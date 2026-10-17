@@ -131,6 +131,26 @@ p { margin: 0; }
 }
 .hero__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
 
+/* ---------- introdução (manifesto) ---------- */
+.hero__intro {
+  max-width: 720px;
+  margin-bottom: 30px;
+  padding: 22px 26px 22px 30px;
+  background: rgba(255, 255, 255, .78);
+  border-left: 4px solid var(--azul);
+  border-radius: 0 14px 14px 0;
+  box-shadow: 0 8px 24px rgba(13, 43, 82, .06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hero__intro p {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--texto);
+  margin: 0;
+}
+.hero__intro strong { color: var(--azul); font-weight: 600; }
+
 .selo {
   display: inline-flex; align-items: center; gap: 9px;
   padding: 8px 17px; background: var(--branco); border: 1px solid var(--linha);
