@@ -1,0 +1,26 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Node (nao usado, mas por seguranca)
+node_modules/
+
+# Arquivos temporarios do cliente
+*.log
+*.tmp
+*.bak
+*.rar
+*.zip
+
+# Dados sensiveis - NUNCA subir
+.env
+.env.local
+config-local.js
+*.key
+*.pem

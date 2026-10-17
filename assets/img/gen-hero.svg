@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Imagem de destaque">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e293b"/><stop offset=".5" stop-color="#334155"/><stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity=".9"/><stop offset="1" stop-color="#818cf8" stop-opacity=".9"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#f472b6" stop-opacity=".85"/><stop offset="1" stop-color="#fbbf24" stop-opacity=".85"/>
+    </linearGradient>
+    <filter id="b1" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="42"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="620" fill="url(#g1)"/>
+
+  <g filter="url(#b1)" opacity=".55">
+    <circle cx="180" cy="150" r="130" fill="#0ea5e9"/>
+    <circle cx="640" cy="470" r="150" fill="#f472b6"/>
+    <circle cx="640" cy="130" r="90" fill="#fbbf24"/>
+    <circle cx="190" cy="500" r="100" fill="#22d3ee"/>
+  </g>
+
+  <g fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="1.5">
+    <circle cx="400" cy="310" r="120"/>
+    <circle cx="400" cy="310" r="185"/>
+    <circle cx="400" cy="310" r="250"/>
+  </g>
+
+  <g>
+    <rect x="300" y="250" width="200" height="120" rx="18" fill="#0f172a" fill-opacity=".55"
+          stroke="#fff" stroke-opacity=".22" stroke-width="1.5"/>
+    <rect x="330" y="285" width="60" height="9" rx="4.5" fill="url(#g2)"/>
+    <rect x="330" y="308" width="140" height="7" rx="3.5" fill="#fff" fill-opacity=".5"/>
+    <rect x="330" y="328" width="104" height="7" rx="3.5" fill="#fff" fill-opacity=".28"/>
+    <rect x="330" y="348" width="46" height="6" rx="3" fill="url(#g3)"/>
+  </g>
+
+  <rect x="0" y="0" width="800" height="620" fill="#0f172a" fill-opacity=".18"/>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Imagem 4">
+  <defs>
+    <linearGradient id="c4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c2d12"/><stop offset="1" stop-color="#2a0f06"/></linearGradient>
+    <filter id="f4" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="46"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#c4)"/>
+  <g filter="url(#f4)" opacity=".55">
+    <circle cx="230" cy="160" r="130" fill="#fb923c"/>
+    <circle cx="600" cy="430" r="140" fill="#38bdf8"/>
+  </g>
+  <g fill="#fff" fill-opacity=".16">
+    <rect x="200" y="200" width="110" height="200" rx="14"/>
+    <rect x="345" y="150" width="110" height="250" rx="14"/>
+    <rect x="490" y="230" width="110" height="170" rx="14"/>
+  </g>
+  <g fill="#fff" fill-opacity=".55">
+    <rect x="225" y="330" width="60" height="9" rx="4.5"/>
+    <rect x="370" y="330" width="60" height="9" rx="4.5"/>
+    <rect x="515" y="330" width="60" height="9" rx="4.5"/>
+  </g>
+</svg>

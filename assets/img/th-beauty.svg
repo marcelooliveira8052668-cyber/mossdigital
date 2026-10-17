@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Beleza e cuidados">
+  <defs>
+    <linearGradient id="bt1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b0a33"/><stop offset=".55" stop-color="#6d28a8"/><stop offset="1" stop-color="#1e0523"/></linearGradient>
+    <linearGradient id="sk2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fcd9c0"/><stop offset="1" stop-color="#e8b49a"/></linearGradient>
+    <linearGradient id="gld" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
+    <filter id="bg2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="46"/></filter>
+  </defs>
+  <rect width="800" height="620" fill="url(#bt1)"/>
+  <g filter="url(#bg2)" opacity=".5">
+    <circle cx="200" cy="160" r="140" fill="#a855f7"/>
+    <circle cx="630" cy="470" r="150" fill="#ec4899"/>
+  </g>
+
+  <g fill="none" stroke="url(#gld)" stroke-width="1.6" opacity=".4">
+    <circle cx="400" cy="320" r="150"/>
+    <circle cx="400" cy="320" r="225"/>
+  </g>
+
+  <!-- perfil com cabelo -->
+  <g transform="translate(430 310)">
+    <path d="M30-150c58 0 104 40 114 94 6 28-4 50-20 64-8 8-10 18-6 28l12 38c8 24-6 44-28 50-20 6-40 18-52 36l-16 22h-58c8-26 6-46-6-70-14-28-20-58-20-92 0-90 44-170 80-170z" fill="url(#sk2)"/>
+    <path d="M30-150c-30 0-76 76-76 170 0 24 4 46 10 66 4-82 24-136 42-156 20 24 56 32 86 16 24-12 36-38 42-62-8-22-54-34-104-34z" fill="#4a1d4f"/>
+    <path d="M-8-36c14-12 34-12 48 0-14 14-34 14-48 0z" fill="#3f1d2e"/>
+    <circle cx="16" cy="-36" r="8" fill="#1b0d16"/>
+    <circle cx="19" cy="-39" r="3" fill="#fff"/>
+    <path d="M-14-60c16-8 34-6 48 4" fill="none" stroke="#4a1d4f" stroke-width="6" stroke-linecap="round"/>
+    <path d="M18 64c10 6 22 6 32-2-12-2-22-2-32 2z" fill="#b03a62"/>
+    <circle cx="-10" cy="8" r="9" fill="url(#gld)"/>
+  </g>
+
+  <!-- tesoura -->
+  <g transform="translate(250 430) rotate(-16)">
+    <path d="M-8 0 22-96M8 0-22-96" stroke="#e9d5ff" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <circle cx="-14" cy="22" r="17" fill="none" stroke="#f0abfc" stroke-width="6"/>
+    <circle cx="14" cy="22" r="17" fill="none" stroke="#f0abfc" stroke-width="6"/>
+  </g>
+</svg>

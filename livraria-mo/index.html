@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>M.O Livraria | Livros Nacionais e Internacionais</title>
+    <meta name="description" content="M.O Livraria - livros nacionais e internacionais, clássicos, romance, ciência, fantasia e muito mais. Compra online e entrega para todo o Brasil.">
+    <meta name="theme-color" content="#6b3410">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+<header id="header">
+    <div class="container header-inner">
+        <a href="#inicio" class="logo">
+            <i class="fa-solid fa-book-open"></i>
+            M.O <span>Livraria</span>
+        </a>
+
+        <button id="btn-mobile" class="icon-btn btn-mobile" aria-label="Abrir menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav id="main-nav" aria-label="Menu principal">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#destaques">Destaques</a></li>
+                <li><a href="#livros">Livros</a></li>
+                <li><a href="#categorias">Categorias</a></li>
+                <li><a href="#historia">Nossa História</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <button id="theme-toggle" class="icon-btn" aria-label="Alternar tema dia/noite">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button id="cart-btn" class="icon-btn cart-btn" aria-label="Abrir carrinho">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count" class="cart-count">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- =====================================================
+         HERO / BANNER
+         ===================================================== -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-content reveal">
+                <span class="hero-tag">🌎 Literatura sem fronteiras</span>
+                <h1>O mundo inteiro<br>cabe em uma <span>estante.</span></h1>
+                <p>
+                    Descubra histórias, ideias e conhecimentos de diferentes países.
+                    Livros nacionais e internacionais, clássicos, romance, ciência,
+                    fantasia e muito mais, com entrega para todo o Brasil.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#livros" class="btn btn-primary"><i class="fa-solid fa-book"></i> Explorar livros</a>
+                    <a href="#destaques" class="btn btn-outline"><i class="fa-solid fa-star"></i> Mais vendidos</a>
+                    <a href="https://wa.me/5511987654321" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Fale conosco</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         CATEGORIAS
+         ===================================================== -->
+    <section id="categorias">
+        <div class="container">
+            <div class="section-heading reveal">
+                <small>Explore</small>
+                <h2>Encontre sua próxima leitura</h2>
+                <p>Diversos gêneros e áreas do conhecimento para todos os tipos de leitores.</p>
+            </div>
+            <div class="categories">
+                <div class="category reveal"><div class="category-icon">📖</div><h3>Literatura</h3><p>Romances, contos e clássicos.</p></div>
+                <div class="category reveal"><div class="category-icon">🏛️</div><h3>História</h3><p>Civilizações e acontecimentos.</p></div>
+                <div class="category reveal"><div class="category-icon">🔬</div><h3>Ciência</h3><p>Descobertas e conhecimento.</p></div>
+                <div class="category reveal"><div class="category-icon">🧙</div><h3>Fantasia</h3><p>Mundos e aventuras épicas.</p></div>
+                <div class="category reveal"><div class="category-icon">🕵️</div><h3>Suspense</h3><p>Mistério e tensão.</p></div>
+                <div class="category reveal"><div class="category-icon">👦</div><h3>Juvenil</h3><p>Histórias para jovens leitores.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         CARROSSEL DESTAQUES
+         ===================================================== -->
+    <section id="destaques" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div class="container">
+            <div class="section-heading reveal">
+                <small>Destaques</small>
+                <h2>Mais vendidos & favoritos</h2>
+                <p>Deslize para ver os livros mais procurados da M.O Livraria.</p>
+            </div>
+            <div class="carousel-wrap">
+                <button class="carousel-nav prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                <div id="carousel-track" class="carousel-track"></div>
+                <button class="carousel-nav next" aria-label="Próximo"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         LIVROS (CATÁLOGO + BUSCA + ORDENAÇÃO)
+         ===================================================== -->
+    <section id="livros">
+        <div class="container">
+            <div class="section-heading reveal">
+                <small>Catálogo</small>
+                <h2>Livros em destaque</h2>
+                <p>Uma seleção de obras nacionais e internacionais. Clique em um card para ver detalhes.</p>
+            </div>
+
+            <div class="toolbar reveal">
+                <div class="filter-chips" id="filter-chips">
+                    <button class="chip active" data-filter="all">Todos</button>
+                    <button class="chip" data-filter="nacional">Nacionais</button>
+                    <button class="chip" data-filter="internacional">Internacionais</button>
+                    <button class="chip" data-filter="Clássicos">Clássicos</button>
+                    <button class="chip" data-filter="Romance">Romance</button>
+                    <button class="chip" data-filter="Fantasia">Fantasia</button>
+                    <button class="chip" data-filter="Ficção">Ficção</button>
+                    <button class="chip" data-filter="Ciência">Ciência</button>
+                    <button class="chip" data-filter="Suspense">Suspense</button>
+                    <button class="chip" data-filter="Juvenil">Juvenil</button>
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" id="search" placeholder="Buscar por título, autor, gênero...">
+                </div>
+                <select id="sort" class="sort-select" aria-label="Ordenar livros">
+                    <option value="az">Ordenar: A → Z</option>
+                    <option value="za">Ordenar: Z → A</option>
+                    <option value="sold-desc">Mais vendidos</option>
+                    <option value="price-asc">Menor preço</option>
+                    <option value="price-desc">Maior preço</option>
+                </select>
+            </div>
+
+            <div id="books-grid" class="books-grid"></div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         NOSSA HISTÓRIA
+         ===================================================== -->
+    <section id="historia" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div class="container">
+            <div class="section-heading reveal">
+                <small>Sobre nós</small>
+                <h2>Nossa História</h2>
+                <p>Conheça a trajetória da M.O Livraria.</p>
+            </div>
+            <div class="story-grid reveal">
+                <div class="story-image">
+                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80" alt="Interior da livraria">
+                </div>
+                <div>
+                    <p style="margin-bottom:1rem;color:var(--muted);">
+                        A <strong>M.O Livraria</strong> nasceu do amor de Marcelo Oliveira pelos livros e pela
+                        vontade de aproximar leitores de histórias de todo o mundo. O que começou
+                        como uma pequena estante em casa tornou-se um espaço dedicado a quem
+                        acredita que um bom livro pode mudar uma vida.
+                    </p>
+                    <p style="margin-bottom:1.5rem;color:var(--muted);">
+                        Hoje reunimos um catálogo cuidadosamente selecionado de obras nacionais
+                        e internacionais, dos clássicos atemporais aos lançamentos mais recentes,
+                        atendendo leitores de todas as idades. Nossa missão é ser mais do que
+                        uma livraria: um ponto de encontro de ideias, culturas e imaginação.
+                    </p>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3>2018 — O começo</h3>
+                            <p>Primeira estante e vendas para amigos e familiares.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>2020 — Primeira loja física</h3>
+                            <p>Abertura do espaço em São Paulo, com catálogo ampliado.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>2023 — Loja online</h3>
+                            <p>Expansão digital para atender todo o Brasil.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>2026 — M.O Livraria</h3>
+                            <p>Nova identidade, site moderno e experiência de compra completa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         CONTATO / MAPA
+         ===================================================== -->
+    <section id="contato">
+        <div class="container">
+            <div class="section-heading reveal">
+                <small>Visite-nos</small>
+                <h2>Onde estamos</h2>
+                <p>Visite a M.O Livraria e viva a experiência de estar entre estantes.</p>
+            </div>
+
+            <div class="contact-grid reveal">
+                <div>
+                    <div class="contact-card" style="margin-bottom:1.5rem;">
+                        <h3>Informações</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-location-dot"></i> Rua das Letras, 123 — Centro, São Paulo — SP</li>
+                            <li><i class="fa-solid fa-phone"></i> (11) 98765-4321</li>
+                            <li><i class="fa-brands fa-whatsapp"></i> WhatsApp disponível</li>
+                            <li><i class="fa-solid fa-envelope"></i> contato@molivraria.com.br</li>
+                            <li><i class="fa-solid fa-clock"></i> Seg–Sáb: 9h às 19h | Dom: 10h às 14h</li>
+                        </ul>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Fale com a gente</h3>
+                        <p>Tem dúvidas, sugestões ou quer encomendar um livro? Entre em contato pelo WhatsApp!</p>
+                        <a href="https://wa.me/5511987654321?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20M.O%20Livraria." target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-top:.75rem;">
+                            <i class="fa-brands fa-whatsapp"></i> Abrir WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="map-wrap">
+                    <iframe
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        src="https://www.google.com/maps?q=Rua+das+Letras+123+Centro+S%C3%A3o+Paulo+SP&output=embed"
+                        title="Mapa da M.O Livraria">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <h4>M.O Livraria</h4>
+                <p style="color:rgba(255,255,255,.75);font-size:.9rem;">Livros nacionais e internacionais para todas as idades. Um mundo inteiro cabe em uma estante.</p>
+                <div class="socials" style="margin-top:.8rem;">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Institucional</h4>
+                <ul>
+                    <li><a href="#historia">Sobre nós</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#">Política de privacidade</a></li>
+                    <li><a href="#">Termos de uso</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Atendimento</h4>
+                <ul>
+                    <li><a href="https://wa.me/5511987654321">WhatsApp</a></li>
+                    <li><a href="mailto:contato@molivraria.com.br">E-mail</a></li>
+                    <li><a href="#">Trocas e devoluções</a></li>
+                    <li><a href="#">Prazos de entrega</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Pagamento</h4>
+                <ul>
+                    <li>Cartão de crédito/débito</li>
+                    <li>Pix</li>
+                    <li>Boleto bancário</li>
+                    <li>WhatsApp (sob consulta)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copy">© 2026 M.O Livraria — Todos os direitos reservados.</div>
+    </div>
+</footer>
+
+<!-- =========================================================
+     CART DRAWER
+     ========================================================= -->
+<aside id="cart-drawer" class="cart-drawer" aria-label="Carrinho de compras">
+    <div class="cart-drawer-header">
+        <h2>Seu carrinho</h2>
+        <button id="close-cart" class="icon-btn" aria-label="Fechar carrinho"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-drawer-footer">
+        <div class="cart-total" id="cart-total">Total: R$ 0,00</div>
+        <button id="checkout-btn" class="btn btn-primary" style="width:100%;">Finalizar pedido</button>
+        <a href="https://wa.me/5511987654321" target="_blank" rel="noopener" class="btn btn-whatsapp" style="width:100%;">
+            <i class="fa-brands fa-whatsapp"></i> Finalizar pelo WhatsApp
+        </a>
+    </div>
+</aside>
+
+<!-- =========================================================
+     BOOK MODAL
+     ========================================================= -->
+<div id="modal-backdrop" class="modal-backdrop">
+    <div class="modal">
+        <button class="modal-close" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<!-- =========================================================
+     CHECKOUT MODAL
+     ========================================================= -->
+<div id="checkout-backdrop" class="modal-backdrop">
+    <div class="modal checkout-modal">
+        <button id="close-checkout" class="modal-close" aria-label="Fechar checkout"><i class="fa-solid fa-xmark"></i></button>
+        <form id="checkout-form" class="checkout-grid">
+            <div>
+                <h2 style="margin-bottom:1rem;color:var(--primary);">Pagamento & Entrega</h2>
+                <div class="form-group">
+                    <label for="co-name">Nome completo</label>
+                    <input id="co-name" type="text" required placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="co-email">E-mail</label>
+                    <input id="co-email" type="email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="co-phone">Telefone / WhatsApp</label>
+                    <input id="co-phone" type="tel" required placeholder="(11) 98765-4321">
+                </div>
+                <div class="form-group">
+                    <label for="co-address">Endereço de entrega</label>
+                    <textarea id="co-address" rows="3" required placeholder="Rua, número, bairro, cidade/UF, CEP"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Forma de pagamento</label>
+                    <div class="payment-options">
+                        <label class="payment-option"><input type="radio" name="payment" value="Cartão de crédito" checked> Cartão de crédito</label>
+                        <label class="payment-option"><input type="radio" name="payment" value="Cartão de débito"> Cartão de débito</label>
+                        <label class="payment-option"><input type="radio" name="payment" value="Pix"> Pix</label>
+                        <label class="payment-option"><input type="radio" name="payment" value="Boleto"> Boleto bancário</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Confirmar e enviar pelo WhatsApp</button>
+            </div>
+            <div>
+                <div id="checkout-summary" class="checkout-summary"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

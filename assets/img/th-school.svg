@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" width="800" height="620" role="img" aria-label="Educação e cursos">
+  <defs>
+    <linearGradient id="sc1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#052e2b"/><stop offset=".55" stop-color="#0f766e"/><stop offset="1" stop-color="#04211f"/></linearGradient>
+    <linearGradient id="gld2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#fbbf24"/></linearGradient>
+    <filter id="sg" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="46"/></filter>
+  </defs>
+  <rect width="800" height="620" fill="url(#sc1)"/>
+  <g filter="url(#sg)" opacity=".45">
+    <circle cx="190" cy="160" r="140" fill="#14b8a6"/>
+    <circle cx="640" cy="470" r="150" fill="#fbbf24"/>
+  </g>
+
+  <g fill="none" stroke="url(#gld2)" stroke-width="1.6" opacity=".38">
+    <circle cx="400" cy="310" r="150"/>
+    <circle cx="400" cy="310" r="225"/>
+  </g>
+
+  <!-- livro aberto -->
+  <g transform="translate(400 330)">
+    <path d="M-220-70c60-26 132-22 220 20v180c-88-42-160-46-220-20z" fill="#f8fafc"/>
+    <path d="M220-70c-60-26-132-22-220 20v180c88-42 160-46 220-20z" fill="#e2e8f0"/>
+    <path d="M0-50v180" stroke="#94a3b8" stroke-width="7"/>
+    <g stroke="#94a3b8" stroke-width="6" stroke-linecap="round">
+      <path d="M-190-32c52-20 114-16 168 16"/>
+      <path d="M-1902c52-20 114-16 168 16"/>
+      <path d="M-19036c52-20 114-16 168 16"/>
+      <path d="M190-32c-52-20-114-16-168 16"/>
+      <path d="M1902c-52-20-114-16-168 16"/>
+      <path d="M19036c-52-20-114-16-168 16"/>
+    </g>
+    <!-- marcador -->
+    <path d="M150-56v126" stroke="#fbbf24" stroke-width="9" stroke-linecap="round"/>
+  </g>
+
+  <!-- capelo -->
+  <g transform="translate(400 130)">
+    <path d="M0-46 76 0 0 46-76 0z" fill="#0f766e" stroke="#5eead4" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M0 46v40" stroke="#5eead4" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="0" cy="-4" r="7" fill="#fbbf24"/>
+  </g>
+</svg>

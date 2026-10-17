@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Van executiva">
+  <defs>
+    <linearGradient id="s4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f1d2e"/><stop offset="1" stop-color="#1a0f16"/></linearGradient>
+    <linearGradient id="cb4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f472b6"/><stop offset="1" stop-color="#be185d"/></linearGradient>
+    <linearGradient id="gl4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbcfe8"/><stop offset="1" stop-color="#f9a8d4"/></linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#s4)"/>
+  <ellipse cx="400" cy="290" rx="255" ry="172" fill="#db2777" opacity=".1"/>
+  <rect x="0" y="420" width="800" height="180" fill="#1a0f16"/>
+
+  <g>
+    <path d="M110 394v-96c0-16 11-26 28-28h300c22 0 36 8 48 24l44 58 60 12c15 3 24 13 24 28v2z" fill="url(#cb4)"/>
+    <path d="M410 272h34c16 0 27 6 36 20l30 40H410z" fill="url(#gl4)"/>
+    <path d="M470 292h26c14 0 23 5 31 16l24 34h-30z" fill="url(#gl4)" opacity=".8"/>
+    <rect x="116" y="336" width="30" height="18" rx="7" fill="#fde68a"/>
+    <rect x="620" y="330" width="26" height="16" rx="6" fill="#fecaca"/>
+    <rect x="240" y="330" width="48" height="11" rx="5.5" fill="#9d174d"/>
+    <rect x="300" y="330" width="48" height="11" rx="5.5" fill="#9d174d"/>
+    <rect x="110" y="376" width="556" height="18" fill="#9d174d" opacity=".6"/>
+
+    <g>
+      <circle cx="216" cy="394" r="50" fill="#1a0f16"/>
+      <circle cx="216" cy="394" r="29" fill="#e2e8f0"/>
+      <circle cx="216" cy="394" r="12" fill="#64748b"/>
+    </g>
+    <g>
+      <circle cx="566" cy="394" r="50" fill="#1a0f16"/>
+      <circle cx="566" cy="394" r="29" fill="#e2e8f0"/>
+      <circle cx="566" cy="394" r="12" fill="#64748b"/>
+    </g>
+  </g>
+</svg>

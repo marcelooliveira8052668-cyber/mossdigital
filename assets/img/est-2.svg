@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Cuidados com o rosto">
+  <defs>
+    <linearGradient id="b1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a0a2e"/><stop offset="1" stop-color="#3b0764"/></linearGradient>
+    <linearGradient id="sk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fde3d0"/><stop offset="1" stop-color="#e9b79c"/></linearGradient>
+    <linearGradient id="gd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#fbbf24"/></linearGradient>
+    <filter id="bl" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="42"/></filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#b1)"/>
+  <g filter="url(#bl)" opacity=".5">
+    <circle cx="620" cy="140" r="130" fill="#7c3aed"/>
+    <circle cx="180" cy="470" r="120" fill="#db2777"/>
+  </g>
+
+  <g fill="none" stroke="url(#gd)" stroke-width="1.6" opacity=".4">
+    <circle cx="400" cy="310" r="130"/>
+    <circle cx="400" cy="310" r="200"/>
+  </g>
+
+  <!-- rosto de frente, minimalista -->
+  <g transform="translate(400 300)">
+    <ellipse cx="0" cy="0" rx="118" ry="152" fill="url(#sk)"/>
+    <path d="M-118-40c-6-84 54-140 118-140s124 56 118 140c-14-46-40-66-118-66s-104 20-118 66z" fill="#3b0764"/>
+    <g fill="#4c1d3d">
+      <path d="M-62-24c12-10 30-10 42 0-12 12-30 12-42 0z"/>
+      <path d="M20-24c12-10 30-10 42 0-12 12-30 12-42 0z"/>
+    </g>
+    <g fill="#1b0d16">
+      <circle cx="-41" cy="-24" r="8"/><circle cx="41" cy="-24" r="8"/>
+    </g>
+    <circle cx="-34" cy="-24" r="3" fill="#fff"/><circle cx="48" cy="-24" r="3" fill="#fff"/>
+    <path d="M-14 62c10 8 24 8 34-2-12-4-24-4-34 2z" fill="#b03a62"/>
+    <g fill="url(#gd)">
+      <circle cx="-118" cy="10" r="10"/><circle cx="118" cy="10" r="10"/>
+    </g>
+  </g>
+</svg>
