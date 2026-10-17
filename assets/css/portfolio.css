@@ -307,11 +307,11 @@ body {
 .final,
 .rod,
 .cartao-preco {
-  background-color: rgba(255, 255, 255, 0.88);
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
-.sec--alt { background-color: rgba(246, 248, 251, 0.88); }
-.sec--escuro { background-color: rgba(13, 43, 82, 0.90); }
+.sec--alt { background-color: rgba(246, 248, 251, 0.75); }
+.sec--escuro { background-color: rgba(13, 43, 82, 0.78); }
 
 /* ---------- passos ---------- */
 .passos { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 26px; }
