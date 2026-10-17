@@ -290,6 +290,29 @@ p { margin: 0; }
 /* Depois que preencher: é só tirar o case--vazio do <article> */
 .case--vazio:hover { border-color: #b9c4d2; transform: none; }
 
+/* ---------- fundo de código (developer theme) ---------- */
+/* Imagem de fundo fixa em toda a página: tela com código (JS/HTML/CSS/React).
+   Fica sutil (opacidade nas seções) para não atrapalhar a leitura. */
+body {
+  background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Seções levemente translúcidas para a imagem aparecer sutilmente por trás */
+.sec,
+.hero,
+.final,
+.rod,
+.cartao-preco {
+  background-color: rgba(255, 255, 255, 0.88);
+}
+
+.sec--alt { background-color: rgba(246, 248, 251, 0.88); }
+.sec--escuro { background-color: rgba(13, 43, 82, 0.90); }
+
 /* ---------- passos ---------- */
 .passos { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 26px; }
 
