@@ -294,7 +294,7 @@ p { margin: 0; }
 /* Imagem de fundo fixa em toda a página: tela com código (JS/HTML/CSS/React).
    Fica sutil (opacidade nas seções) para não atrapalhar a leitura. */
 body {
-  background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&q=80');
+  background-image: url('https://blog.cronapp.io/wp-content/uploads/2020/09/javascript-1.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
