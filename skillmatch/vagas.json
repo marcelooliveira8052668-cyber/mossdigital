@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "empresa": "Tech Solutions",
+    "cargo": "Desenvolvedor Front-End Júnior",
+    "nivel": "Júnior",
+    "requisitos": ["HTML", "CSS", "JavaScript", "Git"],
+    "salario": 4500,
+    "modalidade": "Remoto",
+    "publicado": 2
+  },
+  {
+    "id": 2,
+    "empresa": "Inova Web",
+    "cargo": "Desenvolvedor React Jr",
+    "nivel": "Júnior",
+    "requisitos": ["HTML", "CSS", "JavaScript", "React", "Git"],
+    "salario": 5200,
+    "modalidade": "Híbrido",
+    "publicado": 5
+  },
+  {
+    "id": 3,
+    "empresa": "Data Corp",
+    "cargo": "Estagiário de Front-End",
+    "nivel": "Estágio",
+    "requisitos": ["HTML", "CSS"],
+    "salario": 2200,
+    "modalidade": "Presencial",
+    "publicado": 1
+  },
+  {
+    "id": 4,
+    "empresa": "Creative Studio",
+    "cargo": "Web Designer e Desenvolvedor",
+    "nivel": "Júnior",
+    "requisitos": ["HTML", "CSS", "JavaScript", "Figma"],
+    "salario": 4000,
+    "modalidade": "Híbrido",
+    "publicado": 9
+  },
+  {
+    "id": 5,
+    "empresa": "NextLevel Code",
+    "cargo": "Desenvolvedor Front-End Pleno",
+    "nivel": "Pleno",
+    "requisitos": ["HTML", "CSS", "JavaScript", "React", "TypeScript", "Node.js", "Git"],
+    "salario": 9500,
+    "modalidade": "Remoto",
+    "publicado": 3
+  },
+  {
+    "id": 6,
+    "empresa": "Startup Growth",
+    "cargo": "Frontend Developer",
+    "nivel": "Pleno",
+    "requisitos": ["HTML", "CSS", "JavaScript", "Vue.js", "Git"],
+    "salario": 6800,
+    "modalidade": "Remoto",
+    "publicado": 7
+  },
+  {
+    "id": 7,
+    "empresa": "Banco Central Digital",
+    "cargo": "Analista de Front-End",
+    "nivel": "Pleno",
+    "requisitos": ["JavaScript", "TypeScript", "React", "Testes", "Acessibilidade"],
+    "salario": 7500,
+    "modalidade": "Híbrido",
+    "publicado": 4
+  },
+  {
+    "id": 8,
+    "empresa": "HealthTech Brasil",
+    "cargo": "Desenvolvedor Front-End Acessível",
+    "nivel": "Pleno",
+    "requisitos": ["HTML", "CSS", "JavaScript", "Acessibilidade", "React"],
+    "salario": 6500,
+    "modalidade": "Remoto",
+    "publicado": 6
+  },
+  {
+    "id": 9,
+    "empresa": "Educa Online",
+    "cargo": "Desenvolvedor React Native",
+    "nivel": "Pleno",
+    "requisitos": ["JavaScript", "React", "React Native", "Git"],
+    "salario": 8000,
+    "modalidade": "Remoto",
+    "publicado": 12
+  },
+  {
+    "id": 10,
+    "empresa": "Conecta Logística",
+    "cargo": "Desenvolvedor Front-End Pleno",
+    "nivel": "Pleno",
+    "requisitos": ["HTML", "CSS", "JavaScript", "React", "Redux", "GraphQL"],
+    "salario": 7000,
+    "modalidade": "Presencial",
+    "publicado": 8
+  },
+  {
+    "id": 11,
+    "empresa": "Imobiliária Digital",
+    "cargo": "Desenvolvedor Front-End Júnior",
+    "nivel": "Júnior",
+    "requisitos": ["HTML", "CSS", "JavaScript", "WordPress"],
+    "salario": 4200,
+    "modalidade": "Remoto",
+    "publicado": 11
+  },
+  {
+    "id": 12,
+    "empresa": "FinTech Aurora",
+    "cargo": "Desenvolvedor Front-End Sênior",
+    "nivel": "Sênior",
+    "requisitos": ["TypeScript", "React", "Next.js", "Testes", "Acessibilidade", "Git"],
+    "salario": 14000,
+    "modalidade": "Remoto",
+    "publicado": 2
+  }
+]

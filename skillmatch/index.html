@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="escuro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillMatch — Encontre vagas compatíveis com o seu perfil</title>
+    <meta name="description" content="SkillMatch cruza as suas habilidades com os requisitos de cada vaga, mostra a compatibilidade em porcentagem e monta um plano de estudo para fechar a diferença.">
+    <meta name="author" content="Marcelo Oliveira">
+    <meta name="theme-color" content="#0b0f19">
+    <link rel="canonical" href="https://marcelooliveira8052668-cyber.github.io/SkillMatch-web/">
+
+    <!-- Ícone da aba -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
+    <!-- Prévia ao compartilhar (WhatsApp, LinkedIn, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SkillMatch">
+    <meta property="og:title" content="SkillMatch — Encontre vagas compatíveis com o seu perfil">
+    <meta property="og:description" content="Descubra em porcentagem o quanto cada vaga combina com você — e o que estudar para chegar a 100%.">
+    <meta property="og:url" content="https://marcelooliveira8052668-cyber.github.io/SkillMatch-web/">
+    <meta property="og:image" content="https://marcelooliveira8052668-cyber.github.io/SkillMatch-web/og.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SkillMatch — Encontre vagas compatíveis com o seu perfil">
+    <meta name="twitter:description" content="Compatibilidade em porcentagem + plano de estudo para cada vaga.">
+    <meta name="twitter:image" content="https://marcelooliveira8052668-cyber.github.io/SkillMatch-web/og.png">
+
+    <link rel="stylesheet" href="index.style.css">
+</head>
+<body>
+
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ===================== TOPO ===================== -->
+    <header class="topo">
+        <nav class="topo__nav" aria-label="Cabeçalho principal">
+            <a class="marca" href="./" aria-label="SkillMatch — página inicial">
+                <img src="gemini-svg.svg" alt="" width="34" height="34" aria-hidden="true">
+                <span class="marca__nome">Skill<b>Match</b></span>
+            </a>
+
+            <button type="button" class="btn-icone" id="btnTema" title="Tema claro"
+                    aria-label="Mudar para tema claro">☀️</button>
+        </nav>
+    </header>
+
+    <main id="conteudo">
+
+        <!-- ===================== HERO ===================== -->
+        <section class="hero" aria-labelledby="titulo-hero">
+            <p class="hero__selo">Para quem é desenvolvedor front-end</p>
+
+            <h1 id="titulo-hero">
+                Pare de se candidatar às vagas<br>
+                <span class="destaque">que você ainda não pega.</span>
+            </h1>
+
+            <p class="hero__sub">
+                Diga o que você sabe. O SkillMatch cruza com o que cada empresa pede,
+                mostra a <b>compatibilidade em porcentagem</b> e monta um
+                <b>plano de estudo</b> para fechar a diferença.
+            </p>
+
+            <dl class="hero__numeros" aria-label="O que o SkillMatch faz">
+                <div><dt>Análise</dt><dd>por vaga</dd></div>
+                <div><dt>Compatibilidade</dt><dd>em %</dd></div>
+                <div><dt>Plano</dt><dd>de estudo</dd></div>
+            </dl>
+        </section>
+
+        <!-- ===================== PERFIL ===================== -->
+        <section id="secao-perfil" class="painel" aria-labelledby="titulo-perfil">
+            <h2 id="titulo-perfil">Seu perfil</h2>
+
+            <form id="form-perfil" novalidate>
+                <div class="campo">
+                    <label for="nome">Nome <span class="obrig" aria-hidden="true">*</span></label>
+                    <input type="text" id="nome" name="nome" required
+                           autocomplete="given-name" maxlength="40"
+                           placeholder="Como a empresa vai te chamar">
+                </div>
+
+                <div class="campo">
+                    <label for="habilidades">
+                        Habilidades <span class="obrig" aria-hidden="true">*</span>
+                        <span class="ajuda">separadas por vírgula</span>
+                    </label>
+                    <input type="text" id="habilidades" name="habilidades" required
+                           aria-describedby="ajuda-hab"
+                           placeholder="ex: HTML, CSS, JavaScript, React">
+                    <p class="ajuda-campo" id="ajuda-hab">
+                        Funciona com apelido: <b>js</b>, <b>ts</b>, <b>react.js</b>
+                        são entendidos automaticamente.
+                    </p>
+                </div>
+
+                <fieldset class="sugestoes-campo">
+                    <legend>Ou clique para adicionar</legend>
+                    <div id="sugestoes" class="sugestoes"></div>
+                </fieldset>
+
+                <button type="submit" class="btn btn--principal">Analisar vagas</button>
+            </form>
+        </section>
+
+        <!-- ===================== FILTROS ===================== -->
+        <section id="filtros" class="painel painel--filtros" hidden aria-labelledby="titulo-filtros">
+            <h2 id="titulo-filtros" class="oculto-visual">Filtros</h2>
+
+            <div class="filtros">
+                <div class="campo campo--compacto">
+                    <label for="fModalidade">Modalidade</label>
+                    <select id="fModalidade">
+                        <option value="todas">Todas</option>
+                        <option value="Remoto">Remoto</option>
+                        <option value="Híbrido">Híbrido</option>
+                        <option value="Presencial">Presencial</option>
+                    </select>
+                </div>
+
+                <div class="campo campo--compacto">
+                    <label for="fMinimo">Compatibilidade mínima</label>
+                    <select id="fMinimo">
+                        <option value="0">Qualquer</option>
+                        <option value="30">30% ou mais</option>
+                        <option value="50">50% ou mais</option>
+                        <option value="70">70% ou mais</option>
+                        <option value="85">85% ou mais</option>
+                    </select>
+                </div>
+
+                <div class="campo campo--compacto">
+                    <label for="fOrdem">Ordenar por</label>
+                    <select id="fOrdem">
+                        <option value="compat">Melhor compatibilidade</option>
+                        <option value="salario">Maior salário</option>
+                        <option value="recentes">Mais recentes</option>
+                        <option value="nivel">Nível (júnior → sênior)</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== RESULTADO ===================== -->
+        <section id="secao-resultados" aria-labelledby="titulo-vagas" hidden>
+            <div class="secao__cabecalho">
+                <h2 id="titulo-vagas">Vagas disponíveis</h2>
+                <div id="resumo" class="resumo" role="status" aria-live="polite" hidden></div>
+            </div>
+
+            <div id="container-vagas" class="grade" aria-live="polite" aria-busy="false"></div>
+        </section>
+
+        <!-- ===================== PLANO DE ESTUDO ===================== -->
+        <section id="secao-plano" class="painel painel--plano" hidden aria-labelledby="titulo-plano">
+            <span class="oculto-visual" id="titulo-plano">Plano de estudo</span>
+            <div id="corpo-plano"></div>
+        </section>
+
+    </main>
+
+    <!-- ===================== RODAPÉ ===================== -->
+    <footer class="rodape">
+        <p><b>SkillMatch</b> — análise de compatibilidade entre perfil e vaga.</p>
+        <p class="rodape__menor">
+            Os dados das vagas são de demonstração. Salvos só no seu navegador,
+            nada sai daqui.
+        </p>
+    </footer>
+
+    <!--
+      Se o arquivo for aberto direto do disco (file://), o navegador bloqueia
+      os módulos ES externos por segurança — a página fica bonita mas não
+      funciona. Em vez de entregar uma tela morta, avisamos na hora.
+    -->
+    <div id="aviso-servidor" class="aviso-servidor" hidden role="alert">
+        <div class="aviso-servidor__caixa">
+            <span class="aviso-servidor__ico" aria-hidden="true">&#9888;</span>
+            <div>
+                <b>Abra por um servidor, não pelo ícone do arquivo</b>
+                <p>Você abriu o <code>index.html</code> direto do disco
+                   (<code>file://</code>). Por segurança, o navegador bloqueia
+                   os módulos que este app usa — por isso os botões não respondem.</p>
+                <p><b>Jeito rápido de ver funcionando:</b> instale a extensão
+                   <b>Live Server</b> no VS Code, clique com o botão direito no
+                   <code>index.html</code> e escolha <b>Open with Live Server</b>.</p>
+                <p class="aviso-servidor__link">
+                    Ou abra a versão já publicada:
+                    <a href="https://marcelooliveira8052668-cyber.github.io/SkillMatch-web/"
+                       rel="noopener">marcelooliveira8052668-cyber.github.io/SkillMatch-web</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* Detecta o file:// na hora (script inline roda mesmo com módulos bloqueados). */
+        if (location.protocol === "file:") {
+            document.getElementById("aviso-servidor").hidden = false;
+        }
+    </script>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
