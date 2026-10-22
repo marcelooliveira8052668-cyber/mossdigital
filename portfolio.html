@@ -4,314 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prof. Marcelo Oliveira — Sites profissionais para o seu negócio</title>
-  <meta name="description" content="Faço sites profissionais para lanchonetes, clínicas, academias, pet shops e qualquer outro negócio. A partir de R$ 400. Entrega em 7 a 15 dias.">
 
+  <!-- Página duplicada: a versão oficial está no index.html.
+       Aqui a gente só encaminha o visitante para lá. -->
+  <meta http-equiv="refresh" content="0; url=./index.html">
+  <link rel="canonical" href="./index.html">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-  <meta property="og:title" content="Prof. Marcelo Oliveira — Sites profissionais para o seu negócio">
-  <meta property="og:description" content="Sites profissionais para qualquer tipo de negócio. A partir de R$ 400. Entrega em 7 a 15 dias, conforme a complexidade.">
-  <meta property="og:type" content="website">
-
-  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      gap: 16px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      text-align: center;
+      padding: 24px;
+    }
+    a { color: #58a6ff; }
+  </style>
 </head>
-
 <body>
+  <p>Levando você para o site…</p>
+  <p><a href="./index.html">Clique aqui se não for redirecionado</a></p>
 
-  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
-
-  <!-- ============ CABEÇALHO ============ -->
-  <header class="cab" id="cab">
-    <div class="wrap cab__in">
-      <a class="marca" href="#topo">
-        <span class="marca__ini">MO</span>
-        <span class="marca__txt">Marcelo Oliveira<small>Criação de sites</small></span>
-      </a>
-
-      <nav class="nav" id="nav">
-        <a href="#exemplos">Exemplos</a>
-        <a href="#entregue">O que você recebe</a>
-        <a href="#como">Como funciona</a>
-        <a href="#duvidas">Dúvidas</a>
-      </nav>
-
-      <a class="btn btn--wa" id="waTop" href="#">
-        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
-          <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.2.1.7-.1 1.3z"/>
-        </svg>
-        <span>(11) 94203-8103</span>
-      </a>
-
-      <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <main id="conteudo">
-
-    <!-- ============ HERO ============ -->
-    <section class="hero" id="topo">
-      <div class="wrap hero__grid">
-        <div class="hero__txt">
-          <span class="selo">
-            <span class="selo__ponto"></span> 26 projetos &middot; Site a partir de R$ 400 &middot; Entrega em 7 a 15 dias
-          </span>
-
-          <h1>Seu negócio merece um site <em>de verdade</em></h1>
-
-          <p class="hero__sub">
-            Faço sites profissionais para <strong>qualquer tipo de negócio</strong> —
-            lanchonete, clínica, academia, pet shop, escritório, oficina.
-            Você manda os dados e as fotos. Eu monto tudo e você recebe pronto pra usar.
-          </p>
-
-          <div class="hero__btns">
-            <a class="btn btn--wa btn--g" id="waHero" href="#">
-              <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true">
-                <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.2.1.7-.1 1.3z"/>
-              </svg>
-              <span>Falar no WhatsApp</span>
-            </a>
-            <a class="btn btn--fant btn--g" href="#exemplos">Ver exemplos</a>
-          </div>
-
-          <ul class="provas">
-            <li><b>26</b> projetos</li>
-            <li><b>7 a 15</b> dias para ficar pronto</li>
-            <li><b>100%</b> funciona no celular</li>
-          </ul>
-        </div>
-
-        <div class="hero__lado">
-          <div class="cartao-preco">
-            <span class="cartao-preco__de">Sites a partir de</span>
-            <strong class="cartao-preco__valor">R$ 400</strong>
-            <ul class="cartao-preco__lista">
-              <li>Seu negócio com cara de empresa grande</li>
-              <li>Funciona bem no celular, onde a maioria dos clientes te procura</li>
-              <li>Aparece no Google quando pesquisam pelo seu nome</li>
-              <li>Cliente pede direto no seu WhatsApp, sem precisar ligar</li>
-              <li>Cada produto ou serviço com foto, preço e descrição</li>
-              
-              <li>Seções: história, serviços, contato, WhatsApp e mapa</li>
-              <li>Você mesmo muda preço e foto quando quiser</li>
-            </ul>
-            <a class="btn btn--wa btn--block" id="waPreco" href="#">Quero o meu</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ EXEMPLOS ============ -->
-    <section class="sec sec--alt" id="exemplos">
-      <div class="wrap">
-        <div class="sec__cab">
-          <span class="tag">Exemplos reais</span>
-          <h2>Olha como fica o site do seu negócio</h2>
-          <p>Essa é a mesma estrutura, adaptada para cada tipo de comércio. Clique num exemplo para ver o site funcionando.</p>
-        </div>
-
-        <div class="exemplos" id="grade-exemplos"></div>
-
-        <p class="exemplos__nota">
-          Esses sites usam dados fictícios para demonstrar o resultado.
-          O seu entra com os dados reais da sua loja.
-        </p>
-      </div>
-    </section>
-
-    <!-- ============ O QUE VOCÊ RECEBE ============ -->
-    <section class="sec" id="entregue">
-      <div class="wrap">
-        <div class="sec__cab">
-          <span class="tag">O que está incluso</span>
-          <h2>Você não precisa saber nada de site</h2>
-          <p>Você me manda o que tem. Eu cuido do resto — do layout ao colocar no ar.</p>
-        </div>
-
-        <div class="beneficios">
-          <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            </span>
-            <h3>Bonito no celular</h3>
-            <p>Seu cliente abre no celular e vê tudo certinho. A maioria das pessoas procura por você pelo celular.</p>
-          </div>
-
-          <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            </span>
-            <h3>Aparece no Google</h3>
-            <p>Título, descrição e estrutura pronta pra o Google indexar. Cliente te acha quando pesquisa.</p>
-          </div>
-
-          <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4z"/><path d="M8 6h8"/></svg>
-            </span>
-            <h3>Ficha de cada serviço</h3>
-            <p>Cada card abre uma ficha completa com fotos, descrição, o que está incluído e o preço.</p>
-          </div>
-
-          <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-10V5l-8-3-8 3v7c0 5.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-            </span>
-            <h3>Carregamento rápido</h3>
-            <p>Site leve, que abre rápido até com internet ruim. Cliente não espera e não sai.</p>
-          </div>
-
-          <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </span>
-            <h3>Botão de WhatsApp</h3>
-            <p>Botão em todo lugar. Seu cliente manda mensagem direto, sem e-mail perdido.</p>
-          </div>
-
-          <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-            </span>
-            <h3>Você atualiza sozinho</h3>
-            <p>Preço, telefone, horário, foto — você mesmo muda. Sem me ligar, sem pagar nada.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ COMO FUNCIONA ============ -->
-    <section class="sec sec--escuro" id="como">
-      <div class="wrap">
-        <div class="sec__cab">
-          <span class="tag tag--claro"> Simples assim</span>
-          <h2>Como funciona</h2>
-          <p>Quatro passos e seu site está no ar.</p>
-        </div>
-
-        <ol class="passos">
-          <li class="passo">
-            <span class="passo__n">1</span>
-            <h3>Você me chama</h3>
-            <p>Manda uma mensagem no WhatsApp dizendo o nome do seu negócio e o que você vende.</p>
-            <small>Leva 2 minutos</small>
-          </li>
-          <li class="passo">
-            <span class="passo__n">2</span>
-            <h3>Você manda o material</h3>
-            <p>Logo, fotos, preços, endereço, telefone, horário e os dizeres que você quer. Pode ser por foto mesmo, do WhatsApp.</p>
-            <small>Pode levar alguns dias</small>
-          </li>
-          <li class="passo">
-            <span class="passo__n">3</span>
-            <h3>Eu monto o site</h3>
-            <p>Escolho a estrutura que mais combina com o seu negócio, coloco seus dados e suas fotos. Você acompanha pelo WhatsApp.</p>
-            <small>7 a 15 dias</small>
-          </li>
-          <li class="passo">
-            <span class="passo__n">4</span>
-            <h3>Entrego e você vende</h3>
-            <p>Você recebe o link do site no ar. Já pode mandar pra cliente, colocar na bio do Instagram e nos prints.</p>
-            <small>Pronto pra usar</small>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ DÚVIDAS ============ -->
-    <section class="sec" id="duvidas">
-      <div class="wrap">
-        <div class="sec__cab">
-          <span class="tag">Dúvidas</span>
-          <h2>Perguntas que sempre aparecem</h2>
-        </div>
-
-        <div class="faq">
-          <details class="faq__i" open>
-            <summary>O valor &eacute; R$ 400 mesmo?</summary>
-            <p>R$ 400 é o valor de um site de uma página, que é o que a maioria dos negócios precisa. Se o seu negócio precisar de mais páginas, blog, loja online ou algum sistema especial, eu te passo o valor certinho antes de começar — e nada muda depois do combinado.</p>
-          </details>
-
-          <details class="faq__i">
-            <summary>Em quanto tempo fica pronto?</summary>
-            <p>Um site de uma p&aacute;gina fica pronto em <strong>7 a 15 dias</strong>. Na maior parte das vezes sai mais r&aacute;pido &mdash; 7 dias &eacute; o prazo t&iacute;pico, 15 dias &eacute; o mais demorado (projeto com mais p&aacute;ginas, loja online ou material que demora a chegar).</p>
-            <p>O prazo real eu te confirmo <strong>antes de come&ccedil;ar</strong>, depois de ver o que voc&ecirc; precisa. E te aviso cada etapa: quando o esbo&ccedil;o estiver pronto pra voc&ecirc; olhar, eu mando no WhatsApp &mdash; voc&ecirc; aprova e s&oacute; depois vai pro ar.</p>
-            <p>Se eu souber que vai atrasar, eu te falo <em>antes</em>, nunca depois. Prefiro essa honestidade do que te prometer 3 dias e entregar correndo.</p>
-          </details>
-
-          <details class="faq__i">
-            <summary>Preciso ter logo?</summary>
-            <p>Não precisa. Se você não tiver, a gente parte de uma marca pronta e você me diz o nome e a cor que prefere. Se já tiver logo, melhor ainda: eu uso a sua.</p>
-          </details>
-
-          <details class="faq__i">
-            <summary>As fotos podem ser as do meu celular?</summary>
-            <p>Podem. Eu ajusto o tamanho e a qualidade pra site não ficar pesado. Só peço que você mande as fotos mais nítidas que tiver.</p>
-          </details>
-
-          <details class="faq__i">
-            <summary>Consigo mudar os preços depois?</summary>
-            <p>Consegue. Eu te entrego com um arquivo simples onde você troca preço, telefone, horário e foto. Te mostro em 2 minutos como fazer. Não precisa pagar mais nada por isso.</p>
-          </details>
-
-          <details class="faq__i">
-            <summary>O site fica no ar? Preciso pagar hospedagem?</summary>
-            <p>Já deixo publicado num endereço gratuito para você começar, sem pagar nada. Se quiser um domínio com o nome da sua loja, eu te explico as opções e o custo — mas isso é opcional.</p>
-          </details>
-
-          <details class="faq__i">
-            <summary>Você faz site para qualquer negócio mesmo?</summary>
-            <p>Faço. Já montei sites para lanchonete, clínica, academia, pet shop, escritório de advocacia, oficina, loja de móveis, estúdio, salão de beleza, entre outros. A estrutura é a mesma, muda o conteúdo e as cores. Se o seu negócio for muito diferente, me chama antes que eu te falo com sinceridade se consigo ou não.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ CHAMADA FINAL ============ -->
-    <section class="final">
-      <div class="wrap final__in">
-        <h2>Bora tirar seu site do papel?</h2>
-        <p>Manda uma mensagem agora. Pode ser só o nome do seu negócio — eu te explico o resto.</p>
-        <a class="btn btn--wa btn--g" id="waFinal" href="#">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-            <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.2.1.7-.1 1.3z"/>
-          </svg>
-          <span>(11) 94203-8103</span>
-        </a>
-        <small>Respondo em até 2 horas, de segunda a sábado.</small>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============ RODAPÉ ============ -->
-  <footer class="rod">
-    <div class="wrap rod__in">
-      <div class="rod__marca">
-        <span class="marca__ini">MO</span>
-        <p>Sites profissionais para qualquer tipo de negócio. São Paulo — SP.</p>
-      </div>
-      <nav class="rod__nav">
-        <a href="#exemplos">Exemplos</a>
-        <a href="#entregue">O que você recebe</a>
-        <a href="#como">Como funciona</a>
-        <a href="#duvidas">Dúvidas</a>
-      </nav>
-      <div class="rod__cont">
-        <a href="#" id="rodWa">WhatsApp (11) 94203-8103</a>
-        <span>Prof. Marcelo Oliveira</span>
-      </div>
-    </div>
-    <div class="wrap rod__base">
-      <span>© 2026 Todos os direitos reservados.</span>
-      <span>Feito à mão.</span>
-    </div>
-  </footer>
-
-  <script src="assets/js/portfolio.js"></script>
+  <script>
+    // Redireciona também para quem tem JavaScript ativado.
+    window.location.replace('./index.html');
+  </script>
 </body>
 </html>

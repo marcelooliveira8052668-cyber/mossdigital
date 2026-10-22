@@ -1,20 +1,21 @@
 # Template de Site Profissional
 
-Template com 23 tipos de negócio prontos. Você troca cores, logo, fotos, textos e cards num único
-arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
+Template com **23 tipos de negócio prontos** e **26 exemplos** no portfólio (23 nichos
+do template + 3 projetos reais). Você troca cores, logo, fotos, textos e cards num
+único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
 Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
 
 ---
 
-## Três telas, três funções
+## Quatro telas, quatro funções
 
 | Arquivo | Para que serve | Quem vê |
 |---------|----------------|---------|
-| **portfolio.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 23 exemplos. É por aqui que o cliente entra | Cliente |
-| demo.html?preset=lanchonete | O site de exemplo, ja preenchido. E este link que voce manda pro cliente | Cliente |
-| demo.html?preset=X&painel=1 | O site de exemplo com o painel de troca | So voce |
-| index.html | Um site de exemplo completo (clinica de estetica) | Cliente |
+| **index.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 26 exemplos. É por aqui que o cliente entra | Cliente |
+| **portfolio.html** | Redireciona para o `index.html` (link antigo, mantido para não quebrar quem já tinha guardado) | Cliente |
+| demo.html?preset=lanchonete | O site de exemplo, já preenchido. É este link que você manda pro cliente | Cliente |
+| demo.html?preset=X&painel=1 | O site de exemplo com o painel de troca | Só você |
 
 ---
 
@@ -42,6 +43,11 @@ Abra o painel (acrescente `&painel=1` no link) e escolha:
 | oficina | Oficina, borracharia, centro automotivo |
 | fotografo | Fotografo, estudio, camera |
 | servicos | Qualquer prestador: eletrica, manutencao |
+| dentista | Dentista, clinica odontologica |
+| veterinario | Veterinario, clinica vet, petshop |
+| psicologo | Psicologo, terapeuta, psicopedagogo |
+| nutricionista | Nutricionista, nutrologia, coach alimentar |
+| arquiteto | Arquiteto, engenheiro, projetista |
 
 Links de exemplo:
 ```
@@ -50,6 +56,30 @@ demo.html?preset=barbearia
 ```
 
 Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1`.
+
+---
+
+## Os 3 projetos reais do portfólio
+
+Além dos 23 nichos gerados pelo template, o portfólio mostra **3 projetos que existem
+de verdade** e abrem em página própria:
+
+| Projeto | O que é | Pasta |
+|---------|---------|-------|
+| EducaEnem | Curso online do ENEM: aulas, PDFs, simulados e área do aluno | `educaenem/` |
+| Código & Conhecimento | Livro didático de programação web, do HTML ao React | `codigo-conhecimento/` |
+| M.O Livraria | Livraria online com catálogo, carrinho, checkout e WhatsApp | `livraria-mo/` |
+
+Para colocar um card desses no portfólio, edite a lista `EXEMPLOS` em
+`assets/js/portfolio.js` e aponte o campo `link` para a pasta do projeto:
+
+```js
+{ id: 'meu-projeto', emoji: '🎯', foto: 'assets/img/fotos/heroi-meu-projeto.jpg',
+  nome: 'Meu Projeto', desc: 'O que o projeto faz', link: 'meu-projeto/index.html' }
+```
+
+A foto pode ser um arquivo local (padrão) ou um link do Unsplash. Card sem `link`
+aponta para `demo.html?preset=<id>`.
 
 ---
 
@@ -105,7 +135,7 @@ Tem tudo comentado, do começo ao fim:
 ### Não mexe nunca
 | Arquivo | Para que serve |
 |---------|----------------|
-| `index.html` | Estrutura da página (já está pronta) |
+| `demo.html` | Estrutura da página do site do cliente (já está pronta) |
 | `assets/css/style.css` | Aparência (ajuste só se souber CSS) |
 | `assets/js/app.js` | Monta o site a partir do config |
 | `assets/js/data.js` | Conexão com o banco de dados |
@@ -255,9 +285,12 @@ Alternativa brasileira com suporte em português:
 
 ```
 template-site-profissional/
-├── portfolio.html         Site de divulgacao SEU (ver README)
-├── index.html              Site de exemplo pronto (clinica de estetica)
-├── demo.html               Painel com os 18 presets
+├── index.html              Site de divulgacao SEU (o principal)
+├── portfolio.html          Redireciona para o index.html
+├── demo.html               Estrutura do site do cliente + painel de presets
+├── educaenem/              Projeto real: curso online do ENEM
+├── codigo-conhecimento/    Projeto real: livro de programacao web
+├── livraria-mo/            Projeto real: livraria online
 ├── assets/
 │   ├── css/
 │   │   ├── style.css       Visual do site do cliente
@@ -265,19 +298,21 @@ template-site-profissional/
 │   │   └── portfolio.css   Visual do site de divulgacao
 │   ├── js/
 │   │   ├── config.js       EDITE ESTE - dados e cores do site do cliente
-│   │   ├── presets.js      8 dos 18 presets (parte 1)
-│   │   ├── presets-2.js    os outros 10 presets (parte 2) → TOTAL: 18
+│   │   ├── presets.js      8 dos 23 presets (parte 1)
+│   │   ├── presets-2.js    10 presets (parte 2)
+│   │   ├── presets-3.js    5 presets (parte 3) → TOTAL: 23
 │   │   ├── data.js         Conexao com o banco de dados
 │   │   ├── app.js          Monta o site
 │   │   ├── demo.js         Logica do painel
-│   │   └── portfolio.js    Logica do site de divulgacao
+│   │   └── portfolio.js    Logica do site de divulgacao + lista de exemplos
 │   └── img/                Logotipos, hero e fotos de exemplo
 └── README.md
 ```
 
 **Para entregar ao cliente:** mande a pasta inteira, **menos** estes arquivos:
-`portfolio.html`, `demo.html`, `assets/css/demo.css`, `assets/css/portfolio.css`,
-`assets/js/presets.js`, `assets/js/presets-2.js`, `assets/js/demo.js`,
+`portfolio.html`, `demo.html`, `educaenem/`, `codigo-conhecimento/`, `livraria-mo/`,
+`assets/css/demo.css`, `assets/css/portfolio.css`, `assets/js/presets.js`,
+`assets/js/presets-2.js`, `assets/js/presets-3.js`, `assets/js/demo.js`,
 `assets/js/portfolio.js`, `README.md` e `.git`.
 
 ---
