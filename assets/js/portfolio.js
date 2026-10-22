@@ -47,7 +47,8 @@
     { id: 'arquiteto',    emoji: '📐', foto: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', nome: 'Arquiteto',              desc: 'Projetos residenciais e comerciais' },
     { id: 'livraria',   emoji: '📚', foto: 'assets/img/fotos/heroi-livraria.jpg', nome: 'M.O Livraria',       desc: 'Livraria online com catálogo, carrinho, checkout e WhatsApp', link: 'livraria-mo/index.html' },
     { id: 'educaenem',  emoji: '🎓', foto: 'assets/img/fotos/heroi-educaenem.jpg', nome: 'EducaEnem',          desc: 'Curso online do ENEM: aulas, PDFs, simulados e área do aluno', link: 'educaenem/index.html' },
-    { id: 'conhecimento', emoji: '📘', foto: 'assets/img/fotos/heroi-codigo.jpg', nome: 'Código & Conhecimento', desc: 'Livro didático de programação web, do HTML ao React', link: 'codigo-conhecimento/index.html' }
+    { id: 'conhecimento', emoji: '📘', foto: 'assets/img/fotos/heroi-codigo.jpg', nome: 'Código & Conhecimento', desc: 'Livro didático de programação web, do HTML ao React', link: 'codigo-conhecimento/index.html' },
+    { id: 'nfcontrol', emoji: '📦', foto: 'assets/img/fotos/heroi-nfcontrol.jpg', nome: 'NF Control', desc: 'Sistema de notas fiscais, estoque, financeiro e auditoria', link: 'nf-control/index.html' }
   ];
 
   /* ------------------------------------------------------------------

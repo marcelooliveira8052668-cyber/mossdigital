@@ -1,7 +1,7 @@
 # Template de Site Profissional
 
-Template com **23 tipos de negócio prontos** e **26 exemplos** no portfólio (23 nichos
-do template + 3 projetos reais). Você troca cores, logo, fotos, textos e cards num
+Template com **23 tipos de negócio prontos** e **27 exemplos** no portfólio (23 nichos
+do template + 4 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
 Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
@@ -59,9 +59,9 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ---
 
-## Os 3 projetos reais do portfólio
+## Os 4 projetos reais do portfólio
 
-Além dos 23 nichos gerados pelo template, o portfólio mostra **3 projetos que existem
+Além dos 23 nichos gerados pelo template, o portfólio mostra **4 projetos que existem
 de verdade** e abrem em página própria:
 
 | Projeto | O que é | Pasta |
@@ -69,6 +69,7 @@ de verdade** e abrem em página própria:
 | EducaEnem | Curso online do ENEM: aulas, PDFs, simulados e área do aluno | `educaenem/` |
 | Código & Conhecimento | Livro didático de programação web, do HTML ao React | `codigo-conhecimento/` |
 | M.O Livraria | Livraria online com catálogo, carrinho, checkout e WhatsApp | `livraria-mo/` |
+| NF Control | Sistema de notas fiscais, estoque, financeiro e auditoria | `nf-control/` |
 
 Para colocar um card desses no portfólio, edite a lista `EXEMPLOS` em
 `assets/js/portfolio.js` e aponte o campo `link` para a pasta do projeto:
@@ -291,6 +292,7 @@ template-site-profissional/
 ├── educaenem/              Projeto real: curso online do ENEM
 ├── codigo-conhecimento/    Projeto real: livro de programacao web
 ├── livraria-mo/            Projeto real: livraria online
+├── nf-control/             Projeto real: sistema de notas fiscais e estoque
 ├── assets/
 │   ├── css/
 │   │   ├── style.css       Visual do site do cliente
@@ -311,9 +313,9 @@ template-site-profissional/
 
 **Para entregar ao cliente:** mande a pasta inteira, **menos** estes arquivos:
 `portfolio.html`, `demo.html`, `educaenem/`, `codigo-conhecimento/`, `livraria-mo/`,
-`assets/css/demo.css`, `assets/css/portfolio.css`, `assets/js/presets.js`,
-`assets/js/presets-2.js`, `assets/js/presets-3.js`, `assets/js/demo.js`,
-`assets/js/portfolio.js`, `README.md` e `.git`.
+`nf-control/`, `assets/css/demo.css`, `assets/css/portfolio.css`,
+`assets/js/presets.js`, `assets/js/presets-2.js`, `assets/js/presets-3.js`,
+`assets/js/demo.js`, `assets/js/portfolio.js`, `README.md` e `.git`.
 
 ---
 
