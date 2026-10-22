@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Material Completo — Curso EducaEnem 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/estilo.css" />
+    <style>
+      body {
+        font-family: "Space Grotesk", system-ui, sans-serif;
+        color: #101828;
+        line-height: 1.7;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+      }
+      .capa {
+        background: linear-gradient(135deg, #b8ff4d 0%, #9be12e 60%, #7c3aed 100%);
+        color: #05050a;
+        padding: 4rem 2rem;
+        text-align: center;
+        border-radius: 0 0 40px 40px;
+        margin-bottom: 2rem;
+      }
+      .capa h1 {
+        font-family: "Orbitron", sans-serif;
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        margin: 0;
+        text-transform: uppercase;
+        line-height: 1.1;
+      }
+      .capa p {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        opacity: 0.95;
+      }
+      .container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 1.5rem 3rem;
+      }
+      h2 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        color: #153502;
+        border-bottom: 3px solid #b8ff4d;
+        padding-bottom: 0.5rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+        color: #3b0764;
+        margin: 1.5rem 0 0.75rem;
+      }
+      p {
+        margin-bottom: 1rem;
+        color: #242e3d;
+      }
+      ul {
+        margin: 0.75rem 0 1.5rem 1.5rem;
+        color: #242e3d;
+      }
+      ul li {
+        margin-bottom: 0.5rem;
+      }
+      .disciplina {
+        border: 1px solid rgba(15, 23, 42, 0.13);
+        border-left: 4px solid #b8ff4d;
+        border-radius: 14px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1rem;
+        background: #f7f8fc;
+        page-break-inside: avoid;
+      }
+      .disciplina h4 {
+        margin: 0 0 0.5rem;
+        font-size: 1.05rem;
+        color: #101828;
+        font-family: "Orbitron", sans-serif;
+      }
+      .disciplina p {
+        margin: 0;
+        font-size: 0.92rem;
+        color: #242e3d;
+      }
+      .disciplina .meta {
+        font-size: 0.78rem;
+        font-family: "JetBrains Mono", monospace;
+        color: #667085;
+        margin-top: 0.5rem;
+      }
+      .pdf-lista {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .pdf-item {
+        border: 1px solid rgba(15, 23, 42, 0.13);
+        border-radius: 12px;
+        padding: 1rem;
+        background: #fff;
+        font-size: 0.85rem;
+        color: #242e3d;
+        page-break-inside: avoid;
+      }
+      .pdf-item strong {
+        color: #153502;
+      }
+      .passos {
+        background: rgba(167, 139, 250, 0.1);
+        border: 1px solid rgba(167, 139, 250, 0.4);
+        border-radius: 14px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+      }
+      .passos h3 {
+        margin-top: 0;
+        color: #3b0764;
+      }
+      .passos ol {
+        margin: 0.5rem 0 0 1.5rem;
+        padding: 0;
+      }
+      .passos li {
+        margin-bottom: 0.75rem;
+      }
+      .destaque {
+        background: rgba(5, 57, 26, 0.1);
+        border: 1px solid rgba(74, 222, 128, 0.4);
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        margin: 1.5rem 0;
+        color: #05391a;
+      }
+      .contato {
+        margin-top: 2.5rem;
+        padding: 1.5rem;
+        background: #f7f8fc;
+        border-radius: 14px;
+        text-align: center;
+      }
+      .contato p {
+        margin: 0.25rem 0;
+      }
+      .rodape {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(15, 23, 42, 0.13);
+        font-size: 0.8rem;
+        color: #667085;
+        text-align: center;
+      }
+      @media print {
+        body {
+          background: #fff;
+          color: #111;
+          font-size: 10.5pt;
+        }
+        .capa {
+          background: #b8ff4d !important;
+          color: #05050a !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        h1, h2, h3, h4 {
+          color: #111 !important;
+          -webkit-text-fill-color: #111 !important;
+        }
+        .disciplina {
+          background: #fff !important;
+          border: 1px solid #999 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .pdf-item {
+          background: #fff !important;
+          border: 1px solid #999 !important;
+        }
+        .passos {
+          background: #f2f4fb !important;
+          border: 1px solid #999 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        .destaque {
+          background: #e8f5e9 !important;
+          border: 1px solid #4caf50 !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        a {
+          color: #111 !important;
+          text-decoration: none !important;
+        }
+        a::after {
+          content: " (" attr(href) ")";
+          font-size: 0.8rem;
+          color: #666;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="capa">
+      <h1>EducaEnem 2026</h1>
+      <p>Curso Completo de Preparação para o ENEM e Vestibulares</p>
+      <p><strong>Prof. Marcelo Oliveira</strong> · Material de apoio para entrega ao aluno</p>
+    </div>
+
+    <div class="container">
+
+      <h2>1. Apresentação</h2>
+      <p>
+        O <strong>EducaEnem 2026</strong> é um curso online completo de preparação para o Exame
+        Nacional do Ensino Médio (ENEM) e para vestibulares tradicionais como Fuvest (USP) e Unicamp (Comvest).
+      </p>
+      <p>
+        O aluno recebe acesso à plataforma com videoaulas, materiais em PDF, atividades comentadas,
+        simulados no estilo da prova, aulas ao vivo (Zoom e Google Meet), gravações de aulas e um
+        Professor Virtual para tirar dúvidas.
+      </p>
+
+      <div class="destaque">
+        <strong>✅ O que está incluído:</strong>
+        <ul>
+          <li>Videoaulas de todas as disciplinas da matriz do ENEM</li>
+          <li>Materiais em PDF para download (resumos e guias por matéria)</li>
+          <li>Atividades com gabarito comentado</li>
+          <li>Simulado com mais de 180 questões no estilo ENEM</li>
+          <li>Aulas ao vivo com tira-dúvidas</li>
+          <li>Gravações de aulas para assistir quando quiser</li>
+          <li>Professor Virtual (tira-dúvidas automático por disciplina)</li>
+          <li>Boletim de notas e acompanhamento de progresso</li>
+          <li>Preparação para Fuvest e Unicamp</li>
+        </ul>
+      </div>
+
+      <h2>2. Disciplinas do Curso</h2>
+      <p>
+        O curso está dividido em 4 áreas de conhecimento da matriz do ENEM, com 12 disciplinas ao todo:
+      </p>
+
+      <div class="disciplina">
+        <h4>📐 Matemática</h4>
+        <p>Razão e proporção, funções, análise de dados, probabilidade e geometria aplicada.</p>
+        <div class="meta">120h · Prof. Marcelo Oliveira · PDF: Resumão de Matemática no ENEM</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>✍️ Redação</h4>
+        <p>Dissertativo-argumentativo: tese, repertório, proposta de intervenção e reescrita.</p>
+        <div class="meta">40h · Prof. Marcelo Oliveira · PDF: Guia Completo de Redação do ENEM</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>📖 Língua Portuguesa</h4>
+        <p>Leitura, interpretação de textos, gramática e produção de escrita.</p>
+        <div class="meta">Prof. Marcelo Oliveira · Área: Linguagens</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>📚 Literatura</h4>
+        <p>Linha do tempo, quadros comparativos e exercícios de literatura brasileira e portuguesa.</p>
+        <div class="meta">PDF: Resumão de Literatura no ENEM · Área: Linguagens</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>🇪🇸 Espanhol</h4>
+        <p>Domine a língua espanhola para garantir sua nota no ENEM.</p>
+        <div class="meta">PDF: Guia de Espanhol para o ENEM · Área: Linguagens</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>🏛 História</h4>
+        <p>História Geral e do Brasil, com foco nas competências e habilidades da matriz do ENEM.</p>
+        <div class="meta">PDF: Resumão de História Geral para o ENEM 2025 · Área: Humanas</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>🌍 Geografia</h4>
+        <p>Mapas conceituais, conceitos geográficos e exercícios comentados.</p>
+        <div class="meta">PDF: Resumão de Geografia para o ENEM · Área: Humanas</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>👥 Sociologia</h4>
+        <p>Sociedade, cultura e pensamento sociológico para o ENEM.</p>
+        <div class="meta">PDF: Guia Completo de Sociologia para o ENEM · Área: Humanas</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>🧠 Filosofia</h4>
+        <p>Correntes e pensadores essenciais para o ENEM.</p>
+        <div class="meta">PDF: Filosofia no ENEM · Área: Humanas</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>🧬 Biologia</h4>
+        <p>Ciências da Natureza: biologia celular, genética, ecologia e evolução.</p>
+        <div class="meta">PDF: Guia Completo de Biologia para o ENEM · Área: Natureza</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>⚛ Física</h4>
+        <p>Mecânica, termologia, óptica, eletricidade e física moderna.</p>
+        <div class="meta">PDF: Guia Completo de Física para o ENEM · Área: Natureza</div>
+      </div>
+
+      <div class="disciplina">
+        <h4>🧪 Química</h4>
+        <p>Mapas conceituais, exercícios e dicas práticas de química para o ENEM.</p>
+        <div class="meta">PDF: Resumão de Química no ENEM · Área: Natureza</div>
+      </div>
+
+      <h2>3. Materiais em PDF Incluídos</h2>
+      <p>
+        Os seguintes materiais em PDF estão disponíveis para download na plataforma do aluno:
+      </p>
+      <div class="pdf-lista">
+        <div class="pdf-item"><strong>Matemática:</strong> Resumão de Matemática no ENEM — Fórmulas, Exercícios e Simulados Práticos</div>
+        <div class="pdf-item"><strong>Redação:</strong> Guia Completo de Redação do ENEM — Modelos, Exercícios e Propostas de Intervenção</div>
+        <div class="pdf-item"><strong>Literatura:</strong> Resumão de Literatura no ENEM — Linha do Tempo, Quadros e Exercícios</div>
+        <div class="pdf-item"><strong>Espanhol:</strong> Guia de Espanhol para o ENEM — Domine a Língua e Garanta sua Nota</div>
+        <div class="pdf-item"><strong>História:</strong> Resumão de História Geral para o ENEM 2025</div>
+        <div class="pdf-item"><strong>Geografia:</strong> Resumão de Geografia para o ENEM — Mapas, Conceitos e Exercícios Comentados</div>
+        <div class="pdf-item"><strong>Sociologia:</strong> Guia Completo de Sociologia para o ENEM</div>
+        <div class="pdf-item"><strong>Filosofia:</strong> Filosofia no ENEM — Correntes e Pensadores Essenciais</div>
+        <div class="pdf-item"><strong>Biologia:</strong> Guia Completo de Biologia para o ENEM</div>
+        <div class="pdf-item"><strong>Física:</strong> Guia Completo de Física para o ENEM</div>
+        <div class="pdf-item"><strong>Química:</strong> Resumão de Química no ENEM — Mapas Conceituais, Exercícios e Dicas Práticas</div>
+        <div class="pdf-item"><strong>Plano de Aula:</strong> Plano de aula para 2026 — História Geral e do Brasil</div>
+      </div>
+
+      <h2>4. Como Acessar o Curso Após a Compra</h2>
+      <div class="passos">
+        <h3>Passo a passo</h3>
+        <ol>
+          <li>Após a confirmação do pagamento, você receberá o link de acesso por e-mail ou WhatsApp.</li>
+          <li>Clique no link para entrar na plataforma do EducaEnem.</li>
+          <li>Faça login com o usuário e senha cadastrados (ou crie sua conta grátis se ainda não tiver).</li>
+          <li>Na área do aluno, você terá acesso a todas as disciplinas, PDFs, aulas, atividades e simulados.</li>
+          <li>Estude no seu horário, pelo celular ou computador.</li>
+        </ol>
+      </div>
+
+      <div class="destaque">
+        <strong>💡 Dica:</strong> Salve esta página como PDF (Ctrl + P → Salvar como PDF) para ter este material sempre à mão.
+      </div>
+
+      <h2>5. Contato</h2>
+      <div class="contato">
+        <p><strong>EducaEnem — Prof. Marcelo Oliveira</strong></p>
+        <p>✉️ contato@educaenem.com</p>
+        <p>📱 WhatsApp: <a href="https://wa.me/5511999999999">clique aqui para falar conosco</a></p>
+        <p>🌐 Site: https://seudominio.com</p>
+      </div>
+
+      <div class="rodape">
+        © 2026 EducaEnem — Prof. Marcelo Oliveira. Todos os direitos reservados.<br>
+        Material de apoio do curso preparatório para o ENEM 2026.
+      </div>
+
+    </div>
+
+  </body>
+</html>

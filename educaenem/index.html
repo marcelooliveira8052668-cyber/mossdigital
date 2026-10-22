@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EducaEnem 2026 — Curso Online do Prof. Marcelo Oliveira</title>
+    <meta
+      name="description"
+      content="Curso online completo para o ENEM 2026: videoaulas, PDFs, aulas ao vivo, atividades e simulados."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/estilo.css" />
+  </head>
+  <body>
+    <!-- ==========================================================================
+         LANDING (visitante) e APP (aluno logado) são controlados por js/app.js
+         ========================================================================== -->
+
+    <!-- ---------- TELA PÚBLICA / LANDING ---------- -->
+    <div id="landing" class="landing">
+      <header class="site-topbar">
+        <div class="container">
+          <a class="marca" href="#/">
+            <span class="logo">EN</span>
+            <span>Educa<strong>Enem</strong></span>
+          </a>
+          <nav>
+            <a href="#/">Início</a>
+            <a href="#disciplinas">Disciplinas</a>
+            <a href="#aulas">Aulas ao vivo</a>
+            <a href="#gravacoes">Gravações</a>
+            <a href="#simulado">Simulado</a>
+        <a href="#vestibulares">Vestibulares</a>
+            <a class="btn btn-accent btn-pequeno" href="curso.html">🛒 Comprar curso</a>
+            <a class="btn btn-primario btn-pequeno" href="#/entrar">Entrar</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="conteudo-principal">
+      <section class="hero">
+        <div class="hero-arte" aria-hidden="true">
+          <span class="hero-orb orb-neon"></span>
+          <span class="hero-orb orb-violeta"></span>
+          <span class="hero-orb orb-magenta"></span>
+        </div>
+
+        <div class="container hero-grid">
+          <!-- ============ LADO DO TEXTO ============ -->
+          <div class="hero-texto">
+            <span class="arte-pill">
+              <span class="ao-vivo"><span class="ponto"></span>Turmas abertas</span>
+              ENEM 2026 · Fuvest · Unicamp
+            </span>
+
+            <h1>
+              Sua aprovação no
+              <span class="glow-texto">ENEM 2026</span>
+              começa hoje
+            </h1>
+
+            <p class="sub">
+              Videoaulas, material em PDF, aulas ao vivo, atividades comentadas e
+              <strong>309 questões no estilo da prova</strong> — corrigidas na hora,
+              com o porquê de cada gabarito.
+            </p>
+
+            <div class="hero-acoes">
+              <a class="btn btn-accent btn-grande" href="#/entrar/cadastrar"
+                >✨ Começar de graça</a
+              >
+              <a class="btn btn-secundario btn-grande" href="curso.html"
+                >Ver o curso completo</a
+              >
+              <button class="btn btn-fantasma btn-grande" onclick="window.print()"
+                >📄 Salvar esta página em PDF</button
+              >
+            </div>
+
+            <p class="hero-micro">
+              <span>✓ Conta grátis em 30 segundos</span>
+              <span>✓ Sem cartão de crédito</span>
+              <span>✓ Curso inteiro grátis</span>
+            </p>
+
+            <div class="hero-stats">
+              <div class="hs-item">
+                <strong id="stat-disciplinas">14</strong>
+                <span>Disciplinas</span>
+              </div>
+              <div class="hs-item">
+                <strong id="stat-questoes">309</strong>
+                <span>Questões</span>
+              </div>
+              <div class="hs-item">
+                <strong id="stat-textos">53</strong>
+                <span>Textos ENEM</span>
+              </div>
+              <div class="hs-item">
+                <strong id="stat-vestibulares">2</strong>
+                <span>Vestibulares</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ LADO VISUAL ============ -->
+          <div class="hero-visao" aria-hidden="true">
+            <div class="hv-painel">
+              <div class="hv-topo">
+                <span class="hv-rotulo">SEU PROGRESSO</span>
+                <span class="hv-chip">ENEM 2026</span>
+              </div>
+
+              <div class="hv-corpo">
+                <div class="hv-anel" style="--pct: 0%">
+                  <div class="hv-anel-num"><strong id="hv-pct">0</strong><span>%</span></div>
+                </div>
+                <div class="hv-meta">
+                  <span class="hv-meta-rotulo">MÉDIA</span>
+                  <strong id="hv-media">—</strong>
+                  <span class="hv-meta-txt" id="hv-meta-txt">sem nota ainda</span>
+                </div>
+              </div>
+
+              <div class="hv-linhas">
+                <div class="hv-linha">
+                  <span>Textos</span><b id="hv-b-textos" style="--p: 0%"></b><em id="hv-v-textos">0%</em>
+                </div>
+                <div class="hv-linha">
+                  <span>Atividades</span><b id="hv-b-atividades" style="--p: 0%"></b><em id="hv-v-atividades">0%</em>
+                </div>
+                <div class="hv-linha">
+                  <span>Vestibulares</span><b id="hv-b-vestibulares" style="--p: 0%"></b><em id="hv-v-vestibulares">0%</em>
+                </div>
+              </div>
+
+              <div class="hv-rodape">
+                <span id="hv-seq">🔥 Comece hoje</span>
+                <span class="hv-ok" id="hv-sit">✓ Crie sua conta grátis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao alt" id="disciplinas">
+        <div class="container">
+          <div class="secao-titulo-centro">
+            <h2>Disciplinas por área</h2>
+            <p>
+              Conteúdo alinhado às competências e habilidades da matriz do ENEM,
+              distribuído em 3 trimestres.
+            </p>
+          </div>
+          <div id="landing-areas" class="grade grade-4"></div>
+        </div>
+      </section>
+
+      <section class="secao" id="aulas">
+        <div class="container">
+          <div class="secao-titulo-centro">
+            <h2>Próximas aulas ao vivo</h2>
+            <p>Encontros online no Zoom e no Google Meet com tira-dúvidas.</p>
+          </div>
+          <div id="landing-aulas" class="pilha"></div>
+        </div>
+      </section>
+
+      <section class="secao alt" id="gravacoes">
+        <div class="container">
+          <div class="cartao">
+            <div class="cartao-cabecalho">
+              <div>
+                <h2>🎬 Aulas gravadas</h2>
+                <p class="texto-pequeno">
+                  Não pode assistir ao vivo? As aulas ficam gravadas e
+                  disponíveis para qualquer pessoa assistir quando quiser —
+                  sem precisar de login. Professores de todas as disciplinas
+                  podem publicar suas gravações aqui.
+                </p>
+              </div>
+              <a class="btn btn-accent" href="#/gravacoes">Ver gravações</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao" id="simulado">
+        <div class="container">
+          <div class="cartao">
+            <div class="cartao-cabecalho">
+              <div>
+                <h2>Simulado Express</h2>
+                <p class="texto-pequeno">
+                  Mais de 180 questões no estilo ENEM com correção na hora.
+                </p>
+              </div>
+              <a class="btn btn-accent" href="simulado.html" target="_blank"
+                >Fazer simulado</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= VESTIBULARES TRADICIONAIS ================= -->
+      <section class="secao alt" id="vestibulares">
+        <div class="container">
+          <div class="cartao">
+            <div class="cartao-cabecalho">
+              <div>
+                <h2>Preparação para Fuvest e Unicamp</h2>
+                <p class="texto-pequeno">
+                  O ENEM e o vestibular tradicional são provas diferentes. Aqui você
+                  vê o que muda — formato da prova, redação no estilo de cada banca,
+                  trilhas de estudo e questões escritas no formato delas.
+                </p>
+              </div>
+              <a class="btn btn-primario" href="#/vestibulares"
+                >Ver os vestibulares</a
+              >
+            </div>
+            <div class="linha" style="gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem">
+              <span class="badge badge-violeta">🏆 Fuvest · USP</span>
+              <span class="badge badge-violeta">🔶 Unicamp · Comvest</span>
+              <span class="badge">80 questões objetivas na 1ª fase da Fuvest</span>
+              <span class="badge">72 questões na 1ª fase da Unicamp</span>
+              <span class="badge">Redação sem proposta de intervenção</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= MATRÍCULA / COMPRA ================= -->
+      <section class="secao" id="matricula">
+        <div class="container">
+          <div class="cartao" style="text-align: center">
+            <span class="badge badge-verde">Matrículas abertas 2026</span>
+            <h2 style="margin: 0.75rem 0 0.5rem">
+              Garanta sua vaga e pague no <span class="glow-texto">PIX</span>
+            </h2>
+            <p class="texto-pequeno" style="max-width: 640px; margin: 0 auto 1.25rem">
+              Comece <strong>de graça</strong> com a conta gratuita. Se quiser
+              estudar sem limite, escolha abaixo o curso completo, um pacote por
+              área ou apenas as disciplinas que você precisa — pagamento único,
+              à vista no PIX, com 7 dias de garantia e acesso liberado na hora.
+            </p>
+            <div
+              class="cartao cartao-compacto"
+              style="max-width: 620px; margin: 0 auto 1.5rem; text-align: left; border-left: 2px solid var(--accent)"
+            >
+              <div class="stat">
+                <div class="stat-icone">🎁</div>
+                <div>
+                  <div class="stat-rotulo">Conta grátis (sem cartão)</div>
+                  <div class="stat-valor" data-cfg-texto="cotas-gratis">20 aulas e 60 questões por mês</div>
+                  <p class="texto-pequeno" style="margin: 0.35rem 0 0">
+                    Dá para estudar assim o ano todo. Quiser mais, é só fazer o upgrade:
+                    <a href="#/entrar/cadastrar">criar conta grátis →</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="grade grade-3" style="margin-bottom: 1.5rem">
+              <div class="cartao cartao-compacto" style="text-align: left">
+                <div class="stat">
+                  <div class="stat-icone">🎓</div>
+                  <div>
+                    <div class="stat-rotulo">Curso completo</div>
+                    <div class="stat-valor" data-cfg-preco="curso">R$ 597</div>
+                  </div>
+                </div>
+                <p class="texto-pequeno" style="margin: 0.6rem 0 0">
+                  Todas as disciplinas · 3 trimestres
+                </p>
+              </div>
+              <div class="cartao cartao-compacto" style="text-align: left">
+                <div class="stat">
+                  <div class="stat-icone">📚</div>
+                  <div>
+                    <div class="stat-rotulo">Por área</div>
+                    <div class="stat-valor" data-cfg-preco="area-minima">R$ 169+</div>
+                  </div>
+                </div>
+                <p class="texto-pequeno" style="margin: 0.6rem 0 0">
+                  Linguagens, Humanas, Natureza ou Matemática
+                </p>
+              </div>
+              <div class="cartao cartao-compacto" style="text-align: left">
+                <div class="stat">
+                  <div class="stat-icone">📘</div>
+                  <div>
+                    <div class="stat-rotulo">Disciplina avulsa</div>
+                    <div class="stat-valor" data-cfg-preco="disciplina">R$ 49,90</div>
+                  </div>
+                </div>
+                <p class="texto-pequeno" style="margin: 0.6rem 0 0">
+                  Compre só o que você precisa
+                </p>
+              </div>
+            </div>
+            <div class="hero-acoes" style="justify-content: center">
+              <a class="btn btn-accent btn-grande" href="#/entrar/cadastrar">🆓 Começar de graça</a>
+              <a class="btn btn-secundario btn-grande" href="#/painel">Ver meu painel</a>
+            </div>
+            <p class="texto-pequeno" style="margin-top: 1rem">
+              🔒 Pagamento seguro via PIX · ✅ 7 dias de garantia
+            </p>
+          </div>
+        </div>
+      </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-grade">
+            <div>
+              <h3 data-cfg-texto="escola">EducaEnem</h3>
+              <p class="texto-pequeno">
+                Curso online do <span data-cfg-texto="professor">Prof. Marcelo Oliveira</span>. Preparação completa para
+                o ENEM 2026.
+              </p>
+            </div>
+            <div>
+              <h3>Curso</h3>
+              <div class="footer-links">
+                <a href="#disciplinas">Disciplinas</a>
+                <a href="#aulas">Aulas ao vivo</a>
+                <a href="#simulado">Simulado</a>
+        <a href="#vestibulares">Vestibulares</a>
+                <a href="curso.html">Comprar curso</a>
+              </div>
+            </div>
+            <div>
+              <h3>Áreas</h3>
+              <div class="footer-links" id="footer-areas"></div>
+            </div>
+          </div>
+          <div class="footer-base">
+            <span>&copy; <span data-cfg-texto="ano">2026</span> <span data-cfg-texto="escola">EducaEnem</span> — <span data-cfg-texto="professor">Prof. Marcelo Oliveira</span></span>
+            <span>Todos os direitos reservados</span>
+          </div>
+          <div class="links-legais">
+            <a href="termos.html">Termos de Uso</a>
+            <a href="privacidade.html">Política de Privacidade</a>
+            <a href="reembolso.html">Garantia e Reembolso</a>
+            <a href="membro.html">Área do Aluno</a>
+          </div>
+          <style>
+            .links-legais {
+              margin-top: 1rem;
+              display: flex;
+              gap: 1.25rem;
+              flex-wrap: wrap;
+              justify-content: center;
+              font-size: 0.78rem;
+              color: var(--texto-3);
+            }
+            .links-legais a {
+              color: var(--texto-3);
+              text-decoration: underline;
+            }
+            .links-legais a:hover {
+              color: var(--neon-texto);
+            }
+          </style>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ---------- APLICATIVO (renderizado por js/app.js) ---------- -->
+    <div id="app" class="app oculto-visual" hidden></div>
+
+    <!-- ---------- TELA DE LOGIN ---------- -->
+    <div id="login" hidden></div>
+
+    <!-- ---------- ÁREA DE TOASTS ---------- -->
+    <div id="toast-area"></div>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <!-- 0. Configuração central (identidade, PIX, preços e BACKEND/banco) -->
+    <script src="js/config.js?v=2"></script>
+
+    <!-- 1. Dados base do curso -->
+    <script src="js/dados-acervo.js?v=2"></script>
+
+    <!-- 2. Textos de apoio BNCC (cada texto traz 2 questões estilo ENEM) -->
+    <script src="js/textos-matematica.js?v=2"></script>
+    <script src="js/textos-linguagens.js?v=2"></script>
+    <script src="js/textos-idiomas.js?v=2"></script>
+    <script src="js/textos-historia.js?v=2"></script>
+    <script src="js/textos-humanas.js?v=2"></script>
+    <script src="js/textos-natureza.js?v=2"></script>
+    <!-- Trilhas de vestibular (Fuvest e Unicamp) — precisa carregar antes do app.js -->
+    <script src="js/vestibulares.js?v=2"></script>
+
+    <!-- 3. Banco do simulado (questões estilo ENEM) -->
+    <script src="js/simulado-questoes.js?v=2"></script>
+
+    <!-- 3b. Atividades de Ciências da Natureza (tema + 2 questões) -->
+    <script src="js/banco-1natureza.js?v=2"></script>
+
+    <!-- 4. Atividades avulsas (tema + 2 questões) -->
+    <script src="js/atividades.js?v=2"></script>
+
+    <!-- 4. Projetos trimestrais (a cada 3 meses) -->
+    <script src="js/projetos.js?v=2"></script>
+
+    <!-- 5. Base de conhecimento do Professor Virtual -->
+    <script src="js/kb-tutor.js?v=2"></script>
+
+    <!-- 6. Persistência (login, notas, correções) -->
+    <script src="js/store.js?v=2"></script>
+
+    <!-- 6b. Camada de dados plugável (local agora; troque para o seu banco em js/config.js) -->
+    <script src="js/backend.js?v=2"></script>
+
+    <!-- 6c. Ponte entre as telas e o backend (não precisa editar) -->
+    <script src="js/db.js?v=2"></script>
+
+    <!-- 6d. Plano grátis: cota mensal de questões/aulas + compra (js/config.js → plano) -->
+    <script src="js/acessos.js?v=2"></script>
+
+    <!-- 7. Motor do Professor Virtual -->
+    <script src="js/professor-virtual.js?v=2"></script>
+
+    <!-- 8. Estúdio de gravação de aulas (IndexedDB + localStorage) -->
+    <script src="js/gravacoes.js?v=2"></script>
+
+    <!-- 9. Aplicação (SPA) -->
+    <script src="js/app.js?v=2"></script>
+  </body>
+</html>

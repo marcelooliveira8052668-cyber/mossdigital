@@ -45,7 +45,8 @@
     { id: 'psicologo',    emoji: '🧠', foto: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80', nome: 'Psicólogo',              desc: 'Terapia individual, casal e online' },
     { id: 'nutricionista', emoji: '🥗', foto: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80', nome: 'Nutricionista',          desc: 'Planos alimentares personalizados' },
     { id: 'arquiteto',    emoji: '📐', foto: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', nome: 'Arquiteto',              desc: 'Projetos residenciais e comerciais' },
-    { id: 'livraria',   emoji: '📚', foto: 'assets/img/fotos/heroi-livraria.jpg', nome: 'M.O Livraria',       desc: 'Livraria online com catálogo, carrinho, checkout e WhatsApp', link: 'livraria-mo/index.html' }
+    { id: 'livraria',   emoji: '📚', foto: 'assets/img/fotos/heroi-livraria.jpg', nome: 'M.O Livraria',       desc: 'Livraria online com catálogo, carrinho, checkout e WhatsApp', link: 'livraria-mo/index.html' },
+    { id: 'educaenem',  emoji: '🎓', foto: 'assets/img/fotos/heroi-educaenem.jpg', nome: 'EducaEnem',          desc: 'Curso online do ENEM: aulas, PDFs, simulados e área do aluno', link: 'educaenem/index.html' }
   ];
 
   /* ------------------------------------------------------------------

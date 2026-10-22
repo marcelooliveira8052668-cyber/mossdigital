@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matricule-se — EducaEnem 2026 · Pagamento no PIX</title>
+    <meta
+      name="description"
+      content="Garanta sua vaga no curso preparatório para o ENEM 2026. Compre o curso completo, um pacote por área ou disciplinas avulsas. Pagamento à vista no PIX."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/estilo.css" />
+    <style>
+      /* ---------- Estilos próprios da loja ---------- */
+      .tela {
+        display: none;
+      }
+      .tela.ativa {
+        display: block;
+      }
+      .loja-hero {
+        padding: 3.5rem 0 2.5rem;
+        text-align: center;
+      }
+      .loja-hero h1 {
+        font-family: var(--fonte-display);
+        font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+        line-height: 1.15;
+        margin: 1rem 0;
+      }
+      .plano {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      .plano.destaque {
+        border: 1px solid var(--borda-neon);
+        box-shadow: var(--glow-neon);
+      }
+      .plano-emoji {
+        font-size: 2rem;
+      }
+      .plano-nome {
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+      .plano-desc {
+        font-size: 0.85rem;
+        color: var(--texto-2);
+        min-height: 2.6em;
+      }
+      .plano-preco {
+        font-family: var(--fonte-display);
+        font-size: 2rem;
+        line-height: 1;
+        color: var(--neon-texto);
+      }
+      .plano-preco small {
+        font-size: 0.8rem;
+        color: var(--texto-2);
+        font-family: var(--fonte);
+      }
+      .selo-destaque {
+        position: absolute;
+        top: -0.7rem;
+        right: 1rem;
+      }
+      .beneficios {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+      .beneficio {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+      }
+      .beneficio .b-ico {
+        font-size: 1.6rem;
+      }
+      .faq details {
+        background: var(--surface);
+        border: 1px solid var(--borda);
+        border-radius: var(--r-md);
+        padding: 0.9rem 1.1rem;
+        margin-bottom: 0.75rem;
+      }
+      .faq summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .faq p {
+        margin: 0.6rem 0 0;
+        color: var(--texto-2);
+      }
+      /* barra flutuante do carrinho */
+      .barra-carrinho {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 40;
+        background: rgba(255, 255, 255, 0.96);
+        border-top: 1px solid var(--borda);
+        backdrop-filter: blur(10px);
+        transform: translateY(120%);
+        transition: transform var(--transicao);
+      }
+      .barra-carrinho.aberta {
+        transform: translateY(0);
+      }
+      .barra-carrinho .container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.85rem 0;
+      }
+      .grade-checkout {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 1.5rem;
+        align-items: start;
+      }
+      @media (max-width: 820px) {
+        .grade-checkout {
+          grid-template-columns: 1fr;
+        }
+      }
+      .resumo-linha {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.35rem 0;
+      }
+      .resumo-linha.total {
+        border-top: 1px solid var(--borda);
+        margin-top: 0.5rem;
+        padding-top: 0.75rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+      .item-carrinho {
+        display: flex;
+        gap: 0.9rem;
+        align-items: center;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid var(--borda);
+      }
+      .item-carrinho .ico {
+        font-size: 1.6rem;
+      }
+      .qr-wrap {
+        background: #ffffff;
+        padding: 1rem;
+        border-radius: var(--r-md);
+        display: inline-block;
+        line-height: 0;
+      }
+      .qr-wrap img {
+        image-rendering: pixelated;
+        width: 240px;
+        height: 240px;
+      }
+      .pix-codigo {
+        width: 100%;
+        min-height: 96px;
+        resize: vertical;
+        font-family: var(--fonte-mono);
+        font-size: 0.75rem;
+        line-height: 1.5;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--texto);
+        border: 1px solid var(--borda);
+        border-radius: var(--r-sm);
+        padding: 0.7rem;
+        word-break: break-all;
+      }
+      .pix-timer {
+        font-family: var(--fonte-mono);
+        font-size: 1.05rem;
+      }
+      .passos {
+        counter-reset: passo;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .passos li {
+        counter-increment: passo;
+        position: relative;
+        padding: 0.45rem 0 0.45rem 2.4rem;
+      }
+      .passos li::before {
+        content: counter(passo);
+        position: absolute;
+        left: 0;
+        top: 0.35rem;
+        width: 1.7rem;
+        height: 1.7rem;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--violeta), var(--magenta));
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+      .toast-loja {
+        position: fixed;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        z-index: 60;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .toast-loja .t {
+        background: #ffffff;
+        color: var(--texto);
+        border: 1px solid var(--borda-forte);
+        border-left: 4px solid var(--neon-texto);
+        border-radius: var(--r-sm);
+        padding: 0.7rem 1rem;
+        max-width: 320px;
+        font-size: 0.88rem;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+      }
+      .toast-loja .t.erro {
+        border-left-color: var(--erro);
+      }
+      .conta-box {
+        background: rgba(184, 255, 77, 0.08);
+        border: 1px solid var(--borda-neon);
+        border-radius: var(--r-md);
+        padding: 1rem 1.2rem;
+      }
+      .conta-box code {
+        font-family: var(--fonte-mono);
+        color: var(--neon-texto);
+      }
+      .link-voltar {
+        color: var(--texto-2);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .link-voltar:hover {
+        color: var(--texto);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ---------- TOPBAR ---------- -->
+    <header class="site-topbar">
+      <div class="container">
+        <a class="marca" href="index.html">
+          <span class="logo">EN</span>
+          <span>Educa<strong>Enem</strong></span>
+        </a>
+        <nav>
+          <a href="index.html">Início</a>
+          <a href="index.html#disciplinas">Disciplinas</a>
+          <a href="index.html#aulas">Aulas ao vivo</a>
+          <a href="simulado.html">Simulado</a>
+          <a class="btn btn-secundario btn-pequeno" href="index.html#/entrar">Entrar</a>
+          <button class="btn btn-primario btn-pequeno" id="abrir-carrinho">
+            🛒 <span id="carrinho-contador">Carrinho</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- =====================================================================
+           TELA 1 — VITRINE
+           ===================================================================== -->
+      <section id="tela-vitrine" class="tela ativa">
+        <div class="container loja-hero">
+          <span class="arte-pill">
+            <span class="ao-vivo"><span class="ponto"></span>Matrículas abertas</span>
+            ENEM 2026 · vagas limitadas
+          </span>
+          <h1>
+            Garanta sua vaga no <span class="glow-texto">ENEM 2026</span><br />
+            e pague no <span class="glow-texto">PIX</span>
+          </h1>
+          <p class="sub" style="max-width: 720px; margin: 0 auto 1.5rem">
+            Escolha o curso completo, um pacote por área ou só as disciplinas
+            que você precisa. Pagamento único, à vista, sem mensalidade — e
+            acesso liberado assim que o PIX é confirmado.
+          </p>
+          <div class="hero-acoes" style="justify-content: center">
+            <a class="btn btn-primario btn-grande" href="#planos">Ver planos e preços</a>
+            <a class="btn btn-secundario btn-grande" id="link-whats" href="#" target="_blank">
+              💬 Tirar dúvidas no WhatsApp
+            </a>
+            <button class="btn btn-fantasma btn-grande" onclick="window.print()">
+              📄 Salvar esta página em PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- benefícios -->
+        <div class="container" style="padding-bottom: 2rem">
+          <div class="beneficios">
+            <div class="beneficio">
+              <span class="b-ico">🎥</span>
+              <div><strong>Videoaulas</strong><br /><span class="texto-pequeno">Conteúdo completo por disciplina</span></div>
+            </div>
+            <div class="beneficio">
+              <span class="b-ico">📄</span>
+              <div><strong>Material em PDF</strong><br /><span class="texto-pequeno">Resumos e guias para baixar</span></div>
+            </div>
+            <div class="beneficio">
+              <span class="b-ico">📡</span>
+              <div><strong>Aulas ao vivo</strong><br /><span class="texto-pequeno">Zoom e Google Meet</span></div>
+            </div>
+            <div class="beneficio">
+              <span class="b-ico">🧠</span>
+              <div><strong>Simulados</strong><br /><span class="texto-pequeno">+180 questões com correção na hora</span></div>
+            </div>
+            <div class="beneficio">
+              <span class="b-ico">💬</span>
+              <div><strong>Professor Virtual</strong><br /><span class="texto-pequeno">Tira-dúvidas 24h por disciplina</span></div>
+            </div>
+            <div class="beneficio">
+              <span class="b-ico">📊</span>
+              <div><strong>Boletim e notas</strong><br /><span class="texto-pequeno">Acompanhe sua evolução</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- planos -->
+        <section class="secao alt" id="planos">
+          <div class="container">
+            <div class="secao-titulo-centro">
+              <h2>Escolha o seu plano</h2>
+              <p>Sem pegadinha: preço único, à vista no PIX. Adicione ao carrinho e finalize em minutos.</p>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 0.75rem">🎓 Curso completo</h3>
+            <div id="grade-curso" class="grade grade-2"></div>
+
+            <h3 style="margin: 2.5rem 0 0.75rem">📚 Pacotes por área do conhecimento</h3>
+            <div id="grade-areas" class="grade grade-4"></div>
+
+            <h3 style="margin: 2.5rem 0 0.75rem">📘 Disciplinas avulsas</h3>
+            <p class="texto-pequeno" style="margin-top: -0.4rem">
+              Compre exatamente o que precisa pagar. Cada disciplina dá acesso
+              aos textos, atividades, aulas e simulados dela.
+            </p>
+            <div id="grade-disciplinas" class="grade grade-4"></div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="secao">
+          <div class="container-estreito faq">
+            <div class="secao-titulo-centro">
+              <h2>Perguntas frequentes</h2>
+            </div>
+            <details open>
+              <summary>Como funciona o pagamento no PIX?</summary>
+              <p>
+                Ao finalizar, o site gera um QR Code e um código copia-e-cola do
+                PIX já com o valor exato da sua compra. Abra o aplicativo do seu
+                banco, pague e o acesso é liberado.
+              </p>
+            </details>
+            <details>
+              <summary>Quando começo a estudar?</summary>
+              <p>
+                Assim que o pagamento é confirmado. Ao concluir a compra, criamos
+                (ou vinculamos) sua conta de aluno automaticamente — é só entrar
+                na plataforma.
+              </p>
+            </details>
+            <details>
+              <summary>Posso comprar só uma disciplina?</summary>
+              <p>
+                Pode! Você paga apenas pela disciplina que quiser. Se depois
+                quiser o curso todo, é possível complementar.
+              </p>
+            </details>
+            <details>
+              <summary>E se eu me arrepender?</summary>
+              <p>
+                Você tem 7 dias de garantia. Basta falar com o professor pelo
+                WhatsApp com o número do pedido e devolvemos o valor.
+              </p>
+            </details>
+          </div>
+        </section>
+      </section>
+
+      <!-- =====================================================================
+           TELA 2 — CARRINHO
+           ===================================================================== -->
+      <section id="tela-carrinho" class="tela">
+        <div class="container" style="padding: 2.5rem 0">
+          <a class="link-voltar" href="#" data-ir="vitrine">← continuar escolhendo</a>
+          <h1 style="margin: 0.75rem 0 1.5rem">🛒 Seu carrinho</h1>
+          <div class="grade-checkout">
+            <div class="cartao">
+              <div id="lista-carrinho"></div>
+            </div>
+            <div class="cartao">
+              <h3 style="margin-top: 0">Resumo</h3>
+              <div class="campo" style="margin: 0.75rem 0">
+                <label for="cupom">Cupom de desconto</label>
+                <div class="linha" style="margin-top: 0.4rem">
+                  <input type="text" id="cupom" placeholder="Ex.: ENEM10" style="flex: 1" />
+                  <button class="btn btn-secundario" id="aplicar-cupom">Aplicar</button>
+                </div>
+                <span class="texto-pequeno" id="cupom-status"></span>
+              </div>
+              <div id="resumo-carrinho"></div>
+              <button class="btn btn-primario btn-grande btn-bloco" id="ir-checkout" style="margin-top: 1rem">
+                Ir para o pagamento →
+              </button>
+              <p class="texto-pequeno" style="text-align: center; margin-top: 0.6rem">
+                🔒 Pagamento seguro via PIX · 7 dias de garantia
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           TELA 3 — CHECKOUT
+           ===================================================================== -->
+      <section id="tela-checkout" class="tela">
+        <div class="container" style="padding: 2.5rem 0">
+          <a class="link-voltar" href="#" data-ir="carrinho">← voltar ao carrinho</a>
+          <h1 style="margin: 0.75rem 0 1.5rem">Finalizar compra</h1>
+          <div class="grade-checkout">
+            <form class="cartao" id="form-checkout" novalidate>
+              <h3 style="margin-top: 0">Seus dados</h3>
+              <p class="texto-pequeno" style="margin-top: -0.4rem">
+                Usamos esses dados para emitir o pedido e criar seu acesso ao curso.
+              </p>
+              <div class="campo">
+                <label for="ck-nome">Nome completo *</label>
+                <input type="text" id="ck-nome" autocomplete="name" required />
+              </div>
+              <div class="campo">
+                <label for="ck-email">E-mail *</label>
+                <input type="email" id="ck-email" autocomplete="email" required />
+              </div>
+              <div class="linha">
+                <div class="campo" style="flex: 1">
+                  <label for="ck-cpf">CPF *</label>
+                  <input type="text" id="ck-cpf" inputmode="numeric" placeholder="000.000.000-00" required />
+                </div>
+                <div class="campo" style="flex: 1">
+                  <label for="ck-zap">WhatsApp *</label>
+                  <input type="text" id="ck-zap" inputmode="numeric" placeholder="(00) 00000-0000" required />
+                </div>
+              </div>
+              <label class="linha" style="gap: 0.5rem; margin-top: 0.5rem; cursor: pointer">
+                <input type="checkbox" id="ck-termos" required />
+                <span class="texto-pequeno">Li e concordo com os termos e com a política de garantia de 7 dias.</span>
+              </label>
+              <div id="checkout-erro" class="alerta alerta-erro" style="display: none; margin-top: 1rem"></div>
+            </form>
+
+            <div class="cartao">
+              <h3 style="margin-top: 0">Resumo do pedido</h3>
+              <div id="resumo-checkout"></div>
+              <button class="btn btn-primario btn-grande btn-bloco" id="gerar-pix" style="margin-top: 1rem">
+                Gerar PIX de <span id="valor-pix"></span>
+              </button>
+              <p class="texto-pequeno" style="text-align: center; margin-top: 0.6rem">
+                Pagamento à vista no PIX, sem taxas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           TELA 4 — PAGAMENTO (PIX)
+           ===================================================================== -->
+      <section id="tela-pix" class="tela">
+        <div class="container" style="padding: 2.5rem 0">
+          <a class="link-voltar" href="#" data-ir="checkout">← voltar</a>
+          <h1 style="margin: 0.75rem 0 1.5rem">💳 Pague com PIX</h1>
+          <div class="grade-checkout">
+            <div class="cartao" style="text-align: center">
+              <p style="margin-top: 0">
+                Abra o app do seu banco e escaneie o QR Code —
+                ou use o código copia-e-cola.
+              </p>
+              <div class="qr-wrap" id="qr-wrap"></div>
+              <p class="pix-timer" id="pix-timer" style="margin: 0.9rem 0 0"></p>
+              <p class="texto-pequeno">
+                Pedido <code id="pix-pedido-id"></code> · Valor
+                <strong id="pix-valor"></strong>
+              </p>
+            </div>
+            <div class="cartao">
+              <h3 style="margin-top: 0">Código PIX copia-e-cola</h3>
+              <textarea class="pix-codigo" id="pix-codigo" readonly></textarea>
+              <div class="linha" style="margin-top: 0.75rem">
+                <button class="btn btn-secundario btn-bloco" id="copiar-pix">📋 Copiar código</button>
+              </div>
+              <hr style="border-color: var(--borda); margin: 1.2rem 0" />
+              <ol class="passos">
+                <li>Abra o app do seu banco e escolha <strong>PIX</strong>.</li>
+                <li>Escolha <strong>Ler QR Code</strong> ou <strong>PIX copia-e-cola</strong>.</li>
+                <li>Confira se o valor é <strong id="pix-valor-2"></strong> e finalize.</li>
+                <li>Volte aqui e clique em <strong>“Já fiz o pagamento”</strong>.</li>
+              </ol>
+              <button class="btn btn-sucesso btn-grande btn-bloco" id="ja-paguei" style="margin-top: 1rem">
+                ✅ Já fiz o pagamento
+              </button>
+              <p class="texto-pequeno" style="margin-top: 0.7rem; text-align: center">
+                O acesso é liberado automaticamente. Se preferir, envie o
+                comprovante no WhatsApp: <a id="pix-whats" href="#" target="_blank">falar com o professor</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           TELA 5 — SUCESSO
+           ===================================================================== -->
+      <section id="tela-sucesso" class="tela">
+        <div class="container-estreito" style="padding: 3rem 0">
+          <div class="cartao" style="text-align: center">
+            <div style="font-size: 3rem">🎉</div>
+            <h1 style="margin: 0.5rem 0">Pedido confirmado!</h1>
+            <p class="sub" style="margin-top: 0">
+              Recebemos o aviso do seu PIX. O acesso ao curso já está liberado.
+            </p>
+            <p class="texto-pequeno">
+              Pedido <code id="sucesso-pedido-id"></code> · <span id="sucesso-data"></span>
+            </p>
+            <div id="sucesso-conta" style="margin: 1.25rem 0"></div>
+            <div class="cartao-compacto" style="text-align: left; margin: 0 auto 1rem; max-width: 460px">
+              <h3 style="margin: 0 0 0.5rem">Resumo da compra</h3>
+              <div id="sucesso-itens"></div>
+            </div>
+            <div class="linha" style="justify-content: center; gap: 0.75rem">
+              <a class="btn btn-primario btn-grande" href="index.html#/painel">▶ Acessar o curso</a>
+              <a class="btn btn-secundario" id="sucesso-whats" href="#" target="_blank">💬 Enviar comprovante</a>
+              <button class="btn btn-fantasma" onclick="window.print()">🖨 Imprimir recibo</button>
+            </div>
+            <p class="texto-pequeno" style="margin-top: 1.25rem">
+              Guarde o número do pedido. Qualquer coisa, é só chamar no WhatsApp.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ---------- barra flutuante do carrinho ---------- -->
+    <div class="barra-carrinho" id="barra-carrinho">
+      <div class="container">
+        <span id="barra-texto">0 itens</span>
+        <span class="espaco"></span>
+        <button class="btn btn-primario" id="barra-ver">Ver carrinho →</button>
+      </div>
+    </div>
+
+    <!-- ---------- toasts ---------- -->
+    <div class="toast-loja" id="toast-loja"></div>
+
+    <!-- ---------- FOOTER ---------- -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grade">
+          <div>
+            <h4>EducaEnem</h4>
+            <p class="texto-pequeno">
+              Curso online do Prof. Marcelo Oliveira. Preparação completa para
+              o ENEM 2026.
+            </p>
+          </div>
+          <div>
+            <h4>Curso</h4>
+            <div class="footer-links">
+              <a href="index.html#disciplinas">Disciplinas</a>
+              <a href="index.html#aulas">Aulas ao vivo</a>
+              <a href="simulado.html">Simulado</a>
+            </div>
+          </div>
+          <div>
+            <h4>Matrícula</h4>
+            <div class="footer-links">
+              <a href="#planos">Planos e preços</a>
+              <a href="#" data-ir="carrinho">Meu carrinho</a>
+              <a id="footer-whats" href="#" target="_blank">Falar no WhatsApp</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-base">
+          <span>&copy; 2026 EducaEnem — Prof. Marcelo Oliveira</span>
+          <span>Pagamento via PIX · Todos os direitos reservados</span>
+        </div>
+        <div class="links-legais">
+          <a href="termos.html">Termos de Uso</a>
+          <a href="privacidade.html">Política de Privacidade</a>
+          <a href="reembolso.html">Garantia e Reembolso</a>
+          <a href="membro.html">Área do Aluno</a>
+        </div>
+        <style>
+          .links-legais {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 0.78rem;
+            color: var(--texto-3);
+          }
+          .links-legais a {
+            color: var(--texto-3);
+            text-decoration: underline;
+          }
+          .links-legais a:hover {
+            color: var(--neon-texto);
+          }
+        </style>
+      </div>
+    </footer>
+
+    <!-- ======================= SCRIPTS ======================= -->
+    <script src="js/config.js?v=2"></script>
+    <script src="js/dados-acervo.js?v=2"></script>
+    <script src="js/lib/qrcode.js?v=2"></script>
+    <script src="js/store.js?v=2"></script>
+    <script src="js/backend.js?v=2"></script>
+    <script src="js/db.js?v=2"></script>
+    <script src="js/loja.js?v=2"></script>
+    <script>
+      /* ================= UI DA LOJA (curso.html) ================= */
+      (function () {
+        "use strict";
+        const $ = (sel) => document.querySelector(sel);
+        const telas = ["vitrine", "carrinho", "checkout", "pix", "sucesso"];
+        let cupomAplicado = "";
+        let pedidoEmCurso = null;
+        let timerId = null;
+
+        /* ---------- utilidades ---------- */
+        function toast(msg, tipo) {
+          const box = $("#toast-loja");
+          const t = document.createElement("div");
+          t.className = "t" + (tipo === "erro" ? " erro" : "");
+          t.innerHTML = msg;
+          box.appendChild(t);
+          setTimeout(() => {
+            t.style.opacity = "0";
+            setTimeout(() => t.remove(), 300);
+          }, 4200);
+        }
+
+        function irPara(nome) {
+          telas.forEach((t) => {
+            const el = document.getElementById("tela-" + t);
+            if (el) el.classList.toggle("ativa", t === nome);
+          });
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          atualizarBarra();
+        }
+
+        function cpfValido(cpf) {
+          cpf = String(cpf || "").replace(/\D/g, "");
+          if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+          let s = 0;
+          for (let i = 0; i < 9; i++) s += parseInt(cpf[i]) * (10 - i);
+          let d1 = (s * 10) % 11;
+          if (d1 === 10) d1 = 0;
+          if (d1 !== parseInt(cpf[9])) return false;
+          s = 0;
+          for (let i = 0; i < 10; i++) s += parseInt(cpf[i]) * (11 - i);
+          let d2 = (s * 10) % 11;
+          if (d2 === 10) d2 = 0;
+          return d2 === parseInt(cpf[10]);
+        }
+
+        function emailValido(e) {
+          return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(e || "").trim());
+        }
+
+        function mascaraCpf(el) {
+          el.addEventListener("input", () => {
+            let v = el.value.replace(/\D/g, "").slice(0, 11);
+            v = v.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+            el.value = v;
+          });
+        }
+        function mascaraZap(el) {
+          el.addEventListener("input", () => {
+            let v = el.value.replace(/\D/g, "").slice(0, 11);
+            v = v.replace(/^(\d{2})(\d)/, "($1) $2").replace(/(\d{5})(\d{1,4})$/, "$1-$2");
+            el.value = v;
+          });
+        }
+
+        /* ---------- vitrine ---------- */
+        function cardPlano(item, destaque) {
+          return (
+            '<div class="cartao plano' + (destaque ? " destaque" : "") + '">' +
+            (destaque ? '<span class="badge badge-verde selo-destaque">Mais escolhido</span>' : "") +
+            '<div class="plano-emoji">' + item.emoji + "</div>" +
+            '<div class="plano-nome">' + Loja.esc(item.nome) + "</div>" +
+            '<div class="plano-desc">' + Loja.esc(item.descricao || "") + "</div>" +
+            '<div class="plano-preco">' + Loja.brl(item.preco) + ' <small>à vista no PIX</small></div>' +
+            '<button class="btn btn-primario btn-bloco" data-add="' +
+            item.tipo + ":" + item.id + '">Adicionar ao carrinho</button>' +
+            "</div>"
+          );
+        }
+
+        function renderVitrine() {
+          $("#grade-curso").innerHTML = cardPlano(Loja.itemCurso(), true);
+          $("#grade-areas").innerHTML = Loja.itensAreas().map((i) => cardPlano(i, false)).join("");
+          $("#grade-disciplinas").innerHTML = Loja.itensDisciplinas().map((i) => cardPlano(i, false)).join("");
+
+          const wa = Loja.PIX_CONFIG.whatsapp.replace(/\D/g, "");
+          const msg = encodeURIComponent("Olá! Quero saber mais sobre o curso do ENEM 2026.");
+          ["#link-whats", "#footer-whats"].forEach((s) => {
+            const el = $(s);
+            if (el) el.href = "https://wa.me/" + wa + "?text=" + msg;
+          });
+        }
+
+        function catalogoBusca(tipo, id) {
+          if (tipo === "curso") return Loja.itemCurso();
+          if (tipo === "area") return Loja.itensAreas().find((i) => i.id === id);
+          return Loja.itensDisciplinas().find((i) => i.id === id);
+        }
+
+        function adicionarPorChave(chave) {
+          const [tipo, ...resto] = chave.split(":");
+          const id = resto.join(":");
+          const item = catalogoBusca(tipo, id);
+          if (!item) return;
+          const r = Loja.adicionar(item);
+          if (r.ok) {
+            toast("✅ <strong>" + Loja.esc(item.nome) + "</strong> adicionado ao carrinho.");
+          } else {
+            toast("Esse item já está no seu carrinho.", "erro");
+          }
+          atualizarBarra();
+        }
+
+        /* ---------- carrinho ---------- */
+        function renderCarrinho() {
+          const itens = Loja.getCarrinho();
+          if (!itens.length) {
+            $("#lista-carrinho").innerHTML =
+              '<div class="vazio" style="text-align:center;padding:1rem 0">' +
+              '<div style="font-size:2.5rem">🛒</div>' +
+              "<p>Seu carrinho está vazio.</p>" +
+              '<button class="btn btn-primario" data-ir="vitrine">Ver planos</button></div>';
+          } else {
+            $("#lista-carrinho").innerHTML = itens
+              .map(
+                (i) =>
+                  '<div class="item-carrinho">' +
+                  '<div class="ico">' + i.emoji + "</div>" +
+                  '<div style="flex:1"><strong>' + Loja.esc(i.nome) + "</strong>" +
+                  '<div class="texto-pequeno">' + Loja.esc(i.descricao || "") + "</div></div>" +
+                  '<div><strong>' + Loja.brl(i.preco) + "</strong></div>" +
+                  '<button class="btn btn-fantasma btn-pequeno" data-del="' + i.tipo + ":" + i.id + '">remover</button>' +
+                  "</div>"
+              )
+              .join("");
+          }
+          renderResumo("#resumo-carrinho", Loja.calcular(cupomAplicado));
+        }
+
+        function renderResumo(alvo, calc) {
+          let h = '<div class="resumo-linha"><span>Subtotal</span><span>' + Loja.brl(calc.subtotal) + "</span></div>";
+          if (calc.descPacote > 0)
+            h += '<div class="resumo-linha"><span>Desconto pacote (' +
+              Math.round(calc.descPacotePct * 100) + "%)</span><span>− " + Loja.brl(calc.descPacote) + "</span></div>";
+          if (calc.descCupom > 0)
+            h += '<div class="resumo-linha"><span>Cupom ' + calc.cupom + "</span><span>− " + Loja.brl(calc.descCupom) + "</span></div>";
+          h += '<div class="resumo-linha total"><span>Total</span><span>' + Loja.brl(calc.total) + "</span></div>";
+          h += '<p class="texto-pequeno" style="margin:0.5rem 0 0">Pagamento à vista no PIX.</p>';
+          $(alvo).innerHTML = h;
+        }
+
+        function atualizarBarra() {
+          const n = Loja.qtdItens();
+          const barra = $("#barra-carrinho");
+          const calc = Loja.calcular(cupomAplicado);
+          $("#carrinho-contador").textContent = n ? "Carrinho (" + n + ")" : "Carrinho";
+          if (n > 0) {
+            barra.classList.add("aberta");
+            $("#barra-texto").innerHTML =
+              "<strong>" + n + "</strong> item(ns) · <strong>" + Loja.brl(calc.total) + "</strong>";
+          } else {
+            barra.classList.remove("aberta");
+          }
+        }
+
+        /* ---------- checkout ---------- */
+        function renderCheckout() {
+          const calc = Loja.calcular(cupomAplicado);
+          renderResumo("#resumo-checkout", calc);
+          $("#valor-pix").textContent = Loja.brl(calc.total);
+          document.body.style.paddingBottom = "0"; // sem barra nesta tela
+        }
+
+        function validarCheckout() {
+          const erro = $("#checkout-erro");
+          const nome = $("#ck-nome").value.trim();
+          const email = $("#ck-email").value.trim();
+          const cpf = $("#ck-cpf").value;
+          const zap = $("#ck-zap").value;
+          const termos = $("#ck-termos").checked;
+          const problemas = [];
+          if (nome.split(/\s+/).filter(Boolean).length < 2) problemas.push("Informe seu nome completo.");
+          if (!emailValido(email)) problemas.push("Informe um e-mail válido.");
+          if (!cpfValido(cpf)) problemas.push("CPF inválido.");
+          if (zap.replace(/\D/g, "").length < 10) problemas.push("Informe um WhatsApp com DDD.");
+          if (!termos) problemas.push("É preciso aceitar os termos.");
+          if (problemas.length) {
+            erro.style.display = "block";
+            erro.innerHTML = problemas.map((p) => "• " + p).join("<br>");
+            return null;
+          }
+          erro.style.display = "none";
+          return {
+            nome: nome,
+            email: email,
+            cpf: cpf.replace(/\D/g, ""),
+            whatsapp: zap.replace(/\D/g, ""),
+          };
+        }
+
+        /* ---------- PIX ---------- */
+        function iniciarTimer(min) {
+          let restante = min * 60;
+          clearInterval(timerId);
+          const el = $("#pix-timer");
+          function tick() {
+            const m = Math.floor(restante / 60);
+            const s = restante % 60;
+            el.textContent = "⏱ Expira em " + String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+            if (restante <= 0) {
+              clearInterval(timerId);
+              el.textContent = "⚠ PIX expirado — gere um novo código.";
+              el.style.color = "var(--alerta)";
+            }
+            restante--;
+          }
+          el.style.color = "";
+          tick();
+          timerId = setInterval(tick, 1000);
+        }
+
+        function mostrarPix(pedido) {
+          pedidoEmCurso = pedido;
+          const payload = Loja.pixPayload(pedido.total, pedido.id);
+          const qr = Loja.qrImagemHTML(payload);
+          $("#qrcode") && $("#qrcode").remove();
+          const wrap = $("#qr-wrap");
+          if (qr) {
+            wrap.innerHTML = qr;
+            const img = wrap.querySelector("img");
+            if (img) {
+              img.id = "qrcode";
+              img.alt = "QR Code para pagamento PIX";
+            }
+          } else {
+            wrap.innerHTML =
+              '<div style="color:#111;font-size:0.85rem;max-width:220px;line-height:1.4">' +
+              "Não foi possível desenhar o QR Code neste navegador. Use o código copia-e-cola ao lado.</div>";
+          }
+          $("#pix-codigo").value = payload;
+          $("#pix-pedido-id").textContent = pedido.id;
+          $("#pix-valor").textContent = Loja.brl(pedido.total);
+          $("#pix-valor-2").textContent = Loja.brl(pedido.total);
+          $("#pix-whats").href = Loja.waLink(pedido);
+          iniciarTimer(Loja.PIX_CONFIG.expiracaoMin);
+          irPara("pix");
+        }
+
+        function gerarPedido(cliente) {
+          const calc = Loja.calcular(cupomAplicado);
+          const pedido = {
+            id: Loja.pedidos().length + 1 > 0 ? "ENEM-" + Date.now().toString(36).toUpperCase() : "ENEM-1",
+            dataISO: new Date().toISOString(),
+            itens: Loja.getCarrinho(),
+            subtotal: calc.subtotal,
+            desconto: calc.descPacote + calc.descCupom,
+            cupom: calc.cupom || null,
+            total: calc.total,
+            cliente: cliente,
+            status: "aguardando pagamento",
+            metodo: "PIX",
+          };
+          Loja.salvarPedido(pedido);
+          Loja.definirPedidoAtual(pedido);
+          return pedido;
+        }
+
+        function copiarTexto(txt, btn) {
+          const ok = () => {
+            if (btn) {
+              const orig = btn.innerHTML;
+              btn.innerHTML = "✅ Copiado!";
+              setTimeout(() => (btn.innerHTML = orig), 1800);
+            }
+            toast("Código PIX copiado. Cole no app do seu banco. 🙂");
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(txt).then(ok, () => fallback(txt, ok));
+          } else {
+            fallback(txt, ok);
+          }
+        }
+        function fallback(txt, ok) {
+          const ta = document.createElement("textarea");
+          ta.value = txt;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand("copy");
+            ok();
+          } catch (e) {
+            toast("Não foi possível copiar automaticamente. Selecione o código e copie.", "erro");
+          }
+          ta.remove();
+        }
+
+        /* ---------- sucesso ---------- */
+        function mostrarSucesso(pedido, conta, senhaTemp) {
+          $("#sucesso-pedido-id").textContent = pedido.id;
+          $("#sucesso-data").textContent = new Date(pedido.dataISO).toLocaleString("pt-BR");
+          let h = "";
+          if (conta && senhaTemp) {
+            h =
+              '<div class="conta-box" style="text-align:left">' +
+              "<strong>🎈 Criamos seu acesso!</strong><br />" +
+              'Usuário: <code>' + Loja.esc(conta.login) + "</code><br />" +
+              'Senha temporária: <code>' + Loja.esc(senhaTemp) + "</code><br />" +
+              '<span class="texto-pequeno">Troque a senha depois em “Meu perfil”, dentro do curso.</span>' +
+              "</div>";
+          } else {
+            h =
+              '<p class="texto-pequeno">Sua conta já está vinculada a esta compra. É só entrar na plataforma.</p>';
+          }
+          $("#sucesso-conta").innerHTML = h;
+          $("#sucesso-itens").innerHTML =
+            pedido.itens
+              .map(
+                (i) =>
+                  '<div class="resumo-linha"><span>' + i.emoji + " " + Loja.esc(i.nome) +
+                  '</span><span>' + Loja.brl(i.preco) + "</span></div>"
+              )
+              .join("") +
+            '<div class="resumo-linha total"><span>Total pago</span><span>' + Loja.brl(pedido.total) + "</span></div>";
+          $("#sucesso-whats").href = Loja.waLink(pedido);
+          clearInterval(timerId);
+          Loja.limparCarrinho();
+          irPara("sucesso");
+        }
+
+        /* ---------- eventos ---------- */
+        document.addEventListener("click", (e) => {
+          const add = e.target.closest("[data-add]");
+          if (add) {
+            adicionarPorChave(add.getAttribute("data-add"));
+            return;
+          }
+          const del = e.target.closest("[data-del]");
+          if (del) {
+            const [tipo, ...resto] = del.getAttribute("data-del").split(":");
+            Loja.remover(tipo, resto.join(":"));
+            renderCarrinho();
+            atualizarBarra();
+            return;
+          }
+          const ir = e.target.closest("[data-ir]");
+          if (ir) {
+            e.preventDefault();
+            const destino = ir.getAttribute("data-ir");
+            if (destino === "carrinho") renderCarrinho();
+            if (destino === "checkout") renderCheckout();
+            irPara(destino);
+            return;
+          }
+        });
+
+        $("#abrir-carrinho").addEventListener("click", () => {
+          renderCarrinho();
+          irPara("carrinho");
+        });
+        $("#barra-ver").addEventListener("click", () => {
+          renderCarrinho();
+          irPara("carrinho");
+        });
+
+        $("#aplicar-cupom").addEventListener("click", () => {
+          const cod = $("#cupom").value.trim().toUpperCase();
+          if (!cod) {
+            cupomAplicado = "";
+            $("#cupom-status").textContent = "";
+          } else if (Loja.cupomValido(cod)) {
+            cupomAplicado = cod;
+            $("#cupom-status").innerHTML = "✅ Cupom aplicado: <strong>" + cod + "</strong>";
+          } else {
+            cupomAplicado = "";
+            $("#cupom-status").textContent = "❌ Cupom inválido.";
+          }
+          renderCarrinho();
+          atualizarBarra();
+        });
+
+        $("#ir-checkout").addEventListener("click", () => {
+          if (!Loja.qtdItens()) return toast("Seu carrinho está vazio.", "erro");
+          renderCheckout();
+          irPara("checkout");
+        });
+
+        $("#form-checkout").addEventListener("submit", (e) => e.preventDefault());
+        $("#gerar-pix").addEventListener("click", () => {
+          const cliente = validarCheckout();
+          if (!cliente) {
+            toast("Revise os campos destacados antes de continuar.", "erro");
+            return;
+          }
+          const pedido = gerarPedido(cliente);
+          mostrarPix(pedido);
+        });
+
+        $("#copiar-pix").addEventListener("click", (e) => {
+          copiarTexto($("#pix-codigo").value, e.currentTarget);
+        });
+
+        $("#ja-paguei").addEventListener("click", () => {
+          if (!pedidoEmCurso) return;
+          const res = Loja.confirmarPagamento(pedidoEmCurso, pedidoEmCurso.cliente);
+          toast("Pagamento informado. Liberando seu acesso…");
+          mostrarSucesso(res.pedido, res.conta, res.senhaTemp);
+        });
+
+        /* ---------- ajustes de formulário ---------- */
+        mascaraCpf($("#ck-cpf"));
+        mascaraZap($("#ck-zap"));
+
+        /* O aviso de erro não espera o próximo clique: ele se atualiza sozinho
+           assim que o aluno corrige o campo (e some quando tudo fica válido). */
+        ["#ck-nome", "#ck-email", "#ck-cpf", "#ck-zap", "#ck-termos"].forEach((sel) => {
+          const campo = $(sel);
+          if (!campo) return;
+          const reavaliar = () => {
+            const erro = $("#checkout-erro");
+            if (!erro || erro.style.display !== "block") return; // só se já houver aviso
+            validarCheckout();
+          };
+          campo.addEventListener("input", reavaliar);
+          campo.addEventListener("change", reavaliar);
+        });
+
+        /* ---------- compra rápida (chegou de uma aula bloqueada) ----------
+           curso.html?item=aula:<id>&nome=<título>&disc=<disciplina>
+           Adiciona no carrinho e pula direto para a tela de pagamento. */
+        function processarLinkRapido() {
+          let params;
+          try {
+            params = new URLSearchParams(window.location.search);
+          } catch (e) {
+            return;
+          }
+          const chave = params.get("item");
+          if (!chave) return;
+
+          const partes = String(chave).split(":");
+          const tipo = partes[0];
+          const id = partes.slice(1).join(":");
+
+          let item = null;
+          if (tipo === "aula") {
+            item = Loja.itemAula({
+              id: id,
+              nome: params.get("nome") || "Aula avulsa",
+              disciplina: params.get("disc") || "",
+              descricao: params.get("desc") || "",
+            });
+          } else {
+            item = catalogoBusca(tipo, id);
+          }
+          if (!item) return;
+
+          const r = Loja.adicionar(item);
+          atualizarBarra();
+          if (r.ok || r.erro === "já-no-carrinho") {
+            toast("✅ <strong>" + Loja.esc(item.nome) + "</strong> no carrinho. É só pagar no PIX.");
+            renderCheckout();
+            irPara("checkout");
+            // limpa a URL para o refresh não tentar adicionar de novo
+            try {
+              history.replaceState(null, "", window.location.pathname);
+            } catch (e) {}
+          } else {
+            toast("Não consegui adicionar este item. Escolha abaixo o plano.", "erro");
+          }
+        }
+
+        /* ---------- init ---------- */
+        renderVitrine();
+        atualizarBarra();
+        processarLinkRapido();
+      })();
+    </script>
+  </body>
+</html>
