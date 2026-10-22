@@ -1,0 +1,235 @@
+
+/* =====================================================
+   PORTAL DA ESCOLA
+   CAPÍTULO 3 — PRIMEIROS PASSOS COM CSS
+
+   Eu utilizo este arquivo para controlar
+   a apresentação visual do projeto.
+   ===================================================== */
+
+
+/* =====================================================
+   1. CONFIGURAÇÕES GERAIS
+   ===================================================== */
+
+/* Eu seleciono todos os elementos da página. */
+* {
+
+    /* Eu incluo bordas e preenchimentos no tamanho total. */
+    box-sizing: border-box;
+
+}
+
+
+/* Eu seleciono o corpo principal do documento. */
+body {
+
+    /* Eu removo a margem padrão do navegador. */
+    margin: 0;
+
+    /* Eu defino a fonte principal do site. */
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* Eu aplico uma cor clara ao fundo da página. */
+    background-color: #f4f7fb;
+
+    /* Eu defino a cor padrão dos textos. */
+    color: #243247;
+
+    /* Eu aumento o espaçamento entre as linhas. */
+    line-height: 1.6;
+
+}
+
+
+/* =====================================================
+   2. CABEÇALHO DA ESCOLA
+   ===================================================== */
+
+/* Eu seleciono o cabeçalho principal. */
+header {
+
+    /* Eu aplico uma cor azul-escura ao fundo. */
+    background-color: #10294b;
+
+    /* Eu defino a cor branca para os textos. */
+    color: #ffffff;
+
+    /* Eu adiciono espaço interno ao cabeçalho. */
+    padding: 40px 20px;
+
+    /* Eu centralizo os textos do cabeçalho. */
+    text-align: center;
+
+}
+
+
+/* Eu seleciono o título principal da escola. */
+header h1 {
+
+    /* Eu removo a margem superior do título. */
+    margin-top: 0;
+
+    /* Eu defino o tamanho da fonte. */
+    font-size: 32px;
+
+}
+
+
+/* =====================================================
+   3. MENU DE NAVEGAÇÃO
+   ===================================================== */
+
+/* Eu seleciono a navegação principal. */
+nav {
+
+    /* Eu utilizo um azul diferente do cabeçalho. */
+    background-color: #193d68;
+
+    /* Eu adiciono espaço interno ao menu. */
+    padding: 15px;
+
+}
+
+
+/* Eu seleciono a lista que está dentro da navegação. */
+nav ul {
+
+    /* Eu removo os marcadores da lista. */
+    list-style: none;
+
+    /* Eu removo as margens padrão. */
+    margin: 0;
+
+    /* Eu removo o preenchimento padrão. */
+    padding: 0;
+
+    /* Eu organizo os itens lado a lado. */
+    display: flex;
+
+    /* Eu centralizo os itens horizontalmente. */
+    justify-content: center;
+
+    /* Eu defino o espaço entre os links. */
+    gap: 25px;
+
+    /* Eu permito a quebra de linha em telas pequenas. */
+    flex-wrap: wrap;
+
+}
+
+
+/* Eu seleciono os links do menu. */
+nav a {
+
+    /* Eu defino a cor branca para os links. */
+    color: #ffffff;
+
+    /* Eu removo o sublinhado padrão. */
+    text-decoration: none;
+
+    /* Eu destaco o texto dos links. */
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
+   4. CONTEÚDO PRINCIPAL
+   ===================================================== */
+
+/* Eu seleciono o conteúdo principal do site. */
+main {
+
+    /* Eu limito a largura para facilitar a leitura. */
+    max-width: 1100px;
+
+    /* Eu centralizo o conteúdo horizontalmente. */
+    margin: 30px auto;
+
+    /* Eu adiciono espaço nas laterais. */
+    padding: 0 20px;
+
+}
+
+
+/* Eu seleciono as seções do conteúdo principal. */
+main section {
+
+    /* Eu utilizo fundo branco nas seções. */
+    background-color: #ffffff;
+
+    /* Eu adiciono espaço interno. */
+    padding: 30px;
+
+    /* Eu crio espaço entre as seções. */
+    margin-bottom: 25px;
+
+    /* Eu arredondo os cantos das seções. */
+    border-radius: 12px;
+
+    /* Eu adiciono uma sombra suave. */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+
+}
+
+
+/* Eu seleciono os títulos das seções. */
+main h2 {
+
+    /* Eu aplico a cor azul aos títulos. */
+    color: #10294b;
+
+}
+
+
+/* =====================================================
+   5. RODAPÉ
+   ===================================================== */
+
+/* Eu seleciono o rodapé principal. */
+footer {
+
+    /* Eu aplico um fundo azul-escuro. */
+    background-color: #10294b;
+
+    /* Eu defino a cor branca para os textos. */
+    color: #ffffff;
+
+    /* Eu centralizo o conteúdo do rodapé. */
+    text-align: center;
+
+    /* Eu adiciono espaço interno. */
+    padding: 25px 20px;
+
+}
+
+
+/* =====================================================
+   AULA 35 — CORES, FONTES E ESPAÇAMENTOS
+   ===================================================== */
+
+/* Eu seleciono os títulos das seções principais. */
+main h2 {
+
+    /* Eu defino uma nova cor para os títulos. */
+    color: #1764a0;
+
+    /* Eu aumento o tamanho das letras. */
+    font-size: 28px;
+
+    /* Eu adiciono espaço abaixo dos títulos. */
+    margin-bottom: 18px;
+
+}
+
+/* Eu seleciono os parágrafos do conteúdo principal. */
+main p {
+
+    /* Eu defino um tamanho confortável para a leitura. */
+    font-size: 17px;
+
+    /* Eu aumento o espaço entre as linhas. */
+    line-height: 1.8;
+
+}

@@ -1,0 +1,120 @@
+
+
+
+
+
+/* =====================================================
+   BOTÃO DE COMPRA — CAPA DO LIVRO
+
+   Eu crio a aparência do botão de venda na capa.
+   ===================================================== */
+
+.area-compra {
+
+    /* Eu centralizo o botão e o aviso. */
+    text-align: center;
+
+    /* Eu adiciono espaço acima do botão. */
+    margin-top: 40px;
+
+}
+
+/* Eu crio a aparência do link que simula um botão. */
+
+.botao-compra {
+
+    /* Eu faço o elemento ocupar o comportamento de bloco. */
+    display: inline-block;
+
+    /* Eu adiciono espaço interno ao botão. */
+    padding: 18px 36px;
+
+    /* Eu utilizo a cor dourada da identidade visual. */
+    background-color: #c6a35b;
+
+    /* Eu defino o texto branco. */
+    color: #ffffff;
+
+    /* Eu removo a decoração do link. */
+    text-decoration: none;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 8px;
+
+    /* Eu deixo o texto em negrito. */
+    font-weight: bold;
+
+    /* Eu defino o tamanho confortável de leitura. */
+    font-size: 18px;
+
+    /* Eu utilizo a fonte da interface. */
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* Eu indico que o elemento pode ser clicado. */
+    cursor: pointer;
+
+    /* Eu suavizo a transição ao passar o mouse. */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    /* Eu adiciono uma sombra discreta. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+}
+
+/* Eu destaco o botão quando o mouse passa por cima. */
+
+.botao-compra:hover {
+
+    /* Eu utilizo o dourado mais claro ao passar o mouse. */
+    background-color: #e7d3a4;
+
+    /* Eu levemente elev o botão. */
+    transform: translateY(-2px);
+
+}
+
+/* Eu mostro o foco para quem navega pelo teclado. */
+
+.botao-compra:focus-visible {
+
+    /* Eu crio um contorno visível para acessibilidade. */
+    outline: 3px solid #e7d3a4;
+
+    /* Eu posiciono o contorno fora do botão. */
+    outline-offset: 3px;
+
+}
+
+/* Eu estilizo o aviso abaixo do botão. */
+
+.aviso-compra {
+
+    /* Eu adiciono espaço acima do texto. */
+    margin-top: 10px;
+
+    /* Eu utilizo uma cor suave. */
+    color: #657086;
+
+    /* Eu defino o tamanho menor para o aviso. */
+    font-size: 14px;
+
+    /* Eu utilizo a fonte da interface. */
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+/* Eu adapto o botão para telas pequenas. */
+
+@media (max-width: 600px) {
+
+    .botao-compra {
+
+        /* Eu reduzo o espaço interno no celular. */
+        padding: 14px 24px;
+
+        /* Eu diminuo o tamanho das letras. */
+        font-size: 16px;
+
+    }
+
+}

@@ -1,0 +1,2727 @@
+/* ==========================================================
+   CÓDIGO & CONHECIMENTO
+   LIVRO DIGITAL DE PROGRAMAÇÃO WEB
+
+   Arquivo: css/style.css
+
+   Neste arquivo, eu defino toda a identidade visual
+   do meu livro: cores, fontes, capas, páginas,
+   exercícios e adaptação para diferentes telas.
+   ========================================================== */
+
+
+/* ==========================================================
+   1. VARIÁVEIS DE CORES E MEDIDAS
+   ========================================================== */
+
+:root {
+    /* Defino as cores principais da minha coleção. */
+    --azul-profundo: #101d38;
+    --azul-medio: #213d70;
+    --azul-claro: #e9f0fa;
+
+    /* Utilizo dourado para criar uma identidade editorial. */
+    --dourado: #c6a35b;
+    --dourado-claro: #e7d3a4;
+
+    /* Defino as cores das páginas e dos textos. */
+    --papel: #fffdf8;
+    --fundo: #e9edf3;
+    --texto: #253047;
+    --texto-suave: #657086;
+    --borda: #e5e0d5;
+
+    /* Defino as fontes utilizadas no livro. */
+    --fonte-texto: Georgia, "Times New Roman", serif;
+    --fonte-interface: Arial, Helvetica, sans-serif;
+
+    /* Centralizo as medidas para facilitar alterações. */
+    --largura-pagina: 850px;
+    --raio: 12px;
+}
+
+
+/* ==========================================================
+   2. REINICIALIZAÇÃO DOS ESTILOS
+   ========================================================== */
+
+* {
+    /* Incluo bordas e espaçamentos nas dimensões. */
+    box-sizing: border-box;
+}
+
+html {
+    /* Permito rolagem suave pelos links internos. */
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Retiro as margens padrão do navegador. */
+    margin: 0;
+
+    /* Defino a aparência geral do ambiente de leitura. */
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: var(--fonte-texto);
+    line-height: 1.8;
+}
+
+button,
+a {
+    /* Facilito a identificação de elementos interativos. */
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* ==========================================================
+   3. BARRA SUPERIOR DO LEITOR
+   ========================================================== */
+
+.barra-superior {
+    /* Mantenho a barra visível durante a leitura. */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    /* Organizo a marca e o botão horizontalmente. */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 14px 28px;
+
+    background: var(--azul-profundo);
+    border-bottom: 2px solid var(--dourado);
+
+    font-family: var(--fonte-interface);
+}
+
+.marca {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+#botao-sumario {
+    padding: 10px 18px;
+
+    background: transparent;
+    border: 1px solid var(--dourado);
+    border-radius: 6px;
+
+    color: var(--dourado-claro);
+    font-weight: bold;
+
+    transition: background 0.2s, color 0.2s;
+}
+
+#botao-sumario:hover {
+    background: var(--dourado);
+    color: var(--azul-profundo);
+}
+
+
+/* ==========================================================
+   4. ÁREA PRINCIPAL DO LIVRO
+   ========================================================== */
+
+#livro {
+    /* Centralizo o conjunto de páginas. */
+    width: min(100% - 32px, var(--largura-pagina));
+
+    margin: 40px auto 120px;
+}
+
+
+/* ==========================================================
+   5. FORMATO DAS PÁGINAS
+   ========================================================== */
+
+.pagina {
+    /* Cada seção representa uma página do livro. */
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 900px;
+    margin-bottom: 35px;
+
+    padding: 72px 72px 80px;
+
+    background: var(--papel);
+
+    border: 1px solid var(--borda);
+    border-radius: 3px;
+
+    /* Simulo uma folha com uma sombra discreta. */
+    box-shadow:
+        0 4px 12px rgba(16, 29, 56, 0.06),
+        0 18px 45px rgba(16, 29, 56, 0.09);
+
+    overflow-wrap: anywhere;
+}
+
+.conteudo-pagina {
+    flex: 1;
+}
+
+.numero-pagina {
+    /* Posiciono a numeração no rodapé de cada página. */
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: var(--texto-suave);
+
+    font-family: var(--fonte-interface);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+
+/* ==========================================================
+   6. CAPA PRINCIPAL
+   ========================================================== */
+
+.capa {
+    /* Crio uma capa com aparência editorial. */
+    background:
+        radial-gradient(circle at 80% 20%,
+            rgba(198, 163, 91, 0.18),
+            transparent 35%),
+        linear-gradient(145deg,
+            #0b1428,
+            #172c51 55%,
+            #243e6b);
+
+    border: 2px solid var(--dourado);
+
+    color: white;
+    text-align: center;
+}
+
+.capa::before {
+    /* Desenho uma moldura interna dourada. */
+    content: "";
+
+    position: absolute;
+    inset: 18px;
+
+    border: 1px solid rgba(231, 211, 164, 0.5);
+
+    pointer-events: none;
+}
+
+.capa .conteudo-pagina {
+    /* Centralizo os elementos da capa verticalmente. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 0;
+}
+
+.colecao {
+    margin-bottom: 15px;
+
+    font-family: var(--fonte-interface);
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+
+    color: var(--dourado-claro);
+}
+
+.edicao {
+    margin-bottom: 45px;
+
+    font-family: var(--fonte-interface);
+    font-size: 12px;
+
+    color: #cbd5e1;
+}
+
+.simbolo-capa {
+    /* Transformo o símbolo de código em elemento visual. */
+    display: grid;
+    place-items: center;
+
+    width: 120px;
+    height: 120px;
+
+    margin-bottom: 38px;
+
+    border: 2px solid var(--dourado);
+    border-radius: 50%;
+
+    color: var(--dourado-claro);
+
+    font-family: Consolas, monospace;
+    font-size: 32px;
+    font-weight: bold;
+
+    box-shadow: 0 0 35px rgba(198, 163, 91, 0.15);
+}
+
+.capa h1 {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: white;
+
+    font-size: clamp(36px, 6vw, 62px);
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+
+.capa h2 {
+    margin: 24px 0 0;
+
+    color: var(--dourado-claro);
+
+    font-family: var(--fonte-interface);
+    font-size: clamp(17px, 3vw, 24px);
+    font-weight: 400;
+}
+
+.subtitulo {
+    max-width: 470px;
+
+    margin-top: 30px;
+
+    color: #d9e2f0;
+
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.autor {
+    margin-top: 70px;
+
+    color: white;
+
+    font-family: var(--fonte-interface);
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.capa .numero-pagina {
+    color: var(--dourado-claro);
+}
+
+
+/* ==========================================================
+   7. TÍTULOS E PARÁGRAFOS
+   ========================================================== */
+
+.rotulo {
+    margin: 0 0 12px;
+
+    color: #947333;
+
+    font-family: var(--fonte-interface);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.pagina:not(.capa) h2 {
+    margin: 0 0 35px;
+
+    color: var(--azul-profundo);
+
+    font-size: clamp(32px, 5vw, 44px);
+    line-height: 1.2;
+}
+
+.pagina h3 {
+    margin: 0 0 28px;
+
+    color: var(--azul-medio);
+
+    font-size: 27px;
+    line-height: 1.35;
+}
+
+.pagina h4 {
+    margin: 30px 0 10px;
+
+    color: var(--azul-medio);
+
+    font-family: var(--fonte-interface);
+    font-size: 17px;
+}
+
+.pagina:not(.capa) p {
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    font-size: 17px;
+    text-align: justify;
+}
+
+.pagina ul,
+.pagina ol {
+    padding-left: 25px;
+}
+
+.pagina li {
+    margin-bottom: 10px;
+}
+
+.destaque-texto {
+    margin-top: 35px !important;
+
+    padding: 22px 25px;
+
+    background: #f8f2e5;
+
+    border-left: 4px solid var(--dourado);
+
+    color: var(--azul-profundo);
+
+    font-style: italic;
+}
+
+
+/* ==========================================================
+   8. SUMÁRIO
+   ========================================================== */
+
+.pagina-sumario {
+    /* Uso uma borda lateral para diferenciar o sumário. */
+    border-left: 7px solid var(--dourado);
+}
+
+.lista-sumario {
+    margin-top: 35px;
+    padding-left: 25px;
+}
+
+.lista-sumario li {
+    padding: 8px 0;
+
+    border-bottom: 1px dotted #d6d9e0;
+
+    font-family: var(--fonte-interface);
+    font-size: 15px;
+}
+
+.lista-sumario a {
+    color: var(--azul-profundo);
+    text-decoration: none;
+}
+
+.lista-sumario a:hover {
+    color: #946e26;
+    text-decoration: underline;
+}
+
+.observacao {
+    margin-top: 28px !important;
+
+    color: var(--texto-suave);
+
+    font-family: var(--fonte-interface);
+    font-size: 13px !important;
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   9. CAPÍTULOS DIDÁTICOS
+   ========================================================== */
+
+.pagina-capitulo {
+    border-top: 7px solid var(--azul-medio);
+}
+
+.atividade {
+    margin-top: 35px;
+    padding: 20px 25px;
+
+    background: var(--azul-claro);
+
+    border: 1px solid #cddbf0;
+    border-radius: var(--raio);
+}
+
+.atividade h4 {
+    margin-top: 0;
+}
+
+.atividade p {
+    text-align: left !important;
+}
+
+
+/* ==========================================================
+   10. CONTROLES DE NAVEGAÇÃO
+   ========================================================== */
+
+.controles-leitura {
+    /* Mantenho os controles na parte inferior da janela. */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    min-height: 65px;
+    padding: 12px 20px;
+
+    background: rgba(16, 29, 56, 0.97);
+
+    border-top: 2px solid var(--dourado);
+
+    color: white;
+
+    font-family: var(--fonte-interface);
+}
+
+.controles-leitura button {
+    padding: 10px 18px;
+
+    background: var(--dourado);
+
+    border: none;
+    border-radius: 6px;
+
+    color: var(--azul-profundo);
+
+    font-weight: bold;
+
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.controles-leitura button:hover {
+    transform: translateY(-2px);
+}
+
+.controles-leitura button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#indicador-pagina {
+    min-width: 105px;
+
+    text-align: center;
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   11. ACESSIBILIDADE
+   ========================================================== */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #e6b95b;
+    outline-offset: 4px;
+}
+
+
+/* ==========================================================
+   12. RESPONSIVIDADE
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+    .barra-superior {
+        padding: 12px 15px;
+    }
+
+    .marca {
+        font-size: 13px;
+    }
+
+    #botao-sumario {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    #livro {
+        width: min(100% - 16px, var(--largura-pagina));
+        margin-top: 15px;
+    }
+
+    .pagina {
+        min-height: 720px;
+        padding: 45px 28px 75px;
+        margin-bottom: 20px;
+    }
+
+    .capa::before {
+        inset: 10px;
+    }
+
+    .capa h1 {
+        font-size: 38px;
+    }
+
+    .simbolo-capa {
+        width: 95px;
+        height: 95px;
+        font-size: 26px;
+    }
+
+    .pagina:not(.capa) p {
+        font-size: 16px;
+    }
+
+    .controles-leitura {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .controles-leitura button {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    #indicador-pagina {
+        min-width: 80px;
+        font-size: 11px;
+    }
+}
+
+
+/* ==========================================================
+   13. VERSÃO PARA IMPRESSÃO
+   ========================================================== */
+
+@media print {
+
+    body {
+        background: white;
+    }
+
+    .barra-superior,
+    .controles-leitura {
+        display: none !important;
+    }
+
+    #livro {
+        width: 100%;
+        margin: 0;
+    }
+
+    .pagina {
+        min-height: auto;
+
+        margin: 0;
+        padding: 20mm 18mm 18mm;
+
+        border-radius: 0;
+        box-shadow: none;
+
+        break-after: page;
+        page-break-after: always;
+
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .pagina:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .numero-pagina {
+        bottom: 10mm;
+    }
+}
+
+
+/* ==========================================================
+   14. CONTROLE DE VISIBILIDADE DAS PÁGINAS
+
+   Eu garanto que uma página marcada como oculta
+   pelo JavaScript não apareça na tela.
+   ========================================================== */
+
+.pagina[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================================
+   15. CAPA INTERNA DO SUMÁRIO
+
+   Eu crio uma abertura especial para o sumário,
+   com identidade visual editorial.
+   ========================================================== */
+
+.capa-sumario {
+    background: linear-gradient(
+        145deg,
+        #101d38,
+        #233e6d
+    );
+
+    color: white;
+    text-align: center;
+
+    border: 2px solid var(--dourado);
+}
+
+.capa-sumario .conteudo-pagina {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rotulo-capa {
+    color: var(--dourado-claro) !important;
+
+    font-family: var(--fonte-interface);
+    font-size: 13px !important;
+    letter-spacing: 4px;
+    text-align: center !important;
+}
+
+.emblema-sumario {
+    display: grid;
+    place-items: center;
+
+    width: 110px;
+    height: 110px;
+
+    margin: 40px auto;
+
+    border: 2px solid var(--dourado);
+    border-radius: 50%;
+
+    color: var(--dourado-claro);
+
+    font-family: Consolas, monospace;
+    font-size: 32px;
+}
+
+.capa-sumario h2 {
+    max-width: 580px;
+
+    color: white !important;
+
+    font-size: clamp(32px, 5vw, 48px) !important;
+    line-height: 1.25;
+}
+
+.frase-sumario {
+    max-width: 480px;
+
+    color: #e1e8f4;
+
+    font-size: 19px !important;
+    text-align: center !important;
+}
+
+.temas-sumario {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    margin: 35px 0;
+}
+
+.temas-sumario span {
+    padding: 9px 14px;
+
+    border: 1px solid var(--dourado);
+    border-radius: 5px;
+
+    color: var(--dourado-claro);
+
+    font-family: var(--fonte-interface);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.mensagem-sumario {
+    max-width: 430px;
+
+    margin-top: 30px !important;
+
+    color: #dce5f1;
+
+    font-style: italic;
+    text-align: center !important;
+}
+
+.capa-sumario .numero-pagina {
+    color: var(--dourado-claro);
+}
+
+
+/* =========================================================
+   EXEMPLOS DE CÓDIGO DO LIVRO
+   ========================================================= */
+
+/* Eu organizo a aparência das caixas com exemplos de código. */
+.exemplo-codigo {
+
+    /* Eu aplico uma cor escura ao fundo do exemplo. */
+    background: #17243c;
+
+    /* Eu defino uma cor clara para facilitar a leitura. */
+    color: #f1f5f9;
+
+    /* Eu crio um espaço interno entre o texto e as bordas. */
+    padding: 20px;
+
+    /* Eu arredondo os cantos da caixa. */
+    border-radius: 10px;
+
+    /* Eu utilizo uma fonte apropriada para programação. */
+    font-family: Consolas, "Courier New", monospace;
+
+    /* Eu defino um tamanho confortável para o código. */
+    font-size: 14px;
+
+    /* Eu aumento o espaço entre as linhas. */
+    line-height: 1.7;
+
+    /* Eu preservo as quebras e permito linhas longas se ajustarem. */
+    white-space: pre-wrap;
+
+    /* Eu evito que palavras muito longas ultrapassem a caixa. */
+    overflow-wrap: anywhere;
+
+    /* Eu acrescento uma margem vertical ao exemplo. */
+    margin: 20px 0;
+
+}
+/* Eu encerro a estilização dos exemplos de código. */
+
+
+/* Eu organizo os gabaritos interativos do livro. */
+details {
+
+    /* Eu acrescento espaço entre o gabarito e outros conteúdos. */
+    margin-top: 20px;
+
+    /* Eu crio espaço interno para melhorar a leitura. */
+    padding: 16px;
+
+    /* Eu acrescento uma borda discreta. */
+    border: 1px solid #d7deea;
+
+    /* Eu arredondo os cantos do gabarito. */
+    border-radius: 8px;
+
+}
+/* Eu encerro a estilização dos gabaritos. */
+
+
+/* Eu destaco o texto que abre e fecha o gabarito. */
+details summary {
+
+    /* Eu indico que o texto pode ser clicado. */
+    cursor: pointer;
+
+    /* Eu destaco o comando com uma fonte mais forte. */
+    font-weight: bold;
+
+    /* Eu utilizo uma cor azul-escura. */
+    color: #173b63;
+
+}
+/* Eu encerro a estilização do controle do gabarito. */
+
+
+/* Eu garanto que as páginas ocultas não ocupem espaço. */
+.pagina[hidden] {
+
+    /* Eu escondo completamente as páginas que não estão ativas. */
+    display: none !important;
+
+}
+/* Eu encerro a regra de ocultação. */
+
+
+/* =========================================================
+   LABORATÓRIO INTERATIVO DE HTML
+
+   Eu organizo a aparência do editor e da prévia.
+   ========================================================= */
+
+
+/* Eu seleciono o campo onde o estudante escreve HTML. */
+#editor-html {
+
+    /* Eu faço o editor ocupar a largura disponível. */
+    width: 100%;
+
+    /* Eu defino uma altura mínima para escrever código. */
+    min-height: 180px;
+
+    /* Eu crio um espaço interno confortável. */
+    padding: 16px;
+
+    /* Eu aplico um fundo escuro semelhante a um editor. */
+    background: #17243c;
+
+    /* Eu defino uma cor clara para o texto digitado. */
+    color: #f8fafc;
+
+    /* Eu utilizo uma fonte apropriada para código. */
+    font-family: Consolas, "Courier New", monospace;
+
+    /* Eu defino o tamanho da fonte. */
+    font-size: 14px;
+
+    /* Eu aumento o espaçamento entre as linhas. */
+    line-height: 1.6;
+
+    /* Eu arredondo os cantos do campo. */
+    border-radius: 10px;
+
+    /* Eu crio uma borda discreta. */
+    border: 1px solid #334155;
+
+    /* Eu permito redimensionar a altura do editor. */
+    resize: vertical;
+
+    /* Eu incluo o preenchimento dentro da largura total. */
+    box-sizing: border-box;
+
+}
+/* Eu encerro a configuração visual do editor. */
+
+
+/* Eu seleciono o botão de execução do HTML. */
+#executar-html {
+
+    /* Eu adiciono um espaço acima do botão. */
+    margin-top: 16px;
+
+    /* Eu crio espaço interno para facilitar o clique. */
+    padding: 12px 20px;
+
+    /* Eu utilizo uma cor azul para destacar a ação. */
+    background: #173b63;
+
+    /* Eu deixo o texto do botão branco. */
+    color: #ffffff;
+
+    /* Eu retiro a borda padrão do navegador. */
+    border: none;
+
+    /* Eu arredondo os cantos do botão. */
+    border-radius: 8px;
+
+    /* Eu indico que o botão pode ser clicado. */
+    cursor: pointer;
+
+    /* Eu destaco o texto do botão. */
+    font-weight: bold;
+
+}
+/* Eu encerro a configuração visual do botão. */
+
+
+/* Eu seleciono a área que exibirá o resultado. */
+#visualizacao-html {
+
+    /* Eu faço a visualização ocupar toda a largura disponível. */
+    width: 100%;
+
+    /* Eu defino uma altura para a prévia. */
+    height: 220px;
+
+    /* Eu crio um fundo branco para o documento HTML. */
+    background: #ffffff;
+
+    /* Eu acrescento uma borda ao redor da visualização. */
+    border: 1px solid #cbd5e1;
+
+    /* Eu arredondo os cantos da visualização. */
+    border-radius: 10px;
+
+    /* Eu acrescento espaço acima do resultado. */
+    margin-top: 12px;
+
+    /* Eu incluo a borda dentro da largura total. */
+    box-sizing: border-box;
+
+}
+/* Eu encerro a configuração visual da prévia. */
+
+
+/* =========================================================
+   FORMULÁRIO DIDÁTICO — PÁGINA 14
+
+   Eu organizo os campos e melhoro a apresentação
+   visual do laboratório de cadastro.
+   ========================================================= */
+
+
+/* Eu seleciono o formulário de estudantes. */
+#formulario-estudante {
+
+    /* Eu organizo os elementos em uma coluna. */
+    display: flex;
+
+    /* Eu posiciono um elemento abaixo do outro. */
+    flex-direction: column;
+
+    /* Eu crio espaços entre os elementos. */
+    gap: 12px;
+
+    /* Eu adiciono espaço acima do formulário. */
+    margin-top: 20px;
+
+}
+/* Eu encerro a organização do formulário. */
+
+
+/* Eu seleciono os rótulos dos campos. */
+#formulario-estudante label {
+
+    /* Eu destaco o texto dos rótulos. */
+    font-weight: bold;
+
+    /* Eu utilizo uma cor escura para melhorar a leitura. */
+    color: #173b63;
+
+}
+/* Eu encerro a configuração dos rótulos. */
+
+
+/* Eu seleciono os campos de texto e a lista de cursos. */
+#formulario-estudante input,
+#formulario-estudante select {
+
+    /* Eu faço os campos ocuparem a largura disponível. */
+    width: 100%;
+
+    /* Eu crio um espaço interno confortável. */
+    padding: 12px;
+
+    /* Eu defino uma borda discreta. */
+    border: 1px solid #cbd5e1;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 8px;
+
+    /* Eu utilizo uma fonte legível. */
+    font-size: 15px;
+
+    /* Eu mantenho o fundo branco. */
+    background: #ffffff;
+
+    /* Eu utilizo uma cor escura para o texto. */
+    color: #172033;
+
+    /* Eu incluo a borda na largura total. */
+    box-sizing: border-box;
+
+}
+/* Eu encerro a aparência dos campos. */
+
+
+/* Eu destaco o campo que recebe o foco do teclado. */
+#formulario-estudante input:focus-visible,
+#formulario-estudante select:focus-visible {
+
+    /* Eu utilizo um contorno visível para acessibilidade. */
+    outline: 3px solid #d4a24c;
+
+    /* Eu separo o contorno da borda. */
+    outline-offset: 2px;
+
+}
+/* Eu encerro o destaque de foco. */
+
+
+/* Eu seleciono o botão de envio. */
+#formulario-estudante button {
+
+    /* Eu crio espaço dentro do botão. */
+    padding: 13px 20px;
+
+    /* Eu utilizo o azul da identidade visual do livro. */
+    background: #173b63;
+
+    /* Eu deixo o texto branco. */
+    color: #ffffff;
+
+    /* Eu retiro a borda padrão. */
+    border: none;
+
+    /* Eu arredondo os cantos do botão. */
+    border-radius: 8px;
+
+    /* Eu destaco o texto. */
+    font-weight: bold;
+
+    /* Eu indico que o botão pode ser clicado. */
+    cursor: pointer;
+
+}
+/* Eu encerro a configuração do botão. */
+
+
+/* Eu seleciono o botão quando o mouse passa sobre ele. */
+#formulario-estudante button:hover {
+
+    /* Eu utilizo um azul mais escuro. */
+    background: #102b49;
+
+}
+/* Eu encerro o efeito de interação. */
+
+
+/* Eu seleciono a mensagem de confirmação. */
+#mensagem-inscricao {
+
+    /* Eu utilizo uma cor de destaque. */
+    color: #173b63;
+
+    /* Eu destaco o texto da mensagem. */
+    font-weight: bold;
+
+    /* Eu aumento a distância entre as linhas. */
+    line-height: 1.6;
+
+}
+/* Eu encerro a configuração da mensagem. */
+
+
+/* =========================================================
+   ACESSIBILIDADE — FOCO VISÍVEL
+
+   Eu destaco elementos interativos quando
+   recebem o foco da navegação por teclado.
+   ========================================================= */
+
+
+/* Eu seleciono elementos interativos com foco visível. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+
+    /* Eu crio um contorno dourado bem visível. */
+    outline: 3px solid #d4a24c;
+
+    /* Eu separo o contorno do elemento. */
+    outline-offset: 3px;
+
+}
+/* Eu encerro a configuração de foco acessível. */
+
+
+/* =========================================================
+   PÁGINA 19 — LABORATÓRIO DO BOX MODEL
+
+   Eu crio os estilos específicos do laboratório,
+   sem modificar as outras páginas do livro.
+   ========================================================= */
+
+
+/* Eu seleciono a área de demonstração do laboratório. */
+#area-box-model {
+
+    /* Eu utilizo uma cor clara para destacar a experiência. */
+    background-color: #e8eef7;
+
+    /* Eu adiciono espaço interno à área de demonstração. */
+    padding: 15px;
+
+    /* Eu crio espaço acima da demonstração. */
+    margin-top: 25px;
+
+    /* Eu crio espaço abaixo da demonstração. */
+    margin-bottom: 20px;
+
+    /* Eu arredondo os cantos da área. */
+    border-radius: 12px;
+
+    /* Eu permito rolagem horizontal se o conteúdo não couber. */
+    overflow-x: auto;
+
+}
+
+
+/* Eu seleciono a caixa que será modificada pelo estudante. */
+#caixa-box-model {
+
+    /* Eu defino uma cor azul-escura para a caixa. */
+    background-color: #193d68;
+
+    /* Eu defino a cor branca para o texto. */
+    color: #ffffff;
+
+    /* Eu centralizo o texto dentro da caixa. */
+    text-align: center;
+
+    /* Eu destaco o texto. */
+    font-weight: bold;
+
+    /* Eu defino o espaço externo inicial. */
+    margin: 20px;
+
+    /* Eu defino o espaço interno inicial. */
+    padding: 24px;
+
+    /* Eu crio uma borda inicial de três pixels. */
+    border: 3px solid #e2ac45;
+
+    /* Eu arredondo levemente os cantos. */
+    border-radius: 8px;
+
+    /* Eu suavizo as mudanças visuais dos espaçamentos. */
+    transition: margin 0.2s, padding 0.2s, border-width 0.2s;
+
+}
+
+
+/* Eu seleciono os controles deslizantes do laboratório. */
+#laboratorio-box-model input[type="range"] {
+
+    /* Eu faço o controle ocupar toda a largura disponível. */
+    width: 100%;
+
+    /* Eu crio espaço acima do controle. */
+    margin-top: 8px;
+
+    /* Eu crio espaço abaixo do controle. */
+    margin-bottom: 20px;
+
+    /* Eu destaco o controle com uma cor azul. */
+    accent-color: #193d68;
+
+    /* Eu indico que o controle pode ser manipulado. */
+    cursor: pointer;
+
+}
+
+
+/* Eu seleciono os textos que identificam os controles. */
+#laboratorio-box-model label {
+
+    /* Eu coloco cada identificação em sua própria linha. */
+    display: block;
+
+    /* Eu destaco os nomes das propriedades. */
+    font-weight: bold;
+
+}
+
+
+/* Eu seleciono os valores numéricos dos controles. */
+#laboratorio-box-model output {
+
+    /* Eu aplico uma cor azul aos números. */
+    color: #1764a0;
+
+    /* Eu destaco os valores. */
+    font-weight: bold;
+
+}
+
+
+/* Eu seleciono a descrição dos valores atuais. */
+#descricao-box-model {
+
+    /* Eu centralizo a descrição. */
+    text-align: center;
+
+    /* Eu defino uma cor para facilitar a leitura. */
+    color: #243247;
+
+    /* Eu destaco os valores apresentados. */
+    font-weight: bold;
+
+}
+
+
+/* Eu seleciono o botão de restauração. */
+#restaurar-box-model {
+
+    /* Eu defino a cor de fundo do botão. */
+    background-color: #193d68;
+
+    /* Eu defino a cor do texto. */
+    color: #ffffff;
+
+    /* Eu removo a borda padrão. */
+    border: none;
+
+    /* Eu adiciono espaço interno ao botão. */
+    padding: 12px 20px;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 8px;
+
+    /* Eu indico que o botão é clicável. */
+    cursor: pointer;
+
+    /* Eu destaco o texto do botão. */
+    font-weight: bold;
+
+}
+
+
+/* Eu modifico a aparência quando o mouse passa pelo botão. */
+#restaurar-box-model:hover {
+
+    /* Eu utilizo um azul um pouco mais claro. */
+    background-color: #1764a0;
+
+}
+
+
+/* Eu destaco o botão quando recebe foco pelo teclado. */
+#restaurar-box-model:focus-visible {
+
+    /* Eu crio um contorno visível para acessibilidade. */
+    outline: 3px solid #e2ac45;
+
+    /* Eu afasto o contorno do botão. */
+    outline-offset: 3px;
+
+}
+
+
+/* =========================================================
+   ETAPA 42 — PAINEL DE CÓDIGO EXPLICADO
+
+   Eu crio a aparência de um editor profissional
+   para apresentar códigos aos estudantes.
+   ========================================================= */
+
+
+/* Eu seleciono o painel expansível do código. */
+.codigo-explicado {
+
+    /* Eu crio espaço acima do painel. */
+    margin-top: 25px;
+
+    /* Eu adiciono uma borda discreta. */
+    border: 1px solid #cbd5e1;
+
+    /* Eu arredondo os cantos externos. */
+    border-radius: 12px;
+
+    /* Eu evito que o conteúdo ultrapasse os cantos. */
+    overflow: hidden;
+
+    /* Eu defino um fundo branco. */
+    background-color: #ffffff;
+
+}
+
+
+/* Eu seleciono o título clicável do painel. */
+.codigo-explicado summary {
+
+    /* Eu defino um fundo azul-escuro. */
+    background-color: #193d68;
+
+    /* Eu utilizo texto branco. */
+    color: #ffffff;
+
+    /* Eu adiciono espaço interno. */
+    padding: 16px 20px;
+
+    /* Eu destaco o texto do título. */
+    font-weight: bold;
+
+    /* Eu indico que o título pode ser clicado. */
+    cursor: pointer;
+
+}
+
+
+/* Eu modifico a cor ao passar o mouse. */
+.codigo-explicado summary:hover {
+
+    /* Eu utilizo um azul um pouco mais claro. */
+    background-color: #24558d;
+
+}
+
+
+/* Eu destaco o título ao navegar pelo teclado. */
+.codigo-explicado summary:focus-visible {
+
+    /* Eu crio um contorno visível. */
+    outline: 3px solid #e2ac45;
+
+    /* Eu posiciono o contorno para dentro. */
+    outline-offset: -3px;
+
+}
+
+
+/* Eu seleciono a área de explicações. */
+.conteudo-codigo-explicado {
+
+    /* Eu adiciono espaço interno. */
+    padding: 22px;
+
+}
+
+
+/* Eu seleciono somente os blocos de código
+   que estão dentro do painel explicado. */
+.codigo-explicado pre.exemplo-codigo {
+
+    /* Eu crio um fundo semelhante ao de um editor. */
+    background-color: #111827;
+
+    /* Eu utilizo uma cor clara para o código. */
+    color: #e5e7eb;
+
+    /* Eu adiciono espaço interno ao editor. */
+    padding: 20px;
+
+    /* Eu crio espaço acima e abaixo do código. */
+    margin: 18px 0;
+
+    /* Eu arredondo os cantos do editor. */
+    border-radius: 10px;
+
+    /* Eu permito rolagem horizontal para linhas longas. */
+    overflow-x: auto;
+
+    /* Eu defino uma altura confortável entre as linhas. */
+    line-height: 1.8;
+
+    /* Eu preservo quebras de linha e espaços do código. */
+    white-space: pre;
+
+}
+
+
+/* Eu seleciono o texto dentro do editor. */
+.codigo-explicado pre.exemplo-codigo code {
+
+    /* Eu utilizo uma fonte própria para programação. */
+    font-family: Consolas, "Courier New", monospace;
+
+    /* Eu defino o tamanho do código. */
+    font-size: 14px;
+
+    /* Eu mantenho a cor clara do editor. */
+    color: #e5e7eb;
+
+    /* Eu removo fundos que possam vir de estilos gerais. */
+    background: transparent;
+
+    /* Eu removo bordas que possam vir de estilos gerais. */
+    border: none;
+
+    /* Eu removo espaçamentos extras. */
+    padding: 0;
+
+}
+
+
+/* Eu seleciono os subtítulos do painel. */
+.conteudo-codigo-explicado h4 {
+
+    /* Eu utilizo a cor principal do projeto. */
+    color: #193d68;
+
+    /* Eu separo os subtítulos do conteúdo anterior. */
+    margin-top: 22px;
+
+}
+
+
+/* Eu seleciono os itens explicativos. */
+.conteudo-codigo-explicado li {
+
+    /* Eu crio espaço entre as explicações. */
+    margin-bottom: 12px;
+
+    /* Eu aumento a distância entre as linhas. */
+    line-height: 1.7;
+
+}
+
+
+/* Eu adapto o painel a telas menores. */
+@media (max-width: 600px) {
+
+    /* Eu reduzo o espaço interno do conteúdo. */
+    .conteudo-codigo-explicado {
+        padding: 14px;
+    }
+
+    /* Eu ajusto o editor para telas pequenas. */
+    .codigo-explicado pre.exemplo-codigo {
+        padding: 14px;
+    }
+
+    /* Eu reduzo levemente o tamanho da fonte. */
+    .codigo-explicado pre.exemplo-codigo code {
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   ETAPA 44 — LEITOR DE CÓDIGO INTERATIVO
+
+   Eu crio uma interface semelhante a um editor
+   para ensinar programação linha por linha.
+   ========================================================= */
+
+
+/* Eu seleciono o laboratório de leitura de código. */
+.leitor-codigo-interativo {
+
+    /* Eu separo o laboratório do conteúdo anterior. */
+    margin-top: 30px;
+
+    /* Eu adiciono uma linha de separação. */
+    border-top: 2px solid #e2e8f0;
+
+    /* Eu crio espaço acima do conteúdo. */
+    padding-top: 20px;
+
+}
+
+
+/* Eu seleciono a área que contém as linhas de código. */
+.linhas-codigo {
+
+    /* Eu defino um fundo semelhante ao VS Code. */
+    background-color: #111827;
+
+    /* Eu adiciono espaço interno. */
+    padding: 15px 0;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 12px;
+
+    /* Eu permito rolagem horizontal para códigos longos. */
+    overflow-x: auto;
+
+    /* Eu crio um contador automático de linhas. */
+    counter-reset: numero-linha;
+
+}
+
+
+/* Eu seleciono cada botão que representa uma linha. */
+.linha-codigo {
+
+    /* Eu faço cada linha ocupar a largura disponível. */
+    display: block;
+
+    /* Eu utilizo toda a largura do editor. */
+    width: 100%;
+
+    /* Eu evito que linhas longas sejam comprimidas. */
+    min-width: max-content;
+
+    /* Eu alinho o texto à esquerda. */
+    text-align: left;
+
+    /* Eu removo a borda padrão dos botões. */
+    border: none;
+
+    /* Eu removo o arredondamento padrão. */
+    border-radius: 0;
+
+    /* Eu mantenho o fundo transparente. */
+    background-color: transparent;
+
+    /* Eu utilizo texto claro. */
+    color: #e5e7eb;
+
+    /* Eu utilizo uma fonte monoespaçada. */
+    font-family: Consolas, "Courier New", monospace;
+
+    /* Eu defino o tamanho das letras. */
+    font-size: 14px;
+
+    /* Eu adiciono espaço dentro de cada linha. */
+    padding: 10px 18px;
+
+    /* Eu indico que a linha pode ser clicada. */
+    cursor: pointer;
+
+    /* Eu preservo os espaços escritos no código. */
+    white-space: pre;
+
+    /* Eu suavizo as mudanças de cor. */
+    transition: background-color 0.2s;
+
+}
+
+
+/* Eu crio a numeração automática de cada linha. */
+.linha-codigo::before {
+
+    /* Eu avanço o contador para a próxima linha. */
+    counter-increment: numero-linha;
+
+    /* Eu mostro o número atual do contador. */
+    content: counter(numero-linha);
+
+    /* Eu organizo o número como um bloco alinhado. */
+    display: inline-block;
+
+    /* Eu reservo espaço para a numeração. */
+    width: 30px;
+
+    /* Eu separo o número do código. */
+    margin-right: 15px;
+
+    /* Eu utilizo uma cor discreta para os números. */
+    color: #94a3b8;
+
+    /* Eu alinho os números à direita. */
+    text-align: right;
+
+}
+
+
+/* Eu destaco a linha quando o mouse passa por ela. */
+.linha-codigo:hover {
+
+    /* Eu aplico um fundo azul discreto. */
+    background-color: #243b5a;
+
+}
+
+
+/* Eu destaco a linha ao navegar pelo teclado. */
+.linha-codigo:focus-visible {
+
+    /* Eu crio um contorno visível. */
+    outline: 2px solid #e2ac45;
+
+    /* Eu posiciono o contorno dentro da linha. */
+    outline-offset: -2px;
+
+}
+
+
+/* Eu preparo o estilo da linha selecionada. */
+.linha-codigo.ativa {
+
+    /* Eu mantenho a linha selecionada destacada. */
+    background-color: #29446b;
+
+    /* Eu utilizo texto branco. */
+    color: #ffffff;
+
+    /* Eu crio uma faixa azul na lateral. */
+    box-shadow: inset 4px 0 0 #60a5fa;
+
+}
+
+
+/* Eu seleciono a área de explicação do professor. */
+.explicacao-linha {
+
+    /* Eu crio espaço acima da explicação. */
+    margin-top: 20px;
+
+    /* Eu utilizo um fundo claro. */
+    background-color: #eff6ff;
+
+    /* Eu adiciono uma faixa azul à esquerda. */
+    border-left: 4px solid #2563eb;
+
+    /* Eu crio espaço interno. */
+    padding: 20px;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 8px;
+
+}
+
+
+/* Eu seleciono o título da explicação. */
+.explicacao-linha h4 {
+
+    /* Eu utilizo azul-escuro no título. */
+    color: #193d68;
+
+    /* Eu removo o espaço superior desnecessário. */
+    margin-top: 0;
+
+}
+
+
+/* Eu seleciono o texto explicativo. */
+#texto-explicacao-linha {
+
+    /* Eu defino uma cor confortável para leitura. */
+    color: #243247;
+
+    /* Eu aumento a distância entre as linhas. */
+    line-height: 1.8;
+
+    /* Eu removo a margem inferior. */
+    margin-bottom: 0;
+
+}
+
+
+/* =========================================================
+   ADAPTAÇÃO PARA TELAS PEQUENAS
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Eu ajusto o tamanho das letras do código. */
+    .linha-codigo {
+        font-size: 12px;
+    }
+
+    /* Eu reduzo o espaço interno da explicação. */
+    .explicacao-linha {
+        padding: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   ETAPA 47 — IDENTIDADE VISUAL DO MODO PROFESSOR
+
+   Eu crio um espaço pedagógico diferenciado
+   para as orientações destinadas ao professor.
+   ========================================================= */
+
+
+/* Eu seleciono o painel principal do professor. */
+.modo-professor {
+
+    /* Eu separo o painel dos conteúdos anteriores. */
+    margin-top: 30px;
+
+    /* Eu crio uma borda azul-escura. */
+    border: 2px solid #193d68;
+
+    /* Eu arredondo os cantos do painel. */
+    border-radius: 12px;
+
+    /* Eu mantenho os elementos dentro dos cantos. */
+    overflow: hidden;
+
+    /* Eu utilizo um fundo branco. */
+    background-color: #ffffff;
+
+}
+
+
+/* Eu seleciono o título clicável do Modo Professor. */
+.modo-professor > summary {
+
+    /* Eu crio um cabeçalho azul-escuro. */
+    background-color: #193d68;
+
+    /* Eu utilizo letras brancas. */
+    color: #ffffff;
+
+    /* Eu adiciono espaço interno. */
+    padding: 18px 20px;
+
+    /* Eu destaco o título. */
+    font-weight: bold;
+
+    /* Eu indico que o título pode ser clicado. */
+    cursor: pointer;
+
+}
+
+
+/* Eu modifico a cor ao passar o mouse. */
+.modo-professor > summary:hover {
+
+    /* Eu utilizo um azul mais claro. */
+    background-color: #24558d;
+
+}
+
+
+/* Eu destaco o título ao navegar pelo teclado. */
+.modo-professor > summary:focus-visible {
+
+    /* Eu crio um contorno dourado. */
+    outline: 3px solid #e2ac45;
+
+    /* Eu posiciono o contorno dentro do painel. */
+    outline-offset: -3px;
+
+}
+
+
+/* Eu seleciono a área interna do material docente. */
+.conteudo-modo-professor {
+
+    /* Eu crio espaço interno confortável. */
+    padding: 25px;
+
+    /* Eu defino uma cor escura para os textos. */
+    color: #243247;
+
+}
+
+
+/* Eu seleciono os subtítulos do Modo Professor. */
+.conteudo-modo-professor h4 {
+
+    /* Eu utilizo azul-escuro nos títulos. */
+    color: #193d68;
+
+    /* Eu separo os assuntos com espaço superior. */
+    margin-top: 25px;
+
+    /* Eu adiciono uma linha dourada abaixo do título. */
+    border-bottom: 2px solid #e2ac45;
+
+    /* Eu separo o texto da linha decorativa. */
+    padding-bottom: 8px;
+
+}
+
+
+/* Eu removo o espaço superior do primeiro subtítulo. */
+.conteudo-modo-professor > h4:first-child {
+
+    /* Eu aproximo o primeiro título do topo. */
+    margin-top: 0;
+
+}
+
+
+/* Eu seleciono as listas do material docente. */
+.conteudo-modo-professor ul,
+.conteudo-modo-professor ol {
+
+    /* Eu organizo o recuo das listas. */
+    padding-left: 25px;
+
+    /* Eu crio espaço abaixo das listas. */
+    margin-bottom: 20px;
+
+}
+
+
+/* Eu seleciono os itens das listas. */
+.conteudo-modo-professor li {
+
+    /* Eu separo visualmente as orientações. */
+    margin-bottom: 12px;
+
+    /* Eu melhoro a leitura dos textos. */
+    line-height: 1.8;
+
+}
+
+
+/* Eu seleciono o painel interno da solução comentada. */
+.conteudo-modo-professor details {
+
+    /* Eu crio um fundo suave. */
+    background-color: #f4f7fb;
+
+    /* Eu adiciono uma borda discreta. */
+    border: 1px solid #cbd5e1;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 8px;
+
+    /* Eu crio espaço interno. */
+    padding: 15px;
+
+    /* Eu separo o gabarito do conteúdo anterior. */
+    margin-top: 15px;
+
+}
+
+
+/* Eu seleciono o título da solução comentada. */
+.conteudo-modo-professor details > summary {
+
+    /* Eu destaco o texto. */
+    font-weight: bold;
+
+    /* Eu utilizo a cor azul. */
+    color: #193d68;
+
+    /* Eu indico que o gabarito pode ser aberto. */
+    cursor: pointer;
+
+}
+
+
+/* Eu destaco o gabarito ao navegar pelo teclado. */
+.conteudo-modo-professor details > summary:focus-visible {
+
+    /* Eu crio um contorno de acessibilidade. */
+    outline: 2px solid #193d68;
+
+    /* Eu afasto o contorno do texto. */
+    outline-offset: 4px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE DO MODO PROFESSOR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Eu reduzo o espaço interno em telas pequenas. */
+    .conteudo-modo-professor {
+        padding: 15px;
+    }
+
+    /* Eu ajusto o cabeçalho do painel. */
+    .modo-professor > summary {
+        padding: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   ETAPA 48 — CORREÇÃO DO TEXTO DO CÓDIGO
+
+   Eu garanto que os códigos do Modo Professor
+   sejam legíveis sobre o fundo escuro.
+   ========================================================= */
+
+
+/* Eu seleciono os blocos de código do Modo Professor. */
+.conteudo-modo-professor pre.exemplo-codigo {
+
+    /* Eu defino um fundo escuro de editor. */
+    background-color: #111827;
+
+    /* Eu defino uma cor clara para o texto. */
+    color: #f8fafc;
+
+    /* Eu adiciono espaço interno. */
+    padding: 18px;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 8px;
+
+    /* Eu permito rolagem para linhas compridas. */
+    overflow-x: auto;
+
+    /* Eu preservo a formatação do código. */
+    white-space: pre;
+
+}
+
+
+/* Eu seleciono diretamente o texto dentro do código. */
+.conteudo-modo-professor pre.exemplo-codigo code {
+
+    /* Eu garanto letras claras sobre o fundo escuro. */
+    color: #f8fafc;
+
+    /* Eu removo possíveis fundos herdados. */
+    background-color: transparent;
+
+    /* Eu utilizo uma fonte semelhante à do VS Code. */
+    font-family: Consolas, "Courier New", monospace;
+
+    /* Eu defino um tamanho confortável. */
+    font-size: 14px;
+
+    /* Eu aumento a distância entre as linhas. */
+    line-height: 1.8;
+
+    /* Eu removo possíveis bordas anteriores. */
+    border: none;
+
+    /* Eu removo espaçamentos adicionais do código. */
+    padding: 0;
+
+}
+
+
+/* =========================================================
+   ETAPA 49 — CORREÇÃO DO BOTÃO VER SOLUÇÃO COMENTADA
+
+   Eu corrijo o contraste entre o texto
+   e o fundo do botão do Modo Professor.
+   ========================================================= */
+
+
+/* Eu seleciono o título do gabarito do professor. */
+.modo-professor .conteudo-modo-professor details > summary {
+
+    /* Eu defino um fundo azul-escuro. */
+    background-color: #193d68;
+
+    /* Eu defino a cor branca para o texto. */
+    color: #ffffff;
+
+    /* Eu adiciono espaço interno. */
+    padding: 12px 16px;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 6px;
+
+    /* Eu destaco o texto. */
+    font-weight: bold;
+
+    /* Eu indico que o elemento pode ser clicado. */
+    cursor: pointer;
+
+}
+
+
+/* Eu mantenho o texto visível quando o mouse passa. */
+.modo-professor .conteudo-modo-professor details > summary:hover {
+
+    /* Eu utilizo um azul um pouco mais claro. */
+    background-color: #24558d;
+
+    /* Eu mantenho o texto branco. */
+    color: #ffffff;
+
+}
+
+
+/* Eu mantenho o texto visível quando o gabarito abre. */
+.modo-professor .conteudo-modo-professor details[open] > summary {
+
+    /* Eu mantenho o fundo azul. */
+    background-color: #193d68;
+
+    /* Eu mantenho o texto branco. */
+    color: #ffffff;
+
+}
+
+
+/* =====================================================
+   ETAPA 57 — LABORATÓRIO DE CSS FLEXBOX
+
+   Eu crio a aparência das três caixas da página 21.
+
+   Meu objetivo é demonstrar:
+   1. Como ativar o Flexbox;
+   2. Como organizar elementos em linha;
+   3. Como distribuir os espaços;
+   4. Como criar um layout responsivo.
+   ===================================================== */
+
+
+/* =====================================================
+   1. CONTÊINER PRINCIPAL
+   ===================================================== */
+
+.laboratorio-flexbox-area {
+
+    /* Eu ativo o modelo de layout Flexbox. */
+    display: flex;
+
+    /* Eu organizo os elementos em uma linha. */
+    flex-direction: row;
+
+    /* Eu centralizo os itens no eixo principal. */
+    justify-content: center;
+
+    /* Eu centralizo os itens no eixo transversal. */
+    align-items: center;
+
+    /* Eu defino um espaço de 16 pixels entre as caixas. */
+    gap: 16px;
+
+    /* Eu permito que as caixas mudem de linha
+       quando não houver espaço suficiente. */
+    flex-wrap: wrap;
+
+    /* Eu adiciono espaço interno ao laboratório. */
+    padding: 24px;
+
+    /* Eu defino uma altura mínima para a área. */
+    min-height: 180px;
+
+    /* Eu aplico uma cor clara ao fundo. */
+    background-color: #eff6ff;
+
+    /* Eu crio uma borda ao redor do laboratório. */
+    border: 2px dashed #93c5fd;
+
+    /* Eu arredondo os cantos da área. */
+    border-radius: 14px;
+
+    /* Eu separo o laboratório dos outros conteúdos. */
+    margin-top: 20px;
+
+    /* Eu mantenho a largura dentro da página. */
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   2. CAIXAS INTERNAS
+   ===================================================== */
+
+.flexbox-item {
+
+    /* Eu ativo o Flexbox dentro de cada caixa. */
+    display: flex;
+
+    /* Eu centralizo o texto horizontalmente. */
+    justify-content: center;
+
+    /* Eu centralizo o texto verticalmente. */
+    align-items: center;
+
+    /* Eu defino a largura inicial da caixa. */
+    width: 110px;
+
+    /* Eu defino a altura da caixa. */
+    min-height: 100px;
+
+    /* Eu aplico a cor azul ao fundo. */
+    background-color: #2563eb;
+
+    /* Eu defino a cor branca para o texto. */
+    color: #ffffff;
+
+    /* Eu aumento o tamanho das letras. */
+    font-size: 20px;
+
+    /* Eu deixo o texto em negrito. */
+    font-weight: bold;
+
+    /* Eu arredondo os cantos das caixas. */
+    border-radius: 12px;
+
+    /* Eu adiciono uma sombra suave. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+
+    /* Eu incluo padding e bordas nas dimensões. */
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   3. ADAPTAÇÃO PARA TELAS PEQUENAS
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+    /* Eu ajusto o contêiner em telas menores. */
+    .laboratorio-flexbox-area {
+
+        /* Eu diminuo o espaço interno. */
+        padding: 14px;
+
+        /* Eu diminuo o espaço entre as caixas. */
+        gap: 10px;
+
+    }
+
+    /* Eu ajusto o tamanho das caixas. */
+    .flexbox-item {
+
+        /* Eu permito que as caixas ocupem
+           o espaço disponível sem ultrapassar
+           a largura do contêiner. */
+        flex: 1 1 80px;
+
+        /* Eu mantenho uma altura confortável. */
+        min-height: 80px;
+
+    }
+
+}
+
+
+/* =====================================================
+   ETAPA 59 — CONTROLES DO LABORATÓRIO FLEXBOX
+
+   Eu estilizo os três menus de seleção
+   utilizados pelo estudante na página 21.
+
+   Meu objetivo é criar uma interface
+   organizada, acessível e responsiva.
+   ===================================================== */
+
+
+/* =====================================================
+   1. ÁREA DOS CONTROLES
+   ===================================================== */
+
+.controles-flexbox {
+
+    /* Eu organizo os controles em uma coluna. */
+    display: flex;
+
+    /* Eu posiciono os elementos verticalmente. */
+    flex-direction: column;
+
+    /* Eu defino um espaço entre os elementos. */
+    gap: 10px;
+
+    /* Eu adiciono espaço interno. */
+    padding: 20px;
+
+    /* Eu defino um fundo claro. */
+    background-color: #f8fafc;
+
+    /* Eu crio uma borda suave. */
+    border: 1px solid #cbd5e1;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 12px;
+
+    /* Eu separo os controles do laboratório. */
+    margin-bottom: 20px;
+
+}
+
+
+/* =====================================================
+   2. TEXTOS DOS CONTROLES
+   ===================================================== */
+
+.controles-flexbox label {
+
+    /* Eu deixo os títulos em negrito. */
+    font-weight: 600;
+
+    /* Eu utilizo uma cor escura para leitura. */
+    color: #1e293b;
+
+    /* Eu defino o tamanho do texto. */
+    font-size: 15px;
+
+}
+
+
+/* =====================================================
+   3. MENUS DE SELEÇÃO
+   ===================================================== */
+
+.controles-flexbox select {
+
+    /* Eu faço o menu ocupar a largura disponível. */
+    width: 100%;
+
+    /* Eu adiciono espaço dentro do menu. */
+    padding: 12px;
+
+    /* Eu utilizo uma cor de fundo branca. */
+    background-color: #ffffff;
+
+    /* Eu defino a cor do texto. */
+    color: #0f172a;
+
+    /* Eu crio uma borda discreta. */
+    border: 1px solid #94a3b8;
+
+    /* Eu arredondo os cantos do menu. */
+    border-radius: 8px;
+
+    /* Eu defino um tamanho confortável de texto. */
+    font-size: 15px;
+
+    /* Eu indico que o elemento pode ser selecionado. */
+    cursor: pointer;
+
+    /* Eu incluo padding e borda na largura. */
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   4. DESTAQUE AO UTILIZAR O TECLADO
+   ===================================================== */
+
+.controles-flexbox select:focus-visible {
+
+    /* Eu destaco o controle que recebe o foco. */
+    outline: 3px solid #2563eb;
+
+    /* Eu separo o destaque da borda. */
+    outline-offset: 2px;
+
+}
+
+
+/* =====================================================
+   5. AJUSTE PARA TELAS PEQUENAS
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+    .controles-flexbox {
+
+        /* Eu diminuo o espaço interno no celular. */
+        padding: 14px;
+
+    }
+
+}
+
+
+/* =====================================================
+   ETAPA 67 — LABORATÓRIO DE CSS GRID
+
+   Eu crio a aparência do laboratório da página 22.
+
+   Meu objetivo é demonstrar:
+   1. Como ativar o CSS Grid;
+   2. Como criar três colunas;
+   3. Como distribuir seis elementos;
+   4. Como adaptar a grade a diferentes telas.
+   ===================================================== */
+
+
+/* =====================================================
+   1. CONTÊINER PRINCIPAL DO GRID
+   ===================================================== */
+
+.laboratorio-grid-area {
+
+    /* Eu ativo o sistema de layout CSS Grid. */
+    display: grid;
+
+    /* Eu crio três colunas de larguras iguais. */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    /* Eu defino um espaço entre os elementos. */
+    gap: 16px;
+
+    /* Eu adiciono espaço interno ao laboratório. */
+    padding: 24px;
+
+    /* Eu aplico uma cor clara ao fundo. */
+    background-color: #ecfdf5;
+
+    /* Eu crio uma borda tracejada. */
+    border: 2px dashed #6ee7b7;
+
+    /* Eu arredondo os cantos do contêiner. */
+    border-radius: 14px;
+
+    /* Eu separo o laboratório do texto anterior. */
+    margin-top: 20px;
+
+    /* Eu mantenho as dimensões dentro da largura. */
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   2. ITENS INTERNOS DA GRADE
+   ===================================================== */
+
+.grid-item-aula {
+
+    /* Eu utilizo Flexbox para centralizar o texto. */
+    display: flex;
+
+    /* Eu centralizo o texto horizontalmente. */
+    justify-content: center;
+
+    /* Eu centralizo o texto verticalmente. */
+    align-items: center;
+
+    /* Eu defino uma altura mínima para os cartões. */
+    min-height: 100px;
+
+    /* Eu adiciono espaço interno aos cartões. */
+    padding: 12px;
+
+    /* Eu aplico uma cor verde aos cartões. */
+    background-color: #0f766e;
+
+    /* Eu defino a cor branca para o texto. */
+    color: #ffffff;
+
+    /* Eu deixo as letras em negrito. */
+    font-weight: bold;
+
+    /* Eu defino um tamanho confortável de fonte. */
+    font-size: 18px;
+
+    /* Eu centralizo o texto dentro dos cartões. */
+    text-align: center;
+
+    /* Eu arredondo os cantos dos cartões. */
+    border-radius: 12px;
+
+    /* Eu adiciono uma sombra suave. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+
+    /* Eu evito que o conteúdo ultrapasse a largura. */
+    min-width: 0;
+
+    /* Eu incluo padding nas dimensões dos cartões. */
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   3. ADAPTAÇÃO PARA TABLETS
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .laboratorio-grid-area {
+
+        /* Eu reduzo a grade para duas colunas. */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        /* Eu diminuo o espaço interno. */
+        padding: 18px;
+
+    }
+
+}
+
+
+/* =====================================================
+   4. ADAPTAÇÃO PARA CELULARES
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+    .laboratorio-grid-area {
+
+        /* Eu organizo os cartões em uma coluna. */
+        grid-template-columns: minmax(0, 1fr);
+
+        /* Eu diminuo o espaço entre os cartões. */
+        gap: 12px;
+
+        /* Eu ajusto o espaço interno. */
+        padding: 14px;
+
+    }
+
+    .grid-item-aula {
+
+        /* Eu ajusto a altura dos cartões no celular. */
+        min-height: 75px;
+
+        /* Eu ajusto o tamanho das letras. */
+        font-size: 16px;
+
+    }
+
+}
+
+
+/* =====================================================
+   ETAPA 69 — CONTROLES DO LABORATÓRIO CSS GRID
+
+   Eu estilizo os dois menus da página 22.
+
+   Meu objetivo é criar uma interface:
+   - Organizada;
+   - Fácil de utilizar;
+   - Responsiva;
+   - Visualmente integrada ao livro.
+   ===================================================== */
+
+
+/* =====================================================
+   1. ÁREA PRINCIPAL DOS CONTROLES
+   ===================================================== */
+
+.controles-grid {
+
+    /* Eu organizo os controles verticalmente. */
+    display: flex;
+
+    /* Eu posiciono os elementos em uma coluna. */
+    flex-direction: column;
+
+    /* Eu defino o espaço entre os elementos. */
+    gap: 12px;
+
+    /* Eu adiciono espaço interno. */
+    padding: 20px;
+
+    /* Eu aplico um fundo verde muito claro. */
+    background-color: #f0fdf4;
+
+    /* Eu crio uma borda suave. */
+    border: 1px solid #a7f3d0;
+
+    /* Eu arredondo os cantos. */
+    border-radius: 12px;
+
+    /* Eu separo os controles da grade. */
+    margin-bottom: 20px;
+
+    /* Eu mantenho as dimensões organizadas. */
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   2. TEXTOS DOS CONTROLES
+   ===================================================== */
+
+.controles-grid label {
+
+    /* Eu destaco os títulos dos menus. */
+    font-weight: 600;
+
+    /* Eu utilizo uma cor escura. */
+    color: #134e4a;
+
+    /* Eu defino o tamanho das letras. */
+    font-size: 15px;
+
+}
+
+
+/* =====================================================
+   3. MENUS DE SELEÇÃO
+   ===================================================== */
+
+.controles-grid select {
+
+    /* Eu faço os menus ocuparem a largura disponível. */
+    width: 100%;
+
+    /* Eu adiciono espaço interno. */
+    padding: 12px;
+
+    /* Eu utilizo um fundo branco. */
+    background-color: #ffffff;
+
+    /* Eu defino a cor do texto. */
+    color: #0f172a;
+
+    /* Eu crio uma borda verde suave. */
+    border: 1px solid #6ee7b7;
+
+    /* Eu arredondo os cantos dos menus. */
+    border-radius: 8px;
+
+    /* Eu defino um tamanho confortável de fonte. */
+    font-size: 15px;
+
+    /* Eu indico que os menus são interativos. */
+    cursor: pointer;
+
+    /* Eu mantenho a largura dentro do contêiner. */
+    box-sizing: border-box;
+
+}
+
+
+/* =====================================================
+   4. DESTAQUE AO NAVEGAR PELO TECLADO
+   ===================================================== */
+
+.controles-grid select:focus-visible {
+
+    /* Eu destaco o menu que recebe o foco. */
+    outline: 3px solid #0f766e;
+
+    /* Eu separo o destaque da borda. */
+    outline-offset: 2px;
+
+}
+
+
+/* =====================================================
+   5. ADAPTAÇÃO PARA CELULARES
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+    .controles-grid {
+
+        /* Eu reduzo o espaço interno no celular. */
+        padding: 14px;
+
+        /* Eu ajusto a distância entre os elementos. */
+        gap: 10px;
+
+    }
+
+}
+
+
+/* =====================================================
+   ETAPA 78 — LABORATÓRIO DE DESIGN RESPONSIVO
+
+   Eu organizo os botões e os cartões.
+   Eu preparo uma aparência profissional.
+   Eu adapto o laboratório para telas menores.
+   ===================================================== */
+
+/* Eu organizo o laboratório como um painel. */
+#laboratorio-responsivo {
+    margin-top: 24px;
+    padding: 24px;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+/* Eu organizo os três botões lado a lado. */
+.controles-responsivos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* Eu crio a aparência dos botões. */
+.controles-responsivos button {
+    padding: 12px 20px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+/* Eu destaco o botão ao passar o mouse. */
+.controles-responsivos button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Eu mostro o foco para quem navega pelo teclado. */
+.controles-responsivos button:focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 3px;
+}
+
+/* Eu centralizo a descrição do dispositivo. */
+#descricao-tela-responsiva {
+    text-align: center;
+    color: #334155;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+/* Eu preparo a área que simula uma tela. */
+.simulador-tela-responsiva {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 18px;
+    background-color: #dbeafe;
+    border: 2px dashed #60a5fa;
+    border-radius: 14px;
+    box-sizing: border-box;
+    transition: width 0.3s ease;
+}
+
+/* Eu organizo inicialmente os cartões em três colunas. */
+.grade-responsiva {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+/* Eu defino a aparência de cada cartão. */
+.cartao-responsivo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 80px;
+    padding: 10px;
+    background-color: #1d4ed8;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    overflow-wrap: anywhere;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* Eu adapto o painel quando a tela fica menor. */
+@media (max-width: 600px) {
+
+    /* Eu reduzo o espaço interno do laboratório. */
+    #laboratorio-responsivo {
+        padding: 14px;
+    }
+
+    /* Eu ajusto os botões para telas pequenas. */
+    .controles-responsivos button {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    /* Eu reduzo o espaço interno da simulação. */
+    .simulador-tela-responsiva {
+        padding: 10px;
+    }
+
+    /* Eu organizo os cartões em uma coluna. */
+    .grade-responsiva {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Eu ajusto a altura dos cartões. */
+    .cartao-responsivo {
+        min-height: 65px;
+        font-size: 14px;
+    }
+
+}
+
+
+
+
