@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="claro">
+  <!-- Início da seção de cabeçalho da página, onde ficam metadados, links de estilo e scripts iniciais -->
+  <head>
+    <!-- Define a codificação de caracteres como UTF-8 para suportar acentuação e caracteres especiais -->
+    <meta charset="UTF-8" />
+    <!-- Configura a viewport para garantir que a página seja responsiva em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ===== EDITAR (opcional): título da aba do navegador. Preenchendo DADOS.nome e DADOS.cargo, o script escreve este título sozinho. ===== -->
+    <title>Mariana Nogueira | Manicure e Nail Designer</title>
+    <!-- ===== EDITAR (opcional): descrição que o Google mostra. Preenchendo DADOS.frase, o script usa esse texto aqui. ===== -->
+    <meta
+      name="description"
+      content="Unhas cuidadas, duradouras e com acabamento de salao"
+    />
+    <!-- Ícone da aba do navegador. O script troca pelo desenho com as iniciais do cliente. -->
+    <link rel="icon" id="favicon-site" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%239a5f3c'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='30' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
+
+    <!-- ============================================================
+         COMPARTILHAMENTO (WhatsApp, Instagram, Facebook)
+         É isto que aparece na prévia quando alguém manda o link.
+         Preenchido pelo gerador com os dados do cliente.
+         ============================================================ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Mariana Nogueira | Manicure e Nail Designer" />
+    <meta property="og:description" content="Unhas cuidadas, duradouras e com acabamento de salao" />
+    <meta property="og:image" content="foto-mariana.jpg" />
+    <meta property="og:url" content="https://mariana-nogueira.netlify.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mariana Nogueira | Manicure e Nail Designer" />
+    <meta name="twitter:description" content="Unhas cuidadas, duradouras e com acabamento de salao" />
+
+    <!-- Endere&#231;o final do site. Vazio = o site ainda n&#227;o foi publicado. -->
+    <link rel="canonical" id="link-canonico" href="https://mariana-nogueira.netlify.app" />
+
+    <!-- Conexão antecipada com o servidor de fontes do Google para otimizar o carregamento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- Conexão antecipada com o servidor de recursos estáticos de fontes do Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Importa as fontes tipográficas Sora, Inter e Playfair Display do Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Script inline executado imediatamente para evitar o flash visual incorreto ao carregar o tema salvo -->
+    <script>
+      try {
+        // Tenta recuperar a preferência de tema salva no armazenamento local do navegador
+        var escolha = localStorage.getItem('tema');
+        // Se houver uma escolha salva, aplica imediatamente no elemento HTML raiz
+        if (escolha) document.documentElement.setAttribute('data-tema', escolha);
+      } catch (e) {} // Captura silenciosamente qualquer erro caso o armazenamento esteja bloqueado
+    </script>
+
+    <!-- Início da folha de estilos CSS personalizada da aplicação -->
+    <style>
+            /* ==========================================================
+         0.1 PAINEL DE ORIENTAÇÃO
+         Aparece sozinho quando falta preencher algo. Some quando
+         está tudo preenchido. Não precisa mexer aqui.
+         ========================================================== */
+      .painel {
+        margin: 0;
+        padding: 16px 24px;
+        font-size: 0.9rem;
+        border-bottom: 1px solid var(--borda);
+      } /* Caixa do painel de avisos */
+      .painel-amarelo {
+        background: #fff8e1;
+        color: #6b5200;
+        border-bottom-color: #f0d27a;
+      } /* Aviso: falta preencher (não é erro) */
+      .painel-vermelho {
+        background: #fdecec;
+        color: #8a1f1f;
+        border-bottom-color: #f0b4b4;
+      } /* Aviso: o site não conseguiu se montar (erro de verdade) */
+      .painel h2 { font-size: 1rem; margin: 0 0 8px; }
+      .painel ul { margin: 0; padding-left: 20px; }
+      .painel li { margin-bottom: 4px; }
+      .painel code {
+        font-family: ui-monospace, Consolas, monospace;
+        background: rgba(0, 0, 0, 0.07);
+        border-radius: 4px;
+        padding: 1px 5px;
+        font-size: 0.88em;
+        font-weight: 700;
+      } /* Destaca o código da edição (ex: EDICAO 01) */
+      .painel .painel-dica { margin: 10px 0 0; opacity: 0.85; font-size: 0.85rem; }
+      .painel-fechar {
+        float: right;
+        border: 1px solid currentColor;
+        background: transparent;
+        color: inherit;
+        border-radius: 6px;
+        font: inherit;
+        font-size: 0.75rem;
+        padding: 2px 9px;
+        cursor: pointer;
+      } /* Botão de fechar o painel */
+
+      /* ==========================================================
+         LINK DE PULAR PARA O CONTEUDO
+         Escondido ate alguem usar o teclado.
+         ========================================================== */
+
+      .pular-para-conteudo {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        z-index: 9999;
+        padding: 12px 20px;
+        background: var(--acento);
+        color: #fff;
+        border-radius: 0 0 10px 0;
+        font-weight: 600;
+      }
+
+      .pular-para-conteudo:focus {
+        left: 0;
+      }
+
+      /* ==========================================================
+         1. VARIÁVEIS
+         ========================================================== */
+      :root {
+        --serif: 'Playfair Display', Georgia, serif;
+        --titulo: 'Sora', system-ui, sans-serif;
+        --texto: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+        --max: 1160px;
+        --raio: 14px;
+        --raio-g: 24px;
+        --tempo: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Bloco de variáveis CSS aplicadas quando o tema claro estiver ativo */
+      html[data-tema='claro'] {
+        --fundo: #fdfcfa;
+        --fundo-2: #f6f2ee;
+        --superficie: #ffffff;
+        --borda: #e8e0d8;
+        --tinta: #1c1815;
+        --tinta-2: #574f48;
+        --tinta-3: #8b8179;
+        --acento: #9a5f3c;
+        --acento-2: #c07d4f;
+        --acento-suave: #f6ece4;
+        --zap: #25d366;
+        --sombra: 0 1px 2px rgba(28, 24, 21, 0.04), 0 12px 32px rgba(28, 24, 21, 0.07);
+        --sombra-forte: 0 24px 60px rgba(28, 24, 21, 0.16);
+        --gradiente: radial-gradient(1000px 520px at 10% -10%, rgba(192, 125, 79, 0.14), transparent 60%),
+          radial-gradient(800px 460px at 95% 0%, rgba(154, 95, 60, 0.1), transparent 55%);
+      }
+
+      /* Bloco de variáveis CSS aplicadas quando o tema escuro estiver ativo */
+      html[data-tema='escuro'] {
+        --fundo: #12100e;
+        --fundo-2: #191614;
+        --superficie: #1c1917;
+        --borda: #322c28;
+        --tinta: #f2ece6;
+        --tinta-2: #c3b8ae;
+        --tinta-3: #8d8177;
+        --acento: #dda179;
+        --acento-2: #eab894;
+        --acento-suave: rgba(221, 161, 121, 0.14);
+        --zap: #25d366;
+        --sombra: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.36);
+        --sombra-forte: 0 24px 60px rgba(0, 0, 0, 0.5);
+        --gradiente: radial-gradient(1000px 520px at 10% -10%, rgba(221, 161, 121, 0.16), transparent 60%),
+          radial-gradient(800px 460px at 95% 0%, rgba(154, 95, 60, 0.1), transparent 55%);
+      }
+
+      /* ==========================================================
+         2. BASE
+         ========================================================== */
+      * { box-sizing: border-box; } /* Garante que padding e borda não aumentem as dimensões dos elementos */
+      html { scroll-behavior: smooth; scroll-padding-top: 88px; } /* Ativa rolagem suave e margem superior ao saltar para seções */
+      body {
+        margin: 0; /* Remove a margem padrão do navegador */
+        font-family: var(--texto); /* Define a fonte padrão do corpo */
+        background: var(--fundo); /* Define a cor de fundo com base na variável do tema */
+        color: var(--tinta); /* Define a cor do texto padrão */
+        line-height: 1.65; /* Define o espaçamento entrelinhas legível */
+        -webkit-font-smoothing: antialiased; /* Suaviza a renderização de fontes em navegadores WebKit */
+        overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada */
+      }
+      h1, h2, h3, h4 { font-family: var(--titulo); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 12px; font-weight: 600; } /* Estilos comuns para títulos */
+      p { margin: 0 0 16px; } /* Define espaçamento inferior padrão para parágrafos */
+      a { color: var(--acento); text-decoration: none; } /* Define a cor padrão de links sem sublinhado */
+      img { display: block; max-width: 100%; } /* Torna imagens responsivas por padrão */
+      ::selection { background: var(--acento); color: #fff; } /* Estiliza a cor de seleção de texto na página */
+      [hidden] { display: none !important; } /* Garante que o elemento escondido pelo script não reapareça por causa do display definido no CSS */
+
+      .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; } /* Classe utilitária para centralizar e limitar largura do conteúdo */
+      .secao { padding: 96px 0; } /* Define espaçamento vertical padrão para seções */
+      .centralizado { text-align: center; } /* Centraliza o texto de blocos */
+      .centralizado .sub-secao { margin-left: auto; margin-right: auto; } /* Centraliza subtítulos dentro de blocos centralizados */
+
+      .titulo-secao { font-size: clamp(1.7rem, 3.2vw, 2.35rem); margin-bottom: 14px; } /* Define tamanho responsivo para títulos de seções */
+      .sub-secao { color: var(--tinta-2); font-size: 1.04rem; max-width: 62ch; } /* Estiliza subtítulos com largura máxima legível */
+      .destaque { color: var(--acento); } /* Aplica cor de destaque a elementos específicos */
+
+      .rotulo {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--acento);
+        background: var(--acento-suave);
+        border: 1px solid var(--borda);
+        border-radius: 999px;
+        padding: 6px 14px;
+        margin-bottom: 18px;
+      } /* Estiliza rótulos e tags decorativas */
+
+      /* ==========================================================
+         3. ANIMAÇÃO
+         ========================================================== */
+      .revelar { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--tempo), transform 0.7s var(--tempo); } /* Estado inicial invisível para animação de scroll */
+      .revelar.visivel { opacity: 1; transform: none; } /* Estado final visível quando o elemento entra na tela */
+      @media (prefers-reduced-motion: reduce) {
+        .revelar { opacity: 1; transform: none; transition: none; }
+        html { scroll-behavior: auto; }
+      } /* Desativa animações para usuários que preferem movimento reduzido */
+
+      /* ==========================================================
+         4. BARRA DE PROGRESSO
+         ========================================================== */
+      .progresso { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: linear-gradient(90deg, var(--acento), var(--acento-2)); z-index: 60; transition: width 0.1s linear; } /* Estiliza a barra de progresso de leitura no topo */
+
+      /* ==========================================================
+         5. CABEÇALHO
+         ========================================================== */
+      .topo {
+        position: sticky; top: 0; z-index: 50;
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        background: color-mix(in srgb, var(--fundo) 84%, transparent);
+        border-bottom: 1px solid transparent;
+        transition: border-color var(--tempo);
+      } /* Cria o cabeçalho fixo com efeito de vidro fosco */
+      .topo.rolado { border-bottom-color: var(--borda); } /* Adiciona borda ao rolar a página */
+      .topo nav { max-width: var(--max); margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 18px; } /* Organiza o layout interno da navegação */
+
+      .marca { display: flex; align-items: center; gap: 11px; color: var(--tinta); } /* Estiliza o logotipo e nome no menu */
+      .marca-ponto {
+        width: 40px; height: 40px; border-radius: 50%;
+        background: linear-gradient(140deg, var(--acento-2), var(--acento));
+        color: #fff; display: grid; place-items: center;
+        font-family: var(--titulo); font-size: 0.82rem; font-weight: 700;
+        flex-shrink: 0;
+      } /* Cria o avatar circular com iniciais da marca */
+      .marca-nome { font-family: var(--titulo); font-weight: 700; font-size: 0.98rem; line-height: 1.2; } /* Estiliza o nome principal da marca */
+      .marca-nome small { display: block; font-family: var(--texto); font-weight: 400; font-size: 0.74rem; color: var(--tinta-3); } /* Estiliza o subtítulo do logotipo */
+
+      .topo-links { display: flex; gap: 26px; } /* Agrupa os links de navegação do menu */
+      .topo-links a { color: var(--tinta-2); font-size: 0.92rem; font-weight: 500; position: relative; padding: 4px 0; } /* Estiliza links individuais do menu */
+      .topo-links a::after { content: ''; position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--acento); transition: width var(--tempo); } /* Cria linha animada ao passar o mouse */
+      .topo-links a:hover { color: var(--tinta); } /* Muda a cor do link ao passar o mouse */
+      .topo-links a:hover::after { width: 100%; } /* Expande a linha animada ao passar o mouse */
+      .topo-acoes { display: flex; align-items: center; gap: 10px; } /* Agrupa os botões de ação à direita do menu */
+
+      .tema-btn {
+        width: 38px; height: 38px; border-radius: 10px;
+        border: 1px solid var(--borda); background: var(--superficie);
+        color: var(--tinta-2); cursor: pointer; display: grid; place-items: center;
+        transition: border-color var(--tempo), color var(--tempo);
+      } /* Estiliza o botão de alternância de tema claro/escuro */
+      .tema-btn:hover { border-color: var(--acento); color: var(--acento); } /* Altera cor da borda ao passar o mouse */
+      .tema-btn svg { width: 18px; height: 18px; } /* Define tamanho do ícone interno do botão de tema */
+      .tema-btn .fase { display: none; } /* Oculta ícones por padrão */
+      html[data-tema='escuro'] .tema-btn .fase-escuro { display: block; } /* Mostra ícone de lua no tema escuro */
+      html[data-tema='claro'] .tema-btn .fase-claro { display: block; } /* Mostra ícone de sol no tema claro */
+
+      /* ==========================================================
+         6. BOTÕES
+         ========================================================== */
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+        padding: 13px 24px; border-radius: 999px;
+        font-family: inherit; font-size: 0.95rem; font-weight: 600;
+        border: 1px solid transparent; cursor: pointer; white-space: nowrap;
+        transition: transform var(--tempo), background var(--tempo), border-color var(--tempo), color var(--tempo);
+      } /* Estilos base para todos os botões do site */
+      .btn:active { transform: translateY(1px); } /* Efeito de clique afundando */
+      .btn:focus-visible { outline: 3px solid var(--acento-2); outline-offset: 2px; } /* Estilo de foco acessível por teclado */
+      .btn svg { width: 18px; height: 18px; flex-shrink: 0; } /* Define tamanho dos ícones dentro dos botões */
+      .btn-zap { background: var(--zap); color: #06331a; box-shadow: 0 10px 26px -10px var(--zap); } /* Estilo específico para botão do WhatsApp */
+      .btn-zap:hover { transform: translateY(-2px); } /* Efeito de elevação ao passar o mouse no botão do WhatsApp */
+      .btn-secundario { background: var(--superficie); color: var(--tinta); border-color: var(--borda); } /* Estilo base para botão secundário */
+      .btn-secundario:hover { border-color: var(--acento); color: var(--acento); } /* Efeito de borda colorida ao passar o mouse no botão secundário */
+      .btn-pequeno { padding: 9px 17px; font-size: 0.87rem; } /* Variante menor de botão */
+
+      /* ==========================================================
+         7. HERO
+         ========================================================== */
+      .hero { position: relative; padding: 84px 0 90px; background-image: var(--gradiente); background-repeat: no-repeat; } /* Estiliza a seção principal de introdução (Hero) */
+      .hero-grade { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; } /* Organiza o grid de duas colunas do Hero */
+
+      .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; margin-bottom: 10px; } /* Estiliza o título principal do Hero */
+      .hero-frase { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem, 2.2vw, 1.4rem); color: var(--acento); margin: 0 0 20px; } /* Estiliza a frase de destaque em itálico */
+      .hero-local { display: inline-flex; align-items: center; gap: 7px; color: var(--tinta-3); font-size: 0.92rem; margin: 0 0 22px; } /* Estiliza a linha de localização */
+      .hero-local svg { width: 15px; height: 15px; } /* Define tamanho do ícone de localização */
+      .hero-texto { color: var(--tinta-2); font-size: 1.06rem; max-width: 52ch; margin-bottom: 30px; } /* Estiliza o texto descritivo do Hero */
+      .hero-acoes { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; } /* Agrupa os botões de ação do Hero */
+
+      .hero-numeros { display: flex; gap: 32px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--borda); } /* Agrupa os blocos de estatísticas */
+      .hero-numeros strong { display: block; font-family: var(--titulo); font-size: 1.5rem; color: var(--tinta); } /* Estiliza os números de destaque */
+      .hero-numeros span { font-size: 0.82rem; color: var(--tinta-3); } /* Estiliza as legendas das estatísticas */
+
+      .moldura {
+        position: relative;
+        border-radius: 200px 200px 24px 24px;
+        overflow: hidden;
+        background: var(--superficie);
+        border: 1px solid var(--borda);
+        box-shadow: var(--sombra-forte);
+        aspect-ratio: 4 / 5;
+      } /* Cria uma moldura elegante para a foto principal em destaque */
+      .moldura-topo { padding: 12px 18px; text-align: center; font-size: 0.74rem; color: var(--tinta-3); border-bottom: 1px solid var(--borda); background: var(--fundo-2); } /* Cabeçalho interno da moldura */
+      .selo-zap {
+        position: absolute; bottom: 16px; left: 16px; right: 16px;
+        background: rgba(255, 255, 255, 0.94); color: #1c1815;
+        border-radius: 999px; padding: 12px 18px;
+        display: flex; align-items: center; justify-content: center; gap: 9px;
+        font-weight: 600; font-size: 0.9rem; box-shadow: var(--sombra);
+      } /* Selo flutuante de chamada para o WhatsApp sobre a foto */
+
+      /* ==========================================================
+         8. FOTOS
+         ========================================================== */
+      .espaco-foto {
+        position: relative;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        gap: 10px;
+        background:
+          repeating-linear-gradient(115deg, rgba(154, 95, 60, 0.07) 0 2px, transparent 2px 9px),
+          linear-gradient(150deg, var(--acento-suave), var(--fundo-2));
+        color: var(--tinta-3);
+        overflow: hidden;
+      } /* Estiliza áreas reservadas para imagens com padrão decorativo */
+      .espaco-foto svg { width: 30px; height: 30px; opacity: 0.55; } /* Estiliza ícones dentro dos espaços de foto */
+      .espaco-foto b { display: block; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; } /* Estiliza o título do espaço de foto */
+      .espaco-foto span { font-size: 0.78rem; padding: 0 16px; } /* Estiliza a descrição do espaço de foto */
+      .espaco-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; } /* Garante que a imagem preencha todo o espaço reservado */
+
+      /* ==========================================================
+         9. SERVIÇOS
+         ========================================================== */
+      .grade-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; } /* Cria um grid de três colunas */
+
+      .servico {
+        background: var(--superficie);
+        border: 1px solid var(--borda);
+        border-radius: var(--raio);
+        padding: 26px;
+        display: flex; flex-direction: column;
+        transition: transform var(--tempo), border-color var(--tempo), box-shadow var(--tempo);
+      } /* Estiliza o card individual de cada serviço */
+      .servico:hover { transform: translateY(-3px); border-color: var(--acento); box-shadow: var(--sombra); } /* Efeito ao passar o mouse no card de serviço */
+      .servico h3 { font-size: 1.08rem; margin-bottom: 6px; } /* Título do serviço */
+      .servico p { color: var(--tinta-2); font-size: 0.92rem; } /* Descrição do serviço */
+      .servico-rodape {
+        display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+        padding-top: 16px; margin-top: auto; border-top: 1px solid var(--borda);
+      } /* Rodapé do card de serviço contendo preço e duração */
+      .servico-preco { font-family: var(--titulo); font-size: 1.25rem; font-weight: 700; } /* Estiliza o valor monetário do serviço */
+      .servico-duracao { font-size: 0.8rem; color: var(--tinta-3); } /* Estiliza a duração estimada do serviço */
+
+      /* ==========================================================
+         10. GALERIA
+         ========================================================== */
+      .galeria { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; } /* Organiza a grade de itens da galeria */
+      .galeria-item {
+        border: 1px solid var(--borda); border-radius: var(--raio);
+        overflow: hidden; background: var(--superficie);
+        transition: transform var(--tempo), box-shadow var(--tempo);
+      } /* Estiliza cada item da galeria */
+      .galeria-item:hover { transform: translateY(-3px); box-shadow: var(--sombra); } /* Efeito ao passar o mouse na galeria */
+      .galeria-item .espaco-foto { aspect-ratio: 4 / 3; } /* Define proporção fixa para as fotos da galeria */
+      .galeria-legenda { padding: 14px 16px; } /* Espaçamento interno da legenda da galeria */
+      .galeria-legenda strong { display: block; font-size: 0.95rem; } /* Título da legenda */
+      .galeria-legenda span { font-size: 0.82rem; color: var(--tinta-3); } /* Descrição da legenda */
+
+      /* ==========================================================
+         11. AVALIAÇÕES
+         ========================================================== */
+      .avaliacoes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; } /* Organiza a grade de depoimentos */
+      .avaliacao { background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); padding: 26px; } /* Estiliza o card individual de avaliação */
+      .estrelas { color: var(--acento); letter-spacing: 2px; font-size: 0.95rem; margin-bottom: 12px; } /* Estiliza as estrelas de avaliação */
+      .avaliacao p { color: var(--tinta-2); font-size: 0.95rem; } /* Texto do depoimento */
+      .avaliacao footer { font-size: 0.85rem; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--borda); } /* Rodapé do depoimento com nome do cliente */
+      .avaliacao footer strong { display: block; } /* Nome do cliente em destaque */
+      .avaliacao footer span { color: var(--tinta-3); } /* Subtítulo do cliente (ex: cliente verificada) */
+
+      /* ==========================================================
+         12. ONDE ESTOU
+         ========================================================== */
+      .grade-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; } /* Organiza o layout de duas colunas na seção de localização */
+      .info-linha { display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid var(--borda); align-items: flex-start; } /* Linha individual de informação de contato/endereço */
+      .info-linha:first-of-type { border-top: none; } /* Remove borda superior do primeiro elemento */
+      .info-linha svg { width: 19px; height: 19px; color: var(--acento); flex-shrink: 0; margin-top: 3px; } /* Ícone da linha de informação */
+      .info-linha b { display: block; font-size: 0.95rem; } /* Título da linha de informação */
+      .info-linha span { font-size: 0.9rem; color: var(--tinta-2); } /* Descrição da linha de informação */
+
+      /* ==========================================================
+         13. RODAPÉ
+         ========================================================== */
+      .rodape { border-top: 1px solid var(--borda); padding: 30px 0; } /* Estiliza a barra de rodapé do site */
+      .rodape .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 0.85rem; color: var(--tinta-3); } /* Organiza o conteúdo interno do rodapé */
+
+      .zap-flutuante {
+        position: fixed; right: 20px; bottom: 20px; z-index: 55;
+        width: 56px; height: 56px; border-radius: 50%;
+        background: var(--zap); color: #06331a;
+        display: grid; place-items: center;
+        box-shadow: 0 12px 30px -6px rgba(37, 211, 102, 0.6);
+        transition: transform var(--tempo);
+      } /* Estiliza o botão flutuante fixo do WhatsApp no canto da tela */
+      .zap-flutuante:hover { transform: scale(1.08); } /* Efeito de zoom ao passar o mouse no botão flutuante */
+      .zap-flutuante svg { width: 28px; height: 28px; } /* Define tamanho do ícone do botão flutuante */
+
+      /* ==========================================================
+         14. RESPONSIVO
+         ========================================================== */
+      @media (max-width: 980px) {
+        .hero-grade, .grade-2 { grid-template-columns: 1fr; }
+        .grade-3, .galeria, .avaliacoes { grid-template-columns: 1fr 1fr; }
+        .topo-links { display: none; }
+        .moldura { max-width: 380px; margin: 0 auto; }
+      } /* Ajustes de layout para tablets e telas médias */
+      @media (max-width: 640px) {
+        .secao { padding: 66px 0; }
+        .grade-3, .galeria, .avaliacoes { grid-template-columns: 1fr; }
+        .zap-flutuante { right: 14px; bottom: 14px; width: 52px; height: 52px; }
+        button, .btn, .preset { min-height: 44px; }
+  .preset { font-size: 0.95rem; padding-top: 8px; padding-bottom: 8px; }
+  label, legend, small, .dica, .mini { font-size: 0.95rem; }
+  .bolas i { width: 17px; height: 17px; }
+} /* Ajustes de layout para smartphones */
+
+      /* ==========================================================
+         15. IMPRESSÃO
+         ========================================================== */
+@media print {
+        .progresso, .topo, .zap-flutuante, .hero-acoes { display: none !important; }
+        body { background: #fff; }
+        .secao { padding: 24px 0; }
+        .revelar { opacity: 1 !important; transform: none !important; }
+        .galeria-item, .servico, .avaliacao { break-inside: avoid; }
+        .grade-3, .galeria, .avaliacoes { grid-template-columns: 1fr 1fr; }
+      } /* Otimizações de estilo para quando a página for impressa */
+    </style>
+  <!-- Fim da seção de cabeçalho (head) -->
+  </head>
+
+  <!-- Início do corpo visível da página HTML -->
+  <body>
+
+    <!-- Pular direto para o conteudo (teclado e leitor de tela). -->
+    <a class="pular-para-conteudo" href="#conteudo">Pular para o conteudo</a>
+    <!-- ==========================================================
+         TARJA DE PROTÓTIPO
+         Apague este bloco inteiro quando for publicar o site do cliente.
+         ========================================================== -->
+    <!-- ==========================================================
+         PAINEL DE ORIENTAÇÃO
+         Você NÃO escreve nada aqui. O script preenche este painel.
+         Amarelo = falta preencher alguma coisa (não é erro).
+         Vermelho = o site não conseguiu se montar (aí é erro mesmo).
+         Aparece sozinho e some quando está tudo certo.
+         ========================================================== -->
+    <div class="painel" id="painel" hidden>
+      <button class="painel-fechar" id="painel-fechar" type="button">Fechar</button>
+      <h2 id="painel-titulo"></h2>
+      <ul id="painel-lista"></ul>
+      <p class="painel-dica" id="painel-dica"></p>
+    </div>
+
+    <!-- Elemento estrutural da barra de progresso fixada no topo -->
+    <div class="progresso" id="progresso"></div>
+
+    <!-- Início do elemento de cabeçalho de navegação fixo (header) -->
+    <header class="topo" id="topo">
+      <!-- Tag interna de navegação que agrupa o logo, links e botões do menu -->
+      <nav>
+        <!-- Link clicável do logotipo que direciona para o topo da página -->
+        <a class="marca" href="#inicio">
+          <!-- Círculo decorativo contendo as iniciais da marca (preenchido pelo script a partir de DADOS.iniciais) -->
+          <span class="marca-ponto" id="marca-ponto"></span>
+          <!-- Container de texto do logotipo -->
+          <span class="marca-nome">
+            <!-- Nome principal exibido no logotipo (preenchido pelo script a partir de DADOS.nome) -->
+            <span id="marca-nome"></span>
+            <!-- Subtítulo ou cargo exibido no logotipo (preenchido pelo script a partir de DADOS.cargo) -->
+            <small id="marca-cargo">Profissão</small>
+          </span>
+        </a>
+
+        <!-- Container que agrupa os links de navegação interna das seções -->
+        <div class="topo-links">
+          <!-- Link de ancoragem para a seção de serviços -->
+          <a href="#servicos">Serviços</a>
+          <!-- Link de ancoragem para a seção de galeria -->
+          <a href="#galeria">Galeria</a>
+          <!-- Link de ancoragem para a seção de avaliações -->
+          <a href="#avaliacoes">Avaliações</a>
+          <!-- Link de ancoragem para a seção de localização -->
+          <a href="#onde-estou">Onde estou</a>
+        </div>
+
+        <!-- Container que agrupa as ações do menu superior (botão de tema e WhatsApp) -->
+        <div class="topo-acoes">
+          <!-- Botão interativo para alternar entre o tema claro e escuro -->
+          <button class="tema-btn" type="button" data-tema-btn aria-label="Trocar tema">
+            <!-- Ícone SVG exibido no tema claro (representando o sol) -->
+            <svg class="fase fase-claro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <circle cx="12" cy="12" r="4" />
+              <line x1="12" y1="2" x2="12" y2="5" />
+              <line x1="12" y1="19" x2="12" y2="22" />
+              <line x1="2" y1="12" x2="5" y2="12" />
+              <line x1="19" y1="12" x2="22" y2="12" />
+              <line x1="5" y1="5" x2="7" y2="7" />
+              <line x1="17" y1="17" x2="19" y2="19" />
+              <line x1="5" y1="19" x2="7" y2="17" />
+              <line x1="17" y1="7" x2="19" y2="5" />
+            </svg>
+            <!-- Ícone SVG exibido no tema escuro (representando a lua) -->
+            <svg class="fase fase-escuro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+            </svg>
+          </button>
+          <!-- Botão de atalho para contato via WhatsApp localizado no topo -->
+          <a class="btn btn-zap btn-pequeno" id="zap-topo" href="#">
+            <!-- Ícone SVG do WhatsApp -->
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5v-.5c0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 0 0 12 2z"/></svg>
+            <!-- Texto visível do botão -->
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </nav>
+    <!-- Fim do cabeçalho de navegação -->
+    </header>
+
+    <!-- Início do conteúdo principal da página (main) -->
+    <main id="conteudo">
+      <!-- ===================== HERO ===================== -->
+      <!-- Início da seção principal de introdução (Hero) -->
+      <section class="hero">
+        <!-- Container centralizado que organiza o grid do Hero -->
+        <div class="container hero-grade">
+          <!-- Coluna esquerda contendo os textos de apresentação e chamadas para ação -->
+          <div class="revelar">
+            <!-- Rótulo superior informativo -->
+            <span class="rotulo" id="hero-rotulo">Agenda aberta</span>
+            <!-- Título principal da profissional (preenchido pelo script a partir de DADOS.nome) -->
+            <h1 id="hero-nome">Mariana Nogueira</h1>
+            <!-- Frase de destaque em estilo itálico -->
+            <p class="hero-frase" id="hero-frase"></p>
+            <!-- Linha indicando a cidade de atendimento com ícone -->
+            <p class="hero-local" id="hero-local"></p>
+            <!-- Parágrafo descritivo detalhando a especialidade -->
+            <p class="hero-texto" id="hero-texto"></p>
+
+            <!-- Container que agrupa os botões de ação do Hero -->
+            <div class="hero-acoes">
+              <!-- Botão principal para agendamento via WhatsApp -->
+              <a class="btn btn-zap" id="zap-hero" href="#">
+                <!-- Ícone SVG do WhatsApp -->
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5v-.5c0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 0 0 12 2z"/></svg>
+                <!-- Texto explicativo do botão -->
+                <span>Marcar horário</span>
+              </a>
+              <!-- Botão secundário para rolar até a galeria de trabalhos -->
+              <a class="btn btn-secundario" href="#galeria">Ver o trabalho</a>
+            </div>
+
+            <!-- Container preenchido dinamicamente com estatísticas e números -->
+            <div class="hero-numeros" id="hero-numeros"></div>
+          </div>
+
+          <!-- Coluna direita contendo a moldura visual e a foto da profissional -->
+          <div class="revelar moldura">
+            <!-- Barra superior decorativa da moldura -->
+            <div class="moldura-topo" id="moldura-topo">Foto de Mariana Nogueira</div>
+            <!-- Container reservado para a fotografia principal -->
+            <div class="espaco-foto" style="height: 100%" id="foto-principal">
+              <!-- Ícone SVG indicando espaço de foto -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              <!-- Texto orientativo em negrito -->
+              <b>Espaço para a foto</b>
+              <!-- Texto descritivo complementar -->
+              <span>A foto real do cliente entra aqui</span>
+            </div>
+            <!-- Selo interativo inferior para contato rápido -->
+            <a class="selo-zap" id="selo-zap" href="#"><span>Chamar no WhatsApp</span></a>
+          </div>
+        </div>
+      <!-- Fim da seção Hero -->
+      </section>
+
+      <!-- ===================== SERVIÇOS ===================== -->
+      <!-- Início da seção de listagem de serviços oferecidos -->
+      <section class="secao" id="servicos">
+        <!-- Container padrão centralizado -->
+        <div class="container">
+          <!-- Bloco animado contendo o título e descrição da seção -->
+          <div class="revelar">
+            <!-- Rótulo identificador da seção -->
+            <span class="rotulo">Serviços e preços</span>
+            <!-- Título principal da seção -->
+            <h2 class="titulo-secao">O que você sai daqui com</h2>
+            <!-- Descrição explicativa da proposta dos serviços -->
+            <p class="sub-secao">
+              Preço fechado, combinado antes de começar. Sem surpresa no fim.
+            </p>
+          </div>
+
+          <!-- Grade preenchida via script com os cards de serviços -->
+          <div class="grade-3 revelar" id="lista-servicos" style="margin-top: 34px"></div>
+        </div>
+      <!-- Fim da seção de serviços -->
+      </section>
+
+      <!-- ===================== GALERIA ===================== -->
+      <!-- Início da seção de galeria de fotos e trabalhos realizados -->
+      <section class="secao" id="galeria" style="background: var(--fundo-2); border-top: 1px solid var(--borda); border-bottom: 1px solid var(--borda)">
+        <!-- Container padrão centralizado -->
+        <div class="container">
+          <!-- Bloco animado com o cabeçalho da seção de galeria -->
+          <div class="revelar">
+            <!-- Rótulo identificador -->
+            <span class="rotulo">Galeria</span>
+            <!-- Título principal -->
+            <h2 class="titulo-secao">Trabalhos em destaque</h2>
+            <!-- Subtítulo orientativo -->
+            <p class="sub-secao">
+              Cada foto cadastrada em DADOS.galeria aparece aqui.
+            </p>
+          </div>
+
+          <!-- Container da grade de itens da galeria preenchida via script -->
+          <div class="galeria revelar" id="lista-galeria"></div>
+        </div>
+      <!-- Fim da seção de galeria -->
+      </section>
+
+      <!-- ===================== AVALIAÇÕES ===================== -->
+      <!-- Início da seção de depoimentos e avaliações de clientes -->
+      <section class="secao" id="avaliacoes">
+        <!-- Container padrão centralizado -->
+        <div class="container">
+          <!-- Bloco centralizado com rótulo e título da seção -->
+          <div class="revelar centralizado">
+            <!-- Rótulo identificador -->
+            <span class="rotulo">Quem já foi cliente</span>
+            <!-- Título principal -->
+            <h2 class="titulo-secao">O que dizem</h2>
+          </div>
+          <!-- Grade preenchida dinamicamente com os depoimentos -->
+          <div class="avaliacoes revelar" id="lista-avaliacoes" style="margin-top: 34px"></div>
+        </div>
+      <!-- Fim da seção de avaliações -->
+      </section>
+
+      <!-- ===================== ONDE ESTOU ===================== -->
+      <!-- Início da seção de localização, endereço e horários -->
+      <section class="secao" id="onde-estou" style="background: var(--fundo-2); border-top: 1px solid var(--borda)">
+        <!-- Container em grid de duas colunas -->
+        <div class="container grade-2">
+          <!-- Coluna esquerda com os dados textuais de endereço e horários -->
+          <div class="revelar">
+            <!-- Rótulo identificador -->
+            <span class="rotulo">Onde estou</span>
+            <!-- Título da seção -->
+            <h2 class="titulo-secao">Endereço e horários</h2>
+            <!-- Container preenchido via script com as linhas de informação -->
+            <div id="lista-info" style="margin-top: 20px"></div>
+          </div>
+
+          <!-- Coluna direita com a representação visual do mapa -->
+          <div class="revelar">
+            <!-- Espaço reservado simulando o mapa -->
+            <div class="espaco-foto" style="aspect-ratio: 4 / 3; border-radius: var(--raio); border: 1px solid var(--borda)">
+              <!-- Ícone SVG de mapa/localização -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <!-- Título do espaço de mapa -->
+              <b>Mapa do endereço</b>
+              <!-- Descrição de utilidade -->
+              <span>Botão de rota no celular</span>
+            </div>
+            <!-- Botão para abrir o link de rotas no mapa externo -->
+            <a class="btn btn-secundario" id="btn-mapa" href="#" style="margin-top: 14px; width: 100%">
+              Abrir rota no mapa
+            </a>
+          </div>
+        </div>
+      <!-- Fim da seção de localização -->
+      </section>
+    <!-- Fim do conteúdo principal da página -->
+    </main>
+
+    <!-- Início da seção de rodapé da página (footer) -->
+    <footer class="rodape">
+      <!-- Container interno do rodapé -->
+      <div class="container">
+        <!-- Texto de direitos autorais escrito pelo script com DADOS.nome e o ano atual -->
+        <span id="rodape-texto">© Nome da profissional. Todos os direitos reservados.</span>
+        <!-- Mensagem institucional de rodapé -->
+        <span>Desenvolvido com foco em resultados</span>
+      </div>
+    <!-- Fim do rodapé -->
+    </footer>
+
+    <!-- Elemento flutuante fixo de atalho rápido para o WhatsApp -->
+    <a class="zap-flutuante" id="zap-flutuante" href="#" aria-label="Chamar no WhatsApp">
+      <!-- Ícone SVG do WhatsApp para o botão flutuante -->
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5v-.5c0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.5-.3zM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 0 0 12 2z"/></svg>
+    </a>
+
+    <!-- ==================================================================
+         REDE DE SEGURANÇA DO APRENDIZ
+         Este script roda ANTES de tudo. Ele fica de olho em qualquer erro
+         que apareça depois e escreve no painel vermelho a orientação.
+         Se algum dia o site abrir quebrado, a causa quase sempre é uma
+         aspas que ficou de fora ou uma chave {} faltando no bloco DADOS.
+         Você não precisa mexer aqui. É só a rede de proteção.
+         ================================================================== -->
+    <script>
+      (function () {
+        var jaAvisou = false;
+
+        // Escreve uma mensagem no painel do alto da página.
+        window.__painel = function (cor, titulo, itens, dica) {
+          jaAvisou = true;
+          var painel = document.getElementById('painel');
+          if (!painel) return;
+          painel.classList.add(cor);
+          document.getElementById('painel-titulo').textContent = titulo;
+          document.getElementById('painel-lista').innerHTML = itens
+            .map(function (t) { return '<li>' + t + '</li>'; })
+            .join('');
+          document.getElementById('painel-dica').textContent = dica || '';
+          painel.hidden = false;
+        };
+
+        // Se qualquer script depois deste der erro, mostra o painel vermelho.
+        window.addEventListener('error', function (evento) {
+          if (jaAvisou) return; // já tem um aviso na tela, não sobrescreve
+          window.__painel(
+            'painel-vermelho',
+            'O site não conseguiu se montar.',
+            [
+              'O navegador encontrou um erro neste arquivo. A página ficou sem conteúdo.',
+              'Causa 1, a mais comum: <b>uma aspas que ficou de fora</b> no bloco DADOS.',
+              'Causa 2, bem comum: <b>faltou a vírgula entre dois itens</b> de uma lista. Todo item precisa terminar com <b>,</b>, menos o último da lista.',
+              'Causa 3: <b>sobrou uma vírgula</b> bem na linha que fecha a lista (aquela com o <b>]</b>), ou faltou fechar uma chave <b>}</b>.'
+            ],
+            'O que fazer: abra o index.html no Bloco de Notas, aperte Ctrl+F, procure "DADOS" e confira: todo texto entre aspas, toda lista fechando com "]", vírgula depois de cada item, menos no último.'
+          );
+          if (window.console && console.error) console.error(evento.error || evento.message);
+        });
+      })();
+    </script>
+
+    <!-- SCRIPT DE GERENCIAMENTO DE DADOS E COMPORTAMENTOS -->
+    <!-- Início da tag de script JavaScript para a lógica dinâmica da página -->
+    <script>
+      /* ================================================================
+         >>> 1. DADOS DO CLIENTE — ESTE E O UNICO LUGAR PARA MEXER <<<
+         ================================================================
+
+         COMO ESTE BLOCO FUNCIONA
+         Cada linha e um "campo". O nome do campo ja vem pronto,
+         so o valor (dentro das aspas) e que voce troca.
+
+         Exemplo de um campo preenchido e um vazio:
+             nome: "Maria Souza",      <- preenchido: aparece na tela
+             cargo: "",                <- vazio: nao aparece na tela
+
+         LEMBRE-SE DAS REGRAS DE OURO
+         1. O valor do texto vai sempre entre aspas " ".
+         2. Aspas vazias  ""  significam "ainda nao preencher".
+         3. Nas listas (numeros, servicos, galeria, avaliacoes, info),
+            cada par de chaves { } e um item. Para usar um exemplo,
+            apague o "//" do comeco da linha, preencha e pronto.
+         4. Pode repetir quantas vezes quiser em cada lista.
+
+         ONDE ESTA O CROQUI
+         O arquivo CROQUI.html, na mesma pasta, mostra para onde cada
+         EDICAO vai parar na tela. Abra ele no navegador.
+         ================================================================ */
+      /* ================================================================ */
+      /* >>> DADOS_INICIO <<<  (nao apague esta linha) */
+      const DADOS = {
+        nome: "Mariana Nogueira", // EDICAO 01
+        cargo: "Manicure e Nail Designer", // EDICAO 02
+        iniciais: "MN", // EDICAO 03
+        rotulo: "Agenda aberta", // EDICAO 04
+        cidade: "Goiania - GO", // EDICAO 05
+        frase: "Unhas cuidadas, duradouras e com acabamento de salao", // EDICAO 06
+        textoHero: "Cuidado com cada detalhe, do acabamento perfeito a atencao que cada cliente merece.", // EDICAO 07
+        foto: "foto-mariana.jpg", // EDICAO 08
+        whatsapp: "5561988887777", // EDICAO 09
+        mapaUrl: "https://maps.google.com/?q=Goiania", // EDICAO 10
+        url: "https://mariana-nogueira.netlify.app", // EDICAO 16
+        numeros: [
+          { valor: "480", rotulo: "Clientes atendidas" },
+          { valor: "6", rotulo: "Anos de experiencia" },
+          { valor: "2", rotulo: "Unidades" }
+        ],
+        servicos: [
+          { nome: "Manicure em gel", preco: "R$ 65", duracao: "1h", desc: "Preparacao completa, cutelagem e pintura em gel." },
+          { nome: "Pedicure spa", preco: "R$ 75", duracao: "1h20", desc: "Esfoliacao, hidratacao e massagem relaxante." },
+          { nome: "Alongamento", preco: "R$ 180", duracao: "2h30", desc: "Fibra de vidro ou nail em gel, com desenho." }
+        ],
+        galeria: [
+          { imagem: "trabalho-1.jpg", titulo: "Nude geometrico", desc: "Francesa colorida com detalhe dourado" },
+          { imagem: "trabalho-2.jpg", titulo: "Degrade", desc: "Esmalte com efeito degrade suave" },
+          { imagem: "trabalho-3.jpg", titulo: "Arte Nail", desc: "Desenho artistico feito a mao" }
+        ],
+        avaliacoes: [
+          { nota: "5", nome: "Camila R.", detalhe: "Cliente ha 2 anos", texto: "O acabamento ficou perfeito e durou semanas. Super atenciosa." },
+          { nota: "5", nome: "Patrcia M.", detalhe: "Cliente ha 6 meses", texto: "Melhor manicure de Goiania, sem exagero. Sempre busco ela." },
+          { nota: "5", nome: "Ana L.", detalhe: "Cliente ha 1 ano", texto: "Atendimento impecavel e pontual. O espaco e muito limpo." }
+        ],
+        info: [
+          { icone: "local", titulo: "Endereco", desc: "Rua 135, Setor Marista - Goiania - GO" },
+          { icone: "telefone", titulo: "Telefone", desc: "(62) 99888-7777" },
+          { icone: "email", titulo: "E-mail", desc: "contato@mariananogueira.com.br" },
+          { icone: "horario", titulo: "Horario", desc: "Segunda a sexta, das 9h as 18h" }
+        ]
+      };
+      /* <<< DADOS_FIM <<< */
+
+      /* ================================================================
+         >>> 3. MAQUINA: NAO MEXER AQUI <<<
+         ================================================================
+         Tudo daqui para baixo e a parte que monta a pagina.
+         Ela le o DADOS de cima e escreve o resultado na tela.
+
+         Se voce precisa mudar cor, fonte, espacamento ou o tamanho de
+         algum bloco, mexa no CSS, no comeco do arquivo. As partes do
+         CSS estao numeradas: 1. VARIAVEIS (as cores e as fontes),
+         7. HERO, 8. FOTOS, 9. SERVICOS, e assim por diante.
+         O que voce PRECISA mexer esta tudo no bloco DADOS acima.
+         ================================================================ */
+
+      // Escapa os caracteres especiais para um texto colado nunca quebrar o HTML
+      const esc = (v) =>
+        String(v === null || v === undefined ? '' : v).replace(/[&<>"']/g, (c) => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[c]);
+
+      // Escreve um texto e esconde o elemento automaticamente se o texto vier vazio
+      const texto = (id, valor) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = valor;
+        el.hidden = !valor;
+      };
+
+      // Esconde um elemento (seção, lista ou botão) quando a condição for verdadeira
+      const esconder = (id, cond) => {
+        const el = document.getElementById(id);
+        if (el) el.hidden = cond;
+      };
+
+      // Desenha as estrelas de uma nota de 1 a 5. Sem nota, não desenha nada
+      const estrelas = (nota) => {
+        const n = Math.round(Number(nota));
+        if (!nota || !Number.isFinite(n) || n < 1) return '';
+        return `<div class="estrelas">${'★'.repeat(Math.min(5, n))}${'☆'.repeat(5 - Math.min(5, n))}</div>`;
+      };
+
+      // Desenhos disponíveis para o campo "icone" da lista de informações
+      const ICONES = {
+        local: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+        relogio: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>'
+      };
+
+      // Aceita o campo como lista mesmo se o cliente escrever apenas um item
+      const lista = (campo) => (Array.isArray(campo) ? campo : []);
+
+      /* ---------- ABA DO NAVEGADOR E GOOGLE ---------- */
+      // Monta o título da aba a partir do nome e do cargo informados
+      if (DADOS.nome) document.title = DADOS.cargo ? `${DADOS.nome} | ${DADOS.cargo}` : DADOS.nome;
+      // Usa a frase como descrição para os buscadores
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && DADOS.frase) metaDesc.setAttribute('content', DADOS.frase);
+
+      /* ---------- LOGOTIPO ---------- */
+      // Se as iniciais vierem vazias, monta uma sigla com a primeira letra das duas primeiras palavras
+      const iniciais = DADOS.iniciais || (DADOS.nome
+        ? DADOS.nome.trim().split(/\s+/).slice(0, 2)
+          .map((p) => (p.match(/[\p{L}]/u) || [''])[0])
+          .join('')
+          .toUpperCase()
+        : '');
+      texto('marca-ponto', iniciais);
+
+      /* O icone da aba do navegador usa as iniciais do cliente */
+      const icone = document.getElementById('favicon-site');
+      if (icone) {
+        const cor = getComputedStyle(document.documentElement)
+          .getPropertyValue('--acento').trim() || '#9a5f3c';
+        const svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>"
+          + "<rect width='64' height='64' rx='14' fill='" + cor + "'/>"
+          + "<text x='32' y='44' font-family='Arial' font-size='30' font-weight='bold' "
+          + "fill='#ffffff' text-anchor='middle'>" + iniciais + "</text></svg>";
+        icone.href = 'data:image/svg+xml,' + encodeURIComponent(svg);
+      }
+      texto('marca-nome', DADOS.nome);
+      texto('marca-cargo', DADOS.cargo);
+      // Se não houver nome, some com o logotipo inteiro
+      const marca = document.querySelector('.marca');
+      if (marca) marca.hidden = !DADOS.nome;
+
+      /* ---------- TOPO DA PÁGINA ---------- */
+      texto('hero-rotulo', DADOS.rotulo || 'Agenda aberta');
+      texto('hero-nome', DADOS.nome);
+      texto('hero-frase', DADOS.frase);
+      texto('hero-texto', DADOS.textoHero);
+
+      // Desenha o ícone de local junto com a cidade
+      const elLocal = document.getElementById('hero-local');
+      if (elLocal) {
+        elLocal.innerHTML = DADOS.cidade
+          ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ${esc(DADOS.cidade)}`
+          : '';
+        elLocal.hidden = !DADOS.cidade;
+      }
+
+      // Se houver foto, troca o quadro reservado pela imagem
+      if (DADOS.foto) {
+        const quadro = document.getElementById('foto-principal');
+        if (quadro) quadro.innerHTML = `<img src="${esc(DADOS.foto)}" alt="${esc(DADOS.nome ? 'Foto de ' + DADOS.nome : 'Foto principal')}" />`;
+      }
+
+      /* ---------- NÚMEROS DE DESTAQUE ---------- */
+      const caixaNumeros = document.getElementById('hero-numeros');
+      if (caixaNumeros) {
+        caixaNumeros.innerHTML = lista(DADOS.numeros)
+          .filter((n) => n && n.valor)
+          .map((n) => `<div><strong>${esc(n.valor)}</strong><span>${esc(n.rotulo || '')}</span></div>`)
+          .join('');
+        caixaNumeros.hidden = !caixaNumeros.children.length;
+      }
+
+      /* ---------- WHATSAPP ---------- */
+      // Os quatro botões de WhatsApp só aparecem quando existe número preenchido
+      const botoesZap = ['zap-topo', 'zap-hero', 'selo-zap', 'zap-flutuante'];
+      const numeroZap = String(DADOS.whatsapp || '').replace(/\D/g, '');
+      botoesZap.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        // Sem número, esconde o botão e tira o link para não levar a lugar nenhum
+        el.hidden = !numeroZap;
+        if (!numeroZap) {
+          el.removeAttribute('href');
+          return;
+        }
+        // Monta o endereço de conversa já com a mensagem pronta
+        el.href = 'https://wa.me/' + numeroZap + '?text=' +
+          encodeURIComponent('Olá! Vim pelo site e gostaria de mais informações.');
+      });
+
+      /* ---------- SERVIÇOS ---------- */
+      const caixaServicos = document.getElementById('lista-servicos');
+      if (caixaServicos) {
+        caixaServicos.innerHTML = lista(DADOS.servicos)
+          .filter((s) => s && s.nome)
+          .map((s) => `
+            <div class="servico">
+              <h3>${esc(s.nome)}</h3>
+              ${s.desc ? `<p>${esc(s.desc)}</p>` : ''}
+              <div class="servico-rodape">
+                <span class="servico-preco">${esc(s.preco || '')}</span>
+                <span class="servico-duracao">${s.duracao ? 'Aprox. ' + esc(s.duracao) : ''}</span>
+              </div>
+            </div>
+          `)
+          .join('');
+      }
+      // Sem serviços cadastrados, a seção inteira some
+      esconder('servicos', !caixaServicos || !caixaServicos.children.length);
+
+      /* ---------- GALERIA ---------- */
+      const caixaGaleria = document.getElementById('lista-galeria');
+      if (caixaGaleria) {
+        caixaGaleria.innerHTML = lista(DADOS.galeria)
+          .filter((g) => g && (g.imagem || g.titulo || g.desc))
+          .map((g) => {
+            // Usa a foto cadastrada ou mantém o quadro reservado
+            const foto = g.imagem
+              ? `<div class="espaco-foto"><img src="${esc(g.imagem)}" alt="${esc(g.titulo || 'Foto do trabalho')}" loading="lazy" decoding="async" /></div>`
+              : `<div class="espaco-foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><b>Foto do trabalho</b></div>`;
+            // A legenda só aparece se houver título ou descrição
+            const legenda = g.titulo || g.desc
+              ? `<div class="galeria-legenda">${g.titulo ? `<strong>${esc(g.titulo)}</strong>` : ''}${g.desc ? `<span>${esc(g.desc)}</span>` : ''}</div>`
+              : '';
+            return `<div class="galeria-item">${foto}${legenda}</div>`;
+          })
+          .join('');
+      }
+      // Sem fotos cadastradas, a seção inteira some
+      esconder('galeria', !caixaGaleria || !caixaGaleria.children.length);
+
+      /* ---------- AVALIAÇÕES ---------- */
+      const caixaAvaliacoes = document.getElementById('lista-avaliacoes');
+      if (caixaAvaliacoes) {
+        caixaAvaliacoes.innerHTML = lista(DADOS.avaliacoes)
+          .filter((a) => a && a.texto)
+          .map((a) => {
+            // O rodapé do card só aparece se houver nome ou detalhe
+            const rodape = a.nome || a.detalhe
+              ? `<footer>${a.nome ? `<strong>${esc(a.nome)}</strong>` : ''}${a.detalhe ? `<span>${esc(a.detalhe)}</span>` : ''}</footer>`
+              : '';
+            return `<div class="avaliacao">${estrelas(a.nota)}<p>"${esc(a.texto)}"</p>${rodape}</div>`;
+          })
+          .join('');
+      }
+      // Sem depoimentos cadastrados, a seção inteira some
+      esconder('avaliacoes', !caixaAvaliacoes || !caixaAvaliacoes.children.length);
+
+      /* ---------- ENDEREÇO E HORÁRIOS ---------- */
+      const caixaInfo = document.getElementById('lista-info');
+      if (caixaInfo) {
+        caixaInfo.innerHTML = lista(DADOS.info)
+          .filter((i) => i && (i.titulo || i.desc))
+          .map((i) => {
+            // Usa o desenho escolhido ou o relógio como padrão
+            const desenho = ICONES[i.icone] || ICONES.relogio;
+            const svg = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">${desenho}</svg>`;
+            return `<div class="info-linha">${svg}<div>${i.titulo ? `<b>${esc(i.titulo)}</b>` : ''}${i.desc ? `<span>${esc(i.desc)}</span>` : ''}</div></div>`;
+          })
+          .join('');
+        caixaInfo.hidden = !caixaInfo.children.length;
+      }
+
+      /* ---------- MAPA ---------- */
+      // Sem link de mapa, o botão de rota some
+      const botaoMapa = document.getElementById('btn-mapa');
+      if (botaoMapa) {
+        if (DADOS.mapaUrl) botaoMapa.href = DADOS.mapaUrl;
+        else botaoMapa.hidden = true;
+      }
+
+      // Sem endereço, horário e sem mapa, a seção inteira some
+      esconder('onde-estou', (caixaInfo ? caixaInfo.children.length === 0 : true) && !DADOS.mapaUrl);
+
+      /* ---------- MENU ---------- */
+      // Esconde do menu os links das seções que ficaram sem conteúdo
+      document.querySelectorAll('.topo-links a[href^="#"]').forEach((link) => {
+        const alvo = document.querySelector(link.getAttribute('href'));
+        if (alvo) link.hidden = alvo.hidden;
+      });
+
+      /* ---------- RODAPÉ ---------- */
+      // Escreve o nome e o ano corrente no texto de direitos autorais
+      const rodape = document.getElementById('rodape-texto');
+      if (rodape) {
+        rodape.textContent = '© ' + (DADOS.nome || 'Nome da profissional') +
+          '. Todos os direitos reservados.';
+      }
+
+      /* ---------- AVISO PARA QUEM ESTÁ PREENCHENDO ---------- */
+      // Aparece só no console do navegador (F12), nunca na página
+      // ---- Painel de orientação: diz na tela o que ainda falta preencher ----
+
+      // Cada item da lista abaixo é uma regra de conferência.
+      // "edicao" diz ONDE mexer, "campo" é o nome que você procura no bloco
+      // DADOS e "fala" explica por que aquele dado é importante.
+      const conferir = [
+        {
+          edicao: 'EDICAO 01', campo: 'nome',
+          fala: 'é o que o visitante vê primeiro. Está no menu e no título grande da página.'
+        },
+        {
+          edicao: 'EDICAO 02', campo: 'cargo',
+          fala: 'é a profissão. Ajuda o visitante a entender na hora o que você faz.'
+        },
+        {
+          edicao: 'EDICAO 09', campo: 'whatsapp',
+          fala: 'é o botão de contato. Sem ele, os botões de WhatsApp ficam escondidos.'
+        }
+      ];
+
+      // Monta a lista de campos vazios. Só mostra o que está faltando.
+      const pendentes = conferir.filter((c) => !DADOS[c.campo]);
+
+      // Escreve o painel amarelo no alto da página
+      if (pendentes.length && window.__painel) {
+        window.__painel(
+          'painel-amarelo',
+          'Faltam ' + pendentes.length + ' informação(ões). A página abre assim mesmo, mas fica incompleta.',
+          pendentes.map(
+            (c) => '<code>' + c.edicao + '</code> — o campo <code>' + c.campo +
+                   '</code> está vazio. ' + c.fala
+          ),
+          'Para preencher: abra o index.html com o Bloco de Notas, aperte Ctrl+F, procure DADOS e edite a linha indicada. Salve e atualize a página (F5).'
+        );
+      }
+
+      // Fecha o painel de avisos quando a pessoa clica em "Fechar"
+      const btnFecharPainel = document.getElementById('painel-fechar');
+      if (btnFecharPainel) {
+        btnFecharPainel.addEventListener('click', () => {
+          const painel = document.getElementById('painel');
+          if (painel) painel.hidden = true;
+        });
+      }
+
+      // Obter a referência do botão interativo de troca de tema
+      const btnTema = document.querySelector('[data-tema-btn]');
+      // Adiciona um evento de clique para alternar o tema da página
+      btnTema.addEventListener('click', () => {
+        // Verifica qual é o tema atualmente aplicado no elemento HTML raiz
+        const atual = document.documentElement.getAttribute('data-tema');
+        // Define o novo tema alternando entre claro e escuro
+        const novo = atual === 'claro' ? 'escuro' : 'claro';
+        // Aplica o novo atributo de tema no elemento HTML raiz
+        document.documentElement.setAttribute('data-tema', novo);
+        // Tenta salvar a preferência escolhida no armazenamento local do navegador
+        try { localStorage.setItem('tema', novo); } catch(e){}
+      });
+
+      // Cria um observador de interseção para animar elementos ao entrarem na tela (scroll)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // Verifica se o elemento alvo está visível na janela de visualização
+          if (entry.isIntersecting) {
+            // Adiciona a classe que dispara a animação visual de revelação
+            entry.target.classList.add('visivel');
+          }
+        });
+      }, { threshold: 0.1 }); // Define o limite de visibilidade necessário para disparar a animação
+
+      // Seleciona todos os elementos com a classe de animação e inicia a observação
+      document.querySelectorAll('.revelar').forEach(el => observer.observe(el));
+
+      // Adiciona um ouvinte de evento de rolagem na janela do navegador
+      const barraProgresso = document.getElementById('progresso');
+      const topoPagina = document.getElementById('topo');
+      // Atualiza a barra de progresso e o estilo do cabeçalho conforme a rolagem
+      function aoRolar() {
+        // Calcula a quantidade de pixels rolados a partir do topo
+        const winScroll = document.documentElement.scrollTop;
+        // Calcula a altura total rolável da página descontando a altura visível
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        // Define a porcentagem de rolagem, evitando divisão por zero em páginas curtas
+        if (barraProgresso) barraProgresso.style.width = (height > 0 ? (winScroll / height) * 100 : 0) + '%';
+        // Aplica a borda do cabeçalho quando a página passa de 40 pixels de rolagem
+        if (topoPagina) topoPagina.classList.toggle('rolado', winScroll > 40);
+      }
+      window.addEventListener('scroll', aoRolar, { passive: true });
+      // Refaz o cálculo quando a janela muda de tamanho, para a barra não ficar travada
+      window.addEventListener('resize', aoRolar);
+      // Executa uma vez ao abrir para a barra já nascer no lugar certo
+      aoRolar();
+    // Fim da tag de script JavaScript
+    </script>
+  <!-- Fim do corpo da página -->
+  </body>
+<!-- Fim do documento HTML -->
+</html>

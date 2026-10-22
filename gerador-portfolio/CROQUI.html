@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Croqui — o caminho do portfólio, do zero ao ar</title>
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --papel: #ffffff;
+    --fundo: #f6f5f2;
+    --borda: #e2ded7;
+    --tinta: #221f1b;
+    --tinta-2: #5c554d;
+    --tinta-3: #8d857b;
+    --acento: #b23a63;
+    --ok: #1f7a4d;
+    --alerta: #a15c00;
+    --erro: #a12b2b;
+  }
+  body {
+    margin: 0;
+    padding: 32px 20px 64px;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--fundo);
+    color: var(--tinta);
+    line-height: 1.55;
+  }
+  .dentro { max-width: 900px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 34px; }
+  h1 { margin: 0 0 6px; font-size: 1.7rem; letter-spacing: -0.01em; }
+  header p { margin: 0; color: var(--tinta-2); }
+  .regra { height: 1px; background: var(--borda); margin: 0 0 30px; }
+
+  .etapa {
+    background: var(--papel);
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .etapa h2 {
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .num {
+    flex: 0 0 auto;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--acento); color: #fff;
+    display: grid; place-items: center;
+    font-size: 0.85rem; font-weight: 700;
+  }
+  .etapa > p { margin: 6px 0 0; color: var(--tinta-2); font-size: 0.95rem; }
+  .etapa ul { margin: 10px 0 0; padding-left: 20px; color: var(--tinta-2); font-size: 0.92rem; }
+  .etapa li { margin: 3px 0; }
+  code {
+    background: #f0ede8; border-radius: 5px; padding: 1px 6px;
+    font-family: Consolas, "Courier New", monospace; font-size: 0.87em;
+  }
+  .seta {
+    text-align: center;
+    color: var(--tinta-3);
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 12px 0;
+  }
+
+  .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; margin-top: 14px; }
+  .caixa { border: 1px solid var(--borda); border-radius: 10px; padding: 13px 15px; background: #fdfcfa; }
+  .caixa b { display: block; font-size: 0.92rem; margin-bottom: 3px; }
+  .caixa span { font-size: 0.86rem; color: var(--tinta-2); }
+
+  .aviso {
+    border-left: 4px solid var(--erro);
+    background: #fdecec; border-radius: 0 8px 8px 0;
+    padding: 11px 15px; margin-top: 14px; font-size: 0.9rem;
+  }
+  .aviso b { color: var(--erro); }
+  .bom {
+    border-left: 4px solid var(--ok);
+    background: #e8f5ee; border-radius: 0 8px 8px 0;
+    padding: 11px 15px; margin-top: 14px; font-size: 0.9rem;
+  }
+  .bom b { color: var(--ok); }
+
+  .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+  .col { border: 1px solid var(--borda); border-radius: 10px; padding: 14px 16px; }
+  .col.err { border-color: #e7b8b8; background: #fdf4f4; }
+  .col.cer { border-color: #b8d8c4; background: #f3faf6; }
+  .col h3 { margin: 0 0 6px; font-size: 0.95rem; }
+  .col.err h3 { color: var(--erro); }
+  .col.cer h3 { color: var(--ok); }
+  .col p { margin: 0; font-size: 0.89rem; color: var(--tinta-2); }
+
+  footer { text-align: center; margin-top: 36px; color: var(--tinta-3); font-size: 0.85rem; }
+  @media (max-width: 620px) { .duas { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="dentro">
+
+<header>
+  <h1>Do zero ao ar</h1>
+  <p>O caminho inteiro, em seis etapas. Você nunca precisa abrir o Bloco de Notas.</p>
+</header>
+
+<div class="regra"></div>
+
+<div class="etapa">
+  <h2><span class="num">1</span> Abrir o gerador</h2>
+  <p>Dois cliques em <code>GERADOR.html</code>. Abre no navegador. É o único
+  arquivo que você precisa abrir.</p>
+  <div class="aviso"><b>Nunca</b> abra com Word ou Google Docs. Word salva
+  arquivo quebrado sem avisar. Se precisar, use o Bloco de Notas.</div>
+</div>
+
+<div class="seta">&darr;</div>
+
+<div class="etapa">
+  <h2><span class="num">2</span> Preencher o que o cliente te deu</h2>
+  <p>As caixas de texto do lado esquerdo. Só duas são obrigatórias:</p>
+  <ul>
+    <li><b>Nome</b> e <b>Profissão</b> (marcados com asterisco vermelho).</li>
+    <li>Frase, cidade, WhatsApp, endereço, horários — o que mais ela tiver.</li>
+    <li>Os campos vazios simplesmente não aparecem no site. Não precisa
+    inventar para preencher tudo.</li>
+  </ul>
+</div>
+
+<div class="seta">&darr;</div>
+
+<div class="etapa">
+  <h2><span class="num">3</span> Escolher as cores</h2>
+  <p>No lado direito. Duas formas de fazer:</p>
+  <div class="grade">
+    <div class="caixa"><b>Conjunto pronto</b><span>Clica em Terracota, Rosa, Lilás, Azul, Verde, Vinho ou Preto e dourado.</span></div>
+    <div class="caixa"><b>Ajuste fino</b><span>Cinco quadradinhos: principal, secundária, fundo, fundo&nbsp;2 e texto.</span></div>
+  </div>
+  <div class="bom"><b>Só a cor principal já resolve.</b> O gerador calcula sozinho
+  as bordas, as sombras, o brilho do topo e o tema escuro inteiro, para nenhuma
+  combinação sair estragada.</div>
+  <div class="aviso"><b>Fique de olho no aviso de contraste.</b> Ele avisa quando
+  a letra vai ficar difícil de ler. Acerto: texto mais escuro, ou fundo mais claro.</div>
+</div>
+
+<div class="seta">&darr;</div>
+
+<div class="etapa">
+  <h2><span class="num">4</span> Baixar o site</h2>
+  <p>Botão <b>Baixar meu site (index.html)</b>. O arquivo tem que se chamar
+  <code>index.html</code> — esse nome é o que a internet procura.</p>
+  <p>Antes de baixar, desligue <b>Manter as instruções</b> e ligue
+  <b>Tirar a tarja de "Protótipo"</b>. É o que separa um rascunho de um
+  site para entregar.</p>
+</div>
+
+<div class="seta">&darr;</div>
+
+<div class="etapa">
+  <h2><span class="num">5</span> Montar a pasta</h2>
+  <p>Crie uma pasta no Computador e junte o site com as fotos. Tudo solto,
+  no mesmo nível:</p>
+  <ul>
+    <li><code>portfolios/ana/</code></li>
+    <li><code>portfolios/ana/index.html</code></li>
+    <li><code>portfolios/ana/foto-ana.jpg</code></li>
+    <li><code>portfolios/ana/trabalho-1.jpg</code></li>
+  </ul>
+  <div class="duas">
+    <div class="col err">
+      <h3>Foto sumida</h3>
+      <p>A foto está numa pasta dentro, ou o nome não bate. O site procura o
+      nome exato, e maiúscula conta.</p>
+    </div>
+    <div class="col cer">
+      <h3>Foto aparece</h3>
+      <p>Abriu com dois cliques e deu certo? Então está certo. É só isso que
+      importa agora.</p>
+    </div>
+  </div>
+</div>
+
+<div class="seta">&darr;</div>
+
+<div class="etapa">
+  <h2><span class="num">6</span> Colocar no ar</h2>
+  <p>Enquanto o site está só no seu computador, só você vê. As duas formas de
+  dar um endereço de verdade para ele:</p>
+  <div class="grade">
+    <div class="caixa"><b>Netlify Drop — comece por aqui</b><span>app.netlify.com/drop → arrasta a pasta → endereço na hora. Grátis, sem cartão, sem instalar nada.</span></div>
+    <div class="caixa"><b>GitHub Pages — depois</b><span>Mais controle, endereço com cara de programador. Vale se o cliente já tem conta no GitHub.</span></div>
+  </div>
+  <p style="margin-top:14px">O passo a passo, com tela por tela, está no
+  <code>PUBLICAR.md</code>.</p>
+</div>
+
+<div class="seta">&darr;</div>
+
+<div class="etapa">
+  <h2><span class="num">7</span> Conferir antes de mandar</h2>
+  <p>Abra o endereço <b>novo</b> (não o arquivo do computador) e confira:</p>
+  <ul>
+    <li>Nome com acento certo, e nenhum "Maria Jose" sobrando.</li>
+    <li>WhatsApp é o da pessoa, com 55 e DDD.</li>
+    <li>Preços, telefones e e-mails são os dela, não os seus.</li>
+    <li>Fotos aparecem. Sem tarja, sem instruções, sem painel amarelo.</li>
+    <li>Dá para ler inclusive as letras pequenas.</li>
+    <li>No celular, com 4G, sem Wi-Fi.</li>
+    <li>Tema claro e escuro legíveis nos dois.</li>
+  </ul>
+</div>
+
+<footer>
+  Mostre o <code>exemplo-cliente/</code> para ver como fica um site pronto.
+</footer>
+
+</div>
+</body>
+</html>

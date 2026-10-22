@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador de Portfólio — monte o site do cliente sem escrever código | R$ 67</title>
+  <meta name="description" content="Ferramenta para quem cria site para cliente: preenche as caixas, escolhe as cores e o portfólio fica pronto. Responsivo, tema escuro, acessível e com preview para rede social. R$ 67, pagamento único." />
+
+  <!-- ==================================================================
+       >>> TROQUE AQUI O LINK DO PRODUTO NA KIWIFY <<<
+       O placeholder abaixo leva a uma página que não existe. Substitua
+       pelo link de checkout que o Kiwify gera para o seu produto.
+       ================================================================== -->
+  <meta name="checkout" content="https://pay.kiwify.com.br/SEU_LINK_AQUI" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%239a5f3c'/%3E%3Ctext x='32' y='44' font-family='Arial' font-size='30' font-weight='bold' fill='%23ffffff' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Gerador de Portfólio — o site do cliente em 20 minutos" />
+  <meta property="og:description" content="Preencha as caixas, escolha as cores e baixe o portfólio pronto. Responsivo, com tema escuro e preview para rede social." />
+
+  <style>
+    :root {
+      --acento: #9a5f3c;
+      --acento-2: #c07d4f;
+      --acento-suave: #f6ece4;
+      --fundo: #fdfcfa;
+      --fundo-2: #f6f2ee;
+      --superficie: #ffffff;
+      --borda: #e8e0d8;
+      --tinta: #1c1815;
+      --tinta-2: #574f48;
+      --tinta-3: #8b8179;
+      --escuro: #12100e;
+      --verde: #1f7a4d;
+      --verde-suave: #e9f5ee;
+      --serif: "Playfair Display", Georgia, serif;
+      --titulo: "Sora", system-ui, sans-serif;
+      --texto: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --raio: 16px;
+      --raio-g: 26px;
+      --sombra: 0 1px 2px rgba(28,24,21,.04), 0 12px 32px rgba(28,24,21,.07);
+      --sombra-forte: 0 24px 60px rgba(28,24,21,.16);
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--texto);
+      background: var(--fundo);
+      color: var(--tinta);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--titulo); line-height: 1.18; letter-spacing: -.02em; margin-bottom: 14px; }
+    p { margin-bottom: 18px; }
+    a { color: var(--acento); text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .secao { padding: 92px 0; }
+    .secao--alt { background: var(--fundo-2); }
+    .centralizado { text-align: center; }
+    .centralizado .sub { max-width: 66ch; margin-left: auto; margin-right: auto; }
+    .sub { color: var(--tinta-2); font-size: 1.05rem; max-width: 62ch; }
+
+    .rotulo {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .72rem; font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--acento);
+      background: var(--acento-suave); border: 1px solid var(--borda);
+      border-radius: 999px; padding: 6px 14px; margin-bottom: 18px;
+    }
+
+    h2.secao-titulo { font-size: clamp(1.7rem, 3.4vw, 2.4rem); margin-bottom: 14px; }
+
+    /* ---------- BOTÕES ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 15px 28px; border-radius: 999px;
+      font-family: inherit; font-size: .98rem; font-weight: 600;
+      border: 1px solid transparent; cursor: pointer;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn:focus-visible { outline: 3px solid var(--acento-2); outline-offset: 3px; }
+    .btn--principal { background: var(--acento); color: #fff; box-shadow: 0 10px 26px -10px rgba(154,95,60,.7); }
+    .btn--principal:hover { background: var(--acento-2); transform: translateY(-2px); }
+    .btn--zap { background: #25d366; color: #06331a; box-shadow: 0 10px 26px -10px rgba(37,211,102,.7); }
+    .btn--zap:hover { transform: translateY(-2px); }
+    .btn--fant { background: transparent; color: var(--tinta); border-color: var(--borda); }
+    .btn--fant:hover { border-color: var(--acento); color: var(--acento); }
+    .btn--claro { background: #fff; color: var(--acento); }
+    .btn--grande { padding: 18px 36px; font-size: 1.05rem; }
+    .btn--bloco { width: 100%; }
+
+    /* ---------- TOPO ---------- */
+    .topo {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(253,252,250,.88);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--borda);
+    }
+    .topo__in { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 24px; max-width: var(--max); margin: 0 auto; }
+    .marca { display: flex; align-items: center; gap: 10px; color: var(--tinta); font-family: var(--titulo); font-weight: 700; }
+    .marca__ponto {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(140deg, var(--acento-2), var(--acento));
+      color: #fff; display: grid; place-items: center; font-size: .82rem; font-weight: 700;
+    }
+    .marca small { display: block; font-family: var(--texto); font-weight: 400; font-size: .72rem; color: var(--tinta-3); }
+    .topo__acoes { display: flex; align-items: center; gap: 10px; }
+
+    /* ---------- HERO ---------- */
+    .hero { padding: 74px 0 84px; background-image: radial-gradient(1000px 480px at 8% -8%, rgba(192,125,79,.16), transparent 60%); }
+    .hero__grade { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+    .hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.3rem); margin-bottom: 16px; }
+    .hero h1 em { font-family: var(--serif); font-style: italic; color: var(--acento); font-weight: 600; }
+    .hero__preco {
+      display: inline-flex; align-items: baseline; gap: 12px;
+      background: var(--superficie); border: 1px solid var(--borda);
+      border-radius: var(--raio); padding: 14px 24px; margin: 22px 0;
+      box-shadow: var(--sombra);
+    }
+    .hero__preco strong { font-family: var(--titulo); font-size: 2.1rem; line-height: 1; color: var(--acento); }
+    .hero__preco span { font-size: .88rem; color: var(--tinta-3); }
+    .hero__acoes { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero__nota { margin-top: 14px; font-size: .86rem; color: var(--tinta-3); }
+
+    .cartao-demo {
+      background: var(--superficie); border: 1px solid var(--borda);
+      border-radius: var(--raio-g); padding: 22px; box-shadow: var(--sombra-forte);
+    }
+    .cartao-demo__topo { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+    .cartao-demo__topo i { width: 10px; height: 10px; border-radius: 50%; background: var(--borda); display: block; }
+    .cartao-demo__topo span { margin-left: 6px; font-size: .78rem; color: var(--tinta-3); }
+    .cartao-demo iframe {
+      width: 100%; height: 420px; border: 1px solid var(--borda); border-radius: 12px; background: var(--fundo);
+    }
+
+    /* ---------- LISTAS ---------- */
+    .grade-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grade-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .card {
+      background: var(--superficie); border: 1px solid var(--borda);
+      border-radius: var(--raio); padding: 26px;
+    }
+    .card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .card p { margin: 0; color: var(--tinta-2); font-size: .93rem; }
+    .card__ico {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: var(--acento-suave); color: var(--acento);
+      display: grid; place-items: center; font-size: 1.2rem; margin-bottom: 14px;
+    }
+
+    .check { list-style: none; display: grid; gap: 12px; }
+    .check li { display: flex; gap: 12px; align-items: flex-start; font-size: .96rem; }
+    .check li::before {
+      content: "✓"; flex-shrink: 0;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--verde-suave); color: var(--verde);
+      display: grid; place-items: center; font-size: .78rem; font-weight: 700; margin-top: 2px;
+    }
+    .check b { font-weight: 600; }
+
+    /* ---------- PASSOS ---------- */
+    .passos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; counter-reset: passo; }
+    .passo { position: relative; padding-top: 34px; }
+    .passo::before {
+      counter-increment: passo; content: counter(passo);
+      position: absolute; top: 0; left: 0;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--acento); color: #fff;
+      display: grid; place-items: center; font-weight: 700; font-size: .9rem;
+    }
+    .passo h3 { font-size: .98rem; margin-bottom: 6px; }
+    .passo p { margin: 0; font-size: .89rem; color: var(--tinta-2); }
+
+    /* ---------- TABELA DE PREÇO ---------- */
+    .preco-caixa {
+      max-width: 620px; margin: 0 auto;
+      background: var(--superficie); border: 2px solid var(--acento);
+      border-radius: var(--raio-g); padding: 34px 32px; box-shadow: var(--sombra-forte);
+    }
+    .preco-caixa__tag {
+      display: inline-block; background: var(--acento); color: #fff;
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      border-radius: 999px; padding: 6px 16px; margin-bottom: 18px;
+    }
+    .preco-caixa__valor { font-family: var(--titulo); font-size: 3rem; line-height: 1; color: var(--tinta); margin-bottom: 6px; }
+    .preco-caixa__valor small { font-size: 1rem; color: var(--tinta-3); font-family: var(--texto); font-weight: 400; }
+    .preco-caixa ul { list-style: none; margin: 26px 0; display: grid; gap: 12px; text-align: left; }
+    .preco-caixa ul li { display: flex; gap: 11px; align-items: flex-start; font-size: .95rem; }
+    .preco-caixa ul li::before { content: "✓"; color: var(--verde); font-weight: 700; }
+    .preco-caixa__garantia {
+      margin-top: 18px; font-size: .85rem; color: var(--tinta-3);
+      border-top: 1px solid var(--borda); padding-top: 16px;
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 760px; margin: 0 auto; }
+    .faq details {
+      background: var(--superficie); border: 1px solid var(--borda);
+      border-radius: var(--raio); margin-bottom: 12px; padding: 4px 22px;
+    }
+    .faq summary { cursor: pointer; padding: 17px 0; font-weight: 600; color: var(--tinta); list-style: none; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; float: right; color: var(--acento); font-size: 1.4rem; line-height: 1; }
+    .faq details[open] summary::after { content: "\2212"; }
+    .faq details p { margin: 0 0 18px; color: var(--tinta-2); font-size: .95rem; }
+
+    /* ---------- DESTAQUE / RODAPÉ ---------- */
+    .final { background: var(--azul-profundo, var(--escuro)); color: #fff; text-align: center; padding: 84px 0; }
+    .final h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin-bottom: 12px; }
+    .final p { color: #c3b8ae; max-width: 580px; margin: 0 auto 28px; }
+    .final small { display: block; margin-top: 16px; color: #8d8177; font-size: .85rem; }
+
+    .rodape { background: var(--escuro); color: #8d8177; padding: 34px 0; font-size: .87rem; text-align: center; }
+    .rodape a { color: var(--acento-2); }
+
+    .zap-flutuante {
+      position: fixed; right: 20px; bottom: 20px; z-index: 55;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25d366; color: #06331a;
+      display: grid; place-items: center;
+      box-shadow: 0 12px 30px -6px rgba(37,211,102,.6);
+    }
+    .zap-flutuante:hover { transform: scale(1.06); }
+
+    .aviso-demo {
+      background: #fff8e1; color: #6b5200; border-bottom: 1px solid #f0d27a;
+      padding: 11px 24px; text-align: center; font-size: .85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero__grade { grid-template-columns: 1fr; gap: 36px; }
+      .grade-3 { grid-template-columns: 1fr 1fr; }
+      .passos { grid-template-columns: 1fr 1fr; }
+      .topo__preco { display: none; }
+    }
+    @media (max-width: 620px) {
+      .secao { padding: 62px 0; }
+      .grade-2, .grade-3, .passos { grid-template-columns: 1fr; }
+      .cartao-demo iframe { height: 320px; }
+      .zap-flutuante { right: 14px; bottom: 14px; width: 52px; height: 52px; }
+    }
+    @media print {
+      .topo, .zap-flutuante, .hero__acoes, .cartao-demo { display: none !important; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOPO ============ -->
+  <header class="topo">
+    <div class="topo__in">
+      <a class="marca" href="#topo">
+        <span class="marca__ponto">G</span>
+        <span>Gerador de Portfólio<small>para quem cria site para cliente</small></span>
+      </a>
+      <div class="topo__acoes">
+        <span class="hero__preco topo__preco"><strong>R$ 67</strong></span>
+        <a class="btn btn--principal" href="#comprar">Comprar</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero__grade">
+        <div>
+          <span class="rotulo">Ferramenta para quem faz site</span>
+          <h1>O site do seu cliente, <em>pronto em 20 minutos</em></h1>
+          <p class="sub">
+            Você preenche umas caixas, escolhe as cores e o portfólio fica pronto: responsivo,
+            com tema escuro, acessível e com preview bonitinho quando o cliente manda o link
+            no WhatsApp. Sem escrever código. Sem instalar nada.
+          </p>
+
+          <div class="hero__preco">
+            <strong>R$ 67</strong>
+            <span>pagamento único &middot; download imediato</span>
+          </div>
+
+          <div class="hero__acoes">
+            <a class="btn btn--principal btn--grande" href="#comprar">Comprar por R$ 67</a>
+            <a class="btn btn--fant btn--grande" href="#demo">Testar a demonstração</a>
+          </div>
+
+          <p class="hero__nota">
+            7 dias para pedir reembolso &middot; Suporte por WhatsApp por 30 dias &middot; Windows, Mac e celular
+          </p>
+        </div>
+
+        <div class="cartao-demo">
+          <div class="cartao-demo__topo">
+            <i></i><i></i><i></i>
+            <span>gerador.html &mdash; funciona no navegador</span>
+          </div>
+          <iframe id="demo-gerador" src="GERADOR.html" title="Demonstração do gerador de portfólio" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ O PROBLEMA ============ -->
+    <section class="secao secao--alt">
+      <div class="container">
+        <div class="centralizado" style="max-width:720px;margin:0 auto 46px;">
+          <span class="rotulo">O dia a dia</span>
+          <h2 class="secao-titulo">Você perde a hora no CSS, não na venda</h2>
+          <p class="sub">
+            A parte difícil de fazer site para cliente não é convencer. É a hora passa
+            tentando acertar menu responsivo, sombra, tema escuro e foto que não cabe na tela.
+            O gerador tira essa hora do seu dia.
+          </p>
+        </div>
+
+        <div class="grade-3">
+          <div class="card">
+            <span class="card__ico">⏱️</span>
+            <h3>Sem mexer em código</h3>
+            <p>Você escreve o nome da cliente, marca a profissão e pronto. Não existe "vou ajustar uma linha no CSS".</p>
+          </div>
+          <div class="card">
+            <span class="card__ico">🎨</span>
+            <h3>Cores no automático</h3>
+            <p>Escolhe a cor principal e o gerador calcula o resto: tons, bordas, sombras e o tema escuro inteiro.</p>
+          </div>
+          <div class="card">
+            <span class="card__ico">📱</span>
+            <h3>Já sai no celular</h3>
+            <p>Responsivo de verdade, testado em tela pequena. A cliente abre e não precisa mandar zoom.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ O QUE VOCÊ RECEBE ============ -->
+    <section class="secao">
+      <div class="container">
+        <div class="centralizado" style="max-width:680px;margin:0 auto 46px;">
+          <span class="rotulo">O pacote</span>
+          <h2 class="secao-titulo">Tudo o que vem no download</h2>
+          <p class="sub">
+            Um arquivo só para baixar, mais os guias que explicam cada etapa — inclusive a de
+            colocar no ar e entregar.
+          </p>
+        </div>
+
+        <div class="grade-3">
+          <div class="card">
+            <span class="card__ico">🧰</span>
+            <h3>O gerador</h3>
+            <p>Um arquivo HTML que abre com dois cliques. Preenche as caixas, vê a prévia mudando na hora e baixa o site.</p>
+          </div>
+          <div class="card">
+            <span class="card__ico">📖</span>
+            <h3>Guia do aprendiz</h3>
+            <p>Passo a passo em português simples, do primeiro clique até a entrega: cores, listas, fotos e o que nunca mexer.</p>
+          </div>
+          <div class="card">
+            <span class="card__ico">🚀</span>
+            <h3>Guia de publicação</h3>
+            <p>Como colocar no ar em 5 minutos, com as três opções explicadas e a lista de conferência antes de mandar o link.</p>
+          </div>
+          <div class="card">
+            <span class="card__ico">👀</span>
+            <h3>Site de exemplo</h3>
+            <p>Um portfólio já preenchido e funcionando, para você ver o resultado e mostrar para a cliente antes decepção.</p>
+          </div>
+          <div class="card">
+            <span class="card__ico">🗺️</span>
+            <h3>Croqui do caminho</h3>
+            <p>O mapa visual do caminho inteiro, do zero até o site no ar. Serve para você não se perder na primeira entrega.</p>
+          </div>
+          <div class="card">
+            <span class="card__ico">💬</span>
+            <h3>Suporte por 30 dias</h3>
+            <p>WhatsApp comigo por 30 dias para dúvida de uso. Se travar alguma coisa, você me chama.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ O SITE GERADO ============ -->
+    <section class="secao secao--alt">
+      <div class="container">
+        <div class="centralizado" style="max-width:680px;margin:0 auto 46px;">
+          <span class="rotulo">O que sai pronto</span>
+          <h2 class="secao-titulo">O site que você entrega não é um site "de template"</h2>
+          <p class="sub">
+            Aqui está um site gerado de verdade, com as cores trocadas e a cliente preenchida.
+            É o mesmo arquivo que a sua cliente vai receber.
+          </p>
+        </div>
+
+        <div class="cartao-demo" style="max-width:900px;margin:0 auto;">
+          <div class="cartao-demo__topo">
+            <i></i><i></i><i></i>
+            <span>exemplo-cliente/index.html &mdash; site gerado pelo gerador</span>
+          </div>
+          <iframe src="exemplo-cliente/index.html" title="Site de exemplo gerado pelo gerador" loading="lazy" style="height:560px;"></iframe>
+        </div>
+
+        <div class="grade-3" style="margin-top:34px;">
+          <div class="card">
+            <span class="card__ico">🌗</span>
+            <h3>Tema claro e escuro</h3>
+            <p>O visitante alterna na hora. As duas versões de cor saem consistentes, mesmo com cor escolhida à mão.</p>
+          </div>
+          <div class="card">
+            <span class="card__ico">📲</span>
+            <h3>Compartilhamento em rede social</h3>
+            <p>Quando a cliente manda o link no WhatsApp, aparece a prévia com o nome e a foto dela, não um link seco.</p>
+          </div>
+          <div class="card">
+            <span class="card__ico">♿</span>
+            <h3>Acessível</h3>
+            <p>Botão de pular para o conteúdo, foco visível no teclado e aviso automático de contraste ruim.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMO FUNCIONA ============ -->
+    <section class="secao">
+      <div class="container">
+        <div class="centralizado" style="max-width:680px;margin:0 auto 46px;">
+          <span class="rotulo">Como funciona</span>
+          <h2 class="secao-titulo">Cinco passos, o primeiro leva dois minutos</h2>
+        </div>
+
+        <div class="passos">
+          <div class="passo">
+            <h3>Abra o gerador</h3>
+            <p>Dois cliques no arquivo. Abre no navegador, sem instalar nada.</p>
+          </div>
+          <div class="passo">
+            <h3>Preencha os dados</h3>
+            <p>Nome, profissão, WhatsApp, serviços. O que ficar vazio simplesmente não aparece.</p>
+          </div>
+          <div class="passo">
+            <h3>Escolha as cores</h3>
+            <p>Um clique num conjunto pronto ou cinco seletores. O resto é calculado.</p>
+          </div>
+          <div class="passo">
+            <h3>Baixe o site</h3>
+            <p>Um arquivo index.html. É esse que a cliente vai receber.</p>
+          </div>
+          <div class="passo">
+            <h3>Coloque no ar</h3>
+            <p>Arraste a pasta no Netlify Drop e mande o link. O guia mostra o passo a passo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARA QUEM É ============ -->
+    <section class="secao secao--alt">
+      <div class="container">
+        <div class="grade-2" style="max-width:900px;margin:0 auto;">
+          <div class="card">
+            <h3>É para você se:</h3>
+            <ul class="check" style="margin-top:14px;">
+              <li><span>Você <b>faz site para os outros</b> e quer entregar mais rápido.</span></li>
+              <li><span>Você é <b>estudante ou aprendiz</b> e ainda trava no CSS.</span></li>
+              <li><span>Você vende para <b>profissionais de serviço</b>: manicure, nutrição, advogado, personal.</span></li>
+              <li><span>Você quer <b>uma entrega que não passe vergonha</b>: com ícone, preview e tema escuro.</span></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Não é para você se:</h3>
+            <ul class="check" style="margin-top:14px;">
+              <li><span>Você quer um site <b>de loja com carrinho e pagamento</b>.</span></li>
+              <li><span>Você precisa de <b>painel com login</b> e vários usuários.</span></li>
+              <li><span>Você quer um site <b>de empresa grande</b>, com dezenas de páginas.</span></li>
+              <li><span>Você quer <b>publicar sozinho na internet</b> sem pensar em venda e entrega.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PREÇO ============ -->
+    <section class="secao" id="comprar">
+      <div class="container">
+        <div class="centralizado" style="max-width:660px;margin:0 auto 40px;">
+          <span class="rotulo">Preço</span>
+          <h2 class="secao-titulo">Um pagamento. O gerador é seu.</h2>
+          <p class="sub">
+            Sem assinatura, sem mensalidade. Você baixa uma vez e usa para quantos clientes quiser.
+          </p>
+        </div>
+
+        <div class="preco-caixa">
+          <span class="preco-caixa__tag">Pacote completo</span>
+          <div class="preco-caixa__valor">R$ 67 <small>pagamento único</small></div>
+          <ul>
+            <li>Gerador de portfólio (arquivo único, funciona offline)</li>
+            <li>Guia do aprendiz — o passo a passo completo</li>
+            <li>Guia de publicação — como colocar no ar e entregar</li>
+            <li>Site de exemplo já preenchido, com as fotos</li>
+            <li>Croqui do caminho, do zero até o site no ar</li>
+            <li>Suporte por WhatsApp por 30 dias</li>
+            <li>Atualização com as cores novas que eu for acrescentando</li>
+          </ul>
+          <a class="btn btn--principal btn--grande btn--bloco" href="#" data-compra="principal">Comprar por R$ 67</a>
+          <p class="preco-caixa__garantia">
+            7 dias para pedir reembolso, sem dor de cabeça. Download imediato, assim que o pagamento confirma.
+          </p>
+        </div>
+
+        <div class="centralizado" style="margin-top:26px;">
+          <a class="btn btn--zap" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Tenho%20d%C3%BAvida%20do%20Gerador%20de%20Portf%C3%B3lio" target="_blank" rel="noopener">
+            Falar comigo antes de comprar
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="secao secao--alt">
+      <div class="container">
+        <div class="centralizado" style="max-width:660px;margin:0 auto 40px;">
+          <span class="rotulo">Dúvidas</span>
+          <h2 class="secao-titulo">Perguntas que aparecem sempre</h2>
+        </div>
+
+        <div class="faq">
+          <details open>
+            <summary>Eu não sei programar. Dá para usar?</summary>
+            <p>Dá — é esse o ponto da ferramenta. Você não escreve uma linha de código: preenche caixas, escolhe cores e clica em baixar. O guia do aprendiz explica cada passo em português simples. Se você já trabalha com site, vai achar trivial e ganhar tempo.</p>
+          </details>
+
+          <details>
+            <summary>Preciso instalar alguma coisa?</summary>
+            <p>Não. É um arquivo HTML: dois cliques e abre no navegador. Funciona no Windows, no Mac e no celular, e pode ser usado sem internet.</p>
+          </details>
+
+          <details>
+            <summary>Cada cliente meu vai receber o mesmo site?</summary>
+            <p>Não. O site nasce em branco a cada download. O que se repete é a estrutura e o visual — é o mesmo jeito de você usar um template hoje. O que muda são os dados, as fotos e as cores de cada cliente.</p>
+          </details>
+
+          <details>
+            <summary>Posso vender o site que eu gerar para o meu cliente?</summary>
+            <p>Pode, e é esse o objetivo. Você entrega o site pronto, cobra do seu jeito e fica com a diferença. A ferramenta é sua: use para quantos clientes quiser.</p>
+          </details>
+
+          <details>
+            <summary>As fotos do cliente vão junto?</summary>
+            <p>O site fica com um desenho no lugar da foto enquanto a foto não chega. Quando o cliente mandar as fotos, é só colocá-las na mesma pasta do site, com o mesmo nome, que aparecem.</p>
+          </details>
+
+          <details>
+            <summary>Ele funciona no celular?</summary>
+            <p>Sim. O site gerado é responsivo de fábrica, e o próprio gerador também é. A cliente abre no celular e não precisa dar zoom nem arrastar a página de lado.</p>
+          </details>
+
+          <details>
+            <summary>Como funciona o reembolso?</summary>
+            <p>São 7 dias, conforme o direito do consumidor para compra online. O pedido é feito na própria plataforma, sem burocracia.</p>
+          </details>
+
+          <details>
+            <summary>Quais são os tipos de site que dá para fazer?</summary>
+            <p>Portfólio de profissional de serviço: manicure, cabelo, nutrição, advocacia, personal trainer, tatuagem, fotografia. É um layout só, bem completo, com serviços, galeria, depoimentos, endereço e botão de WhatsApp.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CHAMADA FINAL ============ -->
+    <section class="final">
+      <div class="container">
+        <h2>Seu próximo cliente não precisa esperar você terminar o CSS</h2>
+        <p>Baixe o gerador, monte o site da sua cliente hoje e mande o link amanhã.</p>
+        <a class="btn btn--claro btn--grande" href="#" data-compra="final">Comprar por R$ 67</a>
+        <small>Download imediato &middot; 7 dias para reembolso &middot; Suporte por 30 dias</small>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="rodape">
+    <div class="container">
+      <p>
+        <strong>Gerador de Portfólio</strong> &middot; por Marcelo Oliveira<br>
+        © 2026 Todos os direitos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <a class="zap-flutuante" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Tenho%20d%C3%BAvida%20do%20Gerador%20de%20Portf%C3%B3lio" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+      <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.2.1.7-.1 1.3z"/>
+    </svg>
+  </a>
+
+  <script>
+    /* ==========================================================
+       1. LINK DE CHECKOUT
+       Troque o conteudo da meta "checkout" no head pelo link que
+       o Kiwify gera. Enquanto for o placeholder, o botão avisa
+       em vez de levar a pessoa para uma pagina que nao existe.
+       ========================================================== */
+    (function () {
+      var meta = document.querySelector('meta[name="checkout"]');
+      var link = meta ? meta.getAttribute("content") : "";
+      var placeholder = link.indexOf("SEU_LINK_AQUI") !== -1;
+
+      document.querySelectorAll("[data-compra]").forEach(function (botao) {
+        if (placeholder) {
+          botao.addEventListener("click", function (ev) {
+            ev.preventDefault();
+            alert("Configure o link de checkout: troque o placeholder no <meta name=\"checkout\"> no começo deste arquivo.");
+          });
+        } else {
+          botao.setAttribute("href", link);
+          botao.setAttribute("target", "_blank");
+          botao.setAttribute("rel", "noopener");
+        }
+      });
+    })();
+
+    /* ==========================================================
+       2. DEMONSTRACAO
+       No modo de demonstracao, o download do gerador fica
+       bloqueado: a pessoa ve a ferramenta funcionando e entende
+       o valor, mas o arquivo completo vem na compra.
+       ========================================================== */
+    (function () {
+      var quadro = document.getElementById("demo-gerador");
+      if (!quadro) return;
+
+      quadro.addEventListener("load", function () {
+        try {
+          var doc = quadro.contentDocument;
+          if (!doc) return;
+
+          var aviso = doc.createElement("div");
+          aviso.className = "aviso-demo";
+          aviso.textContent = "Modo demonstração: o download fica liberado na versão completa.";
+          aviso.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#fff8e1;color:#6b5200;border-top:1px solid #f0d27a;padding:9px 16px;text-align:center;font:13px Arial,Helvetica,sans-serif;";
+          doc.body.appendChild(aviso);
+
+          var botao = doc.getElementById("btn-baixar");
+          if (botao) {
+            botao.setAttribute("data-demo", "1");
+            botao.addEventListener("click", function (ev) {
+              ev.preventDefault();
+              ev.stopImmediatePropagation();
+              alert("Esta é a demonstração. O download do gerador vem com a compra.");
+            }, true);
+          }
+        } catch (e) {
+          /* navegador bloqueou o acesso: segue sem mexer */
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
