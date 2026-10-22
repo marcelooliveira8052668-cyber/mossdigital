@@ -49,7 +49,8 @@
     { id: 'educaenem',  emoji: '🎓', foto: 'assets/img/fotos/heroi-educaenem.jpg', nome: 'EducaEnem',          desc: 'Curso online do ENEM: aulas, PDFs, simulados e área do aluno', link: 'educaenem/index.html' },
     { id: 'conhecimento', emoji: '📘', foto: 'assets/img/fotos/heroi-codigo.jpg', nome: 'Código & Conhecimento', desc: 'Livro didático de programação web, do HTML ao React', link: 'codigo-conhecimento/index.html' },
     { id: 'nfcontrol', emoji: '📦', foto: 'assets/img/fotos/heroi-nfcontrol.jpg', nome: 'NF Control', desc: 'Sistema de notas fiscais, estoque, financeiro e auditoria', link: 'nf-control/index.html' },
-    { id: 'gerador', emoji: '🛠️', foto: 'assets/img/fotos/heroi-gerador.jpg', nome: 'Gerador de Portfólio', desc: 'Ferramenta que monta o site do cliente em 20 minutos, sem código', link: 'gerador-portfolio/index.html' }
+    { id: 'gerador', emoji: '🛠️', foto: 'assets/img/fotos/heroi-gerador.jpg', nome: 'Gerador de Portfólio', desc: 'Ferramenta que monta o site do cliente em 20 minutos, sem código', link: 'gerador-portfolio/index.html' },
+    { id: 'tutor', emoji: '🎧', foto: 'assets/img/fotos/heroi-tutor.jpg', nome: 'Lina — Tutor de Inglês', desc: 'App de inglês com IA: voz, cenários, correção de erros e XP', link: 'tutor-ia/index.html' }
   ];
 
   /* ------------------------------------------------------------------
