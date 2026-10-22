@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comanda Fácil — Sistema de Comandas, Cozinha e Caixa</title>
+
+    <meta name="description"
+          content="Sistema de comandas para restaurantes, lanchonetes, pizzarias e padarias: abrir comanda, enviar para a cozinha, receber por Pix, cartão ou dinheiro e fechar o caixa do dia.">
+    <meta name="author" content="Marcelo Oliveira">
+    <meta name="theme-color" content="#6a4028">
+    <link rel="canonical" href="https://marcelooliveira8052668-cyber.github.io/comandas/">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Comanda Fácil">
+    <meta property="og:title" content="Comanda Fácil — Sistema de Comandas, Cozinha e Caixa">
+    <meta property="og:description"
+          content="Abra comandas, acompanhe a cozinha em tempo real e feche o caixa por forma de pagamento. Funciona offline.">
+    <meta property="og:url" content="https://marcelooliveira8052668-cyber.github.io/comandas/">
+    <meta property="og:image" content="https://marcelooliveira8052668-cyber.github.io/comandas/og.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Comanda Fácil — Sistema de Comandas, Cozinha e Caixa">
+    <meta name="twitter:description"
+          content="Abra comandas, acompanhe a cozinha e feche o caixa por forma de pagamento. Funciona offline.">
+    <meta name="twitter:image" content="https://marcelooliveira8052668-cyber.github.io/comandas/og.png">
+
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body data-tela="login">
+
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- =========================================================
+         LOGIN
+    ========================================================== -->
+    <section id="telaLogin" class="tela-login" aria-labelledby="titulo-login">
+
+        <div class="login-box">
+
+            <div class="login-marca">
+                <img src="favicon.svg" alt="" width="52" height="52" aria-hidden="true">
+                <h1 id="titulo-login">Comanda <b>Fácil</b></h1>
+                <p class="login-sub">Comandas, cozinha e caixa em um só lugar</p>
+            </div>
+
+            <p id="login-erro" class="login-erro" role="alert" hidden></p>
+
+            <form id="formLogin" novalidate>
+
+                <div class="campo">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" id="usuario" name="usuario"
+                           autocomplete="username" required maxlength="40"
+                           placeholder="Digite seu usuário">
+                </div>
+
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <div class="campo-com-botao">
+                        <input type="password" id="senha" name="senha"
+                               autocomplete="current-password" required maxlength="72"
+                               placeholder="Digite sua senha">
+                        <button type="button" class="btn-olho" id="btnMostrarSenha"
+                                aria-label="Mostrar senha" aria-pressed="false"
+                                title="Mostrar senha">Mostrar</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--principal" id="btnEntrar">Entrar</button>
+
+            </form>
+
+            <p class="login-dica">
+                Primeira vez? Entre com <b>admin</b> / <b>1234</b> e troque a senha
+                em <b>Cadastros → Funcionários</b>.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         SISTEMA
+    ========================================================== -->
+    <div id="sistema" class="sistema" hidden>
+
+        <header class="topo">
+
+            <div class="topo__marca">
+                <img src="favicon.svg" alt="" width="30" height="30" aria-hidden="true">
+                <span class="topo__nome" id="nomeEmpresaTopo">Comanda Fácil</span>
+            </div>
+
+            <nav class="topo__nav" aria-label="Telas do sistema">
+                <button type="button" class="nav-btn ativo" data-tela="comandas">
+                    🧾 Comandas
+                </button>
+                <button type="button" class="nav-btn" data-tela="cozinha">
+                    🍳 Cozinha <span class="nav-badge" id="badgeCozinha" hidden>0</span>
+                </button>
+                <button type="button" class="nav-btn" data-tela="caixa">
+                    💰 Caixa
+                </button>
+                <button type="button" class="nav-btn" data-tela="cadastros">
+                    📇 Cadastros
+                </button>
+                <button type="button" class="nav-btn" data-tela="config">
+                    ⚙️ Config
+                </button>
+            </nav>
+
+            <div class="topo__usuario">
+                <span class="topo__quem" id="quemLogado" title="Funcionário logado"></span>
+                <button type="button" class="btn btn--fantasma" id="btnSair">Sair</button>
+            </div>
+
+        </header>
+
+
+        <main id="conteudo">
+
+            <!-- ===================== COMANDAS ===================== -->
+            <section id="telaComandas" class="tela ativa" aria-labelledby="titulo-comandas">
+
+                <div class="tela__cabecalho">
+                    <div>
+                        <h2 id="titulo-comandas">Comandas</h2>
+                        <p>Abra uma nova comanda ou continue uma já aberta.</p>
+                    </div>
+                    <div class="tela__acoes">
+                        <button type="button" class="btn btn--principal" id="btnNovaComanda">
+                            + Nova comanda
+                        </button>
+                    </div>
+                </div>
+
+                <div class="barra-filtros">
+                    <div class="campo campo--busca">
+                        <label for="buscaComanda" class="oculto-visual">Buscar comanda</label>
+                        <input type="search" id="buscaComanda" placeholder="Buscar por número ou funcionário">
+                    </div>
+                    <div class="chips" role="group" aria-label="Filtrar por situação">
+                        <button type="button" class="chip ativo" data-filtro="todas">Todas</button>
+                        <button type="button" class="chip" data-filtro="aberta">🟡 Abertas</button>
+                        <button type="button" class="chip" data-filtro="em_preparo">🔥 Em preparo</button>
+                        <button type="button" class="chip" data-filtro="pronto">✅ Prontas</button>
+                    </div>
+                </div>
+
+                <div id="listaComandas" class="grade-cards" aria-live="polite"></div>
+
+            </section>
+
+
+            <!-- ===================== DA COMANDA ===================== -->
+            <section id="telaComanda" class="tela" aria-labelledby="titulo-comanda-atual" hidden>
+
+                <div class="comanda-topo">
+                    <div>
+                        <h2 id="titulo-comanda-atual">
+                            Comanda <span id="numeroComandaAtual" class="numero-destaque"></span>
+                        </h2>
+                        <p class="comanda-meta">
+                            <span id="metaAberta"></span>
+                            <span id="metaStatus"></span>
+                            <span id="metaValor"></span>
+                        </p>
+                    </div>
+                    <div class="tela__acoes">
+                        <button type="button" class="btn btn--fantasma" id="btnFecharComanda">
+                            ← Voltar para comandas
+                        </button>
+                    </div>
+                </div>
+
+                <div class="comanda-layout">
+
+                    <div class="produtos-area">
+                        <div class="campo campo--busca">
+                            <label for="buscaProduto" class="oculto-visual">Buscar produto</label>
+                            <input type="search" id="buscaProduto" placeholder="🔍 Buscar produto pelo nome">
+                        </div>
+
+                        <div class="categorias" id="categorias" role="group" aria-label="Categorias de produtos"></div>
+
+                        <div id="listaProdutos" class="grade-produtos"></div>
+                    </div>
+
+                    <aside class="resumo" aria-labelledby="titulo-resumo">
+                        <h3 id="titulo-resumo">🧾 Resumo da comanda</h3>
+
+                        <div id="itensComanda" class="itens-resumo" aria-live="polite"></div>
+
+                        <div class="resumo__totais">
+                            <div class="linha-total">
+                                <span>Subtotal</span>
+                                <strong id="subtotalComanda">R$ 0,00</strong>
+                            </div>
+                            <div class="linha-total linha-total--grande">
+                                <span>Total</span>
+                                <strong id="totalComanda">R$ 0,00</strong>
+                            </div>
+                        </div>
+
+                        <div class="resumo__botoes">
+                            <button type="button" class="btn btn--cozinha" id="btnEnviarCozinha">
+                                👨‍🍳 Enviar para cozinha
+                            </button>
+                            <button type="button" class="btn btn--principal" id="btnFinalizarComanda">
+                                💰 Finalizar venda
+                            </button>
+                            <button type="button" class="btn btn--fantasma" id="btnDescartarComanda">
+                                🗑️ Excluir comanda
+                            </button>
+                        </div>
+                    </aside>
+
+                </div>
+
+            </section>
+
+
+            <!-- ===================== COZINHA ===================== -->
+            <section id="telaCozinha" class="tela" aria-labelledby="titulo-cozinha" hidden>
+
+                <div class="tela__cabecalho">
+                    <div>
+                        <h2 id="titulo-cozinha">🍳 Cozinha</h2>
+                        <p>Pedidos em preparo. <strong id="contadorCozinha">0</strong> ativo(s).</p>
+                    </div>
+                    <div class="tela__acoes">
+                        <button type="button" class="btn btn--fantasma" data-print="cozinha">
+                            🖨️ Imprimir fila
+                        </button>
+                    </div>
+                </div>
+
+                <div id="listaCozinha" class="grade-cards" aria-live="polite"></div>
+
+            </section>
+
+
+            <!-- ===================== CAIXA ===================== -->
+            <section id="telaCaixa" class="tela" aria-labelledby="titulo-caixa" hidden>
+
+                <div class="tela__cabecalho">
+                    <div>
+                        <h2 id="titulo-caixa">💰 Caixa</h2>
+                        <p>Fechamento por forma de pagamento.</p>
+                    </div>
+                    <div class="tela__acoes">
+                        <div class="campo campo--data">
+                            <label for="dataCaixa">Data</label>
+                            <input type="date" id="dataCaixa">
+                        </div>
+                        <button type="button" class="btn btn--fantasma" id="btnCsvCaixa">
+                            ⬇️ CSV
+                        </button>
+                        <button type="button" class="btn btn--principal" data-print="fechamento">
+                            🖨️ Fechamento
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grade-metricas">
+
+                    <div class="metrica metrica--principal">
+                        <h3>Total do dia</h3>
+                        <div class="metrica__valor" id="caixaTotal">R$ 0,00</div>
+                        <p id="caixaAnotacoes"></p>
+                    </div>
+
+                    <div class="metrica">
+                        <h3>Vendas</h3>
+                        <div class="metrica__valor" id="caixaQuantidade">0</div>
+                        <p>comandas finalizadas</p>
+                    </div>
+
+                    <div class="metrica">
+                        <h3>💵 Dinheiro</h3>
+                        <div class="metrica__valor" id="caixaDinheiro">R$ 0,00</div>
+                        <p id="caixaDinheiroQtd">0 venda(s)</p>
+                    </div>
+
+                    <div class="metrica">
+                        <h3>📱 Pix</h3>
+                        <div class="metrica__valor" id="caixaPix">R$ 0,00</div>
+                        <p id="caixaPixQtd">0 venda(s)</p>
+                    </div>
+
+                    <div class="metrica">
+                        <h3>💳 Débito</h3>
+                        <div class="metrica__valor" id="caixaDebito">R$ 0,00</div>
+                        <p id="caixaDebitoQtd">0 venda(s)</p>
+                    </div>
+
+                    <div class="metrica">
+                        <h3>💳 Crédito</h3>
+                        <div class="metrica__valor" id="caixaCredito">R$ 0,00</div>
+                        <p id="caixaCreditoQtd">0 venda(s)</p>
+                    </div>
+
+                </div>
+
+                <div class="painel-duas-colunas">
+
+                    <section class="painel" aria-labelledby="titulo-fechamento">
+                        <h3 id="titulo-fechamento">📊 Fechamento do caixa</h3>
+                        <div class="tabela-simples" id="fechamentoTabela"></div>
+                        <p class="nota">Valores já descontando vendas estornadas do dia.</p>
+                    </section>
+
+                    <section class="painel" aria-labelledby="titulo-relatorio">
+                        <h3 id="titulo-relatorio">🏆 Mais vendidos</h3>
+                        <div class="tabela-simples" id="relatorioProdutos"></div>
+                    </section>
+
+                </div>
+
+                <section class="painel" aria-labelledby="titulo-vendas">
+                    <div class="painel__cabecalho">
+                        <h3 id="titulo-vendas">📋 Vendas do dia</h3>
+                        <div class="chips" role="group" aria-label="Filtrar vendas">
+                            <button type="button" class="chip ativo" data-vendas="todas">Todas</button>
+                            <button type="button" class="chip" data-vendas="estornadas">Estornadas</button>
+                        </div>
+                    </div>
+                    <div id="listaVendas" aria-live="polite"></div>
+                </section>
+
+            </section>
+
+
+            <!-- ===================== CADASTROS ===================== -->
+            <section id="telaCadastros" class="tela" aria-labelledby="titulo-cadastros" hidden>
+
+                <div class="tela__cabecalho">
+                    <div>
+                        <h2 id="titulo-cadastros">📇 Cadastros</h2>
+                        <p>Produtos, categorias e equipe.</p>
+                    </div>
+                </div>
+
+                <div class="abas" role="tablist" aria-label="Cadastros">
+                    <button type="button" class="aba ativo" role="tab" aria-selected="true"
+                            aria-controls="painelProdutos" id="abaProdutos">🍔 Produtos</button>
+                    <button type="button" class="aba" role="tab" aria-selected="false"
+                            aria-controls="painelFuncionarios" id="abaFuncionarios">👥 Funcionários</button>
+                </div>
+
+                <section id="painelProdutos" role="tabpanel" aria-labelledby="abaProdutos">
+                    <div class="tela__cabecalho">
+                        <div class="campo campo--busca">
+                            <label for="buscaProdutoCadastro" class="oculto-visual">Buscar produto</label>
+                            <input type="search" id="buscaProdutoCadastro" placeholder="🔍 Buscar produto">
+                        </div>
+                        <div class="tela__acoes">
+                            <button type="button" class="btn btn--principal" id="btnNovoProduto">+ Novo produto</button>
+                        </div>
+                    </div>
+                    <div id="tabelaProdutos"></div>
+                </section>
+
+                <section id="painelFuncionarios" role="tabpanel" aria-labelledby="abaFuncionarios" hidden>
+                    <div class="tela__cabecalho">
+                        <div class="campo campo--busca">
+                            <label for="buscaFuncionario" class="oculto-visual">Buscar funcionário</label>
+                            <input type="search" id="buscaFuncionario" placeholder="🔍 Buscar funcionário">
+                        </div>
+                        <div class="tela__acoes">
+                            <button type="button" class="btn btn--principal" id="btnNovoFuncionario">+ Novo funcionário</button>
+                        </div>
+                    </div>
+                    <div id="tabelaFuncionarios"></div>
+                    <p class="nota">A senha nunca aparece na tela — é guardada protegida por hash.</p>
+                </section>
+
+            </section>
+
+
+            <!-- ===================== CONFIGURAÇÕES ===================== -->
+            <section id="telaConfig" class="tela" aria-labelledby="titulo-config" hidden>
+
+                <div class="tela__cabecalho">
+                    <div>
+                        <h2 id="titulo-config">⚙️ Configurações</h2>
+                        <p>Dados da empresa, numeração e backup.</p>
+                    </div>
+                </div>
+
+                <div class="painel-duas-colunas">
+
+                    <section class="painel" aria-labelledby="titulo-empresa">
+                        <h3 id="titulo-empresa">🏪 Dados da empresa</h3>
+                        <form id="formEmpresa" novalidate>
+                            <div class="campo">
+                                <label for="cfgNome">Nome do estabelecimento</label>
+                                <input type="text" id="cfgNome" maxlength="60" required placeholder="Ex: Gran Forno Pizzaria">
+                            </div>
+                            <div class="campo">
+                                <label for="cfgEndereco">Endereço</label>
+                                <input type="text" id="cfgEndereco" maxlength="90" placeholder="Rua, nº — bairro">
+                            </div>
+                            <div class="campo">
+                                <label for="cfgTelefone">Telefone / WhatsApp</label>
+                                <input type="tel" id="cfgTelefone" maxlength="20" placeholder="(11) 99999-9999">
+                            </div>
+                            <div class="campo">
+                                <label for="cfgCnpj">CNPJ (opcional)</label>
+                                <input type="text" id="cfgCnpj" maxlength="20" placeholder="00.000.000/0000-00">
+                            </div>
+                            <div class="campo">
+                                <label for="cfgProximoNumero">Próximo número de comanda</label>
+                                <input type="number" id="cfgProximoNumero" min="1" step="1">
+                                <p class="campo__ajuda">Usado quando você pedir um número automático.</p>
+                            </div>
+                            <button type="submit" class="btn btn--principal">Salvar dados da empresa</button>
+                        </form>
+                    </section>
+
+                    <section class="painel" aria-labelledby="titulo-dados">
+                        <h3 id="titulo-dados">💾 Dados e backup</h3>
+
+                        <p class="nota">
+                            Tudo é gravado <b>no próprio navegador</b> deste computador.
+                            Faça backup de vez em quando — ele é um arquivo só.
+                        </p>
+
+                        <div class="botoes-empilhados">
+                            <button type="button" class="btn btn--contorno" id="btnExportarBackup">
+                                ⬇️ Exportar backup (.json)
+                            </button>
+                            <button type="button" class="btn btn--contorno" id="btnImportarBackup">
+                                ⬆️ Importar backup
+                            </button>
+                            <input type="file" id="arquivoBackup" accept="application/json,.json" hidden>
+                        </div>
+
+                        <hr class="separador">
+
+                        <h4>Zona de risco</h4>
+                        <div class="botoes-empilhados">
+                            <button type="button" class="btn btn--perigo" id="btnZerarComandas">
+                                Excluir todas as comandas abertas
+                            </button>
+                            <button type="button" class="btn btn--perigo" id="btnZerarTudo">
+                                Apagar TODOS os dados deste navegador
+                            </button>
+                        </div>
+                    </section>
+
+                </div>
+
+                <section class="painel" aria-labelledby="titulo-sobre">
+                    <h3 id="titulo-sobre">ℹ️ Sobre</h3>
+                    <div class="sobre">
+                        <p><b>Comanda Fácil</b> — sistema de comandas para restaurantes,
+                           lanchonetes, pizzarias, padarias e food trucks.</p>
+                        <p>Funciona <b>offline</b>: depois de abrir uma vez, não precisa de
+                           internet. Pode ser instalado como aplicativo pelo navegador.</p>
+                        <p class="nota">Versão 2.0 · HTML, CSS e JavaScript puro — sem framework,
+                           sem servidor, sem mensalidade.</p>
+                    </div>
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+         MODAL — NOVA COMANDA
+    ========================================================== -->
+    <div class="modal" id="modalNovaComanda" role="dialog" aria-modal="true" aria-labelledby="tituloNovaComanda" hidden>
+        <div class="modal__conteudo">
+            <h2 id="tituloNovaComanda">🧾 Nova comanda</h2>
+
+            <form id="formNovaComanda" novalidate>
+                <div class="campo">
+                    <label for="numeroComanda">Número da comanda</label>
+                    <div class="campo-com-botao">
+                        <input type="text" id="numeroComanda" maxlength="20" required
+                               placeholder="Ex: 12, MESA 4, BLOCO A">
+                        <button type="button" class="btn-olho" id="btnNumeroAuto"
+                                title="Gerar número automático">Auto</button>
+                    </div>
+                    <p class="campo__ajuda" id="ajudaNumero">Pode ser número, mesa ou qualquer identificador.</p>
+                </div>
+
+                <div class="campo">
+                    <label for="clienteComanda">Cliente / mesa (opcional)</label>
+                    <input type="text" id="clienteComanda" maxlength="40" placeholder="Ex: João, Mesa 4, Balcão">
+                </div>
+
+                <div class="modal__botoes">
+                    <button type="button" class="btn btn--fantasma" data-fechar-modal>Cancelar</button>
+                    <button type="submit" class="btn btn--principal">Abrir comanda</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- =========================================================
+         MODAL — PAGAMENTO
+    ========================================================== -->
+    <div class="modal modal--largo" id="modalPagamento" role="dialog" aria-modal="true"
+         aria-labelledby="tituloPagamento" hidden>
+        <div class="modal__conteudo">
+            <h2 id="tituloPagamento">💰 Finalizar comanda</h2>
+
+            <p class="modal__resumo">
+                Total da comanda:
+                <strong id="totalPagamento">R$ 0,00</strong>
+            </p>
+
+            <form id="formPagamento" novalidate>
+
+                <fieldset class="campo">
+                    <legend>Formas de pagamento</legend>
+                    <p class="campo__ajuda">
+                        Pode dividir: informe um valor em mais de uma forma.
+                        Quando tudo for preenchido, o botão libera.
+                    </p>
+
+                    <div class="grade-pagamentos" id="gradePagamentos"></div>
+
+                    <div class="linha-total linha-total--grande">
+                        <span>Restante</span>
+                        <strong id="restantePagamento">R$ 0,00</strong>
+                    </div>
+                </fieldset>
+
+                <div class="campo" id="campoTroco" hidden>
+                    <label for="valorRecebido">Valor recebido em dinheiro (para calcular o troco)</label>
+                    <input type="text" id="valorRecebido" inputmode="decimal"
+                           autocomplete="off" placeholder="0,00">
+                    <div class="linha-total linha-total--grande">
+                        <span>Troco</span>
+                        <strong id="valorTroco">R$ 0,00</strong>
+                    </div>
+                </div>
+
+                <p id="erroPagamento" class="erro" role="alert" hidden></p>
+
+                <div class="modal__botoes">
+                    <button type="button" class="btn btn--fantasma" data-fechar-modal>Cancelar</button>
+                    <button type="submit" class="btn btn--principal" id="btnConfirmarPagamento" disabled>
+                        Confirmar venda
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- =========================================================
+         MODAL — PRODUTO
+    ========================================================== -->
+    <div class="modal" id="modalProduto" role="dialog" aria-modal="true" aria-labelledby="tituloProduto" hidden>
+        <div class="modal__conteudo">
+            <h2 id="tituloProduto">🍔 Produto</h2>
+
+            <form id="formProduto" novalidate>
+                <input type="hidden" id="produtoId">
+
+                <div class="campo">
+                    <label for="nomeProduto">Nome do produto</label>
+                    <input type="text" id="nomeProduto" maxlength="60" required placeholder="Ex: X-Burger">
+                </div>
+
+                <div class="campo">
+                    <label for="precoProduto">Preço (R$)</label>
+                    <input type="text" id="precoProduto" inputmode="decimal"
+                           autocomplete="off" required placeholder="0,00">
+                    <p class="campo__ajuda">Aceita tanto vírgula (9,90) quanto ponto (9.90).</p>
+                </div>
+
+                <div class="campo">
+                    <label for="categoriaProduto">Categoria</label>
+                    <input type="text" id="categoriaProduto" list="listaCategorias"
+                           maxlength="30" required placeholder="Ex: bebidas" autocomplete="off">
+                    <datalist id="listaCategorias"></datalist>
+                    <p class="campo__ajuda">Digite uma existente ou crie outra. A primeira letra vira maiúscula na tela.</p>
+                </div>
+
+                <div class="campo">
+                    <label for="ativoProduto">
+                        <input type="checkbox" id="ativoProduto" checked>
+                        Produto disponível no cardápio
+                    </label>
+                    <p class="campo__ajuda">Desmarcado, ele some da comanda mas continua no histórico.</p>
+                </div>
+
+                <p id="erroProduto" class="erro" role="alert" hidden></p>
+
+                <div class="modal__botoes">
+                    <button type="button" class="btn btn--fantasma" data-fechar-modal>Cancelar</button>
+                    <button type="submit" class="btn btn--principal">Salvar produto</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- =========================================================
+         MODAL — FUNCIONÁRIO
+    ========================================================== -->
+    <div class="modal" id="modalFuncionario" role="dialog" aria-modal="true" aria-labelledby="tituloFuncionario" hidden>
+        <div class="modal__conteudo">
+            <h2 id="tituloFuncionario">👤 Funcionário</h2>
+
+            <form id="formFuncionario" novalidate>
+                <input type="hidden" id="funcionarioId">
+
+                <div class="campo">
+                    <label for="nomeFuncionario">Nome completo</label>
+                    <input type="text" id="nomeFuncionario" maxlength="60" required placeholder="Ex: Maria Souza">
+                </div>
+
+                <div class="campo">
+                    <label for="usuarioFuncionario">Usuário de acesso</label>
+                    <input type="text" id="usuarioFuncionario" maxlength="40" required
+                           autocomplete="off" placeholder="Ex: maria">
+                </div>
+
+                <div class="campo">
+                    <label for="senhaFuncionario">Senha</label>
+                    <input type="password" id="senhaFuncionario" minlength="4" maxlength="72"
+                           autocomplete="new-password" placeholder="Mínimo de 4 caracteres">
+                    <p class="campo__ajuda" id="ajudaSenha">
+                        Preencha somente quando quiser criar ou trocar a senha.
+                    </p>
+                </div>
+
+                <div class="campo">
+                    <label for="tipoFuncionario">Permissão</label>
+                    <select id="tipoFuncionario">
+                        <option value="funcionario">Funcionário — comandas e cozinha</option>
+                        <option value="admin">Administrador — tudo, incluindo cadastros e caixa</option>
+                    </select>
+                </div>
+
+                <p id="erroFuncionario" class="erro" role="alert" hidden></p>
+
+                <div class="modal__botoes">
+                    <button type="button" class="btn btn--fantasma" data-fechar-modal>Cancelar</button>
+                    <button type="submit" class="btn btn--principal">Salvar funcionário</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- =========================================================
+         MODAL — CONFIRMAÇÃO (genérico)
+    ========================================================== -->
+    <div class="modal" id="modalConfirmar" role="dialog" aria-modal="true" aria-labelledby="tituloConfirmar" hidden>
+        <div class="modal__conteudo">
+            <h2 id="tituloConfirmar">Confirmar</h2>
+            <p id="textoConfirmar" class="modal__texto"></p>
+
+            <div class="campo" id="campoMotivo" hidden>
+                <label for="motivoConfirmar">Motivo (obrigatório)</label>
+                <input type="text" id="motivoConfirmar" maxlength="80" placeholder="Ex: errado no caixa">
+            </div>
+
+            <p id="erroConfirmar" class="erro" role="alert" hidden></p>
+
+            <div class="modal__botoes">
+                <button type="button" class="btn btn--fantasma" data-fechar-modal>Voltar</button>
+                <button type="button" class="btn btn--perigo" id="btnConfirmarAcao">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =========================================================
+         TOASTS
+    ========================================================== -->
+    <div id="toasts" class="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
+
+
+    <!-- Área usada apenas na impressão -->
+    <div id="areaImpressao" class="area-impressao" aria-hidden="true"></div>
+
+
+    <script src="js/util.js"></script>
+    <script src="js/dados.js"></script>
+    <script src="js/negocio.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
