@@ -2,31 +2,23 @@
    Lina - Tutor de Inglês IA
    chave.js
    -------------------------------------------------------------
-   Este é o ÚNICO arquivo que você precisa mexer para ligar a IA.
+   ESTE ARQUIVO VAI PARA O GITHUB. DEIXE OS VALORES VAZIOS.
 
-   1) MODO SERVIDOR (recomendado)
-      A chave da IA fica NO SERVIDOR, nunca no navegador.
-      Rode "node server.js" na pasta e a Lina já conversa de verdade.
-      Se for publicar na internet, ponha aqui o endereço do seu
-      servidor, por exemplo:
+   NUNCA cole uma chave de verdade aqui: ela seria publicada.
+   A chave de verdade fica em um destes lugares:
+     1) variavel de ambiente  LINA_GEMINI_KEY / LINA_OPENROUTER_KEY
+     2) arquivo local-secret.js  (ignorado pelo git)
+     3) Configuracoes do app     (fica no localStorage do navegador)
 
-        window.LINA_API = "https://SEU-PROJETO.web.app";
-
-      Vazio: a Lina funciona no MODO BÁSICO (respostas prontas).
-
-   2) CHAVE NO NAVEGADOR (opcional)
-      Só se você não tiver servidor. A chave fica guardada
-      neste navegador (localStorage), nunca é enviada a lugar
-      nenhum além da API da IA.
-
-        window.CHAVE_IA = "AIza...";   // Gemini
-        window.CHAVE_IA = "sk-...";    // OpenRouter
-
-      Quem tem servidor NÃO precisa preencher isto.
+   Este e o UNICO arquivo que voce precisa mexer para dizer
+   ONDE esta a API. Sem mexer em mais nada.
    ============================================================= */
 
-/* Endereço da API. Vazio = modo básico. */
+/* Endereco da API. Vazio = modo basico (respostas prontas).
+   Servidor local:  "http://localhost:3000"
+   Firebase:        "https://SEU-PROJETO.web.app" */
 window.LINA_API = "";
 
-/* Chave da IA direto no navegador. Vazio = use o servidor. */
+/* Chave da IA direto no navegador. Vazio = use o servidor.
+   So use isto se voce NAO tem servidor. */
 window.CHAVE_IA = "";
