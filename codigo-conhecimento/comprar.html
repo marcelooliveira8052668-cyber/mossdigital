@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Código &amp; Conhecimento — Programação Web do HTML ao React | R$ 29,90</title>
+  <meta name="description" content="Livro didático de programação web: 57 páginas, 29 exercícios com gabarito, 21 laboratórios e 4 projetos completos. Do zero absoluto até React. PDF para download imediato.">
+  <link rel="canonical" href="./index.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23101d38'/><text x='16' y='22' font-size='15' font-family='Georgia' fill='%23c6a35b' text-anchor='middle'>C</text></svg>">
+
+  <style>
+    :root {
+      --azul-profundo: #101d38;
+      --azul-medio: #213d70;
+      --azul-claro: #e9f0fa;
+      --dourado: #c6a35b;
+      --dourado-claro: #e7d3a4;
+      --papel: #fffdf8;
+      --fundo: #e9edf3;
+      --texto: #253047;
+      --texto-suave: #657086;
+      --borda: #e5e0d5;
+      --fonte-texto: Georgia, "Times New Roman", serif;
+      --fonte-ui: Arial, Helvetica, sans-serif;
+      --raio: 12px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--fonte-ui);
+      color: var(--texto);
+      background: var(--fundo);
+      line-height: 1.6;
+    }
+
+    a { color: var(--azul-medio); }
+
+    .topo {
+      background: var(--azul-profundo);
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .topo__marca {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--fonte-texto);
+      font-size: 1.05rem;
+      color: #fff; text-decoration: none;
+    }
+    .topo__selo {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--dourado); color: var(--azul-profundo);
+      display: grid; place-items: center;
+      font-weight: 700; font-family: var(--fonte-ui);
+    }
+    .topo a { color: var(--dourado-claro); text-decoration: none; font-size: .92rem; }
+    .topo a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background:
+        radial-gradient(900px 400px at 15% -10%, rgba(198,163,91,.18), transparent 60%),
+        var(--azul-profundo);
+      color: #fff;
+      padding: 64px 0 72px;
+      text-align: center;
+    }
+    .hero__tag {
+      display: inline-block;
+      font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--dourado-claro);
+      border: 1px solid rgba(198,163,91,.45);
+      border-radius: 999px; padding: 6px 14px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: var(--fonte-texto);
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.15;
+      margin: 0 0 14px;
+      font-weight: 700;
+    }
+    .hero h1 em { color: var(--dourado); font-style: normal; }
+    .hero__sub {
+      max-width: 640px; margin: 0 auto 30px;
+      color: #cbd5e6; font-size: 1.08rem;
+    }
+    .hero__preco {
+      display: inline-flex; align-items: baseline; gap: 12px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(198,163,91,.35);
+      border-radius: var(--raio);
+      padding: 16px 28px; margin-bottom: 22px;
+      flex-wrap: wrap; justify-content: center;
+    }
+    .hero__preco s { color: #93a2bb; font-size: 1rem; }
+    .hero__preco strong {
+      font-family: var(--fonte-texto);
+      font-size: 2.2rem; color: var(--dourado); line-height: 1;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--dourado); color: var(--azul-profundo);
+      text-decoration: none; font-weight: 700;
+      padding: 16px 34px; border-radius: 999px;
+      font-size: 1.05rem;
+      border: none; cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 6px 20px rgba(198,163,91,.28);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(198,163,91,.36); }
+    .btn--fant {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,.4); box-shadow: none;
+    }
+    .btn--fant:hover { background: rgba(255,255,255,.07); }
+    .hero__acoes { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero__nota { margin-top: 18px; font-size: .88rem; color: #9fb0c9; }
+
+    /* ---------- SEÇÕES ---------- */
+    section { padding: 68px 0; }
+    section:nth-of-type(even) { background: var(--papel); }
+    .sec__cab { text-align: center; max-width: 640px; margin: 0 auto 44px; }
+    .sec__cab h2 {
+      font-family: var(--fonte-texto);
+      font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+      margin: 12px 0 10px; color: var(--azul-profundo);
+    }
+    .sec__cab p { color: var(--texto-suave); margin: 0; }
+    .rotulo {
+      font-size: .74rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--dourado); font-weight: 700;
+    }
+
+    /* ---------- CONTEÚDO ---------- */
+    .grade { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+    .cartao {
+      background: #fff; border: 1px solid var(--borda);
+      border-radius: var(--raio); padding: 24px 22px;
+    }
+    .cartao__ico {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: var(--azul-claro); color: var(--azul-medio);
+      display: grid; place-items: center; font-size: 1.3rem;
+      margin-bottom: 14px;
+    }
+    .cartao h3 { margin: 0 0 8px; font-size: 1.06rem; color: var(--azul-profundo); }
+    .cartao p { margin: 0; color: var(--texto-suave); font-size: .95rem; }
+
+    .numeros {
+      display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      margin-bottom: 44px;
+    }
+    .numero {
+      background: #fff; border: 1px solid var(--borda);
+      border-radius: var(--raio); padding: 20px 16px; text-align: center;
+    }
+    .numero b {
+      display: block; font-family: var(--fonte-texto);
+      font-size: 2rem; color: var(--azul-medio); line-height: 1.1;
+    }
+    .numero span { font-size: .88rem; color: var(--texto-suave); }
+
+    /* ---------- PASSOS ---------- */
+    .passos { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); counter-reset: passo; }
+    .passo { background: #fff; border: 1px solid var(--borda); border-radius: var(--raio); padding: 26px 22px; position: relative; }
+    .passo::before {
+      counter-increment: passo; content: counter(passo);
+      position: absolute; top: -14px; left: 22px;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--dourado); color: var(--azul-profundo);
+      display: grid; place-items: center; font-weight: 700; font-size: .95rem;
+    }
+    .passo h3 { margin: 10px 0 6px; font-size: 1.02rem; color: var(--azul-profundo); }
+    .passo p { margin: 0; color: var(--texto-suave); font-size: .94rem; }
+
+    /* ---------- PROJETOS ---------- */
+    .projetos { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+    .projeto {
+      background: var(--azul-profundo); color: #fff;
+      border-radius: var(--raio); padding: 24px 20px;
+      border-bottom: 3px solid var(--dourado);
+    }
+    .projeto h3 { margin: 0 0 8px; font-family: var(--fonte-texto); font-size: 1.08rem; color: var(--dourado-claro); }
+    .projeto p { margin: 0; font-size: .9rem; color: #b9c6da; }
+    .projeto span { display: block; margin-top: 12px; font-size: .78rem; color: #8fa1bd; text-transform: uppercase; letter-spacing: .08em; }
+
+    /* ---------- FAQ ---------- */
+    .faq { max-width: 720px; margin: 0 auto; }
+    .faq details {
+      background: #fff; border: 1px solid var(--borda);
+      border-radius: var(--raio); margin-bottom: 12px; padding: 4px 20px;
+    }
+    .faq summary {
+      cursor: pointer; padding: 16px 0; font-weight: 700;
+      color: var(--azul-profundo); list-style: none;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; float: right; color: var(--dourado); font-size: 1.3rem; line-height: 1; }
+    .faq details[open] summary::after { content: "\2212"; }
+    .faq details p { margin: 0 0 18px; color: var(--texto-suave); font-size: .96rem; }
+    .faq details strong { color: var(--texto); }
+
+    /* ---------- CHAMADA FINAL ---------- */
+    .final {
+      background:
+        radial-gradient(800px 340px at 85% 110%, rgba(198,163,91,.2), transparent 60%),
+        var(--azul-profundo);
+      color: #fff; text-align: center;
+    }
+    .final h2 { font-family: var(--fonte-texto); font-size: clamp(1.6rem, 3.4vw, 2.2rem); margin: 0 0 10px; }
+    .final p { color: #c3d0e3; max-width: 560px; margin: 0 auto 26px; }
+    .final small { display: block; margin-top: 16px; color: #93a2bb; }
+
+    /* ---------- RODAPÉ ---------- */
+    .rodape { background: #0b1428; color: #8fa1bd; text-align: center; padding: 26px 20px; font-size: .86rem; }
+    .rodape a { color: var(--dourado-claro); }
+
+    @media (max-width: 560px) {
+      .hero { padding: 48px 0 56px; }
+      .hero__preco strong { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="topo">
+    <a class="topo__marca" href="./index.html">
+      <span class="topo__selo">C</span>
+      Código &amp; Conhecimento
+    </a>
+    <a href="./index.html">&larr; Voltar para a leitura online</a>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="hero__tag">Coleção Educação &amp; Tecnologia</span>
+      <h1>Código &amp; Conhecimento<br><em>Programação Web: do HTML ao React</em></h1>
+      <p class="hero__sub">
+        Do zero absoluto ao seu primeiro projeto em React. Explicações passo a passo,
+        exercícios com gabarito comentado e 4 projetos completos — na linguagem de quem
+        está começando.
+      </p>
+
+      <div class="hero__preco">
+        <strong>R$ 29,90</strong>
+        <span>pagamento único &middot; PDF imediato</span>
+      </div>
+
+      <div class="hero__acoes">
+        <a class="btn" href="https://pay.kiwify.com.br/GCuEHes" target="_blank" rel="noopener">Comprar agora</a>
+        <a class="btn btn--fant" href="./index.html">Ler online grátis</a>
+      </div>
+
+      <p class="hero__nota">PDF para download imediato &middot; Leitura online liberada na hora da compra</p>
+    </div>
+  </section>
+
+  <!-- ============ NÚMEROS ============ -->
+  <section>
+    <div class="wrap">
+      <div class="numeros">
+        <div class="numero"><b>57</b><span>páginas de leitura</span></div>
+        <div class="numero"><b>6</b><span>capítulos, do zero ao React</span></div>
+        <div class="numero"><b>29</b><span>exercícios práticos</span></div>
+        <div class="numero"><b>35</b><span>gabaritos comentados</span></div>
+        <div class="numero"><b>21</b><span>laboratórios interativos</span></div>
+        <div class="numero"><b>4</b><span>projetos completos</span></div>
+      </div>
+
+      <div class="sec__cab">
+        <span class="rotulo">O que você recebe</span>
+        <h2>Um livro feito para você terminar</h2>
+        <p>Não é um e-book de referência para ler e esquecer. Cada conceito vem com exercício,
+           resposta comentada e projeto para colocar no portfólio.</p>
+      </div>
+
+      <div class="grade">
+        <div class="cartao">
+          <span class="cartao__ico">📄</span>
+          <h3>PDF completo para baixar</h3>
+          <p>Paginado, otimizado para tela e para impressão. Estude offline, anote à mão e leve para a mesa.</p>
+        </div>
+        <div class="cartao">
+          <span class="cartao__ico">💻</span>
+          <h3>Versão online interativa</h3>
+          <p>Leitura página a página, sumário clicável, navegação pelo teclado e laboratórios que executam na hora.</p>
+        </div>
+        <div class="cartao">
+          <span class="cartao__ico">✅</span>
+          <h3>Gabarito comentado</h3>
+          <p>Todo exercício tem a resposta — e a resposta vem comentada linha por linha, mostrando o raciocínio.</p>
+        </div>
+        <div class="cartao">
+          <span class="cartao__ico">🧪</span>
+          <h3>21 laboratórios</h3>
+          <p>Espaços práticos para mexer: ajustar o código, ver o resultado e entender o que cada linha faz.</p>
+        </div>
+        <div class="cartao">
+          <span class="cartao__ico">🏗️</span>
+          <h3>4 projetos de ponta a ponta</h3>
+          <p>Do HTML semântico ao gerenciador de tarefas em React, com planejamento, código e critérios de avaliação.</p>
+        </div>
+        <div class="cartao">
+          <span class="cartao__ico">🎓</span>
+          <h3>Guia do Professor</h3>
+          <p>Como usar o livro em sala de aula, avaliar os projetos da turma e aplicar atividades extras.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJETOS ============ -->
+  <section>
+    <div class="wrap">
+      <div class="sec__cab">
+        <span class="rotulo">Na prática</span>
+        <h2>Você sai com 4 projetos prontos</h2>
+        <p>Cada projeto é fechado — não é exercício solto. Você constrói, avalia e põe no seu portfólio.</p>
+      </div>
+
+      <div class="projetos">
+        <div class="projeto">
+          <h3>Portal da Escola</h3>
+          <p>HTML semântico completo: estrutura, links, imagens, tabelas, formulários e acessibilidade.</p>
+          <span>Capítulo 2 &middot; HTML</span>
+        </div>
+        <div class="projeto">
+          <h3>Plataforma de Cursos</h3>
+          <p>Layout profissional com Flexbox, Grid e responsividade — do zero, com box model e tipografia.</p>
+          <span>Capítulo 3 &middot; CSS</span>
+        </div>
+        <div class="projeto">
+          <h3>Projeto Integrador</h3>
+          <p>Interatividade real: componentes, props, estado e efeitos connected a uma interface de verdade.</p>
+          <span>Capítulo 4 &middot; React</span>
+        </div>
+        <div class="projeto">
+          <h3>Gerenciador de Tarefas</h3>
+          <p>Projeto final: rotas, consumo de API, formulários controlados, contexto e deploy.</p>
+          <span>Capítulo 5 &middot; React avançado</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMO FUNCIONA ============ -->
+  <section>
+    <div class="wrap">
+      <div class="sec__cab">
+        <span class="rotulo">Como funciona</span>
+        <h2>Três passos e você começa</h2>
+      </div>
+
+      <div class="passos">
+        <div class="passo">
+          <h3>Você faz a compra</h3>
+          <p>Pagamento único por R$ 29,90, noPix ou cartão. A confirmação é imediata.</p>
+        </div>
+        <div class="passo">
+          <h3>O PDF chega na hora</h3>
+          <p>Assim que o pagamento é confirmado, o download do livro em PDF é liberado para o seu e-mail.</p>
+        </div>
+        <div class="passo">
+          <h3>Você estuda e constrói</h3>
+          <p>Do capítulo 0 ao 5, na sua rythme. Cada capítulo fecha com um projeto pronto para o portfólio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARA QUEM É ============ -->
+  <section>
+    <div class="wrap">
+      <div class="sec__cab">
+        <span class="rotulo">Para quem é</span>
+        <h2>Se você se reconhece em um destes, é para você</h2>
+      </div>
+
+      <div class="grade">
+        <div class="cartao">
+          <span class="cartao__ico">🌱</span>
+          <h3>Nunca programou</h3>
+          <p>O capítulo 0 começa no absoluto zero: o que é programar, como o computador pensa e como preparar o ambiente.</p>
+        </div>
+        <div class="cartao">
+          <span class="cartao__ico">🎓</span>
+          <h3>Está no técnico ou na faculdade</h3>
+          <p>Um roteiro com ordem definida, exercícios e gabarito — para não ficar perdido no meio do caminho.</p>
+        </div>
+        <div class="cartao">
+          <span class="cartao__ico">👩‍🏫</span>
+          <h3>É professor</h3>
+          <p>Há um Guia do Professor com cronograma, avaliação de projetos e atividades extras para a turma.</p>
+        </div>
+        <div class="cartao">
+          <span class="cartao__ico">💼</span>
+          <h3>Trabalha com web e quer sair do básico</h3>
+          <p>Você já faz HTML e CSS e precisa de React bem explicado: estado, efeitos, rotas, API e deploy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section>
+    <div class="wrap">
+      <div class="sec__cab">
+        <span class="rotulo">Dúvidas</span>
+        <h2>Perguntas antes de comprar</h2>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>O PDF é o livro inteiro?</summary>
+          <p>Sim. O PDF traz o conteúdo completo do livro, do capítulo 0 ao 5, com os exercícios e os gabaritos comentados — exatamente o que você lê aqui, em formato paginado.</p>
+        </details>
+
+        <details>
+          <summary>Por que pagar se eu consigo ler tudo no site?</summary>
+          <p>A leitura online é de graça e continua disponível — foi para você conhecer o material sem risco. O PDF é a versão para estudar de verdade: paginada, feita para imprimir, para annotate com caneta e para ler offline, no ônibus ou no computador sem internet.</p>
+        </details>
+
+        <details>
+          <summary>Recebo o livro na hora?</summary>
+          <p>Sim. O download é liberado assim que o pagamento é confirmado e o link chega no seu e-mail. É um produto digital, então não tem frete nem prazo de entrega.</p>
+        </details>
+
+        <details>
+          <summary>Se eu não gostar, tem reembolso?</summary>
+          <p>Tem. Você tem <strong>7 dias para pedir o reembolso</strong> após a compra, conforme o Código de Defesa do Consumidor (art. 49, para compras online). O pedido é feito na própria plataforma de pagamento, sem burocracia.</p>
+        </details>
+
+        <details>
+          <summary>Posso usar em sala de aula?</summary>
+          <p>Pode. O livro autoriza o uso educacional em atividades de sala de aula, estudos individuais e projetos educacionais, desde que a fonte seja citada. Para uso comercial ou venda de cópias, entre em contato antes.</p>
+        </details>
+
+        <details>
+          <summary>Preciso saber programar para começar?</summary>
+          <p>Não. O capítulo 0 é exatamente para quem nunca escreveu uma linha de código. Se você já tem noção de HTML e CSS, pode pular direto para o capítulo 4.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAMADA FINAL ============ -->
+  <section class="final">
+    <div class="wrap">
+      <h2>Comece pelo capítulo 0</h2>
+      <p>57 páginas, 29 exercícios, 21 laboratórios e 4 projetos. Tudo que você precisa
+         para sair do zero e colocar um site no seu portfólio.</p>
+      <a class="btn" href="https://pay.kiwify.com.br/GCuEHes" target="_blank" rel="noopener">Comprar por R$ 29,90</a>
+      <small>Download imediato &middot; 7 dias para reembolso &middot; Pagamento único</small>
+    </div>
+  </section>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="rodape">
+    <p>
+      <strong>Código &amp; Conhecimento</strong> — Programação Web: do HTML ao React &middot; 1ª edição, 2026<br>
+      © 2026 Marcelo Oliveira. Todos os direitos reservados.<br>
+      <a href="./index.html">Ler o livro online</a>
+    </p>
+  </footer>
+
+</body>
+</html>
