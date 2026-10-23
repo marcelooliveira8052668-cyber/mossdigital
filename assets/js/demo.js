@@ -15,6 +15,18 @@
   const presets = window.SITE_PRESETS || {};
   const ordem   = window.SITE_PRESET_LIST || [];
 
+  /* Cabeçalho colado junto no config gerado, para o cliente não ficar sem guia */
+  const CABECALHO_CONFIG =
+    '/* ==========================================================================\n' +
+    '   CONFIGURACAO DO SITE — EDITE AQUI\n' +
+    '   ==========================================================================\n' +
+    '   Este e o unico arquivo que voce precisa mexer. Cada bloco abaixo esta\n' +
+    '   comentado. Troque o valor entre aspas, salve, e o site ja atualiza.\n' +
+    '\n' +
+    '   Nao apague as chaves { }, as virgulas e as aspas.\n' +
+    '   Se algo parar de funcionar, desfaca a alteracao (Ctrl+Z).\n' +
+    '   ========================================================================== */\n';
+
   const params  = new URLSearchParams(location.search);
   const atual   = params.get('preset') || 'lanchonete';
 
@@ -66,13 +78,41 @@
     if (e.key === 'Escape') bar.classList.remove('is-open');
   });
 
+  /* Insere os comentários de seção num JSON recém-gerado, para o
+     arquivo que o cliente cola continuar com a mesma guia do config.js */
+  function comentar(json) {
+    const mapa = {
+      brand:  'NOME E MARCA — nome do negocio, slogan, logo e favicon',
+      theme:  'CORES E FONTES — troque "primary" e o site inteiro muda de cor',
+      meta:   'O QUE APARECE NO GOOGLE — titulo e descricao da aba e da busca',
+      dataSource: 'BANCO DE DADOS — "local" guarda no proprio navegador',
+      nav:    'MENU — os itens do topo e para onde cada um leva',
+      hero:   'PRIMEIRA DOBRA — titulo, texto da capa e foto principal',
+      stats:  'NUMEROS — os numeros grandes com legenda',
+      sections: 'TITULOS — o titulo de cada secao do site',
+      services: 'SERVICOS / PRODUTOS — cada card. "price" e o preco que aparece nele',
+      portfolioFilters: 'CATEGORIAS DA GALERIA — os filtros acima das fotos',
+      portfolio: 'GALERIA DE FOTOS — troque "image" para trocar a foto',
+      about:  'SOBRE — a historia do negocio e a foto do lado',
+      contact: 'CONTATO — telefone, WhatsApp, e-mail, endereco, horario e mapa',
+      footer: 'RODAPE — textos do fim da pagina: marca, links e copyright'
+    };
+
+    return json.split('\n').map(function (linha) {
+      const m = linha.match(/^ {2}"(\w+)"\s*:/);
+      if (!m || !mapa[m[1]]) return linha;
+      return '// ' + mapa[m[1]] + '\n' + linha;
+    }).join('\n');
+  }
+
   /* Copiar configuracao do preset atual */
   copyB.addEventListener('click', function () {
     const preset = presets[atual];
     if (!preset) return;
 
     const texto =
-      'window.SITE_CONFIG = ' + JSON.stringify(preset, null, 2) + ';\n';
+      CABECALHO_CONFIG +
+      'window.SITE_CONFIG = ' + comentar(JSON.stringify(preset, null, 2)) + ';\n';
 
     const feito = function () {
       copyB.textContent = 'Copiado!';

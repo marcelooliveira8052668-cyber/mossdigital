@@ -19,7 +19,7 @@ Site no ar: <https://marcelooliveira8052668-cyber.github.io/template-site-profes
       Está certo?
 - [ ] **Nome e cargo** — "Prof. Marcelo Oliveira". Confere com o que você
       quer usar profissionalmente.
-- [ ] **Rodapé** ainda diz "São Paulo — SP" e "Respondo em até 2 horas".
+- [ ] **Rodapé** ainda diz "São Paulo — SP".
 
 ---
 

@@ -109,6 +109,7 @@
      ------------------------------------------------------------------ */
   const wa = 'https://wa.me/' + EU.whats;
   const msg = encodeURIComponent('Olá, Prof. Marcelo! Vi seu trabalho e quero um site para o meu negócio.');
+  const msgAg = encodeURIComponent('Olá, Prof. Marcelo! Desenvolvi e gostaria de saber as condições de licença dos projetos do seu portfólio.');
 
   ['waTop', 'waHero', 'waPreco', 'waFinal', 'rodWa'].forEach(function (id) {
     const el = document.getElementById(id);
@@ -117,6 +118,14 @@
     el.target = '_blank';
     el.rel = 'noopener';
   });
+
+  // Seção de agências usa outra mensagem
+  const waAg = document.getElementById('waAgencia');
+  if (waAg) {
+    waAg.href = wa + '?text=' + msgAg;
+    waAg.target = '_blank';
+    waAg.rel = 'noopener';
+  }
 
   // Assinatura no rodapé
   const quem = document.querySelector('.rod__marca p');

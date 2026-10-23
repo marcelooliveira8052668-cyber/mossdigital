@@ -1,4 +1,14 @@
+/* ==========================================================================
+   CONFIGURACAO DO SITE — EDITE AQUI
+   ==========================================================================
+   Este e o unico arquivo que voce precisa mexer. Cada bloco abaixo esta
+   comentado. Troque o valor entre aspas, salve, e o site ja atualiza.
+
+   Nao apague as chaves { }, as virgulas e as aspas.
+   Se algo parar de funcionar, desfaca a alteracao (Ctrl+Z).
+   ========================================================================== */
 window.SITE_CONFIG = {
+// NOME E MARCA — nome do negocio, slogan, logo e favicon
   "brand": {
     "name": "Lumière",
     "tagline": "Clínica de estética",
@@ -6,6 +16,7 @@ window.SITE_CONFIG = {
     "logoDark": "assets/img/est-logo-light.svg",
     "favicon": "assets/img/est-favicon.svg"
   },
+// CORES E FONTES — troque "primary" e o site inteiro muda de cor
   "theme": {
     "primary": "#9d174d",
     "primaryDark": "#701a45",
@@ -17,11 +28,13 @@ window.SITE_CONFIG = {
     "fontHeading": "'Playfair Display', Georgia, serif",
     "fontBody": "'Inter', system-ui, -apple-system, sans-serif"
   },
+// O QUE APARECE NO GOOGLE — titulo e descricao da aba e da busca
   "meta": {
     "title": "Lumière — Clínica de Estética em São Paulo",
     "description": "Tratamentos de estética com equipe médica, desde 2012. Limpeza de pele, Harmonização, depilação a laser e muito mais. Agende pelo WhatsApp.",
     "ogImage": "assets/img/est-hero.svg"
   },
+// BANCO DE DADOS — "local" guarda no proprio navegador. So troque se tiver API
   "dataSource": {
     "provider": "local",
     "rest": {
@@ -39,6 +52,7 @@ window.SITE_CONFIG = {
       "services"
     ]
   },
+// MENU — os itens do topo e para onde cada um leva
   "nav": [
     {
       "label": "Início",
@@ -61,6 +75,7 @@ window.SITE_CONFIG = {
       "href": "#contato"
     }
   ],
+// PRIMEIRA DOBRA — titulo, texto da capa e foto principal
   "hero": {
     "tag": "CNO · Equipe médica · 4,9 no Google",
     "title": "Cuidado que se nota na pele e na confiança",
@@ -75,6 +90,7 @@ window.SITE_CONFIG = {
     },
     "image": "assets/img/fotos/heroi-estetica.jpg"
   },
+// NUMEROS — os numeros grandes com legenda (ex.: anos de casa, clientes)
   "stats": [
     {
       "value": 14,
@@ -97,6 +113,7 @@ window.SITE_CONFIG = {
       "label": "Especialistas"
     }
   ],
+// TITULOS — o titulo de cada secao do site
   "sections": {
     "services": {
       "tag": "Tratamentos",
@@ -118,6 +135,7 @@ window.SITE_CONFIG = {
       "description": "A primeira consulta é gratuita e sem compromisso. Escolha o melhor dia e horário para você."
     }
   },
+// SERVICOS / PRODUTOS — cada card. "price" e o preco que aparece nele
   "services": [
     {
       "icon": "star",
@@ -290,9 +308,11 @@ window.SITE_CONFIG = {
       }
     }
   ],
+// CATEGORIAS DA GALERIA — os filtros que ficam acima das fotos
   "portfolioFilters": [
     "Todos"
   ],
+// GALERIA DE FOTOS — troque o valor de "image" para trocar a foto
   "portfolio": [
     {
       "title": "Nosso espaço",
@@ -364,6 +384,7 @@ window.SITE_CONFIG = {
       }
     }
   ],
+// SOBRE — a historia do negocio e a foto do lado
   "about": {
     "tag": "Nossa história",
     "title": "Estética séria começa em 2012",
@@ -391,6 +412,7 @@ window.SITE_CONFIG = {
       "href": "#contato"
     }
   },
+// CONTATO — telefone, WhatsApp, e-mail, endereco, horario e mapa
   "contact": {
     "tag": "Agendamento",
     "title": "Agende sua avaliação",
@@ -484,6 +506,7 @@ window.SITE_CONFIG = {
       }
     ]
   },
+// RODAPE — textos do fim da pagina: marca, links e copyright
   "footer": {
     "description": "Clínica de estética com equipe médica, desde 2012. Avaliação gratuita e protocolo sempre personalizado.",
     "credit": "© 2026 Lumière Clínica de Estética. Todos os direitos reservados."

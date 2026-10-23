@@ -142,6 +142,17 @@ p { margin: 0; }
 .preco__txt p strong { color: var(--texto); }
 .preco__nota { font-size: .88rem; padding-top: 14px; border-top: 1px dashed var(--linha); }
 
+/* ---------- para quem desenvolve (agências) ---------- */
+.agencia { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px; }
+.agencia__item {
+  background: var(--branco); border: 1px solid var(--linha);
+  border-radius: var(--raio); padding: 28px 26px;
+}
+.agencia__item h3 { font-size: 1.05rem; margin-bottom: 10px; font-family: var(--fonte); }
+.agencia__item p { font-size: .92rem; color: var(--suave); line-height: 1.65; }
+.agencia__cta { text-align: center; margin-top: 42px; }
+.agencia__nota { font-size: .84rem; color: var(--suave); margin-top: 14px; }
+
 /* ---------- introdução (manifesto) ---------- */
 .hero__intro {
   max-width: 720px;
@@ -403,6 +414,16 @@ body {
 }
 
 /* ---------- responsivo ---------- */
+/* 6 itens no menu: aperta antes de virar hambúrguer (940px) */
+@media (max-width: 1240px) {
+  .nav { gap: 16px; }
+  .nav a { font-size: .88rem; }
+}
+@media (max-width: 1100px) {
+  /* o botão do topo sai; o do herói continua à mão */
+  .cab__in .btn { display: none; }
+}
+
 @media (max-width: 940px) {
   .hero__grid { grid-template-columns: 1fr; gap: 40px; }
   .preco__grid { grid-template-columns: 1fr; gap: 36px; }
@@ -420,7 +441,6 @@ body {
   .nav a::after { display: none; }
   .hamb { display: grid; }
   .cab__in { flex-wrap: wrap; }
-  .cab__in .btn { display: none; }
 }
 
 @media (max-width: 560px) {
