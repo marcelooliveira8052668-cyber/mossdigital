@@ -328,32 +328,47 @@ function decidirMedo(f) {
     f.dir = lista[(Math.random() * lista.length) | 0];
 }
 
-// caminho minimo por busca em largura: os olhos sempre acham a porta,
-// mesmo contornando o bloco central (o guloso daria voltas infinitas)
+// caminho minimo para a porta: mapa de distancias calculado a partir da
+// porta (busca em largura reversa). A distancia so diminui a cada decisao,
+// entao os olhos nunca ficam em loop nem presos contornando o bloco central.
 function direcaoOlhos(f) {
-    const tx = tileX(f.x), ty = tileY(f.y);
     const alvo = JG.posPorta;
-    const visto = new Set([ty * 100 + tx]);
-    const fila = [[tx, ty, null]];
+    const dist = new Map();
+    dist.set(alvo.y * 100 + alvo.x, 0);
+    const fila = [[alvo.x, alvo.y]];
     while (fila.length) {
-        const item = fila.shift();
-        const x = item[0], y = item[1], primeira = item[2];
-        if (x === alvo.x && y === alvo.y) return primeira || f.dir;
+        const p = fila.shift();
+        const d0 = dist.get(p[1] * 100 + p[0]);
         for (const nome of ORDEM_TURNO) {
             const d = DIRS[nome];
-            let nx = x + d.x, ny = y + d.y;
+            let nx = p[0] + d.x, ny = p[1] + d.y;
             if (ny < 0 || ny >= ROWS) continue;
             if (nx < 0 || nx >= COLS) {
                 if (ny !== TUNEL) continue;
                 nx = (nx + COLS) % COLS; // tunel lateral
             }
             const k = ny * 100 + nx;
-            if (visto.has(k) || !celulaLivre(nx, ny, "olhos")) continue;
-            visto.add(k);
-            fila.push([nx, ny, primeira === null && x === tx && y === ty ? nome : primeira]);
+            if (dist.has(k) || !celulaLivre(nx, ny, "olhos")) continue;
+            dist.set(k, d0 + 1);
+            fila.push([nx, ny]);
         }
     }
-    return f.dir; // sem caminho (nao deve acontecer): segue reto
+    const tx = tileX(f.x), ty = tileY(f.y);
+    const meu = dist.get(ty * 100 + tx);
+    if (meu === undefined) return f.dir; // sem caminho: segue reto
+    let melhor = null, melhorD = meu;
+    for (const nome of ORDEM_TURNO) {
+        const d = DIRS[nome];
+        let nx = tx + d.x, ny = ty + d.y;
+        if (ny < 0 || ny >= ROWS) continue;
+        if (nx < 0 || nx >= COLS) {
+            if (ny !== TUNEL) continue;
+            nx = (nx + COLS) % COLS;
+        }
+        const dd = dist.get(ny * 100 + nx);
+        if (dd !== undefined && dd < melhorD) { melhorD = dd; melhor = nome; }
+    }
+    return melhor || f.dir;
 }
 
 function atualizarFantasma(f) {
@@ -500,6 +515,7 @@ function ligarMedo() {
         if (f.estado === "livre") {
             f.estado = "medo";
             f.dir = DIRS[f.dir].op;
+            f.tileDec = null;
         }
     }
     Som.tocar("pastilha");
@@ -561,6 +577,7 @@ function colisoes() {
             mostrarPopup(f.x, f.y - TS / 2, String(pontos), "#00e5ff");
             f.estado = "olhos";
             f.dir = DIRS[f.dir].op;
+            f.tileDec = null; // os olhos decidem o caminho do zero
             Som.tocar("fantasma");
         } else {
             comecarMorte();
@@ -874,24 +891,43 @@ function desenhar() {
     const modoFim = JG.modo === "fimfase";
     const piscarFim = modoFim && JG.temporizador > 1.6 && Math.floor(JG.tempoTotal * 8) % 2 === 0;
 
-    // paredes (blocos neon com cantos arredondados)
+    // paredes: blocos chapados + contorno neon so nas bordas externas
+    const corParede = piscarFim ? "#4a1260" : "#241a86";
+    const corBorda = piscarFim ? "#ff2bd6" : "#7b6bff";
+    ctx.fillStyle = corParede;
     for (let y = 0; y < ROWS; y++) {
         for (let x = 0; x < COLS; x++) {
-            const cel = g[y][x];
+            if (g[y][x].t === TIPO.PAREDE) ctx.fillRect(x * TS, y * TS, TS, TS);
+        }
+    }
+    const ehParede = (x, y) => x >= 0 && x < COLS && y >= 0 && y < ROWS && g[y][x].t === TIPO.PAREDE;
+    ctx.strokeStyle = corBorda;
+    ctx.lineWidth = 2.5;
+    ctx.shadowColor = "rgba(123,107,255,0.55)";
+    ctx.shadowBlur = 5;
+    ctx.beginPath();
+    for (let y = 0; y < ROWS; y++) {
+        for (let x = 0; x < COLS; x++) {
+            if (g[y][x].t !== TIPO.PAREDE) continue;
             const px = x * TS, py = y * TS;
-            if (cel.t === TIPO.PAREDE) {
-                ctx.fillStyle = piscarFim ? "#3d0f4f" : "#171153";
-                ctx.strokeStyle = piscarFim ? "#ff2bd6" : "#4f3cff";
-                ctx.lineWidth = 2;
-                cantos(px, py, 5);
-                ctx.fill();
-                ctx.stroke();
-            } else if (cel.t === TIPO.PORTA) {
+            if (!ehParede(x, y - 1)) { ctx.moveTo(px, py + 1.4); ctx.lineTo(px + TS, py + 1.4); }
+            if (!ehParede(x, y + 1)) { ctx.moveTo(px, py + TS - 1.4); ctx.lineTo(px + TS, py + TS - 1.4); }
+            if (!ehParede(x - 1, y)) { ctx.moveTo(px + 1.4, py); ctx.lineTo(px + 1.4, py + TS); }
+            if (!ehParede(x + 1, y)) { ctx.moveTo(px + TS - 1.4, py); ctx.lineTo(px + TS - 1.4, py + TS); }
+        }
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // porta da casa dos fantasmas
+    for (let y = 0; y < ROWS; y++) {
+        for (let x = 0; x < COLS; x++) {
+            if (g[y][x].t === TIPO.PORTA) {
                 ctx.strokeStyle = "#ff9ee2";
                 ctx.lineWidth = 3;
                 ctx.beginPath();
-                ctx.moveTo(px + 2, py + TS / 2);
-                ctx.lineTo(px + TS - 2, py + TS / 2);
+                ctx.moveTo(x * TS + 2, y * TS + TS / 2);
+                ctx.lineTo(x * TS + TS - 2, y * TS + TS / 2);
                 ctx.stroke();
             }
         }
@@ -934,17 +970,6 @@ function desenhar() {
         ctx.globalAlpha = 1;
     }
     ctx.textAlign = "start";
-}
-
-// retângulo com cantos arredondados só nas bordas externas (visual de bloco)
-function cantos(px, py, r) {
-    ctx.beginPath();
-    ctx.moveTo(px + r, py);
-    ctx.arcTo(px + TS, py, px + TS, py + TS, r);
-    ctx.arcTo(px + TS, py + TS, px, py + TS, r);
-    ctx.arcTo(px, py + TS, px, py, r);
-    ctx.arcTo(px, py, px + TS, py, r);
-    ctx.closePath();
 }
 
 function desenharPacman() {
@@ -1056,7 +1081,9 @@ function passoSimulacao() {
                 JG.medo -= PASSO;
                 if (JG.medo <= 0) {
                     JG.medo = 0;
-                    for (const f of JG.fantasmas) if (f.estado === "medo") f.estado = "livre";
+                    for (const f of JG.fantasmas) {
+                        if (f.estado === "medo") { f.estado = "livre"; f.tileDec = null; }
+                    }
                 }
             }
             atualizarCiclo();
@@ -1174,6 +1201,7 @@ window.__teste = {
         JG.temporizador = 0.02;
         passoSimulacao();
         JG.pacman.dir = "cima"; // para cima = parede: nao come nada sem querer
+        JG.congelar = true;     // teste: so a movimentacao natural do inicio
     },
     modo() { return JG.modo; },
     pontos() { return JG.pontos; },
