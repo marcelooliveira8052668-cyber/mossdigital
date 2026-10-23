@@ -25,15 +25,25 @@ Site no ar: <https://marcelooliveira8052668-cyber.github.io/template-site-profes
 
 ## Detalhes que valem conferir
 
-- [ ] **Contagem de projetos** — o número no hero e na prova social (hoje `26`)
-      precisa bater com a quantidade real de cards em `assets/js/portfolio.js`.
-      Hoje são **23 presets + 3 projetos reais = 26**.
+- [ ] **Contagem de projetos** — os números no site (hoje `13 projetos no ar`
+      e `23 modelos prontos`) agora são **calculados pelo script**, então sozinhos
+      ficam certos. Ao adicionar projeto, é só entrar na lista `REAIS` ou
+      `MODELOS` de `assets/js/portfolio.js`.
 - [ ] **Ano do rodapé** é automático (`© 2026`), não precisa mexer.
 
 ---
 
 ## Já resolvido
 
+- [x] **Posicionamento do herói** — saiu o "a partir de R$ 400" da primeira dobra.
+      O herói agora fala de resultado (site que traz cliente) e o preço foi para
+      a seção `#preco`, com o mesmo card e o texto do que entra / não entra.
+- [x] **Projetos reais separados dos modelos** — duas seções: `#reais` (13, no ar)
+      e `#exemplos` (23 modelos prontos). O cliente vê a diferença na hora.
+- [x] **PAC-MAN//NEON no portfólio** — pasta `pacman/`, card em `REAIS` e capa
+      `assets/img/fotos/heroi-pacman.svg`.
+- [x] **Contagens automáticas** — a legenda e os números vêm do tamanho das
+      listas do `portfolio.js`, sem número fixo para esquecer.
 - [x] **Decidir qual site fica** — `index.html` é a versão oficial (tem manifesto,
       card de "não entra nos R$ 400" e FAQ refinado). `portfolio.html` virou um
       redirecionamento para ele, então links antigos continuam funcionando.

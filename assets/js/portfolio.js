@@ -19,9 +19,9 @@
   };
 
   /* ------------------------------------------------------------------
-     EXEMPLOS — cada um aponta para um preset do template
+     MODELOS PRONTOS — 23 nichos do template, abrem no demo.html
      ------------------------------------------------------------------ */
-  const EXEMPLOS = [
+  const MODELOS = [
     { id: 'lanchonete',  emoji: '🍔', foto: 'assets/img/fotos/heroi-lanchonete.jpg', nome: 'Lanchonete',         desc: 'Cardápio com preço e pedido pelo WhatsApp' },
     { id: 'pizzaria',    emoji: '🍕', foto: 'assets/img/fotos/heroi-pizzaria.jpg', nome: 'Pizzaria',           desc: 'Forno a lenha, cardápio e reserva de mesa' },
     { id: 'padaria',     emoji: '🥐', foto: 'assets/img/fotos/heroi-padaria.jpg', nome: 'Padaria e café',     desc: 'Cardápio da manhã e encomenda para negócio' },
@@ -44,49 +44,64 @@
     { id: 'veterinario',  emoji: '🐾', foto: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&q=80', nome: 'Clínica veterinária',    desc: 'Consultas, vacinas e emergência 24h' },
     { id: 'psicologo',    emoji: '🧠', foto: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80', nome: 'Psicólogo',              desc: 'Terapia individual, casal e online' },
     { id: 'nutricionista', emoji: '🥗', foto: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80', nome: 'Nutricionista',          desc: 'Planos alimentares personalizados' },
-    { id: 'arquiteto',    emoji: '📐', foto: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', nome: 'Arquiteto',              desc: 'Projetos residenciais e comerciais' },
-    { id: 'livraria',   emoji: '📚', foto: 'assets/img/fotos/heroi-livraria.jpg', nome: 'M.O Livraria',       desc: 'Livraria online com catálogo, carrinho, checkout e WhatsApp', link: 'livraria-mo/index.html' },
-    { id: 'educaenem',  emoji: '🎓', foto: 'assets/img/fotos/heroi-educaenem.jpg', nome: 'EducaEnem',          desc: 'Curso online do ENEM: aulas, PDFs, simulados e área do aluno', link: 'educaenem/index.html' },
-    { id: 'conhecimento', emoji: '📘', foto: 'assets/img/fotos/heroi-codigo.jpg', nome: 'Código & Conhecimento', desc: 'Livro didático de programação web, do HTML ao React', link: 'codigo-conhecimento/index.html' },
-    { id: 'nfcontrol', emoji: '📦', foto: 'assets/img/fotos/heroi-nfcontrol.jpg', nome: 'NF Control', desc: 'Sistema de notas fiscais, estoque, financeiro e auditoria', link: 'nf-control/index.html' },
-    { id: 'gerador', emoji: '🛠️', foto: 'assets/img/fotos/heroi-gerador.jpg', nome: 'Gerador de Portfólio', desc: 'Ferramenta que monta o site do cliente em 20 minutos, sem código', link: 'gerador-portfolio/index.html' },
-    { id: 'tutor', emoji: '🎧', foto: 'assets/img/fotos/heroi-tutor.jpg', nome: 'Lina — Tutor de Inglês', desc: 'App de inglês com IA: voz, cenários, correção de erros e XP', link: 'tutor-ia/index.html' },
-    { id: 'skillmatch', emoji: '🔍', foto: 'assets/img/fotos/heroi-skillmatch.jpg', nome: 'SkillMatch', desc: 'Cruza suas habilidades com cada vaga e monta um plano de estudo', link: 'skillmatch/index.html' },
-    { id: 'comandas', emoji: '🧾', foto: 'assets/img/fotos/heroi-comandas.jpg', nome: 'Comanda Fácil', desc: 'Comandas, cozinha e caixa: sistema completo para restaurantes e lanchonetes', link: 'comandas/index.html' },
-
-    { id: 'lojavirtual', emoji: '🛒', foto: 'assets/img/fotos/heroi-loja.jpg', nome: 'NEXA Store', desc: 'Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix, crédito e débito', link: 'loja-virtual/index.html' },
-    { id: 'elaine', emoji: '🧠', foto: 'assets/img/fotos/heroi-elaine.jpg', nome: 'Elaine & Sandra', desc: 'Site de neuropsicopedagogia clínica com avaliação, etapas, dúvidas frequentes, mapa e contato', link: 'elaine-sandrinha/index.html' },
-    { id: 'turismo', emoji: '✈️', foto: 'assets/img/fotos/heroi-turismo.jpg', nome: 'Horizon Travel', desc: 'Agência de viagens: destinos, pacotes, galeria e orçamento pelo WhatsApp', link: 'site-de-turismo/index.html' },
-    { id: 'jogo-velha', emoji: '🎮', foto: 'assets/img/fotos/heroi-jogo-velha.jpg', nome: 'VELHA//CORE', desc: 'Jogo da velha futurista: IA em três dificuldades, dois jogadores no mesmo aparelho, placar com sequências e dica da jogada', link: 'jogo-velha/index.html' }
+    { id: 'arquiteto',    emoji: '📐', foto: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', nome: 'Arquiteto',              desc: 'Projetos residenciais e comerciais' }
   ];
 
   /* ------------------------------------------------------------------
-     Monta os cards de exemplo
+     PROJETOS REAIS — no ar, com página própria
      ------------------------------------------------------------------ */
-  const grade = document.getElementById('grade-exemplos');
+  const REAIS = [
+    { id: 'lojavirtual', emoji: '🛒', foto: 'assets/img/fotos/heroi-loja.jpg', nome: 'NEXA Store', desc: 'Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix, crédito e débito', link: 'loja-virtual/index.html' },
+    { id: 'comandas', emoji: '🧾', foto: 'assets/img/fotos/heroi-comandas.jpg', nome: 'Comanda Fácil', desc: 'Comandas, cozinha e caixa: sistema completo para restaurantes e lanchonetes', link: 'comandas/index.html' },
+    { id: 'educaenem',  emoji: '🎓', foto: 'assets/img/fotos/heroi-educaenem.jpg', nome: 'EducaEnem',          desc: 'Curso online do ENEM: aulas, PDFs, simulados e área do aluno', link: 'educaenem/index.html' },
+    { id: 'nfcontrol', emoji: '📦', foto: 'assets/img/fotos/heroi-nfcontrol.jpg', nome: 'NF Control', desc: 'Sistema de notas fiscais, estoque, financeiro e auditoria', link: 'nf-control/index.html' },
+    { id: 'skillmatch', emoji: '🔍', foto: 'assets/img/fotos/heroi-skillmatch.jpg', nome: 'SkillMatch', desc: 'Cruza suas habilidades com cada vaga e monta um plano de estudo', link: 'skillmatch/index.html' },
+    { id: 'tutor', emoji: '🎧', foto: 'assets/img/fotos/heroi-tutor.jpg', nome: 'Lina — Tutor de Inglês', desc: 'App de inglês com IA: voz, cenários, correção de erros e XP', link: 'tutor-ia/index.html' },
+    { id: 'livraria',   emoji: '📚', foto: 'assets/img/fotos/heroi-livraria.jpg', nome: 'M.O Livraria',       desc: 'Livraria online com catálogo, carrinho, checkout e WhatsApp', link: 'livraria-mo/index.html' },
+    { id: 'gerador', emoji: '🛠️', foto: 'assets/img/fotos/heroi-gerador.jpg', nome: 'Gerador de Portfólio', desc: 'Ferramenta que monta o site do cliente em 20 minutos, sem código', link: 'gerador-portfolio/index.html' },
+    { id: 'elaine', emoji: '🧠', foto: 'assets/img/fotos/heroi-elaine.jpg', nome: 'Elaine & Sandra', desc: 'Site de neuropsicopedagogia clínica com avaliação, etapas, dúvidas frequentes, mapa e contato', link: 'elaine-sandrinha/index.html' },
+    { id: 'conhecimento', emoji: '📘', foto: 'assets/img/fotos/heroi-codigo.jpg', nome: 'Código & Conhecimento', desc: 'Livro didático de programação web, do HTML ao React', link: 'codigo-conhecimento/index.html' },
+    { id: 'turismo', emoji: '✈️', foto: 'assets/img/fotos/heroi-turismo.jpg', nome: 'Horizon Travel', desc: 'Agência de viagens: destinos, pacotes, galeria e orçamento pelo WhatsApp', link: 'site-de-turismo/index.html' },
+    { id: 'jogo-velha', emoji: '🎮', foto: 'assets/img/fotos/heroi-jogo-velha.jpg', nome: 'VELHA//CORE', desc: 'Jogo da velha futurista: IA em três dificuldades, dois jogadores no mesmo aparelho, placar com sequências e dica da jogada', link: 'jogo-velha/index.html' },
+    { id: 'pacman', emoji: '🟡', foto: 'assets/img/fotos/heroi-pacman.svg', nome: 'PAC-MAN//NEON', desc: 'Clássico dos labirintos em neon: 5 fases progressivas, 4 fantasmas com personalidade, frutas bônus e ranking por jogador', link: 'pacman/index.html' }
+  ];
 
-  // impede que texto do cliente quebre o HTML
+  /* ------------------------------------------------------------------
+     Monta os cards — primeiro os reais, depois os modelos prontos
+     ------------------------------------------------------------------ */
   function esc(s) {
     return String(s == null ? '' : s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  if (grade) {
-    grade.innerHTML = EXEMPLOS.map(function (e) {
-      var foto = e.foto
-        ? '<img src="' + e.foto + '" alt="Exemplo de site para ' + esc(e.nome) + '" loading="lazy">'
-        : '<span class="ex__emoji">' + e.emoji + '</span>';
-      var href = esc(e.link || ('demo.html?preset=' + encodeURIComponent(e.id)));
+  function card(e) {
+    var foto = e.foto
+      ? '<img src="' + e.foto + '" alt="Exemplo de site: ' + esc(e.nome) + '" loading="lazy">'
+      : '<span class="ex__emoji">' + e.emoji + '</span>';
+    var href = esc(e.link || ('demo.html?preset=' + encodeURIComponent(e.id)));
 
-      return '<a class="ex" href="' + href + '">'
-        + '<div class="ex__topo">' + foto + '</div>'
-        + '<div class="ex__body">'
-        + '<h3>' + esc(e.nome) + '</h3>'
-        + '<p>' + esc(e.desc) + '</p>'
-        + '<span class="ex__ver">Ver o site &rsaquo;</span>'
-        + '</div>'
-        + '</a>';
-    }).join('');
+    return '<a class="ex" href="' + href + '">'
+      + '<div class="ex__topo">' + foto + '</div>'
+      + '<div class="ex__body">'
+      + '<h3>' + esc(e.nome) + '</h3>'
+      + '<p>' + esc(e.desc) + '</p>'
+      + '<span class="ex__ver">Ver o site &rsaquo;</span>'
+      + '</div>'
+      + '</a>';
+  }
+
+  var gradeReais = document.getElementById('grade-reais');
+  if (gradeReais) gradeReais.innerHTML = REAIS.map(card).join('');
+
+  var gradeModelos = document.getElementById('grade-modelos');
+  if (gradeModelos) gradeModelos.innerHTML = MODELOS.map(card).join('');
+
+  // legenda com a contagem real, sem número fixo no HTML
+  var legenda = document.querySelector('.exemplos__nota');
+  if (legenda) {
+    legenda.innerHTML = MODELOS.length + ' modelos prontos, com dados fictícios, e '
+      + REAIS.length + ' projetos reais no ar. '
+      + 'O seu entra com os dados reais do seu negócio.';
   }
 
   /* ------------------------------------------------------------------

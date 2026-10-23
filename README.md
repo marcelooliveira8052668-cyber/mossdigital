@@ -1,7 +1,7 @@
 # Template de Site Profissional
 
-Template com **23 tipos de negócio prontos** e **35 exemplos** no portfólio (23 nichos
-do template + 10 projetos reais). Você troca cores, logo, fotos, textos e cards num
+Template com **23 tipos de negócio prontos** e **36 exemplos** no portfólio (23 nichos
+do template + 13 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
 Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
@@ -12,7 +12,7 @@ Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
 
 | Arquivo | Para que serve | Quem vê |
 |---------|----------------|---------|
-| **index.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 35 exemplos. É por aqui que o cliente entra | Cliente |
+| **index.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 36 exemplos. É por aqui que o cliente entra | Cliente |
 | **portfolio.html** | Redireciona para o `index.html` (link antigo, mantido para não quebrar quem já tinha guardado) | Cliente |
 | demo.html?preset=lanchonete | O site de exemplo, já preenchido. É este link que você manda pro cliente | Cliente |
 | demo.html?preset=X&painel=1 | O site de exemplo com o painel de troca | Só você |
@@ -59,25 +59,29 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ---
 
-## Os 10 projetos reais do portfólio
+## Os 13 projetos reais do portfólio
 
-Além dos 23 nichos gerados pelo template, o portfólio mostra **10 projetos que existem
-de verdade** e abrem em página própria:
+Além dos 23 nichos gerados pelo template, o portfólio mostra **13 projetos que existem
+de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
+`#reais`, separados dos modelos prontos (`#exemplos`):
 
 | Projeto | O que é | Pasta |
 |---------|---------|-------|
-| EducaEnem | Curso online do ENEM: aulas, PDFs, simulados e área do aluno | `educaenem/` |
-| Código & Conhecimento | Livro didático de programação web, do HTML ao React | `codigo-conhecimento/` |
-| M.O Livraria | Livraria online com catálogo, carrinho, checkout e WhatsApp | `livraria-mo/` |
-| NF Control | Sistema de notas fiscais, estoque, financeiro e auditoria | `nf-control/` |
-| Gerador de Portfólio | Ferramenta que monta o site do cliente sem escrever código | `gerador-portfolio/` |
-| Lina — Tutor de Inglês | App de inglês com IA: voz, cenários, correção de erros e XP | `tutor-ia/` |
-| SkillMatch | Compatibilidade de vagas em % + plano de estudo para o candidato | `skillmatch/` |
-| Comanda Fácil | Comandas, cozinha e caixa: sistema completo para restaurantes | `comandas/` |
 | NEXA Store | Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix | `loja-virtual/` |
+| Comanda Fácil | Comandas, cozinha e caixa: sistema completo para restaurantes | `comandas/` |
+| EducaEnem | Curso online do ENEM: aulas, PDFs, simulados e área do aluno | `educaenem/` |
+| NF Control | Sistema de notas fiscais, estoque, financeiro e auditoria | `nf-control/` |
+| SkillMatch | Compatibilidade de vagas em % + plano de estudo para o candidato | `skillmatch/` |
+| Lina — Tutor de Inglês | App de inglês com IA: voz, cenários, correção de erros e XP | `tutor-ia/` |
+| M.O Livraria | Livraria online com catálogo, carrinho, checkout e WhatsApp | `livraria-mo/` |
+| Gerador de Portfólio | Ferramenta que monta o site do cliente sem escrever código | `gerador-portfolio/` |
 | Elaine & Sandra | Site de neuropsicopedagogia clínica, avaliação, dúvidas e mapa | `elaine-sandrinha/` |
+| Código & Conhecimento | Livro didático de programação web, do HTML ao React | `codigo-conhecimento/` |
+| Horizon Travel | Agência de viagens: destinos, pacotes, galeria e orçamento | `site-de-turismo/` |
+| VELHA//CORE | Jogo da velha com IA em três dificuldades e placar por sequência | `jogo-velha/` |
+| PAC-MAN//NEON | Labirinto clássico em neon: 5 fases, 4 fantasmas, frutas e ranking | `pacman/` |
 
-Para colocar um card desses no portfólio, edite a lista `EXEMPLOS` em
+Para colocar um card desses no portfólio, edite a lista `REAIS` em
 `assets/js/portfolio.js` e aponte o campo `link` para a pasta do projeto:
 
 ```js
@@ -85,8 +89,12 @@ Para colocar um card desses no portfólio, edite a lista `EXEMPLOS` em
   nome: 'Meu Projeto', desc: 'O que o projeto faz', link: 'meu-projeto/index.html' }
 ```
 
-A foto pode ser um arquivo local (padrão) ou um link do Unsplash. Card sem `link`
-aponta para `demo.html?preset=<id>`.
+Os modelos prontos ficam na lista `MODELOS`, no mesmo arquivo. Um card sem `link`
+aponta para `demo.html?preset=<id>`. As contagens da página (`13 projetos no ar`,
+`23 modelos prontos`) são calculadas pelo próprio script, então nunca ficam
+desatualizadas.
+
+A foto pode ser um arquivo local (padrão) ou um link do Unsplash.
 
 ---
 
@@ -302,6 +310,12 @@ template-site-profissional/
 ├── gerador-portfolio/      Projeto real: gerador de site para cliente
 ├── tutor-ia/               Projeto real: app de tutor de ingles com IA
 ├── skillmatch/             Projeto real: compatibilidade de vagas + plano de estudo
+├── comandas/               Projeto real: comandas, cozinha e caixa
+├── loja-virtual/           Projeto real: loja com carrinho e pagamento
+├── elaine-sandrinha/       Projeto real: site de neuropsicopedagogia
+├── site-de-turismo/        Projeto real: agencia de viagens
+├── jogo-velha/             Projeto real: jogo da velha com IA
+├── pacman/                 Projeto real: labirinto classico em neon
 ├── assets/
 │   ├── css/
 │   │   ├── style.css       Visual do site do cliente
@@ -320,12 +334,13 @@ template-site-profissional/
 └── README.md
 ```
 
-**Para entregar ao cliente:** mande a pasta inteira, **menos** estes arquivos:
-`portfolio.html`, `demo.html`, `educaenem/`, `codigo-conhecimento/`, `livraria-mo/`,
-`nf-control/`, `gerador-portfolio/`, `tutor-ia/`, `skillmatch/`, `assets/css/demo.css`,
-`assets/css/portfolio.css`, `assets/js/presets.js`, `assets/js/presets-2.js`,
-`assets/js/presets-3.js`, `assets/js/demo.js`, `assets/js/portfolio.js`,
-`README.md` e `.git`.
+**Para entregar ao cliente:** mande a pasta inteira, **menos** as pastas dos projetos
+reais (`educaenem/`, `codigo-conhecimento/`, `livraria-mo/`, `nf-control/`,
+`gerador-portfolio/`, `tutor-ia/`, `skillmatch/`, `comandas/`, `loja-virtual/`,
+`elaine-sandrinha/`, `site-de-turismo/`, `jogo-velha/`, `pacman/`) e estes arquivos:
+`portfolio.html`, `demo.html`, `assets/css/demo.css`, `assets/css/portfolio.css`,
+`assets/js/presets.js`, `assets/js/presets-2.js`, `assets/js/presets-3.js`,
+`assets/js/demo.js`, `assets/js/portfolio.js`, `README.md` e `.git`.
 
 ---
 

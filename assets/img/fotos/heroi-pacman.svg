@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" aria-label="PAC-MAN NEON - jogo da velha em neon">
+  <defs>
+    <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0220"/>
+      <stop offset="1" stop-color="#1a0542"/>
+    </linearGradient>
+    <filter id="brilho" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grade" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0v30" fill="none" stroke="#2b1a66" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="300" fill="url(#fundo)"/>
+  <rect width="600" height="300" fill="url(#grade)" opacity=".55"/>
+
+  <!-- labirinto -->
+  <g fill="none" stroke="#2f6bff" stroke-width="4" stroke-linecap="round" filter="url(#brilho)" opacity=".85">
+    <rect x="40" y="40" width="520" height="220" rx="6"/>
+    <path d="M110 40v60h80V40M240 40v60h120V40M410 40v60h60V40"/>
+    <path d="M40 130h60v40H40M150 130h100v40H150M290 130h100v40H290M430 130h130"/>
+    <path d="M110 260v-50h80v50M240 260v-50h120v50M410 260v-50h60v50"/>
+  </g>
+
+  <!-- pastilhas -->
+  <g fill="#ffe680" filter="url(#brilho)">
+    <circle cx="72" cy="80" r="4"/><circle cx="72" cy="150" r="4"/><circle cx="72" cy="220" r="4"/>
+    <circle cx="220" cy="150" r="4"/><circle cx="270" cy="150" r="4"/>
+    <circle cx="400" cy="150" r="4"/><circle cx="420" cy="80" r="4"/>
+    <circle cx="540" cy="150" r="4"/><circle cx="540" cy="220" r="4"/>
+    <circle cx="300" cy="80" r="4"/><circle cx="300" cy="220" r="4"/>
+  </g>
+
+  <!-- pacman -->
+  <g filter="url(#brilho)">
+    <path d="M150 150 L216 122 A70 70 0 1 0 216 178 Z" fill="#ffd21e"/>
+    <circle cx="176" cy="126" r="6" fill="#1a0542"/>
+  </g>
+
+  <!-- fantasmas -->
+  <g filter="url(#brilho)">
+    <path d="M420 116a24 24 0 0 1 48 0v34l-8-7-8 7-8-7-8 7-8-7-8 7z" fill="#ff3b6b"/>
+    <circle cx="435" cy="118" r="6" fill="#fff"/><circle cx="453" cy="118" r="6" fill="#fff"/>
+    <circle cx="437" cy="119" r="3" fill="#12063a"/><circle cx="455" cy="119" r="3" fill="#12063a"/>
+  </g>
+  <g filter="url(#brilho)" opacity=".95">
+    <path d="M500 196a20 20 0 0 1 40 0v28l-7-6-6 6-7-6-7 6-6-6-7 6z" fill="#37e6ff"/>
+    <circle cx="512" cy="197" r="5" fill="#fff"/><circle cx="528" cy="197" r="5" fill="#fff"/>
+    <circle cx="514" cy="198" r="2.5" fill="#12063a"/><circle cx="530" cy="198" r="2.5" fill="#12063a"/>
+  </g>
+
+  <text x="300" y="288" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"
+        font-size="20" font-weight="bold" fill="#ffd21e" letter-spacing="6">PAC-MAN//NEON</text>
+</svg>

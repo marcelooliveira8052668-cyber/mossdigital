@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#05010f">
+    <meta name="description" content="PAC-MAN//NEON - o classico dos labirintos em neon, com 5 fases progressivas, 4 fantasmas com personalidade, frutas bonus, ranking por jogador e joystick no toque.">
+    <title>PAC-MAN//NEON</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="gabinete">
+
+        <header class="topo">
+            <h1 class="logo">PAC-MAN<b>//NEON</b></h1>
+            <div class="acoes">
+                <button id="btSom" class="botao-icone" type="button" aria-label="Ligar ou desligar o som">🔊</button>
+                <button id="btAjuda" class="botao-icone" type="button" aria-label="Como jogar">?</button>
+                <button id="btTrocar" class="botao-icone" type="button" aria-label="Trocar de jogador">👤</button>
+            </div>
+        </header>
+
+        <section class="placar" aria-label="Placar">
+            <div class="item jogador"><span class="rotulo">Jogador</span><span class="valor" id="hudJogador">—</span></div>
+            <div class="item pontos"><span class="rotulo">Pontos</span><span class="valor" id="hudPontos">0</span></div>
+            <div class="item fase"><span class="rotulo">Fase</span><span class="valor" id="hudFase">1</span></div>
+            <div class="item recorde"><span class="rotulo">Recorde</span><span class="valor" id="hudRecorde">0</span></div>
+        </section>
+
+        <section class="tela" id="tela">
+            <canvas id="jogo" width="418" height="462" aria-label="Area de jogo do Pac-Man"></canvas>
+
+            <!-- 1. login do jogador -->
+            <div class="camada ativa" id="camLogin" role="dialog" aria-label="Entrar com seu nome">
+                <h2 class="titulo">IDENTIFIQUE-SE</h2>
+                <p class="subtitulo">Seu nome entra no ranking e fica salvo neste aparelho.</p>
+                <form class="login-campo" id="formLogin">
+                    <label for="inpNome">Nome do jogador</label>
+                    <input id="inpNome" type="text" maxlength="12" autocomplete="nickname"
+                           placeholder="SEU NOME" autocapitalize="characters" spellcheck="false" required>
+                    <button class="botao" type="submit">Entrar</button>
+                </form>
+            </div>
+
+            <!-- 2. tela inicial -->
+            <div class="camada" id="camTitulo" role="dialog" aria-label="Menu inicial">
+                <h2 class="titulo">PAC-MAN<span class="destaque">//NEON</span></h2>
+                <p class="subtitulo">5 fases de labirinto. 4 caçadores com personalidade.
+                    Um só objetivo: <span class="destaque">não ser encostado.</span></p>
+                <p class="subtitulo" id="saudacao">Bem-vindo.</p>
+                <button class="botao" id="btJogar" type="button">▶ Jogar</button>
+                <div style="display:flex; gap:10px;">
+                    <button class="botao secundario" id="btRanking" type="button">Ranking</button>
+                    <button class="botao fantasma" id="btInstrucoes" type="button">Como jogar</button>
+                </div>
+            </div>
+
+            <!-- 3. instrucoes -->
+            <div class="camada" id="camInstrucoes" role="dialog" aria-label="Como jogar">
+                <h2 class="titulo ciano">COMO JOGAR</h2>
+                <div class="instrucoes">
+                    <h3>Controles</h3>
+                    <ul>
+                        <li><b>Computador:</b> setas ou <span class="atalho">W</span><span class="atalho">A</span><span class="atalho">S</span><span class="atalho">D</span></li>
+                        <li><b>Celular:</b> joystick na tela ou deslize o dedo sobre o labirinto</li>
+                        <li><span class="atalho">P</span> ou <span class="atalho">Esc</span> pausa o jogo</li>
+                    </ul>
+                    <h3>Pontuacao</h3>
+                    <ul>
+                        <li><span class="linha-icone"><span class="bolinha"></span> Moeda vale 10 pontos</span></li>
+                        <li><span class="linha-icone"><span class="bolinha grande"></span> Pastilha vale 50 e deixa os fantasmas azuis por alguns segundos</span></li>
+                        <li>Fantasma azul comido: 200, 400, 800, 1600 na mesma rodada</li>
+                        <li>Fruta bonus vale de 100 a 5000 conforme a fase</li>
+                        <li>A cada <span class="destaque">10.000 pontos</span> voce ganha uma vida extra</li>
+                    </ul>
+                    <h3>Os caçadores</h3>
+                    <ul>
+                        <li><span class="linha-icone"><span class="fantasma-mini" style="background:#ff3b5c"></span> <b>Blinky</b> - vai reto na sua cabeca</span></li>
+                        <li><span class="linha-icone"><span class="fantasma-mini" style="background:#ff9ee2"></span> <b>Pinky</b> - embosca 4 casas a sua frente</span></li>
+                        <li><span class="linha-icone"><span class="fantasma-mini" style="background:#00e5ff"></span> <b>Inky</b> - imprevisivel, ataca pelo vetor duplo</span></li>
+                        <li><span class="linha-icone"><span class="fantasma-mini" style="background:#ffb899"></span> <b>Clyde</b> - te ca se estiver longe, foge se estiver perto</span></li>
+                    </ul>
+                </div>
+                <button class="botao" id="btVoltarInstrucoes" type="button">Voltar</button>
+            </div>
+
+            <!-- 4. ranking -->
+            <div class="camada" id="camRanking" role="dialog" aria-label="Ranking">
+                <h2 class="titulo ciano">RANKING</h2>
+                <div class="ranking" id="listaRanking"></div>
+                <button class="botao" id="btVoltarRanking" type="button">Voltar</button>
+            </div>
+
+            <!-- 5. pausa -->
+            <div class="camada" id="camPausa" role="dialog" aria-label="Jogo pausado">
+                <h2 class="titulo">PAUSA</h2>
+                <p class="subtitulo">Respire fundo. Eles esperam.</p>
+                <button class="botao" id="btContinuar" type="button">Continuar</button>
+                <button class="botao fantasma" id="btSair" type="button">Sair do jogo</button>
+            </div>
+
+            <!-- 6. preparado (entre mortes e no inicio da fase) -->
+            <div class="camada" id="camPronto" role="status">
+                <h2 class="titulo piscando">PREPARADO...</h2>
+            </div>
+
+            <!-- 7. fase limpa -->
+            <div class="camada" id="camFase" role="status">
+                <h2 class="titulo verde">FASE LIMPA!</h2>
+                <p class="subtitulo" id="txtProxFase">Proxima: O LABIRINTO</p>
+                <p class="subtitulo destaque" id="txtBonusFase">Bônus: 500 pontos</p>
+            </div>
+
+            <!-- 8. fim de jogo -->
+            <div class="camada" id="camFim" role="dialog" aria-label="Fim de jogo">
+                <h2 class="titulo vermelho">FIM DE JOGO</h2>
+                <p class="pontuacao-grande" id="fimPontos">0</p>
+                <p class="subtitulo" id="fimDetalhe">Você chegou até a fase 1.</p>
+                <p class="subtitulo destaque" id="fimRecorde" hidden>🏆 NOVO RECORDE!</p>
+                <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                    <button class="botao" id="btDeNovo" type="button">Jogar de novo</button>
+                    <button class="botao secundario" id="btRankingFim" type="button">Ranking</button>
+                </div>
+                <button class="botao fantasma" id="btTrocarFim" type="button">Trocar jogador</button>
+            </div>
+        </section>
+
+        <section class="controles" aria-label="Controles de movimento">
+            <div class="joystick" id="joystick">
+                <button class="cima" data-dir="cima" type="button" aria-label="Mover para cima">▲</button>
+                <button class="esq" data-dir="esq" type="button" aria-label="Mover para a esquerda">◀</button>
+                <span class="miolo" aria-hidden="true"></span>
+                <button class="dir" data-dir="dir" type="button" aria-label="Mover para a direita">▶</button>
+                <button class="baixo" data-dir="baixo" type="button" aria-label="Mover para baixo">▼</button>
+            </div>
+            <div class="lateral-controles">
+                <button class="botao-icone" id="btPausa" type="button" aria-label="Pausar ou continuar">⏸</button>
+                <p class="dica-toque" id="dicaToque">Arraste o dedo<br>no labirinto</p>
+            </div>
+        </section>
+
+        <footer class="rodape">
+            <p>PAC-MAN//NEON — feito com <b>HTML, CSS e JavaScript puro</b>. Ranking salvo neste aparelho.</p>
+        </footer>
+    </main>
+
+    <noscript><p style="text-align:center; padding:20px;">Este jogo precisa de JavaScript habilitado.</p></noscript>
+
+    <script src="maps.js"></script>
+    <script src="audio.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
