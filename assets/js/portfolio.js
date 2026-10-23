@@ -52,7 +52,9 @@
     { id: 'gerador', emoji: '🛠️', foto: 'assets/img/fotos/heroi-gerador.jpg', nome: 'Gerador de Portfólio', desc: 'Ferramenta que monta o site do cliente em 20 minutos, sem código', link: 'gerador-portfolio/index.html' },
     { id: 'tutor', emoji: '🎧', foto: 'assets/img/fotos/heroi-tutor.jpg', nome: 'Lina — Tutor de Inglês', desc: 'App de inglês com IA: voz, cenários, correção de erros e XP', link: 'tutor-ia/index.html' },
     { id: 'skillmatch', emoji: '🔍', foto: 'assets/img/fotos/heroi-skillmatch.jpg', nome: 'SkillMatch', desc: 'Cruza suas habilidades com cada vaga e monta um plano de estudo', link: 'skillmatch/index.html' },
-    { id: 'comandas', emoji: '🧾', foto: 'assets/img/fotos/heroi-comandas.jpg', nome: 'Comanda Fácil', desc: 'Comandas, cozinha e caixa: sistema completo para restaurantes e lanchonetes', link: 'comandas/index.html' }
+    { id: 'comandas', emoji: '🧾', foto: 'assets/img/fotos/heroi-comandas.jpg', nome: 'Comanda Fácil', desc: 'Comandas, cozinha e caixa: sistema completo para restaurantes e lanchonetes', link: 'comandas/index.html' },
+
+    { id: 'lojavirtual', emoji: '🛒', foto: 'assets/img/fotos/heroi-loja.jpg', nome: 'NEXA Store', desc: 'Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix, crédito e débito', link: 'loja-virtual/index.html' }
   ];
 
   /* ------------------------------------------------------------------

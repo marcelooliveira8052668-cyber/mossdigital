@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXA STORE — Tecnologia com preço que cabe</title>
+<meta name="description" content="Loja virtual completa: smartphones, notebooks, áudio, games e casa inteligente. Pix, crédito e débito, com entrega para todo o Brasil.">
+<meta name="theme-color" content="#0b1120">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="NEXA STORE — Tecnologia com preço que cabe">
+<meta property="og:description" content="Mais de 50 produtos com frete grátis acima de R$ 199 e pagamento no Pix, crédito e débito.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header id="cabecalho"></header>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="container hero-interno">
+    <div class="hero-texto">
+      <span class="hero-tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Ofertas da semana</span>
+
+      <h1>A tecnologia que você quer,<br><em>sem pesar no bolso.</em></h1>
+
+      <p class="hero-desc">
+        Smartphones, notebooks, áudio, games e casa inteligente.
+        Você escolhe, paga do jeito que prefere e acompanha o pedido
+        do nosso galpão até a sua porta.
+      </p>
+
+      <div class="hero-acoes">
+        <a class="btn btn-grande" href="#produtos">
+          <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Ver produtos
+        </a>
+        <a class="btn btn-claro btn-grande" href="ofertas.html">
+          <i class="fa-solid fa-fire" aria-hidden="true"></i> Ofertas do dia
+        </a>
+      </div>
+
+      <div class="hero-confianca">
+        <div>
+          <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+          <span><strong>Frete grátis</strong> acima de R$ 199</span>
+        </div>
+        <div>
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <span><strong>12 meses</strong> de garantia</span>
+        </div>
+        <div>
+          <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+          <span><strong>7 dias</strong> para devolver</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-vitrine" id="hero-vitrine" aria-label="Destaques da semana"></div>
+  </div>
+</section>
+
+<!-- ============================ CATEGORIAS ============================ -->
+<section class="secao" id="categorias">
+  <div class="container">
+    <div class="secao-topo">
+      <div>
+        <h2>Compre por categoria</h2>
+        <p>Dez seções para achar rápido o que você precisa.</p>
+      </div>
+      <a class="secao-link" href="#produtos">Ver tudo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+    <div class="grade-categorias" id="grade-categorias"></div>
+  </div>
+</section>
+
+<!-- ============================ OFERTAS ============================ -->
+<section class="secao faixa-escura" id="ofertas">
+  <div class="container">
+    <div class="secao-topo">
+      <div>
+        <h2><i class="fa-solid fa-fire" aria-hidden="true"></i> Ofertas do dia</h2>
+        <p>Preços especiais enquanto durar o estoque.</p>
+      </div>
+      <div class="contador-ofertas" id="contador-ofertas" aria-label="Tempo restante das ofertas">
+        <div class="contador-caixa">
+          <div><strong data-h>00</strong><span>horas</span></div>
+          <div><strong data-m>00</strong><span>min</span></div>
+          <div><strong data-s>00</strong><span>seg</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grade-produtos" id="grade-promocoes"></div>
+
+    <p style="text-align:center; margin-top:28px">
+      <a class="btn btn-claro" href="ofertas.html">
+        <i class="fa-solid fa-percent" aria-hidden="true"></i> Ver todas as promoções
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ============================ PRODUTOS ============================ -->
+<section class="secao" id="produtos">
+  <div class="container">
+    <div class="secao-topo">
+      <div>
+        <h2>Nossos produtos</h2>
+        <p>Filtre por categoria, busque pelo nome ou ordene por preço.</p>
+      </div>
+    </div>
+
+    <div class="barra-filtros">
+      <div class="chips" id="chips-categoria" role="group" aria-label="Filtrar por categoria"></div>
+      <label class="ordenar">
+        Ordenar por
+        <select id="ordenar-por" aria-label="Ordenar produtos">
+          <option value="relevancia">Mais vendidos</option>
+          <option value="menor-preco">Menor preço</option>
+          <option value="maior-preco">Maior preço</option>
+          <option value="desconto">Maior desconto</option>
+          <option value="nota">Melhor avaliação</option>
+          <option value="nome">Nome (A–Z)</option>
+        </select>
+      </label>
+    </div>
+
+    <p class="contador-produtos" id="contador-produtos"></p>
+
+    <div class="grade-produtos" id="grade-produtos"></div>
+
+    <div class="mais-area">
+      <button class="btn btn-claro" id="btn-carregar-mais" hidden>Carregar mais produtos</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MAIS VENDIDOS ============================ -->
+<section class="secao faixa-escura" id="mais-vendidos">
+  <div class="container">
+    <div class="secao-topo">
+      <div>
+        <h2>Os mais pedidos</h2>
+        <p>Quem comprou aqui voltou — e trouxe gente.</p>
+      </div>
+    </div>
+    <div class="grade-produtos" id="grade-mais-vendidos"></div>
+  </div>
+</section>
+
+<!-- ============================ CUPONS ============================ -->
+<section class="secao" id="cupons">
+  <div class="container">
+    <div class="secao-topo">
+      <div>
+        <h2>Cupons de desconto</h2>
+        <p>Copie o código e use na hora de pagar.</p>
+      </div>
+    </div>
+    <div class="grade-cupons" id="grade-cupons"></div>
+  </div>
+</section>
+
+<!-- ============================ DEPOIMENTOS ============================ -->
+<section class="secao" id="depoimentos">
+  <div class="container">
+    <div class="secao-topo">
+      <div>
+        <h2>Quem comprou, conta</h2>
+        <p>Avaliações reais de quem já recebeu.</p>
+      </div>
+    </div>
+    <div class="grade-depoimentos" id="grade-depoimentos"></div>
+  </div>
+</section>
+
+<!-- ============================ ONDE ESTAMOS ============================ -->
+<section class="secao" id="onde-estamos">
+  <div class="container">
+    <div class="secao-topo">
+      <div>
+        <h2>Onde vendemos, preparamos e enviamos</h2>
+        <p>É aqui que separamos e embalamos cada pedido.</p>
+      </div>
+    </div>
+
+    <div class="painel" style="display:grid; grid-template-columns:1.1fr .9fr; gap:26px; align-items:center">
+      <div class="local-mapa" id="mapa-loja"></div>
+      <div class="local-info">
+        <h2><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Loja física e centro de distribuição</h2>
+        <p>
+          Av. Paulista, 1000 — Conjunto 12<br>
+          Bela Vista · São Paulo — SP<br>
+          CEP 01310-100
+        </p>
+        <p class="local-dica">
+          Atendimento de segunda a sexta, das 9h às 18h.
+          Você também pode retirar o pedido presencialmente — combinamos o horário pelo WhatsApp.
+        </p>
+        <a class="btn btn-claro" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=-23.5614,-46.6559">
+          <i class="fa-solid fa-diamond-turn-right" aria-hidden="true"></i> Traçar rota
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="rodape"></footer>
+
+<script src="js/dados.js"></script>
+<script src="js/config.js"></script>
+<script src="js/catalogo.js"></script>
+<script src="js/carrinho.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Finalizar compra | NEXA STORE</title>
+<meta name="description" content="Pague no Pix, no crédito em até 12x ou no débito. Seus dados ficam com o seu banco — nós não guardamos cartão.">
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header id="cabecalho"></header>
+
+<main id="secao-checkout">
+  <div class="container">
+
+    <div class="cabecalho-compra">
+      <h1>Finalizar compra</h1>
+      <p>Preencha seus dados e escolha como prefere pagar. Leva menos de dois minutos.</p>
+    </div>
+
+    <form id="form-checkout" novalidate>
+      <div class="grade-checkout">
+
+        <!-- ==================== COLUNA DO FORMULÁRIO ==================== -->
+        <div class="coluna-form">
+
+          <!-- 1. Quem vai receber -->
+          <section class="painel">
+            <h2 class="painel-titulo"><span class="numero">1</span> Quem vai receber</h2>
+            <div class="grade-campos">
+              <div class="campo largo">
+                <label for="campo-nome">Nome completo</label>
+                <input type="text" id="campo-nome" autocomplete="name" placeholder="Como está no seu documento">
+              </div>
+              <div class="campo">
+                <label for="campo-email">E-mail</label>
+                <input type="email" id="campo-email" autocomplete="email" placeholder="seu@email.com">
+              </div>
+              <div class="campo">
+                <label for="campo-telefone">Telefone com DDD</label>
+                <input type="tel" id="campo-telefone" autocomplete="tel" placeholder="(11) 99999-9999">
+              </div>
+            </div>
+          </section>
+
+          <!-- 2. Onde entrega -->
+          <section class="painel">
+            <h2 class="painel-titulo"><span class="numero">2</span> Onde você quer receber</h2>
+
+            <label class="check-retirar" for="check-retirar">
+              <input type="checkbox" id="check-retirar">
+              <span>
+                <strong>Quero retirar na loja</strong>
+                <span>Sem frete. Avisamos quando estiver pronto para retirada.</span>
+              </span>
+            </label>
+
+            <div id="bloco-endereco" style="margin-top:18px">
+              <div class="grade-campos">
+                <div class="campo">
+                  <label for="campo-cep">CEP</label>
+                  <input type="text" id="campo-cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000">
+                </div>
+                <div class="campo">
+                  <label for="campo-cidade">Cidade</label>
+                  <input type="text" id="campo-cidade" autocomplete="address-level2">
+                </div>
+                <div class="campo largo">
+                  <label for="campo-rua">Rua e bairro</label>
+                  <input type="text" id="campo-rua" autocomplete="address-line1" placeholder="Nome da rua">
+                </div>
+                <div class="campo">
+                  <label for="campo-numero">Número</label>
+                  <input type="text" id="campo-numero" autocomplete="address-line2" placeholder="123 ou s/n">
+                </div>
+                <div class="campo">
+                  <label for="campo-bairro">Bairro</label>
+                  <input type="text" id="campo-bairro" autocomplete="address-level3">
+                </div>
+                <div class="campo">
+                  <label for="campo-uf">Estado (sigla)</label>
+                  <input type="text" id="campo-uf" maxlength="2" autocomplete="address-level1" placeholder="SP"
+                         style="text-transform:uppercase">
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 3. Pagamento -->
+          <section class="painel">
+            <h2 class="painel-titulo"><span class="numero">3</span> Como você quer pagar</h2>
+
+            <div class="abas-pagamento" role="tablist" aria-label="Forma de pagamento">
+              <button type="button" class="aba-pagamento ativo" role="tab" aria-selected="true" data-metodo="pix">
+                <i class="fa-brands fa-pix" aria-hidden="true"></i> Pix
+              </button>
+              <button type="button" class="aba-pagamento" role="tab" aria-selected="false" data-metodo="credito">
+                <i class="fa-regular fa-credit-card" aria-hidden="true"></i> Crédito
+              </button>
+              <button type="button" class="aba-pagamento" role="tab" aria-selected="false" data-metodo="debito">
+                <i class="fa-solid fa-money-check-card" aria-hidden="true"></i> Débito
+              </button>
+            </div>
+
+            <!-- PAINEL PIX -->
+            <div data-painel="pix">
+              <div id="area-pix"></div>
+            </div>
+
+            <!-- PAINEL COMPARTILHADO: CARTÃO (crédito e débito) -->
+            <div data-painel="credito,debito" hidden>
+              <div class="grade-campos">
+                <div class="campo largo">
+                  <label for="campo-cartao">Número do cartão</label>
+                  <input type="text" id="campo-cartao" inputmode="numeric" autocomplete="cc-number"
+                         placeholder="0000 0000 0000 0000">
+                </div>
+                <div class="campo largo">
+                  <label for="campo-nome-cartao">Nome impresso no cartão</label>
+                  <input type="text" id="campo-nome-cartao" autocomplete="cc-name"
+                         placeholder="Como está na frente do cartão">
+                </div>
+                <div class="campo">
+                  <label for="campo-validade">Validade</label>
+                  <input type="text" id="campo-validade" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA">
+                </div>
+                <div class="campo">
+                  <label for="campo-cvv">Código de segurança</label>
+                  <input type="password" id="campo-cvv" inputmode="numeric" autocomplete="cc-csc" placeholder="000">
+                </div>
+
+                <div class="campo largo" id="linha-parcelas">
+                  <label for="sel-parcelas">Parcelamento</label>
+                  <select id="sel-parcelas"></select>
+                </div>
+
+                <div class="campo largo">
+                  <p id="cartao-resumo"></p>
+                </div>
+              </div>
+
+              <p class="aviso-seguranca">
+                <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                <span>Seus dados do cartão são enviados direto ao banco, pelo ambiente seguro do
+                processador. Esta loja não guarda o número, o código de segurança nem a validade.</span>
+              </p>
+            </div>
+          </section>
+
+          <!-- 4. Confirmar -->
+          <section class="painel" style="text-align:center">
+            <button class="btn btn-grande btn-block" type="submit">
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Confirmar pedido
+            </button>
+            <p style="font-size:12.5px; color:var(--texto-fraco); margin-top:14px">
+              Ao confirmar, você concorda com as trocas em até 7 dias e a garantia de 12 meses.
+            </p>
+          </section>
+        </div>
+
+        <!-- ==================== RESUMO LATERAL ==================== -->
+        <aside class="resumo" aria-label="Resumo do pedido">
+          <h2>Resumo do pedido</h2>
+          <div id="resumo-pedido"></div>
+
+          <form class="form-cupom" id="form-cupom" novalidate>
+            <label class="sr-only" for="campo-cupom">Código do cupom</label>
+            <input type="text" id="campo-cupom" placeholder="Cupom de desconto" autocomplete="off">
+            <button class="btn btn-pequeno" type="submit">Aplicar</button>
+          </form>
+          <p class="cupom-aviso" id="cupom-aviso"></p>
+        </aside>
+      </div>
+    </form>
+  </div>
+</main>
+
+<footer id="rodape"></footer>
+
+<script src="js/lib/qrcode.js"></script>
+<script src="js/dados.js"></script>
+<script src="js/config.js"></script>
+<script src="js/catalogo.js"></script>
+<script src="js/carrinho.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/checkout.js"></script>
+</body>
+</html>

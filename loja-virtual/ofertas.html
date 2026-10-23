@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ofertas e promoções | NEXA STORE</title>
+<meta name="description" content="Todos os produtos em promoção, com o desconto calculado e o prazo de entrega.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header id="cabecalho"></header>
+
+<main>
+  <section class="hero" style="background:linear-gradient(160deg,#7f1d1d 0%,#991b1b 55%,#b91c1c 100%)">
+    <div class="container hero-interno" style="grid-template-columns:1fr; padding-block:46px">
+      <div class="hero-texto">
+        <span class="hero-tag"><i class="fa-solid fa-percent" aria-hidden="true"></i> Promoção</span>
+        <h1 style="font-size:clamp(1.9rem,3.6vw,2.7rem)">Ofertas do dia</h1>
+        <p class="hero-desc">
+          Preços especiais enquanto durar o estoque. O desconto já aparece no produto —
+          nada de esperar cupom na hora de pagar.
+        </p>
+
+        <div class="contador-ofertas" id="contador-ofertas" aria-label="Tempo restante das ofertas"
+             style="margin-top:26px">
+          <div class="contador-caixa">
+            <div><strong data-h>00</strong><span>horas</span></div>
+            <div><strong data-m>00</strong><span>min</span></div>
+            <div><strong data-s>00</strong><span>seg</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="produtos">
+    <div class="container">
+      <div class="secao-topo">
+        <div>
+          <h2>Todos os produtos em promoção</h2>
+          <p>Filtre por categoria ou ordene para achar a melhor oportunidade.</p>
+        </div>
+        <a class="secao-link" href="index.html#produtos">Ver catálogo completo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+
+      <div class="barra-filtros">
+        <div class="chips" id="chips-categoria" role="group" aria-label="Filtrar por categoria"></div>
+        <label class="ordenar">
+          Ordenar por
+          <select id="ordenar-por" aria-label="Ordenar produtos">
+            <option value="desconto">Maior desconto</option>
+            <option value="menor-preco">Menor preço</option>
+            <option value="maior-preco">Maior preço</option>
+            <option value="nota">Melhor avaliação</option>
+            <option value="nome">Nome (A–Z)</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="contador-produtos" id="contador-produtos"></p>
+
+      <div class="grade-produtos" id="grade-produtos" data-apenas-promocao="1"></div>
+
+      <div class="mais-area">
+        <button class="btn btn-claro" id="btn-carregar-mais" hidden>Carregar mais ofertas</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="cupons">
+    <div class="container">
+      <div class="secao-topo">
+        <div>
+          <h2>Cupons extras</h2>
+          <p>Somam ao desconto que já está no produto.</p>
+        </div>
+      </div>
+      <div class="grade-cupons" id="grade-cupons"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="rodape"></footer>
+
+<script src="js/dados.js"></script>
+<script src="js/config.js"></script>
+<script src="js/catalogo.js"></script>
+<script src="js/carrinho.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

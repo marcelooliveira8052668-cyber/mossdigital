@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Acompanhar pedido | NEXA STORE</title>
+<meta name="description" content="Veja em que etapa está seu pedido, de onde ele sai e quando chega até você.">
+<meta name="robots" content="noindex">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header id="cabecalho"></header>
+
+<main>
+  <div class="container" id="area-pedido">
+
+    <div class="cabecalho-pedido">
+      <div>
+        <h1>Pedido <span id="pedido-numero">—</span></h1>
+        <p id="pedido-data"></p>
+      </div>
+      <div class="pedido-previsao" id="pedido-previsao"></div>
+    </div>
+
+    <div class="grade-pedido">
+
+      <!-- ==================== LINHA DO TEMPO ==================== -->
+      <section class="painel">
+        <h2 class="painel-titulo">
+          <i class="fa-solid fa-route" aria-hidden="true" style="color:var(--accent)"></i>
+          Acompanhamento
+        </h2>
+        <ol class="linha-tempo" id="linha-tempo"></ol>
+      </section>
+
+      <!-- ==================== DETALHES ==================== -->
+      <div class="pedido-blocos">
+
+        <section class="painel">
+          <h2 class="painel-titulo">
+            <i class="fa-solid fa-box-open" aria-hidden="true" style="color:var(--accent)"></i>
+            Itens do pedido
+          </h2>
+          <ul class="pedido-itens" id="pedido-itens"></ul>
+          <dl class="resumo-totais" id="pedido-totais" style="margin-top:20px; padding-top:18px; border-top:1px solid var(--linha)"></dl>
+        </section>
+
+        <section class="painel">
+          <h2 class="painel-titulo">
+            <i class="fa-solid fa-credit-card" aria-hidden="true" style="color:var(--accent)"></i>
+            Pagamento
+          </h2>
+          <div id="pedido-pagamento"></div>
+        </section>
+
+        <section class="painel">
+          <div class="destino-info" id="pedido-destino"></div>
+        </section>
+
+        <section class="painel" style="padding:0; overflow:hidden">
+          <div class="pedido-mapa" id="pedido-mapa"></div>
+        </section>
+
+        <div class="pedido-acoes">
+          <button class="btn btn-claro" id="btn-avancar" type="button"></button>
+          <button class="btn btn-claro" id="btn-imprimir" type="button">
+            <i class="fa-solid fa-print" aria-hidden="true"></i> Imprimir comprovante
+          </button>
+          <a class="btn" id="pedido-whats" target="_blank" rel="noopener" href="#">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Falar sobre o pedido
+          </a>
+        </div>
+
+        <p style="font-size:12.5px; color:var(--texto-fraco); line-height:1.6">
+          Este é um pedido de demonstração: ele fica guardado neste navegador.
+          Na loja real, as etapas avançam sozinhas conforme o pagamento é compensado
+          e o transporte é notificado.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer id="rodape"></footer>
+
+<script src="js/dados.js"></script>
+<script src="js/config.js"></script>
+<script src="js/catalogo.js"></script>
+<script src="js/carrinho.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/pedido.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Produto | NEXA STORE</title>
+<meta name="description" content="Detalhes do produto: preço, descrição completa, avaliações de clientes, prazo de entrega e compra no Pix, crédito ou débito.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header id="cabecalho"></header>
+
+<main>
+  <div class="container">
+    <nav class="migalha" id="prod-rastro" aria-label="Você está em"></nav>
+
+    <div class="produto-detalhe">
+
+      <!-- ---------- GALERIA ---------- -->
+      <div class="galeria">
+        <div class="galeria-principal" id="galeria-principal">
+          <img src="assets/img/produtos/nexa-phone-x-pro.jpg" alt="Produto">
+          <span class="galeria-lente"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i> Passe o mouse para ver de perto</span>
+        </div>
+        <div class="galeria-miniaturas" id="galeria-miniaturas"></div>
+      </div>
+
+      <!-- ---------- INFORMAÇÕES ---------- -->
+      <div class="info-produto">
+        <div>
+          <a class="card-categoria" id="prod-categoria" href="index.html">Categoria</a>
+          <h1 id="prod-nome">Carregando produto…</h1>
+          <p id="prod-resumo" style="color:var(--texto-suave); margin-top:10px"></p>
+        </div>
+
+        <div class="info-linha">
+          <span id="prod-estrelas"></span>
+          <span id="prod-vendidos"></span>
+          <span class="codigo" id="prod-codigo"></span>
+        </div>
+
+        <div class="bloco-preco">
+          <div class="linha-preco">
+            <strong id="prod-preco">R$ 0,00</strong>
+            <s id="prod-preco-antigo" hidden></s>
+            <span id="prod-desconto" hidden></span>
+          </div>
+          <p id="prod-economia" hidden></p>
+          <p id="prod-parcelas"></p>
+          <p id="prod-frete"></p>
+          <p id="prod-estoque" hidden></p>
+        </div>
+
+        <div class="bloco-compra">
+          <div class="linha-compra">
+            <span class="rotulo-quantidade">Quantidade</span>
+            <div class="controle-qtd">
+              <button type="button" id="qtd-menos" aria-label="Diminuir quantidade">
+                <i class="fa-solid fa-minus" aria-hidden="true"></i>
+              </button>
+              <span id="qtd-valor" aria-live="polite">1</span>
+              <button type="button" id="qtd-mais" aria-label="Aumentar quantidade">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="painel-compra">
+            <button class="btn btn-grande btn-claro" id="btn-add-carrinho">
+              <i class="fa-solid fa-cart-plus" aria-hidden="true"></i> Adicionar ao carrinho
+            </button>
+            <button class="btn btn-grande btn-comprar" id="btn-comprar-agora">
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Comprar agora
+            </button>
+            <a class="btn btn-grande btn-claro" target="_blank" rel="noopener" data-whats-produto
+               href="https://wa.me/5511999999999">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Falar com o vendedor
+            </a>
+          </div>
+        </div>
+
+        <!-- ---------- ENTREGA ---------- -->
+        <div class="entrega-bloco">
+          <h3><i class="fa-solid fa-truck-fast" aria-hidden="true"></i> Calcular entrega</h3>
+          <form class="form-cep" id="form-cep" novalidate>
+            <label class="sr-only" for="campo-cep">Digite seu CEP</label>
+            <input type="text" id="campo-cep" inputmode="numeric" placeholder="Digite seu CEP" autocomplete="postal-code">
+            <button class="btn btn-pequeno" type="submit">Calcular</button>
+          </form>
+          <div id="resultado-cep" hidden></div>
+        </div>
+
+        <!-- ---------- ONDE ESTÁ O PRODUTO ---------- -->
+        <div class="entrega-bloco">
+          <div class="local-info" id="local-loja"></div>
+          <div class="local-mapa" id="mapa-produto"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------- CONTEÚDO ---------- -->
+    <section class="abas-conteudo">
+      <div class="menu-abas" role="tablist" aria-label="Informações do produto">
+        <button class="ativo" role="tab" aria-selected="true" data-aba="descricao">Descrição</button>
+        <button role="tab" aria-selected="false" data-aba="especificacoes">Especificações</button>
+        <button role="tab" aria-selected="false" data-aba="avaliacoes">Avaliações</button>
+      </div>
+
+      <div class="painel-aba conteudo-produto" role="tabpanel" id="aba-descricao">
+        <div id="prod-descricao"></div>
+      </div>
+
+      <div class="painel-aba" role="tabpanel" id="aba-especificacoes" hidden>
+        <div class="grade-detalhes">
+          <div>
+            <h3 class="subtitulo-aba">Ficha técnica</h3>
+            <table class="tabela-especificacoes">
+              <tbody id="prod-especificacoes"></tbody>
+            </table>
+          </div>
+          <div>
+            <h3 class="subtitulo-aba">O que vem na caixa</h3>
+            <ul class="lista-caixa" id="prod-caixa"></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="painel-aba" role="tabpanel" id="aba-avaliacoes" hidden>
+        <div class="avaliacao-topo" id="avaliacao-resumo"></div>
+        <div class="lista-avaliacoes" id="lista-avaliacoes"></div>
+      </div>
+    </section>
+
+    <!-- ---------- RELACIONADOS ---------- -->
+    <section class="secao">
+      <div class="secao-topo">
+        <div>
+          <h2>Você também pode gostar</h2>
+          <p>Selecionados com base no que você está vendo.</p>
+        </div>
+      </div>
+      <div class="grade-produtos" id="prod-relacionados"></div>
+    </section>
+  </div>
+</main>
+
+<footer id="rodape"></footer>
+
+<script src="js/dados.js"></script>
+<script src="js/config.js"></script>
+<script src="js/catalogo.js"></script>
+<script src="js/carrinho.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/produto.js"></script>
+</body>
+</html>
