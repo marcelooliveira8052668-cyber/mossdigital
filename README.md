@@ -1,7 +1,7 @@
 # Template de Site Profissional
 
-Template com **23 tipos de negócio prontos** e **31 exemplos** no portfólio (23 nichos
-do template + 8 projetos reais). Você troca cores, logo, fotos, textos e cards num
+Template com **23 tipos de negócio prontos** e **33 exemplos** no portfólio (23 nichos
+do template + 10 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
 Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
@@ -12,7 +12,7 @@ Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
 
 | Arquivo | Para que serve | Quem vê |
 |---------|----------------|---------|
-| **index.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 26 exemplos. É por aqui que o cliente entra | Cliente |
+| **index.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 33 exemplos. É por aqui que o cliente entra | Cliente |
 | **portfolio.html** | Redireciona para o `index.html` (link antigo, mantido para não quebrar quem já tinha guardado) | Cliente |
 | demo.html?preset=lanchonete | O site de exemplo, já preenchido. É este link que você manda pro cliente | Cliente |
 | demo.html?preset=X&painel=1 | O site de exemplo com o painel de troca | Só você |
@@ -59,9 +59,9 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ---
 
-## Os 8 projetos reais do portfólio
+## Os 10 projetos reais do portfólio
 
-Além dos 23 nichos gerados pelo template, o portfólio mostra **8 projetos que existem
+Além dos 23 nichos gerados pelo template, o portfólio mostra **10 projetos que existem
 de verdade** e abrem em página própria:
 
 | Projeto | O que é | Pasta |
@@ -74,6 +74,8 @@ de verdade** e abrem em página própria:
 | Lina — Tutor de Inglês | App de inglês com IA: voz, cenários, correção de erros e XP | `tutor-ia/` |
 | SkillMatch | Compatibilidade de vagas em % + plano de estudo para o candidato | `skillmatch/` |
 | Comanda Fácil | Comandas, cozinha e caixa: sistema completo para restaurantes | `comandas/` |
+| NEXA Store | Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix | `loja-virtual/` |
+| Elaine & Sandra | Site de neuropsicopedagogia clínica, avaliação, dúvidas e mapa | `elaine-sandrinha/` |
 
 Para colocar um card desses no portfólio, edite a lista `EXEMPLOS` em
 `assets/js/portfolio.js` e aponte o campo `link` para a pasta do projeto:
