@@ -55,7 +55,8 @@
     { id: 'comandas', emoji: '🧾', foto: 'assets/img/fotos/heroi-comandas.jpg', nome: 'Comanda Fácil', desc: 'Comandas, cozinha e caixa: sistema completo para restaurantes e lanchonetes', link: 'comandas/index.html' },
 
     { id: 'lojavirtual', emoji: '🛒', foto: 'assets/img/fotos/heroi-loja.jpg', nome: 'NEXA Store', desc: 'Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix, crédito e débito', link: 'loja-virtual/index.html' },
-    { id: 'elaine', emoji: '🧠', foto: 'assets/img/fotos/heroi-elaine.jpg', nome: 'Elaine & Sandra', desc: 'Site de neuropsicopedagogia clínica com avaliação, etapas, dúvidas frequentes, mapa e contato', link: 'elaine-sandrinha/index.html' }
+    { id: 'elaine', emoji: '🧠', foto: 'assets/img/fotos/heroi-elaine.jpg', nome: 'Elaine & Sandra', desc: 'Site de neuropsicopedagogia clínica com avaliação, etapas, dúvidas frequentes, mapa e contato', link: 'elaine-sandrinha/index.html' },
+    { id: 'turismo', emoji: '✈️', foto: 'assets/img/fotos/heroi-turismo.jpg', nome: 'Horizon Travel', desc: 'Agência de viagens: destinos, pacotes, galeria e orçamento pelo WhatsApp', link: 'site-de-turismo/index.html' }
   ];
 
   /* ------------------------------------------------------------------
