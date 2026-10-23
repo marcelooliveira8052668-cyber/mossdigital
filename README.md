@@ -365,3 +365,13 @@ pode ter uma seção `nav` diferente para cada página.
 **E se o cliente quiser mais que isso?**
 Dá para fazer sim, mas aí já vira projeto sob medida e não cabe nos 7 dias do
 pacote básico. Cobre como adicional.
+
+## Propriedade intelectual
+
+Todo o codigo-fonte deste portfólio (HTML, CSS, JavaScript, imagens e
+textos) é propriedade do autor — veja o arquivo [LICENSE](LICENSE).
+É proibida a reprodução, redistribuição ou revenda sem autorização
+escrita. Os clientes compram **licença de uso** para o próprio negócio,
+não o código para revenda. O site aplica bloqueios simples de cópia
+(botão direito, atalhos e seleção) como desincentivo; a proteção
+principal é jurídica.
