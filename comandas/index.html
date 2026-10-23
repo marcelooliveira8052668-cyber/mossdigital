@@ -55,7 +55,14 @@
 
             <p id="login-erro" class="login-erro" role="alert" hidden></p>
 
-            <form id="formLogin" novalidate>
+            <div class="abas login-abas" role="tablist" aria-label="Entrar ou criar conta">
+                <button type="button" class="aba ativo" id="abaEntrar" role="tab"
+                        aria-selected="true" aria-controls="formLogin">Entrar</button>
+                <button type="button" class="aba" id="abaCriarConta" role="tab"
+                        aria-selected="false" aria-controls="formCadastro">Criar conta</button>
+            </div>
+
+            <form id="formLogin" novalidate role="tabpanel" aria-labelledby="abaEntrar">
 
                 <div class="campo">
                     <label for="usuario">Usuário</label>
@@ -71,6 +78,7 @@
                                autocomplete="current-password" required maxlength="72"
                                placeholder="Digite sua senha">
                         <button type="button" class="btn-olho" id="btnMostrarSenha"
+                                data-campo="senha"
                                 aria-label="Mostrar senha" aria-pressed="false"
                                 title="Mostrar senha">Mostrar</button>
                     </div>
@@ -80,7 +88,59 @@
 
             </form>
 
-            <p class="login-dica">
+            <form id="formCadastro" novalidate hidden
+                  role="tabpanel" aria-labelledby="abaCriarConta">
+
+                <p class="cadastro-texto">
+                    Crie seu acesso para entrar no sistema. Na primeira conta, o cargo
+                    nasce <b>administrador</b> — assim ninguém fica de fora.
+                </p>
+
+                <div class="campo">
+                    <label for="cadNome">Nome completo</label>
+                    <input type="text" id="cadNome" name="cadNome"
+                           autocomplete="name" required maxlength="60"
+                           placeholder="Como aparece no seu documento">
+                </div>
+
+                <div class="campo">
+                    <label for="cadUsuario">Usuário</label>
+                    <input type="text" id="cadUsuario" name="cadUsuario"
+                           autocomplete="username" required maxlength="40"
+                           placeholder="Você vai digitar isto para entrar">
+                </div>
+
+                <div class="campo">
+                    <label for="cadSenha">Senha</label>
+                    <div class="campo-com-botao">
+                        <input type="password" id="cadSenha" name="cadSenha"
+                               autocomplete="new-password" required maxlength="72"
+                               placeholder="Mínimo de 4 caracteres">
+                        <button type="button" class="btn-olho" id="btnMostrarCadSenha"
+                                data-campo="cadSenha"
+                                aria-label="Mostrar senha" aria-pressed="false"
+                                title="Mostrar senha">Mostrar</button>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="cadSenha2">Repetir a senha</label>
+                    <div class="campo-com-botao">
+                        <input type="password" id="cadSenha2" name="cadSenha2"
+                               autocomplete="new-password" required maxlength="72"
+                               placeholder="Digite a mesma senha de novo">
+                        <button type="button" class="btn-olho" id="btnMostrarCadSenha2"
+                                data-campo="cadSenha2"
+                                aria-label="Mostrar senha" aria-pressed="false"
+                                title="Mostrar senha">Mostrar</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--principal" id="btnCriarConta">Criar conta</button>
+
+            </form>
+
+            <p class="login-dica" id="login-dica">
                 Primeira vez? Entre com <b>admin</b> / <b>1234</b> e troque a senha
                 em <b>Cadastros → Funcionários</b>.
             </p>

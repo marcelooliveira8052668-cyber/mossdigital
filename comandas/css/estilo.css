@@ -370,6 +370,23 @@ fieldset.campo legend { padding: 0 .35rem; font-size: .95rem; }
     text-align: center;
 }
 
+/* Abas "Entrar / Criar conta" — reaproveita .abas/.aba, ajustada ao card. */
+.login-abas { margin-top: 1.2rem; gap: .2rem; }
+.login-abas .aba { flex: 1; text-align: center; padding: .55rem .5rem; font-size: .92rem; }
+
+/* Texto de apoio acima dos campos do cadastro. */
+.cadastro-texto {
+    margin: 0 0 1rem;
+    padding: .65rem .8rem;
+    background: var(--primaria-suave);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-pequeno);
+    font-size: .82rem;
+    line-height: 1.5;
+    color: var(--texto-suave);
+}
+.cadastro-texto b { color: var(--primaria); }
+
 
 /* ------------------------------------------------------------- TOPO */
 .sistema { min-height: 100vh; display: flex; flex-direction: column; }

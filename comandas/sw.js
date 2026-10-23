@@ -6,7 +6,7 @@
    Versão do cache: incrementar quando qualquer arquivo mudar.
    ================================================================= */
 
-var VERSAO_CACHE = 'comanda-facil-v2';
+var VERSAO_CACHE = 'comanda-facil-v3';
 
 var ARQUIVOS = [
     './',

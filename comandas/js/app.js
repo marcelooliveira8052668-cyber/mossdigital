@@ -40,20 +40,87 @@
 
 
     /* ================================================================
-       LOGIN
+       LOGIN / CRIAR CONTA
     ================================================================= */
     function iniciarLogin() {
         var form = el('formLogin');
         if (form) form.addEventListener('submit', fazerLogin);
 
-        el('btnMostrarSenha').addEventListener('click', function () {
-            var campo = el('senha');
-            var mostrando = campo.type === 'text';
-            campo.type = mostrando ? 'password' : 'text';
-            this.textContent = mostrando ? 'Mostrar' : 'Ocultar';
-            this.setAttribute('aria-pressed', String(!mostrando));
-            this.setAttribute('aria-label', mostrando ? 'Mostrar senha' : 'Ocultar senha');
-        });
+        var cadastro = el('formCadastro');
+        if (cadastro) cadastro.addEventListener('submit', fazerConta);
+
+        if (el('abaEntrar')) {
+            el('abaEntrar').addEventListener('click', function () { mostrarAba('entrar'); });
+        }
+        if (el('abaCriarConta')) {
+            el('abaCriarConta').addEventListener('click', function () { mostrarAba('criar'); });
+        }
+
+        /* Mostrar/ocultar senha: o botão aponta para o campo com data-campo,
+           então os três pares da tela de entrada usam o mesmo código. */
+        Array.prototype.forEach.call(
+            document.querySelectorAll('.btn-olho[data-campo]'),
+            function (botao) {
+                botao.addEventListener('click', function () {
+                    var campo = el(botao.getAttribute('data-campo'));
+                    if (!campo) return;
+                    var mostrando = campo.type === 'text';
+                    campo.type = mostrando ? 'password' : 'text';
+                    botao.textContent = mostrando ? 'Mostrar' : 'Ocultar';
+                    botao.setAttribute('aria-pressed', String(!mostrando));
+                    botao.setAttribute('aria-label',
+                        mostrando ? 'Mostrar senha' : 'Ocultar senha');
+                });
+            }
+        );
+
+        atualizarDica();
+    }
+
+    /* Troca entre "Entrar" e "Criar conta". */
+    function mostrarAba(qual) {
+        var criando = qual === 'criar';
+        var formLogin = el('formLogin');
+        var formCadastro = el('formCadastro');
+        if (!formLogin || !formCadastro || !el('abaEntrar')) return;
+
+        formLogin.hidden = criando;
+        formCadastro.hidden = !criando;
+
+        el('abaEntrar').classList.toggle('ativo', !criando);
+        el('abaCriarConta').classList.toggle('ativo', criando);
+        el('abaEntrar').setAttribute('aria-selected', String(!criando));
+        el('abaCriarConta').setAttribute('aria-selected', String(criando));
+
+        var erroEl = el('login-erro');
+        if (erroEl) { erroEl.hidden = true; erroEl.textContent = ''; }
+
+        CF.focar(criando ? 'cadNome' : 'usuario');
+    }
+
+    /* A dica de baixo muda conforme o estado real das contas. */
+    function atualizarDica() {
+        var dica = el('login-dica');
+        if (!dica) return;
+
+        var funcs = N.listarFuncionarios();
+
+        if (!funcs.length) {
+            /* Caso do sistema limpo: sem contas não há nada para entrar. */
+            dica.innerHTML = 'Nenhuma conta cadastrada ainda. Abra a aba ' +
+                '<b>Criar conta</b> — na primeira, o cargo nasce ' +
+                '<b>administrador</b>.';
+            return;
+        }
+
+        if (funcs.some(function (f) { return f.demo; })) {
+            dica.innerHTML = 'Primeira vez? Entre com <b>admin</b> / <b>1234</b> ' +
+                'e troque a senha em <b>Cadastros → Funcionários</b>.';
+            return;
+        }
+
+        dica.innerHTML = 'Esqueceu a senha? Um administrador redefine em ' +
+            '<b>Cadastros → Funcionários</b>.';
     }
 
     function fazerLogin(ev) {
@@ -81,11 +148,62 @@
             botao.textContent = 'Entrar';
 
             if (!resultado.ok) {
+                /* Sem conta cadastrada (sistema limpo): em vez de deixar a
+                   pessoa encostada numa tela sem saída, abre o cadastro. */
+                if (resultado.erro && resultado.erro.indexOf('não encontrado') !== -1) {
+                    mostrarAba('criar');
+                } else {
+                    CF.focar('senha');
+                }
+
                 erroEl.textContent = resultado.erro || 'Não foi possível entrar.';
                 erroEl.hidden = false;
-                CF.focar('senha');
                 return;
             }
+
+            entrarNoSistema(resultado.funcionario);
+        });
+    }
+
+    /* Cria a conta pela tela de entrada e já entra com ela. */
+    function fazerConta(ev) {
+        ev.preventDefault();
+
+        var erroEl = el('login-erro');
+        var botao = el('btnCriarConta');
+
+        erroEl.hidden = true;
+        erroEl.textContent = '';
+
+        var dados = {
+            nome: valor('cadNome').trim(),
+            usuario: valor('cadUsuario').trim(),
+            senha: valor('cadSenha'),
+            repetir: valor('cadSenha2')
+        };
+
+        if (!dados.nome || !dados.usuario || !dados.senha) {
+            erroEl.textContent = 'Preencha nome, usuário e senha.';
+            erroEl.hidden = false;
+            return;
+        }
+
+        botao.disabled = true;
+        botao.textContent = 'Criando…';
+
+        N.criarConta(dados).then(function (resultado) {
+            botao.disabled = false;
+            botao.textContent = 'Criar conta';
+
+            if (!resultado.ok) {
+                erroEl.textContent = resultado.erro || 'Não foi possível criar a conta.';
+                erroEl.hidden = false;
+                return;
+            }
+
+            CF.toast(resultado.primeira
+                ? 'Conta criada — você é o administrador.'
+                : 'Conta criada.', 'ok');
 
             entrarNoSistema(resultado.funcionario);
         });
@@ -131,7 +249,15 @@
         el('sistema').hidden = true;
         el('telaLogin').hidden = false;
         el('senha').value = '';
-        CF.focar('usuario');
+
+        /* Recalcula a dica e volta para a aba certa: quem acabou de criar a
+           conta não pode encontrar "nenhuma conta cadastrada" aqui. */
+        if (el('formCadastro') && !el('formCadastro').hidden) {
+            mostrarAba('entrar');
+        } else {
+            atualizarDica();
+            CF.focar('usuario');
+        }
     }
 
     /* Tenta recuperar a sessão se o navegador foi recarregado. */

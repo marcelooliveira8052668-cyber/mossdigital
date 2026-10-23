@@ -203,6 +203,60 @@ CF.negocio = (function () {
         return Promise.resolve(gravar(null));
     }
 
+    /* Cria uma conta direto da tela de entrada.
+
+       É a saída de emergência do sistema. O "excluir tudo" varre a lista de
+       funcionários e a configuração continua de pé, então a migração não
+       recria o administrador — quem limpa os dados ficava trancado para
+       sempre, com "usuário não encontrado" sem saída.
+
+       A primeira conta nasce administrador; as seguintes entram como
+       funcionário, para a tela de entrada não virar porta dos fundos
+       para cargo alto. Administrador se dá em Cadastros → Funcionários. */
+    function criarConta(dados) {
+        dados = dados || {};
+
+        var lista = listarFuncionarios();
+        var primeira = lista.length === 0;
+
+        var nome = String(dados.nome || '').trim();
+        var usuario = String(dados.usuario || '').trim();
+        var senha = String(dados.senha || '');
+        var repetir = String(dados.repetir || '');
+
+        var erro = null;
+
+        if (!nome) erro = 'Informe o nome completo.';
+        else if (!usuario) erro = 'Informe o usuário de acesso.';
+        else if (usuario.length < 3) erro = 'O usuário precisa ter pelo menos 3 caracteres.';
+        else if (usuarioDuplicado(usuario, null)) erro = 'Esse usuário já está em uso.';
+        else if (senha.length < 4) erro = 'A senha precisa ter pelo menos 4 caracteres.';
+        else if (senha !== repetir) erro = 'As duas senhas não conferem.';
+
+        if (erro) return Promise.resolve({ ok: false, erro: erro });
+
+        return CF.hashSenha(senha).then(function (resumo) {
+            var novo = {
+                id: CF.uid(),
+                nome: nome.slice(0, 60),
+                usuario: usuario.slice(0, 40),
+                senhaResumo: resumo,
+                tipo: primeira ? 'admin' : 'funcionario',
+                ativo: true,
+                criadoEm: Date.now()
+            };
+
+            lista.push(novo);
+            D.salvar(K.funcionarios, lista);
+
+            D.registrar('conta-criada',
+                'Conta de ' + novo.nome + ' (' + novo.usuario + ')' +
+                (primeira ? ' — administrador' : ''), novo.nome);
+
+            return { ok: true, funcionario: novo, primeira: primeira };
+        });
+    }
+
     function excluirFuncionario(id, idQuemExcluiu) {
         var funcs = listarFuncionarios();
         var alvo = funcs.filter(function (f) { return f.id === id; })[0];
@@ -602,6 +656,7 @@ CF.negocio = (function () {
         listarFuncionarios: listarFuncionarios,
         verificarLogin: verificarLogin,
         salvarFuncionario: salvarFuncionario,
+        criarConta: criarConta,
         excluirFuncionario: excluirFuncionario,
         acharPorUsuario: acharPorUsuario,
 
