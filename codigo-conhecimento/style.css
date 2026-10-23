@@ -4,29 +4,29 @@
 
 
 /* =====================================================
-   BOTÃƒO DE COMPRA â€” CAPA DO LIVRO
+   BOTÃO DE COMPRA — CAPA DO LIVRO
 
-   Eu crio a aparÃªncia do botÃ£o de venda na capa.
+   Eu crio a aparência do botão de venda na capa.
    ===================================================== */
 
 .area-compra {
 
-    /* Eu centralizo o botÃ£o e o aviso. */
+    /* Eu centralizo o botão e o aviso. */
     text-align: center;
 
-    /* Eu adiciono espaÃ§o acima do botÃ£o. */
+    /* Eu adiciono espaço acima do botão. */
     margin-top: 40px;
 
 }
 
-/* Eu crio a aparÃªncia do link que simula um botÃ£o. */
+/* Eu crio a aparência do link que simula um botão. */
 
 .botao-compra {
 
-    /* Eu faÃ§o o elemento ocupar o comportamento de bloco. */
+    /* Eu faço o elemento ocupar o comportamento de bloco. */
     display: inline-block;
 
-    /* Eu adiciono espaÃ§o interno ao botÃ£o. */
+    /* Eu adiciono espaço interno ao botão. */
     padding: 18px 36px;
 
     /* Eu utilizo a cor dourada da identidade visual. */
@@ -35,7 +35,7 @@
     /* Eu defino o texto branco. */
     color: #ffffff;
 
-    /* Eu removo a decoraÃ§Ã£o do link. */
+    /* Eu removo a decoração do link. */
     text-decoration: none;
 
     /* Eu arredondo os cantos. */
@@ -44,7 +44,7 @@
     /* Eu deixo o texto em negrito. */
     font-weight: bold;
 
-    /* Eu defino o tamanho confortÃ¡vel de leitura. */
+    /* Eu defino o tamanho confortável de leitura. */
     font-size: 18px;
 
     /* Eu utilizo a fonte da interface. */
@@ -53,7 +53,7 @@
     /* Eu indico que o elemento pode ser clicado. */
     cursor: pointer;
 
-    /* Eu suavizo a transiÃ§Ã£o ao passar o mouse. */
+    /* Eu suavizo a transição ao passar o mouse. */
     transition: background-color 0.3s ease, transform 0.2s ease;
 
     /* Eu adiciono uma sombra discreta. */
@@ -61,14 +61,14 @@
 
 }
 
-/* Eu destaco o botÃ£o quando o mouse passa por cima. */
+/* Eu destaco o botão quando o mouse passa por cima. */
 
 .botao-compra:hover {
 
     /* Eu utilizo o dourado mais claro ao passar o mouse. */
     background-color: #e7d3a4;
 
-    /* Eu levemente elev o botÃ£o. */
+    /* Eu levemente elev o botão. */
     transform: translateY(-2px);
 
 }
@@ -77,19 +77,19 @@
 
 .botao-compra:focus-visible {
 
-    /* Eu crio um contorno visÃ­vel para acessibilidade. */
+    /* Eu crio um contorno visível para acessibilidade. */
     outline: 3px solid #e7d3a4;
 
-    /* Eu posiciono o contorno fora do botÃ£o. */
+    /* Eu posiciono o contorno fora do botão. */
     outline-offset: 3px;
 
 }
 
-/* Eu estilizo o aviso abaixo do botÃ£o. */
+/* Eu estilizo o aviso abaixo do botão. */
 
 .aviso-compra {
 
-    /* Eu adiciono espaÃ§o acima do texto. */
+    /* Eu adiciono espaço acima do texto. */
     margin-top: 10px;
 
     /* Eu utilizo uma cor suave. */
@@ -103,13 +103,13 @@
 
 }
 
-/* Eu adapto o botÃ£o para telas pequenas. */
+/* Eu adapto o botão para telas pequenas. */
 
 @media (max-width: 600px) {
 
     .botao-compra {
 
-        /* Eu reduzo o espaÃ§o interno no celular. */
+        /* Eu reduzo o espaço interno no celular. */
         padding: 14px 24px;
 
         /* Eu diminuo o tamanho das letras. */
