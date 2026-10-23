@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VELHA//CORE — Jogo da Velha futurista contra a máquina</title>
+<meta name="description" content="Jogo da velha com visual futurista: três dificuldades, modo para dois jogadores no mesmo aparelho, placar com sequências, dica da IA e jogabilidade pelo teclado.">
+<meta name="theme-color" content="#05060f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VELHA//CORE — Jogo da Velha futurista">
+<meta property="og:description" content="Três dificuldades, modo para dois jogadores, placar com sequências e dica da inteligência artificial.">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="pular" href="#tabuleiro">Pular para o tabuleiro</a>
+
+<!-- ---------------------------------------------------------- CABEÇALHO -->
+<header class="topo">
+    <h1 class="marca">
+        <span class="marca__x">VELHA</span><span class="marca__barra">//</span><span class="marca__o">CORE</span>
+    </h1>
+    <p class="slogan">Três em linha &middot; inteligência artificial a bordo</p>
+</header>
+
+<!-- ------------------------------------------------------------- PLACAR -->
+<section class="placar" aria-label="Placar da partida">
+    <div class="placar__painel placar--x" id="painel-x" data-ativo="sim" data-lider="nao">
+        <div class="placar__apelido" id="nome-x">VOCÊ</div>
+        <div class="placar__linha">
+            <span class="placar__simbolo" aria-hidden="true">X</span>
+            <span class="placar__valor" id="placar-x">0</span>
+            <span class="placar__sequencia" id="sequencia-x"></span>
+        </div>
+        <div class="placar__nome">vitórias</div>
+    </div>
+
+    <div class="placar__empates">
+        <div class="placar__apelido">EMPATES</div>
+        <div class="placar__valor" id="placar-empates">0</div>
+    </div>
+
+    <div class="placar__painel placar--o" id="painel-o" data-ativo="nao" data-lider="nao">
+        <div class="placar__apelido" id="nome-o">MÁQUINA</div>
+        <div class="placar__linha">
+            <span class="placar__simbolo" aria-hidden="true">O</span>
+            <span class="placar__valor" id="placar-o">0</span>
+            <span class="placar__sequencia" id="sequencia-o"></span>
+        </div>
+        <div class="placar__nome">vitórias</div>
+    </div>
+</section>
+
+<!-- ------------------------------------------------- MODO E DIFICULDADE -->
+<div class="controles">
+    <div class="grupo grupo--modo" role="group" aria-label="Modo de jogo">
+        <button class="opcao" type="button" data-modo="maquina" aria-pressed="true">Máquina</button>
+        <button class="opcao" type="button" data-modo="duo" aria-pressed="false">2 jogadores</button>
+    </div>
+
+    <div class="grupo grupo--nivel" id="grupo-nivel" role="group" aria-label="Dificuldade" aria-disabled="false">
+        <button class="opcao" type="button" data-nivel="facil" aria-pressed="false">Fácil</button>
+        <button class="opcao" type="button" data-nivel="medio" aria-pressed="true">Médio</button>
+        <button class="opcao" type="button" data-nivel="dificil" aria-pressed="false">Imbatível</button>
+    </div>
+</div>
+
+<!-- --------------------------------------------------------- TABULEIRO -->
+<div class="moldura" id="moldura">
+    <div class="tabuleiro" id="tabuleiro" data-encerrado="nao" aria-label="Tabuleiro do jogo da velha"></div>
+    <div class="trilho" id="trilho-vitoria" aria-hidden="true"></div>
+</div>
+
+<!-- ------------------------------------------------------------ MENSAGEM -->
+<div class="mensagem">
+    <p class="mensagem__principal" id="msg-principal" data-tom="x">Vez de VOCÊ</p>
+    <p class="mensagem__extra" id="msg-extra">Casa livre: sua escolha</p>
+</div>
+
+<p class="aviso" id="aviso" hidden role="status"></p>
+
+<!-- --------------------------------------------------------------- AÇÕES -->
+<div class="acoes">
+    <button class="botao botao--primario" type="button" id="btn-proxima" hidden>Próxima rodada</button>
+    <button class="botao botao--fantasma" type="button" id="btn-sugestao">Dica da IA</button>
+    <button class="botao botao--fantasma" type="button" id="btn-zerar">Zerar placar</button>
+</div>
+
+<!-- ---------------------------------------------------------------- AJUDA -->
+<details class="ajuda">
+    <summary class="ajuda__gatilho">Como jogar</summary>
+    <div class="ajuda__corpo">
+        <dl>
+            <div>
+                <dt>Objetivo</dt>
+                <dd>Marque três casas em linha — na horizontal, na vertical ou na diagonal — antes do adversário.</dd>
+            </div>
+            <div>
+                <dt>Dificuldades</dt>
+                <dd><b>Fácil</b> joga quase no instinto (1 casa de análise). <b>Médio</b> enxerga 4 casas à frente. <b>Imbatível</b> calcula todas as linhas possíveis: você não perde dele — no máximo empata.</dd>
+            </div>
+            <div>
+                <dt>Teclado</dt>
+                <dd>As teclas <kbd>1</kbd> a <kbd>9</kbd> marcam a casa correspondente (de cima para baixo, da esquerda para a direita) e <kbd>N</kbd> começa a próxima rodada.</dd>
+            </div>
+            <div>
+                <dt>Dica da IA</dt>
+                <dd>O botão <b>Dica da IA</b> aponta a jogada mais forte no momento. A escolha continua sendo sua: a casa é destacada, não marcada.</dd>
+            </div>
+            <div>
+                <dt>Mesmo aparelho</dt>
+                <dd>No modo <b>2 jogadores</b> o X e o O se revezam no mesmo celular ou computador, e a dificuldade fica desativada.</dd>
+            </div>
+        </dl>
+    </div>
+</details>
+
+<!-- ------------------------------------------------------------- RODAPÉ -->
+<footer class="rodape">
+    <p>VELHA//CORE &middot; jogo de demonstração &middot; sem cadastro, sem coleta de dados</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

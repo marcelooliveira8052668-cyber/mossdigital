@@ -56,7 +56,8 @@
 
     { id: 'lojavirtual', emoji: '🛒', foto: 'assets/img/fotos/heroi-loja.jpg', nome: 'NEXA Store', desc: 'Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix, crédito e débito', link: 'loja-virtual/index.html' },
     { id: 'elaine', emoji: '🧠', foto: 'assets/img/fotos/heroi-elaine.jpg', nome: 'Elaine & Sandra', desc: 'Site de neuropsicopedagogia clínica com avaliação, etapas, dúvidas frequentes, mapa e contato', link: 'elaine-sandrinha/index.html' },
-    { id: 'turismo', emoji: '✈️', foto: 'assets/img/fotos/heroi-turismo.jpg', nome: 'Horizon Travel', desc: 'Agência de viagens: destinos, pacotes, galeria e orçamento pelo WhatsApp', link: 'site-de-turismo/index.html' }
+    { id: 'turismo', emoji: '✈️', foto: 'assets/img/fotos/heroi-turismo.jpg', nome: 'Horizon Travel', desc: 'Agência de viagens: destinos, pacotes, galeria e orçamento pelo WhatsApp', link: 'site-de-turismo/index.html' },
+    { id: 'jogo-velha', emoji: '🎮', foto: 'assets/img/fotos/heroi-jogo-velha.jpg', nome: 'VELHA//CORE', desc: 'Jogo da velha futurista: IA em três dificuldades, dois jogadores no mesmo aparelho, placar com sequências e dica da jogada', link: 'jogo-velha/index.html' }
   ];
 
   /* ------------------------------------------------------------------

@@ -1,6 +1,6 @@
 # Template de Site Profissional
 
-Template com **23 tipos de negócio prontos** e **34 exemplos** no portfólio (23 nichos
+Template com **23 tipos de negócio prontos** e **35 exemplos** no portfólio (23 nichos
 do template + 10 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
@@ -12,7 +12,7 @@ Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
 
 | Arquivo | Para que serve | Quem vê |
 |---------|----------------|---------|
-| **index.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 34 exemplos. É por aqui que o cliente entra | Cliente |
+| **index.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 35 exemplos. É por aqui que o cliente entra | Cliente |
 | **portfolio.html** | Redireciona para o `index.html` (link antigo, mantido para não quebrar quem já tinha guardado) | Cliente |
 | demo.html?preset=lanchonete | O site de exemplo, já preenchido. É este link que você manda pro cliente | Cliente |
 | demo.html?preset=X&painel=1 | O site de exemplo com o painel de troca | Só você |
