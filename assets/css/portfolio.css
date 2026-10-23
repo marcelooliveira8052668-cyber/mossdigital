@@ -153,25 +153,95 @@ p { margin: 0; }
 .agencia__cta { text-align: center; margin-top: 42px; }
 .agencia__nota { font-size: .84rem; color: var(--suave); margin-top: 14px; }
 
-/* ---------- introdução (manifesto) ---------- */
-.hero__intro {
-  max-width: 720px;
-  margin-bottom: 30px;
-  padding: 26px 30px;
-  background: #0f172a;                       /* fundo negro */
-  border-left: 4px solid var(--amarelo);     /* destaque amarelo */
-  border-radius: 0 14px 14px 0;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+/* ---------- quem constrói (apresentação com foto) ---------- */
+.sec--sobre { background: var(--off); }
+.sobre__grid {
+  display: grid;
+  grid-template-columns: .82fr 1.18fr;
+  gap: 56px;
+  align-items: center;
 }
-.hero__intro p {
-  font-size: 1.02rem;
-  line-height: 1.75;
-  color: #e2e8f0;                          /* texto claro */
-  margin: 0;
+
+/* foto: círculo com moldura dupla, estilo "retrato" */
+.sobre__fig { position: relative; }
+.sobre__fig::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 2px dashed rgba(13, 43, 82, .18);
 }
-.hero__intro strong { color: var(--amarelo); font-weight: 600; }
+.sobre__fig::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  bottom: 10px;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--amarelo);
+  box-shadow: 0 0 0 8px var(--off);
+}
+.sobre__fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--branco);
+  box-shadow: var(--sombra-forte);
+  position: relative;
+  z-index: 1;
+}
+
+.sobre__txt .tag { margin-bottom: 16px; }
+.sobre__txt h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); margin-bottom: 18px; }
+.sobre__txt p { color: var(--suave); margin-bottom: 15px; }
+.sobre__txt p strong { color: var(--texto); font-weight: 600; }
+.sobre__lead { font-size: 1.06rem; color: var(--texto) !important; }
+
+.sobre__assinatura {
+  margin: 22px 0 !important;
+  padding: 16px 20px;
+  background: var(--branco);
+  border-left: 4px solid var(--amarelo);
+  border-radius: 0 var(--raio) var(--raio) 0;
+  font-size: .98rem;
+}
+.sobre__assinatura b { color: var(--texto); }
+
+.sobre__selos {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 26px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.sobre__selos li {
+  background: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 14px 12px;
+  text-align: center;
+}
+.sobre__selos b {
+  display: block;
+  font-size: 1.12rem;
+  color: var(--azul);
+  font-family: var(--serifada);
+  line-height: 1.2;
+}
+.sobre__selos small {
+  display: block;
+  font-size: .74rem;
+  color: var(--suave);
+  margin-top: 4px;
+  line-height: 1.35;
+}
+
+.sobre__btns { display: flex; flex-wrap: wrap; gap: 14px; }
 
 .selo {
   display: inline-flex; align-items: center; gap: 9px;
@@ -427,6 +497,9 @@ body {
 @media (max-width: 940px) {
   .hero__grid { grid-template-columns: 1fr; gap: 40px; }
   .preco__grid { grid-template-columns: 1fr; gap: 36px; }
+  .sobre__grid { grid-template-columns: 1fr; gap: 44px; }
+  /* a foto vira retrato menor, centralizado acima do texto */
+  .sobre__fig { max-width: 320px; margin-inline: auto; }
   .rod__in { grid-template-columns: 1fr; gap: 30px; }
   .nav {
     position: fixed; inset: 76px 0 auto 0;
@@ -450,4 +523,7 @@ body {
   .hero__btns .btn { width: 100%; }
   .provas { gap: 22px; }
   .final .btn { width: 100%; }
+  .sobre__selos { grid-template-columns: repeat(2, 1fr); }
+  .sobre__btns .btn { width: 100%; }
+  .sobre__fig::after { width: 58px; height: 58px; box-shadow: 0 0 0 6px var(--off); }
 }

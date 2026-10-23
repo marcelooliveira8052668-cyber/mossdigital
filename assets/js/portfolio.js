@@ -105,6 +105,15 @@
       + 'O seu entra com os dados reais do seu negócio.';
   }
 
+  // números usados na apresentação e nas provas do herói
+  var total = REAIS.length + MODELOS.length;
+  document.querySelectorAll('[data-conta-reais]').forEach(function (el) {
+    el.textContent = REAIS.length;
+  });
+  document.querySelectorAll('[data-conta-total]').forEach(function (el) {
+    el.textContent = total;
+  });
+
   /* ------------------------------------------------------------------
      Liga os botões de WhatsApp
      ------------------------------------------------------------------ */
@@ -112,7 +121,7 @@
   const msg = encodeURIComponent('Olá, Prof. Marcelo! Vi seu trabalho e quero um site para o meu negócio.');
   const msgAg = encodeURIComponent('Olá, Prof. Marcelo! Desenvolvi e gostaria de saber as condições de licença dos projetos do seu portfólio.');
 
-  ['waTop', 'waHero', 'waPreco', 'waFinal', 'rodWa'].forEach(function (id) {
+  ['waTop', 'waHero', 'waPreco', 'waFinal', 'rodWa', 'waSobre'].forEach(function (id) {
     const el = document.getElementById(id);
     if (!el) return;
     el.href = id === 'rodWa' ? wa : wa + '?text=' + msg;
