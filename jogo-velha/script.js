@@ -27,7 +27,7 @@ const LINHAS = [
 
 const NIVEIS = {
     facil:   { rotulo: 'Fácil',      profundidade: 1 },
-    medio:   { rotulo: 'Médio',      profundidade: 4 },
+    medio:   { rotulo: 'Médio',      profundidade: 5 },
     dificil: { rotulo: 'Imbatível',  profundidade: 9 }
 };
 
@@ -68,37 +68,77 @@ function casasLivres(tabuleiro) {
 
 /* A ordem importa para a busca convergir mais rápido em empates:
    centro e cantos são as casas mais fortes. */
+/* A ordem importa para a busca convergir mais rápido em empates:
+   centro e cantos são as casas mais fortes. */
 const ORDEM_FORTE = [4, 0, 2, 6, 8, 1, 3, 5, 7];
 
-function melhorJogada(tabuleiro, simbolo, profundidade, alfa, beta) {
+function ordenarLivres(tabuleiro) {
+    return casasLivres(tabuleiro).sort(function (a, b) {
+        return ORDEM_FORTE.indexOf(a) - ORDEM_FORTE.indexOf(b);
+    });
+}
+
+/* Pontuação de uma posição quando a busca para no meio do caminho
+   (os níveis curtos). Duas casas suas com a terceira livre valem
+   ameaça; a mesma conta para o adversário vale bloqueio - e bloquear
+   vale mais do que preparar, porque é o que evita o golpe de agora. */
+function avaliar(tabuleiro, raiz) {
+    const outro = raiz === SIMBOLO_X ? SIMBOLO_O : SIMBOLO_X;
+    let ponto = 0;
+
+    for (let i = 0; i < LINHAS.length; i++) {
+        const l = LINHAS[i];
+        const linha = [tabuleiro[l[0]], tabuleiro[l[1]], tabuleiro[l[2]]];
+        const seus = linha.filter(function (v) { return v === raiz; }).length;
+        const deles = linha.filter(function (v) { return v === outro; }).length;
+        const vazias = 3 - seus - deles;
+
+        if (seus === 2 && vazias === 1) ponto += 4;
+        else if (deles === 2 && vazias === 1) ponto -= 5;
+        else if (seus === 1 && vazias === 2) ponto += 1;
+    }
+    return ponto;
+}
+
+/* Minimax com poda alfa-beta.
+   `raiz` é quem pediu a jogada e a pontuação é sempre do ponto de vista
+   dele: +10 vence, -10 perde, 0 empata. Quem está na vez MAXIMIZA se é
+   `raiz` e MINIMIZA se é o adversário - é essa alternância que faltava
+   na versão anterior, em que todos os níveis maximizavam e a máquina
+   tratava vencer e perder como se fossem a mesma coisa. */
+function buscar(tabuleiro, raiz, naVez, profundidade, alfa, beta) {
     const fim = quemGanhou(tabuleiro);
     if (fim) {
-        /* Quem está a jogar agora é quem está prestes a levar o golpe.
-           Se ele vence, a jogada dele é ótima: pontuação alta. */
-        return { ponto: fim.vencedor === simbolo ? 10 : -10, casa: -1 };
+        /* Mais profundo = vitória mais rápida; derrota mais tardia. */
+        return { ponto: fim.vencedor === raiz ? 10 + profundidade
+                                              : -10 - profundidade,
+                 casa: -1 };
     }
-    if (tabuleiroCheio(tabuleiro) || profundidade === 0) {
-        return { ponto: 0, casa: -1 };
-    }
+    if (tabuleiroCheio(tabuleiro)) return { ponto: 0, casa: -1 };
+    if (profundidade === 0) return { ponto: avaliar(tabuleiro, raiz), casa: -1 };
 
-    const outro = simbolo === SIMBOLO_X ? SIMBOLO_O : SIMBOLO_X;
-    const livres = casasLivres(tabuleiro)
-        .sort(function (a, b) { return ORDEM_FORTE.indexOf(a) - ORDEM_FORTE.indexOf(b); });
+    const maximizando = naVez === raiz;
+    const outro = naVez === SIMBOLO_X ? SIMBOLO_O : SIMBOLO_X;
+    const livres = ordenarLivres(tabuleiro);
 
-    let melhorPonto = -Infinity;
+    let melhorPonto = maximizando ? -Infinity : Infinity;
     let melhorCasa = livres[0];
 
     for (let i = 0; i < livres.length; i++) {
         const casa = livres[i];
-        tabuleiro[casa] = simbolo;
-        const r = melhorJogada(tabuleiro, outro, profundidade - 1, alfa, beta);
+        tabuleiro[casa] = naVez;
+        const r = buscar(tabuleiro, raiz, outro, profundidade - 1, alfa, beta);
         tabuleiro[casa] = '';
 
-        if (r.ponto > melhorPonto) {
+        if (maximizando ? r.ponto > melhorPonto : r.ponto < melhorPonto) {
             melhorPonto = r.ponto;
             melhorCasa = casa;
         }
-        if (melhorPonto > alfa) alfa = melhorPonto;
+        if (maximizando) {
+            if (melhorPonto > alfa) alfa = melhorPonto;
+        } else {
+            if (melhorPonto < beta) beta = melhorPonto;
+        }
         if (beta <= alfa) break;   /* poda: este ramo não melhora o que já temos */
     }
 
@@ -108,13 +148,32 @@ function melhorJogada(tabuleiro, simbolo, profundidade, alfa, beta) {
 function escolherCasa(tabuleiro, simbolo, nivel) {
     const livres = casasLivres(tabuleiro);
     if (!livres.length) return -1;
+
     if (livres.length === 9) {
         /* Abertura sempre igual é monótono: sorteia entre as boas. */
         return ORDEM_FORTE[Math.floor(Math.random() * 5)];
     }
 
+    if (nivel === 'facil') {
+        /* Escolhe uma casa "boa o bastante" com um pouco de ruído no
+           lugar da busca: erra o bloqueio de vez em quando de propósito,
+           para o jogador conseguir vencer. */
+        let melhor = -Infinity;
+        let alvo = livres[0];
+        for (let i = 0; i < livres.length; i++) {
+            const casa = livres[i];
+            tabuleiro[casa] = simbolo;
+            const ponto = avaliar(tabuleiro, simbolo) + Math.random() * 8 - 4;
+            tabuleiro[casa] = '';
+            if (ponto > melhor) { melhor = ponto; alvo = casa; }
+        }
+        return alvo;
+    }
+
+    /* Nível Imbatível: profundidade 9 alcança o fim de TODA linha - não
+       existe posição que a busca não veja completa. Empata ou vence. */
     const prof = NIVEIS[nivel].profundidade;
-    const r = melhorJogada(tabuleiro.slice(), simbolo, prof, -Infinity, Infinity);
+    const r = buscar(tabuleiro.slice(), simbolo, simbolo, prof, -Infinity, Infinity);
     return r.casa === -1 ? livres[0] : r.casa;
 }
 

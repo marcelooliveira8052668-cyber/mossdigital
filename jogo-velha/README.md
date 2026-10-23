@@ -13,8 +13,9 @@ coleta de dados — abre e joga.
 
 | Recurso | Detalhe |
 | --- | --- |
-| Contra a máquina | Minimax com poda alfa-beta; nunca perde no nível Imbatível |
-| Três dificuldades | Fácil (1 casa de análise), Médio (4) e Imbatível (todas as linhas) |
+| Contra a máquina | Minimax com poda alfa-beta, pontuação alternada entre maximizar e minimizar |
+| Três dificuldades | Fácil erra de propósito, Médio lê ameaças 5 casas à frente, Imbatível calcula o fim de todas as linhas |
+| Imbatível de verdade | Contra jogo perfeito: 9 empates, 0 derrotas (testado em todas as 9 aberturas). Contra jogador que escorrega: vence |
 | Dois jogadores | X e O revezam no mesmo celular ou computador |
 | Placar | Vitórias de cada lado, empates e faixa de "N seguidas" |
 | Linha de vitória | Trilho de luz medido em pixels, girado no ângulo exato da sequência |
@@ -41,18 +42,18 @@ Abra `script.js` e ajuste o bloco `CONFIG` no topo:
 
 ```js
 const CONFIG = {
-    simboloX: 'X',        // símbolo do primeiro jogador
-    simboloO: 'O',        // símbolo do segundo jogador
     nomeX: 'VOCÊ',        // apelido do X quando joga contra a máquina
     nomeO: 'MÁQUINA',     // apelido do O quando joga contra a máquina
-    esperaMaquina: {      // pausa "de pensamento" da máquina, em ms
-        facil: 300, medio: 450, dificil: 600
-    }
+    simboloX: 'X',        // símbolo do primeiro jogador
+    simboloO: 'O',        // símbolo do segundo jogador
+    pensamento: true      // false = resposta instantânea da máquina
 };
 ```
 
-As cores ficam em `style.css`, no bloco `:root` (`--ciano`, `--magenta`,
-`--fundo`…). Trocando essas duas coisas, o jogo já está com a cara do cliente.
+As forças de cada nível ficam em `NIVEIS` (logo abaixo), em `profundidade`:
+quanto maior, mais casas a máquina enxerga antes de escolher. As cores
+ficam em `style.css`, no bloco `:root` (`--ciano`, `--magenta`, `--fundo`…).
+Trocando esses dois blocos, o jogo já está com a cara do cliente.
 
 ## Como testar na máquina
 
