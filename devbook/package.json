@@ -1,0 +1,22 @@
+{
+  "name": "devbook",
+  "version": "2.0.0",
+  "description": "Curso Full Stack do Zero ao Deploy — plataforma de ensino interativa (HTML, CSS e JavaScript puros, zero dependências)",
+  "private": true,
+  "license": "MIT",
+  "author": "DevBook",
+  "keywords": [
+    "curso", "programacao", "fullstack", "javascript", "react",
+    "nodejs", "sql", "typescript", "nextjs", "docker", "frontend", "backend"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "start": "node server.js 8080",
+    "dev": "node server.js 8080",
+    "test": "node test/run.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

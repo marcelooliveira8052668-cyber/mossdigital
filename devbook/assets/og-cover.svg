@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#171a21"/>
+      <stop offset="100%" stop-color="#2b3140"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c3c9d6"/>
+      <stop offset="100%" stop-color="#8f97a8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- formas decorativas -->
+  <circle cx="1090" cy="90" r="230" fill="#ffffff" opacity="0.035"/>
+  <circle cx="120" cy="580" r="180" fill="#ffffff" opacity="0.025"/>
+
+  <!-- marca -->
+  <g transform="translate(72, 68)">
+    <rect x="0" y="0" width="52" height="52" rx="14" fill="#c3c9d6"/>
+    <text x="26" y="37" font-size="27" text-anchor="middle">📚</text>
+  </g>
+  <text x="140" y="106" font-size="30" font-weight="800" fill="#ffffff" font-family="Georgia, serif">DevBook</text>
+
+  <!-- título -->
+  <text x="72" y="248" font-size="66" font-weight="800" fill="#ffffff">Vire desenvolvedor</text>
+  <text x="72" y="322" font-size="66" font-weight="800" fill="url(#accent)">do zero ao deploy.</text>
+
+  <!-- subtítulo -->
+  <text x="72" y="382" font-size="25" fill="#a3abbd">Curso Full Stack completo · em português · acesso vitalício</text>
+
+  <!-- pills de conteúdo -->
+  <g font-size="21" font-weight="600" fill="#171a21">
+    <rect x="72"  y="428" width="212" height="52" rx="26" fill="#c3c9d6"/>
+    <text x="178" y="461" text-anchor="middle">15 capítulos</text>
+
+    <rect x="300" y="428" width="248" height="52" rx="26" fill="#c3c9d6"/>
+    <text x="424" y="461" text-anchor="middle">6 desafios de código</text>
+
+    <rect x="564" y="428" width="242" height="52" rx="26" fill="#c3c9d6"/>
+    <text x="685" y="461" text-anchor="middle">3 projetos reais</text>
+
+    <rect x="822" y="428" width="188" height="52" rx="26" fill="#c3c9d6"/>
+    <text x="916" y="461" text-anchor="middle">Certificado</text>
+  </g>
+
+  <!-- rodapé -->
+  <text x="72" y="562" font-size="20" fill="#6f788c">HTML · CSS · JavaScript · React · Next.js · Node.js · SQL · TypeScript · Docker</text>
+</svg>

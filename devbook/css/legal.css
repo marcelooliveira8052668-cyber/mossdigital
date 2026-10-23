@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════════════
+   DevBook — Página legal (Termos de Uso + Privacidade)
+   ═══════════════════════════════════════════════════════ */
+
+.legal { padding: 44px 0 70px; }
+.lg-wrap { max-width: 860px; }
+
+/* ─── Aviso para o dono ─── */
+.lg-alert {
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px; padding: 20px 22px; margin-bottom: 40px;
+}
+.lg-alert strong {
+  display: block; font-size: .8rem; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--accent); margin-bottom: 8px;
+}
+.lg-alert p { font-size: .9rem; color: var(--text-2); line-height: 1.65; }
+
+/* ─── Cabeçalho ─── */
+.lg-head { margin-bottom: 34px; }
+.lg-head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  letter-spacing: -.025em; line-height: 1.2; margin-bottom: 14px;
+}
+.lg-sub { font-size: .93rem; color: var(--text-2); line-height: 1.7; }
+
+/* ─── Índice ─── */
+.lg-nav {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 7px;
+  padding: 18px 20px; margin-bottom: 40px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.lg-nav > span {
+  font-size: .74rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--text-3); margin-right: 6px;
+}
+.lg-nav a {
+  font-size: .8rem; font-weight: 600; padding: 5px 12px;
+  border-radius: 20px; background: var(--surface-2);
+  color: var(--text-2); border: 1px solid transparent;
+  transition: all .15s ease;
+}
+.lg-nav a:hover { border-color: var(--primary); color: var(--primary); }
+.lg-nav a.active { background: var(--primary-soft); color: var(--primary); border-color: var(--primary); }
+
+/* ─── Corpo ─── */
+.lg-body {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 44px 46px;
+}
+
+.lg-body h2 {
+  font-family: var(--font-display);
+  font-size: 1.32rem; letter-spacing: -.015em;
+  margin: 44px 0 14px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.lg-body h2:first-child { margin-top: 0; }
+.lg-body h3 {
+  font-size: 1.1rem; margin: 34px 0 12px;
+  color: var(--primary);
+}
+.lg-body h4 {
+  font-size: .82rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--text-3);
+  margin: 26px 0 12px;
+}
+
+.lg-lgpd-title { margin-top: 56px; }
+.lg-intro {
+  font-size: .95rem; color: var(--text-2); line-height: 1.7;
+  margin-bottom: 26px;
+}
+
+.lg-body p {
+  font-size: .94rem; color: var(--text-2);
+  line-height: 1.75; margin-bottom: 15px;
+}
+.lg-body strong { color: var(--text); }
+.lg-body ul { margin: 0 0 18px 22px; }
+.lg-body li {
+  font-size: .94rem; color: var(--text-2);
+  line-height: 1.72; margin-bottom: 9px;
+}
+.lg-body hr {
+  border: none; border-top: 1px solid var(--border);
+  margin: 52px 0 0;
+}
+.lg-body code {
+  font-family: var(--font-mono); font-size: .85em;
+  background: var(--code-bg); border: 1px solid var(--border);
+  padding: 1px 6px; border-radius: 5px; color: var(--primary);
+}
+
+/* ─── Destaques ─── */
+.lg-note {
+  background: var(--surface-2);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px; margin: 18px 0;
+  font-size: .9rem; color: var(--text-2); line-height: 1.7;
+}
+.lg-note strong { color: var(--text); }
+
+/* ─── Tabela ─── */
+.lg-table-wrap {
+  overflow-x: auto; margin: 18px 0 24px;
+  border: 1px solid var(--border); border-radius: 12px;
+}
+.lg-table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+.lg-table th {
+  background: var(--surface-2); text-align: left;
+  padding: 12px 15px; font-size: .72rem; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--primary); font-weight: 800;
+  white-space: nowrap;
+}
+.lg-table td {
+  padding: 12px 15px; border-top: 1px solid var(--border);
+  color: var(--text-2); line-height: 1.6; vertical-align: top;
+}
+.lg-table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+.lg-table tr:hover td { background: var(--surface-2); }
+
+/* ─── Campos a preencher ─── */
+.lg-fill {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  color: var(--accent);
+  padding: 2px 8px; border-radius: 5px;
+  font-weight: 700;
+  border-bottom: 2px dotted var(--accent);
+  white-space: nowrap;
+}
+
+/* ─── Responsivo ─── */
+@media (max-width: 720px) {
+  .legal { padding: 28px 0 50px; }
+  .lg-body { padding: 28px 22px; border-radius: 14px; }
+  .lg-body h2 { font-size: 1.15rem; margin-top: 34px; }
+  .lg-nav { padding: 14px; gap: 5px; }
+  .lg-nav a { font-size: .74rem; padding: 4px 10px; }
+  .lg-table td:first-child { white-space: normal; }
+}

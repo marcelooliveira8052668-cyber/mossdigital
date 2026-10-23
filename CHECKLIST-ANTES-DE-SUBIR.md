@@ -25,7 +25,7 @@ Site no ar: <https://marcelooliveira8052668-cyber.github.io/template-site-profes
 
 ## Detalhes que valem conferir
 
-- [ ] **Contagem de projetos** — os números no site (hoje `13 projetos no ar`
+- [ ] **Contagem de projetos** — os números no site (hoje `14 projetos no ar`
       e `23 modelos prontos`) agora são **calculados pelo script**, então sozinhos
       ficam certos. Ao adicionar projeto, é só entrar na lista `REAIS` ou
       `MODELOS` de `assets/js/portfolio.js`.

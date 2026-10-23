@@ -63,7 +63,8 @@
     { id: 'conhecimento', emoji: '📘', foto: 'assets/img/fotos/heroi-codigo.jpg', nome: 'Código & Conhecimento', desc: 'Livro didático de programação web, do HTML ao React', link: 'codigo-conhecimento/index.html' },
     { id: 'turismo', emoji: '✈️', foto: 'assets/img/fotos/heroi-turismo.jpg', nome: 'Horizon Travel', desc: 'Agência de viagens: destinos, pacotes, galeria e orçamento pelo WhatsApp', link: 'site-de-turismo/index.html' },
     { id: 'jogo-velha', emoji: '🎮', foto: 'assets/img/fotos/heroi-jogo-velha.jpg', nome: 'VELHA//CORE', desc: 'Jogo da velha futurista: IA em três dificuldades, dois jogadores no mesmo aparelho, placar com sequências e dica da jogada', link: 'jogo-velha/index.html' },
-    { id: 'pacman', emoji: '🟡', foto: 'assets/img/fotos/heroi-pacman.svg', nome: 'PAC-MAN//NEON', desc: 'Clássico dos labirintos em neon: 5 fases progressivas, 4 fantasmas com personalidade, frutas bônus e ranking por jogador', link: 'pacman/index.html' }
+    { id: 'pacman', emoji: '🟡', foto: 'assets/img/fotos/heroi-pacman.svg', nome: 'PAC-MAN//NEON', desc: 'Clássico dos labirintos em neon: 5 fases progressivas, 4 fantasmas com personalidade, frutas bônus e ranking por jogador', link: 'pacman/index.html' },
+    { id: 'devbook', emoji: '📖', foto: 'assets/img/fotos/heroi-devbook.svg', nome: 'DevBook', desc: 'Plataforma de curso Full Stack: 15 capítulos, editor de código no navegador, desafios corrigidos sozinhos, progresso salvo e certificado', link: 'devbook/index.html' }
   ];
 
   /* ------------------------------------------------------------------

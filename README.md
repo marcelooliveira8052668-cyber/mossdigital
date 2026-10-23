@@ -1,7 +1,7 @@
 # Template de Site Profissional
 
-Template com **23 tipos de negócio prontos** e **36 exemplos** no portfólio (23 nichos
-do template + 13 projetos reais). Você troca cores, logo, fotos, textos e cards num
+Template com **23 tipos de negócio prontos** e **37 exemplos** no portfólio (23 nichos
+do template + 14 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
 Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
@@ -12,7 +12,7 @@ Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
 
 | Arquivo | Para que serve | Quem vê |
 |---------|----------------|---------|
-| **index.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 36 exemplos. É por aqui que o cliente entra | Cliente |
+| **index.html** | Seu site de divulgação. Mostra o que você faz, o preço e os 37 exemplos. É por aqui que o cliente entra | Cliente |
 | **portfolio.html** | Redireciona para o `index.html` (link antigo, mantido para não quebrar quem já tinha guardado) | Cliente |
 | demo.html?preset=lanchonete | O site de exemplo, já preenchido. É este link que você manda pro cliente | Cliente |
 | demo.html?preset=X&painel=1 | O site de exemplo com o painel de troca | Só você |
@@ -59,9 +59,9 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ---
 
-## Os 13 projetos reais do portfólio
+## Os 14 projetos reais do portfólio
 
-Além dos 23 nichos gerados pelo template, o portfólio mostra **13 projetos que existem
+Além dos 23 nichos gerados pelo template, o portfólio mostra **14 projetos que existem
 de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 `#reais`, separados dos modelos prontos (`#exemplos`):
 
@@ -80,6 +80,7 @@ de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 | Horizon Travel | Agência de viagens: destinos, pacotes, galeria e orçamento | `site-de-turismo/` |
 | VELHA//CORE | Jogo da velha com IA em três dificuldades e placar por sequência | `jogo-velha/` |
 | PAC-MAN//NEON | Labirinto clássico em neon: 5 fases, 4 fantasmas, frutas e ranking | `pacman/` |
+| DevBook | Plataforma de curso Full Stack: 15 capítulos, editor de código, desafios corrigidos sozinhos e certificado | `devbook/` |
 
 Para colocar um card desses no portfólio, edite a lista `REAIS` em
 `assets/js/portfolio.js` e aponte o campo `link` para a pasta do projeto:
@@ -90,7 +91,7 @@ Para colocar um card desses no portfólio, edite a lista `REAIS` em
 ```
 
 Os modelos prontos ficam na lista `MODELOS`, no mesmo arquivo. Um card sem `link`
-aponta para `demo.html?preset=<id>`. As contagens da página (`13 projetos no ar`,
+aponta para `demo.html?preset=<id>`. As contagens da página (`14 projetos no ar`,
 `23 modelos prontos`) são calculadas pelo próprio script, então nunca ficam
 desatualizadas.
 

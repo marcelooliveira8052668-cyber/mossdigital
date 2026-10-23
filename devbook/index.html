@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DevBook — Curso Full Stack do Zero ao Deploy: 15 capítulos, 3 trilhas de carreira, 6 desafios com validação automática, 3 projetos integradores e certificado. HTML, CSS, JavaScript, React, Next.js, Node.js, SQL, TypeScript, testes e Docker.">
+<meta name="theme-color" content="#f6f7f9">
+<meta name="author" content="DevBook">
+<meta name="keywords" content="curso programação, full stack, javascript, react, node.js, sql, typescript, next.js, docker, desenvolvedor, front-end, back-end">
+
+<!-- Open Graph / redes sociais -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DevBook">
+<meta property="og:title" content="DevBook — Curso Full Stack do Zero ao Deploy">
+<meta property="og:description" content="15 capítulos, 3 trilhas, 6 desafios com validação automática, 3 projetos integradores e certificado. Do zero ao primeiro deploy.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DevBook — Vire desenvolvedor do zero ao deploy">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DevBook — Curso Full Stack do Zero ao Deploy">
+<meta name="twitter:description" content="Aprenda a programar do zero ao deploy com conteúdo técnico, projetos reais e certificado.">
+<meta name="twitter:image" content="assets/og-cover.png">
+<link rel="canonical" href="index.html">
+
+<title>DevBook — Curso Full Stack do Zero ao Deploy</title>
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Fraunces:opsz,wght@9..144,700;9..144,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#128218;</text></svg>">
+</head>
+<body>
+
+<!-- ═══════════ TOASTS ═══════════ -->
+<div id="toastZone" aria-live="polite"></div>
+
+<!-- ═══════════ SIDEBAR (menu lateral) ═══════════ -->
+<aside id="sidebar" class="sidebar" aria-label="Navegação do livro">
+  <div class="sidebar-brand">
+    <div class="brand-logo">📚</div>
+    <div class="brand-text">
+      <strong>DevBook</strong>
+      <span>Full Stack do Zero</span>
+    </div>
+    <button id="btnCloseSidebar" class="icon-btn only-mobile" aria-label="Fechar menu">&#10005;</button>
+  </div>
+
+  <!-- Perfil / Streak -->
+  <div class="sidebar-profile" id="sidebarProfile">
+    <div class="profile-row">
+      <div class="profile-avatar" id="avatarEl">🧑‍💻</div>
+      <div class="profile-info">
+        <div class="profile-level" id="levelEl">Nível 1 — Iniciante</div>
+        <div class="xp-bar"><div class="xp-fill" id="xpFill"></div></div>
+        <div class="profile-xp" id="xpText">0 / 100 XP</div>
+      </div>
+    </div>
+    <div class="profile-stats">
+      <div class="stat" title="Sequência de dias"><span class="stat-ico">🔥</span><span id="streakEl">0</span></div>
+      <div class="stat" title="Conquistas"><span class="stat-ico">🏅</span><span id="badgesEl">0</span></div>
+      <div class="stat" title="Capítulos lidos"><span class="stat-ico">📖</span><span id="chaptersDoneEl">0</span></div>
+      <div class="stat" title="Desafios resolvidos"><span class="stat-ico">💪</span><span id="challengesDoneEl">0</span></div>
+      <div class="stat" title="Projetos entregues"><span class="stat-ico">📦</span><span id="projectsDoneEl">0</span></div>
+    </div>
+  </div>
+
+  <!-- Busca: gatilho da paleta de comandos + filtro do sumário -->
+  <div class="sidebar-search">
+    <button id="btnPalette" class="search-trigger" aria-label="Buscar em todo o curso (Ctrl+K)">
+      <span class="st-ico">🔍</span>
+      <span class="st-text">Buscar ou pular para…</span>
+      <kbd>Ctrl K</kbd>
+    </button>
+    <input type="search" id="searchInput" placeholder="Filtrar sumário…" autocomplete="off" aria-label="Filtrar sumário">
+  </div>
+
+  <!-- Sumário -->
+  <nav id="tocNav" class="toc"></nav>
+
+  <div class="sidebar-foot">
+    <button id="btnContinue" class="btn-primary small">▶ Continuar estudos</button>
+    <button id="btnBadges" class="btn-ghost small">🏅 Minhas conquistas</button>
+    <a href="landing.html" class="btn-ghost small sidebar-lp">💰 Conhecer o curso completo</a>
+    <a href="legal.html" class="btn-ghost small sidebar-lp">⚖️ Termos e privacidade</a>
+    <button id="btnShortcuts" class="btn-ghost small">⌨️ Atalhos do teclado</button>
+    <button id="btnResetProgress" class="btn-ghost small">↺ Zerar progresso</button>
+  </div>
+</aside>
+<div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+<!-- ═══════════ PALETA DE COMANDOS (Ctrl+K) ═══════════ -->
+<div id="palette" class="palette hidden" role="dialog" aria-modal="true" aria-label="Busca rápida"></div>
+
+<!-- ═══════════ AJUDA DE ATALHOS ═══════════ -->
+<div id="shortcutsModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Atalhos de teclado">
+  <div class="modal-card">
+    <header class="modal-head">
+      <h3>⌨️ Atalhos do teclado</h3>
+      <button class="icon-btn" data-close-modal aria-label="Fechar">&#10005;</button>
+    </header>
+    <div class="modal-body">
+      <table class="sc-table">
+        <thead><tr><th>Tecla</th><th>Ação</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>K</kbd></td><td>Abre a busca rápida (paleta de comandos)</td></tr>
+          <tr><td><kbd>/</kbd></td><td>Atalho rápido para a busca</td></tr>
+          <tr><td><kbd>F</kbd></td><td>Revisar flashcards</td></tr>
+          <tr><td><kbd>T</kbd></td><td>Alternar tema claro / escuro</td></tr>
+          <tr><td><kbd>N</kbd></td><td>Próximo capítulo não lido</td></tr>
+          <tr><td><kbd>Ctrl</kbd>+<kbd>Enter</kbd></td><td>Rodar código / validar desafio</td></tr>
+          <tr><td><kbd>Espaço</kbd></td><td>Revelar flashcard</td></tr>
+          <tr><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd></td><td>Avaliar o flashcard (de novo / difícil / bom / fácil)</td></tr>
+          <tr><td><kbd>?</kbd></td><td>Abre esta ajuda</td></tr>
+          <tr><td><kbd>Esc</kbd></td><td>Fechar modal, menu ou paleta</td></tr>
+          <tr><td><kbd>↑</kbd> <kbd>↓</kbd> <kbd>Enter</kbd></td><td>Na busca: navegar e abrir</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ TELA DE ACESSO (conteúdo bloqueado) ═══════════ -->
+<div id="gateScreen" class="gate-screen hidden" role="dialog" aria-modal="true" aria-label="Acesso ao curso"></div>
+
+<!-- ═══════════ MODAL DESAFIOS ═══════════ -->
+<div id="challengeModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Desafios de codigo">
+  <div class="modal-card modal-wide">
+    <header class="modal-head">
+      <h3>💪 Desafio de Código</h3>
+      <button class="icon-btn" data-close-modal aria-label="Fechar">&#10005;</button>
+    </header>
+    <div class="modal-body" id="challengeBody"></div>
+  </div>
+</div>
+
+<!-- ═══════════ CONTEÚDO PRINCIPAL ═══════════ -->
+<div class="shell">
+
+  <!-- Barra de progresso de leitura (fica no topo da janela) -->
+  <div id="readBar" class="read-bar" aria-hidden="true"><span id="readFill"></span></div>
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="btnOpenSidebar" class="icon-btn only-mobile" aria-label="Abrir menu">&#9776;</button>
+      <button id="btnPaletteMobile" class="icon-btn" aria-label="Buscar (Ctrl+K)" title="Buscar (Ctrl+K)">🔍</button>
+      <div class="breadcrumb" id="breadcrumb"><span>DevBook</span></div>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-progress" title="Progresso total do curso">
+        <div class="mini-ring"><svg viewBox="0 0 36 36"><circle class="ring-bg" cx="18" cy="18" r="15.9"/><circle class="ring-fg" id="totalRing" cx="18" cy="18" r="15.9"/></svg><span id="totalPct">0%</span></div>
+      </div>
+      <button id="btnFlashcards" class="btn-ghost" title="Revisar flashcards (F)">🃏 <span class="hide-sm">Revisar</span></button>
+      <a href="landing.html" class="btn-ghost lp-link" title="Conheça o curso completo">💰 <span class="hide-sm">Know more</span></a>
+      <button id="btnTheme" class="icon-btn" title="Alternar tema (T)">🌙</button>
+    </div>
+  </header>
+
+  <!-- Barra de navegação rápida das seções do curso -->
+  <div id="quickNav" class="quick-nav hidden">
+    <button class="quick-nav-item" data-section="trilhas"><span class="qn-ico">🧭</span><span class="qn-label">Trilhas</span></button>
+    <button class="quick-nav-item" data-section="projetos"><span class="qn-ico">📦</span><span class="qn-label">Projetos</span></button>
+    <button class="quick-nav-item" data-section="desafios"><span class="qn-ico">💪</span><span class="qn-label">Desafios</span></button>
+    <button class="quick-nav-item" data-section="certificado"><span class="qn-ico">📜</span><span class="qn-label">Certificado</span></button>
+  </div>
+
+  <!-- Área de renderização -->
+  <main id="view" class="view" tabindex="-1"></main>
+
+  <!-- Navegação de capítulos (rodapé) -->
+  <nav id="chapterNav" class="chapter-nav hidden">
+    <button id="btnPrev" class="btn-nav prev">← <span></span></button>
+    <button id="btnComplete" class="btn-complete">✓ Concluir capítulo</button>
+    <button id="btnNext" class="btn-nav next"><span></span> →</button>
+  </nav>
+
+  <footer class="foot">
+    <p>DevBook — Curso Full Stack do Zero ao Deploy · Feito com HTML, CSS &amp; JavaScript puros · <span id="offlineBadge" class="badge-offline hidden">⚡ Offline</span></p>
+  </footer>
+</div>
+
+<!-- Botão voltar ao topo (aparece ao rolar) -->
+<button id="btnTop" class="btn-top" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+<!-- ═══════════ MODAL FLASHCARDS (repetição espaçada) ═══════════ -->
+<div id="flashModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Revisão de flashcards">
+  <div class="modal-card">
+    <header class="modal-head">
+      <h3>🃏 Revisão Espaçada</h3>
+      <button class="icon-btn" data-close-modal aria-label="Fechar">&#10005;</button>
+    </header>
+    <div class="modal-body" id="flashBody"></div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL CONQUISTAS ═══════════ -->
+<div id="badgeModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Conquistas">
+  <div class="modal-card">
+    <header class="modal-head">
+      <h3>🏅 Conquistas</h3>
+      <button class="icon-btn" data-close-modal aria-label="Fechar">&#10005;</button>
+    </header>
+    <div class="modal-body" id="badgeBody"></div>
+  </div>
+</div>
+
+<!-- ═══════════ BARRA DE PWA: atalho offline ═══════════ -->
+<div id="pwaBar" class="pwa-bar hidden">
+  <span>⚡ Instale o DevBook para usar offline</span>
+  <button id="btnInstall" class="btn-primary small">Instalar</button>
+  <button id="btnDismissPwa" class="icon-btn" aria-label="Dispensar">&#10005;</button>
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════
+     A ordem importa:
+       1. content/  → dados do curso (edite aqui para mudar conteúdo)
+       2. modules/  → lógica da aplicação (raramente precisa editar)
+       3. app.js    → bootstrap e roteamento (vem por último)
+     ═══════════════════════════════════════════════════════════ -->
+
+<!-- 1. Conteúdo do curso -->
+<script src="js/content/curriculum.js"></script>
+<script src="js/content/badges.js"></script>
+<script src="js/content/curriculum-advanced.js"></script>
+<script src="js/content/tracks.js"></script>
+<script src="js/content/projects.js"></script>
+<script src="js/content/challenges.js"></script>
+<script src="js/content/certificate.js"></script>
+
+<!-- 2. Módulos da aplicação -->
+<script src="js/modules/progress.js"></script>
+<script src="js/modules/gate.js"></script>
+<script src="js/modules/playground.js"></script>
+<script src="js/modules/challenges.js"></script>
+<script src="js/modules/labs.js"></script>
+<script src="js/modules/palette.js"></script>
+<script src="js/modules/flashcards.js"></script>
+
+<!-- 3. Bootstrap -->
+<script src="js/modules/app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  }
+</script>
+</body>
+</html>
