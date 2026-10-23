@@ -54,7 +54,8 @@
     { id: 'skillmatch', emoji: '🔍', foto: 'assets/img/fotos/heroi-skillmatch.jpg', nome: 'SkillMatch', desc: 'Cruza suas habilidades com cada vaga e monta um plano de estudo', link: 'skillmatch/index.html' },
     { id: 'comandas', emoji: '🧾', foto: 'assets/img/fotos/heroi-comandas.jpg', nome: 'Comanda Fácil', desc: 'Comandas, cozinha e caixa: sistema completo para restaurantes e lanchonetes', link: 'comandas/index.html' },
 
-    { id: 'lojavirtual', emoji: '🛒', foto: 'assets/img/fotos/heroi-loja.jpg', nome: 'NEXA Store', desc: 'Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix, crédito e débito', link: 'loja-virtual/index.html' }
+    { id: 'lojavirtual', emoji: '🛒', foto: 'assets/img/fotos/heroi-loja.jpg', nome: 'NEXA Store', desc: 'Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix, crédito e débito', link: 'loja-virtual/index.html' },
+    { id: 'elaine', emoji: '🧠', foto: 'assets/img/fotos/heroi-elaine.jpg', nome: 'Elaine & Sandra', desc: 'Site de neuropsicopedagogia clínica com avaliação, etapas, dúvidas frequentes, mapa e contato', link: 'elaine-sandrinha/index.html' }
   ];
 
   /* ------------------------------------------------------------------
