@@ -1,92 +1,161 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Eu configuro o idioma e a codificação. -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Eu informo ao Google qual é o endereço oficial do meu portfólio. -->
-<link rel="canonical" href="https://marcelooliveira8052668-cyber.github.io/template-site-professional/">
-  <!-- Eu defino o título para apresentar meus serviços nas pesquisas do Google. -->
-<title>Criação de Sites Profissionais | Marcelo Oliveira</title>
-  <!-- Eu descrevo meus serviços para clientes de todo o Brasil. -->
-<meta name="description" content="Criação de sites profissionais e responsivos para empresas de todo o Brasil. Desenvolvedor Front-End Marcelo Oliveira. Solicite seu orçamento.">
 
+  <!-- Eu configuro o domínio oficial. -->
+  <link rel="canonical" href="https://mossdigital.com.br/">
+
+  <title>MOSS DIGITAL | Criação de Sites e Sistemas</title>
+  <meta name="description" content="MOSS DIGITAL: criação de sites profissionais, modelos comerciais e soluções web para empresas de todo o Brasil. Solicite seu orçamento.">
+
+  <!-- Eu preparo a apresentação nas redes sociais. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MOSS DIGITAL | Sites e Sistemas">
+  <meta property="og:description" content="Sites profissionais e soluções digitais para o seu negócio.">
+  <meta property="og:url" content="https://mossdigital.com.br/">
+
+  <!-- Eu mantenho os recursos originais. -->
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-  <meta property="og:title" content="Prof. Marcelo Oliveira — Sites profissionais para o seu negócio">
-  <meta property="og:description" content="Sites e sistemas sob medida para o seu negócio. 14 projetos no ar e 23 modelos prontos. Entrega em 7 a 15 dias, conforme a complexidade.">
-  <meta property="og:type" content="website">
-
   <link rel="stylesheet" href="assets/css/portfolio.css">
-  <!-- Eu apresento meus serviços profissionais aos mecanismos de busca. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "M.O Design - Marcelo Oliveira",
-  "telephone": "+55-11-94203-8103",
-  "priceRange": "A partir de R$ 400",
-  "description": "Criação de sites profissionais e responsivos para empresas e empreendedores de todo o Brasil.",
-  "url": "https://marcelooliveira8052668-cyber.github.io/template-site-professional/",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Brasil"
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Marcelo Oliveira",
-    "jobTitle": "Desenvolvedor Front-End"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Serviços de desenvolvimento web",
-    "itemListElement": [
-      {
-        "@type": "OfferCatalog",
-        "name": "Criação de sites profissionais"
-      },
-      {
-        "@type": "OfferCatalog",
-        "name": "Desenvolvimento de sistemas web"
-      }
-    ]
+
+  <!-- Eu descrevo os serviços para mecanismos de busca. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "MOSS DIGITAL",
+    "url": "https://mossdigital.com.br/",
+    "telephone": "+55-11-94203-8103",
+    "description": "Criação de sites profissionais e sistemas web.",
+    "priceRange": "A partir de R$ 400",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Brasil"
+    }
+  }
+  </script>
+
+<!-- Eu configuro os logotipos da MOSS DIGITAL. -->
+<style>
+
+  /* Eu ajusto o logotipo grande na apresentação do site. */
+  .moss-logo {
+    display: block;
+    width: 100%;
+    max-width: 540px;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+    border-radius: 18px;
+  }
+
+  /* Eu centralizo o logotipo na apresentação. */
+  .moss-logo-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Eu ajusto o logotipo no cabeçalho. */
+  
+/* Eu ajusto o logotipo para caber no cabeçalho branco. */
+.logo-topo {
+  display: block;
+  width: auto;
+  max-width: 160px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Eu ajusto o logotipo para celulares. */
+@media (max-width: 1000px) {
+  .logo-topo {
+    max-width: 125px;
+    height: 40px;
   }
 }
-</script>
+
+
+  /* Eu ajusto o logotipo para celulares. */
+  @media (max-width: 500px) {
+
+    /* Eu diminuo o logotipo do cabeçalho. */
+    .logo-topo {
+      width: 130px;
+    }
+
+    /* Eu adapto o logotipo grande à tela do celular. */
+    .moss-logo {
+      max-width: 100%;
+    }
+
+  }
+
+</style>
+
 </head>
 
 <body>
 
-  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <!-- Eu adiciono o link de acessibilidade. -->
+  <a class="skip" href="#conteudo">
+    Pular para o conteúdo
+  </a>
 
-  <!-- ============ CABEÇALHO ============ -->
+  <!-- ========== CABEÇALHO ========== -->
   <header class="cab" id="cab">
+
+    <!-- Eu organizo os elementos do cabeçalho. -->
     <div class="wrap cab__in">
-      <a class="marca" href="#topo">
-        <span class="marca__ini">MO</span>
-        <span class="marca__txt">Marcelo Oliveira<small>Criação de sites</small></span>
+
+      <!-- Eu apresento o logotipo oficial da MOSS DIGITAL. -->
+      <a
+        class="marca"
+        href="#topo"
+        aria-label="MOSS DIGITAL - Início"
+      >
+
+        <!-- Eu carrego o logotipo no topo do site. -->
+        <img
+          src="assets/img/fotos/moss-logo.webp"
+          alt="MOSS DIGITAL - Sites e Sistemas"
+          class="logo-topo"
+          width="180"
+          height="120"
+        >
+
       </a>
 
-      <nav class="nav" id="nav">
-        <a href="#sobre">Sobre</a>
-        <a href="#reais">Projetos reais</a>
+      <!-- Eu mantenho a navegação abaixo deste trecho. -->
+
+
+
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <a href="#sobre">A empresa</a>
+        <a href="#reais">Projetos</a>
         <a href="#exemplos">Modelos prontos</a>
-        <a href="#preco">Preço</a>
-        <a href="#entregue">O que você recebe</a>
+        <a href="#preco">Preços</a>
+        <a href="#entregue">Benefícios</a>
         <a href="#duvidas">Dúvidas</a>
         <a href="#agencias">Para agências</a>
       </nav>
 
-      <a class="btn btn--wa" id="waTop" href="#">
-        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true">
-          <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.2.1.7-.1 1.3z"/>
-        </svg>
-        <span>(11) 94203-8103</span>
+      <a class="btn btn--wa" id="waTop"
+         href="https://wa.me/5511942038103"
+         target="_blank" rel="noopener noreferrer">
+        <span>WhatsApp (11) 94203-8103</span>
       </a>
 
-      <button class="hamb" id="hamb" aria-label="Abrir menu" aria-expanded="false">
+      <button class="hamb" id="hamb" type="button"
+              aria-label="Abrir menu" aria-expanded="false"
+              aria-controls="nav">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -94,419 +163,568 @@
 
   <main id="conteudo">
 
-    <!-- ============ HERO ============ -->
+    <!-- ========== APRESENTAÇÃO PRINCIPAL ========== -->
     <section class="hero" id="topo">
       <div class="wrap hero__grid hero__grid--so">
         <div class="hero__txt">
+
           <span class="selo">
-            <span class="selo__ponto"></span> 14 projetos no ar &middot; 23 modelos prontos &middot; Entrega em 7 a 15 dias
+            <span class="selo__ponto"></span>
+            Sites profissionais · Sistemas web · Atendimento em todo o Brasil
           </span>
 
-          <h1>Seu site precisa trazer cliente, <em>não só existir</em></h1>
+          <h1>
+            Seu negócio merece um site que
+            <em>trabalhe a favor das suas vendas</em>
+          </h1>
 
           <p class="hero__sub">
-            Sites e sistemas para <strong>negócio que precisa vender</strong> —
-            loja online, comandas de restaurante, controle de notas, curso, agendamento.
-            Você manda os dados e as fotos. Eu monto, publico e te mostro como atualizar.
+            A <strong>MOSS DIGITAL</strong> desenvolve sites
+            profissionais, páginas comerciais e soluções
+            digitais para empresas e empreendedores.
+            Conheça nossos modelos e solicite um orçamento.
           </p>
 
           <div class="hero__btns">
-            <a class="btn btn--wa btn--g" id="waHero" href="#">
-              <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true">
-                <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.2.1.7-.1 1.3z"/>
-              </svg>
-              <span>Falar no WhatsApp</span>
+            <a class="btn btn--wa btn--g" id="waHero"
+               href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20quero%20um%20or%C3%A7amento%20de%20site."
+               target="_blank" rel="noopener noreferrer">
+              Solicitar orçamento
             </a>
-            <a class="btn btn--fant btn--g" href="#reais">Ver projetos no ar</a>
+
+            <a class="btn btn--fant btn--g" href="#exemplos">
+              Ver modelos disponíveis
+            </a>
           </div>
 
           <ul class="provas">
-            <li><b data-conta-reais>14</b> projetos no ar</li>
-            <li><b>7 a 15</b> dias para ficar pronto</li>
-            <li><b>100%</b> funciona no celular</li>
+            <li><b>Sites</b> responsivos</li>
+            <li><b>Modelos</b> para diversos segmentos</li>
+            <li><b>Brasil</b> atendimento online</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ============ QUEM CONSTRÓI ============ -->
+    <!-- ========== SOBRE A MOSS DIGITAL ========== -->
     <section class="sec sec--sobre" id="sobre">
       <div class="wrap sobre__grid">
 
-        <div class="sobre__fig">
-          <picture>
-            <source srcset="assets/img/fotos/marcelo-oliveira.webp" type="image/webp">
-            <img src="assets/img/fotos/marcelo-oliveira.jpg"
-                 alt="Marcelo Oliveira, desenvolvedor de sites, segurando um notebook com um site aberto"
-                 width="900" height="900" loading="lazy" decoding="async">
-          </picture>
+        <!-- Eu apresento o logotipo oficial da empresa. -->
+        <div class="sobre__fig moss-logo-area">
+          <img
+            class="moss-logo"
+            src="assets/img/moss-logo.webp"
+            alt="MOSS DIGITAL - Sites e Sistemas"
+            loading="lazy"
+            decoding="async">
         </div>
 
         <div class="sobre__txt">
-          <span class="tag">Quem constrói</span>
-          <h2>Olá, eu sou o Marcelo Oliveira</h2>
+          <span class="tag">Conheça a MOSS DIGITAL</span>
+
+          <h2>Soluções digitais para o crescimento do seu negócio</h2>
 
           <p class="sobre__lead">
-            Sou <strong>professor de História</strong> e <strong>desenvolvedor Front-End</strong>,
-            formado pelo SENAI. Quem me conhece de antes sabe que as duas coisas não competem:
-            são o mesmo trabalho com materiais diferentes.
+            A <strong>MOSS DIGITAL</strong> oferece
+            desenvolvimento de sites profissionais,
+            páginas de vendas e soluções web para empresas.
           </p>
 
           <p>
-            Na sala de aula eu aprendi a <strong>explicar coisa difícil sem complicar</strong> —
-            a entender o que a pessoa travou antes de tentar resolver. Construir site é igual.
-            A maioria dos clientes não quer saber qual é a tecnologia. Quer saber se o site
-            vai trazer telefone tocando.
+            Nossa proposta é ajudar seu negócio a ter
+            uma presença digital moderna, organizada e
+            acessível em celulares e computadores.
           </p>
 
           <p>
-            Hoje o meu portfólio reúne <strong><span data-conta-total>37</span> projetos</strong>
-            feitos para segmentos diferentes — loja, restaurante, clínica, escola, prestador de
-            serviço. Nenhum deles é igual ao outro, porque o negócio de cada cliente era diferente.
-          </p>
-
-          <p>
-            Meu objetivo é ajudar <strong>pequenos empreendedores</strong> a conquistar seu espaço
-            na internet com um site moderno, rápido no celular e que dá para você mesmo atualizar.
+            Escolha um modelo pronto para personalização
+            ou solicite um projeto desenvolvido conforme
+            as necessidades da sua empresa.
           </p>
 
           <p class="sobre__assinatura">
-            <b>M.O Design</b> — tecnologia, criatividade e compromisso com cada projeto.
+            <b>MOSS DIGITAL</b> — Sites e Sistemas.
           </p>
 
           <ul class="sobre__selos">
-            <li><b>Prof. de História</b><small>ensino antes do código</small></li>
-            <li><b>SENAI</b><small>formação em Front-End</small></li>
-            <li><b data-conta-total>37</b><small>projetos no portfólio</small></li>
-            <li><b>7 a 15</b><small>dias de entrega</small></li>
+            <li>
+              <b>Sites</b>
+              <small>Institucionais e comerciais</small>
+            </li>
+            <li>
+              <b>Responsivo</b>
+              <small>Celular e computador</small>
+            </li>
+            <li>
+              <b data-conta-total>37</b>
+              <small>Projetos no catálogo</small>
+            </li>
+            <li>
+              <b>Brasil</b>
+              <small>Atendimento online</small>
+            </li>
           </ul>
 
           <div class="sobre__btns">
-            <a class="btn btn--prim btn--g" id="waSobre" href="#">Chamar no WhatsApp</a>
-            <a class="btn btn--fant btn--g" href="#reais">Ver o que já está no ar</a>
+            <a class="btn btn--prim btn--g" id="waSobre"
+               href="https://wa.me/5511942038103"
+               target="_blank" rel="noopener noreferrer">
+              Solicitar orçamento
+            </a>
+            <a class="btn btn--fant btn--g" href="#exemplos">
+              Conhecer modelos
+            </a>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- ============ PROJETOS REAIS ============ -->
+    <!-- ========== PROJETOS DEMONSTRATIVOS ========== -->
     <section class="sec" id="reais">
       <div class="wrap">
         <div class="sec__cab">
-          <span class="tag">No ar agora</span>
-          <h2>Projetos reais que eu construí</h2>
-          <p>São sistemas e sites que estão funcionando, com página própria. Clique em qualquer um para usar.</p>
+          <span class="tag">Demonstrações</span>
+          <h2>Conheça nossos projetos</h2>
+          <p>
+            Explore sites e sistemas demonstrativos.
+            Clique nos projetos para conhecer suas
+            páginas e funcionalidades.
+          </p>
         </div>
 
+        <!-- Eu preservo a grade preenchida pelo JavaScript. -->
         <div class="exemplos" id="grade-reais"></div>
       </div>
     </section>
 
-    <!-- ============ MODELOS PRONTOS ============ -->
+    <!-- ========== MODELOS PRONTOS ========== -->
     <section class="sec sec--alt" id="exemplos">
       <div class="wrap">
         <div class="sec__cab">
-          <span class="tag">Prontos pra usar</span>
-          <h2>Modelos para o seu tipo de negócio</h2>
-          <p>A mesma estrutura, adaptada para cada ramo. Escolha o mais parecido com o seu — os dados são de exemplo e viram os seus.</p>
+          <span class="tag">Catálogo de sites</span>
+          <h2>Escolha um modelo para seu negócio</h2>
+          <p>
+            Modelos para diferentes segmentos,
+            com possibilidade de personalização
+            de textos, imagens, cores e informações.
+          </p>
         </div>
 
+        <!-- Eu mantenho o catálogo gerado pelo JS original. -->
         <div class="exemplos" id="grade-modelos"></div>
-
         <p class="exemplos__nota"></p>
       </div>
     </section>
 
-    <!-- ============ PROVA SOCIAL ============ 
-     (seção removida por enquanto — sem depoimentos reais ainda.
-      Quando tiver 2+ depoimentos, descomente o bloco abaixo.) -->
-
-    <!-- ============ O QUE VOCÊ RECEBE ============ -->
+    <!-- ========== BENEFÍCIOS ========== -->
     <section class="sec" id="entregue">
       <div class="wrap">
         <div class="sec__cab">
-          <span class="tag">O que está incluso</span>
-          <h2>Você não precisa saber nada de site</h2>
-          <p>Você me manda o que tem. Eu cuido do resto — do layout ao colocar no ar.</p>
+          <span class="tag">Nossas soluções</span>
+          <h2>O que seu negócio pode receber</h2>
+          <p>
+            Funcionalidades e serviços definidos
+            conforme o modelo ou projeto contratado.
+          </p>
         </div>
 
         <div class="beneficios">
+
           <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            </span>
-            <h3>Bonito no celular</h3>
-            <p>Seu cliente abre no celular e vê tudo certinho. A maioria das pessoas procura por você pelo celular.</p>
+            <span class="ben__ico" aria-hidden="true">📱</span>
+            <h3>Design responsivo</h3>
+            <p>
+              Site adaptado para celulares,
+              tablets e computadores.
+            </p>
           </div>
 
           <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            </span>
-            <h3>Sai no Google</h3>
-            <p>Título, descrição e estrutura já vêm prontos para o Google indexar. Assim quem pesquisar pelo seu nome te encontra — sem pagar anúncio.</p>
+            <span class="ben__ico" aria-hidden="true">🔎</span>
+            <h3>Estrutura para o Google</h3>
+            <p>
+              Títulos, descrições e organização
+              preparados para mecanismos de busca.
+              O posicionamento não é garantido.
+            </p>
           </div>
 
           <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4z"/><path d="M8 6h8"/></svg>
-            </span>
-            <h3>Ficha de cada serviço</h3>
-            <p>Cada card abre uma ficha completa com fotos, descrição, o que está incluído e o preço.</p>
+            <span class="ben__ico" aria-hidden="true">🛍️</span>
+            <h3>Produtos e serviços</h3>
+            <p>
+              Apresentação organizada de produtos,
+              serviços, imagens e informações.
+            </p>
           </div>
 
           <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-10V5l-8-3-8 3v7c0 5.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-            </span>
-            <h3>Carregamento rápido</h3>
-            <p>Site leve, que abre rápido até com internet ruim. Cliente não espera e não sai.</p>
+            <span class="ben__ico" aria-hidden="true">⚡</span>
+            <h3>Desempenho</h3>
+            <p>
+              Estrutura planejada para oferecer
+              navegação prática e carregamento eficiente.
+            </p>
           </div>
 
           <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            </span>
-            <h3>Botão de WhatsApp</h3>
-            <p>Botão em todo lugar. Seu cliente manda mensagem direto, sem e-mail perdido.</p>
+            <span class="ben__ico" aria-hidden="true">💬</span>
+            <h3>Contato por WhatsApp</h3>
+            <p>
+              Facilite o atendimento e o recebimento
+              de solicitações dos clientes.
+            </p>
           </div>
 
           <div class="ben">
-            <span class="ben__ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-            </span>
-            <h3>Você atualiza sozinho</h3>
-            <p>Preço, telefone, horário, foto — você mesmo muda. Sem me ligar, sem pagar nada.</p>
+            <span class="ben__ico" aria-hidden="true">🛠️</span>
+            <h3>Personalização</h3>
+            <p>
+              Textos, imagens, informações e
+              funcionalidades conforme o escopo contratado.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ PREÇO ============ -->
+    <!-- ========== PREÇOS ========== -->
     <section class="sec sec--alt" id="preco">
       <div class="wrap preco__grid">
+
         <div class="preco__txt">
-          <span class="tag">Quanto custa</span>
-          <h2>O preço fechado, antes de começar</h2>
-          <p>O site de uma página sai por <strong>R$ 400</strong> — é o formato que resolve o problema de 9 em cada 10 negócios que me procuram: quem você é, o que vende, onde está e um botão que leva direto no seu WhatsApp.</p>
-          <p>Projeto maior (loja online, painel, mais de uma página, integração) tem outro valor, e eu te passo <strong>por escrito, antes de começar</strong>. Nada de surpresa no fim.</p>
-          <p class="preco__nota">Domínio com o nome da sua loja é opcional e eu te explico as opções. Publicar num endereço gratuito já vem incluso.</p>
+          <span class="tag">Investimento</span>
+          <h2>Sites profissionais com preço acessível</h2>
+
+          <p>
+            Um site institucional de uma página
+            pode ser contratado a partir de
+            <strong>R$ 400</strong>.
+          </p>
+
+          <p>
+            Para lojas virtuais, sistemas, páginas
+            adicionais e integrações, o valor é
+            definido em orçamento personalizado.
+          </p>
+
+          <p>
+            O escopo, os prazos, as condições
+            de pagamento e os custos adicionais
+            são informados antes da contratação.
+          </p>
+
+          <p class="preco__nota">
+            Domínio próprio e serviços de hospedagem
+            pagos não estão automaticamente incluídos.
+          </p>
         </div>
 
         <div class="cartao-preco">
-          <span class="cartao-preco__de">Site de uma página a partir de</span>
+          <span class="cartao-preco__de">
+            Site institucional a partir de
+          </span>
+
           <strong class="cartao-preco__valor">R$ 400</strong>
-          <span class="cartao-preco__nota">O formato da maioria dos negócios.</span>
+
+          <span class="cartao-preco__nota">
+            Site comercial de uma página.
+          </span>
+
           <ul class="cartao-preco__lista">
-            <li>Seu negócio com cara de empresa grande</li>
-            <li>Funciona bem no celular, onde a maioria dos clientes te procura</li>
-            <li>Sai no Google quando pesquisam pelo seu nome</li>
-            <li>Cliente pede direto no seu WhatsApp, sem precisar ligar</li>
-            <li>Seções: história, serviços, contato, WhatsApp e mapa</li>
-            <li>Até 6 serviços ou produtos, cada um com foto, preço e descrição</li>
-            <li>Você mesmo muda preço e foto quando quiser</li>
-            <li>Publicação no ar e endereço gratuito inclusos</li>
+            <li>Layout responsivo</li>
+            <li>Apresentação da empresa</li>
+            <li>Descrição dos serviços</li>
+            <li>Até 6 produtos ou serviços</li>
+            <li>Botão de WhatsApp</li>
+            <li>Informações de contato</li>
+            <li>Estrutura básica para SEO</li>
+            <li>Publicação em endereço gratuito compatível</li>
           </ul>
+
           <div class="cartao-preco__fora">
-            <b>Não entra nos R$ 400:</b>
+            <b>Serviços com orçamento separado:</b>
             <ul>
-              <li>Loja online com carrinho e pagamento</li>
-              <li>Mais de uma página ou blog</li>
-              <li>Área de cliente com login / painel</li>
+              <li>Loja virtual com pagamento</li>
+              <li>Carrinho de compras</li>
+              <li>Área de clientes com login</li>
+              <li>Sistemas com banco de dados</li>
+              <li>Integrações e funcionalidades especiais</li>
             </ul>
-            <p>Nesses casos eu te passo o valor certinho antes de começar, com tudo escrito.</p>
+            <p>
+              Todos os valores e condições são
+              definidos antes do início do projeto.
+            </p>
           </div>
-          <a class="btn btn--wa btn--block" id="waPreco" href="#">Quero o meu</a>
+
+          <a class="btn btn--wa btn--block" id="waPreco"
+             href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20site%20de%20R%24%20400."
+             target="_blank" rel="noopener noreferrer">
+            Solicitar este site
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ============ COMO FUNCIONA ============ -->
+    <!-- ========== COMO FUNCIONA ========== -->
     <section class="sec sec--escuro" id="como">
       <div class="wrap">
         <div class="sec__cab">
-          <span class="tag tag--claro"> Simples assim</span>
+          <span class="tag tag--claro">Contratação</span>
           <h2>Como funciona</h2>
-          <p>Quatro passos e seu site está no ar.</p>
+          <p>
+            Conheça as etapas para contratar
+            seu site profissional.
+          </p>
         </div>
 
         <ol class="passos">
           <li class="passo">
             <span class="passo__n">1</span>
-            <h3>Você me chama</h3>
-            <p>Manda uma mensagem no WhatsApp dizendo o nome do seu negócio e o que você vende.</p>
-            <small>Leva 2 minutos</small>
+            <h3>Entre em contato</h3>
+            <p>
+              Informe seu tipo de negócio
+              e o site que deseja contratar.
+            </p>
+            <small>Atendimento pelo WhatsApp</small>
           </li>
+
           <li class="passo">
             <span class="passo__n">2</span>
-            <h3>Você manda o material</h3>
-            <p>Logo, fotos, preços, endereço, telefone, horário e os dizeres que você quer. Pode ser por foto mesmo, do WhatsApp.</p>
-            <small>Pode levar alguns dias</small>
+            <h3>Escolha a solução</h3>
+            <p>
+              Selecione um modelo pronto
+              ou solicite um projeto personalizado.
+            </p>
+            <small>Proposta comercial</small>
           </li>
+
           <li class="passo">
             <span class="passo__n">3</span>
-            <h3>Eu monto o site</h3>
-            <p>Escolho a estrutura que mais combina com o seu negócio, coloco seus dados e suas fotos. Você acompanha pelo WhatsApp.</p>
-            <small>7 a 15 dias</small>
+            <h3>Desenvolvimento</h3>
+            <p>
+              Envie o material necessário
+              e acompanhe a criação do site.
+            </p>
+            <small>Prazo definido no orçamento</small>
           </li>
+
           <li class="passo">
             <span class="passo__n">4</span>
-            <h3>Entrego e você vende</h3>
-            <p>Você recebe o link do site no ar. Já pode mandar pra cliente, colocar na bio do Instagram e nos prints.</p>
-            <small>Pronto pra usar</small>
+            <h3>Entrega e publicação</h3>
+            <p>
+              Após aprovação, o site é entregue
+              e publicado conforme o combinado.
+            </p>
+            <small>Pronto para divulgar</small>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- ============ DÚVIDAS ============ -->
+    <!-- ========== PERGUNTAS FREQUENTES ========== -->
     <section class="sec" id="duvidas">
       <div class="wrap">
         <div class="sec__cab">
-          <span class="tag">Dúvidas</span>
-          <h2>Perguntas que sempre aparecem</h2>
+          <span class="tag">Central de dúvidas</span>
+          <h2>Perguntas frequentes</h2>
         </div>
 
         <div class="faq">
+
           <details class="faq__i" open>
-            <summary>O valor &eacute; R$ 400 mesmo? Isso d&aacute; pra loja online?</summary>
-            <p>Os R$ 400 s&atilde;o para um <strong>site institucional de uma p&aacute;gina</strong> &mdash; o tipo que a maioria dos com&eacute;rcios precisa: quem s&atilde;o voc&ecirc;, o que voc&ecirc; faz, onde voc&ecirc; est&aacute; e um bot&atilde;o de WhatsApp. Isso n&atilde;o &eacute; loja online.</p>
-            <p>Se voc&ecirc; precisa vender online com carrinho, pagamento autom&aacute;tico, ou tem mais de uma p&aacute;gina, blog ou &aacute;rea de cliente com login, o valor &eacute; outro &mdash; e eu te passo o valor certinho antes de come&ccedil;ar, tudo por escrito. Prefiro te dar um pre&ccedil;o certo do que te dizer &ldquo;barato&rdquo; e entregar algo que voc&ecirc; n&atilde;o vai usar.</p>
-            <p>Na pr&aacute;tica: 9 de cada 10 clientes que me procuram precisam s&oacute; do site de uma p&aacute;gina. Se o seu caso for esse, os R$ 400 valem a pena.</p>
+            <summary>Quanto custa criar um site?</summary>
+            <p>
+              O site institucional de uma página
+              começa em R$ 400. Projetos maiores
+              recebem orçamento personalizado.
+            </p>
           </details>
 
           <details class="faq__i">
-            <summary>Por que t&atilde;o barato? Tem algum problema?</summary>
-            <p>N&atilde;o. Trabalho sozinho, sem equipe de 10 pessoas e sem alugar escritório caro &mdash; esse dinheiro volta pro seu bolso em forma de pre&ccedil;o justo. Sites de uma p&aacute;gina bem feitos n&atilde;o exigem 40 horas de trabalho; a maior parte do tempo vai em ouvir o cliente, entender o neg&oacute;cio e acertar o texto e as fotos.</p>
-            <p>Quando o projeto envolve sistema de verdade (loja online, painel, integração), o pre&ccedil;o sobe porque o trabalho tamb&eacute;m sobe. Prefiro explicar isso na conversa do que fingir que tudo cabe nos R$ 400.</p>
+            <summary>O valor inclui uma loja virtual?</summary>
+            <p>
+              Não. Carrinho de compras, pagamentos
+              automáticos e sistemas de gestão
+              são serviços orçados separadamente.
+            </p>
           </details>
 
           <details class="faq__i">
-            <summary>Em quanto tempo fica pronto?</summary>
-            <p>Um site de uma p&aacute;gina fica pronto em <strong>7 a 15 dias</strong>. Na maior parte das vezes sai mais r&aacute;pido &mdash; 7 dias &eacute; o prazo t&iacute;pico, 15 dias &eacute; o mais demorado (projeto com mais p&aacute;ginas, loja online ou material que demora a chegar).</p>
-            <p>O prazo real eu te confirmo <strong>antes de come&ccedil;ar</strong>, depois de ver o que voc&ecirc; precisa. E te aviso cada etapa: quando o esbo&ccedil;o estiver pronto pra voc&ecirc; olhar, eu mando no WhatsApp &mdash; voc&ecirc; aprova e s&oacute; depois vai pro ar.</p>
-            <p>Se eu souber que vai atrasar, eu te falo <em>antes</em>, nunca depois. Prefiro essa honestidade do que te prometer 3 dias e entregar correndo.</p>
+            <summary>Qual é o prazo de entrega?</summary>
+            <p>
+              Projetos básicos podem ter prazo estimado
+              de 7 a 15 dias. O prazo definitivo depende
+              do escopo e do envio dos materiais.
+            </p>
           </details>
 
           <details class="faq__i">
-            <summary>Preciso ter logo?</summary>
-            <p>Não precisa. Se você não tiver, a gente parte de uma marca pronta e você me diz o nome e a cor que prefere. Se já tiver logo, melhor ainda: eu uso a sua.</p>
+            <summary>Preciso ter um logotipo?</summary>
+            <p>
+              Não é obrigatório. Podemos avaliar
+              uma apresentação textual da marca
+              ou incluir a criação de identidade visual
+              no orçamento.
+            </p>
           </details>
 
           <details class="faq__i">
-            <summary>As fotos podem ser as do meu celular?</summary>
-            <p>Podem. Eu ajusto o tamanho e a qualidade pra site não ficar pesado. Só peço que você mande as fotos mais nítidas que tiver.</p>
+            <summary>Posso usar fotos do celular?</summary>
+            <p>
+              Sim. As imagens devem ter qualidade
+              adequada e autorização para publicação.
+            </p>
           </details>
 
           <details class="faq__i">
-            <summary>Consigo mudar os preços depois?</summary>
-            <p>Consegue. Eu te entrego com um arquivo simples onde você troca preço, telefone, horário e foto. Te mostro em 2 minutos como fazer. Não precisa pagar mais nada por isso.</p>
+            <summary>Posso atualizar o site depois?</summary>
+            <p>
+              Sim, conforme a tecnologia e os recursos
+              contratados. As formas de atualização
+              serão explicadas na entrega.
+            </p>
           </details>
 
           <details class="faq__i">
-            <summary>O site fica no ar? Preciso pagar hospedagem?</summary>
-            <p>Já deixo publicado num endereço gratuito para você começar, sem pagar nada. Se quiser um domínio com o nome da sua loja, eu te explico as opções e o custo — mas isso é opcional.</p>
+            <summary>Preciso pagar hospedagem?</summary>
+            <p>
+              Alguns sites podem usar hospedagem gratuita.
+              Domínios próprios e funcionalidades avançadas
+              podem exigir serviços pagos.
+            </p>
           </details>
 
           <details class="faq__i">
-            <summary>Você faz site para qualquer negócio mesmo?</summary>
-            <p>Faço. Já montei sites para lanchonete, clínica, academia, pet shop, escritório de advocacia, oficina, loja de móveis, estúdio, salão de beleza, entre outros. A estrutura é a mesma, muda o conteúdo e as cores. Se o seu negócio for muito diferente, me chama antes que eu te falo com sinceridade se consigo ou não.</p>
+            <summary>O site vai aparecer no Google?</summary>
+            <p>
+              O site pode ser preparado para indexação.
+              A inclusão e a posição nos resultados
+              dependem dos mecanismos de busca.
+            </p>
           </details>
+
         </div>
       </div>
     </section>
 
-    <!-- ============ PARA QUEM DESENVOLVE ============ -->
+    <!-- ========== PARA AGÊNCIAS ========== -->
     <section class="sec sec--alt" id="agencias">
       <div class="wrap">
         <div class="sec__cab">
-          <span class="tag">Para quem desenvolve</span>
-          <h2>Desenvolvedores e agências</h2>
-          <p>Se você monta sites para clientes e quer encurtar o tempo de produção,
-             os projetos do meu portfólio podem ser licenciados para uso nos seus
-             trabalhos. As condições dependem do uso pretendido — projeto único,
-             uso recorrente ou revenda — e ficam definidas <strong>por escrito,
-             antes de qualquer coisa</strong>.</p>
+          <span class="tag">Parcerias comerciais</span>
+          <h2>Soluções para desenvolvedores e agências</h2>
+          <p>
+            A MOSS DIGITAL também oferece
+            possibilidades de licenciamento
+            de códigos e modelos para uso profissional.
+          </p>
         </div>
 
         <div class="agencia">
+
           <div class="agencia__item">
-            <h3>Como funciona</h3>
-            <p>Você me conta para que tipo de projeto vai usar. Eu devolvo o que
-               posso licenciar, as condições e o valor. Sem catálogo público de
-               preço nem compromisso automático — cada caso é conversado.</p>
+            <h3>Licenciamento</h3>
+            <p>
+              Consulte condições para utilização
+              de modelos em projetos comerciais.
+            </p>
           </div>
+
           <div class="agencia__item">
-            <h3>O que você recebe</h3>
-            <p>O código-fonte completo, organizado, com o mesmo padrão dos projetos
-               que estão no ar. Sem dependência de ferramenta paga e sem build:
-               é HTML, CSS e JavaScript puro.</p>
+            <h3>Código-fonte</h3>
+            <p>
+              Consulte a disponibilidade de projetos
+              desenvolvidos com HTML, CSS e JavaScript.
+            </p>
           </div>
+
           <div class="agencia__item">
-            <h3>Antes de fechar</h3>
-            <p>Tudo por escrito, com o escopo e as permissões claros dos dois lados.
-               Prefiro uma conversa franca a uma proposta que depois gere dúvida.</p>
+            <h3>Direitos de utilização</h3>
+            <p>
+              Revenda, exclusividade e cessão de direitos
+              dependem de autorização contratual.
+            </p>
           </div>
         </div>
 
         <div class="agencia__cta">
-          <a class="btn btn--wa btn--g" id="waAgencia" href="#">
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true">
-              <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.2.1.7-.1 1.3z"/>
-            </svg>
-            <span>Solicitar condições de licença</span>
+          <a class="btn btn--wa btn--g" id="waAgencia"
+             href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20quero%20informa%C3%A7%C3%B5es%20sobre%20licenciamento%20de%20sites."
+             target="_blank" rel="noopener noreferrer">
+            Solicitar condições comerciais
           </a>
-          <p class="agencia__nota">A licença é negociada caso a caso e autorizada por escrito.
-             Veja os termos no repositório.</p>
+          <p class="agencia__nota">
+            Condições de licenciamento definidas por escrito.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ============ CHAMADA FINAL ============ -->
+    <!-- ========== CHAMADA FINAL ========== -->
     <section class="final">
       <div class="wrap final__in">
-        <h2>Bora tirar seu site do papel?</h2>
-        <p>Manda uma mensagem agora. Pode ser só o nome do seu negócio — eu te explico o resto.</p>
-        <a class="btn btn--wa btn--g" id="waFinal" href="#">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-            <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.8 14.2c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.9.9c.2.1.4.2.5.3.1.2.1.7-.1 1.3z"/>
-          </svg>
-          <span>(11) 94203-8103</span>
+        <h2>Seu próximo site começa aqui</h2>
+
+        <p>
+          Transforme a presença digital da sua empresa
+          com um site profissional da MOSS DIGITAL.
+        </p>
+
+        <a class="btn btn--wa btn--g" id="waFinal"
+           href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20quero%20conhecer%20os%20servi%C3%A7os%20da%20MOSS%20DIGITAL."
+           target="_blank" rel="noopener noreferrer">
+          Falar com a MOSS DIGITAL
         </a>
-        <small>De segunda a sábado. Costumo responder no mesmo dia.</small>
+
+        <small>Atendimento comercial pelo WhatsApp.</small>
       </div>
     </section>
-
   </main>
 
-  <!-- ============ RODAPÉ ============ -->
+  <!-- ========== RODAPÉ ========== -->
   <footer class="rod">
     <div class="wrap rod__in">
+
       <div class="rod__marca">
-        <span class="marca__ini">MO</span>
-        <p>Sites profissionais para qualquer tipo de negócio. São Paulo — SP.</p>
+        <span class="marca__ini">MOSS</span>
+        <p>
+          MOSS DIGITAL — Sites e Sistemas.
+          Soluções digitais para empresas
+          e empreendedores de todo o Brasil.
+        </p>
       </div>
-      <nav class="rod__nav">
-        <a href="#reais">Projetos reais</a>
+
+      <nav class="rod__nav" aria-label="Links do rodapé">
+        <a href="#reais">Projetos</a>
         <a href="#exemplos">Modelos prontos</a>
-        <a href="#preco">Preço</a>
+        <a href="#preco">Preços</a>
         <a href="#como">Como funciona</a>
         <a href="#duvidas">Dúvidas</a>
       </nav>
+
       <div class="rod__cont">
-        <a href="#" id="rodWa">WhatsApp (11) 94203-8103</a>
-        <span>Prof. Marcelo Oliveira</span>
+        <a href="https://wa.me/5511942038103"
+           id="rodWa" target="_blank"
+           rel="noopener noreferrer">
+          WhatsApp (11) 94203-8103
+        </a>
+        <a href="https://mossdigital.com.br/">
+          mossdigital.com.br
+        </a>
       </div>
     </div>
+
     <div class="wrap rod__base">
-      <span>© 2026 Todos os direitos reservados.</span>
-      <span>Feito à mão.</span>
+      <span>© 2026 MOSS DIGITAL. Todos os direitos reservados.</span>
+      <span>Sites e Sistemas</span>
     </div>
   </footer>
 
+  <!-- Eu preservo os scripts existentes do projeto. -->
   <script src="assets/js/portfolio.js"></script>
-
   <script src="assets/js/protecao.js"></script>
+
 </body>
 </html>
