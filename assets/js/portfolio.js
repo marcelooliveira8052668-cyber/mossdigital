@@ -51,7 +51,7 @@
      PROJETOS REAIS — no ar, com página própria
      ------------------------------------------------------------------ */
   const REAIS = [
-    { id: 'momusic', emoji: '🎵', foto: 'assets/img/fotos/heroi-momusic.jpg', nome: 'M.O Music', desc: 'Plataforma de música estilo Spotify: player completo, playlists, letra na tela, compartilhar com amigos e venda/apoio via Pix — sem cadastro', link: 'https://marcelooliveira8052668-cyber.github.io/mo-music/' },
+    { id: 'momusic', emoji: '🎵', foto: 'assets/img/fotos/heroi-momusic.jpg', nome: 'M.O Music', desc: 'Plataforma de música completa: player de verdade, playlists, letra na tela, compartilhamento e venda/apoio via Pix — sem cadastro', link: 'https://marcelooliveira8052668-cyber.github.io/mo-music/' },
     { id: 'lojavirtual', emoji: '🛒', foto: 'assets/img/fotos/heroi-loja.jpg', nome: 'NEXA Store', desc: 'Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix, crédito e débito', link: 'loja-virtual/index.html' },
     { id: 'comandas', emoji: '🧾', foto: 'assets/img/fotos/heroi-comandas.jpg', nome: 'Comanda Fácil', desc: 'Comandas, cozinha e caixa: sistema completo para restaurantes e lanchonetes', link: 'comandas/index.html' },
     { id: 'educaenem',  emoji: '🎓', foto: 'assets/img/fotos/heroi-educaenem.jpg', nome: 'EducaEnem',          desc: 'Curso online do ENEM: aulas, PDFs, simulados e área do aluno', link: 'educaenem/index.html' },
