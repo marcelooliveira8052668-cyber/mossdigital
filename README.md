@@ -1,7 +1,7 @@
 # Template de Site Profissional
 
 Template com **23 tipos de negócio prontos** e **37 exemplos** no portfólio (23 nichos
-do template + 14 projetos reais). Você troca cores, logo, fotos, textos e cards num
+do template + 15 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
 Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
@@ -59,14 +59,15 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ---
 
-## Os 14 projetos reais do portfólio
+## Os 15 projetos reais do portfólio
 
-Além dos 23 nichos gerados pelo template, o portfólio mostra **14 projetos que existem
+Além dos 23 nichos gerados pelo template, o portfólio mostra **15 projetos que existem
 de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 `#reais`, separados dos modelos prontos (`#exemplos`):
 
 | Projeto | O que é | Pasta |
 |---------|---------|-------|
+| M.O Music | Plataforma de música estilo Spotify: player, playlists, letra na tela e venda via Pix | [demo no ar](https://marcelooliveira8052668-cyber.github.io/mo-music/) |
 | NEXA Store | Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix | `loja-virtual/` |
 | Comanda Fácil | Comandas, cozinha e caixa: sistema completo para restaurantes | `comandas/` |
 | EducaEnem | Curso online do ENEM: aulas, PDFs, simulados e área do aluno | `educaenem/` |
@@ -91,7 +92,8 @@ Para colocar um card desses no portfólio, edite a lista `REAIS` em
 ```
 
 Os modelos prontos ficam na lista `MODELOS`, no mesmo arquivo. Um card sem `link`
-aponta para `demo.html?preset=<id>`. As contagens da página (`14 projetos no ar`,
+aponta para `demo.html?preset=<id>`. Um card com `link` externo (http/https) abre em
+outra aba. As contagens da página (`15 projetos no ar`,
 `23 modelos prontos`) são calculadas pelo próprio script, então nunca ficam
 desatualizadas.
 

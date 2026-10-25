@@ -51,6 +51,7 @@
      PROJETOS REAIS — no ar, com página própria
      ------------------------------------------------------------------ */
   const REAIS = [
+    { id: 'momusic', emoji: '🎵', nome: 'M.O Music', desc: 'Plataforma de música estilo Spotify: player completo, playlists, letra na tela, compartilhar com amigos e venda/apoio via Pix — sem cadastro', link: 'https://marcelooliveira8052668-cyber.github.io/mo-music/' },
     { id: 'lojavirtual', emoji: '🛒', foto: 'assets/img/fotos/heroi-loja.jpg', nome: 'NEXA Store', desc: 'Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix, crédito e débito', link: 'loja-virtual/index.html' },
     { id: 'comandas', emoji: '🧾', foto: 'assets/img/fotos/heroi-comandas.jpg', nome: 'Comanda Fácil', desc: 'Comandas, cozinha e caixa: sistema completo para restaurantes e lanchonetes', link: 'comandas/index.html' },
     { id: 'educaenem',  emoji: '🎓', foto: 'assets/img/fotos/heroi-educaenem.jpg', nome: 'EducaEnem',          desc: 'Curso online do ENEM: aulas, PDFs, simulados e área do aluno', link: 'educaenem/index.html' },
@@ -81,12 +82,17 @@
       : '<span class="ex__emoji">' + e.emoji + '</span>';
     var href = esc(e.link || ('demo.html?preset=' + encodeURIComponent(e.id)));
 
-    return '<a class="ex" href="' + href + '">'
+    // links externos abrem em outra aba para manter o portfólio aberto
+    var externo = /^https?:\/\//.test(href);
+    var alvo = externo ? ' target="_blank" rel="noopener"' : '';
+    var rotulo = externo ? 'Abrir demonstração no ar &rsaquo;' : 'Ver o site &rsaquo;';
+
+    return '<a class="ex" href="' + href + '"' + alvo + '>'
       + '<div class="ex__topo">' + foto + '</div>'
       + '<div class="ex__body">'
       + '<h3>' + esc(e.nome) + '</h3>'
       + '<p>' + esc(e.desc) + '</p>'
-      + '<span class="ex__ver">Ver o site &rsaquo;</span>'
+      + '<span class="ex__ver">' + rotulo + '</span>'
       + '</div>'
       + '</a>';
   }
@@ -115,27 +121,18 @@
   });
 
   /* ------------------------------------------------------------------
-     Liga os botões de WhatsApp
+     Liga os contatos de WhatsApp — um único botão de orçamento no site
      ------------------------------------------------------------------ */
   const wa = 'https://wa.me/' + EU.whats;
   const msg = encodeURIComponent('Olá, Prof. Marcelo! Vi seu trabalho e quero um site para o meu negócio.');
-  const msgAg = encodeURIComponent('Olá, Prof. Marcelo! Desenvolvi e gostaria de saber as condições de licença dos projetos do seu portfólio.');
 
-  ['waTop', 'waHero', 'waPreco', 'waFinal', 'rodWa', 'waSobre'].forEach(function (id) {
+  ['waFinal', 'rodWa'].forEach(function (id) {
     const el = document.getElementById(id);
     if (!el) return;
     el.href = id === 'rodWa' ? wa : wa + '?text=' + msg;
     el.target = '_blank';
     el.rel = 'noopener';
   });
-
-  // Seção de agências usa outra mensagem
-  const waAg = document.getElementById('waAgencia');
-  if (waAg) {
-    waAg.href = wa + '?text=' + msgAg;
-    waAg.target = '_blank';
-    waAg.rel = 'noopener';
-  }
 
   // Assinatura no rodapé
   const quem = document.querySelector('.rod__marca p');
