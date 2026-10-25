@@ -538,3 +538,115 @@ body {
   .sobre__btns .btn { width: 100%; }
   .sobre__fig::after { width: 58px; height: 58px; box-shadow: 0 0 0 6px var(--off); }
 }
+
+
+/* Eu aumento a altura do cabeçalho no computador. */
+.cab {
+  height: 150px;
+}
+
+/* Eu mantenho o logotipo alinhado com o menu. */
+.cab__in {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Eu reservo espaço para o logotipo. */
+.cab .marca {
+  flex: 0 1 340px;
+  min-width: 0;
+}
+
+/* Eu amplio o logotipo sem deformar a imagem. */
+.cab .logo-topo {
+  width: 340px;
+  max-width: 100%;
+  height: 135px;
+  object-fit: contain;
+}
+
+/* Eu ajusto o início da página à altura do cabeçalho. */
+.hero {
+  padding-top: 220px;
+}
+
+/* Eu adapto o cabeçalho para tablets e celulares. */
+@media (max-width: 940px) {
+  .cab {
+    height: 110px;
+  }
+
+  .cab .marca {
+    flex: 0 1 240px;
+  }
+
+  .cab .logo-topo {
+    width: 240px;
+    height: 100px;
+  }
+
+  .nav {
+    top: 110px;
+  }
+
+  .hero {
+    padding-top: 166px;
+  }
+}
+
+/* Eu ajusto o logotipo para celulares pequenos. */
+@media (max-width: 500px) {
+  .cab .marca {
+    flex: 0 1 220px;
+  }
+
+  .cab .logo-topo {
+    width: 220px;
+    height: 100px;
+  }
+}
+
+
+/* Eu amplio o espaço horizontal da marca no computador. */
+@media (min-width: 941px) {
+
+  /* Eu deixo a área da marca ocupar o espaço disponível. */
+  .cab .marca {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-right: 0;
+  }
+
+  /* Eu faço a imagem ocupar a largura da área da marca. */
+  .cab .logo-topo {
+    width: 100%;
+    max-width: 100%;
+    height: 135px;
+    /* Eu preservo a proporção original do logotipo. */
+object-fit: contain;
+    object-position: left center;
+  }
+
+  /* Eu mantenho o menu no lado direito. */
+  .cab .nav {
+    flex-shrink: 0;
+  }
+}
+
+/* Eu amplio o logotipo sem deformar a marca. */
+@media (min-width: 941px) {
+  .cab .marca {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .cab .logo-topo {
+    width: 100%;
+    height: 140px;
+    max-width: none;
+    object-fit: contain;
+    object-position: left center;
+  }
+}

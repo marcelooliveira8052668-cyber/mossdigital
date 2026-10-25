@@ -64,14 +64,17 @@
   }
 
   /* Eu deixo o logotipo bem grande no topo, em evidência no cabeçalho. */
-  .logo-topo {
-    display: block;
-    width: 300px;
-    max-width: 100%;
-    height: 96px;
-    object-fit: contain;
-    animation: logo-entra .7s cubic-bezier(.2, .7, .3, 1) both;
-  }
+  /* Eu aumento o logotipo da MOSS DIGITAL no computador. */
+
+/* Eu ajusto o logotipo para caber no cabeçalho. */
+.logo-topo {
+  display: block;
+  width: 300px;
+  max-width: 100%;
+  height: 90px;
+  object-fit: contain;
+  animation: logo-entra .7s cubic-bezier(.2, .7, .3, 1) both;
+}
 
   /* Eu animo a entrada suave do logotipo para manter a magia do site. */
   @keyframes logo-entra {
@@ -84,20 +87,26 @@
     .logo-topo { animation: none; }
   }
 
-  /* Eu mantenho o logotipo grande também nos tablets. */
-  @media (max-width: 1000px) {
-    .logo-topo { width: 210px; height: 66px; }
+  /* Eu ajusto o logotipo para tablets. */
+@media (max-width: 1000px) {
+  .logo-topo {
+    width: 260px;
+    height: auto;
+  }
+}
+
+/* Eu aumento o logotipo para celulares. */
+@media (max-width: 500px) {
+  .logo-topo {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
   }
 
-  /* Eu mantenho o logotipo em evidência no celular. */
-  @media (max-width: 500px) {
-
-    .logo-topo { width: 172px; height: 56px; }
-
-    /* Eu adapto o logotipo grande à tela do celular. */
-    .moss-logo { max-width: 100%; }
-
+  .moss-logo {
+    max-width: 100%;
   }
+}
 
 </style>
 
@@ -124,13 +133,12 @@
       >
 
         <!-- Eu carrego o logotipo no topo do site. -->
-        <img
-          src="assets/img/fotos/moss-logo.webp"
-          alt="MOSS DIGITAL - Sites e Sistemas"
-          class="logo-topo"
-          width="180"
-          height="120"
-        >
+        <!-- Eu utilizo o novo logotipo horizontal da MOSS DIGITAL. -->
+<img
+  src="assets/img/fotos/moss-logo-horizontal.webp"
+  alt="MOSS DIGITAL - Sites e Sistemas"
+  class="logo-topo"
+>
 
       </a>
 
