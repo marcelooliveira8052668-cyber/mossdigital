@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- ============================================
+       LANCHONETE DO CHINA — Site oficial
+       Desenvolvido por MOSS Digital
+       ============================================ -->
+  <meta charset="UTF-8">
+  <!-- viewport = site nasce pro celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lanchonete do China | Os melhores lanches do bairro</title>
+  <meta name="description" content="Peça seu lanche direto pelo site e envie pelo WhatsApp. X-Burguer, X-Bacon, porções e bebidas. Entrega grátis acima de R$45!">
+
+  <!-- Favicon simples (ícone da aba) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+
+  <!-- Nosso arquivo de estilo -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ========== ① BARRA DE AVISO (pedido do cliente: horário GRANDE) ========== -->
+  <div class="aviso">
+    🕐 <strong>ABERTO AGORA</strong> — Terça a Domingo, das 18h às 23h30 &nbsp;|&nbsp; 🛵 Entrega <strong>GRÁTIS</strong> acima de R$45
+  </div>
+
+  <!-- ========== ② CABEÇALHO ========== -->
+  <header class="cabecalho">
+    <div class="container cabecalho-conteudo">
+
+      <!-- Logo: vamos criar em SVG (vetor = fica nítido em qualquer tamanho) -->
+      <a href="#" class="logo">
+        <svg viewBox="0 0 48 48" width="42" height="42">
+          <circle cx="24" cy="24" r="23" fill="#d62828"/>
+          <text x="24" y="31" font-size="22" text-anchor="middle">🍔</text>
+        </svg>
+        <span>Lanchonete <b>do China</b></span>
+      </a>
+
+      <nav class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <!-- Botão que abre o carrinho -->
+      <button class="btn-carrinho-topo" onclick="abrirCarrinho()">
+        🛒 <span id="contador-topo">0</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ========== ③ BANNER PRINCIPAL (HERO) ========== -->
+  <section class="hero" id="inicio">
+    <div class="container hero-conteudo">
+      <div class="hero-texto">
+        <h1>Os melhores lanches <span>do bairro</span></h1>
+        <p>Hambúrguer na brasa, crocante e caprichado. Peça pelo site, envie no WhatsApp e receba quentinho na sua casa.</p>
+        <a href="#cardapio" class="btn btn-primario">🍔 Ver cardápio</a>
+      </div>
+      <div class="hero-foto">🍔</div>
+    </div>
+  </section>
+
+  <!-- ========== ④ MAIS PEDIDOS ========== -->
+  <section class="secao">
+    <div class="container">
+      <h2 class="titulo-secao">🔥 Os mais pedidos</h2>
+      <div class="grade-produtos" id="destaques">
+        <!-- Preenchido pelo JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ⑤ COMO FUNCIONA ========== -->
+  <section class="como-funciona">
+    <div class="container">
+      <h2 class="titulo-secao claro">Como funciona?</h2>
+      <div class="passos">
+        <div class="passo"><div class="numero">1</div><h3>Escolha os lanches</h3><p>Navegue pelo cardápio e veja as fotos</p></div>
+        <div class="passo"><div class="numero">2</div><h3>Monte seu pedido</h3><p>Adicione tudo no carrinho</p></div>
+        <div class="passo"><div class="numero">3</div><h3>Envie no WhatsApp</h3><p>A gente confirma e entrega!</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ⑥ CARDÁPIO ========== -->
+  <section class="secao" id="cardapio">
+    <div class="container">
+      <h2 class="titulo-secao"> Nosso cardápio</h2>
+
+      <!-- Abas de categoria -->
+      <div class="categorias">
+        <button class="categoria ativa" onclick="mudarCategoria('lanches', this)">🍔 Lanches</button>
+        <button class="categoria" onclick="mudarCategoria('porcoes', this)">🍟 Porções</button>
+        <button class="categoria" onclick="mudarCategoria('bebidas', this)">🥤 Bebidas</button>
+      </div>
+
+      <!-- Lista de produtos (preenchida pelo JavaScript) -->
+      <div class="lista-produtos" id="lista-produtos"></div>
+    </div>
+  </section>
+
+  <!-- ========== ⑦ INFORMAÇÕES E CONTATO ========== -->
+  <section class="secao info" id="contato">
+    <div class="container grade-info">
+      <div class="cartao-info">📍 <h3>Endereço</h3><p>Rua das Palmeiras, 123 — Bairro Centro</p></div>
+      <div class="cartao-info">🕐 <h3>Funcionamento</h3><p>Terça a Domingo<br>18h às 23h30</p></div>
+      <div class="cartao-info">🛵 <h3>Entrega</h3><p>Taxa R$5 até 3km<br>Grátis acima de R$45</p></div>
+    </div>
+  </section>
+
+  <!-- ========== ⑧ RODAPÉ ========== -->
+  <footer class="rodape">
+    <div class="container rodape-conteudo">
+      <p>© 2026 Lanchonete do China — Todos os direitos reservados</p>
+      <p>Site desenvolvido por <b>MOSS Digital</b> ⚡</p>
+    </div>
+  </footer>
+
+  <!-- ========== ⑨ CARRINHO (painel lateral) ========== -->
+  <!-- fundo escuro que fecha o carrinho ao clicar -->
+  <div class="fundo-carrinho" id="fundo-carrinho" onclick="fecharCarrinho()"></div>
+
+  <aside class="carrinho" id="carrinho">
+    <div class="carrinho-topo">
+      <h2>🛒 Meu pedido</h2>
+      <button onclick="fecharCarrinho()">✕</button>
+    </div>
+
+    <div class="carrinho-itens" id="carrinho-itens">
+      <!-- Itens aparecem aqui -->
+    </div>
+
+    <div class="carrinho-resumo">
+      <div class="linha-resumo"><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div>
+      <div class="linha-resumo"><span>Taxa de entrega</span><span id="taxa">R$ 0,00</span></div>
+      <div class="linha-resumo total"><span>Total</span><span id="total">R$ 0,00</span></div>
+      <p class="aviso-minimo" id="aviso-minimo"></p>
+      <button class="btn btn-whatsapp" id="btn-whatsapp" onclick="enviarPedido()">
+        📱 Enviar pedido no WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========== ⑩ BOTÃO FLUTUANTE DE WHATSAPP ========== -->
+  <a class="zap-flutuante" href="https://wa.me/5500900000000?text=Oi! Vim pelo site da Lanchonete do China 😊" target="_blank">
+    💬
+  </a>
+
+  <!-- Nosso arquivo de JavaScript (sempre no final!) -->
+  <script src="js/script.js"></script>
+</body>
+</html>
