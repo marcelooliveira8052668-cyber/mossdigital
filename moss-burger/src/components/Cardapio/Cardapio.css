@@ -74,17 +74,17 @@
 .item-preco { font-size: 19px; color: var(--vermelho); white-space: nowrap; }
 
 .btn-add-lista {
-  background: var(--grafite);
-  color: var(--amarelo);
+  background: var(--amarelo);
+  color: var(--grafite);
   border: none;
   width: 46px;
   height: 46px;
   border-radius: 50%;
   font-size: 24px;
   cursor: pointer;
-  transition: transform .12s, background .12s;
+  transition: transform .12s, background .12s, color .12s;
 }
-.btn-add-lista:hover { background: var(--vermelho); color: var(--branco); transform: scale(1.08); }
+.btn-add-lista:hover { background: var(--grafite); color: var(--amarelo); transform: scale(1.08); }
 .btn-add-lista:active { transform: scale(.88); }
 
 /* ---------- Responsivo ---------- */

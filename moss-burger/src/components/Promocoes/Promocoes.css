@@ -1,13 +1,14 @@
-/* Promoções — fundo escuro com cards destacados */
+/* Promoções — fundo AMARELO de campanha (visual de site de fast-food) */
 
 .promocoes {
   background:
-    radial-gradient(circle at 15% 85%, rgba(255, 200, 87, .12), transparent 40%),
-    var(--grafite);
+    radial-gradient(circle at 15% 85%, rgba(255, 255, 255, .35), transparent 45%),
+    var(--amarelo);
 }
 
-.titulo-secao.claro, .subtitulo-secao.claro { color: var(--branco); }
-.subtitulo-secao.claro { color: #c9c9c9; }
+/* Dentro da seção amarela, os títulos são grafite (não branco) */
+.promocoes .titulo-secao { color: var(--grafite); }
+.promocoes .subtitulo-secao { color: rgba(23, 23, 23, .72); }
 
 .grade-promocoes {
   display: grid;

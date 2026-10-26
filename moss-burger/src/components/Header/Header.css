@@ -1,9 +1,11 @@
-/* Estilo do cabeçalho — fixo no topo com sombra sutil */
+/* Estilo do cabeçalho — branco, limpo e com botão amarelo (estilo fast-food) */
 
 .header {
-  background: var(--grafite);
+  background: var(--branco);
   position: sticky; /* fica grudado no topo quando a pessoa rola a página */
   top: 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .10);
+  border-bottom: 2px solid #f0f0f0;
   z-index: 100;
 }
 
@@ -21,28 +23,28 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: var(--branco);
+  color: var(--grafite);
   font-size: 20px;
   letter-spacing: .5px;
 }
-.logo b { color: var(--amarelo); }
+.logo b { color: var(--vermelho); }
 
 .menu { display: flex; gap: 26px; }
 .menu a {
   text-decoration: none;
-  color: #dcdcdc;
-  font-weight: 600;
+  color: #333;
+  font-weight: 700;
   font-size: 15px;
   transition: color .15s;
 }
-.menu a:hover { color: var(--amarelo); }
+.menu a:hover { color: var(--vermelho); }
 
 .header-acoes { display: flex; align-items: center; gap: 10px; }
 
 .btn-carrinho {
   position: relative;
-  background: var(--vermelho);
-  color: var(--branco);
+  background: var(--amarelo); /* botão amarelo icônico do fast-food */
+  color: var(--grafite);
   border: none;
   border-radius: 50px;
   padding: 10px 18px;
@@ -57,8 +59,8 @@
   position: absolute;
   top: -6px;
   right: -6px;
-  background: var(--amarelo);
-  color: var(--grafite);
+  background: var(--vermelho);
+  color: var(--branco);
   font-size: 12px;
   font-weight: 800;
   min-width: 20px;
@@ -73,7 +75,7 @@
   display: none; /* some no computador, aparece no celular */
   background: none;
   border: none;
-  color: var(--branco);
+  color: var(--grafite);
   font-size: 24px;
   cursor: pointer;
 }
@@ -89,12 +91,12 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--grafite-claro);
+    background: var(--branco);
     flex-direction: column;
     gap: 0;
     padding: 8px 0;
-    box-shadow: var(--sombra);
+    box-shadow: 0 14px 22px rgba(0, 0, 0, .12);
   }
   .menu.aberto { display: flex; }
-  .menu a { padding: 14px 24px; border-bottom: 1px solid #333; }
+  .menu a { padding: 14px 24px; border-bottom: 1px solid #f0f0f0; }
 }

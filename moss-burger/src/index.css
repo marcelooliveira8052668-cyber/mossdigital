@@ -11,6 +11,7 @@
   --vermelho: #E63946;
   --vermelho-escuro: #c92c39;
   --amarelo: #FFC857;
+  --amarelo-escuro: #f0b93f; /* versão mais escura pros hover */
   --branco: #FFFFFF;
   --cinza-claro: #F5F5F5;
   --cinza-texto: #8a8a8a;
@@ -56,18 +57,26 @@ a { color: inherit; }
 }
 .btn:active { transform: scale(.96); }
 
-.btn-primario { background: var(--vermelho); color: var(--branco); }
-.btn-primario:hover { background: var(--vermelho-escuro); transform: translateY(-2px); box-shadow: var(--sombra); }
+/* Botão primário estilo fast-food: AMARELO com texto preto (icônico!) */
+.btn-primario { background: var(--amarelo); color: var(--grafite); }
+.btn-primario:hover { background: var(--amarelo-escuro); transform: translateY(-2px); box-shadow: var(--sombra); }
 
-.btn-secundario { background: var(--amarelo); color: var(--grafite); }
-.btn-secundario:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
+/* Botão secundário: VERMELHO, usado em chamadas de promoção */
+.btn-secundario { background: var(--vermelho); color: var(--branco); }
+.btn-secundario:hover { background: var(--vermelho-escuro); transform: translateY(-2px); box-shadow: var(--sombra); }
 
-/* Título padrão das seções */
+/* Título padrão das seções — pesado e em caixa alta (estilo fast-food) */
 .titulo-secao {
-  font-size: 32px;
+  font-size: 34px;
   text-align: center;
   margin-bottom: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -.5px;
 }
+/* Variação clara: usada nas seções de fundo escuro (Contato e Pagamentos) */
+.titulo-secao.claro { color: var(--branco); }
+.subtitulo-secao.claro { color: #c9c9c9; }
 .subtitulo-secao {
   text-align: center;
   color: var(--cinza-texto);
