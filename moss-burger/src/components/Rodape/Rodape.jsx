@@ -28,6 +28,11 @@ export default function Rodape() {
         </div>
       </div>
 
+      {/* Barra do Depósito: atalho para a área do dono */}
+      <div className="rodape-deposito">
+        <a href="#admin">📦 Entrar no Depósito — Área do dono</a>
+      </div>
+
       <div className="rodape-base">
         <p>© 2026 MOSS Burger — Todos os direitos reservados</p>
         <p>Site desenvolvido por <b>MOSS Digital</b> ⚡</p>

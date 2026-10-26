@@ -37,6 +37,11 @@ export default function Header() {
         </nav>
 
         <div className="header-acoes">
+          {/* Botão de entrada no Depósito (área do dono) */}
+          <a className="btn-deposito" href="#admin" title="Área do dono">
+            📦 <span className="txt-deposito">Depósito</span>
+          </a>
+
           {/* Botão do carrinho: abre o painel lateral */}
           <button className="btn-carrinho" onClick={() => setPainelAberto(true)} aria-label="Abrir carrinho">
             🛒 {totalItens > 0 && <span className="badge">{totalItens}</span>}
