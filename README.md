@@ -67,7 +67,7 @@ de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 
 | Projeto | O que é | Pasta |
 |---------|---------|-------|
-| M.O Music | Plataforma de música estilo Spotify: player, playlists, letra na tela e venda via Pix | [demo no ar](https://marcelooliveira8052668-cyber.github.io/mo-music/) |
+| M.O Music | Site personalizável para artistas: apresentação, catálogo público, player, compartilhamento e apoio voluntário por Pix | [demo no ar](https://marcelooliveira8052668-cyber.github.io/mo-music/) |
 | NEXA Store | Loja virtual com 56 produtos, carrinho, cupom e pagamento por Pix | `loja-virtual/` |
 | Comanda Fácil | Comandas, cozinha e caixa: sistema completo para restaurantes | `comandas/` |
 | EducaEnem | Curso online do ENEM: aulas, PDFs, simulados e área do aluno | `educaenem/` |
