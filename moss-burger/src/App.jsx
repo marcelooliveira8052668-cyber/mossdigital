@@ -8,6 +8,8 @@ import Destaques from './components/Destaques/Destaques'
 import Cardapio from './components/Cardapio/Cardapio'
 import Promocoes from './components/Promocoes/Promocoes'
 import Sobre from './components/Sobre/Sobre'
+import Extras from './components/Extras/Extras'
+import Pagamentos from './components/Pagamentos/Pagamentos'
 import Contato from './components/Contato/Contato'
 import Rodape from './components/Rodape/Rodape'
 import Carrinho from './components/Carrinho/Carrinho'
@@ -26,6 +28,8 @@ export default function App() {
         <Cardapio />
         <Promocoes />
         <Sobre />
+        <Extras />
+        <Pagamentos />
         <Contato />
       </main>
 

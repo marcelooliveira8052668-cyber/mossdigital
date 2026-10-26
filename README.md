@@ -1,7 +1,7 @@
 # Template de Site Profissional
 
-Template com **23 tipos de negócio prontos** e **37 exemplos** no portfólio (23 nichos
-do template + 15 projetos reais). Você troca cores, logo, fotos, textos e cards num
+Template com **23 tipos de negócio prontos** e **42 exemplos** no portfólio (23 nichos
+do template + 19 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
 Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
@@ -59,9 +59,9 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ---
 
-## Os 15 projetos reais do portfólio
+## Os 19 projetos reais do portfólio
 
-Além dos 23 nichos gerados pelo template, o portfólio mostra **15 projetos que existem
+Além dos 23 nichos gerados pelo template, o portfólio mostra **19 projetos que existem
 de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 `#reais`, separados dos modelos prontos (`#exemplos`):
 
@@ -82,6 +82,7 @@ de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 | VELHA//CORE | Jogo da velha com IA em três dificuldades e placar por sequência | `jogo-velha/` |
 | PAC-MAN//NEON | Labirinto clássico em neon: 5 fases, 4 fantasmas, frutas e ranking | `pacman/` |
 | DevBook | Plataforma de curso Full Stack: 15 capítulos, editor de código, desafios corrigidos sozinhos e certificado | `devbook/` |
+| Lanchonete do China | Cardápio digital com carrinho de pedido e envio direto no WhatsApp | `lanchonete-do-china/` |
 
 Para colocar um card desses no portfólio, edite a lista `REAIS` em
 `assets/js/portfolio.js` e aponte o campo `link` para a pasta do projeto:
@@ -93,7 +94,7 @@ Para colocar um card desses no portfólio, edite a lista `REAIS` em
 
 Os modelos prontos ficam na lista `MODELOS`, no mesmo arquivo. Um card sem `link`
 aponta para `demo.html?preset=<id>`. Um card com `link` externo (http/https) abre em
-outra aba. As contagens da página (`15 projetos no ar`,
+outra aba. As contagens da página (`19 projetos no ar`,
 `23 modelos prontos`) são calculadas pelo próprio script, então nunca ficam
 desatualizadas.
 
@@ -319,6 +320,7 @@ template-site-profissional/
 ├── site-de-turismo/        Projeto real: agencia de viagens
 ├── jogo-velha/             Projeto real: jogo da velha com IA
 ├── pacman/                 Projeto real: labirinto classico em neon
+├── lanchonete-do-china/    Projeto real: cardapio digital com pedido pelo WhatsApp
 ├── assets/
 │   ├── css/
 │   │   ├── style.css       Visual do site do cliente
@@ -340,7 +342,7 @@ template-site-profissional/
 **Para entregar ao cliente:** mande a pasta inteira, **menos** as pastas dos projetos
 reais (`educaenem/`, `codigo-conhecimento/`, `livraria-mo/`, `nf-control/`,
 `gerador-portfolio/`, `tutor-ia/`, `skillmatch/`, `comandas/`, `loja-virtual/`,
-`elaine-sandrinha/`, `site-de-turismo/`, `jogo-velha/`, `pacman/`) e estes arquivos:
+`elaine-sandrinha/`, `site-de-turismo/`, `jogo-velha/`, `pacman/`, `lanchonete-do-china/`) e estes arquivos:
 `portfolio.html`, `demo.html`, `assets/css/demo.css`, `assets/css/portfolio.css`,
 `assets/js/presets.js`, `assets/js/presets-2.js`, `assets/js/presets-3.js`,
 `assets/js/demo.js`, `assets/js/portfolio.js`, `README.md` e `.git`.
