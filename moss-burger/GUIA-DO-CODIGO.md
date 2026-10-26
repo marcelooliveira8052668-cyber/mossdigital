@@ -112,6 +112,8 @@ export default function App() {
         <Cardapio />
         <Promocoes />
         <Sobre />
+        <Extras />
+        <Pagamentos />
         <Contato />
       </main>
       <Rodape />
@@ -196,6 +198,7 @@ export const produtos = [
     nome: 'MOSS Bacon',
     categoria: 'lanches',
     emoji: '🥓',
+    foto: 'fotos/bacon.jpg',
     descricao: 'Blend 150g, cheddar cremoso, bacon...',
     preco: 27.9,
     destaque: true,
@@ -206,6 +209,7 @@ export const produtos = [
 ```
 - **Cada produto é um objeto com campos nomeados.** Isso torna o código legível: `produto.preco` é autoexplicativo.
 - `preco: 27.9` = número **sem formato** (sem R$, sem vírgula). A formatação acontece na tela, na função `formatarMoeda`. Isso é importante porque o computador precisa somar números, não textos.
+- `foto: 'fotos/bacon.jpg'` = caminho da imagem real (pasta `public/fotos/`). Se existir, os componentes usam a foto; se faltar, usam o `emoji` de reserva.
 - `destaque: true` = flag booleana que faz o produto aparecer na vitrine "Os mais pedidos".
 - `maisVendido: true` = ativa a etiqueta 🔥.
 
@@ -474,7 +478,33 @@ function handleSubmit(e) {
 - Mostra aviso de mínimo ou bônus de entrega conforme os booleanos vindos do contexto.
 - `disabled={abaixoDoMinimo}` = bloqueia o botão enquanto o pedido estiver abaixo de R$30.
 
-### 8.8 `BotaoWhats.jsx` e `Rodape.jsx`
+### 8.8 `Extras.jsx` (vídeo + mapa)
+```jsx
+const VIDEO_ID = 'DhGoIb5oS-M'
+const temVideo = VIDEO_ID.trim().length > 0
+```
+- O ID do vídeo fica numa constante no topo do arquivo — quem for trocar mexe em **um lugar só**. `.trim()` remove espaços acidentais; `.length > 0` decide se mostro o `<iframe>` ou o aviso de espaço reservado.
+- O `<iframe>` do YouTube usa a URL oficial `youtube.com/embed/ID` (embed permitido pelos termos do serviço).
+
+```jsx
+<iframe src="https://maps.google.com/maps?q=Rua%20das%20Palmeiras%2C%20123&z=15&output=embed" loading="lazy" />
+```
+- Google Maps modo incorporado: grátis e **sem chave de API**. `%20` = espaço na URL. `loading="lazy"` = o mapa só carrega quando a pessoa chega perto dele (performance).
+
+### 8.9 `Pagamentos.jsx` (Pix estático — v1)
+```jsx
+const [copiado, setCopiado] = useState(false)
+```
+- Estado que muda o texto do botão por 2 segundos depois de copiar a chave ("📋 Copiar chave" → "✅ Copiado!").
+
+```jsx
+await navigator.clipboard.writeText(CHAVE_PIX)
+```
+- `navigator.clipboard` = API nativa do navegador para copiar para a área de transferência. O `try/catch` garante plano B: se o navegador bloquear (pode acontecer em http), um `alert()` mostra a chave para copiar à mão.
+- O QR Code vem da API pública `qrserver` lendo o **texto** da chave — é demonstração visual. Em produção, substitua o `src` pela imagem BR Code que o cliente baixa do app do banco (aí o banco já abre o pagamento com valor pronto).
+- **Nenhum pagamento é processado pelo site** — regra do projeto (v1 sem gateway).
+
+### 8.10 `BotaoWhats.jsx` e `Rodape.jsx`
 - Botão fixo: CSS `position: fixed` + animação `pulso` (box-shadow crescendo) para chamar atenção.
 - Rodapé: links âncora + créditos (SEO e credibilidade).
 
@@ -488,10 +518,10 @@ function handleSubmit(e) {
 | **Pix estático (v1)** | Cliente gera QR Code no app do banco; site mostra a imagem + chave copia-e-cola | Grátis |
 | **Pix/Cartão automático (v2)** | API de gateway (Mercado Pago, Efí, Stripe): site gera cobrança e confirma pagamento sozinho | ~3% por transação + conta cadatrada |
 
-O site **já está preparado** para a v2: bastaria uma nova função "Finalizar pagamento" ao lado do "Enviar no WhatsApp".
+O site **já entrega a v1** na seção `Pagamentos.jsx` (selos, chave copiável e QR Code). E **já está preparado** para a v2: bastaria uma nova função "Finalizar pagamento" ao lado do "Enviar no WhatsApp".
 
 ### 🗺️ "Dá pra colocar mapa da loja?"
-Sim, grátis, sem API:
+Sim, grátis, sem API — e o site **já tem** na seção `Extras.jsx`:
 ```html
 <iframe src="https://maps.google.com/maps?q=ENDERECO_AQUI&z=15&output=embed"></iframe>
 ```
