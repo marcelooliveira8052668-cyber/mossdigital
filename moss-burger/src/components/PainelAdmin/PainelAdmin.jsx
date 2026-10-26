@@ -74,9 +74,12 @@ export default function PainelAdmin() {
 
   return (
     <div className="admin">
-      {/* Barra superior: identidade + abas + volta pro site */}
+      {/* Barra superior: identidade + volta pra loja + abas */}
       <header className="admin-topo">
         <div className="admin-logo">🍔 MOSS <b>Painel</b></div>
+
+        {/* Botão em destaque logo ao lado da logo — troca #admin por #inicio */}
+        <a className="admin-voltar" href="#inicio">↩ Voltar ao site</a>
 
         <nav className="admin-abas">
           {ABAS.map(b => (
@@ -89,9 +92,6 @@ export default function PainelAdmin() {
             </button>
           ))}
         </nav>
-
-        {/* Volta pra loja: troca o #admin por #inicio */}
-        <a className="admin-voltar" href="#inicio">↩ Ver site</a>
       </header>
 
       <main className="admin-conteudo">
@@ -122,13 +122,14 @@ export default function PainelAdmin() {
         )}
       </main>
 
-      {/* Rodapé utilitário: nota de armazenamento + ferramentas */}
+      {/* Rodapé utilitário: volta pra loja + ferramentas + nota de armazenamento */}
       <footer className="admin-rodape">
-        <span>💾 Dados salvos neste navegador (localStorage) — v2: nuvem</span>
         <span className="admin-ferramentas">
+          <a href="#inicio">↩ Voltar ao site</a>
           <button onClick={carregarExemplo}>🎲 Carregar exemplo</button>
           <button className="perigo" onClick={limparTudo}>🗑 Limpar tudo</button>
         </span>
+        <span>💾 Dados salvos neste navegador (localStorage) — v2: nuvem</span>
       </footer>
     </div>
   )
