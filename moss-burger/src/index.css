@@ -1,0 +1,76 @@
+/* ============================================================
+   MOSS BURGER — Estilo global
+   Aqui concentro as "regras de casa": cores, fontes e reset.
+   ============================================================ */
+
+/* Estou criando VARIÁVEIS de CSS: se o cliente pedir pra trocar
+   o vermelho, mudo em UM lugar só e o site inteiro atualiza. */
+:root {
+  --grafite: #171717;
+  --grafite-claro: #242424;
+  --vermelho: #E63946;
+  --vermelho-escuro: #c92c39;
+  --amarelo: #FFC857;
+  --branco: #FFFFFF;
+  --cinza-claro: #F5F5F5;
+  --cinza-texto: #8a8a8a;
+  --sombra: 0 6px 20px rgba(0, 0, 0, .25);
+  --raio: 14px;
+}
+
+/* Reset: zerro margins e paddings para nada "fugir" do lugar
+   por causa de estilos padrão do navegador. */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; } /* rolagem suave ao clicar no menu */
+
+body {
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+  background: var(--cinza-claro);
+  color: var(--grafite);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+a { color: inherit; }
+
+/* Utilitário de largura máxima: todo conteúdo segue a mesma "pista" */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Classe de botão reutilizável — uso em todo o site */
+.btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+.btn:active { transform: scale(.96); }
+
+.btn-primario { background: var(--vermelho); color: var(--branco); }
+.btn-primario:hover { background: var(--vermelho-escuro); transform: translateY(-2px); box-shadow: var(--sombra); }
+
+.btn-secundario { background: var(--amarelo); color: var(--grafite); }
+.btn-secundario:hover { transform: translateY(-2px); box-shadow: var(--sombra); }
+
+/* Título padrão das seções */
+.titulo-secao {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.subtitulo-secao {
+  text-align: center;
+  color: var(--cinza-texto);
+  margin-bottom: 36px;
+}
+.secao { padding: 70px 0; }

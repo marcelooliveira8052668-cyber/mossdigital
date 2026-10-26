@@ -11,6 +11,9 @@ desktop.ini
 # Node (nao usado, mas por seguranca)
 node_modules/
 
+# Build do Vite (gerado automaticamente pelo npm run build)
+dist/
+
 # Arquivos temporarios do cliente
 *.log
 *.tmp

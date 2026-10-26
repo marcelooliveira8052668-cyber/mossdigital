@@ -1,0 +1,17 @@
+/* Grade responsiva da seção de destaques */
+
+.destaques { background: var(--cinza-claro); }
+
+.grade-cards {
+  display: grid;
+  /* 3 colunas no computador */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .grade-cards { grid-template-columns: repeat(2, 1fr); } /* 2 no tablet */
+}
+@media (max-width: 600px) {
+  .grade-cards { grid-template-columns: 1fr; } /* 1 no celular */
+}

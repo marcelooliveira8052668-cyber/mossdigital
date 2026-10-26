@@ -1,0 +1,62 @@
+/* Promoções — fundo escuro com cards destacados */
+
+.promocoes {
+  background:
+    radial-gradient(circle at 15% 85%, rgba(255, 200, 87, .12), transparent 40%),
+    var(--grafite);
+}
+
+.titulo-secao.claro, .subtitulo-secao.claro { color: var(--branco); }
+.subtitulo-secao.claro { color: #c9c9c9; }
+
+.grade-promocoes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card-promocao {
+  background: var(--branco);
+  border-radius: var(--raio);
+  padding: 26px 22px;
+  text-align: center;
+  position: relative;
+  transition: transform .18s;
+}
+.card-promocao:hover { transform: translateY(-6px); }
+
+.selo-desconto {
+  position: absolute;
+  top: -12px;
+  right: 18px;
+  background: var(--vermelho);
+  color: var(--branco);
+  font-weight: 800;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  box-shadow: var(--sombra);
+}
+
+.promo-emoji { font-size: 52px; margin-bottom: 10px; }
+.card-promocao h3 { font-size: 21px; margin-bottom: 8px; }
+.card-promocao p {
+  font-size: 13.5px;
+  color: var(--cinza-texto);
+  margin-bottom: 16px;
+  min-height: 42px; /* reserva espaço para textos de tamanhos diferentes */
+}
+
+.promo-precos {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.promo-precos s { color: #b0b0b0; font-size: 15px; }
+.promo-precos strong { color: var(--vermelho); font-size: 26px; }
+
+@media (max-width: 900px) {
+  .grade-promocoes { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+}

@@ -1,0 +1,98 @@
+/* Estilo do cardápio: abas + lista de produtos */
+
+.categorias {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 34px;
+  flex-wrap: wrap;
+}
+
+.categoria {
+  border: 2px solid var(--grafite);
+  background: var(--branco);
+  color: var(--grafite);
+  padding: 11px 26px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .18s;
+}
+.categoria:hover { border-color: var(--vermelho); color: var(--vermelho); }
+
+/* Aba ativa: fundo grafite, texto branco */
+.categoria.ativa {
+  background: var(--grafite);
+  color: var(--amarelo);
+  border-color: var(--grafite);
+}
+
+.lista-produtos { max-width: 800px; margin: 0 auto; }
+
+.item-produto {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--branco);
+  border-radius: var(--raio);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, .07);
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  transition: transform .15s;
+}
+.item-produto:hover { transform: translateX(4px); }
+
+.item-emoji { font-size: 46px; flex-shrink: 0; }
+/* Miniatura quadrada quando existe foto real */
+.item-emoji img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.item-dados { flex: 1; }
+.item-dados h3 { font-size: 18px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.item-dados p { font-size: 14px; color: var(--cinza-texto); }
+
+.selo-mais {
+  background: var(--amarelo);
+  color: var(--grafite);
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 50px;
+}
+
+.item-acoes {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.item-preco { font-size: 19px; color: var(--vermelho); white-space: nowrap; }
+
+.btn-add-lista {
+  background: var(--grafite);
+  color: var(--amarelo);
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform .12s, background .12s;
+}
+.btn-add-lista:hover { background: var(--vermelho); color: var(--branco); transform: scale(1.08); }
+.btn-add-lista:active { transform: scale(.88); }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 600px) {
+  .item-produto { padding: 13px; gap: 11px; }
+  .item-emoji { font-size: 34px; }
+  .item-dados h3 { font-size: 15.5px; }
+  .item-dados p { font-size: 12.5px; }
+  .item-preco { font-size: 16px; }
+  .btn-add-lista { width: 40px; height: 40px; font-size: 20px; }
+}

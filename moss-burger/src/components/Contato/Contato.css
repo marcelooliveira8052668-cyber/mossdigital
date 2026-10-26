@@ -1,0 +1,65 @@
+/* Seção Contato — fundo grafite com formulário claro */
+
+.contato {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(230, 57, 70, .22), transparent 45%),
+    var(--grafite);
+}
+
+.contato-grade {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.contato-info { display: grid; gap: 16px; }
+
+.cartao-info {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: var(--grafite-claro);
+  border: 1px solid #333;
+  border-radius: var(--raio);
+  padding: 18px;
+  font-size: 26px;
+  color: var(--branco);
+}
+.cartao-info h3 { font-size: 16px; color: var(--amarelo); }
+.cartao-info p { font-size: 14px; color: #c9c9c9; }
+
+/* Formulário */
+.formulario {
+  background: var(--branco);
+  border-radius: var(--raio);
+  padding: 26px;
+  display: grid;
+  gap: 14px;
+  box-shadow: var(--sombra);
+}
+.formulario input,
+.formulario select,
+.formulario textarea {
+  border: 2px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color .15s;
+  width: 100%;
+  background: #fafafa;
+}
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--vermelho);
+  background: var(--branco);
+}
+.formulario textarea { resize: vertical; }
+.formulario .btn { justify-self: start; }
+
+@media (max-width: 820px) {
+  .contato-grade { grid-template-columns: 1fr; }
+}
