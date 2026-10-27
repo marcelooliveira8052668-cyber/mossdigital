@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7dce6">
+    <meta name="description" content="Organize clientes e atendimentos com a MOSS Agenda Pro.">
+    <title>MOSS Agenda Pro | Sua rotina em ordem</title>
+    <link rel="stylesheet" href="style.css?v=agenda-20261027">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="config.js" defer></script>
+    <script src="agenda-utils.js?v=agenda-20261027" defer></script>
+    <script src="script.js?v=agenda-20261027" defer></script>
+</head>
+<body>
+    <main class="auth-screen" id="tela-login" hidden>
+        <div class="auth-card">
+            <div class="auth-brand"><span class="brand-symbol" aria-hidden="true">m.</span><strong>MOSS <small>AGENDA PRO</small></strong></div>
+            <p class="section-kicker">SUA AGENDA, EM QUALQUER LUGAR</p>
+            <h1 id="titulo-login">Acesse sua conta</h1>
+            <p class="auth-intro">Entre para encontrar seus atendimentos no computador e no celular.</p>
+            <form id="form-login">
+                <div class="field"><label for="email-login">E-mail</label><input id="email-login" type="email" autocomplete="email" required></div>
+                <div class="field"><label for="senha-login">Senha</label><input id="senha-login" type="password" autocomplete="current-password" minlength="8" required></div>
+                <p class="form-message" id="mensagem-login" role="alert" hidden></p>
+                <button class="button button-primary button-full" type="submit" id="botao-login">Entrar</button>
+            </form>
+            <button class="auth-toggle" id="alternar-cadastro" type="button">Ainda não tem conta? Criar conta</button>
+            <p class="auth-footnote">Seus dados ficam protegidos na sua conta. Não use uma senha que você compartilha com outras pessoas.</p>
+        </div>
+    </main>
+
+    <div class="app-shell" id="app-principal">
+        <aside class="sidebar">
+            <a class="brand" href="#painel" aria-label="m. MOSS Agenda Pro — voltar ao painel">
+                <span class="brand-symbol" aria-hidden="true">m.</span>
+                <span class="brand-name">MOSS <small>AGENDA PRO</small></span>
+            </a>
+
+            <div class="sidebar-content">
+                <p class="nav-caption">ESPAÇO DE TRABALHO</p>
+                <nav class="navigation" aria-label="Menu principal">
+                    <a class="nav-link is-active" href="#painel">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                        Painel
+                    </a>
+                    <a class="nav-link" href="#agenda">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg>
+                        Agenda
+                    </a>
+                    <a class="nav-link" href="#clientes">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2H3Zm14-14a3 3 0 0 1 0 6m1 3a5 5 0 0 1 3 5"/></svg>
+                        Clientes
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-foot">
+                <span class="sidebar-foot-icon" aria-hidden="true">✦</span>
+                <span>Seu espaço, seu ritmo.<small id="mensagem-armazenamento">Dados salvos neste navegador.</small></span>
+            </div>
+        </aside>
+
+        <div class="workspace">
+            <header class="topbar">
+                <div>
+                    <p class="breadcrumb">ESPAÇO DE TRABALHO <span>/</span> VISÃO GERAL</p>
+                    <p class="topbar-title">Bem-vindo à sua agenda</p>
+                </div>
+                 <div class="topbar-right">
+                    <a class="logout-button" href="https://mossdigital.com.br/sistemas.html">MOSS Digital ↗</a>
+                    <span class="user-email" id="email-usuario" hidden></span>
+                    <button class="logout-button" id="botao-sair" type="button" hidden>Sair</button>
+                    <span class="topbar-avatar" aria-hidden="true">M</span>
+                </div>
+            </header>
+
+            <main class="main-content">
+                <div class="sync-notice" id="aviso-demo" hidden>
+                    <p><strong>Modo demonstração.</strong> Sem banco configurado, os dados ficam somente neste navegador. Não cadastre informações reais de clientes aqui.</p>
+                </div>
+                <div class="sync-notice" id="migracao-local" hidden>
+                    <p><strong>Há agendamentos antigos neste navegador.</strong> Envie uma cópia deles para a sua conta na nuvem para vê-los em outros aparelhos.</p>
+                    <button class="button button-primary" id="botao-migrar" type="button">Importar agora</button>
+                </div>
+                <section class="welcome" id="painel" aria-labelledby="welcome-title">
+                    <div class="welcome-copy">
+                        <p class="eyebrow"><span class="eyebrow-dot"></span> TUDO COMEÇA COM ORGANIZAÇÃO</p>
+                        <h1 id="welcome-title">Sua agenda, <em>sob controle.</em></h1>
+                        <p>Mais clareza para os seus dias. Mais tempo para cuidar de cada cliente.</p>
+                        <a class="button button-light" href="#form-agendamento">
+                            <span aria-hidden="true">＋</span> Novo agendamento
+                        </a>
+                    </div>
+                    <div class="welcome-art" aria-hidden="true">
+                        <span class="art-orbit orbit-one"></span>
+                        <span class="art-orbit orbit-two"></span>
+                        <div class="art-card"><span class="art-card-icon">✳</span><span>Planeje hoje.<br><strong>Faça acontecer.</strong></span></div>
+                    </div>
+                </section>
+
+                <section class="stats-grid" aria-label="Indicadores da agenda">
+                    <article class="stat-card">
+                        <span class="stat-icon icon-today" aria-hidden="true">▦</span>
+                        <span class="stat-label">Agendamentos hoje</span>
+                        <strong id="total-hoje">0</strong>
+                        <span class="stat-caption">Compromissos para o dia</span>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-icon icon-clients" aria-hidden="true">◈</span>
+                        <span class="stat-label">Clientes cadastrados</span>
+                        <strong id="total-clientes">0</strong>
+                        <span class="stat-caption">Clientes na sua agenda</span>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-icon icon-pending" aria-hidden="true">◷</span>
+                        <span class="stat-label">Pendentes</span>
+                        <strong id="total-pendentes">0</strong>
+                        <span class="stat-caption">Aguardando atendimento</span>
+                    </article>
+                    <article class="stat-card">
+                        <span class="stat-icon icon-done" aria-hidden="true">✓</span>
+                        <span class="stat-label">Concluídos</span>
+                        <strong id="total-concluidos">0</strong>
+                        <span class="stat-caption">Atendimentos realizados</span>
+                    </article>
+                </section>
+
+                <div class="content-grid">
+                    <section class="panel appointments-panel" id="agenda" aria-labelledby="agenda-title">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="section-kicker">SUA ROTINA EM DIA</p>
+                                <h2 id="agenda-title">Atendimentos</h2>
+                                <p>Acompanhe e organize seus agendamentos.</p>
+                            </div>
+                            <span class="count-chip" id="resumo-agendamentos">0 agendamentos</span>
+                        </div>
+
+                        <div class="toolbar">
+                            <div class="search-field">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+                                <label class="sr-only" for="busca-agendamentos">Buscar por cliente ou serviço</label>
+                                <input id="busca-agendamentos" type="search" placeholder="Buscar cliente ou serviço..." autocomplete="off">
+                            </div>
+                            <label class="sr-only" for="filtro-data">Escolher um dia da agenda</label>
+                            <input class="day-filter" id="filtro-data" type="date" title="Escolher um dia da agenda">
+                            <label class="sr-only" for="filtro-status">Filtrar agendamentos por situação</label>
+                            <select id="filtro-status" aria-label="Filtrar por situação">
+                                <option value="todos">Todos</option>
+                                <option value="pendente">Pendentes</option>
+                                <option value="concluido">Concluídos</option>
+                            </select>
+                        </div>
+
+                        <div class="day-heading" id="dia-selecionado" hidden>
+                            <span id="texto-dia"></span>
+                            <button id="limpar-data" type="button">Ver todos os dias</button>
+                        </div>
+
+                        <div class="day-navigation" role="group" aria-label="Navegar pelos dias da agenda">
+                            <button class="action-button" id="dia-anterior" type="button" aria-label="Ver dia anterior">← Anterior</button>
+                            <button class="action-button" id="dia-hoje" type="button">Hoje</button>
+                            <button class="action-button" id="dia-proximo" type="button" aria-label="Ver próximo dia">Próximo →</button>
+                            <span id="resumo-dia" role="status"></span>
+                        </div>
+
+                        <div class="appointments-list" id="lista-agendamentos" aria-live="polite"></div>
+                    </section>
+
+                    <section class="panel form-panel" id="cadastro" aria-labelledby="titulo-formulario">
+                        <div class="form-heading">
+                            <span class="form-heading-icon" aria-hidden="true">＋</span>
+                            <div>
+                                <p class="section-kicker">ORGANIZE O PRÓXIMO PASSO</p>
+                                <h2 id="titulo-formulario">Novo agendamento</h2>
+                            </div>
+                        </div>
+                        <p class="form-intro">Preencha os dados para reservar um horário.</p>
+
+                        <form id="form-agendamento">
+                            <div class="field">
+                                <label for="nome-cliente">Nome do cliente <span aria-hidden="true">*</span></label>
+                                <input id="nome-cliente" name="nome" type="text" maxlength="80" placeholder="Ex.: Maria Oliveira" autocomplete="name" required>
+                            </div>
+                            <div class="field">
+                                <label for="telefone-cliente">Telefone <span class="optional">(opcional)</span></label>
+                                <input id="telefone-cliente" name="telefone" type="tel" maxlength="25" placeholder="(11) 99999-9999" autocomplete="tel">
+                            </div>
+                            <div class="field">
+                                <label for="servico">Serviço <span aria-hidden="true">*</span></label>
+                                <input id="servico" name="servico" type="text" maxlength="80" list="sugestoes-servicos" placeholder="Ex.: Criação de site" required>
+                                <datalist id="sugestoes-servicos">
+                                    <option value="Criação de site"></option>
+                                    <option value="Identidade visual"></option>
+                                    <option value="Consultoria"></option>
+                                    <option value="Gestão de redes sociais"></option>
+                                </datalist>
+                            </div>
+                            <div class="field-row">
+                                <div class="field">
+                                    <label for="data-agendamento">Data <span aria-hidden="true">*</span></label>
+                                    <input id="data-agendamento" name="data" type="date" required>
+                                </div>
+                                <div class="field">
+                                    <label for="hora-agendamento">Horário <span aria-hidden="true">*</span></label>
+                                    <input id="hora-agendamento" name="hora" type="time" required>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="observacoes">Observações <span class="optional">(opcional)</span></label>
+                                <textarea id="observacoes" name="observacoes" rows="3" maxlength="300" placeholder="Algum detalhe importante para este atendimento?"></textarea>
+                            </div>
+                            <p class="form-message" id="mensagem-formulario" role="alert" hidden></p>
+                            <button class="button button-primary button-full" id="botao-salvar" type="submit">Salvar agendamento <span aria-hidden="true">↗</span></button>
+                            <button class="button button-cancel button-full" id="botao-cancelar" type="button" hidden>Cancelar edição</button>
+                            <p class="form-hint">* Campos obrigatórios. Telefone brasileiro com DDD para habilitar o lembrete pelo WhatsApp. O envio é manual.</p>
+                        </form>
+                    </section>
+                </div>
+
+                <section class="panel clients-panel" id="clientes" aria-labelledby="clientes-title">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="section-kicker">RELACIONAMENTOS QUE IMPORTAM</p>
+                            <h2 id="clientes-title">Meus clientes</h2>
+                            <p>Contatos reunidos automaticamente a partir da sua agenda.</p>
+                        </div>
+                    </div>
+                    <div class="clients-list" id="lista-clientes"></div>
+                </section>
+
+                <section class="panel backup-panel" aria-labelledby="backup-title">
+                    <div>
+                        <p class="section-kicker">CUIDE DOS SEUS DADOS</p>
+                        <h2 id="backup-title">Cópia de segurança</h2>
+                        <p>Baixe uma cópia dos agendamentos ou restaure um arquivo de backup. Guarde esse arquivo em local privado.</p>
+                    </div>
+                    <div class="backup-actions">
+                        <button class="button button-primary" id="botao-backup" type="button">Baixar backup</button>
+                        <label class="button button-cancel" for="arquivo-backup">Restaurar backup</label>
+                        <input class="sr-only" id="arquivo-backup" type="file" accept=".json,application/json">
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer">MOSS Agenda Pro <span>·</span> Seu negócio organizado, seus clientes conectados.</footer>
+        </div>
+    </div>
+
+    <div class="toast" id="notificacao" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

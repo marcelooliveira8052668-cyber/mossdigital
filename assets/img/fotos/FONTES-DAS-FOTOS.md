@@ -53,6 +53,8 @@ As imagens abaixo já eram usadas pelo site via Unsplash; foram armazenadas loca
 
 `heroi-tutor.jpg` é uma captura da própria demo do Tutor IA hospedada neste repositório.
 
+`heroi-agenda.jpg` é uma captura da própria MOSS Agenda Pro, com um contato fictício de demonstração; não contém dados de clientes reais.
+
 ## Complemento de arquitetura — Pexels
 
 | Arquivo | Página da foto |
