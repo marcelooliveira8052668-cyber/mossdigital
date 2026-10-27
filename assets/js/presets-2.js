@@ -216,10 +216,10 @@ Object.assign(window.SITE_PRESETS, {
         "url": "#"
       },
       {
-        "title": "Pizza da casa",
-        "category": "Pizzas",
-        "description": "Imagem ilustrativa de pizza da casa.",
-        "image": "assets/img/fotos/pizza-2.jpg",
+        "title": "Pudim da casa",
+        "category": "Sobremesas",
+        "description": "Imagem ilustrativa de pudim com calda de caramelo.",
+        "image": "assets/img/fotos/pudim-da-vovo.png",
         "url": "#"
       }
     ],
@@ -227,7 +227,7 @@ Object.assign(window.SITE_PRESETS, {
       "tag": "Nossa história",
       "title": "Começou num forno de garagem",
       "description": "Em 2008 o Seu Antônio comprou um forno de lenha usado e começou a fazer pizza para os amigos no fim de semana. A massa fermentava 48 horas na geladeira e a fila crescia na calçada. Hoje somos uma pizzaria de casa cheia, mas a massa continua fermentando 48 horas e o forno continua sendo o mesmo.",
-      "image": "assets/img/fotos/pizzaria-preparo.jpg",
+      "image": "assets/img/fotos/Pizza napolitana no forno a lenha.png",
       "stats": [
         {
           "value": 18,
