@@ -64,7 +64,7 @@ window.SITE_PRESETS = {
     "meta": {
       "title": "Brasa & Bão — Hambúrguer Artesanal",
       "description": "Hambúrguer artesanal feito na hora, com ingredientes frescos. Peça pelo delivery ou retire no balcão.",
-      "ogImage": "assets/img/hero.svg"
+      "ogImage": "assets/img/fotos/heroi-lanchonete.jpg"
     },
     "nav": [
       {
@@ -132,8 +132,8 @@ window.SITE_PRESETS = {
       },
       "portfolio": {
         "tag": "Galeria",
-        "title": "Saída da nossa chapa",
-        "description": "Sem foto de banco de imagem. É tudo lanche que a gente realmente entregou."
+        "title": "Hambúrgueres e acompanhamentos",
+        "description": "Imagens ilustrativas de hambúrgueres e acompanhamentos."
       },
       "about": {
         "tag": "Nossa história",
@@ -185,30 +185,30 @@ window.SITE_PRESETS = {
     ],
     "portfolio": [
       {
-        "title": "Clássico da Casa",
+        "title": "Hambúrguer artesanal",
         "category": "Lanches",
-        "description": "O que mais sai da nossa chapa todos os dias.",
+        "description": "Imagem ilustrativa de hambúrguer artesanal.",
         "image": "assets/img/fotos/lanche-1.jpg",
         "url": "#"
       },
       {
-        "title": "Smash Duplo",
+        "title": "Hambúrguer da casa",
         "category": "Lanches",
-        "description": "Carne porosa por dentro, selada por fora.",
+        "description": "Imagem ilustrativa de hambúrguer da casa.",
         "image": "assets/img/fotos/lanche-2.jpg",
         "url": "#"
       },
       {
-        "title": "Batata rústica",
-        "category": "Acompanhamentos",
-        "description": "Crocante de verdade, temperada na hora.",
+        "title": "Lanche com batatas",
+        "category": "Combos",
+        "description": "Imagem ilustrativa de lanche com batatas.",
         "image": "assets/img/fotos/lanche-3.jpg",
         "url": "#"
       },
       {
-        "title": "X-Tudo Brasa",
+        "title": "Hambúrguer com queijo",
         "category": "Lanches",
-        "description": "Generoso do começo ao fim, como deve ser.",
+        "description": "Imagem ilustrativa de hambúrguer com queijo.",
         "image": "assets/img/fotos/lanche-4.jpg",
         "url": "#"
       }
@@ -284,7 +284,7 @@ window.SITE_PRESETS = {
     "meta": {
       "title": "Clínica Vida — Odontologia e Estética",
       "description": "Atendimento odontológico e de estética com equipe especializada, agenda online e condições de pagamento facilitadas.",
-      "ogImage": "assets/img/gen-hero.svg"
+      "ogImage": "assets/img/fotos/heroi-clinica.jpg"
     },
     "nav": [
       {
@@ -352,8 +352,8 @@ window.SITE_PRESETS = {
       },
       "portfolio": {
         "tag": "Estrutura",
-        "title": "Como é o nosso ambiente",
-        "description": "Espaço pensado para o paciente se sentir tranquilo desde a recepção."
+        "title": "Atendimento e ambiente",
+        "description": "Imagens ilustrativas do atendimento e ambiente da clínica."
       },
       "about": {
         "tag": "Nossa equipe",
@@ -405,31 +405,31 @@ window.SITE_PRESETS = {
     ],
     "portfolio": [
       {
-        "title": "Recepção",
-        "category": "Estrutura",
-        "description": "Conforto e água quente desde a chegada.",
+        "title": "Atendimento humanizado",
+        "category": "Atendimento",
+        "description": "Imagem ilustrativa de atendimento humanizado.",
         "image": "assets/img/fotos/clinica-1.jpg",
         "url": "#"
       },
       {
-        "title": "Consultório",
+        "title": "Recepção da clínica",
         "category": "Estrutura",
-        "description": "Esterilização de alto padrão em todas as salas.",
+        "description": "Imagem ilustrativa de recepção da clínica.",
         "image": "assets/img/fotos/clinica-2.jpg",
         "url": "#"
       },
       {
-        "title": "Raio-X digital",
-        "category": "Equipamento",
-        "description": "Imagem em segundos, com baixa radiação.",
+        "title": "Equipe e tecnologia",
+        "category": "Equipe",
+        "description": "Imagem ilustrativa de equipe e tecnologia.",
         "image": "assets/img/fotos/clinica-3.jpg",
         "url": "#"
       },
       {
-        "title": "Sala infantil",
-        "category": "Estrutura",
-        "description": "Um cantinho tranquilo para os pequenos.",
-        "image": "assets/img/fotos/beleza-1.jpg",
+        "title": "Atendimento odontológico",
+        "category": "Odontologia",
+        "description": "Imagem ilustrativa de atendimento odontológico.",
+        "image": "assets/img/fotos/dentista-consulta.jpg",
         "url": "#"
       }
     ],
@@ -504,7 +504,7 @@ window.SITE_PRESETS = {
     "meta": {
       "title": "Ferreira & Associados — Advocacia Empresarial",
       "description": "Atuação em direito empresarial, trabalhista e cível com mais de 20 anos de experiência.",
-      "ogImage": "assets/img/gen-hero.svg"
+      "ogImage": "assets/img/fotos/heroi-advocacia.jpg"
     },
     "nav": [
       {
@@ -568,8 +568,8 @@ window.SITE_PRESETS = {
       },
       "portfolio": {
         "tag": "Resultados",
-        "title": "Casos que explicam o nosso trabalho",
-        "description": "Publicamos resultados reais, sempre com autorização do cliente."
+        "title": "Rotina jurídica",
+        "description": "Imagens ilustrativas do atendimento e da rotina jurídica. Nenhum caso real é exibido."
       },
       "about": {
         "tag": "Escritório",
@@ -621,31 +621,31 @@ window.SITE_PRESETS = {
     ],
     "portfolio": [
       {
-        "title": "Recuperação judicial",
-        "category": "Empresarial",
-        "description": "Reorganização de empresa com 300 funcionários.",
-        "image": "assets/img/fotos/loja-2.jpg",
+        "title": "Atendimento jurídico",
+        "category": "Atendimento",
+        "description": "Imagem ilustrativa de atendimento jurídico.",
+        "image": "assets/img/fotos/advocacia-atendimento.jpg",
         "url": "#"
       },
       {
-        "title": "Ação trabalhista em massa",
-        "category": "Trabalhista",
-        "description": "Acordo coletivo fechado em 40 dias.",
-        "image": "assets/img/fotos/loja-3.jpg",
+        "title": "Documentos e contratos",
+        "category": "Contratos",
+        "description": "Imagem ilustrativa de documentos e contratos.",
+        "image": "assets/img/fotos/advocacia-contrato.jpg",
         "url": "#"
       },
       {
-        "title": "Contrato de fornecimento",
-        "category": "Empresarial",
-        "description": "Revisão que evitou prejuízo de R$ 2 milhões.",
-        "image": "assets/img/fotos/loja-1.jpg",
+        "title": "Análise de documentos",
+        "category": "Documentos",
+        "description": "Imagem ilustrativa de análise de documentos.",
+        "image": "assets/img/fotos/advocacia-documentos.jpg",
         "url": "#"
       },
       {
-        "title": "Adequação à LGPD",
-        "category": "Compliance",
-        "description": "Adequação completa em 60 dias.",
-        "image": "assets/img/fotos/loja-4.jpg",
+        "title": "Justiça",
+        "category": "Justiça",
+        "description": "Imagem ilustrativa de justiça.",
+        "image": "assets/img/fotos/advocacia-justica.jpg",
         "url": "#"
       }
     ],
@@ -653,7 +653,7 @@ window.SITE_PRESETS = {
       "tag": "Escritório",
       "title": "Dois sócios, uma única responsabilidade",
       "description": "O escritório nasceu da decisão de fazer o trabalho difícil com as próprias mãos. Hoje somos dois sócios e três advogados, mas a regra continua a mesma: quem faz a análise apresenta a estratégia ao cliente. Não terceirizamos a responsabilidade. Atendemos empresas de pequeno e médio porte, assim como pessoas físicas em questões patrimoniais.",
-      "image": "assets/img/fotos/loja-2.jpg",
+      "image": "assets/img/fotos/advocacia-atendimento.jpg",
       "stats": [
         {
           "value": 22,
@@ -720,7 +720,7 @@ window.SITE_PRESETS = {
     "meta": {
       "title": "Studio Corpo — Treino Funcional",
       "description": "Studio de treino funcional com turmas pequenas, acompanhamento individual e avaliação gratuita.",
-      "ogImage": "assets/img/gen-hero.svg"
+      "ogImage": "assets/img/fotos/heroi-academia.jpg"
     },
     "nav": [
       {
@@ -788,8 +788,8 @@ window.SITE_PRESETS = {
       },
       "portfolio": {
         "tag": "Estrutura",
-        "title": "Um espaço feito para treinar",
-        "description": "Mais de 900m² com sala de musculação, box jump e área funcional."
+        "title": "Treinos e equipamentos",
+        "description": "Imagens ilustrativas de treinos e equipamentos."
       },
       "about": {
         "tag": "Sobre",
@@ -841,31 +841,31 @@ window.SITE_PRESETS = {
     ],
     "portfolio": [
       {
-        "title": "Área funcional",
+        "title": "Treinamento de força",
         "category": "Treino",
-        "description": "400m² com cabo de guerra, pneus e trilhas.",
+        "description": "Imagem ilustrativa de treinamento de força.",
         "image": "assets/img/fotos/academia-1.jpg",
         "url": "#"
       },
       {
-        "title": "Musculação",
-        "category": "Treino",
-        "description": "Equipamentos de última geração.",
+        "title": "Espaço de musculação",
+        "category": "Estrutura",
+        "description": "Imagem ilustrativa de espaço de musculação.",
         "image": "assets/img/fotos/academia-2.jpg",
         "url": "#"
       },
       {
-        "title": "Box jump",
-        "category": "Aula",
-        "description": "Salão reservado com 24 boxes.",
+        "title": "Exercício com pesos",
+        "category": "Treino",
+        "description": "Imagem ilustrativa de exercício com pesos.",
         "image": "assets/img/fotos/academia-3.jpg",
         "url": "#"
       },
       {
-        "title": "Área de recuperação",
-        "category": "Estrutura",
-        "description": "Sala de vapor, sauna e duchas.",
-        "image": "assets/img/fotos/academia-1.jpg",
+        "title": "Aulas em grupo",
+        "category": "Aulas",
+        "description": "Imagem ilustrativa de aulas em grupo.",
+        "image": "assets/img/fotos/fisio-3.jpg",
         "url": "#"
       }
     ],
@@ -940,7 +940,7 @@ window.SITE_PRESETS = {
     "meta": {
       "title": "Patinhas e Cia — Pet Shop e Clínica Veterinária",
       "description": "Pet shop, banho e tosa, clínica veterinária e hospedagem. Cuidamos do seu pet como se fosse nosso.",
-      "ogImage": "assets/img/gen-hero.svg"
+      "ogImage": "assets/img/fotos/heroi-petshop.jpg"
     },
     "nav": [
       {
@@ -1008,8 +1008,8 @@ window.SITE_PRESETS = {
       },
       "portfolio": {
         "tag": "Estrutura",
-        "title": "Conforto para eles, tranquilidade para você",
-        "description": "Cada detalhe pensado para o pet se sentir seguro."
+        "title": "Pets e cuidados",
+        "description": "Imagens ilustrativas dos pets e dos cuidados com eles."
       },
       "about": {
         "tag": "Sobre",
@@ -1061,31 +1061,31 @@ window.SITE_PRESETS = {
     ],
     "portfolio": [
       {
-        "title": "Sala de banho",
-        "category": "Estrutura",
-        "description": "Duas salas com secagem e piso antiderrapante.",
+        "title": "Cães e gatos",
+        "category": "Pets",
+        "description": "Imagem ilustrativa de cães e gatos.",
         "image": "assets/img/fotos/pet-1.jpg",
         "url": "#"
       },
       {
-        "title": "Consultório",
-        "category": "Clínica",
-        "description": "Atendimento com contenção suave.",
+        "title": "Pequenos pets",
+        "category": "Pequenos pets",
+        "description": "Imagem ilustrativa de pequenos pets.",
         "image": "assets/img/fotos/pet-2.jpg",
         "url": "#"
       },
       {
-        "title": "Hospedagem",
-        "category": "Estrutura",
-        "description": "24 boxes com cama e comedouro individual.",
+        "title": "Cuidados diários",
+        "category": "Cuidados",
+        "description": "Imagem ilustrativa de cuidados diários.",
         "image": "assets/img/fotos/pet-3.jpg",
         "url": "#"
       },
       {
-        "title": "Loja",
-        "category": "Pet shop",
-        "description": "Mais de 300 itens selecionados.",
-        "image": "assets/img/fotos/pet-1.jpg",
+        "title": "Gatos e filhotes",
+        "category": "Gatos",
+        "description": "Imagem ilustrativa de gatos e filhotes.",
+        "image": "assets/img/fotos/veterinario-gato.jpg",
         "url": "#"
       }
     ],
@@ -1160,7 +1160,7 @@ window.SITE_PRESETS = {
     "meta": {
       "title": "Via Norte — Locadora de Veículos em São Paulo",
       "description": "Aluguel de carros, SUVs e vans com diária a partir de R$ 89. Retire no aeroporto ou na loja, sem caução.",
-      "ogImage": "assets/img/hero.svg"
+      "ogImage": "assets/img/fotos/heroi-locadora.jpg"
     },
     "nav": [
       {
@@ -1228,8 +1228,8 @@ window.SITE_PRESETS = {
       },
       "portfolio": {
         "tag": "Galeria",
-        "title": "Saída da nossa garagem",
-        "description": "Fotos reais da frota. O carro que você vê aqui é o carro que você recebe."
+        "title": "Inspirações de veículos",
+        "description": "Imagens ilustrativas de veículos. Modelos e disponibilidade variam."
       },
       "about": {
         "tag": "Nossa história",
@@ -1281,30 +1281,30 @@ window.SITE_PRESETS = {
     ],
     "portfolio": [
       {
-        "title": "Sedan Executivo",
-        "category": "Sedãs",
-        "description": "Conforto para estrada. Acaba de passar na revisão.",
+        "title": "Carro de passeio",
+        "category": "Carros",
+        "description": "Imagem ilustrativa de carro de passeio.",
         "image": "assets/img/fotos/carro-1.jpg",
         "url": "#"
       },
       {
-        "title": "SUV 4x2",
-        "category": "SUVs",
-        "description": "Altura extra e espaço para toda a família.",
+        "title": "Cupê esportivo",
+        "category": "Esportivos",
+        "description": "Imagem ilustrativa de cupê esportivo.",
         "image": "assets/img/fotos/carro-2.jpg",
         "url": "#"
       },
       {
-        "title": "Hatch Compacto",
-        "category": "Hatches",
-        "description": "O carro mais econômico da frota.",
+        "title": "Carro esportivo",
+        "category": "Esportivos",
+        "description": "Imagem ilustrativa de carro esportivo.",
         "image": "assets/img/fotos/carro-3.jpg",
         "url": "#"
       },
       {
-        "title": "Van Executiva",
-        "category": "Vans",
-        "description": "Sete lugares com ar-condicionado.",
+        "title": "SUV",
+        "category": "SUVs",
+        "description": "Imagem ilustrativa de suv.",
         "image": "assets/img/fotos/carro-4.jpg",
         "url": "#"
       }
@@ -1451,7 +1451,7 @@ window.SITE_PRESETS = {
     "meta": {
       "title": "Lumière - Clínica de Estética em São Paulo",
       "description": "Tratamentos de estética com equipe médica. Limpeza de pele, harmonização, depilação a laser. Agende pelo WhatsApp.",
-      "ogImage": "assets/img/est-hero.svg"
+      "ogImage": "assets/img/fotos/heroi-estetica.jpg"
     },
     "nav": [
       {
@@ -1519,8 +1519,8 @@ window.SITE_PRESETS = {
       },
       "portfolio": {
         "tag": "Galeria",
-        "title": "Nosso espaço e resultados",
-        "description": "Ambiente pensado para o seu conforto. As fotos são reais, tiradas aqui dentro."
+        "title": "Cuidados e tratamentos",
+        "description": "Imagens ilustrativas de procedimentos e cuidados estéticos."
       },
       "about": {
         "tag": "Nossa história",
@@ -1601,7 +1601,7 @@ window.SITE_PRESETS = {
         "description": "Laser de diodo com protocolo progressivo, para rosto, corpo e área íntima.",
         "text": "Usamos laser de diodo com sistema de resfriamento, o que deixa o tratamento bem mais confortável do que você imagina. O protocolo é progressivo: começamos com densidade alta e energia baixa para adaptação.",
         "price": "R$ 390 a sessão",
-        "image": "assets/img/fotos/beleza-1.jpg",
+        "image": "assets/img/fotos/estetica-laser.jpg",
         "gallery": [],
         "features": [
           "Laser de diodo com resfriamento",
@@ -1627,7 +1627,7 @@ window.SITE_PRESETS = {
         "description": "Relaxamento muscular, pedras quentes opcionais e finalização relaxante.",
         "text": "Indicada para quem trabalha muito tempo na frente da tela. A massagem trabalha lombar, cervical e ombros. Terminamos com pedras quentes e cinco minutos de respiração guiada.",
         "price": "R$ 220",
-        "image": "assets/img/fotos/beleza-2.jpg",
+        "image": "assets/img/fotos/fisio-2.jpg",
         "gallery": [],
         "features": [
           "Relaxamento muscular",
@@ -1675,7 +1675,7 @@ window.SITE_PRESETS = {
         "description": "Pacote mensal com os tratamentos que você mais precisa, num preço fechado.",
         "text": "Para quem já tem a rotina montada. Você escolhe os tratamentos e o número de sessões do mês, e o valor fica fechado, sem surpresa na fatura. Inclui avaliação periódica para ajustar o plano.",
         "price": "R$ 590/mês",
-        "image": "assets/img/fotos/beleza-4.jpg",
+        "image": "assets/img/fotos/heroi-estetica.jpg",
         "gallery": [],
         "features": [
           "Tratamentos combináveis",
@@ -1694,12 +1694,12 @@ window.SITE_PRESETS = {
     ],
     "portfolio": [
       {
-        "title": "Nosso espaço",
-        "category": "Estrutura",
-        "description": "Sala individual, maca com aquecimento e música baixa.",
+        "title": "Cuidado facial",
+        "category": "Facial",
+        "description": "Imagem ilustrativa de cuidado facial.",
         "badge": "Estrutura",
         "text": "Cada sala tem maca com aquecimento, iluminação ajustável e som ambiente. Nada de luz de consultório: a sala foi desenhada para você relaxar.",
-        "image": "assets/img/fotos/fisio-1.jpg",
+        "image": "assets/img/fotos/beleza-1.jpg",
         "gallery": [],
         "features": [
           "Sala individual",
@@ -1712,11 +1712,11 @@ window.SITE_PRESETS = {
         }
       },
       {
-        "title": "Cuidados com o rosto",
+        "title": "Tratamento estético",
         "category": "Tratamentos",
-        "description": "Resultado da harmonização depois de 60 dias de protocolo.",
+        "description": "Imagem ilustrativa de tratamento estético.",
         "text": "Foto real de cliente, 60 dias após o início do protocolo. Pedimos autorização antes de publicar casos assim.",
-        "image": "assets/img/fotos/fisio-2.jpg",
+        "image": "assets/img/fotos/beleza-2.jpg",
         "gallery": [],
         "features": [
           "Antes e depois",
@@ -1730,10 +1730,10 @@ window.SITE_PRESETS = {
       },
       {
         "title": "Depilação a laser",
-        "category": "Equipamento",
-        "description": "Laser de diodo com sistema de resfriamento.",
+        "category": "Depilação",
+        "description": "Imagem ilustrativa de depilação a laser.",
         "text": "O resfriamento é o que torna o tratamento confortável. Trabalhamos com energia progressiva e todo cliente faz avaliação de fototipo antes da primeira sessão.",
-        "image": "assets/img/fotos/fisio-3.jpg",
+        "image": "assets/img/fotos/estetica-laser.jpg",
         "gallery": [],
         "features": [
           "Diodo com resfriamento",
@@ -1746,11 +1746,11 @@ window.SITE_PRESETS = {
         }
       },
       {
-        "title": "Resultados",
-        "category": "Depoimentos",
-        "description": "O que dizem as clientes depois de seis meses.",
+        "title": "Produtos de beleza",
+        "category": "Produtos",
+        "description": "Imagem ilustrativa de produtos de beleza.",
         "text": "Reunimos os principais pontos que as clientes mais citam: o atendimento, a clareza dos valores e a verdade sobre o que precisa ou não precisa fazer.",
-        "image": "assets/img/fotos/heroi-estetica.jpg",
+        "image": "assets/img/fotos/beleza-3.jpg",
         "gallery": [],
         "features": [
           "4,9 no Google",
@@ -1905,7 +1905,7 @@ window.SITE_PRESETS = {
     "meta": {
       "title": "Ferraz e Filhos — Manutenção e Instalações",
       "description": "Manutenção residencial e comercial, instalações elétricas e hidráulicas com garantia de serviço.",
-      "ogImage": "assets/img/gen-hero.svg"
+      "ogImage": "assets/img/fotos/servico-2.jpg"
     },
     "nav": [
       {
@@ -1941,7 +1941,7 @@ window.SITE_PRESETS = {
         "label": "Ver serviços",
         "href": "#cardapio"
       },
-      "image": "assets/img/fotos/heroi-servicos.jpg"
+      "image": "assets/img/fotos/servico-2.jpg"
     },
     "stats": [
       {
@@ -1973,8 +1973,8 @@ window.SITE_PRESETS = {
       },
       "portfolio": {
         "tag": "Trabalhos",
-        "title": "Alguns serviços que entregamos",
-        "description": "Trabalhos reais, fotos reais, cliente feliz."
+        "title": "Áreas de atuação",
+        "description": "Imagens ilustrativas das áreas de atuação."
       },
       "about": {
         "tag": "Sobre",
@@ -2026,30 +2026,30 @@ window.SITE_PRESETS = {
     ],
     "portfolio": [
       {
-        "title": "Quadro de energia",
-        "category": "Elétrica",
-        "description": "Troca completa com etiquetamento de todos os circuitos.",
+        "title": "Planejamento de serviços",
+        "category": "Planejamento",
+        "description": "Imagem ilustrativa de planejamento de serviços.",
         "image": "assets/img/fotos/servico-1.jpg",
         "url": "#"
       },
       {
-        "title": "Cozinha planejada",
-        "category": "Reforma",
-        "description": "Demolição, instalações e marcenaria sob medida.",
+        "title": "Manutenção elétrica",
+        "category": "Elétrica",
+        "description": "Imagem ilustrativa de manutenção elétrica.",
         "image": "assets/img/fotos/servico-2.jpg",
         "url": "#"
       },
       {
-        "title": "Vazamento urgente",
-        "category": "Hidráulica",
-        "description": "Resolvido no mesmo dia, com obra refeita.",
+        "title": "Obras e reformas",
+        "category": "Construção",
+        "description": "Imagem ilustrativa de obras e reformas.",
         "image": "assets/img/fotos/servico-3.jpg",
         "url": "#"
       },
       {
-        "title": "Iluminação LED",
-        "category": "Elétrica",
-        "description": "Projeto de iluminação de 400m² de escritório.",
+        "title": "Jardinagem",
+        "category": "Jardinagem",
+        "description": "Imagem ilustrativa de jardinagem.",
         "image": "assets/img/fotos/servico-4.jpg",
         "url": "#"
       }

@@ -74,7 +74,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Forno da Vila — Pizzaria e Restaurante",
       "description": "Pizza de forno a lenha, massas artesanais e pratos da casa. Peça pelo WhatsApp ou reserve sua mesa.",
-      "ogImage": "assets/img/th-food.svg"
+      "ogImage": "assets/img/fotos/heroi-pizzaria.jpg"
     },
     "nav": [
       {
@@ -142,8 +142,8 @@ Object.assign(window.SITE_PRESETS, {
       },
       "portfolio": {
         "tag": "Galeria",
-        "title": "Saiu do forno assim",
-        "description": "Foto de pizza que a gente entregou essa semana, sem filtro de instagram."
+        "title": "Pizzas e preparo",
+        "description": "Imagens ilustrativas de pizzas e do preparo."
       },
       "about": {
         "tag": "Nossa história",
@@ -195,31 +195,31 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Margherita",
+        "title": "Pizza margherita",
         "category": "Pizzas",
-        "description": "A mais pedida da casa, desde 2008.",
+        "description": "Imagem ilustrativa de pizza margherita.",
         "image": "assets/img/fotos/pizza-1.jpg",
         "url": "#"
       },
       {
         "title": "Forno a lenha",
-        "category": "Cozinha",
-        "description": "Nada de forno a gás. É lenha de verdade.",
-        "image": "assets/img/fotos/pizza-2.jpg",
+        "category": "Preparo",
+        "description": "Imagem ilustrativa de forno a lenha.",
+        "image": "assets/img/fotos/pizzaria-forno.jpg",
         "url": "#"
       },
       {
-        "title": "Sala de mesas",
-        "category": "Estrutura",
-        "description": "80 lugares com ar-condicionado.",
+        "title": "Pizzas artesanais",
+        "category": "Pizzas",
+        "description": "Imagem ilustrativa de pizzas artesanais.",
         "image": "assets/img/fotos/pizza-3.jpg",
         "url": "#"
       },
       {
-        "title": "Pudim da casa",
-        "category": "Sobremesas",
-        "description": "Receita da vovó, sem mudar nunca.",
-        "image": "assets/img/fotos/padaria-1.jpg",
+        "title": "Pizza da casa",
+        "category": "Pizzas",
+        "description": "Imagem ilustrativa de pizza da casa.",
+        "image": "assets/img/fotos/pizza-2.jpg",
         "url": "#"
       }
     ],
@@ -227,7 +227,7 @@ Object.assign(window.SITE_PRESETS, {
       "tag": "Nossa história",
       "title": "Começou num forno de garagem",
       "description": "Em 2008 o Seu Antônio comprou um forno de lenha usado e começou a fazer pizza para os amigos no fim de semana. A massa fermentava 48 horas na geladeira e a fila crescia na calçada. Hoje somos uma pizzaria de casa cheia, mas a massa continua fermentando 48 horas e o forno continua sendo o mesmo.",
-      "image": "assets/img/fotos/padaria-3.jpg",
+      "image": "assets/img/fotos/pizzaria-preparo.jpg",
       "stats": [
         {
           "value": 18,
@@ -359,7 +359,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Pão Quente — Padaria e Café",
       "description": "Pão assado várias vezes ao dia, café coado na hora e bolo caseiro. A padaria do bairro desde 1998.",
-      "ogImage": "assets/img/th-food.svg"
+      "ogImage": "assets/img/fotos/heroi-padaria.jpg"
     },
     "nav": [
       {
@@ -427,8 +427,8 @@ Object.assign(window.SITE_PRESETS, {
       },
       "portfolio": {
         "tag": "Galeria",
-        "title": "A vitrine de hoje",
-        "description": "Repondo às 6h, 10h, 15h e 18h. Venha antes que acaba."
+        "title": "Pães e doces",
+        "description": "Imagens ilustrativas dos pães, doces e da vitrine."
       },
       "about": {
         "tag": "Nossa história",
@@ -480,30 +480,30 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Pão francês",
-        "category": "Pães",
-        "description": "Crocante por fora, macio por dentro.",
+        "title": "Vitrine de pães e doces",
+        "category": "Vitrine",
+        "description": "Imagem ilustrativa de vitrine de pães e doces.",
         "image": "assets/img/fotos/padaria-1.jpg",
         "url": "#"
       },
       {
-        "title": "Cafeteria",
-        "category": "Estrutura",
-        "description": "24 lugares com WIFI e tomada.",
+        "title": "Pães artesanais",
+        "category": "Pães",
+        "description": "Imagem ilustrativa de pães artesanais.",
         "image": "assets/img/fotos/padaria-2.jpg",
         "url": "#"
       },
       {
-        "title": "Bolos da casa",
-        "category": "Doces",
-        "description": "Cinco sabores, todo dia.",
+        "title": "Croissants frescos",
+        "category": "Croissants",
+        "description": "Imagem ilustrativa de croissants frescos.",
         "image": "assets/img/fotos/padaria-3.jpg",
         "url": "#"
       },
       {
-        "title": "Forno a lenha",
-        "category": "Estrutura",
-        "description": "Panificação própria desde 1998.",
+        "title": "Seleção de pães e doces",
+        "category": "Vitrine",
+        "description": "Imagem ilustrativa de seleção de pães e doces.",
         "image": "assets/img/fotos/padaria-1.jpg",
         "url": "#"
       }
@@ -638,7 +638,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Beleza Pura — Salão de Beleza",
       "description": "Cabelo, coloração, unha e design em um só lugar. Agenda online, sem fila de espera.",
-      "ogImage": "assets/img/th-beauty.svg"
+      "ogImage": "assets/img/fotos/heroi-salao.jpg"
     },
     "nav": [
       {
@@ -706,8 +706,8 @@ Object.assign(window.SITE_PRESETS, {
       },
       "portfolio": {
         "tag": "Galeria",
-        "title": "Trabalhos reais",
-        "description": "Cabelo e unha que fizemos essa semana, com autorização das clientes."
+        "title": "Cabelo, unhas e cuidados",
+        "description": "Imagens ilustrativas de cabelo, unhas e cuidados."
       },
       "about": {
         "tag": "Nosso salão",
@@ -759,31 +759,31 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Coloração",
+        "title": "Corte de cabelo",
         "category": "Cabelo",
-        "description": "Loiros novos em cliente ruiva.",
-        "image": "assets/img/fotos/beleza-1.jpg",
+        "description": "Imagem ilustrativa de corte de cabelo.",
+        "image": "assets/img/fotos/salao-corte.jpg",
         "url": "#"
       },
       {
-        "title": "Salão",
-        "category": "Estrutura",
-        "description": "8 estações com iluminação boa.",
-        "image": "assets/img/fotos/beleza-3.jpg",
+        "title": "Escova e finalização",
+        "category": "Cabelo",
+        "description": "Imagem ilustrativa de escova e finalização.",
+        "image": "assets/img/fotos/salao-escova.jpg",
         "url": "#"
       },
       {
-        "title": "Unhas",
-        "category": "Unha",
-        "description": "Esmalte gel em 40 minutos.",
-        "image": "assets/img/fotos/beleza-4.jpg",
+        "title": "Manicure",
+        "category": "Unhas",
+        "description": "Imagem ilustrativa de manicure.",
+        "image": "assets/img/fotos/salao-unhas.jpg",
         "url": "#"
       },
       {
-        "title": "Design",
-        "category": "Sobrancelha",
-        "description": "Formato natural, na Pinça.",
-        "image": "assets/img/fotos/beleza-2.jpg",
+        "title": "Lavagem dos cabelos",
+        "category": "Cabelo",
+        "description": "Imagem ilustrativa de lavagem dos cabelos.",
+        "image": "assets/img/fotos/salao-lavagem.jpg",
         "url": "#"
       }
     ],
@@ -791,7 +791,7 @@ Object.assign(window.SITE_PRESETS, {
       "tag": "Nosso salão",
       "title": "Um lugar para cuidar de você inteira",
       "description": "Abrimos em 2011 com duas cadeiras e um sonho. Hoje somos oito profissionais e um salão com luz boa, música baixa e café de verdade. A gente não vende pacote pronto, vende o resultado. Se o serviço não for bom pra você, a gente fala na hora.",
-      "image": "assets/img/fotos/beleza-1.jpg",
+      "image": "assets/img/fotos/salao-atendimento.jpg",
       "stats": [
         {
           "value": 15,
@@ -1051,21 +1051,21 @@ Object.assign(window.SITE_PRESETS, {
       },
       {
         "title": "Bar da barbearia",
-        "category": "Estrutura",
+        "category": "Bar",
         "description": "Cerveja gelada de graça.",
         "image": "assets/img/fotos/barbearia-bar.jpg",
         "url": "#"
       },
       {
-        "title": "Barba pronta",
-        "category": "Resultado",
+        "title": "Corte com acabamento",
+        "category": "Cortes",
         "description": "Feita e finalizada.",
         "image": "assets/img/fotos/barbearia-barba.jpg",
         "url": "#"
       },
       {
         "title": "Produtos",
-        "category": "Loja",
+        "category": "Produtos",
         "description": "Pomada e óleo para barba.",
         "image": "assets/img/fotos/barbearia-produtos.jpg",
         "url": "#"
@@ -1200,7 +1200,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Ponto Imóveis — Compra, venda e aluguel",
       "description": "Imóveis para comprar, alugar e investir. Avaliação gratuita e acompanhamento de crédito.",
-      "ogImage": "assets/img/th-home.svg"
+      "ogImage": "assets/img/fotos/imovel-4.jpg"
     },
     "nav": [
       {
@@ -1236,7 +1236,7 @@ Object.assign(window.SITE_PRESETS, {
         "label": "Ver imóveis",
         "href": "#cardapio"
       },
-      "image": "assets/img/fotos/heroi-imobiliaria.jpg"
+      "image": "assets/img/fotos/imovel-4.jpg"
     },
     "stats": [
       {
@@ -1268,8 +1268,8 @@ Object.assign(window.SITE_PRESETS, {
       },
       "portfolio": {
         "tag": "Galeria",
-        "title": "Imóveis que fechamos",
-        "description": "Apartamentos, casas e salas na região. Todos visitados por nós."
+        "title": "Inspirações de imóveis",
+        "description": "Imagens ilustrativas de imóveis; anúncios reais devem usar fotos próprias."
       },
       "about": {
         "tag": "Sobre",
@@ -1321,31 +1321,31 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Apartamento",
+        "title": "Casa contemporânea",
         "category": "Residencial",
-        "description": "3 quartos, 2 vagas, 94m2.",
-        "image": "assets/img/fotos/imovel-1.jpg",
-        "url": "#"
-      },
-      {
-        "title": "Casa",
-        "category": "Residencial",
-        "description": "4 quartos com quintal e 2 vagas.",
-        "image": "assets/img/fotos/imovel-2.jpg",
-        "url": "#"
-      },
-      {
-        "title": "Sala comercial",
-        "category": "Comercial",
-        "description": "120m2 em prédio com recepção.",
+        "description": "Imagem ilustrativa de casa contemporânea.",
         "image": "assets/img/fotos/imovel-3.jpg",
         "url": "#"
       },
       {
-        "title": "Imóvel entregue",
-        "category": "Negociação",
-        "description": "Chave entregue ao cliente em 45 dias.",
+        "title": "Casa residencial",
+        "category": "Residencial",
+        "description": "Imagem ilustrativa de casa residencial.",
+        "image": "assets/img/fotos/imovel-2.jpg",
+        "url": "#"
+      },
+      {
+        "title": "Arquitetura moderna",
+        "category": "Residencial",
+        "description": "Imagem ilustrativa de arquitetura moderna.",
         "image": "assets/img/fotos/imovel-4.jpg",
+        "url": "#"
+      },
+      {
+        "title": "Ambiente interno",
+        "category": "Interiores",
+        "description": "Imagem ilustrativa de ambiente interno.",
+        "image": "assets/img/fotos/arquiteto-interiores.jpg",
         "url": "#"
       }
     ],
@@ -1485,7 +1485,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Mover — Fisioterapia e RPG",
       "description": "Fisioterapia, RPG epilates clínico para dor nas costas, coluna, joelho e pós-operatório. Primeira avaliação gratuita.",
-      "ogImage": "assets/img/gen-hero.svg"
+      "ogImage": "assets/img/fotos/fisioterapia-avaliacao.jpg"
     },
     "nav": [
       {
@@ -1521,7 +1521,7 @@ Object.assign(window.SITE_PRESETS, {
         "label": "Ver tratamentos",
         "href": "#cardapio"
       },
-      "image": "assets/img/fotos/heroi-fisioterapia.jpg"
+      "image": "assets/img/fotos/fisioterapia-avaliacao.jpg"
     },
     "stats": [
       {
@@ -1553,8 +1553,8 @@ Object.assign(window.SITE_PRESETS, {
       },
       "portfolio": {
         "tag": "Estrutura",
-        "title": "Como é o atendimento",
-        "description": "Sala individual, equipamento completo e tempo para entender seu caso."
+        "title": "Atendimento e reabilitação",
+        "description": "Imagens ilustrativas de atendimento e reabilitação."
       },
       "about": {
         "tag": "Equipe",
@@ -1606,31 +1606,31 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Sala de atendimento",
-        "category": "Estrutura",
-        "description": "Macas, biombo e tatame.",
-        "image": "assets/img/fotos/fisio-1.jpg",
+        "title": "Avaliação e movimento",
+        "category": "Avaliação",
+        "description": "Imagem ilustrativa de avaliação e movimento.",
+        "image": "assets/img/fotos/fisioterapia-avaliacao.jpg",
         "url": "#"
       },
       {
-        "title": "RPG",
-        "category": "Tratamento",
-        "description": "Método que trata a causa.",
-        "image": "assets/img/fotos/fisio-2.jpg",
+        "title": "Terapia manual",
+        "category": "Terapia",
+        "description": "Imagem ilustrativa de terapia manual.",
+        "image": "assets/img/fotos/fisioterapia-terapia.jpg",
         "url": "#"
       },
       {
-        "title": "Pilates clínico",
-        "category": "Tratamento",
-        "description": "Grupo pequeno com fisioterapeuta presente.",
+        "title": "Pilates em grupo",
+        "category": "Pilates",
+        "description": "Imagem ilustrativa de pilates em grupo.",
         "image": "assets/img/fotos/fisio-3.jpg",
         "url": "#"
       },
       {
-        "title": "Retorno ao esporte",
-        "category": "Resultado",
-        "description": "Paciente voltou a correr em 12 semanas.",
-        "image": "assets/img/fotos/fisio-1.jpg",
+        "title": "Exercícios orientados",
+        "category": "Exercícios",
+        "description": "Imagem ilustrativa de exercícios orientados.",
+        "image": "assets/img/fotos/fisioterapia-exercicios.jpg",
         "url": "#"
       }
     ],
@@ -1638,7 +1638,7 @@ Object.assign(window.SITE_PRESETS, {
       "tag": "Equipe",
       "title": "Fisioterapia que explica o tratamento",
       "description": "Somos cinco fisioterapeutas formados em universidades reconhecidas, com especialização em RPG e pilates clínico. A primeira consulta sempre dura uma hora e termina com um plano escrito, com prazo e objetivo. Se não vamos melhorar alguma coisa, a gente diz na hora e não cobra 20 sessões.",
-      "image": "assets/img/fotos/fisio-2.jpg",
+      "image": "assets/img/fotos/fisioterapia-terapia.jpg",
       "stats": [
         {
           "value": 20,
@@ -1772,7 +1772,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Aprenda Já — Cursos e Aulas",
       "description": "Cursos online e aulas presenciais com certificado. Turmas de manhã, tarde e noite.",
-      "ogImage": "assets/img/th-school.svg"
+      "ogImage": "assets/img/fotos/heroi-escola.jpg"
     },
     "nav": [
       {
@@ -1840,8 +1840,8 @@ Object.assign(window.SITE_PRESETS, {
       },
       "portfolio": {
         "tag": "Estrutura",
-        "title": "Como é estudar aqui",
-        "description": "Sala climatizada, datacenter com internet e material didático incluso."
+        "title": "Aulas e aprendizagem",
+        "description": "Imagens ilustrativas de aulas e aprendizagem."
       },
       "about": {
         "tag": "Sobre",
@@ -1893,30 +1893,30 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Sala de aula",
-        "category": "Estrutura",
-        "description": "Climatizada com projetor.",
+        "title": "Estudos em equipe",
+        "category": "Estudos",
+        "description": "Imagem ilustrativa de estudos em equipe.",
         "image": "assets/img/fotos/escola-1.jpg",
         "url": "#"
       },
       {
-        "title": "Laboratório",
-        "category": "Estrutura",
-        "description": "18 micros com internet rápida.",
+        "title": "Sala de aula",
+        "category": "Aulas",
+        "description": "Imagem ilustrativa de sala de aula.",
         "image": "assets/img/fotos/escola-2.jpg",
         "url": "#"
       },
       {
-        "title": "Formação",
-        "category": "Resultado",
-        "description": "3 mil alunos formados.",
+        "title": "Aula com tecnologia",
+        "category": "Tecnologia",
+        "description": "Imagem ilustrativa de aula com tecnologia.",
         "image": "assets/img/fotos/escola-3.jpg",
         "url": "#"
       },
       {
-        "title": "Biblioteca",
-        "category": "Estrutura",
-        "description": "Material didático para consultar.",
+        "title": "Aprendizagem colaborativa",
+        "category": "Estudos",
+        "description": "Imagem ilustrativa de aprendizagem colaborativa.",
         "image": "assets/img/fotos/escola-4.jpg",
         "url": "#"
       }
@@ -2057,7 +2057,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Casa do Vale — Pousada",
       "description": "Quarto aconchegante no meio do vale, café da manhã caseiro e vista para o rio. Reserva direta, sem taxa escondida.",
-      "ogImage": "assets/img/gen-hero.svg"
+      "ogImage": "assets/img/fotos/heroi-hotel.jpg"
     },
     "nav": [
       {
@@ -2125,8 +2125,8 @@ Object.assign(window.SITE_PRESETS, {
       },
       "portfolio": {
         "tag": "Galeria",
-        "title": "A casa e o entorno",
-        "description": "Fotos reais do quarto, da área externa e da vista."
+        "title": "Ambientes de hospedagem",
+        "description": "Imagens ilustrativas da hospedagem; quartos e vista reais dependem do estabelecimento."
       },
       "about": {
         "tag": "Sobre",
@@ -2178,30 +2178,30 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Quarto com vista",
-        "category": "Quartos",
-        "description": "O melhor do casa.",
+        "title": "Área externa e piscina",
+        "category": "Lazer",
+        "description": "Imagem ilustrativa de área externa e piscina.",
         "image": "assets/img/fotos/hotel-1.jpg",
         "url": "#"
       },
       {
-        "title": "Café da manhã",
-        "category": "Refeições",
-        "description": "Feito na hora, todo dia.",
+        "title": "Suíte aconchegante",
+        "category": "Quartos",
+        "description": "Imagem ilustrativa de suíte aconchegante.",
         "image": "assets/img/fotos/hotel-2.jpg",
         "url": "#"
       },
       {
-        "title": "Área externa",
-        "category": "Estrutura",
-        "description": "Deck com piscina pequena.",
+        "title": "Quarto da pousada",
+        "category": "Quartos",
+        "description": "Imagem ilustrativa de quarto da pousada.",
         "image": "assets/img/fotos/hotel-3.jpg",
         "url": "#"
       },
       {
-        "title": "O vale",
+        "title": "Vista ao ar livre",
         "category": "Paisagem",
-        "description": "Vista da varanda.",
+        "description": "Imagem ilustrativa de vista ao ar livre.",
         "image": "assets/img/fotos/hotel-4.jpg",
         "url": "#"
       }
@@ -2340,7 +2340,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Box Nove — Oficina",
       "description": "Mecânica, elétrica, suspensão e Cambio. Orçamento no mesmo dia, sem surpresa na hora de pagar.",
-      "ogImage": "assets/img/gen-hero.svg"
+      "ogImage": "assets/img/fotos/heroi-oficina.jpg"
     },
     "nav": [
       {
@@ -2408,8 +2408,8 @@ Object.assign(window.SITE_PRESETS, {
       },
       "portfolio": {
         "tag": "Galeria",
-        "title": "Trabalho de box",
-        "description": "Antes e depois de serviços que a gente fez."
+        "title": "Oficina e manutenção",
+        "description": "Imagens ilustrativas da oficina e dos serviços automotivos."
       },
       "about": {
         "tag": "Sobre",
@@ -2461,31 +2461,31 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Elevador",
+        "title": "Interior da oficina",
         "category": "Estrutura",
-        "description": "Capacidade de 4 toneladas.",
+        "description": "Imagem ilustrativa de interior da oficina.",
         "image": "assets/img/fotos/oficina-1.jpg",
         "url": "#"
       },
       {
-        "title": "Revisão",
-        "category": "Serviço",
-        "description": "Tudo conferido.",
+        "title": "Troca de óleo",
+        "category": "Serviços",
+        "description": "Imagem ilustrativa de troca de óleo.",
         "image": "assets/img/fotos/oficina-2.jpg",
         "url": "#"
       },
       {
-        "title": "Suspensão",
-        "category": "Serviço",
-        "description": "Troca de amortecedores.",
+        "title": "Serviço nos pneus",
+        "category": "Serviços",
+        "description": "Imagem ilustrativa de serviço nos pneus.",
         "image": "assets/img/fotos/oficina-4.jpg",
         "url": "#"
       },
       {
-        "title": "Carro entregue",
-        "category": "Resultado",
-        "description": "Cliente buscou no mesmo dia.",
-        "image": "assets/img/fotos/oficina-1.jpg",
+        "title": "Manutenção automotiva",
+        "category": "Serviços",
+        "description": "Imagem ilustrativa de manutenção automotiva.",
+        "image": "assets/img/fotos/heroi-oficina.jpg",
         "url": "#"
       }
     ],
@@ -2612,7 +2612,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Enquadro — Fotografia",
       "description": "Fotografia de casamento, newborn, produto e eventos. Ensaio com roteiro e preview em 48 horas.",
-      "ogImage": "assets/img/gen-hero.svg"
+      "ogImage": "assets/img/fotos/heroi-fotografo.jpg"
     },
     "nav": [
       {
@@ -2680,8 +2680,8 @@ Object.assign(window.SITE_PRESETS, {
       },
       "portfolio": {
         "tag": "Portfólio",
-        "title": "Fotos reais, sem filtro",
-        "description": "Trabalhos que eu entreguei. Cliente nenhum foi usado sem autorização."
+        "title": "Fotografia e eventos",
+        "description": "Imagens ilustrativas de fotografia e eventos; um portfólio real deve usar trabalhos autorizados."
       },
       "about": {
         "tag": "Sobre",
@@ -2733,30 +2733,30 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Casamento",
-        "category": "Casamento",
-        "description": "Cerimônia ao ar livre.",
+        "title": "Equipamentos de fotografia",
+        "category": "Equipamentos",
+        "description": "Imagem ilustrativa de equipamentos de fotografia.",
         "image": "assets/img/fotos/foto-1.jpg",
         "url": "#"
       },
       {
-        "title": "Newborn",
-        "category": "Newborn",
-        "description": "Na sala de casa, com luz natural.",
+        "title": "Detalhes de casamento",
+        "category": "Casamento",
+        "description": "Imagem ilustrativa de detalhes de casamento.",
         "image": "assets/img/fotos/foto-2.jpg",
         "url": "#"
       },
       {
-        "title": "Produto",
-        "category": "Publicidade",
-        "description": "Catálogo de e-commerce.",
+        "title": "Cobertura de cerimônias",
+        "category": "Casamento",
+        "description": "Imagem ilustrativa de cobertura de cerimônias.",
         "image": "assets/img/fotos/foto-3.jpg",
         "url": "#"
       },
       {
-        "title": "Família",
-        "category": "Família",
-        "description": "Ensaio no parque.",
+        "title": "Registro de eventos",
+        "category": "Eventos",
+        "description": "Imagem ilustrativa de registro de eventos.",
         "image": "assets/img/fotos/foto-4.jpg",
         "url": "#"
       }

@@ -21,30 +21,31 @@
   /* ------------------------------------------------------------------
      MODELOS PRONTOS — 23 nichos do template, abrem no demo.html
      ------------------------------------------------------------------ */
+  const version = 'fotos-20261027';
   const MODELOS = [
     { id: 'lanchonete',  emoji: '🍔', foto: 'assets/img/fotos/heroi-lanchonete.jpg', nome: 'Lanchonete',         desc: 'Cardápio com preço e pedido pelo WhatsApp' },
     { id: 'pizzaria',    emoji: '🍕', foto: 'assets/img/fotos/heroi-pizzaria.jpg', nome: 'Pizzaria',           desc: 'Forno a lenha, cardápio e reserva de mesa' },
     { id: 'padaria',     emoji: '🥐', foto: 'assets/img/fotos/heroi-padaria.jpg', nome: 'Padaria e café',     desc: 'Cardápio da manhã e encomenda para negócio' },
     { id: 'clinica',     emoji: '🦷', foto: 'assets/img/fotos/heroi-clinica.jpg', nome: 'Clínica',            desc: 'Tratamentos, avaliação e agenda online' },
     { id: 'estetica',    emoji: '💫', foto: 'assets/img/fotos/heroi-estetica.jpg', nome: 'Clínica estética',  desc: 'Ficha completa de cada tratamento' },
-    { id: 'fisioterapia', emoji: '🦵', foto: 'assets/img/fotos/heroi-fisioterapia.jpg', nome: 'Fisioterapia',       desc: 'Convênios, avaliação grátis e agenda' },
+    { id: 'fisioterapia', emoji: '🦵', foto: 'assets/img/fotos/fisioterapia-avaliacao.jpg', nome: 'Fisioterapia',       desc: 'Convênios, avaliação grátis e agenda' },
     { id: 'academia',    emoji: '🏋️', foto: 'assets/img/fotos/heroi-academia.jpg', nome: 'Academia',          desc: 'Aulas, planos e avaliação física' },
     { id: 'salao',       emoji: '💇', foto: 'assets/img/fotos/heroi-salao.jpg', nome: 'Salão de beleza',    desc: 'Agenda online, sem fila de espera' },
     { id: 'barbearia',   emoji: '💈', foto: 'assets/img/fotos/heroi-barbearia.jpg', nome: 'Barbearia',          desc: 'Barba, corte e terapia quente' },
     { id: 'petshop',     emoji: '🐾', foto: 'assets/img/fotos/heroi-petshop.jpg', nome: 'Pet shop',          desc: 'Serviços, preços e agendamento' },
     { id: 'locadora',    emoji: '🚗', foto: 'assets/img/fotos/heroi-locadora.jpg', nome: 'Locadora',          desc: 'Frota com diária e reserva de datas' },
-    { id: 'imobiliaria', emoji: '🏠', foto: 'assets/img/fotos/heroi-imobiliaria.jpg', nome: 'Imobiliária',        desc: 'Imóveis à venda e avaliação gratuita' },
+    { id: 'imobiliaria', emoji: '🏠', foto: 'assets/img/fotos/imovel-4.jpg', nome: 'Imobiliária',        desc: 'Imóveis à venda e avaliação gratuita' },
     { id: 'advocacia',   emoji: '⚖️', foto: 'assets/img/fotos/heroi-advocacia.jpg', nome: 'Advocacia',         desc: 'Áreas de atuação e casos do escritório' },
     { id: 'escola',      emoji: '🎓', foto: 'assets/img/fotos/heroi-escola.jpg', nome: 'Escola e cursos',    desc: 'Cursos, turmas e matrícula online' },
     { id: 'hotel',       emoji: '🏨', foto: 'assets/img/fotos/heroi-hotel.jpg', nome: 'Hotel e pousada',    desc: 'Quartos, diária e reserva direta' },
     { id: 'oficina',     emoji: '🔧', foto: 'assets/img/fotos/heroi-oficina.jpg', nome: 'Oficina',           desc: 'Serviços e orçamento no mesmo dia' },
     { id: 'fotografo',   emoji: '📷', foto: 'assets/img/fotos/heroi-fotografo.jpg', nome: 'Fotógrafo',         desc: 'Portfólio e orçamento de ensaio' },
-    { id: 'servicos',    emoji: '🛠️', foto: 'assets/img/fotos/heroi-servicos.jpg', nome: 'Prestação de serviço', desc: 'Orçamento na hora e atendimento' },
-    { id: 'dentista',     emoji: '🦷', foto: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80', nome: 'Dentista',               desc: 'Tratamentos, avaliação e agenda online' },
-    { id: 'veterinario',  emoji: '🐾', foto: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&q=80', nome: 'Clínica veterinária',    desc: 'Consultas, vacinas e emergência 24h' },
-    { id: 'psicologo',    emoji: '🧠', foto: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80', nome: 'Psicólogo',              desc: 'Terapia individual, casal e online' },
-    { id: 'nutricionista', emoji: '🥗', foto: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80', nome: 'Nutricionista',          desc: 'Planos alimentares personalizados' },
-    { id: 'arquiteto',    emoji: '📐', foto: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', nome: 'Arquiteto',              desc: 'Projetos residenciais e comerciais' }
+    { id: 'servicos',    emoji: '🛠️', foto: 'assets/img/fotos/servico-2.jpg', nome: 'Prestação de serviço', desc: 'Orçamento na hora e atendimento' },
+    { id: 'dentista',     emoji: '🦷', foto: 'assets/img/fotos/dentista-consulta.jpg', nome: 'Dentista',               desc: 'Tratamentos, avaliação e agenda online' },
+    { id: 'veterinario',  emoji: '🐾', foto: 'assets/img/fotos/veterinario-consulta.jpg', nome: 'Clínica veterinária',    desc: 'Consultas, vacinas e emergência 24h' },
+    { id: 'psicologo',    emoji: '🧠', foto: 'assets/img/fotos/psicologia-consulta.jpg', nome: 'Psicólogo',              desc: 'Terapia individual, casal e online' },
+    { id: 'nutricionista', emoji: '🥗', foto: 'assets/img/fotos/nutricao-refeicao.jpg', nome: 'Nutricionista',          desc: 'Planos alimentares personalizados' },
+    { id: 'arquiteto',    emoji: '📐', foto: 'assets/img/fotos/arquiteto-residencia.jpg', nome: 'Arquiteto',              desc: 'Projetos residenciais e comerciais' }
   ];
 
   /* ------------------------------------------------------------------
@@ -84,7 +85,7 @@
     var foto = e.foto
       ? '<img src="' + e.foto + '" alt="Exemplo de site: ' + esc(e.nome) + '" loading="lazy">'
       : '<span class="ex__emoji">' + e.emoji + '</span>';
-    var href = esc(e.link || ('demo.html?preset=' + encodeURIComponent(e.id)));
+    var href = esc(e.link || ('demo.html?preset=' + encodeURIComponent(e.id) + '&fotos='+version));
 
     // links externos abrem em outra aba para manter o portfólio aberto
     var externo = /^https?:\/\//.test(href);
