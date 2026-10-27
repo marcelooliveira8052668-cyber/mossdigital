@@ -219,7 +219,7 @@ Object.assign(window.SITE_PRESETS, {
         "title": "Pudim da casa",
         "category": "Sobremesas",
         "description": "Receita da vovó, sem mudar nunca.",
-        
+        "image": "assets/img/fotos/pudim-da-vovo.png",
         "url": "#"
       }
     ],
