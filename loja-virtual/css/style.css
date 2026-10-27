@@ -246,7 +246,7 @@ button { cursor: pointer; border: 0; background: none; }
 }
 .hero-produto:hover { transform: translateY(-4px); background: rgba(255,255,255,.1); }
 .hero-produto:first-child { grid-column: span 2; display: flex; gap: 16px; align-items: center; }
-.hero-produto img { border-radius: 10px; width: 100%; aspect-ratio: 1; object-fit: cover; }
+.hero-produto img { border-radius: 10px; width: 100%; aspect-ratio: 1; object-fit: contain; background: #eef1f6; }
 .hero-produto:first-child img { width: 132px; flex: none; }
 .hero-produto h3 { font-size: 14.5px; margin-top: 10px; color: #f1f5f9; }
 .hero-produto:first-child h3 { margin-top: 0; font-size: 17px; }
@@ -340,7 +340,7 @@ button { cursor: pointer; border: 0; background: none; }
 .card-link { display: block; flex: 1; }
 
 .card-img { position: relative; background: var(--escuro); overflow: hidden; }
-.card-img img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .35s ease; }
+.card-img img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #eef1f6; transition: transform .35s ease; }
 .card-produto:hover .card-img img { transform: scale(1.05); }
 
 .card-selos { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; gap: 6px; z-index: 2; }
@@ -531,7 +531,7 @@ button { cursor: pointer; border: 0; background: none; }
   background: var(--escuro); cursor: zoom-in; aspect-ratio: 1;
 }
 .galeria-principal img {
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%; height: 100%; object-fit: contain; background: #eef1f6;
   transition: transform .3s ease;
 }
 .galeria-lente {

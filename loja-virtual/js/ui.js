@@ -160,6 +160,7 @@ const UI = (() => {
 
     alvo.className = "cabecalho";
     alvo.innerHTML =
+      '<div style="background:#fff4d6;color:#4f3a13;padding:9px 18px;text-align:center;font-size:12px;line-height:1.5" role="note">Demonstração MOSS Digital · Produtos, preços e avaliações fictícios. Fotografias reais ilustrativas da categoria, não do modelo anunciado.</div>' +
       '<div class="topo-faixa">' +
         '<div class="container topo-faixa-interno">' +
           '<p><i class="fa-solid fa-truck-fast" aria-hidden="true"></i> Frete grátis acima de ' +

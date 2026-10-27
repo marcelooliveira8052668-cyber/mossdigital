@@ -1438,6 +1438,60 @@ const PRODUTOS = [
   }
 ];
 
+/* Fotografias reais de banco de imagens para o catálogo demonstrativo.
+   Os nomes Nexa são fictícios: as fotos representam o tipo de produto,
+   não garantem marca, modelo ou especificações. Fontes em assets/img/fotos-reais/FONTES.md. */
+const FOTOS_REAIS = {
+  'telefone': ['nexa-phone-x-pro', 'nexa-phone-mini', 'nexa-phone-a54'],
+  'telefone-azul': ['nexa-phone-12', 'nexa-phone-ultra-5g'],
+  'telefone-dobravel': ['nexa-phone-fold'],
+  'notebook': ['nexabook-pro-14', 'nexabook-air-13', 'nexabook-slim-15'],
+  'notebook-trabalho': ['nexabook-work-14', 'nexabook-studio-16'],
+  'notebook-gamer': ['nexabook-gamer-x7'],
+  'fone': ['nexa-sound-max', 'nexa-studio-headset'],
+  'earbuds': ['nexa-buds-pro', 'nexa-ear-clip'],
+  'soundbar': ['nexa-sound-bar-3-1'],
+  'speaker': ['nexa-boom-speaker'],
+  'tv': ['nexa-tv-55-4k', 'nexa-tv-43-smart', 'nexa-tv-65-oled'],
+  'monitor': ['nexa-monitor-27', 'nexa-monitor-ultrawide'],
+  'lente-projetor': ['nexa-projector-mini'],
+  'console': ['nexa-console-x'],
+  'console-controle': ['nexa-console-s'],
+  'controle-produto': ['nexa-controller-pro'],
+  'fone-microfone': ['nexa-gaming-headset'],
+  'volante': ['nexa-racing-wheel'],
+  'relogio': ['nexa-watch-s3', 'nexa-watch-kids'],
+  'relogio-esporte': ['nexa-watch-ultra'],
+  'pulseira-fitness': ['nexa-band-5'],
+  'anel': ['nexa-ring-smart'],
+  'camera-interna': ['nexa-cam-indoor'],
+  'camera-externa': ['nexa-cam-outdoor'],
+  'lampada': ['nexa-bulb-rgb-kit-4'],
+  'tomada': ['nexa-smart-plug'],
+  'campainha': ['nexa-doorbell'],
+  'sensores': ['nexa-sensor-kit'],
+  'airfryer': ['nexa-air-fryer-5l'],
+  'liquidificador': ['nexa-blender-pro'],
+  'cafeteira': ['nexa-coffee-machine'],
+  'ventilador': ['nexa-fan-smart'],
+  'aspirador': ['nexa-vacuum-robot'],
+  'chaleira': ['nexa-kettle-steel'],
+  'camera': ['nexa-cam-dslr-x', 'nexa-cam-mirrorless'],
+  'camera-esportiva': ['nexa-action-cam-4k', 'nexa-cam-dash'],
+  'drone': ['nexa-drone-cam'],
+  'mouse': ['nexa-mouse-light'],
+  'teclado': ['nexa-keyboard-mech'],
+  'ssd': ['nexa-ssd-1tb'],
+  'webcam': ['nexa-webcam-4k'],
+  'roteador': ['nexa-router-wi-fi-6']
+};
+Object.entries(FOTOS_REAIS).forEach(([foto, ids]) => {
+  ids.forEach(id => {
+    const produto = PRODUTOS.find(item => item.id === id);
+    if (produto) produto.imagem = 'assets/img/fotos-reais/' + foto + '.jpg';
+  });
+});
+
 /* Avaliações de cada produto, pela chave do id. */
 const AVALIACOES = {
   "nexa-phone-x-pro": [
