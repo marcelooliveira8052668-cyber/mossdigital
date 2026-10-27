@@ -922,7 +922,7 @@ Object.assign(window.SITE_PRESETS, {
     "meta": {
       "title": "Navalha — Barbearia",
       "description": "Barba, corte e terapia quente. Agende seu horário na melhor barbearia do bairro.",
-      "ogImage": "assets/img/th-beauty.svg"
+      "ogImage": "assets/img/fotos/heroi-barbearia.jpg"
     },
     "nav": [
       {
@@ -991,7 +991,7 @@ Object.assign(window.SITE_PRESETS, {
       "portfolio": {
         "tag": "Galeria",
         "title": "A barbearia",
-        "description": "Interior, cadeiras, bar e o básico que faz diferença."
+        "description": "Imagens ilustrativas do espaço, dos resultados e dos produtos."
       },
       "about": {
         "tag": "Sobre",
@@ -1043,31 +1043,31 @@ Object.assign(window.SITE_PRESETS, {
     ],
     "portfolio": [
       {
-        "title": "Cadeira e navalha",
+        "title": "Cadeiras da barbearia",
         "category": "Estrutura",
         "description": "Conforto de verdade.",
-        "image": "assets/img/fotos/loja-1.jpg",
+        "image": "assets/img/fotos/barbearia-cadeira.jpg",
         "url": "#"
       },
       {
         "title": "Bar da barbearia",
         "category": "Estrutura",
         "description": "Cerveja gelada de graça.",
-        "image": "assets/img/fotos/loja-2.jpg",
+        "image": "assets/img/fotos/barbearia-bar.jpg",
         "url": "#"
       },
       {
         "title": "Barba pronta",
         "category": "Resultado",
         "description": "Feita e finalizada.",
-        "image": "assets/img/fotos/loja-4.jpg",
+        "image": "assets/img/fotos/barbearia-barba.jpg",
         "url": "#"
       },
       {
         "title": "Produtos",
         "category": "Loja",
-        "description": "Pomada, óleo e shampoo.",
-        "image": "assets/img/fotos/loja-3.jpg",
+        "description": "Pomada e óleo para barba.",
+        "image": "assets/img/fotos/barbearia-produtos.jpg",
         "url": "#"
       }
     ],
@@ -1075,7 +1075,7 @@ Object.assign(window.SITE_PRESETS, {
       "tag": "Sobre",
       "title": "Barbearia de bairro, qualidade de studio",
       "description": "Abrimos em 2017 com uma cadeira, um espelho e um barbeiro que tinha cansaço de barbearia cara. A ideia era simples: cadeira boa, navalha nova, preço justo e barbeiro que presta atenção. Nove anos depois, quatro cadeiras e a mesma ideia.",
-      "image": "assets/img/fotos/loja-1.jpg",
+      "image": "assets/img/fotos/barbearia-sobre.jpg",
       "stats": [
         {
           "value": 9,
