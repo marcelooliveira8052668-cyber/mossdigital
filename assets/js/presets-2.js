@@ -497,7 +497,7 @@ Object.assign(window.SITE_PRESETS, {
         "title": "Bolos da casa",
         "category": "Doces",
         "description": "Cinco sabores, todo dia.",
-        "image": "assets/img/fotos/padaria-3.jpg",
+        "image": "assets/img/fotos/Pizza napolitana no forno a lenha.png",
         "url": "#"
       },
       {
