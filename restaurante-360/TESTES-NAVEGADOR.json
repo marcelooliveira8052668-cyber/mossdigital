@@ -1,0 +1,21 @@
+{
+  "at": "2026-11-01T21:47:53.398Z",
+  "runtimeErrors": 0,
+  "flow": "Mesa mista → produção → recebimentos parciais → encerramento",
+  "checks": [
+    "vitrine e filtro",
+    "mesa mista e cálculo em gramas",
+    "produção por estação",
+    "divisão em centavos",
+    "recebimento parcial",
+    "liberação de mesa",
+    "reservas e espera",
+    "delivery",
+    "estoque",
+    "relatórios por data",
+    "perfis",
+    "persistência opcional e exclusão",
+    "11 módulos em 320 e 390 px",
+    "privacidade"
+  ]
+}

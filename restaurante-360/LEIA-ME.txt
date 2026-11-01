@@ -1,0 +1,19 @@
+RESTAURANTE 360 — BRASA & OLIVA — MOSS DIGITAL
+
+1. Abra index.html para conhecer o site do restaurante.
+2. Abra painel.html para testar a operação. Escolha sessão temporária ou salvamento local opcional.
+3. Use Como testar para ver os seis passos do fluxo completo.
+4. A mesa pode misturar à la carte, buffet por peso e rodízio.
+5. Leia ENTREGA-AO-CLIENTE.md antes de vender, adaptar ou entregar.
+
+Dados e marca fictícios. Não há autenticação segura, pagamentos reais, emissão fiscal ou sincronização multiusuário.
+Não use dados reais. O protótipo sozinho não substitui um sistema de produção de grande restaurante.
+
+Os perfis são de demonstração, sem senha. Teste Garçom, Cozinha, Bar, Caixa e Gerente pelo seletor no alto.
+O estoque começa com saldos fictícios já ajustados para duas mesas de exemplo.
+O backup JSON é apenas para exportação e conferência; não há importação no painel.
+
+Os testes técnicos podem ser executados com Node.js:
+node engine.test.cjs
+node browser.test.cjs
+O teste de navegador exige Windows, Edge e Node com WebSocket global.

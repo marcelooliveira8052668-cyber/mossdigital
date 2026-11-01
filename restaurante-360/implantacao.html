@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<html lang="pt-BR">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<head>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<meta charset="UTF-8">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<meta name="robots" content="noindex, follow">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<meta name="description" content="Restaurante demonstrativo com à la carte, buffet por peso, rodízio e uma operação integrada para experimentar. Modelo MOSS Digital, dados fictícios.">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<meta property="og:title" content="Guia de implantação — Restaurante 360">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<meta property="og:description" content="Conheça a vitrine e experimente a operação de restaurante misto da MOSS Digital. Demonstração fictícia, sem pagamentos reais.">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<meta property="og:type" content="website">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<meta property="og:image" content="https://mossdigital.com.br/restaurante-360/assets/social.png">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<meta name="twitter:card" content="summary_large_image">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<title>Guia de implantação — Restaurante 360</title>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<link rel="stylesheet" href="assets/site.css">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+</head>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<body>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<main class="legal">
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<a class="brand" href="index.html"><span aria-hidden="true">b.</span><div>brasa &amp; oliva<small>RESTAURANTE · EXPERIÊNCIA COMPLETA</small></div></a>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p><a class="btn ghost" href="painel.html">Voltar ao painel</a></p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<h1>Brasa &amp; Oliva — Restaurante 360</h1>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<h2>Natureza da entrega</h2>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>Protótipo funcional local para restaurante com à la carte, buffet por peso e rodízio. Não é um sistema homologado nem está pronto para operar um estabelecimento real apenas trocando o logotipo. A vitrine e o painel são exemplos independentes com identidade fictícia.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<h2>Como abrir</h2>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<ul>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>`index.html`: site do restaurante, cardápio e apresentação.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>`painel.html`: operação integrada da demonstração.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Abra os HTMLs no navegador ou execute `python -m http.server 8080` nesta pasta e acesse http://localhost:8080/.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Não é necessário instalar bibliotecas para usar o site. JavaScript é necessário para o painel e os filtros.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>`assets/engine.js`: regras isoladas e cálculos financeiros em centavos.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>`assets/panel.js` e `assets/panel.css`: módulos e interface operacional.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>`assets/site.js` e `assets/site.css`: comportamento e identidade da vitrine.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>`assets/mesa.svg`: ilustração gastronômica original, sem fotos de terceiros.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>`privacidade.html`: armazenamento, termos de demonstração e limitações.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+</ul>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<h2>O que funciona na demonstração</h2>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>1. Mapa de 16 mesas, capacidades e comandas abertas; duas mesas começam com exemplos.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>2. Conta mista com à la carte, buffet e rodízio na mesma mesa.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>3. Buffet: peso bruto e tara em gramas, peso líquido e preço por kg. Sem conexão a balança.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>4. Rodízio adulto/infantil por pessoa, limitado ao número de pessoas da mesa. Idades e regras comerciais reais ainda precisam ser definidas.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>5. Pedidos em rascunho, observações e envio local à cozinha ou ao bar.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>6. Estoque conferido atomicamente antes do envio: uma falta impede o envio inteiro; uma mesma linha não é baixada duas vezes.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>7. Painéis com aguardando, preparando, pronto e entregue. Não há impressão ou sincronização entre aparelhos.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>8. Cancelamentos com motivo e sem retorno automático de consumo ao estoque.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>9. Serviço opcional, desconto justificado pelo perfil Gerente e recebimentos parciais simulados.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>10. Cálculos em centavos, divisão com diferença de arredondamento e troco apenas para dinheiro.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>11. Bloqueio de alterações após o primeiro recebimento; sem estorno nesta versão.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>12. Encerramento somente com itens entregues e saldo quitado. A mesa é então liberada.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>13. Reservas locais com capacidade e conflito de horário; fila de espera e acomodação.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>14. Pedidos de entrega/retirada com taxa fictícia e etapas locais de expedição.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>15. Estoque em g/ml/un, ficha técnica de referência, compras, ajustes e perdas manuais.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>16. Turno com fundo, sangria, suprimento, saldo teórico, contagem e diferença justificada. Fechamento exige encerrar/cancelar todas as comandas.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>17. Relatórios de vendas encerradas, recebimentos, mix bruto, ticket médio, CSV e histórico local de até 500 eventos.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>18. Perfis demonstrativos Gerente, Garçom, Cozinha, Bar e Caixa; não são autenticação ou proteção real.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>19. Sessão temporária por padrão; armazenamento local opcional, exclusão específica, backup JSON para conferência e reinício da demo.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<h2>Limites importantes</h2>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<ul>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Não há backend, servidor de pedidos, banco de dados central ou sincronização multiusuário.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Não há senha, login autenticado, permissão no servidor ou log imutável.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Pix e cartão são anotações simuladas: não há provedor, transação, conciliação, antifraude ou estorno.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>A conferência não é documento fiscal nem comprovante de pagamento. Não emite NFC-e/NF-e e não integra SEFAZ.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Não há integração com iFood, WhatsApp API, entregadores, impressoras, gaveta de caixa ou balança.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>A seleção de perfil é aberta para qualquer visitante. Não use dados reais.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>localStorage não é backup nem isolamento entre usuários; outra aba pode ter uma cópia desatualizada. Não use várias abas como terminais de operação.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>O backup JSON pode ser baixado para conferência técnica; não há importação/restauração pelo painel.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>A vitrine tem cardápio de exemplo estático. Alterações de configuração no painel não editam automaticamente o HTML público.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Buffet e rodízio usam consumo estimado de insumos. Não há avaliação de rendimento, porcionamento individual, alergênicos ou qualidade nutricional.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>O sistema não identifica individualmente cada pessoa da mesa; o limite de rodízio considera somente a soma das pessoas.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Não há DRE, lucro líquido, compras fiscais, cálculo tributário, conciliação bancária ou gestão de pessoas/RH.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Reservas não são comunicadas e não bloqueiam uma agenda central real.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>Não declarar conformidade jurídica, fiscal ou WCAG sem auditoria específica.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+</ul>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<h2>Dados que o restaurante precisa fornecer</h2>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>Nome, razão social e identificação aplicável; marca, logotipo e domínio; fotos autorizadas; contatos; endereços e horários; áreas e capacidade de mesas; modalidades e regras; preços por item, kg e pessoa; faixa etária infantil; serviço opcional e descontos autorizados; ingredientes, alergênicos, receitas e rendimentos verificados; fornecedores; estoque e unidades; políticas de reservas, entrega, cancelamento e privacidade; processos de atendimento e responsáveis.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>Não solicite dados pessoais desnecessários nem compartilhe senhas em arquivos do site.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<h2>Checklist para uma operação real</h2>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<ul>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Levantar volume de mesas, terminais simultâneos, pedidos e horários críticos.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Definir arquitetura de servidor, banco de dados transacional, disponibilidade e recuperação de desastres.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Implementar login, autorização no servidor, trilha de auditoria protegida e segregação de funções.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Garantir idempotência, concorrência, locks de conta e estoque, reconciliação e prevenção de dupla cobrança.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Integrar pedidos e KDS com sincronização, confirmação de recebimento e recuperação de falhas.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Contratar e integrar pagamentos e fluxo de estorno por provedor autorizado.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Validar emissão fiscal e obrigações com contador e fornecedor especializado, conforme local e regime.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Homologar impressoras, balanças e equipamentos; não assumir compatibilidade.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Definir integração de delivery e contratos próprios, quando necessária.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Validar serviço opcional, descontos, cancelamentos, regras comerciais e políticas com o responsável real.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Definir governança de dados, base legal, retenção, segurança e direitos conforme a LGPD.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Configurar backups com restauração testada, monitoramento e suporte em horário de operação.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Realizar testes de carga, quedas de internet, retomada, pagamentos duplicados e divergências de caixa.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Auditar acessibilidade, navegação por teclado, contraste e uso em tablets/telas da cozinha.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Aprovar conteúdo da vitrine e configurar domínio, HTTPS, canonical e dados estruturados verdadeiros. Remover noindex somente no site real aprovado; painel operacional não deve ser indexado.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<li>[ ] Treinar gerente, caixa, cozinha e garçons; operar em homologação antes de substituir o sistema atual.</li>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+</ul>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<h2>Condição comercial sugerida</h2>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+<p>Venda a personalização da vitrine e o protótipo como escopos separados da implantação operacional. Banco de dados, integrações, homologação, suporte, hospedagem e manutenção precisam de escopo, contrato e orçamento próprios. Não prometa que esta demonstração sozinha substitui o sistema de um grande restaurante.</p>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+</main>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+</body>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->
+</html>
+<!-- Eu organizo este trecho para apresentar a experiência e os limites da demonstração. -->

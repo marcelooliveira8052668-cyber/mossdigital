@@ -62,6 +62,7 @@
      PROJETOS REAIS — no ar, com página própria
      ------------------------------------------------------------------ */
   const REAIS = [
+    { id: 'restaurante360', emoji: '🍽️', foto: 'restaurante-360/assets/social.png', nome: 'Restaurante 360', desc: 'Demo local de à la carte, buffet e rodízio: salão, cozinha/bar, caixa e estoque. Sem pagamentos reais ou sincronização.', link: 'restaurante-360/' },
     { id: 'momusic', emoji: '🎵', foto: 'assets/img/fotos/heroi-momusic.jpg', nome: 'M.O Music — Site para artistas', desc: 'Modelo personalizável para artistas independentes: apresentação, catálogo público de músicas, player, compartilhamento e apoio voluntário por Pix. Sem pagamento automático por reprodução.', link: 'https://marcelooliveira8052668-cyber.github.io/mo-music/' },
     { id: 'mocursos', emoji: '🎓', foto: 'assets/img/fotos/heroi-mocursos.jpg', nome: 'MO Cursos', desc: 'Plataforma de cursos online: login de professor e aluno, videoaulas, atividades com entrega, exercícios corrigidos e certificado em PDF', link: 'https://marcelooliveira8052668-cyber.github.io/mo-cursos/' },
     { id: 'mosscardapio', emoji: '🍽️', foto: 'assets/img/fotos/heroi-mosscardapio.jpg', nome: 'MOSS Cardápio', desc: 'Cardápio digital com fotos, busca, cupom, QR Code por mesa e pedido direto pelo WhatsApp — sem aplicativo', link: 'https://marcelooliveira8052668-cyber.github.io/moss-cardapio/' },

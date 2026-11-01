@@ -1,0 +1,20 @@
+DADOS PARA PERSONALIZAR O RESTAURANTE 360
+
+- Identificação comercial e responsável legal; nome, marca e domínio.
+- Endereços, áreas e capacidade de mesas, horários e contatos reais.
+- Fotos autorizadas e textos aprovados.
+- Produtos, preços e disponibilidade do à la carte.
+- Buffet: preço/kg, regras de tara, balança e controle de porções.
+- Rodízio: preço adulto/infantil, faixa etária, dias e condições.
+- Ingredientes, alergênicos, receitas e rendimentos verificados.
+- Estoque, unidades-base, fornecedores e rotinas de compra e perdas.
+- Regras de serviço opcional, descontos, cancelamentos e fechamento de caixa.
+- Reservas, fila, horários, capacidade e regras de não comparecimento.
+- Delivery: regiões, taxas, canais, entregadores e condições de retirada.
+- Funções da equipe, equipamentos, impressoras e número de terminais.
+- Meios de pagamento, provedor e requisitos fiscais validados com profissionais adequados.
+- Privacidade, segurança, suporte, manutenção e backup.
+
+A demo não oferece edição pública por um cliente autenticado. O seletor de perfis é aberto apenas para apresentação; não é login.
+Servidor, banco de dados, sincronização, autenticação, integrações e homologação devem ter escopo e orçamento separados.
+Não publique documentos pessoais, senhas ou chaves privadas. Leia ENTREGA-AO-CLIENTE.md.

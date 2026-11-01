@@ -22,6 +22,7 @@ dist/
 *.zip
 # Pacotes demonstrativos revisados, sem credenciais ou dados pessoais
 !entregas/utilidade-empreendedorismo/*.zip
+!entregas/restaurante360/*.zip
 
 # Cache das ferramentas de geração
 __pycache__/

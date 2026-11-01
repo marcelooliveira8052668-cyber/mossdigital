@@ -1,7 +1,7 @@
 # Template de Site Profissional
 
-Template com **28 tipos de negócio prontos** e **52 exemplos** no portfólio (33 nichos
-do template + 19 projetos reais). Você troca cores, logo, fotos, textos e cards num
+Template com **28 tipos de negócio prontos** e **53 exemplos** no portfólio (33 nichos
+do catálogo + 20 projetos independentes). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
 Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
@@ -64,9 +64,9 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ---
 
-## Os 19 projetos reais do portfólio
+## Os 20 projetos independentes do portfólio
 
-Além dos 33 nichos gerados pelo template, o portfólio mostra **19 projetos que existem
+Além dos 33 nichos gerados pelo template, o portfólio mostra **20 projetos que existem
 de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 `#reais`, separados dos modelos prontos (`#exemplos`):
 
@@ -420,3 +420,18 @@ As ações não confirmam inscrição, reserva, pagamento ou recebimento de pedi
 As demos ficam com `noindex`; não devem ser adicionadas ao sitemap público como serviços reais.
 
 O gerador `tools/build-community-demos.py` recria apenas estes cinco pacotes. Não execute sobre adaptações de clientes sem backup: ele sobrescreve os arquivos desses IDs. `tools/integrate-community-demos.py` integra a coleção ao catálogo sem duplicar entradas.
+
+
+## Restaurante 360 — Brasa & Oliva
+
+Projeto independente em `restaurante-360/` para demonstrar uma operação mista de à la carte, buffet por peso e rodízio. Não adiciona um preset genérico: possui vitrine, painel e regras próprios.
+
+- Site público: `restaurante-360/index.html`.
+- Operação: `restaurante-360/painel.html`.
+- Implantação e limitações: `restaurante-360/ENTREGA-AO-CLIENTE.md`.
+- Dados para personalizar: `restaurante-360/DADOS-DO-CLIENTE.txt`.
+- Testes de regras: `node restaurante-360/engine.test.cjs`.
+- Testes no Edge: `node restaurante-360/browser.test.cjs` (Windows, Node com WebSocket global).
+- Capa e legenda: `divulgacao/instagram/restaurante360/`.
+
+São registros locais fictícios. Perfis são de interface, não autenticação. Não há banco de dados central, sincronização entre aparelhos, pagamento real, estorno ou emissão fiscal. Operação de restaurante real requer infraestrutura e integrações próprias. Não incluir esta demonstração no sitemap de páginas comerciais reais.
