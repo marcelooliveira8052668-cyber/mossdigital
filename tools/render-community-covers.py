@@ -39,8 +39,13 @@ for i,c in enumerate(builder.COLLECTION,1):
 <header><strong>MOSS <b>DIGITAL</b></strong><span>NOVA COLEÇÃO · {i:02d}/05</span></header><div class="tag">{c['folder'].upper()}</div><h1>{title}</h1><p class="sub">{subtitle}</p><div class="screen"><div class="bar"><i></i><i></i><i></i><span>Prévia real do modelo {c['brand']}</span></div><img src="{encoded}" alt="Prévia de demonstração do site"></div><div class="bottom"><p>Um site útil.<br>Uma identidade só sua.</p><div class="button">Conheça os modelos ↗</div></div><footer><strong>mossdigital.com.br</strong><span>Layout demonstrativo personalizável.<br>Dados fictícios · Artes autorais.</span></footer></html>'''
     source=out/(name+'.html');source.write_text(html,encoding='utf-8')
     png=out/(name+'.png')
-    cmd=[str(edge),'--headless=new','--disable-gpu','--no-first-run','--hide-scrollbars',f'--user-data-dir={temp / ("community-cover-"+uuid.uuid4().hex[:10])}','--force-device-scale-factor=1','--virtual-time-budget=1800','--window-size=1080,1350',f'--screenshot={png}',source.as_uri()]
-    result=subprocess.run(cmd,capture_output=True,timeout=60)
+    profile=temp/('community-cover-'+uuid.uuid4().hex[:10])
+    cmd=[str(edge),'--headless=new','--disable-gpu','--no-first-run','--hide-scrollbars',f'--user-data-dir={profile}','--force-device-scale-factor=1','--virtual-time-budget=1800','--window-size=1080,1350',f'--screenshot={png}',source.as_uri()]
+    try:
+        result=subprocess.run(cmd,capture_output=True,timeout=60)
+    finally:
+        # Eu removo somente o perfil temporário criado por esta captura.
+        shutil.rmtree(profile,ignore_errors=True)
     assert png.exists() and png.stat().st_size>20000,result.stderr[-500:]
     assert struct.unpack('>II',png.read_bytes()[16:24])==(1080,1350)
     shutil.copy2(png,publish/png.name)

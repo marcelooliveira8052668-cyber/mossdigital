@@ -137,5 +137,9 @@ const ids=['reciclo','junto','raizfeira','pontocomum','acessoaberto'];
     fs.writeFileSync(path.join(repo,'docs','testes','community-demos.json'),JSON.stringify(report,null,2));
     console.log('5 demos aprovadas. Nenhuma mensagem real foi enviada.');
     await cmd('Browser.close');
-  }finally{if(ws)ws.close();edge.kill();}
+  }finally{
+    if(ws)ws.close();edge.kill();await sleep(400);
+    /* Eu limpo apenas o perfil temporário criado por este teste. */
+    try{fs.rmSync(profile,{recursive:true,force:true,maxRetries:3,retryDelay:200});}catch(error){console.warn('Perfil temporário ainda em uso: '+profile);}
+  }
 })().catch(error=>{console.error(error);process.exit(1)});
