@@ -1,6 +1,6 @@
 # Template de Site Profissional
 
-Template com **28 tipos de negócio prontos** e **47 exemplos** no portfólio (28 nichos
+Template com **28 tipos de negócio prontos** e **52 exemplos** no portfólio (33 nichos
 do template + 19 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
@@ -66,7 +66,7 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ## Os 19 projetos reais do portfólio
 
-Além dos 28 nichos gerados pelo template, o portfólio mostra **19 projetos que existem
+Além dos 33 nichos gerados pelo template, o portfólio mostra **19 projetos que existem
 de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 `#reais`, separados dos modelos prontos (`#exemplos`):
 
@@ -340,7 +340,7 @@ template-site-profissional/
 │   │   ├── presets-5.js    1 preset, assistencia (parte 5)
 │   │   ├── presets-6.js    1 preset, fretes (parte 6)
 │   │   ├── presets-7.js    1 preset, festas (parte 7)
-│   │   ├── presets-8.js    1 preset, bar (parte 8) → TOTAL: 28
+│   │   ├── presets-8.js    1 preset, bar (parte 8) → TOTAL: 33
 │   │   ├── data.js         Conexao com o banco de dados
 │   │   ├── app.js          Monta o site
 │   │   ├── demo.js         Logica do painel
@@ -401,3 +401,22 @@ As demos usam dados fictícios, ilustrações autorais e `noindex`. O contato de
 
 - Capas Instagram em PNG, 1080 × 1350: `divulgacao/instagram/`.
 - Orientações de indexação e divulgação: `docs/GUIA-GOOGLE.md`.
+
+
+## Coleção de utilidade pública e empreendedorismo
+
+Cinco modelos independentes com dados fictícios, ferramentas locais, páginas de privacidade e termos e checklist de implantação:
+
+| ID | Projeto | Ferramenta funcional |
+| --- | --- | --- |
+| reciclo | ReCiclo — reciclagem e ecopontos | Filtros por material, peso informado e plano de descarte |
+| junto | junto. — voluntariado | Filtros, seleção de oportunidades e dedicação semanal |
+| raizfeira | Raiz Feira — produtores locais | Cesta, quantidades, estoque ilustrativo e consulta por WhatsApp |
+| pontocomum | Ponto Comum — coworking | Estimativa por hora, capacidade, datas e lembrete .ics provisório |
+| acessoaberto | Acesso Aberto — guia de acessibilidade | Filtros por recurso e roteiro sem navegação geográfica |
+
+Arquivos em `demos/<id>/`; instruções específicas em `ENTREGA-AO-CLIENTE.md`. Cada pacote é independente e funciona sem build. Requer JavaScript para filtros e ferramentas; catálogo e políticas têm conteúdo HTML.
+As ações não confirmam inscrição, reserva, pagamento ou recebimento de pedidos. Não há backend nem armazenamento persistente. Marcas, endereços, estoques e preços são fictícios.
+As demos ficam com `noindex`; não devem ser adicionadas ao sitemap público como serviços reais.
+
+O gerador `tools/build-community-demos.py` recria apenas estes cinco pacotes. Não execute sobre adaptações de clientes sem backup: ele sobrescreve os arquivos desses IDs. `tools/integrate-community-demos.py` integra a coleção ao catálogo sem duplicar entradas.

@@ -1,0 +1,6 @@
+raiz / feira — Feira de Produtores Locais
+
+Abra index.html. Leia ENTREGA-AO-CLIENTE.md antes de adaptar e entregar.
+Dados, marcas e locais fictícios. Contato demonstrativo com MOSS Digital.
+Não há pagamento, reserva confirmada, inscrição enviada ou backend.
+O plano funciona apenas nesta aba, sem dados persistentes.

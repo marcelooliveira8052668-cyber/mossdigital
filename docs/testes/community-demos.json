@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-11-01T17:43:03.576Z",
+  "runtimeErrors": 0,
+  "results": [
+    {
+      "id": "reciclo",
+      "catalog": 6,
+      "filters": "OK",
+      "tool": "OK",
+      "download": "OK",
+      "mobile": [
+        390,
+        320
+      ],
+      "policies": "OK"
+    },
+    {
+      "id": "junto",
+      "catalog": 6,
+      "filters": "OK",
+      "tool": "OK",
+      "download": "OK",
+      "mobile": [
+        390,
+        320
+      ],
+      "policies": "OK"
+    },
+    {
+      "id": "raizfeira",
+      "catalog": 6,
+      "filters": "OK",
+      "tool": "OK",
+      "download": "OK",
+      "mobile": [
+        390,
+        320
+      ],
+      "policies": "OK"
+    },
+    {
+      "id": "pontocomum",
+      "catalog": 6,
+      "filters": "OK",
+      "tool": "OK",
+      "download": "OK",
+      "mobile": [
+        390,
+        320
+      ],
+      "policies": "OK"
+    },
+    {
+      "id": "acessoaberto",
+      "catalog": 6,
+      "filters": "OK",
+      "tool": "OK",
+      "download": "OK",
+      "mobile": [
+        390,
+        320
+      ],
+      "policies": "OK"
+    }
+  ]
+}

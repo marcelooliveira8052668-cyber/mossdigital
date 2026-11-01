@@ -20,6 +20,12 @@ dist/
 *.bak
 *.rar
 *.zip
+# Pacotes demonstrativos revisados, sem credenciais ou dados pessoais
+!entregas/utilidade-empreendedorismo/*.zip
+
+# Cache das ferramentas de geração
+__pycache__/
+*.pyc
 
 # Dados sensiveis - NUNCA subir
 .env

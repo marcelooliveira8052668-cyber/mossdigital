@@ -7,7 +7,7 @@
       var params = new URLSearchParams(location.search);
       var id = params.get('preset');
       if (id === 'mudancas') id = 'fretes';
-      if (params.get('painel') !== '1' && ['tatuagem', 'assistencia', 'fretes', 'festas', 'bar'].includes(id)) {
+      if (params.get('painel') !== '1' && ['tatuagem', 'assistencia', 'fretes', 'festas', 'bar', 'reciclo', 'junto', 'raizfeira', 'pontocomum', 'acessoaberto'].includes(id)) {
         location.replace('demos/' + id + '/index.html' + location.search);
       }
     })();

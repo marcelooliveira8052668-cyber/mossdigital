@@ -19,7 +19,7 @@
   };
 
   /* ------------------------------------------------------------------
-     MODELOS PRONTOS — 28 nichos do template, abrem no demo.html
+     MODELOS PRONTOS — 33 nichos do template, abrem no demo.html
      ------------------------------------------------------------------ */
   const version = 'fotos-20261027';
   const MODELOS = [
@@ -50,7 +50,12 @@
     { id: 'assistencia',  emoji: '📱', foto: 'assets/img/assistencia/heroi-assistencia.svg', nome: 'Assistência de Celular', desc: 'Reparos, preços e orçamento com foto no WhatsApp' },
     { id: 'fretes',     emoji: '🚚', foto: 'assets/img/fretes/heroi-fretes.svg', nome: 'Fretes e Transportes', desc: 'Fretes rápidos e logística para pessoas e empresas' },
     { id: 'festas',       emoji: '🎉', foto: 'assets/img/festas/heroi-festas.svg', nome: 'Casa de Festas', desc: 'Salão decorado, buffet e reserva de data' },
-    { id: 'bar',          emoji: '🍸', foto: 'assets/img/bar/heroi-bar.svg', nome: 'Bar e Coquetelaria', desc: 'Drinks autorais, clássicos e música ao vivo' }
+    { id: 'bar',          emoji: '🍸', foto: 'assets/img/bar/heroi-bar.svg', nome: 'Bar e Coquetelaria', desc: 'Drinks autorais, clássicos e música ao vivo' },
+    { id: 'reciclo', emoji: '↻', foto: 'demos/reciclo/assets/hero.svg', nome: 'Reciclagem e Ecopontos', desc: 'Pontos de coleta', link: 'demos/reciclo/index.html' },
+    { id: 'junto', emoji: '✳', foto: 'demos/junto/assets/hero.svg', nome: 'Voluntariado e Impacto Social', desc: 'Uma causa para chamar de sua', link: 'demos/junto/index.html' },
+    { id: 'raizfeira', emoji: '◒', foto: 'demos/raizfeira/assets/hero.svg', nome: 'Feira de Produtores Locais', desc: 'Fresquinho na banca', link: 'demos/raizfeira/index.html' },
+    { id: 'pontocomum', emoji: '↗', foto: 'demos/pontocomum/assets/hero.svg', nome: 'Coworking e Salas de Reuniao', desc: 'Encontre o seu ponto', link: 'demos/pontocomum/index.html' },
+    { id: 'acessoaberto', emoji: '＋', foto: 'demos/acessoaberto/assets/hero.svg', nome: 'Guia de Acessibilidade Urbana', desc: 'O que importa para a sua visita?', link: 'demos/acessoaberto/index.html' }
   ];
 
   /* ------------------------------------------------------------------
