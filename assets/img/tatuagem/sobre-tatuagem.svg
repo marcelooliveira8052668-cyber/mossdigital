@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Ilustração de máquina de tatuagem rotativa, símbolo do studio">
+  <defs>
+    <radialGradient id="bgSobre" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#221c13"/>
+      <stop offset="100%" stop-color="#0c0a07"/>
+    </radialGradient>
+    <linearGradient id="ouroSobre" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4d78c"/>
+      <stop offset="100%" stop-color="#b0812f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bgSobre)"/>
+  <circle cx="400" cy="380" r="300" fill="none" stroke="#d4a24e" stroke-opacity=".15" stroke-width="2"/>
+  <g fill="none" stroke="url(#ouroSobre)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-35 400 380)">
+    <rect x="330" y="180" width="140" height="90" rx="18"/>
+    <path d="M400 270 v40"/>
+    <rect x="352" y="310" width="96" height="180" rx="26"/>
+    <path d="M400 490 v60"/>
+    <path d="M400 550 l-14 34 14 90 14 -90z"/>
+    <path d="M360 210 h60 M360 240 h40"/>
+    <circle cx="400" cy="160" r="20"/>
+    <path d="M330 350 h-40 M470 350 h40"/>
+  </g>
+  <g fill="#f4d78c" opacity=".8">
+    <path d="M180 200 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z"/>
+    <path d="M630 560 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z"/>
+    <circle cx="640" cy="220" r="4"/>
+    <circle cx="160" cy="560" r="4"/>
+  </g>
+  <text x="400" y="740" text-anchor="middle" font-family="Georgia, serif" font-size="26" letter-spacing="8" fill="#9a7c46">DESDE 2017</text>
+</svg>

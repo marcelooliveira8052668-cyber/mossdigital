@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Ilustração de flor de lótus com raios, exemplo de tatuagem ornamental">
+  <defs>
+    <radialGradient id="bg4" cx="50%" cy="45%" r="80%">
+      <stop offset="0%" stop-color="#211a12"/>
+      <stop offset="100%" stop-color="#0c0a07"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg4)"/>
+  <g fill="none" stroke="#d4a24e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="400" cy="270" r="34"/>
+    <path d="M400 150 c26 40 26 86 0 120 -26 -34 -26 -80 0 -120z"/>
+    <path d="M400 390 c26 -40 26 -86 0 -120 -26 34 -26 80 0 120z"/>
+    <path d="M280 270 c40 -26 86 -26 120 0 -34 26 -80 26 -120 0z"/>
+    <path d="M520 270 c-40 -26 -86 -26 -120 0 34 26 80 26 120 0z"/>
+    <path d="M315 185 c44 4 78 38 82 82 -44 -4 -78 -38 -82 -82z"/>
+    <path d="M485 355 c-44 -4 -78 -38 -82 -82 44 4 78 38 82 82z"/>
+    <path d="M485 185 c-4 44 -38 78 -82 82 4 -44 38 -78 82 -82z"/>
+    <path d="M315 355 c4 -44 38 -78 82 -82 -4 44 -38 78 -82 82z"/>
+    <path d="M400 440 v70"/>
+    <path d="M400 470 c-26 -2 -44 -18 -48 -44 26 -2 44 12 48 32"/>
+  </g>
+  <g fill="#f4d78c" opacity=".8">
+    <circle cx="400" cy="90" r="4"/>
+    <circle cx="240" cy="270" r="3"/>
+    <circle cx="560" cy="270" r="3"/>
+    <path d="M620 130 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <path d="M170 430 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+  </g>
+  <text x="400" y="565" text-anchor="middle" font-family="Georgia, serif" font-size="24" letter-spacing="6" fill="#9a7c46">ORNAMENTAL</text>
+</svg>

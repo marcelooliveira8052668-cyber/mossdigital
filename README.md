@@ -1,6 +1,6 @@
 # Template de Site Profissional
 
-Template com **23 tipos de negócio prontos** e **42 exemplos** no portfólio (23 nichos
+Template com **24 tipos de negócio prontos** e **43 exemplos** no portfólio (24 nichos
 do template + 19 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
@@ -19,7 +19,7 @@ Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
 
 ---
 
-## Os 23 negócios prontos
+## Os 24 negócios prontos
 
 Abra o painel (acrescente `&painel=1` no link) e escolha:
 
@@ -48,6 +48,7 @@ Abra o painel (acrescente `&painel=1` no link) e escolha:
 | psicologo | Psicologo, terapeuta, psicopedagogo |
 | nutricionista | Nutricionista, nutrologia, coach alimentar |
 | arquiteto | Arquiteto, engenheiro, projetista |
+| tatuagem | Studio de tatuagem, tatuador, piercer |
 
 Links de exemplo:
 ```
@@ -61,7 +62,7 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ## Os 19 projetos reais do portfólio
 
-Além dos 23 nichos gerados pelo template, o portfólio mostra **19 projetos que existem
+Além dos 24 nichos gerados pelo template, o portfólio mostra **19 projetos que existem
 de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 `#reais`, separados dos modelos prontos (`#exemplos`):
 
@@ -95,7 +96,7 @@ Para colocar um card desses no portfólio, edite a lista `REAIS` em
 Os modelos prontos ficam na lista `MODELOS`, no mesmo arquivo. Um card sem `link`
 aponta para `demo.html?preset=<id>`. Um card com `link` externo (http/https) abre em
 outra aba. As contagens da página (`19 projetos no ar`,
-`23 modelos prontos`) são calculadas pelo próprio script, então nunca ficam
+`24 modelos prontos`) são calculadas pelo próprio script, então nunca ficam
 desatualizadas.
 
 A foto pode ser um arquivo local (padrão) ou um link do Unsplash.
@@ -328,9 +329,10 @@ template-site-profissional/
 │   │   └── portfolio.css   Visual do site de divulgacao
 │   ├── js/
 │   │   ├── config.js       EDITE ESTE - dados e cores do site do cliente
-│   │   ├── presets.js      8 dos 23 presets (parte 1)
+│   │   ├── presets.js      8 dos 24 presets (parte 1)
 │   │   ├── presets-2.js    10 presets (parte 2)
-│   │   ├── presets-3.js    5 presets (parte 3) → TOTAL: 23
+│   │   ├── presets-3.js    5 presets (parte 3)
+│   │   ├── presets-4.js    1 preset, tatuagem (parte 4) → TOTAL: 24
 │   │   ├── data.js         Conexao com o banco de dados
 │   │   ├── app.js          Monta o site
 │   │   ├── demo.js         Logica do painel

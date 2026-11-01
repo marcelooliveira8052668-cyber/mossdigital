@@ -1,0 +1,10 @@
+# robots.txt — mossdigital.com.br
+# Eu permito que o Google indexe todas as páginas públicas do site.
+User-agent: *
+Allow: /
+
+# O painel de demos é ferramenta interna; o Google não precisa indexar.
+Disallow: /demo.html
+
+# Eu sempre aponto o sitemap aqui para o Google encontrar as páginas.
+Sitemap: https://mossdigital.com.br/sitemap.xml

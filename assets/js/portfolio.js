@@ -19,7 +19,7 @@
   };
 
   /* ------------------------------------------------------------------
-     MODELOS PRONTOS — 23 nichos do template, abrem no demo.html
+     MODELOS PRONTOS — 24 nichos do template, abrem no demo.html
      ------------------------------------------------------------------ */
   const version = 'fotos-20261027';
   const MODELOS = [
@@ -45,7 +45,8 @@
     { id: 'veterinario',  emoji: '🐾', foto: 'assets/img/fotos/veterinario-consulta.jpg', nome: 'Clínica veterinária',    desc: 'Consultas, vacinas e emergência 24h' },
     { id: 'psicologo',    emoji: '🧠', foto: 'assets/img/fotos/psicologia-consulta.jpg', nome: 'Psicólogo',              desc: 'Terapia individual, casal e online' },
     { id: 'nutricionista', emoji: '🥗', foto: 'assets/img/fotos/nutricao-refeicao.jpg', nome: 'Nutricionista',          desc: 'Planos alimentares personalizados' },
-    { id: 'arquiteto',    emoji: '📐', foto: 'assets/img/fotos/arquiteto-residencia.jpg', nome: 'Arquiteto',              desc: 'Projetos residenciais e comerciais' }
+    { id: 'arquiteto',    emoji: '📐', foto: 'assets/img/fotos/arquiteto-residencia.jpg', nome: 'Arquiteto',              desc: 'Projetos residenciais e comerciais' },
+    { id: 'tatuagem',     emoji: '🖋️', foto: 'assets/img/tatuagem/heroi-tatuagem.svg', nome: 'Studio de Tatuagem',    desc: 'Estilos, galeria e agendamento pelo WhatsApp' }
   ];
 
   /* ------------------------------------------------------------------

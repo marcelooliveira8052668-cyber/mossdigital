@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" role="img" aria-label="Logo Agulha de Ouro Studio (versão clara)">
+  <g fill="none" stroke="#f4d78c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="24"/>
+    <path d="M32 14 v26"/>
+    <path d="M23 26 h18"/>
+    <path d="M32 40 l-5 12 5 4 5 -4z"/>
+  </g>
+  <text x="70" y="30" font-family="Georgia, serif" font-size="21" letter-spacing="3" fill="#f4d78c">AGULHA DE OURO</text>
+  <text x="70" y="52" font-family="Georgia, serif" font-size="13" letter-spacing="6" fill="#9a7c46">STUDIO DE TATUAGEM</text>
+</svg>

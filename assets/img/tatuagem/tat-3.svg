@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Ilustração de lua crescente com folhas, exemplo de tatuagem minimalista">
+  <defs>
+    <radialGradient id="bg3" cx="50%" cy="45%" r="80%">
+      <stop offset="0%" stop-color="#1d1920"/>
+      <stop offset="100%" stop-color="#0b090c"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg3)"/>
+  <g fill="none" stroke="#d4a24e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M470 130 a170 170 0 1 0 0 300 a135 135 0 0 1 0 -300z"/>
+    <path d="M400 430 v90"/>
+    <path d="M400 470 c-38 -4 -64 -28 -70 -64 36 -4 64 16 70 48"/>
+    <path d="M400 500 c38 -4 64 -28 70 -64 -36 -4 -64 16 -70 48"/>
+  </g>
+  <g fill="#f4d78c">
+    <path d="M560 170 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z"/>
+    <path d="M610 300 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" opacity=".8"/>
+    <path d="M540 400 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z" opacity=".6"/>
+    <circle cx="250" cy="200" r="3" opacity=".7"/>
+    <circle cx="220" cy="330" r="3" opacity=".5"/>
+  </g>
+  <text x="400" y="565" text-anchor="middle" font-family="Georgia, serif" font-size="24" letter-spacing="6" fill="#9a7c46">MINIMALISTA</text>
+</svg>

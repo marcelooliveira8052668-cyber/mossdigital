@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Arte ilustrativa de faca ornamental com cobra, símbolo do studio de tatuagem">
+  <defs>
+    <radialGradient id="bgHero" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#241d14"/>
+      <stop offset="55%" stop-color="#16120d"/>
+      <stop offset="100%" stop-color="#0b0907"/>
+    </radialGradient>
+    <linearGradient id="ouroHero" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4d78c"/>
+      <stop offset="50%" stop-color="#d4a24e"/>
+      <stop offset="100%" stop-color="#a87a2c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgHero)"/>
+  <circle cx="600" cy="430" r="330" fill="none" stroke="#d4a24e" stroke-opacity=".18" stroke-width="2"/>
+  <circle cx="600" cy="430" r="290" fill="none" stroke="#d4a24e" stroke-opacity=".10" stroke-width="1" stroke-dasharray="3 9"/>
+  <g fill="none" stroke="url(#ouroHero)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M600 175 l26 44 -26 380 -26 -380z"/>
+    <path d="M600 219 v348"/>
+    <path d="M540 262 h120"/>
+    <path d="M600 262 v-40"/>
+    <circle cx="600" cy="205" r="16"/>
+    <path d="M566 300 c-40 26 -52 78 -18 112 30 30 84 22 108 -14 20 -30 12 -70 -18 -90"/>
+    <path d="M648 320 c34 44 30 104 -10 138"/>
+    <circle cx="645" cy="316" r="4" fill="url(#ouroHero)" stroke="none"/>
+    <path d="M520 520 c-60 34 -96 96 -96 168"/>
+    <path d="M680 520 c60 34 96 96 96 168"/>
+    <path d="M460 560 l-34 -18 M440 618 l-40 -6 M446 676 l-38 12"/>
+    <path d="M740 560 l34 -18 M760 618 l40 -6 M754 676 l38 12"/>
+  </g>
+  <g fill="#f4d78c">
+    <path d="M330 250 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z" opacity=".85"/>
+    <path d="M870 250 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z" opacity=".85"/>
+    <path d="M600 120 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="290" cy="520" r="4" opacity=".7"/>
+    <circle cx="910" cy="520" r="4" opacity=".7"/>
+    <circle cx="360" cy="700" r="3" opacity=".5"/>
+    <circle cx="840" cy="700" r="3" opacity=".5"/>
+  </g>
+  <text x="600" y="810" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" letter-spacing="14" fill="#d4a24e">AGULHA DE OURO</text>
+  <text x="600" y="852" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" letter-spacing="8" fill="#8f7443">S T U D I O &#183; S &#193; O &#193; P A U L O</text>
+</svg>
