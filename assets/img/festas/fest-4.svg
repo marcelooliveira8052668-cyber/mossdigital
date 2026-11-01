@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Ilustração de espelho de pista de dança com notas musicais">
+  <defs>
+    <radialGradient id="discoF4" cx="38%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="55%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </radialGradient>
+    <linearGradient id="pistaF4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#9d174d"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="18" fill="#150427"/>
+  <g stroke="#fbbf24" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M320 40 v40"/>
+    <circle cx="320" cy="165" r="88" fill="url(#discoF4)"/>
+    <path d="M232 165 h176 M320 77 v176 M258 103 q62 62 124 0 M258 227 q62 -62 124 0" stroke-width="3" opacity=".75"/>
+    <path d="M150 430 h340 l-30 -60 h-280z" fill="url(#pistaF4)"/>
+    <path d="M185 370 l-25 60 M265 370 l-12 60 M345 370 l12 60 M425 370 l25 60" stroke-width="3" opacity=".7"/>
+    <path d="M180 190 v-55 l40 -12 v55" stroke-width="6"/>
+    <circle cx="167" cy="192" r="14" fill="#fbbf24"/>
+    <circle cx="207" cy="178" r="14" fill="#fbbf24"/>
+    <path d="M445 235 v-60 l45 -13 v60" stroke-width="6"/>
+    <circle cx="431" cy="237" r="14" fill="#ec4899"/>
+    <circle cx="476" cy="222" r="14" fill="#ec4899"/>
+  </g>
+  <g fill="#fbbf24">
+    <path d="M120 95 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <path d="M525 110 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="105" cy="300" r="5" fill="#ec4899"/>
+    <circle cx="540" cy="315" r="5" fill="#ec4899"/>
+  </g>
+</svg>

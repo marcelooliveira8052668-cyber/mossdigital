@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Ilustração de celular com tela trincada e chave de fenda, símbolo da assistência técnica">
+  <defs>
+    <radialGradient id="bgTech" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#12283f"/>
+      <stop offset="55%" stop-color="#0d1b2c"/>
+      <stop offset="100%" stop-color="#070f19"/>
+    </radialGradient>
+    <linearGradient id="azulTech" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7dd3fc"/>
+      <stop offset="50%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgTech)"/>
+  <circle cx="600" cy="420" r="320" fill="none" stroke="#0ea5e9" stroke-opacity=".16" stroke-width="2"/>
+  <circle cx="600" cy="420" r="275" fill="none" stroke="#0ea5e9" stroke-opacity=".09" stroke-width="1" stroke-dasharray="4 10"/>
+  <g fill="none" stroke="url(#azulTech)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="480" y="180" width="240" height="460" rx="34"/>
+    <path d="M560 214 h80"/>
+    <path d="M540 330 l50 60 -30 40 60 70"/>
+    <path d="M650 300 l-40 55 35 45 -55 80"/>
+    <path d="M520 480 l45 -35 40 30 55 -50 45 40"/>
+    <path d="M780 240 l120 -80"/>
+    <path d="M892 152 l40 -26 22 34 -38 28z"/>
+    <path d="M780 240 l-24 -14 -14 24 26 14z"/>
+  </g>
+  <g fill="#7dd3fc">
+    <path d="M330 240 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z" opacity=".9"/>
+    <path d="M880 560 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z" opacity=".9"/>
+    <circle cx="300" cy="480" r="4" opacity=".7"/>
+    <circle cx="910" cy="380" r="4" opacity=".7"/>
+    <circle cx="380" cy="660" r="3" opacity=".5"/>
+    <circle cx="830" cy="680" r="3" opacity=".5"/>
+  </g>
+  <text x="600" y="790" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="700" font-size="54" letter-spacing="10" fill="#0ea5e9">PONTO CERTO</text>
+  <text x="600" y="836" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" letter-spacing="8" fill="#5b8bb0">A S S I S T &#202; N C I A   T &#201; C N I C A</text>
+</svg>

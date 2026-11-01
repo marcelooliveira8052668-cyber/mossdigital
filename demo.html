@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <script>
+    // Eu abro os layouts exclusivos preservando os links do catálogo.
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var id = params.get('preset');
+      if (id === 'mudancas') id = 'fretes';
+      if (params.get('painel') !== '1' && ['tatuagem', 'assistencia', 'fretes', 'festas', 'bar'].includes(id)) {
+        location.replace('demos/' + id + '/index.html' + location.search);
+      }
+    })();
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Painel de Demos — Template Profissional</title>
@@ -196,6 +208,10 @@
   <script src="assets/js/presets-2.js?v=fotos-20261027"></script>
   <script src="assets/js/presets-3.js?v=fotos-20261027"></script>
   <script src="assets/js/presets-4.js?v=tatuagem-20261101"></script>
+  <script src="assets/js/presets-5.js?v=assistencia-20261101"></script>
+  <script src="assets/js/presets-6.js?v=fretes-20261101"></script>
+  <script src="assets/js/presets-7.js?v=festas-20261101"></script>
+  <script src="assets/js/presets-8.js?v=bar-20261101"></script>
 
   <script>
     // Troca a configuracao ANTES do app.js montar o site

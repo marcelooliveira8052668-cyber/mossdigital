@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    PORTFÓLIO — Prof. Marcelo Oliveira
    Script leve: preenche os exemplos, liga o WhatsApp e anima na rolagem.
    ========================================================================== */
@@ -19,7 +19,7 @@
   };
 
   /* ------------------------------------------------------------------
-     MODELOS PRONTOS — 24 nichos do template, abrem no demo.html
+     MODELOS PRONTOS — 28 nichos do template, abrem no demo.html
      ------------------------------------------------------------------ */
   const version = 'fotos-20261027';
   const MODELOS = [
@@ -46,7 +46,11 @@
     { id: 'psicologo',    emoji: '🧠', foto: 'assets/img/fotos/psicologia-consulta.jpg', nome: 'Psicólogo',              desc: 'Terapia individual, casal e online' },
     { id: 'nutricionista', emoji: '🥗', foto: 'assets/img/fotos/nutricao-refeicao.jpg', nome: 'Nutricionista',          desc: 'Planos alimentares personalizados' },
     { id: 'arquiteto',    emoji: '📐', foto: 'assets/img/fotos/arquiteto-residencia.jpg', nome: 'Arquiteto',              desc: 'Projetos residenciais e comerciais' },
-    { id: 'tatuagem',     emoji: '🖋️', foto: 'assets/img/tatuagem/heroi-tatuagem.svg', nome: 'Studio de Tatuagem',    desc: 'Estilos, galeria e agendamento pelo WhatsApp' }
+    { id: 'tatuagem',     emoji: '🖋️', foto: 'assets/img/tatuagem/heroi-tatuagem.svg', nome: 'Studio de Tatuagem',    desc: 'Estilos, galeria e agendamento pelo WhatsApp' },
+    { id: 'assistencia',  emoji: '📱', foto: 'assets/img/assistencia/heroi-assistencia.svg', nome: 'Assistência de Celular', desc: 'Reparos, preços e orçamento com foto no WhatsApp' },
+    { id: 'fretes',     emoji: '🚚', foto: 'assets/img/fretes/heroi-fretes.svg', nome: 'Fretes e Transportes', desc: 'Fretes rápidos e logística para pessoas e empresas' },
+    { id: 'festas',       emoji: '🎉', foto: 'assets/img/festas/heroi-festas.svg', nome: 'Casa de Festas', desc: 'Salão decorado, buffet e reserva de data' },
+    { id: 'bar',          emoji: '🍸', foto: 'assets/img/bar/heroi-bar.svg', nome: 'Bar e Coquetelaria', desc: 'Drinks autorais, clássicos e música ao vivo' }
   ];
 
   /* ------------------------------------------------------------------

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Ilustração de buquê de balões coloridos">
+  <defs>
+    <linearGradient id="balaoF1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="balaoF2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="18" fill="#28084a"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="235" cy="165" rx="72" ry="88" fill="url(#balaoF1)" stroke="#fbbf24" stroke-width="5"/>
+    <path d="M235 253 q11 20 0 36 q-11 -16 0 -36" fill="#be185d"/>
+    <ellipse cx="395" cy="190" rx="64" ry="78" fill="url(#balaoF2)" stroke="#fbbf24" stroke-width="5"/>
+    <path d="M395 268 q10 18 0 33 q-10 -15 0 -33" fill="#f59e0b"/>
+    <ellipse cx="320" cy="120" rx="58" ry="70" fill="#8b5cf6" stroke="#fbbf24" stroke-width="5"/>
+    <path d="M320 190 q9 17 0 31 q-9 -14 0 -31" fill="#8b5cf6"/>
+    <path d="M235 289 q40 80 -6 165 M395 301 q-36 76 4 153 M320 221 q16 110 2 233" stroke="#fbbf24" stroke-width="4"/>
+    <path d="M295 440 q30 -22 56 0" stroke="#ec4899" stroke-width="5"/>
+  </g>
+  <g fill="#fbbf24">
+    <path d="M120 110 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <path d="M525 130 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="140" cy="300" r="5" fill="#ec4899"/>
+    <circle cx="510" cy="320" r="5" fill="#ec4899"/>
+    <circle cx="95" cy="215" r="4"/>
+    <circle cx="545" cy="230" r="4"/>
+  </g>
+</svg>

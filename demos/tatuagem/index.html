@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<!-- Eu declaro o tipo de documento como HTML5, a linguagem padrão da web. -->
+<html lang="pt-BR">
+<!-- Eu abro a raiz do site e informo que o idioma é o português do Brasil. -->
+<head>
+<!-- Eu abro a área das configurações, que o visitante não vê na tela. -->
+<meta charset="UTF-8">
+<!-- Eu defino a codificação UTF-8 para os acentos e caracteres especiais aparecerem certo. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Eu faço o site se adaptar à tela do celular, tablet e computador. -->
+<meta name="description" content="Studio de tatuagem autoral em São Paulo: fine line, blackwork e ornamental. Galeria, valores e agendamento pelo WhatsApp.">
+<!-- Eu escrevo a descrição que aparece nos resultados do Google para atrair o cliente certo. -->
+<meta name="robots" content="noindex, follow">
+<!-- Eu evito que a demonstração fictícia dispute buscas com o site principal da MOSS. -->
+<meta property="og:title" content="Agulha de Ouro — Studio de Tatuagem em São Paulo">
+<!-- Eu preparo o título que aparece quando alguém compartilha o link no WhatsApp. -->
+<meta property="og:description" content="Tatuagem autoral com projeto sob medida, material descartável e agenda aberta.">
+<!-- Eu preparo a descrição da prévia no WhatsApp e nas redes sociais. -->
+<meta property="og:type" content="website">
+<!-- Eu informo aos social networks que esta página é um site. -->
+<title>Agulha de Ouro — Studio de Tatuagem em São Paulo</title>
+<!-- Eu escrevo o título que aparece na aba do navegador e no Google. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312100e'/%3E%3Cg fill='none' stroke='%23d4a24e' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M32 10 v30'/%3E%3Cpath d='M23 22 h18'/%3E%3Cpath d='M32 40 l-6 12 6 4 6 -4z'/%3E%3C/g%3E%3C/svg%3E">
+<!-- Eu colo o ícone da agulha direto no HTML para a pasta funcionar sozinha, sem arquivo extra. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- Eu aviso o navegador que vou buscar fontes no Google Fonts, acelerando o download. -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Eu aviso que os arquivos das fontes vêm de outro domínio. -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Eu carrego as duas fontes do site: serifa elegante para títulos e sans para textos. -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TattooParlor","name":"Agulha de Ouro — Studio de Tatuagem","description":"Tatuagem autoral em fine line, blackwork e ornamental, com projeto sob medida e material descartável.","telephone":"+5511942038103","address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"priceRange":"A partir de R$ 250"}</script>
+<!-- Eu mantenho os dados estruturados válidos, sem comentários dentro do JSON. -->
+<style>
+/* Eu abro a área do visual de tudo que aparece na página. */
+:root {
+  /* Eu declaro as variáveis de cor, que uso em todos os outros estilos. */
+  --fundo: #0c0a08;
+  /* Eu escolho o preto quente do fundo do site. */
+  --fundo-2: #16120d;
+  /* Eu escolho um preto levemente mais claro para as seções alternadas. */
+  --ouro: #d4a24e;
+  /* Eu escolho o dourado como cor principal da marca. */
+  --ouro-claro: #f4d78c;
+  /* Eu escolho um dourado claro para destaques e brilhos. */
+  --texto: #e9e2d6;
+  /* Eu escolho um off-white quente para o texto não cansar a vista no fundo escuro. */
+  --texto-suave: #a99f8d;
+  /* Eu escolho um tom apagado para textos de apoio. */
+  --linha: #2a2318;
+  /* Eu escolho a cor das linhas divisórias. */
+  --fonte-titulo: 'Cormorant Garamond', Georgia, serif;
+  /* Eu defino a fonte de serifa dos títulos. */
+  --fonte-texto: 'Inter', system-ui, sans-serif;
+  /* Eu defino a fonte limpa dos textos corridos. */
+}
+* { box-sizing: border-box; }
+/* Eu faço a margem interna de cada elemento ser calculada dentro da largura dele. */
+body {
+  /* Eu aplico o estilo base do corpo da página. */
+  margin: 0;
+  /* Eu zero a margem padrão que o navegador dá para o body. */
+  background: var(--fundo);
+  /* Eu pinto o fundo de preto quente. */
+  color: var(--texto);
+  /* Eu deixo o texto na cor off-white quente. */
+  font: 400 16px/1.65 var(--fonte-texto);
+  /* Eu defino tamanho, altura de linha e fonte do texto de uma vez. */
+  -webkit-font-smoothing: antialiased;
+  /* Eu deixo as letras mais lisas no Mac e no iPhone. */
+}
+img, svg { max-width: 100%; display: block; }
+/* Eu faço imagens e SVGs nunca ultrapassarem a tela e começarem em nova linha. */
+a { color: inherit; }
+/* Eu faço os links herdarem a cor do texto ao redor. */
+h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 600; line-height: 1.12; margin: 0; }
+/* Eu aplico a fonte de serifa, peso e espaçamento em todos os títulos. */
+section { padding: 88px 22px; }
+/* Eu dou respiro vertical generoso em cada seção da página. */
+.envoltorio { max-width: 1120px; margin: 0 auto; }
+/* Eu centralizo o conteúdo numa largura máxima para não esticar demais no monitor grande. */
+.topo {
+  /* Eu estilizo o cabeçalho fixo no topo. */
+  position: sticky;
+  /* Eu prendo o cabeçalho para ele ficar sempre visível durante a rolagem. */
+  top: 0;
+  /* Eu alinho o cabeçalho colado na borda superior da tela. */
+  z-index: 50;
+  /* Eu dou prioridade de camada para o menu ficar por cima do conteúdo. */
+  background: rgba(12, 10, 8, .88);
+  /* Eu pinto o fundo do topo quase opaco, deixando ver um pedacinho do conteúdo atrás. */
+  backdrop-filter: blur(10px);
+  /* Eu aplico o efeito de desfoque no fundo do topo. */
+  border-bottom: 1px solid var(--linha);
+  /* Eu desenho a fina linha dourada escura embaixo do cabeçalho. */
+}
+.topo__interno {
+  /* Eu estilizo a área interna do cabeçalho. */
+  max-width: 1120px;
+  /* Eu limito a largura igual ao resto do conteúdo. */
+  margin: 0 auto;
+  /* Eu centralizo o cabeçalho na tela. */
+  padding: 14px 22px;
+  /* Eu afasto o conteúdo das laterais. */
+  display: flex;
+  /* Eu uso flexbox para alinhar marca, menu e botão lado a lado. */
+  align-items: center;
+  /* Eu centralizo os itens verticalmente. */
+  justify-content: space-between;
+  /* Eu empurro a marca para a esquerda e o botão para a direita. */
+  gap: 18px;
+  /* Eu dou um espaço mínimo entre os itens do topo. */
+}
+.marca {
+  /* Eu estilizo a marca do studio no cabeçalho. */
+  display: flex;
+  /* Eu uso flexbox para juntar o ícone e o nome lado a lado. */
+  align-items: center;
+  /* Eu alinho ícone e texto no meio. */
+  gap: 10px;
+  /* Eu separo ícone e nome por dez pixels. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado do link da marca. */
+}
+.marca__icone {
+  /* Eu estilizo o círculo do ícone da agulha. */
+  width: 38px;
+  /* Eu defino a largura do ícone. */
+  height: 38px;
+  /* Eu defino a altura do ícone, fazendo o círculo. */
+  border: 1px solid var(--ouro);
+  /* Eu desenho a borda dourada em volta do ícone. */
+  border-radius: 50%;
+  /* Eu arredondo a borda até virar círculo. */
+  display: grid;
+  /* Eu uso grade interna para centralizar o desenho da agulha. */
+  place-items: center;
+  /* Eu centralizo o desenho vertical e horizontalmente. */
+  color: var(--ouro);
+  /* Eu pinto a agulha de dourado. */
+}
+.marca__nome {
+  /* Eu estilizo o nome do studio escrito ao lado do ícone. */
+  font-family: var(--fonte-titulo);
+  /* Eu uso a serifa elegante no nome. */
+  font-size: 1.3rem;
+  /* Eu defino um tamanho grande e marcante para o nome. */
+  letter-spacing: .04em;
+  /* Eu abro levemente as letras do nome. */
+  color: var(--ouro-claro);
+  /* Eu pinto o nome de dourado claro. */
+}
+.menu {
+  /* Eu estilizo a lista de links do menu. */
+  display: flex;
+  /* Eu alinho os links lado a lado. */
+  gap: 26px;
+  /* Eu separo cada link do menu. */
+  list-style: none;
+  /* Eu tiro os marcadores de lista. */
+  margin: 0;
+  /* Eu zero a margem da lista. */
+  padding: 0;
+  /* Eu zero o preenchimento da lista. */
+}
+.menu a {
+  /* Eu estilizo cada link do menu. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado dos links. */
+  font-size: .92rem;
+  /* Eu deixo o menu um pouco menor que o texto normal. */
+  color: var(--texto);
+  /* Eu pinto o link na cor do texto. */
+}
+.menu a:hover { color: var(--ouro); }
+/* Eu mudo a cor do link para dourado quando o mouse passa por cima. */
+.botao {
+  /* Eu estilizo o botão principal que leva ao WhatsApp. */
+  display: inline-block;
+  /* Eu faço o botão seguir o tamanho do texto, mas aceitar margem em volta. */
+  padding: 12px 22px;
+  /* Eu dou conforto interno ao botão. */
+  border-radius: 999px;
+  /* Eu arredondo o botão inteiro, deixando com formato de pílula. */
+  background: linear-gradient(135deg, var(--ouro-claro), var(--ouro));
+  /* Eu pinto o botão com um gradiente dourado. */
+  color: #171208;
+  /* Eu deixo o texto do botão escuro para o contraste ficar bom no dourado. */
+  font-weight: 600;
+  /* Eu engrosso a letra do botão. */
+  font-size: .95rem;
+  /* Eu defino o tamanho da letra do botão. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado do botão. */
+  transition: transform .2s ease, box-shadow .2s ease;
+  /* Eu preparo uma transição suave para a animação do hover. */
+}
+.botao:hover {
+  /* Eu defino o que acontece quando o mouse passa por cima do botão. */
+  transform: translateY(-2px);
+  /* Eu faço o botão subir dois pixels, dando sensação de profundidade. */
+  box-shadow: 0 10px 26px rgba(212, 162, 78, .35);
+  /* Eu adiciono uma sombra dourada embaixo do botão. */
+}
+.botao--fantasma {
+  /* Eu crio uma versão vazada do botão, só com borda. */
+  background: transparent;
+  /* Eu tiro o preenchimento. */
+  border: 1px solid var(--ouro);
+  /* Eu desenho a borda dourada. */
+  color: var(--ouro-claro);
+  /* Eu pinto o texto de dourado claro. */
+}
+.aparador {
+  /* Eu estilizo a etiqueta pequena que aparece acima dos títulos. */
+  display: inline-block;
+  /* Eu deixo a etiqueta seguir o tamanho do texto. */
+  font-size: .78rem;
+  /* Eu escrevo bem pequeno para não competir com o título. */
+  letter-spacing: .22em;
+  /* Eu abro muito as letras, dando ar de luxo. */
+  text-transform: uppercase;
+  /* Eu deixo tudo em caixa alta. */
+  color: var(--ouro);
+  /* Eu pinto a etiqueta de dourado. */
+  border: 1px solid var(--linha);
+  /* Eu desenho uma borda discreta em volta. */
+  border-radius: 999px;
+  /* Eu arredondo a borda da etiqueta. */
+  padding: 7px 16px;
+  /* Eu dou espaço interno à etiqueta. */
+  margin-bottom: 22px;
+  /* Eu afasto a etiqueta do título de baixo. */
+}
+.capa {
+  /* Eu estilizo a primeira dobra do site. */
+  min-height: 92vh;
+  /* Eu faço a capa ocupar praticamente a tela inteira. */
+  display: grid;
+  /* Eu uso grade para dividir a capa em texto e arte. */
+  place-items: center;
+  /* Eu centralizo o conteúdo da capa. */
+  text-align: center;
+  /* Eu centralizo o texto da capa. */
+  background:
+  /* Eu monto o fundo da capa em camadas. */
+  radial-gradient(60% 50% at 50% 0%, rgba(212,162,78,.14), transparent 70%),
+  /* Eu adiciono um brilho dourado descendo do topo. */
+  var(--fundo);
+  /* Eu finalizo com o preto do fundo. */
+}
+.capa h1 {
+  /* Eu estilizo o título gigante da capa. */
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  /* Eu faço o título crescer conforme a tela, sem estourar no celular. */
+  max-width: 820px;
+  /* Eu limito a largura do título para o texto não ficar longo demais. */
+  margin: 0 auto 18px;
+  /* Eu centralizo e afasto o título do texto abaixo. */
+  color: var(--texto);
+  /* Eu pinto o título na cor do texto. */
+}
+.capa h1 em {
+  /* Eu destaco a parte em itálico do título. */
+  color: var(--ouro-claro);
+  /* Eu pinto o destaque de dourado claro. */
+  font-style: italic;
+  /* Eu inclino a letra para o estilo manuscrito. */
+}
+.capa__sub {
+  /* Eu estilizo o texto abaixo do título da capa. */
+  max-width: 620px;
+  /* Eu limito a linha para facilitar a leitura. */
+  margin: 0 auto 30px;
+  /* Eu centralizo e afasto do botão. */
+  color: var(--texto-suave);
+  /* Eu uso a cor suave para o texto de apoio. */
+}
+.capa__acoes {
+  /* Eu estilizo a área dos dois botões da capa. */
+  display: flex;
+  /* Eu alinho os botões lado a lado. */
+  gap: 14px;
+  /* Eu separo os botões. */
+  justify-content: center;
+  /* Eu centralizo os botões na tela. */
+  flex-wrap: wrap;
+  /* Eu quebro os botões em linha nova quando a tela é pequena. */
+}
+.fita {
+  /* Eu estilizo a fita de estilos que passa sob a capa. */
+  border-block: 1px solid var(--linha);
+  /* Eu desenho linhas em cima e embaixo da fita. */
+  background: var(--fundo-2);
+  /* Eu pinto o fundo da fita de preto levemente mais claro. */
+  overflow: hidden;
+  /* Eu escondo o que passar da borda da fita. */
+  padding: 0;
+  /* Eu tiro o respiro vertical da fita, ela fica fina. */
+}
+.fita__trilho {
+  /* Eu estilizo a trilha que desliza dentro da fita. */
+  display: flex;
+  /* Eu alinho os termos lado a lado. */
+  gap: 44px;
+  /* Eu separo cada termo da fita. */
+  padding: 15px 0;
+  /* Eu dou altura confortável à fita. */
+  white-space: nowrap;
+  /* Eu proíbo os termos de quebrar linha. */
+  animation: desliza 26s linear infinite;
+  /* Eu aplico a animação contínua de deslize. */
+  width: max-content;
+  /* Eu faço a trilha ter a largura do conteúdo, necessária para o deslizar. */
+  color: var(--ouro);
+  /* Eu pinto os termos de dourado. */
+  letter-spacing: .18em;
+  /* Eu abro as letras dos termos. */
+  text-transform: uppercase;
+  /* Eu deixo os termos em caixa alta. */
+  font-size: .82rem;
+  /* Eu deixo os termos pequenos e discretos. */
+}
+@keyframes desliza {
+  /* Eu defino os quadros da animação da fita. */
+  from { transform: translateX(0); }
+  /* Eu começo a trilha na posição zero. */
+  to { transform: translateX(-50%); }
+  /* Eu termino com a trilha deslizada metade da largura, dando efeito de loop perfeito. */
+}
+.titulos { text-align: center; max-width: 640px; margin: 0 auto 54px; }
+/* Eu centralizo a área de títulos de cada seção e afasto dos cards. */
+.titulos h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); }
+/* Eu dimensiono os títulos das seções, crescentes conforme a tela. */
+.titulos p { color: var(--texto-suave); margin: 14px 0 0; }
+/* Eu pinto o texto de apoio dos títulos e afasto um pouco. */
+.estilos {
+  /* Eu estilizo a lista numerada dos estilos de tatuagem. */
+  display: grid;
+  /* Eu uso grade para organizar os itens. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  /* Eu faço a grade ter de uma a duas colunas conforme a tela. */
+  gap: 1px;
+  /* Eu separo os itens por um pixel, criando efeito de grade com linhas. */
+  background: var(--linha);
+  /* Eu pinto o fundo da grade para as linhas aparecerem entre os itens. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda externa da grade. */
+  border-radius: 18px;
+  /* Eu arredondo os cantos da grade. */
+  overflow: hidden;
+  /* Eu corto o que passar dos cantos arredondados. */
+}
+.estilo {
+  /* Eu estilizo cada cartão de estilo. */
+  background: var(--fundo);
+  /* Eu pinto o fundo do cartão de preto. */
+  padding: 30px 26px;
+  /* Eu dou respiro interno ao cartão. */
+  transition: background .25s ease;
+  /* Eu preparo uma transição suave na troca de cor. */
+}
+.estilo:hover { background: var(--fundo-2); }
+/* Eu clareio levemente o cartão quando o mouse passa por cima. */
+.estilo__num {
+  /* Eu estilizo o número grande de cada estilo. */
+  font-family: var(--fonte-titulo);
+  /* Eu uso a serifa no número para combinar com os títulos. */
+  font-size: 2.1rem;
+  /* Eu deixo o número grande. */
+  color: var(--ouro);
+  /* Eu pinto o número de dourado. */
+  display: block;
+  /* Eu faço o número ocupar a linha inteira. */
+  margin-bottom: 12px;
+  /* Eu afasto o número do título. */
+}
+.estilo h3 { margin-bottom: 8px; font-size: 1.35rem; }
+/* Eu separo o título do texto e dimensiono o título do estilo. */
+.estilo p { color: var(--texto-suave); font-size: .94rem; margin: 0 0 14px; }
+/* Eu escrevo a descrição do estilo em cor suave, encostando no preço. */
+.estilo__preco {
+  /* Eu estilizo a etiqueta de preço do estilo. */
+  color: var(--ouro-claro);
+  /* Eu pinto o preço de dourado claro para ele saltar aos olhos. */
+  font-weight: 600;
+  /* Eu engrosso o preço. */
+  letter-spacing: .03em;
+  /* Eu abro levemente as letras do preço. */
+}
+.galeria {
+  /* Eu estilizo a grade da galeria de trabalhos. */
+  display: grid;
+  /* Eu uso grade para as artes. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  /* Eu faço a galeria ter de duas a quatro colunas conforme a tela. */
+  gap: 16px;
+  /* Eu separo as artes por dezesseis pixels. */
+}
+.arte {
+  /* Eu estilizo cada quadrado da galeria. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda dourada escura em volta da arte. */
+  border-radius: 16px;
+  /* Eu arredondo os cantos da arte. */
+  overflow: hidden;
+  /* Eu corto o que passar do canto arredondado. */
+  background: var(--fundo-2);
+  /* Eu pinto o fundo do quadro. */
+  position: relative;
+  /* Eu preparo o quadro para receber elementos posicionados dentro. */
+}
+.arte svg {
+  /* Eu estilizo o SVG dentro do quadro. */
+  width: 100%;
+  /* Eu faço o desenho ocupar a largura do quadro. */
+  height: auto;
+  /* Eu deixo a altura acompanhar o desenho. */
+  transition: transform .4s ease;
+  /* Eu preparo a animação de aproximação da arte. */
+}
+.arte:hover svg { transform: scale(1.05); }
+/* Eu amplio a arte cinco por cento quando o mouse passa por cima. */
+.sobre__grade {
+  /* Eu estilizo a área da história do studio. */
+  display: grid;
+  /* Eu uso grade para dividir arte e texto. */
+  grid-template-columns: 1fr 1fr;
+  /* Eu divido a seção em duas colunas iguais. */
+  gap: 48px;
+  /* Eu separo a arte do texto por quarenta e oito pixels. */
+  align-items: center;
+  /* Eu centralizo os dois lados verticalmente. */
+}
+.sobre__texto p { color: var(--texto-suave); }
+/* Eu pinto o texto da história em cor suave. */
+.numeros {
+  /* Eu estilizo a linha de números de destaque. */
+  display: flex;
+  /* Eu alixo os números lado a lado. */
+  gap: 34px;
+  /* Eu separo cada número. */
+  margin-top: 26px;
+  /* Eu afasto os números do texto. */
+  flex-wrap: wrap;
+  /* Eu quebro os números em nova linha no celular. */
+}
+.numeros strong {
+  /* Eu estilizo o número grande. */
+  display: block;
+  /* Eu faço o número ocupar a linha inteira. */
+  font-family: var(--fonte-titulo);
+  /* Eu uso a serifa no número. */
+  font-size: 2rem;
+  /* Eu deixo o número grande. */
+  color: var(--ouro-claro);
+  /* Eu pinto o número de dourado claro. */
+}
+.numeros span { color: var(--texto-suave); font-size: .85rem; }
+/* Eu escrevo a legenda dos números em cor suave e pequena. */
+.depoimentos {
+  /* Eu estilizo a área dos depoimentos dos clientes. */
+  display: grid;
+  /* Eu uso grade para os três depoimentos. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  /* Eu faço a grade ter de uma a três colunas conforme a tela. */
+  gap: 16px;
+  /* Eu separo os depoimentos. */
+}
+.fala {
+  /* Eu estilizo cada cartão de depoimento. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda do cartão. */
+  border-radius: 16px;
+  /* Eu arredondo os cantos do cartão. */
+  padding: 26px;
+  /* Eu dou respiro interno ao cartão. */
+  background: var(--fundo-2);
+  /* Eu pinto o fundo do cartão de preto mais claro. */
+}
+.fala blockquote { margin: 0 0 14px; font-style: italic; }
+/* Eu zero a margem padrão da citação e inclino o texto. */
+.fala footer { color: var(--ouro); font-size: .88rem; font-weight: 600; }
+/* Eu assino o depoimento com o nome do cliente em dourado. */
+.duvidas details {
+  /* Eu estilizo cada pergunta da lista de dúvidas. */
+  border-bottom: 1px solid var(--linha);
+  /* Eu desenho a linha divisória embaixo de cada pergunta. */
+  padding: 18px 0;
+  /* Eu dou respiro vertical à pergunta. */
+}
+.duvidas summary {
+  /* Eu estilizo o título clicável de cada pergunta. */
+  cursor: pointer;
+  /* Eu mostro a mãozinha do mouse ao passar por cima. */
+  font-family: var(--fonte-titulo);
+  /* Eu uso a serifa na pergunta. */
+  font-size: 1.2rem;
+  /* Eu dimensiono a pergunta. */
+  color: var(--texto);
+  /* Eu pinto a pergunta na cor do texto. */
+}
+.duvidas p { color: var(--texto-suave); margin-bottom: 0; }
+/* Eu pinto a resposta em cor suave e encosto no fim do bloco. */
+.contato__grade {
+  /* Eu estilizo a área final de contato. */
+  display: grid;
+  /* Eu uso grade para informações e formulário. */
+  grid-template-columns: 1fr 1fr;
+  /* Eu divido em duas colunas iguais. */
+  gap: 48px;
+  /* Eu separo as colunas. */
+  align-items: start;
+  /* Eu alinho os blocos no topo. */
+}
+.lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+/* Eu monto a lista de contatos sem marcadores, com espaçamento entre itens. */
+.lista li { display: flex; gap: 12px; align-items: baseline; }
+/* Eu alinho ícone e texto de cada contato lado a lado. */
+.lista strong { color: var(--ouro); min-width: 92px; font-weight: 600; }
+/* Eu destaco o nome do campo de contato em dourado. */
+.formulario {
+  /* Eu estilizo o cartão do formulário de agendamento. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda do cartão. */
+  border-radius: 18px;
+  /* Eu arredondo os cantos. */
+  padding: 28px;
+  /* Eu dou respiro interno ao cartão. */
+  background: var(--fundo-2);
+  /* Eu pinto o fundo do cartão. */
+  display: grid;
+  /* Eu uso grade para empilhar os campos. */
+  gap: 14px;
+  /* Eu separo os campos por quatorze pixels. */
+}
+.formulario label { display: grid; gap: 6px; font-size: .88rem; color: var(--texto-suave); }
+/* Eu organizo cada campo com legenda em cima e caixa embaixo. */
+.formulario input, .formulario select, .formulario textarea {
+  /* Eu estilizo todas as caixas de preenchimento. */
+  font: inherit;
+  /* Eu faço as caixas herdarem a fonte do site. */
+  padding: 12px 14px;
+  /* Eu dou conforto interno às caixas. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda das caixas. */
+  border-radius: 10px;
+  /* Eu arredondo as caixas. */
+  background: var(--fundo);
+  /* Eu pinto o fundo das caixas de preto. */
+  color: var(--texto);
+  /* Eu pinto o texto digitado na cor clara. */
+}
+.formulario input:focus-visible, .formulario select:focus-visible, .formulario textarea:focus-visible {
+  /* Eu defino o destaque quando o campo recebe o foco do teclado. */
+  outline: 2px solid var(--ouro);
+  /* Eu desenho um contorno dourado em volta do campo em foco. */
+  outline-offset: 1px;
+  /* Eu afasto levemente o contorno do campo. */
+}
+.rodape {
+  /* Eu estilizo o rodapé do site. */
+  border-top: 1px solid var(--linha);
+  /* Eu desenho a linha divisória no topo do rodapé. */
+  padding: 40px 22px;
+  /* Eu dou respiro interno ao rodapé. */
+  text-align: center;
+  /* Eu centralizo o texto do rodapé. */
+  color: var(--texto-suave);
+  /* Eu uso a cor suave no rodapé. */
+  font-size: .9rem;
+  /* Eu deixo o rodapé em letra menor. */
+}
+.rodape strong { color: var(--ouro); }
+/* Eu destaco o nome da marca no rodapé em dourado. */
+.aviso {
+  /* Eu estilizo a tarja de aviso de que a demo é ilustrativa. */
+  background: var(--fundo-2);
+  /* Eu pinto o fundo da tarja. */
+  border-bottom: 1px solid var(--linha);
+  /* Eu desenho a linha embaixo da tarja. */
+  text-align: center;
+  /* Eu centralizo o aviso. */
+  padding: 10px 22px;
+  /* Eu dou altura à tarja. */
+  font-size: .82rem;
+  /* Eu escrevo o aviso em letra pequena. */
+  color: var(--texto-suave);
+  /* Eu pinto o aviso de cor suave. */
+}
+.revela {
+  /* Eu preparo o estado inicial dos elementos que aparecem na rolagem. */
+  opacity: 0;
+  /* Eu deixo o elemento invisível antes de aparecer. */
+  transform: translateY(22px);
+  /* Eu desloco o elemento para baixo antes de aparecer. */
+  transition: opacity .7s ease, transform .7s ease;
+  /* Eu defino a transição suave de aparição. */
+}
+.revela.visivel { opacity: 1; transform: none; }
+/* Eu mostro o elemento e devolvo à posição original quando ele entra na tela. */
+@media (max-width: 860px) {
+  /* Eu crio as regras especiais para telas de celular. */
+  .sobre__grade, .contato__grade { grid-template-columns: 1fr; }
+  /* Eu empilho as colunas em uma só no celular. */
+  .menu {
+    /* Eu escondo o menu horizontal no celular. */
+    display: none;
+    /* Eu removê-lo do fluxo para abrir espaço. */
+    position: absolute;
+    /* Eu preparo o menu suspenso para quando abrir. */
+    top: 100%;
+    /* Eu o posiciono logo abaixo do cabeçalho. */
+    right: 0;
+    /* Eu encosto no lado direito da tela. */
+    left: 0;
+    /* Eu faço ele esticar até a esquerda também. */
+    background: var(--fundo-2);
+    /* Eu pinto o fundo do menu suspenso. */
+    flex-direction: column;
+    /* Eu empilho os links na vertical. */
+    padding: 18px 22px;
+    /* Eu dou respiro interno ao menu suspenso. */
+    border-bottom: 1px solid var(--linha);
+    /* Eu desenho a linha embaixo do menu suspenso. */
+  }
+  .menu.aberto { display: flex; }
+  /* Eu mostro o menu em coluna quando ele está aberto. */
+  .topo__interno { position: relative; }
+  /* Eu preparo o cabeçalho como referência de posição para o menu suspenso. */
+  .botao-topo { display: none; }
+  /* Eu escondo o botão do topo no celular, o da capa já basta. */
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Eu atendo quem prefere menos animação no sistema. */
+  * { animation: none !important; transition: none !important; }
+  /* Eu desligo todas as animações e transições para essa pessoa. */
+  .revela { opacity: 1; transform: none; }
+  /* Eu deixo o conteúdo já visível sem depender de animação. */
+}
+</style>
+<!-- Eu fecho a área de estilos. -->
+</head>
+<!-- Eu fecho a área de configurações. -->
+<body>
+<!-- Eu abro o corpo da página, o que aparece na tela. -->
+<div class="aviso">
+  <!-- Eu crio a tarja de aviso no topo da página. -->
+  DEMO ILUSTRATIVA — textos, preços, fotos e depoimentos são exemplos. O contato leva à MOSS Digital.
+  <!-- Eu aviso que tudo aqui é exemplo e o botão leva ao meu contato. -->
+</div>
+<!-- Eu fecho a tarja de aviso. -->
+<header class="topo">
+  <!-- Eu crio o cabeçalho fixo do site. -->
+  <div class="topo__interno">
+    <!-- Eu abro a área interna do cabeçalho. -->
+    <a class="marca" href="#inicio">
+      <!-- Eu faço a marca ser um link que volta para o topo. -->
+      <span class="marca__icone" aria-hidden="true">
+        <!-- Eu crio o círculo do ícone, escondido dos leitores de tela. -->
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <!-- Eu desenho a agulha com três traços. -->
+          <path d="M12 3 v14"/>
+          <!-- Eu desenho o corpo vertical da agulha. -->
+          <path d="M8 8 h8"/>
+          <!-- Eu desenho a haste horizontal da agulha. -->
+          <path d="M12 17 l-3 4 3 1 3 -1z"/>
+          <!-- Eu desenho a ponta da agulha. -->
+        </svg>
+      </span>
+      <!-- Eu fecho o ícone. -->
+      <span class="marca__nome">Agulha de Ouro</span>
+      <!-- Eu escrevo o nome do studio ao lado do ícone. -->
+    </a>
+    <!-- Eu fecho o link da marca. -->
+    <nav aria-label="Menu principal">
+      <!-- Eu abro a área de navegação, marcada para leitores de tela. -->
+      <ul class="menu" id="menu">
+        <!-- Eu abro a lista de links do menu. -->
+        <li><a href="#estilos">Estilos</a></li>
+        <!-- Eu adiciono o link para a seção de estilos. -->
+        <li><a href="#galeria">Galeria</a></li>
+        <!-- Eu adiciono o link para a galeria. -->
+        <li><a href="#sobre">O studio</a></li>
+        <!-- Eu adiciono o link para a história do studio. -->
+        <li><a href="#contato">Agendar</a></li>
+        <!-- Eu adiciono o link para a área de agendamento. -->
+      </ul>
+      <!-- Eu fecho a lista do menu. -->
+    </nav>
+    <!-- Eu fecho a navegação. -->
+    <a class="botao botao-topo" href="#contato">Agendar sessão</a>
+    <!-- Eu adiciono o botão de agendamento no cabeçalho. -->
+  </div>
+  <!-- Eu fecho a área interna do cabeçalho. -->
+</header>
+<!-- Eu fecho o cabeçalho. -->
+<main>
+<!-- Eu abro o conteúdo principal da página. -->
+<section class="capa" id="inicio">
+  <!-- Eu crio a primeira dobra do site, o que o cliente vê primeiro. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo da capa. -->
+    <span class="aparador">Studio de tatuagem autoral · São Paulo</span>
+    <!-- Eu escrevo a etiqueta que identifica o studio. -->
+    <h1>A sua tatuagem começa com uma <em>boa conversa</em></h1>
+    <!-- Eu escrevo o título principal, com destaque em itálico dourado. -->
+    <p class="capa__sub">
+      <!-- Eu abro o texto de apoio da capa. -->
+      Traço autoral em fine line, blackwork e ornamental. Você descreve a ideia, eu desenho na medida do seu corpo — e só tatuamos quando você amar o projeto.
+      <!-- Eu explico a proposta do studio com as palavras que o cliente sente. -->
+    </p>
+    <!-- Eu fecho o texto de apoio. -->
+    <div class="capa__acoes">
+      <!-- Eu abro a área dos botões da capa. -->
+      <a class="botao" href="#contato">Agendar pelo WhatsApp</a>
+      <!-- Eu crio o botão principal que leva ao agendamento. -->
+      <a class="botao botao--fantasma" href="#galeria">Ver a galeria</a>
+      <!-- Eu crio o botão secundário que leva à galeria. -->
+    </div>
+    <!-- Eu fecho a área dos botões. -->
+  </div>
+  <!-- Eu fecho o conteúdo da capa. -->
+</section>
+<!-- Eu fecho a seção da capa. -->
+<section class="fita" aria-hidden="true">
+  <!-- Eu crio a fita de estilos, decorativa, escondida dos leitores de tela. -->
+  <div class="fita__trilho">
+    <!-- Eu abro a trilha que desliza. -->
+    <span>Fine line ◆ Blackwork ◆ Ornamental ◆ Flash autoral ◆ Minimalista ◆ Realismo ◆ Pontilhismo ◆</span>
+    <!-- Eu escrevo os estilos separados por losangos. -->
+    <span>Fine line ◆ Blackwork ◆ Ornamental ◆ Flash autoral ◆ Minimalista ◆ Realismo ◆ Pontilhismo ◆</span>
+    <!-- Eu repito a lista para o deslize voltar ao início sem buraco. -->
+  </div>
+  <!-- Eu fecho a trilha. -->
+</section>
+<!-- Eu fecho a fita. -->
+<section id="estilos">
+  <!-- Eu crio a seção dos estilos com preços. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título, que revela na rolagem. -->
+      <span class="aparador">Estilos e valores</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Escolha o seu estilo</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>Valores de referência por peça. O fechamento sai do orçamento, considerando tamanho, local do corpo e tempo de sessão.</p>
+      <!-- Eu explico que os preços são pontos de partida. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="estilos">
+      <!-- Eu abro a grade dos estilos. -->
+      <article class="estilo revela">
+        <!-- Eu crio o cartão do primeiro estilo. -->
+        <span class="estilo__num">01</span>
+        <!-- Eu escrevo o número do estilo. -->
+        <h3>Fine line</h3>
+        <!-- Eu escrevo o nome do estilo. -->
+        <p>Traço fino e delicado, linhas limpas e mínimas. Ótimo para flores, símbolos e letras.</p>
+        <!-- Eu descrevo o estilo para o cliente se identificar. -->
+        <span class="estilo__preco">A partir de R$ 250</span>
+        <!-- Eu mostro o preço inicial do estilo. -->
+      </article>
+      <!-- Eu fecho o cartão do primeiro estilo. -->
+      <article class="estilo revela">
+        <!-- Eu crio o cartão do segundo estilo. -->
+        <span class="estilo__num">02</span>
+        <!-- Eu escrevo o número do estilo. -->
+        <h3>Blackwork</h3>
+        <!-- Eu escrevo o nome do estilo. -->
+        <p>Preenchimento sólido em preto, contraste forte e presença na pele.</p>
+        <!-- Eu descrevo o estilo. -->
+        <span class="estilo__preco">A partir de R$ 350</span>
+        <!-- Eu mostro o preço inicial. -->
+      </article>
+      <!-- Eu fecho o cartão do segundo estilo. -->
+      <article class="estilo revela">
+        <!-- Eu crio o cartão do terceiro estilo. -->
+        <span class="estilo__num">03</span>
+        <!-- Eu escrevo o número do estilo. -->
+        <h3>Ornamental</h3>
+        <!-- Eu escrevo o nome do estilo. -->
+        <p>Composições com mandalas e detalhes que acompanham o formato do corpo.</p>
+        <!-- Eu descrevo o estilo. -->
+        <span class="estilo__preco">A partir de R$ 400</span>
+        <!-- Eu mostro o preço inicial. -->
+      </article>
+      <!-- Eu fecho o cartão do terceiro estilo. -->
+      <article class="estilo revela">
+        <!-- Eu crio o cartão do quarto estilo. -->
+        <span class="estilo__num">04</span>
+        <!-- Eu escrevo o número do estilo. -->
+        <h3>Flash autoral</h3>
+        <!-- Eu escrevo o nome do estilo. -->
+        <p>Desenhos exclusivos, feitos uma única vez — quem pega, leva o original.</p>
+        <!-- Eu descrevo o estilo. -->
+        <span class="estilo__preco">A partir de R$ 300</span>
+        <!-- Eu mostro o preço inicial. -->
+      </article>
+      <!-- Eu fecho o cartão do quarto estilo. -->
+      <article class="estilo revela">
+        <!-- Eu crio o cartão do quinto estilo. -->
+        <span class="estilo__num">05</span>
+        <!-- Eu escrevo o número do estilo. -->
+        <h3>Hora técnica</h3>
+        <!-- Eu escrevo o nome do estilo. -->
+        <p>Sessões longas de cobertura e projetos grandes, cobradas por hora.</p>
+        <!-- Eu descrevo a opção por hora. -->
+        <span class="estilo__preco">R$ 180 / hora</span>
+        <!-- Eu mostro o valor da hora. -->
+      </article>
+      <!-- Eu fecho o cartão do quinto estilo. -->
+      <article class="estilo revela">
+        <!-- Eu crio o cartão do sexto item. -->
+        <span class="estilo__num">06</span>
+        <!-- Eu escrevo o número do item. -->
+        <h3>Retoque</h3>
+        <!-- Eu escrevo o nome do item. -->
+        <p>Retoque gratuito de até 90 dias para clientes do studio, com orientação de cuidado.</p>
+        <!-- Eu descrevo a política de retoque, que gera confiança. -->
+        <span class="estilo__preco">Grátis</span>
+        <!-- Eu mostro que o retoque não custa nada. -->
+      </article>
+      <!-- Eu fecho o cartão do sexto item. -->
+    </div>
+    <!-- Eu fecho a grade dos estilos. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de estilos. -->
+<section id="galeria" style="background: var(--fundo-2);">
+  <!-- Eu crio a seção da galeria com fundo levemente mais claro. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título da galeria. -->
+      <span class="aparador">Galeria</span>
+      <!-- Eu escrevo a etiqueta da galeria. -->
+      <h2>Traços que já saíram da agulha</h2>
+      <!-- Eu escrevo o título da galeria. -->
+      <p>Artes ilustrativas em quatro estilos — no site do cliente entram fotos reais do trabalho.</p>
+      <!-- Eu aviso que aqui são ilustrações de exemplo. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="galeria">
+      <!-- Eu abro a grade da galeria. -->
+      <figure class="arte revela" style="margin:0">
+        <!-- Eu crio o primeiro quadro, zerando a margem padrão da figura. -->
+        <svg viewBox="0 0 400 400" role="img" aria-label="Ilustração de rosa em traço fino">
+          <!-- Eu desenho a rosa em fine line dentro do quadro. -->
+          <rect width="400" height="400" fill="#100d0a"/>
+          <!-- Eu pinto o fundo do quadro. -->
+          <g fill="none" stroke="#d4a24e" stroke-width="3" stroke-linecap="round">
+            <!-- Eu agrupo os traços dourados da rosa. -->
+            <circle cx="200" cy="160" r="70"/>
+            <!-- Eu desenho o círculo externo da rosa. -->
+            <path d="M200 118 c-20 0 -36 15 -36 34 0 26 30 40 56 29 20 -9 24 -34 11 -49 -11 -12 -30 -11 -38 3 -7 11 -1 25 11 29"/>
+            <!-- Eu desenho o miolo espiral da rosa. -->
+            <path d="M200 230 v90"/>
+            <!-- Eu desenho o caule da rosa. -->
+            <path d="M200 262 c-28 -4 -47 -22 -51 -47 25 -3 46 12 51 36"/>
+            <!-- Eu desenho a folha da esquerda. -->
+            <path d="M200 288 c28 -4 47 -22 51 -47 -25 -3 -46 12 -51 36"/>
+            <!-- Eu desenho a folha da direita. -->
+          </g>
+          <!-- Eu fecho o grupo de traços. -->
+          <text x="200" y="378" text-anchor="middle" font-family="Georgia, serif" font-size="16" letter-spacing="5" fill="#9a7c46">FINE LINE</text>
+          <!-- Eu escrevo o nome do estilo embaixo da arte. -->
+        </svg>
+      </figure>
+      <!-- Eu fecho o primeiro quadro. -->
+      <figure class="arte revela" style="margin:0">
+        <!-- Eu crio o segundo quadro. -->
+        <svg viewBox="0 0 400 400" role="img" aria-label="Ilustração de cobra em preenchimento sólido">
+          <!-- Eu desenho a cobra em blackwork. -->
+          <rect width="400" height="400" fill="#0f0d0a"/>
+          <!-- Eu pinto o fundo do quadro. -->
+          <g fill="none" stroke="#d4a24e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Eu agrupo os traços da cobra. -->
+            <path d="M200 70 c-45 20 -64 62 -42 98 20 32 69 36 93 8 22 -26 12 -67 -19 -79 -26 -11 -55 4 -61 30 -5 22 12 42 33 42 18 0 32 -14 31 -32"/>
+            <!-- Eu desenho o corpo em espiral da cobra. -->
+            <path d="M243 122 l26 -7"/>
+            <!-- Eu desenho a cabeça da cobra. -->
+            <circle cx="240" cy="112" r="3" fill="#f4d78c" stroke="none"/>
+            <!-- Eu desenho o olho da cobra em dourado claro. -->
+            <path d="M176 265 c-26 26 -30 64 -9 94"/>
+            <!-- Eu desenho a metade de baixo do corpo da cobra. -->
+            <path d="M218 271 c30 22 39 62 22 94"/>
+            <!-- Eu desenho a outra metade do corpo. -->
+          </g>
+          <!-- Eu fecho o grupo de traços. -->
+          <text x="200" y="378" text-anchor="middle" font-family="Georgia, serif" font-size="16" letter-spacing="5" fill="#9a7c46">BLACKWORK</text>
+          <!-- Eu escrevo o nome do estilo embaixo da arte. -->
+        </svg>
+      </figure>
+      <!-- Eu fecho o segundo quadro. -->
+      <figure class="arte revela" style="margin:0">
+        <!-- Eu crio o terceiro quadro. -->
+        <svg viewBox="0 0 400 400" role="img" aria-label="Ilustração de lua crescente minimalista">
+          <!-- Eu desenho a lua minimalista. -->
+          <rect width="400" height="400" fill="#0e0c0f"/>
+          <!-- Eu pinto o fundo do quadro. -->
+          <g fill="none" stroke="#d4a24e" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Eu agrupo os traços da lua. -->
+            <path d="M240 80 a105 105 0 1 0 0 185 a84 84 0 0 1 0 -185z"/>
+            <!-- Eu desenho a lua crescente. -->
+            <path d="M200 265 v70"/>
+            <!-- Eu desenho o talo das folhas embaixo da lua. -->
+            <path d="M200 296 c-24 -3 -40 -18 -44 -42 22 -2 40 10 44 32"/>
+            <!-- Eu desenho a folha da esquerda. -->
+            <path d="M200 316 c24 -3 40 -18 44 -42 -22 -2 -40 10 -44 32"/>
+            <!-- Eu desenho a folha da direita. -->
+          </g>
+          <!-- Eu fecho o grupo de traços. -->
+          <g fill="#f4d78c">
+            <!-- Eu agrupo as estrelinhas douradas. -->
+            <path d="M300 110 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4z"/>
+            <!-- Eu desenho a primeira estrela. -->
+            <path d="M320 200 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"/>
+            <!-- Eu desenho a segunda estrela. -->
+          </g>
+          <!-- Eu fecho o grupo de estrelas. -->
+          <text x="200" y="378" text-anchor="middle" font-family="Georgia, serif" font-size="16" letter-spacing="5" fill="#9a7c46">MINIMALISTA</text>
+          <!-- Eu escrevo o nome do estilo embaixo da arte. -->
+        </svg>
+      </figure>
+      <!-- Eu fecho o terceiro quadro. -->
+      <figure class="arte revela" style="margin:0">
+        <!-- Eu crio o quarto quadro. -->
+        <svg viewBox="0 0 400 400" role="img" aria-label="Ilustração de flor de lótus ornamental">
+          <!-- Eu desenho a flor de lótus ornamental. -->
+          <rect width="400" height="400" fill="#100d09"/>
+          <!-- Eu pinto o fundo do quadro. -->
+          <g fill="none" stroke="#d4a24e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Eu agrupo os traços da lótus. -->
+            <circle cx="200" cy="170" r="24"/>
+            <!-- Eu desenho o miolo da flor. -->
+            <path d="M200 88 c18 28 18 60 0 84 -18 -24 -18 -56 0 -84z"/>
+            <!-- Eu desenho a pétala do topo. -->
+            <path d="M200 252 c18 -28 18 -60 0 -84 -18 24 -18 56 0 84z"/>
+            <!-- Eu desenho a pétala de baixo. -->
+            <path d="M118 170 c28 -18 60 -18 84 0 -24 18 -56 18 -84 0z"/>
+            <!-- Eu desenho a pétala da esquerda. -->
+            <path d="M282 170 c-28 -18 -60 -18 -84 0 24 18 56 18 84 0z"/>
+            <!-- Eu desenho a pétala da direita. -->
+            <path d="M200 300 v48"/>
+            <!-- Eu desenho o talo da flor. -->
+          </g>
+          <!-- Eu fecho o grupo de traços. -->
+          <text x="200" y="378" text-anchor="middle" font-family="Georgia, serif" font-size="16" letter-spacing="5" fill="#9a7c46">ORNAMENTAL</text>
+          <!-- Eu escrevo o nome do estilo embaixo da arte. -->
+        </svg>
+      </figure>
+      <!-- Eu fecho o quarto quadro. -->
+    </div>
+    <!-- Eu fecho a grade da galeria. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção da galeria. -->
+<section id="sobre">
+  <!-- Eu crio a seção da história do studio. -->
+  <div class="envoltorio sobre__grade">
+    <!-- Eu abro a grade de duas colunas da história. -->
+    <div class="revela">
+      <!-- Eu crio o lado da arte da máquina. -->
+      <svg viewBox="0 0 400 400" role="img" aria-label="Ilustração de máquina de tatuagem rotativa">
+        <!-- Eu desenho a máquina de tatuagem. -->
+        <rect width="400" height="400" fill="#141009"/>
+        <!-- Eu pinto o fundo da ilustração. -->
+        <circle cx="200" cy="190" r="140" fill="none" stroke="#d4a24e" stroke-opacity=".18"/>
+        <!-- Eu desenho o círculo decorativo atrás da máquina. -->
+        <g fill="none" stroke="#d4a24e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-32 200 200)">
+          <!-- Eu agrupo os traços da máquina com uma leve inclinação. -->
+          <rect x="160" y="90" width="80" height="52" rx="10"/>
+          <!-- Eu desenho o motor da máquina. -->
+          <path d="M200 142 v24"/>
+          <!-- Eu desenho a haste que liga o motor à caneta. -->
+          <rect x="172" y="166" width="56" height="100" rx="16"/>
+          <!-- Eu desenho a caneta da máquina. -->
+          <path d="M200 266 v34"/>
+          <!-- Eu desenho a ponta que segura a agulha. -->
+          <path d="M200 300 l-8 20 8 34 8 -34z"/>
+          <!-- Eu desenho a agulha da máquina. -->
+          <path d="M170 106 h36 M170 124 h22"/>
+          <!-- Eu desenho os detalhes do motor. -->
+        </g>
+        <!-- Eu fecho o grupo da máquina. -->
+        <text x="200" y="378" text-anchor="middle" font-family="Georgia, serif" font-size="16" letter-spacing="6" fill="#9a7c46">DESDE 2017</text>
+        <!-- Eu escrevo o ano de fundação embaixo da arte. -->
+      </svg>
+    </div>
+    <!-- Eu fecho o lado da arte. -->
+    <div class="sobre__texto revela">
+      <!-- Eu crio o lado do texto da história. -->
+      <span class="aparador">O studio</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2 style="font-size: clamp(1.9rem, 3.6vw, 2.7rem); margin-bottom: 14px;">Cada cliente vira uma história na pele</h2>
+      <!-- Eu escrevo o título da história. -->
+      <p>
+        <!-- Eu abro o parágrafo da história. -->
+        A Agulha de Ouro nasceu em 2017 num canto de ateliê alugado, com uma cadeira, uma máquina e a teimosia de fazer arte sob medida. Nove anos depois, o ritual continua igual: conversa franca sobre a ideia, desenho exclusivo e sessão sem pressa, com material 100% descartável. Aqui ninguém sai com um desenho igual ao de outra pessoa.
+        <!-- Eu conto a origem do studio de um jeito que gera confiança. -->
+      </p>
+      <!-- Eu fecho o parágrafo da história. -->
+      <div class="numeros">
+        <!-- Eu abro a área dos números de destaque. -->
+        <div>
+          <!-- Eu crio o primeiro número. -->
+          <strong>3.200+</strong>
+          <!-- Eu escrevo o número grande. -->
+          <span>sessões realizadas</span>
+          <!-- Eu escrevo a legenda do número. -->
+        </div>
+        <!-- Eu fecho o primeiro número. -->
+        <div>
+          <!-- Eu crio o segundo número. -->
+          <strong>100%</strong>
+          <!-- Eu escrevo o número grande. -->
+          <span>material descartável</span>
+          <!-- Eu escrevo a legenda do número. -->
+        </div>
+        <!-- Eu fecho o segundo número. -->
+        <div>
+          <!-- Eu crio o terceiro número. -->
+          <strong>4,9</strong>
+          <!-- Eu escrevo o número grande. -->
+          <span>nota no Google</span>
+          <!-- Eu escrevo a legenda do número. -->
+        </div>
+        <!-- Eu fecho o terceiro número. -->
+      </div>
+      <!-- Eu fecho a área dos números. -->
+    </div>
+    <!-- Eu fecho o lado do texto. -->
+  </div>
+  <!-- Eu fecho a grade da história. -->
+</section>
+<!-- Eu fecho a seção da história. -->
+<section style="background: var(--fundo-2);">
+  <!-- Eu crio a seção dos depoimentos com fundo alternado. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título dos depoimentos. -->
+      <span class="aparador">Quem já tatuo</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Confiança em forma de traço</h2>
+      <!-- Eu escrevo o título da seção. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="depoimentos">
+      <!-- Eu abro a grade dos depoimentos. -->
+      <figure class="fala revela" style="margin:0">
+        <!-- Eu crio o primeiro cartão de depoimento. -->
+        <blockquote>“Levei só uma referência e voltei com um desenho que era mais eu do que eu imaginava. A sessão voou.”</blockquote>
+        <!-- Eu escrevo a fala do cliente fictício. -->
+        <footer>— Camila R., fine line no antebraço</footer>
+        <!-- Eu assino o depoimento com nome e trabalho feito. -->
+      </figure>
+      <!-- Eu fecho o primeiro depoimento. -->
+      <figure class="fala revela" style="margin:0">
+        <!-- Eu crio o segundo cartão de depoimento. -->
+        <blockquote>“Studio impecável, tudo descartado na minha frente. Explicou o cuidado antes e depois, sem pressa nenhuma.”</blockquote>
+        <!-- Eu escrevo a fala do cliente fictício. -->
+        <footer>— Diego M., blackwork no braço</footer>
+        <!-- Eu assino o depoimento. -->
+      </figure>
+      <!-- Eu fecho o segundo depoimento. -->
+      <figure class="fala revela" style="margin:0">
+        <!-- Eu crio o terceiro cartão de depoimento. -->
+        <blockquote>“O retoque grátis me deu segurança total. Já marquei a próxima sessão antes mesmo de sair.”</blockquote>
+        <!-- Eu escrevo a fala do cliente fictício. -->
+        <footer>— Letícia A., ornamental nas costas</footer>
+        <!-- Eu assino o depoimento. -->
+      </figure>
+      <!-- Eu fecho o terceiro depoimento. -->
+    </div>
+    <!-- Eu fecho a grade dos depoimentos. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção dos depoimentos. -->
+<section id="duvidas-sec">
+  <!-- Eu crio a seção de dúvidas frequentes. -->
+  <div class="envoltorio" style="max-width: 760px;">
+    <!-- Eu centralizo a lista de dúvidas numa largura confortável de leitura. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título das dúvidas. -->
+      <span class="aparador">Antes de agendar</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Dúvidas frequentes</h2>
+      <!-- Eu escrevo o título da seção. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="duvidas revela">
+      <!-- Eu abro a lista de perguntas. -->
+      <details>
+        <!-- Eu crio a primeira pergunta com o detalhe nativo do HTML. -->
+        <summary>Como funciona o orçamento?</summary>
+        <!-- Eu escrevo a pergunta clicável. -->
+        <p>Você manda a ideia e o local do corpo pelo WhatsApp; eu devolvo o desenho de referência e o valor fechado em até 24 horas, sem compromisso.</p>
+        <!-- Eu respondo a pergunta de forma clara. -->
+      </details>
+      <!-- Eu fecho a primeira pergunta. -->
+      <details>
+        <!-- Eu crio a segunda pergunta. -->
+        <summary>Doe muito?</summary>
+        <!-- Eu escrevo a pergunta clicável. -->
+        <p>O desconforto varia conforme a região e a pessoa. Trabalhamos com pausas, ritmo calmo e as técnicas de conforto combinadas na conversa inicial.</p>
+        <!-- Eu respondo tranquilizando o cliente. -->
+      </details>
+      <!-- Eu fecho a segunda pergunta. -->
+      <details>
+        <!-- Eu crio a terceira pergunta. -->
+        <summary>Posso levar minha própria arte?</summary>
+        <!-- Eu escrevo a pergunta clicável. -->
+        <p>Pode. Revisamos o desenho juntos para ele envelhecer bem na pele — e se você quiser, eu crio uma versão exclusiva a partir da sua ideia.</p>
+        <!-- Eu respondo deixando claro que a decisão é do cliente. -->
+      </details>
+      <!-- Eu fecho a terceira pergunta. -->
+      <details>
+        <!-- Eu crio a quarta pergunta. -->
+        <summary>Como cuido depois da sessão?</summary>
+        <!-- Eu escrevo a pergunta clicável. -->
+        <p>Você sai com uma folha de cuidados impressa e um contato direto para tirar dúvidas nos dias seguintes. Retorno garantido em até 90 dias.</p>
+        <!-- Eu respondo mostrando que o cuidado continua depois. -->
+      </details>
+      <!-- Eu fecho a quarta pergunta. -->
+    </div>
+    <!-- Eu fecho a lista de perguntas. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de dúvidas. -->
+<section id="contato" style="background: var(--fundo-2);">
+  <!-- Eu crio a seção final de agendamento. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título do contato. -->
+      <span class="aparador">Agende</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Vamos desenhar a sua ideia</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>Preencha ao lado ou chame direto no WhatsApp — o retorno sai em até 24 horas.</p>
+      <!-- Eu explico os dois caminhos de contato. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="contato__grade">
+      <!-- Eu abro a grade de contato com informações e formulário. -->
+      <div class="revela">
+        <!-- Eu crio o lado das informações de contato. -->
+        <ul class="lista">
+          <!-- Eu abro a lista de informações. -->
+          <li><strong>WhatsApp</strong> <span>(11) 94203-8103</span></li>
+          <!-- Eu mostro o número do WhatsApp. -->
+          <li><strong>Telefone</strong> <span>(11) 94203-8103</span></li>
+          <!-- Eu mostro o telefone fixo de contato. -->
+          <li><strong>E-mail</strong> <span>agenda@agulhadeouro.com.br</span></li>
+          <!-- Eu mostro o e-mail do studio. -->
+          <li><strong>Endereço</strong> <span>Rua Aurora, 210 — São Paulo/SP</span></li>
+          <!-- Eu mostro o endereço do studio. -->
+          <li><strong>Horário</strong> <span>Terça a sábado, das 10h às 20h</span></li>
+          <!-- Eu mostro os dias e horários de atendimento. -->
+        </ul>
+        <!-- Eu fecho a lista de informações. -->
+        <a class="botao" style="margin-top: 26px;" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Agulha%20de%20Ouro%20e%20quero%20agendar%20uma%20tatuagem." target="_blank" rel="noopener">
+          <!-- Eu crio o botão que abre o WhatsApp com a mensagem pronta. -->
+          Chamar no WhatsApp agora
+          <!-- Eu escrevo o texto do botão. -->
+        </a>
+        <!-- Eu fecho o botão do WhatsApp. -->
+      </div>
+      <!-- Eu fecho o lado das informações. -->
+      <form class="formulario revela" id="formAgenda">
+        <!-- Eu crio o formulário de agendamento, identificado pelo id. -->
+        <h3 style="margin:0 0 6px; font-size:1.3rem;">Pedido de agendamento</h3>
+        <!-- Eu escrevo o título do formulário. -->
+        <label>
+          <!-- Eu crio o primeiro campo com legenda. -->
+          Seu nome
+          <!-- Eu escrevo a legenda do campo. -->
+          <input type="text" name="nome" required placeholder="Como te chamo?">
+          <!-- Eu crio a caixa de texto obrigatória do nome. -->
+        </label>
+        <!-- Eu fecho o campo do nome. -->
+        <label>
+          <!-- Eu crio o segundo campo com legenda. -->
+          Estilo desejado
+          <!-- Eu escrevo a legenda do campo. -->
+          <select name="estilo">
+            <!-- Eu crio a lista de opções do estilo. -->
+            <option>Fine line</option>
+            <!-- Eu adiciono a primeira opção de estilo. -->
+            <option>Blackwork</option>
+            <!-- Eu adiciono a segunda opção de estilo. -->
+            <option>Ornamental</option>
+            <!-- Eu adiciono a terceira opção de estilo. -->
+            <option>Flash autoral</option>
+            <!-- Eu adiciono a quarta opção de estilo. -->
+            <option>Ainda não sei</option>
+            <!-- Eu adiciono a opção para quem ainda não decidiu. -->
+          </select>
+          <!-- Eu fecho a lista de opções. -->
+        </label>
+        <!-- Eu fecho o campo do estilo. -->
+        <label>
+          <!-- Eu crio o terceiro campo com legenda. -->
+          Conte a sua ideia
+          <!-- Eu escrevo a legenda do campo. -->
+          <textarea name="ideia" rows="3" placeholder="O que você quer tatuar e onde?"></textarea>
+          <!-- Eu crio a caixa grande para o cliente descrever a ideia. -->
+        </label>
+        <!-- Eu fecho o campo da ideia. -->
+        <button class="botao" type="submit" style="border:0; cursor:pointer; font-family: inherit;">
+          <!-- Eu crio o botão de enviar, sem borda padrão e com o cursor de mão. -->
+          Enviar pedido pelo WhatsApp
+          <!-- Eu escrevo o texto do botão de envio. -->
+        </button>
+        <!-- Eu fecho o botão de envio. -->
+        <p style="margin:0; color:var(--texto-suave); font-size:.82rem;">
+          <!-- Eu crio a letra miúda debaixo do botão. -->
+          Este formulário só abre o WhatsApp com a mensagem pronta — nada é enviado sozinho.
+          <!-- Eu aviso que o envio depende da confirmação do cliente no WhatsApp. -->
+        </p>
+        <!-- Eu fecho a letra miúda. -->
+      </form>
+      <!-- Eu fecho o formulário. -->
+    </div>
+    <!-- Eu fecho a grade de contato. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de contato. -->
+</main>
+<!-- Eu fecho o conteúdo principal. -->
+<footer class="rodape">
+  <!-- Eu crio o rodapé do site. -->
+  <p style="margin:0 0 6px;">
+    <!-- Eu escrevo a primeira linha do rodapé. -->
+    <strong>Agulha de Ouro</strong> — tatuagem autoral com projeto sob medida, material descartável e agenda aberta em São Paulo.
+    <!-- Eu resumo a proposta do studio no fim da página. -->
+  </p>
+  <!-- Eu fecho a primeira linha do rodapé. -->
+  <p style="margin:0;">© <span id="ano">2026</span> Agulha de Ouro Studio · Demo ilustrativa criada pela MOSS Digital.</p>
+  <!-- Eu escrevo o copyright, com o ano preenchido por JavaScript. -->
+</footer>
+<!-- Eu fecho o rodapé. -->
+<script>
+<!-- Eu abro a área de comportamento do site, o JavaScript. -->
+document.getElementById('ano').textContent = new Date().getFullYear();
+<!-- Eu preencho o ano do copyright automaticamente, para nunca ficar desatualizado. -->
+const observador = new IntersectionObserver(function (entradas) {
+  <!-- Eu crio um observador que vigia quando cada elemento entra na tela. -->
+  entradas.forEach(function (entrada) {
+    <!-- Eu percorro cada elemento vigiado. -->
+    if (entrada.isIntersecting) {
+      <!-- Eu verifico se o elemento apareceu na área visível. -->
+      entrada.target.classList.add('visivel');
+      <!-- Eu adiciono a classe que revela o elemento com animação. -->
+      observador.unobserve(entrada.target);
+      <!-- Eu deixo de vigiar o elemento, já que ele apareceu uma vez. -->
+    }
+  });
+<!-- Eu fecho a percorrida dos elementos. -->
+});
+<!-- Eu fecho a definição do observador. -->
+document.querySelectorAll('.revela').forEach(function (el) { observador.observe(el); });
+<!-- Eu mando o observador vigiar todos os elementos com a classe de revelação. -->
+const botaoMenu = document.getElementById('menu');
+<!-- Eu guardo a referência da lista do menu para abrir e fechar no celular. -->
+document.querySelectorAll('.menu a').forEach(function (link) {
+  <!-- Eu percorro cada link do menu. -->
+  link.addEventListener('click', function () { botaoMenu.classList.remove('aberto'); });
+  <!-- Eu fecho o menu automaticamente quando alguém toca num link. -->
+});
+<!-- Eu fecho a percorrida dos links. -->
+document.getElementById('formAgenda').addEventListener('submit', function (evento) {
+  <!-- Eu intercepto o envio do formulário antes de recarregar a página. -->
+  evento.preventDefault();
+  <!-- Eu cancelo o envio padrão do formulário. -->
+  const dados = new FormData(evento.target);
+  <!-- Eu leio o que o cliente digitou nos campos. -->
+  const nome = (dados.get('nome') || '').toString().trim();
+  <!-- Eu guardo o nome digitado, sem espaços sobrando. -->
+  const estilo = (dados.get('estilo') || '').toString();
+  <!-- Eu guardou o estilo escolhido na lista. -->
+  const ideia = (dados.get('ideia') || '').toString().trim();
+  <!-- Eu guardo a descrição da ideia digitada. -->
+  if (!nome) {
+    <!-- Eu verifico se o cliente esqueceu de escrever o nome. -->
+    alert('Preencha o seu nome para eu saber como te chamar.');
+    <!-- Eu aviso que o nome é obrigatório antes de seguir. -->
+    return;
+    <!-- Eu paro o envio até o nome ser preenchido. -->
+  }
+  <!-- Eu fecho a verificação do nome. -->
+  const texto = 'Olá! Vim pelo site da Agulha de Ouro.%0A%0ANome: ' + encodeURIComponent(nome) + '%0AEstilo: ' + encodeURIComponent(estilo) + '%0AIdeia: ' + encodeURIComponent(ideia || '—');
+  <!-- Eu monto a mensagem do WhatsApp com os campos preenchidos, já codificada para o endereço. -->
+  window.open('https://wa.me/5511942038103?text=' + texto, '_blank', 'noopener');
+  <!-- Eu abro o WhatsApp numa nova aba com a mensagem pronta para enviar. -->
+});
+<!-- Eu fecho o evento do formulário. -->
+</script>
+<!-- Eu fecho a área de comportamento. -->
+</body>
+<!-- Eu fecho o corpo da página. -->
+</html>
+<!-- Eu fecho o documento. -->

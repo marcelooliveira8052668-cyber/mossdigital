@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Ilustração de técnico consertando celular na lupa, símbolo da oficina">
+  <defs>
+    <radialGradient id="bgSobreCel" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#13293f"/>
+      <stop offset="100%" stop-color="#08111d"/>
+    </radialGradient>
+    <linearGradient id="azulSobre" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7dd3fc"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bgSobreCel)"/>
+  <circle cx="400" cy="370" r="300" fill="none" stroke="#0ea5e9" stroke-opacity=".15" stroke-width="2"/>
+  <circle cx="360" cy="330" r="170" fill="none" stroke="url(#azulSobre)" stroke-width="10"/>
+  <path d="M482 452 l120 120" fill="none" stroke="url(#azulSobre)" stroke-width="18" stroke-linecap="round"/>
+  <g fill="none" stroke="#7dd3fc" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="300" y="240" width="120" height="180" rx="16"/>
+    <path d="M336 262 h48"/>
+    <path d="M325 320 l30 34 -18 24 34 42"/>
+    <path d="M382 300 l-24 30 20 26 -32 46"/>
+  </g>
+  <g fill="#7dd3fc" opacity=".85">
+    <path d="M200 170 l6 14 14 6 -14 6 -6 14 -6 -14 -14 -6 14 -6z"/>
+    <path d="M600 220 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="640" cy="560" r="4"/>
+    <circle cx="170" cy="560" r="4"/>
+  </g>
+  <text x="400" y="740" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="26" letter-spacing="8" fill="#5b8bb0">DIAGN&#211;STICO GR&#193;TIS</text>
+</svg>

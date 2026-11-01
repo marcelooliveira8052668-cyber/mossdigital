@@ -1,6 +1,6 @@
 # Template de Site Profissional
 
-Template com **24 tipos de negócio prontos** e **43 exemplos** no portfólio (24 nichos
+Template com **28 tipos de negócio prontos** e **47 exemplos** no portfólio (28 nichos
 do template + 19 projetos reais). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
@@ -19,7 +19,7 @@ Nota Lighthouse: **Acessibilidade 100 · Boas Práticas 100 · SEO 100**
 
 ---
 
-## Os 24 negócios prontos
+## Os 28 negócios prontos
 
 Abra o painel (acrescente `&painel=1` no link) e escolha:
 
@@ -49,6 +49,10 @@ Abra o painel (acrescente `&painel=1` no link) e escolha:
 | nutricionista | Nutricionista, nutrologia, coach alimentar |
 | arquiteto | Arquiteto, engenheiro, projetista |
 | tatuagem | Studio de tatuagem, tatuador, piercer |
+| assistencia | Assistência técnica de celular, conserto de smartphone |
+| fretes | Fretes, transportes e logística para empresas |
+| festas | Casa de festas, salão de eventos, buffet |
+| bar | Bar, coquetelaria, boteco, casa noturna |
 
 Links de exemplo:
 ```
@@ -62,7 +66,7 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ## Os 19 projetos reais do portfólio
 
-Além dos 24 nichos gerados pelo template, o portfólio mostra **19 projetos que existem
+Além dos 28 nichos gerados pelo template, o portfólio mostra **19 projetos que existem
 de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 `#reais`, separados dos modelos prontos (`#exemplos`):
 
@@ -96,7 +100,7 @@ Para colocar um card desses no portfólio, edite a lista `REAIS` em
 Os modelos prontos ficam na lista `MODELOS`, no mesmo arquivo. Um card sem `link`
 aponta para `demo.html?preset=<id>`. Um card com `link` externo (http/https) abre em
 outra aba. As contagens da página (`19 projetos no ar`,
-`24 modelos prontos`) são calculadas pelo próprio script, então nunca ficam
+`28 modelos prontos`) são calculadas pelo próprio script, então nunca ficam
 desatualizadas.
 
 A foto pode ser um arquivo local (padrão) ou um link do Unsplash.
@@ -329,10 +333,14 @@ template-site-profissional/
 │   │   └── portfolio.css   Visual do site de divulgacao
 │   ├── js/
 │   │   ├── config.js       EDITE ESTE - dados e cores do site do cliente
-│   │   ├── presets.js      8 dos 24 presets (parte 1)
+│   │   ├── presets.js      8 dos 28 presets (parte 1)
 │   │   ├── presets-2.js    10 presets (parte 2)
 │   │   ├── presets-3.js    5 presets (parte 3)
-│   │   ├── presets-4.js    1 preset, tatuagem (parte 4) → TOTAL: 24
+│   │   ├── presets-4.js    1 preset, tatuagem (parte 4)
+│   │   ├── presets-5.js    1 preset, assistencia (parte 5)
+│   │   ├── presets-6.js    1 preset, fretes (parte 6)
+│   │   ├── presets-7.js    1 preset, festas (parte 7)
+│   │   ├── presets-8.js    1 preset, bar (parte 8) → TOTAL: 28
 │   │   ├── data.js         Conexao com o banco de dados
 │   │   ├── app.js          Monta o site
 │   │   ├── demo.js         Logica do painel
@@ -382,3 +390,14 @@ escrita. Os clientes compram **licença de uso** para o próprio negócio,
 não o código para revenda. O site aplica bloqueios simples de cópia
 (botão direito, atalhos e seleção) como desincentivo; a proteção
 principal é jurídica.
+
+
+## Layouts exclusivos e divulgação
+
+As demos `tatuagem`, `assistencia`, `fretes`, `festas` e `bar` possuem layouts próprios em `demos/<id>/index.html`.
+Os links antigos `demo.html?preset=<id>` abrem esses layouts automaticamente; `mudancas` é um alias de `fretes`.
+Para usar o painel genérico, abra `demo.html?painel=1`.
+As demos usam dados fictícios, ilustrações autorais e `noindex`. O contato demonstrativo leva à MOSS Digital.
+
+- Capas Instagram em PNG, 1080 × 1350: `divulgacao/instagram/`.
+- Orientações de indexação e divulgação: `docs/GUIA-GOOGLE.md`.

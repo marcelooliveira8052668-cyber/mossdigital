@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Ilustração neon de prateleira de garrafas">
+  <defs>
+    <filter id="neonB2" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="480" rx="18" fill="#0e0f1f"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonB2)">
+    <path d="M110 160 h420 M110 320 h420" stroke="#22d3ee" stroke-width="7"/>
+    <path d="M160 160 v-46 q0 -14 12 -20 v-30 h24 v30 q12 6 12 20 v46" stroke="#ff2d95" stroke-width="8"/>
+    <path d="M160 130 h48" stroke="#ff2d95" stroke-width="5"/>
+    <path d="M262 160 v-64 q0 -12 10 -18 v-24 h22 v24 q10 6 10 18 v64" stroke="#22d3ee" stroke-width="8"/>
+    <path d="M360 160 v-40 q0 -16 14 -22 v-34 h26 v34 q14 6 14 22 v40" stroke="#ff2d95" stroke-width="8"/>
+    <path d="M462 160 v-58 q0 -14 12 -20 v-28 h24 v28 q12 6 12 20 v58" stroke="#22d3ee" stroke-width="8"/>
+    <path d="M200 320 v-52 q0 -14 12 -20 v-32 h24 v32 q12 6 12 20 v52" stroke="#22d3ee" stroke-width="8"/>
+    <path d="M310 320 v-70 q0 -12 10 -18 v-26 h22 v26 q10 6 10 18 v70" stroke="#ff2d95" stroke-width="8"/>
+    <path d="M420 320 v-46 q0 -14 12 -20 v-30 h24 v30 q12 6 12 20 v46" stroke="#22d3ee" stroke-width="8"/>
+    <path d="M110 380 h420" stroke="#ff2d95" stroke-width="6" opacity=".7"/>
+  </g>
+  <g fill="#ff2d95" filter="url(#neonB2)">
+    <path d="M140 400 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/>
+    <circle cx="500" cy="410" r="6" fill="#22d3ee"/>
+    <circle cx="320" cy="80" r="5" fill="#22d3ee"/>
+  </g>
+</svg>

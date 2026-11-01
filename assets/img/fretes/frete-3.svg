@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Ilustração de sofá embalado em plástico, exemplo de proteção de móveis">
+  <defs>
+    <radialGradient id="bgMud3" cx="50%" cy="45%" r="80%">
+      <stop offset="0%" stop-color="#fdf0e4"/>
+      <stop offset="100%" stop-color="#fadfc2"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgMud3)"/>
+  <g fill="none" stroke="#0d2f6b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M230 380 v-70 a30 30 0 0 1 30 -30 h250 a30 30 0 0 1 30 30 v70"/>
+    <path d="M210 380 h350 v60 h-350z"/>
+    <path d="M240 440 v30 M530 440 v30"/>
+    <path d="M260 310 v70 M400 290 v90 M520 310 v70"/>
+    <path d="M250 240 l150 -70 150 70"/>
+    <path d="M310 268 l140 -64"/>
+    <path d="M370 296 l140 -64"/>
+    <path d="M400 170 v-40"/>
+  </g>
+  <g fill="#ffc400" opacity=".8">
+    <path d="M640 160 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="140" cy="240" r="4"/>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="22" letter-spacing="6" fill="#1749a3">PROTE&#199;&#195;O</text>
+</svg>

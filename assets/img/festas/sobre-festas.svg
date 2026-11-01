@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Ilustração do salão de festas decorado com balões e arco">
+  <defs>
+    <linearGradient id="arcoF5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="50%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="chaoF5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b1163"/>
+      <stop offset="100%" stop-color="#1f0638"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="18" fill="#150427"/>
+  <g stroke="#fbbf24" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- arco de balões da entrada -->
+    <path d="M140 420 V240 a180 150 0 0 1 360 0 V420" stroke="url(#arcoF5)" stroke-width="14"/>
+    <!-- piso do salão -->
+    <path d="M60 420 h520" stroke-width="4" opacity=".6"/>
+    <path d="M60 420 h520 v40 h-520z" fill="url(#chaoF5)" stroke-width="3"/>
+    <!-- mesa com bolo ao fundo -->
+    <path d="M255 395 h130 v-25 h-130z" fill="#7c3aed"/>
+    <path d="M270 370 h100 v-45 h-100z" fill="#f472b6"/>
+    <path d="M285 325 h70 v-30 h-70z" fill="#fde68a"/>
+    <path d="M305 295 v-18 M320 295 v-24 M335 295 v-18" stroke-width="4"/>
+    <!-- luminárias em cima -->
+    <path d="M150 130 q75 45 150 0 q75 -45 150 0" stroke-width="3" opacity=".8"/>
+    <circle cx="205" cy="150" r="7" fill="#fbbf24"/>
+    <circle cx="270" cy="146" r="7" fill="#ec4899"/>
+    <circle cx="340" cy="146" r="7" fill="#fbbf24"/>
+    <circle cx="405" cy="150" r="7" fill="#ec4899"/>
+    <!-- balões nos cantos -->
+    <ellipse cx="175" cy="330" rx="34" ry="42" fill="#ec4899"/>
+    <path d="M175 372 q6 11 0 20 q-6 -9 0 -20"/>
+    <ellipse cx="465" cy="330" rx="34" ry="42" fill="#8b5cf6"/>
+    <path d="M465 372 q6 11 0 20 q-6 -9 0 -20"/>
+  </g>
+  <g fill="#fbbf24">
+    <path d="M110 105 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <path d="M525 120 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="95" cy="260" r="5" fill="#ec4899"/>
+    <circle cx="550" cy="270" r="5" fill="#ec4899"/>
+    <rect x="300" y="70" width="14" height="7" rx="3.5" transform="rotate(20 300 70)" fill="#ec4899"/>
+  </g>
+</svg>

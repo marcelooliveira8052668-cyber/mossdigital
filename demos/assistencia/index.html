@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<!-- Eu declaro o documento como HTML5, o padrão atual da web. -->
+<html lang="pt-BR">
+<!-- Eu abro a raiz do site e informo que o idioma é o português do Brasil. -->
+<head>
+<!-- Eu abro a área das configurações, invisível na tela. -->
+<meta charset="UTF-8">
+<!-- Eu defino a codificação UTF-8 para acentos e símbolos aparecerem certo. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Eu faço o site se adaptar à tela do celular, tablet e computador. -->
+<meta name="description" content="Assistência técnica de celular em São Paulo: troca de tela, bateria e conserto de placa. Diagnóstico grátis, orçamento na hora e garantia de 90 dias.">
+<!-- Eu escrevo a descrição que aparece no Google para atrair quem busca conserto. -->
+<meta name="robots" content="noindex, follow">
+<!-- Eu evito que a demonstração fictícia dispute buscas com o site principal da MOSS. -->
+<meta property="og:title" content="Ponto Certo — Assistência Técnica de Celular">
+<!-- Eu preparo o título que aparece quando alguém compartilha o link. -->
+<meta property="og:description" content="Seu celular volta a funcionar no mesmo dia. Diagnóstico grátis e garantia de 90 dias.">
+<!-- Eu preparo a descrição da prévia no WhatsApp. -->
+<meta property="og:type" content="website">
+<!-- Eu informo que esta página é um site. -->
+<title>Ponto Certo — Assistência Técnica de Celular</title>
+<!-- Eu escrevo o título da aba do navegador e do Google. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d1b2c'/%3E%3Cg fill='none' stroke='%230ea5e9' stroke-width='4' stroke-linecap='round'%3E%3Crect x='22' y='10' width='22' height='36' rx='5'/%3E%3Cpath d='M27 34 l6 6 -4 4 7 8'/%3E%3C/g%3E%3C/svg%3E">
+<!-- Eu colo o ícone do celular direto no HTML, sem arquivo extra. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- Eu aviso o navegador que vou buscar fontes no Google Fonts. -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Eu aviso que os arquivos das fontes vêm de outro domínio. -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Eu carrego as fontes: geométrica para títulos e limpa para textos. -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ElectronicsRepair","name":"Ponto Certo — Assistência Técnica de Celular","description":"Troca de tela, bateria e conserto de placa de celular com diagnóstico grátis e garantia de 90 dias.","telephone":"+5511942038103","address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"priceRange":"A partir de R$ 90"}</script>
+<!-- Eu mantenho os dados estruturados válidos, sem comentários dentro do JSON. -->
+<style>
+/* Eu abro a área do visual de toda a página. */
+:root {
+  /* Eu declaro as variáveis de cor usadas no site inteiro. */
+  --fundo: #f4f8fb;
+  /* Eu escolho o cinza-azulado claro do fundo. */
+  --cartao: #ffffff;
+  /* Eu escolho o branco dos cartões. */
+  --navy: #0d1b2c;
+  /* Eu escolho o azul-marinho escuro para títulos. */
+  --azul: #0ea5e9;
+  /* Eu escolho o azul elétrico como cor principal. */
+  --azul-forte: #0284c7;
+  /* Eu escolho um azul mais escuro para hover e detalhes. */
+  --texto: #243647;
+  /* Eu escolho a cor do texto corrido. */
+  --texto-suave: #5b7288;
+  /* Eu escolho o tom suave dos textos de apoio. */
+  --linha: #dbe6ef;
+  /* Eu escolho a cor das linhas divisórias. */
+  --fonte-titulo: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  /* Eu defino a fonte geométrica dos títulos. */
+  --fonte-texto: 'Inter', system-ui, sans-serif;
+  /* Eu defino a fonte limpa dos textos. */
+}
+* { box-sizing: border-box; }
+/* Eu faço a margem interna ser calculada dentro da largura de cada elemento. */
+body {
+  /* Eu aplico o estilo base do corpo. */
+  margin: 0;
+  /* Eu zero a margem padrão do navegador. */
+  background: var(--fundo);
+  /* Eu pinto o fundo de cinza-azulado claro. */
+  color: var(--texto);
+  /* Eu deixo o texto na cor escura confortável. */
+  font: 400 16px/1.65 var(--fonte-texto);
+  /* Eu defino tamanho, altura de linha e fonte do texto. */
+  -webkit-font-smoothing: antialiased;
+  /* Eu deixo as letras mais lisas no Mac e no iPhone. */
+}
+img, svg { max-width: 100%; display: block; }
+/* Eu faço imagens e SVGs nunca ultrapassarem a tela. */
+a { color: inherit; }
+/* Eu faço os links herdarem a cor do texto ao redor. */
+h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 700; line-height: 1.15; margin: 0; color: var(--navy); }
+/* Eu aplico a fonte geométrica, peso forte e cor marinho em todos os títulos. */
+section { padding: 84px 22px; }
+/* Eu dou respiro vertical em cada seção. */
+.envoltorio { max-width: 1100px; margin: 0 auto; }
+/* Eu centralizo o conteúdo numa largura máxima confortável. */
+.topo {
+  /* Eu estilizo o cabeçalho fixo no topo. */
+  position: sticky;
+  /* Eu prendo o cabeçalho para ficar sempre visível. */
+  top: 0;
+  /* Eu alinho na borda superior da tela. */
+  z-index: 50;
+  /* Eu dou prioridade de camada para o menu ficar por cima. */
+  background: rgba(255, 255, 255, .92);
+  /* Eu pinto o fundo do topo quase branco. */
+  backdrop-filter: blur(10px);
+  /* Eu aplico o desfoque atrás do cabeçalho. */
+  border-bottom: 1px solid var(--linha);
+  /* Eu desenho a linha embaixo do cabeçalho. */
+}
+.topo__interno {
+  /* Eu estilizo a área interna do cabeçalho. */
+  max-width: 1100px;
+  /* Eu limito a largura igual ao conteúdo. */
+  margin: 0 auto;
+  /* Eu centralizo na tela. */
+  padding: 13px 22px;
+  /* Eu afasto das laterais. */
+  display: flex;
+  /* Eu uso flexbox para alinhar marca, menu e botão. */
+  align-items: center;
+  /* Eu centralizo verticalmente. */
+  justify-content: space-between;
+  /* Eu empurro a marca para a esquerda e o botão para a direita. */
+  gap: 16px;
+  /* Eu dou espaço mínimo entre os itens. */
+}
+.marca {
+  /* Eu estilizo a marca no cabeçalho. */
+  display: flex;
+  /* Eu junto ícone e nome lado a lado. */
+  align-items: center;
+  /* Eu alinho no meio. */
+  gap: 10px;
+  /* Eu separo ícone e nome. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado do link. */
+}
+.marca__icone {
+  /* Eu estilizo o quadradinho do ícone. */
+  width: 38px;
+  /* Eu defino a largura. */
+  height: 38px;
+  /* Eu defino a altura, formando o quadrado. */
+  border: 2px solid var(--azul);
+  /* Eu desenho a borda azul. */
+  border-radius: 10px;
+  /* Eu arredondo os cantos. */
+  display: grid;
+  /* Eu uso grade para centralizar o desenho. */
+  place-items: center;
+  /* Eu centralizo o celularzinho. */
+  color: var(--azul);
+  /* Eu pinto o desenho de azul. */
+  background: #e8f6fe;
+  /* Eu pinto o fundo do ícone de azul bem clarinho. */
+}
+.marca__nome {
+  /* Eu estilizo o nome da marca. */
+  font-family: var(--fonte-titulo);
+  /* Eu uso a fonte geométrica. */
+  font-size: 1.25rem;
+  /* Eu defino o tamanho do nome. */
+  font-weight: 700;
+  /* Eu deixo o nome bem forte. */
+  letter-spacing: .02em;
+  /* Eu abro levemente as letras. */
+  color: var(--navy);
+  /* Eu pinto o nome de marinho. */
+}
+.menu {
+  /* Eu estilizo a lista de links do menu. */
+  display: flex;
+  /* Eu alinho os links lado a lado. */
+  gap: 24px;
+  /* Eu separo cada link. */
+  list-style: none;
+  /* Eu tiro os marcadores de lista. */
+  margin: 0;
+  /* Eu zero a margem. */
+  padding: 0;
+  /* Eu zero o preenchimento. */
+}
+.menu a {
+  /* Eu estilizo cada link do menu. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado. */
+  font-size: .92rem;
+  /* Eu dimensiono a letra do menu. */
+  font-weight: 500;
+  /* Eu dou um peso médio à letra. */
+  color: var(--texto);
+  /* Eu pinto o link na cor do texto. */
+}
+.menu a:hover { color: var(--azul-forte); }
+/* Eu mudo a cor do link para azul forte no hover. */
+.botao {
+  /* Eu estilizo o botão principal. */
+  display: inline-block;
+  /* Eu faço o botão seguir o tamanho do texto. */
+  padding: 12px 22px;
+  /* Eu dou conforto interno. */
+  border-radius: 10px;
+  /* Eu arredondo os cantos do botão. */
+  background: var(--azul);
+  /* Eu pinto o botão de azul elétrico. */
+  color: #ffffff;
+  /* Eu deixo o texto do botão branco. */
+  font-weight: 600;
+  /* Eu engrosso a letra do botão. */
+  font-size: .95rem;
+  /* Eu defino o tamanho da letra. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado. */
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  /* Eu preparo a transição suave das animações. */
+}
+.botao:hover {
+  /* Eu defino o que acontece no hover. */
+  background: var(--azul-forte);
+  /* Eu escureço o azul do botão. */
+  transform: translateY(-2px);
+  /* Eu faço o botão subir dois pixels. */
+  box-shadow: 0 10px 24px rgba(14, 165, 233, .3);
+  /* Eu adiciono uma sombra azul embaixo. */
+}
+.botao--fantasma {
+  /* Eu crio a versão vazada do botão. */
+  background: transparent;
+  /* Eu tiro o preenchimento. */
+  border: 1.5px solid var(--navy);
+  /* Eu desenho a borda marinho. */
+  color: var(--navy);
+  /* Eu pinto o texto de marinho. */
+}
+.botao--fantasma:hover { background: var(--navy); color: #fff; }
+/* Eu invert as cores do botão vazado no hover, virando sólido escuro. */
+.aparador {
+  /* Eu estilizo a etiqueta pequena acima dos títulos. */
+  display: inline-block;
+  /* Eu faço a etiqueta seguir o tamanho do texto. */
+  font-size: .76rem;
+  /* Eu escrevo pequeno. */
+  letter-spacing: .2em;
+  /* Eu abro as letras. */
+  text-transform: uppercase;
+  /* Eu deixo em caixa alta. */
+  color: var(--azul-forte);
+  /* Eu pinto a etiqueta de azul. */
+  font-weight: 700;
+  /* Eu engrosso a etiqueta. */
+  margin-bottom: 18px;
+  /* Eu afasto a etiqueta do título. */
+}
+.capa {
+  /* Eu estilizo a primeira dobra do site. */
+  background:
+  /* Eu monto o fundo da capa em camadas. */
+  radial-gradient(55% 60% at 85% 20%, rgba(14, 165, 233, .16), transparent 70%),
+  /* Eu adiciono um brilho azul no canto superior direito. */
+  var(--fundo);
+  /* Eu finalizo com o fundo claro padrão. */
+}
+.capa__grade {
+  /* Eu estilizo a grade da capa: texto e arte. */
+  display: grid;
+  /* Eu uso grade para dividir a capa. */
+  grid-template-columns: 1.1fr .9fr;
+  /* Eu dou um pouco mais de espaço para o texto. */
+  gap: 44px;
+  /* Eu separo texto e arte. */
+  align-items: center;
+  /* Eu centralizo os dois lados verticalmente. */
+}
+.capa h1 {
+  /* Eu estilizo o título gigante da capa. */
+  font-size: clamp(2.3rem, 5vw, 3.9rem);
+  /* Eu faço o título crescer conforme a tela. */
+  margin-bottom: 16px;
+  /* Eu afasto o título do texto abaixo. */
+}
+.capa h1 span { color: var(--azul-forte); }
+/* Eu destaco parte do título em azul forte. */
+.capa__sub {
+  /* Eu estilizo o texto de apoio da capa. */
+  color: var(--texto-suave);
+  /* Eu uso a cor suave. */
+  font-size: 1.05rem;
+  /* Eu deixo o texto levemente maior. */
+  margin: 0 0 26px;
+  /* Eu afasto do bloco de botões. */
+}
+.capa__acoes {
+  /* Eu estilizo a área dos botões. */
+  display: flex;
+  /* Eu alinho os botões lado a lado. */
+  gap: 12px;
+  /* Eu separo os botões. */
+  flex-wrap: wrap;
+  /* Eu quebro em nova linha no celular. */
+}
+.fita {
+  /* Eu estilizo a fita de destaques. */
+  background: var(--navy);
+  /* Eu pinto a fita de marinho. */
+  color: #9fd9f7;
+  /* Eu pinto o texto da fita de azul clarinho. */
+  padding: 14px 22px;
+  /* Eu dou altura à fita. */
+  text-align: center;
+  /* Eu centralizo o texto da fita. */
+  font-weight: 600;
+  /* Eu engrosso o texto da fita. */
+  letter-spacing: .04em;
+  /* Eu abro levemente as letras. */
+}
+.titulos { text-align: center; max-width: 620px; margin: 0 auto 50px; }
+/* Eu centralizo os títulos de seção e afasto dos cards. */
+.titulos h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+/* Eu dimensiono os títulos das seções. */
+.titulos p { color: var(--texto-suave); margin: 13px 0 0; }
+/* Eu pinto o texto de apoio e afasto um pouco. */
+.servicos {
+  /* Eu estilizo a grade de cartões de serviço. */
+  display: grid;
+  /* Eu uso grade para os cartões. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  /* Eu faço a grade ter de uma a três colunas conforme a tela. */
+  gap: 18px;
+  /* Eu separo os cartões. */
+}
+.servico {
+  /* Eu estilizo cada cartão de serviço. */
+  background: var(--cartao);
+  /* Eu pinto o cartão de branco. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda do cartão. */
+  border-radius: 16px;
+  /* Eu arredondo os cantos. */
+  padding: 26px 24px;
+  /* Eu dou respiro interno. */
+  box-shadow: 0 8px 22px rgba(13, 27, 44, .06);
+  /* Eu adiciono uma sombra suave no cartão. */
+  transition: transform .25s ease, box-shadow .25s ease;
+  /* Eu preparo a animação de elevação. */
+}
+.servico:hover {
+  /* Eu defino o hover do cartão. */
+  transform: translateY(-5px);
+  /* Eu faço o cartão subir no hover. */
+  box-shadow: 0 16px 32px rgba(13, 27, 44, .12);
+  /* Eu escureço a sombra no hover. */
+}
+.servico__icone {
+  /* Eu estilizo o ícone dentro do cartão. */
+  width: 46px;
+  /* Eu defino a largura do ícone. */
+  height: 46px;
+  /* Eu defino a altura. */
+  border-radius: 12px;
+  /* Eu arredondo o quadradinho do ícone. */
+  background: #e8f6fe;
+  /* Eu pinto o fundo do ícone de azul clarinho. */
+  color: var(--azul-forte);
+  /* Eu pinto o desenho de azul. */
+  display: grid;
+  /* Eu uso grade para centralizar. */
+  place-items: center;
+  /* Eu centralizo o desenho. */
+  margin-bottom: 16px;
+  /* Eu afasto o ícone do título. */
+}
+.servico h3 { font-size: 1.2rem; margin-bottom: 8px; }
+/* Eu dimensiono e afasto o título do serviço. */
+.servico p { color: var(--texto-suave); font-size: .93rem; margin: 0 0 14px; }
+/* Eu escrevo a descrição em cor suave. */
+.servico__preco {
+  /* Eu estilizo a etiqueta de preço. */
+  display: inline-block;
+  /* Eu faço a etiqueta seguir o tamanho do texto. */
+  background: var(--navy);
+  /* Eu pinto o fundo do preço de marinho. */
+  color: #9fd9f7;
+  /* Eu pinto o texto do preço de azul clarinho. */
+  font-weight: 700;
+  /* Eu engrosso o preço. */
+  padding: 6px 14px;
+  /* Eu dou conforto interno à etiqueta. */
+  border-radius: 999px;
+  /* Eu arredondo a etiqueta, formato pílula. */
+  font-size: .88rem;
+  /* Eu dimensiono a letra do preço. */
+}
+.sobre__grade {
+  /* Eu estilizo a seção da história. */
+  display: grid;
+  /* Eu uso grade para dividir arte e texto. */
+  grid-template-columns: 1fr 1fr;
+  /* Eu divido em duas colunas iguais. */
+  gap: 46px;
+  /* Eu separo as colunas. */
+  align-items: center;
+  /* Eu centralizo verticalmente. */
+}
+.sobre__texto p { color: var(--texto-suave); }
+/* Eu pinto o texto da história em cor suave. */
+.numeros {
+  /* Eu estilizo a linha de números de destaque. */
+  display: flex;
+  /* Eu alinho os números lado a lado. */
+  gap: 32px;
+  /* Eu separo cada número. */
+  margin-top: 24px;
+  /* Eu afasto dos textos. */
+  flex-wrap: wrap;
+  /* Eu quebro em nova linha no celular. */
+}
+.numeros strong {
+  /* Eu estilizo o número grande. */
+  display: block;
+  /* Eu faço o número ocupar a linha inteira. */
+  font-family: var(--fonte-titulo);
+  /* Eu uso a fonte geométrica. */
+  font-size: 1.9rem;
+  /* Eu deixo o número grande. */
+  color: var(--azul-forte);
+  /* Eu pinto o número de azul. */
+}
+.numeros span { color: var(--texto-suave); font-size: .85rem; }
+/* Eu escrevo a legenda em cor suave e pequena. */
+.galeria {
+  /* Eu estilizo a grade da galeria. */
+  display: grid;
+  /* Eu uso grade para as artes. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  /* Eu faço a grade ter de duas a quatro colunas. */
+  gap: 16px;
+  /* Eu separo as artes. */
+}
+.arte {
+  /* Eu estilizo cada quadro da galeria. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda do quadro. */
+  border-radius: 16px;
+  /* Eu arredondo os cantos. */
+  overflow: hidden;
+  /* Eu corto o que passar dos cantos. */
+  background: var(--cartao);
+  /* Eu pinto o fundo do quadro de branco. */
+}
+.arte svg {
+  /* Eu estilizo o SVG dentro do quadro. */
+  width: 100%;
+  /* Eu faço o desenho ocupar a largura. */
+  height: auto;
+  /* Eu deixo a altura acompanhar. */
+  transition: transform .4s ease;
+  /* Eu preparo a animação de aproximação. */
+}
+.arte:hover svg { transform: scale(1.05); }
+/* Eu amplio a arte cinco por cento no hover. */
+.depoimentos {
+  /* Eu estilizo a área dos depoimentos. */
+  display: grid;
+  /* Eu uso grade para os três depoimentos. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+  /* Eu faço a grade ter de uma a três colunas. */
+  gap: 16px;
+  /* Eu separo os depoimentos. */
+}
+.fala {
+  /* Eu estilizo cada cartão de depoimento. */
+  background: var(--cartao);
+  /* Eu pinto o cartão de branco. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda. */
+  border-radius: 16px;
+  /* Eu arredondo os cantos. */
+  padding: 24px;
+  /* Eu dou respiro interno. */
+}
+.fala blockquote { margin: 0 0 12px; font-style: italic; }
+/* Eu zero a margem da citação e inclino o texto. */
+.fala footer { color: var(--azul-forte); font-weight: 600; font-size: .88rem; }
+/* Eu assino o depoimento em azul forte. */
+.duvidas details {
+  /* Eu estilizo cada pergunta de dúvidas. */
+  background: var(--cartao);
+  /* Eu pinto o cartão da pergunta de branco. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda. */
+  border-radius: 12px;
+  /* Eu arredondo os cantos. */
+  padding: 16px 20px;
+  /* Eu dou respiro interno. */
+  margin-bottom: 10px;
+  /* Eu separo as perguntas. */
+}
+.duvidas summary {
+  /* Eu estilizo o título clicável da pergunta. */
+  cursor: pointer;
+  /* Eu mostro a mãozinha do mouse. */
+  font-weight: 600;
+  /* Eu engrosso a pergunta. */
+  color: var(--navy);
+  /* Eu pinto a pergunta de marinho. */
+}
+.duvidas p { color: var(--texto-suave); margin-bottom: 0; }
+/* Eu pinto a resposta em cor suave e encosto no fim. */
+.contato__grade {
+  /* Eu estilizo a área de contato. */
+  display: grid;
+  /* Eu uso grade para informações e formulário. */
+  grid-template-columns: 1fr 1fr;
+  /* Eu divido em duas colunas iguais. */
+  gap: 46px;
+  /* Eu separo as colunas. */
+  align-items: start;
+  /* Eu alinho no topo. */
+}
+.lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+/* Eu monto a lista de contatos sem marcadores. */
+.lista li { display: flex; gap: 12px; align-items: baseline; }
+/* Eu alinho campo e valor lado a lado. */
+.lista strong { color: var(--azul-forte); min-width: 96px; font-weight: 600; }
+/* Eu destaco o nome do campo em azul. */
+.formulario {
+  /* Eu estilizo o cartão do formulário. */
+  background: var(--cartao);
+  /* Eu pinto o cartão de branco. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda. */
+  border-radius: 18px;
+  /* Eu arredondo os cantos. */
+  padding: 28px;
+  /* Eu dou respiro interno. */
+  display: grid;
+  /* Eu uso grade para empilhar os campos. */
+  gap: 14px;
+  /* Eu separo os campos. */
+}
+.formulario label { display: grid; gap: 6px; font-size: .88rem; color: var(--texto-suave); }
+/* Eu organizo cada campo com legenda em cima e caixa embaixo. */
+.formulario input, .formulario select, .formulario textarea {
+  /* Eu estilizo todas as caixas de preenchimento. */
+  font: inherit;
+  /* Eu faço herdarem a fonte do site. */
+  padding: 12px 14px;
+  /* Eu dou conforto interno. */
+  border: 1.5px solid var(--linha);
+  /* Eu desenho a borda das caixas. */
+  border-radius: 10px;
+  /* Eu arredondo as caixas. */
+  background: #fbfdff;
+  /* Eu pinto o fundo das caixas de branco quase puro. */
+  color: var(--texto);
+  /* Eu pinto o texto digitado na cor escura. */
+}
+.formulario input:focus-visible, .formulario select:focus-visible, .formulario textarea:focus-visible {
+  /* Eu defino o destaque quando o campo ganha o foco. */
+  outline: 2px solid var(--azul);
+  /* Eu desenho o contorno azul em volta. */
+  outline-offset: 1px;
+  /* Eu afasto levemente o contorno. */
+}
+.rodape {
+  /* Eu estilizo o rodapé. */
+  background: var(--navy);
+  /* Eu pinto o rodapé de marinho. */
+  color: #b9c9d8;
+  /* Eu pinto o texto do rodapé de cinza-azulado. */
+  text-align: center;
+  /* Eu centralizo o texto. */
+  padding: 38px 22px;
+  /* Eu dou respiro interno. */
+  font-size: .9rem;
+  /* Eu dimensiono a letra. */
+}
+.rodape strong { color: #9fd9f7; }
+/* Eu destaco a marca em azul clarinho no rodapé. */
+.aviso {
+  /* Eu estilizo a tarja de aviso de demo ilustrativa. */
+  background: var(--navy);
+  /* Eu pinto a tarja de marinho. */
+  color: #9fd9f7;
+  /* Eu pinto o texto de azul clarinho. */
+  text-align: center;
+  /* Eu centralizo o aviso. */
+  padding: 9px 22px;
+  /* Eu dou altura à tarja. */
+  font-size: .82rem;
+  /* Eu escrevo em letra pequena. */
+}
+.revela {
+  /* Eu preparo o estado inicial dos elementos que aparecem na rolagem. */
+  opacity: 0;
+  /* Eu deixo invisível antes de aparecer. */
+  transform: translateY(22px);
+  /* Eu desloco para baixo antes de aparecer. */
+  transition: opacity .7s ease, transform .7s ease;
+  /* Eu defino a transição suave. */
+}
+.revela.visivel { opacity: 1; transform: none; }
+/* Eu mostro e devolvo à posição quando entra na tela. */
+@media (max-width: 860px) {
+  /* Eu crio as regras para telas de celular. */
+  .capa__grade, .sobre__grade, .contato__grade { grid-template-columns: 1fr; }
+  /* Eu empilho as colunas em uma só. */
+  .menu {
+    /* Eu escondo o menu horizontal no celular. */
+    display: none;
+    /* Eu removo do fluxo para abrir espaço. */
+    position: absolute;
+    /* Eu preparo o menu suspenso. */
+    top: 100%;
+    /* Eu posiciono logo abaixo do cabeçalho. */
+    right: 0;
+    /* Eu encosto à direita. */
+    left: 0;
+    /* Eu estico até a esquerda. */
+    background: #ffffff;
+    /* Eu pinto o fundo do menu suspenso de branco. */
+    flex-direction: column;
+    /* Eu empilho os links na vertical. */
+    padding: 16px 22px;
+    /* Eu dou respiro interno. */
+    border-bottom: 1px solid var(--linha);
+    /* Eu desenho a linha embaixo. */
+  }
+  .menu.aberto { display: flex; }
+  /* Eu mostro o menu em coluna quando está aberto. */
+  .topo__interno { position: relative; }
+  /* Eu preparo o cabeçalho como referência para o menu suspenso. */
+  .botao-topo { display: none; }
+  /* Eu escondo o botão do topo no celular. */
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Eu atendo quem prefere menos animação. */
+  * { animation: none !important; transition: none !important; }
+  /* Eu desligo animações e transições para essa pessoa. */
+  .revela { opacity: 1; transform: none; }
+  /* Eu deixo o conteúdo já visível. */
+}
+</style>
+<!-- Eu fecho a área de estilos. -->
+</head>
+<!-- Eu fecho a área de configurações. -->
+<body>
+<!-- Eu abro o corpo da página. -->
+<div class="aviso">
+  <!-- Eu crio a tarja de aviso no topo. -->
+  DEMO ILUSTRATIVA — textos, preços e depoimentos são exemplos. O contato leva à MOSS Digital.
+  <!-- Eu aviso que tudo aqui é exemplo fictício. -->
+</div>
+<!-- Eu fecho a tarja de aviso. -->
+<header class="topo">
+  <!-- Eu crio o cabeçalho fixo. -->
+  <div class="topo__interno">
+    <!-- Eu abro a área interna do cabeçalho. -->
+    <a class="marca" href="#inicio">
+      <!-- Eu faço a marca ser link para o topo. -->
+      <span class="marca__icone" aria-hidden="true">
+        <!-- Eu crio o quadradinho do ícone, escondido dos leitores de tela. -->
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Eu desenho o celularzinho com o raio de conserto. -->
+          <rect x="7" y="3" width="10" height="18" rx="2.5"/>
+          <!-- Eu desenho o corpo do celular. -->
+          <path d="M10.5 15.5 l2.5 3 -1.5 1.5 3 3"/>
+          <!-- Eu desenho o raio indicando o conserto. -->
+          <path d="M14 13 l-2.5 3 1.5 1.5 -3 3"/>
+          <!-- Eu desenho o outro traço do raio. -->
+        </svg>
+      </span>
+      <!-- Eu fecho o ícone. -->
+      <span class="marca__nome">Ponto Certo</span>
+      <!-- Eu escrevo o nome da marca. -->
+    </a>
+    <!-- Eu fecho o link da marca. -->
+    <nav aria-label="Menu principal">
+      <!-- Eu abro a navegação, marcada para leitores de tela. -->
+      <ul class="menu" id="menu">
+        <!-- Eu abro a lista do menu. -->
+        <li><a href="#servicos">Serviços</a></li>
+        <!-- Eu adiciono o link dos serviços. -->
+        <li><a href="#sobre">A oficina</a></li>
+        <!-- Eu adiciono o link da oficina. -->
+        <li><a href="#galeria">Trabalhos</a></li>
+        <!-- Eu adiciono o link da galeria. -->
+        <li><a href="#contato">Orçamento</a></li>
+        <!-- Eu adiciono o link do orçamento. -->
+      </ul>
+      <!-- Eu fecho a lista do menu. -->
+    </nav>
+    <!-- Eu fecho a navegação. -->
+    <a class="botao botao-topo" href="#contato">Pedir orçamento</a>
+    <!-- Eu adiciono o botão principal no cabeçalho. -->
+  </div>
+  <!-- Eu fecho a área interna do cabeçalho. -->
+</header>
+<!-- Eu fecho o cabeçalho. -->
+<main>
+<!-- Eu abro o conteúdo principal. -->
+<section class="capa" id="inicio">
+  <!-- Eu crio a primeira dobra do site. -->
+  <div class="envoltorio capa__grade">
+    <!-- Eu abro a grade de duas colunas da capa. -->
+    <div>
+      <!-- Eu crio a coluna do texto. -->
+      <span class="aparador">Assistência técnica em São Paulo</span>
+      <!-- Eu escrevo a etiqueta que identifica a oficina. -->
+      <h1>Seu celular volta a funcionar <span>no mesmo dia</span></h1>
+      <!-- Eu escrevo o título principal, com destaque azul. -->
+      <p class="capa__sub">
+        <!-- Eu abro o texto de apoio. -->
+        Tela trincada, bateria viciada ou placa doente: a gente resolve na hora quando dá, e avisa o prazo quando não. Orçamento aprovado antes de qualquer reparo.
+        <!-- Eu explico a proposta com as palavras que o cliente sente. -->
+      </p>
+      <!-- Eu fecho o texto de apoio. -->
+      <div class="capa__acoes">
+        <!-- Eu abro a área dos botões. -->
+        <a class="botao" href="#contato">Falar no WhatsApp</a>
+        <!-- Eu crio o botão principal de contato. -->
+        <a class="botao botao--fantasma" href="#servicos">Ver serviços e preços</a>
+        <!-- Eu crio o botão secundário para os serviços. -->
+      </div>
+      <!-- Eu fecho a área dos botões. -->
+    </div>
+    <!-- Eu fecho a coluna do texto. -->
+    <div>
+      <!-- Eu crio a coluna da arte. -->
+      <svg viewBox="0 0 400 340" role="img" aria-label="Ilustração de celular sendo consertado">
+        <!-- Eu desenho a arte da capa: celular com chave. -->
+        <rect width="400" height="340" rx="20" fill="#ffffff" stroke="#dbe6ef"/>
+        <!-- Eu desenho o quadro branco da arte. -->
+        <g fill="none" stroke="#0ea5e9" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Eu agrupo os traços azuis da ilustração. -->
+          <rect x="150" y="60" width="110" height="180" rx="16"/>
+          <!-- Eu desenho o corpo do celular. -->
+          <path d="M185 78 h40"/>
+          <!-- Eu desenho o alto-falante do celular. -->
+          <path d="M175 130 l30 34 -18 24 34 42"/>
+          <!-- Eu desenho a trinca na tela. -->
+          <path d="M230 110 l-24 30 20 26 -32 46"/>
+          <!-- Eu desenho o outro pedaço da trinca. -->
+          <path d="M280 90 l70 -50"/>
+          <!-- Eu desenho a haste da chave de fenda. -->
+          <path d="M336 44 l28 -20 18 24 -26 20z"/>
+          <!-- Eu desenho a ponta da chave de fenda. -->
+          <path d="M280 90 l-16 14 20 18 16 -16z"/>
+          <!-- Eu desenho o cabo da chave. -->
+        </g>
+        <!-- Eu fecho o grupo de traços. -->
+        <g fill="#0d1b2c">
+          <!-- Eu agrupo os detalhes escuros. -->
+          <circle cx="80" cy="120" r="5"/>
+          <!-- Eu desenho um ponto decorativo. -->
+          <circle cx="330" cy="250" r="5"/>
+          <!-- Eu desenho outro ponto decorativo. -->
+          <path d="M90 210 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z" opacity=".7"/>
+          <!-- Eu desenho uma estrelinha decorativa. -->
+        </g>
+        <!-- Eu fecho o grupo de detalhes. -->
+      </svg>
+      <!-- Eu fecho a arte da capa. -->
+    </div>
+    <!-- Eu fecho a coluna da arte. -->
+  </div>
+  <!-- Eu fecho a grade da capa. -->
+</section>
+<!-- Eu fecho a seção da capa. -->
+<div class="fita">
+  <!-- Eu crio a fita de destaques. -->
+  DIAGNÓSTICO GRÁTIS · GARANTIA DE 90 DIAS · PEÇAS TESTADAS · RETIRADA EM DOMICÍLIO
+  <!-- Eu escrevo os diferenciais da oficina na fita. -->
+</div>
+<!-- Eu fecho a fita. -->
+<section id="servicos">
+  <!-- Eu crio a seção dos serviços com preços. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título. -->
+      <span class="aparador">Serviços e valores</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>O que a gente resolve</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>Preços de referência para os reparos mais pedidos. O valor fechado sai após o diagnóstico gratuito do seu aparelho.</p>
+      <!-- Eu explico que os preços são pontos de partida. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="servicos">
+      <!-- Eu abro a grade de serviços. -->
+      <article class="servico revela">
+        <!-- Eu crio o primeiro cartão de serviço. -->
+        <span class="servico__icone" aria-hidden="true">
+          <!-- Eu crio o quadradinho do ícone. -->
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M9 6h6"/></svg>
+          <!-- Eu desenho o ícone de tela. -->
+        </span>
+        <!-- Eu fecho o ícone. -->
+        <h3>Troca de tela</h3>
+        <!-- Eu escrevo o nome do serviço. -->
+        <p>Tela original ou compatível de qualidade, com teste de touch e sensor na frente do cliente.</p>
+        <!-- Eu descrevo o serviço. -->
+        <span class="servico__preco">A partir de R$ 180</span>
+        <!-- Eu mostro o preço do serviço. -->
+      </article>
+      <!-- Eu fecho o primeiro cartão. -->
+      <article class="servico revela">
+        <!-- Eu crio o segundo cartão. -->
+        <span class="servico__icone" aria-hidden="true">
+          <!-- Eu crio o quadradinho do ícone. -->
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="6" width="12" height="14" rx="2"/><path d="M10 6V3h4v3"/><path d="M13 10l-3 4h3l-2 4"/></svg>
+          <!-- Eu desenho o ícone de bateria com raio. -->
+        </span>
+        <!-- Eu fecho o ícone. -->
+        <h3>Bateria nova</h3>
+        <!-- Eu escrevo o nome do serviço. -->
+        <p>Bateria com selo de qualidade, troca rápida e teste de carga antes da entrega.</p>
+        <!-- Eu descrevo o serviço. -->
+        <span class="servico__preco">A partir de R$ 120</span>
+        <!-- Eu mostro o preço. -->
+      </article>
+      <!-- Eu fecho o segundo cartão. -->
+      <article class="servico revela">
+        <!-- Eu crio o terceiro cartão. -->
+        <span class="servico__icone" aria-hidden="true">
+          <!-- Eu crio o quadradinho do ícone. -->
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h4v4H8z"/><path d="M16 8h.01M16 12h.01M12 16h.01M8 16h.01"/></svg>
+          <!-- Eu desenho o ícone de placa com componentes. -->
+        </span>
+        <!-- Eu fecho o ícone. -->
+        <h3>Conserto de placa</h3>
+        <!-- Eu escrevo o nome do serviço. -->
+        <p>Microsolda para celular que não liga, não carrega ou desliga sozinho.</p>
+        <!-- Eu descrevo o serviço. -->
+        <span class="servico__preco">A partir de R$ 250</span>
+        <!-- Eu mostro o preço. -->
+      </article>
+      <!-- Eu fecho o terceiro cartão. -->
+      <article class="servico revela">
+        <!-- Eu crio o quarto cartão. -->
+        <span class="servico__icone" aria-hidden="true">
+          <!-- Eu crio o quadradinho do ícone. -->
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <!-- Eu desenho o ícone de telefone. -->
+        </span>
+        <!-- Eu fecho o ícone. -->
+        <h3>Conector e microfone</h3>
+        <!-- Eu escrevo o nome do serviço. -->
+        <p>Troca de conector de carga, microfone e alto-falante com teste completo no final.</p>
+        <!-- Eu descrevo o serviço. -->
+        <span class="servico__preco">A partir de R$ 90</span>
+        <!-- Eu mostro o preço. -->
+      </article>
+      <!-- Eu fecho o quarto cartão. -->
+      <article class="servico revela">
+        <!-- Eu crio o quinto cartão. -->
+        <span class="servico__icone" aria-hidden="true">
+          <!-- Eu crio o quadradinho do ícone. -->
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+          <!-- Eu desenho o ícone de gráfico subindo. -->
+        </span>
+        <!-- Eu fecho o ícone. -->
+        <h3>Recuperação de dados</h3>
+        <!-- Eu escrevo o nome do serviço. -->
+        <p>Resgate de fotos, contatos e arquivos de aparelhos que pararam de funcionar.</p>
+        <!-- Eu descrevo o serviço. -->
+        <span class="servico__preco">A partir de R$ 200</span>
+        <!-- Eu mostro o preço. -->
+      </article>
+      <!-- Eu fecho o quinto cartão. -->
+      <article class="servico revela">
+        <!-- Eu crio o sexto cartão. -->
+        <span class="servico__icone" aria-hidden="true">
+          <!-- Eu crio o quadradinho do ícone. -->
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4.5 8-10V5l-8-3-8 3v7c0 5.5 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <!-- Eu desenho o ícone de escudo com check. -->
+        </span>
+        <!-- Eu fecho o ícone. -->
+        <h3>Limpeza de líquidos</h3>
+        <!-- Eu escrevo o nome do serviço. -->
+        <p>Ultrassom e secagem profunda para celular afogado — a chance de salvar é maior quando é rápido.</p>
+        <!-- Eu descrevo o serviço. -->
+        <span class="servico__preco">A partir de R$ 150</span>
+        <!-- Eu mostro o preço. -->
+      </article>
+      <!-- Eu fecho o sexto cartão. -->
+    </div>
+    <!-- Eu fecho a grade de serviços. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de serviços. -->
+<section id="sobre" style="background: #ffffff;">
+  <!-- Eu crio a seção da história com fundo branco. -->
+  <div class="envoltorio sobre__grade">
+    <!-- Eu abro a grade da história. -->
+    <div class="revela">
+      <!-- Eu crio o lado da arte. -->
+      <svg viewBox="0 0 400 340" role="img" aria-label="Ilustração de técnico com lupa consertando placa">
+        <!-- Eu desenho a cena da bancada com lupa. -->
+        <rect width="400" height="340" rx="20" fill="#f4f8fb" stroke="#dbe6ef"/>
+        <!-- Eu desenho o quadro da arte. -->
+        <g fill="none" stroke="#0d1b2c" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Eu agrupo os traços escuros. -->
+          <path d="M70 250 h260"/>
+          <!-- Eu desenho a bancada. -->
+          <rect x="140" y="170" width="120" height="80" rx="10" fill="#e8f6fe"/>
+          <!-- Eu desenho a placa na bancada com fundo azul clarinho. -->
+          <rect x="140" y="170" width="120" height="80" rx="10"/>
+          <!-- Eu desenho a borda da placa. -->
+          <circle cx="255" cy="120" r="52" stroke="#0ea5e9"/>
+          <!-- Eu desenho a lupa em azul. -->
+          <path d="M292 158 l44 44" stroke="#0ea5e9"/>
+          <!-- Eu desenho o cabo da lupa em azul. -->
+          <path d="M170 200 h30 M170 220 h50"/>
+          <!-- Eu desenho os componentes da placa. -->
+        </g>
+        <!-- Eu fecho o grupo de traços. -->
+        <g fill="#0ea5e9">
+          <!-- Eu agrupy os detalhes azuis. -->
+          <circle cx="255" cy="120" r="8"/>
+          <!-- Eu desenho o centro da lupa. -->
+          <path d="M90 90 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z" opacity=".8"/>
+          <!-- Eu desenho uma estrelinha. -->
+        </g>
+        <!-- Eu fecho o grupo de detalhes. -->
+        <text x="200" y="310" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="17" letter-spacing="5" fill="#0369a1">DIAGN&#211;STICO NA SUA FRENTE</text>
+        <!-- Eu escrevo a frase da garantia de transparência. -->
+      </svg>
+    </div>
+    <!-- Eu fecho o lado da arte. -->
+    <div class="sobre__texto revela">
+      <!-- Eu crio o lado do texto. -->
+      <span class="aparador">A oficina</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2 style="font-size: clamp(1.8rem, 3.4vw, 2.6rem); margin-bottom: 14px;">Oficina de verdade, não só balcão de troca</h2>
+      <!-- Eu escrevo o título da história. -->
+      <p>
+        <!-- Eu abro o parágrafo da história. -->
+        A Ponto Certo abriu em 2013 com uma lupa, um ferro de solda e a mania de explicar o defeito antes de mexer em qualquer coisa. Doze anos depois, somos uma oficina completa, com microscópio, ultrassom e peças testadas — mas o combinado continua o mesmo: diagnóstico na sua frente, orçamento aprovado antes de começar e garantia escrita de 90 dias em todo reparo.
+        <!-- Eu conto a origem da oficina gerando confiança. -->
+      </p>
+      <!-- Eu fecho o parágrafo. -->
+      <div class="numeros">
+        <!-- Eu abro a área dos números. -->
+        <div>
+          <!-- Eu crio o primeiro número. -->
+          <strong>8.500+</strong>
+          <!-- Eu escrevo o número grande. -->
+          <span>reparos entregues</span>
+          <!-- Eu escrevo a legenda. -->
+        </div>
+        <!-- Eu fecho o primeiro número. -->
+        <div>
+          <!-- Eu crio o segundo número. -->
+          <strong>12 anos</strong>
+          <!-- Eu escrevo o número grande. -->
+          <span>de oficina</span>
+          <!-- Eu escrevo a legenda. -->
+        </div>
+        <!-- Eu fecho o segundo número. -->
+        <div>
+          <!-- Eu crio o terceiro número. -->
+          <strong>90 dias</strong>
+          <!-- Eu escrevo o número grande. -->
+          <span>de garantia</span>
+          <!-- Eu escrevo a legenda. -->
+        </div>
+        <!-- Eu fecho o terceiro número. -->
+      </div>
+      <!-- Eu fecho a área dos números. -->
+    </div>
+    <!-- Eu fecho o lado do texto. -->
+  </div>
+  <!-- Eu fecho a grade da história. -->
+</section>
+<!-- Eu fecho a seção da história. -->
+<section id="galeria">
+  <!-- Eu crio a seção da galeria. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título. -->
+      <span class="aparador">Bancada</span>
+      <!-- Eu escrevo a etiqueta. -->
+      <h2>Por dentro do nosso trabalho</h2>
+      <!-- Eu escrevo o título. -->
+      <p>Imagens ilustrativas dos reparos — no site do cliente entram fotos reais da oficina.</p>
+      <!-- Eu aviso que as artes são exemplos. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="galeria">
+      <!-- Eu abro a grade da galeria. -->
+      <figure class="arte revela" style="margin:0">
+        <!-- Eu crio o primeiro quadro. -->
+        <svg viewBox="0 0 400 300" role="img" aria-label="Celular com tela trincada">
+          <!-- Eu desenho o celular com a tela trincada. -->
+          <rect width="400" height="300" fill="#eef6fb"/>
+          <!-- Eu pinto o fundo do quadro. -->
+          <g fill="none" stroke="#0d1b2c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Eu agrupo os traços do celular. -->
+            <rect x="155" y="45" width="90" height="180" rx="14"/>
+            <!-- Eu desenho o corpo do celular. -->
+            <path d="M180 60 h40"/>
+            <!-- Eu desenho o alto-falante. -->
+            <path d="M175 110 l28 32 -16 22 32 40"/>
+            <!-- Eu desenho a trinca. -->
+            <path d="M225 95 l-22 28 18 24 -28 44"/>
+            <!-- Eu desenho o outro lado da trinca. -->
+            <path d="M170 200 h60"/>
+            <!-- Eu desenho o botão inicial. -->
+          </g>
+          <!-- Eu fecho o grupo de traços. -->
+          <g fill="#0ea5e9">
+            <!-- Eu agrupy os pontos azuis. -->
+            <path d="M310 80 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+            <!-- Eu desenho uma estrelinha. -->
+          </g>
+          <!-- Eu fecho os pontos. -->
+          <text x="200" y="275" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="15" letter-spacing="5" fill="#0369a1">TELAS</text>
+          <!-- Eu escrevo a categoria embaixo. -->
+        </svg>
+      </figure>
+      <!-- Eu fecho o primeiro quadro. -->
+      <figure class="arte revela" style="margin:0">
+        <!-- Eu crio o segundo quadro. -->
+        <svg viewBox="0 0 400 300" role="img" aria-label="Bateria de celular carregando">
+          <!-- Eu desenho a bateria carregando. -->
+          <rect width="400" height="300" fill="#edf7f1"/>
+          <!-- Eu pinto o fundo do quadro. -->
+          <g fill="none" stroke="#0d1b2c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Eu agrupo os traços da bateria. -->
+            <rect x="155" y="70" width="90" height="150" rx="12"/>
+            <!-- Eu desenho o corpo da bateria. -->
+            <path d="M182 70 v-14 h36 v14"/>
+            <!-- Eu desenho o polo de cima. -->
+            <path d="M205 100 l-26 46 h20 l-14 44 50 -58 h-22z" fill="#0ea5e9" stroke="none"/>
+            <!-- Eu desenho o raio de carga em azul preenchido. -->
+            <path d="M205 100 l-26 46 h20 l-14 44 50 -58 h-22z"/>
+            <!-- Eu desenho o contorno do raio. -->
+          </g>
+          <!-- Eu fecho o grupo de traços. -->
+          <text x="200" y="275" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="15" letter-spacing="5" fill="#15803d">BATERIAS</text>
+          <!-- Eu escrevo a categoria embaixo. -->
+        </svg>
+      </figure>
+      <!-- Eu fecho o segundo quadro. -->
+      <figure class="arte revela" style="margin:0">
+        <!-- Eu crio o terceiro quadro. -->
+        <svg viewBox="0 0 400 300" role="img" aria-label="Placa de celular em detalhe">
+          <!-- Eu desenho a placa em detalhe. -->
+          <rect width="400" height="300" fill="#e9f2fb"/>
+          <!-- Eu pinto o fundo do quadro. -->
+          <g fill="none" stroke="#0d1b2c" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Eu agrupo os traços da placa. -->
+            <rect x="110" y="60" width="180" height="160" rx="12"/>
+            <!-- Eu desenho a borda da placa. -->
+            <rect x="145" y="95" width="55" height="55" rx="8" fill="#0ea5e9" fill-opacity=".2"/>
+            <!-- Eu desenho o chip com fundo azul clarinho. -->
+            <rect x="145" y="95" width="55" height="55" rx="8"/>
+            <!-- Eu desenho a borda do chip. -->
+            <path d="M145 108 h-22 M145 125 h-22 M145 142 h-22"/>
+            <!-- Eu desenho os pins da esquerda. -->
+            <path d="M200 108 h22 M200 125 h22 M200 142 h22"/>
+            <!-- Eu desenho os pins da direita. -->
+            <rect x="230" y="165" width="40" height="30" rx="6"/>
+            <!-- Eu desenho um componente retangular. -->
+            <circle cx="150" cy="190" r="14"/>
+            <!-- Eu desenho um componente redondo. -->
+          </g>
+          <!-- Eu fecho o grupo de traços. -->
+          <text x="200" y="275" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="15" letter-spacing="5" fill="#0369a1">PLACAS</text>
+          <!-- Eu escrevo a categoria embaixo. -->
+        </svg>
+      </figure>
+      <!-- Eu fecho o terceiro quadro. -->
+      <figure class="arte revela" style="margin:0">
+        <!-- Eu crio o quarto quadro. -->
+        <svg viewBox="0 0 400 300" role="img" aria-label="Bancada de ferramentas">
+          <!-- Eu desenho a bancada de ferramentas. -->
+          <rect width="400" height="300" fill="#fbf3e8"/>
+          <!-- Eu pinto o fundo do quadro. -->
+          <g fill="none" stroke="#0d1b2c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Eu agrupo os traços da bancada. -->
+            <path d="M80 200 h240"/>
+            <!-- Eu desenho a mesa. -->
+            <path d="M110 200 v45 M290 200 v45"/>
+            <!-- Eu desenho as pernas da mesa. -->
+            <rect x="165" y="140" width="70" height="60" rx="8" fill="#e8f6fe"/>
+            <!-- Eu desenho o celular na bancada. -->
+            <rect x="165" y="140" width="70" height="60" rx="8"/>
+            <!-- Eu desenho a borda do celular. -->
+            <path d="M265 130 l55 -55"/>
+            <!-- Eu desenho a haste da chave. -->
+            <path d="M305 78 l22 -22 16 16 -20 22z"/>
+            <!-- Eu desenho a ponta da chave. -->
+            <circle cx="120" cy="160" r="22"/>
+            <!-- Eu desenho a lupa redonda. -->
+            <path d="M136 176 l18 18"/>
+            <!-- Eu desenho o cabo da lupa. -->
+          </g>
+          <!-- Eu fecho o grupo de traços. -->
+          <text x="200" y="275" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="15" letter-spacing="5" fill="#b45309">BANCADA</text>
+          <!-- Eu escrevo a categoria embaixo. -->
+        </svg>
+      </figure>
+      <!-- Eu fecho o quarto quadro. -->
+    </div>
+    <!-- Eu fecho a grade da galeria. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção da galeria. -->
+<section style="background: #ffffff;">
+  <!-- Eu crio a seção dos depoimentos com fundo branco. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título. -->
+      <span class="aparador">Clientes satisfeitos</span>
+      <!-- Eu escrevo a etiqueta. -->
+      <h2>Quem confiou no conserto</h2>
+      <!-- Eu escrevo o título. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="depoimentos">
+      <!-- Eu abro a grade de depoimentos. -->
+      <figure class="fala revela" style="margin:0">
+        <!-- Eu crio o primeiro cartão. -->
+        <blockquote>“Quebrei a tela do meu celular num domingo. No dia seguinte estava pronto e com garantia. Preço justo, sem enrolação.”</blockquote>
+        <!-- Eu escrevo a fala do cliente fictício. -->
+        <footer>— Rafael S., troca de tela</footer>
+        <!-- Eu assino o depoimento. -->
+      </figure>
+      <!-- Eu fecho o primeiro depoimento. -->
+      <figure class="fala revela" style="margin:0">
+        <!-- Eu crio o segundo cartão. -->
+        <blockquote>“Meu celular caiu na água e a gente achou que era perdido. Fizeram a limpeza e salvou tudo, inclusive as fotos.”</blockquote>
+        <!-- Eu escrevo a fala do cliente fictício. -->
+        <footer>— Priscila M., limpeza de líquidos</footer>
+        <!-- Eu assino o depoimento. -->
+      </figure>
+      <!-- Eu fecho o segundo depoimento. -->
+      <figure class="fala revela" style="margin:0">
+        <!-- Eu crio o terceiro cartão. -->
+        <blockquote>“Explicaram o problema na minha frente, mostraram a peça e só depois começaram. É difícil achar essa honestidade.”</blockquote>
+        <!-- Eu escrevo a fala do cliente fictício. -->
+        <footer>— Jonas L., conserto de placa</footer>
+        <!-- Eu assino o depoimento. -->
+      </figure>
+      <!-- Eu fecho o terceiro depoimento. -->
+    </div>
+    <!-- Eu fecho a grade de depoimentos. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de depoimentos. -->
+<section>
+  <!-- Eu crio a seção de dúvidas frequentes. -->
+  <div class="envoltorio" style="max-width: 740px;">
+    <!-- Eu centralizo as dúvidas numa largura confortável. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título. -->
+      <span class="aparador">Antes de vir</span>
+      <!-- Eu escrevo a etiqueta. -->
+      <h2>Dúvidas frequentes</h2>
+      <!-- Eu escrevo o título. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="duvidas revela">
+      <!-- Eu abro a lista de perguntas. -->
+      <details>
+        <!-- Eu crio a primeira pergunta com o detalhe nativo. -->
+        <summary>O diagnóstico é mesmo grátis?</summary>
+        <!-- Eu escrevo a pergunta clicável. -->
+        <p>Sim. Você traz o aparelho, a gente abre e mostra o defeito — e só cobra se você aprovar o orçamento.</p>
+        <!-- Eu respondo reforçando a transparência. -->
+      </details>
+      <!-- Eu fecho a primeira pergunta. -->
+      <details>
+        <!-- Eu crio a segunda pergunta. -->
+        <summary>Quanto tempo demora?</summary>
+        <!-- Eu escrevo a pergunta clicável. -->
+        <p>Troca de tela e bateria costumam sair no mesmo dia. Conserto de placa depende da peça, e avisamos o prazo no orçamento.</p>
+        <!-- Eu respondo sendo sincero sobre prazos. -->
+      </details>
+      <!-- Eu fecho a segunda pergunta. -->
+      <details>
+        <!-- Eu crio a terceira pergunta. -->
+        <summary>Tem garantia?</summary>
+        <!-- Eu escrevo a pergunta clicável. -->
+        <p>Todo reparo tem 90 dias de garantia por escrito, cobrindo a peça e a mão de obra do serviço feito aqui.</p>
+        <!-- Eu respondo mostrando a garantia. -->
+      </details>
+      <!-- Eu fecho a terceira pergunta. -->
+      <details>
+        <!-- Eu crio a quarta pergunta. -->
+        <summary>Vocês atendem qual marca?</summary>
+        <!-- Eu escrevo a pergunta clicável. -->
+        <p>Samsung, Apple, Motorola, Xiaomi, LG, Motorola e as demais marcas do mercado. Se não der para consertar, não cobramos nada.</p>
+        <!-- Eu respondo listando as marcas. -->
+      </details>
+      <!-- Eu fecho a quarta pergunta. -->
+    </div>
+    <!-- Eu fecho a lista de perguntas. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de dúvidas. -->
+<section id="contato" style="background: #ffffff;">
+  <!-- Eu crio a seção de contato com fundo branco. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="titulos revela">
+      <!-- Eu crio a área de título. -->
+      <span class="aparador">Fale com a gente</span>
+      <!-- Eu escrevo a etiqueta. -->
+      <h2>Manda o problema que a gente orça</h2>
+      <!-- Eu escrevo o título. -->
+      <p>Chame no WhatsApp com a foto do aparelho e do problema — o orçamento sai no mesmo dia.</p>
+      <!-- Eu explico como funciona o contato. -->
+    </div>
+    <!-- Eu fecho a área de título. -->
+    <div class="contato__grade">
+      <!-- Eu abro a grade de contato. -->
+      <div class="revela">
+        <!-- Eu crio o lado das informações. -->
+        <ul class="lista">
+          <!-- Eu abro a lista de informações. -->
+          <li><strong>WhatsApp</strong> <span>(11) 94203-8103</span></li>
+          <!-- Eu mostro o WhatsApp. -->
+          <li><strong>Telefone</strong> <span>(11) 94203-8103</span></li>
+          <!-- Eu mostro o telefone. -->
+          <li><strong>E-mail</strong> <span>orcamento@pontocerto.com.br</span></li>
+          <!-- Eu mostro o e-mail. -->
+          <li><strong>Endereço</strong> <span>Rua do Comércio, 320 — São Paulo/SP</span></li>
+          <!-- Eu mostro o endereço. -->
+          <li><strong>Horário</strong> <span>Segunda a sábado, das 9h às 19h</span></li>
+          <!-- Eu mostro o horário de atendimento. -->
+        </ul>
+        <!-- Eu fecho a lista. -->
+        <a class="botao" style="margin-top: 24px;" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Ponto%20Certo%20e%20preciso%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">
+          <!-- Eu crio o botão que abre o WhatsApp com mensagem pronta. -->
+          Abrir WhatsApp agora
+          <!-- Eu escrevo o texto do botão. -->
+        </a>
+        <!-- Eu fecho o botão. -->
+      </div>
+      <!-- Eu fecho o lado das informações. -->
+      <form class="formulario revela" id="formOrcamento">
+        <!-- Eu crio o formulário de orçamento. -->
+        <h3 style="margin:0 0 4px; font-size:1.3rem;">Orçamento rápido</h3>
+        <!-- Eu escrevo o título do formulário. -->
+        <label>
+          <!-- Eu crio o primeiro campo. -->
+          Seu nome
+          <!-- Eu escrevo a legenda. -->
+          <input type="text" name="nome" required placeholder="Como te chamo?">
+          <!-- Eu crio a caixa obrigatória do nome. -->
+        </label>
+        <!-- Eu fecho o campo do nome. -->
+        <label>
+          <!-- Eu crio o segundo campo. -->
+          Qual o problema?
+          <!-- Eu escrevo a legenda. -->
+          <select name="problema">
+            <!-- Eu crio a lista de opções. -->
+            <option>Tela trincada ou quebrada</option>
+            <!-- Eu adiciono a opção de tela. -->
+            <option>Bateria viciada</option>
+            <!-- Eu adiciono a opção de bateria. -->
+            <option>Não carrega</option>
+            <!-- Eu adiciono a opção de carga. -->
+            <option>Caiu na água</option>
+            <!-- Eu adiciono a opção de líquidos. -->
+            <option>Não liga / placa</option>
+            <!-- Eu adiciono a opção de placa. -->
+            <option>Outro problema</option>
+            <!-- Eu adiciono a opção genérica. -->
+          </select>
+          <!-- Eu fecho a lista de opções. -->
+        </label>
+        <!-- Eu fecho o campo do problema. -->
+        <label>
+          <!-- Eu crio o terceiro campo. -->
+          Modelo e detalhes
+          <!-- Eu escrevo a legenda. -->
+          <textarea name="detalhes" rows="3" placeholder="Ex.: Samsung A54, caiu e a tela não liga mais"></textarea>
+          <!-- Eu crio a caixa grande para o cliente detalhar. -->
+        </label>
+        <!-- Eu fecho o campo de detalhes. -->
+        <button class="botao" type="submit" style="border:0; cursor:pointer; font-family: inherit;">
+          <!-- Eu crio o botão de enviar. -->
+          Pedir orçamento pelo WhatsApp
+          <!-- Eu escrevo o texto do botão. -->
+        </button>
+        <!-- Eu fecho o botão. -->
+        <p style="margin:0; color:var(--texto-suave); font-size:.82rem;">
+          <!-- Eu crio a letra miúda abaixo. -->
+          Este formulário só abre o WhatsApp com a mensagem pronta — nada é enviado sozinho.
+          <!-- Eu aviso que o envio depende da confirmação no WhatsApp. -->
+        </p>
+        <!-- Eu fecho a letra miúda. -->
+      </form>
+      <!-- Eu fecho o formulário. -->
+    </div>
+    <!-- Eu fecho a grade de contato. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de contato. -->
+</main>
+<!-- Eu fecho o conteúdo principal. -->
+<footer class="rodape">
+  <!-- Eu crio o rodapé. -->
+  <p style="margin:0 0 6px;">
+    <!-- Eu escrevo a primeira linha do rodapé. -->
+    <strong>Ponto Certo</strong> — assistência técnica de celular com diagnóstico grátis, orçamento honesto e garantia de 90 dias.
+    <!-- Eu resumo a proposta da oficina. -->
+  </p>
+  <!-- Eu fecho a primeira linha. -->
+  <p style="margin:0;">© <span id="ano">2026</span> Ponto Certo · Demo ilustrativa criada pela MOSS Digital.</p>
+  <!-- Eu escrevo o copyright com ano automático. -->
+</footer>
+<!-- Eu fecho o rodapé. -->
+<script>
+<!-- Eu abro a área de comportamento, o JavaScript. -->
+document.getElementById('ano').textContent = new Date().getFullYear();
+<!-- Eu preencho o ano do copyright automaticamente para nunca ficar desatualizado. -->
+const observador = new IntersectionObserver(function (entradas) {
+  <!-- Eu crio um observador que vigia quando cada elemento entra na tela. -->
+  entradas.forEach(function (entrada) {
+    <!-- Eu percorro cada elemento vigiado. -->
+    if (entrada.isIntersecting) {
+      <!-- Eu verifico se o elemento apareceu na área visível. -->
+      entrada.target.classList.add('visivel');
+      <!-- Eu adiciono a classe que revela o elemento. -->
+      observador.unobserve(entrada.target);
+      <!-- Eu deixo de vigiar, já que ele apareceu. -->
+    }
+  });
+  <!-- Eu fecho a percorrida dos elementos. -->
+});
+<!-- Eu fecho a definição do observador. -->
+document.querySelectorAll('.revela').forEach(function (el) { observador.observe(el); });
+<!-- Eu mando o observador vigiar todos os elementos de revelação. -->
+const menuEl = document.getElementById('menu');
+<!-- Eu guardo a referência do menu para abrir e fechar no celular. -->
+document.querySelectorAll('.menu a').forEach(function (link) {
+  <!-- Eu percorro cada link do menu. -->
+  link.addEventListener('click', function () { menuEl.classList.remove('aberto'); });
+  <!-- Eu fecho o menu quando alguém toca num link. -->
+});
+<!-- Eu fecho a percorrida dos links. -->
+document.getElementById('formOrcamento').addEventListener('submit', function (evento) {
+  <!-- Eu intercepto o envio do formulário antes de recarregar. -->
+  evento.preventDefault();
+  <!-- Eu cancelo o envio padrão. -->
+  const dados = new FormData(evento.target);
+  <!-- Eu leio o que o cliente digitou. -->
+  const nome = (dados.get('nome') || '').toString().trim();
+  <!-- Eu guardo o nome digitado. -->
+  const problema = (dados.get('problema') || '').toString();
+  <!-- Eu guardou o problema escolhido. -->
+  const detalhes = (dados.get('detalhes') || '').toString().trim();
+  <!-- Eu guardo os detalhes escritos. -->
+  if (!nome) {
+    <!-- Eu verifico se o nome está vazio. -->
+    alert('Preencha o seu nome para eu saber como te chamar.');
+    <!-- Eu aviso que o nome é obrigatório. -->
+    return;
+    <!-- Eu paro o envio até o nome ser preenchido. -->
+  }
+  <!-- Eu fecho a verificação do nome. -->
+  const texto = 'Olá! Vim pelo site da Ponto Certo.%0A%0ANome: ' + encodeURIComponent(nome) + '%0AProblema: ' + encodeURIComponent(problema) + '%0ADetalhes: ' + encodeURIComponent(detalhes || '—');
+  <!-- Eu monto a mensagem do WhatsApp com os campos, já codificada. -->
+  window.open('https://wa.me/5511942038103?text=' + texto, '_blank', 'noopener');
+  <!-- Eu abro o WhatsApp numa nova aba com a mensagem pronta. -->
+});
+<!-- Eu fecho o evento do formulário. -->
+</script>
+<!-- Eu fecho a área de comportamento. -->
+</body>
+<!-- Eu fecho o corpo da página. -->
+</html>
+<!-- Eu fecho o documento. -->

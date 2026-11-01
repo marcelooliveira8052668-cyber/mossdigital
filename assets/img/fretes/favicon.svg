@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Favicon Fretes Avenida">
+  <rect width="64" height="64" rx="14" fill="#0d2f6b"/>
+  <g fill="none" stroke="#ffc400" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 38 h26 v-12 h10 l8 8 v4z"/>
+    <circle cx="24" cy="44" r="5"/>
+    <circle cx="48" cy="44" r="5"/>
+    <path d="M12 38 v-10 h18"/>
+  </g>
+</svg>

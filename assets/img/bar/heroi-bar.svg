@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Ilustração neon de coquetel e placa de bar">
+  <defs>
+    <radialGradient id="bgBar" cx="50%" cy="45%" r="85%">
+      <stop offset="0%" stop-color="#171830"/>
+      <stop offset="55%" stop-color="#0e0f1f"/>
+      <stop offset="100%" stop-color="#07070f"/>
+    </radialGradient>
+    <linearGradient id="neonMg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff7ac6"/>
+      <stop offset="100%" stop-color="#ff2d95"/>
+    </linearGradient>
+    <filter id="brilhoNeon" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="7" result="borrao"/>
+      <feMerge>
+        <feMergeNode in="borrao"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgBar)"/>
+  <circle cx="600" cy="420" r="340" fill="none" stroke="#22d3ee" stroke-opacity=".14" stroke-width="2"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#brilhoNeon)">
+    <!-- copo martini neon -->
+    <path d="M420 240 h250 l-110 140 v120 h60 M560 500 h-60"/>
+    <path d="M420 240 l110 140 115 -140" stroke="url(#neonMg)" stroke-width="10"/>
+    <path d="M470 320 h150" stroke="#22d3ee" stroke-width="7"/>
+    <!-- cereja neon -->
+    <circle cx="556" cy="312" r="16" stroke="#ff2d95" stroke-width="7"/>
+    <path d="M556 296 q10 -26 34 -34" stroke="#22d3ee" stroke-width="6"/>
+    <!-- canudo neon -->
+    <path d="M600 262 l52 -70" stroke="#22d3ee" stroke-width="8"/>
+    <!-- balãozinho de gelo -->
+    <path d="M478 268 q14 18 0 34" stroke="#ffffff" stroke-opacity=".55" stroke-width="5"/>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#brilhoNeon)" opacity=".9">
+    <!-- garrafa neon à esquerda -->
+    <path d="M250 560 v-90 q0 -24 18 -34 v-46 h28 v46 q18 10 18 34 v90 q-32 14 -64 0z" stroke="#22d3ee" stroke-width="8"/>
+    <path d="M250 520 h64" stroke="#22d3ee" stroke-width="6"/>
+    <!-- taça alta neon à direita -->
+    <path d="M880 300 q0 70 -54 84 v96 M826 480 h64 M848 480 q-38 60 -14 96 h76 q24 -36 -14 -96" stroke="url(#neonMg)" stroke-width="8"/>
+    <path d="M834 336 q34 24 68 0" stroke="#22d3ee" stroke-width="6"/>
+  </g>
+  <g fill="#ff2d95" filter="url(#brilhoNeon)">
+    <path d="M270 230 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z"/>
+    <path d="M940 640 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z"/>
+    <circle cx="930" cy="240" r="7" fill="#22d3ee"/>
+    <circle cx="255" cy="680" r="7" fill="#22d3ee"/>
+    <circle cx="350" cy="150" r="5" fill="#22d3ee"/>
+    <circle cx="850" cy="160" r="5"/>
+  </g>
+  <g filter="url(#brilhoNeon)">
+    <text x="600" y="790" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="700" font-size="64" letter-spacing="16" fill="#ff2d95">BAR &#205;RIS</text>
+    <text x="600" y="840" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="24" letter-spacing="10" fill="#22d3ee">C O Q U E T E L A R I A</text>
+  </g>
+</svg>

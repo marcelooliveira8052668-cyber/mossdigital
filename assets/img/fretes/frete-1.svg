@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Ilustração de caminhão de mudanças, exemplo de transporte">
+  <defs>
+    <radialGradient id="bgMud1" cx="50%" cy="45%" r="80%">
+      <stop offset="0%" stop-color="#fff6ed"/>
+      <stop offset="100%" stop-color="#ffe7d1"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgMud1)"/>
+  <g fill="none" stroke="#0d2f6b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 330 h340 v130 h-340z"/>
+    <path d="M490 360 h70 l55 55 v45 h-125z"/>
+    <path d="M515 375 h35 l32 32 h-67z"/>
+    <circle cx="240" cy="485" r="34"/>
+    <circle cx="240" cy="485" r="13"/>
+    <circle cx="545" cy="485" r="34"/>
+    <circle cx="545" cy="485" r="13"/>
+    <path d="M150 330 v-60 h190 v60"/>
+    <path d="M185 270 v-46 h60 v46"/>
+    <path d="M275 270 v-34 h50 v34"/>
+    <path d="M185 288 h140"/>
+  </g>
+  <g fill="#ffc400" opacity=".85">
+    <path d="M650 200 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="120" cy="220" r="4"/>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="22" letter-spacing="6" fill="#1749a3">FROTA</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Ilustração de caminhão de mudanças carregado de caixas">
+  <defs>
+    <radialGradient id="bgMud" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#2b211a"/>
+      <stop offset="55%" stop-color="#1f1813"/>
+      <stop offset="100%" stop-color="#120e0b"/>
+    </radialGradient>
+    <linearGradient id="laranjaMud" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffc400"/>
+      <stop offset="50%" stop-color="#ffc400"/>
+      <stop offset="100%" stop-color="#1749a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgMud)"/>
+  <circle cx="600" cy="430" r="330" fill="none" stroke="#ffc400" stroke-opacity=".15" stroke-width="2"/>
+  <g fill="none" stroke="url(#laranjaMud)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M320 520 h420 v130 h-420z"/>
+    <path d="M740 560 h100 l70 70 v20 h-170z"/>
+    <path d="M775 575 h45 l40 40 h-85z"/>
+    <circle cx="430" cy="680" r="42"/>
+    <circle cx="430" cy="680" r="16"/>
+    <circle cx="820" cy="680" r="42"/>
+    <circle cx="820" cy="680" r="16"/>
+    <path d="M320 520 v-70 h240 v70"/>
+    <path d="M360 450 v-60 h80 v60"/>
+    <path d="M470 450 v-46 h70 v46"/>
+    <path d="M360 470 h180"/>
+    <path d="M400 450 v-40 M440 450 v-40"/>
+  </g>
+  <g fill="#ffc400">
+    <path d="M260 260 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z" opacity=".9"/>
+    <path d="M930 300 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z" opacity=".9"/>
+    <circle cx="250" cy="520" r="4" opacity=".7"/>
+    <circle cx="960" cy="520" r="4" opacity=".7"/>
+    <path d="M600 210 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/>
+  </g>
+  <text x="600" y="800" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="700" font-size="56" letter-spacing="12" fill="#ffc400">FRET&#195;O</text>
+  <text x="600" y="844" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" letter-spacing="8" fill="#a8764f">M U D A N &#199; A S   E   T R A N S P O R T E S</text>
+</svg>

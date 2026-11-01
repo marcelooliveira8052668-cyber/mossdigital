@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Ilustração neon de drink com limão e palito">
+  <defs>
+    <filter id="neonB3" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="480" rx="18" fill="#0e0f1f"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonB3)">
+    <path d="M225 120 h190 l-70 110 v110 h50 M345 340 h-50"/>
+    <path d="M225 120 l75 110 80 -110" stroke="#ff2d95" stroke-width="9"/>
+    <path d="M262 176 h116" stroke="#22d3ee" stroke-width="7"/>
+    <path d="M400 140 l56 -54" stroke="#22d3ee" stroke-width="8"/>
+    <circle cx="330" cy="168" r="18" stroke="#ff2d95" stroke-width="7"/>
+    <path d="M330 150 v36 M312 168 h36" stroke="#ff2d95" stroke-width="4"/>
+    <path d="M150 380 h340" stroke="#22d3ee" stroke-width="7"/>
+    <path d="M470 380 v-90 q0 -16 14 -22 v-34 h28 v34 q14 6 14 22 v90" stroke="#ff2d95" stroke-width="8"/>
+  </g>
+  <g fill="#22d3ee" filter="url(#neonB3)">
+    <path d="M160 140 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/>
+    <circle cx="500" cy="170" r="6" fill="#ff2d95"/>
+    <circle cx="170" cy="300" r="5" fill="#ff2d95"/>
+  </g>
+</svg>

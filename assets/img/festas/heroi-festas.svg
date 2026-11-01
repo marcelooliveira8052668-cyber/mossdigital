@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Ilustração de balões, bolo e confetes de festa">
+  <defs>
+    <radialGradient id="bgFest" cx="50%" cy="38%" r="85%">
+      <stop offset="0%" stop-color="#3b1163"/>
+      <stop offset="55%" stop-color="#28084a"/>
+      <stop offset="100%" stop-color="#150427"/>
+    </radialGradient>
+    <linearGradient id="rosaDourado" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="50%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgFest)"/>
+  <circle cx="600" cy="420" r="330" fill="none" stroke="#ec4899" stroke-opacity=".16" stroke-width="2"/>
+  <g fill="none" stroke="url(#rosaDourado)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- balão grande à esquerda -->
+    <ellipse cx="360" cy="330" rx="95" ry="115"/>
+    <path d="M360 445 q14 26 0 46 q-14 -20 0 -46"/>
+    <path d="M360 491 q30 60 -10 130"/>
+    <path d="M325 285 q22 45 0 95"/>
+    <!-- balão médio ao centro -->
+    <ellipse cx="600" cy="270" rx="78" ry="95"/>
+    <path d="M600 365 q12 22 0 40 q-12 -18 0 -40"/>
+    <path d="M600 405 q26 70 -6 150"/>
+    <!-- balão à direita -->
+    <ellipse cx="835" cy="335" rx="88" ry="108"/>
+    <path d="M835 443 q13 24 0 43 q-13 -19 0 -43"/>
+    <path d="M835 486 q-28 64 8 135"/>
+    <!-- bolo de festa embaixo -->
+    <path d="M470 690 h260 v95 h-260z"/>
+    <path d="M470 738 h260"/>
+    <path d="M500 690 q30 -34 60 0 q30 -34 60 0 q30 -34 60 0 q30 -34 60 0"/>
+    <path d="M560 655 v-38 M600 655 v-48 M640 655 v-38"/>
+    <path d="M560 617 q10 -14 0 -26 q-10 12 0 26 M600 607 q11 -16 0 -30 q-11 14 0 30 M640 617 q10 -14 0 -26 q-10 12 0 26"/>
+  </g>
+  <g fill="#fbbf24">
+    <path d="M250 240 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z" opacity=".9"/>
+    <path d="M950 265 l6 15 15 6 -15 6 -6 15 -6 -15 -15 -6 15 -6z" opacity=".9"/>
+    <path d="M600 175 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/>
+    <circle cx="245" cy="530" r="5" opacity=".7"/>
+    <circle cx="965" cy="530" r="5" opacity=".7"/>
+    <circle cx="320" cy="620" r="6" fill="#ec4899" opacity=".8"/>
+    <circle cx="880" cy="610" r="6" fill="#ec4899" opacity=".8"/>
+    <circle cx="470" cy="230" r="5" fill="#ec4899" opacity=".8"/>
+    <circle cx="740" cy="215" r="5" opacity=".8"/>
+    <rect x="415" y="560" width="12" height="6" rx="3" transform="rotate(-25 415 560)" fill="#ec4899" opacity=".85"/>
+    <rect x="770" y="555" width="12" height="6" rx="3" transform="rotate(20 770 555)" fill="#ec4899" opacity=".85"/>
+    <rect x="530" y="185" width="12" height="6" rx="3" transform="rotate(35 530 185)" opacity=".85"/>
+    <rect x="665" y="180" width="12" height="6" rx="3" transform="rotate(-30 665 180)" fill="#ec4899" opacity=".85"/>
+  </g>
+  <text x="600" y="855" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="700" font-size="44" letter-spacing="14" fill="#fbbf24">CELEBRA</text>
+</svg>

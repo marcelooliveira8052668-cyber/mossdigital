@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Favicon Ponto Certo">
+  <rect width="64" height="64" rx="14" fill="#0d1b2c"/>
+  <g fill="none" stroke="#0ea5e9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="22" y="10" width="22" height="36" rx="5"/>
+    <path d="M30 16 h6"/>
+    <path d="M27 34 l6 6 -4 4 7 8"/>
+    <path d="M37 30 l-5 6 4 5 -6 8"/>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Ilustração de mesa posta para festa">
+  <defs>
+    <linearGradient id="toalhaF3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="18" fill="#28084a"/>
+  <g stroke="#fbbf24" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M90 300 h460 l-40 130 h-380z" fill="url(#toalhaF3)"/>
+    <path d="M130 300 l-14 -70 M510 300 l14 -70"/>
+    <circle cx="200" cy="345" r="42" fill="#fef3c7"/>
+    <circle cx="200" cy="345" r="24" fill="none" stroke-width="4"/>
+    <circle cx="440" cy="345" r="42" fill="#fef3c7"/>
+    <circle cx="440" cy="345" r="24" fill="none" stroke-width="4"/>
+    <path d="M300 320 h44 v55 a22 22 0 0 1 -44 0z" fill="#ec4899"/>
+    <path d="M344 332 h16 a14 14 0 0 1 0 28 h-16" fill="none"/>
+    <path d="M312 300 v-34 M332 300 v-34" stroke-width="4"/>
+    <path d="M155 385 h40 M425 385 h40" stroke-width="4" opacity=".7"/>
+    <path d="M262 160 h116 v40 h-116z" fill="#f472b6"/>
+    <path d="M262 200 q58 34 116 0" fill="#f472b6"/>
+    <path d="M285 160 v-26 M320 160 v-34 M355 160 v-26" stroke-width="4"/>
+  </g>
+  <g fill="#fbbf24">
+    <path d="M135 130 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <path d="M505 145 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="470" cy="225" r="5" fill="#ec4899"/>
+    <circle cx="175" cy="235" r="5" fill="#ec4899"/>
+    <rect x="230" y="95" width="14" height="7" rx="3.5" transform="rotate(25 230 95)" fill="#ec4899"/>
+    <rect x="405" y="100" width="14" height="7" rx="3.5" transform="rotate(-30 405 100)"/>
+  </g>
+</svg>

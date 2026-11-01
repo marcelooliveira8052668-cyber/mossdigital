@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<!-- Eu declaro o documento como HTML5, o padrão atual da web. -->
+<html lang="pt-BR">
+<!-- Eu abro a raiz do site e informo que o idioma é o português do Brasil. -->
+<head>
+<!-- Eu abro a área das configurações, invisível na tela. -->
+<meta charset="UTF-8">
+<!-- Eu defino a codificação UTF-8 para acentos e símbolos aparecerem certo. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Eu faço o site se adaptar à tela do celular, tablet e computador. -->
+<meta name="description" content="Fretes em São Paulo, Guarulhos e Campinas: coletas, entregas, logística para empresas e rotas entre cidades. Orçamento rápido pelo WhatsApp.">
+<!-- Eu escrevo a descrição que aparece no Google para atrair quem precisa de frete. -->
+<meta name="robots" content="noindex, follow">
+<!-- Eu evito que a demonstração fictícia dispute buscas com o site principal da MOSS. -->
+<meta property="og:title" content="Fretes Avenida — Fretes rápidos, transporte urbano e logística">
+<!-- Eu preparo o título que aparece quando alguém compartilha o link. -->
+<meta property="og:description" content="Coletas, entregas, logística e rotas para pessoas e empresas. Orçamento rápido pelo WhatsApp.">
+<!-- Eu preparo a descrição da prévia no WhatsApp. -->
+<meta property="og:type" content="website">
+<!-- Eu informo que esta página é um site. -->
+<title>Fretes Avenida — Fretes rápidos, transporte urbano e logística</title>
+<!-- Eu escrevo o título da aba do navegador e do Google. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d2f6b'/%3E%3Cg fill='none' stroke='%23ffc400' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 38 h26 v-12 h10 l8 8 v4z'/%3E%3Ccircle cx='24' cy='44' r='5'/%3E%3Ccircle cx='48' cy='44' r='5'/%3E%3C/g%3E%3C/svg%3E">
+<!-- Eu colo o ícone do caminhão azul com detalhe amarelo direto no HTML, sem arquivo extra. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- Eu aviso o navegador que vou buscar fontes no Google Fonts. -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Eu aviso que os arquivos das fontes vêm de outro domínio. -->
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Eu carrego a fonte de placa de rua para títulos e a limpa para textos. -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","Organization"],"name":"Fretes Avenida","description":"Fretes rápidos, transporte urbano e logística para pessoas e empresas em São Paulo, Guarulhos e Campinas.","telephone":"+5511942038103","address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressRegion":"SP","addressCountry":"BR"},"priceRange":"A partir de R$ 90","areaServed":["São Paulo","Guarulhos","Campinas"]}</script>
+<!-- Eu mantenho os dados estruturados válidos, sem comentários dentro do JSON. -->
+<!-- Eu escrevo todos os dados estruturados do negócio numa linha só, sem comentários dentro, para o Google conseguir ler certo. -->
+<style>
+/* Eu abro a área do visual de toda a página. */
+:root {
+  /* Eu declaro as variáveis de cor usadas no site inteiro. */
+  --fundo: #f5f6f8;
+  /* Eu escolho o fundo cinza-claro de asfalto fresco. */
+  --cartao: #ffffff;
+  /* Eu escolho o branco dos cartões. */
+  --tinta: #10233d;
+  /* Eu escolho o azul-escuro dos títulos. */
+  --azul: #0d2f6b;
+  /* Eu escolho o azul rodoviário como cor principal. */
+  --azul-vivo: #1749a3;
+  /* Eu escolho um azul mais claro para hover e detalhes. */
+  --amarelo: #ffc400;
+  /* Eu escolho o amarelo de placa de trânsito como destaque. */
+  --amarelo-escuro: #e6ac00;
+  /* Eu escolho um amarelo mais escuro para o botão pressionado. */
+  --texto: #33404f;
+  /* Eu escolho a cor do texto corrido. */
+  --texto-suave: #667385;
+  /* Eu escolho o tom suave dos textos de apoio. */
+  --linha: #e3e7ec;
+  /* Eu escolho a cor das linhas divisórias. */
+  --fonte-titulo: 'Overpass', 'Arial Black', sans-serif;
+  /* Eu defino a fonte de placa de rua dos títulos. */
+  --fonte-texto: 'Inter', system-ui, sans-serif;
+  /* Eu defino a fonte limpa dos textos. */
+}
+* { box-sizing: border-box; }
+/* Eu faço a margem interna ser calculada dentro da largura de cada elemento. */
+body {
+  /* Eu aplico o estilo base do corpo. */
+  margin: 0;
+  /* Eu zero a margem padrão do navegador. */
+  background: var(--fundo);
+  /* Eu pinto o fundo de cinza-claro. */
+  color: var(--texto);
+  /* Eu deixo o texto na cor cinza-escura. */
+  font: 400 16px/1.65 var(--fonte-texto);
+  /* Eu defino tamanho, altura de linha e fonte do texto. */
+  -webkit-font-smoothing: antialiased;
+  /* Eu deixo as letras mais lisas no Mac e no iPhone. */
+}
+img, svg { max-width: 100%; display: block; }
+/* Eu faço imagens e SVGs nunca ultrapassarem a tela. */
+a { color: inherit; }
+/* Eu faço os links herdarem a cor do texto ao redor. */
+h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 800; line-height: 1.1; margin: 0; color: var(--tinta); text-transform: uppercase; }
+/* Eu aplico a fonte de placa, peso forte e caixa alta em todos os títulos. */
+section { padding: 84px 22px; }
+/* Eu dou respiro vertical em cada seção. */
+.envoltorio { max-width: 1120px; margin: 0 auto; }
+/* Eu centralizo o conteúdo numa largura máxima confortável. */
+.aparador {
+  /* Eu estilizo a etiqueta pequena que abre cada seção. */
+  display: inline-block;
+  /* Eu faço a etiqueta ficar numa linha só. */
+  background: var(--amarelo);
+  /* Eu pinto a etiqueta de amarelo de placa. */
+  color: var(--tinta);
+  /* Eu deixo o texto da etiqueta azul-escuro. */
+  font: 800 12px/1 var(--fonte-titulo);
+  /* Eu defino a fonte e o tamanho da etiqueta. */
+  letter-spacing: .14em;
+  /* Eu abro um pouco as letras. */
+  padding: 8px 14px;
+  /* Eu dou espaço interno à etiqueta. */
+  border-radius: 4px;
+  /* Eu arredondo levemente os cantos. */
+  text-transform: uppercase;
+  /* Eu forço caixa alta na etiqueta. */
+}
+.topo {
+  /* Eu estilizo o cabeçalho fixo no topo. */
+  position: sticky;
+  /* Eu prendo o cabeçalho para ficar sempre visível. */
+  top: 0;
+  /* Eu alinho na borda superior da tela. */
+  z-index: 50;
+  /* Eu dou prioridade de camada para o menu ficar por cima. */
+  background: rgba(255, 255, 255, .95);
+  /* Eu pinto o fundo do topo quase branco. */
+  backdrop-filter: blur(10px);
+  /* Eu aplico o desfoque atrás do cabeçalho. */
+  border-bottom: 3px solid var(--amarelo);
+  /* Eu desenho a faixa amarela embaixo do cabeçalho, como placa de trânsito. */
+}
+.topo__interno {
+  /* Eu estilizo a área interna do cabeçalho. */
+  max-width: 1120px;
+  /* Eu limito a largura igual ao conteúdo. */
+  margin: 0 auto;
+  /* Eu centralizo a área interna. */
+  padding: 12px 22px;
+  /* Eu dou respiro lateral. */
+  display: flex;
+  /* Eu coloco marca, menu e botão lado a lado. */
+  align-items: center;
+  /* Eu centralizo os itens verticalmente. */
+  gap: 20px;
+  /* Eu separo os itens do cabeçalho. */
+}
+.marca {
+  /* Eu estilizo o link da marca. */
+  display: flex;
+  /* Eu coloco ícone e nome lado a lado. */
+  align-items: center;
+  /* Eu centralizo ícone e nome. */
+  gap: 10px;
+  /* Eu separo o ícone do nome. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado do link. */
+  margin-right: auto;
+  /* Eu empurro o menu para a direita. */
+}
+.marca svg { width: 40px; height: 40px; }
+/* Eu dimensiono o ícone do caminhão da marca. */
+.marca__nome {
+  /* Eu estilizo o nome da marca. */
+  font: 900 22px/1 var(--fonte-titulo);
+  /* Eu defino a fonte forte do nome. */
+  color: var(--azul);
+  /* Eu pinto o nome de azul rodoviário. */
+  text-transform: uppercase;
+  /* Eu escrevo o nome em caixa alta. */
+  letter-spacing: .02em;
+  /* Eu dou um espaço leve entre as letras. */
+}
+.menu {
+  /* Eu estilizo a lista do menu. */
+  display: flex;
+  /* Eu coloco os itens lado a lado. */
+  gap: 4px;
+  /* Eu separo os itens do menu. */
+  list-style: none;
+  /* Eu tiro os marcadores da lista. */
+  margin: 0;
+  /* Eu zero a margem da lista. */
+  padding: 0;
+  /* Eu zero o preenchimento da lista. */
+}
+.menu a {
+  /* Eu estilizo cada link do menu. */
+  display: block;
+  /* Eu faço o link ocupar a linha toda. */
+  padding: 8px 11px;
+  /* Eu dou espaço interno ao link. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado. */
+  color: var(--tinta);
+  /* Eu deixo o texto azul-escuro. */
+  font: 700 13px/1 var(--fonte-titulo);
+  /* Eu defino a fonte dos itens. */
+  text-transform: uppercase;
+  /* Eu escrevo os itens em caixa alta. */
+  border-radius: 6px;
+  /* Eu arredondo o fundo no hover. */
+  transition: background .2s, color .2s;
+  /* Eu suavizo a mudança de cor no hover. */
+}
+.menu a:hover { background: var(--amarelo); color: var(--tinta); }
+/* Eu pinto o item em amarelo quando o mouse passa por cima. */
+.botao {
+  /* Eu estilizo os botões de ação. */
+  display: inline-block;
+  /* Eu faço o botão ficar numa linha só. */
+  background: var(--amarelo);
+  /* Eu pinto o botão de amarelo de placa. */
+  color: var(--tinta);
+  /* Eu deixo o texto azul-escuro. */
+  font: 800 14px/1 var(--fonte-titulo);
+  /* Eu defino a fonte forte do botão. */
+  text-transform: uppercase;
+  /* Eu escrevo o botão em caixa alta. */
+  letter-spacing: .06em;
+  /* Eu abro um pouco as letras do botão. */
+  padding: 14px 24px;
+  /* Eu dou espaço interno ao botão. */
+  border-radius: 8px;
+  /* Eu arredondo os cantos do botão. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado. */
+  border: 2px solid var(--amarelo);
+  /* Eu desenho a borda amarela. */
+  transition: transform .15s, background .2s, box-shadow .2s;
+  /* Eu preparo a animação do botão. */
+  cursor: pointer;
+  /* Eu mostro a mãozinha ao passar o mouse. */
+}
+.botao:hover {
+  /* Eu estilizo o botão quando o mouse passa por cima. */
+  background: var(--amarelo-escuro);
+  /* Eu escureço o amarelo no hover. */
+  border-color: var(--amarelo-escuro);
+  /* Eu escureço a borda junto. */
+  transform: translateY(-2px);
+  /* Eu levo o botão 2 pixels para cima. */
+  box-shadow: 0 8px 18px rgba(16, 35, 61, .18);
+  /* Eu adiciono uma sombra suave embaixo. */
+}
+.botao--azul { background: var(--azul); color: #fff; border-color: var(--azul); }
+/* Eu crio a variação azul do botão para ações secundárias. */
+.botao--azul:hover { background: var(--azul-vivo); border-color: var(--azul-vivo); color: #fff; }
+/* Eu escureço o azul no hover do botão azul. */
+.botao--vazio { background: transparent; color: var(--tinta); border-color: var(--tinta); }
+/* Eu crio a variação vazia com borda escura. */
+.botao--vazio:hover { background: var(--tinta); color: #fff; }
+/* Eu preencho o botão vazio de azul-escuro no hover. */
+.aviso {
+  /* Eu estilizo a tarja de aviso do topo. */
+  background: var(--tinta);
+  /* Eu pinto a tarja de azul-escuro. */
+  color: #fff;
+  /* Eu deixo o texto branco. */
+  text-align: center;
+  /* Eu centralizo o texto da tarja. */
+  font-size: 13px;
+  /* Eu deixo o texto da tarja pequeno. */
+  padding: 8px 16px;
+  /* Eu dou espaço interno à tarja. */
+}
+.capa {
+  /* Eu estilizo a primeira dobra do site. */
+  background: linear-gradient(180deg, #ffffff 0%, var(--fundo) 100%);
+  /* Eu pinto um degradê suave de branco para cinza. */
+  padding-bottom: 40px;
+  /* Eu reduzo o respiro embaixo para a faixa de fotos encostar. */
+  text-align: center;
+  /* Eu centralizo todo o conteúdo da capa. */
+}
+.capa h1 {
+  /* Eu estilizo o título principal da capa. */
+  font-size: clamp(34px, 6vw, 64px);
+  /* Eu faço o título crescer com a tela. */
+  max-width: 900px;
+  /* Eu limito a largura do título para não esticar demais. */
+  margin: 18px auto 14px;
+  /* Eu centralizo o título com respiro. */
+}
+.capa h1 span { color: var(--azul); }
+/* Eu pinto o destaque do título de azul rodoviário. */
+.capa__sub {
+  /* Eu estilizo o texto de apoio da capa. */
+  max-width: 680px;
+  /* Eu limito a largura para facilitar a leitura. */
+  margin: 0 auto;
+  /* Eu centralizo o texto. */
+  color: var(--texto);
+  /* Eu deixo o texto na cor de leitura. */
+  font-size: 18px;
+  /* Eu aumento um pouco o texto de apoio. */
+}
+.cidades {
+  /* Eu estilizo a lista de cidades atendidas. */
+  display: flex;
+  /* Eu coloco as cidades lado a lado. */
+  justify-content: center;
+  /* Eu centralizo as cidades. */
+  flex-wrap: wrap;
+  /* Eu quebro a linha no celular. */
+  gap: 10px;
+  /* Eu separo as cidades. */
+  margin: 22px 0;
+  /* Eu dou respiro em volta da lista. */
+}
+.cidades span {
+  /* Eu estilizo cada cidade. */
+  background: #fff;
+  /* Eu pinto o fundo de branco. */
+  border: 2px solid var(--azul);
+  /* Eu desenho a borda azul. */
+  color: var(--azul);
+  /* Eu deixo o texto azul. */
+  font: 800 13px/1 var(--fonte-titulo);
+  /* Eu defino a fonte da cidade. */
+  padding: 9px 16px;
+  /* Eu dou espaço interno. */
+  border-radius: 999px;
+  /* Eu deixo tudo redondo, como uma inscrição. */
+  text-transform: uppercase;
+  /* Eu escrevo a cidade em caixa alta. */
+  letter-spacing: .08em;
+  /* Eu abro as letras da cidade. */
+}
+.importante {
+  /* Eu estilizo a caixa de aviso do que não transportamos. */
+  max-width: 760px;
+  /* Eu limito a largura da caixa. */
+  margin: 0 auto 26px;
+  /* Eu centralizo a caixo com respiro. */
+  background: #fff8e0;
+  /* Eu pinto o fundo de amarelo bem claro. */
+  border: 2px dashed var(--amarelo-escuro);
+  /* Eu desenho a borda tracejada de amarelo. */
+  border-radius: 10px;
+  /* Eu arredondo os cantos. */
+  padding: 14px 20px;
+  /* Eu dou espaço interno à caixa. */
+  font-size: 14px;
+  /* Eu deixo o texto um pouco menor. */
+  color: var(--tinta);
+  /* Eu deixo o texto azul-escuro. */
+}
+.importante strong { text-transform: uppercase; letter-spacing: .05em; }
+/* Eu destaco a palavra importante em caixa alta. */
+.capa__acoes {
+  /* Eu estilizo a linha dos botões da capa. */
+  display: flex;
+  /* Eu coloco os botões lado a lado. */
+  justify-content: center;
+  /* Eu centralizo os botões. */
+  flex-wrap: wrap;
+  /* Eu quebro a linha no celular. */
+  gap: 14px;
+  /* Eu separo os botões. */
+}
+.faixa {
+  /* Eu estilizo a faixa de fotos que passa sozinhas, como no site de referência. */
+  overflow: hidden;
+  /* Eu escondo o que sai da lateral da faixa. */
+  padding: 26px 0 6px;
+  /* Eu dou respiro em cima da faixa. */
+}
+.faixa__trilho {
+  /* Eu estilizo o trilho que desliza com as fotos. */
+  display: flex;
+  /* Eu coloco as fotos lado a lado. */
+  gap: 16px;
+  /* Eu separo as fotos entre si. */
+  width: max-content;
+  /* Eu dou ao trilho a largura somada das fotos, para ele nunca quebrar linha. */
+  animation: passar 46s linear infinite;
+  /* Eu animo o trilho deslizando devagar para a esquerda sem parar. */
+}
+.faixa:hover .faixa__trilho { animation-play-state: paused; }
+/* Eu pauso a passagem das fotos quando o mouse entra na faixa. */
+@keyframes passar {
+  /* Eu defino o começo da animação: trilho no lugar. */
+  from { transform: translateX(0); }
+  /* Eu defino o fim da animação: trilho andou metade da largura, que é a cópia repetida. */
+  to { transform: translateX(-50%); }
+}
+.faixa__foto {
+  /* Eu estilizo cada foto da faixa. */
+  position: relative;
+  /* Eu preparo a foto para receber a legenda por cima. */
+  width: 260px;
+  /* Eu dimensiono a largura de cada foto. */
+  flex: 0 0 auto;
+  /* Eu impedo a foto de encolher dentro do trilho. */
+  border-radius: 14px;
+  /* Eu arredondo os cantos da foto. */
+  overflow: hidden;
+  /* Eu corto o que passar da borda da foto. */
+  border: 2px solid var(--tinta);
+  /* Eu desenho a borda escura em volta da foto. */
+  background: #fff;
+  /* Eu pinto o fundo de trás da foto de branco. */
+  transition: transform .25s, box-shadow .25s;
+  /* Eu preparo a animação de zoom no hover. */
+  cursor: pointer;
+  /* Eu mostro a mãozinha quando o mouse chega na foto. */
+}
+.faixa__foto:hover {
+  /* Eu estilizo a foto quando o mouse passa por cima. */
+  transform: scale(1.07);
+  /* Eu amplio a foto 7% para dar o zoom. */
+  box-shadow: 0 16px 34px rgba(16, 35, 61, .3);
+  /* Eu adiciono uma sombra forte embaixo da foto ampliada. */
+  z-index: 2;
+  /* Eu jogo a foto ampliada para a camada de cima. */
+}
+.faixa__foto svg { width: 100%; height: 170px; display: block; }
+/* Eu dimensiono a ilustração de cada foto da faixa. */
+.faixa__foto figcaption {
+  /* Eu estilizo a legenda que aparece no hover da foto. */
+  position: absolute;
+  /* Eu prendo a legenda dentro da foto. */
+  left: 0; right: 0; bottom: 0;
+  /* Eu encosto a legenda na base da foto. */
+  background: linear-gradient(transparent, rgba(13, 47, 107, .92));
+  /* Eu pinto um degradê escuro de baixo para o texto ficar legível. */
+  color: #fff;
+  /* Eu deixo a legenda branca. */
+  font: 700 13px/1.3 var(--fonte-titulo);
+  /* Eu defino a fonte da legenda. */
+  padding: 30px 12px 10px;
+  /* Eu dou espaço interno e espaço em cima para o degradê. */
+  opacity: 0;
+  /* Eu escondo a legenda no normal. */
+  transform: translateY(8px);
+  /* Eu deixo a legenda levemente abaixada. */
+  transition: opacity .25s, transform .25s;
+  /* Eu preparo a animação de aparecer. */
+  text-transform: uppercase;
+  /* Eu escrevo a legenda em caixa alta. */
+  letter-spacing: .04em;
+  /* Eu abro um pouco as letras da legenda. */
+}
+.faixa__foto:hover figcaption { opacity: 1; transform: translateY(0); }
+/* Eu mostro a legenda subindo quando o mouse passa na foto. */
+.secao-titulo { text-align: center; margin-bottom: 46px; }
+/* Eu centralizo o cabeçalho de cada seção. */
+.secao-titulo h2 {
+  /* Eu estilizo o título de cada seção. */
+  font-size: clamp(26px, 4vw, 40px);
+  /* Eu faço o título crescer com a tela. */
+  margin: 14px 0 8px;
+  /* Eu dou respiro em volta do título. */
+}
+.secao-titulo p {
+  /* Eu estilizo a descrição de cada seção. */
+  max-width: 620px;
+  /* Eu limito a largura para facilitar a leitura. */
+  margin: 0 auto;
+  /* Eu centralizo a descrição. */
+  color: var(--texto-suave);
+  /* Eu deixo a descrição no tom suave. */
+}
+.servicos {
+  /* Eu estilizo a área dos serviços numerados. */
+  background: var(--tinta);
+  /* Eu pinto o fundo de azul-escuro para o amarelo saltar. */
+}
+.servicos .secao-titulo h2 { color: #fff; }
+/* Eu deixo o título da seção branco sobre o fundo escuro. */
+.servicos .secao-titulo p { color: #b9c3d1; }
+/* Eu deixo a descrição clara sobre o fundo escuro. */
+.servico {
+  /* Eu estilizo cada bloco de serviço. */
+  display: grid;
+  /* Eu monto a grade de duas colunas do serviço. */
+  grid-template-columns: 300px 1fr;
+  /* Eu dou 300px para a foto e o resto para o texto. */
+  gap: 30px;
+  /* Eu separo a coluna da foto da coluna do texto. */
+  align-items: center;
+  /* Eu centralizo foto e texto verticalmente. */
+  background: #16304f;
+  /* Eu pinto o cartão do serviço de azul um pouco mais claro. */
+  border: 1px solid #23456f;
+  /* Eu desenho a borda sutil do cartão. */
+  border-radius: 16px;
+  /* Eu arredondo os cantos do cartão. */
+  padding: 26px;
+  /* Eu dou espaço interno ao cartão. */
+  margin-bottom: 22px;
+  /* Eu separo um serviço do outro. */
+  transition: transform .2s, border-color .2s;
+  /* Eu preparo a animação do cartão no hover. */
+}
+.servico:hover { transform: translateY(-4px); border-color: var(--amarelo); }
+/* Eu elevo o cartão e acendo a borda amarela no hover. */
+.servico__foto {
+  /* Eu estilizo a área da foto do serviço. */
+  position: relative;
+  /* Eu preparo a foto para receber o número. */
+}
+.servico__foto svg { width: 100%; height: 190px; border-radius: 12px; }
+/* Eu dimensiono a ilustração do serviço com cantos arredondados. */
+.servico__num {
+  /* Eu estilizo o número grande do serviço. */
+  position: absolute;
+  /* Eu prendo o número dentro da foto. */
+  top: -14px;
+  /* Eu levanto o número para fora da foto. */
+  left: -8px;
+  /* Eu jogo o número para a esquerda. */
+  font: 900 58px/1 var(--fonte-titulo);
+  /* Eu defino a fonte gigante do número. */
+  color: var(--amarelo);
+  /* Eu pinto o número de amarelo. */
+  -webkit-text-stroke: 2px var(--tinta);
+  /* Eu desenho contorno escuro no número para saltar. */
+  text-shadow: 0 4px 0 rgba(0, 0, 0, .25);
+  /* Eu adiciono uma sombra dura embaixo do número. */
+}
+.servico h3 {
+  /* Eu estilizo o título do serviço. */
+  color: #fff;
+  /* Eu deixo o título branco. */
+  font-size: 24px;
+  /* Eu dimensiono o título do serviço. */
+  margin-bottom: 8px;
+  /* Eu dou respiro embaixo do título. */
+}
+.servico p { color: #c6d0dd; margin: 0 0 14px; }
+/* Eu deixo a descrição do serviço em tom claro. */
+.servico .tags {
+  /* Eu estilizo a linha de etiquetas do serviço. */
+  display: flex;
+  /* Eu coloco as etiquetas lado a lado. */
+  flex-wrap: wrap;
+  /* Eu quebro a linha no celular. */
+  gap: 8px;
+  /* Eu separo as etiquetas. */
+  margin: 0 0 16px;
+  /* Eu dou respiro embaixo das etiquetas. */
+  padding: 0;
+  /* Eu zero o preenchimento da lista. */
+  list-style: none;
+  /* Eu tiro os marcadores da lista. */
+}
+.servico .tags li {
+  /* Eu estilizo cada etiqueta do serviço. */
+  background: rgba(255, 196, 0, .14);
+  /* Eu pinto um fundo amarelo bem fraco. */
+  border: 1px solid rgba(255, 196, 0, .5);
+  /* Eu desenho a borda amarela. */
+  color: var(--amarelo);
+  /* Eu deixo o texto amarelo. */
+  font: 700 11px/1 var(--fonte-titulo);
+  /* Eu defino a fonte da etiqueta. */
+  padding: 7px 11px;
+  /* Eu dou espaço interno à etiqueta. */
+  border-radius: 999px;
+  /* Eu deixo a etiqueta redonda. */
+  text-transform: uppercase;
+  /* Eu escrevo em caixa alta. */
+  letter-spacing: .06em;
+  /* Eu abro as letras da etiqueta. */
+}
+.avaliacoes { background: var(--fundo); }
+.nota-grande {
+  /* Eu estilizo o bloco da nota 5,0. */
+  display: flex;
+  /* Eu coloco nota e estrelas lado a lado. */
+  align-items: center;
+  /* Eu centralizo os elementos. */
+  justify-content: center;
+  /* Eu centralizo o bloco na tela. */
+  gap: 18px;
+  /* Eu separo a nota das estrelas. */
+  margin-bottom: 36px;
+  /* Eu dou respiro embaixo do bloco. */
+}
+.nota-grande b {
+  /* Eu estilizo o número da nota. */
+  font: 900 54px/1 var(--fonte-titulo);
+  /* Eu defino a fonte gigante da nota. */
+  color: var(--azul);
+  /* Eu pinto a nota de azul. */
+}
+.estrelas { color: #f4b400; font-size: 30px; letter-spacing: 3px; }
+/* Eu desenho as estrelas douradas da avaliação. */
+.depoimentos {
+  /* Eu estilizo a grade de depoimentos. */
+  display: grid;
+  /* Eu monto a grade dos cartões. */
+  grid-template-columns: repeat(3, 1fr);
+  /* Eu crio três colunas no computador. */
+  gap: 18px;
+  /* Eu separo os cartões entre si. */
+}
+.depoimento {
+  /* Eu estilizo cada cartão de depoimento. */
+  background: var(--cartao);
+  /* Eu pinto o cartão de branco. */
+  border: 1px solid var(--linha);
+  /* Eu desenho a borda suave. */
+  border-radius: 14px;
+  /* Eu arredondo os cantos. */
+  padding: 22px;
+  /* Eu dou espaço interno ao cartão. */
+}
+.depoimento p { margin: 0 0 12px; font-style: italic; }
+/* Eu itálico o texto do depoimento, como fala de alguém. */
+.depoimento small {
+  /* Eu estilizo o nome de quem falou. */
+  color: var(--texto-suave);
+  /* Eu deixo o nome no tom suave. */
+  font-weight: 600;
+  /* Eu engrosso um pouco o nome. */
+}
+.empresas {
+  /* Eu estilizo a seção de logística para empresas. */
+  background: var(--azul);
+  /* Eu pinto o fundo de azul rodoviário. */
+  color: #fff;
+  /* Eu deixo o texto branco. */
+}
+.empresas h2 { color: #fff; }
+/* Eu deixo o título da empresa branco. */
+.empresas-grade {
+  /* Eu monto a grade de duas colunas da seção empresarial. */
+  display: grid;
+  /* Eu ativo a grade. */
+  grid-template-columns: 1.2fr .8fr;
+  /* Eu dou mais largura para a coluna do texto. */
+  gap: 40px;
+  /* Eu separo as colunas. */
+  align-items: center;
+  /* Eu centralizo as colunas verticalmente. */
+}
+.empresas ul {
+  /* Eu estilizo a lista de soluções empresariais. */
+  list-style: none;
+  /* Eu tiro os marcadores. */
+  padding: 0;
+  /* Eu zero o preenchimento. */
+  margin: 18px 0 24px;
+  /* Eu dou respiro em volta da lista. */
+}
+.empresas li {
+  /* Eu estilizo cada solução da lista. */
+  padding: 12px 0 12px 34px;
+  /* Eu dou espaço e reservo área para o ícone. */
+  border-bottom: 1px solid rgba(255, 255, 255, .18);
+  /* Eu desenho a linha divisória entre itens. */
+  position: relative;
+  /* Eu preparo a linha para receber o ícone. */
+  font-weight: 600;
+  /* Eu engrosso o texto da solução. */
+}
+.empresas li::before {
+  /* Eu desenho o marcador amarelo de cada item. */
+  content: "▸";
+  /* Eu escrevo a setinha. */
+  position: absolute;
+  /* Eu prendo o ícone na linha. */
+  left: 4px;
+  /* Eu alinho à esquerda. */
+  color: var(--amarelo);
+  /* Eu pinto a setinha de amarelo. */
+}
+.empresas .caixa-foto {
+  /* Eu estilizo a foto da seção empresarial. */
+  border-radius: 16px;
+  /* Eu arredondo os cantos. */
+  overflow: hidden;
+  /* Eu corto o que passar da borda. */
+  border: 3px solid var(--amarelo);
+  /* Eu desenho a borda amarela em volta. */
+}
+.empresas .caixa-foto svg { width: 100%; height: 280px; }
+/* Eu dimensiono a ilustração empresarial. */
+.como {
+  /* Eu estilizo a seção de como funciona. */
+  background: #fff;
+  /* Eu pinto o fundo de branco. */
+}
+.passos {
+  /* Eu estilizo a linha dos passos. */
+  display: grid;
+  /* Eu monto a grade dos passos. */
+  grid-template-columns: repeat(4, 1fr);
+  /* Eu crio quatro colunas, uma por passo. */
+  gap: 18px;
+  /* Eu separo os passos. */
+  counter-reset: passo;
+  /* Eu ligo o contador automático dos passos. */
+}
+.passo {
+  /* Eu estilizo cada cartão de passo. */
+  background: var(--fundo);
+  /* Eu pinto o cartão de cinza-claro. */
+  border: 2px solid var(--linha);
+  /* Eu desenho a borda suave. */
+  border-radius: 14px;
+  /* Eu arredondo os cantos. */
+  padding: 24px 20px;
+  /* Eu dou espaço interno ao passo. */
+  text-align: center;
+  /* Eu centralizo o conteúdo do passo. */
+  counter-increment: passo;
+  /* Eu avanço o contador a cada passo. */
+  transition: border-color .2s, transform .2s;
+  /* Eu preparo a animação no hover. */
+}
+.passo:hover { border-color: var(--amarelo); transform: translateY(-4px); }
+/* Eu acendo a borda e elevo o passo no hover. */
+.passo::before {
+  /* Eu desenho o número do passo automaticamente. */
+  content: counter(passo);
+  /* Eu escrevo o número do contador. */
+  display: block;
+  /* Eu ponho o número na própria linha. */
+  width: 46px;
+  /* Eu dimensiono o círculo do número. */
+  height: 46px;
+  /* Eu fecho o círculo do número. */
+  line-height: 46px;
+  /* Eu centralizo o número dentro do círculo. */
+  margin: 0 auto 14px;
+  /* Eu centralizo o círculo com respiro embaixo. */
+  background: var(--azul);
+  /* Eu pinto o círculo de azul. */
+  color: #fff;
+  /* Eu deixo o número branco. */
+  border-radius: 50%;
+  /* Eu deixo o círculo redondo. */
+  font: 900 20px/46px var(--fonte-titulo);
+  /* Eu defino a fonte do número. */
+}
+.passo h3 { font-size: 17px; margin-bottom: 6px; }
+/* Eu dimensiono o título do passo. */
+.passo p { margin: 0; font-size: 14px; color: var(--texto-suave); }
+/* Eu deixo a descrição do passo no tom suave. */
+.sobre-grade {
+  /* Eu monto a grade da seção sobre. */
+  display: grid;
+  /* Eu ativo a grade. */
+  grid-template-columns: 1fr 1fr;
+  /* Eu crio duas colunas iguais. */
+  gap: 44px;
+  /* Eu separo as colunas. */
+  align-items: center;
+  /* Eu centralizo as colunas verticalmente. */
+}
+.sobre-grade h2 { font-size: clamp(26px, 4vw, 38px); margin-bottom: 14px; }
+/* Eu dimensiono o título do sobre. */
+.sobre-grade .caixa-foto {
+  /* Eu estilizo a foto do sobre. */
+  border-radius: 16px;
+  /* Eu arredondo os cantos. */
+  overflow: hidden;
+  /* Eu corto o que passar da borda. */
+  border: 3px solid var(--tinta);
+  /* Eu desenho a borda escura. */
+}
+.sobre-grade .caixa-foto svg { width: 100%; height: 320px; }
+/* Eu dimensiono a ilustração do sobre. */
+.area {
+  /* Eu estilizo a seção de área de atendimento. */
+  background: var(--fundo);
+}
+.area-grade {
+  /* Eu monto a grade das cidades atendidas. */
+  display: grid;
+  /* Eu ativo a grade. */
+  grid-template-columns: repeat(3, 1fr);
+  /* Eu crio três colunas, uma por cidade. */
+  gap: 18px;
+  /* Eu separo os cartões. */
+}
+.area-cidade {
+  /* Eu estilizo cada cartão de cidade. */
+  background: var(--cartao);
+  /* Eu pinto o cartão de branco. */
+  border-top: 5px solid var(--amarelo);
+  /* Eu desenho a faixa amarela no topo. */
+  border-radius: 0 0 14px 14px;
+  /* Eu arredondo só a base do cartão. */
+  padding: 24px;
+  /* Eu dou espaço interno ao cartão. */
+  box-shadow: 0 6px 18px rgba(16, 35, 61, .07);
+  /* Eu adiciono uma sombra suave. */
+}
+.area-cidade h3 { font-size: 19px; margin-bottom: 6px; color: var(--azul); }
+/* Eu dimensiono e pinto o nome da cidade de azul. */
+.area-cidade p { margin: 0; font-size: 14px; color: var(--texto-suave); }
+/* Eu deixo a descrição da cidade no tom suave. */
+.parte {
+  /* Eu estilizo a seção de faça parte (agregados, carreiras e indicação). */
+  background: #fff;
+}
+.parte-grade {
+  /* Eu monto a grade dos três convites. */
+  display: grid;
+  /* Eu ativo a grade. */
+  grid-template-columns: repeat(3, 1fr);
+  /* Eu crio três colunas. */
+  gap: 18px;
+  /* Eu separo os cartões. */
+}
+.parte-cartao {
+  /* Eu estilizo cada convite. */
+  border: 2px solid var(--linha);
+  /* Eu desenho a borda suave. */
+  border-radius: 14px;
+  /* Eu arredondo os cantos. */
+  padding: 28px 24px;
+  /* Eu dou espaço interno ao convite. */
+  background: var(--fundo);
+  /* Eu pinto o fundo de cinza-claro. */
+  transition: border-color .2s, transform .2s;
+  /* Eu preparo a animação no hover. */
+}
+.parte-cartao:hover { border-color: var(--azul); transform: translateY(-4px); }
+/* Eu acendo a borda azul e elevo o convite no hover. */
+.parte-cartao span {
+  /* Eu estilizo a etiqueta do convite. */
+  display: inline-block;
+  /* Eu faço a etiqueta ficar numa linha só. */
+  background: var(--azul);
+  /* Eu pinto a etiqueta de azul. */
+  color: #fff;
+  /* Eu deixo o texto branco. */
+  font: 800 11px/1 var(--fonte-titulo);
+  /* Eu defino a fonte da etiqueta. */
+  padding: 7px 12px;
+  /* Eu dou espaço interno. */
+  border-radius: 4px;
+  /* Eu arredondo os cantos. */
+  margin-bottom: 12px;
+  /* Eu dou respiro embaixo da etiqueta. */
+  text-transform: uppercase;
+  /* Eu escrevo em caixa alta. */
+  letter-spacing: .1em;
+  /* Eu abro as letras da etiqueta. */
+}
+.parte-cartao h3 { font-size: 20px; margin-bottom: 8px; }
+/* Eu dimensiono o título do convite. */
+.parte-cartao p { margin: 0 0 16px; color: var(--texto-suave); }
+/* Eu deixo a descrição do convite no tom suave. */
+.contato {
+  /* Eu estilizo a seção de contato. */
+  background: var(--tinta);
+  /* Eu pinto o fundo de azul-escuro. */
+  color: #fff;
+  /* Eu deixo o texto branco. */
+  text-align: center;
+  /* Eu centralizo o conteúdo do contato. */
+}
+.contato h2 { color: #fff; font-size: clamp(28px, 4.5vw, 44px); margin-bottom: 12px; }
+/* Eu dimensiono o título do contato em branco. */
+.contato p { max-width: 620px; margin: 0 auto 26px; color: #b9c3d1; }
+/* Eu centralizo a descrição do contato. */
+.contato-info {
+  /* Eu estilizo a linha de informações de contato. */
+  display: flex;
+  /* Eu coloco as informações lado a lado. */
+  justify-content: center;
+  /* Eu centralizo as informações. */
+  flex-wrap: wrap;
+  /* Eu quebro a linha no celular. */
+  gap: 14px 30px;
+  /* Eu separo as informações. */
+  margin-top: 28px;
+  /* Eu dou respiro em cima. */
+  font-size: 14px;
+  /* Eu dimensiono o texto das informações. */
+  color: #b9c3d1;
+  /* Eu deixo as informações em tom claro. */
+}
+.contato-info b { color: var(--amarelo); }
+/* Eu destaco os rótulos das informações em amarelo. */
+.rodape {
+  /* Eu estilizo o rodapé. */
+  background: #0a1c33;
+  /* Eu pinto o rodapé de azul mais escuro ainda. */
+  color: #9fb0c4;
+  /* Eu deixo o texto do rodapé em tom frio. */
+  padding: 40px 22px;
+  /* Eu dou espaço interno ao rodapé. */
+  text-align: center;
+  /* Eu centralizo o texto do rodapé. */
+  font-size: 14px;
+  /* Eu dimensiono o texto do rodapé. */
+}
+.rodape strong { color: #fff; }
+/* Eu destaco o nome da marca no rodapé em branco. */
+.zap {
+  /* Eu estilizo o botão flutuante do WhatsApp. */
+  position: fixed;
+  /* Eu prendo o botão na tela. */
+  right: 20px;
+  /* Eu alinho à direita. */
+  bottom: 20px;
+  /* Eu encosto na base. */
+  z-index: 60;
+  /* Eu dou prioridade de camada para o botão ficar por cima. */
+  width: 58px;
+  /* Eu dimensiono a largura do botão. */
+  height: 58px;
+  /* Eu dimensiono a altura do botão. */
+  border-radius: 50%;
+  /* Eu deixo o botão redondo. */
+  background: #25d366;
+  /* Eu pinto o botão do verde do WhatsApp. */
+  display: flex;
+  /* Eu centralizo o ícone. */
+  align-items: center;
+  /* Eu centralizo o ícone verticalmente. */
+  justify-content: center;
+  /* Eu centralizo o ícone na horizontal. */
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .3);
+  /* Eu adiciono uma sombra forte embaixo. */
+  transition: transform .2s;
+  /* Eu preparo a animação do botão. */
+  text-decoration: none;
+  /* Eu tiro o sublinhado. */
+}
+.zap:hover { transform: scale(1.1); }
+/* Eu amplio o botão do WhatsApp no hover. */
+.zap svg { width: 30px; height: 30px; fill: #fff; }
+/* Eu dimensiono e pinto o ícone de branco. */
+.revela { opacity: 0; transform: translateY(26px); transition: opacity .6s, transform .6s; }
+/* Eu escondo os elementos animados antes deles aparecerem na tela. */
+.revela.visivel { opacity: 1; transform: none; }
+/* Eu mostro o elemento quando a classe de revelação é adicionada. */
+@media (max-width: 960px) {
+  /* Eu ativo as regras abaixo apenas em telas de até 960px. */
+  .servico { grid-template-columns: 1fr; }
+  /* Eu empilho foto e texto do serviço no tablet e celular. */
+  .empresas-grade, .sobre-grade { grid-template-columns: 1fr; }
+  /* Eu empilho as colunas das seções empresarial e sobre. */
+  .passos { grid-template-columns: repeat(2, 1fr); }
+  /* Eu deixo os quatro passos em duas colunas. */
+  .depoimentos, .area-grade, .parte-grade { grid-template-columns: 1fr; }
+  /* Eu deixo cartões em coluna única no celular. */
+}
+@media (max-width: 820px) {
+  /* Eu ativo as regras abaixo apenas em telas de até 820px. */
+  .menu, .botao-topo { display: none; }
+  /* Eu escondo o menu e o botão do topo no celular. */
+  .hamb {
+    /* Eu estilizo o botão do menu no celular. */
+    display: flex;
+    /* Eu centralizo as linhas do hambúrguer. */
+    flex-direction: column;
+    /* Eu empilho as três linhas. */
+    gap: 5px;
+    /* Eu separo as linhas. */
+    background: none;
+    /* Eu tiro o fundo do botão. */
+    border: 0;
+    /* Eu tiro a borda do botão. */
+    cursor: pointer;
+    /* Eu mostro a mãozinha. */
+    padding: 8px;
+    /* Eu dou espaço interno ao botão. */
+  }
+  .hamb span {
+    /* Eu estilizo cada linha do hambúrguer. */
+    width: 26px;
+    /* Eu dimensiono a largura da linha. */
+    height: 3px;
+    /* Eu dimensiono a espessura da linha. */
+    background: var(--azul);
+    /* Eu pinto a linha de azul. */
+    border-radius: 2px;
+    /* Eu arredondo as pontas. */
+    transition: transform .2s, opacity .2s;
+    /* Eu preparo a animação de abrir e fechar. */
+  }
+  .menu.aberto {
+    /* Eu estilizo o menu quando ele está aberto no celular. */
+    position: absolute;
+    /* Eu prendo o menu abaixo do cabeçalho. */
+    top: 100%;
+    /* Eu encosto no base do cabeçalho. */
+    left: 0;
+    /* Eu alinho à esquerda. */
+    right: 0;
+    /* Eu estico até a direita. */
+    flex-direction: column;
+    /* Eu empilho os itens. */
+    background: #fff;
+    /* Eu pinto o fundo de branco. */
+    border-bottom: 3px solid var(--amarelo);
+    /* Eu desenho a borda amarela embaixo. */
+    padding: 12px 22px 18px;
+    /* Eu dou espaço interno. */
+    box-shadow: 0 14px 24px rgba(16, 35, 61, .14);
+    /* Eu adiciono uma sombra embaixo do menu aberto. */
+  }
+  .hamb[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  /* Eu transformo a primeira linha em diagonal quando o menu abre. */
+  .hamb[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  /* Eu escondo a linha do meio quando o menu abre. */
+  .hamb[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  /* Eu transformo a última linha em diagonal quando o menu abre. */
+}
+.hamb { display: none; }
+/* Eu escondo o botão hambúrguer no computador. */
+@media (prefers-reduced-motion: reduce) {
+  /* Eu atendo quem prefere menos animação. */
+  * { animation: none !important; transition: none !important; }
+  /* Eu desligo animações e transições para essa pessoa. */
+  .revela { opacity: 1; transform: none; }
+  /* Eu deixo o conteúdo já visível. */
+  .faixa__trilho { flex-wrap: wrap; width: auto; justify-content: center; }
+  /* Eu quebro a faixa em várias linhas para não precisar de animação. */
+}
+
+/* Eu mantenho a navegação por âncoras abaixo do cabeçalho fixo. */
+html { scroll-padding-top: 100px; }
+/* Eu retiro a margem padrão das figuras para fechar o ciclo da faixa. */
+.faixa__foto { margin: 0; }
+/* Eu permito pausar a faixa também pelo teclado. */
+.faixa:focus-within .faixa__trilho { animation-play-state: paused; }
+/* Eu calculo o ciclo considerando o espaço entre as duas cópias. */
+@keyframes passar { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 8px)); } }
+/* Eu organizo os indicadores e o rodapé completo. */
+.indicadores, .rodape-grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+/* Eu destaco os números ilustrativos. */
+.indicadores strong { display: block; font: 900 32px var(--fonte-titulo); color: var(--azul); }
+/* Eu deixo os links do rodapé acessíveis e espaçados. */
+.rodape-grade a { display: block; padding: 4px; }
+/* Eu ajusto as grades e restauro o botão do menu no celular. */
+@media (max-width: 820px) { .hamb { display: flex; } .menu.aberto { display: flex; } .indicadores, .rodape-grade { grid-template-columns: 1fr 1fr; } }
+/* Eu mantenho a faixa parada para quem prefere menos movimento. */
+@media (prefers-reduced-motion: reduce) { .faixa__trilho { animation: none; } }
+</style>
+<!-- Eu fecho a área de estilos. -->
+</head>
+<!-- Eu fecho a área de configurações. -->
+<body>
+<!-- Eu abro o corpo da página. -->
+<div class="aviso">
+  <!-- Eu crio a tarja de aviso no topo. -->
+  DEMO ILUSTRATIVA — textos, preços e depoimentos são exemplos. O contato leva à MOSS Digital.
+  <!-- Eu aviso que tudo aqui é exemplo fictício. -->
+</div>
+<!-- Eu fecho a tarja de aviso. -->
+<header class="topo">
+  <!-- Eu crio o cabeçalho fixo. -->
+  <div class="topo__interno">
+    <!-- Eu abro a área interna do cabeçalho. -->
+    <a class="marca" href="#inicio">
+      <!-- Eu faço a marca ser link para o topo. -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0d2f6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- Eu desenho o caminhãozinho da marca, escondido dos leitores de tela. -->
+        <path d="M2 16h14V8h4l4 5v3h-2"/>
+        <!-- Eu desenho a carroceria e a cabine do caminhão. -->
+        <circle cx="7" cy="19" r="2"/>
+        <!-- Eu desenho a roda da frente. -->
+        <circle cx="17" cy="19" r="2"/>
+        <!-- Eu desenho a roda de trás. -->
+        <path d="M2 16V6h10"/>
+        <!-- Eu desenho a caixa da carroceria. -->
+      </svg>
+      <!-- Eu fecho o ícone do caminhão. -->
+      <span class="marca__nome">Fretes Avenida</span>
+      <!-- Eu escrevo o nome da marca. -->
+    </a>
+    <!-- Eu fecho o link da marca. -->
+    <button class="hamb" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <!-- Eu crio o botão do hambúrguer para o celular. -->
+      <span></span><span></span><span></span>
+      <!-- Eu desenho as três linhas do hambúrguer. -->
+    </button>
+    <!-- Eu fecho o botão do hambúrguer. -->
+    <ul class="menu" id="menu">
+      <!-- Eu abro a lista do menu. -->
+      <li><a href="#inicio">Início</a></li>
+      <!-- Eu adiciono o link do início. -->
+      <li><a href="#avaliacoes">Avaliações</a></li>
+      <!-- Eu adiciono o link das avaliações. -->
+      <li><a href="#servicos">Serviços</a></li>
+      <!-- Eu adiciono o link dos serviços. -->
+      <li><a href="#empresas">Empresas</a></li>
+      <!-- Eu adiciono o link de empresas. -->
+      <li><a href="#como">Como funciona</a></li>
+      <!-- Eu adiciono o link de como funciona. -->
+      <li><a href="#sobre">Sobre</a></li>
+      <!-- Eu adiciono o link do sobre. -->
+      <li><a href="#contato">Contato</a></li>
+      <!-- Eu adiciono o link do contato. -->
+    </ul>
+    <!-- Eu fecho a lista do menu. -->
+    <a class="botao botao-topo" href="#contato">Pedir orçamento</a>
+    <!-- Eu adiciono o botão principal no cabeçalho. -->
+  </div>
+  <!-- Eu fecho a área interna do cabeçalho. -->
+</header>
+<!-- Eu fecho o cabeçalho. -->
+<main>
+<!-- Eu abro o conteúdo principal. -->
+<section class="capa" id="inicio">
+  <!-- Eu crio a primeira dobra do site. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo da capa. -->
+    <span class="aparador">São Paulo · Guarulhos · Campinas</span>
+    <!-- Eu escrevo a etiqueta com as cidades principais. -->
+    <h1>Fretes rápidos, <span>transporte urbano e logística</span></h1>
+    <!-- Eu escrevo o título principal com destaque azul. -->
+    <p class="capa__sub">
+      <!-- Eu abro o texto de apoio. -->
+      Coletas, entregas e soluções de transporte para pessoas e empresas com agilidade, segurança e compromisso.
+      <!-- Eu explico a proposta com as palavras que o cliente sente. -->
+    </p>
+    <!-- Eu fecho o texto de apoio. -->
+    <div class="cidades">
+      <!-- Eu crio a lista de cidades atendidas. -->
+      <span>São Paulo</span>
+      <!-- Eu adiciono a primeira cidade. -->
+      <span>Guarulhos</span>
+      <!-- Eu adiciono a segunda cidade. -->
+      <span>Campinas</span>
+      <!-- Eu adiciono a terceira cidade. -->
+    </div>
+    <!-- Eu fecho a lista de cidades. -->
+    <p class="importante">
+      <!-- Eu abro a caixa de aviso. -->
+      <strong>Importante:</strong> não realizamos mudanças completas nem transportamos vidros, mármores, pedras, brita, tijolos ou materiais semelhantes.
+      <!-- Eu deixo claro o que a empresa não faz, como no site de referência. -->
+    </p>
+    <!-- Eu fecho a caixa de aviso. -->
+    <div class="capa__acoes">
+      <!-- Eu abro a linha dos botões da capa. -->
+      <a class="botao" href="#contato">Pedir orçamento no WhatsApp</a>
+      <!-- Eu adiciono o botão principal do WhatsApp. -->
+      <a class="botao botao--vazio" href="#servicos">Conhecer serviços</a>
+      <!-- Eu adiciono o botão secundário dos serviços. -->
+    </div>
+    <!-- Eu fecho a linha dos botões. -->
+  </div>
+  <!-- Eu fecho o conteúdo da capa. -->
+</section>
+<!-- Eu fecho a seção da capa. -->
+<div class="faixa" aria-label="Fotos dos nossos serviços">
+  <!-- Eu crio a faixa de fotos que passam sozinhas. -->
+  <div class="faixa__trilho">
+    <!-- Eu abro o trilho que desliza com as fotos. -->
+    <figure class="faixa__foto">
+      <!-- Eu crio a primeira foto da faixa. -->
+      <svg viewBox="0 0 260 170" role="img" aria-label="Caminhão de frete na estrada">
+        <!-- Eu desenho a cena do caminhão na estrada. -->
+        <rect width="260" height="170" fill="#0d2f6b"/>
+        <!-- Eu pinto o céu noturno azul da cena. -->
+        <circle cx="215" cy="34" r="16" fill="#ffc400"/>
+        <!-- Eu desenho a lua amarela. -->
+        <rect y="120" width="260" height="50" fill="#16304f"/>
+        <!-- Eu pinto o chão da cena. -->
+        <g stroke="#ffc400" stroke-width="3" stroke-dasharray="16 12">
+          <!-- Eu agrupo as marcas centrais da estrada. -->
+          <line x1="0" y1="146" x2="260" y2="146"/>
+          <!-- Eu desenho a faixa tracejada da pista. -->
+        </g>
+        <!-- Eu fecho o grupo da pista. -->
+        <g>
+          <!-- Eu agrupo as peças do caminhão. -->
+          <rect x="52" y="76" width="104" height="48" rx="4" fill="#ffc400"/>
+          <!-- Eu desenho a carroceria amarela. -->
+          <rect x="156" y="90" width="44" height="34" rx="4" fill="#fff"/>
+          <!-- Eu desenho a cabine branca. -->
+          <circle cx="82" cy="128" r="10" fill="#10233d"/>
+          <!-- Eu desenho a roda traseira. -->
+          <circle cx="176" cy="128" r="10" fill="#10233d"/>
+          <!-- Eu desenho a roda dianteira. -->
+        </g>
+        <!-- Eu fecho o grupo do caminhão. -->
+      </svg>
+      <!-- Eu fecho a ilustração do caminhão. -->
+      <figcaption>Transporte urbano</figcaption>
+      <!-- Eu escrevo a legenda que aparece no hover. -->
+    </figure>
+    <!-- Eu fecho a primeira foto. -->
+    <figure class="faixa__foto">
+      <!-- Eu crio a segunda foto da faixa. -->
+      <svg viewBox="0 0 260 170" role="img" aria-label="Entrega de encomendas na porta">
+        <!-- Eu desenho a cena da entrega. -->
+        <rect width="260" height="170" fill="#1749a3"/>
+        <!-- Eu pinto o fundo azul da cena. -->
+        <rect y="130" width="260" height="40" fill="#10233d"/>
+        <!-- Eu pinto o chão. -->
+        <rect x="40" y="42" width="90" height="88" fill="#fff"/>
+        <!-- Eu desenho a casa de entrega. -->
+        <polygon points="30,44 85,12 140,44" fill="#ffc400"/>
+        <!-- Eu desenho o telhado amarelo. -->
+        <rect x="72" y="86" width="26" height="44" fill="#0d2f6b"/>
+        <!-- Eu desenho a porta da casa. -->
+        <g>
+          <!-- Eu agrupo as caixas da entrega. -->
+          <rect x="160" y="84" width="52" height="46" rx="3" fill="#ffc400"/>
+          <!-- Eu desenho a caixa grande. -->
+          <rect x="168" y="56" width="36" height="30" rx="3" fill="#fff"/>
+          <!-- Eu desenho a caixa pequena em cima. -->
+          <line x1="186" y1="56" x2="186" y2="86" stroke="#0d2f6b" stroke-width="3"/>
+          <!-- Eu desenho a fita da caixa de cima. -->
+          <line x1="160" y1="106" x2="212" y2="106" stroke="#0d2f6b" stroke-width="3"/>
+          <!-- Eu desenho a fita da caixa de baixo. -->
+        </g>
+        <!-- Eu fecho o grupo das caixas. -->
+      </svg>
+      <!-- Eu fecho a ilustração da entrega. -->
+      <figcaption>Coletas e entregas</figcaption>
+      <!-- Eu escrevo a legenda que aparece no hover. -->
+    </figure>
+    <!-- Eu fecho a segunda foto. -->
+    <figure class="faixa__foto">
+      <!-- Eu crio a terceira foto da faixa. -->
+      <svg viewBox="0 0 260 170" role="img" aria-label="Galpão logístico com prateleiras">
+        <!-- Eu desenho a cena do galpão. -->
+        <rect width="260" height="170" fill="#10233d"/>
+        <!-- Eu pinto o fundo escuro do galpão. -->
+        <rect y="138" width="260" height="32" fill="#16304f"/>
+        <!-- Eu pinto o piso do galpão. -->
+        <g fill="none" stroke="#1749a3" stroke-width="4">
+          <!-- Eu agrupo as estruturas das prateleiras. -->
+          <path d="M24 138V52h84v86M24 78h84M24 106h84"/>
+          <!-- Eu desenho a primeira prateleira. -->
+          <path d="M152 138V52h84v86M152 78h84M152 106h84"/>
+          <!-- Eu desenho a segunda prateleira. -->
+        </g>
+        <!-- Eu fecho o grupo das prateleiras. -->
+        <g fill="#ffc400">
+          <!-- Eu agrupo as caixas guardadas. -->
+          <rect x="36" y="56" width="24" height="20"/>
+          <!-- Eu coloco a primeira caixa na prateleira. -->
+          <rect x="70" y="84" width="24" height="20"/>
+          <!-- Eu coloco a segunda caixa na prateleira. -->
+          <rect x="164" y="56" width="24" height="20"/>
+          <!-- Eu coloco a terceira caixa na prateleira. -->
+          <rect x="200" y="84" width="24" height="20"/>
+          <!-- Eu coloco a quarta caixa na prateleira. -->
+        </g>
+        <!-- Eu fecho o grupo das caixas. -->
+      </svg>
+      <!-- Eu fecho a ilustração do galpão. -->
+      <figcaption>Logística para empresas</figcaption>
+      <!-- Eu escrevo a legenda que aparece no hover. -->
+    </figure>
+    <!-- Eu fecho a terceira foto. -->
+    <figure class="faixa__foto">
+      <!-- Eu crio a quarta foto da faixa. -->
+      <svg viewBox="0 0 260 170" role="img" aria-label="Mapa com rota entre cidades">
+        <!-- Eu desenho a cena do mapa com rota. -->
+        <rect width="260" height="170" fill="#e3e7ec"/>
+        <!-- Eu pinto o fundo de mapa claro. -->
+        <path d="M0 40h260M0 90h260M0 130h260" stroke="#c3ccd8" stroke-width="8"/>
+        <!-- Eu desenho as ruas do mapa. -->
+        <path d="M60 0v170M150 0v170M220 0v170" stroke="#c3ccd8" stroke-width="8"/>
+        <!-- Eu desenho as ruas cruzadas do mapa. -->
+        <path d="M42 138C90 118 110 62 168 44" fill="none" stroke="#0d2f6b" stroke-width="6" stroke-dasharray="12 9" stroke-linecap="round"/>
+        <!-- Eu desenho a rota tracejada entre as cidades. -->
+        <circle cx="42" cy="138" r="13" fill="#0d2f6b"/>
+        <!-- Eu desenho o ponto de partida. -->
+        <circle cx="42" cy="138" r="5" fill="#ffc400"/>
+        <!-- Eu destaque o centro do ponto de partida. -->
+        <path d="M168 20a14 14 0 0 1 14 14c0 10-14 24-14 24s-14-14-14-24a14 14 0 0 1 14-14z" fill="#ffc400" stroke="#10233d" stroke-width="3"/>
+        <!-- Eu desenho o pino de destino. -->
+      </svg>
+      <!-- Eu fecho a ilustração do mapa. -->
+      <figcaption>Rotas entre cidades</figcaption>
+      <!-- Eu escrevo a legenda que aparece no hover. -->
+    </figure>
+    <!-- Eu fecho a quarta foto. -->
+    <figure class="faixa__foto">
+      <!-- Eu crio a quinta foto da faixa. -->
+      <svg viewBox="0 0 260 170" role="img" aria-label="Passageiros com bagagens indo embarcar">
+        <!-- Eu desenho a cena de passageiros e bagagens. -->
+        <rect width="260" height="170" fill="#0d2f6b"/>
+        <!-- Eu pinto o céu da cena. -->
+        <rect y="126" width="260" height="44" fill="#16304f"/>
+        <!-- Eu pinto o chão. -->
+        <rect x="140" y="70" width="96" height="56" rx="8" fill="#fff"/>
+        <!-- Eu desenho a van branca. -->
+        <rect x="150" y="80" width="26" height="20" rx="3" fill="#1749a3"/>
+        <!-- Eu desenho a janela da van. -->
+        <rect x="184" y="80" width="26" height="20" rx="3" fill="#1749a3"/>
+        <!-- Eu desenho a segunda janela da van. -->
+        <circle cx="162" cy="128" r="10" fill="#10233d"/>
+        <!-- Eu desenho a roda traseira da van. -->
+        <circle cx="216" cy="128" r="10" fill="#10233d"/>
+        <!-- Eu desenho a roda dianteira da van. -->
+        <g>
+          <!-- Eu agrupo o passageiro e as bagagens. -->
+          <circle cx="56" cy="66" r="12" fill="#ffc400"/>
+          <!-- Eu desenho a cabeça do passageiro. -->
+          <rect x="46" y="80" width="20" height="34" rx="8" fill="#ffc400"/>
+          <!-- Eu desenho o corpo do passageiro. -->
+          <rect x="72" y="92" width="24" height="24" rx="3" fill="#fff"/>
+          <!-- Eu desenho a mala do passageiro. -->
+          <line x1="84" y1="92" x2="84" y2="84" stroke="#fff" stroke-width="4"/>
+          <!-- Eu desenho a alça da mala. -->
+        </g>
+        <!-- Eu fecho o grupo do passageiro. -->
+      </svg>
+      <!-- Eu fecho a ilustração dos passageiros. -->
+      <figcaption>Passageiros e bagagens</figcaption>
+      <!-- Eu escrevo a legenda que aparece no hover. -->
+    </figure>
+    <!-- Eu fecho a quinta foto. -->
+    <figure class="faixa__foto">
+      <!-- Eu crio a sexta foto da faixa. -->
+      <svg viewBox="0 0 260 170" role="img" aria-label="Equipe carregando caixas com segurança">
+        <!-- Eu desenho a cena da equipe carregando. -->
+        <rect width="260" height="170" fill="#1749a3"/>
+        <!-- Eu pinto o fundo da cena. -->
+        <rect y="132" width="260" height="38" fill="#10233d"/>
+        <!-- Eu pinto o chão. -->
+        <g>
+          <!-- Eu agrupo os dois ajudantes. -->
+          <circle cx="86" cy="58" r="13" fill="#fff"/>
+          <!-- Eu desenho a cabeça do primeiro ajudante. -->
+          <rect x="74" y="72" width="24" height="36" rx="9" fill="#fff"/>
+          <!-- Eu desenho o corpo do primeiro ajudante. -->
+          <circle cx="174" cy="58" r="13" fill="#ffc400"/>
+          <!-- Eu desenho a cabeça do segundo ajudante. -->
+          <rect x="162" y="72" width="24" height="36" rx="9" fill="#ffc400"/>
+          <!-- Eu desenho o corpo do segundo ajudante. -->
+        </g>
+        <!-- Eu fecho o grupo dos ajudantes. -->
+        <rect x="106" y="76" width="48" height="34" rx="3" fill="#fff" stroke="#10233d" stroke-width="3"/>
+        <!-- Eu desenho a caixa que os dois carregam juntos. -->
+        <line x1="130" y1="76" x2="130" y2="110" stroke="#10233d" stroke-width="3"/>
+        <!-- Eu desenho a fita da caixa. -->
+      </svg>
+      <!-- Eu fecho a ilustração da equipe. -->
+      <figcaption>Equipe treinada</figcaption>
+      <!-- Eu escrevo a legenda que aparece no hover. -->
+    </figure>
+    <!-- Eu fecho a sexta foto. -->
+  </div>
+  <!-- Eu fecho o trilho das fotos. -->
+</div>
+<!-- Eu fecho a faixa de fotos. -->
+<section class="servicos" id="servicos">
+  <!-- Eu crio a seção de serviços numerados. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo dos serviços. -->
+    <div class="secao-titulo revela">
+      <!-- Eu crio o cabeçalho da seção. -->
+      <span class="aparador">Nossos serviços</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Transporte para cada necessidade</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>Escolha o serviço que você precisa e fale diretamente com nossa equipe.</p>
+      <!-- Eu escrevo a descrição da seção. -->
+    </div>
+    <!-- Eu fecho o cabeçalho da seção. -->
+    <article class="servico revela">
+      <!-- Eu crio o primeiro serviço. -->
+      <div class="servico__foto">
+        <!-- Eu abro a área da foto do serviço. -->
+        <svg viewBox="0 0 300 190" role="img" aria-label="Frete rápido com caminhão pequeno">
+          <!-- Eu desenho a cena do frete rápido. -->
+          <rect width="300" height="190" fill="#ffc400"/>
+          <!-- Eu pinto o fundo amarelo da cena. -->
+          <rect y="140" width="300" height="50" fill="#10233d"/>
+          <!-- Eu pinto a estrada escura. -->
+          <g>
+            <!-- Eu agrupo as peças do caminhão. -->
+            <rect x="60" y="78" width="120" height="52" rx="5" fill="#fff"/>
+            <!-- Eu desenho a carroceria branca. -->
+            <rect x="180" y="92" width="52" height="38" rx="5" fill="#0d2f6b"/>
+            <!-- Eu desenho a cabine azul. -->
+            <circle cx="96" cy="132" r="12" fill="#10233d"/>
+            <!-- Eu desenho a roda traseira. -->
+            <circle cx="206" cy="132" r="12" fill="#10233d"/>
+            <!-- Eu desenho a roda dianteira. -->
+            <path d="M40 166h40M120 166h40M200 166h40" stroke="#ffc400" stroke-width="5" stroke-dasharray="18 14"/>
+            <!-- Eu desenho as marcas da pista. -->
+          </g>
+          <!-- Eu fecho o grupo do caminhão. -->
+        </svg>
+        <!-- Eu fecho a ilustração do frete rápido. -->
+        <span class="servico__num">01</span>
+        <!-- Eu escrevo o número grande do serviço. -->
+      </div>
+      <!-- Eu fecho a área da foto. -->
+      <div>
+        <!-- Eu abro a coluna de texto do serviço. -->
+        <h3>Fretes rápidos</h3>
+        <!-- Eu escrevo o título do serviço. -->
+        <p>Coletas e entregas para móveis, eletrodomésticos, mercadorias e outros volumes em São Paulo e região, com pontualidade e cuidado.</p>
+        <!-- Eu escrevo a descrição do serviço. -->
+        <ul class="tags">
+          <!-- Eu abro a lista de etiquetas. -->
+          <li>Coletas</li>
+          <!-- Eu adiciono a etiqueta de coletas. -->
+          <li>Entregas</li>
+          <li>Móveis</li>
+          <li>Eletrodomésticos</li>
+          <!-- Eu adiciono as etiquetas restantes do serviço. -->
+        </ul>
+        <!-- Eu fecho a lista de etiquetas. -->
+        <a class="botao" href="#contato">Solicitar frete rápido</a>
+        <!-- Eu adiciono o botão de pedido deste serviço. -->
+      </div>
+      <!-- Eu fecho a coluna de texto. -->
+    </article>
+    <!-- Eu fecho o primeiro serviço. -->
+    <article class="servico revela">
+      <!-- Eu crio o segundo serviço. -->
+      <div class="servico__foto">
+        <!-- Eu abro a área da foto do serviço. -->
+        <svg viewBox="0 0 300 190" role="img" aria-label="Logística para empresas com caixas e prateleiras">
+          <!-- Eu desenho a cena da logística empresarial. -->
+          <rect width="300" height="190" fill="#1749a3"/>
+          <!-- Eu pinto o fundo azul da cena. -->
+          <rect y="150" width="300" height="40" fill="#10233d"/>
+          <!-- Eu pinto o piso. -->
+          <g fill="none" stroke="#ffc400" stroke-width="5">
+            <!-- Eu agrupo as prateleiras. -->
+            <path d="M40 150V60h90v90M40 90h90M40 120h90"/>
+            <!-- Eu desenho a prateleira da esquerda. -->
+            <path d="M170 150V60h90v90M170 90h90M170 120h90"/>
+            <!-- Eu desenho a prateleira da direita. -->
+          </g>
+          <!-- Eu fecho o grupo das prateleiras. -->
+          <g fill="#fff">
+            <!-- Eu agrupo as caixas das prateleiras. -->
+            <rect x="54" y="66" width="28" height="22"/>
+            <!-- Eu coloco a primeira caixa. -->
+            <rect x="94" y="96" width="28" height="22"/>
+            <!-- Eu coloco a segunda caixa. -->
+            <rect x="184" y="66" width="28" height="22"/>
+            <!-- Eu coloco a terceira caixa. -->
+            <rect x="222" y="96" width="28" height="22"/>
+            <!-- Eu coloco a quarta caixa. -->
+          </g>
+          <!-- Eu fecho o grupo das caixas. -->
+        </svg>
+        <!-- Eu fecho a ilustração da logística. -->
+        <span class="servico__num">02</span>
+        <!-- Eu escrevo o número grande do serviço. -->
+      </div>
+      <!-- Eu fecho a área da foto. -->
+      <div>
+        <!-- Eu abro a coluna de texto do serviço. -->
+        <h3>Logística para empresas</h3>
+        <!-- Eu escrevo o título do serviço. -->
+        <p>Soluções para coletas, entregas, rotas, operações programadas e demandas empresariais, com contrato e nota fiscal.</p>
+        <!-- Eu escrevo a descrição do serviço. -->
+        <ul class="tags">
+          <!-- Eu abro a lista de etiquetas. -->
+          <li>B2B</li>
+          <!-- Eu adiciono a etiqueta empresarial. -->
+          <li>Rotas</li>
+          <li>Entregas</li>
+          <li>Operações</li>
+          <!-- Eu adiciono as etiquetas restantes do serviço. -->
+        </ul>
+        <!-- Eu fecho a lista de etiquetas. -->
+        <a class="botao" href="#contato">Solicitar atendimento empresarial</a>
+        <!-- Eu adiciono o botão de pedido deste serviço. -->
+      </div>
+      <!-- Eu fecho a coluna de texto. -->
+    </article>
+    <!-- Eu fecho o segundo serviço. -->
+    <article class="servico revela">
+      <!-- Eu crio o terceiro serviço. -->
+      <div class="servico__foto">
+        <!-- Eu abro a área da foto do serviço. -->
+        <svg viewBox="0 0 300 190" role="img" aria-label="Rota entre cidades no mapa">
+          <!-- Eu desenho a cena das rotas. -->
+          <rect width="300" height="190" fill="#e3e7ec"/>
+          <!-- Eu pinto o fundo de mapa. -->
+          <path d="M0 50h300M0 100h300M0 145h300" stroke="#c3ccd8" stroke-width="9"/>
+          <!-- Eu desenho as ruas horizontais. -->
+          <path d="M70 0v190M170 0v190M245 0v190" stroke="#c3ccd8" stroke-width="9"/>
+          <!-- Eu desenho as ruas verticais. -->
+          <path d="M50 158C110 132 140 66 220 44" fill="none" stroke="#0d2f6b" stroke-width="7" stroke-dasharray="14 10" stroke-linecap="round"/>
+          <!-- Eu desenho a rota tracejada entre as cidades. -->
+          <circle cx="50" cy="158" r="14" fill="#0d2f6b"/>
+          <!-- Eu desenho o ponto de partida. -->
+          <circle cx="50" cy="158" r="6" fill="#ffc400"/>
+          <!-- Eu destaque o centro do ponto de partida. -->
+          <path d="M220 18a15 15 0 0 1 15 15c0 11-15 26-15 26s-15-15-15-26a15 15 0 0 1 15-15z" fill="#ffc400" stroke="#10233d" stroke-width="3"/>
+          <!-- Eu desenho o pino de destino. -->
+        </svg>
+        <!-- Eu fecho a ilustração da rota. -->
+        <span class="servico__num">03</span>
+        <!-- Eu escrevo o número grande do serviço. -->
+      </div>
+      <!-- Eu fecho a área da foto. -->
+      <div>
+        <!-- Eu abro a coluna de texto do serviço. -->
+        <h3>Rotas e viagens</h3>
+        <!-- Eu escrevo o título do serviço. -->
+        <p>Transportes entre cidades para cargas, mercadorias, entregas exclusivas e operações programadas, cobrindo São Paulo, Guarulhos, Campinas e outras cidades.</p>
+        <!-- Eu escrevo a descrição do serviço. -->
+        <ul class="tags">
+          <!-- Eu abro a lista de etiquetas. -->
+          <li>São Paulo</li>
+          <!-- Eu adiciono a etiqueta da primeira cidade. -->
+          <li>Guarulhos</li>
+          <li>Campinas</li>
+          <li>Outras cidades</li>
+          <!-- Eu adiciono as etiquetas restantes do serviço. -->
+        </ul>
+        <!-- Eu fecho a lista de etiquetas. -->
+        <a class="botao" href="#contato">Cotar rota</a>
+        <!-- Eu adiciono o botão de pedido deste serviço. -->
+      </div>
+      <!-- Eu fecho a coluna de texto. -->
+    </article>
+    <!-- Eu fecho o terceiro serviço. -->
+    <article class="servico revela">
+      <!-- Eu crio o quarto serviço. -->
+      <div class="servico__foto">
+        <!-- Eu abro a área da foto do serviço. -->
+        <svg viewBox="0 0 300 190" role="img" aria-label="Passageiros com bagagens indo para a van">
+          <!-- Eu desenho a cena de passageiros com bagagens. -->
+          <rect width="300" height="190" fill="#0d2f6b"/>
+          <!-- Eu pinto o céu da cena. -->
+          <rect y="142" width="300" height="48" fill="#16304f"/>
+          <!-- Eu pinto o chão. -->
+          <rect x="160" y="76" width="110" height="62" rx="9" fill="#fff"/>
+          <!-- Eu desenho a van branca. -->
+          <rect x="172" y="86" width="30" height="22" rx="3" fill="#1749a3"/>
+          <!-- Eu desenho a janela da van. -->
+          <rect x="212" y="86" width="30" height="22" rx="3" fill="#1749a3"/>
+          <!-- Eu desenho a segunda janela da van. -->
+          <circle cx="184" cy="140" r="11" fill="#10233d"/>
+          <!-- Eu desenho a roda traseira da van. -->
+          <circle cx="244" cy="140" r="11" fill="#10233d"/>
+          <!-- Eu desenho a roda dianteira da van. -->
+          <g>
+            <!-- Eu agrupo o passageiro e as bagagens. -->
+            <circle cx="64" cy="70" r="14" fill="#ffc400"/>
+            <!-- Eu desenho a cabeça do passageiro. -->
+            <rect x="52" y="86" width="24" height="40" rx="9" fill="#ffc400"/>
+            <!-- Eu desenho o corpo do passageiro. -->
+            <rect x="84" y="100" width="26" height="26" rx="3" fill="#fff"/>
+            <!-- Eu desenho a mala do passageiro. -->
+            <line x1="97" y1="100" x2="97" y2="90" stroke="#fff" stroke-width="4"/>
+            <!-- Eu desenho a alça da mala. -->
+          </g>
+          <!-- Eu fecho o grupo do passageiro. -->
+        </svg>
+        <!-- Eu fecho a ilustração dos passageiros. -->
+        <span class="servico__num">04</span>
+        <!-- Eu escrevo o número grande do serviço. -->
+      </div>
+      <!-- Eu fecho a área da foto. -->
+      <div>
+        <!-- Eu abro a coluna de texto do serviço. -->
+        <h3>Passageiros + bagagens</h3>
+        <!-- Eu escrevo o título do serviço. -->
+        <p>Transporte para situações em que o cliente precisa levar bagagens, volumes e também seguir junto com a gente.</p>
+        <!-- Eu escrevo a descrição do serviço. -->
+        <ul class="tags">
+          <!-- Eu abro a lista de etiquetas. -->
+          <li>Passageiros</li>
+          <!-- Eu adiciono a etiqueta de passageiros. -->
+          <li>Bagagens</li>
+          <li>Viagens</li>
+          <!-- Eu adiciono as etiquetas restantes do serviço. -->
+        </ul>
+        <!-- Eu fecho a lista de etiquetas. -->
+        <a class="botao" href="#contato">Solicitar transporte</a>
+        <!-- Eu adiciono o botão de pedido deste serviço. -->
+      </div>
+      <!-- Eu fecho a coluna de texto. -->
+    </article>
+    <!-- Eu fecho o quarto serviço. -->
+    <article class="servico revela">
+      <!-- Eu crio o quinto serviço. -->
+      <div class="servico__foto">
+        <!-- Eu abro a área da foto do serviço. -->
+        <svg viewBox="0 0 300 190" role="img" aria-label="Retirada de itens para descarte">
+          <!-- Eu desenho a cena do descarte. -->
+          <rect width="300" height="190" fill="#16304f"/>
+          <!-- Eu pinto o fundo da cena. -->
+          <rect y="146" width="300" height="44" fill="#10233d"/>
+          <!-- Eu pinto o chão. -->
+          <g>
+            <!-- Eu agrupo os itens descartados. -->
+            <rect x="48" y="98" width="76" height="48" rx="6" fill="#ffc400"/>
+            <!-- Eu desenho o sofá velho. -->
+            <rect x="48" y="76" width="20" height="30" rx="6" fill="#ffc400"/>
+            <!-- Eu desenho o encosto do sofá. -->
+            <rect x="146" y="104" width="52" height="42" rx="4" fill="#fff"/>
+            <!-- Eu desenho a mesa velha. -->
+            <rect x="154" y="88" width="36" height="16" rx="3" fill="#fff"/>
+            <!-- Eu desenho a gaveta da mesa. -->
+          </g>
+          <!-- Eu fecho o grupo dos itens. -->
+          <g>
+            <!-- Eu agrupo o ícone de reciclagem. -->
+            <circle cx="240" cy="106" r="34" fill="none" stroke="#ffc400" stroke-width="5"/>
+            <!-- Eu desenho o círculo da reciclagem. -->
+            <path d="M226 112l8-16 8 16M248 96l4 16-14 2" fill="none" stroke="#ffc400" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Eu desenho as setas da reciclagem. -->
+          </g>
+          <!-- Eu fecho o grupo da reciclagem. -->
+        </svg>
+        <!-- Eu fecho a ilustração do descarte. -->
+        <span class="servico__num">05</span>
+        <!-- Eu escrevo o número grande do serviço. -->
+      </div>
+      <!-- Eu fecho a área da foto. -->
+      <div>
+        <!-- Eu abro a coluna de texto do serviço. -->
+        <h3>Descartes</h3>
+        <!-- Eu escrevo o título do serviço. -->
+        <p>Retirada e transporte de itens que não serão mais utilizados, conforme avaliação da demanda e do material.</p>
+        <!-- Eu escrevo a descrição do serviço. -->
+        <ul class="tags">
+          <!-- Eu abro a lista de etiquetas. -->
+          <li>Retirada</li>
+          <!-- Eu adiciono a etiqueta de retirada. -->
+          <li>Transporte</li>
+          <li>Descarte</li>
+          <!-- Eu adiciono as etiquetas restantes do serviço. -->
+        </ul>
+        <!-- Eu fecho a lista de etiquetas. -->
+        <a class="botao" href="#contato">Solicitar descarte</a>
+        <!-- Eu adiciono o botão de pedido deste serviço. -->
+      </div>
+      <!-- Eu fecho a coluna de texto. -->
+    </article>
+    <!-- Eu fecho o quinto serviço. -->
+  </div>
+  <!-- Eu fecho o conteúdo dos serviços. -->
+</section>
+<!-- Eu fecho a seção de serviços. -->
+<section class="avaliacoes" id="avaliacoes">
+  <!-- Eu crio a seção de avaliações. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo das avaliações. -->
+    <div class="secao-titulo revela">
+      <!-- Eu crio o cabeçalho da seção. -->
+      <span class="aparador">Prova de quem já contratou</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Mais de 1.000 avaliações de clientes</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>Depoimentos fictícios para demonstrar o layout. Não são avaliações reais do Google.</p>
+      <!-- Eu escrevo a descrição da seção. -->
+    </div>
+    <!-- Eu fecho o cabeçalho da seção. -->
+    <div class="nota-grande revela">
+      <!-- Eu crio o bloco da nota grande. -->
+      <b>5,0</b>
+      <!-- Eu escrevo a nota gigante. -->
+      <span class="estrelas" aria-label="Cinco estrelas">★★★★★</span>
+      <!-- Eu desenho as cinco estrelas. -->
+    </div>
+    <!-- Eu fecho o bloco da nota. -->
+    <div class="depoimentos">
+      <!-- Eu abro a grade de depoimentos. -->
+      <article class="depoimento revela">
+        <!-- Eu crio o primeiro depoimento. -->
+        <p>“Precisei entregar móveis para minha filha em Guarulhos e no mesmo dia resolveram. Chegou tudo inteiro e no horário combinado.”</p>
+        <!-- Eu escrevo o texto do depoimento. -->
+        <small>— Márcia L., São Paulo</small>
+        <!-- Eu escrevo quem falou. -->
+      </article>
+      <!-- Eu fecho o primeiro depoimento. -->
+      <article class="depoimento revela">
+        <!-- Eu crio o segundo depoimento. -->
+        <p>“Uso o serviço deles para as entregas da minha loja há dois anos. Nunca tivemos problema com a mercadoria e o orçamento é sempre claro.”</p>
+        <!-- Eu escrevo o texto do depoimento. -->
+        <small>— Ricardo S., empresário</small>
+        <!-- Eu escrevo quem falou. -->
+      </article>
+      <!-- Eu fecho o segundo depoimento. -->
+      <article class="depoimento revela">
+        <!-- Eu crio o terceiro depoimento. -->
+        <p>“Contratei o transporte com passageiros e bagagens para uma viagem. Motorista pontual, van limpa e atendimento muito educado.”</p>
+        <!-- Eu escrevo o texto do depoimento. -->
+        <small>— Juliana P., Campinas</small>
+        <!-- Eu escrevo quem falou. -->
+      </article>
+      <!-- Eu fecho o terceiro depoimento. -->
+    </div>
+    <!-- Eu fecho a grade de depoimentos. -->
+  </div>
+  <!-- Eu fecho o conteúdo das avaliações. -->
+</section>
+<!-- Eu fecho a seção de avaliações. -->
+<section class="empresas" id="empresas">
+  <!-- Eu crio a seção de logística para empresas. -->
+  <div class="envoltorio empresas-grade">
+    <!-- Eu monto a grade de duas colunas da seção. -->
+    <div class="revela">
+      <!-- Eu abro a coluna de texto. -->
+      <span class="aparador">Para empresas</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Logística para a sua empresa</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>Atendimento para empresas que precisam de transporte recorrente, operações especiais, rotas ou demandas sob medida.</p>
+      <!-- Eu escrevo a descrição da seção. -->
+      <ul>
+        <!-- Eu abro a lista de soluções. -->
+        <li>Coletas e entregas recorrentes</li>
+        <!-- Eu adiciono a primeira solução. -->
+        <li>Rotas fixas entre cidades</li>
+        <!-- Eu adiciono a segunda solução. -->
+        <li>Operações programadas</li>
+        <!-- Eu adiciono a terceira solução. -->
+        <li>Transportes entre cidades</li>
+        <!-- Eu adiciono a quarta solução. -->
+        <li>Demandas sob medida</li>
+        <!-- Eu adiciono a quinta solução. -->
+      </ul>
+      <!-- Eu fecho a lista de soluções. -->
+      <a class="botao" href="#contato">Solicitar atendimento empresarial</a>
+      <!-- Eu adiciono o botão da seção empresarial. -->
+    </div>
+    <!-- Eu fecho a coluna de texto. -->
+    <div class="caixa-foto revela">
+      <!-- Eu abro a coluna da foto. -->
+      <svg viewBox="0 0 400 280" role="img" aria-label="Operação logística com caminhão e galpão">
+        <!-- Eu desenho a cena da operação empresarial. -->
+        <rect width="400" height="280" fill="#ffc400"/>
+        <!-- Eu pinto o fundo amarelo. -->
+        <rect y="210" width="400" height="70" fill="#10233d"/>
+        <!-- Eu pinto o chão escura. -->
+        <rect x="30" y="60" width="150" height="150" fill="#fff"/>
+        <!-- Eu desenho o galpão. -->
+        <polygon points="20,62 105,20 190,62" fill="#0d2f6b"/>
+        <!-- Eu desenho o telhado do galpão. -->
+        <rect x="80" y="130" width="50" height="80" fill="#0d2f6b"/>
+        <!-- Eu desenho a porta do galpão. -->
+        <g>
+          <!-- Eu agrupo o caminhão da operação. -->
+          <rect x="210" y="120" width="130" height="62" rx="5" fill="#0d2f6b"/>
+          <!-- Eu desenho a carroceria azul. -->
+          <rect x="340" y="136" width="48" height="46" rx="5" fill="#fff"/>
+          <!-- Eu desenho a cabine branca. -->
+          <circle cx="244" cy="186" r="13" fill="#10233d"/>
+          <!-- Eu desenho a roda traseira. -->
+          <circle cx="358" cy="186" r="13" fill="#10233d"/>
+          <!-- Eu desenho a roda dianteira. -->
+        </g>
+        <!-- Eu fecho o grupo do caminhão. -->
+        <path d="M0 244h60M100 244h60M200 244h60M300 244h60" stroke="#ffc400" stroke-width="6" stroke-dasharray="22 16"/>
+        <!-- Eu desenho as marcas da pista. -->
+      </svg>
+      <!-- Eu fecho a ilustração da operação. -->
+    </div>
+    <!-- Eu fecho a coluna da foto. -->
+  </div>
+  <!-- Eu fecho a grade da seção. -->
+</section>
+<!-- Eu fecho a seção de empresas. -->
+<section class="como" id="como">
+  <!-- Eu crio a seção de como funciona. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="secao-titulo revela">
+      <!-- Eu crio o cabeçalho da seção. -->
+      <span class="aparador">Simples, rápido e direto</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Como funciona</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>Do primeiro contato até a entrega, nossa equipe acompanha o serviço.</p>
+      <!-- Eu escrevo a descrição da seção. -->
+    </div>
+    <!-- Eu fecho o cabeçalho da seção. -->
+    <div class="passos">
+      <!-- Eu abro a linha dos passos. -->
+      <div class="passo revela">
+        <!-- Eu crio o primeiro passo. -->
+        <h3>Solicite</h3>
+        <!-- Eu escrevo o título do passo. -->
+        <p>Fale com a gente pelo WhatsApp e informe sua necessidade.</p>
+        <!-- Eu escrevo a descrição do passo. -->
+      </div>
+      <!-- Eu fecho o primeiro passo. -->
+      <div class="passo revela">
+        <!-- Eu crio o segundo passo. -->
+        <h3>Orçamento</h3>
+        <!-- Eu escrevo o título do passo. -->
+        <p>Enviamos o orçamento rapidamente com a melhor solução para o serviço.</p>
+        <!-- Eu escrevo a descrição do passo. -->
+      </div>
+      <!-- Eu fecho o segundo passo. -->
+      <div class="passo revela">
+        <!-- Eu crio o terceiro passo. -->
+        <h3>Coleta</h3>
+        <!-- Eu escrevo o título do passo. -->
+        <p>Nossa equipe realiza a coleta ou busca no local combinado, com pontualidade.</p>
+        <!-- Eu escrevo a descrição do passo. -->
+      </div>
+      <!-- Eu fecho o terceiro passo. -->
+      <div class="passo revela">
+        <!-- Eu crio o quarto passo. -->
+        <h3>Entrega</h3>
+        <!-- Eu escrevo o título do passo. -->
+        <p>Entregamos no destino com segurança, cuidado e compromisso.</p>
+        <!-- Eu escrevo a descrição do passo. -->
+      </div>
+      <!-- Eu fecho o quarto passo. -->
+    </div>
+    <!-- Eu fecho a linha dos passos. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de como funciona. -->
+<section id="sobre">
+  <!-- Eu crio a seção sobre a empresa. -->
+  <div class="envoltorio sobre-grade">
+    <!-- Eu monto a grade de duas colunas do sobre. -->
+    <div class="revela">
+      <!-- Eu abro a coluna de texto. -->
+      <span class="aparador">Sobre nós</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Fretes Avenida</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>A Fretes Avenida oferece soluções de transporte para pessoas e empresas, atendendo desde pequenas coletas e entregas até operações logísticas e viagens entre cidades.</p>
+      <!-- Eu escrevo o primeiro parágrafo do sobre. -->
+      <p>Nosso objetivo é tornar a contratação mais simples, com atendimento direto, informação clara e compromisso com cada serviço.</p>
+      <!-- Eu escrevo o segundo parágrafo do sobre. -->
+      <a class="botao botao--azul" href="#contato" style="margin-top:10px;">Falar com nossa equipe</a>
+      <!-- Eu adiciono o botão de falar com a equipe. -->
+    </div>
+    <!-- Eu fecho a coluna de texto. -->
+    <div class="caixa-foto revela">
+      <!-- Eu abro a coluna da foto. -->
+      <svg viewBox="0 0 400 320" role="img" aria-label="Caminhão da frota em frente à empresa">
+        <!-- Eu desenho a cena do caminhão da frota. -->
+        <rect width="400" height="320" fill="#1749a3"/>
+        <!-- Eu pinto o céu azul da cena. -->
+        <circle cx="330" cy="58" r="30" fill="#ffc400"/>
+        <!-- Eu desenho o sol amarelo. -->
+        <rect y="240" width="400" height="80" fill="#10233d"/>
+        <!-- Eu pinto a estrada. -->
+        <rect x="40" y="80" width="120" height="160" fill="#fff"/>
+        <!-- Eu desenho o prédio da empresa. -->
+        <g fill="#0d2f6b">
+          <!-- Eu agrupo as janelas do prédio. -->
+          <rect x="56" y="98" width="26" height="26"/>
+          <!-- Eu coloco a primeira janela. -->
+          <rect x="94" y="98" width="26" height="26"/>
+          <!-- Eu coloco a segunda janela. -->
+          <rect x="56" y="138" width="26" height="26"/>
+          <!-- Eu coloco a terceira janela. -->
+          <rect x="94" y="138" width="26" height="26"/>
+          <!-- Eu coloco a quarta janela. -->
+        </g>
+        <!-- Eu fecho o grupo das janelas. -->
+        <g>
+          <!-- Eu agrupo o caminhão da frota. -->
+          <rect x="190" y="150" width="140" height="66" rx="6" fill="#ffc400"/>
+          <!-- Eu desenho a carroceria amarela. -->
+          <rect x="330" y="168" width="50" height="48" rx="6" fill="#fff"/>
+          <!-- Eu desenho a cabine branca. -->
+          <circle cx="226" cy="218" r="14" fill="#10233d"/>
+          <!-- Eu desenho a roda traseira. -->
+          <circle cx="348" cy="218" r="14" fill="#10233d"/>
+          <!-- Eu desenho a roda dianteira. -->
+        </g>
+        <!-- Eu fecho o grupo do caminhão. -->
+        <path d="M0 276h70M120 276h70M240 276h70" stroke="#ffc400" stroke-width="7" stroke-dasharray="26 18"/>
+        <!-- Eu desenho as marcas da pista. -->
+      </svg>
+      <!-- Eu fecho a ilustração do sobre. -->
+    </div>
+    <!-- Eu fecho a coluna da foto. -->
+  </div>
+  <!-- Eu fecho a grade do sobre. -->
+</section>
+<!-- Eu fecho a seção do sobre. -->
+<section class="area" id="area">
+  <!-- Eu crio a seção de área de atendimento. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="secao-titulo revela">
+      <!-- Eu crio o cabeçalho da seção. -->
+      <span class="aparador">Área de atendimento</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>São Paulo · Guarulhos · Campinas</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>Atendimentos urbanos, rotas e viagens. Para outras cidades, consulte nossa equipe.</p>
+      <!-- Eu escrevo a descrição da seção. -->
+    </div>
+    <!-- Eu fecho o cabeçalho da seção. -->
+    <div class="area-grade">
+      <!-- Eu abro a grade das cidades. -->
+      <article class="area-cidade revela">
+        <!-- Eu crio o cartão da primeira cidade. -->
+        <h3>São Paulo</h3>
+        <!-- Eu escrevo o nome da cidade. -->
+        <p>Fretes, coletas, entregas e operações logísticas em toda a cidade e região metropolitana.</p>
+        <!-- Eu escrevo a descrição da cidade. -->
+      </article>
+      <!-- Eu fecho o cartão da primeira cidade. -->
+      <article class="area-cidade revela">
+        <!-- Eu crio o cartão da segunda cidade. -->
+        <h3>Guarulhos</h3>
+        <!-- Eu escrevo o nome da cidade. -->
+        <p>Rotas, coletas, entregas e transportes programados, com atendimento direto da nossa equipe.</p>
+        <!-- Eu escrevo a descrição da cidade. -->
+      </article>
+      <!-- Eu fecho o cartão da segunda cidade. -->
+      <article class="area-cidade revela">
+        <!-- Eu crio o cartão da terceira cidade. -->
+        <h3>Campinas</h3>
+        <!-- Eu escrevo o nome da cidade. -->
+        <p>Viagens, entregas, coletas e demandas empresariais com orçamento sem compromisso.</p>
+        <!-- Eu escrevo a descrição da cidade. -->
+      </article>
+      <!-- Eu fecho o cartão da terceira cidade. -->
+    </div>
+    <!-- Eu fecho a grade das cidades. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de área de atendimento. -->
+<section class="parte" id="parte">
+  <!-- Eu crio a seção de faça parte. -->
+  <div class="envoltorio">
+    <!-- Eu centralizo o conteúdo. -->
+    <div class="secao-titulo revela">
+      <!-- Eu crio o cabeçalho da seção. -->
+      <span class="aparador">Faça parte</span>
+      <!-- Eu escrevo a etiqueta da seção. -->
+      <h2>Cresça com a Fretes Avenida</h2>
+      <!-- Eu escrevo o título da seção. -->
+      <p>Três formas de caminhar junto com a gente.</p>
+      <!-- Eu escrevo a descrição da seção. -->
+    </div>
+    <!-- Eu fecho o cabeçalho da seção. -->
+    <div class="parte-grade">
+      <!-- Eu abro a grade dos convites. -->
+      <article class="parte-cartao revela">
+        <!-- Eu crio o convite de agregados. -->
+        <span>Parceiros</span>
+        <!-- Eu escrevo a etiqueta do convite. -->
+        <h3>Agregados</h3>
+        <!-- Eu escrevo o título do convite. -->
+        <p>Tem caminhão ou utilitário? Seja um parceiro Fretes Avenida e aumente seus ganhos com rotas constantes.</p>
+        <!-- Eu escrevo a descrição do convite. -->
+        <a class="botao botao--azul" href="#contato">Quero ser agregado</a>
+        <!-- Eu adiciono o botão do convite. -->
+      </article>
+      <!-- Eu fecho o convite de agregados. -->
+      <article class="parte-cartao revela">
+        <!-- Eu crio o convite de carreiras. -->
+        <span>Carreiras</span>
+        <!-- Eu escrevo a etiqueta do convite. -->
+        <h3>Trabalhe conosco</h3>
+        <!-- Eu escrevo o título do convite. -->
+        <p>Faça parte do nosso time. Oportunidades para motoristas, ajudantes e colaboradores.</p>
+        <!-- Eu escrevo a descrição do convite. -->
+        <a class="botao botao--azul" href="#contato">Enviar currículo</a>
+        <!-- Eu adiciono o botão do convite. -->
+      </article>
+      <!-- Eu fecho o convite de carreiras. -->
+      <article class="parte-cartao revela">
+        <!-- Eu crio o convite de indicação. -->
+        <span>Indicação</span>
+        <!-- Eu escrevo a etiqueta do convite. -->
+        <h3>Indicou, ganhou</h3>
+        <!-- Eu escrevo o título do convite. -->
+        <p>Indique nossos serviços. Quando a indicação gerar um serviço, fale com nossa equipe para saber como funciona.</p>
+        <!-- Eu escrevo a descrição do convite. -->
+        <a class="botao botao--azul" href="#contato">Saiba como funciona</a>
+        <!-- Eu adiciono o botão do convite. -->
+      </article>
+      <!-- Eu fecho o convite de indicação. -->
+    </div>
+    <!-- Eu fecho a grade dos convites. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de faça parte. -->
+
+<section id="confianca">
+<!-- Eu mostro indicadores fictícios para exemplificar a seção de confiança. -->
+<div class="envoltorio"><div class="secao-titulo"><span class="aparador">Confiança em cada trajeto</span><h2>Números de demonstração</h2><p>Dados e avaliações abaixo são fictícios, não são resultados reais nem avaliações verificadas do Google.</p></div><div class="indicadores"><div><strong>+1.000</strong>Avaliações de exemplo</div><div><strong>5,0 ★</strong>Nota ilustrativa</div><div><strong>3</strong>Cidades de exemplo</div><div><strong>B2C + B2B</strong>Pessoas e empresas</div></div></div>
+<!-- Eu reúno quatro indicadores para substituir pelos números reais do cliente. -->
+</section>
+<!-- Eu fecho os indicadores de confiança. -->
+<section id="porque">
+<!-- Eu apresento os motivos para escolher o serviço no modelo. -->
+<div class="envoltorio"><div class="secao-titulo"><span class="aparador">Por que escolher</span><h2>Clareza do orçamento à entrega</h2></div><div class="indicadores"><div><strong>+3 anos</strong>Experiência ilustrativa</div><div><strong>Direto</strong>Atendimento sem intermediários</div><div><strong>Planejado</strong>Coletas e rotas combinadas</div><div><strong>Regional</strong>São Paulo e região</div></div></div>
+<!-- Eu descrevo diferenciais exemplificativos sem prometer resultados reais. -->
+</section>
+<!-- Eu fecho os diferenciais. -->
+<section id="instagram">
+<!-- Eu reservo uma vitrine de Instagram sem vincular uma conta de terceiros. -->
+<div class="envoltorio"><div class="secao-titulo"><span class="aparador">Nos bastidores</span><h2>Acompanhe nossos serviços</h2><p>@fretesavenida — nome fictício. Insira o perfil real do cliente na entrega.</p></div><div id="fotos-instagram"></div></div>
+<!-- Eu preparo o espaço para outra faixa de ilustrações em movimento. -->
+</section>
+<!-- Eu fecho a vitrine de Instagram. -->
+<section class="contato" id="contato">
+  <!-- Eu crio a seção de contato. -->
+  <div class="envoltorio revela">
+    <!-- Eu centralizo o conteúdo. -->
+    <span class="aparador">Fale conosco</span>
+    <!-- Eu escrevo a etiqueta da seção. -->
+    <h2>Precisa de um frete?</h2>
+    <!-- Eu escrevo o título da seção. -->
+    <p>Envie os endereços, fotos dos itens e as informações do serviço pelo WhatsApp para receber seu orçamento.</p>
+    <!-- Eu escrevo a descrição da seção. -->
+    <a class="botao" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Fretes%20Avenida%20e%20quero%20fazer%20uma%20cota%C3%A7%C3%A3o%20de%20frete." target="_blank" rel="noopener">Fazer cotação no WhatsApp</a>
+    <!-- Eu adiciono o botão que abre o WhatsApp com a mensagem pronta. -->
+    <div class="contato-info">
+      <!-- Eu abro a linha de informações de contato. -->
+      <span><b>Telefone:</b> (11) 94203-8103</span>
+      <!-- Eu escrevo o telefone de contato. -->
+      <span><b>Cidades:</b> São Paulo, Guarulhos e Campinas</span>
+      <!-- Eu escrevo as cidades atendidas. -->
+      <span><b>Atendimento:</b> Segunda a sábado, das 8h às 18h</span>
+      <!-- Eu escrevo o horário de atendimento. -->
+    </div>
+    <!-- Eu fecho a linha de informações. -->
+  </div>
+  <!-- Eu fecho o conteúdo da seção. -->
+</section>
+<!-- Eu fecho a seção de contato. -->
+</main>
+<!-- Eu fecho o conteúdo principal. -->
+<footer class="rodape">
+<div class="envoltorio rodape-grade">
+<!-- Eu organizo o rodapé em quatro colunas. -->
+<div><strong>Fretes Avenida</strong><p>Fretes e logística para pessoas e empresas. Demonstração ilustrativa.</p></div>
+<!-- Eu apresento a marca fictícia no rodapé. -->
+<div><strong>Links rápidos</strong><a href="#inicio">Início</a><a href="#avaliacoes">Avaliações</a><a href="#sobre">Sobre</a><a href="#como">Como funciona</a></div>
+<!-- Eu reúno os atalhos de navegação. -->
+<div><strong>Serviços</strong><a href="#servicos">Fretes rápidos</a><a href="#empresas">Logística empresarial</a><a href="#servicos">Rotas e viagens</a><a href="#servicos">Passageiros e bagagens</a><a href="#servicos">Descartes</a></div>
+<!-- Eu listo os serviços disponíveis no exemplo. -->
+<div><strong>Fale conosco</strong><a href="#contato">Solicitar cotação</a><p>São Paulo · Guarulhos · Campinas</p><p>Segunda a sábado, 8h às 18h</p><p>Contato demonstrativo: MOSS Digital</p></div>
+<!-- Eu informo o atendimento e identifico o destino real do contato. -->
+</div>
+<!-- Eu fecho as colunas do rodapé. -->
+
+  <!-- Eu crio o rodapé. -->
+  <p style="margin:0 0 6px;">
+    <!-- Eu escrevo a primeira linha do rodapé. -->
+    <strong>Fretes Avenida</strong> — fretes rápidos, transporte urbano e logística para pessoas e empresas.
+    <!-- Eu resumo a proposta da empresa. -->
+  </p>
+  <!-- Eu fecho a primeira linha. -->
+  <p style="margin:0;">© <span id="ano">2026</span> Fretes Avenida · Demo ilustrativa criada pela MOSS Digital.</p>
+  <!-- Eu escrevo o copyright com ano automático. -->
+</footer>
+<!-- Eu fecho o rodapé. -->
+<a class="zap" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Fretes%20Avenida%20e%20preciso%20de%20atendimento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <!-- Eu crio o botão flutuante do WhatsApp. -->
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <!-- Eu abro o ícone do WhatsApp. -->
+    <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.7-1.3 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-4.9-4.4-5.1-4.6-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.9 1.5 2 2.4 1.3 1.2 2.4 1.6 2.7 1.7.3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.2 1c.3.2.6.3.7.5.1.1.1.8-.2 1.5z"/>
+    <!-- Eu desenho a bolha do WhatsApp. -->
+  </svg>
+  <!-- Eu fecho o ícone do WhatsApp. -->
+</a>
+<!-- Eu fecho o botão flutuante. -->
+<script>
+<!-- Eu abro a área de comportamento, o JavaScript. -->
+
+// Eu duplico as seis ilustrações para criar um ciclo contínuo sem salto.
+const trilhoFotos = document.querySelector('.faixa__trilho');
+// Eu permito inspecionar cada imagem também com o teclado.
+Array.from(trilhoFotos.children).forEach(function (foto) { foto.tabIndex = 0; const copia = foto.cloneNode(true); copia.removeAttribute('tabindex'); copia.setAttribute('aria-hidden', 'true'); trilhoFotos.appendChild(copia); });
+// Eu reutilizo a faixa no espaço ilustrativo de Instagram.
+const faixaInstagram = document.querySelector('.faixa').cloneNode(true);
+// Eu diferencio a descrição da segunda galeria.
+faixaInstagram.setAttribute('aria-label', 'Ilustrações de bastidores dos serviços');
+// Eu insiro a segunda faixa sem abrir uma conta social de terceiros.
+document.getElementById('fotos-instagram').appendChild(faixaInstagram);
+
+document.getElementById('ano').textContent = new Date().getFullYear();
+<!-- Eu preencho o ano do copyright automaticamente para nunca ficar desatualizado. -->
+const observador = new IntersectionObserver(function (entradas) {
+  <!-- Eu crio um observador que vigia quando cada elemento entra na tela. -->
+  entradas.forEach(function (entrada) {
+    <!-- Eu percorro cada elemento vigiado. -->
+    if (entrada.isIntersecting) {
+      <!-- Eu verifico se o elemento apareceu na área visível. -->
+      entrada.target.classList.add('visivel');
+      <!-- Eu adiciono a classe que revela o elemento. -->
+      observador.unobserve(entrada.target);
+      <!-- Eu deixo de vigiar, já que ele apareceu. -->
+    }
+  });
+  <!-- Eu fecho a percorrida dos elementos. -->
+});
+<!-- Eu fecho a definição do observador. -->
+document.querySelectorAll('.revela').forEach(function (el) { observador.observe(el); });
+<!-- Eu mando o observador vigiar todos os elementos de revelação. -->
+const botaoHamb = document.querySelector('.hamb');
+<!-- Eu guardo o botão do hambúrguer. -->
+const menuEl = document.getElementById('menu');
+<!-- Eu guardo o menu para abrir e fechar no celular. -->
+botaoHamb.addEventListener('click', function () {
+  <!-- Eu escuto o clique no hambúrguer. -->
+  const aberto = menuEl.classList.toggle('aberto');
+  <!-- Eu abro ou fecho o menu e guardo o estado. -->
+  botaoHamb.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+  <!-- Eu aviso ao leitor de tela se o menu está aberto ou fechado. -->
+});
+<!-- Eu fecho o evento do hambúrguer. -->
+document.querySelectorAll('.menu a').forEach(function (link) {
+  <!-- Eu percorro cada link do menu. -->
+  link.addEventListener('click', function () {
+    <!-- Eu escuto o clique no link. -->
+    menuEl.classList.remove('aberto');
+    <!-- Eu fecho o menu quando alguém toca num link. -->
+    botaoHamb.setAttribute('aria-expanded', 'false');
+    <!-- Eu atualizo o aviso do leitor de tela para fechado. -->
+  });
+  <!-- Eu fecho o evento do link. -->
+});
+<!-- Eu fecho a percorrida dos links. -->
+</script>
+<!-- Eu fecho a área de comportamento. -->
+</body>
+<!-- Eu fecho o corpo da página. -->
+</html>
+<!-- Eu fecho o documento. -->
+
+

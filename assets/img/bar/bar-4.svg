@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Ilustração neon de música ao vivo no bar">
+  <defs>
+    <filter id="neonB4" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="480" rx="18" fill="#0e0f1f"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonB4)">
+    <!-- microfone -->
+    <rect x="285" y="90" width="70" height="120" rx="35" stroke="#ff2d95" stroke-width="9"/>
+    <path d="M265 200 q0 60 55 60 q55 0 55 -60" stroke="#ff2d95" stroke-width="8"/>
+    <path d="M320 260 v50 M280 310 h80" stroke="#22d3ee" stroke-width="8"/>
+    <!-- notas musicais -->
+    <path d="M170 300 v-70 l50 -14 v70" stroke="#22d3ee" stroke-width="7"/>
+    <circle cx="157" cy="303" r="15" stroke="#22d3ee" stroke-width="7"/>
+    <circle cx="207" cy="289" r="15" stroke="#22d3ee" stroke-width="7"/>
+    <path d="M440 330 v-84 l58 -16 v84" stroke="#ff2d95" stroke-width="7"/>
+    <circle cx="425" cy="333" r="16" stroke="#ff2d95" stroke-width="7"/>
+    <circle cx="483" cy="317" r="16" stroke="#ff2d95" stroke-width="7"/>
+    <!-- ondas de som -->
+    <path d="M120 140 q30 40 0 80 M520 140 q-30 40 0 80" stroke="#22d3ee" stroke-width="6" opacity=".7"/>
+  </g>
+  <g fill="#ff2d95" filter="url(#neonB4)">
+    <path d="M130 380 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/>
+    <circle cx="520" cy="400" r="6" fill="#22d3ee"/>
+    <circle cx="320" cy="380" r="5" fill="#22d3ee"/>
+  </g>
+</svg>

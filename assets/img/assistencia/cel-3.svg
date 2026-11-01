@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Ilustração de placa de celular com componentes, exemplo de conserto de placa">
+  <defs>
+    <radialGradient id="bgCel3" cx="50%" cy="45%" r="80%">
+      <stop offset="0%" stop-color="#e9f2fb"/>
+      <stop offset="100%" stop-color="#d3e2f4"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgCel3)"/>
+  <g fill="none" stroke="#0f172a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="240" y="150" width="320" height="300" rx="18"/>
+    <rect x="300" y="210" width="90" height="90" rx="10" fill="#0ea5e9" fill-opacity=".18"/>
+    <rect x="300" y="210" width="90" height="90" rx="10"/>
+    <path d="M300 240 h-40 M300 270 h-40 M300 300 h-40"/>
+    <path d="M430 240 h40 M430 270 h40 M430 300 h40"/>
+    <rect x="440" y="340" width="70" height="50" rx="8"/>
+    <circle cx="300" cy="380" r="24"/>
+    <path d="M240 200 h-30 M240 400 h-30 M560 200 h30 M560 400 h30"/>
+    <path d="M345 255 l0 0"/>
+  </g>
+  <g fill="#0ea5e9" opacity=".8">
+    <circle cx="330" cy="240" r="5"/>
+    <circle cx="330" cy="270" r="5"/>
+    <circle cx="330" cy="300" r="5"/>
+    <path d="M620 160 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <path d="M160 450 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="22" letter-spacing="6" fill="#0369a1">PLACAS</text>
+</svg>

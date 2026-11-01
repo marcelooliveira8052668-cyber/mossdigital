@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Ilustração neon de coquetel shaker">
+  <defs>
+    <filter id="neonB1" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="480" rx="18" fill="#0e0f1f"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonB1)">
+    <path d="M255 130 h130 l-14 40 h-102z" stroke="#22d3ee" stroke-width="8"/>
+    <path d="M262 170 h116 v170 q-58 34 -116 0z" stroke="#ff2d95" stroke-width="9"/>
+    <path d="M262 240 h116" stroke="#ff2d95" stroke-width="6"/>
+    <path d="M300 130 v-36 h40 v36" stroke="#22d3ee" stroke-width="7"/>
+    <path d="M320 380 v46 M270 426 h100" stroke="#22d3ee" stroke-width="7"/>
+    <path d="M420 210 l40 -14 M420 250 l44 6 M420 290 l40 20" stroke="#ff2d95" stroke-width="6"/>
+  </g>
+  <g fill="#22d3ee" filter="url(#neonB1)">
+    <path d="M170 150 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/>
+    <circle cx="470" cy="150" r="6"/>
+    <circle cx="165" cy="330" r="6" fill="#ff2d95"/>
+  </g>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Ilustração neon do balcão do bar com bancos">
+  <defs>
+    <radialGradient id="bgSobreBar" cx="50%" cy="40%" r="85%">
+      <stop offset="0%" stop-color="#171830"/>
+      <stop offset="100%" stop-color="#07070f"/>
+    </radialGradient>
+    <filter id="neonSB" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="480" rx="18" fill="url(#bgSobreBar)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#neonSB)">
+    <!-- prateleira de garrafas atrás do balcão -->
+    <path d="M140 120 h360 M140 190 h360" stroke="#22d3ee" stroke-width="6"/>
+    <path d="M180 120 v-30 q0 -10 10 -14 v-18 h18 v18 q10 4 10 14 v30" stroke="#ff2d95" stroke-width="6"/>
+    <path d="M250 120 v-38 q0 -10 9 -13 v-17 h17 v17 q9 3 9 13 v38" stroke="#22d3ee" stroke-width="6"/>
+    <path d="M330 120 v-30 q0 -10 10 -14 v-18 h18 v18 q10 4 10 14 v30" stroke="#ff2d95" stroke-width="6"/>
+    <path d="M405 120 v-38 q0 -10 9 -13 v-17 h17 v17 q9 3 9 13 v38" stroke="#22d3ee" stroke-width="6"/>
+    <!-- balcão -->
+    <path d="M90 300 h460 v40 h-460z" stroke="#ff2d95" stroke-width="8"/>
+    <path d="M110 340 v70 M530 340 v70" stroke="#22d3ee" stroke-width="7"/>
+    <path d="M90 410 h460" stroke="#22d3ee" stroke-width="7"/>
+    <!-- copos pendurados -->
+    <path d="M240 230 v40 M320 230 v40 M400 230 v40" stroke="#22d3ee" stroke-width="5"/>
+    <path d="M225 270 h30 l-8 26 h-14z M305 270 h30 l-8 26 h-14z M385 270 h30 l-8 26 h-14z" stroke="#ff2d95" stroke-width="5"/>
+    <!-- bancos -->
+    <path d="M180 410 v-40 M155 370 h50 M165 370 v-24 h40 v24" stroke="#ff2d95" stroke-width="7"/>
+    <path d="M440 410 v-40 M415 370 h50 M425 370 v-24 h40 v24" stroke="#ff2d95" stroke-width="7"/>
+  </g>
+  <g fill="#22d3ee" filter="url(#neonSB)">
+    <path d="M110 200 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5z"/>
+    <circle cx="545" cy="210" r="6" fill="#ff2d95"/>
+    <circle cx="320" cy="70" r="5" fill="#ff2d95"/>
+  </g>
+</svg>

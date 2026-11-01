@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Ilustração de bateria de celular carregando, exemplo de troca de bateria">
+  <defs>
+    <radialGradient id="bgCel2" cx="50%" cy="45%" r="80%">
+      <stop offset="0%" stop-color="#edf7f1"/>
+      <stop offset="100%" stop-color="#d7ecdf"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgCel2)"/>
+  <g fill="none" stroke="#0f172a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="290" y="180" width="200" height="280" rx="22"/>
+    <path d="M350 180 v-24 h100 v24"/>
+    <path d="M400 236 l-44 78 h34 l-24 74 84 -96 h-36z" fill="#0ea5e9" stroke="none"/>
+    <path d="M400 236 l-44 78 h34 l-24 74 84 -96 h-36z"/>
+    <path d="M320 420 h60"/>
+  </g>
+  <g fill="#16a34a" opacity=".85">
+    <path d="M620 190 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="180" cy="300" r="4"/>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="22" letter-spacing="6" fill="#15803d">BATERIAS</text>
+</svg>

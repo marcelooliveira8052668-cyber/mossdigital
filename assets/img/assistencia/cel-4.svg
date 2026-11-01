@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Ilustração de bancada de conserto com ferramentas, exemplo do atendimento">
+  <defs>
+    <radialGradient id="bgCel4" cx="50%" cy="45%" r="80%">
+      <stop offset="0%" stop-color="#fbf3e8"/>
+      <stop offset="100%" stop-color="#f2e2cc"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgCel4)"/>
+  <g fill="none" stroke="#0f172a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M160 420 h480"/>
+    <path d="M220 420 v60 M580 420 v60"/>
+    <rect x="330" y="300" width="140" height="120" rx="14"/>
+    <path d="M365 300 v-16 h70 v16"/>
+    <path d="M480 260 l90 -90"/>
+    <path d="M556 158 l34 -34 26 26 -32 34z"/>
+    <path d="M480 260 l-18 18 22 22 18 -20z"/>
+    <circle cx="250" cy="340" r="34"/>
+    <path d="M250 322 v20 l14 10"/>
+    <path d="M180 250 l60 60"/>
+    <path d="M226 244 l22 -22 26 26 -22 22z"/>
+  </g>
+  <g fill="#d97706" opacity=".85">
+    <path d="M620 180 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+    <circle cx="170" cy="170" r="4"/>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-weight="600" font-size="22" letter-spacing="6" fill="#b45309">BANCADA</text>
+</svg>
