@@ -1,0 +1,134 @@
+/* Alternância de tema apenas no início, modelos e sistemas. */
+:root .theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 10px 14px; border: 1px solid #3e6386;
+  border-radius: 8px; background: #11233b; color: #c6f2ff;
+  font: 600 .8rem/1.4 "Segoe UI", Arial, sans-serif; cursor: pointer;
+  white-space: nowrap;
+}
+:root .theme-toggle:hover { background: #1a3752; }
+:root .theme-toggle:focus-visible { outline: 3px solid #78eddd; outline-offset: 4px; }
+:root .theme-toggle svg { flex: none; }
+:root .theme-moon { display: none; }
+:root[data-moss-theme="light"] .theme-sun { display: none; }
+:root[data-moss-theme="light"] .theme-moon { display: block; }
+:root[data-moss-theme="light"] { color-scheme: light; }
+:root[data-moss-theme="dark"] { color-scheme: dark; }
+:root[data-moss-theme="light"] body {
+  --navy: #145582; --azul: #145582; --yellow: #075e73; --amarelo: #075e73;
+  --muted: #455b75; --fundo: #f6f9fe; --texto: #172a43;
+  --surface: #fff; --edge: #c3d4e6;
+  background: #f6f9fe; color: #172a43; color-scheme: light;
+}
+:root[data-moss-theme="light"] body::selection { background: #b6e5ff; color: #142942; }
+:root[data-moss-theme="light"] header { background: #fffffffa; border-color: #c3d4e6; }
+:root[data-moss-theme="light"] header::after { background: linear-gradient(90deg, transparent, #7bb8d8, transparent); }
+:root[data-moss-theme="light"] .brand-logo { filter: none; mix-blend-mode: normal; }
+:root[data-moss-theme="light"] nav a { color: #354d69; }
+:root[data-moss-theme="light"] nav a:hover,
+:root[data-moss-theme="light"] nav a[aria-current="page"] { color: #075978; text-decoration-color: #08729b; }
+:root[data-moss-theme="light"] nav a.client-link { background: #eaf3ff; color: #174d73; border-color: #b2cbe2; }
+:root[data-moss-theme="light"] nav a.client-link:hover { background: #dbeafd; }
+:root[data-moss-theme="light"] .theme-toggle { background: #edf5ff; color: #164e77; border-color: #9bb8d2; }
+:root[data-moss-theme="light"] .theme-toggle:hover { background: #dcecff; }
+:root[data-moss-theme="light"] a:focus-visible,
+:root[data-moss-theme="light"] button:focus-visible,
+:root[data-moss-theme="light"] .moss-home summary:focus-visible { outline-color: #006b8f; }
+:root[data-moss-theme="light"] .hero { background: #eaf3ff; color: #172a43; border-color: #c3d4e6; }
+:root[data-moss-theme="light"] .hero::before {
+  background: radial-gradient(ellipse at 80% 30%, #70b7f522, transparent 54%),
+    radial-gradient(ellipse at 5% 100%, #61cbd51c, transparent 48%),
+    linear-gradient(#32679108 1px, transparent 1px),
+    linear-gradient(90deg, #32679108 1px, transparent 1px);
+  background-size: auto, auto, 56px 56px, 56px 56px;
+}
+:root[data-moss-theme="light"] .hero h1 { color: #142d4a; }
+:root[data-moss-theme="light"] .hero-copy h1 em { background-image: linear-gradient(105deg, #0b587e, #1258a1 55%, #5848a0); }
+:root[data-moss-theme="light"] .hero p { color: #405874; }
+:root[data-moss-theme="light"] .hero strong,
+:root[data-moss-theme="light"] .hero .price strong { color: #15527b; }
+:root[data-moss-theme="light"] .eyebrow,
+:root[data-moss-theme="light"] .hero .eyebrow,
+:root[data-moss-theme="light"] .hero:has(h1:first-child) h1::before { color: #075e73; }
+:root[data-moss-theme="light"] .hero .eyebrow::before { color: #3e6983; }
+:root[data-moss-theme="light"] .price,
+:root[data-moss-theme="light"] .hero .hero-note { color: #455b75; }
+:root[data-moss-theme="light"] .hero-secondary,
+:root[data-moss-theme="light"] .hero-secondary span { color: #124f7d; }
+:root[data-moss-theme="light"] .showcase-label,
+:root[data-moss-theme="light"] .showcase-footer,
+:root[data-moss-theme="light"] .showcase-label > :last-child { color: #405b75; }
+:root[data-moss-theme="light"] .section-kicker,
+:root[data-moss-theme="light"] .category { color: #075e73; }
+:root[data-moss-theme="light"] .section > h2,
+:root[data-moss-theme="light"] .section-heading h2,
+:root[data-moss-theme="light"] .filter-title { color: #172a43; }
+:root[data-moss-theme="light"] .intro,
+:root[data-moss-theme="light"] .section-heading p,
+:root[data-moss-theme="light"] .notice,
+:root[data-moss-theme="light"] .note,
+:root[data-moss-theme="light"] .count { color: #455b75; }
+:root[data-moss-theme="light"] .card { background: linear-gradient(145deg, #fff, #f5f9ff); border-color: #c3d4e6; box-shadow: 0 12px 28px -20px #17314a33; }
+:root[data-moss-theme="light"] .card:hover { border-color: #5d8caa; box-shadow: 0 15px 35px -20px #17314a44; }
+:root[data-moss-theme="light"] .card h2,
+:root[data-moss-theme="light"] .body h3 { color: #172a43; }
+:root[data-moss-theme="light"] .card p,
+:root[data-moss-theme="light"] .body p { color: #455b75; }
+:root[data-moss-theme="light"] .card > img,
+:root[data-moss-theme="light"] .card .preview,
+:root[data-moss-theme="light"] .card .preview img { background: #edf3fa; border-color: #c3d4e6; }
+:root[data-moss-theme="light"] .card-body > a:not([class]),
+:root[data-moss-theme="light"] .back { color: #124f7d; }
+:root[data-moss-theme="light"] .demo,
+:root[data-moss-theme="light"] .btn-outline { background: #eaf3ff; color: #164e77; border-color: #9bb8d2; }
+:root[data-moss-theme="light"] .demo:hover,
+:root[data-moss-theme="light"] .btn-outline:hover { background: #dcecff; border-color: #5687ac; }
+:root[data-moss-theme="light"] .quote,
+:root[data-moss-theme="light"] .btn-whatsapp,
+:root[data-moss-theme="light"] .whatsapp { background: #e3f4ee; color: #125441; border-color: #8ebfae; }
+:root[data-moss-theme="light"] .quote:hover,
+:root[data-moss-theme="light"] .btn-whatsapp:hover,
+:root[data-moss-theme="light"] .whatsapp:hover { background: #cce9df; border-color: #548e78; }
+:root[data-moss-theme="light"] .filters button { background: #fff; color: #354d69; border-color: #b2cbe2; }
+:root[data-moss-theme="light"] .filters button:hover { background: #eaf3ff; border-color: #5687ac; }
+:root[data-moss-theme="light"] .filters button[aria-pressed="true"] { background: #174f79; color: #fff; border-color: #174f79; box-shadow: none; }
+:root[data-moss-theme="light"] .more,
+:root[data-moss-theme="light"] main > .cta { background: linear-gradient(110deg, #e6f0ff, #edf5ff); border-color: #b2cbe2; }
+:root[data-moss-theme="light"] .more h2,
+:root[data-moss-theme="light"] main > .cta h2 { color: #172a43; }
+:root[data-moss-theme="light"] .more p,
+:root[data-moss-theme="light"] main > .cta p { color: #455b75; }
+:root[data-moss-theme="light"] .more a { background: #eaf3ff; color: #164e77; border-color: #9bb8d2; }
+:root[data-moss-theme="light"] .more a:hover { background: #dcecff; }
+:root[data-moss-theme="light"] footer { background: #fff; color: #455b75; border-color: #c3d4e6; }
+
+/* Seções específicas da página inicial. Fotos e vídeo não são alterados. */
+:root[data-moss-theme="light"] .moss-home .hero-benefits,
+:root[data-moss-theme="light"] .moss-home .demo-disclosure,
+:root[data-moss-theme="light"] .moss-home .hero-video .video-hint { color: #405874; }
+:root[data-moss-theme="light"] .moss-home .hero-benefits li::before { color: #12674f; }
+:root[data-moss-theme="light"] .moss-home .home-panel { background: linear-gradient(120deg, #edf5ff, #fff); border-color: #b2cbe2; }
+:root[data-moss-theme="light"] .moss-home .home-panel h2,
+:root[data-moss-theme="light"] .moss-home .home-about h2,
+:root[data-moss-theme="light"] .moss-home .process-grid h3,
+:root[data-moss-theme="light"] .moss-home .scope-lists h3 { color: #172a43; }
+:root[data-moss-theme="light"] .moss-home .home-panel p,
+:root[data-moss-theme="light"] .moss-home .home-about p,
+:root[data-moss-theme="light"] .moss-home .process-grid p,
+:root[data-moss-theme="light"] .moss-home .scope-lists ul,
+:root[data-moss-theme="light"] .moss-home .faq-list p,
+:root[data-moss-theme="light"] .moss-home .contact-actions span { color: #455b75; }
+:root[data-moss-theme="light"] .moss-home summary,
+:root[data-moss-theme="light"] .moss-home .home-text-link,
+:root[data-moss-theme="light"] .moss-home .scope-price strong { color: #124f7d; }
+:root[data-moss-theme="light"] .moss-home .step-number { color: #075e73; }
+:root[data-moss-theme="light"] .moss-home .process-grid li,
+:root[data-moss-theme="light"] .moss-home .home-about,
+:root[data-moss-theme="light"] .moss-home .faq-list details { border-color: #b2cbe2; }
+
+@media (max-width: 570px) {
+  :root .theme-toggle { font-size: .75rem; padding: 9px 12px; }
+}
+@media (forced-colors: active) {
+  :root .theme-toggle { border-color: ButtonText; color: ButtonText; background: ButtonFace; }
+}

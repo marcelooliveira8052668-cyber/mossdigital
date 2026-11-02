@@ -19,6 +19,7 @@
 :root .moss-home .hero { padding-block: 48px 56px; }
 :root .moss-home .hero-video { width: 100%; max-width: 380px; justify-self: center; scroll-margin-top: 24px; }
 :root .moss-home .hero-video .showcase-label { justify-content: center; font-size: .72rem; text-align: center; }
+:root .moss-home .hero-video .showcase-label > :last-child { display: block; }
 :root .moss-home .hero-video .video-frame { width: min(100%, 260px); margin-inline: auto; box-shadow: 0 20px 60px #0005, 0 0 40px #2479ef15; }
 :root .moss-home .hero-video .video-hint { font-size: .76rem; color: #a3b3cb; text-align: center; margin: 16px auto 0; line-height: 1.6; }
 :root .moss-home .hero-video .video-transcript { margin-top: 10px; }
