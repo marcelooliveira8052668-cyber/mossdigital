@@ -1,0 +1,264 @@
+/* Identidade compartilhada: início, catálogo de modelos e sistemas.
+   :root dá precedência sobre os estilos legados, mesmo nos HTML compactados. */
+:root body {
+  --navy: #64d9ff;
+  --azul: #64d9ff;
+  --yellow: #78eddd;
+  --amarelo: #78eddd;
+  --muted: #a3b3cb;
+  --fundo: #070c18;
+  --texto: #edf4ff;
+  --surface: #101a2c;
+  --edge: #26364e;
+  margin: 0;
+  background: #070c18;
+  color: #edf4ff;
+  font: 16px/1.65 "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+}
+:root body::selection { background: #36c8ff; color: #06101e; }
+:root a { text-decoration: none; }
+:root a:focus-visible, :root button:focus-visible {
+  outline: 3px solid #78eddd; outline-offset: 5px;
+}
+:root .wrap, :root .header-inner, :root main {
+  max-width: 1280px; margin-inline: auto; padding-inline: 36px;
+}
+:root header {
+  background: #090f1ef5; border-bottom: 1px solid #23314a;
+  position: relative; z-index: 2;
+}
+:root header::after {
+  content: ""; position: absolute; bottom: -1px; left: 12%; right: 12%; height: 1px;
+  background: linear-gradient(90deg, transparent, #43c7ff99, transparent);
+  pointer-events: none;
+}
+:root .top, :root .header-inner {
+  min-height: 98px; display: flex; justify-content: space-between;
+  align-items: center; gap: 24px; flex-wrap: wrap; padding-block: 14px;
+}
+:root .brand-logo {
+  display: block; width: 200px; max-width: 100%; height: auto; max-height: 75px;
+  filter: invert(1) hue-rotate(180deg); mix-blend-mode: screen;
+}
+:root nav { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 25px; }
+:root nav a {
+  color: #c1cee1; font-size: .83rem; font-weight: 550; padding: 10px 0;
+  transition: color .2s ease; text-decoration: none;
+}
+:root nav a:hover, :root nav a[aria-current="page"] { color: #79e7ff; }
+:root nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 9px; text-decoration-color: #40bcff; }
+:root nav a.client-link {
+  color: #bdefff; background: #11233b; border: 1px solid #2c5675;
+  border-radius: 8px; padding: 10px 16px; box-shadow: none;
+}
+:root nav a.client-link:hover { background: #173451; }
+
+/* Malha técnica e luz ambiente: sem animações contínuas. */
+:root .hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  background: #0a1223; color: #edf4ff; text-align: center;
+  padding: 76px 24px 82px; border-bottom: 1px solid #23314a;
+}
+:root .hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 80% 30%, #1856b43d, transparent 54%),
+    radial-gradient(ellipse at 5% 100%, #097e9429, transparent 48%),
+    linear-gradient(#708ebc09 1px, transparent 1px),
+    linear-gradient(90deg, #708ebc09 1px, transparent 1px);
+  background-size: auto, auto, 56px 56px, 56px 56px;
+}
+:root .hero::after {
+  content: ""; position: absolute; width: 430px; height: 430px;
+  border: 1px solid #3b8bc026; border-radius: 50%; right: -150px; top: -230px;
+  box-shadow: 0 0 0 48px #3b8bc00a, 0 0 0 96px #3b8bc007;
+  z-index: -1; pointer-events: none;
+}
+:root .hero h1 {
+  font-family: "Segoe UI", Arial, sans-serif; font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 750; line-height: 1.12; letter-spacing: -.055em;
+  margin: 14px auto 22px; max-width: 950px; color: #f0f6ff;
+}
+:root .hero p { color: #b5c5de; font-size: 1rem; line-height: 1.85; max-width: 700px; margin-inline: auto; }
+:root .hero strong { color: #86e4ff; }
+:root .hero .eyebrow, :root .eyebrow {
+  color: #77e2f2; font: 600 .7rem/1.5 Consolas, monospace;
+  letter-spacing: .15em; text-transform: uppercase;
+}
+:root .hero .eyebrow::before { content: "// "; color: #4589aa; }
+:root .hero:has(h1:first-child) h1::before {
+  content: "MOSS DIGITAL / CATÁLOGO"; display: block; color: #77e2f2;
+  font: 600 .68rem/1.5 Consolas, monospace; letter-spacing: .15em; margin-bottom: 22px;
+}
+:root .moss-home .hero { text-align: left; padding: 78px 0 82px; }
+:root .hero-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; }
+:root .hero-copy { min-width: 0; }
+:root .hero-copy h1 { font-size: clamp(2.8rem, 4.8vw, 4.5rem); margin: 24px 0; }
+:root .hero-copy h1 em {
+  font-style: normal; color: #64d9ff;
+  background: linear-gradient(105deg, #a0eaff, #53b7ff 55%, #98a8ff);
+  background-clip: text; -webkit-text-fill-color: transparent;
+}
+:root .hero-copy p { max-width: 510px; margin: 0; font-size: .96rem; }
+:root .price { font-size: .85rem; font-weight: 400; color: #a3b3cb; margin: 25px 0 20px; }
+:root .hero .price strong { color: #dceaff; font-size: 1.1rem; }
+:root .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; }
+:root .hero .cta {
+  display: inline-flex; justify-content: center; align-items: center; gap: 18px;
+  color: #fff; background: linear-gradient(115deg, #155ae0, #226edc);
+  border: 1px solid #5592f5; border-radius: 8px; font-size: .83rem; font-weight: 650;
+  padding: 16px 20px; box-shadow: 0 6px 28px #165dec30;
+}
+:root .hero .cta:hover { background: #246beb; box-shadow: 0 7px 35px #247dff50; }
+:root .hero-secondary { color: #bcdcf7; font-size: .82rem; padding: 10px 0; }
+:root .hero-secondary span { margin-left: 6px; color: #66dfff; }
+:root .hero .hero-note { font-size: .74rem; color: #94a6c0; margin-top: 22px; max-width: 390px; }
+
+:root .hero-showcase { min-width: 0; }
+:root .showcase-label, :root .showcase-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  color: #a5bdd5; font: .64rem/1.6 Consolas, monospace;
+}
+:root .showcase-label { margin-bottom: 16px; }
+:root .showcase-label > :last-child { color: #75d8f4; white-space: nowrap; }
+:root .project-window {
+  margin: 0; background: #0d192b; border: 1px solid #39618b; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 0 0 6px #6ca5ff05, 0 30px 70px -25px #000a, 0 0 55px #2479ef15;
+}
+:root .window-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 16px; color: #a8bad1; font: .6rem/1.4 Consolas, monospace;
+  border-bottom: 1px solid #263c59; background: #101e33;
+}
+:root .window-dots { color: #55cce4; letter-spacing: 3px; font-size: .65rem; }
+:root .project-window > img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; }
+:root figcaption { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px; border-top: 1px solid #263c59; }
+:root .project-type { display: block; color: #74dfef; font: .58rem/1.5 Consolas, monospace; letter-spacing: .1em; margin-bottom: 4px; }
+:root figcaption strong { font-size: .95rem; font-weight: 600; }
+:root figcaption a { color: #a8dcff; font-size: .72rem; padding-block: 8px; }
+:root .showcase-footer { margin-top: 20px; }
+:root .showcase-footer > :last-child { color: #62d6f3; font-size: 1.6rem; }
+
+/* Componentes de catálogo usados nas três páginas. */
+:root main { padding-top: 52px; padding-bottom: 72px; }
+:root .section { padding-block: 62px 80px; scroll-margin-top: 24px; }
+:root .section-kicker {
+  display: flex; justify-content: space-between; gap: 18px;
+  color: #73d8f4; font: .65rem/1.6 Consolas, monospace; text-transform: uppercase;
+  letter-spacing: .09em; margin-bottom: 22px;
+}
+:root .section > h2, :root .section-heading h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 650;
+  color: #edf4ff; line-height: 1.25; letter-spacing: -.04em; margin-bottom: 14px;
+}
+:root .intro, :root .section-heading p, :root .notice { color: #a3b3cb; font-size: .92rem; line-height: 1.8; }
+:root .intro { max-width: 710px; margin-bottom: 34px; }
+:root .section-heading { margin-bottom: 32px; }
+:root .grid { gap: 26px; }
+:root .card {
+  position: relative; background: linear-gradient(145deg, #132035, #0e1728);
+  border: 1px solid #2b3d57; border-radius: 13px; overflow: hidden;
+  box-shadow: 0 12px 28px -20px #0009; display: flex; flex-direction: column;
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+:root .card[hidden] { display: none; }
+:root .card:hover {
+  transform: translateY(-4px); border-color: #4a91bc;
+  box-shadow: 0 15px 35px -20px #000c, 0 0 24px #26baff0c;
+}
+:root .card > img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; background: #0a1322; border-bottom: 1px solid #2b3d57; }
+:root .card .preview { display: block; background: #0a1322; }
+:root .card .preview img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: contain; background: #0a1322; }
+:root .preview span { color: #cef5ff; background: #091729ed; border: 1px solid #44708a; border-radius: 6px; backdrop-filter: blur(8px); }
+:root .card .body, :root .card-body { padding: 25px; }
+:root .card h2, :root .body h3 { color: #edf4ff; font-size: 1.12rem; font-weight: 650; line-height: 1.4; letter-spacing: -.02em; }
+:root .card p, :root .body p { color: #aebed3; font-size: .87rem; line-height: 1.8; }
+:root .card-body > a:not([class]) { color: #88d8ff; font-size: .85rem; text-underline-offset: 4px; }
+:root .category { display: block; color: #75ddec; font: 600 .63rem/1.6 Consolas, monospace; letter-spacing: .09em; margin-bottom: 10px; }
+:root .actions, :root .card-actions { gap: 10px; }
+:root .demo, :root .btn-outline, :root .quote, :root .btn-whatsapp, :root .access, :root .whatsapp {
+  border: 1px solid #3e6386; border-radius: 7px; padding: 12px 14px; min-height: 46px;
+  font: 600 .8rem/1.45 "Segoe UI", Arial, sans-serif; text-align: center; text-decoration: none;
+  transition: background .2s ease, border-color .2s ease;
+}
+:root .demo, :root .btn-outline { color: #bfeaff; background: #132b42; }
+:root .demo:hover, :root .btn-outline:hover { background: #1a3b57; border-color: #6bc7e9; }
+:root .quote, :root .btn-whatsapp, :root .whatsapp { color: #a3ecdf; background: #0e2d31; border-color: #285e5e; }
+:root .quote:hover, :root .btn-whatsapp:hover, :root .whatsapp:hover { background: #16413f; border-color: #54b9aa; }
+:root .access { color: #e4f4ff; background: #184b99; border-color: #377bd0; }
+:root .access:hover { background: #1b5dbd; border-color: #79b5ff; }
+:root .filters { gap: 10px; padding-bottom: 6px; margin-bottom: 14px; }
+:root .filter-title { color: #e7f1ff; font-size: 1.05rem; margin-bottom: 20px; font-weight: 600; }
+:root .filters button {
+  color: #bfd0e6; background: #101c2e; border: 1px solid #30445f;
+  border-radius: 8px; padding: 11px 16px; font-size: .82rem; font-weight: 500; min-height: 44px;
+  transition: background .2s ease, border-color .2s ease;
+}
+:root .filters button:hover { background: #1b304b; border-color: #51829f; }
+:root .filters button[aria-pressed="true"] { color: #c6f6ff; background: #153b56; border-color: #56bfdf; box-shadow: inset 0 0 16px #53caff10; }
+:root .count { color: #9eb5cf; font: .75rem/1.6 Consolas, monospace; margin-bottom: 28px; }
+:root .note { color: #a3b3cb; font-size: .86rem; }
+:root .back { color: #8fdcff; }
+:root .more, :root main > .cta {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 22px;
+  margin-top: 32px; padding: 29px; border-radius: 12px;
+  background: linear-gradient(110deg, #122441, #0e1c2e); border: 1px solid #304764;
+}
+:root .more h2, :root main > .cta h2 { color: #e9f3ff; font-size: 1.15rem; font-weight: 600; }
+:root .more p, :root main > .cta p { color: #aebed3; font-size: .87rem; }
+:root .more a { color: #c9f2ff; background: #1a3755; border: 1px solid #3b6f95; border-radius: 7px; padding: 13px 18px; font-size: .8rem; font-weight: 600; }
+:root .more a:hover { background: #224969; }
+:root footer { color: #94a9c5; background: #080f1c; border-top: 1px solid #25344c; padding: 28px 22px; font-size: .8rem; }
+:root .skip-link { position: fixed; top: 12px; left: 12px; z-index: 10; transform: translateY(-180%); color: #001725; background: #85e9ff; padding: 12px 18px; }
+:root .skip-link:focus { transform: translateY(0); }
+
+@media (max-width: 1050px) {
+  :root .hero-layout { gap: 36px; }
+  :root nav { gap: 10px 18px; }
+  :root .brand-logo { width: 180px; }
+}
+@media (max-width: 850px) {
+  :root .wrap, :root .header-inner, :root main { padding-inline: 26px; }
+  :root .top, :root .header-inner { justify-content: center; padding-block: 20px; gap: 16px; }
+  :root nav { justify-content: center; }
+  :root .hero-layout { grid-template-columns: 1fr; gap: 38px; }
+  :root .hero-copy { max-width: 650px; }
+  :root .hero-copy h1 { font-size: clamp(2.8rem, 7.5vw, 4rem); }
+  :root .hero-showcase { max-width: 650px; }
+  :root .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+}
+@media (max-width: 570px) {
+  :root .wrap, :root .header-inner, :root main { padding-inline: 20px; }
+  :root .brand-logo { width: 180px; }
+  :root nav { gap: 5px 16px; }
+  :root nav a { font-size: .75rem; }
+  :root .hero { padding: 48px 20px; }
+  :root .moss-home .hero { padding: 48px 0; }
+  :root .hero h1 { font-size: clamp(2.1rem, 8.7vw, 2.8rem); }
+  :root .hero-copy h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+  :root .hero p { font-size: .9rem; }
+  :root .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+  :root .hero-secondary { align-self: flex-start; }
+  :root .showcase-label { font-size: .6rem; }
+  :root .showcase-label > :last-child, :root .section-kicker > :last-child { display: none; }
+  :root figcaption { padding: 16px; gap: 10px; }
+  :root figcaption a { font-size: .68rem; }
+  :root .section { padding-block: 42px 50px; }
+  :root .section > h2, :root .section-heading h2 { font-size: 1.9rem; }
+  :root .section-kicker { font-size: .6rem; }
+  :root .grid { grid-template-columns: 1fr; }
+  :root .card .body, :root .card-body { padding: 22px; }
+  :root .filters { gap: 8px; }
+  :root .filters button { padding: 10px 12px; font-size: .77rem; }
+  :root .more, :root main > .cta { padding: 23px; }
+  :root .more a, :root main > .cta .whatsapp { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root *, :root *::before, :root *::after { transition-duration: 0s !important; animation: none !important; }
+}
+@media (forced-colors: active) {
+  :root .hero-copy h1 em { -webkit-text-fill-color: currentColor; background: none; }
+  :root .brand-logo { filter: none; mix-blend-mode: normal; background: white; }
+}
