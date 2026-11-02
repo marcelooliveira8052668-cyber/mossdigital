@@ -35,6 +35,8 @@
 :root .moss-home .step-number { font: 500 .84rem/1.6 Consolas, monospace; color: #78eddd; }
 :root .moss-home .process-grid h3, :root .moss-home .scope-lists h3 { color: #edf4ff; font-size: 1.05rem; margin: 14px 0 10px; }
 :root .moss-home .process-grid p { color: #aebed3; font-size: .86rem; margin: 0; }
+:root .moss-home .process-guide { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; margin: 28px 0 0; }
+:root .moss-home .process-guide > span { color: var(--muted); font-size: .76rem; }
 :root .moss-home .home-scope { display: grid; grid-template-columns: .85fr 1.35fr; gap: 42px; }
 :root .moss-home .scope-price strong { display: block; font-size: 2.6rem; line-height: 1.3; color: #91e9ff; letter-spacing: -.04em; }
 :root .moss-home .scope-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }

@@ -31,7 +31,7 @@ async def test(base, output, browser_path, axe_path):
         page.on('pageerror', lambda error: errors.append(str(error)))
         theme = lambda: page.locator('html').get_attribute('data-moss-theme')
 
-        for filename in ['index.html', 'modelos.html', 'sistemas.html']:
+        for filename in ['index.html', 'modelos.html', 'sistemas.html', 'estrutura.html']:
             await page.set_viewport_size({'width': 1440, 'height': 1000})
             await page.goto(base + filename, wait_until='networkidle')
             assert await theme() == 'dark'

@@ -8,11 +8,14 @@
 // Projetos independentes também participam dos filtros e da contagem.
 [
   { nome: 'MOSS Agenda Pro', imagem: 'agenda', link: 'agenda-pro/?v=agenda-20261027', descricao: 'Modelo de agenda para organizar atendimentos, clientes e lembretes manuais. Demonstração local; sincronização depende de configuração.', pedido: 'MOSS Agenda Pro' },
-  { nome: 'Agência de viagens', imagem: 'turismo', link: 'site-de-turismo/?v=vitrines-20261027', descricao: 'Destinos, pacotes, galeria ampliável e formulário para preparar pedidos de orçamento. Preços e avaliações demonstrativos.', pedido: 'site para agência de viagens' }
+  { nome: 'Agência de viagens', imagem: 'turismo', link: 'site-de-turismo/?v=vitrines-20261027', descricao: 'Destinos, pacotes, galeria ampliável e formulário para preparar pedidos de orçamento. Preços e avaliações demonstrativos.', pedido: 'site para agência de viagens' },
+  { nome: 'Flora & Afeto — Floricultura', imagem: 'floricultura', link: 'demos/floricultura/', descricao: 'Catálogo por ocasião e montador de buquê com flores, embalagem, cartão e subtotal ilustrativo. Marca fictícia, sem compra ou entrega reais.', pedido: 'site de floricultura como a demo Flora & Afeto', categoria: 'Comércio' },
+  { nome: 'Clara & Tomás — Site de casamento', imagem: 'casamento', link: 'demos/casamento/', descricao: 'História, programação, ideias de presentes e confirmação de presença simulada. Casal e evento fictícios, sem cadastro real de convidados.', pedido: 'site de casamento como a demo Clara & Tomás', categoria: 'Eventos e fotografia' },
+  { nome: 'Eixo Contábil — Contabilidade', imagem: 'contabilidade', link: 'demos/contabilidade/', descricao: 'Apresentação de serviços e roteiro interativo para uma primeira conversa. Marca fictícia, sem cálculos, diagnóstico ou atendimento contábil.', pedido: 'site de contabilidade como a demo Eixo Contábil', categoria: 'Serviços' }
 ].forEach(modelo => {
   const card = document.createElement('article');
   card.className = 'card';
-  card.dataset.category = 'Serviços';
+  card.dataset.category = modelo.categoria || 'Serviços';
   const foto = document.createElement('img');
   foto.src = 'assets/img/previas/' + modelo.imagem + '.webp';
   foto.alt = 'Captura da demonstração: ' + modelo.nome;
@@ -23,7 +26,7 @@
   corpo.className = 'card-body';
   const categoria = document.createElement('span');
   categoria.className = 'category';
-  categoria.textContent = 'Serviços';
+  categoria.textContent = modelo.categoria || 'Serviços';
   const titulo = document.createElement('h2');
   titulo.textContent = modelo.nome;
   const descricao = document.createElement('p');

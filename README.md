@@ -107,6 +107,18 @@ A foto pode ser um arquivo local (padrão) ou um link do Unsplash.
 
 ---
 
+## Flora & Afeto — Floricultura
+
+Nova demonstração independente em `demos/floricultura/`, com catálogo por ocasião, montador de buquê, subtotal ilustrativo, cartão e resumo em texto. Marca e preços fictícios; sem pedidos, pagamentos ou entregas reais. Documentação em `demos/floricultura/README.md` e limitações em `demos/floricultura/implantacao.html`.
+
+## Novas prévias para revisão
+
+- `estrutura.html`: guia visual genérico, sem fotos, baseado no conceito do wireframe da lanchonete. Um link discreto em “Como funciona” abre a página separada; o original foi preservado.
+- `demos/casamento/`: Clara & Tomás, casal fictício, programação e confirmação de presença apenas simulada.
+- `demos/contabilidade/`: Eixo Contábil, marca fictícia, apresentação e roteiro de conversa sem orientação fiscal.
+
+Cada prévia tem captura, capa PNG de 1080 × 1350, fonte editável e legenda em `divulgacao/instagram/`. O conjunto foi aprovado pelo usuário para publicação no site; isso não autoriza postagem automática no Instagram. Registro de escopo em `docs/REVISAO-NOVAS-DEMOS.md`.
+
 ## Começando em 30 segundos
 
 Abra o `demo.html` no navegador. Escolha o negócio mais parecido com o do seu

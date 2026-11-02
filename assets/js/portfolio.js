@@ -19,7 +19,7 @@
   };
 
   /* ------------------------------------------------------------------
-     MODELOS PRONTOS — 34 nichos do catálogo; os exclusivos têm link próprio
+     MODELOS PRONTOS — 37 entradas do catálogo; os exclusivos têm link próprio
      ------------------------------------------------------------------ */
   const version = 'fotos-20261027';
   const MODELOS = [
@@ -57,6 +57,9 @@
     { id: 'pontocomum', emoji: '↗', foto: 'demos/pontocomum/assets/hero.svg', nome: 'Coworking e Salas de Reuniao', desc: 'Encontre o seu ponto', link: 'demos/pontocomum/index.html' },
     { id: 'acessoaberto', emoji: '＋', foto: 'demos/acessoaberto/assets/hero.svg', nome: 'Guia de Acessibilidade Urbana', desc: 'O que importa para a sua visita?', link: 'demos/acessoaberto/index.html' },
     { id: 'entrelares', emoji: '🤝', foto: 'demos/entrelares/assets/hero.svg', nome: 'Profissionais para Casa', desc: 'Diarista, passadeira, cozinheira e organização para a sua casa', link: 'demos/entrelares/index.html' },
+    { id: 'floricultura', emoji: '💐', foto: 'assets/img/previas/floricultura.webp', nome: 'Flora & Afeto — Floricultura', desc: 'Catálogo e montador de buquê demonstrativo: flores, tamanho, embalagem e cartão. Sem compras ou entregas reais.', link: 'demos/floricultura/index.html' },
+    { id: 'casamento', emoji: '💍', foto: 'assets/img/previas/casamento.webp', nome: 'Clara & Tomás — Casamento', desc: 'História, programação e prévia de confirmação de presença. Casal fictício, sem evento ou lista de convidados reais.', link: 'demos/casamento/index.html' },
+    { id: 'contabilidade', emoji: '📊', foto: 'assets/img/previas/contabilidade.webp', nome: 'Eixo Contábil — Contabilidade', desc: 'Apresentação e roteiro inicial de conversa. Marca fictícia, sem orientação fiscal ou atendimento contábil.', link: 'demos/contabilidade/index.html' },
   ];
 
   /* ------------------------------------------------------------------
