@@ -437,9 +437,9 @@ Projeto independente em `restaurante-360/` para demonstrar uma operação mista 
 São registros locais fictícios. Perfis são de interface, não autenticação. Não há banco de dados central, sincronização entre aparelhos, pagamento real, estorno ou emissão fiscal. Operação de restaurante real requer infraestrutura e integrações próprias. Não incluir esta demonstração no sitemap de páginas comerciais reais.
 
 
-## EntreLares — Agência de Profissionais
+## EntreLares — Profissionais para sua casa
 
-Site demonstrativo em `demos/entrelares/` para uma agência de recrutamento e seleção voltada a residências e pequenos negócios. A agência seleciona e o cliente contrata diretamente; não fornece equipe própria.
+Site demonstrativo em `demos/entrelares/` para encontrar um trabalhador em casa — diarista, passadeira, cozinheira, organização e auxiliar — com uma agência fictícia conduzindo a seleção e o cliente contratando diretamente o profissional.
 
 - Vitrine e dois formulários guiados: `demos/entrelares/index.html`.
 - Implantação e limitações: `demos/entrelares/ENTREGA-AO-CLIENTE.md`.

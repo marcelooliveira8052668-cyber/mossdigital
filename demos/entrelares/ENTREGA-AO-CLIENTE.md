@@ -2,7 +2,7 @@
 
 ## O que este projeto é
 
-Site demonstrativo de agência de recrutamento e seleção para residências e pequenos negócios. A agência conduz a seleção e o cliente contrata diretamente o profissional. Não é empresa de equipe própria, marketplace, agência real ou plataforma de contratação automática.
+Site demonstrativo para encontrar um trabalhador em casa — diarista, passadeira, cozinheira, organização e auxiliar doméstico — com uma agência fictícia conduzindo a seleção e o cliente contratando diretamente o profissional. Não é empresa de equipe própria, marketplace, agência real ou plataforma de contratação automática.
 
 ## Arquivos e edição
 
@@ -57,7 +57,7 @@ Não oferecemos segurança privada, vigilância, serviços de saúde, atividades
 
 ## Como vender com clareza
 
-Site personalizado para agência captar interessados e explicar a seleção, com atendimento humano. Não vender como banco de currículos, intermediação automática ou promessa de candidatos disponíveis. Domínio, hospedagem, manutenção e integrações devem ter condições explícitas.
+Site personalizado para quem precisa de um trabalhador em casa: apresentar os serviços, captar pedidos e explicar a seleção, com atendimento humano. Não vender como banco de currículos, intermediação automática ou promessa de profissionais disponíveis. Domínio, hospedagem, manutenção e integrações devem ter condições explícitas.
 
 ## Atendimento e direitos
 

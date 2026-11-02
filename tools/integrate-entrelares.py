@@ -9,9 +9,9 @@ p=repo/'README.md';t=p.read_text(encoding='utf-8')
 t=t.replace('**53 exemplos**','**54 exemplos**').replace('33 nichos\ndo catálogo + 20 projetos independentes','34 nichos\ndo catálogo + 20 projetos independentes').replace('Além dos 33 nichos gerados pelo template','Além dos 34 nichos gerados pelo template')
 section='''
 
-## EntreLares — Agência de Profissionais
+## EntreLares — Profissionais para sua casa
 
-Site demonstrativo em `demos/entrelares/` para uma agência de recrutamento e seleção voltada a residências e pequenos negócios. A agência seleciona e o cliente contrata diretamente; não fornece equipe própria.
+Site demonstrativo em `demos/entrelares/` para encontrar um trabalhador em casa — diarista, passadeira, cozinheira, organização e auxiliar — com uma agência fictícia conduzindo a seleção e o cliente contratando diretamente o profissional.
 
 - Vitrine e dois formulários guiados: `demos/entrelares/index.html`.
 - Implantação e limitações: `demos/entrelares/ENTREGA-AO-CLIENTE.md`.
@@ -28,7 +28,7 @@ p.write_text(t,encoding='utf-8')
 p=repo/'assets/js/portfolio.js';t=p.read_text(encoding='utf-8')
 t=t.replace('MODELOS PRONTOS — 33 nichos do template, abrem no demo.html','MODELOS PRONTOS — 34 nichos do catálogo; os exclusivos têm link próprio')
 if "id: 'entrelares'" not in t:
-    entry="    { id: 'entrelares', emoji: '🤝', foto: 'demos/entrelares/assets/hero.svg', nome: 'Agência de Profissionais', desc: 'Recrutamento para lares e pequenos negócios', link: 'demos/entrelares/index.html' },\n"
+    entry="    { id: 'entrelares', emoji: '🤝', foto: 'demos/entrelares/assets/hero.svg', nome: 'Profissionais para Casa', desc: 'Diarista, passadeira, cozinheira e organização para a sua casa', link: 'demos/entrelares/index.html' },\n"
     marker="link: 'demos/acessoaberto/index.html' }\n"
     assert marker in t;t=t.replace(marker,"link: 'demos/acessoaberto/index.html' },\n"+entry,1)
 p.write_text(t,encoding='utf-8')
@@ -40,7 +40,7 @@ p.write_text(t,encoding='utf-8')
 
 p=repo/'modelos.html';t=p.read_text(encoding='utf-8')
 if 'href="demos/entrelares/index.html"' not in t:
-    card='<article class="card" data-category="Serviços"><img loading="lazy" src="demos/entrelares/assets/hero.svg" alt="Ilustração autoral do modelo EntreLares"><div class="card-body"><span class="category">Serviços</span><h2>EntreLares - Agência de Profissionais</h2><p>Recrutamento e seleção para lares e pequenos negócios, com caminhos para contratar e para apresentar trabalho. Marca e dados fictícios, sem contratação automática.</p><div class="actions"><a class="demo" href="demos/entrelares/index.html">Ver demonstração ↗</a><a class="quote" href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20entrelares" target="_blank" rel="noopener noreferrer">Quero este modelo</a></div></div></article>'
+    card='<article class="card" data-category="Serviços"><img loading="lazy" src="demos/entrelares/assets/hero.svg" alt="Ilustração autoral do modelo EntreLares"><div class="card-body"><span class="category">Serviços</span><h2>EntreLares - Profissionais para sua casa</h2><p>Peça um trabalhador para casa: diarista, passadeira, cozinheira e organização, com dois caminhos guiados. Marca e dados fictícios, sem contratação automática.</p><div class="actions"><a class="demo" href="demos/entrelares/index.html">Ver demonstração ↗</a><a class="quote" href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20entrelares" target="_blank" rel="noopener noreferrer">Quero este modelo</a></div></div></article>'
     marker='<div class="grid" id="cards">';t=t.replace(marker,marker+card,1)
 p.write_text(t,encoding='utf-8')
 

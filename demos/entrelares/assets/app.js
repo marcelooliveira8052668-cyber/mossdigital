@@ -90,7 +90,7 @@
   function example(prefix){
     const set=(name,value)=>{const el=$(`${prefix}-${name}`);el.value=value;el.setCustomValidity('');};
     if(prefix==='h'){
-      set('sector','Residências');populateHiring('rotina');set('frequency','3 ou mais dias por semana');set('period','Integral');set('name','Cliente exemplo');set('city','Cidade exemplo, região central');set('details','Demonstração: organização da rotina e conservação dos ambientes. Condições serão avaliadas pela agência real.');employmentNotice();
+      set('sector','Residências');populateHiring('diarista');set('frequency','3 ou mais dias por semana');set('period','Integral');set('name','Cliente exemplo');set('city','Cidade exemplo, região central');set('details','Demonstração: limpeza geral da casa (banheiros, sala e cozinha) em três dias por semana. Condições serão avaliadas pela agência real.');employmentNotice();
     }else{
       set('service','cozinha');set('sector','Residências');set('experience','Mais de 2 anos de experiência');set('period','Manhã');set('availability','A combinar');set('name','Profissional exemplo');set('city','Cidade exemplo, região norte');set('details','Demonstração: preparo de refeições e organização de cozinha. Sem dados ou referências reais.');$('c-adult').checked=true;
     }
