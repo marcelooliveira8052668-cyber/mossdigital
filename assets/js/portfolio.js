@@ -19,7 +19,7 @@
   };
 
   /* ------------------------------------------------------------------
-     MODELOS PRONTOS — 33 nichos do template, abrem no demo.html
+     MODELOS PRONTOS — 34 nichos do catálogo; os exclusivos têm link próprio
      ------------------------------------------------------------------ */
   const version = 'fotos-20261027';
   const MODELOS = [
@@ -55,7 +55,8 @@
     { id: 'junto', emoji: '✳', foto: 'demos/junto/assets/hero.svg', nome: 'Voluntariado e Impacto Social', desc: 'Uma causa para chamar de sua', link: 'demos/junto/index.html' },
     { id: 'raizfeira', emoji: '◒', foto: 'demos/raizfeira/assets/hero.svg', nome: 'Feira de Produtores Locais', desc: 'Fresquinho na banca', link: 'demos/raizfeira/index.html' },
     { id: 'pontocomum', emoji: '↗', foto: 'demos/pontocomum/assets/hero.svg', nome: 'Coworking e Salas de Reuniao', desc: 'Encontre o seu ponto', link: 'demos/pontocomum/index.html' },
-    { id: 'acessoaberto', emoji: '＋', foto: 'demos/acessoaberto/assets/hero.svg', nome: 'Guia de Acessibilidade Urbana', desc: 'O que importa para a sua visita?', link: 'demos/acessoaberto/index.html' }
+    { id: 'acessoaberto', emoji: '＋', foto: 'demos/acessoaberto/assets/hero.svg', nome: 'Guia de Acessibilidade Urbana', desc: 'O que importa para a sua visita?', link: 'demos/acessoaberto/index.html' },
+    { id: 'entrelares', emoji: '🤝', foto: 'demos/entrelares/assets/hero.svg', nome: 'Agência de Profissionais', desc: 'Recrutamento para lares e pequenos negócios', link: 'demos/entrelares/index.html' },
   ];
 
   /* ------------------------------------------------------------------

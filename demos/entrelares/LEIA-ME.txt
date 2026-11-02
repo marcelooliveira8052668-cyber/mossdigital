@@ -1,0 +1,14 @@
+ENTRELARES — AGÊNCIA DE RECRUTAMENTO E SELEÇÃO — DEMONSTRAÇÃO MOSS DIGITAL
+
+Abra index.html para testar o site. Use Preencher um exemplo fictício em cada formulário para conhecer as três etapas.
+Há dois caminhos: Preciso contratar e Quero trabalhar.
+Os botões de contato levam à MOSS Digital (11) 94203-8103, não a uma agência ou processo seletivo real.
+
+Não há cadastro, currículos, documentos, profissionais disponíveis, vagas, banco de dados ou contratação automática.
+Os rascunhos ficam nesta aba; o aplicativo não os salva em armazenamento persistente.
+Baixar, copiar e imprimir não enviam solicitações. O WhatsApp exige ação e revisão do usuário.
+Não use dados reais ou sensíveis na demonstração.
+
+Leia ENTREGA-AO-CLIENTE.md, DADOS-DO-CLIENTE.txt e VALIDACAO-COMERCIAL.txt antes de vender e adaptar.
+O cliente contrata diretamente o profissional. A agência do modelo presta seleção, não fornece equipe própria.
+Segurança privada, saúde, serviços de risco e contratação de menores não fazem parte deste modelo.

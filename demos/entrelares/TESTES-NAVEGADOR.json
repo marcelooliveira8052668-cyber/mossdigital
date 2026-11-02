@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-02T10:21:01.519Z",
+  "runtimeErrors": 0,
+  "checks": [
+    "busca sem acentos, filtros e estado vazio",
+    "contratante: validação por etapa, resumo seguro e contato identificado",
+    "revisão após edição e aviso de frequência doméstica",
+    "profissional: compatibilidade de área, declaração de público e revisão",
+    "limpeza independente com confirmação",
+    "alternativa TXT para cópia bloqueada",
+    "sem armazenamento persistente pelo aplicativo",
+    "layout, revisão e menu em 320/390 px",
+    "privacidade, termos e guia em HTML",
+    "catálogo legível e formulários bloqueados sem JavaScript"
+  ]
+}

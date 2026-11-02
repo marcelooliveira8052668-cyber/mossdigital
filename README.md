@@ -1,6 +1,6 @@
 # Template de Site Profissional
 
-Template com **28 tipos de negócio prontos** e **53 exemplos** no portfólio (33 nichos
+Template com **28 tipos de negócio prontos** e **54 exemplos** no portfólio (34 nichos
 do catálogo + 20 projetos independentes). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
 
@@ -66,7 +66,7 @@ Para mandar pro cliente **sem** que ele veja o painel, use o link sem `&painel=1
 
 ## Os 20 projetos independentes do portfólio
 
-Além dos 33 nichos gerados pelo template, o portfólio mostra **20 projetos que existem
+Além dos 34 nichos gerados pelo template, o portfólio mostra **20 projetos que existem
 de verdade** e abrem em página própria. Eles aparecem primeiro, na seção
 `#reais`, separados dos modelos prontos (`#exemplos`):
 
@@ -435,3 +435,17 @@ Projeto independente em `restaurante-360/` para demonstrar uma operação mista 
 - Capa e legenda: `divulgacao/instagram/restaurante360/`.
 
 São registros locais fictícios. Perfis são de interface, não autenticação. Não há banco de dados central, sincronização entre aparelhos, pagamento real, estorno ou emissão fiscal. Operação de restaurante real requer infraestrutura e integrações próprias. Não incluir esta demonstração no sitemap de páginas comerciais reais.
+
+
+## EntreLares — Agência de Profissionais
+
+Site demonstrativo em `demos/entrelares/` para uma agência de recrutamento e seleção voltada a residências e pequenos negócios. A agência seleciona e o cliente contrata diretamente; não fornece equipe própria.
+
+- Vitrine e dois formulários guiados: `demos/entrelares/index.html`.
+- Implantação e limitações: `demos/entrelares/ENTREGA-AO-CLIENTE.md`.
+- Dados para personalizar: `demos/entrelares/DADOS-DO-CLIENTE.txt`.
+- Validação de demanda antes de vender: `demos/entrelares/VALIDACAO-COMERCIAL.txt`.
+- Testes no Edge: `node tools/test-entrelares.cjs` (Windows, Node com WebSocket global).
+- Capa e legenda: `divulgacao/instagram/entrelares/`.
+
+Marca e dados fictícios. Não há agência em funcionamento, candidatos, vagas, banco de currículos, contratação ou envio automático: os formulários montam um resumo local e o contato é com a MOSS Digital. Segurança privada, saúde e contratação de menores ficam fora do escopo. Não incluir esta demonstração no sitemap de páginas comerciais reais.

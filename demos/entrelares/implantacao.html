@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<html lang="pt-BR">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<head>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta charset="UTF-8">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta name="robots" content="noindex, follow">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta name="description" content="Modelo de agência de recrutamento para residências e pequenos negócios. Entenda a seleção e prepare uma consulta. Marca fictícia da MOSS Digital.">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta name="theme-color" content="#44374f">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta property="og:title" content="Guia de implantação — EntreLares">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta property="og:description" content="Um modelo de seleção profissional com dois caminhos: preciso contratar e quero trabalhar. Demonstração da MOSS Digital.">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta property="og:type" content="website">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta property="og:image" content="https://mossdigital.com.br/demos/entrelares/assets/social.png">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta property="og:image:width" content="1200">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta property="og:image:height" content="630">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<meta name="twitter:card" content="summary_large_image">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<title>Guia de implantação — EntreLares</title>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<link rel="stylesheet" href="assets/site.css">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+</head>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<body>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<main class="legal">
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">e.</span><span>entrelares<small>RECRUTAMENTO COM ESCUTA E CLAREZA</small></span></a>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<h1>EntreLares — entrega e implantação</h1>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<h2>O que este projeto é</h2>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>Site demonstrativo de agência de recrutamento e seleção para residências e pequenos negócios. A agência conduz a seleção e o cliente contrata diretamente o profissional. Não é empresa de equipe própria, marketplace, agência real ou plataforma de contratação automática.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<h2>Arquivos e edição</h2>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<ul>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>`index.html`: vitrine, categorias e dois formulários guiados. Cada linha lógica tem comentário em primeira pessoa.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>`assets/site.css`: layout, versão móvel, foco e impressão.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>`assets/data.js`: categorias usadas pelos filtros e formulários. Ao editar categorias, atualize também os cartões estáticos no HTML.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>`assets/app.js`: filtros, validação, etapas, resumos e contato. Sem bibliotecas ou servidor.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>`assets/hero.svg`: ilustração original; sem fotos de trabalhadores fictícios.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>`privacidade.html` e `termos.html`: textos-base para revisão da operação real.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>`implantacao.html`: este guia em formato legível no navegador.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>`DADOS-DO-CLIENTE.txt`: roteiro de informações a solicitar.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>`VALIDACAO-COMERCIAL.txt`: roteiro para validar o interesse de agências antes de prometer demanda.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+</ul>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>Abra index.html diretamente ou execute `python -m http.server 8080` nesta pasta. Não há instalação obrigatória. Com JavaScript desativado, categorias, textos e documentos continuam disponíveis; os formulários ficam desabilitados para não enviar dados por URL.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<h2>Recursos funcionais da demo</h2>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>1. Seis categorias com busca sem distinção de acentos, filtro por ambiente e estado vazio.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>2. Botão por categoria preenche o ambiente e a atividade na jornada de contratação.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>3. Caminho Preciso contratar: contexto, preferências e revisão.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>4. Caminho Quero trabalhar: experiência, disponibilidade e revisão.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>5. Validação por etapa, campos identificados, erro anunciado e foco no campo relevante.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>6. Resumo como texto seguro, sem inserir respostas como HTML.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>7. Cópia, download TXT e impressão com aviso de demonstração.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>8. Aceite explícito antes do link ao WhatsApp da MOSS; a mensagem precisa ser revisada e enviada no serviço externo.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>9. Exemplos fictícios para testar e limpeza independente de cada formulário com confirmação.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>10. Sem cookies de publicidade, analytics, geolocalização, banco de currículos ou armazenamento persistente pelo aplicativo.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<h2>O que não existe</h2>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>Não há candidatos cadastrados, vagas, contratação, seleção executada, disponibilidade verificada, análise de currículos, envio automático, referência checada, pagamentos, agendamento ou login. Não há backend, banco de dados, painel de agência ou acompanhamento multiusuário. Cópia e downloads não são cadastro. Os rascunhos não são recuperados pelo aplicativo após recarregar; o navegador pode ter recursos próprios de restauração/preenchimento.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>Não oferecemos segurança privada, vigilância, serviços de saúde, atividades de risco ou contratação de menores. A recepção não deve ser apresentada como segurança. O modelo não determina vínculo ou afasta obrigações trabalhistas. Revisão jurídica e contábil são necessárias para a atuação real.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<h2>Antes de entregar ao cliente final</h2>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<ul>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Definir se a empresa realmente atua com recrutamento e seleção e contratação direta pelo cliente. Se fornecer equipe própria, reformular operação, contratos e site.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Confirmar responsável, identificação comercial, CNPJ e informações exigíveis, contatos, marca, domínio e regiões efetivamente atendidas.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Substituir a marca e os textos fictícios por informações aprovadas; usar apenas imagens autorizadas.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Definir categorias, tarefas, critérios relacionados à atividade e o que está fora do escopo.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Definir preço do serviço da agência, quem paga, etapas, condições de cancelamento e eventual reposição. Não inventar garantias ou prazos.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Definir como a seleção será realizada, quem responde por ela e como referências e documentos serão tratados.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Substituir o número 5511942038103 e todas as referências à MOSS como destinatário pelos canais aprovados, quando aplicável.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Adaptar o aceite, a privacidade e os termos. Não manter um texto que descreve dados fictícios se a operação passar a receber dados reais.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Definir finalidade, base legal, minimização, retenção, direitos e segurança antes de coletar dados de candidatos. Não presumir que um checkbox resolve a LGPD.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Não publicar currículos, documentos, contatos de referências ou perfis de candidatos sem avaliação de necessidade, direitos e proteção adequada.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Para currículos privados, gestão de candidatos, agenda, pagamentos ou login: contratar backend, autenticação, autorização, armazenamento seguro e backups como escopo próprio.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Fazer revisão jurídica/contábil do modelo, contratos e obrigações. Não oferecer serviços regulados sem estrutura adequada.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Configurar domínio, HTTPS, contatos, imagem social absoluta e metadados verdadeiros. Só remover noindex no site real aprovado; manter a demo fictícia fora do sitemap público.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Testar filtros, etapas, erros, links, downloads, impressão, teclado e telas pequenas. Auditar acessibilidade e segurança antes de afirmar conformidade.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<li>[ ] Obter aprovação escrita do conteúdo e do escopo; entregar acessos por canal seguro e combinar suporte, atualização e manutenção.</li>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+</ul>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<h2>Como vender com clareza</h2>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>Site personalizado para agência captar interessados e explicar a seleção, com atendimento humano. Não vender como banco de currículos, intermediação automática ou promessa de candidatos disponíveis. Domínio, hospedagem, manutenção e integrações devem ter condições explícitas.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<h2>Atendimento e direitos</h2>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p>Não fazer filtros ou exigências discriminatórias. Não solicitar documentos, dados de saúde ou antecedentes indiscriminadamente. Procedimentos reais devem ser proporcionais, adequados à atividade e juridicamente revisados. A contratação doméstica e a contratação para uma empresa não são o mesmo enquadramento.</p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+<p><a class="btn ghost" href="index.html">Voltar ao modelo</a></p>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+</main>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+</body>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->
+</html>
+<!-- Eu organizo esta linha para orientar a navegação e explicar os limites da demonstração. -->

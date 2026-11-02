@@ -19,3 +19,12 @@ Os sites finais são HTML/CSS/JavaScript estáticos: não precisam destas ferram
 **Atenção:** o gerador sobrescreve os arquivos dos cinco IDs `reciclo`, `junto`, `raizfeira`, `pontocomum` e `acessoaberto`. Não execute sobre adaptações de clientes sem backup. Nenhuma ferramenta publica no GitHub automaticamente; a publicação é uma etapa separada, após revisão.
 
 Os testes verificam comportamentos específicos; não equivalem a auditoria completa de acessibilidade, segurança, revisão jurídica ou certificação de desempenho.
+
+## Demo EntreLares (agência de recrutamento)
+
+1. `python tools/build-entrelares.py` — recria `demos/entrelares/` (não altera `assets/app.js`).
+2. `node tools/test-entrelares.cjs` — valida as duas jornadas em Edge e grava `TESTES-NAVEGADOR.json`.
+3. `python tools/package-entrelares.py` — gera a imagem social, a capa 1080 × 1350, a cópia local e o ZIP.
+4. `python tools/integrate-entrelares.py` — integra ao catálogo e aos índices locais, sem duplicar entradas.
+
+**Atenção:** o gerador sobrescreve os arquivos de `demos/entrelares/` (exceto `assets/app.js`, que é mantido à parte). Não execute sobre adaptações de clientes sem backup.
