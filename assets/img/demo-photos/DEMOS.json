@@ -1,0 +1,17 @@
+[
+  {"slug":"floricultura","name":"Flora & Afeto","segment":"Floricultura","path":"demos/floricultura/"},
+  {"slug":"casamento","name":"Clara & Tomás","segment":"Site de casamento","path":"demos/casamento/"},
+  {"slug":"contabilidade","name":"Eixo Contábil","segment":"Contabilidade","path":"demos/contabilidade/"},
+  {"slug":"entrelares","name":"EntreLares","segment":"Serviços para casa","path":"demos/entrelares/"},
+  {"slug":"pontocomum","name":"Ponto Comum","segment":"Coworking","path":"demos/pontocomum/"},
+  {"slug":"raizfeira","name":"Raiz / Feira","segment":"Feira de produtores","path":"demos/raizfeira/"},
+  {"slug":"reciclo","name":"ReCiclo","segment":"Reciclagem e ecopontos","path":"demos/reciclo/"},
+  {"slug":"junto","name":"Junto","segment":"Voluntariado","path":"demos/junto/"},
+  {"slug":"acessoaberto","name":"Acesso Aberto","segment":"Acessibilidade urbana","path":"demos/acessoaberto/"},
+  {"slug":"tatuagem","name":"Agulha de Ouro","segment":"Estúdio de tatuagem","path":"demos/tatuagem/"},
+  {"slug":"assistencia","name":"Assistência Técnica","segment":"Reparo de celulares","path":"demos/assistencia/"},
+  {"slug":"fretes","name":"Fretes e Transportes","segment":"Transporte e logística","path":"demos/fretes/"},
+  {"slug":"festas","name":"Casa de Festas","segment":"Eventos e celebrações","path":"demos/festas/"},
+  {"slug":"bar","name":"Bar e Coquetelaria","segment":"Drinks e encontros","path":"demos/bar/"},
+  {"slug":"restaurante360","name":"Brasa & Oliva","segment":"Restaurante 360","path":"restaurante-360/"}
+]

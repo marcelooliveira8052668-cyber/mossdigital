@@ -6,7 +6,7 @@ import re
 import shutil
 
 REPO = Path(__file__).resolve().parents[1]
-LOCAL = REPO.parent / 'Demos de sites'
+LOCAL = REPO.parent / '02 - Demos de sites'
 COLLECTION = [
     dict(id='reciclo', folder='Reciclagem e Ecopontos', brand='ReCiclo', category='Utilidade pública', type='recycle', icon='↻', color='#174c36', accent='#d9f476', bg='#f3f3e9', eyebrow='MENOS DESCARTE. MAIS FUTURO.', title='O próximo destino<br>não precisa ser<br><em>o lixo.</em>', description='Descubra onde entregar seus materiais, organize o descarte e faça parte de uma cidade mais circular.', action='Encontrar um ponto', tool='Planejar meu descarte', catalog='Pontos de coleta', helper='Busque por material e região. Todos os pontos, endereços e horários desta demonstração são fictícios.', tags=['Economia circular','Coleta consciente','Sem cadastro'], stats=[('06','pontos de exemplo'),('05','tipos de material'),('01','atitude que faz diferença')]),
     dict(id='junto', folder='Voluntariado e Impacto Social', brand='junto.', category='Utilidade pública', type='volunteer', icon='✳', color='#453397', accent='#f5b8a2', bg='#fbf7f2', eyebrow='GENTE QUE SOMA. CAUSAS QUE MOVEM.', title='Seu tempo tem<br><em>um lugar no mundo.</em>', description='Uma hora, uma habilidade, uma boa conversa. Encontre uma forma possível de contribuir — do seu jeito.', action='Encontrar minha causa', tool='Meu plano de participação', catalog='Uma causa para chamar de sua', helper='Oportunidades ilustrativas de projetos fictícios. Nenhuma inscrição é enviada ou vaga garantida por este site.', tags=['Remoto ou presencial','Pequenos compromissos','Grandes encontros'], stats=[('06','oportunidades de exemplo'),('04','causas para descobrir'),('Você','no seu próprio ritmo')]),

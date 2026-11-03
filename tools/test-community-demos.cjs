@@ -6,7 +6,7 @@ const {pathToFileURL}=require('url');
 const assert=require('assert/strict');
 const repo=path.resolve(__dirname,'..');
 const temp=path.join(process.env.LOCALAPPDATA,'Temp','opencode');
-const output=path.join(repo,'..','Capas Instagram - Utilidade e Empreendedorismo','Previas dos sites');
+const output=path.join(repo,'..','04 - Divulgacao','Capas Instagram - Utilidade e Empreendedorismo','Previas dos sites');
 fs.mkdirSync(output,{recursive:true});
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const ids=['reciclo','junto','raizfeira','pontocomum','acessoaberto'];

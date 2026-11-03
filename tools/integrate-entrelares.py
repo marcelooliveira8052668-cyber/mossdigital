@@ -2,7 +2,7 @@
 from pathlib import Path
 from urllib.parse import quote
 
-repo=Path(__file__).resolve().parents[1];root=repo.parent;local=root/'Demos de sites'
+repo=Path(__file__).resolve().parents[1];root=repo.parent;local=root/'02 - Demos de sites'
 folder='EntreLares - Agencia de Profissionais';url='https://mossdigital.com.br/demos/entrelares/index.html'
 
 p=repo/'README.md';t=p.read_text(encoding='utf-8')

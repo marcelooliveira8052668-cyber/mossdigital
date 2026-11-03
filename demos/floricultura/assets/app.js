@@ -2,9 +2,9 @@
   'use strict';
 
   var flowers = {
-    rosa: { name: 'Rosas', cents: 9900 },
-    girassol: { name: 'Girassóis', cents: 8900 },
-    campo: { name: 'Flores do campo', cents: 7900 }
+      rosa: { name: 'Rosas', cents: 9900, photo: 'rosas' },
+      girassol: { name: 'Girassóis', cents: 8900, photo: 'girassois' },
+      campo: { name: 'Flores do campo', cents: 7900, photo: 'flores-campo' }
   };
   var sizes = {
     pequeno: { name: 'Pequeno', multiplier: 1 },
@@ -52,7 +52,8 @@
     setText('delivery-note', choice.receiving === 'entrega'
       ? 'Região, prazo e frete dependeriam de confirmação da loja. Nenhuma entrega é realizada por esta demo.'
       : 'Não há endereço de retirada real nesta demonstração. Nenhuma data é reservada.');
-    document.getElementById('preview-flower').setAttribute('href', 'assets/florais.svg#' + choice.flower);
+    document.getElementById('preview-flower').src = '../../assets/img/demo-photos/' + flowers[choice.flower].photo + '.webp';
+    document.getElementById('preview-flower').alt = flowers[choice.flower].name + ' · fotografia de referência, não reproduz exatamente a montagem';
     document.getElementById('bouquet-preview').dataset.wrap = choice.wrapping;
     setText('wrap-badge', wrappings[choice.wrapping].name);
     setText('preview-caption', flowers[choice.flower].name + ' · ' + sizes[choice.size].name + ' · ' + wrappings[choice.wrapping].name);
@@ -76,7 +77,7 @@
       'Recebimento: ' + (choice.receiving === 'entrega' ? 'Entrega — região, prazo e frete sob consulta.' : 'Retirada simulada — sem endereço real.'),
       'Subtotal ilustrativo: ' + money(price.total) + ' — frete não incluído.',
       '',
-      'Marcas, produtos e valores fictícios. Imagens conceituais.',
+      'Marcas, produtos e valores fictícios. Fotografias ilustrativas de banco de imagens.',
       'Quero conhecer este modelo de site com a MOSS Digital, não comprar flores.'
     ].join('\n');
   }

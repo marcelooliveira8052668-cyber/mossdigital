@@ -10,6 +10,7 @@ Marca fictícia, não um escritório em funcionamento. Não foram criados regist
 - Trocar respostas invalida a prévia; o reconhecimento da demonstração precisa ser renovado.
 - O WhatsApp final é da MOSS Digital, para contratar desenvolvimento de site, não serviços contábeis.
 - Sem JavaScript: apresentação acessível, formulário desabilitado. Sem fontes externas ou análise de visitantes adicionadas.
+- Fotografias locais de banco de imagens são ilustrativas, não retratam equipe ou clientes desta marca fictícia. Fontes em `assets/img/demo-photos/manifest.json`, na raiz do site.
 
 Para uso real: inserir marca, equipe e qualificações verificáveis, definir serviços, privacidade, condições e qualquer infraestrutura para documentos ou área do cliente. Não apresentar os recursos como implementados antes de contratar e testar as integrações. A demo usa `noindex,nofollow` e não entra no sitemap como empresa real.
 

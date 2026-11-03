@@ -36,6 +36,8 @@ async def render(base, args, browser_path):
         page = await context.new_page()
         response = await page.goto(base + args.page, wait_until='networkidle')
         assert response.status == 200
+        if await page.locator('script[src$="demo-photos.js"]').count():
+            await page.wait_for_function('document.documentElement.dataset.mossPhotos === "ready"')
         image = await page.screenshot(type='png')
         subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y' if args.overwrite else '-n', '-i', 'pipe:0', '-frames:v', '1', '-c:v', 'libwebp', '-quality', '85', str(thumb)], input=image, check=True)
         await page.set_viewport_size({'width': 1080, 'height': 1350})

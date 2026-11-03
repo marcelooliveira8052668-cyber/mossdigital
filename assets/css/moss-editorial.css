@@ -1,0 +1,192 @@
+/* MOSS Digital — direção editorial. Isolada da aparência das demonstrações. */
+.moss-home {
+  --navy: #253e4b;
+  --yellow: #987743;
+  --muted: #626862;
+  --paper: #f7f6f2;
+  --ink: #292e2b;
+  --line: #dddEd6;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.moss-home ::selection { background: #d8e2e6; color: #1e343e; }
+.moss-home .wrap { max-width: 1280px; padding-inline: 40px; }
+.moss-home a { color: inherit; }
+.moss-home a:focus-visible { outline: 3px solid #38677c; outline-offset: 5px; }
+.moss-home .skip-link {
+  position: fixed; top: 12px; left: 12px; z-index: 10;
+  padding: 12px 20px; background: #fff; color: var(--ink);
+  transform: translateY(-160%);
+}
+.moss-home .skip-link:focus { transform: translateY(0); }
+
+.moss-home header { background: #fcfbf8; border-bottom: 1px solid var(--line); }
+.moss-home .top { min-height: 106px; gap: 28px; }
+.moss-home .brand-logo { width: 220px; max-width: 100%; }
+.moss-home nav { align-items: center; gap: 28px; }
+.moss-home nav a {
+  font-size: .82rem; font-weight: 500; color: #515951;
+  padding-block: 10px; transition: color .2s ease;
+}
+.moss-home nav a:hover,
+.moss-home nav a[aria-current="page"] { color: var(--navy); text-decoration: underline; text-underline-offset: 7px; }
+.moss-home nav a.client-link {
+  border: 1px solid #bac2bf; background: transparent; color: var(--navy);
+  padding: 11px 17px; border-radius: 4px; box-shadow: none;
+}
+.moss-home nav a.client-link:hover { background: #eaece7; }
+
+.moss-home .hero {
+  background: var(--paper); color: var(--ink); text-align: left;
+  padding: 90px 0 80px; border-bottom: 1px solid var(--line);
+}
+.moss-home .hero-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.moss-home .eyebrow {
+  display: flex; align-items: center; gap: 12px; color: var(--navy);
+  font-size: .68rem; letter-spacing: .2em; font-weight: 600;
+}
+.moss-home .eyebrow::before { content: ""; width: 28px; height: 1px; background: #8c9a9e; }
+.moss-home .hero h1 {
+  font-family: Georgia, "Times New Roman", serif; font-weight: 400;
+  font-size: clamp(2.8rem, 4.65vw, 4.4rem); line-height: 1.08; letter-spacing: -.055em;
+  max-width: 570px; margin: 25px 0;
+}
+.moss-home .hero h1 em { font-weight: 400; color: #385e6d; }
+.moss-home .hero p { color: var(--muted); font-size: .98rem; line-height: 1.85; max-width: 450px; margin: 0; }
+.moss-home .price { color: var(--muted); font-size: .85rem; font-weight: 400; margin: 27px 0 20px; }
+.moss-home .price strong { color: var(--ink); font-weight: 600; }
+.moss-home .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+.moss-home .hero .cta {
+  display: inline-flex; align-items: center; justify-content: center; gap: 16px;
+  background: var(--navy); color: white; border: 1px solid var(--navy);
+  padding: 16px 20px; border-radius: 4px; font-weight: 500; font-size: .82rem;
+  transition: background .2s ease, transform .2s ease;
+}
+.moss-home .hero .cta:hover { background: #172f3b; transform: translateY(-2px); }
+.moss-home .hero-secondary { font-size: .8rem; border-bottom: 1px solid #9ba8ab; padding-block: 7px; }
+.moss-home .hero-secondary span { padding-left: 8px; }
+.moss-home .hero .hero-note { font-size: .73rem; line-height: 1.65; margin-top: 22px; max-width: 385px; }
+
+.moss-home .hero-showcase { min-width: 0; padding: 28px 0; }
+.moss-home .showcase-label,
+.moss-home .showcase-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  font-size: .66rem; color: var(--muted); letter-spacing: .025em;
+}
+.moss-home .showcase-label { margin-bottom: 18px; }
+.moss-home .showcase-label > :last-child { font-size: .58rem; white-space: nowrap; letter-spacing: .1em; }
+.moss-home .project-window {
+  background: #fff; margin: 0; border: 1px solid #d5dbd7; border-radius: 7px; overflow: hidden;
+  box-shadow: 0 24px 55px -28px #263b4b55;
+}
+.moss-home .window-bar {
+  height: 35px; padding: 0 15px; display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid #e4e7e3; background: #f1f2ef; color: #747d76; font-size: .58rem;
+}
+.moss-home .window-dots { color: #a9b1aa; font-size: .63rem; letter-spacing: 3px; }
+.moss-home .project-window > img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; }
+.moss-home figcaption {
+  border-top: 1px solid #e6e9e5; padding: 19px 22px; display: flex;
+  align-items: center; justify-content: space-between; gap: 20px;
+}
+.moss-home .project-type { display: block; color: #687369; font-size: .52rem; letter-spacing: .16em; margin-bottom: 3px; }
+.moss-home figcaption strong { font-size: .91rem; font-weight: 500; }
+.moss-home figcaption a { font-size: .67rem; color: var(--navy); padding-block: 10px; }
+.moss-home figcaption a span { margin-left: 8px; }
+.moss-home .showcase-footer { margin-top: 20px; }
+.moss-home .showcase-footer > :last-child { color: #6b8388; font-size: 1.7rem; line-height: 1; }
+
+.moss-home .section { padding-block: 65px 80px; scroll-margin-top: 24px; }
+.moss-home .section-kicker {
+  display: flex; justify-content: space-between; gap: 20px; color: var(--muted);
+  font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 25px;
+}
+.moss-home .section-kicker > :last-child { font-size: .57rem; }
+.moss-home .section > h2 {
+  color: var(--ink); font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 3vw, 2.7rem); font-weight: 400; letter-spacing: -.04em; line-height: 1.2;
+  margin: 0 0 15px; max-width: 650px;
+}
+.moss-home .intro { font-size: .92rem; line-height: 1.8; max-width: 680px; margin-bottom: 40px; }
+.moss-home .grid { gap: 30px; }
+.moss-home .card {
+  background: #fdfcf9; border: 1px solid #dfE2da; border-radius: 7px; box-shadow: none;
+  transition: border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+.moss-home .card:hover { border-color: #b7c2bc; box-shadow: 0 14px 30px -22px #253e4b66; transform: translateY(-3px); }
+.moss-home .card img { display: block; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid #e1e4dc; }
+.moss-home .card .body { padding: 25px; }
+.moss-home .body h3 { color: var(--ink); font-weight: 500; letter-spacing: -.025em; font-size: 1.12rem; }
+.moss-home .body p { font-size: .85rem; line-height: 1.75; margin-bottom: 25px; }
+.moss-home .card-actions { gap: 9px; }
+.moss-home .btn-outline,
+.moss-home .btn-whatsapp {
+  border-radius: 4px; font-weight: 500; font-size: .78rem; min-height: 45px;
+  transition: background .2s ease, border-color .2s ease;
+}
+.moss-home .btn-outline { background: transparent; border-color: #bdc9c7; color: var(--navy); }
+.moss-home .btn-outline:hover { background: #e9eeeb; border-color: #9bacab; }
+.moss-home .btn-whatsapp { background: #e9eee8; color: #324a3a; border: 1px solid #dbe3d8; }
+.moss-home .btn-whatsapp:hover { background: #dce6da; }
+.moss-home .more {
+  background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0;
+  margin-top: 44px; padding: 30px 0 0;
+}
+.moss-home .more h2 { color: var(--ink); font-size: 1.1rem; font-weight: 500; }
+.moss-home .more p { font-size: .85rem; }
+.moss-home .more a {
+  background: transparent; color: var(--navy); border: 1px solid #bcc6c3;
+  border-radius: 4px; font-size: .8rem; font-weight: 500; padding: 13px 18px;
+}
+.moss-home .more a:hover { background: #e9eeeb; }
+.moss-home footer { background: #efefe9; border-top: 1px solid var(--line); color: #626862; padding: 30px 24px; font-size: .75rem; }
+
+@media (min-width: 851px) and (max-width: 1100px) {
+  .moss-home .hero-layout { gap: 35px; }
+  .moss-home nav { gap: 17px; }
+  .moss-home .brand-logo { width: 190px; }
+}
+@media (max-width: 850px) {
+  .moss-home .wrap { padding-inline: 28px; }
+  .moss-home .top { justify-content: center; padding-block: 20px; gap: 14px; }
+  .moss-home nav { justify-content: center; gap: 12px 22px; }
+  .moss-home .hero { padding-block: 60px; }
+  .moss-home .hero-layout { grid-template-columns: 1fr; gap: 35px; }
+  .moss-home .hero h1 { font-size: clamp(3rem, 7.5vw, 4.2rem); }
+  .moss-home .hero p { max-width: 550px; }
+  .moss-home .hero-showcase { padding: 0; max-width: 600px; }
+  .moss-home .grid { gap: 22px; }
+}
+@media (max-width: 560px) {
+  .moss-home .wrap { padding-inline: 22px; }
+  .moss-home .brand-logo { width: 200px; }
+  .moss-home nav { gap: 4px 16px; }
+  .moss-home nav a { font-size: .75rem; }
+  .moss-home nav a.client-link { padding: 8px 11px; }
+  .moss-home .hero { padding-block: 44px; }
+  .moss-home .hero h1 { font-size: clamp(2.7rem, 10.5vw, 3.6rem); margin-block: 21px; }
+  .moss-home .hero p { font-size: .9rem; }
+  .moss-home .hero-actions { align-items: stretch; flex-direction: column; gap: 12px; }
+  .moss-home .hero-secondary { align-self: flex-start; }
+  .moss-home .showcase-label { font-size: .59rem; }
+  .moss-home .showcase-label > :last-child { display: none; }
+  .moss-home figcaption { padding: 15px; gap: 10px; }
+  .moss-home .section { padding-block: 42px 50px; }
+  .moss-home .section-kicker { font-size: .58rem; margin-bottom: 20px; }
+  .moss-home .section-kicker > :last-child { display: none; }
+  .moss-home .intro { margin-bottom: 28px; }
+  .moss-home .card .body { padding: 23px; }
+  .moss-home .more { gap: 18px; }
+  .moss-home .more a { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .moss-home *, .moss-home *::before, .moss-home *::after {
+    transition-duration: 0s !important;
+    animation: none !important;
+  }
+}

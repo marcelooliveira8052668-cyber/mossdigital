@@ -2,7 +2,7 @@
 from pathlib import Path
 from urllib.parse import quote
 
-repo=Path(__file__).resolve().parents[1];root=repo.parent;local=root/'Demos de sites'
+repo=Path(__file__).resolve().parents[1];root=repo.parent;local=root/'02 - Demos de sites'
 p=repo/'README.md';t=p.read_text(encoding='utf-8')
 t=t.replace('**52 exemplos**','**53 exemplos**').replace('33 nichos\ndo template + 19 projetos reais','33 nichos\ndo catálogo + 20 projetos independentes').replace('## Os 19 projetos reais do portfólio','## Os 20 projetos independentes do portfólio').replace('**19 projetos que existem','**20 projetos que existem')
 section='''

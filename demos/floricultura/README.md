@@ -1,6 +1,6 @@
 # Flora & Afeto — demonstração de floricultura
 
-Demo independente com catálogo de seis composições, filtros por ocasião e valor e montador de buquê. Marca, produtos e preços fictícios; ilustrações SVG autorais, sem dependência de fotos ou fontes externas.
+Demo independente com catálogo de seis composições, filtros por ocasião e valor e montador de buquê. Marca, produtos e preços fictícios; fotografias reais de banco, armazenadas localmente e identificadas como ilustrativas, sem fontes tipográficas externas. Os vetores originais foram preservados.
 
 ## Experimentar
 
@@ -24,7 +24,7 @@ Sem JavaScript, o catálogo permanece legível e os controles interativos ficam 
 
 O catálogo HTML traz alternativas iniciais legíveis sem script. Ao alterar nomes ou valores, atualize esses textos junto com a configuração. O script recalcula os preços dos cartões ao carregar.
 
-As formas de recebimento não calculam frete nem validam disponibilidade. Não há endereço, pedido, reserva, pagamento, upload, banco de dados, armazenamento persistente ou análise de visitantes implementados pela aplicação.
+As formas de recebimento não calculam frete nem validam disponibilidade. Não há endereço, pedido, reserva, pagamento, upload, banco de dados, armazenamento persistente ou análise de visitantes implementados pela aplicação. As fotos não reproduzem exatamente o tamanho, a embalagem ou a quantidade de flores selecionados; fontes em `assets/img/demo-photos/manifest.json`, na raiz do site.
 
 O uso real exige configuração comercial, integrações e revisão das políticas descritas em `implantacao.html`. Não incluir no sitemap como floricultura real; as duas páginas estão com `noindex, nofollow`.
 

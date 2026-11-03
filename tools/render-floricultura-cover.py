@@ -34,6 +34,7 @@ async def render(base, browser_path, output, overwrite):
         browser = await p.chromium.launch(executable_path=browser_path)
         page = await browser.new_page(viewport={'width': 1600, 'height': 1000}, device_scale_factor=1, reduced_motion='reduce')
         await page.goto(base + 'demos/floricultura/', wait_until='networkidle')
+        await page.wait_for_function('document.documentElement.dataset.mossPhotos === "ready"')
         capture = await page.screenshot(type='png')
         subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y' if overwrite else '-n', '-i', 'pipe:0', '-frames:v', '1', '-c:v', 'libwebp', '-quality', '85', str(THUMBNAIL)], input=capture, check=True)
         await page.set_viewport_size({'width': 1080, 'height': 1350})

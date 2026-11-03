@@ -8,7 +8,7 @@ REPO=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('builder',REPO/'tools/build-community-demos.py')
 builder=importlib.util.module_from_spec(spec);spec.loader.exec_module(builder)
 root=REPO.parent
-out=root/'Capas Instagram - Utilidade e Empreendedorismo'
+out=root/'04 - Divulgacao/Capas Instagram - Utilidade e Empreendedorismo'
 shots=out/'Previas dos sites'
 publish=REPO/'divulgacao/instagram/utilidade-empreendedorismo'
 publish.mkdir(parents=True,exist_ok=True)
@@ -61,7 +61,7 @@ sheet=Image.new('RGB',(1080,540),'#e8e8e8')
 for i,png in enumerate(coverpaths):sheet.paste(Image.open(png).convert('RGB').resize((216,270),Image.Resampling.LANCZOS),(i*216,135))
 sheet.save(out/'PREVIA-DAS-5-CAPAS.jpg',quality=90)
 
-packages=root/'Pacotes para entregar - Utilidade e Empreendedorismo';packages.mkdir(exist_ok=True)
+packages=root/'05 - Entregas/Pacotes para entregar - Utilidade e Empreendedorismo';packages.mkdir(parents=True,exist_ok=True)
 publicpackages=REPO/'entregas/utilidade-empreendedorismo';publicpackages.mkdir(parents=True,exist_ok=True)
 for c in builder.COLLECTION:
     source=REPO/'demos'/c['id'];target=packages/(c['folder']+'.zip')
@@ -76,7 +76,7 @@ Os cinco ZIPs contêm HTML, CSS, JavaScript, artes, privacidade, termos e checkl
 
 São demonstrações funcionais com dados fictícios, não operações prontas para receber clientes reais sem configuração. Antes de entregar, revise ENTREGA-AO-CLIENTE.md, substitua dados e contatos, adapte as políticas e configure integrações necessárias. Não há backend, confirmação de vagas, pagamento, agenda real ou gestão de estoque compartilhada.
 
-O material de Instagram está em Capas Instagram - Utilidade e Empreendedorismo, na pasta principal da MOSS. No repositório: divulgacao/instagram/utilidade-empreendedorismo/.
+O material de Instagram está em 04 - Divulgacao/Capas Instagram - Utilidade e Empreendedorismo, na pasta principal da MOSS. No repositório: divulgacao/instagram/utilidade-empreendedorismo/.
 '''
 (packages/'LEIA-ANTES-DE-ENTREGAR.md').write_text(instructions,encoding='utf-8')
 (publicpackages/'LEIA-ANTES-DE-ENTREGAR.md').write_text(instructions,encoding='utf-8')

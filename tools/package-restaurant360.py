@@ -5,8 +5,8 @@ import base64,shutil,subprocess,uuid,zipfile,struct
 from urllib.parse import quote
 
 repo=Path(__file__).resolve().parents[1];root=repo.parent;source=repo/'restaurante-360'
-presentation=root/'Restaurante 360 - Apresentacao e Capas';presentation.mkdir(exist_ok=True)
-local=root/'Demos de sites/Restaurante 360 - Operacao Mista'
+presentation=root/'04 - Divulgacao/Restaurante 360 - Apresentacao e Capas';presentation.mkdir(parents=True,exist_ok=True)
+local=root/'02 - Demos de sites/Restaurante 360 - Operacao Mista'
 temp=Path.home()/'AppData/Local/Temp/opencode'
 
 # Eu uso as capturas dos testes para criar imagens reais da interface, não fotos de clientes.
@@ -83,7 +83,7 @@ url='https://mossdigital.com.br/restaurante-360/'
 (source/'LINK-PARA-CLIENTE.txt').write_text(url+'\nPainel: '+url+'painel.html\n\nDisponível após publicação. Demonstração fictícia; explique limites antes de compartilhar.\n',encoding='utf-8')
 (source/'Abrir demo online.url').write_text('[InternetShortcut]\nURL='+url+'\n',encoding='utf-8')
 shutil.copytree(source,local,dirs_exist_ok=True)
-package=root/'Pacotes para entregar - Restaurante 360';package.mkdir(exist_ok=True)
+package=root/'05 - Entregas/Pacotes para entregar - Restaurante 360';package.mkdir(parents=True,exist_ok=True)
 zipname=package/'Restaurante 360 - Demonstracao Completa.zip'
 with zipfile.ZipFile(zipname,'w',zipfile.ZIP_DEFLATED) as z:
     for p in source.rglob('*'):

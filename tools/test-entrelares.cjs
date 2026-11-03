@@ -3,7 +3,7 @@ const fs=require('fs'),path=require('path'),assert=require('assert/strict');
 const {spawn}=require('child_process'),{pathToFileURL}=require('url');
 const repo=path.resolve(__dirname,'..'),base=path.join(repo,'demos','entrelares');
 const temp=path.join(process.env.LOCALAPPDATA,'Temp','opencode');
-const output=path.resolve(repo,'..','EntreLares - Apresentacao e Instagram');fs.mkdirSync(output,{recursive:true});
+const output=path.resolve(repo,'..','04 - Divulgacao','EntreLares - Apresentacao e Instagram');fs.mkdirSync(output,{recursive:true});
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 (async()=>{
   const profile=fs.mkdtempSync(path.join(temp,'entrelares-test-'));

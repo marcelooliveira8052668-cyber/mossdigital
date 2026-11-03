@@ -4,9 +4,9 @@ from PIL import Image
 import base64,shutil,subprocess,uuid,zipfile,struct
 
 repo=Path(__file__).resolve().parents[1];root=repo.parent;source=repo/'demos/entrelares'
-presentation=root/'EntreLares - Apresentacao e Instagram';presentation.mkdir(exist_ok=True)
+presentation=root/'04 - Divulgacao/EntreLares - Apresentacao e Instagram';presentation.mkdir(parents=True,exist_ok=True)
 folder='EntreLares - Agencia de Profissionais'
-local=root/'Demos de sites'/folder
+local=root/'02 - Demos de sites'/folder
 temp=Path.home()/'AppData/Local/Temp/opencode'
 
 # Eu uso a captura real dos testes como previa; nao invento fotos de candidatos ou clientes.
@@ -40,7 +40,7 @@ Texto alternativo: Capa da MOSS Digital com prévia do modelo EntreLares e chama
 (publish/'LEGENDA E INSTRUCOES.txt').write_text(caption,encoding='utf-8')
 
 shutil.copytree(source,local,dirs_exist_ok=True)
-package=root/'Pacotes para entregar - EntreLares';package.mkdir(exist_ok=True)
+package=root/'05 - Entregas/Pacotes para entregar - EntreLares';package.mkdir(parents=True,exist_ok=True)
 zipname=package/(folder+'.zip')
 with zipfile.ZipFile(zipname,'w',zipfile.ZIP_DEFLATED) as z:
     for p in source.rglob('*'):

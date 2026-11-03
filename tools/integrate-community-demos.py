@@ -7,7 +7,7 @@ REPO=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('builder',REPO/'tools/build-community-demos.py')
 builder=importlib.util.module_from_spec(spec);spec.loader.exec_module(builder)
 collection=builder.COLLECTION
-local=REPO.parent/'Demos de sites'
+local=REPO.parent/'02 - Demos de sites'
 ids=[c['id'] for c in collection]
 
 p=REPO/'assets/js/portfolio.js';t=p.read_text(encoding='utf-8-sig')

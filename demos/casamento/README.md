@@ -8,7 +8,7 @@ Casal, história, evento, data e local fictícios. Não há cerimônia, endereç
 - Respostas não são enviadas nem armazenadas. O site não pede telefone, e-mail, documento ou endereço.
 - O contato final é exclusivamente com a MOSS Digital para conhecer o modelo de site. Uma mensagem só é enviada quando o visitante confirmar no WhatsApp externo.
 - Sem JavaScript: história e programação permanecem disponíveis; formulário desabilitado. Nenhuma fonte externa ou análise de visitantes foi adicionada.
-- Arte SVG autoral em `assets/monograma.svg`.
+- Monograma SVG original preservado em `assets/monograma.svg`. A apresentação usa fotografias reais ilustrativas de decoração, não de um evento ou local deste casal fictício. Fontes em `assets/img/demo-photos/manifest.json`, na raiz do site.
 
 Para um evento real: configurar recebimento de confirmações, regras de convidados, acesso restrito, política de privacidade e recursos de presentes conforme o orçamento. Revisar o conteúdo e substituir as informações fictícias. As páginas demonstrativas mantêm `noindex,nofollow` e não entram no sitemap como eventos reais.
 

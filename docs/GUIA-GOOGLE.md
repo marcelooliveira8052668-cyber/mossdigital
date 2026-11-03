@@ -55,7 +55,7 @@ Se elegível, cadastre o nome real da empresa, categoria adequada, site, telefon
 ## 6. Trazer visitas e referências reais
 
 1. Coloque `https://mossdigital.com.br/` na bio do Instagram e no WhatsApp Business.
-2. Publique as cinco capas da pasta **Capas Instagram - Novas Demos** e convide a visitar a página de modelos. Não anuncie as marcas fictícias como clientes reais.
+2. Publique as cinco capas da pasta **04 - Divulgacao/Capas Instagram - Novas Demos** e convide a visitar a página de modelos. Não anuncie as marcas fictícias como clientes reais.
 3. Publique trabalhos reais com autorização, explicando o problema resolvido.
 4. Peça a parceiros e clientes que mencionem a MOSS quando houver contexto e autorização. Não compre pacotes de links.
 5. Mantenha nome, telefone e endereço de contato consistentes nas plataformas utilizadas.

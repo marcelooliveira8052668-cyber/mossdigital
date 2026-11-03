@@ -1,0 +1,136 @@
+
+/* MOSS Digital — Visual moderno e elegante */
+/* Eu defino as cores principais do site. */
+:root {
+  --navy: #17365d;
+  --yellow: #d6a13d;
+  --muted: #52647a;
+}
+
+/* Eu deixo o fundo mais claro e sofisticado. */
+body {
+  background: #f8fafc;
+  color: #172b45;
+}
+
+/* Eu modernizo o cabeçalho. */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e7edf5;
+  box-shadow: 0 4px 20px rgba(20, 45, 80, 0.04);
+}
+
+/* Eu preservo o logotipo original. */
+.brand-logo {
+  width: min(260px, 68vw);
+  height: auto;
+}
+
+/* Eu melhoro a navegação. */
+nav a {
+  transition: color 0.25s ease;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+/* Eu transformo a apresentação principal. */
+.hero {
+  background: linear-gradient(135deg, #ffffff, #eaf2ff);
+  color: #17365d;
+  padding: 90px 20px;
+}
+
+.hero h1 {
+  color: #17365d;
+  letter-spacing: -1.5px;
+}
+
+.hero p {
+  color: #52647a;
+}
+
+.eyebrow,
+.price {
+  color: #a47720;
+}
+
+/* Eu modernizo o botão de orçamento. */
+.cta {
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.16);
+  transition: transform 0.25s ease;
+}
+
+.cta:hover {
+  transform: translateY(-3px);
+}
+
+/* Eu deixo os cartões mais elegantes. */
+.card {
+  border-radius: 20px;
+  border: 1px solid #e5ebf3;
+  box-shadow: 0 10px 30px rgba(20, 45, 80, 0.07);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(20, 45, 80, 0.12);
+}
+
+/* Eu valorizo as imagens dos modelos. */
+.card img {
+  height: 215px;
+  object-fit: cover;
+}
+
+/* Eu melhoro o espaçamento dos cartões. */
+.card .body {
+  padding: 25px;
+}
+
+/* Eu modernizo os botões de demonstração. */
+.btn-outline {
+  border-radius: 12px;
+  transition: background 0.25s ease;
+}
+
+/* Eu destaco as seções de modelos e sistemas. */
+.more {
+  background: #edf3fb;
+  border: 1px solid #e1eaf5;
+  border-radius: 18px;
+}
+
+/* Eu deixo o rodapé discreto. */
+footer {
+  background: #ffffff;
+  border-top: 1px solid #e5ebf3;
+}
+
+/* Eu mantenho o site adaptado ao celular. */
+@media (max-width: 560px) {
+  .hero {
+    padding: 60px 20px;
+  }
+
+  .hero h1 {
+    letter-spacing: -0.5px;
+  }
+
+  .card img {
+    height: 210px;
+  }
+}
+
+/* Eu respeito usuários que preferem menos movimento. */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .cta,
+  nav a {
+    transition: none;
+  }
+}

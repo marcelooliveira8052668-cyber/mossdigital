@@ -67,7 +67,7 @@ async def test(base, output, browser_path, axe_path, catalog):
         await page.locator('[name="size"][value="grande"]').check()
         await page.locator('#wrapping').select_option('caixa')
         assert await page.locator('#bouquet-total').inner_text() == 'R$\xa0210,00'
-        assert await page.locator('#preview-flower').get_attribute('href') == 'assets/florais.svg#girassol'
+        assert (await page.locator('#preview-flower').get_attribute('src')).endswith('/demo-photos/girassois.webp')
         assert await page.locator('#bouquet-preview').get_attribute('data-wrap') == 'caixa'
         await page.locator('#receiving').select_option('entrega')
         assert 'Frete sob consulta' in await page.locator('#receiving-summary').inner_text()

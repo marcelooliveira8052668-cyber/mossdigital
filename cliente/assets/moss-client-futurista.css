@@ -1,0 +1,136 @@
+/* Camada futurista sobre a Área do Cliente. Mantém as classes da aplicação. */
+:root{
+  --moss-fundo:#070c18;--moss-cartao:#101a2c;--moss-campo:#0b1423;--moss-borda:#26364e;
+  --moss-laranja:#64d9ff;--moss-texto:#edf4ff;--moss-suave:#a3b3cb;
+  --moss-destaque:#78eddd;--moss-borda-forte:#43c7ff99;
+}
+body{
+  background:
+    radial-gradient(ellipse at 85% 8%,#1856b43d,transparent 52%),
+    radial-gradient(ellipse at 4% 95%,#097e9429,transparent 46%),
+    linear-gradient(#708ebc09 1px,transparent 1px),
+    linear-gradient(90deg,#708ebc09 1px,transparent 1px),
+    #070c18;
+  background-size:auto,auto,56px 56px,56px 56px,auto;
+  font-family:"Segoe UI",Arial,sans-serif;
+}
+body::selection{background:#36c8ff;color:#06101e}
+.portal,.portal.acesso,.entrada-areas{max-width:1240px}
+.destaque{
+  color:#78eddd;font:600 .7rem/1.5 Consolas,monospace;letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.destaque::before{content:"// ";color:#4589aa}
+.marca{
+  font:700 1.4rem/1 "Segoe UI",Arial,sans-serif;letter-spacing:-.035em;
+  color:#edf4ff;text-decoration:none;
+}
+.marca span{color:#64d9ff;font-size:.75rem;letter-spacing:.18em;font-weight:600}
+.cabecalho,.resumo-projeto{padding:14px 0;border-bottom:1px solid #23314a}
+.etiqueta{
+  color:#78eddd;border:1px solid #3b6f5a;border-radius:7px;padding:8px 14px;
+  background:#0e2d31;font:600 .75rem/1.4 Consolas,monospace;letter-spacing:.05em;
+}
+.apresentacao{padding:72px 0 36px;position:relative}
+.apresentacao::before{
+  content:"";position:absolute;width:430px;height:430px;border:1px solid #3b8bc026;
+  border-radius:50%;right:-150px;top:-230px;box-shadow:0 0 0 48px #3b8bc00a,0 0 0 96px #3b8bc007;
+  pointer-events:none;
+}
+.apresentacao h1{
+  font-size:clamp(2.6rem,5vw,4.6rem);font-weight:750;line-height:1.08;letter-spacing:-.055em;
+  color:#f0f6ff;margin:18px 0 18px;
+}
+.apresentacao h1 em{font-style:normal;color:#64d9ff;background:linear-gradient(105deg,#a0eaff,#53b7ff 55%,#98a8ff);background-clip:text;-webkit-text-fill-color:transparent}
+.apresentacao p{color:#b5c5de;max-width:620px;font-size:.98rem;line-height:1.8}
+.aviso{
+  border:1px solid #304764;border-left:3px solid #64d9ff;border-radius:8px;
+  background:linear-gradient(110deg,#122441,#0e1c2e);color:#dce7f4;
+  padding:18px 22px;font-size:.86rem;line-height:1.7;
+}
+.projeto,.cartao{
+  background:linear-gradient(145deg,#132035,#0e1728);border:1px solid #2b3d57;
+  border-radius:13px;padding:28px;box-shadow:0 12px 28px -20px #0009;
+  transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.projeto:hover,.cartao:hover{transform:translateY(-4px);border-color:#4a91bc;box-shadow:0 15px 35px -20px #000c,0 0 24px #26baff0c}
+.projeto h3,.cartao h2{color:#edf4ff;font-weight:650;letter-spacing:-.02em}
+.projeto p,.cartao p{color:#aebed3}
+.projeto h3{font-size:1.35rem}
+.escolha-areas{gap:22px}
+.acesso-destino{
+  background:linear-gradient(145deg,#132035,#0e1728);border:1px solid #2b3d57;
+  border-radius:13px;padding:26px;box-shadow:0 12px 28px -20px #0009;
+  gap:18px;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.acesso-destino:hover,.acesso-destino:focus-visible{
+  border-color:#4a91bc;transform:translateY(-4px);
+  box-shadow:0 15px 35px -20px #000c,0 0 24px #26baff0c;outline:none;
+}
+.acesso-destino strong{font-size:1.8rem;font-weight:700;color:#edf4ff;letter-spacing:-.03em}
+.destino-acao{color:#64d9ff;font-weight:600;font-size:.85rem}
+.formulario{gap:16px;margin-top:30px}
+.formulario input,.formulario select,.formulario textarea{
+  background:#0b1423;border:1px solid #26364e;border-radius:7px;color:#edf4ff;
+  padding:14px 16px;font-size:.9rem;transition:border-color .2s ease,background .2s ease;
+}
+.formulario input::placeholder,.formulario textarea::placeholder{color:#7487a4}
+.formulario input:focus,.formulario select:focus,.formulario textarea:focus{
+  outline:none;border-color:#64d9ff;box-shadow:0 0 0 3px #64d9ff25;
+}
+.formulario label{color:#a3b3cb;font-size:.78rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.campos-projeto{gap:16px}
+.campos-projeto legend{color:#edf4ff;font-size:1rem;font-weight:650}
+button{
+  border:1px solid #377bd0;border-radius:8px;background:linear-gradient(115deg,#155ae0,#226edc);
+  color:#fff;font-weight:650;padding:14px 22px;font-size:.85rem;letter-spacing:.02em;
+  transition:background .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+  box-shadow:0 6px 28px #165dec30;
+}
+button:hover:not(:disabled):not(.alternar){background:#246beb;border-color:#5592f5;box-shadow:0 7px 35px #247dff50;transform:translateY(-1px)}
+button:disabled{opacity:.55;cursor:wait;border-color:#26364e;background:#101a2c;color:#7487a4;box-shadow:none}
+.alternar{border:0;background:transparent;color:#64d9ff;padding:0;margin-top:18px;font-weight:600;font-size:.85rem}
+.alternar:hover{color:#9be7ff;text-decoration:underline;text-underline-offset:4px}
+.conta{color:#a3b3cb;font-size:.85rem}
+.servicos{gap:18px}
+summary{color:#edf4ff;font-weight:650;font-size:1rem}
+summary::marker{color:#78eddd}
+.servicos details,.projeto details,.cartao details{background:#0b1423;border:1px solid #26364e;border-radius:7px;padding:16px 18px}
+.servicos details[open],.projeto details[open],.cartao details[open]{border-color:#43c7ff99}
+.lista-pedidos{gap:18px}
+.pedido{background:#101a2c;border:1px solid #26364e;border-radius:9px;padding:18px 20px;box-shadow:0 12px 28px -20px #0009}
+.pedido p{color:#aebed3;font-size:.88rem;line-height:1.75;white-space:pre-wrap}
+.pedido strong{color:#edf4ff}
+.titulo-pedidos{color:#edf4ff;font-size:1.3rem;font-weight:650;letter-spacing:-.02em}
+.progress{accent-color:#64d9ff;height:12px;border-radius:6px}
+.resumo-projeto h2{color:#edf4ff;font-size:1.45rem;font-weight:650;letter-spacing:-.02em}
+.cabecalho h1{font-size:clamp(2rem,4vw,3rem);font-weight:750;letter-spacing:-.04em;color:#f0f6ff}
+footer{color:#94a9c5;font-size:.8rem;border-top:1px solid #25344c;padding-top:28px;margin-top:36px}
+footer a{color:#64d9ff;text-decoration:underline;text-underline-offset:4px}
+@media (width<=640px){
+  .escolha-areas,.servicos{grid-template-columns:1fr;gap:18px}
+  .portal{padding:24px 18px}
+  .apresentacao{padding-top:48px}
+  .cabecalho h1{font-size:2rem}
+  .acesso-destino strong{font-size:1.5rem}
+  button{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+@media (forced-colors:active){
+  :root{--moss-laranja:ButtonText;--moss-borda:ButtonText;--moss-texto:CanvasText;--moss-fundo:Canvas;--moss-cartao:Canvas}
+  button{border:1px solid ButtonText;background:ButtonFace;color:ButtonText}
+  .acesso-destino,.projeto,.cartao{border:1px solid ButtonText}
+}
+/* Aviso de demonstração para a Área do Cliente. */
+.moss-client-note{
+  position:fixed;right:18px;bottom:18px;max-width:340px;z-index:20;
+  background:#101a2cff;border:1px solid #26364e;border-radius:10px;padding:14px 16px;
+  color:#a3b3cb;font-size:.74rem;line-height:1.6;box-shadow:0 12px 28px #0009;
+  backdrop-filter:blur(8px);
+}
+.moss-client-note strong{display:block;color:#edf4ff;margin-bottom:4px}
+.moss-client-note a{color:#64d9ff}
+@media (max-width:420px){.moss-client-note{right:10px;left:10px;max-width:none}}
+@media (prefers-reduced-motion:reduce){.moss-client-note{backdrop-filter:none}}
