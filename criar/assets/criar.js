@@ -112,7 +112,9 @@
       input.placeholder=value?value.slice(0,180):'';
     });
     document.getElementById('role-example').textContent='Sugestão para: '+selected.label+'. Use apenas o que for verdadeiro para você.';
-    document.getElementById('items-help').textContent='Escreva um item em cada linha. Identifique estudos e exemplos; não apresente como clientes reais.';
+    document.getElementById('items-help').textContent=product()==='curriculo'
+      ?'Escreva uma área ou vaga por linha. Ex.: atendimento, vendas, logística.'
+      :'Escreva um item em cada linha. Identifique estudos e exemplos; não apresente como clientes reais.';
     document.getElementById('example').textContent='Preencher com exemplos desta área';
     if(announce)examplesStatus.textContent='Os exemplos foram adaptados. Seus textos continuam como estavam.';
   }
@@ -141,7 +143,17 @@
     document.getElementById('name-label').textContent=kind==='site'?'Nome do seu negócio':'Seu nome';
     document.getElementById('role-label').textContent=cv?'Vaga ou área que você procura':'Uma frase sobre o que você faz';
     document.getElementById('role-example').textContent=cv?'Exemplo: “Busco minha primeira oportunidade em atendimento”.':'Exemplo: “Fotografia de eventos” ou “Manutenção residencial”.';
-    document.getElementById('items-label').textContent=cv?'Que atividades ou oportunidades procura?':kind==='portfolio'?'Quais projetos ou trabalhos quer mostrar?':'Quais serviços ou produtos oferece?';
+    document.getElementById('items-label').textContent=cv?'Quais áreas ou vagas te interessam?':kind==='portfolio'?'Quais projetos ou trabalhos quer mostrar?':'Quais serviços ou produtos oferece?';
+    /* Rótulos do currículo no formato de documento de emprego. */
+    document.getElementById('exp-label').innerHTML=(cv?'Experiência profissional':'Experiências ou atividades que já fez')+' <span>(opcional)</span>';
+    document.getElementById('exp-help').textContent=cv
+      ?'Liste uma por linha: cargo — empresa · período. Ex.: “Atendente — Padaria São João · 2022 a 2024”. Primeiro emprego? Deixe vazio ou conte atividades de curso, pessoais e voluntárias — sem inventar experiência.'
+      :'Primeiro emprego? Pode deixar vazio ou contar atividades de curso, pessoais e voluntárias, identificando cada uma. Não invente experiência.';
+    document.getElementById('skill-label').innerHTML=(cv?'Habilidades e competências':'O que você sabe fazer')+' <span>(opcional)</span>';
+    document.getElementById('contact-label').innerHTML=(cv?'Contato profissional':'Contato que gostaria de mostrar')+' <span>(opcional)</span>';
+    document.getElementById('contact-help').textContent=cv
+      ?'Como querem te encontrar: cidade, e-mail, telefone ou LinkedIn. Use dados fictícios neste teste.'
+      :'No teste, não use telefone nem e-mail reais. Este campo será apenas texto, não envia mensagens.';
     document.getElementById('product-help').textContent='Você está criando: '+names[kind]+'. Preencha com dados fictícios enquanto testamos.';
     document.getElementById('professional-fields').hidden=kind==='site';
     document.getElementById('delivery-fields').hidden=cv;
@@ -551,7 +563,7 @@
     var nome=form.elements.nome.value.trim();
     var itens=form.elements.itens.value;
     if(itens){
-      var tituloItens=kind==='site'?'O que oferecemos':kind==='portfolio'?'Projetos e trabalhos':'Objetivo e atividades de interesse';
+      var tituloItens=kind==='site'?'O que oferecemos':kind==='portfolio'?'Projetos e trabalhos':'Áreas de interesse';
       var lis=itens.split(/\r?\n/).filter(function(linha){return linha.trim();}).map(function(linha){return '<li>'+esc(linha.trim())+'</li>';}).join('');
       if(lis)out.push('<section><h2>'+tituloItens+'</h2><ul class="items">'+lis+'</ul></section>');
     }
@@ -574,7 +586,7 @@
     }
     function bloco(titulo,valor){var texto=(valor||'').trim();if(texto)out.push('<section><h2>'+titulo+'</h2><p class="text">'+esc(texto)+'</p></section>');}
     if(kind==='curriculo'){
-      bloco('Experiências e atividades',form.elements.experiencia.value);
+      bloco('Experiência profissional',form.elements.experiencia.value);
       bloco('Formação e cursos',form.elements.formacao.value);
       bloco('Habilidades',form.elements.habilidades.value);
     }else if(kind==='portfolio'){
@@ -592,7 +604,10 @@
     var modelo=form.querySelector('input[name="modelo"]:checked').value;
     var nome=form.elements.nome.value;
     var avatar=(kind==='curriculo'&&photos.length)?'<img class="avatar" src="'+escLive(photos[0].uri)+'" alt="'+escLive(photos[0].legenda||'Foto de exemplo')+'">':'';
-    var header='<header>'+avatar+'<p class="subtitle">'+escLive(form.elements.titulo.value)+'</p><h1>'+escLive(nome)+'</h1><p class="text">'+escLive(form.elements.apresentacao.value)+'</p></header>';
+    var nomeTag='<h1>'+escLive(nome)+'</h1>';
+    var fraseTag='<p class="subtitle">'+escLive(form.elements.titulo.value)+'</p>';
+    var header='<header>'+avatar+(kind==='curriculo'?nomeTag+fraseTag:fraseTag+nomeTag)+
+      '<p class="text">'+escLive(form.elements.apresentacao.value)+'</p></header>';
     var notice='<aside class="preview">PRÉVIA DE TESTE MOSS DIGITAL · NÃO PUBLICADO · NÃO É COMPROVANTE DE COMPRA</aside>';
     var footer='<footer>Prévia criada com informações de teste. Pagamento e entrega final ainda não ativados.</footer>';
     var cores='--bg:'+corFundo.value+';--ink:'+corTexto.value+';--accent:'+corDestaque.value;
@@ -618,12 +633,15 @@
     doc.title=(nome||'Prévia')+' — '+names[kind];
     var avatar=(kind==='curriculo'&&photos.length)?'<img class="avatar" src="'+escLive(photos[0].uri)+'" alt="'+escLive(photos[0].legenda||'Foto de exemplo')+'">':'';
     var secoes=liveSecoes(kind);
-    var assinatura=avatar+'|'+secoes;
+    var assinatura=kind+'|'+avatar+'|'+secoes;
     var main=doc.querySelector('main');
     if(assinatura!==liveAssinatura){
       var antes=main.querySelectorAll('.gallery figure').length;
       liveAssinatura=assinatura;
-      main.innerHTML='<header>'+avatar+'<p class="subtitle" id="l-titulo"></p><h1 id="l-nome"></h1><p class="text" id="l-apresentacao"></p></header>'+secoes;
+      var cabecalho=kind==='curriculo'
+        ?'<h1 id="l-nome"></h1><p class="subtitle" id="l-titulo"></p>'
+        :'<p class="subtitle" id="l-titulo"></p><h1 id="l-nome"></h1>';
+      main.innerHTML='<header>'+avatar+cabecalho+'<p class="text" id="l-apresentacao"></p></header>'+secoes;
       var figs=main.querySelectorAll('.gallery figure');
       for(var i=antes;i<figs.length;i++)figs[i].classList.add('entra');
     }
