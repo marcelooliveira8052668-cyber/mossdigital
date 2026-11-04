@@ -125,12 +125,12 @@ footer a{color:#64d9ff;text-decoration:underline;text-underline-offset:4px}
 }
 /* Aviso de demonstração para a Área do Cliente. */
 .moss-client-note{
-  position:fixed;right:18px;bottom:18px;max-width:340px;z-index:20;
+  position:fixed;right:18px;bottom:18px;max-width:340px;z-index:20;pointer-events:none;
   background:#101a2cff;border:1px solid #26364e;border-radius:10px;padding:14px 16px;
   color:#a3b3cb;font-size:.74rem;line-height:1.6;box-shadow:0 12px 28px #0009;
   backdrop-filter:blur(8px);
 }
 .moss-client-note strong{display:block;color:#edf4ff;margin-bottom:4px}
-.moss-client-note a{color:#64d9ff}
-@media (max-width:420px){.moss-client-note{right:10px;left:10px;max-width:none}}
+.moss-client-note a{color:#64d9ff;pointer-events:auto}
+@media (max-width:640px){.moss-client-note{position:static;margin:24px 10px 32px;max-width:none;box-shadow:none;backdrop-filter:none}}
 @media (prefers-reduced-motion:reduce){.moss-client-note{backdrop-filter:none}}
