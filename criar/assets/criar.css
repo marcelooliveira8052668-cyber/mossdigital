@@ -62,3 +62,6 @@
 .preview-support p{margin:0;color:#526479;font-size:.88rem}
 .preview-support a{display:inline-flex;align-items:center;padding:10px 16px;border:1px solid var(--blue);border-radius:9px;background:#fff;color:var(--blue);font-weight:700;font-size:.9rem;text-decoration:none;white-space:normal}
 .preview-support a:hover{background:#e7f0ff}
+#occupation-context{margin-bottom:20px}
+#occupation-context label{margin-top:0}
+#occupation-context small{display:block;margin-top:8px;color:#526479;font-size:.82rem}

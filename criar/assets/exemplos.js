@@ -33,9 +33,10 @@
   function areas(kind) {
     return Object.keys(catalog[kind] || {}).map(function (key) { return {value:key, label:catalog[kind][key][0]}; });
   }
-  function example(kind, area, level) {
+  function example(kind, area, level, occupation) {
     if (!catalog[kind]) throw new Error('Produto desconhecido.');
     var selected = catalog[kind][area] || catalog[kind].geral;
+    var profession = typeof occupation === 'string' && kind !== 'site' ? occupation.trim().slice(0, 90) : '';
     var result = {nome:'',titulo:'',apresentacao:'',itens:'',experiencia:'',formacao:'',habilidades:'',contato:'Contato ilustrativo — não disponível'};
     if (kind === 'curriculo') {
       result.nome = 'Alex Exemplo — pessoa fictícia';
@@ -51,11 +52,19 @@
       result.experiencia = level === 'experiente' ? '[Cargo que você realmente exerceu] — [Empresa e período a confirmar]\n[Descreva suas responsabilidades reais. Não mantenha os colchetes na versão final.]' : '';
       result.formacao = '[Sua formação real] — [Instituição e situação do curso]\n[Curso complementar que você realmente fez, se houver]';
       result.habilidades = selected[3];
+      if (profession) {
+        result.titulo = level === 'primeiro' ? 'Primeira oportunidade — ' + profession : 'Objetivo profissional: ' + profession;
+        result.apresentacao = 'Tenho interesse na ocupação: ' + profession + '. Descreva aqui somente seus conhecimentos, atividades e experiências reais. Ajuste este exemplo para refletir sua trajetória.';
+      }
     } else {
       result.nome = selected[1]; result.titulo = selected[2]; result.apresentacao = selected[3]; result.itens = selected[4];
       if (kind === 'portfolio') { result.formacao = '[Sua formação ou cursos reais, se desejar informar]'; result.habilidades = selected[5]; }
+      if (kind === 'portfolio' && profession) {
+        result.titulo = 'Projetos e trabalhos — ' + profession;
+        result.apresentacao = 'Este exemplo organiza projetos e trabalhos ligados à área que você escolheu. Identifique estudos e atividades reais, sem inventar clientes ou resultados.';
+      }
     }
-    return {label:selected[0],content:result};
+    return {label:profession || selected[0],content:result};
   }
   return {areas:areas, example:example};
 }));

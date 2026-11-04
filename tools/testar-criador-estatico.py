@@ -141,6 +141,15 @@ async def main():
                     await page.click('.header .back')
                     await page.locator('#hero-title').wait_for(state='visible')
                     check('Botão de voltar leva para a página principal', True)
+                    await page.goto(DOMINIO + 'criar/index.html', wait_until='networkidle')
+                    await page.check('input[name="produto"][value="curriculo"]')
+                    await page.click('#next')
+                    check('Catálogo CBO carregado no site estático para o currículo',
+                          await page.locator('#occupation').is_visible()
+                          and await page.locator('#occupation-list option').count() > 2500)
+                    await page.fill('#occupation', 'Enfermeiro')
+                    check('Exemplos de currículo acompanham profissão pesquisada',
+                          'Enfermeiro' in await page.locator('#example-titulo').inner_text())
                 finally:
                     await browser.close()
         except Exception as e:

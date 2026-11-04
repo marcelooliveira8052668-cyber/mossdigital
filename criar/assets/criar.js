@@ -16,6 +16,8 @@
   var deliveries = {download:'Arquivo para baixar',publicar:'Publicação na internet',ambos:'Publicação + arquivos para baixar'};
   var contextProduct = '';
   var area = document.getElementById('area');
+  var occupation = document.getElementById('occupation');
+  var occupationsReady = false;
   var moment = document.getElementById('momento');
   var examplesStatus = document.getElementById('examples-status');
   var library = window.MossExamples;
@@ -86,7 +88,18 @@
   }
 
   function product() { var selected=form.querySelector('input[name="produto"]:checked');return selected ? selected.value : ''; }
-  function currentExample() { return library.example(product(),area.value,moment.value); }
+  function currentExample() { return library.example(product(),area.value,moment.value,occupation.value); }
+
+  function loadOccupations() {
+    if (occupationsReady || !Array.isArray(window.MossOccupations)) return;
+    var list = document.getElementById('occupation-list');
+    var options = document.createDocumentFragment();
+    window.MossOccupations.forEach(function(entry){
+      var option=document.createElement('option');option.value=entry[1];option.label='CBO '+entry[0];options.appendChild(option);
+    });
+    list.appendChild(options);
+    occupationsReady = true;
+  }
 
   /* ---------- exemplos por área ---------- */
   function updateExamples(announce) {
@@ -136,9 +149,16 @@
     if(contextProduct!==kind){
       area.replaceChildren();
       library.areas(kind).forEach(function(item){var option=document.createElement('option');option.value=item.value;option.textContent=item.label;area.append(option);});
+      occupation.value='';
       moment.value='';contextProduct=kind;examplesStatus.textContent='';
     }
-    document.getElementById('area-label').textContent=cv?'Em qual área você quer trabalhar?':kind==='portfolio'?'Que tipo de trabalho quer mostrar?':'Qual é a área do seu negócio?';
+    document.getElementById('occupation-context').hidden=kind==='site';
+    if(kind!=='site')loadOccupations();
+    document.getElementById('occupation-label').textContent=cv?'Qual profissão ou vaga você procura?':'Que profissão ou tipo de trabalho quer mostrar?';
+    document.getElementById('area-label').textContent=cv||kind==='portfolio'?'Tema dos exemplos (opcional)':'Qual é a área do seu negócio?';
+    document.getElementById('context-help').textContent=cv||kind==='portfolio'
+      ?'Busque uma profissão acima ou escreva a sua. O tema abaixo só muda os exemplos fictícios; não altera seus textos.'
+      :'Os exemplos mudam conforme sua escolha. Eles não são informações sobre você.';
     document.getElementById('career-context').hidden=!cv;
     document.getElementById('name-label').textContent=kind==='site'?'Nome do seu negócio':'Seu nome';
     document.getElementById('role-label').textContent=cv?'Vaga ou área que você procura':'Uma frase sobre o que você faz';
@@ -410,6 +430,7 @@
   });});
 
   area.addEventListener('change',function(){updateExamples(true);});
+  occupation.addEventListener('input',function(){updateExamples(true);});
   moment.addEventListener('change',function(){updateExamples(true);});
 
   [corFundo,corTexto,corDestaque].forEach(function(input){input.addEventListener('input',function(){updateColors();error.textContent='';});});
