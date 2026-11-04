@@ -146,10 +146,18 @@ async def main():
                     await page.click('#next')
                     check('Catálogo CBO carregado no site estático para o currículo',
                           await page.locator('#occupation').is_visible()
+                          and await page.locator('#area-context').is_hidden()
                           and await page.locator('#occupation-list option').count() > 2500)
                     await page.fill('#occupation', 'Enfermeiro')
                     check('Exemplos de currículo acompanham profissão pesquisada',
                           'Enfermeiro' in await page.locator('#example-titulo').inner_text())
+                    await page.goto(DOMINIO + 'criar/index.html', wait_until='networkidle')
+                    await page.check('input[name="produto"][value="portfolio"]')
+                    await page.click('#next')
+                    await page.fill('#occupation', 'Fotógrafo')
+                    check('Portfólio não mostra menu curto e sugere fotografia',
+                          await page.locator('#area-context').is_hidden()
+                          and 'Ensaio de família' in await page.locator('#example-itens').inner_text())
                 finally:
                     await browser.close()
         except Exception as e:

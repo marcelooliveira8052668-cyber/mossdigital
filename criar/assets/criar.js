@@ -88,7 +88,11 @@
   }
 
   function product() { var selected=form.querySelector('input[name="produto"]:checked');return selected ? selected.value : ''; }
-  function currentExample() { return library.example(product(),area.value,moment.value,occupation.value); }
+  function currentExample() {
+    var kind=product();
+    var exampleArea=kind==='site'?area.value:library.areaForOccupation(kind,occupation.value);
+    return library.example(kind,exampleArea,moment.value,occupation.value);
+  }
 
   function loadOccupations() {
     if (occupationsReady || !Array.isArray(window.MossOccupations)) return;
@@ -128,7 +132,7 @@
     document.getElementById('items-help').textContent=product()==='curriculo'
       ?'Escreva uma área ou vaga por linha. Ex.: atendimento, vendas, logística.'
       :'Escreva um item em cada linha. Identifique estudos e exemplos; não apresente como clientes reais.';
-    document.getElementById('example').textContent='Preencher com exemplos desta área';
+    document.getElementById('example').textContent=product()==='site'?'Preencher com exemplos desta área':'Preencher com exemplos e editar';
     if(announce)examplesStatus.textContent='Os exemplos foram adaptados. Seus textos continuam como estavam.';
   }
 
@@ -148,16 +152,17 @@
     var kind=product();var cv=kind==='curriculo';
     if(contextProduct!==kind){
       area.replaceChildren();
-      library.areas(kind).forEach(function(item){var option=document.createElement('option');option.value=item.value;option.textContent=item.label;area.append(option);});
+      if(kind==='site')library.areas(kind).forEach(function(item){var option=document.createElement('option');option.value=item.value;option.textContent=item.label;area.append(option);});
       occupation.value='';
       moment.value='';contextProduct=kind;examplesStatus.textContent='';
     }
     document.getElementById('occupation-context').hidden=kind==='site';
+    document.getElementById('area-context').hidden=kind!=='site';
     if(kind!=='site')loadOccupations();
     document.getElementById('occupation-label').textContent=cv?'Qual profissão ou vaga você procura?':'Que profissão ou tipo de trabalho quer mostrar?';
-    document.getElementById('area-label').textContent=cv||kind==='portfolio'?'Tema dos exemplos (opcional)':'Qual é a área do seu negócio?';
+    document.getElementById('area-label').textContent='Qual é a área do seu negócio?';
     document.getElementById('context-help').textContent=cv||kind==='portfolio'
-      ?'Busque uma profissão acima ou escreva a sua. O tema abaixo só muda os exemplos fictícios; não altera seus textos.'
+      ?'A profissão escolhida ajusta os exemplos fictícios quando houver um modelo adequado. Seus textos não mudam automaticamente.'
       :'Os exemplos mudam conforme sua escolha. Eles não são informações sobre você.';
     document.getElementById('career-context').hidden=!cv;
     document.getElementById('name-label').textContent=kind==='site'?'Nome do seu negócio':'Seu nome';

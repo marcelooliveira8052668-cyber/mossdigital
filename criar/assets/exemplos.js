@@ -33,6 +33,23 @@
   function areas(kind) {
     return Object.keys(catalog[kind] || {}).map(function (key) { return {value:key, label:catalog[kind][key][0]}; });
   }
+  function areaForOccupation(kind, occupation) {
+    if (typeof occupation !== 'string' || !occupation.trim()) return 'geral';
+    var title = occupation.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    if (kind === 'portfolio') {
+      if (/fotograf|retrato|cinegraf/.test(title)) return 'fotografia';
+      if (/design|desenhista|ilustrador|artista visual/.test(title)) return 'design';
+      if (/programa|desenvolv|software|sistemas de tecnologia|computacao/.test(title)) return 'programacao';
+      if (/artesan|cerami|costur|marcen|bordad/.test(title)) return 'artesanato';
+    }
+    if (kind === 'curriculo') {
+      if (/programa|desenvolv|software|tecnologia da informacao|suporte computacional/.test(title)) return 'tecnologia';
+      if (/logistic|estoqu|almoxarif|transport|motorista/.test(title)) return 'logistica';
+      if (/administrativ|secretari|escritori|contabil|contador/.test(title)) return 'administrativo';
+      if (/atend|vended|comerc|recepcion/.test(title)) return 'atendimento';
+    }
+    return 'geral';
+  }
   function example(kind, area, level, occupation) {
     if (!catalog[kind]) throw new Error('Produto desconhecido.');
     var selected = catalog[kind][area] || catalog[kind].geral;
@@ -66,5 +83,5 @@
     }
     return {label:profession || selected[0],content:result};
   }
-  return {areas:areas, example:example};
+  return {areas:areas, areaForOccupation:areaForOccupation, example:example};
 }));
