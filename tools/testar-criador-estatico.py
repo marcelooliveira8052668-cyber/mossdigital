@@ -99,6 +99,21 @@ async def main():
                     check('Prévia estática avisa que não foi publicada', True)
                     await expect(previa.locator('.gallery img')).to_have_count(1)
                     check('Foto aparece na prévia final', True)
+                    suporte = page.locator('.preview-support a')
+                    href = await suporte.get_attribute('href') or ''
+                    check('Suporte da prévia abre WhatsApp sem enviar dados preenchidos',
+                          await suporte.is_visible()
+                          and href.startswith('https://wa.me/5511942038103?text=')
+                          and 'Padaria' not in href
+                          and await suporte.get_attribute('target') == '_blank'
+                          and 'noopener' in (await suporte.get_attribute('rel') or ''))
+                    await page.set_viewport_size({'width': 390, 'height': 844})
+                    await suporte.scroll_into_view_if_needed()
+                    check('Suporte acessível no celular sem rolagem horizontal',
+                          await suporte.is_visible()
+                          and await page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
+                    await page.screenshot(path=str(SAIDA / 'criador-suporte-celular.png'))
+                    await page.set_viewport_size({'width': 1440, 'height': 900})
                     await expect(page.locator('#order-price')).to_have_text('A definir')
                     check('Preço fica como não definido sem servidor', True)
                     pix = page.locator('#pix-open')
@@ -111,6 +126,7 @@ async def main():
                     await page.locator('[data-page="2"]').wait_for(state='visible')
                     check('Voltar funciona no site publicado',
                           await page.locator('#creator-grid').evaluate("el => el.classList.contains('on')"))
+                    check('Suporte some ao voltar da prévia', await suporte.is_hidden())
 
                     check('Nenhum arquivo local faltando', not faltando)
                     check('Só /api/... responde 404 (esperado sem backend)',
