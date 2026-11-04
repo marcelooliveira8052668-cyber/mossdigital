@@ -54,3 +54,6 @@
 .offer p{margin:8px 0 0;font-size:.87rem}
 .offer-state{font-weight:650;color:#264c72}
 @media(max-width:540px){.photo-list li{grid-template-columns:64px 1fr}.photo-list li button{grid-column:1/-1}.colors{gap:14px}.order-line strong{font-size:1.25rem}}
+.header-brand{display:flex;align-items:center;gap:16px;min-width:0}
+.header .back{display:inline-flex;align-items:center;gap:6px;padding:9px 15px;border:1px solid var(--edge);border-radius:10px;background:#fff;color:var(--blue);font-size:.85rem;font-weight:650;text-decoration:none;white-space:nowrap}
+.header .back:hover{background:#eef4ff;border-color:var(--blue)}

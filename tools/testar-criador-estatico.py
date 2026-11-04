@@ -121,6 +121,10 @@ async def main():
                     check('Sem armazenamento no navegador',
                           await page.evaluate('localStorage.length===0 && sessionStorage.length===0')
                           and len(await context.cookies()) == 0)
+
+                    await page.click('.header .back')
+                    await page.locator('#hero-title').wait_for(state='visible')
+                    check('Botão de voltar leva para a página principal', True)
                 finally:
                     await browser.close()
         except Exception as e:
