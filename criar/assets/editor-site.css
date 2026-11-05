@@ -1,0 +1,57 @@
+.site-editor {
+  margin: 24px 0 30px;
+}
+
+.site-editor > p {
+  color: #526479;
+}
+
+.site-editor details {
+  margin: 14px 0;
+  border: 1px solid #cbd7e5;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.site-editor summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #f1f5f9;
+  color: #183149;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.site-editor summary b {
+  color: #674709;
+  background: #fbe8bd;
+  border-radius: 5px;
+  padding: 3px 7px;
+  font-size: .78rem;
+}
+
+.site-editor-body {
+  padding: 12px 18px 22px;
+}
+
+.site-editor-body p,
+.site-editor-body small {
+  color: #526479;
+  font-size: .85rem;
+}
+
+.site-editor-body [id^="field-"] {
+  min-width: 0;
+}
+
+.site-editor-body input,
+.site-editor-body textarea {
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .site-editor-body { padding: 8px 14px 18px; }
+}

@@ -43,6 +43,9 @@ async def main():
 
                     async def servir(route):
                         url = route.request.url
+                        if url.endswith('/rest/v1/rpc/moss_criador_registrar'):
+                            await route.fulfill(status=200, content_type='application/json', body='{"id":"teste-local"}')
+                            return
                         if not url.startswith(DOMINIO):
                             externas.append(url)
                             await route.abort()
@@ -76,28 +79,34 @@ async def main():
                     await page.check('input[name="produto"][value="site"]')
                     await page.click('#next')
                     await page.locator('[data-page="1"]').wait_for(state='visible')
+                    check('Editor de site tem sete blocos preenchíveis',
+                          await page.locator('#site-editor details').count() == 7
+                          and await page.locator('#site-slot-nome #nome').count() == 1
+                          and await page.locator('#site-slot-contato #contato').count() == 1)
                     await page.click('#example')
                     await page.fill('#nome', 'Padaria Central')
                     await page.select_option('#entrega', 'ambos')
-                    await expect(live.locator('h1')).to_have_text('Padaria Central')
+                    await expect(live.locator('.site-brand')).to_have_text('Padaria Central')
+                    await expect(live.locator('.site-hero h1')).to_have_text('Uma apresentação do que meu negócio oferece')
                     check('Prévia ao vivo espelha no site publicado', True)
+
+                    foto = temp / 'foto-teste.png'
+                    foto.write_bytes(png_bytes())
+                    await page.locator('#site-editor details').nth(4).locator('summary').click()
+                    await page.set_input_files('#fotos', str(foto))
+                    await expect(live.locator('.site-gallery figure')).to_have_count(1)
+                    check('Foto escolhida dentro do bloco 05 entra na galeria', True)
 
                     await page.click('#next')
                     await page.locator('[data-page="2"]').wait_for(state='visible')
-                    foto = temp / 'foto-teste.png'
-                    foto.write_bytes(png_bytes())
-                    await page.set_input_files('#fotos', str(foto))
-                    await expect(live.locator('.gallery figure')).to_have_count(1)
-                    check('Foto processada no navegador entra na galeria', True)
-
                     await page.click('#next')
                     await page.locator('[data-page="3"]').wait_for(state='visible')
                     previa = page.frame_locator('#preview')
-                    await expect(previa.locator('h1')).to_have_text('Padaria Central')
+                    await expect(previa.locator('.site-brand')).to_have_text('Padaria Central')
                     check('Prévia do passo 3 montada no próprio navegador', True)
-                    await expect(previa.locator('.preview')).to_contain_text('PRÉVIA DE TESTE')
+                    await expect(previa.locator('.preview')).to_contain_text('PRÉVIA GRÁTIS')
                     check('Prévia estática avisa que não foi publicada', True)
-                    await expect(previa.locator('.gallery img')).to_have_count(1)
+                    await expect(previa.locator('.site-gallery img')).to_have_count(1)
                     check('Foto aparece na prévia final', True)
                     suporte = page.locator('.preview-support a')
                     href = await suporte.get_attribute('href') or ''
@@ -114,12 +123,10 @@ async def main():
                           and await page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
                     await page.screenshot(path=str(SAIDA / 'criador-suporte-celular.png'))
                     await page.set_viewport_size({'width': 1440, 'height': 900})
-                    await expect(page.locator('#order-price')).to_have_text('A definir')
+                    await expect(page.locator('#order-price')).to_have_text('A combinar no WhatsApp')
                     check('Preço fica como não definido sem servidor', True)
-                    pix = page.locator('#pix-open')
-                    await expect(pix).to_be_disabled()
-                    check('Pix desativado no site publicado',
-                          'indisponível' in (await pix.inner_text()).lower())
+                    check('Pix não é liberado antes da conferência do pedido',
+                          await page.locator('#pix-panel').is_hidden())
                     await page.screenshot(path=str(SAIDA / 'criador-estatico.png'), full_page=True)
 
                     await page.click('#back')

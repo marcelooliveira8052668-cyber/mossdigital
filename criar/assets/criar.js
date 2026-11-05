@@ -62,6 +62,27 @@
     if(!document.hidden&&step>0&&Date.now()-lastActivity<90000&&Date.now()-lastActivitySent>=30000)sendActivity();
   },30000);
   var fields = ['nome','titulo','apresentacao','itens','experiencia','formacao','habilidades','contato'];
+  var siteFields = ['site-acao','site-sobre','site-rodape'];
+  var fieldHomes = {};
+  ['nome','titulo','apresentacao','itens','contato'].forEach(function(field){
+    fieldHomes[field]=document.getElementById('field-'+field).parentElement;
+  });
+  fieldHomes.fotos=document.getElementById('photo-fields').parentElement;
+  function arrangeSiteFields(kind){
+    ['nome','titulo','apresentacao','itens','contato'].forEach(function(field){
+      var wrapper=document.getElementById('field-'+field);
+      (kind==='site'?document.getElementById('site-slot-'+field):fieldHomes[field]).appendChild(wrapper);
+    });
+    (kind==='site'?document.getElementById('site-slot-fotos'):fieldHomes.fotos).appendChild(document.getElementById('photo-fields'));
+    document.getElementById('generic-fields').hidden=kind==='site';
+    document.getElementById('site-editor').hidden=kind!=='site';
+    document.getElementById('personalization-help').textContent=kind==='site'
+      ?'As fotos ficam no bloco 05, Galeria ou portfólio. Agora escolha as cores e, se quiser, adicione um vídeo.'
+      :'Escolha uma paleta pronta ou monte a sua com as cores que quiser. Milhares de combinações, na hora.';
+  }
+  function hasEnteredContent(){
+    return fields.concat(siteFields).some(function(field){return form.elements[field].value.trim();});
+  }
   var names = {site:'Site',portfolio:'Portfólio',curriculo:'Currículo'};
   var deliveries = {download:'Arquivo para baixar',publicar:'Publicação na internet',ambos:'Publicação + arquivos para baixar'};
   var contextProduct = '';
@@ -116,7 +137,7 @@
     if (radio && !product()) { radio.checked = true; previousProduct = ORIGEM.produto; }
     var status = document.getElementById('origem-status');
     if (status) {
-      status.textContent = 'Você chegou pela demonstração “' + ORIGEM.nome + '”. Produto e área já estão marcados — pode seguir.';
+      status.textContent = 'Você chegou pela demonstração “' + ORIGEM.nome + '”. O produto e a área já estão marcados como ponto de partida; o visual da demo não é copiado automaticamente.';
       status.hidden = false;
     }
   }
@@ -204,7 +225,7 @@
       moment.value='';contextProduct=kind;examplesStatus.textContent='';
     }
     document.getElementById('occupation-context').hidden=kind==='site';
-    document.getElementById('site-guide').hidden=kind!=='site';
+    arrangeSiteFields(kind);
     document.getElementById('area-context').hidden=kind!=='site';
     if(kind!=='site')loadOccupations();
     document.getElementById('occupation-label').textContent=cv?'Qual profissão ou vaga você procura?':'Que profissão ou tipo de trabalho quer mostrar?';
@@ -214,7 +235,7 @@
       :'Os exemplos mudam conforme sua escolha. Eles não são informações sobre você.';
     document.getElementById('career-context').hidden=!cv;
     document.getElementById('name-label').textContent=kind==='site'?'Nome do seu negócio':'Seu nome';
-    document.getElementById('role-label').textContent=cv?'Vaga ou área que você procura':'Uma frase sobre o que você faz';
+    document.getElementById('role-label').textContent=cv?'Vaga ou área que você procura':kind==='site'?'Título da apresentação':'Uma frase sobre o que você faz';
     document.getElementById('role-example').textContent=cv?'Exemplo: “Busco minha primeira oportunidade em atendimento”.':'Exemplo: “Fotografia de eventos” ou “Manutenção residencial”.';
     document.getElementById('items-label').textContent=cv?'Quais áreas ou vagas te interessam?':kind==='portfolio'?'Quais projetos ou trabalhos quer mostrar?':'Quais serviços ou produtos oferece?';
     /* Rótulos do currículo no formato de documento de emprego. */
@@ -401,7 +422,12 @@
   /* ---------- envio / prévia ---------- */
   function payload() {
     var content={};fields.forEach(function(field){content[field]=form.elements[field].value;});
-    if(product()==='site'){content.experiencia='';content.formacao='';content.habilidades='';}
+    if(product()==='site'){
+      content.experiencia='';content.formacao='';content.habilidades='';
+      content.acao=form.elements['site-acao'].value;
+      content.sobre=form.elements['site-sobre'].value;
+      content.rodape=form.elements['site-rodape'].value;
+    }
     return {produto:product(),modelo:form.querySelector('input[name="modelo"]:checked').value,
             entrega:product()==='curriculo'?'download':form.elements.entrega.value,
             conteudo:content,personalizacao:personalizacao()};
@@ -419,7 +445,10 @@
     event.preventDefault();if(busy)return;
     if(step===0){if(!product()){error.textContent='Escolha se quer criar um site, um portfólio ou um currículo.';form.querySelector('input[name="produto"]').focus();return;}configure();show(1);return;}
     if(step===1){
-      for(var name of ['nome','titulo','apresentacao']){if(!form.elements[name].value.trim()){error.textContent='Preencha nome, título e apresentação para continuar.';form.elements[name].focus();return;}}
+      for(var name of ['nome','titulo','apresentacao']){if(!form.elements[name].value.trim()){
+        error.textContent='Preencha nome, título e apresentação para continuar.';
+        var field=form.elements[name];var details=field.closest('details');if(details)details.open=true;
+        field.focus();return;}}
       return show(2);
     }
     if(step!==2)return;
@@ -433,7 +462,7 @@
     }
     if(vk==='arquivo'&&!videoToken){error.textContent='Envie o arquivo de vídeo ou escolha outra opção.';return;}
     if(!/^https?:$/.test(location.protocol)){error.textContent='Abra pelo servidor para gerar a prévia.';return;}
-    if(!localServer()){
+    if(!localServer()||product()==='site'){
       frame.srcdoc=previewLocalHtml();
       document.getElementById('delivery-summary').textContent=names[product()]+' · '+(product()==='curriculo'?'PDF privado':deliveries[form.elements.entrega.value]);
       renderOrder();
@@ -459,7 +488,7 @@
   back.addEventListener('click',function(){if(busy)return;frame.removeAttribute('srcdoc');show(Math.max(0,step-1));});
 
   document.getElementById('example').addEventListener('click',function(){
-    if(fields.some(function(field){return form.elements[field].value.trim();})&&!confirm('Substituir os textos atuais por um exemplo fictício?'))return;
+    if(hasEnteredContent()&&!confirm('Substituir os textos atuais por um exemplo fictício?'))return;
     var content=currentExample().content;
     fields.forEach(function(field){form.elements[field].value=content[field];});
     examplesStatus.textContent='Exemplos fictícios preenchidos. Revise todos os campos antes de continuar.';
@@ -468,9 +497,10 @@
 
   form.querySelectorAll('input[name="produto"]').forEach(function(input){input.addEventListener('change',function(){
     if(previousProduct&&previousProduct!==product()){
-      if(fields.some(function(field){return form.elements[field].value.trim();})&&!confirm('Trocar o tipo de criação apaga os textos, as fotos e o vídeo atuais. Quer continuar?')){
+      if(hasEnteredContent()&&!confirm('Trocar o tipo de criação apaga os textos, as fotos e o vídeo atuais. Quer continuar?')){
         form.querySelector('input[name="produto"][value="'+previousProduct+'"]').checked=true;return;}
       fields.forEach(function(field){form.elements[field].value='';});
+      siteFields.forEach(function(field){form.elements[field].value='';});
       photos=[];renderPhotos();photoStatus.textContent='';
       clearVideo();
       frame.removeAttribute('srcdoc');
@@ -541,7 +571,7 @@
     if(whatsFinal)whatsFinal.href=url;
     if(whatsSupport){
       var referencia=pedidoEnviado?'Pedido '+pedidoEnviado:activityId?'Atendimento '+activityId:'Prévia ainda não enviada';
-      var ajuste=referencia+'. Olá, MOSS! Estou criando um '+names[kind]+(nome?' — '+nome:'')+'. Quero solicitar um recurso ou melhoria que não está incluído no modelo. Vou explicar o que preciso para vocês avaliarem viabilidade, prazo e eventual valor adicional.';
+      var ajuste=referencia+'. Olá, MOSS! Estou criando um '+names[kind]+'. Quero solicitar um recurso ou melhoria que não está incluído no modelo. Vou explicar o que preciso para vocês avaliarem viabilidade, prazo e eventual valor adicional.';
       whatsSupport.href='https://wa.me/5511942038103?text='+encodeURIComponent(ajuste);
     }
   }
@@ -616,6 +646,40 @@
       '<meta name="robots" content="noindex,nofollow"><title>Prévia — Site</title><link rel="stylesheet" href="assets/documento.css"></head>'+
       '<body class="claro site live"><main></main></body></html>';
   }
+  function siteSections(){
+    var esc=escLive;
+    var nome=form.elements.nome.value.trim();
+    var titulo=form.elements.titulo.value.trim();
+    var apresentacao=form.elements.apresentacao.value.trim();
+    var itens=form.elements.itens.value.split(/\r?\n/).map(function(item){return item.trim();}).filter(Boolean);
+    var sobre=form.elements['site-sobre'].value.trim();
+    var contato=form.elements.contato.value.trim();
+    var acao=form.elements['site-acao'].value.trim()||'Fale com a gente';
+    var rodape=form.elements['site-rodape'].value.trim();
+    var nav=['<a href="#inicio">Início</a>'];
+    if(itens.length)nav.push('<a href="#servicos">Serviços</a>');
+    if(sobre)nav.push('<a href="#sobre">Sobre</a>');
+    if(photos.length)nav.push('<a href="#galeria">Galeria</a>');
+    if(contato)nav.push('<a href="#contato">Contato</a>');
+    var heroImage=photos.length
+      ?'<img src="'+esc(photos[0].uri)+'" alt="'+esc(photos[0].legenda||'Foto de apresentação de '+nome)+'">'
+      :'<span class="site-visual-mark" aria-hidden="true">'+esc(nome||'Sua marca')+'</span>';
+    var html='<header class="site-header"><div class="site-shell"><a class="site-brand" href="#inicio">'+esc(nome||'Seu negócio')+'</a><nav aria-label="Navegação principal">'+nav.join('')+'</nav></div></header>'+
+      '<section class="site-hero" id="inicio"><div class="site-shell site-hero-grid"><div><span class="site-kicker">Bem-vindo</span><h1>'+esc(titulo||'Seu negócio em destaque')+'</h1><p class="text">'+esc(apresentacao||'Apresente seu negócio aqui.')+'</p>'+
+      (contato?'<a class="site-action" href="#contato">'+esc(acao)+'</a>':'')+'</div><div class="site-hero-art">'+heroImage+'</div></div></section>';
+    if(itens.length)html+='<section class="site-section site-shell" id="servicos"><h2>Serviços ou produtos</h2><div class="site-cards">'+itens.map(function(item){return '<article>'+esc(item)+'</article>';}).join('')+'</div></section>';
+    if(sobre)html+='<section class="site-section site-about" id="sobre"><div class="site-shell"><h2>Sobre a empresa</h2><p class="text">'+esc(sobre)+'</p></div></section>';
+    if(photos.length)html+='<section class="site-section site-shell" id="galeria"><h2>Galeria ou portfólio</h2><div class="site-gallery">'+photos.map(function(photo,index){
+      var alt=esc(photo.legenda||('Foto '+(index+1)+' de '+nome));
+      return '<figure><img src="'+esc(photo.uri)+'" alt="'+alt+'" loading="lazy"><figcaption>'+alt+'</figcaption></figure>';
+    }).join('')+'</div></section>';
+    var vk=videoKind();var url=document.getElementById('video-url').value.trim();
+    if(vk==='link'&&/^https:\/\//.test(url))html+='<section class="site-section site-shell"><h2>Vídeo</h2><p class="video-card"><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">▶ Assistir ao vídeo</a></p></section>';
+    else if(vk==='arquivo'&&videoToken)html+='<section class="site-section site-shell"><h2>Vídeo</h2><video controls preload="metadata" src="/criador/video/'+esc(videoToken)+'">Seu navegador não reproduz este vídeo.</video></section>';
+    if(contato)html+='<section class="site-section site-contact" id="contato"><div class="site-shell"><h2>Contato e próximo passo</h2><p class="text">'+esc(contato)+'</p></div></section>';
+    html+='<footer class="site-footer"><div class="site-shell"><strong>'+esc(nome||'Seu negócio')+'</strong>'+(rodape?'<span>'+esc(rodape)+'</span>':'')+'</div></footer>';
+    return html;
+  }
   function liveSecoes(kind){
     var out=[];var esc=escLive;
     var nome=form.elements.nome.value.trim();
@@ -668,6 +732,8 @@
     var notice='<aside class="preview">PRÉVIA GRÁTIS · MOSS DIGITAL · MONTE A SUA E FINALIZE NO WHATSAPP</aside>';
     var footer='<footer>Prévia criada com a MOSS Digital. Gostou? Finalize no WhatsApp.</footer>';
     var cores='--bg:'+corFundo.value+';--ink:'+corTexto.value+';--accent:'+corDestaque.value;
+    if(kind==='site')return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+
+      escLive(nome||'Seu negócio')+' — Site</title><link rel="stylesheet" href="assets/documento.css"></head><body class="'+modelo+' site" style="'+cores+'">'+notice+'<main>'+siteSections()+'</main></body></html>';
     return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+
       escLive(nome)+' — '+names[kind]+'</title><link rel="stylesheet" href="assets/documento.css"></head><body class="'+modelo+' '+kind+'" style="'+cores+'">'+
       notice+'<main>'+header+liveSecoes(kind)+footer+'</main></body></html>';
@@ -678,6 +744,11 @@
   }
   function syncLive(){
     if(!livePronto)return;
+    if(product()==='site'){
+      var siteHtml=previewLocalHtml();
+      if(siteHtml!==liveAssinatura){liveAssinatura=siteHtml;liveFrame.srcdoc=siteHtml;}
+      return;
+    }
     var doc=liveFrame.contentDocument;
     if(!doc||!doc.body||!doc.querySelector('main'))return;
     var kind=product()||'site';
@@ -708,7 +779,7 @@
     setTextLive(doc.getElementById('l-apresentacao'),form.elements.apresentacao.value.trim(),'Escreva um pouco sobre você ou seu negócio — a prévia monta sozinha.');
   }
   function montarLive(){
-    liveFrame.addEventListener('load',function(){livePronto=true;liveAssinatura='';syncLive();});
+    liveFrame.addEventListener('load',function(){livePronto=true;syncLive();});
     liveFrame.srcdoc=liveEsqueleto();
   }
   function atualizarVivo(alvo){
