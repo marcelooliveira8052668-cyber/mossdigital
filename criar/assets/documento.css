@@ -11,6 +11,8 @@ video{display:block;width:100%;max-width:640px;border-radius:8px;background:#000
 @media print{.preview,footer{display:none}body{background:white}main{padding:0}section{break-inside:avoid}}
 @media print{.curriculo main{max-width:none;padding:0}}
 body.live{transition:background-color .45s ease,color .45s ease}
+.contato-topo{margin:12px 0 18px;font-size:.92rem}
+.curriculo header:has(.avatar){position:relative;padding-right:110px;min-height:96px}.curriculo header>.avatar{position:absolute;right:0;top:0;margin:0}@media(max-width:420px){.curriculo header:has(.avatar){padding-right:82px}.curriculo header>.avatar{width:64px;height:64px}}
 body.live header,body.live h2,body.live .subtitle,body.live .video-card a{transition:color .45s ease,border-color .45s ease}
 body.live .ph{opacity:.5;font-style:italic}
 @keyframes liveFoto{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}

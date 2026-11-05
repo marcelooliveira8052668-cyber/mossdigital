@@ -14,6 +14,8 @@
   var onlineConfig=window.MossOnlineConfig||{};
   var onlineActivity=typeof onlineConfig.url==='string'&&/^https:\/\/[a-z0-9]{20}\.supabase\.co$/.test(onlineConfig.url)
     &&typeof onlineConfig.publishableKey==='string'&&onlineConfig.publishableKey.startsWith('sb_publishable_');
+  var receberPedidos=onlineActivity&&onlineConfig.receberPedidos===true;
+  var pedidoEnviado='';var pedidoSnapshot='';var enviandoPedido=false;
   var activityKey='';var activityId='';var activityPending=false;
   var activityQueued=false;var activityStage='preenchendo';var lastActivity=Date.now();
   var lastActivitySent=0;
@@ -221,10 +223,12 @@
       :'Primeiro emprego? Pode deixar vazio ou contar atividades de curso, pessoais e voluntárias, identificando cada uma. Não invente experiência.';
     document.getElementById('skill-label').innerHTML=(cv?'Habilidades e competências':'O que você sabe fazer')+' <span>(opcional)</span>';
     document.getElementById('contact-label').innerHTML=(cv?'Contato profissional':'Contato que gostaria de mostrar')+' <span>(opcional)</span>';
-    document.getElementById('contact-help').textContent=cv
+    document.getElementById('contact-help').textContent=receberPedidos
+      ?'Informe cidade, telefone, e-mail e links profissionais, um por linha. No currículo e portfólio, os contatos ficam no cabeçalho. Não informe CPF, RG ou endereço completo.'
+      :cv
       ?'Como querem te encontrar: cidade, e-mail, telefone ou LinkedIn. Use dados fictícios neste teste.'
       :'No teste, não use telefone nem e-mail reais. Este campo será apenas texto, não envia mensagens.';
-    document.getElementById('product-help').textContent='Você está criando: '+names[kind]+'. Preencha com dados fictícios enquanto testamos.';
+    document.getElementById('product-help').textContent='Você está criando: '+names[kind]+(receberPedidos?'. Revise seus textos antes de finalizar e enviar à MOSS.':'. Preencha com dados fictícios enquanto testamos.');
     document.getElementById('professional-fields').hidden=kind==='site';
     document.getElementById('delivery-fields').hidden=cv;
     document.getElementById('resume-delivery').hidden=!cv;
@@ -380,6 +384,12 @@
   /* ---------- resumo do pedido ---------- */
   function localServer(){return !onlineActivity&&/^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname);}
   function renderOrder() {
+    if(receberPedidos&&pedidoSnapshot&&pedidoSnapshot!==JSON.stringify(payload())){
+      pedidoEnviado='';pedidoSnapshot='';
+      document.getElementById('pix-panel').hidden=true;
+      whatsFinal.textContent='Finalizar e enviar projeto à MOSS';
+      document.getElementById('envio-status').textContent='Você alterou o projeto. Finalize para enviar esta nova versão.';
+    }
     atualizarWhatsapp('final');
     var kind=product();
     var delivery=kind==='curriculo'?'PDF privado':deliveries[form.elements.entrega.value];
@@ -484,8 +494,16 @@
   });
 
   reset.addEventListener('click',function(){
+    if(busy)return;
     if(!confirm('Apagar os textos, fotos e vídeo desta tela e começar outra criação?'))return;
     activityKey='';activityId='';activityQueued=false;activityInfo.textContent='';
+    pedidoEnviado='';pedidoSnapshot='';
+    if(receberPedidos){
+      document.getElementById('envio-consent').checked=false;
+      document.getElementById('envio-status').textContent='';
+      document.getElementById('pix-panel').hidden=true;
+      whatsFinal.textContent='Finalizar e enviar projeto à MOSS';
+    }
     HTMLFormElement.prototype.reset.call(form);previousProduct='';contextProduct='';examplesStatus.textContent='';
     var origemStatus=document.getElementById('origem-status');
     if(origemStatus){origemStatus.hidden=true;origemStatus.textContent='';}
@@ -516,12 +534,57 @@
     var titulo=form.elements.titulo.value.trim();
     var texto='Olá! Criei minha prévia no site da MOSS Digital: '+names[kind]+(nome?' — "'+nome+'"':'')+(titulo?' — '+titulo:'')+'. Entrega: '+delivery+'. Quero combinar o valor do Pix ou enviar meu comprovante para conferência. Aguardo a confirmação do recebimento e a entrega manual dos arquivos. Vou anexar o comprovante nesta conversa, se já tiver pago.';
     if(activityId)texto='Atendimento '+activityId+'. '+texto;
+    if(pedidoEnviado)texto='Pedido '+pedidoEnviado+'. Meu projeto foi enviado ao painel privado da MOSS. '+texto;
     if(contexto==='ajuste')texto='Olá! Fiz uma prévia no criador da MOSS Digital ('+names[kind]+(nome?' — "'+nome+'"':'')+') e quero ajustar o resultado. Pode me ajudar?';
     var url='https://wa.me/5511942038103?text='+encodeURIComponent(texto);
     if(whatsFinal)whatsFinal.href=url;
-    if(whatsSupport)whatsSupport.href=url;
+    if(whatsSupport){
+      var referencia=pedidoEnviado?'Pedido '+pedidoEnviado:activityId?'Atendimento '+activityId:'Prévia ainda não enviada';
+      var ajuste=referencia+'. Olá, MOSS! Estou criando um '+names[kind]+(nome?' — '+nome:'')+'. Quero solicitar um recurso ou melhoria que não está incluído no modelo. Vou explicar o que preciso para vocês avaliarem viabilidade, prazo e eventual valor adicional.';
+      whatsSupport.href='https://wa.me/5511942038103?text='+encodeURIComponent(ajuste);
+    }
   }
 
+  if(receberPedidos&&whatsFinal){
+    var envioBox=document.createElement('div');envioBox.className='note';
+    var consentLabel=document.createElement('label');consentLabel.className='envio-consent-label';var consent=document.createElement('input');
+    consent.type='checkbox';consent.id='envio-consent';
+    consentLabel.append(consent,document.createTextNode(' Autorizo enviar meus textos, contatos, fotos e configurações à MOSS para preparar este pedido, em área privada. Não informe CPF, RG ou dados sensíveis.'));
+    var envioStatus=document.createElement('p');envioStatus.id='envio-status';envioStatus.setAttribute('role','status');envioStatus.setAttribute('aria-live','polite');
+    envioBox.append(consentLabel,envioStatus);whatsFinal.before(envioBox);
+    whatsFinal.textContent='Finalizar e enviar projeto à MOSS';
+    document.getElementById('pix-panel').hidden=true;
+    document.querySelector('.final-text').textContent='Finalize para enviar seu projeto completo ao painel privado da MOSS. Depois, converse pelo WhatsApp para combinar o valor e enviar o comprovante. A MOSS confere o Pix antes de entregar os arquivos.';
+    document.querySelector('#order-box > .note:last-child').textContent='Após a confirmação do envio, a MOSS recebe o projeto para baixar no painel privado. Você recebe os arquivos manualmente após a conferência do pagamento. Se o envio falhar, não feche a página: seus textos ainda estarão nesta tela.';
+    whatsFinal.addEventListener('click',async function(event){
+      if(pedidoEnviado&&!enviandoPedido)return;
+      event.preventDefault();event.stopImmediatePropagation();
+      if(enviandoPedido)return;
+      if(!consent.checked){envioStatus.textContent='Marque a autorização para enviar seu projeto à MOSS.';consent.focus();return;}
+      var snapshot=payload();var serialized=JSON.stringify(snapshot);
+      if(new Blob([serialized]).size>2800000){envioStatus.textContent='Projeto muito grande. Reduza a quantidade de fotos antes de enviar (limite aproximado de 2,8 MB).';return;}
+      enviandoPedido=true;busy=true;whatsFinal.setAttribute('aria-disabled','true');
+      envioStatus.textContent='Enviando o projeto completo… Não feche esta página.';
+      var controller=new AbortController();var timer=setTimeout(function(){controller.abort();},25000);
+      try{
+        if(!activityId){await sendActivity();if(!activityId)throw new Error('Atendimento ainda não registrado');}
+        var response=await fetch(onlineConfig.url+'/rest/v1/rpc/moss_criador_enviar',{
+          method:'POST',credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer',signal:controller.signal,
+          headers:{apikey:onlineConfig.publishableKey,'Content-Type':'application/json'},
+          body:JSON.stringify({p_chave:activityKey,p_documento:snapshot})
+        });
+        var result=await response.json();
+        if(!response.ok||result.recebido!==true||typeof result.id!=='string')throw new Error('Envio não confirmado');
+        pedidoEnviado=result.id;pedidoSnapshot=serialized;
+        atualizarWhatsapp('final');
+        document.getElementById('pix-panel').hidden=false;
+        whatsFinal.textContent='Conversar com a MOSS no WhatsApp';
+        envioStatus.textContent='Projeto recebido pela MOSS. Pedido '+pedidoEnviado+'. Agora toque no botão para conversar pelo WhatsApp. Isso não confirma pagamento.';
+      }catch(failure){
+        envioStatus.textContent='Envio não confirmado. Não feche nem atualize a página. Confira a conexão e tente novamente; não faça um novo Pix por causa desta falha. Se persistir, use o suporte.';
+      }finally{clearTimeout(timer);enviandoPedido=false;busy=false;whatsFinal.removeAttribute('aria-disabled');}
+    });
+  }
   if(whatsFinal)whatsFinal.addEventListener('click',function(){
     activityStage='whatsapp';lastActivity=Date.now();sendActivity();
   });
@@ -588,7 +651,7 @@
       bloco('Formação e cursos',form.elements.formacao.value);
       bloco('Habilidades',form.elements.habilidades.value);
     }
-    bloco('Contato',form.elements.contato.value);
+    if(kind==='site')bloco('Contato',form.elements.contato.value);
     return out.join('');
   }
   function previewLocalHtml(){
@@ -598,7 +661,8 @@
     var avatar=(kind==='curriculo'&&photos.length)?'<img class="avatar" src="'+escLive(photos[0].uri)+'" alt="'+escLive(photos[0].legenda||'Foto de exemplo')+'">':'';
     var nomeTag='<h1>'+escLive(nome)+'</h1>';
     var fraseTag='<p class="subtitle">'+escLive(form.elements.titulo.value)+'</p>';
-    var header='<header>'+avatar+(kind==='curriculo'?nomeTag+fraseTag:fraseTag+nomeTag)+
+    var contatoTopo=kind!=='site'&&form.elements.contato.value.trim()?'<p class="text contato-topo">'+escLive(form.elements.contato.value.trim())+'</p>':'';
+    var header='<header>'+avatar+(kind==='curriculo'?nomeTag+fraseTag:fraseTag+nomeTag)+contatoTopo+
       '<p class="text">'+escLive(form.elements.apresentacao.value)+'</p></header>';
     var notice='<aside class="preview">PRÉVIA GRÁTIS · MOSS DIGITAL · MONTE A SUA E FINALIZE NO WHATSAPP</aside>';
     var footer='<footer>Prévia criada com a MOSS Digital. Gostou? Finalize no WhatsApp.</footer>';
@@ -625,7 +689,8 @@
     doc.title=(nome||'Prévia')+' — '+names[kind];
     var avatar=(kind==='curriculo'&&photos.length)?'<img class="avatar" src="'+escLive(photos[0].uri)+'" alt="'+escLive(photos[0].legenda||'Foto de exemplo')+'">':'';
     var secoes=liveSecoes(kind);
-    var assinatura=kind+'|'+avatar+'|'+secoes;
+    var contatoTopo=kind!=='site'&&form.elements.contato.value.trim()?'<p class="text contato-topo">'+escLive(form.elements.contato.value.trim())+'</p>':'';
+    var assinatura=kind+'|'+avatar+'|'+secoes+'|'+contatoTopo;
     var main=doc.querySelector('main');
     if(assinatura!==liveAssinatura){
       var antes=main.querySelectorAll('.gallery figure').length;
@@ -633,7 +698,7 @@
       var cabecalho=kind==='curriculo'
         ?'<h1 id="l-nome"></h1><p class="subtitle" id="l-titulo"></p>'
         :'<p class="subtitle" id="l-titulo"></p><h1 id="l-nome"></h1>';
-      main.innerHTML='<header>'+avatar+cabecalho+'<p class="text" id="l-apresentacao"></p></header>'+secoes;
+      main.innerHTML='<header>'+avatar+cabecalho+contatoTopo+'<p class="text" id="l-apresentacao"></p></header>'+secoes;
       var figs=main.querySelectorAll('.gallery figure');
       for(var i=antes;i<figs.length;i++)figs[i].classList.add('entra');
     }

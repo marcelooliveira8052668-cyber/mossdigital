@@ -5,6 +5,8 @@
   var status=document.getElementById('status');
   var dashboard=document.getElementById('dashboard');
   var list=document.getElementById('creations');
+  var orders=document.getElementById('orders');var orderStatus=document.getElementById('orders-status');
+  var documentCss=null;var documentFrame=null;var privateUrls=[];
   var enter=document.getElementById('enter');
   var session=null;var generation=0;var loading=false;var signing=false;
   var configured=typeof config.url==='string'&&/^https:\/\/[a-z0-9]{20}\.supabase\.co$/.test(config.url)
@@ -26,6 +28,9 @@
   }
   function clear(message){
     generation++;session=null;list.replaceChildren();dashboard.hidden=true;form.hidden=false;
+    orders.replaceChildren();orderStatus.textContent='';
+    if(documentFrame){documentFrame.remove();documentFrame=null;}
+    privateUrls.forEach(function(url){URL.revokeObjectURL(url);});privateUrls=[];
     document.getElementById('password').value='';status.textContent=message;
   }
   function makeSession(data){
@@ -60,6 +65,70 @@
       list.append(article);
     });
   }
+  function download(filename,content,type,button){
+    var url=URL.createObjectURL(new Blob([content],{type:type}));privateUrls.push(url);var anchor=document.createElement('a');
+    anchor.href=url;anchor.download=filename;anchor.textContent='Salvar arquivo pronto';anchor.className='private-download';
+    var old=button.parentElement.querySelector('.private-download');if(old)old.remove();
+    button.parentElement.append(anchor);
+    setTimeout(function(){URL.revokeObjectURL(url);anchor.remove();privateUrls=privateUrls.filter(function(item){return item!==url;});},60000);
+  }
+  async function projectAction(record,action,button){
+    var version=generation;if(!session)return;button.disabled=true;orderStatus.textContent='Preparando arquivo privado…';
+    try{
+      var access=await accessToken(version);
+      var data=await request('/rest/v1/moss_criador_pedidos?select=documento&id=eq.'+encodeURIComponent(record.id)+'&limit=1',null,access);
+      if(version!==generation)return;
+      if(!Array.isArray(data)||data.length!==1)throw new Error('Pedido não encontrado.');
+      if(action==='json'){
+        download('projeto-'+record.id+'.json',JSON.stringify(data[0].documento,null,2),'application/json',button);
+      }else{
+        if(!documentCss){
+          var cssResponse=await fetch('../criar/assets/documento.css',{cache:'no-store'});
+          if(!cssResponse.ok)throw new Error('Estilo indisponível.');
+          documentCss=await cssResponse.text();
+        }
+        if(version!==generation)return;
+        var html=window.MossDocuments.render(data[0].documento,documentCss);
+        if(action==='html')download((record.produto||'documento')+'-'+record.id+'.html',html,'text/html;charset=utf-8',button);
+        else{
+          if(documentFrame)documentFrame.remove();
+          var frame=document.createElement('iframe');documentFrame=frame;
+          frame.title='Documento privado para impressão';frame.className='private-print';
+          frame.setAttribute('sandbox','allow-same-origin allow-modals');
+          frame.addEventListener('load',function(){
+            if(version!==generation){frame.remove();return;}
+            try{frame.contentWindow.focus();frame.contentWindow.print();}
+            catch(error){orderStatus.textContent='Não foi possível imprimir. Use Baixar HTML, abra o arquivo e salve como PDF.';}
+          },{once:true});
+          frame.srcdoc=html;document.body.append(frame);
+        }
+      }
+      orderStatus.textContent=action==='pdf'?'Na impressão, escolha Salvar como PDF e papel A4. O documento completo é impresso, sem o painel.':'Arquivo preparado. Clique em Salvar arquivo pronto, junto aos botões do pedido (disponível por um minuto). Nenhuma entrega ao cliente foi feita.';
+    }catch(error){if(version===generation)orderStatus.textContent='Não foi possível preparar o arquivo. Confira a conexão e tente novamente.';}
+    finally{button.disabled=false;}
+  }
+  async function loadOrders(access,version){
+    try{
+      var records=await request('/rest/v1/moss_criador_pedidos?select=id,atendimento,nome,produto,criado_em&order=criado_em.desc&limit=50',null,access);
+      if(version!==generation)return;
+      if(!Array.isArray(records))throw new Error('Resposta inválida.');
+      var fragment=document.createDocumentFragment();
+      records.forEach(function(record){
+        var existing=Array.from(orders.children).find(function(card){return card.dataset.orderId===record.id;});
+        if(existing){fragment.append(existing);return;}
+        var card=document.createElement('article');
+        card.dataset.orderId=record.id;
+        card.append(text('h3',record.nome||'Projeto recebido'),text('p','Pedido '+record.id),text('p',(record.produto||'Documento')+' · Recebido em '+date(record.criado_em)));
+        var actions=document.createElement('div');actions.className='actions';
+        [['html','Baixar HTML completo'],['json','Baixar projeto (backup)']].concat(record.produto==='curriculo'?[['pdf','Salvar currículo em PDF']]:[]).forEach(function(item){
+          var button=text('button',item[1]);button.type='button';button.addEventListener('click',function(){projectAction(record,item[0],button);});actions.append(button);
+        });
+        card.append(actions);fragment.append(card);
+      });
+      orders.replaceChildren(fragment);
+      if(!orders.querySelector('.private-download'))orderStatus.textContent=records.length?'Projetos disponíveis somente para administradores.':'Nenhum projeto completo recebido ainda.';
+    }catch(error){if(version===generation){orders.replaceChildren();orderStatus.textContent='Recebimento de projetos indisponível. A configuração do banco pode estar pendente.';}}
+  }
   async function load(){
     if(!session||loading)return;
     loading=true;var version=generation;
@@ -73,6 +142,8 @@
       if(version!==generation)return;
       if(!Array.isArray(records))throw new Error('Resposta inválida.');
       render(records);
+      await loadOrders(access,version);
+      if(version!==generation)return;
       status.textContent=records.length?'Atualizado às '+new Date().toLocaleTimeString('pt-BR'):'Nenhuma criação registrada. O criador precisa estar conectado para registrar atividades.';
     }catch(error){
       if(version!==generation)return;

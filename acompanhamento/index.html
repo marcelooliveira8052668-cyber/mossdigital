@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https://*.supabase.co; base-uri 'none'; form-action 'self'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.supabase.co; base-uri 'none'; form-action 'self'; object-src 'none'">
   <title>Acompanhamento — MOSS Digital</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="assets/painel.css?v=20261105-1">
-  <script src="assets/config.js?v=20261105-1" defer></script>
-  <script src="assets/painel.js?v=20261105-1" defer></script>
+  <link rel="stylesheet" href="assets/painel.css?v=20261105-2">
+  <script src="assets/config.js?v=20261105-2" defer></script>
+  <script src="assets/documentos.js?v=20261105-2" defer></script>
+  <script src="assets/painel.js?v=20261105-2" defer></script>
 </head>
 <body>
   <main>
@@ -27,6 +28,9 @@
     </form>
     <p id="status" role="status" aria-live="polite"></p>
     <section id="dashboard" hidden aria-labelledby="activity-title">
+      <h2>Projetos recebidos — arquivos para entregar</h2>
+      <p>Estes são os projetos completos enviados pelo cliente. Baixe ou gere o PDF, confira o Pix no banco e entregue manualmente pelo WhatsApp. A existência de um pedido não confirma pagamento.</p>
+      <p id="orders-status" role="status" aria-live="polite"></p><div id="orders"></div>
       <div class="actions"><h2 id="activity-title">Criações em andamento</h2><button id="refresh" type="button">Atualizar</button><button id="logout" type="button">Sair</button></div>
       <p>Até 100 registros recentes. Atualiza a cada 15 segundos enquanto a tela estiver aberta. Atividade recente não garante que o cliente ainda esteja online.</p>
       <p><strong>Clique no WhatsApp não confirma envio de mensagem ou pagamento.</strong> Confira o dinheiro no banco antes de entregar.</p>
