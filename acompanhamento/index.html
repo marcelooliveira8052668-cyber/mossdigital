@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https://*.supabase.co; base-uri 'none'; form-action 'self'; object-src 'none'">
+  <title>Acompanhamento — MOSS Digital</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="assets/painel.css?v=20261105-1">
+  <script src="assets/config.js?v=20261105-1" defer></script>
+  <script src="assets/painel.js?v=20261105-1" defer></script>
+</head>
+<body>
+  <main>
+    <header><p class="brand">MOSS DIGITAL</p><h1>Acompanhamento de criações</h1><p>Área exclusiva de administração.</p></header>
+    <form id="login" class="card">
+      <h2>Entrar no painel</h2>
+      <label for="email">E-mail da conta administradora da MOSS</label>
+      <input id="email" type="email" autocomplete="username" maxlength="254" required>
+      <label for="password">Senha da conta da MOSS</label>
+      <input id="password" type="password" autocomplete="current-password" maxlength="1024" required>
+      <p>Não é a senha do painel do Supabase. Use a conta cadastrada em Authentication.</p>
+      <button id="enter" type="submit">Entrar</button>
+      <p><a href="redefinir.html">Esqueci minha senha</a></p>
+    </form>
+    <p id="status" role="status" aria-live="polite"></p>
+    <section id="dashboard" hidden aria-labelledby="activity-title">
+      <div class="actions"><h2 id="activity-title">Criações em andamento</h2><button id="refresh" type="button">Atualizar</button><button id="logout" type="button">Sair</button></div>
+      <p>Até 100 registros recentes. Atualiza a cada 15 segundos enquanto a tela estiver aberta. Atividade recente não garante que o cliente ainda esteja online.</p>
+      <p><strong>Clique no WhatsApp não confirma envio de mensagem ou pagamento.</strong> Confira o dinheiro no banco antes de entregar.</p>
+      <div id="creations"></div>
+    </section>
+    <noscript><p>Ative JavaScript para entrar no painel.</p></noscript>
+    <footer>O acesso fica somente na memória desta aba. Recarregar ou fechar exige novo login. Não compartilhe sua senha.</footer>
+  </main>
+</body>
+</html>

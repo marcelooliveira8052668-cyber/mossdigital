@@ -1,4 +1,4 @@
-/* Cria prévias de verdade no servidor local; não simula pagamento nem entrega. */
+/* Criador MOSS Digital — prévia + finalização no WhatsApp */
 (function () {
   'use strict';
   var form = document.getElementById('editor');
@@ -11,6 +11,54 @@
   var error = document.getElementById('error');
   var frame = document.getElementById('preview');
   var previousProduct = '';
+  var onlineConfig=window.MossOnlineConfig||{};
+  var onlineActivity=typeof onlineConfig.url==='string'&&/^https:\/\/[a-z0-9]{20}\.supabase\.co$/.test(onlineConfig.url)
+    &&typeof onlineConfig.publishableKey==='string'&&onlineConfig.publishableKey.startsWith('sb_publishable_');
+  var activityKey='';var activityId='';var activityPending=false;
+  var activityQueued=false;var activityStage='preenchendo';var lastActivity=Date.now();
+  var lastActivitySent=0;
+  var activityInfo=document.createElement('p');activityInfo.className='note';
+  activityInfo.id='creation-status';activityInfo.setAttribute('role','status');
+  form.prepend(activityInfo);
+  var activityNotice=document.createElement('p');activityNotice.className='note';
+  activityNotice.textContent=onlineActivity
+    ?'Ao continuar, a MOSS registra no Supabase um número de atendimento, o tipo de projeto, a etapa e horários de atividade. Não enviamos seus textos, fotos ou contatos nesse acompanhamento. Dados antigos são limpos quando há novos registros, após 30 dias sem atividade. Fechar ou recarregar inicia outro atendimento. Atividade não comprova pagamento.'
+    :localServer()
+    ?'Ao continuar, a MOSS registra um número de atendimento, o tipo de projeto, a etapa e horários de atividade para acompanhar a criação. Não registramos os textos digitados, fotos ou contatos nesse acompanhamento. Registros são removidos após 30 dias sem atividade. Fechar ou recarregar a página inicia outro atendimento. Use apenas dados fictícios neste teste local.'
+    :'O acompanhamento pela MOSS ainda não está conectado nesta versão online. Fale pelo WhatsApp para registrar seu atendimento.';
+  form.querySelector('[data-page="0"]').append(activityNotice);
+  function newActivityKey(){
+    var bytes=new Uint8Array(32);crypto.getRandomValues(bytes);
+    return Array.from(bytes,function(value){return value.toString(16).padStart(2,'0');}).join('');
+  }
+  async function sendActivity(){
+    if((!localServer()&&!onlineActivity)||!product()||step===0)return;
+    if(activityPending){activityQueued=true;return;}
+    activityPending=true;activityQueued=false;
+    var key=activityKey;
+    var controller=new AbortController();var timeout=setTimeout(function(){controller.abort();},8000);
+    try{
+      if(!activityKey)activityKey=newActivityKey();
+      key=activityKey;
+      var endpoint=onlineActivity?onlineConfig.url+'/rest/v1/rpc/moss_criador_registrar':'/api/criador/atividade';
+      var headers={'Content-Type':'application/json'};
+      if(onlineActivity)headers.apikey=onlineConfig.publishableKey;
+      var body=onlineActivity?{p_chave:key,p_produto:product(),p_etapa:activityStage}:{chave:key,produto:product(),etapa:activityStage};
+      var response=await fetch(endpoint,{method:'POST',credentials:'omit',signal:controller.signal,
+        headers:headers,body:JSON.stringify(body),referrerPolicy:'no-referrer',cache:'no-store'});
+      var result=await response.json();
+      if(!response.ok||typeof result.id!=='string')throw new Error('Registro indisponível');
+      if(key!==activityKey)return;
+      activityId=result.id;lastActivitySent=Date.now();
+      activityInfo.textContent='Atendimento '+activityId+' · etapa registrada para acompanhamento pela MOSS. Não é confirmação de pagamento.';
+      atualizarWhatsapp();
+    }catch(failure){if(key===activityKey)activityInfo.textContent='A MOSS não conseguiu receber sua atividade agora. Continue a prévia e entre em contato pelo WhatsApp.';}
+    finally{clearTimeout(timeout);activityPending=false;if(activityQueued)sendActivity();}
+  }
+  form.addEventListener('input',function(){lastActivity=Date.now();});
+  setInterval(function(){
+    if(!document.hidden&&step>0&&Date.now()-lastActivity<90000&&Date.now()-lastActivitySent>=30000)sendActivity();
+  },30000);
   var fields = ['nome','titulo','apresentacao','itens','experiencia','formacao','habilidades','contato'];
   var names = {site:'Site',portfolio:'Portfólio',curriculo:'Currículo'};
   var deliveries = {download:'Arquivo para baixar',publicar:'Publicação na internet',ambos:'Publicação + arquivos para baixar'};
@@ -22,7 +70,7 @@
   var examplesStatus = document.getElementById('examples-status');
   var library = window.MossExamples;
   var palettesApi = window.MossPalettes;
-  if (!library || !palettesApi) { error.textContent='Não foi possível carregar os exemplos. Reabra o criador pelo servidor local.'; return; }
+  if (!library || !palettesApi) { error.textContent='Não foi possível carregar os exemplos. Recarregue a página.'; return; }
 
   var corFundo = document.getElementById('cor-fundo');
   var corTexto = document.getElementById('cor-texto');
@@ -43,11 +91,6 @@
   };
   var photos = [];
   var videoToken = '';
-  var prices = null;
-  var pixInfo = null;
-  var pixPedido = '';
-  var pixTimer = 0;
-  var pixTentativa = 0;
 
   /* ---------- origem da visita (?demo=<id>) ----------
      Quem chega de uma demonstração do site público traz o id da demo na URL.
@@ -139,6 +182,8 @@
   /* ---------- navegação de etapas ---------- */
   function show(target) {
     step=target;
+    lastActivity=Date.now();
+    if(step>0){activityStage=['','preenchendo','personalizando','previa'][step];sendActivity();}
     form.querySelectorAll('[data-page]').forEach(function(panel,i){panel.hidden=i!==step;});
     document.querySelectorAll('[data-indicator]').forEach(function(item,i){if(i===step)item.setAttribute('aria-current','step');else item.removeAttribute('aria-current');});
     back.hidden=step===0;next.hidden=step===3;reset.hidden=step!==3;
@@ -299,6 +344,11 @@
   /* ---------- vídeo ---------- */
   function videoKind() { var el=form.querySelector('input[name="video-tipo"]:checked');return el?el.value:'nenhum'; }
   function updateVideoFields() {
+    var fileOption=form.querySelector('input[name="video-tipo"][value="arquivo"]');
+    if(!localServer()){
+      fileOption.disabled=true;fileOption.parentElement.hidden=true;
+      if(fileOption.checked)form.querySelector('input[name="video-tipo"][value="nenhum"]').checked=true;
+    }
     var kind=videoKind();
     document.getElementById('video-link-fields').hidden=kind!=='link';
     document.getElementById('video-file-fields').hidden=kind!=='arquivo';
@@ -312,42 +362,29 @@
     updateVideoFields();videoStatus.textContent='';
   }
   async function uploadVideo(file) {
+    if(!localServer()){videoStatus.textContent='Nesta versão, use um link de vídeo. Nenhum arquivo foi enviado.';return;}
     if(['video/mp4','video/webm'].indexOf(file.type)<0){videoStatus.textContent='Use um arquivo MP4 ou WebM.';document.getElementById('video-arquivo').value='';return;}
     if(file.size>4*1024*1024){videoStatus.textContent='Arquivo maior que 4 MB. Reduza o vídeo antes de enviar.';document.getElementById('video-arquivo').value='';return;}
-    videoStatus.textContent='Enviando o vídeo para o servidor local…';
+    videoStatus.textContent='Enviando o vídeo…';
     try{
       var dados=await fileToBase64(file);
       var response=await fetch('/api/criador/video',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},body:JSON.stringify({dados:dados})});
       var result=await response.json();
       if(!response.ok)throw new Error(result.erro||'Não foi possível enviar o vídeo.');
       videoToken=result.token;
-      videoStatus.textContent='Vídeo enviado para esta sessão: '+file.name+'. Ele expira ao reiniciar o servidor.';
+      videoStatus.textContent='Vídeo enviado: '+file.name+'. Ele expira ao reiniciar o servidor.';
       agendarSync();
     }catch(failure){videoToken='';videoStatus.textContent=failure.message;document.getElementById('video-arquivo').value='';}
   }
 
   /* ---------- resumo do pedido ---------- */
-  async function loadPrices() {
-    if(prices)return;
-    if(!localServer()){prices=null;return;}
-    try{
-      var response=await fetch('/api/criador/precos',{credentials:'omit'});
-      var result=await response.json();
-      if(response.ok&&result&&result.itens)prices=result;
-    }catch(failure){prices=null;}
-  }
+  function localServer(){return !onlineActivity&&/^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname);}
   function renderOrder() {
+    atualizarWhatsapp('final');
     var kind=product();
     var delivery=kind==='curriculo'?'PDF privado':deliveries[form.elements.entrega.value];
     document.getElementById('order-item').textContent=names[kind]+' — '+delivery;
-    var value=prices&&prices.itens?prices.itens[kind]:null;
-    var from=kind==='site'&&value?'a partir de ':'';
-    document.getElementById('order-price').textContent=value?(from+'R$ '+Number(value).toLocaleString('pt-BR')):'A definir';
-    document.getElementById('order-note').textContent=value
-      ?(pixInfo&&pixInfo.disponivel?'Valor exibido para teste. Pix em modo teste: nenhuma cobrança real será feita.':'Valor exibido para teste. O pagamento Pix continua desativado até a homologação do Mercado Pago.')
-      :'Os valores ainda não foram definidos. Quando forem definidos neste computador, aparecem aqui antes do pagamento.';
-    closePix();
-    updatePixButton();
+    document.getElementById('order-price').textContent='A combinar no WhatsApp';
   }
 
   /* ---------- envio / prévia ---------- */
@@ -384,12 +421,10 @@
       if(!/^https:\/\/[A-Za-z0-9]/.test(url)){error.textContent='Use um link de vídeo começando com https://.';document.getElementById('video-url').focus();return;}
     }
     if(vk==='arquivo'&&!videoToken){error.textContent='Envie o arquivo de vídeo ou escolha outra opção.';return;}
-    if(!/^https?:$/.test(location.protocol)){error.textContent='Abra pelo servidor local para gerar a prévia. Use INICIAR MOSS.cmd e acesse /criar/.';return;}
+    if(!/^https?:$/.test(location.protocol)){error.textContent='Abra pelo servidor para gerar a prévia.';return;}
     if(!localServer()){
       frame.srcdoc=previewLocalHtml();
-      document.getElementById('delivery-summary').textContent=names[product()]+' · '+(product()==='curriculo'?'PDF privado — entrega ainda não ativada':deliveries[form.elements.entrega.value]+' — entrega ainda não ativada');
-      await loadPrices();
-      await loadPix();
+      document.getElementById('delivery-summary').textContent=names[product()]+' · '+(product()==='curriculo'?'PDF privado':deliveries[form.elements.entrega.value]);
       renderOrder();
       show(3);
       return;
@@ -403,16 +438,14 @@
       var result=await response.json();if(!response.ok)throw new Error(result.erro||'Não foi possível montar a prévia.');
       if(typeof result.html!=='string')throw new Error('Não foi possível conferir a prévia recebida.');
       frame.srcdoc=result.html;
-      document.getElementById('delivery-summary').textContent=names[product()]+' · '+(product()==='curriculo'?'PDF privado — entrega ainda não ativada':deliveries[form.elements.entrega.value]+' — entrega ainda não ativada');
-      await loadPrices();
-      await loadPix();
+      document.getElementById('delivery-summary').textContent=names[product()]+' · '+(product()==='curriculo'?'PDF privado':deliveries[form.elements.entrega.value]);
       renderOrder();
       show(3);
     }catch(failure){error.textContent=failure.name==='AbortError'?'A montagem demorou mais que o esperado. Tente novamente.':failure.message;}
-    finally{clearTimeout(timer);busy=false;controls.forEach(function(control,i){control.disabled=disabledBefore[i];});updatePixButton();next.textContent='Ver como ficou →';}
+    finally{clearTimeout(timer);busy=false;controls.forEach(function(control,i){control.disabled=disabledBefore[i];});next.textContent='Ver como ficou →';}
   });
 
-  back.addEventListener('click',function(){if(busy)return;closePix();frame.removeAttribute('srcdoc');show(Math.max(0,step-1));});
+  back.addEventListener('click',function(){if(busy)return;frame.removeAttribute('srcdoc');show(Math.max(0,step-1));});
 
   document.getElementById('example').addEventListener('click',function(){
     if(fields.some(function(field){return form.elements[field].value.trim();})&&!confirm('Substituir os textos atuais por um exemplo fictício?'))return;
@@ -452,10 +485,11 @@
 
   reset.addEventListener('click',function(){
     if(!confirm('Apagar os textos, fotos e vídeo desta tela e começar outra criação?'))return;
-    form.reset();previousProduct='';contextProduct='';examplesStatus.textContent='';
+    activityKey='';activityId='';activityQueued=false;activityInfo.textContent='';
+    HTMLFormElement.prototype.reset.call(form);previousProduct='';contextProduct='';examplesStatus.textContent='';
     var origemStatus=document.getElementById('origem-status');
     if(origemStatus){origemStatus.hidden=true;origemStatus.textContent='';}
-    photos=[];renderPhotos();photoStatus.textContent='';clearVideo();closePix();
+    photos=[];renderPhotos();photoStatus.textContent='';clearVideo();
     corFundo.value=modelDefaults.claro.fundo;corTexto.value=modelDefaults.claro.texto;corDestaque.value=modelDefaults.claro.destaque;
     updateColors();
     frame.removeAttribute('srcdoc');show(0);
@@ -472,102 +506,36 @@
     corFundo.value=defaults.fundo;corTexto.value=defaults.texto;corDestaque.value=defaults.destaque;updateColors();
   });});
 
-  /* ---------- Pix (Mercado Pago em modo teste) ----------
-     A chave secreta fica só no servidor; o navegador conversa apenas com a MOSS. */
-  function localServer(){return /^(127\.0\.0\.1|localhost|\[::1\])$/.test(location.hostname);}
-  async function loadPix(){
-    pixInfo={disponivel:false,modo:'',motivo:''};
-    if(!localServer())return;
-    try{
-      var response=await fetch('/api/criador/pix',{credentials:'omit'});
-      var result=await response.json();
-      if(response.ok&&result&&typeof result.disponivel==='boolean')pixInfo=result;
-    }catch(failure){pixInfo={disponivel:false,modo:'',motivo:''};}
+  /* ---------- WhatsApp final ---------- */
+  var whatsFinal=document.getElementById('whats-final');
+  var whatsSupport=document.getElementById('whats-support');
+  function atualizarWhatsapp(contexto){
+    var kind=product()||'site';
+    var delivery=kind==='curriculo'?'PDF privado':deliveries[form.elements.entrega ? form.elements.entrega.value : 'download'];
+    var nome=form.elements.nome.value.trim();
+    var titulo=form.elements.titulo.value.trim();
+    var texto='Olá! Criei minha prévia no site da MOSS Digital: '+names[kind]+(nome?' — "'+nome+'"':'')+(titulo?' — '+titulo:'')+'. Entrega: '+delivery+'. Quero combinar o valor do Pix ou enviar meu comprovante para conferência. Aguardo a confirmação do recebimento e a entrega manual dos arquivos. Vou anexar o comprovante nesta conversa, se já tiver pago.';
+    if(activityId)texto='Atendimento '+activityId+'. '+texto;
+    if(contexto==='ajuste')texto='Olá! Fiz uma prévia no criador da MOSS Digital ('+names[kind]+(nome?' — "'+nome+'"':'')+') e quero ajustar o resultado. Pode me ajudar?';
+    var url='https://wa.me/5511942038103?text='+encodeURIComponent(texto);
+    if(whatsFinal)whatsFinal.href=url;
+    if(whatsSupport)whatsSupport.href=url;
   }
-  function updatePixButton(){
-    var pixOpen=document.getElementById('pix-open');
-    var ativo=!!(pixInfo&&pixInfo.disponivel);
-    pixOpen.disabled=!ativo;
-    pixOpen.textContent=ativo?(pixInfo.modo==='teste'?'Pagar com Pix (teste)':'Pagar com Pix'):'Pagamento Pix indisponível nesta versão';
-    pixOpen.title=ativo?(pixInfo.modo==='teste'?'Ambiente de teste do Mercado Pago: nenhuma cobrança real.':'Modo de pagamento: '+pixInfo.modo):String((pixInfo&&pixInfo.motivo)||'');
-  }
-  function pixStep(which){
-    ['pix-form','pix-qr','pix-done'].forEach(function(id){document.getElementById(id).hidden=id!==which;});
-  }
-  function closePix(){
-    if(pixTimer){clearTimeout(pixTimer);pixTimer=0;}
-    pixPedido='';pixTentativa=0;
-    document.getElementById('pix-panel').hidden=true;
-    pixStep('pix-form');
-    document.getElementById('pix-error').textContent='';
-  }
-  function pixCheck(){
-    pixTimer=setTimeout(async function(){
-      pixTimer=0;
-      if(!pixPedido)return;
-      pixTentativa+=1;
-      var confirmado=false;
-      try{
-        var response=await fetch('/api/criador/pagamento',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},body:JSON.stringify({pedido:pixPedido})});
-        var result=await response.json();
-        if(response.ok&&result&&result.confirmado)confirmado=true;
-      }catch(failure){/* tenta de novo na próxima rodada */}
-      if(!pixPedido)return;
-      if(confirmado){
-        document.getElementById('pix-done-text').textContent='O Mercado Pago confirmou o Pix. Ambiente de teste: nenhuma cobrança real foi feita. A entrega continua desativada nesta versão.';
-        pixStep('pix-done');
-        return;
-      }
-      if(pixTentativa>=200){
-        document.getElementById('pix-status').textContent='Tempo esgotado para esta tentativa. Gere um novo Pix se ainda quiser pagar.';
-        return;
-      }
-      pixCheck();
-    },3000);
-  }
-  document.getElementById('pix-open').addEventListener('click',function(){
-    var panel=document.getElementById('pix-panel');
-    if(panel.hidden){panel.hidden=false;pixStep('pix-form');document.getElementById('pix-email').focus();}
-    else closePix();
+
+  if(whatsFinal)whatsFinal.addEventListener('click',function(){
+    activityStage='whatsapp';lastActivity=Date.now();sendActivity();
   });
-  document.getElementById('pix-doc').addEventListener('input',function(){
-    this.value=this.value.replace(/\D/g,'').slice(0,14);
-  });
-  document.getElementById('pix-pay').addEventListener('click',async function(){
-    var button=this;var box=document.getElementById('pix-error');
-    var email=document.getElementById('pix-email').value.trim();
-    var digits=document.getElementById('pix-doc').value.replace(/\D/g,'');
-    box.textContent='';
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){box.textContent='Informe um e-mail válido para o comprovante.';return;}
-    if(digits.length!==11&&digits.length!==14){box.textContent='Informe o CPF (11 números) ou o CNPJ (14 números) de quem paga.';return;}
-    button.disabled=true;button.textContent='Falando com o Mercado Pago…';
-    try{
-      var response=await fetch('/api/criador/pagar',{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({produto:product(),email:email,documento:{type:digits.length===11?'CPF':'CNPJ',number:digits}})});
-      var result=await response.json();
-      if(!response.ok)throw new Error(result.erro||'Não foi possível gerar o Pix.');
-      if(!result.qr_imagem&&!result.qr_code)throw new Error('O Mercado Pago não devolveu o QR agora. Aguarde alguns segundos e tente de novo.');
-      pixPedido=result.pedido;
-      var image=document.getElementById('pix-img');
-      if(result.qr_imagem){image.src=result.qr_imagem;image.hidden=false;}
-      else{image.removeAttribute('src');image.hidden=true;}
-      document.getElementById('pix-code').value=result.qr_code||'';
-      document.getElementById('pix-valor').textContent='Valor: R$ '+Number(result.valor_cents/100).toLocaleString('pt-BR')+(result.modo==='teste'?' — modo teste, nenhuma cobrança real':'');
-      pixStep('pix-qr');
-      pixCheck();
-    }catch(failure){box.textContent=failure.message;}
-    finally{button.disabled=false;button.textContent='Gerar Pix';}
-  });
+
   document.getElementById('pix-copy').addEventListener('click',async function(){
-    var code=document.getElementById('pix-code');var button=this;
+    var key=document.getElementById('pix-key');
+    var status=document.getElementById('pix-status');
     try{
-      if(navigator.clipboard&&navigator.clipboard.writeText)await navigator.clipboard.writeText(code.value);
-      else{code.select();document.execCommand('copy');}
-      button.textContent='Código copiado ✓';
-      setTimeout(function(){button.textContent='Copiar código Pix';},2000);
+      if(!navigator.clipboard)throw new Error('Clipboard indisponível');
+      await navigator.clipboard.writeText(key.value);
+      status.textContent='Chave CPF copiada. Confirme o valor e o destinatário antes de pagar.';
     }catch(failure){
-      code.select();
-      document.getElementById('pix-status').textContent='Não foi possível copiar automaticamente. O código está selecionado — use Ctrl+C.';
+      key.focus();key.select();
+      status.textContent='Não foi possível copiar automaticamente. Copie a chave selecionada manualmente.';
     }
   });
 
@@ -624,8 +592,6 @@
     return out.join('');
   }
   function previewLocalHtml(){
-    /* Sem servidor local (site publicado): monta a prévia no navegador, com a
-       mesma estrutura do render_document do servidor. */
     var kind=product();
     var modelo=form.querySelector('input[name="modelo"]:checked').value;
     var nome=form.elements.nome.value;
@@ -634,8 +600,8 @@
     var fraseTag='<p class="subtitle">'+escLive(form.elements.titulo.value)+'</p>';
     var header='<header>'+avatar+(kind==='curriculo'?nomeTag+fraseTag:fraseTag+nomeTag)+
       '<p class="text">'+escLive(form.elements.apresentacao.value)+'</p></header>';
-    var notice='<aside class="preview">PRÉVIA DE TESTE MOSS DIGITAL · NÃO PUBLICADO · NÃO É COMPROVANTE DE COMPRA</aside>';
-    var footer='<footer>Prévia criada com informações de teste. Pagamento e entrega final ainda não ativados.</footer>';
+    var notice='<aside class="preview">PRÉVIA GRÁTIS · MOSS DIGITAL · MONTE A SUA E FINALIZE NO WHATSAPP</aside>';
+    var footer='<footer>Prévia criada com a MOSS Digital. Gostou? Finalize no WhatsApp.</footer>';
     var cores='--bg:'+corFundo.value+';--ink:'+corTexto.value+';--accent:'+corDestaque.value;
     return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+
       escLive(nome)+' — '+names[kind]+'</title><link rel="stylesheet" href="assets/documento.css"></head><body class="'+modelo+' '+kind+'" style="'+cores+'">'+
@@ -706,6 +672,7 @@
   aplicarOrigem();
   montarLive();
   atualizarVivo(0);
+  atualizarWhatsapp('final');
   form.addEventListener('input',agendarSync,true);
   form.addEventListener('change',agendarSync,true);
   form.addEventListener('click',agendarSync,true);

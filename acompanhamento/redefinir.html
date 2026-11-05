@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https://*.supabase.co; base-uri 'none'; form-action 'self'; object-src 'none'">
+  <title>Redefinir senha — MOSS Digital</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="assets/painel.css?v=20261105-1">
+  <script src="assets/config.js?v=20261105-1" defer></script>
+  <script src="assets/redefinir.js?v=20261105-1" defer></script>
+</head>
+<body><main>
+  <header><p class="brand">MOSS DIGITAL</p><h1>Redefinir sua senha</h1></header>
+  <p id="status" role="status" aria-live="polite"></p>
+  <form id="recover" class="card">
+    <h2>Receber link por e-mail</h2>
+    <label for="email">E-mail cadastrado na MOSS</label>
+    <input id="email" type="email" autocomplete="username" maxlength="254" required>
+    <p>Solicite uma vez e use o link mais recente. No teste local, abra o e-mail neste mesmo computador, com o servidor de teste ligado. Não compartilhe o link.</p>
+    <button id="send" type="submit">Enviar link de recuperação</button>
+  </form>
+  <form id="reset" class="card" hidden>
+    <h2>Escolher uma nova senha</h2>
+    <p id="account"></p>
+    <label for="password">Nova senha — pelo menos 12 caracteres</label>
+    <input id="password" type="password" autocomplete="new-password" minlength="12" maxlength="1024" required>
+    <label for="confirm">Repita a nova senha</label>
+    <input id="confirm" type="password" autocomplete="new-password" minlength="12" maxlength="1024" required>
+    <button id="save" type="submit">Salvar nova senha</button>
+  </form>
+  <p><a href="./">Voltar ao login do painel</a></p>
+  <noscript><p>Ative JavaScript. Não compartilhe o endereço recebido por e-mail.</p></noscript>
+  <footer>Sua senha vai diretamente para o Supabase por conexão segura. Esta página não guarda a senha nem o link no armazenamento do navegador.</footer>
+</main></body>
+</html>
