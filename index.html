@@ -327,26 +327,64 @@
             outline-offset: 2px
         }
 
-        .hero-create {
-            margin: 18px 0 0
-        }
-
-        .hero-create a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #ffc531;
-            color: #0d2b52;
-            font-weight: 700;
-            font-size: .95rem;
-            padding: 11px 20px;
-            border-radius: 10px;
+        /* Faixa fixa no rodapé — estilo anúncio do Instagram */
+        .top-cta {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 900;
+            display: block;
+            background: #8b7f3e;
+            color: #fff;
             text-decoration: none;
-            box-shadow: 0 4px 14px rgba(13, 43, 82, .22)
+            box-shadow: 0 -6px 24px rgba(0, 0, 0, .25);
+            transition: background .15s ease
         }
 
-        .hero-create a:hover {
-            background: #f0b41f
+        .top-cta:hover,
+        .top-cta:focus-visible {
+            background: #9a8d46
+        }
+
+        .top-cta:focus-visible {
+            outline: 3px solid #ffc531;
+            outline-offset: -3px
+        }
+
+        .top-cta .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 66px;
+            padding-top: 12px;
+            padding-bottom: 12px
+        }
+
+        .top-cta-text {
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+            font-weight: 800;
+            letter-spacing: .01em;
+            line-height: 1.2
+        }
+
+        .top-cta-chevron {
+            font-size: clamp(1.7rem, 5vw, 2.2rem);
+            font-weight: 400;
+            line-height: 1;
+            flex: none
+        }
+
+        /* Espaço para a faixa não cobrir o fim da página */
+        body.moss-home {
+            padding-bottom: 70px
+        }
+
+        @media (max-width: 560px) {
+            .top-cta .wrap {
+                min-height: 60px
+            }
         }
     </style>
     <style>
@@ -424,6 +462,12 @@
                     href="criar/index.html">Criar meu site</a></nav>
         </div>
     </header>
+    <a class="top-cta" href="criar/index.html">
+        <span class="wrap">
+            <span class="top-cta-text">Crie seu site agora</span>
+            <span class="top-cta-chevron" aria-hidden="true">›</span>
+        </span>
+    </a>
     <section class="hero" aria-labelledby="hero-title">
         <div class="wrap hero-layout">
         <div class="hero-copy">
@@ -438,8 +482,6 @@
             <a class="hero-secondary" href="#apresentacao">Assistir apresentação · 30s <span aria-hidden="true">▷</span></a></div>
         <p class="hero-note">Seu site, seu portfólio, seu currículo: monte você mesmo, com prévia
             ao vivo enquanto cria. Sem cadastro e no seu ritmo — e se preferir, a gente faz para você.</p>
-        <p class="hero-create"><a href="criar/index.html">Prefere começar agora?
-            <span aria-hidden="true">→</span></a></p>
         <ul class="hero-benefits" aria-label="Diferenciais"><li>Visual adaptado ao celular</li><li>Identidade do seu negócio</li><li>Contato direto pelo WhatsApp</li></ul>
         </div>
         <div class="hero-showcase hero-video" id="apresentacao">
