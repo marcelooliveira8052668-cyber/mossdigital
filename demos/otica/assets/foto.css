@@ -1,0 +1,10 @@
+.hero-art img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.hero-art span a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

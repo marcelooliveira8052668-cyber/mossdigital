@@ -1,0 +1,20 @@
+/* A mesma estrutura visual da página explicativa, sem a navegação duplicada no criador. */
+html.embed-guide body.moss-structure > header,
+html.embed-guide body.moss-structure > footer,
+html.embed-guide .skip-link,
+html.embed-guide .guide-intro,
+html.embed-guide .guide-note,
+html.embed-guide .guide-next {
+  display: none;
+}
+
+html.embed-guide body.moss-structure main.wrap {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+html.embed-guide .wire-console {
+  border: 0;
+  padding: 14px;
+}

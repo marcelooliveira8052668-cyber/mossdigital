@@ -9,7 +9,8 @@ Marca fictícia, não uma ótica em funcionamento. Não há loja, estoque, venda
 - Respostas não são enviadas nem armazenadas. Não há CPF, telefone, e-mail, documento, senha, pagamento, upload, autenticação ou banco de dados.
 - O WhatsApp final é exclusivamente da MOSS Digital, para contratar o desenvolvimento do site, não para comprar óculos. A mensagem só é enviada quando o visitante confirmar no WhatsApp externo.
 - Sem JavaScript: coleção, lentes e dúvidas permanecem disponíveis; os controles interativos ficam desabilitados.
-- Ilustrações autorais em SVG (`assets/hero.svg` e `assets/arm-*.svg`), sem fotografias de banco, sem fontes externas e sem análise de visitantes.
+- Armações do catálogo em ilustrações autorais SVG (`assets/arm-*.svg`). Foto ilustrativa real no destaque, hospedada localmente, sem fontes externas nem análise de visitantes.
+- Foto do destaque: [Fashion-sunglasses-summer-eyewear](https://commons.wikimedia.org/wiki/File:Fashion-sunglasses-summer-eyewear_(24326655305).jpg), por Pixel.la / Wikimedia Commons, licença CC0. Não representa produto ou loja reais.
 
 ## Conteúdo ilustrativo
 

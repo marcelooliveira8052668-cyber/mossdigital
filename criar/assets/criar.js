@@ -204,6 +204,7 @@
       moment.value='';contextProduct=kind;examplesStatus.textContent='';
     }
     document.getElementById('occupation-context').hidden=kind==='site';
+    document.getElementById('site-guide').hidden=kind!=='site';
     document.getElementById('area-context').hidden=kind!=='site';
     if(kind!=='site')loadOccupations();
     document.getElementById('occupation-label').textContent=cv?'Qual profissão ou vaga você procura?':'Que profissão ou tipo de trabalho quer mostrar?';
