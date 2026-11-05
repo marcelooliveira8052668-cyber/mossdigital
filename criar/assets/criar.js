@@ -223,6 +223,13 @@
       if(kind==='site')library.areas(kind).forEach(function(item){var option=document.createElement('option');option.value=item.value;option.textContent=item.label;area.append(option);});
       occupation.value='';
       moment.value='';contextProduct=kind;examplesStatus.textContent='';
+      if(kind==='portfolio'){
+        form.querySelector('input[name="modelo"][value="natural"]').checked=true;
+        corFundo.value=modelDefaults.natural.fundo;
+        corTexto.value=modelDefaults.natural.texto;
+        corDestaque.value=modelDefaults.natural.destaque;
+        updateColors();
+      }
     }
     document.getElementById('occupation-context').hidden=kind==='site';
     arrangeSiteFields(kind);
@@ -236,10 +243,11 @@
     document.getElementById('career-context').hidden=!cv;
     document.getElementById('name-label').textContent=kind==='site'?'Nome do seu negócio':'Seu nome';
     document.getElementById('role-label').textContent=cv?'Vaga ou área que você procura':kind==='site'?'Título da apresentação':'Uma frase sobre o que você faz';
+    document.getElementById('presentation-label').textContent=kind==='portfolio'?'Apresente seu trabalho e sua trajetória':cv?'Seu resumo profissional':'Conte um pouco sobre seu negócio';
     document.getElementById('role-example').textContent=cv?'Exemplo: “Busco minha primeira oportunidade em atendimento”.':'Exemplo: “Fotografia de eventos” ou “Manutenção residencial”.';
-    document.getElementById('items-label').textContent=cv?'Quais áreas ou vagas te interessam?':kind==='portfolio'?'Quais projetos ou trabalhos quer mostrar?':'Quais serviços ou produtos oferece?';
+    document.getElementById('items-label').textContent=cv?'Quais áreas ou vagas te interessam?':kind==='portfolio'?'Quais projetos ou trabalhos quer mostrar? Um por linha.':'Quais serviços ou produtos oferece?';
     /* Rótulos do currículo no formato de documento de emprego. */
-    document.getElementById('exp-label').innerHTML=(cv?'Experiência profissional':'Experiências ou atividades que já fez')+' <span>(opcional)</span>';
+    document.getElementById('exp-label').innerHTML=(cv?'Experiência profissional':kind==='portfolio'?'Trajetória e experiências':'Experiências ou atividades que já fez')+' <span>(opcional)</span>';
     document.getElementById('exp-help').textContent=cv
       ?'Liste uma por linha: cargo — empresa · período. Ex.: “Atendente — Padaria São João · 2022 a 2024”. Primeiro emprego? Deixe vazio ou conte atividades de curso, pessoais e voluntárias — sem inventar experiência.'
       :'Primeiro emprego? Pode deixar vazio ou contar atividades de curso, pessoais e voluntárias, identificando cada uma. Não invente experiência.';
@@ -256,7 +264,10 @@
     document.getElementById('resume-delivery').hidden=!cv;
     document.getElementById('video-fields').hidden=cv;
     var max=photoLimit();
-    document.getElementById('photo-limit-text').textContent=cv?'Adicionar sua foto (até 1)':'Adicionar fotos (até '+max+')';
+    document.getElementById('photo-limit-text').textContent=cv?'Adicionar sua foto (até 1)':kind==='portfolio'?'Adicionar fotos dos seus trabalhos (até '+max+')':'Adicionar fotos (até '+max+')';
+    document.getElementById('photo-help').textContent=kind==='portfolio'
+      ?'A primeira foto aparece no destaque do portfólio e as demais na galeria. Descreva cada imagem na legenda. JPEG, PNG ou WebP, até 20 MB por imagem; reduzidas no seu computador.'
+      :'JPEG, PNG ou WebP, até 20 MB por imagem. As fotos são reduzidas no seu computador e usadas só na prévia.';
     if(cv)form.elements.entrega.value='download';
     updateExamples(false);
     aplicarAreaOrigem();
@@ -680,6 +691,44 @@
     html+='<footer class="site-footer"><div class="site-shell"><strong>'+esc(nome||'Seu negócio')+'</strong>'+(rodape?'<span>'+esc(rodape)+'</span>':'')+'</div></footer>';
     return html;
   }
+  function portfolioSections(){
+    var esc=escLive;
+    var nome=form.elements.nome.value.trim();
+    var titulo=form.elements.titulo.value.trim();
+    var apresentacao=form.elements.apresentacao.value.trim();
+    var projetos=form.elements.itens.value.split(/\r?\n/).map(function(value){return value.trim();}).filter(Boolean);
+    var experiencia=form.elements.experiencia.value.trim();
+    var formacao=form.elements.formacao.value.trim();
+    var habilidades=form.elements.habilidades.value.trim();
+    var contato=form.elements.contato.value.trim();
+    var nav=['<a href="#inicio">Início</a>'];
+    if(projetos.length)nav.push('<a href="#projetos">Trabalhos</a>');
+    if(photos.length)nav.push('<a href="#galeria">Galeria</a>');
+    if(experiencia||formacao||habilidades)nav.push('<a href="#trajetoria">Trajetória</a>');
+    if(contato)nav.push('<a href="#contato">Contato</a>');
+    var destaque=photos.length?'<img src="'+esc(photos[0].uri)+'" alt="'+esc(photos[0].legenda||'Trabalho de '+nome)+'">'
+      :'<span class="portfolio-monograma" aria-hidden="true">'+esc((nome||'P').slice(0,1).toUpperCase())+'</span>';
+    var marca='<a href="#inicio" class="portfolio-brand"><span class="portfolio-mark" aria-hidden="true">'+esc((nome||'P').slice(0,1).toUpperCase())+'</span><span>'+esc(nome||'Seu nome')+'<small>'+esc(titulo||'Portfólio profissional')+'</small></span></a>';
+    var html='<header class="portfolio-top"><div class="portfolio-shell">'+marca+'<nav aria-label="Navegação do portfólio">'+nav.join('')+'</nav></div></header>'+
+      '<section class="portfolio-hero" id="inicio"><div class="portfolio-shell portfolio-hero-grid"><div><span class="portfolio-kicker">PORTFÓLIO PROFISSIONAL</span><h1>'+esc(titulo||'Sua área de atuação')+'</h1><p class="portfolio-person">'+esc(nome||'Seu nome')+'</p><p class="text">'+esc(apresentacao||'Apresente seu trabalho e sua trajetória aqui.')+'</p>'+
+      (projetos.length?'<a class="portfolio-action" href="#projetos">Ver meus trabalhos <span aria-hidden="true">↗</span></a>':contato?'<a class="portfolio-action" href="#contato">Vamos conversar <span aria-hidden="true">↗</span></a>':'')+'</div><div class="portfolio-art">'+destaque+'</div></div></section>';
+    if(projetos.length)html+='<section class="portfolio-section portfolio-shell" id="projetos"><span class="portfolio-kicker">SELEÇÃO</span><h2>Projetos e trabalhos</h2><div class="portfolio-projects">'+projetos.map(function(value,index){return '<article><span>'+String(index+1).padStart(2,'0')+'</span><h3>'+esc(value)+'</h3></article>';}).join('')+'</div></section>';
+    if(photos.length)html+='<section class="portfolio-section portfolio-gallery-section" id="galeria"><div class="portfolio-shell"><span class="portfolio-kicker">GALERIA</span><h2>Trabalhos em imagens</h2><div class="portfolio-gallery">'+photos.map(function(photo,index){
+      var alt=esc(photo.legenda||'Imagem '+(index+1)+' do portfólio de '+nome);
+      return '<figure><img src="'+esc(photo.uri)+'" alt="'+alt+'" loading="lazy"><figcaption>'+alt+'</figcaption></figure>';
+    }).join('')+'</div></div></section>';
+    var vk=videoKind();var url=document.getElementById('video-url').value.trim();
+    if(vk==='link'&&/^https:\/\//.test(url))html+='<section class="portfolio-section portfolio-shell"><h2>Vídeo</h2><p class="video-card"><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">▶ Assistir ao vídeo</a></p></section>';
+    else if(vk==='arquivo'&&videoToken)html+='<section class="portfolio-section portfolio-shell"><h2>Vídeo</h2><video controls preload="metadata" src="/criador/video/'+esc(videoToken)+'">Seu navegador não reproduz este vídeo.</video></section>';
+    if(experiencia||formacao||habilidades){
+      html+='<section class="portfolio-section portfolio-shell" id="trajetoria"><span class="portfolio-kicker">PERCURSO</span><h2>Trajetória profissional</h2><div class="portfolio-details">';
+      [['Experiência',experiencia],['Formação e cursos',formacao],['Habilidades',habilidades]].forEach(function(part){if(part[1])html+='<article><h3>'+part[0]+'</h3><p class="text">'+esc(part[1])+'</p></article>';});
+      html+='</div></section>';
+    }
+    if(contato)html+='<section class="portfolio-section portfolio-contact" id="contato"><div class="portfolio-shell"><span class="portfolio-kicker">PRÓXIMO PASSO</span><h2>Vamos conversar?</h2><p class="text">'+esc(contato)+'</p></div></section>';
+    html+='<footer class="portfolio-footer"><div class="portfolio-shell"><strong>'+esc(nome||'Seu nome')+'</strong><span>Portfólio profissional</span></div></footer>';
+    return html;
+  }
   function liveSecoes(kind){
     var out=[];var esc=escLive;
     var nome=form.elements.nome.value.trim();
@@ -734,6 +783,8 @@
     var cores='--bg:'+corFundo.value+';--ink:'+corTexto.value+';--accent:'+corDestaque.value;
     if(kind==='site')return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+
       escLive(nome||'Seu negócio')+' — Site</title><link rel="stylesheet" href="assets/documento.css"></head><body class="'+modelo+' site" style="'+cores+'">'+notice+'<main>'+siteSections()+'</main></body></html>';
+    if(kind==='portfolio')return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+
+      escLive(nome||'Seu nome')+' — Portfólio</title><link rel="stylesheet" href="assets/documento.css"></head><body class="'+modelo+' portfolio" style="'+cores+'">'+notice+'<main>'+portfolioSections()+'</main></body></html>';
     return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+
       escLive(nome)+' — '+names[kind]+'</title><link rel="stylesheet" href="assets/documento.css"></head><body class="'+modelo+' '+kind+'" style="'+cores+'">'+
       notice+'<main>'+header+liveSecoes(kind)+footer+'</main></body></html>';
@@ -744,9 +795,9 @@
   }
   function syncLive(){
     if(!livePronto)return;
-    if(product()==='site'){
-      var siteHtml=previewLocalHtml();
-      if(siteHtml!==liveAssinatura){liveAssinatura=siteHtml;liveFrame.srcdoc=siteHtml;}
+    if(product()==='site'||product()==='portfolio'){
+      var previewHtml=previewLocalHtml();
+      if(previewHtml!==liveAssinatura){liveAssinatura=previewHtml;liveFrame.srcdoc=previewHtml;}
       return;
     }
     var doc=liveFrame.contentDocument;

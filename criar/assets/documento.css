@@ -46,3 +46,46 @@ body.site main{max-width:none;padding:0}
 .site-footer{background:var(--ink);color:var(--bg);padding:30px 0;font-size:.88rem}
 .site-footer .site-shell{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 @media(max-width:700px){.site-header .site-shell{align-items:flex-start;flex-direction:column;padding-block:18px}.site-hero{padding:48px 0}.site-hero-grid{grid-template-columns:1fr;gap:24px}.site-hero-art{min-height:200px}.site-section{padding-block:48px}}
+/* Portfólio editorial, inspirado no demonstrativo de professor da MOSS. */
+body.portfolio main{max-width:none;padding:0}
+.portfolio-shell{width:calc(100% - 64px);max-width:1160px;margin-inline:auto}
+.portfolio-top{position:relative;background:var(--bg);padding:0;margin:0;border-bottom:1px solid #bcc8c1}
+.portfolio-top .portfolio-shell{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:90px}
+.portfolio-brand{display:flex;align-items:center;gap:12px;color:var(--ink);font:600 1.2rem/1.2 Georgia,serif;text-decoration:none}
+.portfolio-brand small{display:block;font:600 .62rem/1.5 'Segoe UI',Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
+.portfolio-mark{display:grid;place-items:center;width:45px;height:45px;border:1px solid var(--accent);font:1.7rem Georgia,serif;flex:none}
+.portfolio-top nav{display:flex;flex-wrap:wrap;gap:12px 22px;font-size:.82rem;font-weight:600}
+.portfolio-top nav a{color:var(--ink);text-decoration:none}
+.portfolio-top nav a:hover,.portfolio-top nav a:focus-visible{text-decoration:underline}
+.portfolio-hero{padding:90px 0 105px;border:0;background:var(--bg)}
+.portfolio-hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:64px;align-items:center}
+.portfolio-kicker{display:inline-block;letter-spacing:.17em;font-size:.7rem;font-weight:800;color:var(--ink);text-transform:uppercase}
+.portfolio-kicker::before{content:'•';color:var(--accent);padding-right:8px;font-size:1.15rem}
+.portfolio-hero h1{font:500 clamp(2.8rem,5vw,5rem)/1.1 Georgia,serif;letter-spacing:-.045em;margin:30px 0 20px;max-width:14ch}
+.portfolio-hero .text{max-width:55ch;line-height:1.85}
+.portfolio-person{font-weight:700;margin:0 0 16px;color:var(--accent)}
+.portfolio-action{display:inline-flex;align-items:center;gap:18px;padding:13px 22px;margin-top:26px;border-radius:5px;background:var(--ink);color:var(--bg);text-decoration:none;font-size:.86rem;font-weight:700}
+.portfolio-action:hover,.portfolio-action:focus-visible{text-decoration:underline}
+.portfolio-art{min-height:400px;display:grid;place-items:center;overflow:hidden;border:1px solid #becabe;border-radius:46% 46% 8px 8px;background:linear-gradient(140deg,#dce8dc,var(--accent));color:#fff}
+.portfolio-art img{display:block;width:100%;height:440px;object-fit:cover}
+.portfolio-monograma{font:clamp(6rem,16vw,12rem)/1 Georgia,serif;color:var(--bg)}
+.portfolio-section{padding-block:86px;border:0}
+.portfolio-section h2{font:500 clamp(2rem,4vw,3.2rem)/1.15 Georgia,serif;color:var(--ink);margin:14px 0 35px}
+.portfolio-projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.portfolio-projects article{min-height:180px;padding:27px;background:#ffffffa8;border:1px solid #d4ddd4;border-radius:7px;display:flex;flex-direction:column;justify-content:space-between}
+.portfolio-projects article>span{color:var(--accent);font:700 .75rem Consolas,monospace}
+.portfolio-projects h3{font:500 clamp(1.3rem,2vw,1.7rem)/1.25 Georgia,serif;margin:20px 0 0;overflow-wrap:anywhere}
+.portfolio-gallery-section{background:#ffffff70}
+.portfolio-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.portfolio-gallery figure{margin:0}.portfolio-gallery img{display:block;width:100%;height:250px;object-fit:cover;border-radius:5px;background:#d9e4d9}
+.portfolio-gallery figcaption{font-size:.82rem;padding-top:9px;color:var(--ink)}
+.portfolio-details{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px}
+.portfolio-details article{border-top:2px solid var(--accent);padding-top:20px}
+.portfolio-details h3{font-size:1.04rem;color:var(--ink);margin:0 0 14px}
+.portfolio-details p{font-size:.94rem}
+.portfolio-contact{background:var(--ink);color:var(--bg)}.portfolio-contact h2,.portfolio-contact .portfolio-kicker{color:var(--bg)}
+.portfolio-contact p{max-width:60ch}
+.portfolio-footer{background:var(--ink);color:var(--bg);border-top:1px solid #ffffff45;padding:25px 0;font-size:.82rem}
+.portfolio-footer .portfolio-shell{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:800px){.portfolio-top .portfolio-shell{flex-direction:column;align-items:flex-start;padding-block:18px}.portfolio-hero{padding:55px 0}.portfolio-hero-grid{grid-template-columns:1fr;gap:35px}.portfolio-art{min-height:280px}.portfolio-art img{height:320px}.portfolio-section{padding-block:55px}}
+@media(max-width:500px){.portfolio-shell{width:calc(100% - 36px)}.portfolio-top nav{gap:9px 16px;font-size:.78rem}.portfolio-hero h1{font-size:clamp(2.4rem,11vw,3.3rem)}.portfolio-art img{height:290px}.portfolio-projects{grid-template-columns:1fr}}

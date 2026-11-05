@@ -165,6 +165,31 @@ async def main():
                     check('Portfólio não mostra menu curto e sugere fotografia',
                           await page.locator('#area-context').is_hidden()
                           and 'Ensaio de família' in await page.locator('#example-itens').inner_text())
+                    check('Portfólio começa com visual natural',
+                          await page.locator('input[name="modelo"]:checked').get_attribute('value') == 'natural')
+                    await page.fill('#nome', 'Joana Silva')
+                    await page.fill('#titulo', 'Fotografia que conta histórias')
+                    await page.fill('#apresentacao', 'Retratos e ensaios fotográficos.')
+                    await page.fill('#itens', 'Retratos autorais\nEnsaios de família')
+                    await page.fill('#contato', 'joana@example.com')
+                    await expect(live.locator('.portfolio-hero h1')).to_have_text('Fotografia que conta histórias')
+                    await page.click('#next')
+                    await page.locator('[data-page="2"]').wait_for(state='visible')
+                    await page.set_input_files('#fotos', str(foto))
+                    await expect(live.locator('.portfolio-gallery figure')).to_have_count(1)
+                    await page.click('#next')
+                    await page.locator('[data-page="3"]').wait_for(state='visible')
+                    portfolio = page.frame_locator('#preview')
+                    check('Portfólio com apresentação, projetos e contato próprios',
+                          await portfolio.locator('.portfolio-top').count() == 1
+                          and await portfolio.locator('#projetos article').count() == 2
+                          and await portfolio.locator('#contato').count() == 1
+                          and await portfolio.locator('.portfolio-art img').count() == 1
+                          and await portfolio.locator('#galeria figure').count() == 1)
+                    await page.set_viewport_size({'width': 390, 'height': 844})
+                    check('Portfólio sem rolagem horizontal no celular',
+                          await page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+                          and await portfolio.locator('html').evaluate('el => el.scrollWidth <= innerWidth'))
                 finally:
                     await browser.close()
         except Exception as e:
