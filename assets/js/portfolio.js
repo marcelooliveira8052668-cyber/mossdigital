@@ -19,7 +19,7 @@
   };
 
   /* ------------------------------------------------------------------
-     MODELOS PRONTOS — 37 entradas do catálogo; os exclusivos têm link próprio
+     MODELOS PRONTOS — 38 entradas do catálogo; os exclusivos têm link próprio
      ------------------------------------------------------------------ */
   const version = 'fotos-20261027';
   const MODELOS = [
@@ -60,6 +60,7 @@
     { id: 'floricultura', emoji: '💐', foto: 'assets/img/previas/floricultura.webp', nome: 'Flora & Afeto — Floricultura', desc: 'Catálogo e montador de buquê demonstrativo: flores, tamanho, embalagem e cartão. Sem compras ou entregas reais.', link: 'demos/floricultura/index.html' },
     { id: 'casamento', emoji: '💍', foto: 'assets/img/previas/casamento.webp', nome: 'Clara & Tomás — Casamento', desc: 'História, programação e prévia de confirmação de presença. Casal fictício, sem evento ou lista de convidados reais.', link: 'demos/casamento/index.html' },
     { id: 'contabilidade', emoji: '📊', foto: 'assets/img/previas/contabilidade.webp', nome: 'Eixo Contábil — Contabilidade', desc: 'Apresentação e roteiro inicial de conversa. Marca fictícia, sem orientação fiscal ou atendimento contábil.', link: 'demos/contabilidade/index.html' },
+    { id: 'otica', emoji: '👓', foto: 'assets/img/previas/otica.webp', nome: 'Lumina Ótica — Óculos de grau e sol', desc: 'Coleção de armações com filtro, guia de estilo por rosto e lista de prova local. Marca fictícia, sem venda, exame de vista ou envio de dados.', link: 'demos/otica/index.html' },
   ];
 
   /* ------------------------------------------------------------------

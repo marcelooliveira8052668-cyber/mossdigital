@@ -57,7 +57,8 @@ async def test(base, output, browser_path, axe_path):
             if parsed.scheme or parsed.netloc:
                 continue
             if parsed.path:
-                target = REPO / unquote(parsed.path)
+                # Caminho absoluto (ex.: /criar/) resolve dentro do repositório.
+                target = REPO / unquote(parsed.path).lstrip('/')
                 assert target.exists(), f'Recurso local ausente: {link}'
                 if target.is_dir():
                     assert (target / 'index.html').exists(), f'Índice ausente: {link}'
