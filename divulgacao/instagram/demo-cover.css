@@ -8,3 +8,5 @@
 .bottom>div{flex:none;background:#ffef8a;color:#0d2b52;border-radius:16px;padding:17px 30px;text-align:center;box-shadow:0 12px 30px #00000059}
 .cover .bottom>div strong{display:block;font-size:27px;letter-spacing:-.5px;color:#0d2b52;white-space:nowrap}
 .cover .bottom>div small{display:block;font-size:14px;margin-top:5px;color:#0d2b52;opacity:.78;white-space:nowrap}
+
+.distribuidora .cover{background:radial-gradient(ellipse at 90% 0,#3a2d00,transparent 55%),#111111;color:#fff}.distribuidora .eyebrow{color:#ffc107}.distribuidora h1 em{color:#ffc107}.distribuidora .top>span{border-color:#8a7500}.distribuidora .preview{border-color:#8a7500}.distribuidora .browser{background:#2a2a2a;color:#ffc107}.distribuidora .features>span{background:#222;border-color:#8a7500}.distribuidora .bottom small,.distribuidora .disclaimer{color:#d6d6d6}.distribuidora .disclaimer{border-color:#555}
