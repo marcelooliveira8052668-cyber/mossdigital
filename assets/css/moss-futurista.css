@@ -262,3 +262,14 @@
   :root .hero-copy h1 em { -webkit-text-fill-color: currentColor; background: none; }
   :root .brand-logo { filter: none; mix-blend-mode: normal; background: white; }
 }
+
+/* Botao fixo do WhatsApp (sempre acessivel em qualquer pagina) */
+.zap-flutuante{position:fixed;right:18px;bottom:18px;z-index:901;display:inline-flex;align-items:center;gap:9px;padding:13px 18px;border-radius:999px;background:#25d366;color:#06210f;font-weight:800;font-size:.88rem;line-height:1;box-shadow:0 8px 28px rgba(0,0,0,.35);transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.zap-flutuante:hover,.zap-flutuante:focus-visible{background:#31e575;transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.42)}
+.zap-flutuante svg{flex:none}
+@media (max-width:640px){.zap-flutuante{right:12px;bottom:12px;padding:12px 15px;font-size:.82rem}}
+@media (prefers-reduced-motion:reduce){.zap-flutuante{transition:none}}
+
+/* No inicio, a faixa fixa ocupa o rodape: pila sobe para nao cobrir a seta */
+body:has(.top-cta) .zap-flutuante{bottom:82px}
+@media (max-width:640px){body:has(.top-cta) .zap-flutuante{bottom:74px}}
