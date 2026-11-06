@@ -14,6 +14,8 @@ import re
 import sys
 from pathlib import Path
 
+sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 REPO = Path(__file__).resolve().parent.parent
 EXTERNO = REPO.parents[1] / '_repo-site' / 'modelos.html'
 ARTEFATOS = [REPO / 'modelos.html', EXTERNO]
@@ -27,9 +29,14 @@ def ids_do_mapa():
 
 
 def id_demo(href):
-    """Deriva o id do criador a partir do href da demonstração."""
+    """Deriva o id do criador a partir do href da demonstração.
+
+    Aceita hrefs absolutos (https://mossdigital.com.br/...) removendo a origem.
+    """
     if href.startswith(('http://', 'https://', '//')):
-        return None
+        href = re.sub(r'^[a-z]+://[^/]+', '', href)
+        if href.startswith('/'):
+            href = href[1:]
     if 'preset=' in href:
         found = re.search(r'preset=([^&"]+)', href)
         return 'preset-' + found.group(1) if found else None
