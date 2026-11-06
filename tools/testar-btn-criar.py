@@ -1,6 +1,6 @@
 """Verifica o botão "Criar o meu site grátis" em todos os cards de modelos.html.
 
-- 36 cards estáticos com <a class="btn-create" href="criar/?demo=<id>">
+- 37 cards estáticos com <a class="btn-create" href="criar/?demo=<id>">
 - 6 cards criados pelo JS com o mesmo texto
 - id de cada botão existe em criar/assets/mapa-demos.js
 - alvo do botão existe (criar/index.html) e demo= resolve no mapa
@@ -33,13 +33,13 @@ mapa = (REPO / 'criar' / 'assets' / 'mapa-demos.js').read_text(encoding='utf-8')
 ids = set(re.findall(r"'([a-z0-9-]+)'\s*:\s*\{", mapa))
 
 arts = re.findall(r'<article class="card" data-category="[^"]*">.*?</article>', html, re.S)
-checar(len(arts) == 36, f'36 cards estaticos (achados: {len(arts)})')
+checar(len(arts) == 37, f'37 cards estaticos (achados: {len(arts)})')
 
 com_botao = [a for a in arts if 'btn-create' in a]
-checar(len(com_botao) == 36, f'todos com btn-create ({len(com_botao)})')
+checar(len(com_botao) == 37, f'todos com btn-create ({len(com_botao)})')
 
 hrefs = re.findall(r'<a class="btn-create" href="criar/\?demo=([^"]+)">', html)
-checar(len(hrefs) == 36, f'36 hrefs btn-create ({len(hrefs)})')
+checar(len(hrefs) == 37, f'37 hrefs btn-create ({len(hrefs)})')
 checar(all(h in ids for h in hrefs), 'todos os ids existem no mapa-demos')
 checar(all(TEXTO in a for a in com_botao), f'texto "{TEXTO}" em todos')
 
@@ -70,7 +70,7 @@ with sync_playwright() as p:
 
         botoes = page.locator('a.btn-create')
         n = botoes.count()
-        checar(n >= 42, f'{rot}: >=42 botoes (achados: {n})')
+        checar(n >= 43, f'{rot}: >=43 botoes (achados: {n})')
 
         textos = botoes.all_inner_texts()
         checar(all(TEXTO in t for t in textos), f'{rot}: todos com texto "{TEXTO}"')
@@ -104,6 +104,24 @@ with sync_playwright() as p:
     ok_pag = page.evaluate("() => document.title.includes('MOSS') || !!document.querySelector('[data-moss-theme]')")
     checar(ok_url, f'clique leva para o criador ({page.url})')
     checar(ok_pag, 'criador carrega (title/theme)')
+    ctx.close()
+
+    ctx = nav.new_context(viewport={'width': 1440, 'height': 900})
+    page = ctx.new_page()
+    page.goto(f'{URL}/modelos.html', wait_until='networkidle')
+    motors = page.locator('#cards article.card').filter(has=page.locator('a[href="demos/moss-motors/"]'))
+    checar(motors.count() == 1 and motors.locator('a.btn-create').get_attribute('href') == 'criar/?demo=moss-motors',
+           'MOSS Motors presente no catalogo, com link para demo e criador')
+    motors.locator('a.demo').click()
+    page.wait_for_url('**/demos/moss-motors/')
+    checar(page.locator('.vehicle-card').count() == 6 and page.title().startswith('MOSS Motors'),
+           'demo MOSS Motors abre e renderiza estoque em destaque')
+    page.goto(f'{URL}/criar/?demo=moss-motors', wait_until='networkidle')
+    page.locator('#creator').wait_for(state='visible')
+    pronto = page.locator('input[name="produto"][value="site"]').is_checked()
+    origem = page.locator('#origem-status').inner_text()
+    checar(pronto and 'MOSS Motors' in origem,
+           f'botao Criar da MOSS Motors prepara o criador gratuito (site={pronto}, origem={origem[:70]!r})')
     ctx.close()
 
     nav.close()

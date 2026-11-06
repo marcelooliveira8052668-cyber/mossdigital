@@ -23,7 +23,7 @@
   'use strict';
 
   var mapa = {
-    /* ---------- Demonstrações em demos/ (15) ---------- */
+    /* ---------- Demonstrações em demos/ (16) ---------- */
     'acessoaberto': { nome: 'acesso aberto — Guia de Acessibilidade Urbana', produto: 'site', area: 'geral', demo: '../demos/acessoaberto/' },
     'assistencia': { nome: 'Ponto Certo — Assistência e Reparos', produto: 'site', area: 'servicos', demo: '../demos/assistencia/' },
     'bar': { nome: 'Bar Íris — Coquetelaria', produto: 'site', area: 'restaurante', demo: '../demos/bar/' },
@@ -34,6 +34,7 @@
     'floricultura': { nome: 'Flora & Afeto — Floricultura', produto: 'site', area: 'loja', demo: '../demos/floricultura/' },
     'fretes': { nome: 'Fretes Avenida — Fretes e Transportes', produto: 'site', area: 'servicos', demo: '../demos/fretes/' },
     'junto': { nome: 'junto. — Voluntariado e Impacto Social', produto: 'site', area: 'geral', demo: '../demos/junto/' },
+    'moss-motors': { nome: 'MOSS Motors — Loja de Veículos', produto: 'site', area: 'loja', demo: '../demos/moss-motors/' },
     'otica': { nome: 'Lumina Ótica — Óculos de grau e sol', produto: 'site', area: 'loja', demo: '../demos/otica/' },
     'pontocomum': { nome: 'ponto comum — Coworking e Salas de Reunião', produto: 'site', area: 'servicos', demo: '../demos/pontocomum/' },
     'raizfeira': { nome: 'raiz / feira — Feira de Produtores Locais', produto: 'site', area: 'loja', demo: '../demos/raizfeira/' },
