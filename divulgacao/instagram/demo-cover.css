@@ -2,3 +2,9 @@
 .wedding .cover{background:#eee9dc;color:#3f453b}.wedding .top>span{border-color:#aab395}.wedding .eyebrow{color:#65714e}.wedding h1{font-family:Georgia,serif;font-weight:400;font-size:82px}.wedding h1 em{color:#826537}.wedding .preview{border-color:#acb397}.wedding .browser{background:#d6dcc9;color:#48553d}.wedding .features>span{background:#e0e3d3;border-color:#adb99b}.wedding .bottom>p{font-family:Georgia,serif}.wedding .bottom small,.wedding .disclaimer{color:#606754}.wedding .disclaimer{border-color:#b7bea7}
 .accounting .cover{background:linear-gradient(135deg,#152b3a,#254958);color:#f8f4e9}.accounting .eyebrow{color:#efbf83}.accounting h1 em{color:#efbf83;font-family:Georgia,serif}.accounting .top>span{border-color:#b39268}.accounting .browser{background:#e7cfab;color:#394d53}.accounting .preview{border-color:#bda680}.accounting .features>span{background:#284e5b;border-color:#71919a}.accounting .disclaimer{border-color:#71919a}
 .optica .cover{background:radial-gradient(ellipse at 90% 0,#1f5b60,transparent 55%),#0f2a31;color:#eef5f4}.optica .eyebrow{color:#7fd4cf}.optica h1 em{color:#f0b45c;font-family:Georgia,serif;font-style:italic}.optica .top>span{border-color:#4f8b8b}.optica .preview{border-color:#4f8b8b}.optica .browser{background:#cfe3e2;color:#17454e}.optica .features>span{background:#17414a;border-color:#4f8b8b}.optica .bottom small,.optica .disclaimer{color:#b6d0ce}.optica .disclaimer{border-color:#3f7376}
+
+/* Botao impresso no rodape: a capa precisa mostrar por onde entrar no site.
+   Amarelo da faixa do inicio; especificidade .cover vence os temas claros. */
+.bottom>div{flex:none;background:#ffef8a;color:#0d2b52;border-radius:16px;padding:17px 30px;text-align:center;box-shadow:0 12px 30px #00000059}
+.cover .bottom>div strong{display:block;font-size:27px;letter-spacing:-.5px;color:#0d2b52;white-space:nowrap}
+.cover .bottom>div small{display:block;font-size:14px;margin-top:5px;color:#0d2b52;opacity:.78;white-space:nowrap}

@@ -16,7 +16,22 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mossdigital.com.br/moss-cardapio/index.html</loc>
+    <loc>https://mossdigital.com.br/site-de-turismo/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mossdigital.com.br/agenda-pro/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mossdigital.com.br/moss-burger-online/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mossdigital.com.br/fotos-amigos/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -59,5 +74,10 @@
     <loc>https://mossdigital.com.br/educaenem/index.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mossdigital.com.br/privacidade.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
