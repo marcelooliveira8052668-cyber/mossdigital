@@ -9,6 +9,7 @@ import json
 from pathlib import Path
 import struct
 import tempfile
+import zipfile
 from urllib.parse import urlparse
 import zlib
 from playwright.async_api import async_playwright, expect
@@ -31,6 +32,7 @@ def png_bytes(color=(40, 90, 160), size=(8, 8)):
 
 async def main():
     checks = []; errors = []; externas = []; faltando = []; api404 = []; failure = None
+    leads = []
     SAIDA.mkdir(parents=True, exist_ok=True)
     def check(name, ok): checks.append({'teste': name, 'passou': bool(ok)})
     with tempfile.TemporaryDirectory(dir=Path.home() / 'AppData/Local/Temp/opencode') as temp:
@@ -45,6 +47,14 @@ async def main():
                         url = route.request.url
                         if url.endswith('/rest/v1/rpc/moss_criador_registrar'):
                             await route.fulfill(status=200, content_type='application/json', body='{"id":"teste-local"}')
+                            return
+                        if url.endswith('/rest/v1/rpc/moss_criador_capturar_lead'):
+                            data = route.request.post_data_json
+                            leads.append(data)
+                            await route.fulfill(status=200, content_type='application/json',
+                                                body=('{"erro":"temporariamente indisponível"}'
+                                                      if data['p_produto'] == 'portfolio'
+                                                      else '{"id":"lead-teste","recebido":true}'))
                             return
                         if not url.startswith(DOMINIO):
                             externas.append(url)
@@ -123,10 +133,48 @@ async def main():
                           and await page.evaluate('document.documentElement.scrollWidth <= innerWidth'))
                     await page.screenshot(path=str(SAIDA / 'criador-suporte-celular.png'))
                     await page.set_viewport_size({'width': 1440, 'height': 900})
-                    await expect(page.locator('#order-price')).to_have_text('A combinar no WhatsApp')
-                    check('Preço fica como não definido sem servidor', True)
-                    check('Pix não é liberado antes da conferência do pedido',
-                          await page.locator('#pix-panel').is_hidden())
+                    await expect(page.locator('#order-price')).to_have_text('Download grátis, na hora')
+                    check('Download gratuito sem Pix', await page.locator('#pix-panel').count() == 0)
+                    await page.click('#btn-baixar')
+                    check('Nome e WhatsApp são exigidos antes do download',
+                          'nome' in (await page.locator('#lead-status').inner_text()).lower()
+                          and await page.locator('#download-done').is_hidden())
+                    await page.fill('#lead-nome', 'Cliente Teste')
+                    await page.fill('#lead-whats', '(11) 99999-9999')
+                    await page.click('#btn-baixar')
+                    check('Captura só ocorre com autorização explícita',
+                          'autorização' in (await page.locator('#lead-status').inner_text()).lower()
+                          and not leads)
+                    await page.check('#lead-consent')
+                    async with page.expect_download() as download_event:
+                        await page.click('#btn-baixar')
+                    download = await download_event.value
+                    zip_path = temp / download.suggested_filename
+                    await download.save_as(zip_path)
+                    with zipfile.ZipFile(zip_path) as archive:
+                        assert archive.testzip() is None
+                        files = {name.split('/', 1)[-1]: archive.read(name) for name in archive.namelist()}
+                        html_site = files['index.html'].decode('utf-8')
+                        check('ZIP do site contém HTML, CSS, foto e guia de publicação',
+                              {'index.html', 'css/estilo.css', 'img/foto-1.jpg', 'COMO-PUBLICAR.html'} <= files.keys())
+                        check('Arquivo é publicável e mantém crédito apenas no site',
+                              'src="img/foto-1.jpg"' in html_site
+                              and 'href="css/estilo.css"' in html_site
+                              and 'data:image/' not in html_site
+                              and 'noindex' not in html_site
+                              and 'Site criado com a MOSS Digital' in html_site)
+                        check('Guia inclui domínio, DNS e WhatsApp de suporte',
+                              all(x in files['COMO-PUBLICAR.html'].decode('utf-8')
+                                  for x in ('domínio', 'DNS', 'wa.me/5511942038103')))
+                    check('Pós-download oferece suporte e demo',
+                          await page.locator('#download-done').is_visible()
+                          and await page.locator('#whats-demo-pos').is_visible())
+                    await expect(page.locator('#lead-status')).to_contain_text('Contato recebido')
+                    check('Contato real envia somente nome, WhatsApp, tipo e chave autorizados',
+                          len(leads) == 1
+                          and set(leads[0]) == {'p_chave', 'p_nome', 'p_whatsapp', 'p_produto'}
+                          and leads[0]['p_nome'] == 'Cliente Teste'
+                          and leads[0]['p_whatsapp'] == '11999999999')
                     await page.screenshot(path=str(SAIDA / 'criador-estatico.png'), full_page=True)
 
                     await page.click('#back')
@@ -158,6 +206,30 @@ async def main():
                     await page.fill('#occupation', 'Enfermeiro')
                     check('Exemplos de currículo acompanham profissão pesquisada',
                           'Enfermeiro' in await page.locator('#example-titulo').inner_text())
+                    await page.fill('#nome', 'Ana Oliveira')
+                    await page.fill('#titulo', 'Enfermeira')
+                    await page.fill('#apresentacao', 'Atendimento humanizado.')
+                    await page.click('#next')
+                    await page.locator('[data-page="2"]').wait_for(state='visible')
+                    await page.click('#next')
+                    await page.locator('[data-page="3"]').wait_for(state='visible')
+                    await page.fill('#lead-nome', 'Ana Oliveira')
+                    await page.fill('#lead-whats', '(11) 98888-7777')
+                    await page.check('#lead-consent')
+                    async with page.expect_download() as cv_event:
+                        await page.click('#btn-baixar')
+                    cv_download = await cv_event.value
+                    cv_path = temp / cv_download.suggested_filename
+                    await cv_download.save_as(cv_path)
+                    with zipfile.ZipFile(cv_path) as archive:
+                        cv_files = {name.split('/', 1)[-1]: archive.read(name) for name in archive.namelist()}
+                        cv_html = cv_files['index.html'].decode('utf-8')
+                        check('Currículo entrega HTML imprimível com guia para PDF',
+                              'LEIA-ME.html' in cv_files and 'css/estilo.css' in cv_files
+                              and 'SALVAR COMO PDF' in cv_html
+                              and '@media print' in cv_files['css/estilo.css'].decode('utf-8'))
+                        check('Arquivo do currículo não contém marca MOSS nem noindex',
+                              'MOSS Digital' not in cv_html and 'noindex' not in cv_html)
                     await page.goto(DOMINIO + 'criar/index.html', wait_until='networkidle')
                     await page.check('input[name="produto"][value="portfolio"]')
                     await page.click('#next')
@@ -185,7 +257,22 @@ async def main():
                           and await portfolio.locator('#projetos article').count() == 2
                           and await portfolio.locator('#contato').count() == 1
                           and await portfolio.locator('.portfolio-art img').count() == 1
-                          and await portfolio.locator('#galeria figure').count() == 1)
+                           and await portfolio.locator('#galeria figure').count() == 1)
+                    await page.fill('#lead-nome', 'Joana Silva')
+                    await page.fill('#lead-whats', '11999999999')
+                    await page.check('#lead-consent')
+                    async with page.expect_download() as portfolio_event:
+                        await page.click('#btn-baixar')
+                    portfolio_download = await portfolio_event.value
+                    portfolio_zip = temp / portfolio_download.suggested_filename
+                    await portfolio_download.save_as(portfolio_zip)
+                    with zipfile.ZipFile(portfolio_zip) as archive:
+                        portfolio_html = archive.read(next(name for name in archive.namelist() if name.endswith('/index.html'))).decode('utf-8')
+                    check('Portfólio entregue sem crédito no rodapé',
+                          'Site criado com a MOSS Digital' not in portfolio_html and 'noindex' not in portfolio_html)
+                    await expect(page.locator('#lead-status')).to_contain_text('não recebeu seu contato')
+                    check('Falha de captura não bloqueia o ZIP e não é tratada como sucesso',
+                          await page.locator('#download-done').is_visible())
                     await page.set_viewport_size({'width': 390, 'height': 844})
                     check('Portfólio sem rolagem horizontal no celular',
                           await page.evaluate('document.documentElement.scrollWidth <= innerWidth')

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Como publicar — guia MOSS Digital</title><style>
+:root{font:16px/1.7 'Segoe UI',Arial,sans-serif;color:#183149;background:#f5f7fb;--navy:#0d2b52;--blue:#174fab;--yellow:#ffef8a;--edge:#cbd7e5}*{box-sizing:border-box}body{margin:0}.wrap{width:calc(100% - 40px);max-width:820px;margin-inline:auto}header{background:var(--navy);color:#fff;padding:40px 0 34px}header .wrap{display:flex;flex-direction:column;gap:6px}header .marca{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}header h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.2;margin:0}header p{margin:4px 0 0;color:#cfdcef}.caixa{background:#fff;border:1px solid var(--edge);border-radius:14px;padding:22px 24px;margin:24px 0}h2{font-size:1.35rem;line-height:1.3;color:var(--navy);margin:34px 0 10px}h2 .num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--yellow);color:var(--navy);font-size:.95rem;margin-right:10px;vertical-align:-6px}h3{font-size:1.02rem;margin:18px 0 6px;color:var(--navy)}p{margin:8px 0}ul,ol{margin:8px 0;padding-left:22px}li{margin:6px 0}code{background:#eef3fa;border:1px solid var(--edge);border-radius:6px;padding:1px 7px;font-size:.92em;word-break:break-all}a{color:var(--blue)}.destaque{border-left:5px solid var(--yellow);background:#fffbe0}.azul{background:var(--navy);color:#fff;border-color:var(--navy)}.azul h2,.azul h3{color:#fff}.azul code{background:#16396a;border-color:#2c528c;color:#e8f0fb}.etapa{display:flex;gap:14px;align-items:flex-start}.etapa .ico{flex:0 0 auto;width:46px;height:46px;border-radius:12px;background:#eef3fa;border:1px solid var(--edge);display:flex;align-items:center;justify-content:center;font-size:1.35rem}.btn{display:inline-block;padding:13px 20px;border-radius:10px;text-decoration:none;font-weight:700;margin:8px 8px 0 0}.btn-verde{background:#1f9d55;color:#fff}.btn-amarelo{background:var(--yellow);color:var(--navy)}.btn-azul{background:var(--blue);color:#fff}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.grid2 .caixa{margin:0}table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.95rem}th,td{border:1px solid var(--edge);padding:9px 11px;text-align:left;vertical-align:top}th{background:#eef3fa;color:var(--navy)}footer{margin-top:40px;padding:26px 0 40px;background:var(--navy);color:#cfdcef;text-align:center;font-size:.9rem}footer b{color:#fff}@media print{header,footer{background:#fff;color:#000;border-bottom:1px solid #999}.btn{border:1px solid #333;color:#000;background:#fff}}
+</style></head><body>
+<header><div class="wrap"><span class="marca">MOSS Digital · Guia de publicação</span><h1>Seu site está pronto — agora é só publicar</h1><p><b>Site:</b> {{NOME}} · Este guia acompanha os arquivos que você acabou de baixar.</p></div></header>
+<main class="wrap">
+
+<div class="caixa destaque"><b>O que você recebeu.</b> Uma pasta organizada, pronta para publicar:</div>
+<table><tr><th>Arquivo</th><th>O que é</th></tr>
+<tr><td><code>index.html</code></td><td>O seu site. É o arquivo principal — quem abrir a pasta vê a sua página.</td></tr>
+<tr><td><code>css/estilo.css</code></td><td>O visual (cores e layout). Já vem configurado com as cores que você escolheu.</td></tr>
+<tr><td><code>img/…</code></td><td>Suas fotos, separadas em arquivos.</td></tr>
+<tr><td><code>COMO-PUBLICAR.html</code></td><td>Este guia. Guarde a pasta inteira: sem ela, o site não funciona.</td></tr></table>
+
+<h2><span class="num">1</span>Compre o domínio que quiser</h2>
+<div class="etapa"><div class="ico">🌐</div><div><p>O domínio é o endereço do seu site (ex.: <code>suaempresa.com.br</code>). Você escolhe qualquer registradora — o preço e a liberação variam, consulte na hora da compra:</p>
+<ul><li><b>Registro.br</b> — registradora oficial do <code>.com.br</code> (paga-se por ano).</li>
+<li><b>Hostinger, Cloudflare, GoDaddy, Locaweb</b> e outras — registre onde quiser.</li></ul>
+<p>Leva poucos minutos e você precisa de CPF/cartão no seu nome. <b>Você pode pular este passo</b> se ainda não quiser um endereço próprio: o site publicado funciona mesmo com o endereço gratuito da hospedagem (etapa 2).</p></div></div>
+
+<h2><span class="num">2</span>Publique os arquivos grátis</h2>
+<div class="etapa"><div class="ico">⬆️</div><div><p>Escolha uma opção:</p>
+<h3>Opção A — Netlify Drop (mais fácil)</h3>
+<ol><li>Abra <code>app.netlify.com/drop</code> no navegador.</li>
+<li><b>Arraste a pasta inteira</b> do site para a página.</li>
+<li>Em instantes você recebe um endereço gratuito (algo como <code>nome-aleatorio.netlify.app</code>) que já mostra seu site. Para manter o projeto e configurar o seu domínio, crie ou acesse sua conta na plataforma.</li></ol>
+<h3>Opção B — Cloudflare Pages</h3>
+<ol><li>Crie uma conta em <code>dash.cloudflare.com</code> → <b>Workers &amp; Pages</b> → <b>Create</b> → <b>Pages</b> → <b>Upload assets</b>.</li>
+<li>Arraste a pasta, dê um nome e publique.</li></ol>
+<h3>Opção C — Deixar com a MOSS</h3>
+<p>Prefere que a gente publique e configure para você? É só pedir: <a href="{{SUPORTE}}">fale com o suporte no WhatsApp</a>.</p></div></div>
+
+<h2><span class="num">3</span>Conecte o seu domínio</h2>
+<div class="etapa"><div class="ico">🔗</div><div><p>Depois de publicado, ligue seu domínio ao endereço da hospedagem:</p>
+<ol><li><b>Na hospedagem</b> (Netlify/Cloudflare): abra o projeto → <b>Domain settings / Custom domains</b> → <b>Add domain</b> → digite seu domínio.</li>
+<li>A hospedagem informa o que configurar. Existem dois casos:
+<ul><li><b>Nameservers:</b> ela pede para trocar os nameservers do seu domínio. Vá à <b>registradora</b> (Registro.br etc.) → painel do domínio → <b>Nameservers</b> → cole os valores que a hospedagem mostrou.</li>
+<li><b>Registros DNS (A / CNAME):</b> vá à registradora → painel do domínio → <b>DNS</b> → adicione os registros exatamente como a hospedagem pediu (nome, tipo e valor).</li></ul></li>
+<li><b>Aguarde a propagação:</b> de minutos até 48 horas (raramente mais). O site já funciona pelo endereço gratuito enquanto isso.</li>
+<li><b>Teste:</b> digite seu domínio no navegador — se aparecer o seu site (com cadeado 🔒 no endereço), está tudo certo.</li></ol></div></div>
+
+<div class="caixa destaque"><b>Não achou onde configurar o DNS?</b> O painel muda um pouco em cada registradora. Envie um print da tela para o suporte e a gente aponta exatamente onde clicar.</div>
+
+<h2><span class="num">4</span>Travou? A gente ajuda</h2>
+<div class="caixa azul"><h3>Precisa de ajuda para publicar</h3><p>Chame o suporte da MOSS: informe o nome do seu projeto (<b>{{NOME}}</b>), o domínio que comprou e onde está travado. Respondemos pelo WhatsApp e conduzimos você até o site no ar.</p>
+<a class="btn btn-verde" href="{{SUPORTE}}">Falar com o suporte agora ↗</a>
+<h3>Quer um site pronto, feito pela MOSS?</h3><p>Se você prefere um projeto profissional no lugar do arquivo — design autoral, mais páginas, integrações, manutenção — peça uma demonstração: mostramos exemplos reais e os valores sem compromisso.</p>
+<a class="btn btn-amarelo" href="{{DEMO}}">Quero ver uma demo da MOSS ↗</a></div>
+
+<h2>Boas práticas</h2>
+<div class="grid2">
+<div class="caixa"><h3>🔐 Guarde a pasta</h3><p>Seu site só funciona com os três itens juntos (HTML, CSS, fotos). Faça um backup da pasta em nuvem ou pendrive.</p></div>
+<div class="caixa"><h3>✏️ Quer editar depois?</h3><p>Os textos ficam no <code>index.html</code>. Cuidado ao editar: mantenha as tags. Se preferir, peça ajuda ao suporte.</p></div>
+<div class="caixa"><h3>🔒 HTTPS automático</h3><p>Netlify e Cloudflare emitem certificado sozinhas. Ao trocar o domínio, confira se o cadeado aparece após a propagação.</p></div>
+<div class="caixa"><h3>📈 Próximos passos</h3><p>Google Meu Negócio, Instagram no rodapé e um domínio de e-mail profissional ajudam a crescer. A MOSS pode montar isso com você.</p></div>
+</div>
+
+</main>
+<footer><div class="wrap"><b>MOSS Digital</b> · Site criado pelo criador gratuito da MOSS Digital.<br>Dúvidas sobre publicação? <a href="{{SUPORTE}}" style="color:#ffef8a">WhatsApp do suporte</a> · <a href="https://mossdigital.com.br" style="color:#ffef8a">mossdigital.com.br</a><br>© {{ANO}}</div></footer>
+</body></html>

@@ -45,6 +45,7 @@ body.site main{max-width:none;padding:0}
 .site-contact{background:var(--accent);color:#fff}.site-contact h2{color:#fff}
 .site-footer{background:var(--ink);color:var(--bg);padding:30px 0;font-size:.88rem}
 .site-footer .site-shell{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.site-footer .site-credit{opacity:.8;font-size:.84rem}.site-footer .site-credit a{color:inherit}
 @media(max-width:700px){.site-header .site-shell{align-items:flex-start;flex-direction:column;padding-block:18px}.site-hero{padding:48px 0}.site-hero-grid{grid-template-columns:1fr;gap:24px}.site-hero-art{min-height:200px}.site-section{padding-block:48px}}
 /* Portfólio editorial, inspirado no demonstrativo de professor da MOSS. */
 body.portfolio main{max-width:none;padding:0}

@@ -1,4 +1,4 @@
-/* Criador MOSS Digital — prévia + finalização no WhatsApp */
+/* Criador MOSS Digital — criação grátis + download dos arquivos (.zip) */
 (function () {
   'use strict';
   var form = document.getElementById('editor');
@@ -24,7 +24,7 @@
   form.prepend(activityInfo);
   var activityNotice=document.createElement('p');activityNotice.className='note';
   activityNotice.textContent=onlineActivity
-    ?'Ao continuar, a MOSS registra no Supabase um número de atendimento, o tipo de projeto, a etapa e horários de atividade. Não enviamos seus textos, fotos ou contatos nesse acompanhamento. Dados antigos são limpos quando há novos registros, após 30 dias sem atividade. Fechar ou recarregar inicia outro atendimento. Atividade não comprova pagamento.'
+      ?'Ao continuar, a MOSS registra no Supabase um número de atendimento, o tipo de projeto, a etapa e horários de atividade. Não enviamos seus textos, fotos ou contatos nesse acompanhamento. Dados antigos são limpos quando há novos registros, após 30 dias sem atividade. Fechar ou recarregar inicia outro atendimento.'
     :localServer()
     ?'Ao continuar, a MOSS registra um número de atendimento, o tipo de projeto, a etapa e horários de atividade para acompanhar a criação. Não registramos os textos digitados, fotos ou contatos nesse acompanhamento. Registros são removidos após 30 dias sem atividade. Fechar ou recarregar a página inicia outro atendimento. Use apenas dados fictícios neste teste local.'
     :'O acompanhamento pela MOSS ainda não está conectado nesta versão online. Fale pelo WhatsApp para registrar seu atendimento.';
@@ -52,7 +52,7 @@
       if(!response.ok||typeof result.id!=='string')throw new Error('Registro indisponível');
       if(key!==activityKey)return;
       activityId=result.id;lastActivitySent=Date.now();
-      activityInfo.textContent='Atendimento '+activityId+' · etapa registrada para acompanhamento pela MOSS. Não é confirmação de pagamento.';
+      activityInfo.textContent='Atendimento '+activityId+' · etapa registrada para acompanhamento pela MOSS.';
       atualizarWhatsapp();
     }catch(failure){if(key===activityKey)activityInfo.textContent='A MOSS não conseguiu receber sua atividade agora. Continue a prévia e entre em contato pelo WhatsApp.';}
     finally{clearTimeout(timeout);activityPending=false;if(activityQueued)sendActivity();}
@@ -258,7 +258,7 @@
       :cv
       ?'Como querem te encontrar: cidade, e-mail, telefone ou LinkedIn. Use dados fictícios neste teste.'
       :'No teste, não use telefone nem e-mail reais. Este campo será apenas texto, não envia mensagens.';
-    document.getElementById('product-help').textContent='Você está criando: '+names[kind]+(receberPedidos?'. Revise seus textos antes de finalizar e enviar à MOSS.':'. Preencha com dados fictícios enquanto testamos.');
+    document.getElementById('product-help').textContent='Você está criando: '+names[kind]+(receberPedidos?'. Revise seus textos; no final você baixa os arquivos em .zip.':'. Preencha com dados fictícios enquanto testamos.');
     document.getElementById('professional-fields').hidden=kind==='site';
     document.getElementById('delivery-fields').hidden=cv;
     document.getElementById('resume-delivery').hidden=!cv;
@@ -419,15 +419,13 @@
   function renderOrder() {
     if(receberPedidos&&pedidoSnapshot&&pedidoSnapshot!==JSON.stringify(payload())){
       pedidoEnviado='';pedidoSnapshot='';
-      document.getElementById('pix-panel').hidden=true;
-      whatsFinal.textContent='Finalizar e enviar projeto à MOSS';
-      document.getElementById('envio-status').textContent='Você alterou o projeto. Finalize para enviar esta nova versão.';
+      whatsFinal.textContent='Enviar meu projeto à MOSS (opcional) ↗';
+      document.getElementById('envio-status').textContent='Você alterou o projeto. Envie esta nova versão quando quiser.';
     }
     atualizarWhatsapp('final');
     var kind=product();
     var delivery=kind==='curriculo'?'PDF privado':deliveries[form.elements.entrega.value];
     document.getElementById('order-item').textContent=names[kind]+' — '+delivery;
-    document.getElementById('order-price').textContent='A combinar no WhatsApp';
   }
 
   /* ---------- envio / prévia ---------- */
@@ -543,9 +541,9 @@
     if(receberPedidos){
       document.getElementById('envio-consent').checked=false;
       document.getElementById('envio-status').textContent='';
-      document.getElementById('pix-panel').hidden=true;
-      whatsFinal.textContent='Finalizar e enviar projeto à MOSS';
+      whatsFinal.textContent='Enviar meu projeto à MOSS (opcional) ↗';
     }
+    leadReset();
     HTMLFormElement.prototype.reset.call(form);previousProduct='';contextProduct='';examplesStatus.textContent='';
     var origemStatus=document.getElementById('origem-status');
     if(origemStatus){origemStatus.hidden=true;origemStatus.textContent='';}
@@ -574,7 +572,7 @@
     var delivery=kind==='curriculo'?'PDF privado':deliveries[form.elements.entrega ? form.elements.entrega.value : 'download'];
     var nome=form.elements.nome.value.trim();
     var titulo=form.elements.titulo.value.trim();
-    var texto='Olá! Criei minha prévia no site da MOSS Digital: '+names[kind]+(nome?' — "'+nome+'"':'')+(titulo?' — '+titulo:'')+'. Entrega: '+delivery+'. Quero combinar o valor do Pix ou enviar meu comprovante para conferência. Aguardo a confirmação do recebimento e a entrega manual dos arquivos. Vou anexar o comprovante nesta conversa, se já tiver pago.';
+    var texto='Olá! Criei minha prévia no site da MOSS Digital: '+names[kind]+(nome?' — "'+nome+'"':'')+(titulo?' — '+titulo:'')+'. Entrega: '+delivery+'. Quero ajuda para publicar com meu domínio ou ver uma demo da MOSS.';
     if(activityId)texto='Atendimento '+activityId+'. '+texto;
     if(pedidoEnviado)texto='Pedido '+pedidoEnviado+'. Meu projeto foi enviado ao painel privado da MOSS. '+texto;
     if(contexto==='ajuste')texto='Olá! Fiz uma prévia no criador da MOSS Digital ('+names[kind]+(nome?' — "'+nome+'"':'')+') e quero ajustar o resultado. Pode me ajudar?';
@@ -594,10 +592,7 @@
     consentLabel.append(consent,document.createTextNode(' Autorizo enviar meus textos, contatos, fotos e configurações à MOSS para preparar este pedido, em área privada. Não informe CPF, RG ou dados sensíveis.'));
     var envioStatus=document.createElement('p');envioStatus.id='envio-status';envioStatus.setAttribute('role','status');envioStatus.setAttribute('aria-live','polite');
     envioBox.append(consentLabel,envioStatus);whatsFinal.before(envioBox);
-    whatsFinal.textContent='Finalizar e enviar projeto à MOSS';
-    document.getElementById('pix-panel').hidden=true;
-    document.querySelector('.final-text').textContent='Finalize para enviar seu projeto completo ao painel privado da MOSS. Depois, converse pelo WhatsApp para combinar o valor e enviar o comprovante. A MOSS confere o Pix antes de entregar os arquivos.';
-    document.querySelector('#order-box > .note:last-child').textContent='Após a confirmação do envio, a MOSS recebe o projeto para baixar no painel privado. Você recebe os arquivos manualmente após a conferência do pagamento. Se o envio falhar, não feche a página: seus textos ainda estarão nesta tela.';
+    whatsFinal.textContent='Enviar meu projeto à MOSS (opcional) ↗';
     whatsFinal.addEventListener('click',async function(event){
       if(pedidoEnviado&&!enviandoPedido)return;
       event.preventDefault();event.stopImmediatePropagation();
@@ -619,11 +614,10 @@
         if(!response.ok||result.recebido!==true||typeof result.id!=='string')throw new Error('Envio não confirmado');
         pedidoEnviado=result.id;pedidoSnapshot=serialized;
         atualizarWhatsapp('final');
-        document.getElementById('pix-panel').hidden=false;
         whatsFinal.textContent='Conversar com a MOSS no WhatsApp';
-        envioStatus.textContent='Projeto recebido pela MOSS. Pedido '+pedidoEnviado+'. Agora toque no botão para conversar pelo WhatsApp. Isso não confirma pagamento.';
+        envioStatus.textContent='Projeto recebido pela MOSS. Pedido '+pedidoEnviado+'. Baixe seus arquivos acima; o WhatsApp abre quando você tocar no botão.';
       }catch(failure){
-        envioStatus.textContent='Envio não confirmado. Não feche nem atualize a página. Confira a conexão e tente novamente; não faça um novo Pix por causa desta falha. Se persistir, use o suporte.';
+        envioStatus.textContent='Envio não confirmado. Não feche nem atualize a página. Confira a conexão e tente novamente. Se persistir, use o suporte pelo WhatsApp.';
       }finally{clearTimeout(timer);enviandoPedido=false;busy=false;whatsFinal.removeAttribute('aria-disabled');}
     });
   }
@@ -631,17 +625,110 @@
     activityStage='whatsapp';lastActivity=Date.now();sendActivity();
   });
 
-  document.getElementById('pix-copy').addEventListener('click',async function(){
-    var key=document.getElementById('pix-key');
-    var status=document.getElementById('pix-status');
-    try{
-      if(!navigator.clipboard)throw new Error('Clipboard indisponível');
-      await navigator.clipboard.writeText(key.value);
-      status.textContent='Chave CPF copiada. Confirme o valor e o destinatário antes de pagar.';
-    }catch(failure){
-      key.focus();key.select();
-      status.textContent='Não foi possível copiar automaticamente. Copie a chave selecionada manualmente.';
+  /* ---------- download gratuito: arquivos organizados em uma pasta ZIP ---------- */
+  var leadNome=document.getElementById('lead-nome');
+  var leadWhats=document.getElementById('lead-whats');
+  var leadConsent=document.getElementById('lead-consent');
+  var leadStatus=document.getElementById('lead-status');
+  var btnBaixar=document.getElementById('btn-baixar');
+  var downloadDone=document.getElementById('download-done');
+  function leadReset(){
+    leadNome.value='';leadWhats.value='';leadConsent.checked=false;leadStatus.textContent='';
+    downloadDone.hidden=true;btnBaixar.textContent='Baixar meu arquivo grátis ↓';
+  }
+  function leadValido(){
+    if(leadNome.value.trim().length<2){leadStatus.textContent='Digite seu nome para baixar o arquivo.';leadNome.focus();return false;}
+    var digits=leadWhats.value.replace(/\D/g,'').replace(/^55(?=\d{10,11}$)/,'');
+    if(!/^[1-9]\d{9,10}$/.test(digits)){
+      leadStatus.textContent='Informe um WhatsApp brasileiro válido, com DDD e 10 ou 11 dígitos.';
+      leadWhats.focus();return false;
     }
+    if(!leadConsent.checked){
+      leadStatus.textContent='Marque a autorização para receber ajuda da MOSS e liberar o download.';
+      leadConsent.focus();return false;
+    }
+    leadStatus.textContent='';return true;
+  }
+  function slug(value){
+    return (value||'meu-projeto').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,65)||'meu-projeto';
+  }
+  function arquivoFoto(uri,index){
+    var match=/^data:(image\/(?:jpeg|png|webp));base64,([a-z\d+/=]+)$/i.exec(uri);
+    if(!match)throw new Error('Uma foto não pôde ser incluída. Tente adicionar novamente.');
+    var extension={'image/jpeg':'jpg','image/png':'png','image/webp':'webp'}[match[1].toLowerCase()];
+    var raw=atob(match[2]);var bytes=new Uint8Array(raw.length);
+    for(var i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
+    return {nome:'img/foto-'+index+'.'+extension,dados:bytes};
+  }
+  function linkMoss(texto){return 'https://wa.me/5511942038103?text='+encodeURIComponent(texto);}
+  function linksPosDownload(){
+    var nome=leadNome.value.trim();var whats=leadWhats.value.trim();var kind=names[product()];
+    document.getElementById('whats-suporte-pos').href=linkMoss('Olá! Sou '+nome+' ('+whats+'). Baixei meu '+kind+' no criador grátis da MOSS Digital e preciso de ajuda para publicar com meu domínio.');
+    document.getElementById('whats-demo-pos').href=linkMoss('Olá! Sou '+nome+' ('+whats+'). Criei meu '+kind+' grátis e quero ver uma demo pronta como as da MOSS. Pode me mostrar as opções?');
+  }
+  async function textoLocal(caminho){
+    var response=await fetch(caminho,{credentials:'omit'});
+    if(!response.ok)throw new Error('Não foi possível carregar '+caminho+'. Verifique a conexão e tente novamente.');
+    return response.text();
+  }
+  async function montarDownload(){
+    var kind=product();var nome=form.elements.nome.value.trim();var pasta=slug(nome)+'-'+kind;
+    var html=previewLocalHtml(true);var arquivos=[];
+    photos.forEach(function(photo,index){
+      var file=arquivoFoto(photo.uri,index+1);
+      arquivos.push({nome:pasta+'/'+file.nome,dados:file.dados});
+      html=html.split('src="'+photo.uri+'"').join('src="'+file.nome+'"');
+    });
+    if(/src="data:image\//.test(html))throw new Error('Uma foto não pôde ser separada. Tente adicionar novamente.');
+    var css=await textoLocal('assets/documento.css');
+    var guia=await textoLocal(kind==='curriculo'?'assets/guias/curriculo.html':'assets/guias/publicar.html');
+    var assunto=kind==='curriculo'?'gerar o PDF do meu currículo':'publicar meu '+kind+' com meu domínio';
+    var suporte=linkMoss('Olá! Sou '+leadNome.value.trim()+'. Baixei meu '+kind+' grátis e preciso de ajuda para '+assunto+'.');
+    var demo=linkMoss('Olá! Sou '+leadNome.value.trim()+'. Quero uma demo pronta como as da MOSS para meu '+kind+'.');
+    guia=guia.replaceAll('{{NOME}}',escLive(nome)).replaceAll('{{SUPORTE}}',suporte)
+      .replaceAll('{{DEMO}}',demo).replaceAll('{{ANO}}',String(new Date().getFullYear()));
+    arquivos.unshift({nome:pasta+'/index.html',dados:window.MossZip.textoEmBytes(html)});
+    arquivos.push({nome:pasta+'/css/estilo.css',dados:window.MossZip.textoEmBytes(css)});
+    arquivos.push({nome:pasta+'/'+(kind==='curriculo'?'LEIA-ME.html':'COMO-PUBLICAR.html'),dados:window.MossZip.textoEmBytes(guia)});
+    return {blob:window.MossZip.pacote(arquivos),nome:pasta+'.zip'};
+  }
+  async function capturarLead(){
+    if(!onlineActivity)throw new Error('captura de contatos indisponível');
+    if(!activityId){await sendActivity();if(!activityId)throw new Error('atendimento não registrado');}
+    var digits=leadWhats.value.replace(/\D/g,'').replace(/^55(?=\d{10,11}$)/,'');
+    var controller=new AbortController();var timer=setTimeout(function(){controller.abort();},10000);
+    try{
+      var response=await fetch(onlineConfig.url+'/rest/v1/rpc/moss_criador_capturar_lead',{
+        method:'POST',credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer',signal:controller.signal,
+        headers:{apikey:onlineConfig.publishableKey,'Content-Type':'application/json'},
+        body:JSON.stringify({p_chave:activityKey,p_nome:leadNome.value.trim(),p_whatsapp:digits,p_produto:product()})
+      });
+      var result=await response.json();
+      if(!response.ok||result.recebido!==true||typeof result.id!=='string')throw new Error('contato não confirmado');
+    }finally{clearTimeout(timer);}
+  }
+  btnBaixar.addEventListener('click',async function(){
+    if(busy||photoBusy||!leadValido())return;
+    if(!window.MossZip){leadStatus.textContent='Gerador indisponível. Recarregue a página e tente novamente.';return;}
+    busy=true;btnBaixar.disabled=true;leadStatus.textContent='Preparando seu arquivo…';
+    try{
+      var resultado=await montarDownload();
+      var url=URL.createObjectURL(resultado.blob);
+      var anchor=document.createElement('a');anchor.href=url;anchor.download=resultado.nome;
+      document.body.appendChild(anchor);anchor.click();anchor.remove();
+      setTimeout(function(){URL.revokeObjectURL(url);},60000);
+      linksPosDownload();downloadDone.hidden=false;
+      btnBaixar.textContent='Baixar novamente ↓';
+      leadStatus.textContent='Download iniciado. Registrando seu contato com a MOSS…';
+      try{
+        await capturarLead();
+        leadStatus.textContent='Download iniciado. Contato recebido pela MOSS; confira a pasta de downloads.';
+      }catch(failure){
+        leadStatus.textContent='Download iniciado, mas a MOSS não recebeu seu contato. Você pode nos chamar pelo botão de suporte abaixo.';
+      }
+    }catch(failure){leadStatus.textContent='Não foi possível montar o arquivo: '+failure.message;}
+    finally{busy=false;btnBaixar.disabled=false;}
   });
 
   /* ---------- site vivo: prévia ao vivo espelhando o render_document ---------- */
@@ -657,7 +744,7 @@
       '<meta name="robots" content="noindex,nofollow"><title>Prévia — Site</title><link rel="stylesheet" href="assets/documento.css"></head>'+
       '<body class="claro site live"><main></main></body></html>';
   }
-  function siteSections(){
+  function siteSections(final){
     var esc=escLive;
     var nome=form.elements.nome.value.trim();
     var titulo=form.elements.titulo.value.trim();
@@ -686,12 +773,12 @@
     }).join('')+'</div></section>';
     var vk=videoKind();var url=document.getElementById('video-url').value.trim();
     if(vk==='link'&&/^https:\/\//.test(url))html+='<section class="site-section site-shell"><h2>Vídeo</h2><p class="video-card"><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">▶ Assistir ao vídeo</a></p></section>';
-    else if(vk==='arquivo'&&videoToken)html+='<section class="site-section site-shell"><h2>Vídeo</h2><video controls preload="metadata" src="/criador/video/'+esc(videoToken)+'">Seu navegador não reproduz este vídeo.</video></section>';
+    else if(vk==='arquivo'&&videoToken&&final!==true)html+='<section class="site-section site-shell"><h2>Vídeo</h2><video controls preload="metadata" src="/criador/video/'+esc(videoToken)+'">Seu navegador não reproduz este vídeo.</video></section>';
     if(contato)html+='<section class="site-section site-contact" id="contato"><div class="site-shell"><h2>Contato e próximo passo</h2><p class="text">'+esc(contato)+'</p></div></section>';
-    html+='<footer class="site-footer"><div class="site-shell"><strong>'+esc(nome||'Seu negócio')+'</strong>'+(rodape?'<span>'+esc(rodape)+'</span>':'')+'</div></footer>';
+    html+='<footer class="site-footer"><div class="site-shell"><strong>'+esc(nome||'Seu negócio')+'</strong>'+(rodape?'<span>'+esc(rodape)+'</span>':'')+'<span class="site-credit"><a href="https://mossdigital.com.br" target="_blank" rel="noopener noreferrer">Site criado com a MOSS Digital</a></span></div></footer>';
     return html;
   }
-  function portfolioSections(){
+  function portfolioSections(final){
     var esc=escLive;
     var nome=form.elements.nome.value.trim();
     var titulo=form.elements.titulo.value.trim();
@@ -719,7 +806,7 @@
     }).join('')+'</div></div></section>';
     var vk=videoKind();var url=document.getElementById('video-url').value.trim();
     if(vk==='link'&&/^https:\/\//.test(url))html+='<section class="portfolio-section portfolio-shell"><h2>Vídeo</h2><p class="video-card"><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">▶ Assistir ao vídeo</a></p></section>';
-    else if(vk==='arquivo'&&videoToken)html+='<section class="portfolio-section portfolio-shell"><h2>Vídeo</h2><video controls preload="metadata" src="/criador/video/'+esc(videoToken)+'">Seu navegador não reproduz este vídeo.</video></section>';
+    else if(vk==='arquivo'&&videoToken&&final!==true)html+='<section class="portfolio-section portfolio-shell"><h2>Vídeo</h2><video controls preload="metadata" src="/criador/video/'+esc(videoToken)+'">Seu navegador não reproduz este vídeo.</video></section>';
     if(experiencia||formacao||habilidades){
       html+='<section class="portfolio-section portfolio-shell" id="trajetoria"><span class="portfolio-kicker">PERCURSO</span><h2>Trajetória profissional</h2><div class="portfolio-details">';
       [['Experiência',experiencia],['Formação e cursos',formacao],['Habilidades',habilidades]].forEach(function(part){if(part[1])html+='<article><h3>'+part[0]+'</h3><p class="text">'+esc(part[1])+'</p></article>';});
@@ -729,7 +816,7 @@
     html+='<footer class="portfolio-footer"><div class="portfolio-shell"><strong>'+esc(nome||'Seu nome')+'</strong><span>Portfólio profissional</span></div></footer>';
     return html;
   }
-  function liveSecoes(kind){
+  function liveSecoes(kind,final){
     var out=[];var esc=escLive;
     var nome=form.elements.nome.value.trim();
     var itens=form.elements.itens.value;
@@ -752,7 +839,7 @@
         var host=url.replace(/^https:\/\//,'').split('/')[0];
         out.push('<section class="video"><h2>Vídeo</h2><p class="video-card"><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">▶ Assistir ao vídeo — '+esc(host)+' (abre em outra aba)</a></p></section>');
       }
-    }else if(vk==='arquivo'&&videoToken){
+    }else if(vk==='arquivo'&&videoToken&&final!==true){
       out.push('<section class="video"><h2>Vídeo</h2><video controls preload="metadata" src="/criador/video/'+esc(videoToken)+'">Seu navegador não consegue reproduzir este vídeo.</video></section>');
     }
     function bloco(titulo,valor){var texto=(valor||'').trim();if(texto)out.push('<section><h2>'+titulo+'</h2><p class="text">'+esc(texto)+'</p></section>');}
@@ -768,7 +855,7 @@
     if(kind==='site')bloco('Contato',form.elements.contato.value);
     return out.join('');
   }
-  function previewLocalHtml(){
+  function previewLocalHtml(final){
     var kind=product();
     var modelo=form.querySelector('input[name="modelo"]:checked').value;
     var nome=form.elements.nome.value;
@@ -778,16 +865,20 @@
     var contatoTopo=kind!=='site'&&form.elements.contato.value.trim()?'<p class="text contato-topo">'+escLive(form.elements.contato.value.trim())+'</p>':'';
     var header='<header>'+avatar+(kind==='curriculo'?nomeTag+fraseTag:fraseTag+nomeTag)+contatoTopo+
       '<p class="text">'+escLive(form.elements.apresentacao.value)+'</p></header>';
-    var notice='<aside class="preview">PRÉVIA GRÁTIS · MOSS DIGITAL · MONTE A SUA E FINALIZE NO WHATSAPP</aside>';
-    var footer='<footer>Prévia criada com a MOSS Digital. Gostou? Finalize no WhatsApp.</footer>';
+    var notice=final
+      ?(kind==='curriculo'?'<aside class="preview">COMO GERAR O PDF · CLIQUE EM CTRL+P (OU ⌘+P) → SALVAR COMO PDF</aside>':'')
+      :'<aside class="preview">PRÉVIA GRÁTIS · MOSS DIGITAL · MONTE A SUA E BAIXE NO FINAL</aside>';
+    var footer=final?'':'<footer>Prévia criada com a MOSS Digital. Gostou? Baixe grátis no final.</footer>';
+    var robots=final?'':'<meta name="robots" content="noindex,nofollow">';
+    var css=final?'css/estilo.css':'assets/documento.css';
     var cores='--bg:'+corFundo.value+';--ink:'+corTexto.value+';--accent:'+corDestaque.value;
-    if(kind==='site')return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+
-      escLive(nome||'Seu negócio')+' — Site</title><link rel="stylesheet" href="assets/documento.css"></head><body class="'+modelo+' site" style="'+cores+'">'+notice+'<main>'+siteSections()+'</main></body></html>';
-    if(kind==='portfolio')return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+
-      escLive(nome||'Seu nome')+' — Portfólio</title><link rel="stylesheet" href="assets/documento.css"></head><body class="'+modelo+' portfolio" style="'+cores+'">'+notice+'<main>'+portfolioSections()+'</main></body></html>';
-    return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+
-      escLive(nome)+' — '+names[kind]+'</title><link rel="stylesheet" href="assets/documento.css"></head><body class="'+modelo+' '+kind+'" style="'+cores+'">'+
-      notice+'<main>'+header+liveSecoes(kind)+footer+'</main></body></html>';
+    if(kind==='site')return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+robots+'<title>'+
+      escLive(nome||'Seu negócio')+' — Site</title><link rel="stylesheet" href="'+css+'"></head><body class="'+modelo+' site" style="'+cores+'">'+notice+'<main>'+siteSections(final)+'</main></body></html>';
+    if(kind==='portfolio')return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+robots+'<title>'+
+      escLive(nome||'Seu nome')+' — Portfólio</title><link rel="stylesheet" href="'+css+'"></head><body class="'+modelo+' portfolio" style="'+cores+'">'+notice+'<main>'+portfolioSections(final)+'</main></body></html>';
+    return '<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'+robots+'<title>'+
+      escLive(nome)+' — '+names[kind]+'</title><link rel="stylesheet" href="'+css+'"></head><body class="'+modelo+' '+kind+'" style="'+cores+'">'+
+      notice+'<main>'+header+liveSecoes(kind,final)+footer+'</main></body></html>';
   }
   function setTextLive(el,valor,placeholder){
     el.textContent=valor||placeholder;
