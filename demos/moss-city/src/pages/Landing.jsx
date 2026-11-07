@@ -39,7 +39,7 @@ export default function Landing({ theme, onToggleTheme }) { // Recebe o tema atu
       {/* Explica o recorte da primeira prévia e mantém uma ação funcional para entrar. */}
       <section className="city-preview-note"><div><span className="city-kicker">PRIMEIRO PONTO DE REVISÃO</span><h2>Uma visão que já pode ser explorada.</h2><p>Centro de comando, mapa, filtros e portal demonstrativo. Os módulos completos de gestão serão ampliados após a avaliação desta direção visual.</p></div><Link className="city-button city-button-primary" to={entry}>Entrar na experiência <ArrowUpRight size={18} aria-hidden="true" /></Link></section>
       {/* Identifica a autoria e os limites sem sugerir endosso municipal. */}
-      <footer className="city-landing-footer"><Brand /><p>Uma experiência MOSS Digital.<br />Fotografias ilustrativas. Todos os registros operacionais são fictícios.</p><span>PRÉVIA 01 · NÃO PUBLICADA</span></footer>
+      <footer className="city-landing-footer"><Brand /><p>Uma experiência MOSS Digital.<br />Fotografias ilustrativas. Todos os registros operacionais são fictícios.</p><span>PRÉVIA 01 · PUBLICADA</span></footer>
     </main> // Encerra a apresentação inicial.
   ); // Encerra o retorno visual.
 } // Encerra a página inicial da plataforma.
