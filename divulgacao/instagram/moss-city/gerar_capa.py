@@ -11,7 +11,7 @@ from PIL import Image
 # Importa o Chrome automatizado para converter a fonte vetorial em PNG.
 from playwright.sync_api import sync_playwright
 # Define uma opção de cópia externa explícita para não confundir o worktree com a pasta principal.
-parser = argparse.ArgumentParser(description='Gera a capa local da primeira prévia MOSS CITY.')
+parser = argparse.ArgumentParser(description='Gera a capa 1080 x 1350 da demonstração MOSS CITY.')
 # Aceita um destino escolhido pelo responsável, sem publicar nas redes sociais.
 parser.add_argument('--copy-to', type=Path)
 # Lê os argumentos informados na execução do script.
@@ -46,8 +46,8 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" vie
 <text x="77" y="350" fill="#eaf7ff" font-family="Arial" font-size="39">O futuro da cidade</text><text x="77" y="402" fill="#00d4ff" font-family="Arial" font-size="44">começa aqui.</text>
 <!-- Mostra uma captura verdadeira da prévia, com sua cartografia local fictícia. -->
 <rect x="65" y="470" width="950" height="590" fill="#0c2135" stroke="#34708b"/><image x="75" y="480" width="930" height="570" href="data:image/png;base64,{embedded}" preserveAspectRatio="xMidYMid meet"/>
-<!-- Resume apenas os recursos que já estão disponíveis neste ponto de revisão. -->
-<text x="77" y="1120" fill="#eaf7ff" font-family="Arial" font-size="25">CENTRO DE COMANDO · MAPA · INDICADORES</text><path d="M77 1151H1003" stroke="#254d64"/><text x="77" y="1206" fill="#83e0be" font-family="Arial" font-size="20">PRÉVIA DEMONSTRATIVA · DADOS FICTÍCIOS</text><text x="77" y="1250" fill="#a4bed0" font-family="Arial" font-size="18">Em desenvolvimento. Sem vínculo com órgãos públicos.</text><text x="77" y="1280" fill="#a4bed0" font-family="Arial" font-size="16">Não publicada. Material local para avaliação.</text>
+<!-- Resume o status publicado, o endereço da demonstração e as ressalvas. -->
+<text x="77" y="1120" fill="#eaf7ff" font-family="Arial" font-size="25">CENTRO DE COMANDO · MAPA · INDICADORES</text><path d="M77 1151H1003" stroke="#254d64"/><text x="77" y="1206" fill="#83e0be" font-family="Arial" font-size="20">DEMONSTRAÇÃO PUBLICADA · DADOS FICTÍCIOS</text><text x="77" y="1250" fill="#00d4ff" font-family="Arial" font-size="18">mossdigital.com.br/demos/moss-city/</text><text x="77" y="1280" fill="#a4bed0" font-family="Arial" font-size="16">Sem vínculo com órgãos públicos. Fotografias ilustrativas.</text>
 </svg>'''
 # Define a fonte vetorial que poderá ser editada em ferramentas de desenho.
 source = HERE / 'moss-city-capa-editavel.svg'
