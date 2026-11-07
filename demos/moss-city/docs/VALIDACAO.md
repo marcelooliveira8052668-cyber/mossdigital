@@ -27,8 +27,9 @@ Esta verificação cobre a ampliação da **Etapa 3**: cadastros de obras, mobil
 | Acessibilidade automatizada | Nenhuma violação WCAG A/AA detectada nos dezenove cenários da auditoria (doze no modo noturno e sete no modo dia) |
 | Subdiretório | Testes executados no build em `http://127.0.0.1:8797/dist/` |
 | Rede | Sem conexões externas inesperadas; tiles de teste interceptados, sem varredura do OSM |
+| Publicação no ar | Página, assets, alternador dia/noite, celular e cartão do catálogo verificados em produção por `tests/publication_check.py` |
 
-Scripts reproduzíveis: `tests/domain.test.js`, `tests/preview_check.py`, `tests/accessibility_check.py`.
+Scripts reproduzíveis: `tests/domain.test.js`, `tests/preview_check.py`, `tests/accessibility_check.py`, `tests/publication_check.py`.
 
 O build emite avisos da biblioteca React Router sobre diretivas `use client` ignoradas pelo Vite. A compilação termina com sucesso; arquivos da biblioteca não foram alterados. Nenhum pacote gerado ultrapassou o limite de aviso de 500 kB nesta versão.
 
@@ -48,6 +49,7 @@ O build emite avisos da biblioteca React Router sobre diretivas `use client` ign
 - `screenshots/obras-mobile.png`
 - `screenshots/relatorios-desktop.png`
 - `screenshots/fotografias.jpg`
+- `screenshots/publicado-live.png`
 - `accessibility-results.json`
 
 As capturas de celular e do portal podem conter o protocolo fictício criado pela automação. A restauração retorna ao cenário inicial. Os dados salvos por uma versão anterior da demo são completados automaticamente (`schemaVersion` 2) sem apagar protocolos já criados.
@@ -64,6 +66,8 @@ As capturas de celular e do portal podem conter o protocolo fictício criado pel
 
 ## Preservação e publicação
 
-Branch independente: `feat/moss-city`. A revisão do Git mostrou somente arquivos novos em `demos/moss-city/` e `divulgacao/instagram/moss-city/`. Nenhum arquivo rastreado anterior foi modificado, removido ou adicionado ao stage.
+Branch de fontes: `feat/moss-city`. A revisão do Git mostrou somente arquivos novos em `demos/moss-city/` e `divulgacao/instagram/moss-city/`. Nenhum arquivo rastreado anterior foi modificado, removido ou adicionado ao stage durante o desenvolvimento.
 
-O site, as outras demos, o catálogo, os logotipos e as configurações globais permanecem intactos. Nenhum commit, push, merge, postagem ou publicação foi executado para a MOSS CITY. A cópia da capa foi criada apenas na subpasta específica `04 - Divulgacao/MOSS CITY/`, conforme a instrução de entrega.
+Publicação autorizada pelo usuário e concluída em <https://mossdigital.com.br/demos/moss-city/>, com cartão em <https://mossdigital.com.br/sistemas.html>. O build foi enviado a `main` por uma árvore de trabalho separada (`publish/moss-city`), sem mesclar os fontes didáticos sobre a produção e sem alterar páginas, fluxos ou configurações do site. A capa não foi postada em redes sociais. Detalhes dos commits em [PUBLICACAO.md](PUBLICACAO.md).
+
+Verificação em produção (07/11/2026): implantação do GitHub Pages concluída com sucesso para o commit `191de76` (execução nº 100) e `python tests/publication_check.py` aprovado — página, assets, alternador dia/noite, celular, cartão do catálogo e prévia. A cópia da capa foi criada apenas na subpasta específica `04 - Divulgacao/MOSS CITY/`, conforme a instrução de entrega.
