@@ -315,20 +315,34 @@
             bottom: 0;
             z-index: 900;
             display: block;
-            background: #ffef8a;
-            color: #0d2b52;
+            /* Crio o fundo em degradê azul vibrante. */
+            background: linear-gradient(110deg, #0647C8 0%, #087BFA 100%);
+            /* Deixo o texto e a seta brancos. */
+            color: #FFFFFF;
             text-decoration: none;
-            box-shadow: 0 -6px 24px rgba(0, 0, 0, .25);
+            /* Adiciono uma sombra azul discreta. */
+            box-shadow: 0 -6px 24px rgba(0, 42, 110, 0.20);
             transition: background .15s ease
         }
 
+        /* Defino a aparência ao passar o mouse ou focar na barra. */
         .top-cta:hover,
         .top-cta:focus-visible {
-            background: #ffe45c
+            /* Escureço suavemente o degradê. */
+            background: linear-gradient(110deg, #053AA7 0%, #0669DD 100%);
+            /* Mantenho as letras brancas. */
+            color: #FFFFFF
         }
 
-        .top-cta:focus-visible {
-            outline: 3px solid #0d2b52;
+        /* Destaco o foco para navegação por teclado. */
+        /* Este seletor (":root body a...") tem prioridade sobre as regras
+           gerais de foco do moss-futurista.css e do moss-theme.css, que
+           viriam depois e pintariam o contorno de outra cor. Assim o
+           contorno branco vale nos dois temas, sem alterar esses arquivos. */
+        :root body a.top-cta:focus-visible {
+            /* Adiciono um contorno branco. */
+            outline: 3px solid #FFFFFF;
+            /* Posiciono o contorno dentro da barra. */
             outline-offset: -3px
         }
 
