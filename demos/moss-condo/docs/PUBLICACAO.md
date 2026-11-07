@@ -45,3 +45,14 @@ Após o GitHub Pages concluir a implantação, conferir o HTML público, os arqu
 - Catálogo de sistemas preservado: o acesso publicado é pelo link direto, ainda sem cartão em `sistemas.html`.
 
 Na comparação entre `32c10ed` e `3f2dad2`, todas as 37 adições pertencem exclusivamente à nova pasta `demos/moss-condo/`. Nenhum arquivo anterior foi modificado ou excluído.
+
+## Integração posterior ao catálogo, também autorizada
+
+Depois de publicar a demo isolada, o usuário autorizou expressamente adicionar seu cartão e publicar a integração. Essa segunda etapa foi concluída no commit `883ef3ae0e7c52203d8a4f508dc6b063f922ee84`, alterando apenas `sistemas.html` e adicionando `assets/img/previas/moss-condo.webp`.
+
+- Catálogo: <https://mossdigital.com.br/sistemas.html>.
+- Implantação concluída: <https://github.com/marcelooliveira8052668-cyber/mossdigital/actions/runs/42373811210>.
+- Verificação pública: `tests/portfolio_check.py` aprovado, incluindo imagem válida, texto, link em nova aba, responsividade e preservação exata de todos os cartões anteriores.
+- A capa de Instagram não foi postada.
+
+As observações de “catálogo preservado” nas seções anteriores descrevem a primeira publicação isolada. A autorização posterior permitiu acrescentar somente o cartão da MOSS CONDO, sem redesenhar a página ou modificar os outros sistemas.

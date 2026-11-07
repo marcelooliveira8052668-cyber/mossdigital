@@ -109,7 +109,7 @@ O build é gerado em `dist/`, pasta já ignorada pelas regras existentes do repo
 - PNG 1080 × 1350, SVG editável, gerador comentado e legenda: `../../divulgacao/instagram/moss-condo/`.
 - Cópia fácil da capa: `../../../04 - Divulgacao/MOSS CONDO/`.
 
-A publicação da demo foi autorizada e concluída em <https://mossdigital.com.br/demos/moss-condo/>. O catálogo permanece intacto e a capa não foi postada em redes sociais. Veja `docs/PUBLICACAO.md` para a separação entre código-fonte e build publicado.
+A publicação da demo foi autorizada e concluída em <https://mossdigital.com.br/demos/moss-condo/>. Após nova autorização específica, seu cartão foi integrado e publicado em <https://mossdigital.com.br/sistemas.html>, preservando os cartões anteriores. A capa não foi postada em redes sociais. Veja `docs/PUBLICACAO.md` para a separação entre código-fonte e build publicado.
 
 ## Limites de segurança
 
