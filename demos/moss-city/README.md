@@ -55,7 +55,6 @@ Os números da entrada descrevem o **cenário inicial de exemplo**. Os números 
 
 1. Avaliação visual da versão publicada e ajustes indicados por você.
 2. Backend real (autenticação, autorização, API e banco de dados) quando a demonstração avançar para produto.
-3. Postagem da capa no Instagram somente após autorização específica — os arquivos estão prontos em `divulgacao/instagram/moss-city/`.
 
 Os menus apontam apenas para telas funcionais, filtradas por `permissions`. Não há botões decorativos para módulos pendentes.
 
@@ -135,7 +134,7 @@ Capa PNG 1080 × 1350, fonte SVG e legenda da **prévia** em `divulgacao/instagr
 
 O Vite usa `base: './'` e a aplicação usa `HashRouter`. O build fica em `dist/`, ignorado pelas configurações existentes do repositório. Nenhuma configuração global de publicação foi alterada.
 
-A publicação foi concluída com autorização, no padrão da MOSS CONDO: build em <https://mossdigital.com.br/demos/moss-city/>, cartão em <https://mossdigital.com.br/sistemas.html> e verificação em produção por `python tests/publication_check.py`. A capa não foi postada em redes sociais. Registro completo: [docs/PUBLICACAO.md](docs/PUBLICACAO.md).
+A publicação foi concluída com autorização, no padrão da MOSS CONDO: build em <https://mossdigital.com.br/demos/moss-city/>, cartão em <https://mossdigital.com.br/sistemas.html> e verificação em produção por `python tests/publication_check.py`. A capa foi postada pelo usuário no Instagram (@mossdigital_sites) em 07/11/2026. Registro completo: [docs/PUBLICACAO.md](docs/PUBLICACAO.md).
 
 ## Limites de produção
 
