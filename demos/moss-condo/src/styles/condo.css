@@ -1,0 +1,454 @@
+/* Define a caixa principal exclusiva; estas variáveis não são compartilhadas com outras demos. */
+.moss-condo {
+  --condo-bg: #111827; /* Define o fundo azul profundo da plataforma. */
+  --condo-surface: #1f2937; /* Define a superfície dos cartões e campos. */
+  --condo-copper: #c58b5a; /* Define o cobre usado nos destaques e ações. */
+  --condo-ivory: #f4efe9; /* Define o marfim usado no texto principal. */
+  --condo-steel: #273449; /* Define o azul aço das superfícies secundárias. */
+  --condo-teal: #36b5a0; /* Define o turquesa dos indicadores positivos. */
+  --condo-muted: #b1bac8; /* Define um texto secundário legível no fundo escuro. */
+  --condo-line: #ffffff16; /* Define bordas discretas entre regiões. */
+  min-height: 100dvh; /* Ocupa toda a altura disponível, inclusive em celulares. */
+  background: var(--condo-bg); /* Aplica o fundo somente à demonstração. */
+  color: var(--condo-ivory); /* Aplica o texto claro por padrão. */
+  font-family: 'DM Sans', 'Segoe UI', Arial, sans-serif; /* Usa fontes locais alternativas quando DM Sans não estiver disponível. */
+  font-size: 15px; /* Mantém os textos da interface em um tamanho confortável. */
+  line-height: 1.6; /* Afasta as linhas para facilitar a leitura. */
+  color-scheme: dark; /* Adapta os controles nativos ao tema escuro. */
+  -webkit-font-smoothing: antialiased; /* Suaviza o desenho das letras em navegadores compatíveis. */
+}
+/* Limita o ajuste de tamanho de caixas à aplicação e aos seus diálogos. */
+.moss-condo *, .moss-condo *::before, .moss-condo *::after { box-sizing: border-box; /* Inclui borda e espaço interno no tamanho dos elementos. */ }
+/* Remove apenas a margem padrão do documento independente desta demo. */
+body:has(> #root .moss-condo) { margin: 0; /* Encosta o fundo da aplicação nas bordas da janela. */ }
+/* Define a fonte elegante dos títulos. */
+.moss-condo h1, .moss-condo h2, .moss-condo h3 { font-family: Manrope, 'Segoe UI', Arial, sans-serif; /* Prioriza Manrope quando disponível localmente. */ }
+/* Controla o ritmo de títulos e evita margens muito grandes. */
+.moss-condo h1, .moss-condo h2, .moss-condo h3 { line-height: 1.2; /* Mantém títulos compactos. */ margin-top: 0; /* Evita espaço duplicado acima do título. */ letter-spacing: -.045em; /* Aproxima levemente as letras. */ }
+/* Define a escala principal dos títulos internos. */
+.moss-condo h1 { font-size: clamp(1.8rem, 2.5vw, 2.65rem); /* Ajusta o título entre celular e desktop. */ font-weight: 500; /* Evita peso visual excessivo. */ margin-bottom: 12px; /* Separa o título do texto de apoio. */ }
+/* Define títulos de cartões e formulários. */
+.moss-condo h2 { font-size: 1.3rem; /* Destaca subtítulos sem competir com o título principal. */ font-weight: 500; /* Mantém aparência sóbria. */ margin-bottom: 18px; /* Separa o conteúdo seguinte. */ }
+/* Herda a tipografia nos campos e botões. */
+.moss-condo button, .moss-condo input, .moss-condo select, .moss-condo textarea { font: inherit; /* Mantém os controles consistentes com os textos. */ }
+/* Mantém os links na paleta do produto. */
+.moss-condo a { color: inherit; /* Herda a cor da região. */ text-decoration: none; /* Evita sublinhados permanentes na navegação. */ }
+/* Exibe o cursor esperado em botões. */
+.moss-condo button { cursor: pointer; /* Indica que o elemento pode ser acionado. */ }
+/* Torna o foco visível para pessoas que usam teclado. */
+.moss-condo :focus-visible { outline: 3px solid var(--condo-copper); /* Desenha um contorno de foco contrastante. */ outline-offset: 4px; /* Afasta o contorno do elemento. */ }
+/* Oculta descrições somente visualmente, mantendo-as para leitores de tela. */
+.condo-sr-only { position: absolute; /* Retira a descrição do fluxo visual. */ width: 1px; /* Usa a menor largura possível. */ height: 1px; /* Usa a menor altura possível. */ overflow: hidden; /* Esconde o conteúdo que ultrapassa a caixa. */ clip-path: inset(50%); /* Recorta o texto sem remover sua acessibilidade. */ white-space: nowrap; /* Evita quebra de linha no texto oculto. */ }
+/* Exibe o atalho de navegação somente quando recebe foco. */
+.condo-skip { position: fixed; /* Mantém o atalho acessível no topo da janela. */ top: 10px; /* Afasta o atalho da borda superior. */ left: 12px; /* Afasta o atalho da borda esquerda. */ transform: translateY(-160%); /* Esconde o atalho antes do foco. */ z-index: 100; /* Posiciona o atalho acima dos demais conteúdos. */ padding: 12px 20px; /* Amplia a área de clique. */ background: #c58b5a; /* Garante contraste com o texto escuro. */ color: #111827 !important; /* Mantém o texto legível no cobre. */ }
+/* Revela o atalho para quem navega por teclado. */
+.condo-skip:focus { transform: translateY(0); /* Devolve o atalho à área visível. */ }
+/* Padroniza os pequenos títulos editoriais. */
+.condo-eyebrow { display: block; /* Permite separar o rótulo do conteúdo seguinte. */ color: var(--condo-copper); /* Usa cobre para criar hierarquia. */ font-size: .65rem; /* Usa uma escala discreta para rótulos. */ font-weight: 600; /* Reforça letras pequenas sem exagero. */ letter-spacing: .18em; /* Dá espaço entre as letras. */ margin: 0 0 16px; /* Separa o rótulo do próximo conteúdo. */ }
+/* Define textos de contexto secundário. */
+.condo-muted, .condo-page-heading p, .condo-safe-note { color: var(--condo-muted); /* Mantém o texto secundário legível. */ }
+/* Padroniza botões principais. */
+.condo-button { display: inline-flex; /* Alinha texto e ícone na mesma linha. */ align-items: center; /* Centraliza verticalmente o conteúdo. */ justify-content: center; /* Centraliza horizontalmente o conteúdo. */ gap: 10px; /* Separa texto e ícone. */ min-height: 44px; /* Garante uma área de toque confortável. */ padding: 12px 20px; /* Cria espaço interno. */ border: 1px solid transparent; /* Reserva espaço para a borda. */ border-radius: 10px; /* Suaviza os cantos sem usar cápsulas genéricas. */ background: var(--condo-copper); /* Destaca a ação com o cobre do produto. */ color: #111827; /* Usa texto escuro para contraste sobre o cobre. */ font-weight: 650; /* Destaca o rótulo da ação. */ font-size: .82rem; /* Mantém a ação compacta. */ transition: background .18s, transform .18s; /* Suaviza a resposta visual sem animação pesada. */ }
+/* Realça o botão quando o ponteiro está sobre ele. */
+.condo-button:hover { background: #d8a475; /* Clareia o cobre para mostrar interação. */ transform: translateY(-1px); /* Eleva discretamente o botão. */ }
+/* Define botões secundários que não competem com a ação principal. */
+.condo-secondary { background: #ffffff04; /* Aplica uma película clara quase transparente. */ color: var(--condo-ivory); /* Mantém o texto claro. */ border-color: #ffffff25; /* Delimita a área clicável. */ }
+/* Realça botões secundários sem trocar para o cobre. */
+.condo-secondary:hover { background: #ffffff0d; /* Aumenta levemente a luminosidade da superfície. */ }
+/* Define a marca textual própria do produto. */
+.condo-brand { display: inline-flex; /* Alinha símbolo e nome. */ align-items: center; /* Centraliza os elementos verticalmente. */ gap: 12px; /* Separa símbolo e texto. */ font-size: 1.05rem; /* Mantém a marca elegante e compacta. */ letter-spacing: .1em; /* Dá respiro ao nome. */ line-height: 1.2; /* Aproxima nome e assinatura. */ }
+/* Colore o ícone da marca. */
+.condo-brand > svg { color: var(--condo-copper); /* Aplica cobre ao desenho arquitetônico. */ width: 34px; /* Define a largura do ícone. */ height: 34px; /* Define a altura do ícone. */ stroke-width: 1.2; /* Mantém o desenho linear e leve. */ }
+/* Destaca a palavra CONDO sem mudar o logotipo oficial da MOSS Digital. */
+.condo-brand b { font-weight: 400; /* Mantém o nome leve. */ color: var(--condo-copper); /* Diferencia o produto com cobre. */ }
+/* Desenha a assinatura pequena da marca. */
+.condo-brand small { display: block; /* Coloca a assinatura em outra linha. */ font-size: .43rem; /* Reduz a assinatura sem afetar a interface. */ color: var(--condo-muted); /* Usa texto secundário. */ letter-spacing: .2em; /* Espalha as letras da assinatura. */ margin-top: 7px; /* Separa a assinatura do nome. */ }
+/* Identifica permanentemente o caráter demonstrativo. */
+.condo-demo-pill { display: inline-block; /* Permite aplicar margens e preenchimento. */ color: #dfb795; /* Usa cobre claro para boa leitura. */ background: #c58b5a0b; /* Aplica uma película cobre. */ border: 1px solid #c58b5a40; /* Delimita o selo sem brilho excessivo. */ border-radius: 6px; /* Suaviza os cantos do selo. */ padding: 5px 9px; /* Mantém o selo compacto. */ font-size: .59rem; /* Usa escala de rótulo. */ letter-spacing: .11em; /* Destaca a indicação de demonstração. */ white-space: nowrap; /* Evita quebrar o selo no meio. */ }
+/* Cria um ponto turquesa estático, sem piscar. */
+.condo-live-dot { display: inline-block; /* Permite posicionar o ponto ao lado do texto. */ width: 6px; /* Define a largura do ponto. */ height: 6px; /* Define a altura do ponto. */ border-radius: 50%; /* Transforma a caixa em círculo. */ background: var(--condo-teal); /* Usa turquesa para indicar contexto ativo. */ margin-right: 7px; /* Separa o ponto do texto. */ }
+/* Limita a apresentação inicial a uma largura confortável. */
+.condo-landing { max-width: 1440px; /* Evita linhas muito longas em monitores grandes. */ margin: auto; /* Centraliza a composição. */ padding: 0 6%; /* Garante respiro nas laterais. */ }
+/* Distribui a marca e o selo da apresentação. */
+.condo-landing-header { display: flex; /* Organiza os itens em linha. */ justify-content: space-between; /* Afasta marca e selo. */ align-items: center; /* Alinha os itens verticalmente. */ padding: 34px 0; /* Dá respiro ao cabeçalho. */ border-bottom: 1px solid var(--condo-line); /* Separa o cabeçalho sem faixa pesada. */ }
+/* Define a composição editorial de duas colunas. */
+.condo-hero { display: grid; /* Cria colunas flexíveis. */ grid-template-columns: 1.08fr 1fr; /* Dá um pouco mais de espaço ao texto. */ gap: 7%; /* Separa texto e arquitetura. */ align-items: center; /* Centraliza as duas colunas verticalmente. */ padding: 55px 0 48px; /* Define o espaço da apresentação. */ }
+/* Define o título expressivo da entrada. */
+.condo-hero h1 { font-size: clamp(2.8rem, 4.6vw, 4.6rem); /* Ajusta a escala à largura da janela. */ line-height: 1.1; /* Aproxima as linhas do slogan. */ letter-spacing: -.055em; /* Dá acabamento editorial. */ font-weight: 400; /* Mantém a elegância da composição. */ margin: 22px 0; /* Separa o título dos textos próximos. */ }
+/* Destaca a palavra principal do slogan. */
+.condo-hero h1 em { color: #d5a17a; /* Usa cobre mais claro no destaque. */ font-family: Georgia, serif; /* Contrasta com a tipografia da interface. */ font-weight: 400; /* Evita negrito no itálico. */ }
+/* Limita o texto de apresentação. */
+.condo-lead { max-width: 420px; /* Mantém linhas confortáveis. */ color: var(--condo-muted); /* Usa a cor secundária legível. */ font-size: .93rem; /* Equilibra texto e título. */ line-height: 1.85; /* Abre espaço entre linhas longas. */ }
+/* Agrupa os perfis sem a moldura padrão do fieldset. */
+.condo-profile-picker { border: 0; /* Remove a borda nativa do agrupamento. */ padding: 0; /* Evita recuo automático. */ margin: 25px 0 20px; /* Separa a escolha das outras ações. */ display: flex; /* Coloca os perfis lado a lado. */ gap: 9px; /* Separa as escolhas. */ }
+/* Apresenta a instrução da escolha de perfil. */
+.condo-profile-picker legend { color: var(--condo-muted); /* Usa a cor secundária. */ font-size: .75rem; /* Mantém a instrução discreta. */ margin-bottom: 10px; /* Separa o rótulo das opções. */ }
+/* Desenha cada opção de perfil. */
+.condo-profile-picker label { display: flex; /* Alinha controle, ícone e nome. */ align-items: center; /* Centraliza os itens verticalmente. */ gap: 7px; /* Separa os elementos. */ padding: 12px 13px; /* Amplia a área clicável. */ border: 1px solid #ffffff20; /* Mostra o contorno da opção. */ border-radius: 9px; /* Suaviza os cantos. */ color: var(--condo-muted); /* Usa cor secundária para opções não selecionadas. */ font-size: .77rem; /* Ajusta o texto à área disponível. */ cursor: pointer; /* Informa que o rótulo também seleciona. */ }
+/* Destaca o perfil selecionado. */
+.condo-profile-picker .is-selected { color: #e2b78f; /* Clareia o rótulo selecionado. */ border-color: #c58b5a80; /* Usa uma borda cobre. */ background: #c58b5a0b; /* Aplica uma película cobre discreta. */ }
+/* Colore os controles nativos de seleção. */
+.condo-profile-picker input { accent-color: var(--condo-copper); /* Preserva a seleção nativa com a cor do produto. */ margin: 0; /* Evita espaçamento automático extra. */ }
+/* Amplia o botão de entrada. */
+.condo-enter { min-width: 290px; /* Garante destaque suficiente à ação principal. */ justify-content: space-between; /* Afasta texto e seta. */ padding: 16px 22px; /* Aumenta o espaço interno. */ }
+/* Alinha a mensagem de segurança com seu ícone. */
+.condo-safe-note { display: flex; /* Coloca ícone e texto em linha. */ align-items: center; /* Centraliza os itens. */ gap: 7px; /* Separa o ícone da mensagem. */ font-size: .67rem; /* Usa uma escala de nota de apoio. */ margin-top: 15px; /* Separa a nota do botão. */ }
+/* Cria a moldura exclusiva da ilustração arquitetônica. */
+.condo-hero-art { position: relative; /* Permite posicionar as legendas sobre a imagem. */ border-radius: 120px 16px 16px 16px; /* Cria uma assinatura arquitetônica assimétrica. */ overflow: hidden; /* Recorta a imagem nos cantos arredondados. */ border: 1px solid #ffffff20; /* Delimita a ilustração com sutileza. */ box-shadow: 0 25px 80px #00000030; /* Adiciona profundidade suave. */ aspect-ratio: .83; /* Mantém um formato vertical elegante. */ background: #273449; /* Oferece fundo enquanto o SVG é desenhado. */ }
+/* Faz o desenho ocupar toda a moldura. */
+.condo-architecture { width: 100%; /* Ocupa a largura da imagem. */ height: 100%; /* Ocupa a altura da imagem. */ display: block; /* Evita espaço de linha abaixo do SVG. */ object-fit: cover; /* Preenche a composição sem distorcer. */ }
+/* Posiciona a legenda inferior sobre um fundo legível. */
+.condo-art-caption { position: absolute; /* Sobrepõe a legenda ao desenho. */ bottom: 0; /* Alinha ao rodapé da imagem. */ left: 0; /* Encosta à lateral esquerda. */ right: 0; /* Preenche a largura. */ padding: 60px 28px 28px; /* Cria uma área de transição acima do texto. */ background: linear-gradient(transparent, #111827f5); /* Escurece somente o fundo da legenda. */ }
+/* Organiza as linhas da legenda arquitetônica. */
+.condo-art-caption > * { display: block; /* Coloca cada texto em sua linha. */ }
+/* Define os textos auxiliares da imagem. */
+.condo-art-caption span, .condo-art-caption small { font-size: .63rem; /* Mantém as notas compactas. */ letter-spacing: .05em; /* Dá espaço entre letras pequenas. */ color: #e1d7ca; /* Preserva leitura sobre o gradiente. */ }
+/* Destaca o nome do condomínio fictício. */
+.condo-art-caption strong { font-family: Georgia, serif; /* Usa um tom editorial. */ font-size: 1.9rem; /* Destaca o nome da propriedade. */ font-weight: 400; /* Evita um destaque pesado. */ margin: 9px 0; /* Separa o nome das notas. */ }
+/* Posiciona a pequena etiqueta sobre a arquitetura. */
+.condo-art-label { position: absolute; /* Sobrepõe a etiqueta ao desenho. */ top: 26px; /* Afasta da borda superior. */ right: 20px; /* Afasta da borda direita. */ background: #111827ce; /* Garante leitura sobre a imagem. */ border: 1px solid #ffffff20; /* Cria uma borda fina. */ padding: 9px 12px; /* Oferece respiro ao texto. */ border-radius: 8px; /* Suaviza a etiqueta. */ font-size: .62rem; /* Mantém o selo discreto. */ }
+/* Distribui os indicadores da entrada em uma faixa editorial. */
+.condo-landing-metrics { display: grid; /* Cria colunas para os indicadores. */ grid-template-columns: repeat(3, 1fr) 1.1fr; /* Reserva um espaço final para a assinatura. */ gap: 20px; /* Separa os grupos. */ border-top: 1px solid var(--condo-line); /* Marca o início da faixa. */ border-bottom: 1px solid var(--condo-line); /* Marca o fim da faixa. */ padding: 25px 0; /* Oferece espaço vertical. */ }
+/* Destaca o valor de cada indicador. */
+.condo-landing-metrics strong { display: block; /* Coloca o valor acima da descrição. */ font-size: 1.85rem; /* Aumenta os números. */ color: #dfb795; /* Usa cobre claro. */ font-weight: 400; /* Mantém o número leve. */ }
+/* Define o texto auxiliar dos indicadores. */
+.condo-landing-metrics span, .condo-landing-metrics p { color: var(--condo-muted); /* Mantém o texto secundário legível. */ font-size: .75rem; /* Reduz o texto sem competir com os números. */ }
+/* Desenha o rodapé discreto da apresentação. */
+.condo-landing-footer { display: flex; /* Organiza autoria e nota técnica. */ justify-content: space-between; /* Distribui os textos nas extremidades. */ gap: 20px; /* Separa os textos em janelas menores. */ padding: 24px 0; /* Oferece respiro no rodapé. */ font-size: .65rem; /* Mantém o rodapé discreto. */ color: var(--condo-muted); /* Garante leitura no fundo escuro. */ }
+/* Reserva espaço para a navegação flutuante sem colar o menu às bordas. */
+.condo-workspace { padding: 20px 20px 0 280px; /* Deixa a área esquerda livre para a sidebar. */ min-height: 100dvh; /* Preenche a altura da janela. */ background: radial-gradient(ellipse at 95% 0, #27344940, transparent 55%), var(--condo-bg); /* Adiciona profundidade sutil sem neon. */ }
+/* Desenha o menu lateral flutuante. */
+.condo-sidebar { position: fixed; /* Mantém o menu visível durante a rolagem. */ top: 20px; /* Afasta o menu do topo. */ bottom: 20px; /* Afasta o menu do rodapé. */ left: 20px; /* Afasta o menu da lateral. */ width: 238px; /* Define uma largura própria para a navegação. */ padding: 27px 17px 15px; /* Cria espaço interno. */ display: flex; /* Organiza as regiões verticalmente. */ flex-direction: column; /* Coloca marca, links e ações em coluna. */ background: linear-gradient(155deg, #222d3deb, #1b2433ee); /* Cria uma superfície glass discreta. */ border: 1px solid #ffffff15; /* Desenha uma borda sofisticada. */ border-radius: 20px; /* Arredonda o menu flutuante. */ box-shadow: 0 15px 45px #00000020; /* Separa o menu do fundo. */ overflow-y: auto; /* Mantém todas as ações acessíveis em telas baixas. */ z-index: 30; /* Coloca o menu acima do conteúdo. */ }
+/* Ajusta a marca ao espaço da navegação. */
+.condo-sidebar .condo-brand { font-size: .93rem; /* Reduz levemente o nome no menu. */ padding: 0 6px; /* Alinha a marca aos links. */ }
+/* Identifica a propriedade fictícia no menu. */
+.condo-property { display: flex; /* Coloca monograma e nome em linha. */ gap: 9px; /* Separa o monograma do nome. */ align-items: center; /* Centraliza os elementos. */ padding: 17px 0; /* Dá respiro ao seletor visual. */ margin: 26px 0 18px; /* Separa a propriedade da marca. */ border-block: 1px solid var(--condo-line); /* Delimita a região da propriedade. */ }
+/* Desenha o monograma da propriedade. */
+.condo-property-mark { display: grid; /* Permite centralizar as letras. */ place-items: center; /* Centraliza o monograma. */ width: 32px; /* Define a largura do selo. */ height: 35px; /* Define a altura do selo. */ border: 1px solid #c58b5a55; /* Usa uma moldura cobre. */ color: #d7aa85; /* Colore as letras do monograma. */ border-radius: 7px; /* Suaviza o selo. */ font-family: Georgia, serif; /* Reforça o tom imobiliário. */ font-size: .8rem; /* Ajusta as letras ao selo. */ }
+/* Organiza os textos pequenos da propriedade. */
+.condo-property strong { display: block; /* Separa nome e contexto. */ font-size: .7rem; /* Ajusta o nome ao menu. */ font-weight: 500; /* Mantém o texto sóbrio. */ }
+/* Define a legenda do condomínio e a descrição da demo. */
+.condo-property small, .condo-demo-note small { display: block; /* Coloca a nota em linha própria. */ font-size: .62rem; /* Usa escala auxiliar. */ color: var(--condo-muted); /* Mantém contraste legível. */ }
+/* Identifica o agrupamento de navegação. */
+.condo-nav-label { font-size: .56rem; /* Usa uma escala pequena para o grupo. */ letter-spacing: .17em; /* Destaca o agrupamento. */ color: var(--condo-muted); /* Mantém o rótulo secundário. */ padding-left: 12px; /* Alinha ao conteúdo dos links. */ }
+/* Organiza os links do menu verticalmente. */
+.condo-sidebar nav { display: grid; /* Empilha links com espaços consistentes. */ gap: 5px; /* Separa as ações. */ }
+/* Define a área clicável de cada link interno. */
+.condo-sidebar nav a { display: flex; /* Alinha o ícone ao rótulo. */ align-items: center; /* Centraliza os itens. */ gap: 11px; /* Separa ícone e texto. */ padding: 12px; /* Oferece área de toque confortável. */ border: 1px solid transparent; /* Reserva espaço para o estado ativo. */ border-radius: 9px; /* Suaviza os cantos. */ font-size: .76rem; /* Ajusta o texto ao menu. */ color: #c4ccd7; /* Usa texto secundário claro. */ }
+/* Destaca o módulo aberto sem repetir a sidebar das outras demos. */
+.condo-sidebar nav a.active { color: #e8c2a1; /* Clareia o texto ativo. */ background: linear-gradient(90deg, #c58b5a20, #c58b5a08); /* Aplica um realce cobre discreto. */ border-color: #c58b5a30; /* Desenha uma borda sutil. */ }
+/* Mostra uma resposta ao passar o ponteiro pelos links. */
+.condo-sidebar nav a:hover { background-color: #ffffff07; /* Ilumina levemente a área clicável. */ }
+/* Empurra as ações auxiliares para o fim do menu. */
+.condo-sidebar-footer { margin-top: auto; /* Usa o espaço livre acima do rodapé. */ padding-top: 25px; /* Mantém separação dos links. */ }
+/* Explica que o ambiente é demonstrativo. */
+.condo-demo-note { border: 1px solid #ffffff12; /* Delimita a nota. */ border-radius: 10px; /* Suaviza a nota. */ padding: 12px; /* Cria espaço de leitura. */ margin-bottom: 12px; /* Separa das ações. */ background: #11182730; /* Escurece a superfície da nota. */ }
+/* Define o título da nota demonstrativa. */
+.condo-demo-note strong { font-size: .64rem; /* Mantém o título compacto. */ font-weight: 500; /* Evita destaque excessivo. */ }
+/* Afasta a explicação da nota. */
+.condo-demo-note small { margin-top: 5px; /* Separa título e explicação. */ }
+/* Define as ações auxiliares do menu. */
+.condo-sidebar-footer > button, .condo-sidebar-footer > a { display: flex; /* Alinha ícone e rótulo. */ align-items: center; /* Centraliza os itens. */ gap: 9px; /* Separa o ícone. */ width: 100%; /* Ocupa a largura do menu. */ min-height: 44px; /* Garante uma área de toque confortável. */ padding: 10px; /* Oferece espaço interno. */ background: none; /* Evita aparência de botão principal. */ color: var(--condo-muted); /* Usa texto secundário legível. */ border: 0; /* Remove a borda padrão. */ font-size: .66rem; /* Ajusta o texto ao menu. */ }
+/* Distribui o cabeçalho interno. */
+.condo-topbar { display: flex; /* Organiza mensagem e ações em linha. */ flex-wrap: wrap; /* Permite outra linha em vez de empurrar o perfil para fora da tela. */ align-items: center; /* Centraliza as regiões. */ justify-content: space-between; /* Separa mensagem e controles. */ gap: 16px; /* Mantém respiro entre os grupos. */ min-height: 65px; /* Define a altura mínima do cabeçalho. */ padding-inline-end: clamp(8px, 1.2vw, 18px); /* Reserva uma margem interna à direita para proteger o avatar de cortes. */ border-bottom: 1px solid var(--condo-line); /* Separa o cabeçalho do painel. */ font-size: .74rem; /* Usa tipografia de apoio. */ }
+/* Alinha os controles do cabeçalho. */
+.condo-topbar-actions { display: flex; /* Coloca os controles lado a lado. */ flex: 0 0 auto; /* Impede que o grupo seja comprimido para acomodar outros textos. */ flex-wrap: wrap; /* Permite reorganizar controles em janelas excepcionalmente estreitas. */ max-width: 100%; /* Mantém o grupo dentro da área útil do cabeçalho. */ justify-content: flex-end; /* Preserva o alinhamento à direita quando os itens mudam de linha. */ margin-inline-start: auto; /* Usa o espaço livre antes dos controles sem ultrapassar a borda final. */ align-items: center; /* Centraliza os itens. */ gap: 18px; /* Separa os controles. */ }
+/* Mantém os campos de seleção dentro da paleta. */
+.moss-condo input, .moss-condo select, .moss-condo textarea { min-height: 44px; /* Garante uma área de toque confortável. */ border: 1px solid #526074; /* Delimita claramente os campos. */ background: #192332; /* Mantém o fundo opaco para leitura. */ color: var(--condo-ivory); /* Usa texto de alto contraste. */ border-radius: 8px; /* Suaviza os cantos. */ padding: 10px 12px; /* Dá respiro ao texto digitado. */ max-width: 100%; /* Impede o campo de ultrapassar a tela. */ }
+/* Preserva a aparência compacta do controle de rádio. */
+.moss-condo input[type='radio'] { min-height: auto; /* Remove a altura mínima dos campos de texto. */ padding: 0; /* Evita espaço interno no círculo nativo. */ }
+/* Simplifica o seletor de perfil do cabeçalho. */
+.condo-profile-select select { border: 0; /* Remove uma moldura desnecessária. */ background: transparent; /* Integra o seletor ao cabeçalho. */ font-size: .75rem; /* Mantém o perfil compacto. */ }
+/* Desenha o avatar fictício do perfil. */
+.condo-avatar { display: grid; /* Permite centralizar as iniciais. */ place-items: center; /* Centraliza o texto. */ flex: 0 0 35px; /* Preserva os 35 pixels do círculo mesmo quando há pouco espaço na linha. */ width: 35px; /* Define a largura do avatar. */ height: 35px; /* Define a altura do avatar. */ line-height: 1; /* Mantém as iniciais centralizadas sem uma linha de texto excessivamente alta. */ white-space: nowrap; /* Impede que as duas iniciais quebrem de linha. */ border-radius: 50%; /* Transforma a caixa em círculo. */ border: 1px solid #c58b5a60; /* Usa uma borda cobre. */ color: #dfb795; /* Usa cobre claro nas letras. */ background: #c58b5a12; /* Dá um fundo discreto ao avatar. */ font-size: .62rem; /* Ajusta as iniciais ao círculo. */ }
+/* Delimita a área clicável do sino de avisos. */
+.condo-notification { position: relative; /* Permite posicionar o ponto indicador. */ display: grid; /* Centraliza o ícone na área de toque. */ place-items: center; /* Centraliza o sino. */ width: 44px; /* Garante largura confortável. */ height: 44px; /* Garante altura confortável. */ }
+/* Marca a existência de avisos demonstrativos. */
+.condo-notification span { position: absolute; /* Sobrepõe o ponto ao sino. */ top: 10px; /* Posiciona o ponto no alto. */ right: 11px; /* Posiciona o ponto à direita. */ width: 5px; /* Define o diâmetro horizontal. */ height: 5px; /* Define o diâmetro vertical. */ border-radius: 50%; /* Cria um círculo. */ background: var(--condo-copper); /* Usa cobre para o indicador. */ }
+/* Define o espaço principal dos módulos. */
+.condo-main { padding: 32px 8px 40px; /* Afasta os conteúdos do cabeçalho e do rodapé. */ min-height: calc(100dvh - 150px); /* Evita que o rodapé suba demais em telas vazias. */ }
+/* Limita a largura útil do conteúdo interno. */
+.condo-content { max-width: 1600px; /* Evita que os painéis fiquem excessivamente largos. */ margin: auto; /* Centraliza a região em telas grandes. */ min-width: 0; /* Permite que gráficos e tabelas encolham. */ }
+/* Distribui títulos e ações de cada módulo. */
+.condo-page-heading { display: flex; /* Coloca título e ação em linha. */ justify-content: space-between; /* Afasta a ação do texto. */ align-items: center; /* Centraliza os grupos verticalmente. */ gap: 20px; /* Separa os grupos. */ margin-bottom: 28px; /* Afasta o cabeçalho dos cartões. */ }
+/* Ajusta a distância dos rótulos de página. */
+.condo-page-heading .condo-eyebrow { margin-bottom: 12px; /* Aproxima o rótulo do título. */ font-size: .59rem; /* Mantém a hierarquia discreta. */ }
+/* Controla o texto descritivo de cada módulo. */
+.condo-page-heading p { font-size: .79rem; /* Usa uma escala de apoio. */ margin: 0; /* Evita margens verticais duplicadas. */ }
+/* Define a aparência da data no painel. */
+.condo-date { display: flex; /* Alinha ícone e data. */ align-items: center; /* Centraliza os elementos. */ gap: 8px; /* Separa o ícone do texto. */ font-size: .68rem; /* Mantém o indicador discreto. */ color: var(--condo-muted); /* Usa a cor secundária. */ white-space: nowrap; /* Mantém a data na mesma linha. */ }
+/* Cria a faixa de quatro indicadores. */
+.condo-metrics { display: grid; /* Organiza os indicadores em colunas. */ grid-template-columns: repeat(4, minmax(0, 1fr)); /* Distribui quatro cartões sem estourar a largura. */ gap: 15px; /* Separa os cartões. */ margin-bottom: 22px; /* Afasta a próxima seção. */ }
+/* Desenha um indicador com vidro discreto. */
+.condo-metric { padding: 21px 19px; /* Dá espaço aos textos. */ background: linear-gradient(135deg, #27344966, #1f293799); /* Cria variação sutil na superfície. */ border: 1px solid var(--condo-line); /* Desenha uma borda fina. */ border-radius: 14px; /* Suaviza os cantos do cartão. */ min-width: 0; /* Permite reduzir o cartão. */ }
+/* Distribui rótulo e ícone dos indicadores. */
+.condo-metric > div { display: flex; /* Coloca rótulo e ícone na mesma linha. */ justify-content: space-between; /* Afasta os elementos. */ align-items: center; /* Centraliza os itens. */ gap: 8px; /* Evita que rótulo e ícone encostem. */ font-size: .7rem; /* Mantém o rótulo discreto. */ color: var(--condo-muted); /* Usa texto secundário. */ }
+/* Colore os ícones dos indicadores. */
+.condo-metric svg { color: #c58b5abf; /* Usa cobre discreto. */ flex-shrink: 0; /* Preserva o tamanho do desenho. */ }
+/* Destaca o número principal de cada indicador. */
+.condo-metric strong { display: block; /* Coloca o número em linha própria. */ margin: 14px 0 7px; /* Separa número, título e nota. */ font-size: clamp(1.25rem, 1.6vw, 1.8rem); /* Ajusta o tamanho à largura disponível. */ font-weight: 500; /* Mantém a elegância dos números. */ letter-spacing: -.04em; /* Aproxima os algarismos. */ overflow-wrap: anywhere; /* Evita que valores extensos ultrapassem o cartão. */ }
+/* Define a nota auxiliar do indicador. */
+.condo-metric small { color: var(--condo-muted); /* Usa texto secundário legível. */ font-size: .6rem; /* Mantém a nota discreta. */ }
+/* Cria uma composição assimétrica entre saldo e gráfico. */
+.condo-overview-grid { display: grid; /* Organiza o resumo e o gráfico. */ grid-template-columns: .85fr 1.5fr; /* Dá mais espaço ao gráfico financeiro. */ gap: 22px; /* Separa os painéis. */ margin-bottom: 22px; /* Afasta a próxima seção. */ }
+/* Define as superfícies compartilhadas somente pela MOSS CONDO. */
+.condo-panel { background: linear-gradient(140deg, #27344955, #1f293780); /* Cria profundidade suave. */ border: 1px solid var(--condo-line); /* Delimita a superfície. */ border-radius: 16px; /* Suaviza os cantos. */ padding: 25px; /* Dá espaço ao conteúdo. */ min-width: 0; /* Permite gráficos responsivos. */ }
+/* Destaca o saldo com linguagem financeira premium. */
+.condo-balance { border: 1px solid #c58b5a40; /* Usa cobre na borda do saldo. */ border-radius: 16px; /* Mantém cantos refinados. */ padding: 28px; /* Dá respiro aos números. */ background: radial-gradient(ellipse at 100% 0, #c58b5a18, transparent 70%), #202937; /* Dá luz quente ao cartão sem efeito pesado. */ }
+/* Aumenta o número principal do saldo. */
+.condo-balance > strong { display: block; /* Separa o número das notas. */ font-size: clamp(1.8rem, 2.6vw, 3rem); /* Adapta o tamanho do valor. */ font-weight: 400; /* Mantém aparência sofisticada. */ letter-spacing: -.05em; /* Aproxima os algarismos. */ margin: 22px 0 10px; /* Separa o saldo dos demais conteúdos. */ }
+/* Define a nota do período financeiro. */
+.condo-balance > p { color: var(--condo-muted); /* Mantém a nota secundária. */ font-size: .64rem; /* Usa escala auxiliar. */ }
+/* Organiza os indicadores auxiliares do saldo. */
+.condo-balance > div { display: grid; /* Cria duas colunas de apoio. */ grid-template-columns: 1fr 1fr; /* Divide o espaço igualmente. */ gap: 12px; /* Separa os valores. */ border-top: 1px solid var(--condo-line); /* Delimita a região auxiliar. */ padding: 20px 0; /* Cria espaço vertical. */ margin-top: 24px; /* Separa do saldo principal. */ font-size: .62rem; /* Mantém rótulos pequenos. */ color: var(--condo-muted); /* Usa texto secundário. */ }
+/* Destaca os valores auxiliares. */
+.condo-balance b { display: block; /* Coloca os valores abaixo dos rótulos. */ color: #e2b78f; /* Usa cobre claro. */ font-size: .87rem; /* Aumenta os valores auxiliares. */ font-weight: 500; /* Mantém o destaque equilibrado. */ margin-top: 7px; /* Separa o rótulo do valor. */ }
+/* Padroniza os links editoriais dos cartões. */
+.condo-balance > a, .condo-community > a { display: flex; /* Alinha o texto com a seta. */ justify-content: space-between; /* Afasta o ícone do rótulo. */ align-items: center; /* Centraliza os itens. */ color: #dfb795; /* Usa cobre claro no link. */ font-size: .72rem; /* Mantém o link proporcional ao cartão. */ min-height: 44px; /* Mantém uma área clicável confortável. */ border-top: 1px solid var(--condo-line); /* Separa a ação do conteúdo. */ padding-top: 12px; /* Afasta o texto da linha. */ }
+/* Organiza títulos de seções internas. */
+.condo-section-heading { display: flex; /* Coloca título e ícone em linha. */ justify-content: space-between; /* Afasta os elementos. */ align-items: center; /* Centraliza o grupo. */ gap: 10px; /* Mantém respiro entre eles. */ }
+/* Aproxima rótulo e título dos painéis. */
+.condo-section-heading .condo-eyebrow { font-size: .57rem; /* Reduz rótulos de cartões. */ margin-bottom: 8px; /* Separa o título do rótulo. */ }
+/* Define um tamanho estável para o gráfico. */
+.condo-chart { height: 230px; /* Reserva altura para o gráfico responsivo. */ font-size: .64rem; /* Ajusta rótulos do gráfico. */ }
+/* Explica a diferença entre previsão financeira e saldo pago. */
+.condo-chart-note { font-size: .67rem; /* Mantém a explicação proporcional ao gráfico. */ margin: 0 0 12px; /* Separa a nota do desenho sem criar espaço excessivo. */ }
+/* Aplica vidro somente à navegação, evitando filtros pesados em todos os cartões. */
+.condo-sidebar { backdrop-filter: blur(10px); /* Suaviza o fundo atrás da superfície translúcida. */ }
+/* Separa a visualização financeira dos registros logo abaixo. */
+.condo-financial-chart { margin-bottom: 22px; /* Mantém respiro entre gráfico e tabela. */ }
+/* Define o resumo textual acessível do gráfico. */
+.condo-chart-details { font-size: .64rem; /* Mantém o resumo compacto. */ color: var(--condo-muted); /* Usa texto secundário. */ margin-top: 12px; /* Separa do desenho do gráfico. */ }
+/* Sinaliza a interação do resumo do gráfico. */
+.condo-chart-details summary { cursor: pointer; /* Indica que a lista pode ser aberta. */ padding: 8px 0; /* Melhora a área de clique. */ }
+/* Cria a região inferior assimétrica do dashboard. */
+.condo-bottom-grid { display: grid; /* Organiza agenda e mural. */ grid-template-columns: 1.35fr 1fr; /* Dá mais espaço às atividades. */ gap: 22px; /* Separa os cartões. */ }
+/* Organiza cada atividade na agenda resumida. */
+.condo-activity-list > div { display: flex; /* Coloca ícone, texto e unidade em linha. */ align-items: center; /* Centraliza os elementos. */ gap: 13px; /* Separa cada elemento. */ padding: 15px 0; /* Cria área de leitura. */ border-bottom: 1px solid var(--condo-line); /* Separa as atividades. */ }
+/* Desenha o fundo dos ícones de atividade. */
+.condo-activity-icon { display: grid; /* Permite centralizar o ícone. */ place-items: center; /* Centraliza o desenho. */ width: 38px; /* Define a largura do selo. */ height: 38px; /* Define a altura do selo. */ flex-shrink: 0; /* Evita deformar o selo. */ border-radius: 10px; /* Suaviza os cantos. */ background: #c58b5a0d; /* Aplica fundo cobre sutil. */ color: #d2a17a; /* Colore o ícone. */ }
+/* Define a linha principal de uma atividade. */
+.condo-activity-list strong { display: block; /* Separa título e detalhes. */ font-size: .75rem; /* Usa escala de item de lista. */ font-weight: 500; /* Mantém o texto leve. */ }
+/* Define os detalhes secundários das atividades e reservas. */
+.condo-activity-list small, .condo-reservation-row small { display: block; /* Coloca os detalhes em outra linha. */ color: var(--condo-muted); /* Usa texto secundário. */ font-size: .64rem; /* Mantém o detalhe discreto. */ margin-top: 4px; /* Separa os detalhes do título. */ }
+/* Posiciona o selo de unidade no fim da atividade. */
+.condo-activity-list .condo-badge { margin-left: auto; /* Empurra o selo para o lado direito. */ }
+/* Define pequenos selos textuais, sem depender apenas de cor. */
+.condo-badge { display: inline-block; /* Permite preenchimento e borda. */ padding: 4px 8px; /* Dá respiro ao texto. */ border: 1px solid #36b5a033; /* Usa uma borda turquesa discreta. */ background: #36b5a00a; /* Aplica fundo sutil. */ border-radius: 6px; /* Suaviza o selo. */ color: #85d5c6; /* Mantém texto contrastante. */ font-size: .63rem; /* Ajusta o selo ao conteúdo. */ white-space: nowrap; /* Evita quebrar o estado em duas linhas. */ }
+/* Resume indicadores operacionais no fim da agenda. */
+.condo-panel-summary { display: flex; /* Coloca os resumos na mesma linha. */ flex-wrap: wrap; /* Permite quebra em telas pequenas. */ gap: 10px 20px; /* Separa os textos. */ font-size: .65rem; /* Mantém o resumo compacto. */ color: var(--condo-muted); /* Usa texto secundário. */ padding-top: 18px; /* Separa o resumo da lista. */ }
+/* Dá personalidade editorial ao mural resumido. */
+.condo-community h2 { font-family: Georgia, serif; /* Contrasta com os títulos operacionais. */ font-size: 1.65rem; /* Dá destaque ao mural. */ line-height: 1.25; /* Mantém as linhas confortáveis. */ }
+/* Define um aviso resumido no mural ou na agenda. */
+.condo-notice-preview { padding: 16px 0; /* Separa cada aviso. */ border-top: 1px solid var(--condo-line); /* Delimita avisos consecutivos. */ font-size: .75rem; /* Usa escala de lista. */ }
+/* Define o contexto de um aviso. */
+.condo-notice-preview small { display: block; /* Coloca a categoria acima do título. */ color: var(--condo-muted); /* Usa texto secundário. */ font-size: .6rem; /* Mantém a categoria compacta. */ margin-bottom: 6px; /* Afasta a categoria do título. */ }
+/* Destaca o título dos avisos. */
+.condo-notice-preview strong { display: block; /* Mantém o título separado do contexto. */ font-weight: 500; /* Evita peso excessivo. */ }
+/* Define a barra de filtros com quebra automática. */
+.condo-toolbar { display: flex; /* Distribui os filtros em linha. */ flex-wrap: wrap; /* Permite quebra em telas menores. */ gap: 10px; /* Separa os controles. */ align-items: center; /* Centraliza os filtros. */ padding: 18px; /* Dá espaço interno. */ border: 1px solid var(--condo-line); /* Delimita a região de filtros. */ border-radius: 14px; /* Suaviza a barra. */ background: #1f293750; /* Diferencia a barra do fundo. */ }
+/* Alinha o campo de pesquisa e seu ícone. */
+.condo-search { display: flex; /* Coloca ícone e campo lado a lado. */ align-items: center; /* Centraliza os elementos. */ gap: 8px; /* Separa o ícone do texto. */ flex: 1 1 220px; /* Permite que a pesquisa use o espaço livre. */ min-width: 0; /* Permite reduzir a largura no celular. */ }
+/* Faz a pesquisa ocupar sua região disponível. */
+.condo-search input { width: 100%; /* Ocupa o espaço do rótulo. */ font-size: .76rem; /* Mantém a pesquisa compacta. */ }
+/* Define os controles menores dos filtros. */
+.condo-toolbar select, .condo-toolbar input[type='month'] { font-size: .73rem; /* Ajusta os filtros à interface. */ }
+/* Define a região de retorno das ações. */
+.condo-feedback { min-height: 24px; /* Evita saltos entre mensagens. */ color: #9bdacc; /* Dá destaque discreto à confirmação. */ font-size: .73rem; /* Mantém a mensagem compacta. */ margin: 15px 0; /* Separa filtros e registros. */ }
+/* Contém tabelas largas sem quebrar a tela. */
+.condo-table-wrap { overflow-x: auto; /* Permite rolar colunas no celular. */ border: 1px solid var(--condo-line); /* Delimita a tabela. */ border-radius: 14px; /* Suaviza os cantos. */ background: #1f293760; /* Separa a tabela do fundo. */ }
+/* Define uma tabela com linhas bem alinhadas. */
+.condo-table { width: 100%; /* Usa toda a largura disponível. */ border-collapse: collapse; /* Evita bordas duplicadas. */ text-align: left; /* Alinha o conteúdo para leitura. */ font-size: .75rem; /* Mantém os dados em escala confortável. */ }
+/* Dá respiro às células e permite textos longos. */
+.condo-table th, .condo-table td { padding: 16px; /* Afasta textos das bordas. */ border-bottom: 1px solid var(--condo-line); /* Separa as linhas. */ min-width: 110px; /* Evita colunas excessivamente estreitas. */ max-width: 320px; /* Controla colunas extensas como histórico. */ overflow-wrap: anywhere; /* Permite quebrar textos longos. */ vertical-align: top; /* Alinha conteúdos pelo topo da linha. */ }
+/* Diferencia o cabeçalho da tabela. */
+.condo-table th { color: var(--condo-muted); /* Usa texto secundário no cabeçalho. */ font-size: .64rem; /* Reduz os títulos das colunas. */ font-weight: 500; /* Evita um cabeçalho pesado. */ background: #27344970; /* Destaca a faixa de títulos. */ }
+/* Agrupa os botões de cada registro. */
+.condo-row-actions { display: flex; /* Coloca edição e exclusão em linha. */ gap: 4px; /* Separa as ações. */ }
+/* Define botões de ícone com área de toque suficiente. */
+.condo-row-actions button, .condo-icon-button { display: inline-grid; /* Centraliza o ícone. */ place-items: center; /* Centraliza em ambas as direções. */ min-width: 44px; /* Garante largura confortável. */ min-height: 44px; /* Garante altura confortável. */ border: 1px solid #ffffff22; /* Delimita o botão. */ border-radius: 8px; /* Suaviza os cantos. */ background: transparent; /* Integra a ação à superfície. */ color: var(--condo-ivory); /* Mantém o ícone legível. */ }
+/* Desenha estados sem registros. */
+.condo-empty { padding: 35px 20px; /* Dá espaço ao estado vazio. */ text-align: center; /* Centraliza a mensagem. */ color: var(--condo-muted); /* Usa texto secundário. */ font-size: .8rem; /* Mantém a mensagem legível. */ border: 1px dashed #ffffff25; /* Diferencia o vazio dos cartões preenchidos. */ border-radius: 12px; /* Suaviza o estado vazio. */ }
+/* Desenha mensagens de erro com texto explícito. */
+.condo-error { padding: 14px 18px; /* Afasta a mensagem da borda. */ border: 1px solid #d18477; /* Usa borda clara para boa percepção. */ color: #ffc4b9; /* Mantém contraste sobre o fundo escuro. */ background: #492b2b; /* Diferencia erros sem brilho excessivo. */ border-radius: 10px; /* Suaviza a caixa. */ font-size: .8rem; /* Mantém o erro legível. */ }
+/* Define o formulário modal nativo. */
+.condo-dialog { width: min(580px, calc(100% - 30px)); /* Limita o diálogo à janela. */ max-height: 90dvh; /* Mantém o formulário dentro da tela. */ overflow-y: auto; /* Permite rolar formulários longos. */ padding: 30px; /* Dá espaço ao formulário. */ border: 1px solid #617084; /* Delimita o diálogo. */ border-radius: 18px; /* Suaviza a janela. */ background: #1f2937; /* Usa uma superfície opaca legível. */ color: #f4efe9; /* Mantém o texto claro. */ box-shadow: 0 30px 100px #00000080; /* Separa o diálogo do conteúdo. */ }
+/* Escurece o conteúdo atrás do diálogo sem efeito pesado. */
+.condo-dialog::backdrop { background: #090e1bcc; /* Cria uma película escura de fundo. */ }
+/* Organiza os campos do formulário em duas colunas. */
+.condo-form-grid { display: grid; /* Cria uma grade de campos. */ grid-template-columns: 1fr 1fr; /* Divide a largura em duas partes. */ gap: 16px; /* Separa campos e rótulos. */ }
+/* Define os rótulos do formulário. */
+.condo-form-grid label, .condo-field { display: flex; /* Organiza texto e controle. */ flex-direction: column; /* Coloca o campo abaixo do rótulo. */ gap: 7px; /* Separa rótulo e controle. */ font-size: .78rem; /* Mantém os rótulos legíveis. */ min-width: 0; /* Permite que os campos encolham. */ }
+/* Permite escrever comunicados mais longos. */
+.condo-form-grid textarea { min-height: 115px; /* Oferece altura para múltiplas linhas. */ resize: vertical; /* Permite ajustar somente a altura. */ }
+/* Organiza as ações finais do formulário. */
+.condo-actions { display: flex; /* Coloca os botões em linha. */ justify-content: flex-end; /* Alinha as ações à direita. */ gap: 10px; /* Separa cancelar e salvar. */ margin-top: 25px; /* Afasta as ações dos campos. */ }
+/* Cria duas regiões para calendário e disponibilidade. */
+.condo-calendar-layout { display: grid; /* Organiza as duas colunas. */ grid-template-columns: 1.6fr 1fr; /* Dá mais espaço ao calendário. */ gap: 22px; /* Separa as regiões. */ }
+/* Distribui os botões de mês e o título. */
+.condo-calendar-heading { display: flex; /* Coloca setas e título em linha. */ align-items: center; /* Centraliza os controles. */ justify-content: space-between; /* Afasta os botões do título. */ gap: 10px; /* Mantém respiro. */ margin-bottom: 25px; /* Separa o cabeçalho dos dias. */ }
+/* Ajusta o título do mês. */
+.condo-calendar-heading h2 { margin: 0; /* Remove espaço extra do título. */ font-size: 1.1rem; /* Mantém o mês proporcional. */ text-transform: capitalize; /* Coloca a inicial do mês em maiúscula. */ }
+/* Desenha uma grade semanal com sete colunas. */
+.condo-calendar-grid { display: grid; /* Organiza dias em linhas e colunas. */ grid-template-columns: repeat(7, minmax(0, 1fr)); /* Cria sete colunas iguais sem estourar o contêiner. */ gap: 5px; /* Separa os dias. */ }
+/* Define o nome dos dias da semana. */
+.condo-weekday { text-align: center; /* Centraliza o rótulo sobre o dia. */ color: var(--condo-muted); /* Usa texto secundário. */ font-size: .66rem; /* Mantém a legenda compacta. */ padding-bottom: 10px; /* Separa a legenda dos números. */ }
+/* Desenha cada dia como um botão real. */
+.condo-calendar-grid button { min-height: 65px; /* Mantém área de toque e espaço para reservas. */ background: #11182740; /* Diferencia a célula do fundo. */ border: 1px solid var(--condo-line); /* Delimita o dia. */ border-radius: 8px; /* Suaviza cada célula. */ color: var(--condo-ivory); /* Mantém o número legível. */ padding: 6px 2px; /* Cria espaço interno sem alargar a célula. */ font-size: .78rem; /* Define o tamanho dos números. */ }
+/* Mostra a contagem de reservas de cada dia. */
+.condo-calendar-grid small { display: block; /* Coloca a contagem abaixo do número. */ font-size: .49rem; /* Ajusta o texto à célula. */ color: #84d7c7; /* Usa turquesa claro legível. */ margin-top: 4px; /* Separa número e contagem. */ }
+/* Destaca a data selecionada. */
+.condo-calendar-grid button.is-selected { background: #c58b5a26; /* Aplica fundo cobre sutil. */ border-color: #c58b5a; /* Mostra claramente a seleção. */ }
+/* Diferencia a data atual independentemente da seleção. */
+.condo-calendar-grid button.is-today { box-shadow: inset 0 -3px #36b5a0; /* Adiciona uma marca turquesa no rodapé do dia. */ }
+/* Afasta o histórico da área de calendário. */
+.condo-history { margin-top: 22px; /* Cria respiro entre calendário e histórico. */ }
+/* Organiza cada reserva do histórico. */
+.condo-reservation-row { display: flex; /* Coloca dados e ações na mesma linha. */ align-items: center; /* Centraliza os elementos. */ gap: 16px; /* Separa os grupos. */ padding: 16px 0; /* Cria área de leitura. */ border-top: 1px solid var(--condo-line); /* Separa reservas consecutivas. */ font-size: .8rem; /* Ajusta a escala da lista. */ }
+/* Faz o resumo da reserva ocupar o espaço disponível. */
+.condo-reservation-row > div { flex: 1; /* Empurra o estado e a ação para o fim. */ }
+/* Mantém o rodapé da aplicação discreto. */
+.condo-workspace-footer { display: flex; /* Coloca autoria e nota em linha. */ justify-content: space-between; /* Distribui os textos nas extremidades. */ gap: 20px; /* Separa as regiões. */ padding: 20px 8px; /* Dá respiro ao rodapé. */ border-top: 1px solid var(--condo-line); /* Separa rodapé e conteúdo. */ color: var(--condo-muted); /* Mantém o texto secundário. */ font-size: .6rem; /* Usa escala discreta. */ }
+/* Alinha o ícone da nota do rodapé. */
+.condo-workspace-footer > span:last-child { display: flex; /* Coloca texto e ícone em linha. */ align-items: center; /* Centraliza os elementos. */ gap: 6px; /* Separa o ícone do texto. */ }
+/* Centraliza estados iniciais de carregamento e recuperação. */
+.condo-loading { min-height: 100dvh; /* Preenche a janela. */ display: flex; /* Organiza ícone, mensagem e ações. */ flex-direction: column; /* Coloca os elementos em coluna. */ align-items: center; /* Centraliza horizontalmente. */ justify-content: center; /* Centraliza verticalmente. */ padding: 30px; /* Evita tocar as bordas da tela. */ text-align: center; /* Centraliza mensagens longas. */ }
+/* Esconde o controle móvel enquanto há espaço para a sidebar. */
+.condo-mobile-toggle { display: none; /* Evita um menu redundante no desktop. */ }
+/* Adapta a composição para notebooks e tablets largos. */
+@media (max-width: 1200px) {
+  .condo-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); /* Passa os indicadores para duas colunas. */ }
+  .condo-overview-grid { grid-template-columns: 1fr 1.3fr; /* Preserva o destaque do gráfico com menos largura. */ }
+  .condo-bottom-grid { grid-template-columns: 1fr 1fr; /* Equilibra os dois painéis inferiores. */ }
+  .condo-panel, .condo-balance { padding: 20px; /* Reduz o espaço interno sem apertar os textos. */ }
+  .condo-calendar-layout { grid-template-columns: 1fr; /* Coloca disponibilidade abaixo do calendário. */ }
+  .condo-profile-picker { flex-wrap: wrap; /* Permite que os perfis quebrem de linha. */ }
+  .condo-topbar > div:first-child { display: none; /* Prioriza os controles quando há menos espaço. */ }
+  .condo-topbar { justify-content: flex-end; /* Mantém os controles alinhados à direita. */ }
+}
+/* Adapta o menu e a apresentação para tablets e celulares. */
+@media (max-width: 900px) {
+  .condo-workspace { padding: 10px 18px 0; /* Libera o espaço que antes era reservado ao menu fixo. */ }
+  .condo-sidebar { display: none; /* Esconde o menu até o visitante solicitá-lo. */ width: min(290px, calc(100vw - 30px)); /* Mantém a sidebar dentro da tela. */ left: 15px; /* Afasta o menu da borda. */ top: 74px; /* Deixa o botão de fechar visível. */ bottom: 15px; /* Mantém respiro no rodapé. */ box-shadow: 0 0 0 100vmax #080e1bc9; /* Escurece o restante da página sem animações pesadas. */ }
+  .condo-sidebar.is-open { display: flex; /* Mostra o menu quando o estado móvel está aberto. */ }
+  .condo-mobile-toggle { display: inline-grid; /* Exibe o botão de navegação móvel. */ position: fixed; /* Mantém o botão disponível ao rolar. */ left: 18px; /* Alinha ao conteúdo. */ top: 20px; /* Afasta o botão do topo. */ z-index: 40; /* Mantém o botão acima do menu. */ background: #1f2937; /* Garante contraste sobre o conteúdo. */ }
+  .condo-topbar { padding-left: 55px; /* Reserva espaço para o botão móvel. */ }
+  .condo-hero { gap: 5%; /* Aproxima as colunas da apresentação. */ }
+  .condo-hero h1 { font-size: clamp(2.7rem, 5.4vw, 4rem); /* Ajusta o slogan à largura de tablet. */ }
+  .condo-hero-art { aspect-ratio: .66; /* Mantém a arquitetura vertical em telas intermediárias. */ border-top-left-radius: 80px; /* Reduz a curva superior. */ }
+  .condo-landing { padding: 0 5%; /* Aproveita melhor a largura disponível. */ }
+  .condo-art-caption strong { font-size: 1.5rem; /* Ajusta o nome da propriedade à imagem menor. */ }
+  .condo-landing-metrics { grid-template-columns: repeat(3, 1fr); /* Mantém três indicadores na faixa. */ }
+  .condo-landing-metrics > p { display: none; /* Remove apenas a assinatura redundante. */ }
+}
+/* Organiza a experiência para celulares estreitos. */
+@media (max-width: 600px) {
+  .condo-landing-header { padding: 24px 0; /* Reduz o espaço do cabeçalho inicial. */ gap: 14px; /* Separa marca e selo. */ flex-wrap: wrap; /* Evita aperto em telas muito estreitas. */ }
+  .condo-landing-header .condo-demo-pill { font-size: .5rem; /* Reduz o selo sem ocultar a indicação de demo. */ }
+  .condo-hero { grid-template-columns: 1fr; /* Coloca a arquitetura abaixo da apresentação. */ padding-top: 32px; /* Aproxima o conteúdo do cabeçalho. */ gap: 30px; /* Separa texto e imagem. */ }
+  .condo-hero h1 { font-size: clamp(2.9rem, 11vw, 4rem); /* Ajusta o slogan para o celular. */ }
+  .condo-hero-art { aspect-ratio: 1.1; /* Evita uma imagem excessivamente alta no celular. */ border-top-left-radius: 80px; /* Mantém a assinatura arquitetônica. */ }
+  .condo-art-label { top: 16px; /* Aproxima a etiqueta do topo. */ font-size: .55rem; /* Ajusta o texto à moldura. */ }
+  .condo-profile-picker { gap: 7px; /* Reduz a distância entre perfis. */ }
+  .condo-profile-picker label { padding: 12px 10px; /* Mantém as opções confortáveis sem ocupar demais. */ font-size: .72rem; /* Ajusta os rótulos. */ }
+  .condo-profile-picker svg { display: none; /* Prioriza controle nativo e texto no espaço pequeno. */ }
+  .condo-enter { width: 100%; /* Faz a ação principal ocupar a largura útil. */ min-width: 0; /* Evita ultrapassar celulares estreitos. */ }
+  .condo-landing-metrics { gap: 10px; /* Aproxima os indicadores. */ }
+  .condo-landing-metrics strong { font-size: 1.5rem; /* Ajusta os números da faixa. */ }
+  .condo-landing-metrics span { font-size: .61rem; /* Ajusta os rótulos à coluna. */ }
+  .condo-landing-footer { flex-direction: column; /* Coloca as notas do rodapé em coluna. */ gap: 6px; /* Aproxima as notas. */ }
+  .condo-main { padding: 25px 0; /* Aproveita a largura útil do conteúdo. */ }
+  .condo-topbar-actions { gap: 7px; /* Aproxima os controles do cabeçalho. */ }
+  .condo-avatar { display: none; /* Remove um elemento apenas decorativo no celular. */ }
+  .condo-page-heading { align-items: flex-start; /* Alinha o texto ao início. */ flex-direction: column; /* Coloca a ação abaixo do título. */ gap: 16px; /* Separa texto e ação. */ }
+  .condo-page-heading h1 { font-size: 1.9rem; /* Define uma escala confortável no celular. */ }
+  .condo-date { font-size: .65rem; /* Ajusta a data ao cabeçalho empilhado. */ }
+  .condo-metrics { gap: 10px; /* Aproxima os cartões sem eliminar respiro. */ }
+  .condo-metric { padding: 16px 13px; /* Reduz o espaço interno dos indicadores. */ }
+  .condo-metric > div { font-size: .63rem; /* Ajusta os títulos dos indicadores. */ }
+  .condo-metric > div svg { width: 16px; /* Reduz os ícones auxiliares. */ }
+  .condo-metric strong { font-size: 1.3rem; /* Mantém os valores dentro dos cartões. */ }
+  .condo-overview-grid, .condo-bottom-grid { grid-template-columns: 1fr; /* Empilha os painéis no celular. */ gap: 16px; /* Mantém respiro vertical. */ }
+  .condo-balance > strong { font-size: 2.7rem; /* Dá destaque ao saldo em sua própria linha. */ }
+  .condo-toolbar { padding: 12px; /* Aproveita melhor a largura. */ }
+  .condo-toolbar > label { flex: 1 1 100%; /* Coloca os filtros em linhas completas. */ }
+  .condo-toolbar select, .condo-toolbar input { width: 100%; /* Faz os controles preencherem suas linhas. */ }
+  .condo-toolbar .condo-button { flex: 1; /* Distribui as ações de filtro igualmente. */ }
+  .condo-form-grid { grid-template-columns: 1fr; /* Coloca os campos do formulário em coluna. */ }
+  .condo-dialog { padding: 23px; /* Ajusta o espaço interno do formulário. */ }
+  .condo-calendar-layout .condo-panel { padding: 15px; /* Mantém espaço para os sete dias da semana. */ }
+  .condo-calendar-grid { gap: 3px; /* Aproxima as células do calendário. */ }
+  .condo-calendar-grid button { min-height: 55px; /* Preserva uma área de toque adequada. */ }
+  .condo-calendar-grid small { font-size: .42rem; /* Ajusta a contagem à largura de cada dia. */ }
+  .condo-reservation-row { flex-wrap: wrap; /* Permite que estado e ação quebrem de linha. */ gap: 10px; /* Separa os elementos. */ }
+  .condo-reservation-row > div { min-width: 150px; /* Preserva a leitura dos detalhes. */ }
+  .condo-workspace-footer { flex-direction: column; /* Empilha as notas do rodapé. */ gap: 8px; /* Separa as notas. */ }
+}
+/* Reserva o espaço da foto antes do carregamento para evitar saltos de layout. */
+.condo-photo { position: relative; /* Permite sobrepor a indicação de foto ilustrativa. */ margin: 0; /* Remove margens nativas do elemento figure. */ width: 100%; /* Preenche a região visual disponível. */ height: 100%; /* Usa a altura definida pelo cartão ou banner. */ min-height: 0; /* Permite encaixar a foto em regiões pequenas. */ overflow: hidden; /* Recorta a fotografia sem distorcê-la. */ background: #273449; /* Mostra uma superfície neutra durante o carregamento. */ }
+/* Mantém as proporções das fotografias em qualquer tela. */
+.condo-photo > img { display: block; /* Remove o espaço reservado à linha de texto sob imagens. */ width: 100%; /* Ocupa a largura do cartão. */ height: 100%; /* Ocupa a altura do cartão. */ object-fit: cover; /* Recorta as bordas sem esticar a fotografia. */ }
+/* Identifica todas as fotografias como referências visuais, não como imóveis de clientes. */
+.condo-photo > figcaption { position: absolute; /* Sobrepõe a nota à fotografia. */ right: 12px; /* Afasta a nota da borda direita. */ bottom: 12px; /* Afasta a nota da borda inferior. */ z-index: 3; /* Mantém a nota acima do escurecimento dos banners. */ padding: 4px 8px; /* Oferece respiro ao texto. */ border-radius: 5px; /* Suaviza o selo. */ background: #111827; /* Garante contraste sem depender das cores da fotografia. */ color: #f4efe9; /* Mantém a nota clara e legível. */ font-size: .62rem; /* Usa escala discreta para a informação de contexto. */ }
+/* Encaixa a fotografia na moldura arquitetônica que já estava aprovada. */
+.condo-hero-art > .condo-photo { position: absolute; /* Preenche a moldura sem alterar suas dimensões. */ inset: 0; /* Ocupa toda a região da apresentação. */ }
+/* Desenha uma alternativa elegante para falhas de arquivos de imagem. */
+.condo-photo-fallback { display: flex; /* Organiza ícone e mensagem. */ flex-direction: column; /* Coloca a mensagem abaixo do ícone. */ align-items: center; /* Centraliza horizontalmente a informação. */ justify-content: center; /* Centraliza verticalmente a informação. */ gap: 12px; /* Separa o ícone da explicação. */ width: 100%; /* Ocupa a largura do espaço reservado. */ height: 100%; /* Ocupa a altura do espaço reservado. */ min-height: 140px; /* Mantém a mensagem legível em cartões pequenos. */ padding: 24px; /* Evita texto encostado às bordas. */ text-align: center; /* Centraliza mensagens de mais de uma linha. */ color: #f4efe9; /* Mantém contraste sobre a superfície azul aço. */ font-size: .75rem; /* Usa tamanho adequado para a mensagem. */ }
+/* Cria uma faixa fotográfica própria nos três painéis e em todos os módulos. */
+.condo-photo-banner { position: relative; /* Permite organizar imagem e texto em camadas. */ isolation: isolate; /* Limita a ordem das camadas a este banner. */ height: 246px; /* Reserva uma presença visual generosa no dashboard. */ margin: 0 0 24px; /* Separa a foto dos indicadores ou filtros. */ border: 1px solid #ffffff20; /* Integra a fotografia ao acabamento Premium Glass. */ border-radius: 16px; /* Repete os cantos suaves da plataforma. */ overflow: hidden; /* Recorta as camadas nos cantos do banner. */ }
+/* Posiciona a imagem sem alterar a organização dos indicadores. */
+.condo-photo-banner > .condo-photo { position: absolute; /* Usa a fotografia como camada de fundo. */ inset: 0; /* Preenche toda a faixa. */ }
+/* Protege o contraste do texto contra qualquer cor da fotografia. */
+.condo-photo-banner::after { content: ''; /* Cria uma camada visual sem texto adicional. */ position: absolute; /* Sobrepõe o gradiente à imagem. */ inset: 0; /* Preenche toda a faixa. */ z-index: 1; /* Mantém o gradiente entre a fotografia e as palavras. */ background: linear-gradient(90deg, #111827 0%, #111827f5 30%, #111827a8 55%, #11182708 100%); /* Escurece a região de leitura e preserva a foto do lado direito. */ pointer-events: none; /* Evita que a camada bloqueie qualquer interação. */ }
+/* Limita a largura da mensagem para não esconder a fotografia. */
+.condo-photo-banner-copy { position: relative; /* Permite colocar o texto acima do gradiente. */ z-index: 2; /* Mantém as palavras na camada de leitura. */ display: flex; /* Organiza os textos na mesma coluna. */ flex-direction: column; /* Coloca rótulo, título e descrição em sequência. */ justify-content: center; /* Centraliza a mensagem verticalmente. */ width: min(53%, 520px); /* Mantém o texto na parte escura do banner. */ height: 100%; /* Usa toda a altura disponível para centralização. */ padding: 28px; /* Dá respiro aos textos. */ }
+/* Diferencia o título editorial dos títulos operacionais. */
+.condo-photo-banner h2 { margin: 0 0 12px; /* Separa título e descrição. */ color: #f4efe9; /* Usa marfim sobre a região escura. */ font-family: Georgia, serif; /* Cria um contraste editorial sofisticado. */ font-size: clamp(1.5rem, 2vw, 2rem); /* Ajusta a escala à largura do painel. */ font-weight: 400; /* Evita um título pesado. */ line-height: 1.25; /* Mantém as linhas confortáveis. */ letter-spacing: -.025em; /* Refina a composição do título. */ }
+/* Define a descrição contextual da fotografia. */
+.condo-photo-banner-copy > p { margin: 0; /* Remove espaçamentos duplicados. */ color: #e0e5ec; /* Mantém alto contraste no fundo escuro. */ font-size: .76rem; /* Equilibra a descrição com o título. */ line-height: 1.7; /* Facilita a leitura do texto de apoio. */ }
+/* Ajusta o rótulo da faixa fotográfica. */
+.condo-photo-banner .condo-eyebrow { margin-bottom: 13px; /* Separa o rótulo do título. */ color: #e3b78e; /* Usa cobre claro sobre o gradiente. */ font-size: .6rem; /* Mantém a hierarquia discreta. */ }
+/* Evita que as imagens dominem módulos focados em trabalho e listagens. */
+.condo-photo-banner.is-compact { height: 178px; /* Reduz a faixa nos módulos de gestão. */ }
+/* Amplia ligeiramente a área de texto de uma faixa compacta. */
+.condo-photo-banner.is-compact .condo-photo-banner-copy { width: min(62%, 650px); /* Acomoda o título sem aumentar a altura da tela. */ }
+/* Ajusta a escala editorial das faixas menores. */
+.condo-photo-banner.is-compact h2 { font-size: 1.55rem; /* Mantém o texto proporcional à faixa compacta. */ }
+/* Apresenta as cinco áreas com fotografias próprias e ações funcionais. */
+.condo-area-gallery { display: grid; /* Organiza os cartões em uma grade responsiva. */ grid-template-columns: repeat(5, minmax(0, 1fr)); /* Exibe os cinco espaços lado a lado em telas largas. */ gap: 14px; /* Separa as fotografias. */ margin-bottom: 24px; /* Afasta a galeria dos filtros e do calendário. */ }
+/* Desenha cada cartão fotográfico de área comum. */
+.condo-area-card { min-width: 0; /* Permite reduzir o cartão sem ultrapassar a tela. */ border: 1px solid #ffffff20; /* Delimita o cartão discretamente. */ border-radius: 13px; /* Suaviza os cantos. */ overflow: hidden; /* Recorta a foto nos cantos superiores. */ background: #1f2937; /* Mantém o título separado da imagem por uma superfície legível. */ }
+/* Destaca a área que está filtrando a disponibilidade. */
+.condo-area-card.is-selected { border-color: #c58b5a; /* Usa cobre para indicar o filtro ativo. */ box-shadow: 0 0 0 1px #c58b5a; /* Reforça a seleção sem animação. */ }
+/* Define a proporção das fotos das áreas. */
+.condo-area-card > .condo-photo { height: auto; /* Permite que a proporção determine a altura. */ aspect-ratio: 1.35; /* Mantém fotografias com enquadramento consistente. */ }
+/* Reserva espaço para nome e ação do espaço. */
+.condo-area-card > div { padding: 15px 13px 10px; /* Dá respiro aos textos do cartão. */ }
+/* Mantém os nomes das áreas legíveis mesmo quando quebram de linha. */
+.condo-area-card h2 { margin: 0 0 7px; /* Separa o nome da ação. */ font-size: .91rem; /* Ajusta o título à largura dos cartões. */ font-weight: 500; /* Destaca o nome sem peso excessivo. */ letter-spacing: -.025em; /* Refina o espaçamento das letras. */ }
+/* Transforma a seleção da foto em um filtro de disponibilidade real. */
+.condo-area-select { display: flex; /* Alinha rótulo e seta. */ justify-content: space-between; /* Afasta a seta do texto. */ align-items: center; /* Centraliza os elementos verticalmente. */ gap: 8px; /* Preserva um espaço mínimo entre texto e ícone. */ width: 100%; /* Usa toda a largura do cartão como alvo de toque. */ min-height: 44px; /* Garante uma área de interação confortável. */ padding: 8px 0; /* Oferece respiro vertical. */ border: 0; /* Evita um botão visualmente pesado. */ background: transparent; /* Integra a ação à superfície do cartão. */ color: #e3b78e; /* Mantém o cobre claro com contraste adequado. */ text-align: left; /* Alinha o rótulo ao título. */ font-size: .67rem; /* Mantém a ação proporcional ao cartão. */ }
+/* Adapta a galeria quando o menu lateral ocupa parte de uma tela intermediária. */
+@media (max-width: 1200px) {
+  .condo-area-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); /* Distribui os espaços em três colunas. */ }
+  .condo-photo-banner-copy { width: 62%; /* Mantém a descrição dentro da região escurecida. */ }
+}
+/* Preserva fotos generosas e textos legíveis nos celulares. */
+@media (max-width: 600px) {
+  .condo-photo-banner { height: 270px; /* Dá espaço à fotografia e ao título no celular. */ }
+  .condo-photo-banner::after { background: linear-gradient(0deg, #111827 0%, #111827f5 28%, #111827a8 62%, #11182725 100%); /* Coloca a região escura de leitura na parte inferior. */ }
+  .condo-photo-banner-copy, .condo-photo-banner.is-compact .condo-photo-banner-copy { width: 100%; /* Usa a largura útil da tela para o texto. */ justify-content: flex-end; /* Coloca a mensagem na parte mais escura. */ padding: 24px 20px 38px; /* Reserva espaço para a indicação de foto ilustrativa. */ }
+  .condo-photo-banner h2 { font-size: 1.65rem; /* Mantém destaque sem ocultar toda a imagem. */ }
+  .condo-photo-banner.is-compact { height: 245px; /* Mantém contexto fotográfico nos módulos menores. */ }
+  .condo-photo-banner.is-compact h2 { font-size: 1.45rem; /* Ajusta títulos de módulos no celular. */ }
+  .condo-photo-banner-copy > p { font-size: .72rem; /* Ajusta o texto auxiliar à largura menor. */ }
+  .condo-area-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); /* Apresenta duas fotos por linha. */ gap: 10px; /* Mantém respiro sem desperdiçar largura. */ }
+  .condo-area-card > div { padding: 12px 10px 7px; /* Ajusta os textos aos cartões menores. */ }
+  .condo-area-card h2 { font-size: .84rem; /* Mantém os nomes dentro da largura disponível. */ }
+  .condo-area-card .condo-photo > figcaption { right: 6px; /* Aproxima a nota da borda do cartão. */ bottom: 6px; /* Preserva a visibilidade da fotografia. */ font-size: .54rem; /* Ajusta o selo ao cartão pequeno. */ }
+  .condo-hero-art .condo-art-caption { padding-inline: 20px; /* Impede textos da legenda de encostarem na moldura. */ }
+}
+/* Respeita a preferência de pessoas sensíveis a movimento. */
+@media (prefers-reduced-motion: reduce) {
+  .moss-condo *, .moss-condo *::before, .moss-condo *::after { transition: none !important; /* Remove transições não essenciais. */ animation: none !important; /* Impede animações decorativas. */ scroll-behavior: auto !important; /* Evita rolagem animada. */ }
+}

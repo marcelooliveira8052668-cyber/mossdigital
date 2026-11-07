@@ -1,0 +1,44 @@
+// Importa o React para montar o painel de cada perfil.
+import React from 'react';
+// Importa links internos que preservam o estado da aplicação.
+import { Link } from 'react-router-dom';
+// Importa ícones lineares para indicadores e atalhos.
+import { ArrowUpRight, Building2, Users, CalendarDays, Wrench, TrendingUp, Wallet, Package, ShieldCheck } from 'lucide-react';
+// Importa o gráfico financeiro dinâmico.
+import FinanceChart from '../components/FinanceChart.jsx';
+// Importa os formatos de valores e datas.
+import { money, today } from '../utils/rules.js';
+// Importa a faixa fotográfica própria para cada experiência do condomínio.
+import PhotoBanner from '../components/PhotoBanner.jsx';
+// Cria um indicador compacto reutilizado somente nesta demonstração.
+function Metric({ label, value, note, icon: Icon }) {
+  return <article className="condo-metric"><div><span>{label}</span><Icon size={19} aria-hidden="true" /></div><strong>{value}</strong><small>{note}</small></article>; // Mostra título, valor e contexto do indicador.
+} // Encerra o cartão de indicador.
+// Mostra uma visão adequada às permissões demonstrativas do perfil escolhido.
+export default function Dashboard({ data, profile }) {
+  const isAdmin = profile === 'sindico'; // Identifica o perfil administrativo.
+  const isResident = profile === 'morador'; // Identifica a experiência da unidade A · 302.
+  const month = today().slice(0, 7); // Define o mês atual usado no resumo financeiro.
+  const current = data.finances.filter((item) => item.date.startsWith(month)); // Filtra somente lançamentos do mês atual.
+  const income = current.filter((item) => item.kind === 'Receita' && item.status === 'Pago').reduce((sum, item) => sum + Number(item.amount), 0); // Soma as receitas efetivamente marcadas como pagas.
+  const expenses = current.filter((item) => item.kind === 'Despesa' && item.status === 'Pago').reduce((sum, item) => sum + Number(item.amount), 0); // Soma as despesas pagas do mês.
+  const pending = current.filter((item) => item.kind === 'Receita' && item.status === 'Pendente'); // Separa as taxas ainda não pagas.
+  const overdue = pending.filter((item) => item.date < today()).reduce((sum, item) => sum + Number(item.amount), 0); // Calcula somente a inadimplência vencida.
+  const reservations = data.reservations.filter((item) => item.status !== 'Cancelada' && (!isResident || item.unit === 'A · 302')); // Limita as reservas quando o perfil é morador.
+  const issues = data.issues.filter((item) => !isResident || item.unit === 'A · 302'); // Limita as solicitações da moradora.
+  const notices = data.notices.filter((item) => !isResident || ['Todos', 'Bloco A'].includes(item.audience)); // Respeita a audiência do mural.
+  const units = new Set(data.residents.map((item) => item.unit)).size; // Conta unidades ocupadas com base nos cadastros.
+  const base = `/${profile}`; // Prepara o início dos links do perfil atual.
+  return ( // Retorna o painel do perfil selecionado.
+    <div className="condo-dashboard">
+      {/* Apresenta uma saudação e um contexto diferente para cada perfil. */}
+      <section className="condo-page-heading"><div><p className="condo-eyebrow">RESERVA DO HORIZONTE</p><h1>{isAdmin ? 'Uma gestão à altura.' : isResident ? 'Seu lugar. Sua comunidade.' : 'Tudo pronto para receber.'}</h1><p>{isAdmin ? 'Um olhar atento para cada detalhe do condomínio.' : isResident ? 'Marina Exemplo · Bloco A · Apartamento 302' : 'Operação demonstrativa · Turno de atendimento'}</p></div><span className="condo-date"><CalendarDays size={16} aria-hidden="true" />{new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' })}</span></section>
+      {/* Escolhe uma ambientação diferente para síndico, morador e portaria. */}
+      <PhotoBanner image={isAdmin ? 'fachada' : isResident ? 'piscina' : 'recepcao'} title={isAdmin ? 'Patrimônio bem cuidado. Vida bem vivida.' : isResident ? 'Seu tempo merece bons momentos.' : 'O cuidado começa na chegada.'} description={isAdmin ? 'Arquitetura, convivência e uma visão mais próxima de cada espaço.' : isResident ? 'Mais espaço para aproveitar. Mais conexão com sua comunidade.' : 'Uma experiência acolhedora, do primeiro acesso à última entrega.'} />
+      {/* Exibe os indicadores administrativos somente para o síndico. */}
+      {isAdmin ? <><section className="condo-metrics"><Metric label="Total de unidades" value="48" note="3 blocos · capacidade demonstrativa" icon={Building2} /><Metric label="Moradores cadastrados" value={data.residents.length} note={`${units} unidades ocupadas · ${Math.round(units / 48 * 100)}% de ocupação`} icon={Users} /><Metric label="Receitas do mês" value={money(income)} note="Entradas com pagamento simulado" icon={TrendingUp} /><Metric label="Despesas do mês" value={money(expenses)} note="Saídas com pagamento simulado" icon={Wallet} /></section><section className="condo-overview-grid"><article className="condo-balance"><span className="condo-eyebrow">SALDO FINANCEIRO DO MÊS</span><strong>{money(income - expenses)}</strong><p><span className="condo-live-dot" /> Visão demonstrativa · {month.split('-').reverse().join('/')}</p><div><span>Inadimplência vencida<b>{money(overdue)}</b></span><span>Taxas pendentes<b>{pending.length} registros</b></span></div><Link to={`${base}/financeiro`}>Explorar financeiro <ArrowUpRight size={18} aria-hidden="true" /></Link></article><article className="condo-panel"><div className="condo-section-heading"><div><span className="condo-eyebrow">VISÃO MENSAL</span><h2>Receitas & despesas</h2></div><TrendingUp size={20} aria-hidden="true" /></div><FinanceChart records={data.finances} /></article></section></> : <section className="condo-metrics"><Metric label={isResident ? 'Sua unidade' : 'Visitantes autorizados'} value={isResident ? 'A · 302' : data.visitors.filter((item) => item.status === 'Autorizado').length} note={isResident ? 'Perfil fictício · Proprietária' : 'Sem documentos ou biometria'} icon={isResident ? Building2 : ShieldCheck} /><Metric label={isResident ? 'Suas reservas' : 'Entregas aguardando'} value={isResident ? reservations.length : data.deliveries.filter((item) => item.status === 'Aguardando retirada').length} note="Registros de demonstração" icon={isResident ? CalendarDays : Package} /><Metric label={isResident ? 'Suas solicitações' : 'Movimentações registradas'} value={isResident ? issues.filter((item) => item.status !== 'Concluída').length : data.visitors.length} note="Acompanhamento local" icon={Wrench} /><Metric label={isResident ? 'Taxas da unidade' : 'Avisos internos'} value={isResident ? money(pending.filter((item) => item.unit === 'A · 302').reduce((sum, item) => sum + Number(item.amount), 0)) : notices.length} note={isResident ? 'Sem cobrança real' : 'Comunicação demonstrativa'} icon={Wallet} /></section>}
+      {/* Organiza agenda operacional e mural em painéis com proporções diferentes. */}
+      <section className="condo-bottom-grid"><article className="condo-panel"><div className="condo-section-heading"><div><span className="condo-eyebrow">PRÓXIMOS PASSOS</span><h2>{profile === 'portaria' ? 'Rotina da portaria' : 'A vida acontece aqui'}</h2></div><Link to={`${base}/${profile === 'portaria' ? 'visitantes' : 'reservas'}`} aria-label="Abrir agenda operacional"><ArrowUpRight aria-hidden="true" /></Link></div><div className="condo-activity-list">{profile === 'portaria' ? data.deliveries.slice(0, 3).map((item) => <div key={item.id}><span className="condo-activity-icon"><Package size={18} aria-hidden="true" /></span><div><strong>{item.name}</strong><small>{item.unit} · {item.status}</small></div></div>) : reservations.slice(0, 3).map((item) => <div key={item.id}><span className="condo-activity-icon"><CalendarDays size={18} aria-hidden="true" /></span><div><strong>{item.area}</strong><small>{item.date.split('-').reverse().join('/')} · {item.start}–{item.end}</small></div><span className="condo-badge">{item.unit}</span></div>)}</div>{!reservations.length && profile !== 'portaria' && <p className="condo-empty">Nenhuma reserva ativa.</p>}<div className="condo-panel-summary"><span>{issues.filter((item) => item.status !== 'Concluída').length} ocorrências pendentes</span>{isAdmin && <span>{issues.filter((item) => item.type === 'Preventiva').length} manutenções programadas</span>}</div></article><article className="condo-panel condo-community"><span className="condo-eyebrow">COMUNIDADE EM CONEXÃO</span><h2>Pequenos avisos.<br />Boa convivência.</h2>{notices.slice(0, 2).map((notice) => <div className="condo-notice-preview" key={notice.id}><small>{notice.category} · {notice.audience}</small><strong>{notice.title}</strong></div>)}<Link to={`${base}/mural`}>Abrir mural <ArrowUpRight size={18} aria-hidden="true" /></Link></article></section>
+    </div> // Encerra o painel do perfil.
+  ); // Encerra o retorno visual.
+} // Encerra o componente do dashboard.

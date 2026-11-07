@@ -1,0 +1,32 @@
+[
+  {
+    "width": 1440,
+    "route": "/",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/sindico/painel",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/sindico/moradores",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/morador/painel",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/portaria/painel",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/sindico/reservas",
+    "violations": []
+  }
+]
