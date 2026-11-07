@@ -10,6 +10,8 @@ Fotografias de arquitetura e ambientes tornam a experiência mais próxima. As i
 
 Projeto demonstrativo da MOSS Digital. Condomínio, pessoas e valores fictícios. Sem cobranças reais; dados armazenados apenas no navegador.
 
-Prévia local aguardando aprovação. Não anunciar como publicado e não inserir endereço de acesso público antes da autorização.
+Demonstração publicada após autorização: https://mossdigital.com.br/demos/moss-condo/
+
+Material preparado para divulgação. A publicação da demo não autoriza postagem automática desta capa ou legenda nas redes sociais.
 
 #MOSSDigital #MOSSCondo #GestãoDeCondomínios #Portfolio #UXUI

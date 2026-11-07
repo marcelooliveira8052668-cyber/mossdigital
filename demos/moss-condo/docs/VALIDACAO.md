@@ -75,3 +75,9 @@ Verificações repetidas nesta revisão:
 Nova evidência: `screenshots/reservas-desktop.png`. Inventário e fontes em `FOTOGRAFIAS.md` e `photo-sources.json`.
 
 A capa PNG 1080 × 1350, a fonte SVG e a cópia em `04 - Divulgacao/MOSS CONDO/` foram regeneradas com fotografia ilustrativa e captura real da interface atualizada. O cartão continua sendo apenas uma especificação, sem alteração de `sistemas.html`.
+
+## Publicação posterior, autorizada e verificada
+
+Depois das aprovações registradas acima, o usuário autorizou publicar a demo. O build foi enviado em `3f2dad2` e o GitHub Pages concluiu a implantação com sucesso. O teste `tests/publication_check.py` passou em **https://mossdigital.com.br/demos/moss-condo/**, com resposta HTTP 200, fotografias, três perfis, rota recarregável e navegação móvel sem falhas HTTP ou JavaScript da demo. Detalhes em `PUBLICACAO.md`.
+
+Essa etapa não alterou `sistemas.html`, outras demos, logotipos ou configurações. A capa recebeu o endereço público correto, mas não foi postada em redes sociais.

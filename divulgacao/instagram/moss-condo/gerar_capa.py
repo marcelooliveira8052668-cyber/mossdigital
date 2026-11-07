@@ -54,7 +54,8 @@ svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" vie
 <text x="540" y="1155" fill="#f4efe9" font-family="Segoe UI,Arial" font-size="23" text-anchor="middle">Morador</text>
 <text x="870" y="1155" fill="#f4efe9" font-family="Segoe UI,Arial" font-size="23" text-anchor="middle">Portaria</text>
 <text x="74" y="1231" fill="#9fd9cd" font-family="Segoe UI,Arial" font-size="21">DEMONSTRAÇÃO • MARCA E VALORES FICTÍCIOS</text>
-<text x="74" y="1272" fill="#b1bac8" font-family="Segoe UI,Arial" font-size="18">Prévia local para aprovação. Não publicada.</text>
+<!-- Exibe o endereço que foi autorizado e verificado após a publicação da demo. -->
+<text x="74" y="1272" fill="#b1bac8" font-family="Segoe UI,Arial" font-size="18">mossdigital.com.br/demos/moss-condo/</text>
 </svg>'''
 # Define o arquivo vetorial que permanece editável e independente.
 source = HERE / 'moss-condo-capa-editavel.svg'

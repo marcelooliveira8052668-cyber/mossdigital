@@ -109,7 +109,7 @@ O build é gerado em `dist/`, pasta já ignorada pelas regras existentes do repo
 - PNG 1080 × 1350, SVG editável, gerador comentado e legenda: `../../divulgacao/instagram/moss-condo/`.
 - Cópia fácil da capa: `../../../04 - Divulgacao/MOSS CONDO/`.
 
-Não existe autorização implícita para postagem em redes sociais, integração ao catálogo ou publicação.
+A publicação da demo foi autorizada e concluída em <https://mossdigital.com.br/demos/moss-condo/>. O catálogo permanece intacto e a capa não foi postada em redes sociais. Veja `docs/PUBLICACAO.md` para a separação entre código-fonte e build publicado.
 
 ## Limites de segurança
 
@@ -121,4 +121,4 @@ Não há boletos, pagamentos, envio de mensagens, notificações push nem integr
 
 ## Preservação do repositório
 
-Branch: `feat/moss-condo`. Nenhum commit ou push foi realizado. O site principal, os logotipos, as outras demos e as configurações globais foram preservados.
+Branch de fontes: `feat/moss-condo`. Após autorização, o código didático foi commitado e enviado nessa branch; somente o build da nova demo foi publicado em `main`. O site principal, os logotipos, as outras demos e as configurações globais foram preservados. Não mescle a branch de fontes inteira sobre a de produção: consulte `docs/PUBLICACAO.md`.

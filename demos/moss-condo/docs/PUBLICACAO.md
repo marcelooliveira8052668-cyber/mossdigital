@@ -14,7 +14,7 @@ Uma árvore de trabalho separada, criada a partir de `origin/main`, recebe o bui
 
 ## Escopo estrito
 
-Somente arquivos dentro de `demos/moss-condo/` serão enviados à branch publicada. `index.html` da MOSS Digital, `sistemas.html`, outras demos, logotipos, CNAME, configurações globais e diretórios não rastreados não fazem parte dessa publicação.
+Somente arquivos dentro de `demos/moss-condo/` foram enviados à branch publicada. `index.html` da MOSS Digital, `sistemas.html`, outras demos, logotipos, CNAME, configurações globais e diretórios não rastreados não fazem parte dessa publicação.
 
 O cartão continua preparado, mas não integrado ao catálogo. A postagem em redes sociais exige autorização separada.
 
@@ -33,3 +33,15 @@ python tools/prepare_release.py CAMINHO_DO_WORKTREE
 Antes do commit de produção, revisar `git diff --cached --name-only` e confirmar que todos os arquivos pertencem exclusivamente à nova demo. O envio para `main` deve ser normal, sem force push; se houver alteração remota concorrente, parar e revisar antes de continuar.
 
 Após o GitHub Pages concluir a implantação, conferir o HTML público, os arquivos JavaScript/CSS, as fotografias, os três perfis e a atualização das rotas com hash. O envio ao GitHub não é, sozinho, confirmação de que o endereço público já está funcionando.
+
+## Resultado confirmado
+
+- Commit de produção: `3f2dad20a7a3fcf01af5bafbfcaa6b74c9eab6d8`.
+- Fontes iniciais preservadas: `484a204`, branch `feat/moss-condo`.
+- GitHub Pages concluído com sucesso: <https://github.com/marcelooliveira8052668-cyber/mossdigital/actions/runs/42373071281>.
+- Resposta HTTPS pública: HTTP 200.
+- `python tests/publication_check.py`: aprovado no endereço público, verificando entrada, fotografia principal, galeria, três perfis, atualização de rota e navegação móvel.
+- Nenhuma resposta HTTP de erro dos arquivos da demo nem erro JavaScript durante essa verificação.
+- Catálogo de sistemas preservado: o acesso publicado é pelo link direto, ainda sem cartão em `sistemas.html`.
+
+Na comparação entre `32c10ed` e `3f2dad2`, todas as 37 adições pertencem exclusivamente à nova pasta `demos/moss-condo/`. Nenhum arquivo anterior foi modificado ou excluído.
