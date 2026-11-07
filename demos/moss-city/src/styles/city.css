@@ -1,0 +1,937 @@
+/* Define a identidade Urban Command somente dentro da MOSS CITY. */
+.moss-city {
+  --city-night: #071525; /* Define o azul-noturno do fundo principal. */
+  --city-cyan: #00d4ff; /* Define o ciano reservado aos controles e destaques. */
+  --city-steel: #172c46; /* Define superfícies técnicas e regiões secundárias. */
+  --city-ice: #eaf7ff; /* Define o texto principal em branco-gelo. */
+  --city-green: #32d6a0; /* Define a cor dos serviços concluídos e do meio ambiente. */
+  --city-muted: #a0b4c8; /* Mantém leitura confortável dos textos de apoio. */
+  --city-line: #254057; /* Define linhas estruturais sem luminosidade excessiva. */
+  min-height: 100dvh; /* Ocupa a altura útil da janela, inclusive no celular. */
+  color: var(--city-ice); /* Usa a cor de leitura principal por padrão. */
+  background: var(--city-night); /* Aplica o fundo exclusivo da plataforma. */
+  font-family: 'Segoe UI', Arial, sans-serif; /* Usa fontes locais legíveis sem depender de serviços externos. */
+  font-size: 15px; /* Mantém uma escala confortável para a interface. */
+  line-height: 1.6; /* Dá respiro entre as linhas de texto. */
+  color-scheme: dark; /* Adapta os controles nativos ao tema escuro. */
+}
+/* Remove apenas a margem do documento independente desta aplicação. */
+body:has(> #root .moss-city) { margin: 0; /* Encosta o fundo do aplicativo nas bordas da janela. */ }
+/* Mantém os cálculos de largura previsíveis sem criar regras globais compartilhadas. */
+.moss-city *, .moss-city *::before, .moss-city *::after { box-sizing: border-box; /* Inclui bordas e preenchimento no tamanho dos elementos. */ }
+/* Define uma tipografia tecnológica local para títulos e marca. */
+.moss-city h1, .moss-city h2, .moss-city h3, .city-brand { font-family: Bahnschrift, 'Arial Narrow', 'Segoe UI', sans-serif; /* Prioriza uma família técnica sem baixar fontes externas. */ }
+/* Uniformiza o ritmo dos títulos sem copiar os componentes das outras demos. */
+.moss-city h1, .moss-city h2, .moss-city h3 { margin-top: 0; /* Evita espaço duplicado acima dos títulos. */ line-height: 1.2; /* Aproxima as linhas dos títulos sem prejudicar a leitura. */ font-weight: 500; /* Mantém um acabamento técnico equilibrado. */ letter-spacing: -.035em; /* Refina o espaçamento de títulos maiores. */ }
+/* Define o título principal das telas internas. */
+.moss-city h1 { font-size: clamp(1.8rem, 2.7vw, 2.7rem); /* Ajusta a escala entre celular e desktop. */ margin-bottom: 10px; /* Separa o título do texto de apoio. */ }
+/* Define títulos de painéis e detalhes. */
+.moss-city h2 { font-size: 1.2rem; /* Mantém subtítulos proporcionais aos painéis. */ margin-bottom: 15px; /* Separa os conteúdos seguintes. */ }
+/* Evita que controles usem uma tipografia diferente do restante da interface. */
+.moss-city button, .moss-city input, .moss-city select, .moss-city textarea { font: inherit; /* Herda o desenho de letras da aplicação. */ }
+/* Mantém os links integrados à identidade exclusiva. */
+.moss-city a { color: inherit; /* Herda a cor da região em que o link aparece. */ text-decoration: none; /* Remove sublinhado fixo de links de navegação. */ }
+/* Indica elementos que podem ser acionados. */
+.moss-city button { cursor: pointer; /* Mostra o cursor de ação sobre botões. */ }
+/* Mantém o foco visível para navegação por teclado. */
+.moss-city :focus-visible { outline: 3px solid var(--city-cyan); /* Destaca o elemento focado com alto contraste. */ outline-offset: 4px; /* Afasta o contorno das bordas do controle. */ }
+/* Preserva textos auxiliares para leitores de tela sem ocuparem o layout. */
+.city-sr-only { position: absolute; /* Retira o conteúdo do fluxo visual. */ width: 1px; /* Define uma largura mínima. */ height: 1px; /* Define uma altura mínima. */ overflow: hidden; /* Esconde o conteúdo visual excedente. */ clip-path: inset(50%); /* Recorta o texto sem removê-lo da acessibilidade. */ white-space: nowrap; /* Evita quebras de linha no texto oculto. */ }
+/* Oferece um atalho de teclado para ignorar os menus. */
+.city-skip { position: fixed; /* Mantém o atalho no início da janela. */ top: 10px; /* Afasta o atalho da borda superior. */ left: 10px; /* Afasta o atalho da borda lateral. */ z-index: 10000; /* Mantém o atalho acima do mapa. */ transform: translateY(-180%); /* Esconde o atalho antes de receber foco. */ padding: 12px 20px; /* Cria uma área confortável para interação. */ background: var(--city-cyan); /* Usa o destaque principal da aplicação. */ color: #071525 !important; /* Garante leitura sobre o ciano. */ }
+/* Revela o atalho somente quando necessário. */
+.city-skip:focus { transform: none; /* Coloca o atalho na área visível. */ }
+/* Define rótulos operacionais com espaçamento técnico. */
+.city-kicker { display: block; /* Coloca o rótulo em linha própria. */ font-size: .68rem; /* Mantém o rótulo discreto sem perder legibilidade. */ font-weight: 600; /* Reforça o texto pequeno. */ letter-spacing: .15em; /* Dá ritmo tecnológico ao rótulo. */ color: var(--city-cyan); /* Usa ciano como hierarquia, não como brilho constante. */ margin-bottom: 12px; /* Separa o rótulo do título. */ }
+/* Define o ponto estático que identifica o cenário, sem fingir atualização em tempo real. */
+.city-status-dot { display: inline-block; /* Permite alinhar o ponto com texto. */ width: 6px; /* Define o diâmetro horizontal. */ height: 6px; /* Define o diâmetro vertical. */ flex-shrink: 0; /* Evita achatar o ponto. */ border-radius: 50%; /* Cria um círculo. */ background: var(--city-green); /* Usa verde para identificação operacional. */ margin-right: 7px; /* Afasta o ponto do texto. */ }
+/* Define ações textuais e seus ícones com áreas de toque confortáveis. */
+.city-button { display: inline-flex; /* Coloca rótulo e ícone na mesma linha. */ align-items: center; /* Centraliza o conteúdo verticalmente. */ justify-content: center; /* Centraliza o conteúdo horizontalmente. */ gap: 12px; /* Separa texto e ícone. */ min-height: 44px; /* Garante uma área de toque confortável. */ border: 1px solid transparent; /* Reserva espaço para o contorno. */ border-radius: 4px; /* Usa uma geometria técnica, não cartões arredondados glass. */ padding: 12px 18px; /* Oferece espaço interno. */ font-size: .8rem; /* Mantém as ações proporcionais à interface. */ font-weight: 600; /* Destaca o rótulo funcional. */ transition: background .16s, border-color .16s; /* Dá resposta suave sem animação pesada. */ }
+/* Destaca ações principais sem usar texto branco sobre ciano claro. */
+.moss-city .city-button-primary { color: #061525; /* Mantém texto escuro de alto contraste em botões e links sobre o ciano, sem herdar a cor clara dos links comuns. */ background: var(--city-cyan); /* Identifica a ação mais importante da região. */ }
+/* Responde ao ponteiro de forma discreta. */
+.city-button-primary:hover { background: #70e7ff; /* Clareia o fundo para mostrar interação. */ }
+/* Define ações secundárias estruturais. */
+.city-button-outline { color: var(--city-ice); /* Mantém o texto legível no fundo escuro. */ border-color: #426078; /* Delimita a área clicável. */ background: #10263c66; /* Usa uma superfície opaca discreta. */ }
+/* Realça ações secundárias sem efeitos de brilho. */
+.city-button-outline:hover { background: #172c46; /* Ilumina a superfície do botão. */ border-color: #00d4ff; /* Indica interação com o contorno ciano. */ }
+/* Define ações auxiliares que não precisam de um botão sólido. */
+.city-button-text { background: transparent; /* Evita competir com ações principais. */ color: #90dff0; /* Mantém destaque legível no fundo escuro. */ }
+/* Define botões de ícone com alvo de toque adequado. */
+.city-icon-button { display: inline-grid; /* Centraliza o ícone em sua caixa. */ place-items: center; /* Centraliza nos dois eixos. */ width: 44px; /* Define largura confortável. */ height: 44px; /* Define altura confortável. */ border: 1px solid var(--city-line); /* Mostra o limite da ação. */ border-radius: 4px; /* Mantém geometria técnica. */ background: #0c2135; /* Usa superfície escura opaca. */ color: var(--city-ice); /* Mantém o ícone visível. */ }
+/* Constrói uma assinatura de produto sem alterar o logotipo oficial da empresa. */
+.city-brand { display: inline-flex; /* Agrupa símbolo e palavras. */ align-items: center; /* Centraliza os elementos verticalmente. */ gap: 11px; /* Separa símbolo e texto. */ font-size: 1.2rem; /* Define uma marca de leitura rápida. */ letter-spacing: .1em; /* Dá respiro às palavras da marca. */ line-height: 1.15; /* Aproxima nome e assinatura. */ white-space: nowrap; /* Evita quebrar o nome do produto. */ }
+/* Define o emblema arquitetônico em uma moldura quadrada. */
+.city-brand-symbol { display: grid; /* Permite centralizar o desenho. */ place-items: center; /* Centraliza o ícone. */ width: 41px; /* Define a largura do emblema. */ height: 41px; /* Define a altura do emblema. */ color: var(--city-cyan); /* Usa ciano na identificação do produto. */ border: 1px solid #00d4ff75; /* Desenha um contorno preciso. */ background: #00d4ff09; /* Dá uma película de cor sem efeito glass. */ }
+/* Destaca somente a palavra CITY. */
+.city-brand b { color: var(--city-cyan); /* Diferencia o produto da assinatura MOSS. */ font-weight: 500; /* Mantém o peso equilibrado. */ }
+/* Define o subtítulo da marca. */
+.city-brand small { display: block; /* Coloca a assinatura em outra linha. */ margin-top: 7px; /* Separa assinatura e nome. */ color: var(--city-muted); /* Usa cor secundária de apoio. */ font-family: 'Segoe UI', Arial, sans-serif; /* Preserva a leitura das letras pequenas. */ font-size: .47rem; /* Mantém a assinatura discreta. */ letter-spacing: .2em; /* Dá respiro ao texto técnico. */ }
+/* Reserva espaço de imagens antes do carregamento. */
+.city-photo { position: relative; /* Permite sobrepor uma legenda. */ width: 100%; /* Ocupa a largura da moldura. */ height: 100%; /* Usa a altura definida por cada contexto. */ margin: 0; /* Remove margens nativas do elemento figure. */ overflow: hidden; /* Recorta a fotografia dentro da moldura. */ background: #172c46; /* Oferece fundo enquanto o arquivo carrega. */ }
+/* Mantém todas as fotos reais sem deformação. */
+.city-photo img { display: block; /* Remove o espaço reservado à linha de texto. */ width: 100%; /* Preenche a largura da moldura. */ height: 100%; /* Preenche a altura da moldura. */ object-fit: cover; /* Recorta a fotografia preservando suas proporções. */ }
+/* Indica claramente que a imagem é uma referência visual. */
+.city-photo figcaption { position: absolute; /* Sobrepõe a legenda à imagem. */ bottom: 10px; /* Afasta a nota da borda inferior. */ right: 10px; /* Afasta a nota da borda direita. */ z-index: 3; /* Mantém a nota acima das camadas decorativas. */ padding: 4px 7px; /* Oferece respiro ao texto. */ background: #071525; /* Garante contraste independentemente da foto. */ color: #eaf7ff; /* Mantém texto claro e legível. */ font-size: .64rem; /* Usa escala discreta de legenda. */ }
+/* Oferece uma recuperação visual caso um arquivo não carregue. */
+.city-photo-fallback { display: grid; /* Permite centralizar a mensagem. */ place-items: center; /* Centraliza a informação. */ height: 100%; /* Usa a altura reservada da fotografia. */ min-height: 120px; /* Mantém a mensagem utilizável em cartões pequenos. */ padding: 20px; /* Afasta o texto das bordas. */ font-size: .8rem; /* Mantém a mensagem legível. */ text-align: center; /* Centraliza a descrição de falha. */ }
+/* Limita a composição inicial sem criar um template de dashboard. */
+.city-landing { max-width: 1600px; /* Mantém linhas de texto e fotos em escala comercial. */ margin: auto; /* Centraliza o conjunto na janela. */ padding: 0 5%; /* Cria respiro lateral proporcional. */ background: radial-gradient(ellipse at 80% 35%, #12365033, transparent 60%); /* Adiciona profundidade sem luzes animadas. */ }
+/* Organiza o cabeçalho inicial com uma linha estrutural. */
+.city-landing-top { display: flex; /* Alinha marca, navegação e acesso. */ justify-content: space-between; /* Distribui os grupos horizontalmente. */ align-items: center; /* Centraliza os itens. */ gap: 24px; /* Mantém separação entre grupos. */ padding: 28px 0; /* Dá respiro ao cabeçalho. */ border-bottom: 1px solid var(--city-line); /* Separa cabeçalho e apresentação. */ }
+/* Define links auxiliares da apresentação. */
+.city-landing-top nav { display: flex; /* Coloca os links lado a lado. */ gap: 32px; /* Separa as opções. */ font-size: .8rem; /* Mantém a navegação discreta. */ color: #b5c6d8; /* Usa contraste suficiente sobre o fundo escuro. */ }
+/* Constrói uma entrada editorial com imagem ampla e técnica. */
+.city-landing-hero { display: grid; /* Divide texto e fotografia em regiões distintas. */ grid-template-columns: 1fr 1.05fr; /* Dá destaque à fotografia sem sacrificar o título. */ gap: 5%; /* Separa as duas regiões. */ align-items: center; /* Centraliza os conteúdos verticalmente. */ padding: 68px 0 56px; /* Define o espaço da primeira impressão. */ }
+/* Define a escala do slogan principal. */
+.city-landing-copy h1 { margin: 28px 0 25px; /* Separa slogan e conteúdos de apoio. */ font-size: clamp(3rem, 5.3vw, 5.2rem); /* Ajusta o título à janela sem quebrar palavras. */ line-height: 1.08; /* Aproxima as duas linhas do slogan. */ font-weight: 500; /* Preserva firmeza sem aparência pesada. */ letter-spacing: -.055em; /* Refina o ritmo do título. */ }
+/* Destaca a palavra final sem recorrer a tipografia de luxo imobiliário. */
+.city-landing-copy h1 em { font-style: normal; /* Mantém a linguagem técnica sem itálico editorial. */ color: var(--city-cyan); /* Usa a cor principal do Urban Command. */ }
+/* Define a proposta em uma escala intermediária. */
+.city-hero-lead { color: #cfdfeb; /* Dá prioridade ao texto de proposta. */ font-size: 1.04rem; /* Separa visualmente proposta e explicação. */ line-height: 1.85; /* Mantém as frases confortáveis. */ }
+/* Limita o texto secundário para evitar uma parede de palavras. */
+.city-hero-description { max-width: 395px; /* Mantém linhas curtas. */ color: var(--city-muted); /* Usa texto secundário legível. */ font-size: .85rem; /* Define uma escala auxiliar. */ margin: 16px 0 25px; /* Separa explicação e entrada. */ }
+/* Organiza a escolha de perfil como instrução e campo nativo. */
+.city-entry-profile { display: flex; /* Coloca o rótulo acima do seletor. */ flex-direction: column; /* Mantém instrução e controle em coluna. */ gap: 8px; /* Separa rótulo e lista. */ width: min(330px, 100%); /* Mantém o seletor proporcional à ação. */ font-size: .75rem; /* Usa uma escala de formulário. */ color: var(--city-muted); /* Dá hierarquia ao texto do rótulo. */ margin-bottom: 12px; /* Afasta o campo do botão principal. */ }
+/* Destaca a ação central com largura estável. */
+.city-main-cta { width: min(330px, 100%); /* Alinha a ação ao seletor de perfil. */ justify-content: space-between; /* Afasta a seta do rótulo. */ padding: 16px 19px; /* Amplia a área de interação principal. */ }
+/* Mantém o aviso demonstrativo próximo da ação de entrada. */
+.city-demo-disclaimer { display: flex; /* Alinha ícone e informação. */ align-items: center; /* Centraliza verticalmente os elementos. */ gap: 8px; /* Separa ícone e texto. */ font-size: .69rem; /* Mantém o aviso compacto. */ color: var(--city-muted); /* Preserva a leitura da informação de limite. */ margin-top: 15px; /* Separa o aviso do botão. */ }
+/* Desenha uma moldura urbana com cantos técnicos em vez de glassmorphism. */
+.city-landing-visual { position: relative; /* Organiza sobreposições da fotografia. */ height: 580px; /* Cria uma presença fotográfica generosa no desktop. */ min-width: 0; /* Permite reduzir a coluna sem estourar a tela. */ border: 1px solid #3e687c; /* Delimita a moldura com uma linha discreta. */ clip-path: polygon(0 0, 94% 0, 100% 6%, 100% 100%, 6% 100%, 0 94%); /* Cria recortes arquitetônicos sem arredondamento de luxo. */ }
+/* Escurece apenas a base da imagem para preservar os textos sobrepostos. */
+.city-landing-visual::after { content: ''; /* Cria uma camada visual sem informação adicional. */ position: absolute; /* Sobrepõe a camada à foto. */ inset: 0; /* Preenche a moldura. */ background: linear-gradient(0deg, #071525e8, #07152500 60%); /* Protege os textos inferiores sem esconder a fotografia inteira. */ pointer-events: none; /* Mantém a camada sem bloquear interações. */ }
+/* Acrescenta uma grade técnica discreta sobre a fotografia real. */
+.city-visual-grid { position: absolute; /* Sobrepõe a grade à imagem. */ inset: 0; /* Preenche toda a moldura. */ background-image: linear-gradient(#c5f5ff13 1px, transparent 1px), linear-gradient(90deg, #c5f5ff13 1px, transparent 1px); /* Cria linhas sutis, sem animação. */ background-size: 90px 90px; /* Mantém a grade espaçada e não invasiva. */ pointer-events: none; /* Não captura cliques do visitante. */ }
+/* Identifica a composição como uma visão de produto, não uma câmera pública. */
+.city-visual-heading { position: absolute; /* Sobrepõe o rótulo à fotografia. */ z-index: 2; /* Mantém o texto acima da camada visual. */ top: 24px; /* Afasta o rótulo da borda superior. */ left: 24px; /* Afasta o rótulo da lateral. */ right: 24px; /* Limita a largura ao interior da foto. */ display: flex; /* Distribui os dois rótulos. */ align-items: center; /* Centraliza o grupo. */ gap: 5px; /* Mantém espaço entre ponto e texto. */ background: #071525e8; /* Garante leitura sobre qualquer céu ou edifício. */ padding: 10px 12px; /* Cria uma faixa compacta. */ font-size: .61rem; /* Usa uma escala de interface cartográfica. */ letter-spacing: .12em; /* Reforça o tom técnico. */ }
+/* Afasta a segunda identificação do rótulo principal. */
+.city-visual-heading > span:last-child { margin-left: auto; /* Distribui as duas mensagens nos extremos da faixa. */ color: #a4c2d3; /* Define texto secundário claro. */ }
+/* Desenha a mensagem principal sobre a região protegida da fotografia. */
+.city-visual-callout { position: absolute; /* Posiciona a mensagem sobre a foto. */ z-index: 2; /* Mantém o conteúdo acima do gradiente. */ left: 27px; /* Alinha o texto à moldura. */ right: 20px; /* Mantém o texto dentro da imagem. */ bottom: 95px; /* Reserva espaço para as identificações inferiores. */ display: flex; /* Coloca ícone e texto em linha. */ gap: 13px; /* Separa os elementos. */ align-items: center; /* Centraliza o grupo. */ }
+/* Colore o símbolo de localização. */
+.city-visual-callout > svg { color: var(--city-cyan); /* Destaca o ícone no gradiente escuro. */ flex-shrink: 0; /* Impede o símbolo de ser achatado. */ }
+/* Define o contexto pequeno da mensagem fotográfica. */
+.city-visual-callout span { display: block; /* Coloca o rótulo em linha própria. */ font-size: .6rem; /* Mantém o rótulo discreto. */ letter-spacing: .15em; /* Dá acabamento técnico. */ margin-bottom: 8px; /* Afasta o rótulo do título. */ }
+/* Destaca o propósito da imagem sem inventar monitoramento em tempo real. */
+.city-visual-callout strong { font-size: 1.3rem; /* Dá prioridade à mensagem central. */ font-weight: 500; /* Mantém o acabamento equilibrado. */ line-height: 1.4; /* Evita linhas apertadas. */ }
+/* Fecha a moldura com um detalhe operacional estático. */
+.city-visual-coordinates { position: absolute; /* Sobrepõe o detalhe à base da imagem. */ z-index: 2; /* Mantém a mensagem legível. */ left: 27px; /* Alinha ao texto principal. */ right: 24px; /* Mantém o detalhe dentro da moldura. */ bottom: 48px; /* Evita a legenda da fotografia. */ display: flex; /* Distribui texto e ícone. */ justify-content: space-between; /* Afasta os elementos. */ font-size: .57rem; /* Usa escala secundária. */ letter-spacing: .1em; /* Reforça o detalhe técnico. */ color: #b8d0df; /* Mantém leitura no gradiente. */ }
+/* Cria uma faixa de indicadores contínua na apresentação. */
+.city-landing-numbers { display: grid; /* Distribui os grupos em colunas. */ grid-template-columns: repeat(3, 1fr) 1.1fr; /* Reserva espaço para a mensagem de contexto. */ border-block: 1px solid var(--city-line); /* Delimita a faixa sem cartões independentes. */ padding: 30px 0; /* Dá espaço vertical aos números. */ gap: 24px; /* Separa os grupos. */ }
+/* Define rótulos e valores dos indicadores de entrada. */
+.city-landing-numbers > div > span { color: var(--city-muted); /* Define um rótulo secundário legível. */ font-size: .59rem; /* Mantém os rótulos compactos. */ letter-spacing: .1em; /* Dá ritmo às categorias. */ }
+/* Destaca números em linguagem operacional. */
+.city-landing-numbers strong { display: block; /* Coloca o valor em linha própria. */ font-family: Bahnschrift, monospace; /* Diferencia a leitura numérica dos textos. */ font-size: 2.1rem; /* Destaca os números do cenário. */ font-weight: 400; /* Mantém os algarismos leves. */ margin-top: 8px; /* Afasta o número do rótulo. */ }
+/* Explica a unidade de medida abaixo dos números. */
+.city-landing-numbers small { display: block; /* Coloca a unidade abaixo do valor. */ color: var(--city-muted); /* Mantém a explicação secundária. */ font-family: 'Segoe UI', sans-serif; /* Preserva legibilidade nas descrições. */ font-size: .7rem; /* Usa escala auxiliar. */ margin-top: 2px; /* Separa algarismo e unidade. */ }
+/* Explica o limite dos indicadores na faixa inicial. */
+.city-landing-numbers > p { margin: 0; /* Remove margens excessivas. */ align-self: center; /* Centraliza a nota verticalmente. */ color: #a8c2d3; /* Usa uma cor legível de apoio. */ font-size: .75rem; /* Mantém a nota proporcional. */ line-height: 1.8; /* Facilita a leitura das duas frases. */ }
+/* Separa a seção que apresenta os eixos urbanos. */
+.city-experience { padding: 75px 0; /* Dá respiro à segunda parte da apresentação. */ }
+/* Distribui o título de seção e sua explicação. */
+.city-section-heading { display: flex; /* Coloca título e descrição lado a lado. */ align-items: flex-end; /* Alinha os grupos pela base. */ justify-content: space-between; /* Usa os extremos da composição. */ gap: 40px; /* Separa título e explicação. */ margin-bottom: 30px; /* Afasta as fotos do cabeçalho. */ }
+/* Ajusta títulos editoriais sem herdar o slogan gigante. */
+.city-section-heading h2 { font-size: 2.35rem; /* Cria uma segunda escala de títulos. */ margin: 0; /* Evita espaço duplicado. */ }
+/* Limita a descrição da seção. */
+.city-section-heading > p { max-width: 330px; /* Mantém linhas confortáveis. */ color: var(--city-muted); /* Usa texto secundário. */ font-size: .85rem; /* Mantém o apoio legível. */ }
+/* Organiza as fotografias de infraestrutura, mobilidade e meio ambiente. */
+.city-experience-grid { display: grid; /* Cria uma grade de conteúdos relacionados. */ grid-template-columns: repeat(3, minmax(0, 1fr)); /* Distribui os três eixos em colunas iguais. */ gap: 22px; /* Separa os cartões. */ }
+/* Define os cartões da apresentação com bordas técnicas. */
+.city-experience-card { border: 1px solid var(--city-line); /* Delimita cada eixo urbano. */ background: #0c1e31; /* Cria uma superfície sóbria. */ }
+/* Reserva altura consistente para fotografias de assuntos distintos. */
+.city-experience-card > .city-photo { height: 215px; /* Mantém as três imagens alinhadas. */ }
+/* Define espaço dos textos de cada eixo. */
+.city-experience-card > div { padding: 25px; /* Dá respiro a título e descrição. */ }
+/* Colore o ícone do assunto. */
+.city-experience-card > div > svg { color: var(--city-cyan); /* Identifica o eixo sem excesso de cor. */ margin-bottom: 16px; /* Separa o ícone do título. */ }
+/* Define os títulos dos eixos. */
+.city-experience-card h3 { font-size: 1.25rem; /* Mantém os nomes bem identificáveis. */ margin-bottom: 12px; /* Separa o nome da descrição. */ }
+/* Define a descrição das possibilidades de exploração. */
+.city-experience-card p { color: var(--city-muted); /* Mantém hierarquia de leitura. */ font-size: .8rem; /* Ajusta o texto à largura do cartão. */ min-height: 65px; /* Mantém os links aproximadamente alinhados. */ }
+/* Usa links reais para abrir categorias já filtradas no mapa. */
+.city-experience-card a { display: flex; /* Alinha rótulo e seta. */ justify-content: space-between; /* Afasta a seta do texto. */ align-items: center; /* Centraliza verticalmente os elementos. */ min-height: 44px; /* Mantém uma área de toque confortável. */ font-size: .76rem; /* Ajusta a escala da ação. */ color: #7ce5ff; /* Preserva leitura do link no fundo escuro. */ border-top: 1px solid var(--city-line); /* Separa conteúdo e ação. */ padding-top: 12px; /* Cria respiro acima do rótulo. */ }
+/* Explica o escopo desta primeira entrega sem criar botões de módulos ainda não construídos. */
+.city-preview-note { display: flex; /* Distribui explicação e ação. */ justify-content: space-between; /* Afasta as duas regiões. */ align-items: center; /* Centraliza o grupo. */ gap: 30px; /* Mantém separação entre os elementos. */ padding: 32px; /* Oferece respiro à mensagem. */ border: 1px solid #2b657e; /* Destaca o ponto de revisão sem efeitos pesados. */ background: #0c2538; /* Diferencia a nota da seção anterior. */ margin-bottom: 45px; /* Afasta o rodapé. */ }
+/* Define a explicação do ponto de revisão. */
+.city-preview-note p { max-width: 660px; /* Evita linhas muito extensas. */ color: #b1c4d5; /* Usa uma cor secundária clara. */ font-size: .8rem; /* Mantém o texto proporcional. */ margin-bottom: 0; /* Evita espaço extra depois da descrição. */ }
+/* Organiza a autoria e a indicação de prévia local. */
+.city-landing-footer { display: flex; /* Coloca marca e notas em linha. */ align-items: center; /* Centraliza as regiões. */ justify-content: space-between; /* Distribui o conteúdo horizontalmente. */ gap: 25px; /* Separa os textos. */ padding: 30px 0; /* Dá respiro ao rodapé. */ border-top: 1px solid var(--city-line); /* Marca o fim da apresentação. */ color: var(--city-muted); /* Mantém as notas legíveis. */ font-size: .69rem; /* Usa escala discreta de apoio. */ }
+/* Define o espaço fixo do menu lateral, sem flutuar sobre o conteúdo. */
+.city-workspace { min-height: 100dvh; /* Preenche a janela. */ padding-left: 228px; /* Reserva o lugar da navegação estrutural. */ }
+/* Desenha uma navegação tecnológica reta e integrada à borda. */
+.city-sidebar { position: fixed; /* Mantém a navegação ao rolar o conteúdo. */ inset: 0 auto 0 0; /* Encosta o menu ao topo e à lateral da aplicação. */ width: 228px; /* Define a largura estrutural do menu. */ display: flex; /* Organiza as regiões verticalmente. */ flex-direction: column; /* Empilha marca, links e ações. */ background: #091a2c; /* Usa um tom distinto do fundo do conteúdo. */ border-right: 1px solid #254057; /* Separa menu e centro de comando. */ z-index: 1500; /* Mantém o menu acima dos controles Leaflet. */ overflow-y: auto; /* Mantém ações acessíveis em janelas baixas. */ }
+/* Alinha a marca do menu à altura do cabeçalho interno. */
+.city-sidebar-brand { height: 80px; /* Mantém alinhamento com a faixa superior. */ display: flex; /* Permite centralizar a assinatura. */ align-items: center; /* Centraliza o grupo verticalmente. */ padding: 0 21px; /* Afasta a marca da borda. */ border-bottom: 1px solid var(--city-line); /* Marca a separação estrutural do topo. */ }
+/* Ajusta a marca à largura da navegação. */
+.city-sidebar .city-brand { font-size: 1.02rem; /* Mantém o nome proporcional ao menu. */ gap: 9px; /* Reduz o espaço entre símbolo e texto. */ }
+/* Ajusta o emblema no menu lateral. */
+.city-sidebar .city-brand-symbol { width: 34px; /* Define uma largura menor para o emblema. */ height: 36px; /* Mantém altura suficiente para o desenho. */ }
+/* Mantém o caráter de simulação sempre visível na navegação. */
+.city-environment { padding: 16px 20px; /* Alinha a identificação ao restante do menu. */ font-size: .55rem; /* Usa escala de rótulo técnico. */ letter-spacing: .1em; /* Dá espaço às letras. */ color: #a2c5d4; /* Mantém leitura clara. */ }
+/* Identifica a cidade fictícia sem inventar brasão de prefeitura. */
+.city-municipality { display: flex; /* Coloca monograma e nome lado a lado. */ align-items: center; /* Centraliza os itens. */ gap: 12px; /* Separa símbolo e texto. */ margin: 5px 18px 30px; /* Afasta a identificação dos links. */ padding: 14px 0; /* Dá respiro vertical. */ border-block: 1px solid #22394d; /* Delimita a região do cenário. */ }
+/* Desenha um monograma geométrico, sem símbolos oficiais. */
+.city-municipality-symbol { display: grid; /* Permite centralizar as letras. */ place-items: center; /* Centraliza o monograma. */ width: 34px; /* Define a largura do selo. */ height: 34px; /* Define a altura do selo. */ border: 1px solid #3a5268; /* Delimita o símbolo. */ color: #8adff2; /* Usa ciano claro na identificação. */ font-size: .7rem; /* Ajusta as letras à caixa. */ }
+/* Organiza o nome da cidade e sua identificação fictícia. */
+.city-municipality strong { display: block; /* Separa nome e contexto. */ font-size: .8rem; /* Ajusta o nome à navegação. */ font-weight: 500; /* Evita peso visual excessivo. */ }
+/* Define a legenda da cidade fictícia. */
+.city-municipality small { display: block; /* Coloca o contexto abaixo do nome. */ color: var(--city-muted); /* Mantém leitura no fundo escuro. */ font-size: .65rem; /* Define a escala auxiliar. */ margin-top: 3px; /* Separa as linhas. */ }
+/* Identifica o grupo de telas já funcionais nesta prévia. */
+.city-nav-heading { padding: 0 22px; /* Alinha o título aos links. */ color: #8fa8bf; /* Mantém uma hierarquia secundária. */ font-size: .58rem; /* Usa escala de agrupamento. */ letter-spacing: .12em; /* Dá acabamento técnico. */ margin-bottom: 12px; /* Separa título e opções. */ }
+/* Organiza a navegação em coluna. */
+.city-sidebar nav { display: grid; /* Empilha links com alinhamento consistente. */ gap: 4px; /* Separa as opções sem cartões soltos. */ }
+/* Define a área de interação de cada tela. */
+.city-sidebar nav a { display: flex; /* Alinha ícone, rótulo e numeração. */ align-items: center; /* Centraliza os elementos. */ gap: 10px; /* Separa ícone e texto. */ min-height: 51px; /* Amplia o alvo de toque. */ padding: 10px 18px; /* Mantém alinhamento com a estrutura do menu. */ border-left: 3px solid transparent; /* Reserva a posição da marca de seleção. */ color: #b1c2d3; /* Mantém as opções legíveis. */ font-size: .78rem; /* Define a escala dos nomes dos módulos. */ }
+/* Numera as telas como referências de um painel técnico. */
+.city-sidebar nav small { margin-left: auto; /* Leva a referência ao fim do link. */ color: #8ba7bc; /* Mantém a numeração discreta. */ font-size: .57rem; /* Usa escala de identificação auxiliar. */ }
+/* Destaca o módulo atual com uma faixa, não uma cápsula arredondada. */
+.city-sidebar nav a.active { border-left-color: var(--city-cyan); /* Marca a posição ativa na borda estrutural. */ background: linear-gradient(90deg, #00d4ff17, #00d4ff03); /* Ilumina a linha com sutileza. */ color: #a0efff; /* Aumenta a percepção da seleção. */ }
+/* Oferece resposta visual ao passar o ponteiro na navegação. */
+.city-sidebar nav a:hover { background-color: #ffffff05; /* Destaca a área de interação. */ }
+/* Explica os limites de operação sem ocupar a área dos módulos. */
+.city-sidebar-note { margin: auto 21px 25px; /* Usa o espaço livre antes do rodapé. */ padding-top: 55px; /* Separa a nota das opções. */ color: #91b3c7; /* Mantém a mensagem secundária. */ }
+/* Define o símbolo da nota de perspectiva. */
+.city-sidebar-note svg { color: #52bcd4; /* Mantém um detalhe visual ciano discreto. */ margin-bottom: 13px; /* Separa o símbolo da explicação. */ }
+/* Define a mensagem curta de contexto. */
+.city-sidebar-note strong { display: block; /* Coloca o título da nota em linha própria. */ font-weight: 500; /* Mantém aparência leve. */ font-size: .75rem; /* Ajusta o título ao menu. */ color: #c1d4e2; /* Usa texto claro para o ponto principal. */ }
+/* Define a explicação da simulação. */
+.city-sidebar-note p { font-size: .68rem; /* Mantém o texto compacto. */ line-height: 1.8; /* Facilita a leitura no menu estreito. */ }
+/* Separa ações de ambiente da navegação operacional. */
+.city-sidebar-footer { border-top: 1px solid var(--city-line); /* Delimita as ações auxiliares. */ padding: 13px 14px 20px; /* Dá espaço aos botões e à versão. */ }
+/* Mantém restauração e saída utilizáveis por teclado e toque. */
+.city-sidebar-footer > button, .city-sidebar-footer > a { display: flex; /* Coloca ícone e rótulo em linha. */ align-items: center; /* Centraliza os elementos. */ gap: 9px; /* Separa desenho e texto. */ width: 100%; /* Usa a largura disponível. */ min-height: 44px; /* Garante uma área confortável de toque. */ padding: 10px 8px; /* Alinha as ações ao menu. */ background: transparent; /* Evita aparência de ação principal. */ border: 0; /* Remove a moldura padrão. */ color: #b0c4d5; /* Mantém leitura das ações auxiliares. */ font-size: .68rem; /* Usa uma escala de rodapé. */ }
+/* Identifica o ponto de revisão do produto. */
+.city-sidebar-footer > span { display: block; /* Coloca a versão em linha própria. */ padding: 14px 8px 0; /* Separa a versão dos botões. */ font-size: .53rem; /* Mantém a informação discreta. */ letter-spacing: .1em; /* Dá acabamento técnico. */ color: #94aebf; /* Mantém o texto perceptível. */ }
+/* Mantém o corpo interno em uma largura confortável. */
+.city-workspace-body { min-width: 0; /* Permite reduzir mapas e gráficos. */ max-width: 2000px; /* Evita painéis excessivamente largos. */ margin: auto; /* Centraliza o conteúdo quando houver espaço extra. */ }
+/* Organiza a faixa superior sem deixar o perfil encostar na borda. */
+.city-topbar { min-height: 80px; /* Mantém alinhamento com o topo do menu. */ display: flex; /* Distribui contexto e controles. */ align-items: center; /* Centraliza os elementos. */ justify-content: space-between; /* Afasta os grupos. */ flex-wrap: wrap; /* Permite reorganizar o cabeçalho sem cortar controles. */ gap: 15px; /* Mantém separação entre grupos. */ padding: 12px 30px; /* Garante respiro lateral para o seletor e as iniciais. */ border-bottom: 1px solid var(--city-line); /* Marca a separação entre controle e conteúdo. */ background: #091a2a; /* Define uma faixa sólida, sem efeitos de vidro. */ }
+/* Agrupa as identificações operacionais. */
+.city-topbar-context { display: flex; /* Coloca o contexto em linha. */ align-items: center; /* Centraliza os textos. */ gap: 16px; /* Separa identificação e mensagem. */ font-size: .67rem; /* Usa escala de apoio. */ color: #91c9d9; /* Mantém uma tonalidade fria legível. */ }
+/* Define um divisor vertical sutil. */
+.city-topbar-divider { width: 1px; /* Desenha uma linha fina. */ height: 18px; /* Alinha a linha à altura do texto. */ background: #355064; /* Usa uma cor de borda perceptível. */ }
+/* Evita um título pesado no cabeçalho. */
+.city-topbar-context strong { font-weight: 400; /* Mantém a mensagem secundária. */ color: #c2d4e2; /* Usa branco frio de apoio. */ }
+/* Preserva os controles e a margem do perfil em qualquer largura. */
+.city-topbar-controls { display: flex; /* Coloca estado, seletor e iniciais em linha. */ align-items: center; /* Centraliza os controles. */ justify-content: flex-end; /* Mantém o grupo à direita. */ gap: 17px; /* Separa os elementos. */ margin-left: auto; /* Usa o espaço livre antes dos controles. */ max-width: 100%; /* Impede o grupo de exceder o cabeçalho. */ flex-wrap: wrap; /* Permite quebra em janelas muito estreitas. */ }
+/* Mantém o aviso de simulação em uma região discreta, mas legível. */
+.city-simulation-tag { color: #9abfd0; /* Define um rótulo secundário de bom contraste. */ font-size: .55rem; /* Usa escala de indicador operacional. */ letter-spacing: .08em; /* Dá respiro às letras. */ white-space: nowrap; /* Mantém a mensagem em uma linha. */ }
+/* Define as iniciais fictícias com dimensões que não podem ser comprimidas. */
+.city-user-mark { display: grid; /* Centraliza as letras. */ place-items: center; /* Alinha em ambos os eixos. */ flex: 0 0 32px; /* Impede achatar a identificação do perfil. */ width: 32px; /* Define a largura do quadrado. */ height: 32px; /* Define a altura do quadrado. */ border: 1px solid #437085; /* Usa uma moldura técnica. */ color: #9ce8f7; /* Mantém as iniciais visíveis. */ font-size: .63rem; /* Ajusta o texto à moldura. */ white-space: nowrap; /* Impede as letras de quebrarem de linha. */ line-height: 1; /* Centraliza a linha das iniciais. */ }
+/* Padroniza campos nativos somente dentro da MOSS CITY. */
+.moss-city input, .moss-city select, .moss-city textarea { min-height: 44px; /* Garante área de toque e leitura. */ padding: 10px 12px; /* Dá espaço ao conteúdo digitado. */ border: 1px solid #466177; /* Mantém os limites dos campos perceptíveis. */ border-radius: 4px; /* Usa cantos moderados, adequados à interface técnica. */ background: #0c2236; /* Oferece fundo opaco legível. */ color: #eaf7ff; /* Mantém alto contraste nos valores. */ max-width: 100%; /* Evita campos mais largos que a tela. */ }
+/* Ajusta o seletor do perfil ao cabeçalho, sem esconder seu nome. */
+.city-topbar-controls select { font-size: .75rem; /* Mantém os nomes dos quatro perfis legíveis. */ border-color: #304d62; /* Integra a moldura ao topo. */ padding-right: 8px; /* Garante espaço para a seta nativa. */ }
+/* Define o espaço interno das telas. */
+.city-main { padding: 28px 30px 40px; /* Separa conteúdo, cabeçalho e rodapé. */ min-height: calc(100dvh - 150px); /* Evita rodapé alto em páginas sem muitos registros. */ }
+/* Distribui o título do módulo e sua ação principal. */
+.city-page-heading { display: flex; /* Coloca título e ação na mesma linha. */ align-items: center; /* Centraliza os grupos. */ justify-content: space-between; /* Afasta a ação do texto. */ gap: 20px; /* Mantém espaço mínimo entre eles. */ margin-bottom: 25px; /* Separa o cabeçalho dos dados. */ }
+/* Ajusta o contexto de cada tela. */
+.city-page-heading .city-kicker { font-size: .61rem; /* Reduz o rótulo sem perder sua função. */ margin-bottom: 10px; /* Aproxima o rótulo do título. */ }
+/* Define o texto de apoio de cada módulo. */
+.city-page-heading p { color: var(--city-muted); /* Mantém a hierarquia do conteúdo. */ font-size: .8rem; /* Ajusta o texto à interface. */ margin: 0; /* Evita margens adicionais. */ }
+/* Cria uma faixa contínua de indicadores em vez de quatro cartões separados. */
+.city-command-metrics { display: grid; /* Distribui os indicadores em uma grade. */ grid-template-columns: repeat(4, minmax(0, 1fr)); /* Usa quatro regiões de mesma largura. */ border: 1px solid var(--city-line); /* Contorna toda a faixa. */ border-top-color: #28728b; /* Cria um detalhe ciano discreto na estrutura. */ margin-bottom: 24px; /* Afasta o mapa dos indicadores. */ background: #0b1e31; /* Oferece superfície opaca consistente. */ }
+/* Define cada região numérica da faixa. */
+.city-command-metrics article { padding: 20px 22px; /* Dá espaço para rótulo e número. */ min-width: 0; /* Permite reduzir a coluna. */ border-right: 1px solid var(--city-line); /* Divide indicadores adjacentes. */ }
+/* Remove a borda duplicada no final da faixa. */
+.city-command-metrics article:last-child { border-right: 0; /* Mantém apenas a borda externa. */ }
+/* Alinha rótulo e ícone dos indicadores. */
+.city-command-metrics article > div { display: flex; /* Coloca texto e símbolo na mesma linha. */ align-items: center; /* Centraliza os elementos. */ justify-content: space-between; /* Afasta os elementos horizontalmente. */ gap: 10px; /* Preserva espaço mínimo. */ color: #a7bed1; /* Mantém os rótulos legíveis. */ font-size: .73rem; /* Define a escala dos títulos de indicador. */ }
+/* Colore os ícones da faixa sem competir com os números. */
+.city-command-metrics svg { color: #5fb6cd; /* Usa um ciano suavizado. */ flex-shrink: 0; /* Mantém o tamanho dos ícones. */ }
+/* Destaca os valores operacionais. */
+.city-command-metrics strong { display: block; /* Coloca o valor em linha própria. */ font-family: Bahnschrift, 'Segoe UI', sans-serif; /* Diferencia a leitura numérica do texto. */ font-size: 2.05rem; /* Dá prioridade aos dados principais. */ line-height: 1.15; /* Mantém o número compacto. */ margin: 13px 0 9px; /* Separa rótulo, valor e nota. */ font-weight: 400; /* Evita números pesados. */ }
+/* Explica a origem ou unidade de cada indicador. */
+.city-command-metrics small { display: block; /* Separa a nota do valor. */ color: var(--city-muted); /* Mantém a nota legível. */ font-size: .64rem; /* Usa uma escala auxiliar. */ }
+/* Define painéis com geometria técnica exclusiva. */
+.city-panel { min-width: 0; /* Permite reduzir conteúdos largos. */ background: #0c1f32; /* Usa uma superfície sólida em vez de vidro. */ border: 1px solid var(--city-line); /* Delimita o painel. */ border-radius: 5px; /* Suaviza levemente os cantos. */ padding: 22px; /* Dá espaço ao conteúdo. */ }
+/* Organiza títulos de painéis e seus controles. */
+.city-panel-heading { display: flex; /* Coloca título e ação na mesma linha. */ align-items: center; /* Centraliza verticalmente o grupo. */ justify-content: space-between; /* Afasta os dois extremos. */ gap: 15px; /* Garante espaço mínimo entre os elementos. */ margin-bottom: 18px; /* Separa o cabeçalho da visualização. */ }
+/* Mantém títulos de painel compactos. */
+.city-panel-heading h2 { margin-bottom: 0; /* Evita margem duplicada no cabeçalho. */ display: flex; /* Permite aliar título e ícone. */ align-items: center; /* Centraliza o grupo. */ gap: 8px; /* Separa desenho e texto. */ }
+/* Ajusta rótulos dentro de painéis. */
+.city-panel-heading .city-kicker { font-size: .56rem; /* Reduz a escala dos rótulos secundários. */ margin-bottom: 9px; /* Aproxima o rótulo do título. */ }
+/* Define identificações operacionais auxiliares. */
+.city-mini-label { color: #9eb5c7; /* Mantém o texto claro sem destaque excessivo. */ font-size: .54rem; /* Usa escala de etiqueta. */ letter-spacing: .07em; /* Dá respiro às letras. */ }
+/* Dá prioridade espacial ao mapa no centro de comando. */
+.city-command-grid { display: grid; /* Divide território e seleção atual. */ grid-template-columns: minmax(0, 1.95fr) minmax(270px, 1fr); /* Mantém o mapa dominante e detalhes legíveis. */ gap: 22px; /* Separa as regiões. */ margin-bottom: 23px; /* Afasta os indicadores complementares. */ }
+/* Agrupa título, contexto e detalhe da seleção. */
+.city-command-focus { min-width: 0; /* Permite reduzir os detalhes. */ display: flex; /* Mantém a seleção esticada até o fim do conjunto. */ flex-direction: column; /* Coloca contexto e detalhe em coluna. */ }
+/* Identifica a origem dos detalhes da lateral. */
+.city-focus-heading { display: flex; /* Distribui os rótulos. */ align-items: center; /* Centraliza as identificações. */ justify-content: space-between; /* Afasta os extremos. */ gap: 8px; /* Garante respiro mínimo. */ margin-bottom: 12px; /* Separa o contexto da fotografia. */ }
+/* Evita margem duplicada no rótulo de seleção. */
+.city-focus-heading .city-kicker { margin: 0; /* Mantém o cabeçalho compacto. */ font-size: .56rem; /* Ajusta o texto à lateral. */ }
+/* Define o painel que responde aos marcadores e à lista. */
+.city-point-detail { overflow: hidden; /* Recorta a fotografia nos cantos do painel. */ background: #10253a; /* Diferencia a seleção atual do fundo do mapa. */ border: 1px solid #2d4b62; /* Delimita a seleção. */ border-radius: 5px; /* Usa cantos discretos. */ min-width: 0; /* Permite reduzir textos extensos. */ flex: 1; /* Usa o espaço restante na região de detalhe. */ }
+/* Reserva uma fotografia generosa para o local selecionado. */
+.city-point-detail > .city-photo { height: 165px; /* Mantém o contexto visual sem ocultar os dados. */ }
+/* Organiza as informações abaixo da fotografia. */
+.city-point-detail-body { padding: 21px; /* Dá respiro ao detalhe. */ }
+/* Destaca o nome do local fictício. */
+.city-point-detail h2 { font-size: 1.4rem; /* Aumenta a identificação do ponto. */ margin-bottom: 10px; /* Separa nome e localização. */ }
+/* Ajusta o rótulo da categoria selecionada. */
+.city-point-detail .city-kicker { font-size: .57rem; /* Mantém o contexto proporcional ao cartão. */ margin-bottom: 12px; /* Separa categoria e nome. */ }
+/* Alinha bairro e símbolo de localização. */
+.city-point-location { display: flex; /* Coloca ícone e texto em linha. */ align-items: center; /* Centraliza os elementos. */ gap: 6px; /* Separa símbolo e localização. */ color: #aac0d2; /* Mantém o texto de apoio legível. */ font-size: .73rem; /* Define escala de detalhe. */ margin-bottom: 14px; /* Afasta o estado operacional. */ }
+/* Define selos com texto para não depender apenas de cores. */
+.city-badge { display: inline-block; /* Permite aplicar contorno e espaço interno. */ border: 1px solid #3d776d; /* Delimita a informação. */ background: #163c36; /* Diferencia a situação do fundo. */ color: #a3e8ce; /* Mantém contraste no selo. */ padding: 3px 8px; /* Dá respiro ao rótulo. */ border-radius: 3px; /* Usa cantos leves e técnicos. */ font-size: .65rem; /* Mantém a situação compacta. */ white-space: nowrap; /* Evita quebrar situações curtas. */ }
+/* Explica o caráter fictício do ponto sem parecer um registro de serviço real. */
+.city-detail-description { color: #afc3d4; /* Mantém o texto secundário claro. */ font-size: .75rem; /* Ajusta a descrição à lateral. */ line-height: 1.75; /* Facilita a leitura do parágrafo. */ margin: 17px 0; /* Separa a explicação dos indicadores. */ }
+/* Distribui rótulo e porcentagem das obras. */
+.city-project-progress > div { display: flex; /* Alinha rótulo e valor. */ justify-content: space-between; /* Afasta os dois extremos. */ gap: 10px; /* Mantém respiro. */ font-size: .69rem; /* Define escala de apoio. */ color: #b8cad9; /* Usa texto claro secundário. */ }
+/* Mantém barras de execução visíveis e acessíveis em controles nativos. */
+.city-project-progress progress { width: 100%; /* Preenche a região disponível. */ height: 7px; /* Define uma linha de progresso discreta. */ accent-color: #00d4ff; /* Usa a cor de destaque da plataforma. */ margin-top: 10px; /* Separa a barra de seus rótulos. */ }
+/* Define o resumo de orçamento previsto, sem confundir com despesas. */
+.city-budget-line { display: flex; /* Alinha rótulo e valor. */ justify-content: space-between; /* Afasta os dois elementos. */ flex-wrap: wrap; /* Permite quebra em telas estreitas. */ gap: 7px; /* Mantém respiro entre os textos. */ font-size: .69rem; /* Usa escala discreta. */ border-top: 1px solid #2d4b62; /* Separa valores e descrição. */ margin-top: 18px; /* Afasta do progresso. */ padding-top: 16px; /* Dá espaço acima do texto. */ }
+/* Oferece uma saída funcional do detalhe para o mapa completo. */
+.city-detail-link { display: flex; /* Alinha texto e ícone. */ justify-content: space-between; /* Afasta os elementos. */ align-items: center; /* Centraliza o grupo. */ min-height: 44px; /* Mantém uma área de toque adequada. */ border-top: 1px solid #2d4b62; /* Separa a ação do detalhe. */ margin-top: 16px; /* Afasta a ação dos valores. */ padding-top: 12px; /* Dá respiro ao texto. */ font-size: .75rem; /* Ajusta o rótulo ao painel. */ color: #91e8fb !important; /* Garante destaque legível do link. */ }
+/* Posiciona o controle de categoria junto ao mapa do dashboard. */
+.city-command-layer { display: flex; /* Coloca rótulo e filtro em linha. */ align-items: center; /* Centraliza o conjunto. */ gap: 12px; /* Separa os elementos. */ font-size: .68rem; /* Usa escala de controle auxiliar. */ color: var(--city-muted); /* Mantém as notas secundárias. */ margin-bottom: 16px; /* Afasta o controle da cartografia. */ flex-wrap: wrap; /* Evita cortes em janelas menores. */ }
+/* Ajusta o filtro ao painel territorial. */
+.city-command-layer select { min-height: 36px; /* Mantém o controle proporcional ao painel sem remover a operação por teclado. */ font-size: .68rem; /* Ajusta a escala do texto. */ padding: 7px 10px; /* Reduz o espaço interno. */ }
+/* Afasta a contagem do seletor quando houver largura disponível. */
+.city-command-layer > span:last-child { margin-left: auto; /* Mantém a contagem na extremidade da faixa. */ }
+/* Reserva um contêiner estável para o Leaflet e seus controles. */
+.city-map-shell { position: relative; /* Permite sobrepor controles e avisos. */ height: 550px; /* Mantém um mapa amplo no explorador. */ border: 1px solid #254c61; /* Delimita a cartografia. */ overflow: hidden; /* Mantém os elementos dentro da moldura. */ isolation: isolate; /* Limita o empilhamento das camadas do mapa. */ }
+/* Ajusta o mapa na visão de comando. */
+.city-map-shell.is-compact { height: 365px; /* Mantém o painel de comando visualmente equilibrado. */ }
+/* Faz a biblioteca ocupar toda a região reservada. */
+.moss-city .city-map-canvas { width: 100%; /* Preenche a largura do mapa. */ height: 100%; /* Preenche a altura da moldura. */ background: #0a2032; /* Impede que o fundo cinza padrão da biblioteca substitua a identidade visual local. */ font-family: 'Segoe UI', sans-serif; /* Usa fonte legível nos controles. */ }
+/* Define o controle de zoom sem alterar arquivos da biblioteca externa. */
+.moss-city .leaflet-control-zoom a { color: #d5f5ff; /* Mantém os símbolos claros. */ background: #0e293e; /* Integra o zoom ao cenário escuro. */ border-color: #35576c; /* Torna as áreas de ação perceptíveis. */ width: 34px; /* Define área utilizável dos botões do mapa. */ height: 34px; /* Define altura utilizável para cada ação. */ line-height: 34px; /* Centraliza os sinais de zoom. */ }
+/* Mantém a atribuição visível mesmo no tema escuro. */
+.moss-city .city-map-shell .leaflet-control-attribution { color: #eaf7ff; /* Mantém alto contraste da atribuição mesmo com o CSS da biblioteca carregado depois. */ background: #071525f5; /* Cria fundo legível sem esconder a informação. */ font-size: 10px; /* Ajusta a identificação à moldura do mapa. */ padding: 4px 7px; /* Dá respiro ao texto. */ max-width: 100%; /* Evita que créditos ultrapassem telas pequenas. */ }
+/* Destaca os links exigidos na atribuição da cartografia. */
+.moss-city .city-map-shell .leaflet-control-attribution a { color: #a0eaff; /* Mantém os créditos visíveis independentemente da ordem do CSS externo. */ text-decoration: underline; /* Identifica os links de licença. */ }
+/* Define os marcadores controlados pelo catálogo da aplicação. */
+.city-map-pin { display: grid; /* Centraliza a letra da categoria. */ place-items: center; /* Alinha o símbolo nos dois eixos. */ width: 30px; /* Define o diâmetro visual do ponto. */ height: 30px; /* Define a altura visual do ponto. */ border: 1px solid var(--pin-color); /* Usa a cor própria da categoria. */ border-radius: 5px 5px 5px 0; /* Cria uma assinatura de marcador sem usar ícones externos. */ background: #0a2032f5; /* Mantém contraste sobre cartografia clara ou escura. */ color: var(--pin-color); /* Repete a cor no símbolo da categoria. */ box-shadow: 0 2px 10px #0008; /* Separa o ponto das vias ao fundo. */ font-size: 11px; /* Mantém as letras legíveis no mapa. */ font-weight: 700; /* Destaca o símbolo. */ }
+/* Identifica o marcador selecionado sem depender apenas da cor. */
+.city-map-pin.is-selected { outline: 3px solid #eaf7ff; /* Cria um contorno visível na seleção. */ outline-offset: 3px; /* Separa o contorno do marcador. */ }
+/* Mantém a indicação de simulação sobre a cartografia. */
+.city-map-mode { position: absolute; /* Sobrepõe a identificação à base do mapa. */ z-index: 700; /* Mantém o texto acima das camadas de tiles e pontos. */ top: 12px; /* Afasta a nota da borda superior. */ left: 12px; /* Alinha a nota à lateral da moldura. */ max-width: calc(100% - 75px); /* Reserva espaço para o controle de zoom. */ padding: 7px 9px; /* Dá respiro ao rótulo. */ background: #071525; /* Garante contraste sobre qualquer cartografia. */ color: #c1dce9; /* Usa uma cor clara para o contexto. */ font-size: .52rem; /* Mantém a identificação proporcional ao mapa. */ letter-spacing: .05em; /* Dá respiro às letras. */ pointer-events: none; /* Evita bloquear o arraste do mapa. */ }
+/* Posiciona botões reais de base, camadas e enquadramento. */
+.city-map-tools { position: absolute; /* Sobrepõe os controles ao mapa. */ bottom: 34px; /* Reserva o rodapé para a atribuição obrigatória. */ left: 12px; /* Alinha os controles à moldura. */ right: 12px; /* Permite reorganização em telas pequenas. */ z-index: 700; /* Mantém os controles acima da cartografia. */ display: flex; /* Coloca as ações lado a lado. */ gap: 5px; /* Separa cada ação. */ flex-wrap: wrap; /* Evita esconder botões no celular. */ pointer-events: none; /* Mantém a área vazia entre botões livre para arraste. */ }
+/* Desenha os botões do mapa com fundo opaco e alvo confortável. */
+.city-map-tools button { display: inline-flex; /* Alinha ícone e rótulo. */ align-items: center; /* Centraliza o conteúdo. */ gap: 6px; /* Separa desenho e texto. */ min-height: 38px; /* Mantém os controles operáveis sem cobrir o mapa inteiro. */ padding: 8px 10px; /* Cria espaço interno. */ background: #0b2136; /* Garante contraste sobre a base cartográfica. */ color: #d0e5f1; /* Mantém as ações legíveis. */ border: 1px solid #42657d; /* Delimita a área clicável. */ border-radius: 3px; /* Mantém geometria técnica. */ font-size: .64rem; /* Ajusta o texto ao espaço. */ pointer-events: auto; /* Reativa a interação no botão, preservando o mapa ao redor. */ }
+/* Identifica camadas ativas sem usar um ícone decorativo apenas. */
+.city-map-tools button[aria-pressed='true'] { border-color: #00d4ff; /* Destaca o controle ativo. */ color: #9cefff; /* Reforça o texto da ação ativa. */ }
+/* Mantém o erro de mapa online legível sem apagar a lista de locais. */
+.city-map-error { position: absolute; /* Exibe a orientação sobre o mapa. */ z-index: 750; /* Mantém o erro acima dos controles cartográficos. */ left: 12px; /* Afasta da borda esquerda. */ right: 12px; /* Limita a mensagem à largura útil. */ top: 55px; /* Evita sobrepor a identificação de simulação. */ background: #452d23; /* Diferencia a falha da cartografia. */ color: #ffe3c4; /* Mantém a mensagem legível. */ border: 1px solid #a77249; /* Torna a caixa perceptível. */ padding: 10px; /* Dá espaço ao texto. */ font-size: .75rem; /* Usa escala de alerta. */ }
+/* Relaciona símbolos e setores sem depender só de cores. */
+.city-map-legend { display: flex; /* Distribui as categorias em linha. */ gap: 10px 16px; /* Separa os itens. */ flex-wrap: wrap; /* Permite quebra em painéis menores. */ padding-top: 16px; /* Afasta a legenda do mapa. */ font-size: .63rem; /* Mantém a legenda compacta. */ color: #b1cadb; /* Usa texto secundário claro. */ }
+/* Alinha o símbolo de cor com o nome da categoria. */
+.city-map-legend span { display: inline-flex; /* Mantém ponto e nome em linha. */ align-items: center; /* Centraliza o grupo. */ gap: 6px; /* Separa a cor do rótulo. */ }
+/* Define pequenos indicadores de categoria na legenda e nos filtros. */
+.city-map-legend i, .city-category-tabs i { display: inline-block; /* Permite atribuir tamanho ao indicador. */ width: 6px; /* Define largura do ponto. */ height: 6px; /* Define altura do ponto. */ border-radius: 1px; /* Mantém geometria técnica. */ flex-shrink: 0; /* Preserva o tamanho do símbolo. */ }
+/* Organiza os indicadores complementares em uma faixa de apoio. */
+.city-secondary-metrics { display: grid; /* Distribui seis indicadores em regiões iguais. */ grid-template-columns: repeat(6, minmax(0, 1fr)); /* Mantém escolas, saúde e demais setores alinhados. */ gap: 12px; /* Separa os grupos. */ margin-bottom: 25px; /* Afasta os gráficos. */ }
+/* Define cada resumo complementar sem transformá-lo em outro cartão grande. */
+.city-secondary-metrics article { display: flex; /* Alinha símbolo e valores. */ align-items: center; /* Centraliza o conjunto. */ gap: 11px; /* Separa desenho e texto. */ padding: 12px 0 12px 13px; /* Dá respiro ao indicador. */ border-left: 1px solid #2b4a60; /* Marca a separação estrutural. */ min-width: 0; /* Permite reduzir a região. */ }
+/* Mantém ícones de apoio legíveis. */
+.city-secondary-metrics svg { color: #74b4c7; /* Usa uma tonalidade fria discreta. */ flex-shrink: 0; /* Evita reduzir o desenho. */ }
+/* Destaca os valores complementares. */
+.city-secondary-metrics strong { display: block; /* Coloca o valor em linha própria. */ font-size: 1.06rem; /* Mantém o valor proporcional à importância secundária. */ font-weight: 500; /* Evita números excessivamente pesados. */ overflow-wrap: anywhere; /* Impede que valores financeiros ultrapassem a coluna. */ }
+/* Descreve cada valor complementar. */
+.city-secondary-metrics span { display: block; /* Coloca o rótulo abaixo do número. */ color: #a3bacd; /* Mantém leitura no fundo escuro. */ font-size: .62rem; /* Usa escala de legenda. */ margin-top: 3px; /* Separa número e rótulo. */ }
+/* Divide os gráficos sem repetir a distribuição financeira da MOSS CONDO. */
+.city-chart-grid { display: grid; /* Organiza duas visualizações relacionadas. */ grid-template-columns: 1.3fr 1fr; /* Dá mais espaço ao gráfico temporal. */ gap: 22px; /* Separa os painéis. */ }
+/* Mantém controles dos gráficos compactos e legíveis. */
+.city-chart-grid select { font-size: .67rem; /* Ajusta o filtro ao cabeçalho do gráfico. */ min-height: 36px; /* Preserva área de interação nativa. */ padding: 7px 9px; /* Reduz espaço interno sem ocultar valores. */ }
+/* Define uma altura estável para as bibliotecas de gráficos. */
+.city-chart { height: 225px; /* Reserva espaço antes do desenho das séries. */ font-size: .64rem; /* Ajusta rótulos de eixos e valores. */ }
+/* Oferece valores em texto ao lado da visualização gráfica. */
+.city-chart-values { color: #b0c5d6; /* Mantém os dados textuais legíveis. */ font-size: .69rem; /* Usa escala de apoio. */ margin-top: 12px; /* Separa o texto do desenho. */ }
+/* Mantém a abertura do resumo identificável como interação. */
+.city-chart-values summary { cursor: pointer; /* Indica que os valores podem ser expandidos. */ padding: 8px 0; /* Amplia a região acionável. */ }
+/* Diferencia as duas séries temporais com palavras e cores. */
+.city-chart-legend { display: flex; /* Coloca os nomes em linha. */ gap: 19px; /* Separa as séries. */ margin-bottom: 7px; /* Afasta a legenda do gráfico. */ font-size: .66rem; /* Mantém os rótulos compactos. */ color: #8de6ff; /* Identifica as solicitações com ciano claro. */ }
+/* Diferencia o nome da série concluída sem remover seu texto. */
+.city-chart-legend span:last-child { color: #70dfb7; /* Identifica os atendimentos concluídos. */ }
+/* Explica o significado de despesas e distribuição de serviços. */
+.city-chart-note { color: #aec5d7; /* Usa texto secundário legível. */ font-size: .69rem; /* Mantém a explicação proporcional. */ min-height: 21px; /* Reduz mudanças de altura ao alternar o modo. */ margin-bottom: 9px; /* Afasta a nota do gráfico. */ }
+/* Oferece filtros rápidos de categoria com contagem real. */
+.city-category-tabs { display: flex; /* Coloca as categorias lado a lado. */ flex-wrap: wrap; /* Mantém todas as opções acessíveis em telas pequenas. */ gap: 7px; /* Separa as ações. */ margin-bottom: 17px; /* Afasta os filtros adicionais. */ }
+/* Desenha cada categoria como um controle real. */
+.city-category-tabs button { display: flex; /* Alinha símbolo, nome e quantidade. */ align-items: center; /* Centraliza os elementos. */ gap: 8px; /* Separa os itens. */ min-height: 42px; /* Mantém o controle confortável. */ padding: 10px 13px; /* Oferece respiro ao rótulo. */ border: 1px solid #35536b; /* Delimita a opção. */ background: #0b2034; /* Usa uma superfície consistente. */ color: #c5d8e6; /* Mantém o nome legível. */ border-radius: 3px; /* Usa geometria técnica. */ font-size: .72rem; /* Ajusta a escala ao grupo de filtros. */ }
+/* Dá contexto à quantidade de locais por categoria. */
+.city-category-tabs span { color: #a0bccc; /* Mantém a contagem com destaque secundário. */ font-size: .64rem; /* Reduz a quantidade em relação ao nome. */ }
+/* Diferencia a categoria ativa de forma perceptível. */
+.city-category-tabs button[aria-pressed='true'] { border-color: #00d4ff; /* Usa contorno ciano na seleção. */ background: #10344a; /* Diferencia também a superfície. */ color: #b3f1ff; /* Aumenta a percepção do rótulo ativo. */ }
+/* Organiza pesquisa, bairro e situação do explorador. */
+.city-map-filters { display: flex; /* Distribui os filtros na mesma faixa. */ align-items: center; /* Centraliza os controles. */ flex-wrap: wrap; /* Evita cortes quando há menos espaço. */ gap: 10px; /* Separa os controles. */ background: #0b1e31; /* Diferencia a região de filtragem. */ padding: 14px; /* Cria espaço interno. */ border: 1px solid var(--city-line); /* Delimita a faixa. */ }
+/* Mantém a pesquisa bem identificada por ícone e rótulo acessível. */
+.city-search { display: flex; /* Coloca símbolo e caixa de texto em linha. */ align-items: center; /* Centraliza o conjunto. */ gap: 9px; /* Separa ícone e conteúdo. */ flex: 1 1 230px; /* Permite que a pesquisa aproveite o espaço livre. */ min-width: 0; /* Permite reduzir o controle. */ color: #9fbed1; /* Mantém o ícone perceptível. */ }
+/* Faz a pesquisa ocupar a largura útil. */
+.city-search input { width: 100%; /* Preenche o espaço de pesquisa. */ font-size: .76rem; /* Mantém o texto proporcional à interface. */ }
+/* Ajusta os filtros adicionais ao mesmo ritmo visual da pesquisa. */
+.city-map-filters select { font-size: .73rem; /* Mantém as opções compactas. */ }
+/* Reserva uma linha de retorno para filtros e operações. */
+.city-feedback { color: #8ddfc2; /* Usa verde claro para confirmações legíveis. */ font-size: .73rem; /* Mantém as mensagens proporcionais. */ min-height: 23px; /* Evita saltos ao atualizar o texto. */ margin: 16px 0; /* Separa filtros e visualizações. */ }
+/* Define o explorador com predominância da cartografia. */
+.city-explorer-layout { display: grid; /* Distribui mapa e detalhes do local. */ grid-template-columns: minmax(0, 2fr) minmax(270px, 1fr); /* Dá ao mapa a maior parte da tela. */ gap: 22px; /* Separa as duas regiões. */ }
+/* Mantém a alternativa acessível próxima do mapa. */
+.city-location-list { margin-top: 23px; /* Separa a listagem dos detalhes e da cartografia. */ }
+/* Distribui os locais sem exigir rolagem horizontal. */
+.city-location-grid { display: grid; /* Organiza a lista em colunas de botões. */ grid-template-columns: repeat(3, minmax(0, 1fr)); /* Usa três colunas em telas amplas. */ gap: 9px; /* Separa os locais. */ }
+/* Define um local como alternativa completa ao clique no marcador. */
+.city-location-item { display: flex; /* Alinha símbolo, informação e localização. */ align-items: center; /* Centraliza os elementos. */ gap: 12px; /* Separa os grupos. */ padding: 15px 12px; /* Oferece alvo de toque generoso. */ text-align: left; /* Facilita a leitura do nome do ponto. */ background: #0b2134; /* Mantém fundo opaco legível. */ border: 1px solid #2c4960; /* Delimita a opção. */ border-radius: 3px; /* Mantém geometria técnica. */ color: #d1e5f3; /* Usa texto claro. */ min-width: 0; /* Permite reduzir a coluna sem estourar a tela. */ }
+/* Diferencia o local selecionado na lista e no mapa. */
+.city-location-item.is-selected { border-color: #00d4ff; /* Usa a mesma identificação da seleção cartográfica. */ background: #103349; /* Reforça a seleção com superfície distinta. */ }
+/* Desenha a identificação textual da categoria. */
+.city-category-symbol { display: grid; /* Permite centralizar a letra. */ place-items: center; /* Centraliza o símbolo. */ flex: 0 0 29px; /* Mantém a largura do símbolo. */ height: 32px; /* Define a altura do selo. */ border: 1px solid currentColor; /* Usa a cor da categoria na moldura. */ color: var(--category-color); /* Aplica a cor da categoria recebida por variável. */ font-size: .72rem; /* Ajusta a letra ao selo. */ }
+/* Define o nome do local na listagem. */
+.city-location-item strong { display: block; /* Separa nome e detalhes. */ font-size: .75rem; /* Define a escala principal do item. */ font-weight: 500; /* Mantém o nome equilibrado. */ }
+/* Define o bairro e a situação do local. */
+.city-location-item small { display: block; /* Coloca os detalhes abaixo do nome. */ font-size: .62rem; /* Usa escala secundária. */ color: #acc4d5; /* Mantém o texto de apoio legível. */ margin-top: 5px; /* Separa as duas linhas. */ }
+/* Posiciona o ícone de localização no fim da opção. */
+.city-location-item > svg { margin-left: auto; /* Empurra o ícone para a extremidade. */ flex-shrink: 0; /* Impede que o desenho seja achatado. */ color: #86bdcf; /* Usa um tom secundário. */ }
+/* Descreve estados vazios sem deixar regiões silenciosamente em branco. */
+.city-empty { padding: 35px 22px; /* Oferece espaço para ler a mensagem. */ border: 1px dashed #3a5c71; /* Diferencia vazio de dados carregados. */ text-align: center; /* Centraliza orientação e ação. */ color: #b1cadd; /* Mantém a mensagem legível. */ font-size: .8rem; /* Usa escala de informação. */ }
+/* Mostra falhas com palavras e contraste, não apenas cor. */
+.city-error { background: #402d2f; /* Diferencia o estado de erro das superfícies azuis. */ border: 1px solid #bc827f; /* Torna a região claramente perceptível. */ color: #ffdbd7; /* Mantém contraste sobre o fundo de alerta. */ padding: 13px 16px; /* Dá espaço ao texto de orientação. */ border-radius: 4px; /* Mantém a geometria da aplicação. */ font-size: .8rem; /* Mantém o erro legível. */ }
+/* Combina contexto urbano e aviso demonstrativo no portal. */
+.city-citizen-intro { display: grid; /* Cria regiões distintas para foto e explicação. */ grid-template-columns: .8fr 1.7fr; /* Dá mais espaço ao aviso importante. */ border: 1px solid #2c5d72; /* Destaca o limite da simulação. */ background: #0d273b; /* Mantém a mensagem diferente do formulário. */ margin-bottom: 25px; /* Separa introdução e operações. */ }
+/* Reserva altura para a foto introdutória. */
+.city-citizen-intro .city-photo { min-height: 190px; /* Mantém a imagem visível e estável. */ }
+/* Dá respiro à mensagem que explica a simulação. */
+.city-citizen-intro > div { padding: 25px 28px; /* Afasta o texto das bordas. */ }
+/* Destaca o ícone do aviso do portal. */
+.city-citizen-intro > div > svg { color: #77dfc0; /* Usa verde claro para uma mensagem informativa. */ margin-bottom: 12px; /* Separa o símbolo do título. */ }
+/* Define a explicação de privacidade e ausência de envio público. */
+.city-citizen-intro p { color: #c0d5e5; /* Mantém alto contraste do aviso. */ font-size: .81rem; /* Usa uma escala confortável. */ max-width: 700px; /* Evita linhas longas demais. */ margin-bottom: 0; /* Remove espaço extra depois da explicação. */ }
+/* Divide registro e consulta em regiões independentes. */
+.city-portal-layout { display: grid; /* Organiza formulário e protocolos. */ grid-template-columns: .9fr 1.2fr; /* Dá mais espaço ao acompanhamento. */ gap: 24px; /* Separa as regiões. */ }
+/* Mantém os campos de cadastro em uma coluna didática e acessível. */
+.city-request-form { display: flex; /* Organiza título, campos e ação. */ flex-direction: column; /* Coloca cada campo abaixo do anterior. */ gap: 16px; /* Separa regiões clicáveis e rótulos. */ align-self: start; /* Evita esticar o formulário até a altura de uma lista extensa. */ }
+/* Mantém o rótulo introdutório compacto no formulário. */
+.city-request-form .city-kicker, .city-request-form h2 { margin: 0; /* Evita espaços duplicados com o espaçamento da coluna. */ }
+/* Define uma relação visual e semântica clara entre rótulo e controle. */
+.city-request-form label { display: flex; /* Agrupa o rótulo com o controle. */ flex-direction: column; /* Coloca a caixa abaixo da instrução. */ gap: 7px; /* Separa o texto do controle. */ font-size: .76rem; /* Mantém rótulos legíveis. */ color: #bed1df; /* Usa texto secundário claro. */ }
+/* Permite ajustar a altura da descrição sem quebrar a largura do formulário. */
+.city-request-form textarea { resize: vertical; /* Limita o redimensionamento ao eixo vertical. */ min-height: 110px; /* Reserva espaço suficiente para explicar o caso fictício. */ }
+/* Ajusta a busca dentro da consulta de protocolos. */
+.city-protocol-panel > .city-search { margin-bottom: 15px; /* Separa pesquisa e filtro de situação. */ }
+/* Define o filtro nativo de situação do acompanhamento. */
+.city-protocol-filter { display: flex; /* Mantém rótulo e controle na mesma linha. */ align-items: center; /* Centraliza os elementos. */ gap: 12px; /* Separa título e campo. */ color: #bad0df; /* Mantém a identificação legível. */ font-size: .73rem; /* Usa escala de formulário. */ margin-bottom: 23px; /* Separa filtros e lista. */ }
+/* Estrutura cada protocolo com abertura de histórico nativa. */
+.city-protocol-list details { border-top: 1px solid #2b4b62; /* Separa registros consecutivos. */ padding: 16px 0; /* Cria espaço entre registros. */ }
+/* Mantém o protocolo inteiro acionável para expandir o histórico. */
+.city-protocol-list summary { display: flex; /* Organiza identificação, situação e seta. */ align-items: center; /* Centraliza os elementos. */ gap: 10px; /* Separa as regiões. */ cursor: pointer; /* Indica a expansão do histórico. */ list-style: none; /* Evita um marcador redundante junto à seta. */ }
+/* Faz a identificação ocupar o espaço disponível. */
+.city-protocol-list summary > span:first-child { flex: 1; /* Mantém situação e seta na extremidade. */ min-width: 0; /* Permite quebrar títulos longos. */ }
+/* Destaca o código explicitamente fictício em fonte monoespaçada. */
+.city-protocol-list summary small { display: block; /* Coloca o protocolo acima do assunto. */ font-family: Consolas, monospace; /* Alinha os caracteres do código. */ color: #83d9ee; /* Mantém o código bem identificável. */ font-size: .66rem; /* Usa escala auxiliar. */ margin-bottom: 6px; /* Separa código e título. */ }
+/* Define o assunto do protocolo. */
+.city-protocol-list summary strong { display: block; /* Coloca o assunto em sua própria linha. */ font-size: .79rem; /* Mantém o título proporcional à lista. */ font-weight: 500; /* Evita uma listagem visualmente pesada. */ overflow-wrap: anywhere; /* Impede títulos longos de ultrapassarem a tela. */ }
+/* Define bairro e data de cada protocolo. */
+.city-protocol-context { display: block; /* Coloca os detalhes em linha própria. */ color: #a3bdcf; /* Usa a cor de contexto. */ font-size: .65rem; /* Mantém os detalhes compactos. */ margin-top: 6px; /* Separa o contexto do assunto. */ }
+/* Destaca a região expandida do histórico. */
+.city-protocol-history { background: #081d2e; /* Diferencia os detalhes da lista recolhida. */ border-left: 2px solid #296980; /* Conecta visualmente a linha temporal ao protocolo. */ margin-top: 18px; /* Afasta o histórico do resumo. */ padding: 16px; /* Dá respiro ao texto. */ color: #bfd3e1; /* Mantém os eventos legíveis. */ font-size: .76rem; /* Usa escala de detalhe. */ }
+/* Define títulos pequenos dentro dos históricos. */
+.city-protocol-history h3 { font-size: .85rem; /* Mantém a hierarquia do histórico. */ margin-top: 20px; /* Separa título e descrição do registro. */ }
+/* Separa a data do texto do evento sem depender de ícones. */
+.city-protocol-history time { display: block; /* Coloca a data acima do evento. */ font-family: Consolas, monospace; /* Mantém algarismos alinhados. */ color: #83d9ee; /* Destaca a referência temporal. */ margin-bottom: 7px; /* Separa data e descrição. */ }
+/* Mantém o rodapé do ambiente interno discreto e informativo. */
+.city-workspace-footer { display: flex; /* Organiza autoria, aviso e saída. */ justify-content: space-between; /* Distribui as regiões. */ align-items: center; /* Centraliza os elementos. */ flex-wrap: wrap; /* Permite quebra em telas menores. */ gap: 12px; /* Separa as mensagens. */ border-top: 1px solid var(--city-line); /* Marca o fim do conteúdo. */ padding: 20px 30px; /* Alinha o rodapé ao conteúdo principal. */ color: #9bb6ca; /* Mantém as notas legíveis. */ font-size: .62rem; /* Usa escala discreta. */ }
+/* Alinha os ícones às notas do rodapé. */
+.city-workspace-footer > span, .city-workspace-footer > a { display: flex; /* Coloca texto e ícone em linha. */ align-items: center; /* Centraliza o grupo. */ gap: 7px; /* Separa os elementos. */ }
+/* Colore o divisor da assinatura. */
+.city-workspace-footer b { color: #00d4ff; /* Usa o detalhe de marca no divisor. */ font-weight: 400; /* Evita um símbolo excessivamente pesado. */ }
+/* Centraliza o carregamento e a recuperação de erros. */
+.city-loading { min-height: 100dvh; /* Ocupa a janela durante a preparação. */ display: flex; /* Organiza mensagem e ação. */ flex-direction: column; /* Coloca informações em coluna. */ align-items: center; /* Centraliza horizontalmente. */ justify-content: center; /* Centraliza verticalmente. */ text-align: center; /* Mantém as mensagens confortáveis. */ padding: 30px; /* Evita encostar nas bordas. */ }
+/* Reserva espaço legível durante o carregamento de um módulo. */
+.city-content-loading { min-height: 350px; /* Evita um conteúdo que desaparece entre trocas de tela. */ display: grid; /* Permite centralizar a mensagem. */ place-items: center; /* Alinha a informação nos dois eixos. */ color: #b3d9e8; /* Mantém o estado de carregamento visível. */ }
+/* Remove o controle móvel quando a sidebar está permanentemente visível. */
+.city-mobile-toggle { display: none; /* Evita um segundo menu desnecessário no desktop. */ }
+/* Agrupa as ações de exportação e criação no cabeçalho dos módulos. */
+.city-page-actions { display: flex; /* Coloca as ações lado a lado. */ align-items: center; /* Centraliza verticalmente os botões. */ flex-wrap: wrap; /* Permite quebra em telas estreitas. */ gap: 10px; /* Separa cada ação. */ }
+/* Combina fotografia ilustrativa e contexto de cada módulo administrativo. */
+.city-module-intro { display: grid; /* Divide imagem e explicação em regiões distintas. */ grid-template-columns: minmax(0, .85fr) minmax(0, 1.6fr); /* Dá mais espaço ao texto sem esconder a foto. */ border: 1px solid #2c5d72; /* Destaca a faixa demonstrativa. */ background: #0d273b; /* Usa uma superfície diferente dos painéis de dados. */ margin-bottom: 25px; /* Separa a introdução dos filtros. */ }
+/* Reserva altura estável para a fotografia de contexto. */
+.city-module-intro .city-photo { min-height: 180px; /* Mantém a imagem visível em qualquer módulo. */ }
+/* Dá respiro à explicação e aos números do módulo. */
+.city-module-intro > div { padding: 24px 26px; /* Afasta o texto das bordas. */ }
+/* Alinha o título da faixa com a hierarquia das demais telas. */
+.city-module-intro h2 { font-size: 1.25rem; /* Mantém um segundo nível legível. */ margin-bottom: 12px; /* Separa título e explicação. */ }
+/* Mantém a descrição do módulo confortável e limitada. */
+.city-module-intro p { color: #c0d5e5; /* Oferece alto contraste sobre o fundo da faixa. */ font-size: .8rem; /* Usa escala de apoio. */ line-height: 1.75; /* Facilita a leitura. */ max-width: 720px; /* Evita linhas excessivamente longas. */ margin-bottom: 0; /* Remove espaço extra no fim. */ }
+/* Apresenta três números-resumo do módulo em uma linha compacta. */
+.city-module-stats { display: flex; /* Coloca os números lado a lado. */ flex-wrap: wrap; /* Permite quebra em janelas menores. */ gap: 10px 26px; /* Separa os grupos com respiro. */ margin-top: 17px; /* Afasta os valores da descrição. */ font-size: .68rem; /* Usa escala discreta de apoio. */ color: #9fbdd0; /* Mantém os rótulos legíveis. */ }
+/* Destaca os números da faixa em fonte técnica. */
+.city-module-stats strong { color: #eaf7ff; /* Dá prioridade ao valor. */ font-family: Bahnschrift, 'Segoe UI', sans-serif; /* Diferencia algarismos do texto. */ font-size: 1.15rem; /* Mantém números proporcionais. */ font-weight: 400; /* Evita peso excessivo. */ margin-right: 5px; /* Afasta o valor do rótulo. */ }
+/* Enquadrava o formulário acima da listagem com o mesmo painel das telas. */
+.city-module-form-wrap { margin-bottom: 22px; /* Separa cadastro, filtros e tabela. */ }
+/* Distribui os campos em duas colunas no desktop sem comprimir rótulos. */
+.city-module-form { display: grid; /* Organiza os campos em grade. */ grid-template-columns: repeat(2, minmax(0, 1fr)); /* Usa duas colunas equilibradas. */ gap: 16px; /* Separa cada campo. */ }
+/* Mantém rótulo e controle empilhados, com o texto do rótulo livre das opções do campo. */
+.city-module-form .city-field { display: flex; /* Agrupa texto e campo. */ flex-direction: column; /* Coloca o controle abaixo do rótulo. */ gap: 7px; /* Separa as linhas. */ font-size: .76rem; /* Mantém rótulos legíveis. */ color: #bed1df; /* Usa texto secundário claro. */ min-width: 0; /* Permite reduzir colunas sem estourar. */ }
+/* Leva descrições e observações a largura total da grade. */
+.city-module-form .city-field-wide { grid-column: 1 / -1; /* Ocupa as duas colunas da grade. */ }
+/* Permite redimensionar textos longos apenas na vertical. */
+.city-module-form textarea { resize: vertical; /* Limita o ajuste ao eixo vertical. */ min-height: 110px; /* Reserva espaço para explicações fictícias. */ }
+/* Alinha as ações finais do formulário sem competir com os campos. */
+.city-form-actions { grid-column: 1 / -1; /* Ocupa a linha inteira da grade. */ display: flex; /* Coloca salvar e cancelar lado a lado. */ flex-wrap: wrap; /* Permite quebra em telas pequenas. */ gap: 10px; /* Separa as ações. */ padding-top: 4px; /* Afasta das bordas dos campos. */ }
+/* Organiza pesquisa, tipo e situação dos cadastros administrativos. */
+.city-module-filters { display: flex; /* Distribui os filtros na mesma faixa. */ align-items: center; /* Centraliza os controles. */ flex-wrap: wrap; /* Evita cortes quando falta espaço. */ gap: 10px; /* Separa os controles. */ background: #0b1e31; /* Diferencia a região de filtragem. */ padding: 14px; /* Cria espaço interno. */ border: 1px solid var(--city-line); /* Delimita a faixa. */ }
+/* Ajusta os seletores dos módulos à escala da pesquisa. */
+.city-module-filters select { font-size: .73rem; /* Mantém as opções compactas. */ }
+/* Explica o alcance demonstrativo no fim das telas administrativas. */
+.city-module-note { display: flex; /* Coloca ícone e texto em linha. */ align-items: flex-start; /* Alinha o desenho ao topo do parágrafo. */ gap: 9px; /* Separa símbolo e frase. */ color: #9db6c9; /* Usa cor secundária legível. */ font-size: .7rem; /* Mantém a nota discreta. */ margin-top: 22px; /* Afasta a nota da tabela. */ line-height: 1.7; /* Facilita a leitura em telas estreitas. */ }
+/* Alinha o ícone à primeira linha da nota dos módulos. */
+.city-module-note svg { flex-shrink: 0; /* Impede que o símbolo seja espremido. */ margin-top: 3px; /* Ajusta o desenho ao texto. */ color: #6fb3c7; /* Mantém o ícone em tom secundário. */ }
+/* Cria uma região rolável para tabelas largas sem cortar o conteúdo. */
+.city-table-scroll { overflow-x: auto; /* Permite rolagem horizontal apenas dentro da tabela. */ border: 1px solid var(--city-line); /* Delimita a listagem. */ background: #0b1e31; /* Mantém a superfície dos painéis. */ }
+/* Destaca a região rolável para quem navega por teclado. */
+.city-table-scroll:focus-visible { outline: 3px solid var(--city-cyan); /* Usa o mesmo destaque global de foco. */ outline-offset: 2px; /* Afasta o contorno da borda. */ }
+/* Define a tabela de cadastros com linhas legíveis e semântica nativa. */
+.city-record-table { width: 100%; /* Preenche a região rolável. */ min-width: 680px; /* Garante colunas legíveis antes de rolar. */ border-collapse: collapse; /* Remove linhas duplas entre células. */ font-size: .74rem; /* Usa escala de listagem. */ }
+/* Alinha o texto superior das colunas da tabela. */
+.city-record-table thead th { text-align: left; /* Prioriza a leitura à esquerda. */ padding: 13px 14px; /* Dá respiro aos cabeçalhos. */ color: #93aec1; /* Mantém rótulos em tom secundário. */ font-size: .65rem; /* Reduz a escala dos títulos. */ font-weight: 500; /* Evita cabeçalhos pesados. */ letter-spacing: .06em; /* Dá ritmo técnico às colunas. */ border-bottom: 1px solid var(--city-line); /* Separa cabeçalho e registros. */ white-space: nowrap; /* Impede quebras inconvenientes nos títulos. */ }
+/* Define cada célula de registro com contraste estável. */
+.city-record-table tbody td { padding: 13px 14px; /* Oferece espaço ao conteúdo. */ color: #c8dceb; /* Mantém alto contraste sobre o fundo escuro. */ border-top: 1px solid #1f3a4e; /* Separa registros consecutivos. */ vertical-align: middle; /* Centraliza selos e ações. */ white-space: nowrap; /* Evita quebras estranhas em datas, valores e situações; a tabela rola lateralmente. */ }
+/* Destaca a primeira coluna como identificação principal do registro. */
+.city-record-table tbody td:first-child { color: #eaf7ff; /* Dá prioridade ao nome ou protocolo. */ white-space: normal; /* Permite que nomes longos quebrem de forma natural. */ overflow-wrap: break-word; /* Quebra apenas palavras que não couberem, sem cortar no meio. */ }
+/* Explica a rolagem lateral nas telas onde a tabela não cabe inteira. */
+.city-table-hint { display: none; /* Mantém o aviso oculto quando a tabela cabe na tela. */ color: #9db6c9; /* Usa cor secundária legível. */ font-size: .68rem; /* Mantém a nota discreta. */ margin-top: 9px; /* Afasta a nota da tabela rolável. */ }
+/* Apresenta as ações em uma linha compacta no fim de cada registro. */
+.city-row-actions { display: flex; /* Coloca editar e excluir lado a lado. */ flex-wrap: wrap; /* Permite quebra em células estreitas. */ gap: 6px; /* Separa as ações. */ }
+/* Reduz os botões de linha sem remover a área de toque confortável. */
+.city-row-actions .city-button { min-height: 38px; /* Mantém alvo utilizável. */ padding: 8px 11px; /* Reduz o espaçamento interno. */ font-size: .68rem; /* Ajusta o rótulo à tabela. */ }
+/* Diferencia a ação destrutiva com texto, não apenas com cor. */
+.city-row-actions .is-danger { color: #ff9f97; /* Usa um tom de alerta legível sobre o painel. */ }
+/* Destaca códigos de protocolo em fonte monoespaçada. */
+.city-protocol-code { font-family: Consolas, 'Courier New', monospace; /* Alinha os caracteres do código. */ color: #83d9ee; /* Mantém o código bem identificável. */ font-size: .7rem; /* Usa escala auxiliar. */ }
+/* Define o seletor de janela no cabeçalho dos relatórios. */
+.city-period-select { display: flex; /* Coloca rótulo e campo em coluna. */ flex-direction: column; /* Mantém instrução acima do controle. */ gap: 7px; /* Separa as linhas. */ font-size: .7rem; /* Usa escala de rótulo. */ color: var(--city-muted); /* Hierarquiza o texto do período. */ }
+/* Distribui as tabelas de situação em duas colunas no desktop. */
+.city-report-grid { display: grid; /* Cria uma grade de painéis relacionados. */ grid-template-columns: repeat(2, minmax(0, 1fr)); /* Equilibra os módulos lado a lado. */ gap: 22px; /* Separa os painéis. */ margin-top: 23px; /* Afasta dos gráficos. */ }
+/* Mantém cada tabela de relatório dentro de seu painel. */
+.city-report-table-wrap { overflow-x: auto; /* Protege a rolagem em janelas estreitas. */ }
+/* Define a tabela compacta de situações com números alinhados. */
+.city-report-table { width: 100%; /* Preenche o painel do módulo. */ border-collapse: collapse; /* Remove bordas duplicadas. */ font-size: .75rem; /* Usa escala de relatório. */ }
+/* Separa cabeçalhos da tabela de situação. */
+.city-report-table thead th { text-align: left; /* Alinha os títulos à esquerda. */ color: #93aec1; /* Mantém rótulos secundários. */ font-size: .65rem; /* Reduz a escala dos títulos. */ font-weight: 500; /* Evita peso excessivo. */ letter-spacing: .06em; /* Preserva o ritmo técnico. */ padding: 8px; /* Dá respiro mínimo. */ border-bottom: 1px solid var(--city-line); /* Delimita o cabeçalho. */ }
+/* Alinha as linhas de cada situação. */
+.city-report-table tbody th, .city-report-table tfoot th { text-align: left; /* Mantém o nome da situação à esquerda. */ color: #c8dceb; /* Usa cor de leitura padrão. */ font-weight: 400; /* Evita negritos desnecessários. */ padding: 11px 8px; /* Dá espaço às linhas. */ border-top: 1px solid #1f3a4e; /* Separa as situações. */ }
+/* Alinha contagens e valores à direita para comparação rápida. */
+.city-report-table tbody td, .city-report-table tfoot td { text-align: right; /* Aproxima os números da coluna. */ color: #dbeaf5; /* Mantém alto contraste. */ padding: 11px 8px; /* Mantém respiro entre linhas. */ border-top: 1px solid #1f3a4e; /* Conecta a linha ao cabeçalho. */ white-space: nowrap; /* Evita quebras em valores financeiros. */ }
+/* Destaca a linha de total sem transformá-la em um cartão. */
+.city-report-table tfoot th, .city-report-table tfoot td { color: #eaf7ff; /* Dá prioridade ao total. */ border-top: 1px solid #35637a; /* Usa um contorno mais presente no fechamento. */ font-weight: 500; /* Reforça apenas a linha final. */ }
+/* Adapta o comando aos notebooks antes que seus detalhes fiquem comprimidos. */
+@media (max-width: 1250px) {
+  .city-topbar-context strong, .city-topbar-divider { display: none; /* Prioriza perfil e estado do cenário quando há menos largura. */ }
+  .city-secondary-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); /* Distribui os indicadores de apoio em duas linhas. */ }
+  .city-command-grid { grid-template-columns: minmax(0, 1.7fr) minmax(245px, 1fr); /* Mantém mapa e seleção com larguras úteis. */ }
+  .city-panel { padding: 18px; /* Ajusta o espaço interno sem perder legibilidade. */ }
+  .city-command-layer > span:first-child { display: none; /* Remove apenas um rótulo redundante com o nome acessível do controle. */ }
+  .city-point-detail-body { padding: 18px; /* Mantém os dados confortáveis na lateral menor. */ }
+  .city-command-metrics article { padding: 18px 16px; /* Evita apertar os números na faixa. */ }
+  .city-command-metrics article > div { font-size: .66rem; /* Ajusta rótulos longos aos notebooks. */ }
+  .city-location-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); /* Mantém os nomes de locais legíveis. */ }
+  .city-explorer-layout { grid-template-columns: minmax(0, 1.5fr) minmax(245px, 1fr); /* Equilibra o mapa com os detalhes em telas intermediárias. */ }
+}
+/* Reorganiza os painéis sem criar rolagem horizontal em tablets. */
+@media (max-width: 1050px) {
+  .city-topbar-context { display: none; /* Reserva espaço para os controles principais do cabeçalho. */ }
+  .city-topbar-controls { gap: 11px; /* Aproxima os controles sem comprimi-los. */ }
+  .city-simulation-tag { font-size: .5rem; /* Ajusta o selo de cenário simulado. */ }
+  .city-command-grid, .city-explorer-layout, .city-chart-grid { grid-template-columns: 1fr; /* Empilha mapas, detalhes e gráficos. */ }
+  .city-report-grid { grid-template-columns: 1fr; /* Coloca as tabelas de situação em uma única coluna. */ }
+  .city-command-focus .city-point-detail, .city-explorer-layout > .city-point-detail { display: grid; /* Apresenta foto e informações em duas regiões quando há largura. */ grid-template-columns: .7fr 1fr; /* Dá espaço maior aos dados. */ }
+  .city-command-focus .city-point-detail > .city-photo, .city-explorer-layout > .city-point-detail > .city-photo { height: 100%; /* Faz a imagem acompanhar a altura dos dados. */ min-height: 230px; /* Mantém uma área visual generosa. */ }
+  .city-portal-layout { grid-template-columns: 1fr; /* Coloca o formulário antes da consulta de protocolos. */ }
+  .city-landing-hero { gap: 4%; /* Mantém texto e imagem próximos sem se sobrepor. */ }
+  .city-landing-copy h1 { font-size: clamp(2.7rem, 5.5vw, 4.4rem); /* Ajusta o slogan à largura intermediária. */ }
+  .city-landing-visual { height: 560px; /* Preserva a presença da fotografia no tablet largo. */ }
+  .city-landing-top nav { gap: 18px; /* Reduz o espaço entre links de apresentação. */ }
+  .city-landing-numbers { grid-template-columns: repeat(3, 1fr); /* Mantém três grupos de indicadores na faixa. */ }
+  .city-landing-numbers > p { grid-column: 1 / -1; /* Coloca a explicação demonstrativa em sua própria linha. */ }
+  .city-experience-grid { gap: 15px; /* Ajusta o respiro dos cartões. */ }
+  .city-experience-card > div { padding: 20px; /* Mantém os textos confortáveis com menos largura. */ }
+}
+/* Substitui a navegação fixa por um menu compacto em telas menores. */
+@media (max-width: 800px) {
+  .city-workspace { padding-left: 0; /* Libera a largura antes reservada ao menu. */ }
+  .city-sidebar { display: none; /* Oculta a navegação até o visitante abri-la. */ top: 80px; /* Mantém o botão de fechamento disponível acima do menu. */ bottom: 0; /* Usa a altura restante da tela. */ box-shadow: 15px 0 40px #0008; /* Separa o menu do conteúdo sem brilho. */ }
+  .city-sidebar.is-open { display: flex; /* Revela os módulos quando o menu está aberto. */ }
+  .city-sidebar-brand { display: none; /* Evita repetir a marca dentro do menu móvel. */ }
+  .city-mobile-toggle { display: inline-grid; /* Mostra a ação de menu no cabeçalho. */ flex-shrink: 0; /* Mantém a área de toque sem compressão. */ }
+  .city-topbar { padding: 12px 18px; /* Garante respiro à direita do perfil. */ flex-wrap: nowrap; /* Mantém menu e controles alinhados quando couberem. */ }
+  .city-topbar-controls { gap: 10px; /* Equilibra os controles na largura móvel. */ }
+  .city-simulation-tag { display: none; /* Remove apenas o selo redundante com avisos presentes no conteúdo. */ }
+  .city-main { padding: 25px 20px 35px; /* Ajusta o conteúdo à largura de tablet e celular. */ }
+  .city-workspace-footer { padding-inline: 20px; /* Alinha o rodapé ao conteúdo. */ }
+  .city-command-metrics article > div { font-size: .7rem; /* Recupera tamanho confortável com mais largura útil. */ }
+  .city-landing-top { flex-wrap: wrap; /* Evita cortes na navegação da apresentação. */ gap: 18px; /* Mantém respiro ao quebrar a linha. */ }
+  .city-landing-top nav { display: none; /* Prioriza marca e acesso, mantendo os mesmos destinos no conteúdo. */ }
+  .city-landing-hero { grid-template-columns: 1fr; /* Coloca a foto abaixo do slogan. */ padding-top: 40px; /* Aproxima a apresentação do cabeçalho. */ gap: 35px; /* Separa texto e fotografia. */ }
+  .city-landing-copy h1 { font-size: clamp(3rem, 7.7vw, 4.7rem); /* Dá destaque ao slogan em telas menores. */ }
+  .city-hero-description { max-width: 550px; /* Usa melhor a coluna única sem linhas excessivas. */ }
+  .city-landing-visual { height: 440px; /* Evita uma foto alta demais na composição em coluna. */ }
+  .city-experience-grid { grid-template-columns: 1fr; /* Apresenta cada eixo com espaço para fotografia e descrição. */ }
+  .city-experience-card { display: grid; /* Coloca foto e conteúdo em duas colunas intermediárias. */ grid-template-columns: .9fr 1fr; /* Equilibra a imagem com sua explicação. */ }
+  .city-experience-card > .city-photo { height: 100%; /* Mantém a fotografia junto de todo o texto. */ min-height: 240px; /* Garante presença visual suficiente. */ }
+  .city-experience-card p { min-height: auto; /* Remove um alinhamento desnecessário em linhas separadas. */ }
+  .city-section-heading { align-items: flex-start; /* Alinha os textos pelo início. */ flex-direction: column; /* Coloca a explicação abaixo do título. */ gap: 15px; /* Mantém respiro entre regiões. */ }
+  .city-section-heading > p { max-width: 500px; /* Ajusta as linhas à coluna única. */ }
+  .city-preview-note { flex-direction: column; /* Coloca a ação abaixo da explicação. */ align-items: flex-start; /* Alinha todos os elementos à esquerda. */ }
+  .city-landing-footer { flex-wrap: wrap; /* Mantém as mensagens dentro da janela. */ }
+}
+/* Mantém as ações e o mapa utilizáveis em celulares estreitos. */
+@media (max-width: 500px) {
+  .city-main { padding: 23px 14px 30px; /* Maximiza a largura útil sem encostar nas bordas. */ }
+  .city-topbar { padding-inline: 14px; /* Garante respiro para o perfil no celular. */ }
+  .city-topbar-controls select { max-width: 180px; /* Mantém o nome dos gestores dentro da janela. */ font-size: .72rem; /* Ajusta o texto sem esconder o perfil. */ }
+  .city-user-mark { display: none; /* Remove apenas a identificação decorativa quando o seletor já informa o perfil. */ }
+  .city-page-heading { flex-direction: column; /* Coloca a ação abaixo do título. */ align-items: flex-start; /* Alinha texto e ação ao início. */ gap: 17px; /* Separa as regiões. */ }
+  .city-page-heading h1 { font-size: 1.85rem; /* Mantém o título legível no celular. */ }
+  .city-command-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); /* Coloca dois indicadores por linha. */ }
+  .city-command-metrics article { border-bottom: 1px solid var(--city-line); /* Separa as duas linhas de indicadores. */ padding: 17px 13px; /* Mantém espaço para textos e números. */ }
+  .city-command-metrics article:nth-child(even) { border-right: 0; /* Evita borda duplicada na coluna direita. */ }
+  .city-command-metrics article:nth-last-child(-n+2) { border-bottom: 0; /* Mantém apenas a borda externa no rodapé. */ }
+  .city-command-metrics article > div { font-size: .68rem; /* Ajusta rótulos às duas colunas. */ }
+  .city-command-metrics strong { font-size: 1.8rem; /* Mantém os números dentro dos indicadores. */ }
+  .city-command-metrics small { font-size: .6rem; /* Preserva a nota em escala secundária. */ }
+  .city-panel { padding: 16px; /* Mantém os painéis confortáveis sem apertar o mapa. */ }
+  .city-panel-heading { align-items: flex-start; /* Evita desalinhamento de títulos de duas linhas. */ gap: 10px; /* Ajusta o respiro dos controles. */ }
+  .city-panel-heading h2 { font-size: 1.1rem; /* Ajusta o título à região disponível. */ }
+  .city-panel-heading > .city-mini-label { display: none; /* Remove somente uma etiqueta redundante em telas pequenas. */ }
+  .city-command-layer { gap: 8px; /* Aproveita a largura útil da faixa. */ }
+  .city-command-grid, .city-explorer-layout, .city-chart-grid { gap: 18px; /* Mantém respiro entre regiões empilhadas. */ }
+  .city-map-shell { height: 450px; /* Mantém o mapa explorável no celular. */ }
+  .city-map-shell.is-compact { height: 370px; /* Preserva presença territorial na primeira tela de comando. */ }
+  .city-map-tools { left: 7px; /* Aproxima os controles da moldura sem tocar as bordas. */ right: 7px; /* Mantém os botões dentro da janela. */ gap: 4px; /* Reduz espaços entre ações. */ }
+  .city-map-tools button { font-size: .59rem; /* Ajusta os três controles ao espaço pequeno. */ padding: 8px; /* Mantém área de toque útil. */ min-height: 40px; /* Preserva altura confortável de interação. */ }
+  .city-map-tools button svg { width: 12px; /* Reduz apenas os desenhos auxiliares. */ }
+  .city-map-mode { left: 7px; /* Alinha a identificação aos controles. */ font-size: .47rem; /* Mantém o aviso completo sem ocultar o zoom. */ padding: 7px; /* Ajusta o respiro da identificação. */ }
+  .city-command-focus .city-point-detail, .city-explorer-layout > .city-point-detail { display: block; /* Coloca a foto acima dos detalhes no celular. */ }
+  .city-command-focus .city-point-detail > .city-photo, .city-explorer-layout > .city-point-detail > .city-photo { height: 180px; /* Evita fotos excessivamente altas no painel móvel. */ min-height: 0; /* Remove a altura mínima do layout de tablet. */ }
+  .city-secondary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); /* Coloca os seis indicadores complementares em três linhas. */ gap: 10px; /* Mantém respiro entre valores. */ }
+  .city-location-grid { grid-template-columns: 1fr; /* Mantém nomes dos locais em uma coluna legível. */ }
+  .city-map-filters > label { flex: 1 1 100%; /* Coloca cada filtro em uma linha confortável. */ }
+  .city-map-filters select { width: 100%; /* Faz os seletores preencherem sua região. */ }
+  .city-category-tabs { gap: 6px; /* Aproxima categorias sem sobrepô-las. */ }
+  .city-category-tabs button { font-size: .65rem; /* Ajusta os nomes das categorias. */ padding: 10px 9px; /* Mantém o alvo de toque. */ }
+  .city-citizen-intro { grid-template-columns: 1fr; /* Coloca a explicação abaixo da fotografia. */ }
+  .city-table-hint { display: block; /* Revela a orientação de rolagem em telas estreitas. */ }
+  .city-module-intro { grid-template-columns: 1fr; /* Empilha fotografia e contexto do módulo. */ }
+  .city-module-intro .city-photo { height: 170px; /* Mantém uma faixa visual sem ocupar a tela inteira. */ min-height: 0; /* Remove a altura mínima usada no desktop. */ }
+  .city-module-form { grid-template-columns: 1fr; /* Mantém um campo por linha no celular. */ }
+  .city-module-filters > label { flex: 1 1 100%; /* Coloca pesquisa e filtros em linhas completas. */ }
+  .city-module-filters select { width: 100%; /* Faz os seletores preencherem a largura útil. */ }
+  .city-page-actions { width: 100%; /* Usa a largura disponível abaixo do título. */ }
+  .city-page-actions .city-button { flex: 1 1 auto; /* Distribui as ações sem cortar rótulos. */ }
+  .city-record-table { min-width: 600px; /* Mantém colunas legíveis antes da rolagem horizontal. */ }
+  .city-form-actions .city-button { flex: 1 1 auto; /* Amplia salvar e cancelar no celular. */ }
+  .city-citizen-intro .city-photo { height: 160px; /* Reserva uma faixa visual sem ocupar a tela inteira. */ min-height: 0; /* Remove altura mínima de desktop. */ }
+  .city-citizen-intro > div { padding: 22px; /* Mantém o aviso confortável na coluna única. */ }
+  .city-protocol-list summary { flex-wrap: wrap; /* Permite que situação e seta mudem de linha. */ }
+  .city-protocol-list summary > span:first-child { flex-basis: 100%; /* Dá ao protocolo uma linha inteira de leitura. */ }
+  .city-landing-top { padding: 22px 0; /* Ajusta o cabeçalho inicial ao celular. */ }
+  .city-landing-top > .city-button { font-size: .7rem; /* Mantém o acesso compacto. */ padding: 10px 12px; /* Ajusta o espaço da ação. */ }
+  .city-landing-copy h1 { font-size: clamp(2.7rem, 10vw, 3.8rem); /* Mantém o slogan impactante sem cortar palavras. */ }
+  .city-landing-copy .city-kicker { font-size: .59rem; /* Ajusta o rótulo acima do slogan. */ }
+  .city-hero-lead { font-size: .94rem; /* Mantém a proposta legível no celular. */ }
+  .city-landing-visual { height: 380px; /* Evita fotografia excessivamente alta em telas estreitas. */ }
+  .city-visual-heading { left: 15px; /* Aproxima a identificação da moldura. */ right: 15px; /* Mantém o rótulo dentro do recorte. */ font-size: .49rem; /* Ajusta os nomes das identificações. */ }
+  .city-visual-callout { left: 20px; /* Mantém a mensagem dentro do recorte diagonal. */ bottom: 92px; /* Evita a legenda da foto. */ }
+  .city-visual-callout strong { font-size: 1.12rem; /* Ajusta a mensagem à largura da imagem. */ }
+  .city-visual-callout span { font-size: .49rem; /* Mantém o contexto acima do título. */ }
+  .city-landing-numbers { gap: 20px 12px; /* Ajusta o espaço entre indicadores. */ }
+  .city-landing-numbers > div > span { font-size: .48rem; /* Evita rótulos largos em cada coluna. */ }
+  .city-landing-numbers strong { font-size: 1.65rem; /* Mantém números dentro da faixa. */ }
+  .city-landing-numbers small { font-size: .59rem; /* Ajusta a explicação dos números. */ }
+  .city-experience { padding: 48px 0; /* Reduz a distância entre as seções. */ }
+  .city-section-heading h2 { font-size: 2rem; /* Ajusta o segundo título editorial. */ }
+  .city-experience-card { display: block; /* Coloca foto e texto em coluna. */ }
+  .city-experience-card > .city-photo { height: 210px; /* Mantém presença visual sem altura excessiva. */ min-height: 0; /* Remove a regra do layout de tablet. */ }
+  .city-preview-note { padding: 24px; /* Aproveita melhor a largura útil. */ }
+  .city-landing-footer { align-items: flex-start; /* Alinha a marca e as notas pela borda inicial. */ flex-direction: column; /* Empilha as informações do rodapé. */ gap: 15px; /* Separa as regiões. */ }
+}
+/* Preserva a rolagem da navegação mesmo com o menu completo de módulos. */
+@media (max-height: 940px) and (min-width: 801px) {
+  .city-sidebar-note { display: none; /* Oculta apenas a nota decorativa quando a altura não comporta todos os módulos. */ }
+}
+/* Respeita visitantes sensíveis a movimento, incluindo transições da interface. */
+@media (prefers-reduced-motion: reduce) {
+  .moss-city *, .moss-city *::before, .moss-city *::after { animation: none !important; /* Remove animações não essenciais. */ transition: none !important; /* Retira transições visuais desnecessárias. */ scroll-behavior: auto !important; /* Evita rolagem animada. */ }
+}
+/* Mantém o botão de alternar tema com alvo de toque completo, mesmo com muitos controles no topo. */
+.city-theme-toggle { flex-shrink: 0; /* Impede que o ícone de dia/noite seja espremido pelo seletor de perfil. */ }
+/* Oferece atalhos rápidos aos módulos autorizados logo abaixo do título do centro de comando. */
+.city-command-shortcuts { display: flex; /* Coloca os atalhos em uma linha navegável. */ flex-wrap: wrap; /* Permite quebra quando o perfil possui muitos módulos. */ gap: 8px; /* Separa cada atalho sem cartões soltos. */ margin-bottom: 22px; /* Afasta os atalhos da faixa de indicadores. */ }
+/* Desenha cada atalho como uma ação curta, identificável e acessível por teclado. */
+.city-command-shortcuts a { display: inline-flex; /* Alinha ícone, nome e seta na mesma linha. */ align-items: center; /* Centraliza o conteúdo verticalmente. */ gap: 8px; /* Separa os elementos. */ min-height: 40px; /* Mantém alvo de toque confortável. */ padding: 8px 12px; /* Cria espaço interno. */ border: 1px solid var(--city-line); /* Delimita a ação com a linha estrutural. */ background: #0b1e31; /* Usa a mesma superfície técnica dos filtros no modo noturno. */ color: #c5d8e6; /* Mantém o rótulo legível sobre a superfície escura. */ font-size: .7rem; /* Usa escala curta de atalho. */ letter-spacing: .04em; /* Dá ritmo tecnológico ao rótulo. */ transition: background .16s, border-color .16s; /* Responde ao ponteiro sem animação pesada. */ }
+/* Realça o atalho sob o ponteiro mantendo a geometria técnica. */
+.city-command-shortcuts a:hover { border-color: var(--city-cyan); /* Usa o ciano da identidade como indício de interação. */ background: #ffffff08; /* Clareia a superfície sem brilho. */ color: var(--city-ice); /* Aumenta o contraste do rótulo no modo noturno. */ }
+/* Reduz a seta do atalho para não competir com o nome do módulo. */
+.city-command-shortcuts a svg:last-child { opacity: .65; /* Mantém a seta discreta ao lado do rótulo. */ }
+/* Lista as características técnicas do ponto como pares rótulo/valor sem usar tabela. */
+.city-point-specs { display: grid; /* Empilha cada característica técnica. */ gap: 7px; /* Separa as linhas sem tabelas pesadas. */ margin: 16px 0 0; /* Afasta da descrição do ponto. */ border-top: 1px solid var(--city-line); /* Conecta ao restante do painel. */ padding-top: 14px; /* Dá respiro abaixo da linha. */ font-size: .69rem; /* Usa escala de apoio do detalhe. */ }
+/* Coloca rótulo e valor da característica na mesma linha. */
+.city-point-specs div { display: flex; /* Alinha os dois lados da informação. */ justify-content: space-between; /* Afasta rótulo e valor. */ gap: 10px; /* Mantém respiro em telas estreitas. */ }
+/* Mantém o rótulo da característica em segundo plano. */
+.city-point-specs dt { color: var(--city-muted); /* Usa a cor secundária compartilhada. */ font-weight: 400; /* Evita peso excessivo no rótulo. */ }
+/* Destaca o valor medido ou previsto do ponto. */
+.city-point-specs dd { margin: 0; /* Remove o recuo padrão da descrição. */ color: var(--city-ice); /* Usa a cor principal de leitura. */ font-family: Consolas, monospace; /* Alinha datas, medidas e códigos. */ text-align: right; /* Alinha os valores à direita da linha. */ }
+/* Apresenta as etapas registradas no ponto como uma linha do tempo curta. */
+.city-point-history { margin-top: 16px; /* Afasta o histórico dos indicadores. */ border-top: 1px solid var(--city-line); /* Separa as etapas registradas. */ padding-top: 14px; /* Dá respiro ao título. */ }
+/* Aproxima o rótulo do primeiro evento do histórico. */
+.city-point-history .city-kicker { margin-bottom: 11px; /* Mantém o título compacto acima da lista. */ }
+/* Remove marcadores padrão para usar a linha do tempo própria. */
+.city-point-history ul { list-style: none; /* Evita bolinhas nativas. */ margin: 0; /* Controla o espaçamento pelo componente. */ padding: 0; /* Evita recuo duplicado. */ display: grid; /* Empilha os eventos. */ gap: 10px; /* Separa cada etapa. */ }
+/* Conecta cada evento a uma linha vertical na cor do tema atual. */
+.city-point-history li { border-left: 2px solid var(--city-cyan); /* Usa a cor viva do modo dia ou noite. */ padding-left: 10px; /* Afasta o texto da linha. */ color: var(--city-muted); /* Mantém a descrição em segundo plano. */ font-size: .68rem; /* Usa escala de histórico. */ line-height: 1.6; /* Facilita a leitura das etapas. */ }
+/* Coloca a data acima da descrição de cada etapa. */
+.city-point-history time { display: block; /* Ocupa sua própria linha. */ font-family: Consolas, monospace; /* Alinha as datas como códigos. */ color: var(--city-cyan); /* Destaca a referência temporal. */ font-size: .63rem; /* Mantém a data compacta. */ margin-bottom: 3px; /* Separa data e descrição. */ }
+/* Aplica a cor da categoria ao rótulo do detalhe por variável, preparada para o modo dia. */
+.city-kicker-category { color: var(--category-color); /* Mantém a identidade cromática de cada setor no modo noturno. */ }
+/* ===== MODO DIA: troca apenas as cores centrais, sem mexer na identidade noturna. ===== */
+/* Redefine as variáveis do tema; todo texto que usa var() se adapta automaticamente. */
+.moss-city.theme-day { color-scheme: light; /* Ajusta controles nativos como seletores e calendários ao fundo claro. */ --city-night: #eef3f8; /* Usa um azul claríssimo como fundo da aplicação. */ --city-cyan: #00739a; /* Escurece o ciano para manter contraste de texto e foco sobre claro. */ --city-ice: #0c2233; /* Inverte o texto principal para um azul quase preto. */ --city-green: #0f7a55; /* Torna o verde legível sobre superfícies claras. */ --city-muted: #46617a; /* Mantém o texto secundário com bom contraste no claro. */ --city-line: #c9d6e2; /* Clareia as linhas estruturais. */ --city-steel: #dbe6ef; /* Clareia as superfícies técnicas secundárias. */ }
+/* ===== Modo dia · botões e foco ===== */
+/* Mantém o atalho de teclado legível porque a regra noturna usa !important. */
+.moss-city.theme-day .city-skip { color: #ffffff !important; /* Texto branco sobre o ciano escuro do modo dia. */ }
+/* Inverte o texto do botão principal para manter contraste acima de 4,5:1. */
+.moss-city.theme-day .city-button-primary { color: #ffffff; /* Branco sobre o ciano diurno com contraste de 5,3:1. */ }
+/* Preserva o texto branco também na resposta ao ponteiro. */
+.moss-city.theme-day .city-button-primary:hover { background: #0090c0; /* Ciano um pouco mais escuro no hover. */ }
+/* Clareia as ações secundárias sem apagar o texto escuro. */
+.moss-city.theme-day .city-button-outline { background: #ffffffcc; /* Superfície clara translúcida. */ border-color: #9fb4c6; /* Moldura perceptível sobre o fundo claro. */ }
+/* Responde ao ponteiro em tons claros. */
+.moss-city.theme-day .city-button-outline:hover { background: #dfe9f1; /* Clareia sem perder leitura. */ border-color: var(--city-cyan); /* Indica interação com o ciano diurno. */ }
+/* Ajusta as ações textuais auxiliares ao fundo claro. */
+.moss-city.theme-day .city-button-text { color: #0a6d8c; /* Ciano escuro legível sobre branco. */ }
+/* ===== Modo dia · apresentação inicial ===== */
+/* Mantém a profundidade radial da apresentação em tom claro. */
+.moss-city.theme-day .city-landing { background: radial-gradient(ellipse at 80% 35%, #00739a1f, transparent 60%); /* Mesma composição suave com tinta diurna. */ }
+/* Ajusta os links da navegação da apresentação. */
+.moss-city.theme-day .city-landing-top nav { color: #33506a; /* Azul médio legível sobre o fundo claro. */ }
+/* Torna a proposta principal escura sobre o novo fundo. */
+.moss-city.theme-day .city-hero-lead { color: #17324a; /* Tom escuro com prioridade de leitura. */ }
+/* Clareia os cartões dos eixos urbanos. */
+.moss-city.theme-day .city-experience-card { background: #ffffff; /* Mesma superfície dos painéis internos. */ }
+/* Ajusta o link de cada cartão ao fundo claro. */
+.moss-city.theme-day .city-experience-card a { color: #0a6d8c; /* Ciano escuro legível sobre branco. */ }
+/* Mantém a nota de contexto da faixa de números legível. */
+.moss-city.theme-day .city-landing-numbers > p { color: #46617a; /* Usa o texto secundário do tema diurno. */ }
+/* Destaca o ponto de revisão em superfície clara. */
+.moss-city.theme-day .city-preview-note { border-color: #9fb4c6; /* Moldura clara perceptível. */ background: #f4f8fb; /* Fundo suave abaixo dos painéis brancos. */ }
+/* Garante contraste do parágrafo dentro da nota. */
+.moss-city.theme-day .city-preview-note p { color: #24405a; /* Texto escuro sobre a nota clara. */ }
+/* Mantém os textos sobrepostos à fotografia sempre claros, nos dois modos. */
+.moss-city.theme-day .city-visual-heading, .moss-city.theme-day .city-visual-callout, .moss-city.theme-day .city-visual-coordinates { color: #eaf7ff; /* O gradiente escuro da foto continua protegendo a leitura. */ }
+/* Mantém o ícone brilhante sobre o gradiente escuro da imagem. */
+.moss-city.theme-day .city-visual-callout > svg { color: #7ce5ff; /* Ciano claro apenas onde o fundo permanece escuro. */ }
+/* ===== Modo dia · navegação e cabeçalho ===== */
+/* Clareia o menu lateral e sua borda estrutural. */
+.moss-city.theme-day .city-sidebar { background: #ffffff; /* Menu branco encostado no conteúdo claro. */ border-right-color: #c9d6e2; /* Borda compatível com o tema diurno. */ }
+/* Ajusta a etiqueta de ambiente no topo do menu. */
+.moss-city.theme-day .city-environment { color: #41607a; /* Azul acinzentado legível no branco. */ }
+/* Clareia as linhas que delimitam a cidade fictícia. */
+.moss-city.theme-day .city-municipality { border-top-color: #c9d6e2; /* Linha superior clara. */ border-bottom-color: #c9d6e2; /* Linha inferior clara. */ }
+/* Mantém o monograma da cidade legível no modo dia. */
+.moss-city.theme-day .city-municipality-symbol { border-color: #9fb4c6; /* Moldura perceptível. */ color: #0a6d8c; /* Ciano escuro no lugar do ciano claro. */ }
+/* Ajusta o título dos grupos de navegação. */
+.moss-city.theme-day .city-nav-heading { color: #46617a; /* Hierarquia secundária escura. */ }
+/* Torna os itens do menu escuros sobre o branco. */
+.moss-city.theme-day .city-sidebar nav a { color: #24405a; /* Texto principal do menu diurno. */ }
+/* Mantém a numeração técnica discreta. */
+.moss-city.theme-day .city-sidebar nav small { color: #5d768c; /* Número em tom secundário. */ }
+/* Repinta a faixa da página ativa com tinta ciano translúcida. */
+.moss-city.theme-day .city-sidebar nav a.active { background: linear-gradient(90deg, #00739a24, #00739a0a); /* Mesmo efeito com o ciano diurno. */ color: #0a4a63; /* Azul profundo para a seleção atual. */ }
+/* Usa uma sombra clara no lugar do brilho branco do modo noturno. */
+.moss-city.theme-day .city-sidebar nav a:hover { background-color: #00000008; /* Interação sutil sobre o branco. */ }
+/* Ajusta a nota explicativa do menu lateral. */
+.moss-city.theme-day .city-sidebar-note { color: #41607a; /* Texto secundário diurno. */ }
+/* Mantém o ícone da nota no ciano estrutural. */
+.moss-city.theme-day .city-sidebar-note svg { color: #0a6d8c; /* Ciano escuro legível. */ }
+/* Destaca o título da nota sem perda de contraste. */
+.moss-city.theme-day .city-sidebar-note strong { color: #12283a; /* Tom quase preto para o ponto principal. */ }
+/* Ajusta restauração e saída no rodapé do menu. */
+.moss-city.theme-day .city-sidebar-footer > button, .moss-city.theme-day .city-sidebar-footer > a { color: #24405a; /* Ações auxiliares escuras sobre branco. */ }
+/* Mantém a versão da demonstração discreta. */
+.moss-city.theme-day .city-sidebar-footer > span { color: #46617a; /* Versão em tom secundário. */ }
+/* Clareia a faixa superior do ambiente interno. */
+.moss-city.theme-day .city-topbar { background: #ffffff; /* Faixa branca igual ao menu lateral. */ }
+/* Ajusta o contexto operacional do cabeçalho. */
+.moss-city.theme-day .city-topbar-context { color: #33607a; /* Identificação técnica escura. */ }
+/* Mantém a mensagem auxiliar legível. */
+.moss-city.theme-day .city-topbar-context strong { color: #17324a; /* Frase principal em azul escuro. */ }
+/* Clareia o divisor vertical do cabeçalho. */
+.moss-city.theme-day .city-topbar-divider { background: #c9d6e2; /* Linha clara compatível com a faixa branca. */ }
+/* Ajusta o selo de cenário simulado. */
+.moss-city.theme-day .city-simulation-tag { color: #33607a; /* Rótulo escuro sobre o cabeçalho claro. */ }
+/* Mantém as iniciais do perfil visíveis no modo dia. */
+.moss-city.theme-day .city-user-mark { border-color: #9fb4c6; /* Moldura clara. */ color: #0a6d8c; /* Letras em ciano escuro. */ }
+/* ===== Modo dia · campos, superfícies e botões de ícone ===== */
+/* Inverte todos os campos nativos da aplicação. */
+.moss-city.theme-day input, .moss-city.theme-day select, .moss-city.theme-day textarea { border-color: #9fb4c6; /* Moldura perceptível sobre branco. */ background: #ffffff; /* Campo branco. */ color: #0c2233; /* Texto digitado escuro. */ }
+/* Integra o seletor de perfil ao cabeçalho diurno. */
+.moss-city.theme-day .city-topbar-controls select { border-color: #9fb4c6; /* Remove a moldura escura do topo. */ }
+/* Clareia os botões de ícone, incluindo o de alternar tema e o menu móvel. */
+.moss-city.theme-day .city-icon-button { background: #ffffff; /* Superfície branca com a mesma geometria. */ }
+/* ===== Modo dia · painéis, indicadores e detalhe do ponto ===== */
+/* Mantém a faixa de indicadores em superfície branca. */
+.moss-city.theme-day .city-command-metrics { background: #ffffff; /* Continua sendo uma faixa contínua, agora clara. */ border-top-color: #00739a; /* Detalhe superior em ciano diurno. */ }
+/* Ajusta os rótulos da faixa de indicadores. */
+.moss-city.theme-day .city-command-metrics article > div { color: #46617a; /* Rótulo secundário escuro. */ }
+/* Mantém os ícones da faixa visíveis. */
+.moss-city.theme-day .city-command-metrics svg { color: #0a6d8c; /* Ciano escuro sobre branco. */ }
+/* Clareia todos os painéis da aplicação. */
+.moss-city.theme-day .city-panel { background: #ffffff; /* Superfície sólida clara, sem vidro. */ }
+/* Ajusta as etiquetas operacionais auxiliares. */
+.moss-city.theme-day .city-mini-label { color: #46617a; /* Etiqueta em tom secundário. */ }
+/* Clareia o cartão do ponto selecionado. */
+.moss-city.theme-day .city-point-detail { background: #ffffff; /* Detalhe branco dentro do painel. */ border-color: #c9d6e2; /* Moldura clara. */ }
+/* Mantém bairro e localização legíveis. */
+.moss-city.theme-day .city-point-location { color: #41607a; /* Texto de apoio escuro. */ }
+/* Converte o selo de situação para o modo dia. */
+.moss-city.theme-day .city-badge { border-color: #8fc9b4; /* Borda verde clara. */ background: #e2f6ee; /* Fundo verde muito suave. */ color: #0d5c41; /* Texto verde escuro com alto contraste. */ }
+/* Ajusta a descrição fictícia do ponto. */
+.moss-city.theme-day .city-detail-description { color: #33506a; /* Texto secundário diurno. */ }
+/* Mantém rótulo e percentual de execução legíveis. */
+.moss-city.theme-day .city-project-progress > div { color: #41607a; /* Texto de apoio escuro. */ }
+/* Torna a barra de execução perceptível sobre o branco. */
+.moss-city.theme-day .city-project-progress progress { accent-color: #00739a; /* Preenchimento em ciano diurno. */ }
+/* Clareia a linha que separa o orçamento. */
+.moss-city.theme-day .city-budget-line { border-top-color: #dbe5ee; /* Divisória interna clara. */ }
+/* Ajusta o link de saída do detalhe. */
+.moss-city.theme-day .city-detail-link { border-top-color: #dbe5ee; /* Divisória clara. */ color: #0a6d8c !important; /* Sobrescreve o destaque claro fixo com !important. */ }
+/* ===== Modo dia · filtros, listas e estados ===== */
+/* Clareia as faixas de filtros, superfícies e rolagem de tabela. */
+.moss-city.theme-day .city-map-filters, .moss-city.theme-day .city-module-filters, .moss-city.theme-day .city-table-scroll { background: #f4f8fb; /* Azul claríssimo que separa a faixa dos painéis brancos. */ }
+/* Mantém o ícone de pesquisa perceptível. */
+.moss-city.theme-day .city-search { color: #46617a; /* Ícone em tom secundário escuro. */ }
+/* Torna as confirmações verdes escuras sobre claro. */
+.moss-city.theme-day .city-feedback { color: #0f7a55; /* Verde diurno com contraste de texto. */ }
+/* Converte os filtros de categoria do território. */
+.moss-city.theme-day .city-category-tabs button { border-color: #9fb4c6; /* Moldura clara. */ background: #ffffff; /* Opção branca. */ color: #12283a; /* Nome escuro. */ }
+/* Ajusta as contagens dentro dos filtros. */
+.moss-city.theme-day .city-category-tabs span { color: #46617a; /* Quantidade em tom secundário. */ }
+/* Repinta a categoria ativa sem perder o contorno técnico. */
+.moss-city.theme-day .city-category-tabs button[aria-pressed='true'] { border-color: #00739a; /* Seleção em ciano diurno. */ background: #e0f5fd; /* Fundo azulado suave. */ color: #0a4a63; /* Texto da seleção em azul profundo. */ }
+/* Converte os itens da lista de locais do explorador. */
+.moss-city.theme-day .city-location-item { background: #ffffff; /* Item branco. */ border-color: #c9d6e2; /* Moldura clara. */ color: #12283a; /* Nome escuro. */ }
+/* Repinta o local selecionado na lista. */
+.moss-city.theme-day .city-location-item.is-selected { border-color: #00739a; /* Mesma seleção do mapa no modo diurno. */ background: #e3f4fb; /* Fundo azul claríssimo. */ }
+/* Ajusta o bairro e a situação exibidos no item. */
+.moss-city.theme-day .city-location-item small { color: #41607a; /* Detalhe em tom secundário. */ }
+/* Mantém o ícone de localização do item legível. */
+.moss-city.theme-day .city-location-item > svg { color: #41607a; /* Ícone em tom secundário. */ }
+/* Converte a mensagem de lista vazia. */
+.moss-city.theme-day .city-empty { border-color: #9fb4c6; /* Moldura tracejada clara. */ color: #33506a; /* Texto informativo escuro. */ }
+/* Converte o alerta de erro para uma caixa clara de alto contraste. */
+.moss-city.theme-day .city-error { background: #fdeceb; /* Fundo rosa muito suave. */ border-color: #d9a19e; /* Borda vermelha clara. */ color: #7a1f1a; /* Texto vermelho escuro legível. */ }
+/* Mantém a legenda de categorias legível abaixo do mapa. */
+.moss-city.theme-day .city-map-legend { color: #41607a; /* Texto escuro sobre o painel branco. */ }
+/* ===== Modo dia · indicadores complementares e gráficos ===== */
+/* Clareia a linha à esquerda de cada indicador complementar. */
+.moss-city.theme-day .city-secondary-metrics article { border-left-color: #c9d6e2; /* Divisória clara. */ }
+/* Ajusta os ícones dos indicadores complementares. */
+.moss-city.theme-day .city-secondary-metrics svg { color: #0a6d8c; /* Ciano escuro sobre branco. */ }
+/* Mantém os rótulos dos indicadores em segundo plano. */
+.moss-city.theme-day .city-secondary-metrics span { color: #46617a; /* Texto secundário diurno. */ }
+/* Ajusta a lista textual de valores dos gráficos. */
+.moss-city.theme-day .city-chart-values { color: #33506a; /* Valores legíveis sobre o painel branco. */ }
+/* Identifica a série de solicitações no modo dia. */
+.moss-city.theme-day .city-chart-legend { color: #0a6d8c; /* Ciano escuro no lugar do ciano claro. */ }
+/* Identifica a série concluída no modo dia. */
+.moss-city.theme-day .city-chart-legend span:last-child { color: #0f7a55; /* Verde escuro legível. */ }
+/* Ajusta a explicação sob os gráficos. */
+.moss-city.theme-day .city-chart-note { color: #46617a; /* Nota em tom secundário. */ }
+/* Substitui a linha da série de solicitações desenhada pela biblioteca. */
+.moss-city.theme-day .city-chart [stroke='#00d4ff'] { stroke: #00739a; /* Ciano diurno no traço principal. */ }
+/* Substitui a linha da série concluída. */
+.moss-city.theme-day .city-chart [stroke='#32d6a0'] { stroke: #0f7a55; /* Verde diurno no traço secundário. */ }
+/* Substitui o preenchimento verde das barras de distribuição. */
+.moss-city.theme-day .city-chart [fill='#32d6a0'] { fill: #0f7a55; /* Verde escuro legível sobre branco. */ }
+/* Escurece a grade do gráfico temporal. */
+.moss-city.theme-day .city-chart [stroke='#ffffff0b'] { stroke: #dbe5ee; /* Grade clara em vez de branco translúcido. */ }
+/* Escurece a grade do gráfico de distribuição. */
+.moss-city.theme-day .city-chart [stroke='#ffffff09'] { stroke: #dbe5ee; /* Mesma grade clara do gráfico temporal. */ }
+/* Ajusta os eixos do gráfico temporal. */
+.moss-city.theme-day .city-chart [stroke='#9bb1c5'] { stroke: #9fb4c6; /* Eixo perceptível sobre branco. */ }
+/* Ajusta o eixo de categorias do gráfico de barras. */
+.moss-city.theme-day .city-chart [stroke='#a8bdd0'] { stroke: #6b8299; /* Rótulos das categorias em tom médio. */ }
+/* Troca o realce do ponteiro sobre as barras. */
+.moss-city.theme-day .city-chart [fill='#ffffff05'] { fill: #e8eef4; /* Cursor claro no lugar do branco translúcido. */ }
+/* Torna todos os textos da biblioteca de gráficos escuros no modo dia. */
+.moss-city.theme-day .city-chart .recharts-text { fill: #46617a; /* Rótulos de eixo e valores em tom secundário. */ }
+/* Ajusta o gradiente de preenchimento da série de solicitações. */
+.moss-city.theme-day .city-chart [stop-color='#00d4ff'] { stop-color: #00739a; /* Mesma tinta do traço principal. */ }
+/* ===== Modo dia · tabelas, relatórios e exportação ===== */
+/* Ajusta os cabeçalhos da tabela de cadastros. */
+.moss-city.theme-day .city-record-table thead th { color: #46617a; /* Títulos em tom secundário escuro. */ }
+/* Ajusta as células e as divisórias dos registros. */
+.moss-city.theme-day .city-record-table tbody td { color: #17324a; /* Texto principal escuro. */ border-top-color: #dbe5ee; /* Linhas entre registros em tom claro. */ }
+/* Mantém a primeira coluna como identificação principal. */
+.moss-city.theme-day .city-record-table tbody td:first-child { color: #0c2233; /* Valor principal quase preto. */ }
+/* Ajusta a dica de rolagem lateral das tabelas. */
+.moss-city.theme-day .city-table-hint { color: #46617a; /* Nota em tom secundário. */ }
+/* Torna a ação de exclusão legível sem depender só da cor. */
+.moss-city.theme-day .city-row-actions .is-danger { color: #b3261e; /* Vermelho escuro com contraste sobre branco. */ }
+/* Mantém os códigos de protocolo destacados no modo dia. */
+.moss-city.theme-day .city-protocol-code { color: #0a6d8c; /* Ciano escuro em fonte monoespaçada. */ }
+/* Ajusta os cabeçalhos da tabela de situações dos relatórios. */
+.moss-city.theme-day .city-report-table thead th { color: #46617a; /* Títulos em tom secundário. */ }
+/* Ajusta os nomes de situação das linhas. */
+.moss-city.theme-day .city-report-table tbody th, .moss-city.theme-day .city-report-table tfoot th { color: #17324a; /* Texto escuro. */ border-top-color: #dbe5ee; /* Divisória clara entre situações. */ }
+/* Ajusta as contagens e valores das colunas numéricas. */
+.moss-city.theme-day .city-report-table tbody td, .moss-city.theme-day .city-report-table tfoot td { color: #17324a; /* Números escuros para comparação rápida. */ border-top-color: #dbe5ee; /* Linhas claras. */ }
+/* Destaca a linha de total no modo dia. */
+.moss-city.theme-day .city-report-table tfoot th, .moss-city.theme-day .city-report-table tfoot td { color: #0c2233; /* Total quase preto. */ border-top-color: #9fb4c6; /* Contorno mais presente no fechamento. */ }
+/* ===== Modo dia · portal, protocolos, notas e rodapé ===== */
+/* Ajusta os rótulos dos formulários do portal e dos módulos. */
+.moss-city.theme-day .city-request-form label, .moss-city.theme-day .city-module-form .city-field { color: #24405a; /* Instruções escuras sobre superfície clara. */ }
+/* Ajusta o filtro de situação do acompanhamento. */
+.moss-city.theme-day .city-protocol-filter { color: #33506a; /* Rótulo escuro sobre fundo claro. */ }
+/* Clareia as divisórias entre protocolos. */
+.moss-city.theme-day .city-protocol-list details { border-top-color: #dbe5ee; /* Linha clara entre registros. */ }
+/* Mantém o código fictício destacado na lista de protocolos. */
+.moss-city.theme-day .city-protocol-list summary small { color: #0a6d8c; /* Ciano escuro em fonte monoespaçada. */ }
+/* Ajusta bairro e data exibidos ao lado do protocolo. */
+.moss-city.theme-day .city-protocol-context { color: #46617a; /* Contexto em tom secundário. */ }
+/* Converte o bloco expandido do histórico do protocolo. */
+.moss-city.theme-day .city-protocol-history { background: #f2f7fb; /* Fundo claro que diferencia da lista recolhida. */ border-left-color: #0a6d8c; /* Linha do tempo em ciano escuro. */ color: #17324a; /* Eventos escuros. */ }
+/* Mantém as datas do histórico destacadas. */
+.moss-city.theme-day .city-protocol-history time { color: #0a6d8c; /* Data em ciano escuro. */ }
+/* Ajusta as faixas demonstrativas de introdução dos módulos e do portal. */
+.moss-city.theme-day .city-citizen-intro, .moss-city.theme-day .city-module-intro { border-color: #9fb4c6; /* Moldura clara. */ background: #f4f8fb; /* Superfície suave distinta dos painéis. */ }
+/* Mantém o ícone informativo verde no modo dia. */
+.moss-city.theme-day .city-citizen-intro > div > svg { color: #0f7a55; /* Verde escuro legível. */ }
+/* Ajusta os parágrafos das faixas de introdução. */
+.moss-city.theme-day .city-citizen-intro p, .moss-city.theme-day .city-module-intro p { color: #24405a; /* Texto escuro sobre a faixa clara. */ }
+/* Ajusta os rótulos dos números-resumo do módulo. */
+.moss-city.theme-day .city-module-stats { color: #46617a; /* Rótulos em tom secundário. */ }
+/* Mantém os números-resumo em destaque. */
+.moss-city.theme-day .city-module-stats strong { color: #0c2233; /* Valores quase pretos. */ }
+/* Ajusta a nota de escopo exibida no fim dos módulos. */
+.moss-city.theme-day .city-module-note { color: #46617a; /* Nota em tom secundário. */ }
+/* Mantém o ícone da nota no ciano estrutural. */
+.moss-city.theme-day .city-module-note svg { color: #0a6d8c; /* Ciano escuro sobre branco. */ }
+/* Ajusta as notas do rodapé do ambiente interno. */
+.moss-city.theme-day .city-workspace-footer { color: #46617a; /* Texto secundário diurno. */ }
+/* Mantém o divisor da assinatura no ciano da marca. */
+.moss-city.theme-day .city-workspace-footer b { color: #0a6d8c; /* Ciano escuro legível. */ }
+/* Ajusta a mensagem de carregamento de módulos. */
+.moss-city.theme-day .city-content-loading { color: #33607a; /* Estado visível sobre fundo claro. */ }
+/* Clareia a moldura do emblema da marca no modo dia. */
+.moss-city.theme-day .city-brand-symbol { border-color: #00739a75; /* Contorno em ciano diurno translúcido. */ background: #00739a12; /* Película de cor suave sobre o branco. */ }
+/* Escurece a cor da categoria quando ela aparece como texto sobre superfície clara. */
+.moss-city.theme-day .city-kicker-category { color: #0a4f68; /* Cor de reserva escura caso o navegador não suporte a mistura. */ color: color-mix(in srgb, var(--category-color) 50%, #06182b); /* Mantém o tom do setor com metade da luminosidade, garantindo contraste no modo dia. */ }
+/* Escurece a letra e a moldura do símbolo da categoria na listagem de locais. */
+.moss-city.theme-day .city-category-symbol { color: #0a4f68; /* Cor de reserva escura para navegadores antigos. */ color: color-mix(in srgb, var(--category-color) 50%, #06182b); /* Repete a mesma lógica de escurecimento no selo do local. */ }
+/* ===== Modo dia · atalhos do centro de comando ===== */
+/* Converte os atalhos de módulos para superfícies claras. */
+.moss-city.theme-day .city-command-shortcuts a { background: #ffffff; /* Atalho branco como os painéis. */ color: #12283a; /* Nome escuro. */ }
+/* Realça o atalho com um azul suave no ponteiro. */
+.moss-city.theme-day .city-command-shortcuts a:hover { background: #e7f1f7; /* Clareia sem perder o texto escuro. */ }
+/* ===== Modo dia · camada cartográfica ===== */
+/* O mapa mantém a aparência noturna nos dois modos: a território autoral é escura por desenho, e os controles ficam legíveis tanto sobre o desenho quanto sobre os tiles claros da OpenStreetMap. */
+/* Comprime os atalhos do comando em celulares estreitos sem cortar rótulos. */
+@media (max-width: 500px) {
+  .city-command-shortcuts a { flex: 1 1 auto; /* Preenche as linhas disponíveis no celular. */ justify-content: center; /* Centraliza ícone, nome e seta. */ }
+}

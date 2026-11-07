@@ -1,0 +1,116 @@
+[
+  {
+    "width": 1440,
+    "route": "/",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/administrador/comando",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/administrador/mapa",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/administrador/obras",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/administrador/solicitacoes",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/administrador/relatorios",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/cidadao/portal",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/administrador/mapa",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/administrador/obras",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/obras/comando",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/ambiental/ambiente",
+    "theme": "night",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/",
+    "theme": "day",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/administrador/comando",
+    "theme": "day",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/administrador/obras",
+    "theme": "day",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/administrador/relatorios",
+    "theme": "day",
+    "violations": []
+  },
+  {
+    "width": 1440,
+    "route": "/administrador/mapa",
+    "theme": "day",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/administrador/comando",
+    "theme": "day",
+    "violations": []
+  },
+  {
+    "width": 390,
+    "route": "/administrador/obras",
+    "theme": "day",
+    "violations": []
+  }
+]
