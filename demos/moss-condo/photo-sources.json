@@ -1,0 +1,128 @@
+[
+  {
+    "key": "fachada",
+    "subject": "Fachada residencial",
+    "source": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1800&q=85",
+    "provider": "Unsplash",
+    "source_page": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1800&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "Imagem ilustrativa; não representa cliente, condomínio ou patrimônio da MOSS Digital.",
+    "widths": [
+      640,
+      1120,
+      1600
+    ]
+  },
+  {
+    "key": "residencia",
+    "subject": "Residência contemporânea",
+    "source": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
+    "provider": "Unsplash",
+    "source_page": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "Imagem ilustrativa; não representa cliente, condomínio ou patrimônio da MOSS Digital.",
+    "widths": [
+      640,
+      1120,
+      1600
+    ]
+  },
+  {
+    "key": "recepcao",
+    "subject": "Ambiente de recepção e convivência",
+    "source": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85",
+    "provider": "Unsplash",
+    "source_page": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "Imagem ilustrativa; não representa cliente, condomínio ou patrimônio da MOSS Digital.",
+    "widths": [
+      640,
+      1120,
+      1600
+    ]
+  },
+  {
+    "key": "salao",
+    "subject": "Salão de eventos",
+    "source": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1800&q=85",
+    "provider": "Unsplash",
+    "source_page": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1800&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "Imagem ilustrativa; não representa cliente, condomínio ou patrimônio da MOSS Digital.",
+    "widths": [
+      640,
+      1120,
+      1600
+    ]
+  },
+  {
+    "key": "churrasqueira",
+    "subject": "Detalhe de churrasqueira a carvão",
+    "source": "https://images.pexels.com/photos/8021097/pexels-photo-8021097.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    "provider": "Pexels",
+    "source_page": "https://www.pexels.com/photo/8021097/",
+    "license": "https://www.pexels.com/license/",
+    "usage": "Imagem ilustrativa; não representa cliente, condomínio ou patrimônio da MOSS Digital.",
+    "widths": [
+      640,
+      1120,
+      1600
+    ]
+  },
+  {
+    "key": "quadra",
+    "subject": "Quadra esportiva",
+    "source": "https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1800",
+    "provider": "Pexels",
+    "source_page": "https://www.pexels.com/photo/209977/",
+    "license": "https://www.pexels.com/license/",
+    "usage": "Imagem ilustrativa; não representa cliente, condomínio ou patrimônio da MOSS Digital.",
+    "widths": [
+      640,
+      1120,
+      1600
+    ]
+  },
+  {
+    "key": "gourmet",
+    "subject": "Ambiente gourmet",
+    "source": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85",
+    "provider": "Unsplash",
+    "source_page": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1800&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "Imagem ilustrativa; não representa cliente, condomínio ou patrimônio da MOSS Digital.",
+    "widths": [
+      640,
+      1120,
+      1600
+    ]
+  },
+  {
+    "key": "reunioes",
+    "subject": "Ambiente de reuniões",
+    "source": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85",
+    "provider": "Unsplash",
+    "source_page": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "Imagem ilustrativa; não representa cliente, condomínio ou patrimônio da MOSS Digital.",
+    "widths": [
+      640,
+      1120,
+      1600
+    ]
+  },
+  {
+    "key": "piscina",
+    "subject": "Piscina e área de lazer",
+    "source": "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1800&q=85",
+    "provider": "Unsplash",
+    "source_page": "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1800&q=85",
+    "license": "https://unsplash.com/license",
+    "usage": "Imagem ilustrativa; não representa cliente, condomínio ou patrimônio da MOSS Digital.",
+    "widths": [
+      640,
+      1120,
+      1600
+    ]
+  }
+]
