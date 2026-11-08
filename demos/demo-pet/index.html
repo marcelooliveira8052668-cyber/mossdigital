@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>PetLove Clinica Veterinaria | Atendimento para Cachorros e Gatos</title>
+    <meta name="description" content="PetLove Clinica Veterinaria - Consulta, emergência, cirurgia e exames para pets. Agende uma visita e mantenha seu cachorro ou gato saudável." />
+    <meta name="author" content="PetLove" />
+    <link rel="canonical" href="https://petlove.clinicavet/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="PetLove Clinica Veterinaria" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="PetLove Clinica Veterinaria | Atendimento para Pets" />
+    <meta property="og:description" content="Consulta, emergência, cirurgia e exames para pets. Agende uma visita e mantenha seu cachorro ou gato saudável." />
+    <meta property="og:image" content="assets/img/vet-consultorio.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PetLove Clinica Veterinaria | Atendimento para Pets" />
+    <meta name="twitter:description" content="Consulta, emergência, cirurgia e exames para pets. Agende uma visita e mantenha seu cachorro ou gato saudável." />
+    <meta name="twitter:image" content="assets/img/vet-consultorio.webp" />
+    <style>
+        :root {
+            --navy: #1A1A2E;
+            --teal: #008080;
+            --light-teal: #4DBDBC;
+            --white: #FFFFFF;
+            --cream: #F7F5EB;
+            --dark-cream: #D4C8BD;
+            --muted: #777777;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font: 16px/1.6 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--cream); color: var(--navy); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+        .container { max-width: 1120px; margin: auto; padding: 0 20px; }
+
+        /* Header */
+        header { background: var(--navy); border-bottom: 4px solid var(--teal); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .top { min-height: 80px; display: flex; justify-content: space-between; align-items: center; gap: 25px; flex-wrap: wrap; color: var(--white); }
+        .brand { font-size: 1.6rem; font-weight: 800; color: var(--teal); letter-spacing: .02em; }
+        .brand-logo { display: inline-block; width: min(280px, 70vw); height: auto; max-height: 80px; object-fit: contain; }
+        nav { display: flex; flex-wrap: wrap; gap: 30px; }
+        nav a { color: var(--white); font-size: 1rem; font-weight: 550; transition: color 0.2s; }
+        nav a:hover { color: var(--light-teal); }
+        .cta { display: inline-block; padding: 14px 28px; background: var(--light-teal); color: var(--navy); border-radius: 25px; font-weight: 700; font-size: 1rem; transition: background 0.2s, transform 0.1s; box-shadow: 0 4px 12px rgba(0, 128, 128, 0.3); }
+        .cta:hover { background: #33a9a0; transform: translateY(-2px); }
+
+        /* Hero */
+        .hero { padding: 200px 20px 100px; background: var(--navy); color: var(--white); text-align: center; position: relative; }
+        .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 400px; background: radial-gradient(circle at 30% 20%, rgba(0,128,128,0.15) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0,128,128,0.1) 0%, transparent 50%); }
+        .eyebrow { color: var(--light-teal); font-size: .9rem; letter-spacing: .15em; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+        .hero h1 { font-size: clamp(3rem, 6vw, 4rem); max-width: 800px; margin: 0 auto 30px; line-height: 1.2; }
+        .hero p { color: #e0e4e8; max-width: 600px; margin: 0 auto 40px; font-size: 1.2rem; }
+        .hero-botoes { display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+
+        /* Seções */
+        .section { padding: 80px 0; background: var(--white); }
+        .section h2 { font-size: 2rem; color: var(--navy); text-align: center; margin-bottom: 40px; position: relative; display: inline-block; }
+        .section h2::after { content: ''; width: 60px; height: 4px; background: var(--teal); position: absolute; left: 50%; transform: translateX(-50%); bottom: -16px; }
+        .section p { color: var(--muted); max-width: 700px; margin: 0 auto 30px; text-align: center; font-size: 1.1rem; }
+
+        /* Servicos */
+        .servicos-grid { display: grid; gap: 30px; }
+        @media(min-width:768px) { .servicos-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media(min-width:1024px) { .servicos-grid { grid-template-columns: repeat(4, 1fr); } }
+        .servico-card { background: var(--cream); border-radius: 20px; padding: 40px 25px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+        .servico-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal); transform: scaleX(0); transition: transform 0.3s; }
+        .servico-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); }
+        .servico-card:hover::before { transform: scaleX(1); }
+        .servico-card .icone { width: 80px; height: 80px; margin: 0 auto 25px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 2.5rem; margin-bottom: 20px; }
+        .servico-card h3 { margin: 0 0 12px; color: var(--navy); font-size: 1.3rem; }
+        .servico-card p { color: var(--muted); font-size: .95rem; margin: 0; }
+
+        /* Diferenciais */
+        .diferencias { display: grid; gap: 20px; }
+        @media(min-width:600px) { .diferencias { grid-template-columns: repeat(2, 1fr); } }
+        .diferencia-card { padding: 30px; background: var(--cream); border-radius: 15px; }
+        .diferencia-card .numero { font-size: 2.5rem; font-weight: 800; color: var(--teal); display: block; margin-bottom: 10px; }
+        .diferencia-card h4 { margin: 0 0 8px; color: var(--navy); font-size: 1.1rem; }
+        .diferencia-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+
+        /* Agendamento */
+        .agendamento { max-width: 500px; margin: 0 auto; padding: 40px; background: var(--cream); border-radius: 20px; border: 2px solid var(--teal); }
+        .agendamento h3 { text-align: center; margin-bottom: 30px; color: var(--navy); }
+        .agendamento .form-group { margin: 0 0 20px; }
+        .agendamento label { display: block; margin: 0 0 8px; font-weight: 600; color: var(--navy); }
+        .agendamento input, .agendamento select { width: 100%; padding: 14px; border: 2px solid var(--dark-cream); border-radius: 10px; font-size: 1rem; transition: border-color 0.2s; }
+        .agendamento input:focus, .agendamento select:focus { outline: none; border-color: var(--teal); }
+        .agendamento button { width: 100%; padding: 16px; background: var(--teal); color: var(--white); border: none; border-radius: 25px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .agendamento button:hover { background: #006666; }
+
+        /* Sobre */
+        .sobre-grid { display: grid; gap: 40px; }
+        @media(min-width:768px) { .sobre-grid { grid-template-columns: repeat(2, 1fr); } }
+        .sobre-text h3 { color: var(--teal); margin-bottom: 20px; }
+        .sobre-text ul { margin: 0 0 20px 20px; color: var(--muted); }
+        .sobre-text li { margin-bottom: 10px; }
+
+        /* Footer */
+        footer { background: var(--navy); color: var(--white); padding: 60px 0 20px; }
+        .footer .container { display: grid; gap: 40px; }
+        @media(min-width:768px) { .footer .container { grid-template-columns: repeat(3, 1fr); } }
+        .footer-links h3 { color: var(--teal); margin-bottom: 25px; font-size: 1.2rem; }
+        .footer-links a { display: block; margin: 8px 0; color: var(--dark-cream); font-size: .95rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--teal); }
+        .footer-info p { margin: 12px 0; font-size: .9rem; }
+        .social { display: flex; gap: 15px; }
+        .social a { width: 45px; height: 45px; background: var(--cream); border-radius: 50%; color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: background 0.2s; }
+        .social a:hover { background: var(--teal); color: var(--white); }
+
+        /* Topo CTA */
+        .topo-cta { position: fixed; left: 0; right: 0; bottom: 0; background: #ffef8a; color: var(--navy); text-align: center; padding: 20px 0; z-index: 900; }
+        .topo-cta .wrap { max-width: 1120px; margin: auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        @media(max-width:600px) { .topo-cta .wrap { flex-direction: column; gap: 15px; } }
+
+        /* Responsivo */
+        @media(max-width:768px) { .topo { justify-content: center; } nav { justify-content: center; } .hero { padding: 150px 15px 60px; } .section { padding: 50px 0; } .agendamento { margin: 0 15px; } .footer .container { gap: 25px; } }
+    </style>
+</head>
+<body>
+
+    <!-- Topo CTA -->
+    <a class="topo-cta" href="https://wa.me/5511988877777?text=Ol%C3%A1!%20Vi%20o%20site%20da%20PetLove%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" rel="noopener noreferrer">
+        <div class="wrap">
+            <span>Fale conosco no WhatsApp</span>
+            <span aria-hidden="true">›</span>
+        </div>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="top">
+            <a class="brand" href="index.html" aria-label="PetLove Clinica Veterinaria">
+                <img src="assets/img/logo-petlove.svg" alt="PetLove" class="brand-logo">
+            </a>
+            <nav aria-label="Navegação principal">
+                <a href="#inicio" aria-current="page">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#agendamento">Agendar Consulta</a>
+                <a class="cta" href="https://wa.me/5511988877777" target="_blank" rel="noopener noreferrer">Contato WhatsApp</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="wrap">
+            <div class="eyebrow">Cuidado especial para seu melhor amigo</div>
+            <h1>Consultas veterinárias com carinho e profissionalismo.</h1>
+            <p>Na PetLove Clinica Veterinaria, tratamos seu pet como parte da família. Agende uma consulta e mantenha seu cachorro ou gato saudável e feliz.</p>
+            <div class="hero-botoes">
+                <a class="cta" href="#agendamento">Agendar Consulta</a>
+                <a class="cta" href="#sobre">Conhecer nossa clinica</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Clinica -->
+    <section id="sobre" class="section">
+        <div class="container">
+            <div class="sobre-grid">
+                <div class="sobre-img">
+                    <img src="assets/img/vet-equipe.webp" alt="Equipe veterinaria com pet" style="width: 100%; border-radius: 15px;">
+                </div>
+                <div class="sobre-text">
+                    <h2>Quem Somos</h2>
+                    <p>A PetLove Clinica Veterinaria foi fundada com o objetivo de oferecer atendimento de excelência para cães e gatos, com equipe capacitada e estrutura completa para consultas, cirurgias e exames.</p>
+                    <h3>Nossos valores</h3>
+                    <ul>
+                        <li>Compromisso com a saúde animal</li>
+                        <li>Atendimento humanizado</li>
+                        <li>Tecnologia e equipamentos modernos</li>
+                        <li>Preços justos e transparentes</li>
+                    </ul>
+                    <a href="#agendamento" class="cta" style="margin: 30px auto 0; display: block;">Agendar Consulta</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicos -->
+    <section id="servicos" class="section">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <p>Atendimento completo para todas as necessidades do seu pet.</p>
+            <div class="servicos-grid">
+                <article class="servico-card">
+                    <div class="icone">💉</div>
+                    <h3>Consulta Geral</h3>
+                    <p>Exame de rotina, avaliação de saúde e orientações para cuidados diários do seu pet.</p>
+                </article>
+                <article class="servico-card">
+                    <div class="icone">🏥</div>
+                    <h3>Emergência 24h</h3>
+                    <p>Atendimento de urgência para casos de acidentes, intoxicações e sintomas repentinos.</p>
+                </article>
+                <article class="servico-card">
+                    <div class="icone">💊</div>
+                    <h3>Cirurgias</h3>
+                    <p>Procedimentos cirúrgicos diversos, desde castrações até cirurgias especializadas, com anestesia monitorada.</p>
+                </article>
+                <article class="servico-card">
+                    <div class="icone">🧪</div>
+                    <h3>Exames e Diagnóstico</h3>
+                    <p>Análises clínicas, raio-X, ultrassonografia e outros exames para diagnóstico preciso.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agendamento -->
+    <section id="agendamento" class="section" style="background: var(--cream);">
+        <div class="container">
+            <div class="agendamento">
+                <h3>Agende uma Consulta</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Nome do Pet</label>
+                        <input type="text" placeholder="Ex: Bob" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select required>
+                            <option value="" disabled>Selecione</option>
+                            <option value="cao">Cachorro</option>
+                            <option value="gato">Gato</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Atendimento</label>
+                        <select required>
+                            <option value="" disabled>Selecione</option>
+                            <option value="consulta">Consulta Geral</option>
+                            <option value="urgencia">Emergência</option>
+                            <option value="seguimento">Retorno/Medicação</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone para Contato</label>
+                        <input type="tel" placeholder="(11) 9XXXX-XXXX" required />
+                    </div>
+                    <button type="submit" class="btn">Confirmar Agendamento</button>
+                </form>
+                <p style="text-align: center; margin-top: 20; color: var(--muted); font-size: .9rem;">
+                    Horário de funcionamento: Segunda a Sexta, 8h às 18h / Sábado, 8h às 12h
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="section" style="background: var(--cream);">
+        <div class="container">
+            <h2>Por que escolher a PetLove?</h2>
+            <div class="diferencias">
+                <div class="diferencia-card">
+                    <span class="numero">🌟</span>
+                    <h4>Equipe Qualificada</h4>
+                    <p>Médicos veterinários com formação superior e atualização constante em medicina veterinária.</p>
+                </div>
+                <div class="diferencia-card">
+                    <span class="numero">🏆</span>
+                    <h4>Equipamentos Modernos</h4>
+                    <p>Laboratório próprio, aparelho de raio-X digital e ultrassonografia de alta resolução.</p>
+                </div>
+                <div class="diferencia-card">
+                    <span class="numero">💙</span>
+                    <h4>Atendimento Humanizado</h4>
+                    <p>Ambiente acolhedor para reduzir o estresse do seu pet durante as consultas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <h3>Atendimento</h3>
+                <a href="#sobre">Sobre Nós</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#agendamento">Agendar</a>
+                <a href="https://wa.me/5511988877777" target="_blank">WhatsApp</a>
+            </div>
+            <div class="footer-links">
+                <h3>Redes Sociais</h3>
+                <div class="social">
+                    <a href="#" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 5.25a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5zm0 1.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9z"/></svg></a>
+                    <a href="#" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.77 7.46h1.5v12a3.5 3.5 0 0 0 3.5-3.5h-9.08l2.18-2.18.05-.13a3.5 3.5 0 0 0-4.92-4.92l-.58.58zm2.42 2.88L15.5 12.26l1.45-1.85-.82-2.36a.75.75 0 0 0-1.07-.12h-7.63a.75.75 0 0 0-.7.83v7.63a.75.75 0 0 0 1.5 0V15.14z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-info">
+                <p>Endereço: Rua das Palmeiras, 100 - São Paulo, SP</p>
+                <p>Telefone: (11) 3000-1234</p>
+                <p style="font-size: .85rem; opacity: 0.8;">Demo desenvolvida por MOSS Digital · Cuidado que seu pet merece</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="topo-cta">
+        <div class="wrap">
+            <span>PetLove Clinica Veterinaria · Cuidado que seu pet merece</span>
+            <a href="https://wa.me/5511988877777" target="_blank" rel="noopener noreferrer">(11) 98887-7777</a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(ancora => {
+            ancora.addEventListener('click', function(e) {
+                e.preventDefault();
+                const alvo = document.querySelector(this.getAttribute('href'));
+                if (alvo) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const alvoPosicao = alvo.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    window.scrollTo({ top: alvoPosicao, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

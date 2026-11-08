@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Painel Solar | Simulador e Benefícios da Energia Solar</title>
+    <meta name="description" content="Painel Solar — Simulador de energia solar fotovoltaica, cálculo de economia, benefícios ambientais e orçamento para instalação de painéis solares." />
+    <meta name="author" content="MOSS Digital" />
+    <link rel="canonical" href="https://painelsolar.energia/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Painel Solar" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Painel Solar | Simulador e Benefícios da Energia Solar" />
+    <meta property="og:description" content="Simulador de energia solar fotovoltaica, cálculo de economia, benefícios ambientais e orçamento para instalação de painéis solares." />
+    <meta property="og:image" content="assets/img/casa-com-painel.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Painel Solar | Simulador e Benefícios da Energia Solar" />
+    <meta name="twitter:description" content="Simulador de energia solar fotovoltaica, cálculo de economia, benefícios ambientais e orçamento para instalação de painéis solares." />
+    <meta name="twitter:image" content="assets/img/casa-com-painel.webp" />
+    <style>
+        :root {
+            --navy: #102A43;
+            --yellow: #FFC531;
+            --green: #28A745;
+            --light-green: #D4EDDA;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --muted-gray: #6C757D;
+            --light-bg: #F8F9FA;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font: 16px/1.6 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--light-bg); color: var(--dark-gray); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: auto; padding: 0 25px; }
+
+        /* Header */
+        header { background: var(--white); border-bottom: 1px solid #e0e0e0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .top { min-height: 80px; display: flex; justify-content: space-between; align-items: center; gap: 25px; flex-wrap: wrap; }
+        .brand { font-size: 1.5rem; font-weight: 800; color: var(--navy); letter-spacing: .03em; }
+        .brand-logo { display: inline-block; width: min(260px, 65vw); height: auto; max-height: 70px; object-fit: contain; }
+        nav { display: flex; flex-wrap: wrap; gap: 30px; }
+        nav a { font-size: .94rem; color: var(--navy); font-weight: 600; transition: color 0.2s; }
+        nav a:hover { color: var(--yellow); }
+        .cta { display: inline-block; padding: 12px 25px; background: var(--yellow); color: var(--navy); border-radius: 10px; font-weight: 700; transition: background 0.2s; }
+        .cta:hover { background: #E0A825; }
+
+        /* Hero */
+        .hero { padding: 180px 25px 100px; background: var(--navy); color: var(--white); text-align: center; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); }
+        .eyebrow { color: var(--yellow); font-size: .8rem; letter-spacing: .15em; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; }
+        .hero h1 { font-size: clamp(2.8rem, 5vw, 3.8rem); max-width: 720px; margin: 0 auto 20px; line-height: 1.2; }
+        .hero p { color: #dce7f4; max-width: 600px; margin: 0 auto 30px; font-size: 1.1rem; }
+        .hero-botoes { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+        /* Seções */
+        .section { padding: 80px 0; background: var(--white); }
+        .section h2 { font-size: 2rem; color: var(--navy); text-align: center; margin-bottom: 40px; position: relative; display: inline-block; }
+        .section h2::after { content: ''; width: 60px; height: 4px; background: var(--yellow); position: absolute; left: 50%; transform: translateX(-50%); bottom: -16px; }
+        .section p { color: var(--muted-gray); max-width: 700px; margin: 0 auto 30px; text-align: center; font-size: 1.05rem; }
+
+        /* Calculadora */
+        .calculadora { max-width: 600px; margin: 0 auto; padding: 40px; background: var(--light-bg); border-radius: 16px; border: 1px solid #e0e0e0; }
+        .calculadora h3 { text-align: center; margin-bottom: 30px; color: var(--navy); }
+        .calculadora .form-group { margin: 0 0 20px; }
+        .calculadora label { display: block; margin: 0 0 8px; font-weight: 600; color: var(--dark-gray); }
+        .calculadora input, .calculadora select, .calculadora input[type="range"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; transition: border-color 0.2s; }
+        .calculadora input:focus, .calculadora select:focus { outline: none; border-color: var(--yellow); }
+        .calculadora .range-label { display: flex; justify-content: space-between; margin-top: 10px; font-size: .85rem; color: var(--muted-gray); }
+        .calculadora button { width: 100%; padding: 14px; background: var(--yellow); color: var(--navy); border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 20px; }
+        .calculadora button:hover { background: #E0A825; }
+
+        .resultado { margin-top: 30px; padding: 20px; background: var(--light-green); border-radius: 10px; display: none; align-items: center; justify-content: center; }
+        .resultado.ativo { display: flex; }
+        .valor { font-size: 1.5rem; font-weight: 700; color: var(--green); margin-right: 20px; }
+
+        /* Benefícios */
+        .beneficios-grid { display: grid; gap: 30px; }
+        @media(min-width:768px) { .beneficios-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media(min-width:1024px) { .beneficios-grid { grid-template-columns: repeat(4, 1fr); } }
+        .beneficio-card { padding: 30px; background: var(--white); border-radius: 16px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .beneficio-card:hover { transform: translateY(-6px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        .beneficio-card .icone { width: 60px; height: 60px; margin: 0 auto 20px; background: var(--yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 1.8rem; margin-bottom: 15px; }
+        .beneficio-card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.2rem; }
+        .beneficio-card p { color: var(--muted-gray); font-size: .9rem; margin: 0; }
+
+        /* Galeria */
+        .galeria-grid { display: grid; gap: 20px; }
+        @media(min-width:600px) { .galeria-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(min-width:850px) { .galeria-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media(min-width:1200px) { .galeria-grid { grid-template-columns: repeat(4, 1fr); } }
+        .projeto-card { border-radius: 12px; overflow: hidden; background: var(--white); transition: transform 0.3s; }
+        .projeto-card:hover { transform: scale(1.02); }
+        .projeto-card img { width: 100%; height: 200px; object-fit: cover; }
+        .projeto-card .info { padding: 20px; }
+        .projeto-card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1rem; }
+        .projeto-card p { color: var(--muted-gray); font-size: .85rem; margin: 0; }
+
+        /* Orçamento */
+        .orcamento { max-width: 500px; margin: 0 auto; padding: 40px; background: var(--light-bg); border-radius: 16px; border: 1px solid #e0e0e0; }
+        .orcamento h3 { text-align: center; margin-bottom: 30px; color: var(--navy); }
+        .orcamento .form-group { margin: 0 0 20px; }
+        .orcamento label { display: block; margin: 0 0 8px; font-weight: 600; color: var(--dark-gray); }
+        .orcamento input, .orcamento select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+        .orcamento button { width: 100%; padding: 14px; background: var(--yellow); color: var(--navy); border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 700; cursor: pointer; margin-top: 20px; }
+        .orcamento button:hover { background: #E0A825; }
+
+        /* Footer */
+        footer { background: var(--navy); color: var(--white); padding: 60px 0 20px; }
+        .footer .container { display: grid; gap: 40px; }
+        @media(min-width:768px) { .footer .container { grid-template-columns: repeat(3, 1fr); } }
+        .footer-links h3 { color: var(--yellow); margin-bottom: 25px; font-size: 1.2rem; }
+        .footer-links a { display: block; margin: 8px 0; color: var(--dark-gray); font-size: .95rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--yellow); }
+        .footer-info p { margin: 12px 0; font-size: .9rem; }
+        .social { display: flex; gap: 15px; }
+        .social a { width: 40px; height: 40px; background: var(--yellow); color: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: background 0.2s; }
+        .social a:hover { background: #E0A825; }
+
+        /* Topo CTA */
+        .topo-cta { position: fixed; left: 0; right: 0; bottom: 0; background: #ffef8a; color: var(--navy); text-align: center; padding: 20px 0; z-index: 900; }
+        .topo-cta .wrap { max-width: 1200px; margin: auto; padding: 0 25px; display: flex; justify-content: space-between; align-items: center; }
+        @media(max-width:600px) { .topo-cta .wrap { flex-direction: column; gap: 15px; } }
+
+        /* Responsivo */
+        @media(max-width:768px) { .topo { justify-content: center; } nav { justify-content: center; } .hero { padding: 150px 15px 60px; } .section { padding: 50px 0; } .calculadora, .orcamento { margin: 0 15px; } .beneficios-grid { grid-template-columns: 1fr; } .footer .container { gap: 25px; } }
+    </style>
+</head>
+<body>
+
+    <!-- Topo CTA -->
+    <a class="topo-cta" href="https://wa.me/5511988877777?text=Ol%C3%A1!%20Vi%20o%20site%20do%20Painel%20Solar%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">
+        <div class="wrap">
+            <span>Fale conosco no WhatsApp</span>
+            <span aria-hidden="true">›</span>
+        </div>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="top">
+            <a class="brand" href="index.html" aria-label="Painel Solar">
+                <img src="assets/img/logo-painel-solar.svg" alt="Painel Solar" class="brand-logo">
+            </a>
+            <nav aria-label="Navegação principal">
+                <a href="#inicio" aria-current="page">Início</a>
+                <a href="#calculadora">Simulador</a>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#orcamento">Orçamento</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="wrap">
+            <div class="eyebrow">Energia Solar Fotovoltaica</div>
+            <h1>Gere sua própria energia e reduza sua conta de luz.</h1>
+            <p>Simule o tamanho do sistema ideal para o seu consumo e descubra o retorno do investimento em anos.</p>
+            <div class="hero-botoes">
+                <a class="cta" href="#calculadora">Simular agora</a>
+                <a class="cta" href="#orcamento">Solicitar orçamento</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculadora -->
+    <section id="calculadora" class="section">
+        <div class="container">
+            <div class="calculadora">
+                <h3>Simulador de Energia Solar</h3>
+                <form id="calc-form">
+                    <div class="form-group">
+                        <label>Valor médio mensal da conta de luz (R$)</label>
+                        <input type="number" id="conta-luz" name="conta-luz" step="10" min="50" placeholder="Ex: 350,00" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de imóvel</label>
+                        <select id="tipo-imovel" name="tipo-imovel" required>
+                            <option value="" disabled>Selecione</option>
+                            <option value="residencial">Residencial</option>
+                            <option value="comercial">Comercial</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select id="estado" name="estado" required>
+                            <option value="" disabled>Selecione</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="SC">Santa Catarina</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Consumo mensal (kWh)</label>
+                        <input type="number" id="consumo-kwh" name="consumo-kwh" step="10" min="50" placeholder="Ex: 500" required />
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button type="submit" class="btn">Calcular Economia</button>
+                    </div>
+                </form>
+                <div id="resultado" class="resultado" role="alert" aria-live="polite">
+                    <span class="valor" id="valor-economia">R$ 0,00</span>
+                    <span id="periodo">/ mês</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="section" style="background: var(--light-bg);">
+        <div class="container">
+            <h2>Benefícios da Energia Solar</h2>
+            <p>Conheça as principais vantagens de investir em energia fotovoltaica.</p>
+            <div class="beneficios-grid">
+                <div class="beneficio-card">
+                    <div class="icone">💰</div>
+                    <h3>Economia Financeira</h3>
+                    <p>Redução de até 95% na conta de luz, com retorno do investimento em 3 a 6 anos dependendo da região e consumo.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="icone">🌍</div>
+                    <h3>Impacto Ambiental</h3>
+                    <p>Cada sistema solar residencial evita a emissão de toneladas de CO2 ao longo de sua vida útil, equivalente a plantar centenas de árvores.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="icone">⚡</div>
+                    <h3>Independência Energética</h3>
+                    <p>Redução da dependência da rede elétrica e proteção contra aumentos de tarifa das concessionárias.</p>
+                </div>
+                <div class="beneficio-card">
+                    <div class="icone">📈</div>
+                    <h3>Valorização do Imóvel</h3>
+                    <p>Imóveis com sistemas solares tendem a ter valor de mercado maior e mais atrativo para futuros compradores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="section">
+        <div class="container">
+            <h2>Galeria de Instalações</h2>
+            <p>Projetos de instalações solares em diferentes tipos de imóveis.</p>
+            <div class="galeria-grid" id="galeria-grid">
+                <!-- Cards serão inseridos pelo JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Orçamento -->
+    <section id="orcamento" class="section">
+        <div class="container">
+            <div class="orcamento">
+                <h3>Solicite um Orçamento Personalizado</h3>
+                <form id="orcamento-form">
+                    <div class="form-group">
+                        <label>Nome Completo</label>
+                        <input type="text" placeholder="Seu nome" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="tel" placeholder="(11) 9XXXX-XXXX" required />
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="seu@email.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Imóvel</label>
+                        <select required>
+                            <option value="" disabled>Selecione</option>
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="comercio">Comércio</option>
+                            <option value="industria">Indústria</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Valor Médio da Conta (R$)</label>
+                        <input type="number" step="10" min="50" placeholder="Ex: 350,00" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Cidade</label>
+                        <input type="text" placeholder="Sua cidade" required />
+                    </div>
+                    <button type="submit" class="btn">Enviar Solicitação</button>
+                </form>
+                <p style="text-align: center; margin-top: 20px; color: var(--muted-gray); font-size: .9rem;">
+                    * Nossa equipe entrará em contato em até 24 horas para detalhar o projeto.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <h3>Energia Solar</h3>
+                <a href="#inicio">Início</a>
+                <a href="#calculadora">Simulador</a>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#orcamento">Orçamento</a>
+            </div>
+            <div class="footer-links">
+                <h3>Empresa</h3>
+                <a href="https://mossdigital.com.br">MOSS Digital</a>
+                <a href="#sobre">Sobre Nós</a>
+                <a href="https://wa.me/5511988877777" target="_blank">WhatsApp</a>
+            </div>
+            <div class="footer-links">
+                <h3>Social</h3>
+                <div class="social">
+                    <a href="#" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 5.25a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5zm0 1.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9z"/></svg></a>
+                    <a href="#" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.77 7.46h1.5v12a3.5 3.5 0 0 0 3.5-3.5h-9.08l2.18-2.18.05-.13a3.5 3.5 0 0 0-4.92-4.92l-.58.58zm2.42 2.88L15.5 12.26l1.45-1.85-.82-2.36a.75.75 0 0 0-1.07-.12h-7.63a.75.75 0 0 0-.7.83v7.63a.75.75 0 0 0 1.5 0V15.14z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-info">
+                <p>Painel Solar · Sistemas Fotovoltaicos para Residências e Empresas</p>
+                <p>Rua das Palmeiras, 100 - São Paulo, SP</p>
+                <p style="font-size: .85rem; opacity: 0.8;">Demo desenvolvida por MOSS Digital · <a href="https://mossdigital.com.br" style="color: var(--yellow);">mossdigital.com.br</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="topo-cta">
+        <div class="wrap">
+            <span>Painel Solar · Energia Limpa e Renovável</span>
+            <a href="https://wa.me/5511988877777" target="_blank" rel="noopener noreferrer">(11) 98887-7777</a>
+        </div>
+    </div>
+
+    <script>
+        // Dados dos projetos para a galeria
+        const projetos = [
+            {
+                id: 1,
+                titulo: "Residência Moderno",
+                descricao: "Sistema fotovoltaico de 6kW em casa residencial, reduzindo em 90% o consumo de energia elétrica.",
+                imagem: "assets/img/casa-com-painel.webp"
+            },
+            {
+                id: 2,
+                titulo: "Galpão Industrial",
+                descricao: "Usina solar de 50kW em galpão industrial, retorno de investimento em 4 anos.",
+                imagem: "assets/img/galpao-industrial2.webp"
+            },
+            {
+                id: 3,
+                titulo: "Comércio",
+                descricao: "Sistema de 15kW para comércio com alto consumo diurno, economia de R$ 800/mês.",
+                imagem: "assets/img/loja-com-painel.webp"
+            },
+            {
+                id: 4,
+                titulo: "Condomínio",
+                descricao: "Sistema compartilhado para condomínio de 8 unidades, economia coletiva de 70%.",
+                imagem: "assets/img/condominio-painel.webp"
+            }
+        ];
+
+        // Renderizar cards da galeria
+        function renderizarGaleria() {
+            const grid = document.getElementById('galeria-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            projetos.forEach(projeto => {
+                const card = document.createElement('div');
+                card.className = 'projeto-card';
+                card.innerHTML = `
+                    <img src="${projeto.imagem}" alt="${projeto.titulo}">
+                    <div class="info">
+                        <h3>${projeto.titulo}</h3>
+                        <p>${projeto.descricao}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderizarGaleria();
+
+            // ---- Simulador de economia ----
+            const form = document.getElementById('calc-form');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const contaLuz = parseFloat(document.getElementById('conta-luz').value);
+                    const economiaEstimada = Math.round(contaLuz * 0.70);
+                    const economiaAnual = economiaEstimada * 12;
+                    const resultadoDiv = document.getElementById('resultado');
+                    resultadoDiv.classList.add('ativo');
+                    document.getElementById('valor-economia').textContent = 'R$ ' + economiaEstimada.toFixed(2);
+                    document.getElementById('periodo').textContent = '/ mês';
+                });
+            }
+
+            // ---- Rolagem suave ----
+            document.querySelectorAll('a[href^="#"]').forEach(ancora => {
+                ancora.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const alvo = document.querySelector(this.getAttribute('href'));
+                    if (alvo) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const alvoPosicao = alvo.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({ top: alvoPosicao, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
