@@ -1,0 +1,655 @@
+/*
+ * ============================================================
+ * Painel Solar - Estilo CSS
+ * ============================================================
+ * Este arquivo contém todos os estilos da demo Painel Solar.
+ * Todos os seletores e propriedades foram preservados do HTML original.
+ * Cores da paleta: #102A43 (navy), #FFC531 (yellow), #28A745 (green), #D4EDDA (light-green).
+ * ============================================================
+ */
+
+/* Variáveis globais - definição da paleta de cores */
+:root {
+    /* Cores da identidade visual */
+    --navy: #102A43;        /* Azul-marinho principal - transmitindo confiança e seriedade */
+    --yellow: #FFC531;      /* Yellow principal - destaque e chamadas para ação */
+    --green: #28A745;       /* Green success - benefícios e resultados positivos */
+    --light-green: #D4EDDA; /* Green claro - fundos de sucesso */
+    --white: #FFFFFF;       /* Branco - fundo limpo e legível */
+    --dark-gray: #333333;   /* Cinza escuro - texto principal */
+    --muted-gray: #6C757D;  /* Cinza médio - texto secundário */
+    --light-bg: #F8F9FA;    /* Fundo claro - pages e cards */
+}
+
+/* Reset e base */
+* {
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+    margin: 0;              /* Remove margem padrão */
+    padding: 0;           Remove padding padrão */
+}
+
+body {
+    /* Fonte sistema com fallback moderno */
+    font: 16px/1.6 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Cor de fundo clara para conforto visual */
+    background: var(--light-bg);
+    /* Cor do texto principal */
+    color: var(--dark-gray);
+    /* Altura de linha consistente */
+    line-height: 1.6;
+}
+
+a {
+    /* Remove sublinhado padrão */
+    text-decoration: none;
+    /* Herda a cor do pai */
+    color: inherit;
+}
+
+img {
+    /* Imagem responsiva - nunca maior que o container */
+    max-width: 100%;
+    /* Mantém proporção */
+    height: auto;
+    /* Remove bordas padrão */
+    display: block;
+}
+
+ul {
+    /* Remove bolinhas de lista */
+    list-style: none;
+}
+
+/* Container centralizado */
+.container {
+    /* Largura máxima para não esticar demais em telas grandes */
+    max-width: 1200px;
+    /* Centralizado horizontalmente */
+    margin: auto;
+    /* Espaçamento horizontal consistente */
+    padding: 0 25px;
+}
+
+/* Header */
+header {
+    /* Fundo branco para contraste */
+    background: var(--white);
+    /* Borda sutil para separar do conteúdo */
+    border-bottom: 1px solid #e0e0e0;
+    /* Fixo no topo para navegação constante */
+    position: fixed;
+    width: 100%;
+    /* Altura consistente */
+    top: 0;
+    /* Camada acima de outros conteúdos */
+    z-index: 1000;
+}
+
+/* Linha superior do header */
+.top {
+    /* Layout flex: justify-between para logo à esquerda, nav à direita */
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Espaçamento entre itens */
+    gap: 25px;
+    /* Quebra responsiva */
+    flex-wrap: wrap;
+    /* Cor do texto */
+    color: var(--white);
+}
+
+/* Marca/Logo */
+.brand {
+    /* Fonte destaque para o nome da empresa */
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--navy);
+    /* Pequeno espaçamento entre letras */
+    letter-spacing: .03em;
+}
+
+/* Logo da marca */
+.brand-logo {
+    /* Largura responsiva - máximo 260px ou 65% da viewport */
+    display: inline-block;
+    width: min(260px, 65vw);
+    height: auto;
+    max-height: 70px;
+    object-fit: contain;
+}
+
+/* Navegação */
+nav {
+    /* Layout flexível com quebra responsiva */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+nav a {
+    /* Tamanho de fonte consistente */
+    color: var(--navy);
+    font-size: .94rem;
+    font-weight: 600;
+    /* Efeito de transição ao passar o mouse */
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    /* Muda para a cor yellow quando hover */
+    color: var(--yellow);
+}
+
+/* Botão CTA */
+.cta {
+    /* Display inline-block para width/height */
+    display: inline-block;
+    /* Espaçamento interno confortável */
+    padding: 12px 25px;
+    /* Cantos arredondados */
+    border-radius: 10px;
+    /* Fundo yellow */
+    background: var(--yellow);
+    /* Texto navy */
+    color: var(--navy);
+    /* Peso da fonte */
+    font-weight: 700;
+    /* Tamanho da fonte */
+    font-size: 1rem;
+    /* Efeito ao passar o mouse */
+    transition: background 0.2s;
+}
+
+.cta:hover {
+    /* Yellow mais escuro no hover */
+    background: #E0A825;
+}
+
+/* Hero ( primeira tela ) */
+.hero {
+    /* Padding superior e inferior grandes para impacto */
+    padding: 180px 25px 100px;
+    background: var(--navy);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+}
+
+/* Fundo escurecido sobre a imagem do hero */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    /* Cria efeito escurecido para melhor legibilidade do texto */
+}
+
+/* "Amostra" de cor para destacar */
+.eyebrow {
+    color: var(--yellow);
+    font-size: .8rem;
+    letter-spacing: .15em;
+    font-weight: 800;
+    text-transform: uppercase;
+    /* Espaçamento abaixo para o título */
+    margin-bottom: 20px;
+}
+
+/* Título principal do hero */
+.hero h1 {
+    /* Título grande e responsivo com clamp */
+    font-size: clamp(2.8rem, 5vw, 3.8rem);
+    /* Largura máxima para não ficar muito longo */
+    max-width: 720px;
+    /* Centralizado */
+    margin: 0 auto 20px;
+    /* Altura de linha confortável */
+    line-height: 1.2;
+}
+
+/* Parágrafo do hero */
+.hero p {
+    color: #dce7f4;
+    /* Centralizado */
+    max-width: 600px;
+    /* Centralizado */
+    margin: 0 auto 30px;
+    /* Fonte maior para o parágrafo hero */
+    font-size: 1.1rem;
+}
+
+/* Botões do hero */
+.hero-botoes {
+    /* Flex container centralizado */
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Seções */
+.section {
+    /* Espaçamento vertical consistente */
+    padding: 80px 0;
+    /* Fundo branco para contraste */
+    background: var(--white);
+}
+
+/* Título das seções */
+.section h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Linha decorativa abaixo do título */
+.section h2::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: var(--yellow);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -16px;
+}
+
+/* Parágrafo das seções */
+.section p {
+    color: var(--muted-gray);
+    max-width: 700px;
+    margin: 0 auto 30px;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+/* Calculadora */
+.calculadora {
+    /* Largura máxima */
+    max-width: 600px;
+    /* Centralizado */
+    margin: 0 auto;
+    /* Espaçamento interno */
+    padding: 40px;
+    /* Fundo light-bg */
+    background: var(--light-bg);
+    /* Borda */
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+}
+
+.calculadora h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--navy);
+}
+
+/* Grupos de formulário */
+.calculadora .form-group {
+    margin: 0 0 20px;
+}
+
+.calculadora label {
+    display: block;
+    margin: 0 0 8px;
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+/* Inputs e selects */
+.calculadora input,
+.calculadora select,
+.calculadora input[type="range"] {
+    width: 100%; /* Largura total */
+    padding: 12px;
+    border: 1px solid #ddd; /* Borda suave */
+    border-radius: 8px;
+    font-size: 1rem;
+    /* Transição suave ao focar */
+    transition: border-color 0.2s;
+}
+
+.calculadora input:focus,
+.calculadora select:focus {
+    outline: none; /* Remove outline padrão */
+    border-color: var(--yellow); /* Borda yellow quando focado */
+}
+
+/* Rótulo do range */
+.calculadora .range-label {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: .85rem;
+    color: var(--muted-gray);
+}
+
+/* Botão do calculadora */
+.calculadora button {
+    width: 100%; /* Largura total */
+    padding: 14px;
+    background: var(--yellow);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.calculadora button:hover {
+    background: #E0A825; /* Yellow mais escuro */
+}
+
+/* Resultado */
+.resultado {
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--light-green);
+    border-radius: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.resultado.ativo {
+    display: flex;
+}
+
+.valor {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--green);
+    margin-right: 20px;
+}
+
+/* Benefícios */
+.beneficios-grid {
+    /* Layout grid */
+    display: grid;
+    gap: 30px;
+}
+
+/* Quebras de coluna baseadas em largura */
+@media(min-width:768px) {
+    .beneficios-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media(min-width:1024px) {
+    .beneficios-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Card de benefício */
+.beneficio-card {
+    padding: 30px;
+    background: var(--white);
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Ícone do benefício */
+.beneficio-card .icone {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    background: var(--yellow);
+    border-radius: 50%;
+    /* Layout flex: centralizar o ícone */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+/* Título do benefício */
+.beneficio-card h3 {
+    margin: 0 0 8px;
+    color: var(--navy);
+    font-size: 1.2rem;
+}
+
+/* Parágrafo do benefício */
+.beneficio-card p {
+    color: var(--muted-gray);
+    font-size: .9rem;
+    margin: 0;
+}
+
+/* Galeria */
+.galeria-grid {
+    /* Layout grid */
+    display: grid;
+    gap: 20px;
+}
+
+/* Quebras de coluna baseadas em largura */
+@media(min-width:600px) {
+    .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(min-width:850px) {
+    .galeria-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media(min-width:1200px) {
+    .galeria-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Card de projeto */
+.projeto-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    transition: transform 0.3s;
+}
+
+.projeto-card:hover {
+    transform: scale(1.02);
+}
+
+/* Imagem do projeto */
+.projeto-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Informações do projeto */
+.projeto-card .info {
+    padding: 20px;
+}
+
+/* Título do projeto */
+.projeto-card h3 {
+    margin: 0 0 8px;
+    color: var(--navy);
+    font-size: 1rem;
+}
+
+/* Parágrafo do projeto */
+.projeto-card p {
+    color: var(--muted-gray);
+    font-size: .85rem;
+    margin: 0;
+}
+
+/* Orçamento */
+.orcamento {
+    /* Largura máxima */
+    max-width: 500px;
+    /* Centralizado */
+    margin: 0 auto;
+    /* Espaçamento interno */
+    padding: 40px;
+    /* Fundo light-bg */
+    background: var(--light-bg);
+    /* Borda */
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+}
+
+.orcamento h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--navy);
+}
+
+/* Grupos de formulário */
+.orcamento .form-group {
+    margin: 0 0 20px;
+}
+
+.orcamento label {
+    display: block;
+    margin: 0 0 8x;
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+/* Inputs e selects */
+.orcamento input,
+.orcamento select {
+    width: 100%; /* Largura total */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Botão do orçamento */
+.orcamento button {
+    width: 100%; /* Largura total */
+    padding: 14px;
+    background: var(--yellow);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.orcamento button:hover {
+    background: #E0A825; /* Yellow mais escuro */
+}
+
+/* Footer */
+footer {
+    background: var(--navy);
+    color: var(--white);
+    padding: 60px 0 20px;
+}
+
+/* Layout do footer */
+.footer .container {
+    display: grid;
+    gap: 40px;
+}
+
+/* Quebras de coluna baseadas em largura */
+@media(min-width:768px) {
+    .footer .container { grid-template-columns: repeat(3, 1fr); }
+}
+
+.footer-links h3 {
+    color: var(--yellow);
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+
+.footer-links a {
+    display: block;
+    margin: 8px 0;
+    color: var(--dark-gray);
+    font-size: .95rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--yellow);
+}
+
+.footer-info p {
+    margin: 12px 0;
+    font-size: .9rem;
+}
+
+/* Social links */
+.social {
+    /* Layout flex para ícones */
+    display: flex;
+    gap: 15px;
+}
+
+.social a {
+    /* Botões de social */
+    width: 40px;
+    height: 40px;
+    background: var(--yellow);
+    color: var(--navy);
+    /* Layout flex: centralizar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+}
+
+.social a:hover {
+    background: #E0A825;
+}
+
+/* Topo CTA fixo */
+.topo-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffef8a;
+    color: var(--navy);
+    text-align: center;
+    padding: 20px 0;
+    z-index: 900;
+}
+
+.topo-cta .wrap {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media(max-width:600px) {
+    .topo-cta .wrap { flex-direction: column; gap: 15px; }
+}
+
+/* Responsivo */
+@media(max-width:768px) {
+    .topo { justify-content: center; }
+    nav { justify-content: center; }
+    .hero { padding: 150px 15px 60px; }
+    .section { padding: 50px 0; }
+    .calculadora, .orcamento { margin: 0 15px; }
+    .beneficios-grid { grid-template-columns: 1fr; }
+    .footer .container { gap: 25px; }
+}
