@@ -80,7 +80,7 @@ dialog .dialog-actions{position:sticky;bottom:-24px;background:#20211b;padding:1
 <main id="inicio"><section class="hero"><div class="hero-inner"><span class="kicker">Design que transforma espaços</span><h1>O extraordinário mora nos detalhes.</h1><p>Móveis e decoração para transformar sua casa em um lugar único. Explore nossa coleção demonstrativa.</p><a class="btn" href="#colecao">Explorar coleção</a></div></section>
 <section class="wrap"><div class="stats"><div class="stat"><b>60</b>Peças selecionadas</div><div class="stat"><b>5</b>Ambientes para inspirar</div><div class="stat"><b>100%</b>Design responsivo</div></div></section>
 <!-- Catálogo: os 60 produtos são gerados pelo JavaScript. -->
-<section class="wrap" id="colecao"><span class="kicker">Curadoria MOSS</span><h2>Coleção exclusiva</h2><p class="muted">Preços e produtos fictícios para demonstração. Consulte condições reais com a loja.</p><div class="filters"><input id="busca" type="search" placeholder="Buscar móveis e decoração..." aria-label="Buscar produtos"><select id="categoria" aria-label="Filtrar categoria"><option value="">Todos os ambientes</option><option>Sala</option><option>Quarto</option><option>Jantar</option><option>Escritório</option><option>Externo</option></select><select id="ordem" aria-label="Ordenar produtos"><option value="">Ordenar por destaque</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option></select></div><p id="contador" class="muted" aria-live="polite"></p><div id="produtos" class="grid"></div></section>
+<section class="wrap" id="colecao"><span class="kicker">Curadoria MOSS</span><h2>Coleção exclusiva</h2><p class="muted">Preços e produtos fictícios para demonstração. Consulte condições reais com a loja.</p><p class="notice" id="statusFotos" role="status"></p><div class="filters"><input id="busca" type="search" placeholder="Buscar móveis e decoração..." aria-label="Buscar produtos"><select id="categoria" aria-label="Filtrar categoria"><option value="">Todos os ambientes</option><option>Sala</option><option>Quarto</option><option>Jantar</option><option>Escritório</option><option>Externo</option></select><select id="ordem" aria-label="Ordenar produtos"><option value="">Ordenar por destaque</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option></select></div><p id="contador" class="muted" aria-live="polite"></p><div id="produtos" class="grid"></div></section>
 <!-- Galeria com fotografias de ambientes. -->
 <section class="wrap" id="ambientes"><span class="kicker">Inspiração</span><h2>Ambientes que contam histórias</h2><div class="gallery"><img loading="lazy" alt="Sala contemporânea decorada" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80"><img loading="lazy" alt="Ambiente com móveis e decoração" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=80"><img loading="lazy" alt="Ambiente residencial elegante" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=80"></div></section>
 <!-- História e informações da empresa fictícia. -->
@@ -113,11 +113,15 @@ const fotos={
 /* Exemplo de preenchimento futuro: 1: ['foto-frente.webp','foto-lateral.webp','foto-detalhe.webp'] */
 /* Use caminhos locais de imagens autorizadas; não copie URLs de produtos diferentes. */
 const galeriasVerificadas={};
+/* Indicador editorial: nunca declarar como completa uma galeria ainda não verificada. */
+const quantidadeGaleriasVerificadas=Object.values(galeriasVerificadas).filter(lista=>Array.isArray(lista)&&lista.length>=3&&lista.length<=5&&new Set(lista).size===lista.length).length;
 /* Confere se há de três a cinco fotos diferentes cadastradas para o mesmo produto. */
 function validarGaleria(lista){
  if(!Array.isArray(lista)||lista.length<3||lista.length>5)return [];
  if(!lista.every(url=>typeof url==='string'&&url.trim()&&/^(?:\.\.?\/|assets\/|https:\/\/)/.test(url)))return [];
  if(new Set(lista).size!==lista.length)return [];
+ /* Impede que fotografias com aspas ou caracteres de marcação quebrem os atributos HTML. */
+ if(!lista.every(url=>!/[\"'<>]/.test(url)))return [];
  return lista;
 }
 /* Gera IDs estáveis, preços demonstrativos e descrições. */
@@ -207,6 +211,8 @@ $('botaoZap').addEventListener('click',()=>window.open(zap('Olá! Gostaria de in
 $('enviarPedido').addEventListener('click',()=>{if(!carrinho.length){alert('Adicione um produto primeiro.');return;}const mensagem='Olá! Gostaria de consultar estes produtos demonstrativos:\n'+carrinho.map(p=>'- '+p.nome+' ('+moeda(p.preco)+')').join('\n')+'\nTotal estimado: '+moeda(carrinho.reduce((s,p)=>s+p.preco,0));window.open(zap(mensagem),'_blank','noopener');});
 /* Inicializa o catálogo e recupera o carrinho anterior. */
 salvarCarrinho();
+/* Informa com transparência quantas galerias realmente foram cadastradas. */
+$('statusFotos').textContent='Galerias de produtos verificadas: '+quantidadeGaleriasVerificadas+' de 60. As demais imagens são ilustrativas.';
 renderizar();
 
 /* Favoritos e comparador independentes do carrinho; dados apenas nesta sessão. */
