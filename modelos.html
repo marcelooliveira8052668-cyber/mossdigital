@@ -59,6 +59,25 @@ novasDemosMoss.forEach(([nome, categoria, repositorio, descricao, pedido]) => {
   card.append(imagem, corpo);
   document.getElementById('cards').prepend(card);
 });
+// Eu incluo a nova ótica no catálogo sem modificar os cartões anteriores.
+{
+  const card = document.createElement('article'); // Eu crio o cartão da MOSS Vision Prime.
+  card.className = 'card'; // Eu reutilizo o visual existente.
+  card.dataset.category = 'Comércio'; // Eu integro o filtro de comércio.
+  const imagem = document.createElement('img'); // Eu preparo a imagem ilustrativa.
+  imagem.src = 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1200&q=80'; // Eu uso a foto de referência.
+  imagem.alt = 'Foto ilustrativa de óculos de sol da MOSS Vision Prime'; // Eu descrevo a imagem.
+  imagem.loading = 'lazy'; // Eu carrego a foto somente quando necessário.
+  imagem.width = 1200; imagem.height = 800; // Eu reservo o espaço da imagem.
+  const corpo = document.createElement('div'); corpo.className = 'card-body'; // Eu preparo o conteúdo.
+  const categoria = document.createElement('span'); categoria.className = 'category'; categoria.textContent = 'Comércio · ótica'; // Eu mostro a categoria.
+  const titulo = document.createElement('h2'); titulo.textContent = 'MOSS Vision Prime — Ótica'; // Eu mostro o nome.
+  const descricao = document.createElement('p'); descricao.textContent = 'Ótica premium demonstrativa com 60 itens de grau, sol, esportivos e acessórios, favoritos, filtros, comparador e sacola.'; // Eu explico a demo.
+  const acoes = document.createElement('div'); acoes.className = 'actions'; // Eu preparo as ações.
+  const demo = document.createElement('a'); demo.className = 'demo'; demo.href = 'demos/moss-vision-prime/'; demo.textContent = 'Ver demonstração ↗'; // Eu crio o link interno.
+  const orcamento = document.createElement('a'); orcamento.className = 'quote'; orcamento.href = 'https://wa.me/5511942038103?text=' + encodeURIComponent('Olá! Quero um site como a MOSS Vision Prime.'); orcamento.target = '_blank'; orcamento.rel = 'noopener noreferrer'; orcamento.textContent = 'Pedir orçamento'; // Eu crio o contato comercial.
+  acoes.append(demo, orcamento); corpo.append(categoria, titulo, descricao, acoes); card.append(imagem, corpo); document.getElementById('cards').prepend(card); // Eu adiciono o cartão ao catálogo.
+}
 // Projetos independentes também participam dos filtros e da contagem.
 [
   { nome: 'MOSS Agenda Pro', imagem: 'agenda', link: 'agenda-pro/?v=agenda-20261027', descricao: 'Modelo de agenda para organizar atendimentos, clientes e lembretes manuais. Demonstração local; sincronização depende de configuração.', pedido: 'MOSS Agenda Pro' },
