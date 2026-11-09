@@ -28,6 +28,13 @@ footer{background:#1b1c17;padding:45px 22px;border-top:1px solid var(--borda)}fo
 dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius:8px;max-width:min(92vw,650px);width:100%;padding:24px}dialog::backdrop{background:#000c}dialog img{width:100%;height:260px;object-fit:cover;border-radius:4px}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
 .floating{position:fixed;bottom:18px;right:18px;z-index:30;box-shadow:0 4px 20px #0008}
 .notice{color:#cfc8b8;font-size:13px}
+/* Tabela comparativa adaptada para rolagem horizontal no celular. */
+.comparacao-scroll{overflow-x:auto;max-width:100%;margin:16px 0}
+.comparacao-tabela{width:100%;min-width:420px;border-collapse:collapse;text-align:left}
+.comparacao-tabela th,.comparacao-tabela td{border:1px solid var(--borda);padding:10px;vertical-align:top}
+.comparacao-tabela th{color:var(--ouro);background:#2b2b24}
+.comparacao-tabela img{width:100%;height:100px;object-fit:cover;border-radius:4px}
+.comparacao-tabela td:first-child{font-weight:700;color:var(--ouro);width:100px}
 /* Facilita o uso por teclado e respeita a preferência por menos movimento. */
 :focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
@@ -92,6 +99,8 @@ function renderizar(){
  if(ordem==='menor')lista.sort((a,b)=>a.preco-b.preco);
  if(ordem==='maior')lista.sort((a,b)=>b.preco-a.preco);
  $('contador').textContent=lista.length+' '+(lista.length===1?'produto encontrado':'produtos encontrados');
+ /* Orienta o visitante quando a busca não encontra móveis. */
+ if(!lista.length){$('produtos').innerHTML='<p class="muted" role="status">Nenhum móvel encontrado. Tente outro nome ou selecione todos os ambientes.</p>';return;}
  $('produtos').innerHTML=lista.map(p=>'<article class="card"><img class="photo" loading="lazy" src="'+p.foto+'" alt="Foto ilustrativa do ambiente para '+escapar(p.nome)+'"><div class="body"><span class="tag">'+p.categoria+'</span><h3>'+escapar(p.nome)+'</h3><span class="muted">Imagem ilustrativa • Produto demonstrativo</span><div class="price">'+moeda(p.preco)+'</div><div class="actions"><button class="btn sec" data-detalhe="'+p.id+'">Detalhes</button><button class="btn" data-add="'+p.id+'">Adicionar</button></div></div></article>').join('');
 }
 /* Exibe detalhes do produto escolhido. */
@@ -153,7 +162,13 @@ function abrirSelecao(comparar){
  const ids=comparar?comparacao:favoritos;
  $('tituloColecao').textContent=comparar?'Comparar móveis':'Meus favoritos';
  const itens=produtos.filter(p=>ids.has(p.id));
- $('conteudoColecao').innerHTML=itens.length?itens.map(p=>'<p><strong>'+escapar(p.nome)+'</strong> • '+p.categoria+' • '+moeda(p.preco)+' <button class="btn sec" data-add="'+p.id+'">Adicionar</button></p>').join(''):'Nenhum produto selecionado.';
+ /* Compara até três peças em colunas com os mesmos critérios. */
+ if(comparar&&itens.length){
+  const linhas=[['Foto',p=>'<img src="'+p.foto+'" alt="Imagem ilustrativa de '+escapar(p.nome)+'">'],['Nome',p=>escapar(p.nome)],['Ambiente',p=>escapar(p.categoria)],['Preço',p=>moeda(p.preco)],['Descrição',p=>escapar(p.descricao)],['Adicionar',p=>'<button class="btn" data-add="'+p.id+'">Adicionar</button>']];
+  $('conteudoColecao').innerHTML='<p class="notice">Comparação demonstrativa. Imagens ilustrativas e medidas não verificadas.</p><div class="comparacao-scroll"><table class="comparacao-tabela"><tbody>'+linhas.map(([titulo,valor])=>'<tr><th scope="row">'+titulo+'</th>'+itens.map(p=>'<td>'+valor(p)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
+ }else{
+  $('conteudoColecao').innerHTML=itens.length?itens.map(p=>'<p><strong>'+escapar(p.nome)+'</strong> • '+p.categoria+' • '+moeda(p.preco)+' <button class="btn sec" data-add="'+p.id+'">Adicionar</button></p>').join(''):'Nenhum produto selecionado.';
+ }
  $('colecaoModal').showModal();
 }
 /* Cliques delegados também funcionam em cards criados após filtrar. */
