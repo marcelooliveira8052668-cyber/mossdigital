@@ -36,6 +36,8 @@ dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius
 .galeria-controles{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
 .galeria-controles button{min-width:44px;min-height:44px}
 .galeria-controles button:disabled{opacity:.35;cursor:not-allowed}
+/* Esconde os controles de uma galeria que ainda possui uma única imagem. */
+.galeria-controles[hidden],.galeria-miniaturas[hidden]{display:none}
 .foto-clicavel{border:0;padding:0;background:transparent;width:100%;display:block;cursor:pointer}
 .foto-clicavel:focus-visible{outline-offset:-4px}
 .foto-clicavel .photo{display:block}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
@@ -95,8 +97,15 @@ const fotos={
 /* Exemplo de preenchimento futuro: 1: ['foto-frente.webp','foto-lateral.webp','foto-detalhe.webp'] */
 /* Use caminhos locais de imagens autorizadas; não copie URLs de produtos diferentes. */
 const galeriasVerificadas={};
+/* Confere se há de três a cinco fotos diferentes cadastradas para o mesmo produto. */
+function validarGaleria(lista){
+ if(!Array.isArray(lista)||lista.length<3||lista.length>5)return [];
+ if(!lista.every(url=>typeof url==='string'&&url.trim()&&/^(?:\.\.?\/|assets\/|https:\/\/)/.test(url)))return [];
+ if(new Set(lista).size!==lista.length)return [];
+ return lista;
+}
 /* Gera IDs estáveis, preços demonstrativos e descrições. */
-const produtos=Object.entries(colecoes).flatMap(([categoria,nomes],grupo)=>nomes.map((nome,i)=>({id:grupo*12+i+1,nome,categoria,preco:Math.round((299+grupo*170+i*137)/10)*10,medidas:'Medidas sob consulta',descricao:'Peça de design contemporâneo para compor ambientes com elegância e conforto.',foto:'https://images.unsplash.com/'+fotos[categoria][i%3]+'?auto=format&fit=crop&w=700&q=80',galeria:Array.isArray(galeriasVerificadas[grupo*12+i+1])&&galeriasVerificadas[grupo*12+i+1].length>=3?galeriasVerificadas[grupo*12+i+1].slice(0,5):[]})));
+const produtos=Object.entries(colecoes).flatMap(([categoria,nomes],grupo)=>nomes.map((nome,i)=>({id:grupo*12+i+1,nome,categoria,preco:Math.round((299+grupo*170+i*137)/10)*10,medidas:'Medidas sob consulta',descricao:'Peça de design contemporâneo para compor ambientes com elegância e conforto.',foto:'https://images.unsplash.com/'+fotos[categoria][i%3]+'?auto=format&fit=crop&w=700&q=80',galeria:validarGaleria(galeriasVerificadas[grupo*12+i+1])})));
 /* Elementos auxiliares e formatação em reais. */
 const $=id=>document.getElementById(id);
 const moeda=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
@@ -128,8 +137,8 @@ function abrirDetalhes(id){
  const imagens=p.galeria.length?p.galeria.slice(0,5):[p.foto];
  /* Sem galeria verificada, não sugere que existem ângulos adicionais. */
  const possuiGaleria=imagens.length>1;
- const miniaturas=imagens.map((url,i)=>'<button type="button" data-foto="'+i+'" aria-label="Ver foto '+(i+1)+' de '+imagens.length+'" aria-current="'+(i===0)+'"><img src="'+url+'" alt="Miniatura '+(i+1)+'"></button>').join('');
- $('conteudoDetalhes').innerHTML='<img id="fotoDetalhe" src="'+imagens[0]+'" alt="Imagem ilustrativa de '+escapar(p.nome)+'"><div class="galeria-controles"><button class="btn sec" type="button" data-anterior aria-label="Foto anterior">‹</button><span id="indicadorFoto" class="muted" aria-live="polite">Foto 1 de '+imagens.length+'</span><button class="btn sec" type="button" data-proxima aria-label="Próxima foto">›</button></div><div class="galeria-miniaturas" aria-label="Fotos do produto">'+miniaturas+'</div><p class="tag">'+p.categoria+'</p><h2>'+escapar(p.nome)+'</h2><p>'+escapar(p.descricao)+'</p><p>'+escapar(p.medidas)+'</p><strong>'+moeda(p.preco)+'</strong><p class="notice">Fotos ilustrativas até a verificação das imagens específicas deste móvel.</p>'+(p.galeria.length<3?'<p class="galeria-vazia">Galeria em preparação: serão incluídas de 3 a 5 fotos verificadas deste mesmo produto.</p>':'')+'<button class="btn" data-add="'+p.id+'">Adicionar ao carrinho</button>';
+ const miniaturas=possuiGaleria?imagens.map((url,i)=>'<button type="button" data-foto="'+i+'" aria-label="Ver foto '+(i+1)+' de '+imagens.length+'" aria-current="'+(i===0)+'"><img src="'+url+'" alt="Miniatura '+(i+1)+'"></button>').join('');
+ $('conteudoDetalhes').innerHTML='<img id="fotoDetalhe" src="'+imagens[0]+'" alt="'+(possuiGaleria?'Foto do produto ':'Imagem ilustrativa de ')+escapar(p.nome)+'"><div class="galeria-controles"><button class="btn sec" type="button" data-anterior aria-label="Foto anterior">‹</button><span id="indicadorFoto" class="muted" aria-live="polite">Foto 1 de '+imagens.length+'</span><button class="btn sec" type="button" data-proxima aria-label="Próxima foto">›</button></div><div class="galeria-miniaturas" aria-label="Fotos do produto">'+miniaturas+'</div><p class="tag">'+p.categoria+'</p><h2>'+escapar(p.nome)+'</h2><p>'+escapar(p.descricao)+'</p><p>'+escapar(p.medidas)+'</p><strong>'+moeda(p.preco)+'</strong><p class="notice">'+(possuiGaleria?'Galeria cadastrada para demonstração.':'Foto ilustrativa até a verificação das imagens específicas deste móvel.')+'</p>'+(p.galeria.length<3?'<p class="galeria-vazia">Galeria em preparação: serão incluídas de 3 a 5 fotos verificadas deste mesmo produto.</p>':'')+'<button class="btn" data-add="'+p.id+'">Adicionar ao carrinho</button>';
  /* A troca de miniaturas ocorre apenas dentro da janela de detalhes aberta. */
  /* Navega por miniaturas e setas, sem misturar fotografias de produtos. */
  let fotoAtual=0;
@@ -153,6 +162,9 @@ function abrirDetalhes(id){
  };
  /* Desativa navegação redundante enquanto só houver uma foto ilustrativa. */
  $('conteudoDetalhes').querySelectorAll('[data-anterior],[data-proxima]').forEach(botao=>{botao.disabled=!possuiGaleria;botao.title=possuiGaleria?'Navegar pelas fotos':'Aguardando fotos verificadas';});
+ /* Miniaturas e setas só aparecem quando há várias fotos cadastradas. */
+ $('conteudoDetalhes').querySelector('.galeria-controles').hidden=!possuiGaleria;
+ $('conteudoDetalhes').querySelector('.galeria-miniaturas').hidden=!possuiGaleria;
  $('detalhes').showModal();
 }
 /* Adiciona produto e atualiza indicador de quantidade. */
