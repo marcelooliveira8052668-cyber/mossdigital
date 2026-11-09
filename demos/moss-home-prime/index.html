@@ -35,6 +35,7 @@ dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius
 /* Controles acessíveis da galeria de produtos. */
 .galeria-controles{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
 .galeria-controles button{min-width:44px;min-height:44px}
+.galeria-controles button:disabled{opacity:.35;cursor:not-allowed}
 .foto-clicavel{border:0;padding:0;background:transparent;width:100%;display:block;cursor:pointer}
 .foto-clicavel:focus-visible{outline-offset:-4px}
 .foto-clicavel .photo{display:block}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
@@ -90,8 +91,12 @@ const fotos={
 'Jantar':['photo-1617806118233-18e1de247200','photo-1600566753086-00f18fb6b3ea','photo-1600607687939-ce8a6c25118c'],
 'Escritório':['photo-1497366811353-6870744d04b2','photo-1497366754035-f200968a6e72','photo-1524758631624-e2822e304c36'],
 'Externo':['photo-1600566753190-17f0baa2a6c3','photo-1600607687920-4e2a09cf159d','photo-1600210492486-724fe5c67fb0']};
+/* Cadastro das fotos reais por ID do móvel. Cada lista deve ter de 3 a 5 imagens DO MESMO produto. */
+/* Exemplo de preenchimento futuro: 1: ['foto-frente.webp','foto-lateral.webp','foto-detalhe.webp'] */
+/* Use caminhos locais de imagens autorizadas; não copie URLs de produtos diferentes. */
+const galeriasVerificadas={};
 /* Gera IDs estáveis, preços demonstrativos e descrições. */
-const produtos=Object.entries(colecoes).flatMap(([categoria,nomes],grupo)=>nomes.map((nome,i)=>({id:grupo*12+i+1,nome,categoria,preco:Math.round((299+grupo*170+i*137)/10)*10,medidas:'Medidas sob consulta',descricao:'Peça de design contemporâneo para compor ambientes com elegância e conforto.',foto:'https://images.unsplash.com/'+fotos[categoria][i%3]+'?auto=format&fit=crop&w=700&q=80',galeria:[]})));
+const produtos=Object.entries(colecoes).flatMap(([categoria,nomes],grupo)=>nomes.map((nome,i)=>({id:grupo*12+i+1,nome,categoria,preco:Math.round((299+grupo*170+i*137)/10)*10,medidas:'Medidas sob consulta',descricao:'Peça de design contemporâneo para compor ambientes com elegância e conforto.',foto:'https://images.unsplash.com/'+fotos[categoria][i%3]+'?auto=format&fit=crop&w=700&q=80',galeria:Array.isArray(galeriasVerificadas[grupo*12+i+1])&&galeriasVerificadas[grupo*12+i+1].length>=3?galeriasVerificadas[grupo*12+i+1].slice(0,5):[]})));
 /* Elementos auxiliares e formatação em reais. */
 const $=id=>document.getElementById(id);
 const moeda=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
@@ -121,6 +126,8 @@ function abrirDetalhes(id){
  const p=produtos.find(item=>item.id===id);if(!p)return;
  /* Uma galeria só é preenchida quando as imagens do mesmo produto forem verificadas. */
  const imagens=p.galeria.length?p.galeria.slice(0,5):[p.foto];
+ /* Sem galeria verificada, não sugere que existem ângulos adicionais. */
+ const possuiGaleria=imagens.length>1;
  const miniaturas=imagens.map((url,i)=>'<button type="button" data-foto="'+i+'" aria-label="Ver foto '+(i+1)+' de '+imagens.length+'" aria-current="'+(i===0)+'"><img src="'+url+'" alt="Miniatura '+(i+1)+'"></button>').join('');
  $('conteudoDetalhes').innerHTML='<img id="fotoDetalhe" src="'+imagens[0]+'" alt="Imagem ilustrativa de '+escapar(p.nome)+'"><div class="galeria-controles"><button class="btn sec" type="button" data-anterior aria-label="Foto anterior">‹</button><span id="indicadorFoto" class="muted" aria-live="polite">Foto 1 de '+imagens.length+'</span><button class="btn sec" type="button" data-proxima aria-label="Próxima foto">›</button></div><div class="galeria-miniaturas" aria-label="Fotos do produto">'+miniaturas+'</div><p class="tag">'+p.categoria+'</p><h2>'+escapar(p.nome)+'</h2><p>'+escapar(p.descricao)+'</p><p>'+escapar(p.medidas)+'</p><strong>'+moeda(p.preco)+'</strong><p class="notice">Fotos ilustrativas até a verificação das imagens específicas deste móvel.</p>'+(p.galeria.length<3?'<p class="galeria-vazia">Galeria em preparação: serão incluídas de 3 a 5 fotos verificadas deste mesmo produto.</p>':'')+'<button class="btn" data-add="'+p.id+'">Adicionar ao carrinho</button>';
  /* A troca de miniaturas ocorre apenas dentro da janela de detalhes aberta. */
@@ -132,12 +139,20 @@ function abrirDetalhes(id){
   $('indicadorFoto').textContent='Foto '+(fotoAtual+1)+' de '+imagens.length;
   $('conteudoDetalhes').querySelectorAll('[data-foto]').forEach(item=>item.setAttribute('aria-current',String(Number(item.dataset.foto)===fotoAtual)));
  }
+ /* Permite navegar pelas fotografias usando as setas do teclado. */
+ $('conteudoDetalhes').onkeydown=evento=>{
+  if(!possuiGaleria)return;
+  if(evento.key==='ArrowLeft'){evento.preventDefault();selecionarFoto(fotoAtual-1);}
+  if(evento.key==='ArrowRight'){evento.preventDefault();selecionarFoto(fotoAtual+1);}
+ };
  $('conteudoDetalhes').onclick=evento=>{
   const miniatura=evento.target.closest('[data-foto]');
   if(miniatura){selecionarFoto(Number(miniatura.dataset.foto));return;}
   if(evento.target.closest('[data-anterior]'))selecionarFoto(fotoAtual-1);
   if(evento.target.closest('[data-proxima]'))selecionarFoto(fotoAtual+1);
  };
+ /* Desativa navegação redundante enquanto só houver uma foto ilustrativa. */
+ $('conteudoDetalhes').querySelectorAll('[data-anterior],[data-proxima]').forEach(botao=>{botao.disabled=!possuiGaleria;botao.title=possuiGaleria?'Navegar pelas fotos':'Aguardando fotos verificadas';});
  $('detalhes').showModal();
 }
 /* Adiciona produto e atualiza indicador de quantidade. */
