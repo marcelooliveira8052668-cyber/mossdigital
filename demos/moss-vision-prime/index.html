@@ -1,0 +1,154 @@
+<!DOCTYPE html> <!-- Eu identifico o documento como HTML5. -->
+<html lang="pt-BR"> <!-- Eu defino o idioma da página. -->
+<head> <!-- Eu começo as configurações do site. -->
+<meta charset="UTF-8"> <!-- Eu habilito acentos e caracteres especiais. -->
+<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Eu adapto a página a celulares. -->
+<meta name="description" content="MOSS Vision Prime: demonstração de ótica com óculos de grau, sol e esportivos."> <!-- Eu descrevo a demonstração. -->
+<title>MOSS VISION PRIME | Ótica e Estilo</title> <!-- Eu defino o título da aba. -->
+<style> /* Eu mantenho o CSS no próprio HTML para facilitar o uso no Koder. */
+:root{--fundo:#101114;--painel:#1c1e23;--ouro:#d7b779;--texto:#f7f6f2;--cinza:#b9b8b5;--borda:#363536} /* Eu centralizo as cores editáveis. */
+*{box-sizing:border-box} /* Eu evito que bordas aumentem o tamanho dos elementos. */
+html{scroll-behavior:smooth} /* Eu suavizo a navegação entre seções. */
+body{margin:0;background:var(--fundo);color:var(--texto);font:16px/1.55 Arial,Helvetica,sans-serif} /* Eu defino o visual geral. */
+a{color:inherit;text-decoration:none} /* Eu removo sublinhados padrão dos links. */
+button,input,select{font:inherit} /* Eu uniformizo os controles. */
+button{cursor:pointer} /* Eu mostro que os botões são clicáveis. */
+img{display:block;max-width:100%} /* Eu impeço imagens de ultrapassar os cartões. */
+.wrap{width:min(1160px,92%);margin:auto} /* Eu limito a largura do conteúdo. */
+header{position:sticky;top:0;z-index:20;background:#101114f2;border-bottom:1px solid var(--borda);backdrop-filter:blur(12px)} /* Eu mantenho o menu acessível. */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:74px;flex-wrap:wrap} /* Eu organizo o cabeçalho. */
+.logo{font-size:22px;font-weight:800;letter-spacing:2px} /* Eu destaco a marca. */
+.logo span,.gold{color:var(--ouro)} /* Eu aplico a cor de destaque. */
+nav{display:flex;flex-wrap:wrap;gap:16px;font-size:14px} /* Eu preparo o menu responsivo. */
+nav a:hover{color:var(--ouro)} /* Eu sinalizo a navegação. */
+.pill,.btn{border:1px solid var(--ouro);border-radius:100px;padding:11px 18px;background:transparent;color:var(--ouro);font-weight:700} /* Eu crio botões reutilizáveis. */
+.btn.primary{background:var(--ouro);color:#161616} /* Eu destaco a ação principal. */
+.btn:hover,.pill:hover{filter:brightness(1.15)} /* Eu ofereço resposta visual ao toque. */
+.hero{min-height:480px;display:grid;align-items:center;background:linear-gradient(90deg,#101114 0%,#101114eb 42%,#10111444 100%),url('https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1600&q=80') center/cover} /* Eu uso uma foto ilustrativa da coleção. */
+.hero .wrap{padding:72px 0} /* Eu crio espaço para o texto principal. */
+.eyebrow{color:var(--ouro);text-transform:uppercase;letter-spacing:3px;font-size:12px;font-weight:800} /* Eu marco a identidade premium. */
+h1{font-size:clamp(40px,7vw,82px);line-height:1.04;max-width:780px;margin:16px 0} /* Eu dimensiono o título. */
+h2{font-size:clamp(26px,4vw,39px);margin:0 0 10px} /* Eu padronizo títulos das seções. */
+.hero p{max-width:550px;color:#e4e1d9;font-size:18px} /* Eu mantenho o texto legível. */
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px} /* Eu organizo os botões principais. */
+section{padding:66px 0} /* Eu separo as áreas do site. */
+.sub{color:var(--cinza);margin:0 0 24px} /* Eu suavizo textos auxiliares. */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:28px} /* Eu apresento três diferenciais. */
+.stat{background:var(--painel);border:1px solid var(--borda);padding:22px;border-radius:16px} /* Eu crio caixas informativas. */
+.stat strong{display:block;color:var(--ouro);font-size:26px} /* Eu destaco números e benefícios. */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0} /* Eu organizo os filtros. */
+.filters button{border:1px solid var(--borda);background:var(--painel);color:var(--texto);border-radius:30px;padding:9px 14px} /* Eu estilizo os filtros. */
+.filters button.active{border-color:var(--ouro);color:var(--ouro)} /* Eu identifico o filtro selecionado. */
+.tools{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:18px 0 28px} /* Eu organizo busca e ordenação. */
+.tools input,.tools select{width:100%;padding:13px 15px;border-radius:10px;background:#24262b;border:1px solid #555;color:white} /* Eu deixo os campos acessíveis. */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px} /* Eu organizo quatro cartões por linha. */
+.card{background:var(--painel);border:1px solid var(--borda);border-radius:16px;overflow:hidden;display:flex;flex-direction:column} /* Eu construo os cartões. */
+.card:hover{border-color:#93774a} /* Eu destaco o cartão ao passar o mouse. */
+.photo{height:195px;background:#e5e3df;overflow:hidden} /* Eu reservo espaço para a foto. */
+.photo img{width:100%;height:100%;object-fit:cover} /* Eu enquadro as imagens. */
+.body{padding:17px;display:flex;flex:1;flex-direction:column;gap:7px} /* Eu organizo o conteúdo do cartão. */
+.tag{color:var(--ouro);font-size:12px;text-transform:uppercase;letter-spacing:1px} /* Eu identifico a categoria. */
+.card h3{font-size:17px;margin:0;line-height:1.3} /* Eu apresento o nome do modelo. */
+.price{font-size:20px;font-weight:800;margin-top:auto} /* Eu destaco o preço demonstrativo. */
+.card .small{font-size:12px;color:var(--cinza)} /* Eu identifico informações ilustrativas. */
+.card-buttons{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px} /* Eu posiciono ações do cartão. */
+.card-buttons button{padding:9px 6px;border-radius:8px;border:1px solid #666;background:#292b30;color:white;font-size:12px} /* Eu mantenho botões compactos. */
+.card-buttons button:hover{border-color:var(--ouro)} /* Eu indico interação. */
+.card-buttons button.buy{background:var(--ouro);color:#111;border-color:var(--ouro)} /* Eu destaco a compra. */
+.toolbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px} /* Eu organizo contagem e ações. */
+.panel{background:var(--painel);border:1px solid var(--borda);border-radius:18px;padding:22px} /* Eu reutilizo um painel escuro. */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px} /* Eu organizo as seções duplas. */
+details{border-bottom:1px solid var(--borda);padding:14px 0} /* Eu separo perguntas frequentes. */
+summary{cursor:pointer;font-weight:700} /* Eu sinalizo os itens expansíveis. */
+footer{background:#08090b;border-top:1px solid var(--borda);padding:30px 0;color:var(--cinza)} /* Eu finalizo o site. */
+dialog{width:min(580px,94vw);border:1px solid var(--ouro);border-radius:18px;background:#1c1e23;color:white;padding:25px;max-height:85vh;overflow:auto} /* Eu preparo as janelas de detalhes. */
+dialog::backdrop{background:#000b} /* Eu escureço o fundo do modal. */
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px} /* Eu organizo ações no modal. */
+.notice{color:var(--cinza);font-size:13px} /* Eu identifico conteúdo demonstrativo. */
+.cart-list{padding-left:22px} /* Eu organizo a lista do carrinho. */
+.cart-list li{margin-bottom:8px} /* Eu separo os itens do carrinho. */
+#toast{position:fixed;bottom:18px;right:18px;background:var(--ouro);color:#151515;padding:12px 18px;border-radius:12px;z-index:50;display:none;max-width:90vw} /* Eu mostro mensagens rápidas. */
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{min-height:400px}} /* Eu adapto tablets. */
+@media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:145px}.body{padding:11px}.card h3{font-size:14px}.card-buttons{grid-template-columns:1fr}.tools,.two,.stats{grid-template-columns:1fr}.nav{padding:12px 0}nav{gap:11px;font-size:12px}section{padding:44px 0}.hero{background-position:58% center}.hero .wrap{padding:60px 0}.price{font-size:17px}} /* Eu adapto celulares. */
+</style> <!-- Eu encerro os estilos. -->
+</head> <!-- Eu encerro as configurações. -->
+<body> <!-- Eu inicio o conteúdo visível. -->
+<header><div class="wrap nav"><a class="logo" href="#inicio">MOSS <span>VISION</span> PRIME</a><nav aria-label="Menu principal"><a href="#colecao">Coleção</a><a href="#experiencia">Experiência</a><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a></nav><button class="pill" id="abrirCarrinho" type="button">Sacola (<span id="quantidade">0</span>)</button></div></header> <!-- Eu exibo marca, menu e carrinho. -->
+<main> <!-- Eu organizo o conteúdo principal. -->
+<div class="hero" id="inicio"><div class="wrap"><div class="eyebrow">Elegância em cada olhar</div><h1>Seu estilo.<br><span class="gold">Sua visão.</span></h1><p>Armações de grau, óculos de sol e esportivos em uma experiência digital sofisticada.</p><div class="actions"><a class="btn primary" href="#colecao">Explorar coleção</a><a class="btn" href="#experiencia">Conhecer a ótica</a></div><p class="notice">Loja fictícia para demonstração. Fotos e valores ilustrativos.</p></div></div> <!-- Eu apresento a vitrine principal. -->
+<section id="colecao"><div class="wrap"><div class="eyebrow">Coleção 2026 · Demonstração</div><h2>Encontre seu próximo olhar</h2><p class="sub">60 itens demonstrativos. Selecione uma categoria, compare modelos e prepare seu pedido.</p><div class="filters" id="filtros" aria-label="Filtrar produtos"><button class="active" data-cat="Todos">Todos</button><button data-cat="Grau">Grau</button><button data-cat="Sol">Sol</button><button data-cat="Esportivo">Esportivo</button><button data-cat="Acessórios">Acessórios</button><button data-cat="Favoritos">♡ Favoritos</button></div><div class="tools"><input id="busca" type="search" placeholder="Buscar armações, aviador, esportivo..." aria-label="Buscar produtos"><select id="ordem" aria-label="Ordenar produtos"><option value="padrao">Ordenação padrão</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="nome">Nome A-Z</option></select></div><div class="toolbar"><span id="contador" aria-live="polite"></span><button class="pill" id="abrirComparador" type="button">Comparar (<span id="totalComparar">0</span>/3)</button></div><div class="grid" id="produtos"></div></div></section> <!-- Eu preparo o catálogo interativo. -->
+<section id="experiencia"><div class="wrap two"><div><div class="eyebrow">Nossa essência</div><h2>Uma ótica feita para inspirar</h2><p class="sub">A MOSS Vision Prime é um conceito de demonstração criado para mostrar como uma ótica pode apresentar coleções, organizar produtos e receber pedidos digitais.</p><div class="stats"><div class="stat"><strong>60</strong>itens no catálogo</div><div class="stat"><strong>4</strong>categorias</div><div class="stat"><strong>100%</strong>responsivo</div></div></div><div class="panel"><h3>Atendimento personalizado</h3><p>Escolha armações, salve favoritos e compare até três opções. A sacola prepara uma mensagem para WhatsApp; não realiza pagamentos.</p><p class="notice">Não há avaliação oftalmológica, prescrição de lentes ou prova virtual real nesta demonstração.</p><a class="btn primary" href="#colecao">Escolher modelos</a></div></div></section> <!-- Eu apresento a proposta da loja. -->
+<section id="duvidas"><div class="wrap"><div class="eyebrow">Informações</div><h2>Dúvidas frequentes</h2><details><summary>Os preços são reais?</summary><p>Não. São valores fictícios para demonstrar o funcionamento do catálogo.</p></details><details><summary>Posso comprar nesta página?</summary><p>Não. Esta é uma demonstração. A sacola gera apenas um resumo de interesse.</p></details><details><summary>As imagens correspondem exatamente aos produtos?</summary><p>Não. As fotografias são ilustrativas e podem ser reutilizadas em mais de um modelo.</p></details><details><summary>Vocês vendem Ray-Ban ou Oakley?</summary><p>Esta demonstração não representa nem anuncia estoque de marcas reais. As linhas exibidas são fictícias e inspiradas em formatos clássicos.</p></details></div></section> <!-- Eu esclareço as limitações do exemplo. -->
+<section id="contato"><div class="wrap panel"><div class="eyebrow">MOSS Digital</div><h2>Gostou desta demonstração?</h2><p>Quer um site personalizado para sua ótica? Entre em contato com a MOSS Digital.</p><a class="btn primary" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Quero%20um%20site%20como%20a%20MOSS%20Vision%20Prime." target="_blank" rel="noopener noreferrer">Solicitar orçamento</a></div></section> <!-- Eu ofereço contato comercial verdadeiro da MOSS. -->
+</main> <!-- Eu encerro o conteúdo principal. -->
+<footer><div class="wrap"><strong>MOSS VISION PRIME</strong><p>Conceito demonstrativo desenvolvido pela MOSS Digital. Produtos, nomes e preços fictícios. Fotografias ilustrativas.</p><a href="https://mossdigital.com.br/">Voltar à MOSS Digital</a></div></footer> <!-- Eu apresento os créditos. -->
+<dialog id="modal"><div id="modalConteudo"></div><div class="modal-actions"><button class="btn" id="fecharModal" type="button">Fechar</button></div></dialog> <!-- Eu preparo o modal de produtos e comparação. -->
+<dialog id="modalCarrinho"><h2>Minha sacola</h2><div id="listaCarrinho"></div><p id="totalCarrinho"></p><div class="modal-actions"><button class="btn primary" id="enviarCarrinho" type="button">Preparar pedido no WhatsApp</button><button class="btn" id="fecharCarrinho" type="button">Fechar</button></div><p class="notice">Pedido demonstrativo: não há cobrança, estoque ou checkout.</p></dialog> <!-- Eu preparo o resumo da sacola. -->
+<div id="toast" role="status" aria-live="polite"></div> <!-- Eu preparo mensagens de confirmação. -->
+<script> // Eu começo a programação interativa.
+/* Eu defino fotografias ilustrativas de óculos, obtidas por URLs públicas de imagens. */
+const fotos = [
+'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80',
+'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=700&q=80',
+'https://images.unsplash.com/photo-1509695507497-903c140c43b0?auto=format&fit=crop&w=700&q=80'
+]; // Eu reutilizo as fotos e aviso que não identificam produtos específicos.
+/* Eu distribuo os 60 itens entre quatro categorias. */
+const categorias = [['Grau',20],['Sol',25],['Esportivo',10],['Acessórios',5]]; // Eu configuro as quantidades.
+const estilos = {Grau:['Clássico','Redondo','Retangular','Minimal','Acetato'],Sol:['Aviador','Wayfarer','Retrô','Cat Eye','Urban'],Esportivo:['Performance','Trail','Motion','Active','Speed'],Acessórios:['Estojo','Flanela','Cordão','Kit Limpeza','Porta-Óculos']}; // Eu defino nomes fictícios.
+const produtos = []; // Eu armazeno o catálogo em memória.
+categorias.forEach(([categoria,quantidade]) => { // Eu percorro cada categoria.
+ for(let i=1;i<=quantidade;i++){ // Eu gero os produtos da categoria.
+  const estilo = estilos[categoria][(i-1)%5]; // Eu alterno os estilos.
+  const preco = categoria==='Acessórios'?29+(i*12):categoria==='Esportivo'?189+(i*21):categoria==='Sol'?169+(i*17):149+(i*19); // Eu calculo valores ilustrativos.
+  produtos.push({id:produtos.length+1,nome:'Vision '+estilo+' '+String(i).padStart(2,'0'),categoria,preco,imagem:fotos[(i+(categoria==='Grau'?1:categoria==='Sol'?0:2))%fotos.length],descricao:'Modelo demonstrativo '+estilo.toLowerCase()+' da linha '+categoria.toLowerCase()+'. Consulte um profissional para necessidades de lentes e ajustes.'}); // Eu adiciono o item.
+ }
+}); // Eu termino a criação do catálogo.
+const $ = id => document.getElementById(id); // Eu facilito a busca de elementos pelo identificador.
+const dinheiro = valor => valor.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); // Eu formato valores em reais.
+let categoriaAtiva='Todos'; // Eu começo mostrando todos os itens.
+const favoritos=new Set(); // Eu guardo favoritos apenas enquanto a página estiver aberta.
+const comparar=new Set(); // Eu guardo até três itens para comparar.
+const carrinho=[]; // Eu guardo a sacola demonstrativa em memória.
+function avisar(mensagem){$('toast').textContent=mensagem;$('toast').style.display='block';clearTimeout(window.tempoAviso);window.tempoAviso=setTimeout(()=>$('toast').style.display='none',2600);} // Eu mostro um aviso temporário.
+function filtrar(){ // Eu atualizo os itens exibidos.
+ const busca=$('busca').value.trim().toLocaleLowerCase('pt-BR'); // Eu normalizo o texto pesquisado.
+ let lista=produtos.filter(p=>(categoriaAtiva==='Todos'||(categoriaAtiva==='Favoritos'?favoritos.has(p.id):p.categoria===categoriaAtiva))&&(p.nome+' '+p.categoria).toLocaleLowerCase('pt-BR').includes(busca)); // Eu aplico busca e categoria.
+ const ordem=$('ordem').value; // Eu identifico a ordenação escolhida.
+ if(ordem==='menor')lista.sort((a,b)=>a.preco-b.preco); // Eu ordeno pelo menor preço.
+ if(ordem==='maior')lista.sort((a,b)=>b.preco-a.preco); // Eu ordeno pelo maior preço.
+ if(ordem==='nome')lista.sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR')); // Eu ordeno alfabeticamente.
+ $('contador').textContent=lista.length+' de '+produtos.length+' itens demonstrativos'; // Eu atualizo a contagem.
+ $('produtos').replaceChildren(); // Eu removo os cartões anteriores.
+ lista.forEach(p=>{ // Eu construo um cartão para cada item.
+  const card=document.createElement('article');card.className='card'; // Eu crio o cartão.
+  const photo=document.createElement('div');photo.className='photo'; // Eu preparo a área da foto.
+  const img=document.createElement('img');img.src=p.imagem;img.alt='Foto ilustrativa da categoria '+p.categoria;img.loading='lazy';img.onerror=()=>{img.remove();photo.textContent='Imagem ilustrativa indisponível';photo.style.cssText='display:grid;place-items:center;color:#222;text-align:center;padding:20px'};photo.append(img); // Eu mostro a foto ou uma mensagem de falha.
+  const body=document.createElement('div');body.className='body'; // Eu preparo os detalhes.
+  const tag=document.createElement('span');tag.className='tag';tag.textContent=p.categoria; // Eu exibo a categoria.
+  const h=document.createElement('h3');h.textContent=p.nome; // Eu exibo o nome.
+  const price=document.createElement('div');price.className='price';price.textContent=dinheiro(p.preco); // Eu exibo o preço.
+  const small=document.createElement('span');small.className='small';small.textContent='Valor ilustrativo · Foto ilustrativa'; // Eu identifico os dados fictícios.
+  const buttons=document.createElement('div');buttons.className='card-buttons'; // Eu preparo os controles.
+  const detail=document.createElement('button');detail.textContent='Detalhes';detail.onclick=()=>detalhes(p); // Eu abro os detalhes.
+  const fav=document.createElement('button');fav.textContent=favoritos.has(p.id)?'♥ Salvo':'♡ Favorito';fav.setAttribute('aria-pressed',String(favoritos.has(p.id)));fav.onclick=()=>{favoritos.has(p.id)?favoritos.delete(p.id):favoritos.add(p.id);filtrar();}; // Eu alterno favoritos.
+  const comp=document.createElement('button');comp.textContent=comparar.has(p.id)?'✓ Comparando':'Comparar';comp.setAttribute('aria-pressed',String(comparar.has(p.id)));comp.onclick=()=>{if(comparar.has(p.id))comparar.delete(p.id);else if(comparar.size<3)comparar.add(p.id);else return avisar('Compare até 3 itens.');$('totalComparar').textContent=comparar.size;filtrar();}; // Eu limito a comparação.
+  const buy=document.createElement('button');buy.className='buy';buy.textContent='Adicionar +';buy.onclick=()=>adicionar(p); // Eu adiciono o item à sacola.
+  buttons.append(detail,fav,comp,buy);body.append(tag,h,price,small,buttons);card.append(photo,body);$('produtos').append(card); // Eu monto o cartão completo.
+ }); // Eu termino a listagem.
+} // Eu encerro a função de filtragem.
+function detalhes(p){$('modalConteudo').replaceChildren();const h=document.createElement('h2');h.textContent=p.nome;const cat=document.createElement('p');cat.textContent=p.categoria+' · '+dinheiro(p.preco);const d=document.createElement('p');d.textContent=p.descricao;const note=document.createElement('p');note.className='notice';note.textContent='Produto fictício, foto e preço ilustrativos.';const b=document.createElement('button');b.className='btn primary';b.textContent='Adicionar à sacola';b.onclick=()=>{adicionar(p);$('modal').close();};$('modalConteudo').append(h,cat,d,note,b);$('modal').showModal();} // Eu apresento informações de um produto.
+function adicionar(p){const item=carrinho.find(x=>x.id===p.id);if(item)item.quantidade++;else carrinho.push({...p,quantidade:1});$('quantidade').textContent=carrinho.reduce((n,x)=>n+x.quantidade,0);avisar('Item adicionado à sacola!');} // Eu atualizo o carrinho.
+function abrirCarrinho(){$('listaCarrinho').replaceChildren();if(!carrinho.length){$('listaCarrinho').textContent='Sua sacola está vazia.';}else{const ul=document.createElement('ul');ul.className='cart-list';carrinho.forEach(item=>{const li=document.createElement('li');li.textContent=item.quantidade+' × '+item.nome+' — '+dinheiro(item.preco*item.quantidade)+' ';const remove=document.createElement('button');remove.textContent='Remover';remove.onclick=()=>{carrinho.splice(carrinho.indexOf(item),1);$('quantidade').textContent=carrinho.reduce((n,x)=>n+x.quantidade,0);abrirCarrinho();};li.append(remove);ul.append(li);});$('listaCarrinho').append(ul);}$('totalCarrinho').textContent='Total ilustrativo: '+dinheiro(carrinho.reduce((n,x)=>n+x.preco*x.quantidade,0));$('modalCarrinho').showModal();} // Eu mostro o resumo da sacola.
+function abrirComparador(){if(!comparar.size)return avisar('Selecione até 3 produtos para comparar.');$('modalConteudo').replaceChildren();const h=document.createElement('h2');h.textContent='Comparar modelos';$('modalConteudo').append(h);produtos.filter(p=>comparar.has(p.id)).forEach(p=>{const item=document.createElement('p');item.textContent=p.nome+' · '+p.categoria+' · '+dinheiro(p.preco);$('modalConteudo').append(item);});const nota=document.createElement('p');nota.className='notice';nota.textContent='Comparação demonstrativa de nomes, categorias e preços. Não inclui medidas técnicas.';$('modalConteudo').append(nota);$('modal').showModal();} // Eu comparo as informações disponíveis.
+document.querySelectorAll('[data-cat]').forEach(b=>b.addEventListener('click',()=>{categoriaAtiva=b.dataset.cat;document.querySelectorAll('[data-cat]').forEach(x=>x.classList.toggle('active',x===b));filtrar();})); // Eu conecto os filtros.
+$('busca').addEventListener('input',filtrar); // Eu atualizo o catálogo durante a digitação.
+$('ordem').addEventListener('change',filtrar); // Eu conecto a ordenação.
+$('abrirComparador').addEventListener('click',abrirComparador); // Eu conecto o comparador.
+$('abrirCarrinho').addEventListener('click',abrirCarrinho); // Eu conecto o carrinho.
+$('fecharModal').addEventListener('click',()=>$('modal').close()); // Eu fecho o modal.
+$('fecharCarrinho').addEventListener('click',()=>$('modalCarrinho').close()); // Eu fecho a sacola.
+$('enviarCarrinho').addEventListener('click',()=>{if(!carrinho.length)return avisar('Adicione um item antes de continuar.');const linhas=carrinho.map(x=>x.quantidade+'x '+x.nome+' ('+dinheiro(x.preco)+')').join('\n');const texto='Olá! Vi a demo MOSS Vision Prime e gostaria de um site com uma sacola como esta:\n'+linhas+'\nTotal ilustrativo: '+dinheiro(carrinho.reduce((n,x)=>n+x.preco*x.quantidade,0));window.open('https://wa.me/5511942038103?text='+encodeURIComponent(texto),'_blank','noopener,noreferrer');}); // Eu preparo o contato comercial com o resumo.
+filtrar(); // Eu exibo os 60 produtos ao carregar.
+</script> <!-- Eu encerro a programação. -->
+</body> <!-- Eu encerro a página visível. -->
+</html> <!-- Eu finalizo o documento. -->
