@@ -31,7 +31,13 @@ dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius
 .galeria-miniaturas button{background:#292a24;border:1px solid var(--borda);border-radius:5px;padding:4px;color:var(--claro)}
 .galeria-miniaturas button[aria-current="true"]{border:2px solid var(--ouro)}
 .galeria-miniaturas img{width:62px;height:54px;object-fit:cover;display:block}
-.galeria-vazia{padding:9px;border:1px dashed var(--borda);color:#c5c0b4;font-size:13px}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.galeria-vazia{padding:9px;border:1px dashed var(--borda);color:#c5c0b4;font-size:13px}
+/* Controles acessíveis da galeria de produtos. */
+.galeria-controles{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
+.galeria-controles button{min-width:44px;min-height:44px}
+.foto-clicavel{border:0;padding:0;background:transparent;width:100%;display:block;cursor:pointer}
+.foto-clicavel:focus-visible{outline-offset:-4px}
+.foto-clicavel .photo{display:block}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
 .floating{position:fixed;bottom:18px;right:18px;z-index:30;box-shadow:0 4px 20px #0008}
 .notice{color:#cfc8b8;font-size:13px}
 /* Tabela comparativa adaptada para rolagem horizontal no celular. */
@@ -107,7 +113,7 @@ function renderizar(){
  $('contador').textContent=lista.length+' '+(lista.length===1?'produto encontrado':'produtos encontrados');
  /* Orienta o visitante quando a busca não encontra móveis. */
  if(!lista.length){$('produtos').innerHTML='<p class="muted" role="status">Nenhum móvel encontrado. Tente outro nome ou selecione todos os ambientes.</p>';return;}
- $('produtos').innerHTML=lista.map(p=>'<article class="card"><img class="photo" loading="lazy" src="'+p.foto+'" alt="Foto ilustrativa do ambiente para '+escapar(p.nome)+'"><div class="body"><span class="tag">'+p.categoria+'</span><h3>'+escapar(p.nome)+'</h3><span class="muted">Imagem ilustrativa • Produto demonstrativo</span><div class="price">'+moeda(p.preco)+'</div><div class="actions"><button class="btn sec" data-detalhe="'+p.id+'">Detalhes</button><button class="btn" data-add="'+p.id+'">Adicionar</button></div></div></article>').join('');
+ $('produtos').innerHTML=lista.map(p=>'<article class="card"><button class="foto-clicavel" type="button" data-detalhe="'+p.id+'" aria-label="Abrir galeria de '+escapar(p.nome)+'"><img class="photo" loading="lazy" src="'+p.foto+'" alt="Foto ilustrativa do ambiente para '+escapar(p.nome)+'"></button><div class="body"><span class="tag">'+p.categoria+'</span><h3>'+escapar(p.nome)+'</h3><span class="muted">Imagem ilustrativa • Produto demonstrativo</span><div class="price">'+moeda(p.preco)+'</div><div class="actions"><button class="btn sec" data-detalhe="'+p.id+'">Detalhes</button><button class="btn" data-add="'+p.id+'">Adicionar</button></div></div></article>').join('');
 }
 /* Exibe detalhes do produto escolhido. */
 /* Exibe a imagem ilustrativa atual e prepara a galeria de até cinco fotos reais do mesmo móvel. */
@@ -116,13 +122,21 @@ function abrirDetalhes(id){
  /* Uma galeria só é preenchida quando as imagens do mesmo produto forem verificadas. */
  const imagens=p.galeria.length?p.galeria.slice(0,5):[p.foto];
  const miniaturas=imagens.map((url,i)=>'<button type="button" data-foto="'+i+'" aria-label="Ver foto '+(i+1)+' de '+imagens.length+'" aria-current="'+(i===0)+'"><img src="'+url+'" alt="Miniatura '+(i+1)+'"></button>').join('');
- $('conteudoDetalhes').innerHTML='<img id="fotoDetalhe" src="'+imagens[0]+'" alt="Imagem ilustrativa de '+escapar(p.nome)+'"><div class="galeria-miniaturas" aria-label="Fotos do produto">'+miniaturas+'</div><p class="tag">'+p.categoria+'</p><h2>'+escapar(p.nome)+'</h2><p>'+escapar(p.descricao)+'</p><p>'+escapar(p.medidas)+'</p><strong>'+moeda(p.preco)+'</strong><p class="notice">Fotos ilustrativas até a verificação das imagens específicas deste móvel.</p>'+(p.galeria.length<3?'<p class="galeria-vazia">Galeria em preparação: serão incluídas de 3 a 5 fotos verificadas deste mesmo produto.</p>':'')+'<button class="btn" data-add="'+p.id+'">Adicionar ao carrinho</button>';
+ $('conteudoDetalhes').innerHTML='<img id="fotoDetalhe" src="'+imagens[0]+'" alt="Imagem ilustrativa de '+escapar(p.nome)+'"><div class="galeria-controles"><button class="btn sec" type="button" data-anterior aria-label="Foto anterior">‹</button><span id="indicadorFoto" class="muted" aria-live="polite">Foto 1 de '+imagens.length+'</span><button class="btn sec" type="button" data-proxima aria-label="Próxima foto">›</button></div><div class="galeria-miniaturas" aria-label="Fotos do produto">'+miniaturas+'</div><p class="tag">'+p.categoria+'</p><h2>'+escapar(p.nome)+'</h2><p>'+escapar(p.descricao)+'</p><p>'+escapar(p.medidas)+'</p><strong>'+moeda(p.preco)+'</strong><p class="notice">Fotos ilustrativas até a verificação das imagens específicas deste móvel.</p>'+(p.galeria.length<3?'<p class="galeria-vazia">Galeria em preparação: serão incluídas de 3 a 5 fotos verificadas deste mesmo produto.</p>':'')+'<button class="btn" data-add="'+p.id+'">Adicionar ao carrinho</button>';
  /* A troca de miniaturas ocorre apenas dentro da janela de detalhes aberta. */
+ /* Navega por miniaturas e setas, sem misturar fotografias de produtos. */
+ let fotoAtual=0;
+ function selecionarFoto(indice){
+  fotoAtual=(indice+imagens.length)%imagens.length;
+  $('fotoDetalhe').src=imagens[fotoAtual];
+  $('indicadorFoto').textContent='Foto '+(fotoAtual+1)+' de '+imagens.length;
+  $('conteudoDetalhes').querySelectorAll('[data-foto]').forEach(item=>item.setAttribute('aria-current',String(Number(item.dataset.foto)===fotoAtual)));
+ }
  $('conteudoDetalhes').onclick=evento=>{
-  const botao=evento.target.closest('[data-foto]');if(!botao)return;
-  const indice=Number(botao.dataset.foto);if(!imagens[indice])return;
-  $('fotoDetalhe').src=imagens[indice];
-  $('conteudoDetalhes').querySelectorAll('[data-foto]').forEach(item=>item.setAttribute('aria-current',String(item===botao)));
+  const miniatura=evento.target.closest('[data-foto]');
+  if(miniatura){selecionarFoto(Number(miniatura.dataset.foto));return;}
+  if(evento.target.closest('[data-anterior]'))selecionarFoto(fotoAtual-1);
+  if(evento.target.closest('[data-proxima]'))selecionarFoto(fotoAtual+1);
  };
  $('detalhes').showModal();
 }
