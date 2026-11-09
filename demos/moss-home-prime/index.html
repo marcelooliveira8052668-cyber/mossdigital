@@ -114,7 +114,7 @@ const fotos={
 /* Use caminhos locais de imagens autorizadas; não copie URLs de produtos diferentes. */
 const galeriasVerificadas={};
 /* Indicador editorial: nunca declarar como completa uma galeria ainda não verificada. */
-const quantidadeGaleriasVerificadas=Object.values(galeriasVerificadas).filter(lista=>Array.isArray(lista)&&lista.length>=3&&lista.length<=5&&new Set(lista).size===lista.length).length;
+const quantidadeGaleriasVerificadas=Object.values(galeriasVerificadas).filter(lista=>validarGaleria(lista).length>=3).length;
 /* Confere se há de três a cinco fotos diferentes cadastradas para o mesmo produto. */
 function validarGaleria(lista){
  if(!Array.isArray(lista)||lista.length<3||lista.length>5)return [];
@@ -122,6 +122,7 @@ function validarGaleria(lista){
  if(new Set(lista).size!==lista.length)return [];
  /* Impede que fotografias com aspas ou caracteres de marcação quebrem os atributos HTML. */
  if(!lista.every(url=>!/[\"'<>]/.test(url)))return [];
+ /* Aceita somente imagens do próprio pacote ou endereços HTTPS. */
  return lista;
 }
 /* Gera IDs estáveis, preços demonstrativos e descrições. */
@@ -138,6 +139,8 @@ function salvarCarrinho(){$('qtd').textContent=carrinho.length;try{localStorage.
 const zap=texto=>'https://wa.me/'+TELEFONE+'?text='+encodeURIComponent(texto);
 /* Evita inserir nomes de produtos diretamente como HTML. */
 const escapar=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* Retorna uma mensagem legível se o navegador não conseguir abrir janelas nativas. */
+function abrirJanela(janela){if(typeof janela.showModal==='function'){if(!janela.open)janela.showModal();}else{alert('Atualize o navegador para visualizar esta janela.');}}
 /* Desenha catálogo conforme busca, categoria e ordenação. */
 function renderizar(){
  const termo=$('busca').value.toLocaleLowerCase('pt-BR').trim(),categoria=$('categoria').value,ordem=$('ordem').value;
@@ -185,7 +188,7 @@ function abrirDetalhes(id){
  /* Miniaturas e setas só aparecem quando há várias fotos cadastradas. */
  $('conteudoDetalhes').querySelector('.galeria-controles').hidden=!possuiGaleria;
  $('conteudoDetalhes').querySelector('.galeria-miniaturas').hidden=!possuiGaleria;
- $('detalhes').showModal();
+ abrirJanela($('detalhes'));
 }
 /* Adiciona produto e atualiza indicador de quantidade. */
 function adicionar(id){const p=produtos.find(item=>item.id===id);if(!p)return;carrinho.push(p);salvarCarrinho();}
@@ -193,7 +196,7 @@ function adicionar(id){const p=produtos.find(item=>item.id===id);if(!p)return;ca
 function abrirCarrinho(){
  $('itensCarrinho').innerHTML=carrinho.length?carrinho.map((p,i)=>'<p>'+escapar(p.nome)+' — '+moeda(p.preco)+' <button class="btn sec" data-remover="'+i+'">Remover</button></p>').join(''):'Seu carrinho está vazio.';
  $('totalCarrinho').textContent='Total demonstrativo: '+moeda(carrinho.reduce((s,p)=>s+p.preco,0));
- if(!$('carrinhoModal').open)$('carrinhoModal').showModal();
+ abrirJanela($('carrinhoModal'));
 }
 /* Delegação de cliques para botões criados dinamicamente. */
 document.addEventListener('click',e=>{
@@ -209,6 +212,11 @@ $('verCarrinho').addEventListener('click',abrirCarrinho);
 $('contatoZap').href=zap('Olá! Gostaria de conhecer a MOSS HOME PRIME.');
 $('botaoZap').addEventListener('click',()=>window.open(zap('Olá! Gostaria de informações sobre móveis.'),'_blank','noopener'));
 $('enviarPedido').addEventListener('click',()=>{if(!carrinho.length){alert('Adicione um produto primeiro.');return;}const mensagem='Olá! Gostaria de consultar estes produtos demonstrativos:\n'+carrinho.map(p=>'- '+p.nome+' ('+moeda(p.preco)+')').join('\n')+'\nTotal estimado: '+moeda(carrinho.reduce((s,p)=>s+p.preco,0));window.open(zap(mensagem),'_blank','noopener');});
+/* Fecha as janelas ao clicar fora do conteúdo, sem afetar botões internos. */
+['detalhes','colecaoModal','carrinhoModal'].forEach(id=>{
+ const janela=$(id);
+ janela.addEventListener('click',evento=>{if(evento.target===janela)janela.close();});
+});
 /* Inicializa o catálogo e recupera o carrinho anterior. */
 salvarCarrinho();
 /* Informa com transparência quantas galerias realmente foram cadastradas. */
@@ -249,7 +257,7 @@ function abrirSelecao(comparar){
  }else{
   $('conteudoColecao').innerHTML=itens.length?itens.map(p=>'<p><strong>'+escapar(p.nome)+'</strong> • '+p.categoria+' • '+moeda(p.preco)+' <button class="btn sec" data-add="'+p.id+'">Adicionar</button></p>').join(''):'Nenhum produto selecionado.';
  }
- $('colecaoModal').showModal();
+ abrirJanela($('colecaoModal'));
 }
 /* Cliques delegados também funcionam em cards criados após filtrar. */
 document.addEventListener('click',e=>{
