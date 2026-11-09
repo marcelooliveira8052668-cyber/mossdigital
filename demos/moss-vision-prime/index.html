@@ -87,11 +87,27 @@ dialog::backdrop{background:#000b} /* Eu escureço o fundo do modal. */
 <div id="toast" role="status" aria-live="polite"></div> <!-- Eu preparo mensagens de confirmação. -->
 <script> // Eu começo a programação interativa.
 /* Eu defino fotografias ilustrativas de óculos, obtidas por URLs públicas de imagens. */
-const fotos = [
-'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80',
-'https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=700&q=80',
-'https://images.unsplash.com/photo-1509695507497-903c140c43b0?auto=format&fit=crop&w=700&q=80'
-]; // Eu reutilizo as fotos e aviso que não identificam produtos específicos.
+const fotosPorCategoria = { // Eu organizo fotos reais por tipo de produto.
+ Grau: [ // Eu seleciono fotografias que mostram armações de grau.
+  'https://images.unsplash.com/photo-1523657895111-376b5d07a55a?auto=format&fit=crop&w=700&q=80', // Eu mostro uma armação escura.
+  'https://images.unsplash.com/photo-1483412468200-72182dbbc544?auto=format&fit=crop&w=700&q=80', // Eu mostro outra armação.
+  'https://images.unsplash.com/photo-1762718900539-c51799fd71b3?auto=format&fit=crop&w=700&q=80' // Eu mostro óculos com estojo.
+ ], // Eu termino as opções de grau.
+ Sol: [ // Eu seleciono fotografias de óculos escuros.
+  'https://images.unsplash.com/photo-1711223499758-8aef018b720e?auto=format&fit=crop&w=700&q=80', // Eu mostro óculos escuros em fundo claro.
+  'https://images.unsplash.com/photo-1588768897961-332c50c55d18?auto=format&fit=crop&w=700&q=80', // Eu mostro outro modelo escuro.
+  'https://images.unsplash.com/photo-1654257650833-b7398115275a?auto=format&fit=crop&w=700&q=80', // Eu mostro óculos em fundo preto.
+  'https://images.unsplash.com/photo-1556618238-293736ec596e?auto=format&fit=crop&w=700&q=80', // Eu mostro um modelo com outra composição.
+  'https://images.unsplash.com/photo-1577400983943-874919eca6ce?auto=format&fit=crop&w=700&q=80' // Eu mostro óculos redondos.
+ ], // Eu termino as opções solares.
+ Esportivo: [ // Eu uso óculos escuros como referência provisória para a linha esportiva.
+  'https://images.unsplash.com/photo-1654257650833-b7398115275a?auto=format&fit=crop&w=700&q=80', // Eu mostro uma referência escura.
+  'https://images.unsplash.com/photo-1588768897961-332c50c55d18?auto=format&fit=crop&w=700&q=80' // Eu mostro uma segunda referência.
+ ], // Eu termino as referências esportivas provisórias.
+ 'Acessórios': [ // Eu uso imagens relacionadas a estojos e armações.
+  'https://images.unsplash.com/photo-1762718900539-c51799fd71b3?auto=format&fit=crop&w=700&q=80' // Eu mostro um estojo com óculos.
+ ] // Eu termino os acessórios.
+}; // Eu centralizo as fotografias e facilito substituições futuras.
 /* Eu distribuo os 60 itens entre quatro categorias. */
 const categorias = [['Grau',20],['Sol',25],['Esportivo',10],['Acessórios',5]]; // Eu configuro as quantidades.
 const estilos = {Grau:['Clássico','Redondo','Retangular','Minimal','Acetato'],Sol:['Aviador','Wayfarer','Retrô','Cat Eye','Urban'],Esportivo:['Performance','Trail','Motion','Active','Speed'],Acessórios:['Estojo','Flanela','Cordão','Kit Limpeza','Porta-Óculos']}; // Eu defino nomes fictícios.
@@ -100,7 +116,7 @@ categorias.forEach(([categoria,quantidade]) => { // Eu percorro cada categoria.
  for(let i=1;i<=quantidade;i++){ // Eu gero os produtos da categoria.
   const estilo = estilos[categoria][(i-1)%5]; // Eu alterno os estilos.
   const preco = categoria==='Acessórios'?29+(i*12):categoria==='Esportivo'?189+(i*21):categoria==='Sol'?169+(i*17):149+(i*19); // Eu calculo valores ilustrativos.
-  produtos.push({id:produtos.length+1,nome:'Vision '+estilo+' '+String(i).padStart(2,'0'),categoria,preco,imagem:fotos[(i+(categoria==='Grau'?1:categoria==='Sol'?0:2))%fotos.length],descricao:'Modelo demonstrativo '+estilo.toLowerCase()+' da linha '+categoria.toLowerCase()+'. Consulte um profissional para necessidades de lentes e ajustes.'}); // Eu adiciono o item.
+  produtos.push({id:produtos.length+1,nome:'Vision '+estilo+' '+String(i).padStart(2,'0'),categoria,preco,imagem:fotosPorCategoria[categoria][(i-1)%fotosPorCategoria[categoria].length],descricao:'Modelo demonstrativo '+estilo.toLowerCase()+' da linha '+categoria.toLowerCase()+'. Consulte um profissional para necessidades de lentes e ajustes.'}); // Eu adiciono o item.
  }
 }); // Eu termino a criação do catálogo.
 const $ = id => document.getElementById(id); // Eu facilito a busca de elementos pelo identificador.
