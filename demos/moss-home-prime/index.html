@@ -34,7 +34,7 @@ dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius
 </head>
 <body>
 <!-- Navegação principal. -->
-<header><nav class="nav" aria-label="Navegação principal"><a href="#inicio" class="logo">MOSS <span>HOME</span> PRIME</a><div class="links"><a href="#colecao">Coleção</a><a href="#ambientes">Ambientes</a><a href="#historia">Nossa história</a><a href="#contato">Contato</a><button class="btn sec" id="verCarrinho">Carrinho (<span id="qtd">0</span>)</button></div></nav></header>
+<header><nav class="nav" aria-label="Navegação principal"><a href="#inicio" class="logo">MOSS <span>HOME</span> PRIME</a><div class="links"><a href="#colecao">Coleção</a><a href="#ambientes">Ambientes</a><a href="#historia">Nossa história</a><a href="#contato">Contato</a><button class="btn sec" id="verFavoritos">Favoritos (<span id="qtdFavoritos">0</span>)</button><button class="btn sec" id="verComparador">Comparar (<span id="qtdComparar">0</span>)</button><button class="btn sec" id="verCarrinho">Carrinho (<span id="qtd">0</span>)</button></div></nav></header>
 <!-- Capa de destaque. -->
 <main id="inicio"><section class="hero"><div class="hero-inner"><span class="kicker">Design que transforma espaços</span><h1>O extraordinário mora nos detalhes.</h1><p>Móveis e decoração para transformar sua casa em um lugar único. Explore nossa coleção demonstrativa.</p><a class="btn" href="#colecao">Explorar coleção</a></div></section>
 <section class="wrap"><div class="stats"><div class="stat"><b>60</b>Peças selecionadas</div><div class="stat"><b>5</b>Ambientes para inspirar</div><div class="stat"><b>100%</b>Design responsivo</div></div></section>
@@ -46,6 +46,8 @@ dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius
 <section class="wrap about" id="historia"><img loading="lazy" alt="Interior aconchegante e sofisticado" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80"><div><span class="kicker">Sobre a marca</span><h2>Beleza para viver todos os dias.</h2><p>A MOSS HOME PRIME é uma marca fictícia criada para demonstrar como uma loja de móveis pode apresentar seu catálogo online com elegância, clareza e praticidade.</p><p>Personalize os textos, fotografias, valores e contatos antes de usar este modelo em um negócio real.</p><a class="btn sec" href="#contato">Fale com a loja</a></div></section></main>
 <footer id="contato"><div class="inner"><div class="logo">MOSS <span>HOME</span> PRIME</div><p>Loja demonstrativa de móveis e decoração.</p><p>Atendimento via WhatsApp: <a id="contatoZap" href="#" target="_blank" rel="noopener">Conversar com a loja</a></p><p class="notice">Demonstração de portfólio. Não é uma loja real e não processa pagamentos.</p></div></footer>
 <!-- Janelas de detalhes e carrinho. -->
+<!-- Painel de seleção e comparação. -->
+<dialog id="colecaoModal"><h2 id="tituloColecao">Seleção</h2><div id="conteudoColecao"></div><button class="btn sec" onclick="document.getElementById('colecaoModal').close()">Fechar</button></dialog>
 <dialog id="detalhes"><div id="conteudoDetalhes"></div><div class="dialog-actions"><button class="btn sec" onclick="document.getElementById('detalhes').close()">Fechar</button></div></dialog>
 <dialog id="carrinhoModal"><h2>Seu carrinho</h2><div id="itensCarrinho"></div><p id="totalCarrinho"></p><div class="dialog-actions"><button class="btn" id="enviarPedido">Solicitar no WhatsApp</button><button class="btn sec" onclick="document.getElementById('carrinhoModal').close()">Fechar</button></div></dialog>
 <button class="btn floating" id="botaoZap" aria-label="Falar pelo WhatsApp">WhatsApp</button>
@@ -115,6 +117,46 @@ $('botaoZap').addEventListener('click',()=>window.open(zap('Olá! Gostaria de in
 $('enviarPedido').addEventListener('click',()=>{if(!carrinho.length){alert('Adicione um produto primeiro.');return;}const mensagem='Olá! Gostaria de consultar estes produtos demonstrativos:\n'+carrinho.map(p=>'- '+p.nome+' ('+moeda(p.preco)+')').join('\n')+'\nTotal estimado: '+moeda(carrinho.reduce((s,p)=>s+p.preco,0));window.open(zap(mensagem),'_blank','noopener');});
 /* Primeira renderização do catálogo. */
 renderizar();
+
+/* Favoritos e comparador independentes do carrinho; dados apenas nesta sessão. */
+const favoritos=new Set(),comparacao=new Set();
+/* Atualiza botões de favoritos e comparação após renderizar produtos. */
+function inserirBotoesSelecao(){
+ document.querySelectorAll('#produtos [data-add]').forEach(botao=>{
+  const id=Number(botao.dataset.add),pai=botao.parentElement;
+  if(pai.querySelector('[data-favorito]'))return;
+  const f=document.createElement('button');f.className='btn sec';f.dataset.favorito=id;f.textContent=favoritos.has(id)?'♥ Salvo':'♡ Favorito';f.setAttribute('aria-pressed',favoritos.has(id));pai.appendChild(f);
+  const c=document.createElement('button');c.className='btn sec';c.dataset.comparar=id;c.textContent=comparacao.has(id)?'✓ Comparar':'Comparar';c.setAttribute('aria-pressed',comparacao.has(id));pai.appendChild(c);
+ });
+}
+/* Observa as atualizações do catálogo para adicionar os controles. */
+const observador=new MutationObserver(()=>inserirBotoesSelecao());
+observador.observe($('produtos'),{childList:true});
+inserirBotoesSelecao();
+/* Adiciona ou remove um ID da seleção. */
+function alternar(conjunto,id){if(conjunto.has(id))conjunto.delete(id);else conjunto.add(id);}
+/* Abre a lista de móveis salvos ou o comparador de até três peças. */
+function abrirSelecao(comparar){
+ const ids=comparar?comparacao:favoritos;
+ $('tituloColecao').textContent=comparar?'Comparar móveis':'Meus favoritos';
+ const itens=produtos.filter(p=>ids.has(p.id));
+ $('conteudoColecao').innerHTML=itens.length?itens.map(p=>'<p><strong>'+escapar(p.nome)+'</strong> • '+p.categoria+' • '+moeda(p.preco)+' <button class="btn sec" data-add="'+p.id+'">Adicionar</button></p>').join(''):'Nenhum produto selecionado.';
+ $('colecaoModal').showModal();
+}
+/* Cliques delegados também funcionam em cards criados após filtrar. */
+document.addEventListener('click',e=>{
+ const f=e.target.closest('[data-favorito]'),c=e.target.closest('[data-comparar]');
+ if(f){alternar(favoritos,Number(f.dataset.favorito));$('qtdFavoritos').textContent=favoritos.size;renderizar();}
+ if(c){const id=Number(c.dataset.comparar);if(!comparacao.has(id)&&comparacao.size>=3){alert('Você pode comparar até 3 móveis.');return;}alternar(comparacao,id);$('qtdComparar').textContent=comparacao.size;renderizar();}
+});
+$('verFavoritos').addEventListener('click',()=>abrirSelecao(false));
+$('verComparador').addEventListener('click',()=>abrirSelecao(true));
+/* Se uma foto externa falhar, exibe uma arte neutra em vez de ícone quebrado. */
+document.addEventListener('error',e=>{
+ if(e.target.tagName!=='IMG'||e.target.dataset.fallback)return;
+ e.target.dataset.fallback='1';
+ e.target.src='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="700" height="500"><rect width="100%" height="100%" fill="#2c2c27"/><text x="50%" y="48%" text-anchor="middle" font-size="29" fill="#c6a876" font-family="Arial">MOSS HOME PRIME</text><text x="50%" y="57%" text-anchor="middle" font-size="17" fill="#f6f1e7" font-family="Arial">Imagem indisponível</text></svg>');
+},true);
 </script>
 </body>
 </html>
