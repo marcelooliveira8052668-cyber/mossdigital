@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<!-- Configurações básicas da página. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="MOSS HOME PRIME — demonstração de loja de móveis e decoração.">
+<title>MOSS HOME PRIME | Móveis & Design</title>
+<style>
+/* Paleta e estilos globais editáveis. */
+:root{--fundo:#11120f;--painel:#1d1e19;--claro:#f6f1e7;--ouro:#c6a876;--borda:#45443b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--fundo);color:var(--claro);font-family:Arial,Helvetica,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:#11120ff0;border-bottom:1px solid var(--borda);backdrop-filter:blur(12px)}
+.nav{max-width:1200px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-weight:800;letter-spacing:3px;font-size:21px}.logo span,.dourado{color:var(--ouro)}
+.links{display:flex;gap:18px;flex-wrap:wrap;align-items:center}.links a:hover{color:var(--ouro)}
+.btn{border:1px solid var(--ouro);border-radius:4px;background:var(--ouro);color:#161611;padding:11px 16px;font-weight:700}.btn:hover{filter:brightness(1.12)}.btn.sec{background:transparent;color:var(--ouro)}
+.hero{min-height:540px;display:flex;align-items:center;background:linear-gradient(90deg,#0b0d0cdd 0%,#0b0d0c77 60%,#0b0d0c44),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero-inner{max-width:1200px;width:100%;margin:auto;padding:80px 22px}.kicker{letter-spacing:4px;color:var(--ouro);font-size:12px;text-transform:uppercase}
+h1{font-size:clamp(42px,7vw,78px);line-height:1.04;max-width:760px;margin:16px 0}h2{font-size:clamp(28px,4vw,43px);margin:8px 0 20px}
+.hero p{max-width:560px;color:#eee5d9;font-size:18px}.wrap{max-width:1200px;margin:auto;padding:70px 22px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}.stat{border:1px solid var(--borda);padding:20px;text-align:center}.stat b{display:block;color:var(--ouro);font-size:24px}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin:20px 0}.filters input,.filters select{background:#252620;border:1px solid var(--borda);color:white;padding:13px;border-radius:4px;min-width:0}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.card{background:var(--painel);border:1px solid #383930;border-radius:6px;overflow:hidden;display:flex;flex-direction:column}.photo{width:100%;height:210px;object-fit:cover;background:#383930}.body{padding:17px;display:flex;flex-direction:column;gap:8px;flex:1}.tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ouro)}.body h3{margin:0;font-size:17px}.muted{color:#c5c0b4;font-size:13px}.price{font-size:20px;font-weight:800}.actions{display:flex;gap:7px;margin-top:auto;flex-wrap:wrap}.actions button{flex:1;padding:9px;font-size:13px}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}.gallery img{width:100%;height:280px;object-fit:cover;border-radius:5px}.about{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}.about img{width:100%;border-radius:5px}
+footer{background:#1b1c17;padding:45px 22px;border-top:1px solid var(--borda)}footer .inner{max-width:1200px;margin:auto}
+dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius:8px;max-width:min(92vw,650px);width:100%;padding:24px}dialog::backdrop{background:#000c}dialog img{width:100%;height:260px;object-fit:cover;border-radius:4px}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.floating{position:fixed;bottom:18px;right:18px;z-index:30;box-shadow:0 4px 20px #0008}
+.notice{color:#cfc8b8;font-size:13px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,1fr)}.gallery{grid-template-columns:1fr 1fr}.gallery img:first-child{grid-column:span 2}}
+@media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:150px}.body{padding:11px}.filters{grid-template-columns:1fr}.about{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.gallery img{height:160px}.hero{min-height:470px}.links{font-size:13px;gap:12px}}
+</style>
+</head>
+<body>
+<!-- Navegação principal. -->
+<header><nav class="nav" aria-label="Navegação principal"><a href="#inicio" class="logo">MOSS <span>HOME</span> PRIME</a><div class="links"><a href="#colecao">Coleção</a><a href="#ambientes">Ambientes</a><a href="#historia">Nossa história</a><a href="#contato">Contato</a><button class="btn sec" id="verCarrinho">Carrinho (<span id="qtd">0</span>)</button></div></nav></header>
+<!-- Capa de destaque. -->
+<main id="inicio"><section class="hero"><div class="hero-inner"><span class="kicker">Design que transforma espaços</span><h1>O extraordinário mora nos detalhes.</h1><p>Móveis e decoração para transformar sua casa em um lugar único. Explore nossa coleção demonstrativa.</p><a class="btn" href="#colecao">Explorar coleção</a></div></section>
+<section class="wrap"><div class="stats"><div class="stat"><b>60</b>Peças selecionadas</div><div class="stat"><b>5</b>Ambientes para inspirar</div><div class="stat"><b>100%</b>Design responsivo</div></div></section>
+<!-- Catálogo: os 60 produtos são gerados pelo JavaScript. -->
+<section class="wrap" id="colecao"><span class="kicker">Curadoria MOSS</span><h2>Coleção exclusiva</h2><p class="muted">Preços e produtos fictícios para demonstração. Consulte condições reais com a loja.</p><div class="filters"><input id="busca" type="search" placeholder="Buscar móveis e decoração..." aria-label="Buscar produtos"><select id="categoria" aria-label="Filtrar categoria"><option value="">Todos os ambientes</option><option>Sala</option><option>Quarto</option><option>Jantar</option><option>Escritório</option><option>Externo</option></select><select id="ordem" aria-label="Ordenar produtos"><option value="">Ordenar por destaque</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option></select></div><p id="contador" class="muted" aria-live="polite"></p><div id="produtos" class="grid"></div></section>
+<!-- Galeria com fotografias de ambientes. -->
+<section class="wrap" id="ambientes"><span class="kicker">Inspiração</span><h2>Ambientes que contam histórias</h2><div class="gallery"><img loading="lazy" alt="Sala contemporânea decorada" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80"><img loading="lazy" alt="Ambiente com móveis e decoração" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=80"><img loading="lazy" alt="Ambiente residencial elegante" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=80"></div></section>
+<!-- História e informações da empresa fictícia. -->
+<section class="wrap about" id="historia"><img loading="lazy" alt="Interior aconchegante e sofisticado" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80"><div><span class="kicker">Sobre a marca</span><h2>Beleza para viver todos os dias.</h2><p>A MOSS HOME PRIME é uma marca fictícia criada para demonstrar como uma loja de móveis pode apresentar seu catálogo online com elegância, clareza e praticidade.</p><p>Personalize os textos, fotografias, valores e contatos antes de usar este modelo em um negócio real.</p><a class="btn sec" href="#contato">Fale com a loja</a></div></section></main>
+<footer id="contato"><div class="inner"><div class="logo">MOSS <span>HOME</span> PRIME</div><p>Loja demonstrativa de móveis e decoração.</p><p>Atendimento via WhatsApp: <a id="contatoZap" href="#" target="_blank" rel="noopener">Conversar com a loja</a></p><p class="notice">Demonstração de portfólio. Não é uma loja real e não processa pagamentos.</p></div></footer>
+<!-- Janelas de detalhes e carrinho. -->
+<dialog id="detalhes"><div id="conteudoDetalhes"></div><div class="dialog-actions"><button class="btn sec" onclick="document.getElementById('detalhes').close()">Fechar</button></div></dialog>
+<dialog id="carrinhoModal"><h2>Seu carrinho</h2><div id="itensCarrinho"></div><p id="totalCarrinho"></p><div class="dialog-actions"><button class="btn" id="enviarPedido">Solicitar no WhatsApp</button><button class="btn sec" onclick="document.getElementById('carrinhoModal').close()">Fechar</button></div></dialog>
+<button class="btn floating" id="botaoZap" aria-label="Falar pelo WhatsApp">WhatsApp</button>
+<script>
+/* PERSONALIZAÇÃO: substitua este telefone pelo número comercial autorizado. */
+const TELEFONE='5511942038103';
+/* Cada categoria contém 12 produtos, totalizando 60 itens fictícios. */
+const colecoes={
+'Sala':['Sofá Modular Aurora','Sofá Linho Siena','Poltrona Íris','Poltrona Nórdica','Mesa de Centro Oslo','Mesa Lateral Nativa','Rack Horizonte','Estante Escultural','Pufe Bouclé','Aparador Lume','Sofá Retrátil Gaia','Banco de Madeira Brisa'],
+'Quarto':['Cama Estofada Verona','Cabeceira Avelã','Mesa de Cabeceira Alba','Cômoda Essência','Guarda-Roupa Nórdico','Penteadeira Luna','Banco de Quarto Loft','Cama Queen Serena','Criado-Mudo Areia','Poltrona de Leitura','Espelho Orgânico','Baú Estofado Nuvem'],
+'Jantar':['Mesa de Jantar Ébano','Mesa Redonda Ícone','Cadeira Estofada Jade','Cadeira Madeira Nativa','Buffet Minimal','Cristaleira Firenze','Banqueta Alta Lume','Aparador Jantar Duo','Mesa Extensível Alba','Conjunto Mesa e Cadeiras','Carrinho Bar Cobre','Banco Jantar Linear'],
+'Escritório':['Mesa Office Prime','Cadeira Ergonômica Aura','Estante Modular Work','Escrivaninha Lótus','Gaveteiro Urban','Poltrona Office Loft','Mesa de Reunião Vértice','Armário Baixo Office','Mesa Compacta Flow','Cadeira Executiva Nobre','Prateleira Studio','Luminária de Mesa Focus'],
+'Externo':['Sofá Jardim Riviera','Poltrona Varanda Sol','Mesa Externa Brisa','Cadeira Jardim Nativa','Espreguiçadeira Costa','Banco Jardim Madeira','Conjunto Varanda Zen','Mesa Bistrô Externa','Pufe Área Gourmet','Balanço Suspenso Lua','Ombrelone Terra','Aparador Externo Verde']};
+/* Fotos de referência por ambiente. Podem se repetir: não são imagens individuais verificadas de cada produto. */
+const fotos={
+'Sala':['photo-1555041469-a586c61ea9bc','photo-1600210492486-724fe5c67fb0','photo-1600607687920-4e2a09cf159d'],
+'Quarto':['photo-1505693416388-ac5ce068fe85','photo-1616594039964-ae9021a400a0','photo-1615874959474-d609969a20ed'],
+'Jantar':['photo-1617806118233-18e1de247200','photo-1600566753086-00f18fb6b3ea','photo-1600607687939-ce8a6c25118c'],
+'Escritório':['photo-1497366811353-6870744d04b2','photo-1497366754035-f200968a6e72','photo-1524758631624-e2822e304c36'],
+'Externo':['photo-1600566753190-17f0baa2a6c3','photo-1600607687920-4e2a09cf159d','photo-1600210492486-724fe5c67fb0']};
+/* Gera IDs estáveis, preços demonstrativos e descrições. */
+const produtos=Object.entries(colecoes).flatMap(([categoria,nomes],grupo)=>nomes.map((nome,i)=>({id:grupo*12+i+1,nome,categoria,preco:Math.round((299+grupo*170+i*137)/10)*10,medidas:'Medidas sob consulta',descricao:'Peça de design contemporâneo para compor ambientes com elegância e conforto.',foto:'https://images.unsplash.com/'+fotos[categoria][i%3]+'?auto=format&fit=crop&w=700&q=80'})));
+/* Elementos auxiliares e formatação em reais. */
+const $=id=>document.getElementById(id);
+const moeda=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+/* Carrinho local: nenhum pagamento é processado. */
+let carrinho=[];
+const zap=texto=>'https://wa.me/'+TELEFONE+'?text='+encodeURIComponent(texto);
+/* Evita inserir nomes de produtos diretamente como HTML. */
+const escapar=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* Desenha catálogo conforme busca, categoria e ordenação. */
+function renderizar(){
+ const termo=$('busca').value.toLocaleLowerCase('pt-BR').trim(),categoria=$('categoria').value,ordem=$('ordem').value;
+ const lista=produtos.filter(p=>(!categoria||p.categoria===categoria)&&p.nome.toLocaleLowerCase('pt-BR').includes(termo));
+ if(ordem==='menor')lista.sort((a,b)=>a.preco-b.preco);
+ if(ordem==='maior')lista.sort((a,b)=>b.preco-a.preco);
+ $('contador').textContent=lista.length+' produtos encontrados';
+ $('produtos').innerHTML=lista.map(p=>'<article class="card"><img class="photo" loading="lazy" src="'+p.foto+'" alt="Foto ilustrativa do ambiente para '+escapar(p.nome)+'"><div class="body"><span class="tag">'+p.categoria+'</span><h3>'+escapar(p.nome)+'</h3><span class="muted">Imagem ilustrativa • Produto demonstrativo</span><div class="price">'+moeda(p.preco)+'</div><div class="actions"><button class="btn sec" data-detalhe="'+p.id+'">Detalhes</button><button class="btn" data-add="'+p.id+'">Adicionar</button></div></div></article>').join('');
+}
+/* Exibe detalhes do produto escolhido. */
+function abrirDetalhes(id){
+ const p=produtos.find(item=>item.id===id);if(!p)return;
+ $('conteudoDetalhes').innerHTML='<img src="'+p.foto+'" alt="Imagem ilustrativa"><p class="tag">'+p.categoria+'</p><h2>'+escapar(p.nome)+'</h2><p>'+escapar(p.descricao)+'</p><p>'+p.medidas+'</p><strong>'+moeda(p.preco)+'</strong><p class="notice">Imagem de referência do ambiente; não representa necessariamente o produto exato.</p><button class="btn" data-add="'+p.id+'">Adicionar ao carrinho</button>';
+ $('detalhes').showModal();
+}
+/* Adiciona produto e atualiza indicador de quantidade. */
+function adicionar(id){const p=produtos.find(item=>item.id===id);if(!p)return;carrinho.push(p);$('qtd').textContent=carrinho.length;}
+/* Mostra itens, remoção e total demonstrativo. */
+function abrirCarrinho(){
+ $('itensCarrinho').innerHTML=carrinho.length?carrinho.map((p,i)=>'<p>'+escapar(p.nome)+' — '+moeda(p.preco)+' <button class="btn sec" data-remover="'+i+'">Remover</button></p>').join(''):'Seu carrinho está vazio.';
+ $('totalCarrinho').textContent='Total demonstrativo: '+moeda(carrinho.reduce((s,p)=>s+p.preco,0));
+ if(!$('carrinhoModal').open)$('carrinhoModal').showModal();
+}
+/* Delegação de cliques para botões criados dinamicamente. */
+document.addEventListener('click',e=>{
+ const d=e.target.closest('[data-detalhe]'),a=e.target.closest('[data-add]'),r=e.target.closest('[data-remover]');
+ if(d)abrirDetalhes(Number(d.dataset.detalhe));
+ if(a){adicionar(Number(a.dataset.add));a.textContent='Adicionado ✓';}
+ if(r){carrinho.splice(Number(r.dataset.remover),1);$('qtd').textContent=carrinho.length;abrirCarrinho();}
+});
+/* Conecta campos de filtro. */
+['busca','categoria','ordem'].forEach(id=>$(id).addEventListener(id==='busca'?'input':'change',renderizar));
+/* Configura botões de contato e pedido. */
+$('verCarrinho').addEventListener('click',abrirCarrinho);
+$('contatoZap').href=zap('Olá! Gostaria de conhecer a MOSS HOME PRIME.');
+$('botaoZap').addEventListener('click',()=>window.open(zap('Olá! Gostaria de informações sobre móveis.'),'_blank','noopener'));
+$('enviarPedido').addEventListener('click',()=>{if(!carrinho.length){alert('Adicione um produto primeiro.');return;}const mensagem='Olá! Gostaria de consultar estes produtos demonstrativos:\n'+carrinho.map(p=>'- '+p.nome+' ('+moeda(p.preco)+')').join('\n')+'\nTotal estimado: '+moeda(carrinho.reduce((s,p)=>s+p.preco,0));window.open(zap(mensagem),'_blank','noopener');});
+/* Primeira renderização do catálogo. */
+renderizar();
+</script>
+</body>
+</html>
