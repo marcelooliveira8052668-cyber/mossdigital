@@ -38,6 +38,22 @@ dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius
 .galeria-controles button:disabled{opacity:.35;cursor:not-allowed}
 /* Esconde os controles de uma galeria que ainda possui uma única imagem. */
 .galeria-controles[hidden],.galeria-miniaturas[hidden]{display:none}
+/* Melhora a leitura das janelas e evita que o conteúdo saia da tela no celular. */
+dialog{max-height:88dvh;overflow-y:auto;overscroll-behavior:contain}
+dialog img{max-width:100%}
+dialog .dialog-actions{position:sticky;bottom:-24px;background:#20211b;padding:12px 0}
+@media(max-width:650px){
+ .nav{padding:12px 14px}
+ .logo{font-size:17px}
+ .links{width:100%;gap:8px}
+ .links a{padding:5px 0}
+ .links .btn{padding:8px;font-size:12px}
+ dialog{padding:15px;max-width:96vw}
+ dialog img{height:210px}
+ .galeria-miniaturas img{width:48px;height:44px}
+ .grid{gap:10px}
+ .actions button{min-height:40px}
+}
 .foto-clicavel{border:0;padding:0;background:transparent;width:100%;display:block;cursor:pointer}
 .foto-clicavel:focus-visible{outline-offset:-4px}
 .foto-clicavel .photo{display:block}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
