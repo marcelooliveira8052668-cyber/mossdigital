@@ -25,7 +25,13 @@ h1{font-size:clamp(42px,7vw,78px);line-height:1.04;max-width:760px;margin:16px 0
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}.card{background:var(--painel);border:1px solid #383930;border-radius:6px;overflow:hidden;display:flex;flex-direction:column}.photo{width:100%;height:210px;object-fit:cover;background:#383930}.body{padding:17px;display:flex;flex-direction:column;gap:8px;flex:1}.tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ouro)}.body h3{margin:0;font-size:17px}.muted{color:#c5c0b4;font-size:13px}.price{font-size:20px;font-weight:800}.actions{display:flex;gap:7px;margin-top:auto;flex-wrap:wrap}.actions button{flex:1;padding:9px;font-size:13px}
 .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}.gallery img{width:100%;height:280px;object-fit:cover;border-radius:5px}.about{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}.about img{width:100%;border-radius:5px}
 footer{background:#1b1c17;padding:45px 22px;border-top:1px solid var(--borda)}footer .inner{max-width:1200px;margin:auto}
-dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius:8px;max-width:min(92vw,650px);width:100%;padding:24px}dialog::backdrop{background:#000c}dialog img{width:100%;height:260px;object-fit:cover;border-radius:4px}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius:8px;max-width:min(92vw,650px);width:100%;padding:24px}dialog::backdrop{background:#000c}dialog img{width:100%;height:260px;object-fit:cover;border-radius:4px}
+/* Galeria: miniaturas navegáveis com indicação de imagens ainda não cadastradas. */
+.galeria-miniaturas{display:flex;gap:9px;flex-wrap:wrap;margin:10px 0 16px}
+.galeria-miniaturas button{background:#292a24;border:1px solid var(--borda);border-radius:5px;padding:4px;color:var(--claro)}
+.galeria-miniaturas button[aria-current="true"]{border:2px solid var(--ouro)}
+.galeria-miniaturas img{width:62px;height:54px;object-fit:cover;display:block}
+.galeria-vazia{padding:9px;border:1px dashed var(--borda);color:#c5c0b4;font-size:13px}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
 .floating{position:fixed;bottom:18px;right:18px;z-index:30;box-shadow:0 4px 20px #0008}
 .notice{color:#cfc8b8;font-size:13px}
 /* Tabela comparativa adaptada para rolagem horizontal no celular. */
@@ -79,7 +85,7 @@ const fotos={
 'Escritório':['photo-1497366811353-6870744d04b2','photo-1497366754035-f200968a6e72','photo-1524758631624-e2822e304c36'],
 'Externo':['photo-1600566753190-17f0baa2a6c3','photo-1600607687920-4e2a09cf159d','photo-1600210492486-724fe5c67fb0']};
 /* Gera IDs estáveis, preços demonstrativos e descrições. */
-const produtos=Object.entries(colecoes).flatMap(([categoria,nomes],grupo)=>nomes.map((nome,i)=>({id:grupo*12+i+1,nome,categoria,preco:Math.round((299+grupo*170+i*137)/10)*10,medidas:'Medidas sob consulta',descricao:'Peça de design contemporâneo para compor ambientes com elegância e conforto.',foto:'https://images.unsplash.com/'+fotos[categoria][i%3]+'?auto=format&fit=crop&w=700&q=80'})));
+const produtos=Object.entries(colecoes).flatMap(([categoria,nomes],grupo)=>nomes.map((nome,i)=>({id:grupo*12+i+1,nome,categoria,preco:Math.round((299+grupo*170+i*137)/10)*10,medidas:'Medidas sob consulta',descricao:'Peça de design contemporâneo para compor ambientes com elegância e conforto.',foto:'https://images.unsplash.com/'+fotos[categoria][i%3]+'?auto=format&fit=crop&w=700&q=80',galeria:[]})));
 /* Elementos auxiliares e formatação em reais. */
 const $=id=>document.getElementById(id);
 const moeda=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
@@ -104,9 +110,20 @@ function renderizar(){
  $('produtos').innerHTML=lista.map(p=>'<article class="card"><img class="photo" loading="lazy" src="'+p.foto+'" alt="Foto ilustrativa do ambiente para '+escapar(p.nome)+'"><div class="body"><span class="tag">'+p.categoria+'</span><h3>'+escapar(p.nome)+'</h3><span class="muted">Imagem ilustrativa • Produto demonstrativo</span><div class="price">'+moeda(p.preco)+'</div><div class="actions"><button class="btn sec" data-detalhe="'+p.id+'">Detalhes</button><button class="btn" data-add="'+p.id+'">Adicionar</button></div></div></article>').join('');
 }
 /* Exibe detalhes do produto escolhido. */
+/* Exibe a imagem ilustrativa atual e prepara a galeria de até cinco fotos reais do mesmo móvel. */
 function abrirDetalhes(id){
  const p=produtos.find(item=>item.id===id);if(!p)return;
- $('conteudoDetalhes').innerHTML='<img src="'+p.foto+'" alt="Imagem ilustrativa"><p class="tag">'+p.categoria+'</p><h2>'+escapar(p.nome)+'</h2><p>'+escapar(p.descricao)+'</p><p>'+p.medidas+'</p><strong>'+moeda(p.preco)+'</strong><p class="notice">Imagem de referência do ambiente; não representa necessariamente o produto exato.</p><button class="btn" data-add="'+p.id+'">Adicionar ao carrinho</button>';
+ /* Uma galeria só é preenchida quando as imagens do mesmo produto forem verificadas. */
+ const imagens=p.galeria.length?p.galeria.slice(0,5):[p.foto];
+ const miniaturas=imagens.map((url,i)=>'<button type="button" data-foto="'+i+'" aria-label="Ver foto '+(i+1)+' de '+imagens.length+'" aria-current="'+(i===0)+'"><img src="'+url+'" alt="Miniatura '+(i+1)+'"></button>').join('');
+ $('conteudoDetalhes').innerHTML='<img id="fotoDetalhe" src="'+imagens[0]+'" alt="Imagem ilustrativa de '+escapar(p.nome)+'"><div class="galeria-miniaturas" aria-label="Fotos do produto">'+miniaturas+'</div><p class="tag">'+p.categoria+'</p><h2>'+escapar(p.nome)+'</h2><p>'+escapar(p.descricao)+'</p><p>'+escapar(p.medidas)+'</p><strong>'+moeda(p.preco)+'</strong><p class="notice">Fotos ilustrativas até a verificação das imagens específicas deste móvel.</p>'+(p.galeria.length<3?'<p class="galeria-vazia">Galeria em preparação: serão incluídas de 3 a 5 fotos verificadas deste mesmo produto.</p>':'')+'<button class="btn" data-add="'+p.id+'">Adicionar ao carrinho</button>';
+ /* A troca de miniaturas ocorre apenas dentro da janela de detalhes aberta. */
+ $('conteudoDetalhes').onclick=evento=>{
+  const botao=evento.target.closest('[data-foto]');if(!botao)return;
+  const indice=Number(botao.dataset.foto);if(!imagens[indice])return;
+  $('fotoDetalhe').src=imagens[indice];
+  $('conteudoDetalhes').querySelectorAll('[data-foto]').forEach(item=>item.setAttribute('aria-current',String(item===botao)));
+ };
  $('detalhes').showModal();
 }
 /* Adiciona produto e atualiza indicador de quantidade. */
