@@ -28,6 +28,9 @@ footer{background:#1b1c17;padding:45px 22px;border-top:1px solid var(--borda)}fo
 dialog{border:1px solid var(--ouro);background:#20211b;color:white;border-radius:8px;max-width:min(92vw,650px);width:100%;padding:24px}dialog::backdrop{background:#000c}dialog img{width:100%;height:260px;object-fit:cover;border-radius:4px}.dialog-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
 .floating{position:fixed;bottom:18px;right:18px;z-index:30;box-shadow:0 4px 20px #0008}
 .notice{color:#cfc8b8;font-size:13px}
+/* Facilita o uso por teclado e respeita a preferência por menos movimento. */
+:focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 @media(max-width:950px){.grid{grid-template-columns:repeat(3,1fr)}.gallery{grid-template-columns:1fr 1fr}.gallery img:first-child{grid-column:span 2}}
 @media(max-width:650px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:150px}.body{padding:11px}.filters{grid-template-columns:1fr}.about{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.gallery img{height:160px}.hero{min-height:470px}.links{font-size:13px;gap:12px}}
 </style>
@@ -73,8 +76,12 @@ const produtos=Object.entries(colecoes).flatMap(([categoria,nomes],grupo)=>nomes
 /* Elementos auxiliares e formatação em reais. */
 const $=id=>document.getElementById(id);
 const moeda=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-/* Carrinho local: nenhum pagamento é processado. */
-let carrinho=[];
+/* Carrinho demonstrativo: armazena apenas IDs dos produtos no navegador. */
+let idsSalvos=[];
+try{const dados=JSON.parse(localStorage.getItem('mossHomeCarrinho')||'[]');if(Array.isArray(dados))idsSalvos=dados.filter(Number.isInteger);}catch(erro){idsSalvos=[];}
+let carrinho=idsSalvos.map(id=>produtos.find(p=>p.id===id)).filter(Boolean);
+/* Guarda o carrinho e atualiza o indicador do cabeçalho. */
+function salvarCarrinho(){$('qtd').textContent=carrinho.length;try{localStorage.setItem('mossHomeCarrinho',JSON.stringify(carrinho.map(p=>p.id)));}catch(erro){/* Armazenamento opcional. */}}
 const zap=texto=>'https://wa.me/'+TELEFONE+'?text='+encodeURIComponent(texto);
 /* Evita inserir nomes de produtos diretamente como HTML. */
 const escapar=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -84,7 +91,7 @@ function renderizar(){
  const lista=produtos.filter(p=>(!categoria||p.categoria===categoria)&&p.nome.toLocaleLowerCase('pt-BR').includes(termo));
  if(ordem==='menor')lista.sort((a,b)=>a.preco-b.preco);
  if(ordem==='maior')lista.sort((a,b)=>b.preco-a.preco);
- $('contador').textContent=lista.length+' produtos encontrados';
+ $('contador').textContent=lista.length+' '+(lista.length===1?'produto encontrado':'produtos encontrados');
  $('produtos').innerHTML=lista.map(p=>'<article class="card"><img class="photo" loading="lazy" src="'+p.foto+'" alt="Foto ilustrativa do ambiente para '+escapar(p.nome)+'"><div class="body"><span class="tag">'+p.categoria+'</span><h3>'+escapar(p.nome)+'</h3><span class="muted">Imagem ilustrativa • Produto demonstrativo</span><div class="price">'+moeda(p.preco)+'</div><div class="actions"><button class="btn sec" data-detalhe="'+p.id+'">Detalhes</button><button class="btn" data-add="'+p.id+'">Adicionar</button></div></div></article>').join('');
 }
 /* Exibe detalhes do produto escolhido. */
@@ -94,7 +101,7 @@ function abrirDetalhes(id){
  $('detalhes').showModal();
 }
 /* Adiciona produto e atualiza indicador de quantidade. */
-function adicionar(id){const p=produtos.find(item=>item.id===id);if(!p)return;carrinho.push(p);$('qtd').textContent=carrinho.length;}
+function adicionar(id){const p=produtos.find(item=>item.id===id);if(!p)return;carrinho.push(p);salvarCarrinho();}
 /* Mostra itens, remoção e total demonstrativo. */
 function abrirCarrinho(){
  $('itensCarrinho').innerHTML=carrinho.length?carrinho.map((p,i)=>'<p>'+escapar(p.nome)+' — '+moeda(p.preco)+' <button class="btn sec" data-remover="'+i+'">Remover</button></p>').join(''):'Seu carrinho está vazio.';
@@ -106,7 +113,7 @@ document.addEventListener('click',e=>{
  const d=e.target.closest('[data-detalhe]'),a=e.target.closest('[data-add]'),r=e.target.closest('[data-remover]');
  if(d)abrirDetalhes(Number(d.dataset.detalhe));
  if(a){adicionar(Number(a.dataset.add));a.textContent='Adicionado ✓';}
- if(r){carrinho.splice(Number(r.dataset.remover),1);$('qtd').textContent=carrinho.length;abrirCarrinho();}
+ if(r){carrinho.splice(Number(r.dataset.remover),1);salvarCarrinho();abrirCarrinho();}
 });
 /* Conecta campos de filtro. */
 ['busca','categoria','ordem'].forEach(id=>$(id).addEventListener(id==='busca'?'input':'change',renderizar));
@@ -115,11 +122,17 @@ $('verCarrinho').addEventListener('click',abrirCarrinho);
 $('contatoZap').href=zap('Olá! Gostaria de conhecer a MOSS HOME PRIME.');
 $('botaoZap').addEventListener('click',()=>window.open(zap('Olá! Gostaria de informações sobre móveis.'),'_blank','noopener'));
 $('enviarPedido').addEventListener('click',()=>{if(!carrinho.length){alert('Adicione um produto primeiro.');return;}const mensagem='Olá! Gostaria de consultar estes produtos demonstrativos:\n'+carrinho.map(p=>'- '+p.nome+' ('+moeda(p.preco)+')').join('\n')+'\nTotal estimado: '+moeda(carrinho.reduce((s,p)=>s+p.preco,0));window.open(zap(mensagem),'_blank','noopener');});
-/* Primeira renderização do catálogo. */
+/* Inicializa o catálogo e recupera o carrinho anterior. */
+salvarCarrinho();
 renderizar();
 
 /* Favoritos e comparador independentes do carrinho; dados apenas nesta sessão. */
-const favoritos=new Set(),comparacao=new Set();
+/* Recupera favoritos salvos; comparação continua temporária. */
+let favoritosSalvos=[];
+try{const dados=JSON.parse(localStorage.getItem('mossHomeFavoritos')||'[]');if(Array.isArray(dados))favoritosSalvos=dados.filter(id=>Number.isInteger(id)&&produtos.some(p=>p.id===id));}catch(erro){favoritosSalvos=[];}
+const favoritos=new Set(favoritosSalvos),comparacao=new Set();
+$('qtdFavoritos').textContent=favoritos.size;
+function salvarFavoritos(){try{localStorage.setItem('mossHomeFavoritos',JSON.stringify([...favoritos]));}catch(erro){/* Armazenamento opcional. */}}
 /* Atualiza botões de favoritos e comparação após renderizar produtos. */
 function inserirBotoesSelecao(){
  document.querySelectorAll('#produtos [data-add]').forEach(botao=>{
@@ -146,7 +159,7 @@ function abrirSelecao(comparar){
 /* Cliques delegados também funcionam em cards criados após filtrar. */
 document.addEventListener('click',e=>{
  const f=e.target.closest('[data-favorito]'),c=e.target.closest('[data-comparar]');
- if(f){alternar(favoritos,Number(f.dataset.favorito));$('qtdFavoritos').textContent=favoritos.size;renderizar();}
+ if(f){alternar(favoritos,Number(f.dataset.favorito));salvarFavoritos();$('qtdFavoritos').textContent=favoritos.size;renderizar();}
  if(c){const id=Number(c.dataset.comparar);if(!comparacao.has(id)&&comparacao.size>=3){alert('Você pode comparar até 3 móveis.');return;}alternar(comparacao,id);$('qtdComparar').textContent=comparacao.size;renderizar();}
 });
 $('verFavoritos').addEventListener('click',()=>abrirSelecao(false));
