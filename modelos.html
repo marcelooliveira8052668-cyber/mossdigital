@@ -80,6 +80,12 @@ novasDemosMoss.forEach(([nome, categoria, repositorio, descricao, pedido]) => {
   const imagem = document.createElement('img'); // Eu preparo a imagem ilustrativa.
   imagem.src = 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=1200&q=80'; // Eu uso a foto de referência.
   imagem.alt = 'Foto ilustrativa de óculos de sol da MOSS Vision Prime'; // Eu descrevo a imagem.
+  imagem.onerror = () => { // Eu preparo uma capa de reserva para evitar fotos quebradas.
+    imagem.onerror = null; // Eu impeço repetição do tratamento de erro.
+    const arte = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="#121316"/><circle cx="1000" cy="100" r="310" fill="#d7b779" opacity=".12"/><path d="M180 365 Q300 310 450 360 L475 385 Q600 355 725 385 L750 360 Q900 310 1020 365 L980 475 Q850 570 745 475 L710 415 Q600 390 490 415 L455 475 Q350 570 220 475 Z" fill="none" stroke="#d7b779" stroke-width="22"/><text x="600" y="650" text-anchor="middle" fill="#f5eee0" font-family="Arial,sans-serif" font-size="54" font-weight="bold">MOSS VISION PRIME</text></svg>'; // Eu desenho óculos dourados como alternativa temática.
+    imagem.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(arte); // Eu exibo a capa de reserva.
+  }; // Eu encerro a proteção da imagem.
+
   imagem.loading = 'lazy'; // Eu carrego a foto somente quando necessário.
   imagem.width = 1200; imagem.height = 800; // Eu reservo o espaço da imagem.
   const corpo = document.createElement('div'); corpo.className = 'card-body'; // Eu preparo o conteúdo.
