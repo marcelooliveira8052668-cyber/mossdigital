@@ -20,14 +20,27 @@ novasDemosMoss.forEach(([nome, categoria, repositorio, descricao, pedido]) => {
   const card = document.createElement('article');
   card.className = 'card';
   card.dataset.category = categoria;
-  // Eu uso uma prévia ilustrativa em SVG, sem depender de arquivos de imagem inexistentes.
-  const imagem = document.createElement('img');
-  const arte = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750"><rect width="1200" height="750" fill="#17243b"/><rect x="55" y="55" width="1090" height="640" rx="32" fill="#263d60"/><text x="600" y="355" font-family="Arial,sans-serif" font-size="60" font-weight="bold" text-anchor="middle" fill="#ffffff">MOSS DIGITAL</text><text x="600" y="430" font-family="Arial,sans-serif" font-size="30" text-anchor="middle" fill="#d6e4f5">DEMONSTRAÇÃO DE SITE</text></svg>';
-  imagem.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(arte);
-  imagem.alt = 'Imagem ilustrativa da demonstração ' + nome;
-  imagem.loading = 'lazy';
-  imagem.width = 1200;
-  imagem.height = 750;
+  // Eu escolho uma fotografia relacionada a cada demonstração.
+  const capas = { // Eu centralizo as capas para facilitar a manutenção.
+    'CONSTRULAR-PRIME': ['https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80', 'Materiais e construção', '#a66a39'], // Eu identifico a construtora.
+    'Bicicleta-': ['https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=900&q=80', 'Bicicletaria', '#206b67'], // Eu identifico a bicicletaria.
+    'Bomboniere-': ['https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80', 'Doces e chocolates', '#925068'], // Eu identifico a bomboniere.
+    'MOSS-FIT-FOOD': ['https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80', 'Alimentação saudável', '#48845c'], // Eu identifico o cardápio fitness.
+    'MOSS-STUDIO-PRO': ['https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80', 'Criação de sites', '#536ea1'] // Eu identifico o criador de sites.
+  }; // Eu termino o mapa de fotografias.
+  const [foto, legenda, cor] = capas[repositorio]; // Eu recupero os dados da demonstração atual.
+  const imagem = document.createElement('img'); // Eu crio a capa fotográfica.
+  imagem.src = foto; // Eu carrego uma fotografia diferente para cada segmento.
+  imagem.alt = 'Fotografia ilustrativa de ' + legenda; // Eu descrevo o assunto da capa.
+  imagem.loading = 'lazy'; // Eu reduzo o carregamento inicial.
+  imagem.width = 1200; // Eu defino a largura esperada.
+  imagem.height = 750; // Eu defino a altura esperada.
+  imagem.onerror = () => { // Eu preparo uma capa temática se a foto externa falhar.
+    const texto = legenda.replace(/&/g, '&amp;').replace(/</g, '&lt;'); // Eu protejo o texto inserido no SVG.
+    const arte = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750"><rect width="1200" height="750" fill="' + cor + '"/><circle cx="1030" cy="90" r="300" fill="#ffffff" opacity=".09"/><circle cx="130" cy="700" r="310" fill="#000000" opacity=".12"/><text x="600" y="335" font-family="Arial,sans-serif" font-size="66" font-weight="bold" text-anchor="middle" fill="#ffffff">' + texto + '</text><text x="600" y="420" font-family="Arial,sans-serif" font-size="30" text-anchor="middle" fill="#ffffff">DEMONSTRAÇÃO MOSS DIGITAL</text></svg>'; // Eu crio uma alternativa específica, nunca uma imagem quebrada.
+    imagem.onerror = null; // Eu evito repetição infinita caso a alternativa falhe.
+    imagem.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(arte); // Eu apresento a capa alternativa.
+  }; // Eu encerro o tratamento de erro.
   // Eu preparo as informações visíveis do modelo.
   const corpo = document.createElement('div');
   corpo.className = 'card-body';
