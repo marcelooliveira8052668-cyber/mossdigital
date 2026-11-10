@@ -1,0 +1,72 @@
+/* Tema 58 — delivery comercial energético com blocos azuis, catálogo e carrinho. */
+:root { --ice:#c5f3ff; --blue:#087cb1; --dark:#073d62; --ink:#102f40; --muted:#638193; --paper:#f5fcff; --line:#d5edf6; } /* Cores. */
+* { box-sizing:border-box; } /* Box model. */
+html { scroll-behavior:smooth; } /* Navegação. */
+body { margin:0; color:var(--ink); font-family:Arial,Helvetica,sans-serif; background:var(--paper); } /* Base. */
+a { color:inherit; text-decoration:none; } /* Links. */
+button,input,select,textarea { font:inherit; } /* Formulários. */
+button { cursor:pointer; } /* Interação. */
+.ribbon { background:var(--dark); color:white; text-align:center; padding:10px; font-size:11px; font-weight:bold; } /* Aviso. */
+.header { display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:1280px; width:calc(100% - 40px); margin:auto; min-height:82px; } /* Topo. */
+.brand { display:flex; align-items:center; gap:8px; color:var(--dark); font-size:25px; font-weight:1000; letter-spacing:-1px; } /* Marca. */
+.brand span { font-size:38px; color:var(--blue); } /* Ícone. */
+.header nav { display:flex; gap:25px; font-weight:800; font-size:13px; } /* Menu. */
+#cart-count { color:white; padding:4px 7px; font-size:11px; background:var(--blue); border-radius:20px; } /* Quantidade. */
+.contact { background:#e4f7fc; border:1px solid #b7e0ef; color:var(--dark); padding:12px 16px; font-weight:800; border-radius:40px; white-space:nowrap; } /* WhatsApp. */
+.hero { display:grid; grid-template-columns:52% 48%; background:var(--ice); overflow:hidden; max-width:1470px; margin:auto; } /* Divisão. */
+.hero-content { padding:clamp(40px,6vw,95px); display:flex; flex-direction:column; align-items:start; justify-content:center; } /* Texto. */
+.tag { color:var(--blue); font-size:11px; font-weight:900; letter-spacing:2px; } /* Selo. */
+h1,h2 { letter-spacing:-1.5px; line-height:1.04; } /* Títulos fortes. */
+h1 { font-size:clamp(41px,5.2vw,77px); margin:20px 0; max-width:690px; } /* Destaque. */
+.hero-content p { font-size:17px; line-height:1.7; max-width:560px; color:#47788f; } /* Texto. */
+.button { display:inline-flex; align-items:center; justify-content:center; background:var(--dark); color:white; border:0; border-radius:100px; padding:16px 23px; font-weight:900; } /* CTA. */
+.badge-row { display:flex; flex-wrap:wrap; gap:13px; margin-top:40px; color:#1a7099; font-weight:800; font-size:12px; } /* Benefícios. */
+.hero-img { position:relative; min-height:540px; } /* Imagem grande. */
+.hero-img img { display:block; position:absolute; inset:0; width:100%; height:100%; object-fit:cover; } /* Foto. */
+.hero-img>span { position:absolute; bottom:24px; right:24px; background:#ffffffc9; color:var(--dark); padding:12px; border-radius:12px; font-size:11px; } /* Rótulo. */
+.tape { display:flex; flex-wrap:wrap; justify-content:center; gap:35px; background:var(--blue); padding:20px; color:white; font-weight:900; letter-spacing:2px; font-size:12px; } /* Barra. */
+.shop { max-width:1280px; width:calc(100% - 40px); margin:80px auto; } /* Produtos. */
+.shop-heading { display:flex; align-items:end; justify-content:space-between; gap:20px; } /* Título. */
+.shop-heading h2,.checkout h2 { font-size:clamp(33px,3.5vw,52px); margin:10px 0 20px; } /* Título. */
+.shop-heading p { max-width:330px; color:var(--muted); line-height:1.6; font-size:13px; } /* Aviso. */
+.filters { display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 25px; } /* Filtros. */
+.filters button { background:white; border:1px solid #c2e4ef; color:var(--dark); padding:11px 18px; border-radius:30px; font-weight:900; } /* Botão. */
+.filters button.active { background:var(--dark); color:white; } /* Selecionado. */
+.products { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:17px; } /* Catálogo. */
+.products article { overflow:hidden; border-radius:24px; background:white; border:1px solid var(--line); min-width:0; } /* Produto. */
+.products article[hidden] { display:none; } /* Filtrado. */
+.products img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; } /* Foto. */
+.products .body { padding:20px; display:grid; gap:10px; } /* Descrição. */
+.products .body small { font-size:10px; letter-spacing:1px; color:var(--blue); font-weight:900; } /* Grupo. */
+.products h3 { margin:0; font-size:21px; } /* Produto. */
+.products p { color:var(--muted); margin:0; font-size:13px; line-height:1.4; min-height:40px; } /* Resumo. */
+.products strong { font-size:23px; } /* Preço. */
+.products button { border:0; color:white; background:var(--blue); padding:13px; border-radius:12px; font-weight:800; } /* Adicionar. */
+.checkout { display:grid; grid-template-columns:1.14fr .86fr; max-width:1360px; margin:0 auto 80px; gap:30px; padding:0 20px; } /* Checkout sem pagamento. */
+.form-side { background:#eaf8fd; padding:clamp(24px,4vw,55px); border-radius:28px; } /* Formulário. */
+.cart { background:white; border:1px solid var(--line); border-radius:17px; padding:16px; margin-bottom:22px; } /* Itens. */
+.cart-row { display:grid; grid-template-columns:minmax(0,1fr) 74px 90px 24px; align-items:center; gap:9px; padding:12px 0; border-bottom:1px solid var(--line); } /* Linha. */
+.cart-row:last-child { border-bottom:0; } /* Acabamento. */
+.cart-row input { width:100%; padding:9px; border:1px solid var(--line); border-radius:8px; } /* Quantidade. */
+.cart-row small { display:block; color:var(--muted); } /* Unitário. */
+.cart-row button { border:0; background:none; color:#c45a53; font-size:18px; } /* Excluir. */
+#order-form { display:grid; gap:10px; } /* Form. */
+#order-form label { display:grid; gap:8px; font-size:13px; font-weight:800; } /* Rótulo. */
+#order-form input,#order-form select,#order-form textarea { width:100%; padding:13px; border:1px solid #c2e0eb; border-radius:10px; background:white; color:var(--ink); min-width:0; } /* Campos. */
+#order-form textarea { min-height:90px; resize:vertical; } /* Nota. */
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; } /* Campos duplos. */
+.summary { background:white; padding:19px; border-radius:17px; display:grid; gap:14px; } /* Resumo. */
+.summary>div { display:flex; justify-content:space-between; gap:10px; font-size:13px; } /* Linha. */
+.summary .total { border-top:1px solid var(--line); padding-top:15px; font-weight:900; } /* Total. */
+.summary strong { font-size:24px; } /* Valor. */
+.delivery { border-radius:28px; background:var(--dark); color:white; padding:clamp(24px,4vw,55px); display:flex; flex-direction:column; } /* Destaque lateral. */
+.delivery>span { color:#9adeff; font-size:11px; letter-spacing:2px; font-weight:800; } /* Selo. */
+.delivery h2 { margin:22px 0; } /* Título. */
+.delivery p { line-height:1.7; color:#d4edf9; } /* Texto. */
+.delivery-photo { margin-top:12px; border-radius:22px; overflow:hidden; } /* Foto. */
+.delivery-photo img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; } /* Mantém proporção. */
+.delivery ul { margin:20px 0 0; padding-left:20px; line-height:2; color:#d4edf9; } /* Passos. */
+footer { background:#032a46; color:#cceafa; padding:25px; text-align:center; font-size:12px; } /* Rodapé. */
+@media(max-width:1080px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.checkout{grid-template-columns:1fr}.delivery{min-height:0}} /* Tablet. */
+@media(max-width:760px){.header{flex-wrap:wrap;justify-content:center;padding:15px 0}.header nav{width:100%;justify-content:center}.hero{grid-template-columns:1fr}.hero-img{min-height:280px}.shop-heading{display:block}.badge-row{margin-top:20px}} /* Celular. */
+@media(max-width:510px){.products{grid-template-columns:1fr}.hero-content{padding:38px 20px}.tape{gap:12px;font-size:10px}.form-grid{grid-template-columns:1fr}.cart-row{grid-template-columns:minmax(0,1fr) 55px 72px 20px;gap:4px}.cart-row input{padding:5px}.cart-row strong{font-size:12px}.header nav{gap:10px;font-size:11px}} /* Celular estreito. */

@@ -1,0 +1,387 @@
+/* Estilo aplicado a :root. */
+:root {
+  --c1: #0b3142; /* Personalização de --c1. */
+  --c2: #0f7994; /* Personalização de --c2. */
+  --c3: #7ce7ff; /* Personalização de --c3. */
+  --c4: #e9fdff; /* Personalização de --c4. */
+  --ink: #083240; /* Personalização de --ink. */
+}
+/* Estilo aplicado a *. */
+* {
+  box-sizing: border-box; /* Personalização de box-sizing. */
+}
+/* Estilo aplicado a html. */
+html {
+  scroll-behavior: smooth; /* Personalização de scroll-behavior. */
+}
+/* Estilo aplicado a body. */
+body {
+  margin: 0; /* Define o espaço externo. */
+  font-family: Inter,Arial,sans-serif; /* Define a família tipográfica. */
+  background: linear-gradient(180deg,#f4feff 0%,#dbf7ff 100%); /* Define o fundo do elemento. */
+  color: var(--ink); /* Define a cor do texto. */
+}
+/* Estilo aplicado a a. */
+a {
+  text-decoration: none; /* Personalização de text-decoration. */
+  color: inherit; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .container. */
+.container {
+  width: min(1140px,calc(100% - 32px)); /* Controla a largura disponível. */
+  margin: auto; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .topbar. */
+.topbar {
+  position: sticky; /* Define o posicionamento do elemento. */
+  top: 0; /* Define a distância do topo. */
+  z-index: 20; /* Controla a sobreposição em camadas. */
+  background: rgba(245,253,255,.88); /* Define o fundo do elemento. */
+  backdrop-filter: blur(10px); /* Personalização de backdrop-filter. */
+  border-bottom: 1px solid rgba(0,0,0,.08); /* Personalização de border-bottom. */
+}
+/* Estilo aplicado a .topbar-wrap. */
+.topbar-wrap {
+  display: flex; /* Define o modo de distribuição do elemento. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+  justify-content: space-between; /* Distribui os elementos na direção principal. */
+  gap: 18px; /* Ajusta o espaço entre elementos. */
+  padding: 16px 0; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .brand. */
+.brand {
+  font-size: 1.7rem; /* Define o tamanho das letras. */
+  font-weight: 900; /* Controla o peso da fonte. */
+  color: var(--c1); /* Define a cor do texto. */
+}
+/* Estilo aplicado a .brand small. */
+.brand small {
+  display: block; /* Define o modo de distribuição do elemento. */
+  font-size: .75rem; /* Define o tamanho das letras. */
+  color: #4b7582; /* Define a cor do texto. */
+  font-weight: 600; /* Controla o peso da fonte. */
+}
+/* Estilo aplicado a .nav-links. */
+.nav-links {
+  list-style: none; /* Personalização de list-style. */
+  display: flex; /* Define o modo de distribuição do elemento. */
+  gap: 20px; /* Ajusta o espaço entre elementos. */
+  padding: 0; /* Define o espaço interno. */
+  margin: 0; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .nav-links a. */
+.nav-links a {
+  font-weight: 700; /* Controla o peso da fonte. */
+  color: #255767; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .btn. */
+.btn {
+  display: inline-flex; /* Define o modo de distribuição do elemento. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+  justify-content: center; /* Distribui os elementos na direção principal. */
+  padding: 13px 20px; /* Define o espaço interno. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  font-weight: 800; /* Controla o peso da fonte. */
+  border: none; /* Desenha a borda do elemento. */
+}
+/* Estilo aplicado a .btn-cta. */
+.btn-cta {
+  background: linear-gradient(135deg,var(--c2),var(--c3)); /* Define o fundo do elemento. */
+  color: #03212a; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .menu-toggle. */
+.menu-toggle {
+  display: none; /* Define o modo de distribuição do elemento. */
+}
+/* Estilo aplicado a .wave-hero. */
+.wave-hero {
+  position: relative; /* Define o posicionamento do elemento. */
+  overflow: hidden; /* Controla conteúdos que ultrapassam limites. */
+  padding: 48px 0 70px; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .wave-hero::after. */
+.wave-hero::after {
+  content: ""; /* Personalização de content. */
+  position: absolute; /* Define o posicionamento do elemento. */
+  left: 0; /* Define a distância da esquerda. */
+  right: 0; /* Define a distância da direita. */
+  bottom: -1px; /* Define a distância da base. */
+  height: 120px; /* Controla a altura disponível. */
+  background: radial-gradient(circle at 20% 0,#b8f4ff 0 22%,transparent 23%),radial-gradient(circle at 55% 0,#c8f6ff 0 22%,transparent 23%),radial-gradient(circle at 90% 0,#dbfbff 0 22%,transparent 23%); /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .hero-inner. */
+.hero-inner {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: 1fr .92fr; /* Organiza as colunas do grid. */
+  gap: 26px; /* Ajusta o espaço entre elementos. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+}
+/* Estilo aplicado a .eyebrow. */
+.eyebrow {
+  letter-spacing: .18em; /* Personalização de letter-spacing. */
+  text-transform: uppercase; /* Personalização de text-transform. */
+  font-size: .72rem; /* Define o tamanho das letras. */
+  color: #1286a8; /* Define a cor do texto. */
+  font-weight: 800; /* Controla o peso da fonte. */
+}
+/* Estilo aplicado a .hero-copy h1. */
+.hero-copy h1 {
+  font-size: clamp(2.4rem,4vw,4rem); /* Define o tamanho das letras. */
+  line-height: 1.05; /* Define o espaço entre linhas de texto. */
+  margin: .5rem 0 1rem; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .hero-copy p. */
+.hero-copy p {
+  font-size: 1.05rem; /* Define o tamanho das letras. */
+  max-width: 56ch; /* Limita a largura máxima. */
+}
+/* Estilo aplicado a .chip-row. */
+.chip-row {
+  display: flex; /* Define o modo de distribuição do elemento. */
+  flex-wrap: wrap; /* Permite quebrar elementos em novas linhas. */
+  gap: 10px; /* Ajusta o espaço entre elementos. */
+  margin-top: 18px; /* Personalização de margin-top. */
+}
+/* Estilo aplicado a .chip-row span. */
+.chip-row span {
+  padding: 10px 16px; /* Define o espaço interno. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  background: white; /* Define o fundo do elemento. */
+  border: 1px solid rgba(8,50,64,.08); /* Desenha a borda do elemento. */
+  box-shadow: 0 8px 24px rgba(4,70,92,.08); /* Aplica sombra para criar profundidade. */
+}
+/* Estilo aplicado a .bubble-frame. */
+.bubble-frame {
+  padding: 16px; /* Define o espaço interno. */
+  background: white; /* Define o fundo do elemento. */
+  border-radius: 34px; /* Arredonda cantos do elemento. */
+  box-shadow: 0 18px 42px rgba(4,70,92,.16); /* Aplica sombra para criar profundidade. */
+}
+/* Estilo aplicado a .bubble-frame img. */
+.bubble-frame img {
+  width: 100%; /* Controla a largura disponível. */
+  display: block; /* Define o modo de distribuição do elemento. */
+  aspect-ratio: 4/3; /* Mantém a proporção da área de imagem. */
+  object-fit: cover; /* Enquadra fotos sem deformá-las. */
+  border-radius: 26px; /* Arredonda cantos do elemento. */
+}
+/* Estilo aplicado a .section. */
+.section {
+  padding: 32px 0; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .section-title h2. */
+.section-title h2 {
+  font-size: 2rem; /* Define o tamanho das letras. */
+  margin: .35rem 0 1rem; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .filters. */
+.filters {
+  display: flex; /* Define o modo de distribuição do elemento. */
+  gap: 10px; /* Ajusta o espaço entre elementos. */
+  flex-wrap: wrap; /* Permite quebrar elementos em novas linhas. */
+  margin-bottom: 16px; /* Personalização de margin-bottom. */
+}
+/* Estilo aplicado a .filters button. */
+.filters button {
+  padding: 10px 16px; /* Define o espaço interno. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  border: 1px solid rgba(8,50,64,.14); /* Desenha a borda do elemento. */
+  background: white; /* Define o fundo do elemento. */
+  font-weight: 700; /* Controla o peso da fonte. */
+  cursor: pointer; /* Define o cursor do mouse. */
+}
+/* Estilo aplicado a .filters button[aria-pressed="true"]. */
+.filters button[aria-pressed="true"] {
+  background: linear-gradient(135deg,var(--c2),var(--c3)); /* Define o fundo do elemento. */
+  color: #03212a; /* Define a cor do texto. */
+  border-color: transparent; /* Personalização de border-color. */
+}
+/* Estilo aplicado a .mosaic-grid. */
+.mosaic-grid {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: 1.2fr 1fr 1fr; /* Organiza as colunas do grid. */
+  grid-auto-rows: 230px; /* Define o tamanho das linhas automáticas. */
+  gap: 16px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .tile. */
+.tile {
+  position: relative; /* Define o posicionamento do elemento. */
+  overflow: hidden; /* Controla conteúdos que ultrapassam limites. */
+  border-radius: 28px; /* Arredonda cantos do elemento. */
+  box-shadow: 0 18px 32px rgba(4,70,92,.14); /* Aplica sombra para criar profundidade. */
+}
+/* Estilo aplicado a .tile.tall. */
+.tile.tall {
+  grid-row: span 2; /* Define quantas linhas o elemento ocupa. */
+}
+/* Estilo aplicado a .tile.wide. */
+.tile.wide {
+  grid-column: span 2; /* Define quantas colunas o elemento ocupa. */
+}
+/* Estilo aplicado a .tile img. */
+.tile img {
+  width: 100%; /* Controla a largura disponível. */
+  height: 100%; /* Controla a altura disponível. */
+  object-fit: cover; /* Enquadra fotos sem deformá-las. */
+  display: block; /* Define o modo de distribuição do elemento. */
+}
+/* Estilo aplicado a .overlay. */
+.overlay {
+  position: absolute; /* Define o posicionamento do elemento. */
+  inset: 0; /* Personalização de inset. */
+  padding: 18px; /* Define o espaço interno. */
+  display: flex; /* Define o modo de distribuição do elemento. */
+  flex-direction: column; /* Orienta os elementos flexíveis. */
+  justify-content: end; /* Distribui os elementos na direção principal. */
+  background: linear-gradient(180deg,transparent 35%,rgba(3,33,42,.72)); /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .overlay h3,.overlay button. */
+.overlay h3,.overlay button {
+  color: white; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .overlay button. */
+.overlay button {
+  align-self: flex-start; /* Personalização de align-self. */
+  background: none; /* Define o fundo do elemento. */
+  border: none; /* Desenha a borda do elemento. */
+  padding: 0; /* Define o espaço interno. */
+  font-weight: 700; /* Controla o peso da fonte. */
+  cursor: pointer; /* Define o cursor do mouse. */
+}
+/* Estilo aplicado a .sea-band. */
+.sea-band {
+  background: linear-gradient(180deg,#edfaff,#d5f5ff); /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .guide-grid. */
+.guide-grid {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: .95fr 1.05fr; /* Organiza as colunas do grid. */
+  gap: 20px; /* Ajusta o espaço entre elementos. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+}
+/* Estilo aplicado a .cards-inline. */
+.cards-inline {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: repeat(3,1fr); /* Organiza as colunas do grid. */
+  gap: 16px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .cards-inline article. */
+.cards-inline article {
+  background: white; /* Define o fundo do elemento. */
+  padding: 22px; /* Define o espaço interno. */
+  border-radius: 24px; /* Arredonda cantos do elemento. */
+  box-shadow: 0 18px 30px rgba(4,70,92,.1); /* Aplica sombra para criar profundidade. */
+}
+/* Estilo aplicado a .contact-box. */
+.contact-box {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: .9fr 1.1fr; /* Organiza as colunas do grid. */
+  gap: 18px; /* Ajusta o espaço entre elementos. */
+  background: white; /* Define o fundo do elemento. */
+  padding: 24px; /* Define o espaço interno. */
+  border-radius: 28px; /* Arredonda cantos do elemento. */
+  box-shadow: 0 18px 40px rgba(4,70,92,.12); /* Aplica sombra para criar profundidade. */
+}
+/* Estilo aplicado a .contact-form. */
+.contact-form {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: 1fr 1fr; /* Organiza as colunas do grid. */
+  gap: 12px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .contact-form input,.contact-form select,.contact-form textarea. */
+.contact-form input,.contact-form select,.contact-form textarea {
+  padding: 14px 16px; /* Define o espaço interno. */
+  border-radius: 16px; /* Arredonda cantos do elemento. */
+  border: 1px solid rgba(8,50,64,.12); /* Desenha a borda do elemento. */
+  font: inherit; /* Personalização de font. */
+}
+/* Estilo aplicado a .contact-form textarea. */
+.contact-form textarea {
+  grid-column: 1/-1; /* Define quantas colunas o elemento ocupa. */
+  min-height: 120px; /* Define a altura mínima. */
+}
+/* Estilo aplicado a .dialog. */
+.dialog {
+  max-width: 720px; /* Limita a largura máxima. */
+  padding: 20px; /* Define o espaço interno. */
+  border: none; /* Desenha a borda do elemento. */
+  border-radius: 24px; /* Arredonda cantos do elemento. */
+}
+/* Estilo aplicado a .dialog img. */
+.dialog img {
+  width: 100%; /* Controla a largura disponível. */
+  aspect-ratio: 16/10; /* Mantém a proporção da área de imagem. */
+  object-fit: cover; /* Enquadra fotos sem deformá-las. */
+  border-radius: 18px; /* Arredonda cantos do elemento. */
+}
+/* Estilo aplicado a .dialog-close. */
+.dialog-close {
+  position: absolute; /* Define o posicionamento do elemento. */
+  top: 10px; /* Define a distância do topo. */
+  right: 10px; /* Define a distância da direita. */
+  width: 40px; /* Controla a largura disponível. */
+  height: 40px; /* Controla a altura disponível. */
+  border: none; /* Desenha a borda do elemento. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  background: #0f7994; /* Define o fundo do elemento. */
+  color: white; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .open. */
+.open {
+  display: flex !important; /* Define o modo de distribuição do elemento. */
+}
+/* Regras específicas de media: (max-width:940px). */
+@media (max-width:940px) {
+  /* Estilo aplicado a .topbar-wrap,.hero-inner,.guide-grid,.contact-box,.cards-inline,.contact-form. */
+  .topbar-wrap,.hero-inner,.guide-grid,.contact-box,.cards-inline,.contact-form {
+    grid-template-columns: 1fr; /* Organiza as colunas do grid. */
+    display: grid; /* Define o modo de distribuição do elemento. */
+  }
+  /* Estilo aplicado a .menu-toggle. */
+  .menu-toggle {
+    display: inline-flex; /* Define o modo de distribuição do elemento. */
+    padding: 12px; /* Define o espaço interno. */
+    border-radius: 12px; /* Arredonda cantos do elemento. */
+    border: 1px solid rgba(8,50,64,.14); /* Desenha a borda do elemento. */
+    background: white; /* Define o fundo do elemento. */
+  }
+  /* Estilo aplicado a .nav-links. */
+  .nav-links {
+    display: none; /* Define o modo de distribuição do elemento. */
+    flex-direction: column; /* Orienta os elementos flexíveis. */
+    background: white; /* Define o fundo do elemento. */
+    padding: 16px; /* Define o espaço interno. */
+    border-radius: 18px; /* Arredonda cantos do elemento. */
+    position: absolute; /* Define o posicionamento do elemento. */
+    right: 16px; /* Define a distância da direita. */
+    top: 70px; /* Define a distância do topo. */
+    box-shadow: 0 18px 30px rgba(4,70,92,.16); /* Aplica sombra para criar profundidade. */
+  }
+  /* Estilo aplicado a .mosaic-grid. */
+  .mosaic-grid {
+    grid-template-columns: 1fr; /* Organiza as colunas do grid. */
+    grid-auto-rows: 220px; /* Define o tamanho das linhas automáticas. */
+  }
+  /* Estilo aplicado a .tile.tall,.tile.wide. */
+  .tile.tall,.tile.wide {
+    grid-row: auto; /* Define quantas linhas o elemento ocupa. */
+    grid-column: auto; /* Define quantas colunas o elemento ocupa. */
+  }
+  /* Estilo aplicado a .btn-cta. */
+  .btn-cta {
+    width: max-content; /* Controla a largura disponível. */
+  }
+}
+
+/* Rodapé discreto para identificar a demo e evitar confusão com empresa real. */
+.moss-credit {
+  padding: 18px 24px; /* Cria um espaço confortável para leitura. */
+  background: #152233; /* Diferencia o aviso sem alterar o layout principal. */
+  color: #ffffff; /* Garante leitura no fundo escuro. */
+  font-size: 0.86rem; /* Mantém o rodapé discreto. */
+  text-align: center; /* Centraliza o aviso no espaço disponível. */
+}
+.moss-credit a {
+  color: #b7eaff; /* Destaca o link do desenvolvedor. */
+  text-decoration: underline; /* Indica que o endereço é clicável. */
+}

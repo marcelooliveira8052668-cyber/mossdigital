@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!-- Documento HTML5. -->
+<html lang="pt-BR">
+ <!-- Idioma padrão. -->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Demo para manuten&ccedil;&atilde;o de piscinas: volume aproximado, checklist local e solicita&ccedil;&atilde;o de visita." name="description"/>
+  <title>
+   Piscina em Dia | Cuidados e manuten&ccedil;&atilde;o
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+  <script defer="" src="js/script.js">
+  </script>
+ </head>
+ <!-- Metadados e arquivos da demo. -->
+ <body>
+  <!-- Página principal. -->
+  <div class="demo">
+   DEMONSTRA&Ccedil;&Atilde;O MOSS DIGITAL &middot; sem medi&ccedil;&otilde;es ou recomenda&ccedil;&otilde;es qu&iacute;micas reais
+  </div>
+  <!-- Aviso obrigatório. -->
+  <header class="header container">
+   <a class="logo" href="#inicio">
+    <span class="icon">
+     ~
+    </span>
+    Piscina
+    <i>
+     em Dia
+    </i>
+   </a>
+   <nav aria-label="Navega&ccedil;&atilde;o">
+    <a href="#rotina">
+     Rotina
+    </a>
+    <a href="#volume">
+     Volume
+    </a>
+    <a href="#servicos">
+     Servi&ccedil;os
+    </a>
+    <a href="#visita">
+     Visita
+    </a>
+   </nav>
+   <a class="header-wa" href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20vi%20a%20demo%20Piscina%20em%20Dia." rel="noopener noreferrer" target="_blank">
+    WhatsApp &nearrow;
+   </a>
+  </header>
+  <!-- Navegação horizontal leve. -->
+  <main id="inicio">
+   <!-- Início do conteúdo. -->
+   <section class="hero">
+    <div class="container hero-grid">
+     <div class="hero-content">
+      <span class="kicker">
+       CUIDADO QUE FAZ PARTE DA ROTINA
+      </span>
+      <h1>
+       &Aacute;gua bonita.
+       <br/>
+       <em>
+        Rotina organizada.
+       </em>
+      </h1>
+      <p>
+       Uma apresenta&ccedil;&atilde;o de servi&ccedil;os que tamb&eacute;m serve como caderno simples para lembrar tarefas de manuten&ccedil;&atilde;o.
+      </p>
+      <a class="button" href="#rotina">
+       Abrir checklist &nearrow;
+      </a>
+     </div>
+     <div class="photo">
+      <!-- FOTO: acrescente imagem autorizada em assets/img/piscina-capa.webp e atualize o src para ela. -->
+      <img alt="Foto a inserir de piscina clara e jardim" data-photo="assets/img/piscina-capa.webp" height="1000" src="assets/img/placeholder.svg" width="1300"/>
+      <span>
+       FOTO &middot; piscina-capa.webp
+      </span>
+     </div>
+    </div>
+   </section>
+   <!-- Capa com espaço da foto. -->
+   <section class="benefits container">
+    <p>
+     <b>
+      01
+     </b>
+     Rotina visual
+    </p>
+    <p>
+     <b>
+      02
+     </b>
+     Estimativa de volume
+    </p>
+    <p>
+     <b>
+      03
+     </b>
+     Visita pelo WhatsApp
+    </p>
+   </section>
+   <!-- Benefícios da ferramenta. -->
+   <section class="workspace container" id="rotina">
+    <div class="heading">
+     <span class="kicker">
+      MINHA ROTINA
+     </span>
+     <h2>
+      Checklist de acompanhamento
+     </h2>
+     <p>
+      Marque atividades ilustrativas. O estado fica salvo apenas neste navegador, n&atilde;o em um banco de dados.
+     </p>
+    </div>
+    <div class="check-panel">
+     <div class="check-title">
+      <h3>
+       Minha lista
+      </h3>
+      <button id="reset" type="button">
+       Limpar marca&ccedil;&otilde;es
+      </button>
+     </div>
+     <label>
+      <input data-task="verificar-equipamentos" type="checkbox"/>
+      Verificar funcionamento visual dos equipamentos
+     </label>
+     <label>
+      <input data-task="retirar-folhas" type="checkbox"/>
+      Retirar folhas e res&iacute;duos superficiais
+     </label>
+     <label>
+      <input data-task="organizar-visita" type="checkbox"/>
+      Programar avalia&ccedil;&atilde;o profissional
+     </label>
+     <label>
+      <input data-task="revisar-calendario" type="checkbox"/>
+      Revisar calend&aacute;rio de manuten&ccedil;&atilde;o
+     </label>
+     <div aria-live="polite" class="check-status">
+      <strong id="progress">
+       0 de 4 tarefas
+      </strong>
+      <div class="track">
+       <div id="progressbar">
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Simples armazenamento local. -->
+   <section class="volume-section" id="volume">
+    <div class="container volume-layout">
+     <div class="intro">
+      <span class="kicker">
+       CALCULADORA VISUAL
+      </span>
+      <h2>
+       Qual o volume aproximado da piscina?
+      </h2>
+      <p>
+       Para piscinas retangulares, informe as dimens&otilde;es em metros. Este c&aacute;lculo geom&eacute;trico n&atilde;o indica produtos qu&iacute;micos nem substitui a avalia&ccedil;&atilde;o t&eacute;cnica.
+      </p>
+      <div class="volume-photo">
+       <!-- FOTO: acrescente imagem autorizada em assets/img/piscina-planta.webp e atualize o src para ela. -->
+       <img alt="Foto a inserir de piscina vista de cima" data-photo="assets/img/piscina-planta.webp" height="750" src="assets/img/placeholder.svg" width="1000"/>
+      </div>
+     </div>
+     <form class="calculator" id="calc-form">
+      <label>
+       Comprimento (m)
+       <input id="length" max="100" min="0.5" required="" step="0.1" type="number" value="8"/>
+      </label>
+      <label>
+       Largura (m)
+       <input id="width" max="100" min="0.5" required="" step="0.1" type="number" value="4"/>
+      </label>
+      <label>
+       Profundidade m&eacute;dia (m)
+       <input id="depth" max="12" min="0.3" required="" step="0.1" type="number" value="1.4"/>
+      </label>
+      <div class="volume-result">
+       <span>
+        Volume aproximado
+       </span>
+       <strong id="liters">
+        &mdash;
+       </strong>
+       <small>
+        Somente refer&ecirc;ncia geom&eacute;trica; n&atilde;o calcula tratamento qu&iacute;mico.
+       </small>
+      </div>
+     </form>
+    </div>
+   </section>
+   <!-- Calculadora sem orientação de tratamento. -->
+   <section class="services container" id="servicos">
+    <div class="heading">
+     <span class="kicker">
+      SERVI&Ccedil;OS
+     </span>
+     <h2>
+      Cuidados adequados a cada espa&ccedil;o.
+     </h2>
+    </div>
+    <div class="service-list">
+     <article>
+      <!-- FOTO: acrescente imagem autorizada em assets/img/manutencao.webp e atualize o src para ela. -->
+      <img alt="Foto para servi&ccedil;os de manuten&ccedil;&atilde;o" data-photo="assets/img/manutencao.webp" src="assets/img/placeholder.svg"/>
+      <div>
+       <h3>
+        Manuten&ccedil;&atilde;o recorrente
+       </h3>
+       <p>
+        Visitas planejadas e rotina t&eacute;cnica conforme avalia&ccedil;&atilde;o.
+       </p>
+      </div>
+     </article>
+     <article>
+      <!-- FOTO: acrescente imagem autorizada em assets/img/equipamentos.webp e atualize o src para ela. -->
+      <img alt="Foto para equipamentos de piscina" data-photo="assets/img/equipamentos.webp" src="assets/img/placeholder.svg"/>
+      <div>
+       <h3>
+        Avalia&ccedil;&atilde;o de equipamentos
+       </h3>
+       <p>
+        Orienta&ccedil;&atilde;o profissional para bombas, filtros e acess&oacute;rios.
+       </p>
+      </div>
+     </article>
+    </div>
+   </section>
+   <!-- Catálogo editorial horizontal. -->
+   <section class="contact" id="visita">
+    <div class="container contact-grid">
+     <div>
+      <span class="kicker">
+       PREFERE FALAR COM ALGU&Eacute;M?
+      </span>
+      <h2>
+       Solicite uma visita.
+      </h2>
+      <p>
+       Data sugerida n&atilde;o &eacute; agendamento confirmado. Nada &eacute; armazenado em servidor nesta demo.
+      </p>
+     </div>
+     <form id="visit-form">
+      <label>
+       Seu nome
+       <input autocomplete="name" maxlength="70" name="Nome" required=""/>
+      </label>
+      <label>
+       Bairro / cidade
+       <input maxlength="100" name="Local" placeholder="Cidade e bairro" required=""/>
+      </label>
+      <label>
+       Servi&ccedil;o
+       <select name="Servi&ccedil;o" required="">
+        <option value="">
+         Selecione
+        </option>
+        <option>
+         Manuten&ccedil;&atilde;o peri&oacute;dica
+        </option>
+        <option>
+         Avalia&ccedil;&atilde;o t&eacute;cnica
+        </option>
+        <option>
+         Limpeza
+        </option>
+       </select>
+      </label>
+      <label>
+       Data preferida
+       <input id="visit-date" name="Data preferida" required="" type="date"/>
+      </label>
+      <button class="button" type="submit">
+       Enviar solicita&ccedil;&atilde;o &nearrow;
+      </button>
+     </form>
+    </div>
+   </section>
+   <!-- Formulário para WhatsApp. -->
+  </main>
+  <footer>
+   Piscina em Dia
+   <small>
+    Marca ilustrativa &middot; Desenvolvido por MOSS Digital &middot; (11) 94203-8103
+   </small>
+  </footer>
+  <!-- Rodapé. -->
+ </body>
+</html>

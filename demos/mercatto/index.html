@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Configurações para acentuação, responsividade e identificação do site. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffe600">
+  <meta name="description" content="Mercatto: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.">
+  <title>Mercatto | Demo de loja MOSS Digital</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body id="inicio" data-site="Mercatto">
+<!-- Barra informativa: site demonstrativo, com produtos e valores fictícios. -->
+<div class="announcement">PROJETO DEMONSTRATIVO · Produtos, imagens e preços ilustrativos · Pedidos por WhatsApp</div>
+
+<header class="market-header"><div class="container market-upper"><a href="#inicio" class="brand" aria-label="Página inicial Mercatto"><span class="brand-mark">◈</span><span>Mercatto</span></a><label class="market-search"><span class="sr-only">Buscar produtos</span><input type="search" id="product-search" placeholder="Buscar produtos, categorias, ideias..."/><span>⌕</span></label><button class="icon-btn" id="open-cart" aria-label="Abrir lista de cotação">🛒 <span class="cart-count">0</span></button><button class="nav-toggle" aria-controls="menu-links" aria-expanded="false">☰</button></div><div class="container market-low"><span>📍 Atendemos por WhatsApp</span><nav class="nav-links" id="menu-links"><a href="#catalogo">Departamentos</a><a href="#comparar">Comparar</a><a href="#guia">Como funciona</a></nav><span class="small-muted">Cotações demonstrativas</span></div></header>
+<main><section class="container search-hero"><div class="search-hero-copy"><span class="eyebrow">BUSQUE · COMPARE · ESCOLHA</span><h1>O que você precisa, <em>do seu jeito.</em></h1><p>Compare opções lado a lado, salve favoritos e prepare sua cotação em poucos cliques.</p><a href="#catalogo" class="btn btn-blue">Explorar catálogo →</a></div><div class="search-hero-visual"><img src="assets/img/hero.svg" alt="Ilustração de produtos e busca digital"/></div></section>
+<div class="container benefits-line" id="guia"><span>✓ Pesquisa inteligente</span><span>✓ Comparação ilustrativa</span><span>✓ Favoritos neste navegador</span><span>✓ Atendimento personalizado</span></div>
+<section class="container results-layout" id="catalogo"><aside class="sidebar"><span class="eyebrow">EXPLORE</span><h2>Categorias</h2><div id="filter-row" class="sidebar-filters"></div><div class="sidebar-note"><strong>Compare até 3 itens</strong><p>Marque os produtos para visualizar as opções lado a lado.</p></div></aside><div class="listing"><div class="listing-title"><div><span class="eyebrow">CATÁLOGO DE EXEMPLO</span><h2>Encontre a melhor opção.</h2></div><select id="sort-select" aria-label="Ordenar produtos"><option value="featured">Destaques</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select></div><div class="products-grid" id="products-grid"></div><p id="empty-msg" class="empty" hidden>Nenhum resultado para sua busca.</p></div></section>
+<section class="container compare-section" id="comparar"><div class="section-heading"><div><span class="eyebrow">ESCOLHA CONSCIENTE</span><h2>Sua mesa de comparação</h2></div><button class="btn btn-outline" id="clear-compare" type="button">Limpar seleção</button></div><div class="compare-output" id="compare-output"><p>Selecione até três produtos nos cards para comparar.</p></div></section></main>
+
+<!-- Gaveta de carrinho: todas as informações permanecem neste navegador. -->
+<div class="overlay" id="drawer-overlay" hidden></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Carrinho de cotação" aria-hidden="true">
+ <div class="drawer-head"><div><span class="eyebrow">SELEÇÃO DE PRODUTOS</span><h2>Minha lista</h2></div><button id="close-cart" class="close-btn" type="button" aria-label="Fechar carrinho">×</button></div>
+ <div id="cart-items" class="cart-items"><p>Seu carrinho está vazio.</p></div>
+ <div class="drawer-bottom"><div class="cart-total"><span>Total estimado</span><strong id="cart-total">R$ 0,00</strong></div><p>Não realiza pagamento. A loja confirma estoque, frete e valores.</p><a id="checkout-link" class="btn btn-checkout" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511942038103">Enviar pedido pelo WhatsApp ↗</a></div>
+</aside>
+<!-- Janela de informações. -->
+<dialog id="product-dialog" class="product-dialog"><button id="close-dialog" type="button" class="close-btn" aria-label="Fechar detalhes">×</button><div id="dialog-content"></div></dialog>
+
+<!-- Rodapé de transparência comercial. -->
+<footer class="footer"><div><strong>Mercatto</strong><span> · Vitrine demonstrativa criada pela MOSS Digital</span></div><p>Valores ilustrativos. Sem estoque confirmado, pagamento ou entrega automática.</p><a href="#inicio">Voltar ao início ↑</a></footer>
+<!-- Área de anúncios acessíveis para ações do usuário. -->
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

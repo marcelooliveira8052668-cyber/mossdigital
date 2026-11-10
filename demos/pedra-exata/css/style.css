@@ -1,0 +1,464 @@
+/* PEDRA EXATA — arquitetura editorial com superfícies e configurador. */
+:root {
+  --ink: #1c2326; /* Cor personalizada reutilizável. */
+  --stone: #f1f0ea; /* Cor personalizada reutilizável. */
+  --cream: #e8e5dc; /* Cor personalizada reutilizável. */
+  --gold: #a57950; /* Cor personalizada reutilizável. */
+  --grey: #555e60; /* Cor personalizada reutilizável. */
+  --line: #d7d8d1; /* Cor personalizada reutilizável. */
+}
+* {
+  box-sizing: border-box; /* Inclui bordas e padding no tamanho calculado. */
+}
+html {
+  scroll-behavior: smooth; /* Controla suavidade de rolagem. */
+}
+body {
+  margin: 0; /* Controla o espaço externo. */
+  color: var(--ink); /* Define cor do texto. */
+  background: var(--stone); /* Define fundo/cor da área. */
+  font: 16px/1.55 Arial,sans-serif; /* Configura fonte e espaçamento de linha. */
+}
+a {
+  color: inherit; /* Define cor do texto. */
+  text-decoration: none; /* Controla decoração do texto. */
+}
+button,input,select {
+  font: inherit; /* Configura fonte e espaçamento de linha. */
+}
+button {
+  cursor: pointer; /* Define formato do ponteiro. */
+}
+img {
+  max-width: 100%; /* Limita a largura máxima. */
+}
+.demo-ribbon {
+  background: var(--ink); /* Define fundo/cor da área. */
+  color: #ece9df; /* Define cor do texto. */
+  font-size: 11px; /* Define o tamanho das letras. */
+  text-align: center; /* Alinha o texto. */
+  padding: 6px 10px; /* Controla o espaço interno. */
+  letter-spacing: .08em; /* Ajusta espaçamento entre letras. */
+}
+.masthead {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 22px; /* Define o espaço entre elementos. */
+  padding: 22px clamp(16px,3vw,56px); /* Controla o espaço interno. */
+  background: #f6f6f0; /* Define fundo/cor da área. */
+}
+.brand {
+  font: 700 22px/1 Arial,sans-serif; /* Configura fonte e espaçamento de linha. */
+  letter-spacing: .03em; /* Ajusta espaçamento entre letras. */
+  white-space: nowrap; /* Controla quebras de texto. */
+}
+.brand b {
+  color: var(--gold); /* Define cor do texto. */
+}
+.brand small {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  font-size: 9px; /* Define o tamanho das letras. */
+  letter-spacing: .24em; /* Ajusta espaçamento entre letras. */
+  margin: 5px 0 0 29px; /* Controla o espaço externo. */
+  color: var(--grey); /* Define cor do texto. */
+}
+.symbol {
+  font-size: 24px; /* Define o tamanho das letras. */
+  margin-right: 5px; /* Controla o espaço externo direito. */
+  color: var(--gold); /* Define cor do texto. */
+}
+.main-nav {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  gap: 24px; /* Define o espaço entre elementos. */
+  font-size: 13px; /* Define o tamanho das letras. */
+  font-weight: 700; /* Define a espessura das letras. */
+}
+.consult-btn {
+  border: 1px solid var(--ink); /* Cria e formata bordas. */
+  padding: 13px 18px; /* Controla o espaço interno. */
+  font-weight: 700; /* Define a espessura das letras. */
+  white-space: nowrap; /* Controla quebras de texto. */
+}
+.menu-toggle {
+  display: none; /* Determina o modo de distribuição dos elementos. */
+  background: transparent; /* Define fundo/cor da área. */
+  border: 1px solid var(--ink); /* Cria e formata bordas. */
+  padding: 9px 13px; /* Controla o espaço interno. */
+}
+/* Capa de imagem dominante com cartão textual parcialmente sobreposto. */
+.architecture-hero {
+  min-height: 580px; /* Limita a altura mínima. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: minmax(0,1.25fr) minmax(0,.75fr); /* Define colunas do layout em grade. */
+  background: #262d2e; /* Define fundo/cor da área. */
+}
+.hero-photo {
+  min-height: 560px; /* Limita a altura mínima. */
+  position: relative; /* Controla posicionamento. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+}
+.hero-photo img {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  width: 100%; /* Define a largura. */
+  height: 100%; /* Define a altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+}
+.hero-photo span {
+  position: absolute; /* Controla posicionamento. */
+  bottom: 20px; /* Ajusta posição inferior. */
+  left: 20px; /* Ajusta posição esquerda. */
+  background: #f8f8f0d9; /* Define fundo/cor da área. */
+  color: #253333; /* Define cor do texto. */
+  padding: 9px 12px; /* Controla o espaço interno. */
+  font-size: 10px; /* Define o tamanho das letras. */
+}
+.hero-text {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  flex-direction: column; /* Define orientação dos itens. */
+  justify-content: center; /* Distribui itens no eixo principal. */
+  color: #f1f0ea; /* Define cor do texto. */
+  padding: clamp(30px,5vw,70px); /* Controla o espaço interno. */
+  position: relative; /* Controla posicionamento. */
+}
+.vertical-rule {
+  width: 32px; /* Define a largura. */
+  height: 4px; /* Define a altura. */
+  background: var(--gold); /* Define fundo/cor da área. */
+  margin-bottom: 25px; /* Controla o espaço externo inferior. */
+}
+.eyebrow {
+  font-size: 10px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  letter-spacing: .22em; /* Ajusta espaçamento entre letras. */
+  color: #b68a61; /* Define cor do texto. */
+}
+h1,h2,h3,p {
+  margin-top: 0; /* Controla o espaço externo superior. */
+}
+h1,h2,h3 {
+  font-family: Georgia,"Times New Roman",serif; /* Define a família da fonte. */
+}
+h1 {
+  font-size: clamp(40px,4vw,63px); /* Define o tamanho das letras. */
+  line-height: 1.07; /* Controla o espaçamento entre linhas. */
+  letter-spacing: -.04em; /* Ajusta espaçamento entre letras. */
+  margin: 15px 0; /* Controla o espaço externo. */
+}
+h1 em {
+  color: #d6aa7d; /* Define cor do texto. */
+  font-weight: 400; /* Define a espessura das letras. */
+}
+.hero-text p {
+  color: #c8c9c1; /* Define cor do texto. */
+}
+.btn-light {
+  display: inline-flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  padding: 15px 20px; /* Controla o espaço interno. */
+  margin-top: 16px; /* Controla o espaço externo superior. */
+  background: #eee9df; /* Define fundo/cor da área. */
+  color: #1d2728; /* Define cor do texto. */
+  max-width: 280px; /* Limita a largura máxima. */
+  font-weight: 800; /* Define a espessura das letras. */
+}
+.wrap {
+  max-width: 1160px; /* Limita a largura máxima. */
+  margin: auto; /* Controla o espaço externo. */
+  padding-left: 24px; /* Controla o espaço interno esquerdo. */
+  padding-right: 24px; /* Controla o espaço interno direito. */
+}
+.editorial-content,.portfolio {
+  padding-top: 80px; /* Controla o espaço interno superior. */
+  padding-bottom: 78px; /* Controla o espaço interno inferior. */
+}
+.content-intro {
+  max-width: 670px; /* Limita a largura máxima. */
+}
+.content-intro h2,.config-copy h2,.portfolio h2,.footer-cta h2 {
+  font-size: clamp(34px,4vw,52px); /* Define o tamanho das letras. */
+  line-height: 1.13; /* Controla o espaçamento entre linhas. */
+  letter-spacing: -.035em; /* Ajusta espaçamento entre letras. */
+  margin: 12px 0; /* Controla o espaço externo. */
+}
+.content-intro p {
+  color: var(--grey); /* Define cor do texto. */
+}
+.stone-strip {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: repeat(3,minmax(0,1fr)); /* Define colunas do layout em grade. */
+  gap: 18px; /* Define o espaço entre elementos. */
+  margin-top: 26px; /* Controla o espaço externo superior. */
+}
+.stone-choice {
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+  padding: 10px 10px 18px; /* Controla o espaço interno. */
+  background: #f8f7f0; /* Define fundo/cor da área. */
+  text-align: left; /* Alinha o texto. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 7px; /* Define o espaço entre elementos. */
+  transition: border-color .2s; /* Suaviza mudança de propriedade. */
+}
+.stone-choice.active {
+  outline: 2px solid var(--gold); /* Ajuste visual para este elemento. */
+  outline-offset: 1px; /* Ajuste visual para este elemento. */
+}
+.stone-choice img {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  width: 100%; /* Define a largura. */
+  aspect-ratio: 4/3; /* Mantém proporção largura/altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+}
+.stone-choice b {
+  padding-left: 8px; /* Controla o espaço interno esquerdo. */
+  font: 700 25px Georgia,serif; /* Configura fonte e espaçamento de linha. */
+}
+.stone-choice small {
+  padding-left: 8px; /* Controla o espaço interno esquerdo. */
+  color: var(--grey); /* Define cor do texto. */
+}
+/* Simulador em duas colunas, com orçamento à direita. */
+.config-band {
+  background: #dcdcd3; /* Define fundo/cor da área. */
+  padding: 70px 0; /* Controla o espaço interno. */
+}
+.config-grid {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); /* Define colunas do layout em grade. */
+  gap: 38px; /* Define o espaço entre elementos. */
+  align-items: start; /* Alinha itens no eixo transversal. */
+}
+.config-copy p {
+  color: #555e60; /* Define cor do texto. */
+}
+.mini-note {
+  border-left: 3px solid var(--gold); /* Define borda esquerda. */
+  background: #f7f6f0; /* Define fundo/cor da área. */
+  padding: 15px; /* Controla o espaço interno. */
+  margin-bottom: 22px; /* Controla o espaço externo inferior. */
+  font-size: 13px; /* Define o tamanho das letras. */
+}
+.side-photo {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  width: 100%; /* Define a largura. */
+  max-height: 220px; /* Limita a altura máxima. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+}
+.estimate-panel {
+  padding: 30px; /* Controla o espaço interno. */
+  background: #faf9f3; /* Define fundo/cor da área. */
+  border: 1px solid #c9c6bb; /* Cria e formata bordas. */
+  box-shadow: 0 20px 35px #33333318; /* Adiciona sombra ao elemento. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 18px; /* Define o espaço entre elementos. */
+}
+.estimate-panel h3 {
+  font-size: 31px; /* Define o tamanho das letras. */
+  margin: 0; /* Controla o espaço externo. */
+}
+.estimate-panel label {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 8px; /* Define o espaço entre elementos. */
+  font-size: 13px; /* Define o tamanho das letras. */
+  font-weight: 700; /* Define a espessura das letras. */
+}
+.form-grid {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 1fr 1fr; /* Define colunas do layout em grade. */
+  gap: 14px; /* Define o espaço entre elementos. */
+}
+.estimate-panel input,.estimate-panel select {
+  width: 100%; /* Define a largura. */
+  min-width: 0; /* Limita a largura mínima. */
+  background: #fff; /* Define fundo/cor da área. */
+  border: 1px solid #d0d1c6; /* Cria e formata bordas. */
+  padding: 13px; /* Controla o espaço interno. */
+  color: var(--ink); /* Define cor do texto. */
+}
+.estimate-result {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 1fr auto; /* Define colunas do layout em grade. */
+  align-items: baseline; /* Alinha itens no eixo transversal. */
+  gap: 9px 14px; /* Define o espaço entre elementos. */
+  padding: 18px 0; /* Controla o espaço interno. */
+  border-top: 1px solid #ddd9d0; /* Define borda superior. */
+  border-bottom: 1px solid #ddd9d0; /* Define borda inferior. */
+}
+.estimate-result span {
+  color: var(--grey); /* Define cor do texto. */
+  font-size: 13px; /* Define o tamanho das letras. */
+}
+.estimate-result strong {
+  font: 700 27px Georgia,serif; /* Configura fonte e espaçamento de linha. */
+  color: #73513a; /* Define cor do texto. */
+  text-align: right; /* Alinha o texto. */
+}
+.estimate-submit {
+  background: #202a2b; /* Define fundo/cor da área. */
+  color: #fff; /* Define cor do texto. */
+  border: 0; /* Cria e formata bordas. */
+  padding: 15px; /* Controla o espaço interno. */
+  font-weight: 800; /* Define a espessura das letras. */
+}
+.estimate-panel small {
+  color: #6d6c65; /* Define cor do texto. */
+}
+/* Galeria com uma foto grande e duas menores. */
+.portfolio-grid {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 1.3fr .7fr; /* Define colunas do layout em grade. */
+  grid-template-rows: 220px 220px; /* Define linhas do layout em grade. */
+  gap: 18px; /* Define o espaço entre elementos. */
+  margin-top: 20px; /* Controla o espaço externo superior. */
+}
+.portfolio-grid figure {
+  margin: 0; /* Controla o espaço externo. */
+  position: relative; /* Controla posicionamento. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+  background: #ddded5; /* Define fundo/cor da área. */
+}
+.portfolio-grid figure.large {
+  grid-row: span 2; /* Determina a linha ocupada pelo elemento. */
+}
+.portfolio-grid img {
+  width: 100%; /* Define a largura. */
+  height: 100%; /* Define a altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+  display: block; /* Determina o modo de distribuição dos elementos. */
+}
+.portfolio-grid figcaption {
+  position: absolute; /* Controla posicionamento. */
+  bottom: 0; /* Ajusta posição inferior. */
+  left: 0; /* Ajusta posição esquerda. */
+  right: 0; /* Ajusta posição direita. */
+  background: linear-gradient(transparent,#0009); /* Define fundo/cor da área. */
+  padding: 34px 16px 14px; /* Controla o espaço interno. */
+  color: white; /* Define cor do texto. */
+  font-weight: 800; /* Define a espessura das letras. */
+}
+.footer-cta {
+  background: #1f292a; /* Define fundo/cor da área. */
+  color: #f2f1e9; /* Define cor do texto. */
+  padding: 60px 0; /* Controla o espaço interno. */
+}
+.footer-cta>.wrap {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  gap: 24px; /* Define o espaço entre elementos. */
+}
+.footer-cta span {
+  font-size: 11px; /* Define o tamanho das letras. */
+  letter-spacing: .2em; /* Ajusta espaçamento entre letras. */
+  color: #d5a77e; /* Define cor do texto. */
+}
+.footer-cta h2 {
+  max-width: 660px; /* Limita a largura máxima. */
+}
+.footer-cta a {
+  border: 1px solid #d5a77e; /* Cria e formata bordas. */
+  padding: 16px 22px; /* Controla o espaço interno. */
+  white-space: nowrap; /* Controla quebras de texto. */
+}
+.footer {
+  padding: 22px 24px; /* Controla o espaço interno. */
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 20px; /* Define o espaço entre elementos. */
+  flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+  color: #606767; /* Define cor do texto. */
+  font-size: 11px; /* Define o tamanho das letras. */
+  letter-spacing: .08em; /* Ajusta espaçamento entre letras. */
+}
+/* O simulador mantém campos legíveis mesmo em celulares pequenos. */
+@media (max-width:1000px) {
+  .architecture-hero {
+    grid-template-columns: 1fr 1fr; /* Define colunas do layout em grade. */
+  }
+  .main-nav {
+    gap: 12px; /* Define o espaço entre elementos. */
+  }
+  .config-grid {
+    gap: 20px; /* Define o espaço entre elementos. */
+  }
+}
+@media (max-width:760px) {
+  .masthead {
+    flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+    padding: 16px; /* Controla o espaço interno. */
+  }
+  .menu-toggle {
+    display: block; /* Determina o modo de distribuição dos elementos. */
+    margin-left: auto; /* Controla o espaço externo esquerdo. */
+  }
+  .main-nav {
+    display: none; /* Determina o modo de distribuição dos elementos. */
+    order: 4; /* Ajuste visual para este elemento. */
+    flex-basis: 100%; /* Define tamanho-base no flex. */
+    flex-direction: column; /* Define orientação dos itens. */
+  }
+  .main-nav.open {
+    display: flex; /* Determina o modo de distribuição dos elementos. */
+  }
+  .main-nav a {
+    padding: 10px 0; /* Controla o espaço interno. */
+    border-bottom: 1px solid var(--line); /* Define borda inferior. */
+  }
+  .consult-btn {
+    display: none; /* Determina o modo de distribuição dos elementos. */
+  }
+  .architecture-hero {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+  .hero-photo {
+    min-height: 250px; /* Limita a altura mínima. */
+    height: 250px; /* Define a altura. */
+  }
+  .hero-text {
+    padding: 30px 20px; /* Controla o espaço interno. */
+  }
+  .editorial-content,.portfolio {
+    padding-top: 45px; /* Controla o espaço interno superior. */
+    padding-bottom: 48px; /* Controla o espaço interno inferior. */
+  }
+  .stone-strip,.config-grid,.portfolio-grid {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+  .stone-strip {
+    gap: 12px; /* Define o espaço entre elementos. */
+  }
+  .stone-choice {
+    grid-template-columns: 100px 1fr; /* Define colunas do layout em grade. */
+    align-items: center; /* Alinha itens no eixo transversal. */
+  }
+  .stone-choice img {
+    grid-row: span 2; /* Determina a linha ocupada pelo elemento. */
+    height: 100px; /* Define a altura. */
+  }
+  .stone-choice b,.stone-choice small {
+    padding-left: 0; /* Controla o espaço interno esquerdo. */
+  }
+  .config-band {
+    padding: 45px 0; /* Controla o espaço interno. */
+  }
+  .estimate-panel {
+    padding: 20px; /* Controla o espaço interno. */
+  }
+  .portfolio-grid {
+    grid-template-rows: 220px 220px 220px; /* Define linhas do layout em grade. */
+  }
+  .portfolio-grid figure.large {
+    grid-row: auto; /* Determina a linha ocupada pelo elemento. */
+  }
+  .footer-cta>.wrap {
+    display: block; /* Determina o modo de distribuição dos elementos. */
+  }
+  .footer-cta a {
+    display: inline-block; /* Determina o modo de distribuição dos elementos. */
+    margin-top: 10px; /* Controla o espaço externo superior. */
+  }
+  .form-grid {
+    gap: 8px; /* Define o espaço entre elementos. */
+  }
+}

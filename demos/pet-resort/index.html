@@ -1,0 +1,311 @@
+<!DOCTYPE html> <!-- Documento HTML5 sem frameworks. -->
+<html lang="pt-BR"> <!-- Idioma português do Brasil. -->
+
+<head> <!-- Informações invisíveis aos visitantes. -->
+  <meta charset="UTF-8"> <!-- Acentuação correta. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Visualização em celular. -->
+  <meta name="description"
+    content="Demonstração Pet Resort para Hospedagem e cuidados para pets. Projeto ilustrativo criado pela MOSS Digital.">
+  <!-- Descrição para buscadores. -->
+  <meta name="theme-color" content="#24234c"> <!-- Cor da barra do navegador. -->
+  <title>Pet Resort | Demonstração MOSS Digital</title> <!-- Texto da aba. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- Estilos exclusivos da demo. -->
+  <script src="js/script.js" defer></script> <!-- Interações exclusivas da demo. -->
+</head>
+
+<body data-demo="Pet Resort" data-mode="pet"> <!-- Identificação usada pelo script. -->
+  <!-- Fita mantém claro que empresa, preços e serviços são ilustrativos. -->
+  <div class="announcement">Demonstração MOSS Digital · Marca e dados ilustrativos · Fotos a inserir</div>
+  <!-- Cabeçalho com navegação interna e WhatsApp real autorizado. -->
+  <header class="site-header">
+    <nav class="container nav" aria-label="Navegação principal">
+      <a class="brand" href="#inicio"><span class="brand-icon" aria-hidden="true">✿</span><span>Pet
+          Resort<small>Hospedagem e cuidados para pets</small></span></a> <!-- Identidade do projeto. -->
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false"
+        aria-label="Abrir menu">☰</button> <!-- Menu para celular. -->
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#solucoes">Acomodações</a></li>
+        <li><a href="#processo">Como funciona</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#orcamento">Orçamento</a></li>
+        <li><a href="#perguntas">Dúvidas</a></li>
+      </ul> <!-- Links para seções existentes. -->
+      <a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103" target="_blank"
+        rel="noopener noreferrer">Conversar no WhatsApp ↗</a> <!-- Contato direto. -->
+    </nav>
+  </header>
+  <main id="inicio"> <!-- Conteúdo principal. -->
+    <!-- CAPA: texto e espaço de imagem. Basta inserir assets/img/capa.webp para trocar o SVG. -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div><span class="eyebrow">CARINHO, CUIDADO E TRANQUILIDADE</span>
+          <h1>Uma estadia especial para quem é parte da família.</h1>
+          <p class="lead">Apresente acomodações, rotina de cuidados e um pedido de hospedagem simples, com atendimento
+            humano.</p>
+          <div class="actions"><a class="btn btn-dark" href="#orcamento">Solicitar informações ↗</a><a
+              class="btn btn-secondary" href="#solucoes">Explorar acomodações</a></div>
+        </div> <!-- Texto comercial. -->
+        <div class="hero-image"><img src="https://tse4.mm.bing.net/th/id/OIP.F0NXDy_BZj0yAe5PyXir3QHaE9?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" data-photo="assets/img/capa.webp"
+            alt="Cães em ambiente de hospedagem - cuidados e acomodação - imagem ilustrativa" width="1200"
+            height="900"><span class="image-label">FOTO DE CAPA · assets/img/capa.webp</span></div>
+        <!-- Foto trocada automaticamente ao encontrar o arquivo. -->
+      </div>
+    </section>
+    <!-- Diferenciais: três razões resumidas para considerar os serviços. -->
+    <div class="container trust">
+      <article class="trust-item"><span>01</span>
+        <h3>Rotina responsável</h3>
+        <p>Cuidados e atividades explicados com transparência.</p>
+      </article> <!-- Diferencial 01. -->
+      <article class="trust-item"><span>02</span>
+        <h3>Ambientes planejados</h3>
+        <p>Espaços adequados ao serviço anunciado.</p>
+      </article> <!-- Diferencial 02. -->
+      <article class="trust-item"><span>03</span>
+        <h3>Contato próximo</h3>
+        <p>Confirmação humana antes da hospedagem.</p>
+      </article> <!-- Diferencial 03. -->
+    </div>
+    <!-- CATÁLOGO: filtros de categoria e quatro cards clicáveis. -->
+    <section id="solucoes" class="section section-white">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">NOSSA ESPECIALIDADE</span>
+            <h2>Conforto para cada personalidade.</h2>
+          </div>
+          <p>Selecione uma acomodação de exemplo e veja como seu cliente pode pedir informações.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filtros por categoria"><button class="filter" type="button"
+            data-filter="todos" aria-pressed="true">Todos</button> <!-- Filtro: Todos. -->
+          <button class="filter" type="button" data-filter="quartos" aria-pressed="false">Acomodações</button>
+          <!-- Filtro: Acomodações. -->
+          <button class="filter" type="button" data-filter="experiencias" aria-pressed="false">Experiências</button>
+          <!-- Filtro: Experiências. -->
+        </div>
+        <div class="cards" id="service-cards">
+          <!-- Serviço 1: imagem local substituída automaticamente quando suite-conforto.webp existir. -->
+          <article class="card" data-category="quartos">
+            <div class="card-image"><img src="https://cuidadordecachorro.com.br/wp-content/uploads/2026/03/Hotel-para-Cachorro-na-Barra-Funda-SP.webp" data-photo="assets/img/suite-conforto.webp"
+                alt="Suíte Conforto para pets - ambiente acolhedor" loading="lazy" width="900" height="675"></div>
+            <div class="card-copy">
+              <h3>Suíte Conforto</h3>
+              <p>Ambiente acolhedor e rotina supervisionada conforme necessidade do pet.</p><button class="text-action"
+                type="button" data-detail aria-label="Ver detalhes sobre Suíte Conforto">Ver detalhes +</button>
+            </div>
+          </article>
+          <!-- Serviço 2: imagem local substituída automaticamente quando suite-jardim.webp existir. -->
+          <article class="card" data-category="quartos">
+            <div class="card-image"><img src="https://dicasdecoracao.com/wp-content/uploads/ideias-de-espacos-para-cachorros-no-quintal-2-1.jpg" data-photo="assets/img/suite-jardim.webp"
+                alt="Suíte Jardim para pets - área com recreação supervisionada" loading="lazy" width="900"
+                height="675"></div>
+            <div class="card-copy">
+              <h3>Suíte Jardim</h3>
+              <p>Área com acesso programado a ambientes de recreação.</p><button class="text-action" type="button"
+                data-detail aria-label="Ver detalhes sobre Suíte Jardim">Ver detalhes +</button>
+            </div>
+          </article>
+          <!-- Serviço 3: imagem local substituída automaticamente quando recreacao.webp existir. -->
+          <article class="card" data-category="experiencias">
+            <div class="card-image"><img src="https://tse2.mm.bing.net/th/id/OIP.6zq_gKz2LsSF5GgFzcm-igHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" data-photo="assets/img/recreacao.webp"
+                alt="Recreação assistida para pets - atividades organizadas" loading="lazy" width="900" height="675">
+            </div>
+            <div class="card-copy">
+              <h3>Recreação assistida</h3>
+              <p>Atividades organizadas de acordo com porte, temperamento e avaliação.</p><button class="text-action"
+                type="button" data-detail aria-label="Ver detalhes sobre Recreação assistida">Ver detalhes +</button>
+            </div>
+          </article>
+          <!-- Serviço 4: imagem local substituída automaticamente quando rotina-cuidados.webp existir. -->
+          <article class="card" data-category="experiencias">
+            <div class="card-image"><img src="https://heroespet.com.br/wp-content/uploads/2026/03/Guia-de-Dicas-para-Tutores-Cuidados-Essenciais-com-Pets.jpg" data-photo="assets/img/rotina-cuidados.webp"
+                alt="Rotina de cuidados com pets - alimentação, descanso e informações ao tutor" loading="lazy"
+                width="900" height="675"></div>
+            <div class="card-copy">
+              <h3>Rotina de cuidados</h3>
+              <p>Organização de alimentação, descanso e informações ao tutor.</p><button class="text-action"
+                type="button" data-detail aria-label="Ver detalhes sobre Rotina de cuidados">Ver detalhes +</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- PROCESSO: explica o atendimento sem prometer agendamento ou pagamento. -->
+    <section id="processo" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">DO PRIMEIRO CONTATO À PROPOSTA</span>
+            <h2>Simples, transparente e organizado.</h2>
+          </div>
+        </div>
+        <div class="step-grid">
+          <article class="step"><b>PASSO 1</b>
+            <h3>Conte sobre seu pet</h3>
+            <p>Informe porte, datas e acomodação pretendida.</p>
+          </article> <!-- Etapa 1. -->
+          <article class="step"><b>PASSO 2</b>
+            <h3>Solicite avaliação</h3>
+            <p>A equipe confirma requisitos e disponibilidade.</p>
+          </article> <!-- Etapa 2. -->
+          <article class="step"><b>PASSO 3</b>
+            <h3>Organize a estadia</h3>
+            <p>Combine check-in e detalhes diretamente com o responsável.</p>
+          </article> <!-- Etapa 3. -->
+        </div>
+      </div>
+    </section>
+    <!-- GALERIA: três imagens locais fáceis de substituir e sem links remotos. -->
+    <section id="galeria" class="section section-white">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">CONHEÇA MAIS</span>
+            <h2>Detalhes que fazem diferença.</h2>
+          </div>
+          <p>Os espaços abaixo são reservas de fotos. Coloque seus arquivos autorizados e as imagens aparecem
+            automaticamente.</p>
+        </div>
+        <div class="gallery">
+          <!-- Galeria 1: adicione assets/img/area-externa.webp para substituir a imagem de instrução. -->
+          <figure><img src="assets/img/placeholder.svg" data-photo="assets/img/area-externa.webp"
+              alt="Detalhe do ambiente de hospedagem para pets - imagem ilustrativa a substituir" width="750"
+              height="560" loading="lazy">
+            <figcaption>Detalhe do ambiente</figcaption>
+          </figure>
+          <!-- Galeria 2: adicione assets/img/recepcao-pet.webp para substituir a imagem de instrução. -->
+          <figure><img src="assets/img/placeholder.svg" data-photo="assets/img/recepcao-pet.webp"
+              alt="Processo ou equipe de hospedagem para pets - imagem ilustrativa a substituir" width="750"
+              height="560" loading="lazy">
+            <figcaption>Processo ou equipe</figcaption>
+          </figure>
+          <!-- Galeria 3: adicione assets/img/cantinho-descanso.webp para substituir a imagem de instrução. -->
+          <figure><img src="assets/img/placeholder.svg" data-photo="assets/img/cantinho-descanso.webp"
+              alt="Área de descanso para pets - resultado do serviço - imagem ilustrativa a substituir" width="750"
+              height="560" loading="lazy">
+            <figcaption>Resultado do serviço</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- CONTATO: as informações são transmitidas pela abertura do WhatsApp, sem banco de dados. -->
+    <section id="orcamento" class="section">
+      <div class="container contact-grid">
+        <div><span class="eyebrow">ATENDIMENTO PERSONALIZADO</span>
+          <h2>Planeje a hospedagem</h2>
+          <p class="lead">Simulador didático de diárias, sem reserva real e sem consulta a disponibilidade.</p>
+          <p><strong>WhatsApp da demo:</strong> (11) 94203-8103</p>
+          <p class="form-note">Este site é demonstrativo. O envio não cria cadastro, não cobra pagamento e não confirma
+            serviços.</p>
+        </div>
+        <form id="lead-form" class="form-card">
+          <div class="form-grid"><!-- Campo Seu nome: preenchimento pelo visitante. -->
+            <div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text"
+                placeholder="Como podemos chamar você?" maxlength="70" autocomplete="name" required></div>
+            <!-- Campo Nome do pet: preenchimento pelo visitante. -->
+            <div class="field"><label for="pet_nome">Nome do pet</label><input id="pet_nome" name="pet_nome" type="text"
+                placeholder="Nome do seu pet" maxlength="60" required></div>
+            <!-- Campo Porte do pet: preenchimento pelo visitante. -->
+            <div class="field"><label for="porte">Porte do pet</label><select id="porte" name="porte" required>
+                <option value="">Selecione...</option>
+                <option value="pequeno">Pequeno</option>
+                <option value="medio">Médio</option>
+                <option value="grande">Grande</option>
+              </select></div>
+            <!-- Campo Tipo de acomodação: preenchimento pelo visitante. -->
+            <div class="field"><label for="escolha">Tipo de acomodação</label><select id="escolha" name="escolha"
+                required>
+                <option value="">Selecione...</option>
+                <option value="conforto">Suíte Conforto — R$ 90/dia ilustrativos</option>
+                <option value="jardim">Suíte Jardim — R$ 140/dia ilustrativos</option>
+              </select></div>
+            <!-- Campo Entrada desejada: preenchimento pelo visitante. -->
+            <div class="field"><label for="entrada">Entrada desejada</label><input id="entrada" name="entrada"
+                type="date" placeholder="" required></div>
+            <!-- Campo Saída desejada: preenchimento pelo visitante. -->
+            <div class="field"><label for="saida">Saída desejada</label><input id="saida" name="saida" type="date"
+                placeholder="" required></div>
+            <!-- Campo Cuidados importantes (não envie dados sensíveis): preenchimento pelo visitante. -->
+            <div class="field"><label for="observacao">Cuidados importantes (não envie dados sensíveis)</label><textarea
+                id="observacao" name="observacao" maxlength="350"
+                placeholder="Informações para iniciar a conversa"></textarea></div>
+          </div>
+          <p class="estimate" id="estimate" role="status" aria-live="polite">Preencha os campos para visualizar a
+            estimativa ilustrativa.</p> <!-- Resultado atualizado pelo JavaScript. --><button class="btn btn-dark"
+            type="submit">Enviar pedido pelo WhatsApp ↗</button>
+          <p class="form-note">Ao clicar, abre uma mensagem no WhatsApp para você revisar e enviar.</p>
+        </form>
+      </div>
+    </section>
+    <!-- DÚVIDAS: componentes nativos acessíveis via teclado, sem dependências JS. -->
+    <section class="section section-white" id="perguntas">
+      <div class="container">
+        <div class="faq"><span class="eyebrow">PRECISA SABER MAIS?</span>
+          <h2>Perguntas frequentes</h2>
+          <details>
+            <summary>A data fica reservada ao enviar?</summary>
+            <p>Não. O formulário envia apenas uma solicitação de contato pelo WhatsApp.</p>
+          </details> <!-- Pergunta frequente. -->
+          <details>
+            <summary>O preço mostrado é uma tarifa real?</summary>
+            <p>Não. As diárias são demonstrativas e devem ser configuradas pelo negócio.</p>
+          </details> <!-- Pergunta frequente. -->
+          <details>
+            <summary>Há integração com agenda?</summary>
+            <p>Pode ser desenvolvida uma agenda com banco de dados e confirmação após validação de disponibilidade.</p>
+          </details> <!-- Pergunta frequente. -->
+        </div>
+      </div>
+    </section>
+    <!-- Convite final para conhecer o serviço. -->
+    <section class="section">
+      <div class="container">
+        <div class="banner">
+          <div>
+            <h2>Uma conversa pode começar por aqui.</h2>
+            <p>Veja como a apresentação digital aproxima o negócio de seus clientes.</p>
+          </div><a class="btn" data-whatsapp href="https://wa.me/5511942038103">Falar no WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Rodapé com créditos da demo e aviso para não confundir com uma empresa real. -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Pet Resort</h3>
+          <p>Hospedagem e cuidados para pets.</p><small>Marca demonstrativa criada para portfólio. Não representa
+            operação empresarial real.</small>
+        </div>
+        <div>
+          <h3>Navegação</h3>
+          <p><a href="#solucoes">Serviços</a></p>
+          <p><a href="#galeria">Galeria</a></p>
+          <p><a href="#orcamento">Contato</a></p>
+        </div>
+        <div>
+          <h3>Desenvolvimento</h3>
+          <p>MOSS Digital</p>
+          <p><a href="https://www.mossdigital.com.br" target="_blank"
+              rel="noopener noreferrer">www.mossdigital.com.br</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">© Pet Resort · Demo de portfólio · Preços, imagens e serviços ilustrativos.</div>
+    </div>
+  </footer>
+  <!-- Atalho fixo de WhatsApp, com mensagem preenchida pelo JavaScript. -->
+  <a class="float-wa" data-whatsapp href="https://wa.me/5511942038103"
+    aria-label="Conversar com a MOSS Digital pelo WhatsApp" target="_blank" rel="noopener noreferrer">✆ WhatsApp</a>
+  <!-- Diálogo nativo aberto pelo botão de detalhes de cada serviço. -->
+  <dialog class="dialog" id="details-dialog" aria-labelledby="dialog-title"><img id="dialog-photo"
+      src="assets/img/placeholder.svg" alt="Imagem ilustrativa do serviço">
+    <div class="dialog-copy">
+      <div class="dialog-head">
+        <h2 id="dialog-title">Detalhes</h2><button class="dialog-close" id="dialog-close" type="button"
+          aria-label="Fechar janela">×</button>
+      </div>
+      <p id="dialog-text"></p><a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103">Perguntar no
+        WhatsApp ↗</a>
+    </div>
+  </dialog>
+</body> <!-- Final do conteúdo. -->
+
+</html> <!-- Final do documento. -->

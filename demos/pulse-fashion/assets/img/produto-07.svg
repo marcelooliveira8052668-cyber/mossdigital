@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="760" viewBox="0 0 760 760" role="img" aria-label="Ilustração abstrata de Calça Alfaiataria">
+<defs><radialGradient id="g"><stop stop-color="#ffffff" stop-opacity=".84"/><stop offset="1" stop-color="#deddd7"/></radialGradient></defs>
+<rect width="760" height="760" rx="34" fill="#deddd7"/><circle cx="420" cy="284" r="260" fill="url(#g)"/>
+<circle cx="140" cy="105" r="94" fill="#fff" opacity=".29"/><circle cx="650" cy="515" r="160" fill="#fff" opacity=".24"/>
+<path d="M-20 575 Q240 440 470 555 T800 560 V800 H-20Z" fill="#fff" opacity=".27"/>
+<text x="380" y="360" font-family="Noto Color Emoji,Segoe UI Emoji,Apple Color Emoji,Arial" font-size="224" text-anchor="middle">👖</text>
+<text x="58" y="677" fill="#354052" font-family="Arial,sans-serif" font-size="26" font-weight="700" opacity=".8">CONCEITO 07</text><text x="700" y="677" fill="#354052" font-family="Arial,sans-serif" font-size="23" text-anchor="end" opacity=".7">FOTO PENDENTE</text>
+</svg>

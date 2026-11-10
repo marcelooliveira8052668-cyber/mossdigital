@@ -1,0 +1,23 @@
+<!DOCTYPE html> <!-- Declara HTML5. -->
+<html lang="pt-BR"> <!-- Configura idioma brasileiro. -->
+<head> <!-- Reúne dados técnicos. -->
+<meta charset="UTF-8"> <!-- Ativa acentuação. -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Layout para celular. -->
+<meta name="description" content="Papelaria demonstrativa com busca, lista de materiais, quantidades e orçamento por WhatsApp."> <!-- Descrição resumida. -->
+<meta name="theme-color" content="#183a57"> <!-- Cor da interface. -->
+<title>Lista Certa | Papelaria e Lista Escolar</title> <!-- Identifica a aba. -->
+<link rel="stylesheet" href="css/style.css"> <!-- Carrega estilo local. -->
+<script src="js/script.js" defer></script> <!-- Ativa recursos locais. -->
+</head> <!-- Fim do cabeçalho técnico. -->
+<body data-demo="Lista Certa"> <!-- Identifica o projeto. -->
+<!-- Faixa informativa para evitar confundir preços demonstrativos com estoque real. -->
+<div class="faixa">PAPELARIA LISTA CERTA · Catálogo e preços demonstrativos · Sem pagamento neste site</div>
+<header class="cabecalho"><a href="#inicio" class="logo">lista<span>certa</span><small>PAPELARIA & MATERIAL ESCOLAR</small></a><form id="pesquisa" class="busca" role="search"><label class="sr-only" for="buscar">Buscar produtos</label><input id="buscar" type="search" placeholder="Busque lápis, caderno, caneta..."><button type="submit">Buscar ↗</button></form><a data-whatsapp class="topo-wa" href="https://wa.me/5511942038103">Atendimento ↗</a></header>
+<main id="inicio">
+<!-- Título e atalhos funcionais para começar uma lista. -->
+<section class="intro"><div><span>VOLTA ÀS AULAS E ESCRITÓRIO</span><h1>Monte sua lista.<br><em>Sem complicação.</em></h1><p>Escolha materiais, ajuste as quantidades e envie uma cotação organizada pelo WhatsApp. Sem estoque sincronizado ou cobrança automática.</p><a href="#catalogo" class="botao-principal">Explorar materiais ↓</a></div><figure class="intro-foto"><img src="assets/img/espaco-foto.svg" data-foto="assets/img/capa-papelaria.webp" alt="Espaço para foto de mesa de papelaria organizada" width="1200" height="900"><figcaption>Seu catálogo pronto para receber fotos reais</figcaption></figure></section>
+<!-- Área que simula aplicação comercial de compra assistida. -->
+<section class="loja" id="catalogo"><aside class="categorias"><div class="categorias-topo"><b>NAVEGAR</b><small>Categorias</small></div><div class="menu-categorias" role="group" aria-label="Categorias de materiais"><button data-categoria="todos" aria-pressed="true">Todos os itens</button><button data-categoria="escrita" aria-pressed="false">Escrita</button><button data-categoria="cadernos" aria-pressed="false">Cadernos</button><button data-categoria="arte" aria-pressed="false">Artes</button><button data-categoria="organizacao" aria-pressed="false">Organização</button></div><div class="lateral-info">Dica: você pode adicionar materiais de diferentes categorias na mesma cotação.</div></aside><div class="conteudo-loja"><div class="cabecalho-loja"><div><span class="pequeno">CATÁLOGO DIGITAL</span><h2>Escolha item por item</h2></div><div id="contador-produtos" class="contador" aria-live="polite">10 produtos de exemplo</div></div><div id="produtos" class="produtos" aria-live="polite"></div><p class="nota-precos">* Valores meramente ilustrativos. A papelaria deverá confirmar preços e disponibilidade.</p></div><aside class="carrinho"><div class="carrinho-titulo"><span>COTAÇÃO ATUAL</span><strong id="quantidade-selecionada">0 itens</strong></div><div id="lista-pedido" class="lista-pedido" aria-live="polite"><p>Adicione seus materiais para montar a lista.</p></div><div class="totais"><span>Subtotal ilustrativo</span><strong id="subtotal">R$ 0,00</strong></div><label class="nome-label">Seu nome<input type="text" id="nome-cliente" maxlength="70" placeholder="Nome para a cotação"></label><button id="enviar-lista" type="button" class="botao-principal">Enviar cotação no WhatsApp ↗</button><button id="limpar-lista" class="botao-limpar" type="button">Limpar seleção</button><p id="alerta" role="status" class="alerta"></p></aside></section>
+</main><footer class="rodape">Lista Certa · Demonstração comercial MOSS Digital · <a data-whatsapp href="https://wa.me/5511942038103">Dúvidas no WhatsApp ↗</a></footer>
+</body> <!-- Fim do conteúdo. -->
+</html> <!-- Fim da página. -->

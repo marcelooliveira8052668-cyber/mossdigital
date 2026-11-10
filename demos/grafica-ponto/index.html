@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!-- Demo comercial com preços fictícios. -->
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Gr&aacute;fica r&aacute;pida demonstrativa com c&aacute;lculo de impressos e solicita&ccedil;&atilde;o de or&ccedil;amento pelo WhatsApp." name="description"/>
+  <title>
+   Gr&aacute;fica Ponto | Impressos que comunicam
+  </title>
+  <!-- Arquivo de estilos da demo. -->
+  <link href="css/style.css" rel="stylesheet"/>
+  <!-- Script JavaScript da demo. -->
+  <script defer="" src="js/script.js">
+  </script>
+ </head>
+ <body>
+  <!-- Cabeçalho e acesso rápido aos serviços. -->
+  <header class="header">
+   <a class="brand" href="#inicio">
+    GR&Aacute;FICA
+    <span>
+     ●
+    </span>
+    PONTO
+   </a>
+   <!-- Navegação para seções do site. -->
+   <nav>
+    <a href="#produtos">
+     Produtos
+    </a>
+    <a href="#orcamento">
+     Calcular
+    </a>
+    <a href="#portfolio">
+     Inspira&ccedil;&otilde;es
+    </a>
+   </nav>
+   <a class="nav-contact" href="https://wa.me/5511942038103">
+    Falar com a gr&aacute;fica &nearrow;
+   </a>
+  </header>
+  <!-- Início do conteúdo principal. -->
+  <main id="inicio">
+   <!-- Seção de conteúdo do projeto. -->
+   <section class="hero">
+    <div class="hero-copy">
+     <p class="eyebrow">
+      IMPRESS&Atilde;O R&Aacute;PIDA PARA NEG&Oacute;CIOS DE VERDADE
+     </p>
+     <h1>
+      IDEIAS
+      <span>
+       NO
+      </span>
+      PAPEL.
+     </h1>
+     <p>
+      Site para gr&aacute;fica r&aacute;pida com vitrine editorial e um balc&atilde;o digital de or&ccedil;amento, pensado para impressos do dia a dia.
+     </p>
+     <a class="button" href="#orcamento">
+      Simular impressos &nearrow;
+     </a>
+    </div>
+    <div class="graphic-hero">
+     <!-- Imagem substituível, conforme FOTOS-PARA-OPENCODE.md. -->
+     <img alt="Foto a adicionar: materiais gr&aacute;ficos e impressos" data-photo="assets/img/capa-grafica.webp" height="900" src="assets/img/placeholder.svg" width="1200"/>
+     <span>
+      PRINT &bull; DESIGN &bull; ENTREGA
+     </span>
+    </div>
+   </section>
+   <!-- Seção de conteúdo do projeto. -->
+   <section class="services" id="produtos">
+    <div class="section-label">
+     <span>
+      O QUE PODEMOS PRODUZIR
+     </span>
+     <h2>
+      Impressos para divulgar, identificar e vender.
+     </h2>
+    </div>
+    <div class="service-grid">
+     <!-- Bloco de serviço, produto ou informação. -->
+     <article>
+      <span>
+       01 / CART&Otilde;ES
+      </span>
+      <img alt="Foto de cart&otilde;es de visita" data-photo="assets/img/cartoes-visita.webp" height="650" src="assets/img/placeholder.svg" width="900"/>
+      <h3>
+       Cart&atilde;o de visita
+      </h3>
+      <p>
+       Identidade profissional para contatos.
+      </p>
+     </article>
+     <!-- Bloco de serviço, produto ou informação. -->
+     <article>
+      <span>
+       02 / PANFLETOS
+      </span>
+      <img alt="Foto de panfletos" data-photo="assets/img/panfletos.webp" height="650" src="assets/img/placeholder.svg" width="900"/>
+      <h3>
+       Folhetos
+      </h3>
+      <p>
+       Promo&ccedil;&otilde;es, eventos e divulga&ccedil;&atilde;o local.
+      </p>
+     </article>
+     <!-- Bloco de serviço, produto ou informação. -->
+     <article>
+      <span>
+       03 / ETIQUETAS
+      </span>
+      <img alt="Foto de etiquetas" data-photo="assets/img/etiquetas.webp" height="650" src="assets/img/placeholder.svg" width="900"/>
+      <h3>
+       Etiquetas
+      </h3>
+      <p>
+       Embalagens, precifica&ccedil;&atilde;o e organiza&ccedil;&atilde;o.
+      </p>
+     </article>
+    </div>
+   </section>
+   <!-- Seção de conteúdo do projeto. -->
+   <section class="quote" id="orcamento">
+    <div class="quote-head">
+     <div>
+      <span class="eyebrow">
+       SIMULADOR DO BALC&Atilde;O
+      </span>
+      <h2>
+       Monte um pedido antes de falar conosco.
+      </h2>
+      <p>
+       Valores hipot&eacute;ticos. O custo final depende de arte, tiragem, acabamento e aprova&ccedil;&atilde;o t&eacute;cnica.
+      </p>
+     </div>
+     <div class="badge">
+      OR&Ccedil;AMENTO ILUSTRATIVO
+     </div>
+    </div>
+    <div class="quote-grid">
+     <!-- Formulário funcional com saída para WhatsApp ou cadastro local. -->
+     <form id="print-form">
+      <div class="two">
+       <label>
+        Produto
+        <select id="product" name="produto">
+         <option value="cartao">
+          Cart&atilde;o de visita
+         </option>
+         <option value="folheto">
+          Folheto A5
+         </option>
+         <option value="etiqueta">
+          Etiqueta adesiva
+         </option>
+        </select>
+       </label>
+       <label>
+        Quantidade
+        <input id="quantity" max="10000" min="50" name="quantidade" required="" step="50" type="number" value="100"/>
+       </label>
+      </div>
+      <div class="two">
+       <label>
+        Papel
+        <select id="paper" name="papel">
+         <option value="comum">
+          Padr&atilde;o
+         </option>
+         <option value="premium">
+          Premium (+25%)
+         </option>
+        </select>
+       </label>
+       <label>
+        Acabamento
+        <select id="finishing" name="acabamento">
+         <option value="sem">
+          Padr&atilde;o
+         </option>
+         <option value="laminado">
+          Lamina&ccedil;&atilde;o (+20%)
+         </option>
+        </select>
+       </label>
+      </div>
+      <button class="button dark" id="add-item" type="button">
+       Adicionar item ao pedido +
+      </button>
+      <p class="form-note">
+       Cada item &eacute; adicionado a um resumo para envio conjunto pelo WhatsApp.
+      </p>
+     </form>
+     <aside class="quote-summary">
+      <h3>
+       SEU PEDIDO
+      </h3>
+      <ol id="items">
+       <li>
+        Seu pedido ainda est&aacute; vazio.
+       </li>
+      </ol>
+      <div class="total">
+       <span>
+        Estimativa ilustrativa
+       </span>
+       <strong id="sum">
+        R$ 0,00
+       </strong>
+      </div>
+      <label>
+       Nome para contato
+       <input id="client" maxlength="70" placeholder="Seu nome"/>
+      </label>
+      <button class="button full" id="send" type="button">
+       Enviar or&ccedil;amento &nearrow;
+      </button>
+      <p aria-live="polite" id="note" role="status">
+      </p>
+      <small>
+       Sem cobran&ccedil;a, emiss&atilde;o de nota ou pagamento nesta demo.
+      </small>
+     </aside>
+    </div>
+   </section>
+   <!-- Seção de conteúdo do projeto. -->
+   <section class="closing" id="portfolio">
+    <div>
+     <span class="eyebrow">
+      PRODU&Ccedil;&Atilde;O SOB MEDIDA
+     </span>
+     <h2>
+      Do arquivo digital &agrave; presen&ccedil;a f&iacute;sica da sua marca.
+     </h2>
+     <p>
+      Personalize este modelo com produtos, tabela de impress&atilde;o e a identidade visual de cada gr&aacute;fica.
+     </p>
+    </div>
+    <div aria-hidden="true" class="checker">
+     <span>
+      CMYK
+     </span>
+     <span>
+      PRINT
+     </span>
+     <span>
+      LOCAL
+     </span>
+    </div>
+   </section>
+  </main>
+  <!-- Informações finais da demo. -->
+  <footer>
+   Gr&aacute;fica Ponto &middot; Demo de portf&oacute;lio da MOSS Digital &middot; (11) 94203-8103
+  </footer>
+ </body>
+</html>

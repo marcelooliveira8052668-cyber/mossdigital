@@ -1,0 +1,158 @@
+[
+  {
+    "demo": "39-sola-viva",
+    "viewport": "desktop",
+    "checks": {
+      "title": "Sola Viva | Sapataria & Ateliê de Reparos",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "ticket_created": true,
+      "ticket_status": true,
+      "ticket_saved": true,
+      "ticket_deleted": true,
+      "wa_generated": true
+    },
+    "page_errors": [],
+    "ok": true
+  },
+  {
+    "demo": "39-sola-viva",
+    "viewport": "mobile",
+    "checks": {
+      "title": "Sola Viva | Sapataria & Ateliê de Reparos",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "mobile_menu_opens": true
+    },
+    "page_errors": [],
+    "ok": true
+  },
+  {
+    "demo": "40-pedra-exata",
+    "viewport": "desktop",
+    "checks": {
+      "title": "Pedra Exata | Marmoraria",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "estimate_changed": true,
+      "area_correct": true,
+      "wa_generated": true
+    },
+    "page_errors": [],
+    "ok": true
+  },
+  {
+    "demo": "40-pedra-exata",
+    "viewport": "mobile",
+    "checks": {
+      "title": "Pedra Exata | Marmoraria",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "mobile_menu_opens": true
+    },
+    "page_errors": [],
+    "ok": true
+  },
+  {
+    "demo": "41-embalagem-direta",
+    "viewport": "desktop",
+    "checks": {
+      "title": "Embalagem Direta | Atacado que simplifica",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "catalog_8": true,
+      "search_filters": true,
+      "cart_added": true,
+      "wa_generated": true,
+      "cart_saved": true
+    },
+    "page_errors": [],
+    "ok": true
+  },
+  {
+    "demo": "41-embalagem-direta",
+    "viewport": "mobile",
+    "checks": {
+      "title": "Embalagem Direta | Atacado que simplifica",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "mobile_menu_opens": true
+    },
+    "page_errors": [],
+    "ok": true
+  },
+  {
+    "demo": "42-extincontrol",
+    "viewport": "desktop",
+    "checks": {
+      "title": "ExtinControl | Painel de Equipamentos",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "record_created": true,
+      "kpi_updated": true,
+      "record_saved": true,
+      "record_deleted": true
+    },
+    "page_errors": [],
+    "ok": true
+  },
+  {
+    "demo": "42-extincontrol",
+    "viewport": "mobile",
+    "checks": {
+      "title": "ExtinControl | Painel de Equipamentos",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "mobile_menu_opens": true
+    },
+    "page_errors": [],
+    "ok": true
+  },
+  {
+    "demo": "43-toldoforma",
+    "viewport": "desktop",
+    "checks": {
+      "title": "ToldoForma | Toldos & Coberturas",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "step2": true,
+      "step3": true,
+      "summary_area": true,
+      "wa_generated": true
+    },
+    "page_errors": [],
+    "ok": true
+  },
+  {
+    "demo": "43-toldoforma",
+    "viewport": "mobile",
+    "checks": {
+      "title": "ToldoForma | Toldos & Coberturas",
+      "has_h1": true,
+      "photo_fallback": true,
+      "body_overflow": false,
+      "scripts_loaded": "complete",
+      "mobile_menu_opens": true
+    },
+    "page_errors": [],
+    "ok": true
+  }
+]

@@ -1,0 +1,691 @@
+/* Judô: estética editorial contemporânea, sem copiar identidade de academia real. */
+:root {
+  --ink:#181917; /* Cor ou medida configurável deste tema. */
+  --paper:#f1eee6; /* Cor ou medida configurável deste tema. */
+  --red:#c34d3d; /* Cor ou medida configurável deste tema. */
+  --sand:#e3d8c6; /* Cor ou medida configurável deste tema. */
+  --gray:#66655e; /* Ajuste de aparência ou layout do componente. */
+}
+
+* {
+  box-sizing:border-box; /* Inclui bordas e preenchimentos nas dimensões. */
+}
+
+html {
+  scroll-behavior:smooth; /* Define o comportamento da rolagem. */
+}
+
+body {
+  margin:0; /* Define espaçamento externo. */
+  background:var(--paper); /* Define o fundo do elemento. */
+  color:var(--ink); /* Define a cor do texto. */
+  font-family:"Segoe UI",Arial,sans-serif; /* Define a família tipográfica. */
+}
+
+h1,h2,h3,p {
+  margin-top:0; /* Ajusta a margem superior. */
+}
+
+h1,h2 {
+  letter-spacing:-.065em; /* Ajusta o espaçamento entre letras. */
+}
+
+a {
+  text-decoration:none; /* Define decoração do texto. */
+  color:inherit; /* Define a cor do texto. */
+}
+
+button,input,select {
+  font:inherit; /* Configura abreviadamente a tipografia. */
+}
+
+button {
+  cursor:pointer; /* Define o cursor de interação. */
+}
+
+img {
+  width:100%; /* Define a largura. */
+  display:block; /* Define como o elemento participa do layout. */
+}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible {
+  outline:3px solid var(--red); /* Configura o contorno de foco. */
+  outline-offset:4px; /* Afasta o contorno do elemento. */
+}
+
+.masthead {
+  display:flex; /* Define como o elemento participa do layout. */
+  justify-content:space-between; /* Distribui os elementos no eixo principal. */
+  gap:20px; /* Ajusta o espaço entre itens. */
+  background:var(--red); /* Define o fundo do elemento. */
+  color:white; /* Define a cor do texto. */
+  font-size:10px; /* Define o tamanho da fonte. */
+  font-weight:800; /* Define o peso da fonte. */
+  letter-spacing:.13em; /* Ajusta o espaçamento entre letras. */
+  padding:9px 5vw; /* Define espaçamento interno. */
+}
+
+.header {
+  display:flex; /* Define como o elemento participa do layout. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  justify-content:space-between; /* Distribui os elementos no eixo principal. */
+  gap:25px; /* Ajusta o espaço entre itens. */
+  min-height:94px; /* Define uma altura mínima. */
+  padding:14px 5vw; /* Define espaçamento interno. */
+  background:var(--paper); /* Define o fundo do elemento. */
+  position:relative; /* Define o posicionamento no layout. */
+  z-index:9; /* Define a camada de sobreposição. */
+  border-bottom:1px solid #d8d1c7; /* Configura a borda inferior. */
+}
+
+.identity {
+  display:flex; /* Define como o elemento participa do layout. */
+  gap:14px; /* Ajusta o espaço entre itens. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  font-size:20px; /* Define o tamanho da fonte. */
+  font-weight:1000; /* Define o peso da fonte. */
+  letter-spacing:.07em; /* Ajusta o espaçamento entre letras. */
+}
+
+.symbol {
+  background:var(--ink); /* Define o fundo do elemento. */
+  color:#e9dfd0; /* Define a cor do texto. */
+  width:48px; /* Define a largura. */
+  height:48px; /* Define a altura. */
+  display:grid; /* Define como o elemento participa do layout. */
+  place-items:center; /* Ajuste de aparência ou layout do componente. */
+  border-radius:50%; /* Arredonda os cantos. */
+  font-family:Georgia,serif; /* Define a família tipográfica. */
+  font-weight:400; /* Define o peso da fonte. */
+}
+
+.identity small {
+  display:block; /* Define como o elemento participa do layout. */
+  letter-spacing:.19em; /* Ajusta o espaçamento entre letras. */
+  font-size:9px; /* Define o tamanho da fonte. */
+  margin-top:5px; /* Ajusta a margem superior. */
+}
+
+.header nav {
+  display:flex; /* Define como o elemento participa do layout. */
+  gap:26px; /* Ajusta o espaço entre itens. */
+  font-weight:800; /* Define o peso da fonte. */
+  font-size:12px; /* Define o tamanho da fonte. */
+}
+
+.header nav a:hover {
+  color:var(--red); /* Define a cor do texto. */
+}
+
+.top-cta {
+  border-bottom:2px solid var(--red); /* Configura a borda inferior. */
+  padding:8px 0; /* Define espaçamento interno. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  font-weight:900; /* Define o peso da fonte. */
+  letter-spacing:.06em; /* Ajusta o espaçamento entre letras. */
+}
+
+.menu-button {
+  display:none; /* Define como o elemento participa do layout. */
+  border:0; /* Define a borda do elemento. */
+  background:none; /* Define o fundo do elemento. */
+  font-size:25px; /* Define o tamanho da fonte. */
+}
+
+/* Capa de quadrantes, selo inclinado e caracteres decorativos verticais. */
+.hero
+ {
+  display:grid; /* Define como o elemento participa do layout. */
+  grid-template-columns:1.06fr .94fr; /* Organiza as colunas da grade. */
+  min-height:680px; /* Define uma altura mínima. */
+  background:var(--ink); /* Define o fundo do elemento. */
+  color:var(--paper); /* Define a cor do texto. */
+  overflow:hidden; /* Controla o conteúdo que ultrapassa o contêiner. */
+}
+
+.hero-text {
+  padding:94px 4vw 55px 5vw; /* Define espaçamento interno. */
+}
+
+.eyebrow {
+  font-size:11px; /* Define o tamanho da fonte. */
+  font-weight:900; /* Define o peso da fonte. */
+  letter-spacing:.18em; /* Ajusta o espaçamento entre letras. */
+  color:var(--red); /* Define a cor do texto. */
+}
+
+.hero h1 {
+  font-size:clamp(57px,5.4vw,99px); /* Define o tamanho da fonte. */
+  line-height:.95; /* Define a altura entre linhas. */
+  letter-spacing:-.06em; /* Ajusta o espaçamento entre letras. */
+  font-weight:1000; /* Define o peso da fonte. */
+  margin:29px 0; /* Define espaçamento externo. */
+}
+
+.hero h1 em {
+  color:#ed8a73; /* Define a cor do texto. */
+  font-style:normal; /* Define o estilo da fonte. */
+}
+
+.hero p {
+  max-width:520px; /* Impõe um limite de largura. */
+  line-height:1.75; /* Define a altura entre linhas. */
+  color:#cecac0; /* Define a cor do texto. */
+  font-size:15px; /* Define o tamanho da fonte. */
+}
+
+.hero-links {
+  display:flex; /* Define como o elemento participa do layout. */
+  flex-wrap:wrap; /* Permite quebrar itens em novas linhas. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  gap:30px; /* Ajusta o espaço entre itens. */
+  margin-top:35px; /* Ajusta a margem superior. */
+}
+
+.red-button {
+  background:var(--red); /* Define o fundo do elemento. */
+  border:0; /* Define a borda do elemento. */
+  color:white; /* Define a cor do texto. */
+  padding:17px 23px; /* Define espaçamento interno. */
+  display:inline-flex; /* Define como o elemento participa do layout. */
+  justify-content:center; /* Distribui os elementos no eixo principal. */
+  gap:15px; /* Ajusta o espaço entre itens. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  font-weight:900; /* Define o peso da fonte. */
+  letter-spacing:.03em; /* Ajusta o espaçamento entre letras. */
+  font-size:12px; /* Define o tamanho da fonte. */
+}
+
+.red-button:hover {
+  background:#d56651; /* Define o fundo do elemento. */
+  transform:translateY(-2px); /* Aplica deslocamento, rotação ou escala. */
+}
+
+.under-link {
+  border-bottom:1px solid #a4a1a0; /* Configura a borda inferior. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  letter-spacing:.1em; /* Ajusta o espaçamento entre letras. */
+  padding:9px 0; /* Define espaçamento interno. */
+  font-weight:800; /* Define o peso da fonte. */
+}
+
+.hero-right {
+  position:relative; /* Define o posicionamento no layout. */
+  background:#2b302b; /* Define o fundo do elemento. */
+  isolation:isolate; /* Cria contexto de empilhamento independente. */
+  overflow:hidden; /* Controla o conteúdo que ultrapassa o contêiner. */
+}
+
+.japanese-vertical {
+  position:absolute; /* Define o posicionamento no layout. */
+  top:6%; /* Posiciona a partir do topo. */
+  right:3%; /* Posiciona a partir da direita. */
+  writing-mode:vertical-rl; /* Define a direção do texto. */
+  color:#d9d2c440; /* Define a cor do texto. */
+  font-family:Georgia; /* Define a família tipográfica. */
+  font-size:75px; /* Define o tamanho da fonte. */
+  letter-spacing:.3em; /* Ajusta o espaçamento entre letras. */
+  z-index:2; /* Define a camada de sobreposição. */
+}
+
+.circle-art {
+  position:absolute; /* Define o posicionamento no layout. */
+  border:70px solid #b55343; /* Define a borda do elemento. */
+  opacity:.85; /* Define a transparência. */
+  top:10%; /* Posiciona a partir do topo. */
+  left:-18%; /* Posiciona a partir da esquerda. */
+  width:112%; /* Define a largura. */
+  aspect-ratio:1; /* Ajuste de aparência ou layout do componente. */
+  border-radius:50%; /* Arredonda os cantos. */
+  transform:rotate(24deg); /* Aplica deslocamento, rotação ou escala. */
+}
+
+.circle-inner {
+  border:2px solid #f3d1bd88; /* Define a borda do elemento. */
+  width:100%; /* Define a largura. */
+  height:100%; /* Define a altura. */
+  border-radius:50%; /* Arredonda os cantos. */
+}
+
+.dojo-photo {
+  position:absolute; /* Define o posicionamento no layout. */
+  inset:16% 13% 8% 17%; /* Define limites para elemento posicionado. */
+  clip-path:polygon(10% 0,100% 0,89% 100%,0 91%); /* Recorta a área visível do elemento. */
+  background:linear-gradient(130deg,#928e81,#30352e); /* Define o fundo do elemento. */
+}
+
+.dojo-photo img {
+  height:100%; /* Define a altura. */
+  object-fit:cover; /* Ajusta como a imagem preenche seu espaço. */
+  opacity:.35; /* Define a transparência. */
+  mix-blend-mode:screen; /* Ajuste de aparência ou layout do componente. */
+}
+
+.stamp {
+  position:absolute; /* Define o posicionamento no layout. */
+  left:3%; /* Posiciona a partir da esquerda. */
+  bottom:8%; /* Posiciona a partir da base. */
+  z-index:2; /* Define a camada de sobreposição. */
+  background:#efe9d9; /* Define o fundo do elemento. */
+  color:var(--ink); /* Define a cor do texto. */
+  font-size:28px; /* Define o tamanho da fonte. */
+  line-height:1; /* Define a altura entre linhas. */
+  letter-spacing:-.05em; /* Ajusta o espaçamento entre letras. */
+  font-weight:1000; /* Define o peso da fonte. */
+  padding:25px; /* Define espaçamento interno. */
+  transform:rotate(-8deg); /* Aplica deslocamento, rotação ou escala. */
+  box-shadow:13px 13px 0 #17181788; /* Adiciona sombra de profundidade. */
+}
+
+.stamp span {
+  color:var(--red); /* Define a cor do texto. */
+}
+
+/* Barra tipográfica de valores, sem ícones comerciais. */
+.manifest-line
+ {
+  display:flex; /* Define como o elemento participa do layout. */
+  flex-wrap:wrap; /* Permite quebrar itens em novas linhas. */
+  justify-content:space-around; /* Distribui os elementos no eixo principal. */
+  gap:15px; /* Ajusta o espaço entre itens. */
+  padding:24px 5vw; /* Define espaçamento interno. */
+  background:#e4d9c8; /* Define o fundo do elemento. */
+  font-weight:900; /* Define o peso da fonte. */
+  letter-spacing:.15em; /* Ajusta o espaçamento entre letras. */
+  font-size:13px; /* Define o tamanho da fonte. */
+}
+
+.manifest-line i {
+  color:var(--red); /* Define a cor do texto. */
+  font-style:normal; /* Define o estilo da fonte. */
+}
+
+/* Filosofia dividida com princípios numerados e filetes. */
+.philosophy
+ {
+  padding:110px 5vw; /* Define espaçamento interno. */
+  display:grid; /* Define como o elemento participa do layout. */
+  grid-template-columns:1fr 1fr; /* Organiza as colunas da grade. */
+  gap:9vw; /* Ajusta o espaço entre itens. */
+}
+
+.philosophy h2,.group-head h2,.experience h2,.visit h2 {
+  font-size:clamp(42px,4.7vw,73px); /* Define o tamanho da fonte. */
+  line-height:1.05; /* Define a altura entre linhas. */
+  margin:22px 0 0; /* Define espaçamento externo. */
+}
+
+.philosophy-right>p {
+  font-size:19px; /* Define o tamanho da fonte. */
+  line-height:1.8; /* Define a altura entre linhas. */
+  color:#504f4b; /* Define a cor do texto. */
+  margin-top:18px; /* Ajusta a margem superior. */
+}
+
+.principles {
+  margin-top:35px; /* Ajusta a margem superior. */
+}
+
+.principles article {
+  padding:20px 0; /* Define espaçamento interno. */
+  border-top:1px solid #ccc1b1; /* Configura a borda superior. */
+  display:grid; /* Define como o elemento participa do layout. */
+  grid-template-columns:44px 1fr; /* Organiza as colunas da grade. */
+  gap:6px 14px; /* Ajusta o espaço entre itens. */
+}
+
+.principles b {
+  color:var(--red); /* Define a cor do texto. */
+  grid-row:span 2; /* Define o espaço ocupado nas linhas. */
+}
+
+.principles strong {
+  font-size:18px; /* Define o tamanho da fonte. */
+  letter-spacing:.03em; /* Ajusta o espaçamento entre letras. */
+}
+
+.principles span {
+  font-size:12px; /* Define o tamanho da fonte. */
+  color:#77736b; /* Define a cor do texto. */
+}
+
+/* Grupos em três cards deslocados com grandes letras. */
+.groups
+ {
+  padding:98px 5vw 130px; /* Define espaçamento interno. */
+  background:#e4dacb; /* Define o fundo do elemento. */
+}
+
+.group-head {
+  max-width:700px; /* Impõe um limite de largura. */
+}
+
+.group-head p {
+  color:#655e55; /* Define a cor do texto. */
+  line-height:1.7; /* Define a altura entre linhas. */
+  margin-top:18px; /* Ajusta a margem superior. */
+}
+
+.group-cards {
+  display:grid; /* Define como o elemento participa do layout. */
+  grid-template-columns:repeat(3,minmax(0,1fr)); /* Organiza as colunas da grade. */
+  gap:25px; /* Ajusta o espaço entre itens. */
+  margin-top:50px; /* Ajusta a margem superior. */
+}
+
+.group-card {
+  border:0; /* Define a borda do elemento. */
+  min-height:330px; /* Define uma altura mínima. */
+  display:flex; /* Define como o elemento participa do layout. */
+  flex-direction:column; /* Define o sentido dos itens flexíveis. */
+  align-items:start; /* Alinha os itens no eixo transversal. */
+  padding:25px; /* Define espaçamento interno. */
+  text-align:left; /* Alinha o texto. */
+  transition:transform .2s; /* Suaviza a transição entre estados. */
+}
+
+.group-card:hover {
+  transform:translateY(-9px) rotate(0); /* Aplica deslocamento, rotação ou escala. */
+}
+
+.group-card .top-row {
+  width:100%; /* Define a largura. */
+  display:flex; /* Define como o elemento participa do layout. */
+  justify-content:space-between; /* Distribui os elementos no eixo principal. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  letter-spacing:.1em; /* Ajusta o espaçamento entre letras. */
+  font-weight:800; /* Define o peso da fonte. */
+}
+
+.group-card .top-row span:last-child {
+  font-size:24px; /* Define o tamanho da fonte. */
+}
+
+.group-card strong {
+  font-size:clamp(36px,3.5vw,59px); /* Define o tamanho da fonte. */
+  line-height:.96; /* Define a altura entre linhas. */
+  margin:auto 0 17px; /* Define espaçamento externo. */
+  letter-spacing:-.08em; /* Ajusta o espaçamento entre letras. */
+}
+
+.group-card p {
+  font-size:13px; /* Define o tamanho da fonte. */
+  line-height:1.65; /* Define a altura entre linhas. */
+  max-width:280px; /* Impõe um limite de largura. */
+}
+
+.group-action {
+  border-top:1px solid currentColor; /* Configura a borda superior. */
+  padding-top:12px; /* Ajuste de aparência ou layout do componente. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  font-weight:900; /* Define o peso da fonte. */
+  width:100%; /* Define a largura. */
+}
+
+.first {
+  background:#252621; /* Define o fundo do elemento. */
+  color:white; /* Define a cor do texto. */
+  transform:rotate(-3deg); /* Aplica deslocamento, rotação ou escala. */
+}
+
+.second {
+  background:#b94b3c; /* Define o fundo do elemento. */
+  color:#fff; /* Define a cor do texto. */
+  transform:translateY(22px); /* Aplica deslocamento, rotação ou escala. */
+}
+
+.third {
+  background:#f7f3e8; /* Define o fundo do elemento. */
+  color:#252621; /* Define a cor do texto. */
+  transform:rotate(3deg); /* Aplica deslocamento, rotação ou escala. */
+}
+
+/* Galeria e texto lado a lado, com foto substituível. */
+.experience
+ {
+  display:grid; /* Define como o elemento participa do layout. */
+  grid-template-columns:1fr 1fr; /* Organiza as colunas da grade. */
+}
+
+.photo-experience {
+  min-height:530px; /* Define uma altura mínima. */
+  background:linear-gradient(140deg,#b1aca0,#423e35); /* Define o fundo do elemento. */
+  position:relative; /* Define o posicionamento no layout. */
+  overflow:hidden; /* Controla o conteúdo que ultrapassa o contêiner. */
+}
+
+.photo-experience img {
+  height:100%; /* Define a altura. */
+  object-fit:cover; /* Ajusta como a imagem preenche seu espaço. */
+  opacity:.46; /* Define a transparência. */
+  mix-blend-mode:multiply; /* Ajuste de aparência ou layout do componente. */
+}
+
+.photo-experience span {
+  position:absolute; /* Define o posicionamento no layout. */
+  bottom:0; /* Posiciona a partir da base. */
+  left:0; /* Posiciona a partir da esquerda. */
+  background:#e4dacb; /* Define o fundo do elemento. */
+  padding:20px 26px; /* Define espaçamento interno. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  font-weight:900; /* Define o peso da fonte. */
+  letter-spacing:.15em; /* Ajusta o espaçamento entre letras. */
+}
+
+.experience-copy {
+  padding:94px 7vw 60px 6vw; /* Define espaçamento interno. */
+}
+
+.experience-copy p {
+  line-height:1.8; /* Define a altura entre linhas. */
+  color:#62615e; /* Define a cor do texto. */
+  margin:24px 0; /* Define espaçamento externo. */
+}
+
+.mini-grid {
+  display:grid; /* Define como o elemento participa do layout. */
+  grid-template-columns:repeat(3,1fr); /* Organiza as colunas da grade. */
+  gap:15px; /* Ajusta o espaço entre itens. */
+  margin:35px 0; /* Define espaçamento externo. */
+}
+
+.mini-grid div {
+  border-top:2px solid #d0c6b8; /* Configura a borda superior. */
+  padding-top:10px; /* Ajuste de aparência ou layout do componente. */
+  display:grid; /* Define como o elemento participa do layout. */
+  gap:10px; /* Ajusta o espaço entre itens. */
+  font-size:12px; /* Define o tamanho da fonte. */
+}
+
+.mini-grid b {
+  font-size:23px; /* Define o tamanho da fonte. */
+  color:var(--red); /* Define a cor do texto. */
+}
+
+/* Conversão por WhatsApp sem promessa de matrícula. */
+.visit
+ {
+  display:grid; /* Define como o elemento participa do layout. */
+  grid-template-columns:1fr 1fr; /* Organiza as colunas da grade. */
+  gap:8vw; /* Ajusta o espaço entre itens. */
+  padding:110px 5vw; /* Define espaçamento interno. */
+  background:var(--ink); /* Define o fundo do elemento. */
+  color:white; /* Define a cor do texto. */
+}
+
+.visit h2 {
+  font-size:clamp(43px,4.6vw,74px); /* Define o tamanho da fonte. */
+}
+
+.visit>div>p {
+  color:#c7c1ba; /* Define a cor do texto. */
+  line-height:1.8; /* Define a altura entre linhas. */
+  margin:25px 0; /* Define espaçamento externo. */
+}
+
+.seal {
+  font:normal 100px Georgia; /* Configura abreviadamente a tipografia. */
+  color:#a83e34; /* Define a cor do texto. */
+  line-height:1; /* Define a altura entre linhas. */
+}
+
+.visit form {
+  background:#f4eee4; /* Define o fundo do elemento. */
+  color:var(--ink); /* Define a cor do texto. */
+  padding:33px; /* Define espaçamento interno. */
+  display:grid; /* Define como o elemento participa do layout. */
+  gap:18px; /* Ajusta o espaço entre itens. */
+  align-content:start; /* Organiza o alinhamento do conteúdo. */
+}
+
+.visit label {
+  display:grid; /* Define como o elemento participa do layout. */
+  gap:8px; /* Ajusta o espaço entre itens. */
+  font-size:12px; /* Define o tamanho da fonte. */
+  font-weight:900; /* Define o peso da fonte. */
+}
+
+.visit input,.visit select {
+  padding:15px; /* Define espaçamento interno. */
+  border:1px solid #b9b0a1; /* Define a borda do elemento. */
+  background:#fff; /* Define o fundo do elemento. */
+  min-width:0; /* Define uma largura mínima. */
+}
+
+.visit form small {
+  font-size:11px; /* Define o tamanho da fonte. */
+  line-height:1.7; /* Define a altura entre linhas. */
+  color:#635e58; /* Define a cor do texto. */
+}
+
+footer {
+  padding:30px 5vw; /* Define espaçamento interno. */
+  display:flex; /* Define como o elemento participa do layout. */
+  justify-content:space-between; /* Distribui os elementos no eixo principal. */
+  gap:15px; /* Ajusta o espaço entre itens. */
+  flex-wrap:wrap; /* Permite quebrar itens em novas linhas. */
+  font-size:12px; /* Define o tamanho da fonte. */
+}
+
+footer b {
+  font-size:20px; /* Define o tamanho da fonte. */
+}
+
+@media(max-width:980px) {
+  .header nav {
+    gap:14px; /* Ajusta o espaço entre itens. */
+  }
+
+  .group-cards {
+    gap:15px; /* Ajusta o espaço entre itens. */
+  }
+
+  .group-card strong {
+    font-size:43px; /* Define o tamanho da fonte. */
+  }
+
+}
+
+@media(max-width:760px) {
+  .masthead span:nth-child(2) {
+    display:none; /* Define como o elemento participa do layout. */
+  }
+
+  .header {
+    min-height:75px; /* Define uma altura mínima. */
+  }
+
+  .header nav {
+    display:none; /* Define como o elemento participa do layout. */
+    position:absolute; /* Define o posicionamento no layout. */
+    top:100%; /* Posiciona a partir do topo. */
+    left:0; /* Posiciona a partir da esquerda. */
+    right:0; /* Posiciona a partir da direita. */
+    background:var(--paper); /* Define o fundo do elemento. */
+    padding:24px 5vw; /* Define espaçamento interno. */
+    flex-direction:column; /* Define o sentido dos itens flexíveis. */
+    box-shadow:0 18px 22px #0002; /* Adiciona sombra de profundidade. */
+  }
+
+  .header nav.open {
+    display:flex; /* Define como o elemento participa do layout. */
+  }
+
+  .top-cta {
+    display:none; /* Define como o elemento participa do layout. */
+  }
+
+  .menu-button {
+    display:block; /* Define como o elemento participa do layout. */
+    margin-left:auto; /* Ajusta a margem esquerda. */
+  }
+
+  .hero,.philosophy,.experience,.visit {
+    grid-template-columns:1fr; /* Organiza as colunas da grade. */
+  }
+
+  .hero-text {
+    padding:75px 5vw 58px; /* Define espaçamento interno. */
+  }
+
+  .hero-right {
+    min-height:440px; /* Define uma altura mínima. */
+  }
+
+  .stamp {
+    font-size:21px; /* Define o tamanho da fonte. */
+  }
+
+  .japanese-vertical {
+    font-size:48px; /* Define o tamanho da fonte. */
+  }
+
+  .manifest-line {
+    font-size:10px; /* Define o tamanho da fonte. */
+  }
+
+  .philosophy,.groups,.visit {
+    padding:75px 5vw; /* Define espaçamento interno. */
+  }
+
+  .group-cards {
+    grid-template-columns:1fr; /* Organiza as colunas da grade. */
+  }
+
+  .group-card,.first,.second,.third {
+    transform:none; /* Aplica deslocamento, rotação ou escala. */
+    min-height:230px; /* Define uma altura mínima. */
+  }
+
+  .group-card strong {
+    font-size:48px; /* Define o tamanho da fonte. */
+  }
+
+  .photo-experience {
+    min-height:355px; /* Define uma altura mínima. */
+  }
+
+  .experience-copy {
+    padding:75px 5vw; /* Define espaçamento interno. */
+  }
+
+  .mini-grid {
+    gap:8px; /* Ajusta o espaço entre itens. */
+  }
+
+  .visit form {
+    padding:22px; /* Define espaçamento interno. */
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior:auto; /* Define o comportamento da rolagem. */
+  }
+
+  *,*:before,*:after {
+    transition:none!important; /* Suaviza a transição entre estados. */
+  }
+
+}

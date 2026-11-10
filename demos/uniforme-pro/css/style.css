@@ -1,0 +1,358 @@
+/* MOSS Digital — CSS organizado com comentários didáticos em português. */
+:root { /* Estilo visual do seletor acima. */
+  --ink: #1d2733; /* Variável reutilizável do projeto. */
+  --cream: #f3efe6; /* Variável reutilizável do projeto. */
+  --linen: #dfd6c4; /* Variável reutilizável do projeto. */
+  --gold: #a3814b; /* Variável reutilizável do projeto. */
+  --green: #395449; /* Variável reutilizável do projeto. */
+  --muted: #5b6770; /* Variável reutilizável do projeto. */
+  --line: #cec6b8; /* Variável reutilizável do projeto. */
+}
+* { /* Estilo visual do seletor acima. */
+  box-sizing: border-box; /* Inclui as bordas na dimensão total. */
+}
+html { /* Estilo visual do seletor acima. */
+  scroll-behavior: smooth; /* Configura rolagem suave. */
+}
+body { /* Estilo visual do seletor acima. */
+  margin: 0; /* Define a margem externa. */
+  background: var(--cream); /* Define o fundo visual. */
+  color: var(--ink); /* Define a cor do texto. */
+  font: 16px/1.5 Arial,sans-serif; /* Configura fonte, tamanho e altura de linha. */
+}
+a { /* Estilo visual do seletor acima. */
+  text-decoration: none; /* Configura a decoração do texto. */
+  color: inherit; /* Define a cor do texto. */
+}
+button,input,select,textarea { /* Estilo visual do seletor acima. */
+  font: inherit; /* Configura fonte, tamanho e altura de linha. */
+}
+.stripe { /* Estilo visual do seletor acima. */
+  background: var(--green); /* Define o fundo visual. */
+  color: white; /* Define a cor do texto. */
+  padding: 9px; /* Define o espaçamento interno. */
+  text-align: center; /* Alinha o texto. */
+  letter-spacing: .13em; /* Ajusta o espaço entre letras. */
+  font-size: .72rem; /* Define o tamanho da fonte. */
+}
+.top { /* Estilo visual do seletor acima. */
+  padding: 20px max(24px,calc((100vw - 1280px)/2)); /* Define o espaçamento interno. */
+  display: flex; /* Define a estratégia de layout. */
+  justify-content: space-between; /* Alinha elementos no eixo principal. */
+  align-items: center; /* Alinha elementos no eixo transversal. */
+  gap: 20px; /* Define o espaçamento entre elementos. */
+  background: #fff; /* Define o fundo visual. */
+}
+.logo { /* Estilo visual do seletor acima. */
+  font-size: 1.7rem; /* Define o tamanho da fonte. */
+  font-weight: 900; /* Define o peso da fonte. */
+  letter-spacing: -.07em; /* Ajusta o espaço entre letras. */
+}
+.logo span { /* Estilo visual do seletor acima. */
+  color: var(--gold); /* Define a cor do texto. */
+}
+.top nav { /* Estilo visual do seletor acima. */
+  display: flex; /* Define a estratégia de layout. */
+  gap: 24px; /* Define o espaçamento entre elementos. */
+  font-weight: 800; /* Define o peso da fonte. */
+}
+.top>a:last-child { /* Estilo visual do seletor acima. */
+  font-weight: 800; /* Define o peso da fonte. */
+  border-bottom: 2px solid var(--gold); /* Define a borda inferior. */
+}
+.front { /* Estilo visual do seletor acima. */
+  position: relative; /* Define o posicionamento. */
+  display: grid; /* Define a estratégia de layout. */
+  grid-template-columns: 55% 45%; /* Organiza as colunas da grade. */
+  min-height: 570px; /* Define a altura mínima. */
+  background: var(--ink); /* Define o fundo visual. */
+  color: #fff; /* Define a cor do texto. */
+}
+.side-label { /* Estilo visual do seletor acima. */
+  position: absolute; /* Define o posicionamento. */
+  left: 7px; /* Define o deslocamento esquerdo. */
+  top: 50%; /* Define o deslocamento superior. */
+  transform: rotate(-90deg) translateX(-50%); /* Aplica transformação visual. */
+  transform-origin: top left; /* Configura esta propriedade visual. */
+  font-size: .7rem; /* Define o tamanho da fonte. */
+  letter-spacing: .2em; /* Ajusta o espaço entre letras. */
+  color: #d4d7d9; /* Define a cor do texto. */
+}
+.front-copy { /* Estilo visual do seletor acima. */
+  padding: clamp(50px,6vw,95px) 50px 35px max(36px,calc((100vw - 1190px)/2)); /* Define o espaçamento interno. */
+  align-self: center; /* Define o alinhamento próprio. */
+}
+.eyebrow { /* Estilo visual do seletor acima. */
+  font-size: .73rem; /* Define o tamanho da fonte. */
+  font-weight: 900; /* Define o peso da fonte. */
+  letter-spacing: .19em; /* Ajusta o espaço entre letras. */
+  color: var(--gold); /* Define a cor do texto. */
+}
+.front h1 { /* Estilo visual do seletor acima. */
+  font: normal clamp(2.6rem,5.1vw,5.5rem)/1 Georgia,serif; /* Configura fonte, tamanho e altura de linha. */
+  margin: 20px 0; /* Define a margem externa. */
+}
+.front p { /* Estilo visual do seletor acima. */
+  max-width: 53ch; /* Limita a largura máxima. */
+  color: #cbd3d8; /* Define a cor do texto. */
+}
+.button { /* Estilo visual do seletor acima. */
+  display: inline-flex; /* Define a estratégia de layout. */
+  align-items: center; /* Alinha elementos no eixo transversal. */
+  justify-content: center; /* Alinha elementos no eixo principal. */
+  border: none; /* Define a borda do elemento. */
+  cursor: pointer; /* Indica que o elemento é clicável. */
+  background: var(--gold); /* Define o fundo visual. */
+  padding: 16px 23px; /* Define o espaçamento interno. */
+  color: #fff; /* Define a cor do texto. */
+  font-weight: 900; /* Define o peso da fonte. */
+  margin-top: 12px; /* Define a margem externa superior. */
+}
+.micro { /* Estilo visual do seletor acima. */
+  display: flex; /* Define a estratégia de layout. */
+  gap: 20px; /* Define o espaçamento entre elementos. */
+  flex-wrap: wrap; /* Permite quebrar a linha. */
+  margin-top: 40px; /* Define a margem externa superior. */
+  font-size: .8rem; /* Define o tamanho da fonte. */
+  color: #bcc6c8; /* Define a cor do texto. */
+  letter-spacing: .08em; /* Ajusta o espaço entre letras. */
+}
+.front-photo { /* Estilo visual do seletor acima. */
+  position: relative; /* Define o posicionamento. */
+  overflow: hidden; /* Controla conteúdo que ultrapassa a área. */
+}
+.front-photo img { /* Estilo visual do seletor acima. */
+  width: 100%; /* Define a largura. */
+  height: 100%; /* Define a altura. */
+  object-fit: cover; /* Enquadra a foto sem deformar. */
+  display: block; /* Define a estratégia de layout. */
+}
+.front-photo span { /* Estilo visual do seletor acima. */
+  position: absolute; /* Define o posicionamento. */
+  bottom: 23px; /* Define o deslocamento inferior. */
+  right: 23px; /* Define o deslocamento direito. */
+  background: #fff; /* Define o fundo visual. */
+  color: var(--ink); /* Define a cor do texto. */
+  padding: 10px; /* Define o espaçamento interno. */
+  font-size: .8rem; /* Define o tamanho da fonte. */
+}
+.collection { /* Estilo visual do seletor acima. */
+  padding: 70px max(24px,calc((100vw - 1280px)/2)); /* Define o espaçamento interno. */
+}
+.section-head { /* Estilo visual do seletor acima. */
+  display: flex; /* Define a estratégia de layout. */
+  justify-content: space-between; /* Alinha elementos no eixo principal. */
+  align-items: end; /* Alinha elementos no eixo transversal. */
+  gap: 20px; /* Define o espaçamento entre elementos. */
+}
+.section-head h2,.builder h2 { /* Estilo visual do seletor acima. */
+  font: normal clamp(2.1rem,3.6vw,4rem)/1.04 Georgia,serif; /* Configura fonte, tamanho e altura de linha. */
+  margin: 12px 0; /* Define a margem externa. */
+}
+.section-head p { /* Estilo visual do seletor acima. */
+  max-width: 50ch; /* Limita a largura máxima. */
+  color: var(--muted); /* Define a cor do texto. */
+}
+.products { /* Estilo visual do seletor acima. */
+  display: grid; /* Define a estratégia de layout. */
+  grid-template-columns: repeat(3,1fr); /* Organiza as colunas da grade. */
+  gap: 18px; /* Define o espaçamento entre elementos. */
+  margin-top: 25px; /* Define a margem externa superior. */
+}
+.product { /* Estilo visual do seletor acima. */
+  border: 1px solid var(--line); /* Define a borda do elemento. */
+  background: white; /* Define o fundo visual. */
+  text-align: left; /* Alinha o texto. */
+  padding: 0; /* Define o espaçamento interno. */
+  cursor: pointer; /* Indica que o elemento é clicável. */
+  overflow: hidden; /* Controla conteúdo que ultrapassa a área. */
+  transition: transform .18s; /* Define a animação entre estados. */
+}
+.product:hover { /* Estilo visual do seletor acima. */
+  transform: translateY(-4px); /* Aplica transformação visual. */
+}
+.product[aria-pressed="true"] { /* Estilo visual do seletor acima. */
+  outline: 3px solid var(--gold); /* Desenha o contorno de destaque. */
+  outline-offset: -3px; /* Afasta o contorno do elemento. */
+}
+.product img { /* Estilo visual do seletor acima. */
+  display: block; /* Define a estratégia de layout. */
+  width: 100%; /* Define a largura. */
+  aspect-ratio: 4/3; /* Preserva a proporção da imagem. */
+  object-fit: cover; /* Enquadra a foto sem deformar. */
+}
+.product div { /* Estilo visual do seletor acima. */
+  padding: 18px; /* Define o espaçamento interno. */
+}
+.product small { /* Estilo visual do seletor acima. */
+  font-size: .7rem; /* Define o tamanho da fonte. */
+  letter-spacing: .13em; /* Ajusta o espaço entre letras. */
+  color: var(--gold); /* Define a cor do texto. */
+  font-weight: 900; /* Define o peso da fonte. */
+}
+.product h3 { /* Estilo visual do seletor acima. */
+  font: normal 1.9rem Georgia,serif; /* Configura fonte, tamanho e altura de linha. */
+  margin: 9px 0; /* Define a margem externa. */
+}
+.product p { /* Estilo visual do seletor acima. */
+  color: var(--muted); /* Define a cor do texto. */
+}
+.product b { /* Estilo visual do seletor acima. */
+  font-size: .85rem; /* Define o tamanho da fonte. */
+}
+.builder { /* Estilo visual do seletor acima. */
+  display: grid; /* Define a estratégia de layout. */
+  grid-template-columns: .85fr 1.15fr; /* Organiza as colunas da grade. */
+  background: #dfd8c7; /* Define o fundo visual. */
+}
+.builder-copy { /* Estilo visual do seletor acima. */
+  padding: 65px 42px 65px max(32px,calc((100vw - 1190px)/2)); /* Define o espaçamento interno. */
+}
+.builder-copy p { /* Estilo visual do seletor acima. */
+  max-width: 48ch; /* Limita a largura máxima. */
+}
+.builder-copy ol { /* Estilo visual do seletor acima. */
+  padding-left: 20px; /* Configura esta propriedade visual. */
+  margin-top: 32px; /* Define a margem externa superior. */
+  line-height: 2; /* Define o espaçamento vertical entre linhas. */
+}
+.builder-card { /* Estilo visual do seletor acima. */
+  margin: 32px max(24px,calc((100vw - 1300px)/2)) 32px 0; /* Define a margem externa. */
+  background: #fff; /* Define o fundo visual. */
+  padding: 28px; /* Define o espaçamento interno. */
+  display: grid; /* Define a estratégia de layout. */
+  gap: 13px; /* Define o espaçamento entre elementos. */
+  box-shadow: 15px 15px 0 #c9baa4; /* Cria sombra no elemento. */
+}
+.builder-card>label,.notes { /* Estilo visual do seletor acima. */
+  display: grid; /* Define a estratégia de layout. */
+  gap: 7px; /* Define o espaçamento entre elementos. */
+  font-weight: 800; /* Define o peso da fonte. */
+}
+.builder-card input,.builder-card select,.builder-card textarea { /* Estilo visual do seletor acima. */
+  width: 100%; /* Define a largura. */
+  padding: 12px; /* Define o espaçamento interno. */
+  border: 1px solid #c5c3bd; /* Define a borda do elemento. */
+  background: #fff; /* Define o fundo visual. */
+}
+.sizes { /* Estilo visual do seletor acima. */
+  border: 1px solid var(--line); /* Define a borda do elemento. */
+  padding: 15px; /* Define o espaçamento interno. */
+}
+.sizes-head { /* Estilo visual do seletor acima. */
+  display: flex; /* Define a estratégia de layout. */
+  justify-content: space-between; /* Alinha elementos no eixo principal. */
+  gap: 8px; /* Define o espaçamento entre elementos. */
+  margin-bottom: 12px; /* Define a margem inferior. */
+}
+.sizes-head small { /* Estilo visual do seletor acima. */
+  color: var(--muted); /* Define a cor do texto. */
+}
+.size-row { /* Estilo visual do seletor acima. */
+  display: grid; /* Define a estratégia de layout. */
+  grid-template-columns: repeat(4,1fr); /* Organiza as colunas da grade. */
+  gap: 8px; /* Define o espaçamento entre elementos. */
+}
+.size-row label { /* Estilo visual do seletor acima. */
+  display: grid; /* Define a estratégia de layout. */
+  gap: 8px; /* Define o espaçamento entre elementos. */
+  font-weight: 900; /* Define o peso da fonte. */
+  text-align: center; /* Alinha o texto. */
+}
+.size-row input { /* Estilo visual do seletor acima. */
+  text-align: center; /* Alinha o texto. */
+}
+.total { /* Estilo visual do seletor acima. */
+  background: var(--cream); /* Define o fundo visual. */
+  padding: 16px; /* Define o espaçamento interno. */
+  display: grid; /* Define a estratégia de layout. */
+  gap: 6px; /* Define o espaçamento entre elementos. */
+}
+.total>strong { /* Estilo visual do seletor acima. */
+  font-size: 2.2rem; /* Define o tamanho da fonte. */
+  color: var(--green); /* Define a cor do texto. */
+}
+.total small { /* Estilo visual do seletor acima. */
+  font-size: .75rem; /* Define o tamanho da fonte. */
+  color: var(--muted); /* Define a cor do texto. */
+}
+.builder-card textarea { /* Estilo visual do seletor acima. */
+  min-height: 100px; /* Define a altura mínima. */
+}
+.process { /* Estilo visual do seletor acima. */
+  display: grid; /* Define a estratégia de layout. */
+  grid-template-columns: repeat(3,1fr); /* Organiza as colunas da grade. */
+  gap: 20px; /* Define o espaçamento entre elementos. */
+  padding: 60px max(25px,calc((100vw - 1280px)/2)); /* Define o espaçamento interno. */
+}
+.process div { /* Estilo visual do seletor acima. */
+  border-top: 1px solid var(--ink); /* Define a borda superior. */
+  padding: 18px 0; /* Define o espaçamento interno. */
+}
+.process b { /* Estilo visual do seletor acima. */
+  font-size: 2rem; /* Define o tamanho da fonte. */
+  font-weight: 400; /* Define o peso da fonte. */
+  font-family: Georgia,serif; /* Define a família tipográfica. */
+}
+.process h3 { /* Estilo visual do seletor acima. */
+  font: normal 1.6rem Georgia,serif; /* Configura fonte, tamanho e altura de linha. */
+}
+footer { /* Estilo visual do seletor acima. */
+  background: var(--ink); /* Define o fundo visual. */
+  color: #fff; /* Define a cor do texto. */
+  padding: 28px; /* Define o espaçamento interno. */
+  display: flex; /* Define a estratégia de layout. */
+  justify-content: space-between; /* Alinha elementos no eixo principal. */
+  gap: 15px; /* Define o espaçamento entre elementos. */
+  font-weight: 900; /* Define o peso da fonte. */
+}
+footer small { /* Estilo visual do seletor acima. */
+  font-weight: 400; /* Define o peso da fonte. */
+  color: #ced3d6; /* Define a cor do texto. */
+}
+@media (max-width:930px) { /* Regras adaptadas para telas diferentes ou efeitos especiais. */
+  .top nav { /* Estilo visual do seletor acima. */
+    display: none; /* Define a estratégia de layout. */
+  }
+  .front,.builder { /* Estilo visual do seletor acima. */
+    grid-template-columns: 1fr; /* Organiza as colunas da grade. */
+  }
+  .front-photo { /* Estilo visual do seletor acima. */
+    height: 330px; /* Define a altura. */
+  }
+  .front-copy,.builder-copy { /* Estilo visual do seletor acima. */
+    padding: 42px 26px; /* Define o espaçamento interno. */
+  }
+  .builder-card { /* Estilo visual do seletor acima. */
+    margin: 0 26px 45px; /* Define a margem externa. */
+  }
+  .products,.process { /* Estilo visual do seletor acima. */
+    grid-template-columns: 1fr; /* Organiza as colunas da grade. */
+  }
+  .side-label { /* Estilo visual do seletor acima. */
+    display: none; /* Define a estratégia de layout. */
+  }
+  .collection { /* Estilo visual do seletor acima. */
+    padding: 44px 24px; /* Define o espaçamento interno. */
+  }
+  .section-head { /* Estilo visual do seletor acima. */
+    display: grid; /* Define a estratégia de layout. */
+  }
+}
+@media (max-width:520px) { /* Regras adaptadas para telas diferentes ou efeitos especiais. */
+  .top>a:last-child { /* Estilo visual do seletor acima. */
+    font-size: .78rem; /* Define o tamanho da fonte. */
+  }
+  .top { /* Estilo visual do seletor acima. */
+    padding: 16px 18px; /* Define o espaçamento interno. */
+  }
+  .builder-card { /* Estilo visual do seletor acima. */
+    padding: 17px; /* Define o espaçamento interno. */
+  }
+  .size-row { /* Estilo visual do seletor acima. */
+    grid-template-columns: repeat(2,1fr); /* Organiza as colunas da grade. */
+  }
+  footer { /* Estilo visual do seletor acima. */
+    display: grid; /* Define a estratégia de layout. */
+  }
+}

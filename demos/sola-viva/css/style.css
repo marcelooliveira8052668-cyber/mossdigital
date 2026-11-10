@@ -1,0 +1,521 @@
+/* SOLA VIVA — identidade editorial, acolhedora e artesanal. */
+:root {
+  --cream: #f5f0e7; /* Cor personalizada reutilizável. */
+  --paper: #fffaf2; /* Cor personalizada reutilizável. */
+  --ink: #342922; /* Cor personalizada reutilizável. */
+  --copper: #a85a3f; /* Cor personalizada reutilizável. */
+  --line: #d8cfc2; /* Cor personalizada reutilizável. */
+  --muted: #75675f; /* Cor personalizada reutilizável. */
+}
+/* A configuração abaixo permite que todos os blocos respeitem suas larguras. */
+* {
+  box-sizing: border-box; /* Inclui bordas e padding no tamanho calculado. */
+}
+html {
+  scroll-behavior: smooth; /* Controla suavidade de rolagem. */
+}
+body {
+  margin: 0; /* Controla o espaço externo. */
+  color: var(--ink); /* Define cor do texto. */
+  background: var(--cream); /* Define fundo/cor da área. */
+  font: 16px/1.55 Arial, sans-serif; /* Configura fonte e espaçamento de linha. */
+}
+a {
+  color: inherit; /* Define cor do texto. */
+  text-decoration: none; /* Controla decoração do texto. */
+}
+button,input,select,textarea {
+  font: inherit; /* Configura fonte e espaçamento de linha. */
+}
+button {
+  cursor: pointer; /* Define formato do ponteiro. */
+}
+/* Aviso discreto de que o negócio é fictício. */
+.demo-ribbon {
+  background: #382b24; /* Define fundo/cor da área. */
+  color: #ffead3; /* Define cor do texto. */
+  text-align: center; /* Alinha o texto. */
+  padding: 7px 12px; /* Controla o espaço interno. */
+  font-size: 11px; /* Define o tamanho das letras. */
+  letter-spacing: .09em; /* Ajusta espaçamento entre letras. */
+}
+.site-header {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 16px; /* Define o espaço entre elementos. */
+  max-width: 1360px; /* Limita a largura máxima. */
+  margin: auto; /* Controla o espaço externo. */
+  padding: 20px 34px; /* Controla o espaço interno. */
+}
+.brand {
+  font: 900 26px/1 Arial,sans-serif; /* Configura fonte e espaçamento de linha. */
+  letter-spacing: -.08em; /* Ajusta espaçamento entre letras. */
+  white-space: nowrap; /* Controla quebras de texto. */
+}
+.brand span {
+  color: var(--copper); /* Define cor do texto. */
+}
+.brand small {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  font: 700 9px/1.6 Arial,sans-serif; /* Configura fonte e espaçamento de linha. */
+  letter-spacing: .27em; /* Ajusta espaçamento entre letras. */
+  margin-top: 4px; /* Controla o espaço externo superior. */
+}
+.nav {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  gap: 28px; /* Define o espaço entre elementos. */
+}
+.nav a {
+  font-size: 13px; /* Define o tamanho das letras. */
+  font-weight: 700; /* Define a espessura das letras. */
+}
+.top-contact {
+  background: var(--ink); /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+  padding: 12px 18px; /* Controla o espaço interno. */
+  border-radius: 4px; /* Arredonda cantos. */
+  white-space: nowrap; /* Controla quebras de texto. */
+}
+.menu-toggle {
+  display: none; /* Determina o modo de distribuição dos elementos. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+  background: var(--paper); /* Define fundo/cor da área. */
+  border-radius: 5px; /* Arredonda cantos. */
+  padding: 10px 14px; /* Controla o espaço interno. */
+}
+/* Hero em grade assimétrica: não reutiliza o padrão centralizado dos lotes antigos. */
+.hero {
+  max-width: 1360px; /* Limita a largura máxima. */
+  margin: 20px auto 0; /* Controla o espaço externo. */
+  padding: 0 34px 42px; /* Controla o espaço interno. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 74px minmax(0,1fr) minmax(0,1.05fr) 28px; /* Define colunas do layout em grade. */
+  gap: 20px; /* Define o espaço entre elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+}
+.hero-marker {
+  writing-mode: vertical-rl; /* Define orientação do texto. */
+  rotate: 180deg; /* Gira visualmente o elemento. */
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  gap: 25px; /* Define o espaço entre elementos. */
+  letter-spacing: .24em; /* Ajusta espaçamento entre letras. */
+  font-size: 11px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  color: var(--copper); /* Define cor do texto. */
+}
+.hero-copy {
+  padding: 25px 0; /* Controla o espaço interno. */
+}
+.eyebrow {
+  color: var(--copper); /* Define cor do texto. */
+  font-size: 11px; /* Define o tamanho das letras. */
+  letter-spacing: .2em; /* Ajusta espaçamento entre letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+}
+h1,h2,h3,p {
+  margin-top: 0; /* Controla o espaço externo superior. */
+}
+h1,h2,h3 {
+  font-family: Georgia,"Times New Roman",serif; /* Define a família da fonte. */
+}
+h1 {
+  font-size: clamp(43px,5.6vw,81px); /* Define o tamanho das letras. */
+  line-height: 1.04; /* Controla o espaçamento entre linhas. */
+  letter-spacing: -.055em; /* Ajusta espaçamento entre letras. */
+  margin: 20px 0; /* Controla o espaço externo. */
+}
+h1 em {
+  color: var(--copper); /* Define cor do texto. */
+  font-weight: 400; /* Define a espessura das letras. */
+}
+.hero-copy p {
+  max-width: 440px; /* Limita a largura máxima. */
+  font-size: 16px; /* Define o tamanho das letras. */
+  color: var(--muted); /* Define cor do texto. */
+}
+.btn {
+  display: inline-flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: center; /* Distribui itens no eixo principal. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  gap: 18px; /* Define o espaço entre elementos. */
+  padding: 14px 24px; /* Controla o espaço interno. */
+  border: 0; /* Cria e formata bordas. */
+  border-radius: 4px; /* Arredonda cantos. */
+  font-weight: 800; /* Define a espessura das letras. */
+}
+.btn-dark {
+  background: var(--ink); /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+}
+.btn-copper {
+  background: var(--copper); /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+}
+.hero-media {
+  position: relative; /* Controla posicionamento. */
+  border: 10px solid var(--paper); /* Cria e formata bordas. */
+  min-height: 445px; /* Limita a altura mínima. */
+  background: #dacabd; /* Define fundo/cor da área. */
+  box-shadow: 0 25px 48px #442f221f; /* Adiciona sombra ao elemento. */
+}
+.hero-media img {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  width: 100%; /* Define a largura. */
+  height: 445px; /* Define a altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+}
+.photo-note {
+  position: absolute; /* Controla posicionamento. */
+  left: 12px; /* Ajusta posição esquerda. */
+  bottom: 12px; /* Ajusta posição inferior. */
+  background: #fff9f0e6; /* Define fundo/cor da área. */
+  color: #61432e; /* Define cor do texto. */
+  padding: 5px 9px; /* Controla o espaço interno. */
+  font-size: 11px; /* Define o tamanho das letras. */
+  border-radius: 2px; /* Arredonda cantos. */
+}
+.hero-seal {
+  font-size: 10px; /* Define o tamanho das letras. */
+  writing-mode: vertical-rl; /* Define orientação do texto. */
+  color: var(--muted); /* Define cor do texto. */
+  letter-spacing: .15em; /* Ajusta espaçamento entre letras. */
+}
+.intro-bar {
+  background: var(--ink); /* Define fundo/cor da área. */
+  color: #fcebd8; /* Define cor do texto. */
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-around; /* Distribui itens no eixo principal. */
+  gap: 12px; /* Define o espaço entre elementos. */
+  padding: 19px; /* Controla o espaço interno. */
+  letter-spacing: .14em; /* Ajusta espaçamento entre letras. */
+  font-size: 12px; /* Define o tamanho das letras. */
+  text-transform: uppercase; /* Ajusta letras maiúsculas/minúsculas. */
+}
+.section-wrap {
+  max-width: 1160px; /* Limita a largura máxima. */
+  margin: auto; /* Controla o espaço externo. */
+  padding: 72px 22px; /* Controla o espaço interno. */
+}
+.section-head {
+  max-width: 650px; /* Limita a largura máxima. */
+  margin-bottom: 28px; /* Controla o espaço externo inferior. */
+}
+h2 {
+  font-size: clamp(31px,4vw,49px); /* Define o tamanho das letras. */
+  line-height: 1.14; /* Controla o espaçamento entre linhas. */
+  letter-spacing: -.035em; /* Ajusta espaçamento entre letras. */
+  margin: 12px 0; /* Controla o espaço externo. */
+}
+.service-list {
+  border-top: 1px solid var(--line); /* Define borda superior. */
+}
+.service-row {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 55px 145px minmax(0,1fr) auto; /* Define colunas do layout em grade. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  gap: 26px; /* Define o espaço entre elementos. */
+  padding: 16px 0; /* Controla o espaço interno. */
+  border-bottom: 1px solid var(--line); /* Define borda inferior. */
+}
+.service-number {
+  font-family: Georgia,serif; /* Define a família da fonte. */
+  font-style: italic; /* Define o estilo da fonte. */
+  color: var(--copper); /* Define cor do texto. */
+}
+.service-photo {
+  width: 145px; /* Define a largura. */
+  height: 112px; /* Define a altura. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+  background: #e8dfd3; /* Define fundo/cor da área. */
+}
+.service-photo img {
+  width: 100%; /* Define a largura. */
+  height: 100%; /* Define a altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+  display: block; /* Determina o modo de distribuição dos elementos. */
+}
+.service-row h3 {
+  font-size: 24px; /* Define o tamanho das letras. */
+  margin: 0 0 6px; /* Controla o espaço externo. */
+}
+.service-row p {
+  margin: 0; /* Controla o espaço externo. */
+  color: var(--muted); /* Define cor do texto. */
+}
+.service-row button {
+  border: 1px solid var(--ink); /* Cria e formata bordas. */
+  background: transparent; /* Define fundo/cor da área. */
+  padding: 11px 16px; /* Controla o espaço interno. */
+  border-radius: 4px; /* Arredonda cantos. */
+  font-weight: 700; /* Define a espessura das letras. */
+}
+/* Mini painel que funciona apenas no navegador. */
+.orders {
+  background: #e4d9ca; /* Define fundo/cor da área. */
+}
+.orders-layout {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); /* Define colunas do layout em grade. */
+  gap: 44px; /* Define o espaço entre elementos. */
+}
+.orders-info p {
+  color: #68574a; /* Define cor do texto. */
+}
+.notice {
+  background: #fffbf4; /* Define fundo/cor da área. */
+  padding: 12px; /* Controla o espaço interno. */
+  border-left: 3px solid var(--copper); /* Define borda esquerda. */
+  font-size: 13px; /* Define o tamanho das letras. */
+}
+.order-kpis {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  gap: 20px; /* Define o espaço entre elementos. */
+  margin-top: 36px; /* Controla o espaço externo superior. */
+}
+.order-kpis div {
+  min-width: 110px; /* Limita a largura mínima. */
+  border-top: 1px solid #9a8470; /* Define borda superior. */
+  padding-top: 10px; /* Controla o espaço interno superior. */
+}
+.order-kpis strong {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  font: 700 37px Georgia,serif; /* Configura fonte e espaçamento de linha. */
+}
+.order-kpis span {
+  color: #745e4e; /* Define cor do texto. */
+  font-size: 13px; /* Define o tamanho das letras. */
+}
+.workboard {
+  background: var(--paper); /* Define fundo/cor da área. */
+  padding: 24px; /* Controla o espaço interno. */
+  box-shadow: 0 15px 40px #4b372b20; /* Adiciona sombra ao elemento. */
+  border: 1px solid #d6c5b2; /* Cria e formata bordas. */
+}
+.ticket-form {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 1fr 1fr; /* Define colunas do layout em grade. */
+  gap: 12px; /* Define o espaço entre elementos. */
+}
+.ticket-form h3 {
+  grid-column: 1/-1; /* Determina a coluna ocupada pelo elemento. */
+  font-size: 27px; /* Define o tamanho das letras. */
+  margin: 0; /* Controla o espaço externo. */
+}
+.form-line, .lead-form label {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 6px; /* Define o espaço entre elementos. */
+  font-size: 12px; /* Define o tamanho das letras. */
+  color: #634d40; /* Define cor do texto. */
+  font-weight: 800; /* Define a espessura das letras. */
+}
+input,select,textarea {
+  min-width: 0; /* Limita a largura mínima. */
+  width: 100%; /* Define a largura. */
+  border: 1px solid #c8bbae; /* Cria e formata bordas. */
+  background: white; /* Define fundo/cor da área. */
+  border-radius: 3px; /* Arredonda cantos. */
+  padding: 12px; /* Controla o espaço interno. */
+  color: var(--ink); /* Define cor do texto. */
+}
+textarea {
+  min-height: 110px; /* Limita a altura mínima. */
+  resize: vertical; /* Ajuste visual para este elemento. */
+}
+.ticket-form .btn {
+  grid-column: 1/-1; /* Determina a coluna ocupada pelo elemento. */
+}
+.ticket-toolbar {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  border-top: 1px solid #dfd3c4; /* Define borda superior. */
+  margin-top: 22px; /* Controla o espaço externo superior. */
+  padding-top: 14px; /* Controla o espaço interno superior. */
+}
+.ticket-toolbar button {
+  border: 0; /* Cria e formata bordas. */
+  color: var(--copper); /* Define cor do texto. */
+  background: none; /* Define fundo/cor da área. */
+  font-size: 12px; /* Define o tamanho das letras. */
+  text-decoration: underline; /* Controla decoração do texto. */
+}
+.ticket-list {
+  margin-top: 12px; /* Controla o espaço externo superior. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 9px; /* Define o espaço entre elementos. */
+}
+.ticket-item {
+  background: #f3eadf; /* Define fundo/cor da área. */
+  border: 1px solid #decfbe; /* Cria e formata bordas. */
+  padding: 12px; /* Controla o espaço interno. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 1fr auto; /* Define colunas do layout em grade. */
+  gap: 12px; /* Define o espaço entre elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+}
+.ticket-item strong {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  overflow-wrap: anywhere; /* Evita palavras ultrapassarem limite. */
+}
+.ticket-meta {
+  font-size: 11px; /* Define o tamanho das letras. */
+  color: #806958; /* Define cor do texto. */
+}
+.ticket-actions {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+  gap: 5px; /* Define o espaço entre elementos. */
+  justify-content: end; /* Distribui itens no eixo principal. */
+}
+.ticket-actions select {
+  font-size: 12px; /* Define o tamanho das letras. */
+  padding: 6px; /* Controla o espaço interno. */
+  width: auto; /* Define a largura. */
+}
+.ticket-actions button {
+  background: transparent; /* Define fundo/cor da área. */
+  border: 1px solid #bba491; /* Cria e formata bordas. */
+  border-radius: 3px; /* Arredonda cantos. */
+  padding: 6px 8px; /* Controla o espaço interno. */
+}
+.empty {
+  color: var(--muted); /* Define cor do texto. */
+  font-style: italic; /* Define o estilo da fonte. */
+}
+.contact {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: .85fr 1.15fr; /* Define colunas do layout em grade. */
+  gap: 40px; /* Define o espaço entre elementos. */
+}
+.contact p {
+  color: var(--muted); /* Define cor do texto. */
+}
+.lead-form {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 15px; /* Define o espaço entre elementos. */
+  background: var(--paper); /* Define fundo/cor da área. */
+  padding: 24px; /* Controla o espaço interno. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+}
+.footer {
+  background: #342922; /* Define fundo/cor da área. */
+  color: #f2e1ce; /* Define cor do texto. */
+  padding: 36px 30px; /* Controla o espaço interno. */
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  gap: 20px; /* Define o espaço entre elementos. */
+  flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+}
+.footer strong {
+  font: 800 24px Arial,sans-serif; /* Configura fonte e espaçamento de linha. */
+}
+.footer p {
+  font-size: 12px; /* Define o tamanho das letras. */
+  color: #cebaa5; /* Define cor do texto. */
+  margin: 0; /* Controla o espaço externo. */
+}
+/* Adaptação para tablets e celulares. */
+@media (max-width:1000px) {
+  .hero {
+    grid-template-columns: 1fr 1fr; /* Define colunas do layout em grade. */
+  }
+  .hero-marker,.hero-seal {
+    display: none; /* Determina o modo de distribuição dos elementos. */
+  }
+  .nav {
+    gap: 14px; /* Define o espaço entre elementos. */
+  }
+  .orders-layout {
+    gap: 24px; /* Define o espaço entre elementos. */
+  }
+}
+@media (max-width:760px) {
+  .site-header {
+    padding: 14px 18px; /* Controla o espaço interno. */
+    flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+  }
+  .menu-toggle {
+    display: block; /* Determina o modo de distribuição dos elementos. */
+  }
+  .nav {
+    order: 10; /* Ajuste visual para este elemento. */
+    display: none; /* Determina o modo de distribuição dos elementos. */
+    flex-basis: 100%; /* Define tamanho-base no flex. */
+    flex-direction: column; /* Define orientação dos itens. */
+    gap: 0; /* Define o espaço entre elementos. */
+  }
+  .nav.open {
+    display: flex; /* Determina o modo de distribuição dos elementos. */
+  }
+  .nav a {
+    padding: 11px 5px; /* Controla o espaço interno. */
+    border-bottom: 1px solid var(--line); /* Define borda inferior. */
+  }
+  .top-contact {
+    margin-left: auto; /* Controla o espaço externo esquerdo. */
+    font-size: 12px; /* Define o tamanho das letras. */
+    padding: 10px; /* Controla o espaço interno. */
+  }
+  .hero {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+    padding: 15px 18px 30px; /* Controla o espaço interno. */
+    gap: 10px; /* Define o espaço entre elementos. */
+  }
+  .hero-copy {
+    padding: 5px; /* Controla o espaço interno. */
+  }
+  .hero-media {
+    min-height: 0; /* Limita a altura mínima. */
+  }
+  .hero-media img {
+    height: auto; /* Define a altura. */
+    aspect-ratio: 4/3; /* Mantém proporção largura/altura. */
+  }
+  .intro-bar {
+    flex-direction: column; /* Define orientação dos itens. */
+    text-align: center; /* Alinha o texto. */
+  }
+  .section-wrap {
+    padding: 45px 18px; /* Controla o espaço interno. */
+  }
+  .service-row {
+    grid-template-columns: 40px 100px 1fr; /* Define colunas do layout em grade. */
+    gap: 10px; /* Define o espaço entre elementos. */
+  }
+  .service-row .service-number {
+    align-self: center; /* Alinha um elemento individualmente. */
+  }
+  .service-photo {
+    width: 100px; /* Define a largura. */
+    height: 90px; /* Define a altura. */
+  }
+  .service-row h3 {
+    font-size: 19px; /* Define o tamanho das letras. */
+  }
+  .service-row button {
+    grid-column: 3; /* Determina a coluna ocupada pelo elemento. */
+    justify-self: start; /* Alinha um elemento individual no eixo horizontal. */
+  }
+  .orders-layout,.contact {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+  .ticket-form {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+  .ticket-item {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+  .ticket-actions {
+    justify-content: start; /* Distribui itens no eixo principal. */
+  }
+  .footer {
+    display: block; /* Determina o modo de distribuição dos elementos. */
+  }
+  .footer>* {
+    display: block; /* Determina o modo de distribuição dos elementos. */
+    margin: 8px 0; /* Controla o espaço externo. */
+  }
+}

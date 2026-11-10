@@ -1,0 +1,33 @@
+<!doctype html> <!-- Documento HTML5. -->
+<html lang="pt-BR"> <!-- Português do Brasil. -->
+<head> <!-- Metadados da demo. -->
+  <meta charset="utf-8"> <!-- Codificação de acentos. -->
+  <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Ajuste em telas móveis. -->
+  <meta name="description" content="Embalagem Direta: demonstração para atacado de embalagens com catálogo e carrinho de cotação por WhatsApp."> <!-- Resumo. -->
+  <meta name="theme-color" content="#253ff6"> <!-- Tema do navegador. -->
+  <title>Embalagem Direta | Atacado que simplifica</title> <!-- Título. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- Estilo local. -->
+  <script src="js/script.js" defer></script> <!-- Lógica local. -->
+</head>
+<body> <!-- Conteúdo visível. -->
+  <div class="demo-band">DEMO MOSS DIGITAL · Produtos e preços fictícios · Nenhuma compra é cobrada</div> <!-- Transparência. -->
+  <header class="header" id="inicio"> <!-- Cabeçalho azul comercial. -->
+    <div class="brand-block"><a class="brand" href="#inicio">embalagem<span>direta.</span></a><small>ATACADO & SUPRIMENTOS PARA SEU NEGÓCIO</small></div> <!-- Identidade. -->
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false">☰ Categorias</button> <!-- Menu móvel. -->
+    <nav id="nav-links" class="nav" aria-label="Menu principal"><a href="#catalogo">Catálogo</a><a href="#como-funciona">Como pedir</a><a href="#pedido">Meu pedido</a></nav> <!-- Navegação. -->
+    <a href="#pedido" class="cart-chip" aria-label="Ver pedido atual">Pedido <span id="cart-count">0</span></a> <!-- Contador do carrinho. -->
+  </header>
+  <main> <!-- Corpo do catálogo. -->
+    <section class="hero" aria-labelledby="hero-title"> <!-- Capa tipográfica comercial. -->
+      <div class="hero-content"><span class="eyebrow">PARA QUEM VENDE TODOS OS DIAS</span><h1 id="hero-title">Suas embalagens. <em>Seu próximo pedido.</em></h1><p>Catálogo B2B com busca, filtros, quantidades e carrinho de cotação. Ideal para restaurantes, docerias e lojas.</p><a class="btn btn-white" href="#catalogo">Montar orçamento ↗</a></div> <!-- Proposta de valor. -->
+      <div class="hero-graphic" aria-label="Foto reservada de embalagens"><img src="assets/img/placeholder.svg" data-photo="assets/img/capa-embalagens.webp" alt="Foto de diversos recipientes e caixas de embalagem a inserir" width="1200" height="900"><b>EMBALAGENS<br>PARA NEGÓCIOS<br>QUE NÃO PARAM.</b></div> <!-- Imagem de capa. -->
+    </section>
+    <div class="selling-line"><span>ATACADO ACESSÍVEL</span><span>PEDIDO PELO WHATSAPP</span><span>CATÁLOGO QUE CABE NO CELULAR</span></div> <!-- Linha de benefícios. -->
+    <section class="catalog-layout" id="catalogo"> <!-- Layout de catálogo + cesta lateral. -->
+      <div class="catalog-main"><div class="catalog-intro"><span class="eyebrow">ESCOLHA OS PRODUTOS</span><h2>Um catálogo que ajuda a vender sem complicar.</h2></div><div class="catalog-controls"><label class="search-label">Buscar produto<input id="search" type="search" placeholder="Ex.: copo, caixa, sacola" autocomplete="off"></label><div class="filters" aria-label="Filtrar categoria"><button type="button" data-filter="todos" aria-pressed="true">Tudo</button><button type="button" data-filter="food" aria-pressed="false">Alimentos</button><button type="button" data-filter="bebidas" aria-pressed="false">Bebidas</button><button type="button" data-filter="sacolas" aria-pressed="false">Sacolas</button></div></div><div id="products" class="product-grid" aria-live="polite"></div><p class="tiny-note">Todos os produtos, quantidades mínimas e valores são demonstrativos. Sem estoque integrado.</p></div> <!-- Catálogo renderizado com segurança pelo JavaScript. -->
+      <aside class="cart-aside" id="pedido" aria-labelledby="order-title"><div class="cart-top"><span class="eyebrow">SUA COTAÇÃO</span><h2 id="order-title">Meu pedido <span id="cart-badge">0</span></h2><p>Adicione os produtos, confira o valor de referência e envie a lista para atendimento humano.</p></div><div id="cart-lines" class="cart-lines" aria-live="polite"></div><div class="cart-footer"><div class="total-line"><span>Total ilustrativo</span><strong id="total-price">R$ 0,00</strong></div><p class="discount-note">Descontos de demonstração: 10% para 50+ pacotes do mesmo produto; 18% para 200+.</p><button type="button" class="btn btn-send" id="send-order">Enviar cotação pelo WhatsApp ↗</button><button type="button" class="btn-clear" id="clear-order">Esvaziar pedido</button></div></aside> <!-- Cesta sempre identificada como simulação. -->
+    </section>
+    <section class="how" id="como-funciona"><div class="how-title"><span class="eyebrow">COMO FUNCIONA</span><h2>Rápido para você e para seu cliente.</h2></div><div class="how-steps"><article><b>01</b><h3>Escolha</h3><p>Busque itens e informe quantidades.</p></article><article><b>02</b><h3>Revise</h3><p>Confira a lista na lateral.</p></article><article><b>03</b><h3>Converse</h3><p>O WhatsApp abre com a cotação pronta para negociar.</p></article></div></section> <!-- Processo de compra assistida. -->
+  </main>
+  <footer class="footer"><strong>EMBALAGEM DIRETA.</strong><span>Projeto fictício · MOSS Digital</span><a href="https://www.mossdigital.com.br" target="_blank" rel="noopener noreferrer">Desenvolvido por MOSS Digital ↗</a></footer> <!-- Rodapé. -->
+</body></html>

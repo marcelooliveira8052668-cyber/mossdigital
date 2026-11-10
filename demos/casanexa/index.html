@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Configurações para acentuação, responsividade e identificação do site. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#eaf6fc">
+  <meta name="description" content="CasaNexa: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.">
+  <title>CasaNexa | Demo de loja MOSS Digital</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body id="inicio" data-site="CasaNexa">
+<!-- Barra informativa: site demonstrativo, com produtos e valores fictícios. -->
+<div class="announcement">PROJETO DEMONSTRATIVO · Produtos, imagens e preços ilustrativos · Pedidos por WhatsApp</div>
+
+<header class="home-header"><div class="container home-nav"><a href="#inicio" class="brand" aria-label="Página inicial CasaNexa"><span class="brand-mark">⌂</span><span>CasaNexa</span></a><label class="home-search"><span class="sr-only">Buscar produtos</span><input id="product-search" type="search" placeholder="Buscar ideias para sua casa"/><span>⌕</span></label><nav class="nav-links" id="menu-links"><a href="#ambientes">Ambientes</a><a href="#catalogo">Produtos</a><a href="#monte">Monte seu kit</a></nav><button class="icon-btn home-cart" id="open-cart" type="button">🛍️ <span class="cart-count">0</span></button><button class="nav-toggle" aria-controls="menu-links" aria-expanded="false">☰</button></div></header>
+<main><section class="container home-hero"><div class="home-hero-text"><span class="eyebrow">MAIS IDEIAS PARA MORAR BEM</span><h1>Sua casa.<br><em>Seu próximo capítulo.</em></h1><p>Encontre peças para cada ambiente, monte um conjunto e converse com a loja sobre entrega ou retirada.</p><a href="#monte" class="btn btn-home">Montar meu ambiente ↗</a><div class="hero-chips"><span>⌂ Sala</span><span>▦ Cozinha</span><span>☼ Quarto</span></div></div><div class="home-hero-art"><img src="assets/img/hero.svg" alt="Ilustração de produtos de decoração para casa"/><div class="home-sticker">CASA COM JEITO<br>DE LAR ✳</div></div></section>
+<section class="container room-navigation" id="ambientes"><div class="section-heading"><div><span class="eyebrow">ESCOLHA SEU CANTO</span><h2>Um ambiente de cada vez.</h2></div></div><div class="room-cards" id="room-cards"></div></section>
+<section class="container home-catalog" id="catalogo"><div class="section-heading"><div><span class="eyebrow">SELEÇÃO CASANEXA</span><h2>Ideias que combinam.</h2></div><label class="home-search inline-search"><span class="sr-only">Buscar produtos</span><input id="secondary-search" type="search" placeholder="Buscar por nome..."/></label></div><div class="filter-row" id="filter-row"></div><div class="products-grid" id="products-grid"></div><p id="empty-msg" class="empty" hidden>Não encontramos produtos nessa seleção.</p></section>
+<section class="container bundle-section" id="monte"><div class="bundle-copy"><span class="eyebrow">MONTE SEU KIT</span><h2>Combinações que fazem sentido.</h2><p>Adicione peças dos cards, escolha como prefere receber e solicite a cotação.</p><div class="delivery-choice"><label><input type="radio" name="entrega" value="Entrega" checked/> Receber por entrega</label><label><input type="radio" name="entrega" value="Retirada"/> Retirar na loja</label></div><button id="bundle-checkout" type="button" class="btn btn-home">Revisar kit e enviar →</button></div><div class="bundle-preview"><span class="eyebrow">SEU PROJETO DE COMPRA</span><div id="bundle-mini"><p>Nenhum produto selecionado ainda.</p></div><div class="bundle-price"><span>Total ilustrativo</span><strong id="bundle-total">R$ 0,00</strong></div></div></section></main>
+
+<!-- Gaveta de carrinho: todas as informações permanecem neste navegador. -->
+<div class="overlay" id="drawer-overlay" hidden></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Carrinho de cotação" aria-hidden="true">
+ <div class="drawer-head"><div><span class="eyebrow">SELEÇÃO DE PRODUTOS</span><h2>Minha lista</h2></div><button id="close-cart" class="close-btn" type="button" aria-label="Fechar carrinho">×</button></div>
+ <div id="cart-items" class="cart-items"><p>Seu carrinho está vazio.</p></div>
+ <div class="drawer-bottom"><div class="cart-total"><span>Total estimado</span><strong id="cart-total">R$ 0,00</strong></div><p>Não realiza pagamento. A loja confirma estoque, frete e valores.</p><a id="checkout-link" class="btn btn-checkout" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511942038103">Enviar pedido pelo WhatsApp ↗</a></div>
+</aside>
+<!-- Janela de informações. -->
+<dialog id="product-dialog" class="product-dialog"><button id="close-dialog" type="button" class="close-btn" aria-label="Fechar detalhes">×</button><div id="dialog-content"></div></dialog>
+
+<!-- Rodapé de transparência comercial. -->
+<footer class="footer"><div><strong>CasaNexa</strong><span> · Vitrine demonstrativa criada pela MOSS Digital</span></div><p>Valores ilustrativos. Sem estoque confirmado, pagamento ou entrega automática.</p><a href="#inicio">Voltar ao início ↑</a></footer>
+<!-- Área de anúncios acessíveis para ações do usuário. -->
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

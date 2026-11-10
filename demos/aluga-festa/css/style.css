@@ -1,0 +1,58 @@
+/* Tema 55 — editorial de eventos com tipografia clássica e painéis orgânicos. */
+:root { --ink:#342540; --purple:#51355f; --sage:#b6c8b1; --cream:#faf6f0; --lavender:#ede7f1; --muted:#6f6277; } /* Cores. */
+* { box-sizing:border-box; } /* Medidas consistentes. */
+html { scroll-behavior:smooth; } /* Navegação suave. */
+body { margin:0; background:var(--cream); color:var(--ink); font-family:Arial,Helvetica,sans-serif; } /* Base. */
+a { text-decoration:none; color:inherit; } /* Links. */
+button,input,select { font:inherit; } /* Campos. */
+.topnote { padding:10px; background:var(--purple); color:white; font-size:11px; text-align:center; letter-spacing:1px; } /* Aviso. */
+.header { width:min(1250px,calc(100% - 40px)); margin:auto; min-height:90px; display:flex; justify-content:space-between; align-items:center; gap:16px; } /* Cabeçalho editorial. */
+.brand { font-family:Georgia,serif; font-weight:bold; font-size:29px; letter-spacing:-2px; } /* Marca. */
+.brand span { color:#a16c8e; } /* Identidade secundária. */
+.header nav { display:flex; gap:23px; font-size:13px; font-weight:bold; } /* Menu. */
+.contact { border:1px solid var(--purple); border-radius:24px; padding:12px 18px; white-space:nowrap; font-weight:bold; } /* Link de contato. */
+.hero { max-width:1450px; margin:auto; min-height:590px; display:grid; grid-template-columns:49% 51%; } /* Layout dividido. */
+.hero-left { padding:clamp(40px,6vw,100px); background:#e7e0ed; display:flex; flex-direction:column; justify-content:center; align-items:start; } /* Painel editorial. */
+.overline,.intro>span,.planner-intro small,.steps>span { letter-spacing:2px; font-size:12px; font-weight:800; color:#846087; } /* Sobretítulo. */
+h1,h2,h3 { font-family:Georgia,serif; font-weight:normal; } /* Tipografia refinada. */
+h1 { font-size:clamp(40px,5vw,76px); line-height:1; margin:22px 0; max-width:700px; } /* Chamada. */
+.hero-left>p:not(.overline) { color:var(--muted); line-height:1.7; max-width:460px; } /* Descrição. */
+.button { display:inline-flex; align-items:center; justify-content:space-between; gap:20px; background:var(--purple); color:white; border:0; border-radius:40px; padding:17px 24px; font-weight:bold; cursor:pointer; margin-top:15px; } /* CTA. */
+.highlight { margin-top:50px; border-top:1px solid #a8a0ae; padding-top:20px; display:grid; gap:7px; font-size:12px; color:var(--muted); } /* Nota. */
+.highlight b { font-size:13px; color:var(--purple); } /* Destaque. */
+.photo { position:relative; min-height:590px; } /* Foto dominante. */
+.photo img { display:block; width:100%; height:100%; position:absolute; object-fit:cover; } /* Preenchimento sem distorção. */
+.photo-label { position:absolute; left:20px; bottom:20px; padding:12px 16px; background:#ffffffdb; border-radius:30px; font-size:12px; } /* Legenda. */
+.intro { max-width:1250px; margin:85px auto 40px; padding:0 20px; display:grid; grid-template-columns:180px 1fr 1fr; gap:20px; align-items:end; } /* Apresentação de coleção. */
+.intro h2 { margin:0; font-size:clamp(32px,3vw,51px); line-height:1.1; } /* Título. */
+.intro p { margin:0; color:var(--muted); line-height:1.65; } /* Texto. */
+.gallery { width:min(1250px,calc(100% - 40px)); margin:auto; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-template-rows:240px 240px; gap:16px; } /* Mosaico próprio. */
+.gallery article { position:relative; border-radius:25px; overflow:hidden; min-width:0; } /* Item. */
+.gallery-large { grid-row:span 2; } /* Card alto. */
+.gallery img { display:block; width:100%; height:100%; object-fit:cover; } /* Imagem proporcional. */
+.gallery article::after { position:absolute; content:""; inset:40% 0 0; background:linear-gradient(0deg,#24182acc,transparent); } /* Contraste. */
+.gallery article>div { position:absolute; bottom:20px; left:20px; right:20px; z-index:1; color:white; } /* Texto do mosaico. */
+.gallery h3 { font-size:24px; margin:6px 0; } /* Título. */
+.gallery small { letter-spacing:2px; font-size:10px; } /* Edição. */
+.gallery p { font-size:13px; } /* Texto. */
+.planner { display:grid; grid-template-columns:1fr 1.15fr; gap:clamp(20px,5vw,70px); background:var(--sage); padding:clamp(24px,6vw,85px); margin-top:100px; } /* Planejador com fundo diferente. */
+.planner-intro h2 { font-size:clamp(35px,4vw,60px); margin:20px 0; } /* Chamada. */
+.planner-intro p { line-height:1.7; max-width:480px; } /* Explicação. */
+.caution { background:#ffffff84; padding:15px; border-radius:13px; font-size:13px; } /* Aviso. */
+.planner-card { background:white; padding:clamp(20px,3vw,36px); border-radius:28px; display:grid; gap:18px; box-shadow:0 22px 40px #37284220; } /* Formulário. */
+.fieldgrid { display:grid; grid-template-columns:1fr 1fr; gap:16px; } /* Campos alinhados. */
+.planner-card label { display:grid; gap:8px; font-size:13px; font-weight:bold; } /* Rótulo. */
+.planner-card input:not([type=checkbox]),.planner-card select { width:100%; min-width:0; padding:13px; border:1px solid #dcd5e2; border-radius:11px; } /* Campo. */
+.planner-card fieldset { border:1px solid #dcd5e2; border-radius:13px; display:grid; gap:13px; padding:15px; } /* Adicionais. */
+.planner-card fieldset label { display:flex; align-items:center; gap:10px; } /* Linha de checkbox. */
+.estimate { padding:18px; border-radius:17px; background:var(--lavender); display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; } /* Resumo. */
+.estimate strong { display:block; font-size:27px; margin-top:7px; } /* Total. */
+.estimate small { color:var(--muted); font-size:10px; } /* Legenda. */
+.estimate span { font-size:11px; color:var(--muted); max-width:140px; } /* Aviso. */
+.steps { width:min(1200px,calc(100% - 40px)); margin:80px auto; display:grid; grid-template-columns:1fr 2fr; gap:30px; } /* Processo. */
+.steps h2 { font-size:40px; margin-top:0; } /* Título. */
+.steps p { border-bottom:1px solid #d7cbd6; padding-bottom:16px; } /* Linhas. */
+.steps b { color:#ab78a2; margin-right:17px; } /* Números. */
+footer { background:var(--purple); text-align:center; padding:28px 16px; color:#efe7f5; font-size:12px; } /* Rodapé. */
+@media(max-width:850px){.header nav{display:none}.hero{grid-template-columns:1fr}.photo{min-height:300px}.intro{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}.gallery-large{grid-row:span 2}.planner{grid-template-columns:1fr}.steps{grid-template-columns:1fr}} /* Tablet. */
+@media(max-width:540px){.header{width:calc(100% - 28px)}.brand{font-size:23px}.contact{font-size:12px;padding:10px}.hero-left{padding:45px 22px}.gallery{grid-template-columns:1fr;grid-template-rows:repeat(4,230px)}.gallery-large{grid-row:auto}.fieldgrid{grid-template-columns:1fr}.planner{padding:24px 14px}} /* Celular. */

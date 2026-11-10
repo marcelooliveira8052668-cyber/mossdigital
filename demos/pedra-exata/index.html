@@ -1,0 +1,38 @@
+<!doctype html> <!-- HTML5. -->
+<html lang="pt-BR"> <!-- Idioma. -->
+<head> <!-- Configurações da página. -->
+  <meta charset="utf-8"> <!-- Acentos. -->
+  <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Layout móvel. -->
+  <meta name="description" content="Pedra Exata: demo de marmoraria com orçamento ilustrativo de peças sob medida."> <!-- SEO. -->
+  <meta name="theme-color" content="#1c2326"> <!-- Barra do navegador. -->
+  <title>Pedra Exata | Marmoraria</title> <!-- Nome da aba. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- CSS local. -->
+  <script src="js/script.js" defer></script> <!-- JavaScript local. -->
+</head>
+<body> <!-- Conteúdo. -->
+<div class="demo-ribbon">DEMONSTRAÇÃO MOSS DIGITAL · Dados e valores fictícios · Não é uma cotação definitiva</div> <!-- Identificação comercial. -->
+<header class="masthead" id="inicio"> <!-- Cabeçalho em coluna dupla. -->
+  <a class="brand" href="#inicio"><span class="symbol">◩</span> PEDRA <b>EXATA</b><small>SUPERFÍCIES & DESIGN</small></a> <!-- Marca. -->
+  <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu ☰</button> <!-- Menu pequeno. -->
+  <nav id="main-nav" class="main-nav" aria-label="Navegação"><a href="#materiais">Coleção</a><a href="#configurador">Configurar</a><a href="#projetos">Projetos</a><a href="#contato">Contato</a></nav> <!-- Âncoras. -->
+  <a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vim%20pela%20demo%20Pedra%20Exata." target="_blank" rel="noopener noreferrer" class="consult-btn">Solicitar proposta ↗</a> <!-- WhatsApp. -->
+</header>
+<main> <!-- Seções. -->
+  <section class="architecture-hero"> <!-- Capa editorial de arquitetura. -->
+    <div class="hero-photo"><img src="assets/img/placeholder.svg" data-photo="assets/img/capa-marmoraria.webp" alt="Fotografia de bancada de pedra em cozinha sofisticada a inserir" width="1200" height="900"><span>CAPA / capa-marmoraria.webp</span></div> <!-- Fotografia inserida posteriormente. -->
+    <div class="hero-text"><div class="vertical-rule"></div><span class="eyebrow">01 / A BELEZA ESTÁ NOS DETALHES</span><h1>Pedras que dão <em>forma</em> a grandes ideias.</h1><p>Uma vitrine de superfícies e um simulador inicial de metragem. Transforme curiosidade em pedido de orçamento detalhado.</p><a href="#configurador" class="btn-light">Simular meu projeto <span>↘</span></a></div> <!-- Texto de destaque. -->
+  </section>
+  <section class="editorial-content wrap" id="materiais"> <!-- Coleção visual de materiais. -->
+    <div class="content-intro"><span class="eyebrow">MATERIAIS / COLEÇÃO</span><h2>Escolha a superfície que conversa com o espaço.</h2><p>Os valores abaixo são referências fictícias para testar a calculadora. Uma marmoraria real deve informar condições, espessura, acabamento e mão de obra.</p></div> <!-- Descrição. -->
+    <div class="stone-strip" role="group" aria-label="Selecionar material"><button class="stone-choice active" data-stone="granito" aria-pressed="true"><img src="assets/img/placeholder.svg" data-photo="assets/img/granito-sao-gabriel.webp" alt="Foto de granito escuro a inserir" width="700" height="700"><b>Granito</b><small>Resistência / cotidiano</small></button><button class="stone-choice" data-stone="quartzo" aria-pressed="false"><img src="assets/img/placeholder.svg" data-photo="assets/img/quartzo-branco.webp" alt="Foto de quartzo branco a inserir" width="700" height="700"><b>Quartzo</b><small>Linhas contemporâneas</small></button><button class="stone-choice" data-stone="marmore" aria-pressed="false"><img src="assets/img/placeholder.svg" data-photo="assets/img/marmore-claro.webp" alt="Foto de mármore claro a inserir" width="700" height="700"><b>Mármore</b><small>Clássico / marcante</small></button></div> <!-- Seleção com fotos. -->
+  </section>
+  <section id="configurador" class="config-band"> <!-- Módulo de orçamento exclusivo. -->
+    <div class="wrap config-grid"><div class="config-copy"><span class="eyebrow">02 / SIMULADOR</span><h2>Do centímetro à primeira estimativa.</h2><p>Selecione o material, informe as dimensões da peça e veja uma estimativa ilustrativa — sem assumir que o preço é uma oferta.</p><div class="mini-note">Exemplo didático: área = largura × profundidade. Não inclui recortes, perdas, frete, instalação, impostos ou verificação técnica.</div><img class="side-photo" src="assets/img/placeholder.svg" data-photo="assets/img/oficina-pedra.webp" alt="Foto de oficina de marmoraria a inserir" width="900" height="675"></div> <!-- Orientação e foto. -->
+      <form id="estimate-form" class="estimate-panel"><h3>Configure sua peça</h3><div class="form-grid"><label>Largura (cm)<input id="largura" type="number" min="30" max="600" value="180" step="1" required></label><label>Profundidade (cm)<input id="profundidade" type="number" min="30" max="300" value="65" step="1" required></label></div><label>Acabamento<select id="acabamento"><option value="reto">Borda reta — referência padrão</option><option value="polido">Borda polida — adicional ilustrativo</option><option value="especial">Acabamento especial — adicional ilustrativo</option></select></label><label>Quantidade de peças<input id="quantidade" type="number" min="1" max="20" value="1" required></label><div class="estimate-result"><span>Área estimada</span><strong id="area">—</strong><span>Faixa de valor ilustrativa</span><strong id="price">—</strong></div><button type="submit" class="estimate-submit">Enviar medidas pelo WhatsApp ↗</button><small>Simulador sem cálculo de projeto executivo e sem cobrança.</small></form> <!-- Campos e resultados. -->
+    </div>
+  </section>
+  <section class="portfolio wrap" id="projetos"><span class="eyebrow">03 / PORTFÓLIO</span><h2>Espaços que inspiram.</h2><div class="portfolio-grid"><figure class="large"><img src="assets/img/placeholder.svg" data-photo="assets/img/cozinha-planejada.webp" alt="Fotografia de cozinha com pedra a inserir" width="1200" height="900"><figcaption>Cozinhas & bancadas</figcaption></figure><figure><img src="assets/img/placeholder.svg" data-photo="assets/img/lavabo-pedra.webp" alt="Fotografia de lavabo com pedra a inserir" width="900" height="675"><figcaption>Lavabos</figcaption></figure><figure><img src="assets/img/placeholder.svg" data-photo="assets/img/escada-pedra.webp" alt="Fotografia de escada em pedra a inserir" width="900" height="675"><figcaption>Escadas & revestimentos</figcaption></figure></div></section> <!-- Galeria distinta. -->
+  <section class="footer-cta" id="contato"><div class="wrap"><div><span>CONVERSA COM QUEM ENTENDE DO PROJETO</span><h2>Seu ambiente começa com uma boa ideia.</h2></div><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vim%20pela%20demo%20Pedra%20Exata%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a></div></section> <!-- Contato final. -->
+</main>
+<footer class="footer"><span>PEDRA EXATA · DEMO ILUSTRATIVA</span><span>MOSS Digital — sem fotos reais ou preços vinculantes</span><a href="https://www.mossdigital.com.br" target="_blank" rel="noopener noreferrer">MOSS Digital ↗</a></footer> <!-- Rodapé transparente. -->
+</body></html>

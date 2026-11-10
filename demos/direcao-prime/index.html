@@ -1,0 +1,308 @@
+<!DOCTYPE html> <!-- Documento HTML5 sem frameworks. -->
+<html lang="pt-BR"> <!-- Idioma português do Brasil. -->
+
+<head> <!-- Informações invisíveis aos visitantes. -->
+  <meta charset="UTF-8"> <!-- Acentuação correta. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Visualização em celular. -->
+  <meta name="description"
+    content="Demonstração Direção Prime para Autoescola e formação de condutores. Projeto ilustrativo criado pela MOSS Digital.">
+  <!-- Descrição para buscadores. -->
+  <meta name="theme-color" content="#102b52"> <!-- Cor da barra do navegador. -->
+  <title>Direção Prime | Demonstração MOSS Digital</title> <!-- Texto da aba. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- Estilos exclusivos da demo. -->
+  <script src="js/script.js" defer></script> <!-- Interações exclusivas da demo. -->
+</head>
+
+<body data-demo="Direção Prime" data-mode="drive"> <!-- Identificação usada pelo script. -->
+  <!-- Fita mantém claro que empresa, preços e serviços são ilustrativos. -->
+  <div class="announcement">Demonstração MOSS Digital · Marca e dados ilustrativos · Fotos a inserir</div>
+  <!-- Cabeçalho com navegação interna e WhatsApp real autorizado. -->
+  <header class="site-header">
+    <nav class="container nav" aria-label="Navegação principal">
+      <a class="brand" href="#inicio"><span class="brand-icon" aria-hidden="true">➤</span><span>Direção
+          Prime<small>Autoescola e formação de condutores</small></span></a> <!-- Identidade do projeto. -->
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false"
+        aria-label="Abrir menu">☰</button> <!-- Menu para celular. -->
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#solucoes">Categorias</a></li>
+        <li><a href="#processo">Como funciona</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#orcamento">Orçamento</a></li>
+        <li><a href="#perguntas">Dúvidas</a></li>
+      </ul> <!-- Links para seções existentes. -->
+      <a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103" target="_blank"
+        rel="noopener noreferrer">Conversar no WhatsApp ↗</a> <!-- Contato direto. -->
+    </nav>
+  </header>
+  <main id="inicio"> <!-- Conteúdo principal. -->
+    <!-- CAPA: texto e espaço de imagem. Basta inserir assets/img/capa.webp para trocar o SVG. -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div><span class="eyebrow">COMECE SUA JORNADA COM CONFIANÇA</span>
+          <h1>Seu próximo destino começa com preparo.</h1>
+          <p class="lead">Uma apresentação clara para centros de formação de condutores, com trilhas ilustrativas e
+            atendimento para informações sobre habilitação.</p>
+          <div class="actions"><a class="btn btn-dark" href="#orcamento">Solicitar informações ↗</a><a
+              class="btn btn-secondary" href="#solucoes">Explorar categorias</a></div>
+        </div> <!-- Texto comercial. -->
+        <div class="hero-image"><img src="https://habilitacao.cfcsilvalobo.com/auto-escola/imagens/centro-de-formacao-de-condutores-telefone.jpg" data-photo="assets/img/capa.webp"
+            alt="Instrutor e veículo de autoescola - início da formação de condutores" width="1200" height="900"><span
+            class="image-label">FOTO DE CAPA · assets/img/capa.webp</span></div>
+        <!-- Foto trocada automaticamente ao encontrar o arquivo. -->
+      </div>
+    </section>
+    <!-- Diferenciais: três razões resumidas para considerar os serviços. -->
+    <div class="container trust">
+      <article class="trust-item"><span>01</span>
+        <h3>Orientação clara</h3>
+        <p>Etapas descritas em linguagem acessível.</p>
+      </article> <!-- Diferencial 01. -->
+      <article class="trust-item"><span>02</span>
+        <h3>Atendimento próximo</h3>
+        <p>Perguntas enviadas pelo WhatsApp.</p>
+      </article> <!-- Diferencial 02. -->
+      <article class="trust-item"><span>03</span>
+        <h3>Fluxo transparente</h3>
+        <p>Sem promessas de aprovação ou vagas automáticas.</p>
+      </article> <!-- Diferencial 03. -->
+    </div>
+    <!-- CATÁLOGO: filtros de categoria e quatro cards clicáveis. -->
+    <section id="solucoes" class="section section-white">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">NOSSA ESPECIALIDADE</span>
+            <h2>Escolha seu caminho.</h2>
+          </div>
+          <p>Informações gerais ilustrativas. Regras, requisitos e valores devem ser verificados com o órgão de trânsito
+            competente.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filtros por categoria"><button class="filter" type="button"
+            data-filter="todos" aria-pressed="true">Todos</button> <!-- Filtro: Todos. -->
+          <button class="filter" type="button" data-filter="a" aria-pressed="false">Moto</button> <!-- Filtro: Moto. -->
+          <button class="filter" type="button" data-filter="b" aria-pressed="false">Carro</button>
+          <!-- Filtro: Carro. -->
+          <button class="filter" type="button" data-filter="ab" aria-pressed="false">A + B</button>
+          <!-- Filtro: A + B. -->
+          <button class="filter" type="button" data-filter="extra" aria-pressed="false">Adicionais</button>
+          <!-- Filtro: Adicionais. -->
+        </div>
+        <div class="cards" id="service-cards">
+          <!-- Serviço 1: imagem local substituída automaticamente quando categoria-a.webp existir. -->
+          <article class="card" data-category="a">
+            <div class="card-image"><img src="https://tse3.mm.bing.net/th/id/OIP.rqdJFNxIqIsTcrji3Q4iGAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" data-photo="assets/img/categoria-a.webp"
+                alt="Categoria A - formação para habilitação de motocicletas" loading="lazy" width="900" height="675">
+            </div>
+            <div class="card-copy">
+              <h3>Categoria A</h3>
+              <p>Orientação e preparação para interessados em habilitação para motocicletas.</p><button
+                class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Categoria A">Ver detalhes
+                +</button>
+            </div>
+          </article>
+          <!-- Serviço 2: imagem local substituída automaticamente quando categoria-b.webp existir. -->
+          <article class="card" data-category="b">
+            <div class="card-image"><img src="https://autoavaliacao.com/wp-content/uploads/2025/05/datas-renovacao-carta-de-conducao.jpg" data-photo="assets/img/categoria-b.webp"
+                alt="Categoria B - formação para condução de automóveis" loading="lazy" width="900" height="675"></div>
+            <div class="card-copy">
+              <h3>Categoria B</h3>
+              <p>Informações sobre a formação para condução de automóveis.</p><button class="text-action" type="button"
+                data-detail aria-label="Ver detalhes sobre Categoria B">Ver detalhes +</button>
+            </div>
+          </article>
+          <!-- Serviço 3: imagem local substituída automaticamente quando categoria-ab.webp existir. -->
+          <article class="card" data-category="ab">
+            <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/categoria-ab.webp"
+                alt="Categorias A + B - formação completa para motocicletas e automóveis" loading="lazy" width="900"
+                height="675"></div>
+            <div class="card-copy">
+              <h3>Categorias A + B</h3>
+              <p>Atendimento para quem deseja informações sobre ambas as categorias.</p><button class="text-action"
+                type="button" data-detail aria-label="Ver detalhes sobre Categorias A + B">Ver detalhes +</button>
+            </div>
+          </article>
+          <!-- Serviço 4: imagem local substituída automaticamente quando aulas-adicionais.webp existir. -->
+          <article class="card" data-category="extra">
+            <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/aulas-adicionais.webp"
+                alt="Aulas adicionais de direção - acompanhamento conforme regras e disponibilidade" loading="lazy"
+                width="900" height="675"></div>
+            <div class="card-copy">
+              <h3>Aulas adicionais</h3>
+              <p>Acompanhamento conforme regras aplicáveis e disponibilidade.</p><button class="text-action"
+                type="button" data-detail aria-label="Ver detalhes sobre Aulas adicionais">Ver detalhes +</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- PROCESSO: explica o atendimento sem prometer agendamento ou pagamento. -->
+    <section id="processo" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">DO PRIMEIRO CONTATO À PROPOSTA</span>
+            <h2>Simples, transparente e organizado.</h2>
+          </div>
+        </div>
+        <div class="step-grid">
+          <article class="step"><b>PASSO 1</b>
+            <h3>Entenda as categorias</h3>
+            <p>Explore as opções de formação.</p>
+          </article> <!-- Etapa 1. -->
+          <article class="step"><b>PASSO 2</b>
+            <h3>Converse sobre requisitos</h3>
+            <p>Confira as regras atuais aplicáveis ao seu caso.</p>
+          </article> <!-- Etapa 2. -->
+          <article class="step"><b>PASSO 3</b>
+            <h3>Solicite informações</h3>
+            <p>Receba orientações da equipe responsável.</p>
+          </article> <!-- Etapa 3. -->
+        </div>
+      </div>
+    </section>
+    <!-- GALERIA: três imagens locais fáceis de substituir e sem links remotos. -->
+    <section id="galeria" class="section section-white">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">CONHEÇA MAIS</span>
+            <h2>Detalhes que fazem diferença.</h2>
+          </div>
+          <p>Os espaços abaixo são reservas de fotos. Coloque seus arquivos autorizados e as imagens aparecem
+            automaticamente.</p>
+        </div>
+        <div class="gallery">
+          <!-- Galeria 1: adicione assets/img/recepcao.webp para substituir a imagem de instrução. -->
+          <figure><img src="assets/img/placeholder.svg" data-photo="assets/img/recepcao.webp"
+              alt="Detalhe do ambiente de autoescola - imagem ilustrativa a substituir" width="750" height="560"
+              loading="lazy">
+            <figcaption>Detalhe do ambiente</figcaption>
+          </figure>
+          <!-- Galeria 2: adicione assets/img/sala-orientacao.webp para substituir a imagem de instrução. -->
+          <figure><img src="assets/img/placeholder.svg" data-photo="assets/img/sala-orientacao.webp"
+              alt="Processo ou equipe de autoescola - imagem ilustrativa a substituir" width="750" height="560"
+              loading="lazy">
+            <figcaption>Processo ou equipe</figcaption>
+          </figure>
+          <!-- Galeria 3: adicione assets/img/veiculo-instrucao.webp para substituir a imagem de instrução. -->
+          <figure><img src="assets/img/placeholder.svg" data-photo="assets/img/veiculo-instrucao.webp"
+              alt="Foto de exemplo a substituir: Resultado do serviço" width="750" height="560" loading="lazy">
+            <figcaption>Resultado do serviço</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- CONTATO: as informações são transmitidas pela abertura do WhatsApp, sem banco de dados. -->
+    <section id="orcamento" class="section">
+      <div class="container contact-grid">
+        <div><span class="eyebrow">ATENDIMENTO PERSONALIZADO</span>
+          <h2>Tire suas dúvidas sobre habilitação</h2>
+          <p class="lead">Contato comercial demonstrativo. Sem matrícula, agendamento ou pagamento online.</p>
+          <p><strong>WhatsApp da demo:</strong> (11) 94203-8103</p>
+          <p class="form-note">Este site é demonstrativo. O envio não cria cadastro, não cobra pagamento e não confirma
+            serviços.</p>
+        </div>
+        <form id="lead-form" class="form-card">
+          <div class="form-grid"><!-- Campo Seu nome: preenchimento pelo visitante. -->
+            <div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text"
+                placeholder="Como podemos chamar você?" maxlength="70" autocomplete="name" required></div>
+            <!-- Campo Categoria de interesse: preenchimento pelo visitante. -->
+            <div class="field"><label for="escolha">Categoria de interesse</label><select id="escolha" name="escolha"
+                required>
+                <option value="">Selecione...</option>
+                <option value="A">Categoria A — moto</option>
+                <option value="B">Categoria B — carro</option>
+                <option value="AB">Categorias A + B</option>
+                <option value="Adicionais">Aulas adicionais</option>
+              </select></div>
+            <!-- Campo Melhor período: preenchimento pelo visitante. -->
+            <div class="field"><label for="periodo">Melhor período</label><select id="periodo" name="periodo" required>
+                <option value="">Selecione...</option>
+                <option value="Manhã">Manhã</option>
+                <option value="Tarde">Tarde</option>
+                <option value="Noite">Noite</option>
+                <option value="A combinar">A combinar</option>
+              </select></div>
+            <!-- Campo Bairro de atendimento: preenchimento pelo visitante. -->
+            <div class="field"><label for="regiao">Bairro de atendimento</label><input id="regiao" name="regiao"
+                type="text" placeholder="Onde você gostaria de estudar?" maxlength="90"></div>
+            <!-- Campo Sua dúvida: preenchimento pelo visitante. -->
+            <div class="field"><label for="observacao">Sua dúvida</label><textarea id="observacao" name="observacao"
+                maxlength="350" placeholder="Conte o que quer saber"></textarea></div>
+          </div><button class="btn btn-dark" type="submit">Enviar pedido pelo WhatsApp ↗</button>
+          <p class="form-note">Ao clicar, abre uma mensagem no WhatsApp para você revisar e enviar.</p>
+        </form>
+      </div>
+    </section>
+    <!-- DÚVIDAS: componentes nativos acessíveis via teclado, sem dependências JS. -->
+    <section class="section section-white" id="perguntas">
+      <div class="container">
+        <div class="faq"><span class="eyebrow">PRECISA SABER MAIS?</span>
+          <h2>Perguntas frequentes</h2>
+          <details>
+            <summary>Posso me matricular por este formulário?</summary>
+            <p>Não. Ele apenas inicia atendimento pelo WhatsApp.</p>
+          </details> <!-- Pergunta frequente. -->
+          <details>
+            <summary>Os valores e regras são oficiais?</summary>
+            <p>Não. Consulte o órgão de trânsito e a autoescola para regras, disponibilidade e preços.</p>
+          </details> <!-- Pergunta frequente. -->
+          <details>
+            <summary>O site pode ter área do aluno?</summary>
+            <p>Sim, em uma etapa adicional com autenticação, controle de dados, agenda e permissões.</p>
+          </details> <!-- Pergunta frequente. -->
+        </div>
+      </div>
+    </section>
+    <!-- Convite final para conhecer o serviço. -->
+    <section class="section">
+      <div class="container">
+        <div class="banner">
+          <div>
+            <h2>Uma conversa pode começar por aqui.</h2>
+            <p>Veja como a apresentação digital aproxima o negócio de seus clientes.</p>
+          </div><a class="btn" data-whatsapp href="https://wa.me/5511942038103">Falar no WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Rodapé com créditos da demo e aviso para não confundir com uma empresa real. -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Direção Prime</h3>
+          <p>Autoescola e formação de condutores.</p><small>Marca demonstrativa criada para portfólio. Não representa
+            operação empresarial real.</small>
+        </div>
+        <div>
+          <h3>Navegação</h3>
+          <p><a href="#solucoes">Serviços</a></p>
+          <p><a href="#galeria">Galeria</a></p>
+          <p><a href="#orcamento">Contato</a></p>
+        </div>
+        <div>
+          <h3>Desenvolvimento</h3>
+          <p>MOSS Digital</p>
+          <p><a href="https://www.mossdigital.com.br" target="_blank"
+              rel="noopener noreferrer">www.mossdigital.com.br</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">© Direção Prime · Demo de portfólio · Preços, imagens e serviços ilustrativos.</div>
+    </div>
+  </footer>
+  <!-- Atalho fixo de WhatsApp, com mensagem preenchida pelo JavaScript. -->
+  <a class="float-wa" data-whatsapp href="https://wa.me/5511942038103"
+    aria-label="Conversar com a MOSS Digital pelo WhatsApp" target="_blank" rel="noopener noreferrer">✆ WhatsApp</a>
+  <!-- Diálogo nativo aberto pelo botão de detalhes de cada serviço. -->
+  <dialog class="dialog" id="details-dialog" aria-labelledby="dialog-title"><img id="dialog-photo"
+      src="assets/img/placeholder.svg" alt="Imagem ilustrativa do serviço">
+    <div class="dialog-copy">
+      <div class="dialog-head">
+        <h2 id="dialog-title">Detalhes</h2><button class="dialog-close" id="dialog-close" type="button"
+          aria-label="Fechar janela">×</button>
+      </div>
+      <p id="dialog-text"></p><a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103">Perguntar no
+        WhatsApp ↗</a>
+    </div>
+  </dialog>
+</body> <!-- Final do conteúdo. -->
+
+</html> <!-- Final do documento. -->

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DentalTech">
+  <!-- Ícone da aba: símbolo da marca DentalTech sobre o fundo escuro da paleta. -->
+  <rect width="64" height="64" rx="15" fill="#081b2d"/>
+  <g stroke="#00b99a" stroke-width="6" stroke-linecap="round">
+    <line x1="14" y1="32" x2="50" y2="32"/>
+    <line x1="23" y1="16.4" x2="41" y2="47.6"/>
+    <line x1="41" y1="16.4" x2="23" y2="47.6"/>
+  </g>
+</svg>

@@ -1,0 +1,565 @@
+/* EMBALAGEM DIRETA — catálogo B2B gráfico, energético e comercial. */
+:root {
+  --blue: #263fec; /* Cor personalizada reutilizável. */
+  --blue2: #162c9f; /* Cor personalizada reutilizável. */
+  --lime: #dcfa58; /* Cor personalizada reutilizável. */
+  --pale: #f6f8ff; /* Cor personalizada reutilizável. */
+  --ink: #1c2b45; /* Cor personalizada reutilizável. */
+  --line: #dce3fa; /* Cor personalizada reutilizável. */
+  --muted: #5c6680; /* Cor personalizada reutilizável. */
+}
+* {
+  box-sizing: border-box; /* Inclui bordas e padding no tamanho calculado. */
+}
+html {
+  scroll-behavior: smooth; /* Controla suavidade de rolagem. */
+}
+body {
+  margin: 0; /* Controla o espaço externo. */
+  background: var(--pale); /* Define fundo/cor da área. */
+  color: var(--ink); /* Define cor do texto. */
+  font: 16px/1.5 Arial,sans-serif; /* Configura fonte e espaçamento de linha. */
+}
+a {
+  color: inherit; /* Define cor do texto. */
+  text-decoration: none; /* Controla decoração do texto. */
+}
+button,input {
+  font: inherit; /* Configura fonte e espaçamento de linha. */
+}
+button {
+  cursor: pointer; /* Define formato do ponteiro. */
+}
+img {
+  max-width: 100%; /* Limita a largura máxima. */
+}
+.demo-band {
+  padding: 7px 14px; /* Controla o espaço interno. */
+  text-align: center; /* Alinha o texto. */
+  background: #111b62; /* Define fundo/cor da área. */
+  color: #fff; /* Define cor do texto. */
+  font-size: 10px; /* Define o tamanho das letras. */
+  letter-spacing: .11em; /* Ajusta espaçamento entre letras. */
+}
+.header {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 20px; /* Define o espaço entre elementos. */
+  background: white; /* Define fundo/cor da área. */
+  padding: 18px clamp(16px,4vw,64px); /* Controla o espaço interno. */
+  border-bottom: 1px solid var(--line); /* Define borda inferior. */
+  position: sticky; /* Controla posicionamento. */
+  top: 0; /* Ajusta posição superior. */
+  z-index: 30; /* Define prioridade de sobreposição. */
+}
+.brand {
+  font-size: clamp(22px,2.8vw,34px); /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  letter-spacing: -.07em; /* Ajusta espaçamento entre letras. */
+  color: var(--blue); /* Define cor do texto. */
+  line-height: 1; /* Controla o espaçamento entre linhas. */
+}
+.brand span {
+  color: #183071; /* Define cor do texto. */
+}
+.brand-block small {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  font-size: 9px; /* Define o tamanho das letras. */
+  letter-spacing: .17em; /* Ajusta espaçamento entre letras. */
+  color: var(--muted); /* Define cor do texto. */
+  font-weight: 700; /* Define a espessura das letras. */
+  margin-top: 5px; /* Controla o espaço externo superior. */
+}
+.nav {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  gap: 26px; /* Define o espaço entre elementos. */
+  font-weight: 700; /* Define a espessura das letras. */
+  font-size: 13px; /* Define o tamanho das letras. */
+}
+.cart-chip {
+  background: var(--lime); /* Define fundo/cor da área. */
+  padding: 12px 18px; /* Controla o espaço interno. */
+  border-radius: 12px; /* Arredonda cantos. */
+  font-weight: 900; /* Define a espessura das letras. */
+  white-space: nowrap; /* Controla quebras de texto. */
+}
+.cart-chip span {
+  background: #101c6f; /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+  padding: 3px 7px; /* Controla o espaço interno. */
+  border-radius: 9px; /* Arredonda cantos. */
+  margin-left: 4px; /* Controla o espaço externo esquerdo. */
+}
+.menu-toggle {
+  display: none; /* Determina o modo de distribuição dos elementos. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+  background: white; /* Define fundo/cor da área. */
+  padding: 10px; /* Controla o espaço interno. */
+  border-radius: 10px; /* Arredonda cantos. */
+}
+/* Hero com tipografia larga e geometria viva. */
+.hero {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 1.18fr .82fr; /* Define colunas do layout em grade. */
+  min-height: 480px; /* Limita a altura mínima. */
+  background: var(--blue); /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+}
+.hero-content {
+  padding: clamp(36px,6vw,92px) clamp(20px,5vw,70px); /* Controla o espaço interno. */
+  align-self: center; /* Alinha um elemento individualmente. */
+}
+.eyebrow {
+  font-size: 11px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  letter-spacing: .15em; /* Ajusta espaçamento entre letras. */
+  text-transform: uppercase; /* Ajusta letras maiúsculas/minúsculas. */
+  color: #5772d9; /* Define cor do texto. */
+}
+.hero .eyebrow {
+  color: var(--lime); /* Define cor do texto. */
+}
+h1,h2,h3,p {
+  margin-top: 0; /* Controla o espaço externo superior. */
+}
+h1,h2,h3 {
+  line-height: 1.1; /* Controla o espaçamento entre linhas. */
+}
+h1 {
+  font-size: clamp(43px,5.3vw,80px); /* Define o tamanho das letras. */
+  letter-spacing: -.07em; /* Ajusta espaçamento entre letras. */
+  margin: 15px 0 22px; /* Controla o espaço externo. */
+}
+h1 em {
+  color: var(--lime); /* Define cor do texto. */
+  font-style: normal; /* Define o estilo da fonte. */
+}
+.hero-content p {
+  max-width: 580px; /* Limita a largura máxima. */
+  color: #e0e7ff; /* Define cor do texto. */
+  font-size: 17px; /* Define o tamanho das letras. */
+}
+.btn {
+  border: none; /* Cria e formata bordas. */
+  font-weight: 900; /* Define a espessura das letras. */
+  padding: 15px 22px; /* Controla o espaço interno. */
+  border-radius: 12px; /* Arredonda cantos. */
+  display: inline-block; /* Determina o modo de distribuição dos elementos. */
+  cursor: pointer; /* Define formato do ponteiro. */
+}
+.btn-white {
+  background: white; /* Define fundo/cor da área. */
+  color: var(--blue); /* Define cor do texto. */
+}
+.hero-graphic {
+  position: relative; /* Controla posicionamento. */
+  min-height: 360px; /* Limita a altura mínima. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+  background: repeating-linear-gradient(45deg,#1b35db 0 35px,#203be8 35px 70px); /* Define fundo/cor da área. */
+}
+.hero-graphic img {
+  position: absolute; /* Controla posicionamento. */
+  inset: 0; /* Ajuste visual para este elemento. */
+  width: 100%; /* Define a largura. */
+  height: 100%; /* Define a altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+  opacity: .83; /* Define transparência. */
+}
+.hero-graphic b {
+  position: absolute; /* Controla posicionamento. */
+  right: 6%; /* Ajusta posição direita. */
+  bottom: 5%; /* Ajusta posição inferior. */
+  font-size: clamp(27px,3vw,54px); /* Define o tamanho das letras. */
+  line-height: 1; /* Controla o espaçamento entre linhas. */
+  letter-spacing: -.05em; /* Ajusta espaçamento entre letras. */
+  max-width: 80%; /* Limita a largura máxima. */
+  text-shadow: 0 3px 20px #0f1c7a; /* Ajuste visual para este elemento. */
+}
+.selling-line {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-around; /* Distribui itens no eixo principal. */
+  gap: 12px; /* Define o espaço entre elementos. */
+  background: var(--lime); /* Define fundo/cor da área. */
+  font-size: 11px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  letter-spacing: .15em; /* Ajusta espaçamento entre letras. */
+  padding: 17px; /* Controla o espaço interno. */
+  text-align: center; /* Alinha o texto. */
+}
+/* Catálogo ocupa duas colunas, a cesta fica independente na lateral. */
+.catalog-layout {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: minmax(0,1fr) 340px; /* Define colunas do layout em grade. */
+  gap: 24px; /* Define o espaço entre elementos. */
+  width: min(1350px,calc(100% - 40px)); /* Define a largura. */
+  margin: 64px auto; /* Controla o espaço externo. */
+}
+.catalog-main {
+  min-width: 0; /* Limita a largura mínima. */
+}
+.catalog-intro h2,.how-title h2 {
+  font-size: clamp(30px,3.5vw,48px); /* Define o tamanho das letras. */
+  letter-spacing: -.055em; /* Ajusta espaçamento entre letras. */
+  margin: 10px 0 25px; /* Controla o espaço externo. */
+}
+.catalog-controls {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  align-items: end; /* Alinha itens no eixo transversal. */
+  gap: 20px; /* Define o espaço entre elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+  margin-bottom: 22px; /* Controla o espaço externo inferior. */
+}
+.search-label {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 7px; /* Define o espaço entre elementos. */
+  font-size: 12px; /* Define o tamanho das letras. */
+  font-weight: 800; /* Define a espessura das letras. */
+  min-width: min(340px,100%); /* Limita a largura mínima. */
+}
+.search-label input {
+  padding: 13px 16px; /* Controla o espaço interno. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+  border-radius: 12px; /* Arredonda cantos. */
+  min-width: 0; /* Limita a largura mínima. */
+  width: 100%; /* Define a largura. */
+}
+.filters {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  gap: 6px; /* Define o espaço entre elementos. */
+  flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+}
+.filters button {
+  background: white; /* Define fundo/cor da área. */
+  color: var(--ink); /* Define cor do texto. */
+  padding: 11px 13px; /* Controla o espaço interno. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+  border-radius: 12px; /* Arredonda cantos. */
+  font-size: 12px; /* Define o tamanho das letras. */
+  font-weight: 800; /* Define a espessura das letras. */
+}
+.filters button[aria-pressed=true] {
+  background: var(--blue); /* Define fundo/cor da área. */
+  border-color: var(--blue); /* Ajuste visual para este elemento. */
+  color: white; /* Define cor do texto. */
+}
+.product-grid {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: repeat(3,minmax(0,1fr)); /* Define colunas do layout em grade. */
+  gap: 15px; /* Define o espaço entre elementos. */
+}
+.product-card {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  flex-direction: column; /* Define orientação dos itens. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+  background: white; /* Define fundo/cor da área. */
+  border-radius: 19px; /* Arredonda cantos. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+  box-shadow: 0 8px 22px #1b33a008; /* Adiciona sombra ao elemento. */
+}
+.product-photo {
+  aspect-ratio: 4/3; /* Mantém proporção largura/altura. */
+  background: #e0e5ff; /* Define fundo/cor da área. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+}
+.product-photo img {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  width: 100%; /* Define a largura. */
+  height: 100%; /* Define a altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+}
+.product-copy {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  flex-direction: column; /* Define orientação dos itens. */
+  flex: 1; /* Define participação no espaço flexível. */
+  padding: 14px; /* Controla o espaço interno. */
+  gap: 6px; /* Define o espaço entre elementos. */
+}
+.product-copy small {
+  color: #6177b3; /* Define cor do texto. */
+  font-size: 10px; /* Define o tamanho das letras. */
+  letter-spacing: .12em; /* Ajusta espaçamento entre letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  text-transform: uppercase; /* Ajusta letras maiúsculas/minúsculas. */
+}
+.product-copy h3 {
+  font-size: 18px; /* Define o tamanho das letras. */
+  margin: 2px 0; /* Controla o espaço externo. */
+}
+.product-copy p {
+  color: var(--muted); /* Define cor do texto. */
+  font-size: 13px; /* Define o tamanho das letras. */
+  margin: 0; /* Controla o espaço externo. */
+}
+.product-price {
+  font-size: 21px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  color: #182c90; /* Define cor do texto. */
+  margin-top: auto; /* Controla o espaço externo superior. */
+  padding-top: 8px; /* Controla o espaço interno superior. */
+}
+.product-price span {
+  font-size: 11px; /* Define o tamanho das letras. */
+  font-weight: 500; /* Define a espessura das letras. */
+  color: var(--muted); /* Define cor do texto. */
+}
+.product-actions {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 75px 1fr; /* Define colunas do layout em grade. */
+  gap: 7px; /* Define o espaço entre elementos. */
+}
+.product-actions input {
+  min-width: 0; /* Limita a largura mínima. */
+  width: 100%; /* Define a largura. */
+  padding: 10px; /* Controla o espaço interno. */
+  border: 1px solid #cfd8ff; /* Cria e formata bordas. */
+  border-radius: 9px; /* Arredonda cantos. */
+}
+.product-actions button {
+  border: none; /* Cria e formata bordas. */
+  border-radius: 9px; /* Arredonda cantos. */
+  background: var(--blue); /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+  font-weight: 900; /* Define a espessura das letras. */
+  font-size: 13px; /* Define o tamanho das letras. */
+}
+.tiny-note {
+  font-size: 11px; /* Define o tamanho das letras. */
+  margin: 18px 0; /* Controla o espaço externo. */
+  color: var(--muted); /* Define cor do texto. */
+}
+.cart-aside {
+  background: white; /* Define fundo/cor da área. */
+  align-self: start; /* Alinha um elemento individualmente. */
+  position: sticky; /* Controla posicionamento. */
+  top: 105px; /* Ajusta posição superior. */
+  border: 2px solid #dde4ff; /* Cria e formata bordas. */
+  border-radius: 22px; /* Arredonda cantos. */
+  box-shadow: 0 20px 40px #15299c13; /* Adiciona sombra ao elemento. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+}
+.cart-top {
+  padding: 24px; /* Controla o espaço interno. */
+  background: #eaf0ff; /* Define fundo/cor da área. */
+}
+.cart-top h2 {
+  font-size: 28px; /* Define o tamanho das letras. */
+  letter-spacing: -.04em; /* Ajusta espaçamento entre letras. */
+  margin: 8px 0; /* Controla o espaço externo. */
+}
+.cart-top h2 span {
+  background: var(--blue); /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+  font-size: 15px; /* Define o tamanho das letras. */
+  padding: 5px 9px; /* Controla o espaço interno. */
+  border-radius: 9px; /* Arredonda cantos. */
+}
+.cart-top p {
+  font-size: 13px; /* Define o tamanho das letras. */
+  color: var(--muted); /* Define cor do texto. */
+  margin: 0; /* Controla o espaço externo. */
+}
+.cart-lines {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 0; /* Define o espaço entre elementos. */
+  padding: 8px 20px; /* Controla o espaço interno. */
+  max-height: 380px; /* Limita a altura máxima. */
+  overflow: auto; /* Controla conteúdo que excede limites. */
+}
+.cart-line {
+  border-bottom: 1px solid var(--line); /* Define borda inferior. */
+  padding: 14px 0; /* Controla o espaço interno. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 8px; /* Define o espaço entre elementos. */
+}
+.cart-line-head {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 8px; /* Define o espaço entre elementos. */
+  font-weight: 800; /* Define a espessura das letras. */
+}
+.cart-line small {
+  color: var(--muted); /* Define cor do texto. */
+}
+.line-actions {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  gap: 9px; /* Define o espaço entre elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+}
+.line-actions input {
+  width: 75px; /* Define a largura. */
+  min-width: 0; /* Limita a largura mínima. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+  border-radius: 8px; /* Arredonda cantos. */
+  padding: 6px; /* Controla o espaço interno. */
+}
+.line-actions button {
+  border: 0; /* Cria e formata bordas. */
+  background: transparent; /* Define fundo/cor da área. */
+  color: #b3355a; /* Define cor do texto. */
+  text-decoration: underline; /* Controla decoração do texto. */
+}
+.cart-footer {
+  padding: 18px 20px 22px; /* Controla o espaço interno. */
+}
+.total-line {
+  border-top: 1px solid var(--line); /* Define borda superior. */
+  padding-top: 15px; /* Controla o espaço interno superior. */
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 12px; /* Define o espaço entre elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+}
+.total-line strong {
+  font-size: 23px; /* Define o tamanho das letras. */
+}
+.discount-note {
+  font-size: 11px; /* Define o tamanho das letras. */
+  color: var(--muted); /* Define cor do texto. */
+  margin: 10px 0; /* Controla o espaço externo. */
+}
+.btn-send {
+  background: var(--lime); /* Define fundo/cor da área. */
+  color: #121d54; /* Define cor do texto. */
+  width: 100%; /* Define a largura. */
+  margin-top: 9px; /* Controla o espaço externo superior. */
+}
+.btn-clear {
+  background: transparent; /* Define fundo/cor da área. */
+  border: 0; /* Cria e formata bordas. */
+  color: var(--blue2); /* Define cor do texto. */
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  margin: 12px auto 0; /* Controla o espaço externo. */
+  text-decoration: underline; /* Controla decoração do texto. */
+}
+.empty {
+  color: var(--muted); /* Define cor do texto. */
+  font-style: italic; /* Define o estilo da fonte. */
+  font-size: 13px; /* Define o tamanho das letras. */
+}
+.how {
+  padding: 60px max(20px,calc((100% - 1200px)/2)); /* Controla o espaço interno. */
+  background: #e9efff; /* Define fundo/cor da área. */
+}
+.how-steps {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: repeat(3,1fr); /* Define colunas do layout em grade. */
+  gap: 16px; /* Define o espaço entre elementos. */
+}
+.how-steps article {
+  background: white; /* Define fundo/cor da área. */
+  border-radius: 16px; /* Arredonda cantos. */
+  padding: 22px; /* Controla o espaço interno. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+}
+.how-steps b {
+  color: var(--blue); /* Define cor do texto. */
+  font-size: 26px; /* Define o tamanho das letras. */
+}
+.how-steps h3 {
+  margin: 12px 0 6px; /* Controla o espaço externo. */
+}
+.how-steps p {
+  color: var(--muted); /* Define cor do texto. */
+  font-size: 14px; /* Define o tamanho das letras. */
+}
+.footer {
+  padding: 30px 26px; /* Controla o espaço interno. */
+  background: var(--blue2); /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 20px; /* Define o espaço entre elementos. */
+  flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+}
+.footer span {
+  font-size: 12px; /* Define o tamanho das letras. */
+}
+/* Em telas estreitas, cesta passa para depois do catálogo. */
+@media (max-width:1100px) {
+  .catalog-layout {
+    grid-template-columns: minmax(0,1fr) 300px; /* Define colunas do layout em grade. */
+  }
+  .product-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr)); /* Define colunas do layout em grade. */
+  }
+  .nav {
+    gap: 12px; /* Define o espaço entre elementos. */
+  }
+}
+@media (max-width:820px) {
+  .header {
+    padding: 12px 16px; /* Controla o espaço interno. */
+    flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+  }
+  .menu-toggle {
+    display: block; /* Determina o modo de distribuição dos elementos. */
+    margin-left: auto; /* Controla o espaço externo esquerdo. */
+  }
+  .nav {
+    display: none; /* Determina o modo de distribuição dos elementos. */
+    flex-basis: 100%; /* Define tamanho-base no flex. */
+    order: 9; /* Ajuste visual para este elemento. */
+    flex-direction: column; /* Define orientação dos itens. */
+    padding: 10px 0; /* Controla o espaço interno. */
+  }
+  .nav.open {
+    display: flex; /* Determina o modo de distribuição dos elementos. */
+  }
+  .nav a {
+    padding: 9px; /* Controla o espaço interno. */
+    border-bottom: 1px solid var(--line); /* Define borda inferior. */
+  }
+  .cart-chip {
+    padding: 9px 11px; /* Controla o espaço interno. */
+  }
+  .hero {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+  .hero-graphic {
+    min-height: 260px; /* Limita a altura mínima. */
+  }
+  .selling-line {
+    flex-direction: column; /* Define orientação dos itens. */
+  }
+  .catalog-layout {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+    margin: 35px auto; /* Controla o espaço externo. */
+  }
+  .cart-aside {
+    position: static; /* Controla posicionamento. */
+  }
+  .how-steps {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+}
+@media (max-width:520px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+  .product-card {
+    display: grid; /* Determina o modo de distribuição dos elementos. */
+    grid-template-columns: 115px minmax(0,1fr); /* Define colunas do layout em grade. */
+  }
+  .product-photo {
+    aspect-ratio: auto; /* Mantém proporção largura/altura. */
+    height: 100%; /* Define a altura. */
+  }
+  .product-actions {
+    grid-template-columns: 65px 1fr; /* Define colunas do layout em grade. */
+  }
+  .product-copy h3 {
+    font-size: 16px; /* Define o tamanho das letras. */
+  }
+  .catalog-layout {
+    width: calc(100% - 24px); /* Define a largura. */
+  }
+  .hero-content {
+    padding: 38px 20px; /* Controla o espaço interno. */
+  }
+  .hero-graphic b {
+    font-size: 30px; /* Define o tamanho das letras. */
+  }
+}

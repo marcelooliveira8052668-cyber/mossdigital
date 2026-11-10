@@ -1,0 +1,100 @@
+<!DOCTYPE html> <!-- Documento HTML5 sem frameworks. -->
+<html lang="pt-BR"> <!-- Idioma português do Brasil. -->
+<head> <!-- Informações invisíveis aos visitantes. -->
+  <meta charset="UTF-8"> <!-- Acentuação correta. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Visualização em celular. -->
+  <meta name="description" content="Demonstração Nature Escape para Glamping e refúgios na natureza. Projeto ilustrativo criado pela MOSS Digital."> <!-- Descrição para buscadores. -->
+  <meta name="theme-color" content="#203d32"> <!-- Cor da barra do navegador. -->
+  <title>Nature Escape | Demonstração MOSS Digital</title> <!-- Texto da aba. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- Estilos exclusivos da demo. -->
+  <script src="js/script.js" defer></script> <!-- Interações exclusivas da demo. -->
+</head>
+<body data-demo="Nature Escape" data-mode="nature"> <!-- Identificação usada pelo script. -->
+<!-- Fita mantém claro que empresa, preços e serviços são ilustrativos. -->
+<div class="announcement">Demonstração MOSS Digital · Marca e dados ilustrativos · Fotos a inserir</div>
+<!-- Cabeçalho com navegação interna e WhatsApp real autorizado. -->
+<header class="site-header"><nav class="container nav" aria-label="Navegação principal">
+ <a class="brand" href="#inicio"><span class="brand-icon" aria-hidden="true">△</span><span>Nature Escape<small>Glamping e refúgios na natureza</small></span></a> <!-- Identidade do projeto. -->
+ <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menu">☰</button> <!-- Menu para celular. -->
+ <ul id="nav-links" class="nav-links"><li><a href="#solucoes">Acomodações</a></li><li><a href="#processo">Como funciona</a></li><li><a href="#galeria">Galeria</a></li><li><a href="#orcamento">Orçamento</a></li><li><a href="#perguntas">Dúvidas</a></li></ul> <!-- Links para seções existentes. -->
+ <a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a> <!-- Contato direto. -->
+</nav></header>
+<main id="inicio"> <!-- Conteúdo principal. -->
+ <!-- CAPA: texto e espaço de imagem. Basta inserir assets/img/capa.webp para trocar o SVG. -->
+ <section class="hero"><div class="container hero-grid">
+  <div><span class="eyebrow">DESCUBRA SEU PRÓXIMO REFÚGIO</span><h1>Mais natureza. Menos pressa. Memórias para ficar.</h1><p class="lead">Apresente hospedagens de charme e permita que o visitante estime sua estadia antes de conversar com a equipe.</p><div class="actions"><a class="btn btn-dark" href="#orcamento">Solicitar informações ↗</a><a class="btn btn-secondary" href="#solucoes">Explorar acomodações</a></div></div> <!-- Texto comercial. -->
+  <div class="hero-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/capa.webp" alt="Foto principal a inserir: Domo de glamping na serra com vista natural" width="1200" height="900"><span class="image-label">FOTO DE CAPA · assets/img/capa.webp</span></div> <!-- Foto trocada automaticamente ao encontrar o arquivo. -->
+ </div></section>
+ <!-- Diferenciais: três razões resumidas para considerar os serviços. -->
+ <div class="container trust"><article class="trust-item"><span>01</span><h3>Conexão com a natureza</h3><p>Refúgios com proposta de descanso e paisagem.</p></article> <!-- Diferencial 01. -->
+<article class="trust-item"><span>02</span><h3>Experiências no ritmo certo</h3><p>Atividades e detalhes combinados previamente.</p></article> <!-- Diferencial 02. -->
+<article class="trust-item"><span>03</span><h3>Planejamento simples</h3><p>Simulação ilustrativa de noites e hóspedes.</p></article> <!-- Diferencial 03. --></div>
+ <!-- CATÁLOGO: filtros de categoria e quatro cards clicáveis. -->
+ <section id="solucoes" class="section section-white"><div class="container">
+  <div class="section-heading"><div><span class="eyebrow">NOSSA ESPECIALIDADE</span><h2>Seu lugar no meio do verde.</h2></div><p>Experiências e acomodações fictícias para demonstrar o funcionamento de uma página de hospedagem.</p></div>
+  <div class="filters" role="group" aria-label="Filtros por categoria"><button class="filter" type="button" data-filter="todos" aria-pressed="true">Tudo</button> <!-- Filtro: Tudo. -->
+<button class="filter" type="button" data-filter="acomodacoes" aria-pressed="false">Hospedagens</button> <!-- Filtro: Hospedagens. -->
+<button class="filter" type="button" data-filter="experiencias" aria-pressed="false">Experiências</button> <!-- Filtro: Experiências. --></div>
+  <div class="cards" id="service-cards"><!-- Serviço 1: imagem local substituída automaticamente quando domo-vista-verde.webp existir. -->
+<article class="card" data-category="acomodacoes">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/domo-vista-verde.webp" alt="Espaço para fotografia: Domo Vista Verde" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Domo Vista Verde</h3><p>Domo panorâmico com proposta de imersão na natureza.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Domo Vista Verde">Ver detalhes +</button></div>
+</article>
+<!-- Serviço 2: imagem local substituída automaticamente quando cabana-horizonte.webp existir. -->
+<article class="card" data-category="acomodacoes">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/cabana-horizonte.webp" alt="Espaço para fotografia: Cabana Horizonte" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Cabana Horizonte</h3><p>Cabana acolhedora com estética de refúgio serrano.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Cabana Horizonte">Ver detalhes +</button></div>
+</article>
+<!-- Serviço 3: imagem local substituída automaticamente quando trilha-guiada.webp existir. -->
+<article class="card" data-category="experiencias">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/trilha-guiada.webp" alt="Espaço para fotografia: Trilhas guiadas" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Trilhas guiadas</h3><p>Experiência de caminhada organizada com acompanhamento adequado.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Trilhas guiadas">Ver detalhes +</button></div>
+</article>
+<!-- Serviço 4: imagem local substituída automaticamente quando cafe-bosque.webp existir. -->
+<article class="card" data-category="experiencias">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/cafe-bosque.webp" alt="Espaço para fotografia: Café do Bosque" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Café do Bosque</h3><p>Momentos gastronômicos com produtos locais em cenário natural.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Café do Bosque">Ver detalhes +</button></div>
+</article></div>
+ </div></section>
+ <!-- PROCESSO: explica o atendimento sem prometer agendamento ou pagamento. -->
+ <section id="processo" class="section"><div class="container"><div class="section-heading"><div><span class="eyebrow">DO PRIMEIRO CONTATO À PROPOSTA</span><h2>Simples, transparente e organizado.</h2></div></div><div class="step-grid"><article class="step"><b>PASSO 1</b><h3>Escolha sua estadia</h3><p>Conheça as diferentes opções da vitrine.</p></article> <!-- Etapa 1. -->
+<article class="step"><b>PASSO 2</b><h3>Simule as noites</h3><p>Selecione as datas e a quantidade de hóspedes.</p></article> <!-- Etapa 2. -->
+<article class="step"><b>PASSO 3</b><h3>Solicite disponibilidade</h3><p>A equipe confirma valores e vagas reais por WhatsApp.</p></article> <!-- Etapa 3. --></div></div></section>
+ <!-- GALERIA: três imagens locais fáceis de substituir e sem links remotos. -->
+ <section id="galeria" class="section section-white"><div class="container"><div class="section-heading"><div><span class="eyebrow">CONHEÇA MAIS</span><h2>Detalhes que fazem diferença.</h2></div><p>Os espaços abaixo são reservas de fotos. Coloque seus arquivos autorizados e as imagens aparecem automaticamente.</p></div><div class="gallery"><!-- Galeria 1: adicione assets/img/deck-externo.webp para substituir a imagem de instrução. -->
+<figure><img src="assets/img/placeholder.svg" data-photo="assets/img/deck-externo.webp" alt="Foto de exemplo a substituir: Detalhe do ambiente" width="750" height="560" loading="lazy"><figcaption>Detalhe do ambiente</figcaption></figure>
+<!-- Galeria 2: adicione assets/img/interior-cabana.webp para substituir a imagem de instrução. -->
+<figure><img src="assets/img/placeholder.svg" data-photo="assets/img/interior-cabana.webp" alt="Foto de exemplo a substituir: Processo ou equipe" width="750" height="560" loading="lazy"><figcaption>Processo ou equipe</figcaption></figure>
+<!-- Galeria 3: adicione assets/img/paisagem-serra.webp para substituir a imagem de instrução. -->
+<figure><img src="assets/img/placeholder.svg" data-photo="assets/img/paisagem-serra.webp" alt="Foto de exemplo a substituir: Resultado do serviço" width="750" height="560" loading="lazy"><figcaption>Resultado do serviço</figcaption></figure></div></div></section>
+ <!-- CONTATO: as informações são transmitidas pela abertura do WhatsApp, sem banco de dados. -->
+ <section id="orcamento" class="section"><div class="container contact-grid">
+  <div><span class="eyebrow">ATENDIMENTO PERSONALIZADO</span><h2>Seu próximo descanso começa aqui.</h2><p class="lead">Simulador demonstrativo de hospedagem. Ele não confirma vaga, não reserva e não cobra.</p><p><strong>WhatsApp da demo:</strong> (11) 94203-8103</p><p class="form-note">Este site é demonstrativo. O envio não cria cadastro, não cobra pagamento e não confirma serviços.</p></div>
+  <form id="lead-form" class="form-card"><div class="form-grid"><!-- Campo Seu nome: preenchimento pelo visitante. -->
+<div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" placeholder="Como podemos chamar você?" maxlength="70" autocomplete="name" required></div>
+<!-- Campo Acomodação: preenchimento pelo visitante. -->
+<div class="field"><label for="escolha">Acomodação</label><select id="escolha" name="escolha" required><option value="">Selecione...</option><option value="domo">Domo Vista Verde</option><option value="cabana">Cabana Horizonte</option><option value="suite">Suíte Bosque</option></select></div>
+<!-- Campo Entrada desejada: preenchimento pelo visitante. -->
+<div class="field"><label for="entrada">Entrada desejada</label><input id="entrada" name="entrada" type="date" placeholder=""  required></div>
+<!-- Campo Saída desejada: preenchimento pelo visitante. -->
+<div class="field"><label for="saida">Saída desejada</label><input id="saida" name="saida" type="date" placeholder=""  required></div>
+<!-- Campo Quantidade de hóspedes: preenchimento pelo visitante. -->
+<div class="field"><label for="hospedes">Quantidade de hóspedes</label><input id="hospedes" name="hospedes" type="number" placeholder="" min="1" max="6" step="1" required></div>
+<!-- Campo Preferências da estadia: preenchimento pelo visitante. -->
+<div class="field"><label for="observacao">Preferências da estadia</label><textarea id="observacao" name="observacao" maxlength="350" placeholder="Conte sobre o tipo de experiência desejada"></textarea></div></div><p class="estimate" id="estimate" role="status" aria-live="polite">Preencha os campos para visualizar a estimativa ilustrativa.</p> <!-- Resultado atualizado pelo JavaScript. --><button class="btn btn-dark" type="submit">Enviar pedido pelo WhatsApp ↗</button><p class="form-note">Ao clicar, abre uma mensagem no WhatsApp para você revisar e enviar.</p></form>
+ </div></section>
+ <!-- DÚVIDAS: componentes nativos acessíveis via teclado, sem dependências JS. -->
+ <section class="section section-white" id="perguntas"><div class="container"><div class="faq"><span class="eyebrow">PRECISA SABER MAIS?</span><h2>Perguntas frequentes</h2><details><summary>A data fica bloqueada quando envio?</summary><p>Não. Nenhuma reserva é registrada nesta demonstração.</p></details> <!-- Pergunta frequente. -->
+<details><summary>As tarifas mostradas são reais?</summary><p>Não. São valores didáticos que precisam de confirmação.</p></details> <!-- Pergunta frequente. -->
+<details><summary>Podemos integrar uma agenda de reservas?</summary><p>Sim, com banco de dados, prevenção de sobreposição de datas e pagamento integrado depois de testes.</p></details> <!-- Pergunta frequente. --></div></div></section>
+ <!-- Convite final para conhecer o serviço. -->
+ <section class="section"><div class="container"><div class="banner"><div><h2>Uma conversa pode começar por aqui.</h2><p>Veja como a apresentação digital aproxima o negócio de seus clientes.</p></div><a class="btn" data-whatsapp href="https://wa.me/5511942038103">Falar no WhatsApp ↗</a></div></div></section>
+</main>
+<!-- Rodapé com créditos da demo e aviso para não confundir com uma empresa real. -->
+<footer><div class="container"><div class="footer-grid"><div><h3>Nature Escape</h3><p>Glamping e refúgios na natureza.</p><small>Marca demonstrativa criada para portfólio. Não representa operação empresarial real.</small></div><div><h3>Navegação</h3><p><a href="#solucoes">Serviços</a></p><p><a href="#galeria">Galeria</a></p><p><a href="#orcamento">Contato</a></p></div><div><h3>Desenvolvimento</h3><p>MOSS Digital</p><p><a href="https://www.mossdigital.com.br" target="_blank" rel="noopener noreferrer">www.mossdigital.com.br</a></p></div></div><div class="footer-bottom">© Nature Escape · Demo de portfólio · Preços, imagens e serviços ilustrativos.</div></div></footer>
+<!-- Atalho fixo de WhatsApp, com mensagem preenchida pelo JavaScript. -->
+<a class="float-wa" data-whatsapp href="https://wa.me/5511942038103" aria-label="Conversar com a MOSS Digital pelo WhatsApp" target="_blank" rel="noopener noreferrer">✆ WhatsApp</a>
+<!-- Diálogo nativo aberto pelo botão de detalhes de cada serviço. -->
+<dialog class="dialog" id="details-dialog" aria-labelledby="dialog-title"><img id="dialog-photo" src="assets/img/placeholder.svg" alt="Imagem ilustrativa do serviço"><div class="dialog-copy"><div class="dialog-head"><h2 id="dialog-title">Detalhes</h2><button class="dialog-close" id="dialog-close" type="button" aria-label="Fechar janela">×</button></div><p id="dialog-text"></p><a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103">Perguntar no WhatsApp ↗</a></div></dialog>
+</body> <!-- Final do conteúdo. -->
+</html> <!-- Final do documento. -->

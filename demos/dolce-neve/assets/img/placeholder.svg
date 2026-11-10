@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="titulo descricao">
+<title id="titulo">Espaço reservado para fotografia</title>
+<desc id="descricao">Coloque uma imagem WebP na pasta assets/img com o nome indicado no manual.</desc>
+<defs><linearGradient id="g" x2="1" y2="1"><stop offset="0" stop-color="#cbd5e1"/><stop offset="1" stop-color="#f1f5f9"/></linearGradient></defs>
+<rect width="1200" height="900" fill="url(#g)"/>
+<g font-family="Arial,sans-serif" fill="#475569" text-anchor="middle"><text x="600" y="420" font-size="48" font-weight="bold">FOTO A INSERIR</text><text x="600" y="480" font-size="28">Nome e enquadramento indicados no manual</text><text x="600" y="540" font-size="25">MOSS DIGITAL</text></g>
+</svg>

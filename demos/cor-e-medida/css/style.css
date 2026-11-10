@@ -1,0 +1,76 @@
+/* Regras básicas exclusivas desta demo, sem bibliotecas externas. */
+*, *::before, *::after { box-sizing: border-box; } /* Mantém dimensões previsíveis. */
+html { scroll-behavior: smooth; } /* Rolagem suave até as seções. */
+body { margin: 0; } /* Remove a margem padrão. */
+a { color: inherit; text-decoration: none; } /* Herda cor da marca. */
+button, input, select, textarea { font: inherit; } /* Usa a mesma tipografia. */
+button { cursor: pointer; } /* Indica botões clicáveis. */
+img { display: block; max-width: 100%; } /* Impede imagens maiores que o espaço. */
+[hidden] { display: none !important; } /* Respeita ocultação de itens. */
+:focus-visible { outline: 3px solid #faab36; outline-offset: 3px; } /* Acesso por teclado. */
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } } /* Reduz movimento se necessário. */
+
+/* Estilo gráfico inspirado em cartelas de cores de loja de tintas, não em loja genérica. */
+:root { --papel:#f7f6f2; --navy:#213e4b; --texto:#293a40; --muted:#6f7d7f; --linha:#dfe5e3; --laranja:#e98c59; --cor:#d8c8ac; } /* Design tokens. */
+body { background:var(--papel); color:var(--texto); font-family:Arial,Helvetica,sans-serif; } /* Interface suave. */
+.topo { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:22px clamp(18px,4vw,70px); background:white; border-bottom:1px solid var(--linha); position:sticky; top:0; z-index:15; } /* Menu superior. */
+.marca { display:flex; align-items:center; gap:8px; font-size:clamp(1rem,2.2vw,1.4rem); font-weight:700; color:var(--navy); } /* Logotipo tipográfico. */
+.marca strong { color:#bd6a3f; } /* Distinção de nome. */
+.marca small { display:none; } /* Legenda dispensável no menu. */
+.quadrado { width:25px; height:25px; background:linear-gradient(135deg,#e98c59 0 50%,#68a3a0 50%); border-radius:4px; } /* Marca em duas cores. */
+.nav { display:flex; align-items:center; gap:clamp(10px,2vw,26px); font-size:.84rem; font-weight:700; } /* Navegação. */
+.fale { color:#b65e33; } /* Canal de contato. */
+.menu-btn { display:none; padding:10px; background:white; border:1px solid var(--linha); border-radius:8px; } /* Botão móvel. */
+.abertura { display:grid; grid-template-columns:1.07fr .93fr; gap:35px; align-items:center; padding:clamp(45px,6vw,90px) clamp(18px,5vw,84px); } /* Abertura com mockup geométrico. */
+.sobretitulo { font-size:.72rem; color:#b95d34; letter-spacing:.17em; font-weight:900; } /* Etiqueta de seção. */
+h1 { font-size:clamp(2.8rem,5.5vw,5.9rem); letter-spacing:-.065em; line-height:1.03; margin:17px 0; } /* Título grande. */
+h1 em { color:#c16f45; font-style:normal; } /* Destaque. */
+.apresentacao p { max-width:650px; line-height:1.7; font-size:1.06rem; color:var(--muted); } /* Descrição. */
+.botao { display:inline-flex; justify-content:center; align-items:center; padding:15px 23px; color:white; background:var(--navy); border:0; border-radius:7px; font-weight:800; } /* Ação principal. */
+.destaques { display:flex; flex-wrap:wrap; gap:9px; margin-top:33px; } /* Chips de benefícios. */
+.destaques span { background:#e6edea; padding:10px 12px; font-size:.75rem; border-radius:5px; } /* Benefício curto. */
+.quadro-cor { padding:12px; background:white; border:1px solid var(--linha); box-shadow:18px 18px 0 #e8e0d8; border-radius:12px; } /* Prancha de cor. */
+.parede { background:var(--cor); min-height:385px; position:relative; transition:background .3s ease; border-radius:6px; overflow:hidden; box-shadow:inset 0 -28px #b9aa8d40; } /* Ambiente de exemplo. */
+.janela { position:absolute; width:34%; height:43%; top:18%; left:14%; border:13px solid white; background:linear-gradient(135deg,#c9e7ef,#7fb0c4); box-shadow:7px 10px 0 #00000010; } /* Desenho de janela. */
+.porta { position:absolute; width:26%; height:72%; bottom:0; right:13%; border:12px solid #faf7ef; border-bottom:0; background:#9b7963; } /* Desenho de porta. */
+.parede>span { position:absolute; bottom:19px; left:20px; font-weight:900; background:#ffffffd9; padding:9px 13px; border-radius:6px; } /* Nome da cor. */
+.quadro-legenda { font-size:.67rem; font-weight:800; letter-spacing:.12em; color:var(--muted); padding:14px 4px 5px; } /* Legenda. */
+.paleta { padding:38px clamp(18px,5vw,84px); background:white; display:flex; justify-content:space-between; align-items:center; gap:35px; } /* Cartela de cores. */
+.paleta h2,.calc-cabecalho h2,.orientacoes h2 { font-size:clamp(1.9rem,3.7vw,3.3rem); letter-spacing:-.04em; margin:10px 0; } /* Títulos. */
+.amostras { display:flex; flex-wrap:wrap; gap:10px; } /* Botões de cor. */
+.amostras button { display:grid; justify-items:center; gap:7px; background:white; border:2px solid transparent; border-radius:12px; font-size:.69rem; color:var(--texto); padding:9px; } /* Cartelas. */
+.amostras button[aria-pressed="true"] { border-color:var(--navy); } /* Seleção visível. */
+.amostras i { display:block; width:55px; height:55px; border-radius:8px; box-shadow:inset 0 0 0 1px #00000012; } /* Amostra de cor. */
+.calc-area { padding:70px clamp(18px,5vw,84px); } /* Ferramenta de cálculo. */
+.calc-cabecalho { max-width:750px; margin-bottom:25px; } /* Introdução. */
+.calc-cabecalho p { line-height:1.6; color:var(--muted); } /* Explicação de premissas. */
+.calc-grade { display:grid; grid-template-columns:1.3fr .7fr; gap:20px; align-items:start; } /* Fórmula + resultado. */
+.calc-form,.resultado { border:1px solid var(--linha); background:white; padding:clamp(18px,3vw,32px); border-radius:12px; } /* Cartas principais. */
+.input-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; } /* Duas colunas de medidas. */
+.input-grid label { display:grid; gap:8px; font-size:.8rem; font-weight:800; } /* Rótulos. */
+.input-grid input,.input-grid select { padding:13px; width:100%; border:1px solid #cfd9d9; border-radius:7px; background:#fcfdfd; } /* Campos. */
+.nota-form { color:var(--muted); font-size:.8rem; line-height:1.55; margin:22px 0; } /* Premissas. */
+.erro { color:#b74a30; font-weight:800; font-size:.82rem; } /* Validação. */
+.resultado { background:var(--navy); color:white; } /* Painel contrastante. */
+.result-header { display:flex; justify-content:space-between; font-size:.7rem; letter-spacing:.1em; color:#b5c9d0; font-weight:700; } /* Identificação. */
+.resultado>strong { display:block; font-size:clamp(2.4rem,4vw,4rem); letter-spacing:-.065em; margin:20px 0 4px; } /* Área líquida. */
+.resultado>small { color:#b5c9d0; } /* Unidade. */
+.barra-progresso { width:100%; background:#365767; height:11px; border-radius:99px; overflow:hidden; margin:28px 0; } /* Fundo da barra. */
+.barra-preenchida { width:50%; height:100%; background:var(--laranja); transition:width .2s; } /* Preenchimento por estimativa. */
+.metricas { display:grid; grid-template-columns:1fr 1fr; gap:13px; } /* Métricas lado a lado. */
+.metricas div { display:grid; gap:8px; } /* Valor e rótulo. */
+.metricas span { color:#c1d0d6; font-size:.72rem; } /* Etiqueta. */
+.metricas strong { font-size:1.7rem; } /* Valor. */
+.custo { display:grid; gap:8px; border-top:1px solid #496373; margin-top:22px; padding-top:18px; } /* Preço didático. */
+.custo span { color:#c0d0d5; font-size:.75rem; } /* Nota de valor. */
+.custo strong { font-size:1.9rem; } /* Subtotal. */
+.resultado>p { color:#d5e2e6; font-size:.85rem; } /* Cor selecionada. */
+.botao.invertido { width:100%; background:#ffbd82; color:#253944; } /* Botão de orçamento. */
+.orientacoes { padding:65px clamp(18px,5vw,84px); background:#e5ece8; display:grid; grid-template-columns:.8fr 1.2fr; gap:35px; } /* Dicas práticas. */
+.orientacoes p { line-height:1.6; color:var(--muted); } /* Apresentação. */
+.orientacao-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; } /* Pequenos passos. */
+.orientacao-cards article { background:white; border-radius:10px; padding:20px; } /* Card de orientação. */
+.orientacao-cards strong { color:#bf7248; } /* Número. */
+.rodape { padding:24px; background:var(--navy); color:white; text-align:center; line-height:1.6; } /* Rodapé. */
+@media(max-width:1000px) { .abertura,.calc-grade,.orientacoes{grid-template-columns:1fr}.paleta{display:block}.amostras{margin-top:16px}.nav{display:none;position:absolute;top:100%;left:12px;right:12px;background:white;flex-direction:column;padding:18px;border:1px solid var(--linha)}.nav.aberto{display:flex}.menu-btn{display:block} } /* Tablet. */
+@media(max-width:550px) { .input-grid,.orientacao-cards{grid-template-columns:1fr}.parede{min-height:280px}.quadro-cor{box-shadow:9px 9px 0 #e8e0d8}.amostras i{width:42px;height:42px}.abertura{padding:35px 18px} } /* Celular. */

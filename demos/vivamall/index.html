@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Configurações para acentuação, responsividade e identificação do site. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ff6b3a">
+  <meta name="description" content="VivaMall: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.">
+  <title>VivaMall | Demo de loja MOSS Digital</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body id="inicio" data-site="VivaMall">
+<!-- Barra informativa: site demonstrativo, com produtos e valores fictícios. -->
+<div class="announcement">PROJETO DEMONSTRATIVO · Produtos, imagens e preços ilustrativos · Pedidos por WhatsApp</div>
+
+<header class="topbar"><div class="container nav-row"><a href="#inicio" class="brand" aria-label="Página inicial VivaMall"><span class="brand-mark">✳</span><span>VivaMall</span></a><button class="nav-toggle" aria-controls="menu-links" aria-expanded="false" type="button">☰</button><nav class="nav-links" id="menu-links"><a href="#ofertas">Ofertas</a><a href="#catalogo">Categorias</a><a href="#vantagens">Como comprar</a></nav><div class="nav-actions"><button class="icon-btn" id="open-cart" type="button" aria-label="Abrir carrinho">🛒 <span class="cart-count">0</span></button></div></div></header>
+<main><section class="hero container"><div class="hero-copy"><span class="eyebrow">OFERTAS DE TODO DIA · VITRINE MULTICATEGORIA</span><h1>Achados que <em>alegram</em> seu carrinho.</h1><p>Seu bazar digital com categorias rápidas, seleção simples e atendimento humano pelo WhatsApp.</p><a class="btn btn-white" href="#catalogo">Explorar produtos ↗</a><div class="hero-benefits"><span>✦ Vitrine por temas</span><span>✦ Compras sem complicação</span></div></div><div class="hero-art"><img src="assets/img/hero.svg" alt="Ilustração conceitual de uma vitrine de produtos"/><div class="floating-note">★ Favoritos da semana<br><strong>Escolha seu estilo</strong></div></div></section>
+<section class="category-strip container" aria-label="Atalhos de categoria"><span>DESCUBRA POR TEMA</span><div class="category-shortcuts" id="category-shortcuts"></div></section>
+<section class="container specials" id="ofertas"><div class="section-heading"><div><span class="eyebrow">SELEÇÃO ESPECIAL</span><h2>Boa ideia de compra.</h2></div><a href="#catalogo" class="text-link">Ver tudo ↗</a></div><div class="promo-grid"><article class="promo-feature"><span>VIVA SEU ESPAÇO</span><h3>Pequenos detalhes.<br>Grandes mudanças.</h3><p>Presentes, casa, tecnologia e muito mais.</p><a href="#catalogo" class="btn btn-dark">Ver coleção →</a></article><article class="promo-mini"><span>DESTAQUES DO CATÁLOGO</span><h3>Escolha com calma.</h3><p>Encontre produtos por categoria e envie a lista para a loja.</p><div class="mini-circles"><b>🛍️</b><b>🎧</b><b>☕</b></div></article></div></section>
+<section class="container catalog" id="catalogo"><div class="section-heading"><div><span class="eyebrow">O QUE VOCÊ PROCURA?</span><h2>Uma loja. Muitas descobertas.</h2></div><label class="search-control"><span class="sr-only">Buscar produtos</span><input type="search" id="product-search" placeholder="Buscar um achado..." autocomplete="off"/></label></div><div class="filter-row" id="filter-row"></div><div class="products-grid stagger" id="products-grid"></div><p class="empty" id="empty-msg" hidden>Nenhum produto encontrado. Tente outra busca.</p></section>
+<section class="container trust-bar" id="vantagens"><div><b>01</b><strong>Escolha seus produtos</strong><p>Busque e adicione ao carrinho.</p></div><div><b>02</b><strong>Revise a quantidade</strong><p>Ajuste a lista antes de enviar.</p></div><div><b>03</b><strong>Converse com a loja</strong><p>Confirme valores e disponibilidade pelo WhatsApp.</p></div></section></main>
+
+<!-- Gaveta de carrinho: todas as informações permanecem neste navegador. -->
+<div class="overlay" id="drawer-overlay" hidden></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Carrinho de cotação" aria-hidden="true">
+ <div class="drawer-head"><div><span class="eyebrow">SELEÇÃO DE PRODUTOS</span><h2>Minha lista</h2></div><button id="close-cart" class="close-btn" type="button" aria-label="Fechar carrinho">×</button></div>
+ <div id="cart-items" class="cart-items"><p>Seu carrinho está vazio.</p></div>
+ <div class="drawer-bottom"><div class="cart-total"><span>Total estimado</span><strong id="cart-total">R$ 0,00</strong></div><p>Não realiza pagamento. A loja confirma estoque, frete e valores.</p><a id="checkout-link" class="btn btn-checkout" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511942038103">Enviar pedido pelo WhatsApp ↗</a></div>
+</aside>
+<!-- Janela de informações. -->
+<dialog id="product-dialog" class="product-dialog"><button id="close-dialog" type="button" class="close-btn" aria-label="Fechar detalhes">×</button><div id="dialog-content"></div></dialog>
+
+<!-- Rodapé de transparência comercial. -->
+<footer class="footer"><div><strong>VivaMall</strong><span> · Vitrine demonstrativa criada pela MOSS Digital</span></div><p>Valores ilustrativos. Sem estoque confirmado, pagamento ou entrega automática.</p><a href="#inicio">Voltar ao início ↑</a></footer>
+<!-- Área de anúncios acessíveis para ações do usuário. -->
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

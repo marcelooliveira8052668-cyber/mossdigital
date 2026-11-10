@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- Interface administrativa sem back-end. -->
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Painel demonstrativo de ordens de servi&ccedil;o para assist&ecirc;ncia de eletrodom&eacute;sticos, sem servidor." name="description"/>
+  <title>
+   OrdemFix | Painel de ordens de servi&ccedil;o
+  </title>
+  <!-- Arquivo de estilos da demo. -->
+  <link href="css/style.css" rel="stylesheet"/>
+  <!-- Script JavaScript da demo. -->
+  <script defer="" src="js/script.js">
+  </script>
+ </head>
+ <body>
+  <div class="app">
+   <aside class="sidebar">
+    <a class="brand" href="#inicio">
+     ⬡ OrdemFix
+     <small>
+      DEMO DE GEST&Atilde;O
+     </small>
+    </a>
+    <div class="nav-links">
+     <a class="active" href="#inicio">
+      ▦ Vis&atilde;o geral
+     </a>
+     <a href="#lista">
+      ☷ Ordens de servi&ccedil;o
+     </a>
+     <a href="#novo">
+      ＋ Nova OS
+     </a>
+     <a href="#ajuda">
+      ⓘ Integra&ccedil;&otilde;es
+     </a>
+    </div>
+    <div class="sidebar-foot">
+     MOSS DIGITAL
+     <br/>
+     <small>
+      Prot&oacute;tipo local, sem servidor
+     </small>
+    </div>
+   </aside>
+   <!-- Início do conteúdo principal. -->
+   <main class="main" id="inicio">
+    <!-- Cabeçalho e acesso rápido aos serviços. -->
+    <header class="topbar">
+     <div>
+      <span class="eyebrow">
+       PAINEL OPERACIONAL
+      </span>
+      <h1>
+       Bem-vindo ao seu dia de trabalho.
+      </h1>
+     </div>
+     <a class="button primary" href="#novo">
+      + Abrir ordem
+     </a>
+    </header>
+    <div class="warning">
+     <strong>
+      Ambiente de demonstra&ccedil;&atilde;o:
+     </strong>
+     registros ficam somente neste navegador (localStorage). N&atilde;o coloque dados reais de clientes. Sem backup, sincroniza&ccedil;&atilde;o, login ou envio autom&aacute;tico.
+    </div>
+    <!-- Seção de conteúdo do projeto. -->
+    <section class="kpis">
+     <!-- Bloco de serviço, produto ou informação. -->
+     <article>
+      <span>
+       Ordens cadastradas
+      </span>
+      <strong id="count-all">
+       0
+      </strong>
+     </article>
+     <!-- Bloco de serviço, produto ou informação. -->
+     <article>
+      <span>
+       Em aberto
+      </span>
+      <strong id="count-open">
+       0
+      </strong>
+     </article>
+     <!-- Bloco de serviço, produto ou informação. -->
+     <article>
+      <span>
+       Em andamento
+      </span>
+      <strong id="count-progress">
+       0
+      </strong>
+     </article>
+     <!-- Bloco de serviço, produto ou informação. -->
+     <article>
+      <span>
+       Finalizadas
+      </span>
+      <strong id="count-done">
+       0
+      </strong>
+     </article>
+    </section>
+    <!-- Seção de conteúdo do projeto. -->
+    <section class="workspace">
+     <div class="left-pane" id="lista">
+      <div class="pane-head">
+       <div>
+        <span class="eyebrow">
+         CONTROLE
+        </span>
+        <h2>
+         Ordens de servi&ccedil;o
+        </h2>
+       </div>
+       <button class="button secondary" id="export" type="button">
+        Exportar CSV
+       </button>
+      </div>
+      <div class="toolbar">
+       <label>
+        <span class="sr-only">
+         Pesquisar ordens
+        </span>
+        <input id="search" placeholder="Buscar equipamento ou servi&ccedil;o..."/>
+       </label>
+       <label>
+        <span class="sr-only">
+         Filtrar status
+        </span>
+        <select id="status-filter">
+         <option value="todos">
+          Todos os status
+         </option>
+         <option value="aberto">
+          Aberto
+         </option>
+         <option value="andamento">
+          Em andamento
+         </option>
+         <option value="concluido">
+          Conclu&iacute;do
+         </option>
+        </select>
+       </label>
+      </div>
+      <div aria-live="polite" class="orders" id="orders">
+      </div>
+     </div>
+     <div class="right-pane" id="novo">
+      <span class="eyebrow">
+       NOVA OS
+      </span>
+      <h2>
+       Registrar atendimento
+      </h2>
+      <p>
+       Use apenas nomes fict&iacute;cios e descri&ccedil;&otilde;es de demonstra&ccedil;&atilde;o.
+      </p>
+      <!-- Formulário funcional com saída para WhatsApp ou cadastro local. -->
+      <form id="os-form">
+       <label>
+        Equipamento
+        <input maxlength="70" name="equipamento" placeholder="Ex.: m&aacute;quina de lavar" required=""/>
+       </label>
+       <label>
+        Tipo de servi&ccedil;o
+        <select name="servico" required="">
+         <option value="">
+          Escolha
+         </option>
+         <option>
+          Avalia&ccedil;&atilde;o
+         </option>
+         <option>
+          Revis&atilde;o
+         </option>
+         <option>
+          Manuten&ccedil;&atilde;o
+         </option>
+         <option>
+          Instala&ccedil;&atilde;o
+         </option>
+        </select>
+       </label>
+       <label>
+        Prioridade
+        <select name="prioridade">
+         <option value="normal">
+          Normal
+         </option>
+         <option value="alta">
+          Alta
+         </option>
+        </select>
+       </label>
+       <label>
+        Valor estimado (R$)
+        <input max="999999" min="0" name="valor" step="0.01" type="number" value="0"/>
+       </label>
+       <label>
+        Descri&ccedil;&atilde;o / defeito
+        <textarea maxlength="240" name="descricao" placeholder="Ex.: ru&iacute;do durante o funcionamento"></textarea>
+       </label>
+       <button class="button primary full" type="submit">
+        Cadastrar OS
+       </button>
+      </form>
+     </div>
+    </section>
+    <!-- Seção de conteúdo do projeto. -->
+    <section class="learning" id="ajuda">
+     <div>
+      <span class="eyebrow">
+       EVOLU&Ccedil;&Atilde;O PROFISSIONAL
+      </span>
+      <h2>
+       O que falta para um sistema real?
+      </h2>
+      <p>
+       Login, Supabase com permiss&otilde;es, backups, armazenamento de fotos, hist&oacute;rico, relat&oacute;rios, emiss&atilde;o de documentos e integra&ccedil;&otilde;es financeiras seguras. Veja o arquivo
+       <code>
+        INTEGRACOES.md
+       </code>
+       .
+      </p>
+     </div>
+     <a class="button secondary" href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20vi%20a%20demo%20OrdemFix%20e%20quero%20um%20sistema%20com%20banco%20de%20dados." rel="noopener" target="_blank">
+      Solicitar solu&ccedil;&atilde;o &nearrow;
+     </a>
+    </section>
+    <!-- Informações finais da demo. -->
+    <footer>
+     OrdemFix &bull; Prot&oacute;tipo demonstrativo MOSS Digital &bull; Sem dados reais de clientes
+    </footer>
+   </main>
+  </div>
+ </body>
+</html>

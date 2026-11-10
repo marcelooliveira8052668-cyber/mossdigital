@@ -1,0 +1,635 @@
+/* TOLDOFORMA — arquitetura solar, cores quentes e assistente de orçamento por etapas. */
+:root {
+  --navy: #143e50; /* Cor personalizada reutilizável. */
+  --sky: #d8f0f1; /* Cor personalizada reutilizável. */
+  --sand: #f5eee1; /* Cor personalizada reutilizável. */
+  --paper: #fffdf8; /* Cor personalizada reutilizável. */
+  --yellow: #f7cc58; /* Cor personalizada reutilizável. */
+  --ink: #193441; /* Cor personalizada reutilizável. */
+  --muted: #61737c; /* Cor personalizada reutilizável. */
+  --line: #dbe1df; /* Cor personalizada reutilizável. */
+}
+* {
+  box-sizing: border-box; /* Inclui bordas e padding no tamanho calculado. */
+}
+html {
+  scroll-behavior: smooth; /* Controla suavidade de rolagem. */
+}
+body {
+  margin: 0; /* Controla o espaço externo. */
+  background: var(--paper); /* Define fundo/cor da área. */
+  color: var(--ink); /* Define cor do texto. */
+  font: 16px/1.5 Arial,sans-serif; /* Configura fonte e espaçamento de linha. */
+}
+a {
+  text-decoration: none; /* Controla decoração do texto. */
+  color: inherit; /* Define cor do texto. */
+}
+button,input,select {
+  font: inherit; /* Configura fonte e espaçamento de linha. */
+}
+button {
+  cursor: pointer; /* Define formato do ponteiro. */
+}
+img {
+  max-width: 100%; /* Limita a largura máxima. */
+}
+h1,h2,h3,p {
+  margin-top: 0; /* Controla o espaço externo superior. */
+}
+.demo-strip {
+  background: var(--navy); /* Define fundo/cor da área. */
+  color: #eafaf8; /* Define cor do texto. */
+  text-align: center; /* Alinha o texto. */
+  padding: 7px 10px; /* Controla o espaço interno. */
+  letter-spacing: .1em; /* Ajusta espaçamento entre letras. */
+  font-size: 10px; /* Define o tamanho das letras. */
+}
+.header {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 22px; /* Define o espaço entre elementos. */
+  padding: 20px clamp(20px,4vw,58px); /* Controla o espaço interno. */
+  background: var(--paper); /* Define fundo/cor da área. */
+}
+.brand {
+  font-weight: 900; /* Define a espessura das letras. */
+  font-size: 25px; /* Define o tamanho das letras. */
+  letter-spacing: -.07em; /* Ajusta espaçamento entre letras. */
+  line-height: 1; /* Controla o espaçamento entre linhas. */
+}
+.brand span:not(.brand-mark) {
+  color: #da9a26; /* Define cor do texto. */
+}
+.brand small {
+  display: block; /* Determina o modo de distribuição dos elementos. */
+  letter-spacing: .12em; /* Ajusta espaçamento entre letras. */
+  font-size: 9px; /* Define o tamanho das letras. */
+  color: #536973; /* Define cor do texto. */
+  margin: 7px 0 0 32px; /* Controla o espaço externo. */
+}
+.brand-mark {
+  font-size: 30px; /* Define o tamanho das letras. */
+  color: var(--navy); /* Define cor do texto. */
+  margin-right: 7px; /* Controla o espaço externo direito. */
+}
+.nav {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  gap: 23px; /* Define o espaço entre elementos. */
+  font-size: 13px; /* Define o tamanho das letras. */
+  font-weight: 800; /* Define a espessura das letras. */
+}
+.top-cta {
+  background: var(--yellow); /* Define fundo/cor da área. */
+  padding: 13px 16px; /* Controla o espaço interno. */
+  border-radius: 2px; /* Arredonda cantos. */
+  font-size: 13px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  white-space: nowrap; /* Controla quebras de texto. */
+}
+.menu-toggle {
+  display: none; /* Determina o modo de distribuição dos elementos. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+  background: #fff; /* Define fundo/cor da área. */
+  padding: 10px; /* Controla o espaço interno. */
+}
+/* Hero com título ocupando quase toda a largura e foto panorâmica abaixo. */
+.content {
+  max-width: 1210px; /* Limita a largura máxima. */
+  margin: auto; /* Controla o espaço externo. */
+  padding-left: 24px; /* Controla o espaço interno esquerdo. */
+  padding-right: 24px; /* Controla o espaço interno direito. */
+}
+.intro {
+  background: var(--sand); /* Define fundo/cor da área. */
+}
+.intro-header {
+  max-width: 1250px; /* Limita a largura máxima. */
+  margin: auto; /* Controla o espaço externo. */
+  padding: 75px 24px 40px; /* Controla o espaço interno. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: minmax(0,1.8fr) minmax(0,.6fr); /* Define colunas do layout em grade. */
+  gap: 38px; /* Define o espaço entre elementos. */
+  align-items: end; /* Alinha itens no eixo transversal. */
+}
+.eyebrow {
+  font-size: 10px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  letter-spacing: .2em; /* Ajusta espaçamento entre letras. */
+  color: #be8b24; /* Define cor do texto. */
+}
+h1,h2,h3 {
+  letter-spacing: -.045em; /* Ajusta espaçamento entre letras. */
+}
+h1 {
+  font-size: clamp(43px,5.7vw,84px); /* Define o tamanho das letras. */
+  max-width: 890px; /* Limita a largura máxima. */
+  line-height: 1.03; /* Controla o espaçamento entre linhas. */
+  margin: 13px 0 0; /* Controla o espaço externo. */
+}
+.intro-aside p {
+  font-size: 15px; /* Define o tamanho das letras. */
+  color: var(--muted); /* Define cor do texto. */
+}
+.intro-aside a {
+  font-weight: 900; /* Define a espessura das letras. */
+  border-bottom: 2px solid var(--yellow); /* Define borda inferior. */
+  padding-bottom: 6px; /* Controla o espaço interno inferior. */
+  display: inline-flex; /* Determina o modo de distribuição dos elementos. */
+  gap: 18px; /* Define o espaço entre elementos. */
+}
+.intro-image {
+  height: clamp(300px,42vw,590px); /* Define a altura. */
+  position: relative; /* Controla posicionamento. */
+  background: #afcace; /* Define fundo/cor da área. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+}
+.intro-image img {
+  width: 100%; /* Define a largura. */
+  height: 100%; /* Define a altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+  display: block; /* Determina o modo de distribuição dos elementos. */
+}
+.intro-image>span {
+  position: absolute; /* Controla posicionamento. */
+  bottom: 18px; /* Ajusta posição inferior. */
+  left: 25px; /* Ajusta posição esquerda. */
+  background: #ffffffe6; /* Define fundo/cor da área. */
+  padding: 8px 12px; /* Controla o espaço interno. */
+  font-size: 11px; /* Define o tamanho das letras. */
+}
+.image-badge {
+  position: absolute; /* Controla posicionamento. */
+  right: 30px; /* Ajusta posição direita. */
+  top: 24px; /* Ajusta posição superior. */
+  padding: 17px 22px; /* Controla o espaço interno. */
+  background: var(--yellow); /* Define fundo/cor da área. */
+  color: var(--navy); /* Define cor do texto. */
+  font-size: 11px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  letter-spacing: .13em; /* Ajusta espaçamento entre letras. */
+  transform: rotate(2deg); /* Aplica transformação visual. */
+}
+/* Apresentação de serviços com filas numeradas em vez de cards iguais. */
+.solutions {
+  padding-top: 78px; /* Controla o espaço interno superior. */
+  padding-bottom: 80px; /* Controla o espaço interno inferior. */
+}
+.section-head h2,.quote-header h2,.project-caption h2,.final-contact h2 {
+  font-size: clamp(33px,4.2vw,56px); /* Define o tamanho das letras. */
+  line-height: 1.08; /* Controla o espaçamento entre linhas. */
+  margin: 10px 0 28px; /* Controla o espaço externo. */
+}
+.solution-list {
+  border-top: 1px solid var(--line); /* Define borda superior. */
+}
+.solution {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 55px 220px minmax(0,1fr) auto; /* Define colunas do layout em grade. */
+  gap: 25px; /* Define o espaço entre elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  border-bottom: 1px solid var(--line); /* Define borda inferior. */
+  padding: 15px 0; /* Controla o espaço interno. */
+}
+.index {
+  font-size: 13px; /* Define o tamanho das letras. */
+  letter-spacing: .12em; /* Ajusta espaçamento entre letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  color: #b28936; /* Define cor do texto. */
+}
+.solution .photo {
+  height: 135px; /* Define a altura. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+  background: #d0e1e2; /* Define fundo/cor da área. */
+}
+.solution img {
+  width: 100%; /* Define a largura. */
+  height: 100%; /* Define a altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+  display: block; /* Determina o modo de distribuição dos elementos. */
+}
+.solution h3 {
+  font-size: 28px; /* Define o tamanho das letras. */
+  margin: 0 0 9px; /* Controla o espaço externo. */
+}
+.solution p {
+  color: var(--muted); /* Define cor do texto. */
+  margin: 0; /* Controla o espaço externo. */
+}
+.solution button {
+  border: 1px solid var(--navy); /* Cria e formata bordas. */
+  background: transparent; /* Define fundo/cor da área. */
+  padding: 12px 15px; /* Controla o espaço interno. */
+  white-space: nowrap; /* Controla quebras de texto. */
+  color: var(--navy); /* Define cor do texto. */
+  font-weight: 900; /* Define a espessura das letras. */
+}
+/* Mosaico editorial de projetos. */
+.projects {
+  background: var(--sky); /* Define fundo/cor da área. */
+  padding: 75px 0; /* Controla o espaço interno. */
+}
+.project-grid {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: .85fr 1fr 1fr; /* Define colunas do layout em grade. */
+  gap: 18px; /* Define o espaço entre elementos. */
+  align-items: stretch; /* Alinha itens no eixo transversal. */
+}
+.project-caption {
+  align-self: center; /* Alinha um elemento individualmente. */
+  padding-right: 20px; /* Controla o espaço interno direito. */
+}
+.project-caption p {
+  color: var(--muted); /* Define cor do texto. */
+}
+.project-grid figure {
+  margin: 0; /* Controla o espaço externo. */
+  position: relative; /* Controla posicionamento. */
+  background: #b1cbd0; /* Define fundo/cor da área. */
+  height: 350px; /* Define a altura. */
+  overflow: hidden; /* Controla conteúdo que excede limites. */
+}
+.project-grid img {
+  width: 100%; /* Define a largura. */
+  height: 100%; /* Define a altura. */
+  object-fit: cover; /* Encaixa a foto no espaço sem deformar. */
+  display: block; /* Determina o modo de distribuição dos elementos. */
+}
+.project-grid figcaption {
+  position: absolute; /* Controla posicionamento. */
+  bottom: 0; /* Ajusta posição inferior. */
+  left: 0; /* Ajusta posição esquerda. */
+  right: 0; /* Ajusta posição direita. */
+  background: linear-gradient(transparent,#113444b0); /* Define fundo/cor da área. */
+  padding: 36px 17px 16px; /* Controla o espaço interno. */
+  color: white; /* Define cor do texto. */
+  font-weight: 800; /* Define a espessura das letras. */
+}
+/* Assistente com navegação em trilho vertical, três telas independentes. */
+.quote {
+  background: #173f50; /* Define fundo/cor da área. */
+  padding: 78px 0; /* Controla o espaço interno. */
+  color: white; /* Define cor do texto. */
+}
+.quote-header {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  align-items: end; /* Alinha itens no eixo transversal. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 38px; /* Define o espaço entre elementos. */
+  margin-bottom: 30px; /* Controla o espaço externo inferior. */
+}
+.quote-header h2 {
+  margin-bottom: 0; /* Controla o espaço externo inferior. */
+}
+.quote-header p {
+  color: #c0dce1; /* Define cor do texto. */
+  max-width: 375px; /* Limita a largura máxima. */
+}
+.wizard {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 285px minmax(0,1fr); /* Define colunas do layout em grade. */
+  background: white; /* Define fundo/cor da área. */
+  color: var(--ink); /* Define cor do texto. */
+  min-height: 450px; /* Limita a altura mínima. */
+}
+.wizard-rail {
+  background: #e2f1f1; /* Define fundo/cor da área. */
+  padding: 27px; /* Controla o espaço interno. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  align-content: start; /* Distribui blocos na área disponível. */
+  gap: 8px; /* Define o espaço entre elementos. */
+}
+.step {
+  padding: 13px 10px; /* Controla o espaço interno. */
+  text-align: left; /* Alinha o texto. */
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  gap: 14px; /* Define o espaço entre elementos. */
+  background: transparent; /* Define fundo/cor da área. */
+  border: none; /* Cria e formata bordas. */
+  color: #657c83; /* Define cor do texto. */
+}
+.step span {
+  width: 38px; /* Define a largura. */
+  height: 38px; /* Define a altura. */
+  border-radius: 50%; /* Arredonda cantos. */
+  border: 1px solid #a2b8bb; /* Cria e formata bordas. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  place-items: center; /* Ajuste visual para este elemento. */
+  font-size: 11px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+}
+.step b {
+  font-size: 13px; /* Define o tamanho das letras. */
+}
+.step.active {
+  color: var(--navy); /* Define cor do texto. */
+}
+.step.active span {
+  background: var(--navy); /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+}
+.wizard-rail-note {
+  margin-top: 30px; /* Controla o espaço externo superior. */
+  border-top: 1px solid #bed2d4; /* Define borda superior. */
+  padding-top: 18px; /* Controla o espaço interno superior. */
+  color: #5e7880; /* Define cor do texto. */
+  font-size: 12px; /* Define o tamanho das letras. */
+}
+.wizard-main {
+  padding: 35px clamp(22px,4vw,58px); /* Controla o espaço interno. */
+}
+.wizard-main h3 {
+  font-size: 31px; /* Define o tamanho das letras. */
+  margin: 0 0 8px; /* Controla o espaço externo. */
+}
+.wizard-main p {
+  color: var(--muted); /* Define cor do texto. */
+  font-size: 14px; /* Define o tamanho das letras. */
+}
+.step-panel {
+  min-height: 285px; /* Limita a altura mínima. */
+}
+.type-grid {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: repeat(3,minmax(0,1fr)); /* Define colunas do layout em grade. */
+  gap: 12px; /* Define o espaço entre elementos. */
+  margin: 22px 0; /* Controla o espaço externo. */
+}
+.type {
+  background: #f5f8f7; /* Define fundo/cor da área. */
+  padding: 20px 12px; /* Controla o espaço interno. */
+  border: 1px solid var(--line); /* Cria e formata bordas. */
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 6px; /* Define o espaço entre elementos. */
+  text-align: left; /* Alinha o texto. */
+  min-height: 100px; /* Limita a altura mínima. */
+}
+.type b {
+  font-size: 18px; /* Define o tamanho das letras. */
+}
+.type small {
+  color: var(--muted); /* Define cor do texto. */
+}
+.type.active {
+  border: 2px solid #dfac38; /* Cria e formata bordas. */
+  background: #fff8df; /* Define fundo/cor da área. */
+}
+.field {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 8px; /* Define o espaço entre elementos. */
+  font-size: 12px; /* Define o tamanho das letras. */
+  font-weight: 900; /* Define a espessura das letras. */
+  margin-top: 15px; /* Controla o espaço externo superior. */
+}
+.field input,.field select {
+  min-width: 0; /* Limita a largura mínima. */
+  width: 100%; /* Define a largura. */
+  padding: 13px; /* Controla o espaço interno. */
+  border: 1px solid #cddadb; /* Cria e formata bordas. */
+  border-radius: 0; /* Arredonda cantos. */
+  color: var(--ink); /* Define cor do texto. */
+  background: white; /* Define fundo/cor da área. */
+}
+.measurement {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  grid-template-columns: 1fr 1fr; /* Define colunas do layout em grade. */
+  gap: 16px; /* Define o espaço entre elementos. */
+}
+.toggle-line {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  gap: 13px; /* Define o espaço entre elementos. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  margin: 26px 0; /* Controla o espaço externo. */
+  font-size: 13px; /* Define o tamanho das letras. */
+  font-weight: 700; /* Define a espessura das letras. */
+}
+.toggle-line input {
+  accent-color: var(--navy); /* Personaliza cor de controles nativos. */
+  height: 20px; /* Define a altura. */
+  width: 20px; /* Define a largura. */
+}
+.summary {
+  display: grid; /* Determina o modo de distribuição dos elementos. */
+  gap: 8px; /* Define o espaço entre elementos. */
+  margin: 20px 0; /* Controla o espaço externo. */
+}
+.summary div {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 16px; /* Define o espaço entre elementos. */
+  padding: 11px 0; /* Controla o espaço interno. */
+  border-bottom: 1px solid var(--line); /* Define borda inferior. */
+}
+.summary span {
+  font-size: 13px; /* Define o tamanho das letras. */
+  color: var(--muted); /* Define cor do texto. */
+}
+.summary strong {
+  font-size: 17px; /* Define o tamanho das letras. */
+  text-align: right; /* Alinha o texto. */
+}
+.summary div:last-child strong {
+  font-size: 27px; /* Define o tamanho das letras. */
+  color: #a27524; /* Define cor do texto. */
+}
+.sim-note {
+  font-size: 12px !important; /* Define o tamanho das letras. */
+}
+.wizard-controls {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  gap: 12px; /* Define o espaço entre elementos. */
+  padding-top: 18px; /* Controla o espaço interno superior. */
+  border-top: 1px solid var(--line); /* Define borda superior. */
+}
+.wizard-controls button {
+  padding: 13px 20px; /* Controla o espaço interno. */
+  border: 0; /* Cria e formata bordas. */
+  font-weight: 900; /* Define a espessura das letras. */
+}
+.prev {
+  background: #e8f0f1; /* Define fundo/cor da área. */
+  color: var(--navy); /* Define cor do texto. */
+}
+.next,.send {
+  margin-left: auto; /* Controla o espaço externo esquerdo. */
+  background: var(--yellow); /* Define fundo/cor da área. */
+  color: var(--navy); /* Define cor do texto. */
+}
+[hidden] {
+  display: none !important; /* Determina o modo de distribuição dos elementos. */
+}
+.final-contact {
+  display: flex; /* Determina o modo de distribuição dos elementos. */
+  justify-content: space-between; /* Distribui itens no eixo principal. */
+  align-items: center; /* Alinha itens no eixo transversal. */
+  gap: 20px; /* Define o espaço entre elementos. */
+  padding-top: 70px; /* Controla o espaço interno superior. */
+  padding-bottom: 70px; /* Controla o espaço interno inferior. */
+}
+.final-contact h2 {
+  margin-bottom: 0; /* Controla o espaço externo inferior. */
+}
+.final-contact a {
+  background: var(--navy); /* Define fundo/cor da área. */
+  color: white; /* Define cor do texto. */
+  padding: 15px 18px; /* Controla o espaço interno. */
+  font-weight: 800; /* Define a espessura das letras. */
+  white-space: nowrap; /* Controla quebras de texto. */
+}
+.footer {
+  background: #0e2f40; /* Define fundo/cor da área. */
+  color: #d6e9e9; /* Define cor do texto. */
+  padding: 25px; /* Controla o espaço interno. */
+  font-size: 12px; /* Define o tamanho das letras. */
+  text-align: center; /* Alinha o texto. */
+}
+/* Layout responsivo com controle de etapas também por celular. */
+@media (max-width:1120px) {
+  .nav {
+    gap: 14px; /* Define o espaço entre elementos. */
+  }
+  .solution {
+    grid-template-columns: 35px 160px minmax(0,1fr) auto; /* Define colunas do layout em grade. */
+    gap: 12px; /* Define o espaço entre elementos. */
+  }
+  .solution .photo {
+    height: 125px; /* Define a altura. */
+  }
+  .solution h3 {
+    font-size: 23px; /* Define o tamanho das letras. */
+  }
+}
+@media (max-width:800px) {
+  .header {
+    flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+    padding: 14px 20px; /* Controla o espaço interno. */
+  }
+  .menu-toggle {
+    display: block; /* Determina o modo de distribuição dos elementos. */
+    margin-left: auto; /* Controla o espaço externo esquerdo. */
+  }
+  .nav {
+    display: none; /* Determina o modo de distribuição dos elementos. */
+    order: 5; /* Ajuste visual para este elemento. */
+    flex-basis: 100%; /* Define tamanho-base no flex. */
+    flex-direction: column; /* Define orientação dos itens. */
+  }
+  .nav.open {
+    display: flex; /* Determina o modo de distribuição dos elementos. */
+  }
+  .nav a {
+    padding: 11px 0; /* Controla o espaço interno. */
+    border-bottom: 1px solid var(--line); /* Define borda inferior. */
+  }
+  .top-cta {
+    display: none; /* Determina o modo de distribuição dos elementos. */
+  }
+  .intro-header {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+    padding: 50px 22px 25px; /* Controla o espaço interno. */
+    gap: 16px; /* Define o espaço entre elementos. */
+  }
+  .intro-image {
+    height: 315px; /* Define a altura. */
+  }
+  .solutions {
+    padding-top: 55px; /* Controla o espaço interno superior. */
+    padding-bottom: 50px; /* Controla o espaço interno inferior. */
+  }
+  .solution {
+    grid-template-columns: 34px 110px minmax(0,1fr); /* Define colunas do layout em grade. */
+  }
+  .solution .photo {
+    height: 98px; /* Define a altura. */
+  }
+  .solution button {
+    grid-column: 3; /* Determina a coluna ocupada pelo elemento. */
+    justify-self: start; /* Alinha um elemento individual no eixo horizontal. */
+  }
+  .project-grid {
+    grid-template-columns: 1fr 1fr; /* Define colunas do layout em grade. */
+  }
+  .project-caption {
+    grid-column: 1/-1; /* Determina a coluna ocupada pelo elemento. */
+  }
+  .project-grid figure {
+    height: 260px; /* Define a altura. */
+  }
+  .quote {
+    padding: 50px 0; /* Controla o espaço interno. */
+  }
+  .quote-header {
+    display: block; /* Determina o modo de distribuição dos elementos. */
+  }
+  .wizard {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+  .wizard-rail {
+    display: flex; /* Determina o modo de distribuição dos elementos. */
+    flex-wrap: wrap; /* Permite quebrar itens para nova linha. */
+    padding: 15px; /* Controla o espaço interno. */
+    gap: 7px; /* Define o espaço entre elementos. */
+  }
+  .step {
+    padding: 5px; /* Controla o espaço interno. */
+  }
+  .wizard-rail-note {
+    display: none; /* Determina o modo de distribuição dos elementos. */
+  }
+  .wizard-main {
+    padding: 25px; /* Controla o espaço interno. */
+  }
+  .final-contact {
+    display: block; /* Determina o modo de distribuição dos elementos. */
+  }
+  .final-contact a {
+    display: inline-block; /* Determina o modo de distribuição dos elementos. */
+    margin-top: 20px; /* Controla o espaço externo superior. */
+  }
+}
+@media (max-width:540px) {
+  .solution {
+    grid-template-columns: 25px 90px minmax(0,1fr); /* Define colunas do layout em grade. */
+    gap: 8px; /* Define o espaço entre elementos. */
+  }
+  .solution h3 {
+    font-size: 19px; /* Define o tamanho das letras. */
+  }
+  .solution p {
+    font-size: 12px; /* Define o tamanho das letras. */
+  }
+  .solution button {
+    padding: 8px; /* Controla o espaço interno. */
+  }
+  .project-grid,.type-grid,.measurement {
+    grid-template-columns: 1fr; /* Define colunas do layout em grade. */
+  }
+  .type {
+    min-height: 80px; /* Limita a altura mínima. */
+  }
+  .project-grid figure {
+    height: 230px; /* Define a altura. */
+  }
+  .step b {
+    display: none; /* Determina o modo de distribuição dos elementos. */
+  }
+  .wizard-main {
+    padding: 18px; /* Controla o espaço interno. */
+  }
+  .summary strong {
+    font-size: 14px; /* Define o tamanho das letras. */
+  }
+  .intro-image>span {
+    font-size: 9px; /* Define o tamanho das letras. */
+    left: 10px; /* Ajusta posição esquerda. */
+  }
+  .image-badge {
+    font-size: 9px; /* Define o tamanho das letras. */
+    right: 9px; /* Ajusta posição direita. */
+    top: 12px; /* Ajusta posição superior. */
+    padding: 10px; /* Controla o espaço interno. */
+  }
+}

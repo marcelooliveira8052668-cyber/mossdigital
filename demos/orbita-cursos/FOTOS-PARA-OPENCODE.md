@@ -1,0 +1,16 @@
+# Fotografias pendentes — Órbita Cursos
+
+Há apenas placeholders vetoriais locais, sem fotos de terceiros. Para publicar, obter imagens da escola/negócio com **direito de uso comercial**, autorização quando aparecerem pessoas (especialmente crianças e adolescentes) e registro de fontes. Nunca baixar imagens protegidas de instituições reais sem permissão.
+
+## Nomes e enquadramento
+- `assets/img/campus-tech.webp` — Sala de informática ou laboratório de treinamento; proporção 16:9.
+- `assets/img/programacao.webp` — Alunos em curso de programação; proporção 4:3.
+- `assets/img/design.webp` — Alunos em atividade de design; proporção 4:3.
+- `assets/img/gestao.webp` — Aula de gestão e administração; proporção 4:3.
+
+## Instruções para VS Code + OpenCode
+1. Obter as imagens licenciadas e registrar as fontes em `CREDITOS-FOTOS.md`.
+2. Otimizar cada imagem em WebP, preservar o enquadramento e salvar no caminho indicado.
+3. Procurar os atributos `data-photo` no HTML. Substituir `src="assets/img/placeholder.svg"` pelo mesmo nome presente em `data-photo`.
+4. Revisar `alt`, corte `object-fit`, telas de 390 px e desktop, contraste e desempenho.
+5. Não subir ao GitHub nem modificar `mossdigital.com.br` sem aprovação explícita.

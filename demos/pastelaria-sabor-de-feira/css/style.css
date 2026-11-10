@@ -1,0 +1,85 @@
+/* Defino as cores e medidas principais da identidade visual. */
+:root{--vermelho:#a72821;--escuro:#281b17;--creme:#fff8ee;--areia:#f5e7d2;--laranja:#f7b34e;--branco:#fff;--sombra:0 15px 40px #3d1b1014}
+/* Aplico o modelo de caixas previsível a todos os elementos. */
+*{box-sizing:border-box}
+/* Configuro rolagem suave para os links internos. */
+html{scroll-behavior:smooth}
+/* Defino tipografia, cores e margens gerais. */
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--creme);color:var(--escuro);line-height:1.55}
+/* Removo sublinhados e mantenho a cor herdada nos links. */
+a{text-decoration:none;color:inherit}
+/* Mantenho os botões com fonte legível e cursor apropriado. */
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+/* Construo o cabeçalho com navegação adaptável. */
+.topo{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:19px max(5%,calc((100% - 1200px)/2));background:#fffaf3;position:sticky;top:0;z-index:5;box-shadow:0 3px 16px #0000000b}
+/* Destaco a marca da pastelaria. */
+.marca{font-weight:900;font-size:1.25rem;color:var(--vermelho);white-space:nowrap}
+.marca span{font-size:1.65rem;vertical-align:middle}
+/* Organizo os links do menu. */
+nav{display:flex;gap:25px;align-items:center;font-size:.92rem;font-weight:700}
+nav a:hover,footer a:hover{color:var(--vermelho)}
+#contador{background:var(--laranja);border-radius:50px;padding:3px 8px}
+/* Crio o destaque principal em duas colunas. */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:520px;max-width:1440px;margin:auto}
+.hero-texto{padding:85px 8% 75px 11%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.etiqueta,.sobretitulo{font-size:.77rem;letter-spacing:2px;font-weight:900;color:var(--vermelho)}
+h1,h2,p{margin-top:0}
+h1{font-size:clamp(3rem,5.4vw,5.5rem);line-height:1.04;letter-spacing:-3px;margin:19px 0 25px}
+h1 em{font-style:normal;color:var(--vermelho)}
+.hero p{font-size:1.09rem;max-width:490px;color:#6b5548}
+/* Uso imagem de referência remota com alternativa de fundo. */
+.hero-foto{min-height:430px;background:#dfb778 url('../assets/img/pastel-hero.jpg') center/cover no-repeat;border-radius:0 0 0 120px}
+/* Padronizo botões de ação. */
+.botao{display:inline-flex;justify-content:center;align-items:center;gap:15px;padding:15px 25px;border-radius:12px;border:0;font-weight:800;transition:transform .2s,background .2s}
+.botao:hover{transform:translateY(-2px)}
+.principal{background:var(--vermelho);color:white}
+.principal:hover{background:#821b16}
+.secundario{background:var(--escuro);color:white}
+.selo{margin-top:28px;font-size:.9rem;font-weight:700;color:#9a6222}
+/* Exibo diferenciais da pastelaria em três blocos. */
+.beneficios{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;background:var(--escuro);color:white;padding:26px 7%}
+.beneficios div{display:flex;align-items:center;gap:9px;justify-content:center;flex-wrap:wrap}
+.beneficios small{color:#e2cfc3}
+/* Organizo a área de cardápio. */
+.secao{max-width:1200px;margin:auto;padding:85px 5%}
+.secao-topo{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
+h2{font-size:clamp(2rem,3.6vw,3.1rem);line-height:1.15;letter-spacing:-1px;margin:12px 0}
+.secao p,.sobre p{color:#6c594f}
+.filtros{display:flex;flex-wrap:wrap;gap:8px}
+.filtro{border:1px solid #e4d2bd;border-radius:30px;padding:9px 16px;background:white;font-weight:700}
+.filtro.ativo,.filtro:hover{background:var(--vermelho);color:white;border-color:var(--vermelho)}
+.grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:23px}
+/* Defino cartões de produto com imagens e preços. */
+.produto{background:white;border-radius:19px;overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column}
+.produto img{width:100%;height:205px;object-fit:cover;background:#e9caa1}
+.produto-conteudo{padding:20px;display:flex;flex-direction:column;flex:1}
+.produto h3{margin:0 0 7px;font-size:1.25rem}
+.produto p{font-size:.91rem;flex:1;margin-bottom:17px}
+.produto-rodape{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.preco{font-size:1.23rem;font-weight:900;color:var(--vermelho)}
+.adicionar{background:var(--laranja);border:0;border-radius:10px;padding:10px 13px;font-weight:800}
+.adicionar:hover{background:#ed9e25}
+/* Estilizo a seção institucional. */
+.sobre{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:6%;background:var(--areia);padding:65px max(5%,calc((100% - 1100px)/2))}
+.sobre p{max-width:520px}
+.sobre-foto{height:330px;border-radius:25px;background:#dcae6b url('../assets/img/pastel-tradicional.jpg') center/cover no-repeat}
+/* Crio o resumo interativo do pedido. */
+.pedido-secao{max-width:850px}
+.pedido-box{padding:28px;background:white;border-radius:20px;box-shadow:var(--sombra)}
+.item-pedido{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #eee0d2;padding:13px 0}
+.item-pedido button{border:0;background:#f6e6df;color:#8b231d;border-radius:7px;padding:5px 9px}
+.total{display:flex;justify-content:space-between;border-top:2px solid var(--areia);padding:22px 0;margin-top:18px;font-size:1.2rem}
+.pedido-box label{display:block;font-weight:700;margin:15px 0 7px}
+.pedido-box input,.pedido-box textarea{display:block;width:100%;padding:12px;border:1px solid #d9c8b8;border-radius:10px}
+.enviar{width:100%;margin-top:20px}
+.aviso{font-size:.83rem;margin:12px 0 0;color:#765a49!important}
+/* Finalizo com rodapé simples e legível. */
+footer{background:var(--escuro);color:white;padding:35px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer span{font-size:.85rem;color:#d6c5bc}
+/* Adapto as colunas para tablets. */
+@media(max-width:900px){.grade{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-texto{padding:55px 7%}.secao-topo{align-items:start;flex-direction:column}.sobre{padding:50px 5%}}
+/* Adapto o layout para celulares pequenos. */
+@media(max-width:650px){.topo{position:static;flex-direction:column;padding:14px 4%;gap:10px}nav{gap:13px;font-size:.8rem;flex-wrap:wrap;justify-content:center}.hero{grid-template-columns:1fr}.hero-texto{padding:55px 7%}h1{letter-spacing:-2px}.hero-foto{min-height:260px;border-radius:45px 45px 0 0;grid-row:1}.beneficios{grid-template-columns:1fr;padding:24px}.secao{padding:55px 5%}.grade{grid-template-columns:1fr}.sobre{grid-template-columns:1fr}.sobre-foto{min-height:250px;height:250px;grid-row:1}.pedido-box{padding:18px}.item-pedido{align-items:start}footer{flex-direction:column;align-items:start}}
+/* Respeito pessoas que preferem movimento reduzido. */
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.botao{transition:none}}

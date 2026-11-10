@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 760" role="img" aria-label="Colagem ilustrativa de produtos para a vitrine VivaMall">
+<defs><linearGradient id="a" x2="1" y2="1"><stop stop-color="#ff6f38"/><stop offset="1" stop-color="#ffffff" stop-opacity=".35"/></linearGradient></defs>
+<rect width="1000" height="760" rx="90" fill="url(#a)"/>
+<circle cx="520" cy="360" r="303" fill="#fff" opacity=".28"/><circle cx="710" cy="220" r="192" fill="#fff" opacity=".22"/>
+<g transform="rotate(-12 450 320)"><rect x="165" y="90" width="390" height="420" rx="60" fill="#fff" opacity=".83"/><text x="360" y="370" text-anchor="middle" font-family="Noto Color Emoji,Segoe UI Emoji,Arial" font-size="206">🛍️</text></g>
+<g transform="rotate(12 735 450)"><rect x="590" y="322" width="290" height="300" rx="46" fill="#fff" opacity=".85"/><text x="735" y="516" text-anchor="middle" font-family="Noto Color Emoji,Segoe UI Emoji,Arial" font-size="146">🎁</text></g>
+<text x="105" y="676" font-size="52" font-family="Arial" font-weight="800" fill="#fff" opacity=".8">✨ VIVAMALL</text>
+</svg>

@@ -1,0 +1,938 @@
+/* MOSS Digital: estilos de interface compartilhados, documentados em português. */
+:root {
+  --ink:#202632; /* Personaliza a propriedade --ink. */
+  --muted:#647085; /* Personaliza a propriedade --muted. */
+  --surface:#fff; /* Personaliza a propriedade --surface. */
+  --outline:#e3e6ec; /* Personaliza a propriedade --outline. */
+  --accent:#f46b46; /* Personaliza a propriedade --accent. */
+  --accent-ink:#fff; /* Personaliza a propriedade --accent-ink. */
+  --bg:#fafafa; /* Personaliza a propriedade --bg. */
+  --radius:20px; /* Personaliza a propriedade --radius. */
+  --shadow:0 18px 45px rgba(15,26,42,.09); /* Personaliza a propriedade --shadow. */
+}
+/* Reset moderado evita diferenças bruscas entre navegadores. */
+* {
+  box-sizing:border-box; /* Define como largura e borda são calculadas. */
+}
+html {
+  scroll-behavior:smooth; /* Ajusta o comportamento de scroll-behavior. */
+}
+body {
+  margin:0; /* Define o espaço externo. */
+  color:var(--ink); /* Define a cor do texto. */
+  background:var(--bg); /* Define a cor ou composição do fundo. */
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif; /* Define a família tipográfica. */
+  line-height:1.55; /* Ajusta a altura entre linhas. */
+}
+img {
+  display:block; /* Escolhe o modelo de layout. */
+  max-width:100%; /* Limita a largura máxima. */
+}
+a {
+  color:inherit; /* Define a cor do texto. */
+  text-decoration:none; /* Define decoração do texto. */
+}
+button, input, select {
+  font:inherit; /* Ajusta o comportamento de font. */
+}
+button {
+  cursor:pointer; /* Define o cursor do mouse. */
+}
+button:disabled {
+  cursor:not-allowed; /* Define o cursor do mouse. */
+  opacity:.55; /* Define a transparência. */
+}
+input[type=search] {
+  min-width:0; /* Estabelece a largura mínima. */
+}
+:focus-visible {
+  outline:3px solid #246dff; /* Define o contorno de foco. */
+  outline-offset:3px; /* Ajusta o comportamento de outline-offset. */
+}
+.container {
+  width:min(1200px,calc(100% - 48px)); /* Define a largura. */
+  margin-inline:auto; /* Ajusta o comportamento de margin-inline. */
+}
+.sr-only {
+  position:absolute; /* Define o posicionamento. */
+  width:1px; /* Define a largura. */
+  height:1px; /* Define a altura. */
+  padding:0; /* Define o espaço interno. */
+  margin:-1px; /* Define o espaço externo. */
+  overflow:hidden; /* Controla conteúdo excedente. */
+  clip:rect(0,0,0,0); /* Ajusta o comportamento de clip. */
+  white-space:nowrap; /* Controla as quebras de texto. */
+  border:0; /* Define a borda. */
+}
+.announcement {
+  text-align:center; /* Define o alinhamento do texto. */
+  padding:9px 12px; /* Define o espaço interno. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  font-weight:800; /* Define a espessura da fonte. */
+  letter-spacing:.10em; /* Ajusta o espaçamento entre letras. */
+  background:#101828; /* Define a cor ou composição do fundo. */
+  color:white; /* Define a cor do texto. */
+}
+.eyebrow {
+  font-size:11px; /* Define o tamanho da fonte. */
+  font-weight:900; /* Define a espessura da fonte. */
+  letter-spacing:.14em; /* Ajusta o espaçamento entre letras. */
+  text-transform:uppercase; /* Controla caixa alta ou baixa. */
+}
+.brand {
+  display:inline-flex; /* Escolhe o modelo de layout. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  gap:8px; /* Define o espaço entre elementos. */
+  font-size:23px; /* Define o tamanho da fonte. */
+  font-weight:900; /* Define a espessura da fonte. */
+  letter-spacing:-.055em; /* Ajusta o espaçamento entre letras. */
+  white-space:nowrap; /* Controla as quebras de texto. */
+}
+.brand-mark {
+  display:grid; /* Escolhe o modelo de layout. */
+  place-items:center; /* Ajusta o comportamento de place-items. */
+  width:38px; /* Define a largura. */
+  height:38px; /* Define a altura. */
+  border-radius:12px; /* Arredonda os cantos. */
+  background:var(--accent); /* Define a cor ou composição do fundo. */
+  color:var(--accent-ink); /* Define a cor do texto. */
+  font-size:20px; /* Define o tamanho da fonte. */
+  line-height:1; /* Ajusta a altura entre linhas. */
+}
+.nav-links {
+  display:flex; /* Escolhe o modelo de layout. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  gap:25px; /* Define o espaço entre elementos. */
+}
+.nav-links a {
+  font-size:13px; /* Define o tamanho da fonte. */
+  font-weight:700; /* Define a espessura da fonte. */
+}
+.nav-links a:hover {
+  color:var(--accent); /* Define a cor do texto. */
+}
+.nav-toggle {
+  display:none; /* Escolhe o modelo de layout. */
+  border:0; /* Define a borda. */
+  background:transparent; /* Define a cor ou composição do fundo. */
+  font-size:24px; /* Define o tamanho da fonte. */
+}
+.icon-btn {
+  border:1px solid var(--outline); /* Define a borda. */
+  background:white; /* Define a cor ou composição do fundo. */
+  color:var(--ink); /* Define a cor do texto. */
+  border-radius:12px; /* Arredonda os cantos. */
+  padding:10px 13px; /* Define o espaço interno. */
+  font-weight:800; /* Define a espessura da fonte. */
+}
+.cart-count {
+  display:inline-grid; /* Escolhe o modelo de layout. */
+  place-items:center; /* Ajusta o comportamento de place-items. */
+  min-width:20px; /* Estabelece a largura mínima. */
+  min-height:20px; /* Estabelece a altura mínima. */
+  border-radius:50%; /* Arredonda os cantos. */
+  background:var(--accent); /* Define a cor ou composição do fundo. */
+  color:var(--accent-ink); /* Define a cor do texto. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  margin-left:4px; /* Ajusta o comportamento de margin-left. */
+  padding:1px 4px; /* Define o espaço interno. */
+}
+.btn {
+  display:inline-flex; /* Escolhe o modelo de layout. */
+  justify-content:center; /* Distribui os itens pelo eixo principal. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  gap:9px; /* Define o espaço entre elementos. */
+  border:0; /* Define a borda. */
+  padding:14px 20px; /* Define o espaço interno. */
+  border-radius:13px; /* Arredonda os cantos. */
+  font-size:13px; /* Define o tamanho da fonte. */
+  font-weight:900; /* Define a espessura da fonte. */
+  transition:transform .22s ease,box-shadow .22s ease; /* Anima mudanças de estilo. */
+}
+.btn:hover {
+  transform:translateY(-2px); /* Aplica uma transformação visual. */
+  box-shadow:var(--shadow); /* Aplica a sombra do elemento. */
+}
+.section-heading {
+  display:flex; /* Escolhe o modelo de layout. */
+  align-items:end; /* Alinha os itens no eixo transversal. */
+  justify-content:space-between; /* Distribui os itens pelo eixo principal. */
+  gap:20px; /* Define o espaço entre elementos. */
+  margin-bottom:24px; /* Define o espaço externo inferior. */
+}
+.section-heading h2 {
+  margin:7px 0 0; /* Define o espaço externo. */
+  font-size:clamp(27px,3vw,42px); /* Define o tamanho da fonte. */
+  line-height:1.13; /* Ajusta a altura entre linhas. */
+  letter-spacing:-.05em; /* Ajusta o espaçamento entre letras. */
+}
+.section-heading p {
+  margin:4px 0; /* Define o espaço externo. */
+}
+.filter-row {
+  display:flex; /* Escolhe o modelo de layout. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  gap:8px; /* Define o espaço entre elementos. */
+  flex-wrap:wrap; /* Permite a quebra de linha no Flexbox. */
+  margin:0 0 25px; /* Define o espaço externo. */
+}
+.filter-btn {
+  border:1px solid var(--outline); /* Define a borda. */
+  border-radius:99px; /* Arredonda os cantos. */
+  padding:9px 16px; /* Define o espaço interno. */
+  background:white; /* Define a cor ou composição do fundo. */
+  font-size:12px; /* Define o tamanho da fonte. */
+  font-weight:800; /* Define a espessura da fonte. */
+  transition:background .2s ease,color .2s ease; /* Anima mudanças de estilo. */
+}
+.filter-btn.active {
+  color:var(--accent-ink); /* Define a cor do texto. */
+  background:var(--accent); /* Define a cor ou composição do fundo. */
+  border-color:var(--accent); /* Define a cor da borda. */
+}
+.products-grid {
+  display:grid; /* Escolhe o modelo de layout. */
+  grid-template-columns:repeat(4,minmax(0,1fr)); /* Configura as colunas da grade. */
+  gap:19px; /* Define o espaço entre elementos. */
+}
+.product-card {
+  position:relative; /* Define o posicionamento. */
+  min-width:0; /* Estabelece a largura mínima. */
+  background:white; /* Define a cor ou composição do fundo. */
+  border:1px solid var(--outline); /* Define a borda. */
+  border-radius:var(--radius); /* Arredonda os cantos. */
+  overflow:hidden; /* Controla conteúdo excedente. */
+  transition:transform .23s ease,box-shadow .23s ease; /* Anima mudanças de estilo. */
+}
+.product-card:hover {
+  transform:translateY(-5px); /* Aplica uma transformação visual. */
+  box-shadow:var(--shadow); /* Aplica a sombra do elemento. */
+}
+.product-picture {
+  aspect-ratio:1/1; /* Mantém a proporção visual. */
+  background:#ecedf1; /* Define a cor ou composição do fundo. */
+  position:relative; /* Define o posicionamento. */
+  overflow:hidden; /* Controla conteúdo excedente. */
+}
+.product-picture img {
+  width:100%; /* Define a largura. */
+  height:100%; /* Define a altura. */
+  object-fit:cover; /* Define o encaixe da imagem. */
+  transition:transform .35s ease; /* Anima mudanças de estilo. */
+}
+.product-card:hover .product-picture img {
+  transform:scale(1.045); /* Aplica uma transformação visual. */
+}
+.product-tag {
+  position:absolute; /* Define o posicionamento. */
+  top:12px; /* Define o afastamento superior. */
+  left:12px; /* Define o afastamento à esquerda. */
+  border-radius:99px; /* Arredonda os cantos. */
+  background:#fff; /* Define a cor ou composição do fundo. */
+  padding:6px 10px; /* Define o espaço interno. */
+  font-size:10px; /* Define o tamanho da fonte. */
+  font-weight:900; /* Define a espessura da fonte. */
+  box-shadow:0 2px 16px #0001; /* Aplica a sombra do elemento. */
+}
+.product-heart {
+  position:absolute; /* Define o posicionamento. */
+  top:12px; /* Define o afastamento superior. */
+  right:12px; /* Define o afastamento à direita. */
+  width:34px; /* Define a largura. */
+  height:34px; /* Define a altura. */
+  display:grid; /* Escolhe o modelo de layout. */
+  place-items:center; /* Ajusta o comportamento de place-items. */
+  border:0; /* Define a borda. */
+  border-radius:50%; /* Arredonda os cantos. */
+  background:#fff; /* Define a cor ou composição do fundo. */
+  color:#1e2632; /* Define a cor do texto. */
+  font-size:19px; /* Define o tamanho da fonte. */
+}
+.product-heart.saved {
+  color:#dc426e; /* Define a cor do texto. */
+}
+.product-info {
+  padding:16px 15px 15px; /* Define o espaço interno. */
+}
+.product-category {
+  color:var(--muted); /* Define a cor do texto. */
+  text-transform:uppercase; /* Controla caixa alta ou baixa. */
+  letter-spacing:.12em; /* Ajusta o espaçamento entre letras. */
+  font-size:10px; /* Define o tamanho da fonte. */
+  font-weight:800; /* Define a espessura da fonte. */
+}
+.product-info h3 {
+  font-size:15px; /* Define o tamanho da fonte. */
+  line-height:1.3; /* Ajusta a altura entre linhas. */
+  min-height:38px; /* Estabelece a altura mínima. */
+  margin:7px 0 11px; /* Define o espaço externo. */
+  letter-spacing:-.02em; /* Ajusta o espaçamento entre letras. */
+}
+.product-price {
+  font-size:21px; /* Define o tamanho da fonte. */
+  letter-spacing:-.04em; /* Ajusta o espaçamento entre letras. */
+  font-weight:900; /* Define a espessura da fonte. */
+  line-height:1.1; /* Ajusta a altura entre linhas. */
+}
+.product-caption {
+  display:block; /* Escolhe o modelo de layout. */
+  margin-top:5px; /* Define o espaço externo superior. */
+  color:var(--muted); /* Define a cor do texto. */
+  font-size:11px; /* Define o tamanho da fonte. */
+}
+.product-actions {
+  display:flex; /* Escolhe o modelo de layout. */
+  gap:7px; /* Define o espaço entre elementos. */
+  margin-top:15px; /* Define o espaço externo superior. */
+}
+.product-actions button {
+  border-radius:10px; /* Arredonda os cantos. */
+  min-width:0; /* Estabelece a largura mínima. */
+  border:1px solid var(--outline); /* Define a borda. */
+  font-size:12px; /* Define o tamanho da fonte. */
+  font-weight:800; /* Define a espessura da fonte. */
+  padding:10px 9px; /* Define o espaço interno. */
+}
+.quick-add {
+  flex:1; /* Controla a ocupação do espaço flexível. */
+  background:var(--accent); /* Define a cor ou composição do fundo. */
+  color:var(--accent-ink); /* Define a cor do texto. */
+  border-color:var(--accent)!important; /* Define a cor da borda. */
+}
+.quick-view {
+  background:white; /* Define a cor ou composição do fundo. */
+  color:var(--ink); /* Define a cor do texto. */
+}
+.compare-btn {
+  display:block; /* Escolhe o modelo de layout. */
+  width:100%; /* Define a largura. */
+  text-align:left; /* Define o alinhamento do texto. */
+  background:transparent; /* Define a cor ou composição do fundo. */
+  border:0; /* Define a borda. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  color:var(--muted); /* Define a cor do texto. */
+  font-weight:750; /* Define a espessura da fonte. */
+  padding:11px 0 0; /* Define o espaço interno. */
+}
+.compare-btn.selected {
+  color:#0d64be; /* Define a cor do texto. */
+}
+.sizes-wrap {
+  margin-top:9px; /* Define o espaço externo superior. */
+}
+.sizes-wrap label {
+  display:block; /* Escolhe o modelo de layout. */
+  color:var(--muted); /* Define a cor do texto. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  font-weight:700; /* Define a espessura da fonte. */
+  margin-bottom:4px; /* Define o espaço externo inferior. */
+}
+.sizes-wrap select {
+  width:100%; /* Define a largura. */
+  border:1px solid var(--outline); /* Define a borda. */
+  border-radius:9px; /* Arredonda os cantos. */
+  background:white; /* Define a cor ou composição do fundo. */
+  padding:8px; /* Define o espaço interno. */
+  color:var(--ink); /* Define a cor do texto. */
+}
+.empty {
+  background:white; /* Define a cor ou composição do fundo. */
+  border:1px dashed var(--outline); /* Define a borda. */
+  border-radius:18px; /* Arredonda os cantos. */
+  padding:25px; /* Define o espaço interno. */
+}
+.footer {
+  margin-top:88px; /* Define o espaço externo superior. */
+  padding:35px max(24px,calc((100vw - 1200px)/2)); /* Define o espaço interno. */
+  background:#111827; /* Define a cor ou composição do fundo. */
+  color:#e8ecf3; /* Define a cor do texto. */
+  display:flex; /* Escolhe o modelo de layout. */
+  justify-content:space-between; /* Distribui os itens pelo eixo principal. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  gap:20px; /* Define o espaço entre elementos. */
+  flex-wrap:wrap; /* Permite a quebra de linha no Flexbox. */
+  font-size:12px; /* Define o tamanho da fonte. */
+}
+.footer p {
+  margin:0; /* Define o espaço externo. */
+  opacity:.76; /* Define a transparência. */
+}
+.footer a {
+  text-decoration:underline; /* Define decoração do texto. */
+}
+/* Fundo e gaveta: impedem ações acidentais atrás do carrinho aberto. */
+.overlay {
+  position:fixed; /* Define o posicionamento. */
+  inset:0; /* Ajusta o comportamento de inset. */
+  z-index:20; /* Define a sobreposição das camadas. */
+  background:rgba(7,13,23,.59); /* Define a cor ou composição do fundo. */
+}
+.overlay[hidden] {
+  display:none; /* Escolhe o modelo de layout. */
+}
+.cart-drawer {
+  display:flex; /* Escolhe o modelo de layout. */
+  flex-direction:column; /* Define a direção dos elementos flexíveis. */
+  position:fixed; /* Define o posicionamento. */
+  top:0; /* Define o afastamento superior. */
+  right:0; /* Define o afastamento à direita. */
+  bottom:0; /* Define o afastamento inferior. */
+  z-index:21; /* Define a sobreposição das camadas. */
+  background:white; /* Define a cor ou composição do fundo. */
+  width:min(450px,100%); /* Define a largura. */
+  max-width:100%; /* Limita a largura máxima. */
+  box-shadow:-15px 0 80px #0003; /* Aplica a sombra do elemento. */
+  transform:translateX(108%); /* Aplica uma transformação visual. */
+  transition:transform .25s ease; /* Anima mudanças de estilo. */
+}
+.cart-drawer.open {
+  transform:translateX(0); /* Aplica uma transformação visual. */
+}
+.drawer-head {
+  display:flex; /* Escolhe o modelo de layout. */
+  justify-content:space-between; /* Distribui os itens pelo eixo principal. */
+  align-items:flex-start; /* Alinha os itens no eixo transversal. */
+  padding:25px; /* Define o espaço interno. */
+  border-bottom:1px solid #e8ebef; /* Ajusta o comportamento de border-bottom. */
+}
+.drawer-head h2 {
+  margin:3px 0; /* Define o espaço externo. */
+  font-size:27px; /* Define o tamanho da fonte. */
+}
+.close-btn {
+  border:0; /* Define a borda. */
+  background:#f0f2f4; /* Define a cor ou composição do fundo. */
+  border-radius:10px; /* Arredonda os cantos. */
+  width:38px; /* Define a largura. */
+  height:38px; /* Define a altura. */
+  font-size:27px; /* Define o tamanho da fonte. */
+  display:grid; /* Escolhe o modelo de layout. */
+  place-items:center; /* Ajusta o comportamento de place-items. */
+}
+.cart-items {
+  overflow-y:auto; /* Ajusta o comportamento de overflow-y. */
+  flex:1; /* Controla a ocupação do espaço flexível. */
+  padding:20px 24px; /* Define o espaço interno. */
+}
+.cart-line {
+  display:flex; /* Escolhe o modelo de layout. */
+  gap:12px; /* Define o espaço entre elementos. */
+  padding:16px 0; /* Define o espaço interno. */
+  border-bottom:1px solid #edf0f3; /* Ajusta o comportamento de border-bottom. */
+}
+.cart-line img {
+  width:76px; /* Define a largura. */
+  height:76px; /* Define a altura. */
+  border-radius:13px; /* Arredonda os cantos. */
+  object-fit:cover; /* Define o encaixe da imagem. */
+}
+.cart-line-info {
+  flex:1; /* Controla a ocupação do espaço flexível. */
+  min-width:0; /* Estabelece a largura mínima. */
+}
+.cart-line-info strong {
+  display:block; /* Escolhe o modelo de layout. */
+  font-size:13px; /* Define o tamanho da fonte. */
+}
+.cart-line-info small {
+  color:#6b7280; /* Define a cor do texto. */
+}
+.cart-controls {
+  display:flex; /* Escolhe o modelo de layout. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  gap:8px; /* Define o espaço entre elementos. */
+  margin-top:8px; /* Define o espaço externo superior. */
+}
+.cart-controls button {
+  width:27px; /* Define a largura. */
+  height:27px; /* Define a altura. */
+  border:1px solid #ddd; /* Define a borda. */
+  border-radius:7px; /* Arredonda os cantos. */
+  background:white; /* Define a cor ou composição do fundo. */
+}
+.cart-controls .remove {
+  margin-left:auto; /* Ajusta o comportamento de margin-left. */
+  width:auto; /* Define a largura. */
+  padding:0 8px; /* Define o espaço interno. */
+  color:#9c3444; /* Define a cor do texto. */
+}
+.drawer-bottom {
+  padding:20px 24px 25px; /* Define o espaço interno. */
+  border-top:1px solid #e8ebef; /* Ajusta o comportamento de border-top. */
+}
+.cart-total {
+  display:flex; /* Escolhe o modelo de layout. */
+  justify-content:space-between; /* Distribui os itens pelo eixo principal. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  gap:14px; /* Define o espaço entre elementos. */
+}
+.cart-total strong {
+  font-size:23px; /* Define o tamanho da fonte. */
+}
+.drawer-bottom p {
+  font-size:11px; /* Define o tamanho da fonte. */
+  color:#697589; /* Define a cor do texto. */
+}
+.btn-checkout {
+  width:100%; /* Define a largura. */
+  background:#119c65; /* Define a cor ou composição do fundo. */
+  color:white; /* Define a cor do texto. */
+}
+.product-dialog {
+  width:min(550px,calc(100% - 25px)); /* Define a largura. */
+  border:0; /* Define a borda. */
+  border-radius:24px; /* Arredonda os cantos. */
+  padding:24px; /* Define o espaço interno. */
+  box-shadow:0 28px 95px #0005; /* Aplica a sombra do elemento. */
+}
+.product-dialog::backdrop {
+  background:#080d17ad; /* Define a cor ou composição do fundo. */
+}
+.product-dialog .close-btn {
+  margin-left:auto; /* Ajusta o comportamento de margin-left. */
+}
+.dialog-photo {
+  height:220px; /* Define a altura. */
+  object-fit:contain; /* Define o encaixe da imagem. */
+  width:100%; /* Define a largura. */
+  border-radius:15px; /* Arredonda os cantos. */
+  background:#eef2f4; /* Define a cor ou composição do fundo. */
+}
+.dialog-title {
+  font-size:29px; /* Define o tamanho da fonte. */
+  margin:14px 0 5px; /* Define o espaço externo. */
+}
+.dialog-sub {
+  color:var(--muted); /* Define a cor do texto. */
+  font-size:13px; /* Define o tamanho da fonte. */
+}
+.dialog-feature-list {
+  padding-left:18px; /* Ajusta o comportamento de padding-left. */
+  color:#485467; /* Define a cor do texto. */
+  font-size:13px; /* Define o tamanho da fonte. */
+}
+#toast {
+  position:fixed; /* Define o posicionamento. */
+  bottom:22px; /* Define o afastamento inferior. */
+  left:50%; /* Define o afastamento à esquerda. */
+  transform:translate(-50%,22px); /* Aplica uma transformação visual. */
+  max-width:min(450px,calc(100% - 30px)); /* Limita a largura máxima. */
+  background:#1b2938; /* Define a cor ou composição do fundo. */
+  color:#fff; /* Define a cor do texto. */
+  border-radius:12px; /* Arredonda os cantos. */
+  padding:12px 18px; /* Define o espaço interno. */
+  font-size:13px; /* Define o tamanho da fonte. */
+  font-weight:700; /* Define a espessura da fonte. */
+  box-shadow:var(--shadow); /* Aplica a sombra do elemento. */
+  z-index:50; /* Define a sobreposição das camadas. */
+  opacity:0; /* Define a transparência. */
+  pointer-events:none; /* Controla a resposta ao mouse. */
+  transition:opacity .2s ease,transform .2s ease; /* Anima mudanças de estilo. */
+}
+#toast.show {
+  opacity:1; /* Define a transparência. */
+  transform:translate(-50%,0); /* Aplica uma transformação visual. */
+}
+@media(max-width:940px) {
+  .products-grid {
+    grid-template-columns:repeat(3,minmax(0,1fr)); /* Configura as colunas da grade. */
+  }
+  .nav-links {
+    gap:15px; /* Define o espaço entre elementos. */
+  }
+}
+@media(max-width:670px) {
+  .container {
+    width:min(100% - 30px,1200px); /* Define a largura. */
+  }
+  .products-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr)); /* Configura as colunas da grade. */
+    gap:11px; /* Define o espaço entre elementos. */
+  }
+  .product-info {
+    padding:12px; /* Define o espaço interno. */
+  }
+  .product-info h3 {
+    font-size:13px; /* Define o tamanho da fonte. */
+    min-height:34px; /* Estabelece a altura mínima. */
+  }
+  .product-price {
+    font-size:18px; /* Define o tamanho da fonte. */
+  }
+  .product-actions {
+    flex-wrap:wrap; /* Permite a quebra de linha no Flexbox. */
+  }
+  .product-actions button {
+    font-size:11px; /* Define o tamanho da fonte. */
+  }
+  .section-heading {
+    align-items:flex-start; /* Alinha os itens no eixo transversal. */
+    flex-direction:column; /* Define a direção dos elementos flexíveis. */
+  }
+  .nav-toggle {
+    display:block; /* Escolhe o modelo de layout. */
+  }
+  .nav-links {
+    display:none; /* Escolhe o modelo de layout. */
+    position:absolute; /* Define o posicionamento. */
+    top:100%; /* Define o afastamento superior. */
+    left:0; /* Define o afastamento à esquerda. */
+    right:0; /* Define o afastamento à direita. */
+    background:white; /* Define a cor ou composição do fundo. */
+    color:#1e293b; /* Define a cor do texto. */
+    z-index:11; /* Define a sobreposição das camadas. */
+    padding:22px; /* Define o espaço interno. */
+    box-shadow:0 12px 25px #0002; /* Aplica a sombra do elemento. */
+    flex-direction:column; /* Define a direção dos elementos flexíveis. */
+    align-items:flex-start; /* Alinha os itens no eixo transversal. */
+  }
+  .nav-links.open {
+    display:flex; /* Escolhe o modelo de layout. */
+  }
+  .footer {
+    margin-top:55px; /* Define o espaço externo superior. */
+  }
+  .product-card {
+    border-radius:15px; /* Arredonda os cantos. */
+  }
+}
+@media(max-width:355px) {
+  .products-grid {
+    grid-template-columns:1fr; /* Configura as colunas da grade. */
+  }
+  .product-info h3 {
+    min-height:0; /* Estabelece a altura mínima. */
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior:auto; /* Ajusta o comportamento de scroll-behavior. */
+  }
+  *,*::before,*::after {
+    transition-duration:.01ms!important; /* Ajusta o comportamento de transition-duration. */
+    animation-duration:.01ms!important; /* Ajusta o comportamento de animation-duration. */
+  }
+}
+/* Pulse Fashion: vitrine de moda com grade editorial e serifas expressivas. */
+:root {
+  --bg:#f8f5f0; /* Personaliza a propriedade --bg. */
+  --ink:#242624; /* Personaliza a propriedade --ink. */
+  --muted:#766f68; /* Personaliza a propriedade --muted. */
+  --accent:#2e3734; /* Personaliza a propriedade --accent. */
+  --accent-ink:#fff; /* Personaliza a propriedade --accent-ink. */
+  --outline:#e9e3db; /* Personaliza a propriedade --outline. */
+  --radius:2px; /* Personaliza a propriedade --radius. */
+}
+.announcement {
+  background:#2b312f; /* Define a cor ou composição do fundo. */
+  letter-spacing:.08em; /* Ajusta o espaçamento entre letras. */
+}
+.fashion-header {
+  position:relative; /* Define o posicionamento. */
+  z-index:3; /* Define a sobreposição das camadas. */
+  background:#f8f5f0; /* Define a cor ou composição do fundo. */
+  border-bottom:1px solid #e7e0d5; /* Ajusta o comportamento de border-bottom. */
+}
+.fashion-nav {
+  display:flex; /* Escolhe o modelo de layout. */
+  justify-content:space-between; /* Distribui os itens pelo eixo principal. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  min-height:88px; /* Estabelece a altura mínima. */
+  gap:20px; /* Define o espaço entre elementos. */
+}
+.brand {
+  font-family:Georgia,serif; /* Define a família tipográfica. */
+  font-weight:400; /* Define a espessura da fonte. */
+  letter-spacing:-.08em; /* Ajusta o espaçamento entre letras. */
+  font-size:28px; /* Define o tamanho da fonte. */
+}
+.brand-mark {
+  font-family:Arial,sans-serif; /* Define a família tipográfica. */
+  background:#242624; /* Define a cor ou composição do fundo. */
+  color:#f5f0e9; /* Define a cor do texto. */
+  border-radius:50%; /* Arredonda os cantos. */
+  width:37px; /* Define a largura. */
+  height:37px; /* Define a altura. */
+  font-size:15px; /* Define o tamanho da fonte. */
+}
+.fashion-actions {
+  display:flex; /* Escolhe o modelo de layout. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  gap:8px; /* Define o espaço entre elementos. */
+}
+.fashion-bag {
+  border:0; /* Define a borda. */
+  background:#252a27; /* Define a cor ou composição do fundo. */
+  color:white; /* Define a cor do texto. */
+  padding:11px 15px; /* Define o espaço interno. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  letter-spacing:.06em; /* Ajusta o espaçamento entre letras. */
+}
+.fashion-bag .cart-count {
+  background:#8c9a8c; /* Define a cor ou composição do fundo. */
+}
+.fashion-hero {
+  display:grid; /* Escolhe o modelo de layout. */
+  grid-template-columns:1.02fr .9fr .28fr; /* Configura as colunas da grade. */
+  gap:15px; /* Define o espaço entre elementos. */
+  padding-top:26px; /* Define o espaço interno superior. */
+  min-height:590px; /* Estabelece a altura mínima. */
+}
+.fashion-headline {
+  background:#eee7dc; /* Define a cor ou composição do fundo. */
+  padding:70px 25px 40px 42px; /* Define o espaço interno. */
+  position:relative; /* Define o posicionamento. */
+  display:flex; /* Escolhe o modelo de layout. */
+  flex-direction:column; /* Define a direção dos elementos flexíveis. */
+  align-items:flex-start; /* Alinha os itens no eixo transversal. */
+}
+.fashion-headline h1 {
+  font-family:Georgia,serif; /* Define a família tipográfica. */
+  font-size:clamp(60px,6vw,91px); /* Define o tamanho da fonte. */
+  font-weight:400; /* Define a espessura da fonte. */
+  letter-spacing:-.09em; /* Ajusta o espaçamento entre letras. */
+  line-height:1.01; /* Ajusta a altura entre linhas. */
+  margin:25px 0; /* Define o espaço externo. */
+}
+.fashion-headline h1 i {
+  color:#a16d58; /* Define a cor do texto. */
+  font-weight:400; /* Define a espessura da fonte. */
+}
+.fashion-headline p {
+  max-width:330px; /* Limita a largura máxima. */
+  color:#69645f; /* Define a cor do texto. */
+  font-size:15px; /* Define o tamanho da fonte. */
+}
+.btn-fashion {
+  background:#242624; /* Define a cor ou composição do fundo. */
+  color:white; /* Define a cor do texto. */
+  border-radius:0; /* Arredonda os cantos. */
+  margin-top:18px; /* Define o espaço externo superior. */
+}
+.edition {
+  font-size:10px; /* Define o tamanho da fonte. */
+  letter-spacing:.11em; /* Ajusta o espaçamento entre letras. */
+  color:#837b72; /* Define a cor do texto. */
+  margin-top:auto; /* Define o espaço externo superior. */
+  padding-top:30px; /* Define o espaço interno superior. */
+}
+.fashion-image {
+  position:relative; /* Define o posicionamento. */
+  background:#c8b6a4; /* Define a cor ou composição do fundo. */
+  overflow:hidden; /* Controla conteúdo excedente. */
+}
+.fashion-image img {
+  height:100%; /* Define a altura. */
+  width:100%; /* Define a largura. */
+  object-fit:cover; /* Define o encaixe da imagem. */
+}
+.fashion-number {
+  position:absolute; /* Define o posicionamento. */
+  bottom:23px; /* Define o afastamento inferior. */
+  left:21px; /* Define o afastamento à esquerda. */
+  color:#fff; /* Define a cor do texto. */
+  font-size:11px; /* Define o tamanho da fonte. */
+  letter-spacing:.13em; /* Ajusta o espaçamento entre letras. */
+  font-weight:800; /* Define a espessura da fonte. */
+}
+.fashion-side {
+  writing-mode:vertical-rl; /* Ajusta o comportamento de writing-mode. */
+  display:flex; /* Escolhe o modelo de layout. */
+  justify-content:space-between; /* Distribui os itens pelo eixo principal. */
+  padding:25px 15px; /* Define o espaço interno. */
+  background:#d8ded7; /* Define a cor ou composição do fundo. */
+  gap:15px; /* Define o espaço entre elementos. */
+}
+.fashion-side span {
+  font-size:11px; /* Define o tamanho da fonte. */
+  letter-spacing:.14em; /* Ajusta o espaçamento entre letras. */
+}
+.fashion-side strong {
+  font-family:Georgia,serif; /* Define a família tipográfica. */
+  font-size:22px; /* Define o tamanho da fonte. */
+  font-weight:400; /* Define a espessura da fonte. */
+}
+.fashion-side p {
+  font-size:11px; /* Define o tamanho da fonte. */
+}
+.fashion-concept {
+  display:grid; /* Escolhe o modelo de layout. */
+  grid-template-columns:.4fr 1.5fr .8fr; /* Configura as colunas da grade. */
+  align-items:start; /* Alinha os itens no eixo transversal. */
+  gap:25px; /* Define o espaço entre elementos. */
+  padding:80px 0; /* Define o espaço interno. */
+  border-bottom:1px solid #e8e1d6; /* Ajusta o comportamento de border-bottom. */
+}
+.fashion-concept h2 {
+  font:400 clamp(26px,3.2vw,43px)/1.17 Georgia,serif; /* Ajusta o comportamento de font. */
+  letter-spacing:-.045em; /* Ajusta o espaçamento entre letras. */
+  margin:0; /* Define o espaço externo. */
+}
+.fashion-concept p {
+  font-size:13px; /* Define o tamanho da fonte. */
+  color:var(--muted); /* Define a cor do texto. */
+  margin:5px 0; /* Define o espaço externo. */
+}
+.fashion-catalog {
+  padding-top:64px; /* Define o espaço interno superior. */
+}
+.fashion-catalog h2 {
+  font-family:Georgia,serif; /* Define a família tipográfica. */
+  font-weight:400; /* Define a espessura da fonte. */
+  font-size:43px; /* Define o tamanho da fonte. */
+}
+.fashion-search {
+  border-bottom:1px solid #9b978c; /* Ajusta o comportamento de border-bottom. */
+  padding:10px 0; /* Define o espaço interno. */
+}
+.fashion-search input {
+  background:transparent; /* Define a cor ou composição do fundo. */
+  border:0; /* Define a borda. */
+  outline:0; /* Define o contorno de foco. */
+  min-width:250px; /* Estabelece a largura mínima. */
+  font-size:13px; /* Define o tamanho da fonte. */
+}
+.fashion-catalog .filter-btn {
+  border:0; /* Define a borda. */
+  border-bottom:1px solid #ddd0c4; /* Ajusta o comportamento de border-bottom. */
+  background:transparent; /* Define a cor ou composição do fundo. */
+  border-radius:0; /* Arredonda os cantos. */
+  padding-inline:0; /* Ajusta o comportamento de padding-inline. */
+  margin-right:15px; /* Ajusta o comportamento de margin-right. */
+}
+.fashion-catalog .filter-btn.active {
+  color:#744d40; /* Define a cor do texto. */
+  border-color:#744d40; /* Define a cor da borda. */
+  background:transparent; /* Define a cor ou composição do fundo. */
+}
+.fashion-products .product-card {
+  border:0; /* Define a borda. */
+  background:transparent; /* Define a cor ou composição do fundo. */
+}
+.fashion-products .product-picture {
+  aspect-ratio:3/4; /* Mantém a proporção visual. */
+  background:#e4dbce; /* Define a cor ou composição do fundo. */
+}
+.fashion-products .product-card:nth-child(4n+2) {
+  margin-top:38px; /* Define o espaço externo superior. */
+}
+.fashion-products .product-card:nth-child(4n+4) {
+  margin-top:22px; /* Define o espaço externo superior. */
+}
+.fashion-products .product-info {
+  padding:14px 0; /* Define o espaço interno. */
+}
+.fashion-products .product-price {
+  font-size:19px; /* Define o tamanho da fonte. */
+}
+.fashion-products .product-tag {
+  border-radius:0; /* Arredonda os cantos. */
+  background:#f4f0eb; /* Define a cor ou composição do fundo. */
+}
+.fashion-products .quick-add {
+  background:#242624; /* Define a cor ou composição do fundo. */
+  border-radius:0; /* Arredonda os cantos. */
+}
+.fashion-products .quick-view {
+  border-radius:0; /* Arredonda os cantos. */
+}
+.fashion-products .product-heart {
+  border-radius:0; /* Arredonda os cantos. */
+}
+.fashion-footer-banner {
+  background:#ddd2c5; /* Define a cor ou composição do fundo. */
+  margin-top:65px; /* Define o espaço externo superior. */
+  padding:55px 60px; /* Define o espaço interno. */
+  display:flex; /* Escolhe o modelo de layout. */
+  align-items:center; /* Alinha os itens no eixo transversal. */
+  justify-content:space-between; /* Distribui os itens pelo eixo principal. */
+  gap:35px; /* Define o espaço entre elementos. */
+}
+.fashion-footer-banner h2 {
+  font:400 48px/1 Georgia,serif; /* Ajusta o comportamento de font. */
+  margin:0; /* Define o espaço externo. */
+  letter-spacing:-.055em; /* Ajusta o espaçamento entre letras. */
+}
+.fashion-footer-banner p {
+  max-width:260px; /* Limita a largura máxima. */
+  font-size:13px; /* Define o tamanho da fonte. */
+}
+.fashion-footer-banner a {
+  border-bottom:1px solid; /* Ajusta o comportamento de border-bottom. */
+  font-size:13px; /* Define o tamanho da fonte. */
+  font-weight:800; /* Define a espessura da fonte. */
+}
+@media(max-width:900px) {
+  .fashion-hero {
+    grid-template-columns:1fr 1fr .17fr; /* Configura as colunas da grade. */
+    min-height:500px; /* Estabelece a altura mínima. */
+  }
+  .fashion-headline {
+    padding:38px 20px; /* Define o espaço interno. */
+  }
+  .fashion-headline h1 {
+    font-size:66px; /* Define o tamanho da fonte. */
+  }
+  .fashion-concept {
+    grid-template-columns:1fr 2fr; /* Configura as colunas da grade. */
+  }
+  .fashion-concept p {
+    grid-column:2; /* Define as colunas ocupadas. */
+  }
+}
+@media(max-width:670px) {
+  .fashion-nav {
+    min-height:70px; /* Estabelece a altura mínima. */
+  }
+  .fashion-nav .brand {
+    font-size:23px; /* Define o tamanho da fonte. */
+  }
+  .fashion-hero {
+    grid-template-columns:1fr 1fr; /* Configura as colunas da grade. */
+    gap:8px; /* Define o espaço entre elementos. */
+    min-height:0; /* Estabelece a altura mínima. */
+  }
+  .fashion-headline {
+    grid-column:1 / -1; /* Define as colunas ocupadas. */
+    padding:35px 26px; /* Define o espaço interno. */
+  }
+  .fashion-headline h1 {
+    font-size:67px; /* Define o tamanho da fonte. */
+  }
+  .fashion-image {
+    min-height:290px; /* Estabelece a altura mínima. */
+  }
+  .fashion-side {
+    writing-mode:initial; /* Ajusta o comportamento de writing-mode. */
+    display:flex; /* Escolhe o modelo de layout. */
+    flex-direction:column; /* Define a direção dos elementos flexíveis. */
+    min-height:290px; /* Estabelece a altura mínima. */
+  }
+  .fashion-concept {
+    display:block; /* Escolhe o modelo de layout. */
+    padding:45px 0; /* Define o espaço interno. */
+  }
+  .fashion-concept h2 {
+    margin:15px 0; /* Define o espaço externo. */
+  }
+  .fashion-catalog h2 {
+    font-size:36px; /* Define o tamanho da fonte. */
+  }
+  .fashion-products .product-card:nth-child(n) {
+    margin-top:0; /* Define o espaço externo superior. */
+  }
+  .fashion-products .product-picture {
+    aspect-ratio:3/4; /* Mantém a proporção visual. */
+  }
+  .fashion-search input {
+    min-width:150px; /* Estabelece a largura mínima. */
+  }
+  .fashion-footer-banner {
+    padding:30px; /* Define o espaço interno. */
+    flex-direction:column; /* Define a direção dos elementos flexíveis. */
+    align-items:flex-start; /* Alinha os itens no eixo transversal. */
+  }
+  .fashion-footer-banner h2 {
+    font-size:39px; /* Define o tamanho da fonte. */
+  }
+}

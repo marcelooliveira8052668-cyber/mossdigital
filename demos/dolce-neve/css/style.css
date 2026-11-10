@@ -1,0 +1,46 @@
+/* Regras de base: elementos acessíveis e componentes sem dependências externas. */
+* {box-sizing:border-box;} /* Impede bordas de ampliar dimensões. */
+html {scroll-behavior:smooth;} /* Rolagem suave, com alternativa abaixo. */
+body {margin:0;} /* Remove margem padrão. */
+img {display:block;max-width:100%;} /* Evita imagens fora dos contêineres. */
+button, input, select, textarea {font:inherit;} /* Tipografia consistente. */
+button {cursor:pointer;} /* Indica ações clicáveis. */
+a {color:inherit;text-decoration:none;} /* Links usam estilo da demo. */
+[hidden] {display:none!important;} /* Esconde itens filtrados. */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {outline:3px solid #0ea5e9;outline-offset:3px;} /* Teclado. */
+.sr-only {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;} /* Leitor de tela. */
+#feedback {position:fixed;bottom:15px;left:15px;max-width:min(90vw,460px);z-index:50;background:#17233a;color:white;border-radius:13px;padding:10px 14px;font-size:.9rem;pointer-events:none;} /* Avisos. */
+#feedback:empty {display:none;} /* Não mostra caixa vazia. */
+.photo {position:relative;overflow:hidden;} /* Espaço com enquadramento controlado. */
+.photo img {width:100%;height:100%;object-fit:cover;object-position:center;} /* Fotografia preenche sem distorcer. */
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}} /* Reduz movimento. */
+
+/* 62: sorveteria alegre, formas orgânicas, cores pastel e montagem de pedido. */
+:root{--straw:#ffb9c7;--pink:#ef527c;--milk:#fff7e9;--mint:#d9f0d5;--choco:#52352e;--line:#e7b2b9;} /* Paleta doce. */
+body{background:var(--milk);color:var(--choco);font:1rem/1.55 system-ui,-apple-system,Segoe UI,sans-serif;} /* Base. */
+.fun-top{background:var(--pink);color:white;text-align:center;font-size:.72rem;font-weight:800;padding:9px;letter-spacing:.09em;} /* Aviso. */
+.header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px clamp(16px,5vw,78px);background:var(--milk);position:sticky;top:0;z-index:30;border-bottom:2px solid #f7ded7;} /* Cabeçalho. */
+.brand{font:900 2rem/1 ui-rounded,system-ui,sans-serif;letter-spacing:-.07em;}.brand span{color:var(--pink);}.brand small{display:block;font-size:.7rem;font-weight:600;letter-spacing:.08em;margin-top:5px;} /* Logotipo tipográfico. */
+.header nav{display:flex;gap:22px;font-weight:800;}.order-top{background:var(--pink);color:white;padding:12px 20px;border-radius:999px;font-weight:900;white-space:nowrap;}.menu{display:none;background:transparent;border:2px solid var(--pink);border-radius:10px;padding:10px;} /* Navegação. */
+.hero{background:var(--straw);border-radius:0 0 50% 8%/0 0 6% 3%;display:grid;grid-template-columns:1fr .9fr;gap:30px;min-height:575px;position:relative;overflow:hidden;padding:50px clamp(20px,5vw,80px) 65px;} /* Hero orgânico. */
+.hero-message{display:flex;flex-direction:column;align-items:start;justify-content:center;position:relative;z-index:1;}.eyebrow{letter-spacing:.18em;font-size:.72rem;font-weight:900;color:#944563;text-transform:uppercase;} /* Chamada. */
+h1,h2,h3{font-family:ui-rounded,system-ui,sans-serif;line-height:1.08;}h1{font-size:clamp(3.1rem,6vw,6.2rem);letter-spacing:-.075em;margin:16px 0;}h1 em{font-style:normal;color:white;text-shadow:4px 4px 0 #d85178;} /* Título. */
+.hero-message p{font-size:1.1rem;max-width:50ch;}.big-button{display:inline-flex;justify-content:center;align-items:center;padding:17px 26px;background:var(--choco);color:white;border:none;border-radius:999px;font-weight:900;box-shadow:6px 7px 0 #d86f89;margin-top:16px;} /* CTA. */
+.hero-image{aspect-ratio:1/1;border:12px solid #fff5e7;border-radius:45% 45% 20% 20%;align-self:center;box-shadow:16px 16px 0 #e78aa0;}.hero-image img{border-radius:inherit;} /* Foto. */
+.circle-stamp{position:absolute;right:10px;bottom:12px;width:100px;height:100px;background:#fff7e9;border:3px dashed #d86f89;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:.8rem;font-weight:1000;transform:rotate(13deg);} /* Selo. */
+.sprinkle{position:absolute;width:70px;height:20px;border-radius:20px;transform:rotate(35deg);background:#ffedac;}.s1{top:20px;left:20px;}.s2{bottom:45px;left:47%;background:#e8739f;} /* Confetes. */
+.color-band{display:flex;flex-wrap:wrap;justify-content:center;gap:35px;padding:22px 10px;background:#ffebd4;font-weight:900;color:#774b48;} /* Fita. */
+.section{padding:75px clamp(16px,5vw,80px);}.section-title{text-align:center;max-width:740px;margin:auto auto 34px;}.section-title h2,.builder-heading h2,.closing h2{font-size:clamp(2.2rem,4vw,4rem);margin:13px 0;letter-spacing:-.06em;}.section-title p{color:#875d52;} /* Títulos. */
+.flavor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;max-width:1150px;margin:auto;} /* Catálogo em 3 colunas. */
+.flavor-card{background:white;border-radius:32px;overflow:hidden;box-shadow:0 12px 0 var(--flavor);border:2px solid #f4dfd4;}.flavor-art{aspect-ratio:1/1;background:var(--flavor);}.flavor-info{padding:20px;}.flavor-info h3{font-size:1.4rem;margin:4px 0 13px;}.flavor-info button{background:transparent;border:0;color:#ac335a;text-decoration:underline;font-weight:900;padding:0;} /* Card. */
+.builder{background:var(--mint);border-radius:70px 70px 0 0;}.builder-heading{text-align:center;margin-bottom:34px;}.builder-heading p{color:#426454;} /* Pedido. */
+.builder-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1.25fr .75fr;gap:32px;align-items:start;}.builder-form{background:#fffdf8;border-radius:30px;padding:24px;box-shadow:0 12px 0 #b8d8b4;}.builder-form fieldset{border:0;border-bottom:2px dashed #dfddd1;margin:0 0 25px;padding:0 0 22px;}.builder-form legend{font-size:1.22rem;font-weight:900;margin-bottom:13px;} /* Form. */
+.sizes{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}.sizes label{cursor:pointer;}.sizes input{position:absolute;opacity:0;}.sizes span{display:block;border-radius:17px;border:2px solid #edcdd2;padding:16px 7px;text-align:center;font-size:.9rem;}.sizes strong{display:block;font-size:1.7rem;}.sizes input:checked+span{background:#ffe4ec;border-color:var(--pink);}.sizes input:focus-visible+span{outline:3px solid #0ea5e9;} /* Opções de tamanho. */
+.flavor-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}.choice{display:flex;align-items:center;gap:9px;background:#fff1ee;border-radius:14px;padding:12px;font-size:.92rem;}.choice input{accent-color:var(--pink);width:20px;height:20px;flex:none;} /* Sabores/adicionais. */
+.qty{display:grid;gap:7px;font-weight:800;}.qty input{padding:12px;border:2px solid #edcdd2;border-radius:12px;max-width:180px;}.submit{width:100%;margin-top:22px;font-size:1rem;} /* Quantidade. */
+.order-receipt{background:#fff6df;clip-path:polygon(0 0,100% 0,100% 95%,95% 100%,90% 95%,85% 100%,80% 95%,75% 100%,70% 95%,65% 100%,60% 95%,55% 100%,50% 95%,45% 100%,40% 95%,35% 100%,30% 95%,25% 100%,20% 95%,15% 100%,10% 95%,5% 100%,0 95%);padding:25px 25px 52px;box-shadow:0 10px 20px #577b5615;} /* Recibo decorativo. */
+.receipt-head{font-size:.72rem;font-weight:900;letter-spacing:.13em;color:#a56263;}.order-receipt h3{font-size:1.7rem;}.order-receipt p{font-size:.83rem;color:#7f6258;}.receipt-total{display:flex;justify-content:space-between;gap:12px;border-top:2px dashed #d6b6a3;margin-top:15px;padding-top:17px;}.receipt-total strong{font-size:1.45rem;color:#b72b61;}.receipt-photo{aspect-ratio:4/3;border-radius:20px;margin-top:25px;} /* Recibo. */
+.closing{padding:80px 20px;text-align:center;background:#ffe1df;}.closing p{margin:0 auto 25px;max-width:55ch;}.closing a{display:inline-block;background:var(--pink);color:white;border-radius:999px;padding:14px 25px;font-weight:800;}footer{text-align:center;padding:22px;color:#815f58;font-size:.85rem;} /* Rodapé. */
+@media(max-width:950px){.hero,.builder-grid{grid-template-columns:1fr;}.hero-image{max-width:500px;width:100%;}.flavor-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.header nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--milk);padding:22px;flex-direction:column;}.header nav.open{display:flex;}.menu{display:block;}.order-top{display:none;}} /* Tablet. */
+@media(max-width:560px){.flavor-grid{grid-template-columns:1fr;}.flavor-choices{grid-template-columns:1fr;}.hero{padding:45px 22px 65px;}.section{padding:50px 18px;}.builder{border-radius:35px 35px 0 0;}.header{padding:12px 14px;}.brand{font-size:1.6rem;}} /* Celular. */
+

@@ -1,0 +1,359 @@
+/* Estilo aplicado a :root. */
+:root {
+  --bg: #f8fbff; /* Personalização de --bg. */
+  --ink: #203247; /* Personalização de --ink. */
+  --muted: #60758c; /* Personalização de --muted. */
+  --line: #dbe6f0; /* Personalização de --line. */
+  --card: #fff; /* Personalização de --card. */
+  --accent: #4e9dfd; /* Personalização de --accent. */
+  --accent2: #d8ecff; /* Personalização de --accent2. */
+}
+/* Estilo aplicado a *. */
+* {
+  box-sizing: border-box; /* Personalização de box-sizing. */
+}
+/* Estilo aplicado a html. */
+html {
+  scroll-behavior: smooth; /* Personalização de scroll-behavior. */
+}
+/* Estilo aplicado a body. */
+body {
+  margin: 0; /* Define o espaço externo. */
+  font-family: Inter,Arial,sans-serif; /* Define a família tipográfica. */
+  background: var(--bg); /* Define o fundo do elemento. */
+  color: var(--ink); /* Define a cor do texto. */
+}
+/* Estilo aplicado a a. */
+a {
+  text-decoration: none; /* Personalização de text-decoration. */
+  color: inherit; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .container. */
+.container {
+  width: min(1100px,calc(100% - 34px)); /* Controla a largura disponível. */
+  margin: auto; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .header. */
+.header {
+  background: rgba(248,251,255,.92); /* Define o fundo do elemento. */
+  backdrop-filter: blur(10px); /* Personalização de backdrop-filter. */
+  position: sticky; /* Define o posicionamento do elemento. */
+  top: 0; /* Define a distância do topo. */
+  border-bottom: 1px solid var(--line); /* Personalização de border-bottom. */
+  z-index: 10; /* Controla a sobreposição em camadas. */
+}
+/* Estilo aplicado a .header-row. */
+.header-row {
+  display: flex; /* Define o modo de distribuição do elemento. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+  justify-content: space-between; /* Distribui os elementos na direção principal. */
+  padding: 16px 0; /* Define o espaço interno. */
+  gap: 18px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .brand. */
+.brand {
+  font-size: 1.7rem; /* Define o tamanho das letras. */
+  font-weight: 900; /* Controla o peso da fonte. */
+  letter-spacing: -.03em; /* Personalização de letter-spacing. */
+}
+/* Estilo aplicado a .nav-links. */
+.nav-links {
+  display: flex; /* Define o modo de distribuição do elemento. */
+  gap: 22px; /* Ajusta o espaço entre elementos. */
+  list-style: none; /* Personalização de list-style. */
+  margin: 0; /* Define o espaço externo. */
+  padding: 0; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .nav-links a. */
+.nav-links a {
+  font-weight: 700; /* Controla o peso da fonte. */
+  color: #4a6178; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .menu-toggle. */
+.menu-toggle {
+  display: none; /* Define o modo de distribuição do elemento. */
+}
+/* Estilo aplicado a .hero. */
+.hero {
+  padding: 34px 0; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .hero-box. */
+.hero-box {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: 1fr .94fr; /* Organiza as colunas do grid. */
+  gap: 28px; /* Ajusta o espaço entre elementos. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+  background: linear-gradient(135deg,#ffffff,#f1f6fc); /* Define o fundo do elemento. */
+  border: 1px solid var(--line); /* Desenha a borda do elemento. */
+  border-radius: 36px; /* Arredonda cantos do elemento. */
+  padding: 28px; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .eyebrow. */
+.eyebrow {
+  letter-spacing: .18em; /* Personalização de letter-spacing. */
+  text-transform: uppercase; /* Personalização de text-transform. */
+  font-size: .72rem; /* Define o tamanho das letras. */
+  color: #588bc8; /* Define a cor do texto. */
+  font-weight: 900; /* Controla o peso da fonte. */
+}
+/* Estilo aplicado a .hero h1. */
+.hero h1 {
+  font-size: clamp(2.3rem,4vw,3.7rem); /* Define o tamanho das letras. */
+  line-height: 1.05; /* Define o espaço entre linhas de texto. */
+  margin: .5rem 0 1rem; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .hero p. */
+.hero p {
+  font-size: 1.04rem; /* Define o tamanho das letras. */
+  color: var(--muted); /* Define a cor do texto. */
+  max-width: 58ch; /* Limita a largura máxima. */
+}
+/* Estilo aplicado a .btn. */
+.btn {
+  display: inline-flex; /* Define o modo de distribuição do elemento. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+  justify-content: center; /* Distribui os elementos na direção principal. */
+  padding: 14px 22px; /* Define o espaço interno. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  background: var(--ink); /* Define o fundo do elemento. */
+  color: white; /* Define a cor do texto. */
+  font-weight: 800; /* Controla o peso da fonte. */
+  border: none; /* Desenha a borda do elemento. */
+}
+/* Estilo aplicado a .hero-card. */
+.hero-card {
+  background: white; /* Define o fundo do elemento. */
+  border-radius: 28px; /* Arredonda cantos do elemento. */
+  padding: 16px; /* Define o espaço interno. */
+  box-shadow: 0 18px 30px rgba(32,50,71,.08); /* Aplica sombra para criar profundidade. */
+}
+/* Estilo aplicado a .hero-card img. */
+.hero-card img {
+  width: 100%; /* Controla a largura disponível. */
+  aspect-ratio: 4/3; /* Mantém a proporção da área de imagem. */
+  object-fit: cover; /* Enquadra fotos sem deformá-las. */
+  border-radius: 20px; /* Arredonda cantos do elemento. */
+}
+/* Estilo aplicado a .mini-checks. */
+.mini-checks {
+  display: flex; /* Define o modo de distribuição do elemento. */
+  gap: 10px; /* Ajusta o espaço entre elementos. */
+  flex-wrap: wrap; /* Permite quebrar elementos em novas linhas. */
+  margin-top: 14px; /* Personalização de margin-top. */
+}
+/* Estilo aplicado a .mini-checks span. */
+.mini-checks span {
+  padding: 10px 14px; /* Define o espaço interno. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  background: #eef4fb; /* Define o fundo do elemento. */
+  color: #335779; /* Define a cor do texto. */
+  font-weight: 700; /* Controla o peso da fonte. */
+}
+/* Estilo aplicado a .section. */
+.section {
+  padding: 28px 0; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .stepper. */
+.stepper {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: repeat(3,1fr); /* Organiza as colunas do grid. */
+  gap: 16px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .stepper article,.service-card,.pricing-box,.cta-box,.dialog. */
+.stepper article,.service-card,.pricing-box,.cta-box,.dialog {
+  background: var(--card); /* Define o fundo do elemento. */
+  border: 1px solid var(--line); /* Desenha a borda do elemento. */
+  border-radius: 28px; /* Arredonda cantos do elemento. */
+  box-shadow: 0 18px 30px rgba(32,50,71,.06); /* Aplica sombra para criar profundidade. */
+}
+/* Estilo aplicado a .stepper article. */
+.stepper article {
+  padding: 24px; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .stepper b. */
+.stepper b {
+  display: inline-flex; /* Define o modo de distribuição do elemento. */
+  width: 44px; /* Controla a largura disponível. */
+  height: 44px; /* Controla a altura disponível. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+  justify-content: center; /* Distribui os elementos na direção principal. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  background: #eef4fb; /* Define o fundo do elemento. */
+  color: #335779; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .section-head h2. */
+.section-head h2 {
+  font-size: 2rem; /* Define o tamanho das letras. */
+  margin: .35rem 0 0; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .service-list. */
+.service-list {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  gap: 16px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .service-card. */
+.service-card {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: 260px 1fr; /* Organiza as colunas do grid. */
+  overflow: hidden; /* Controla conteúdos que ultrapassam limites. */
+}
+/* Estilo aplicado a .service-card img. */
+.service-card img {
+  width: 100%; /* Controla a largura disponível. */
+  height: 100%; /* Controla a altura disponível. */
+  object-fit: cover; /* Enquadra fotos sem deformá-las. */
+  display: block; /* Define o modo de distribuição do elemento. */
+}
+/* Estilo aplicado a .service-card div. */
+.service-card div {
+  padding: 18px; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .service-card button. */
+.service-card button {
+  border: none; /* Desenha a borda do elemento. */
+  background: none; /* Define o fundo do elemento. */
+  color: #2f74c5; /* Define a cor do texto. */
+  padding: 0; /* Define o espaço interno. */
+  font-weight: 800; /* Controla o peso da fonte. */
+  cursor: pointer; /* Define o cursor do mouse. */
+}
+/* Estilo aplicado a .alt. */
+.alt {
+  background: linear-gradient(180deg,#f8fbff,#eef4fb); /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .pricing-box. */
+.pricing-box {
+  padding: 24px; /* Define o espaço interno. */
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: 1fr .9fr; /* Organiza as colunas do grid. */
+  gap: 16px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .estimate. */
+.estimate {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  gap: 10px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .estimate input. */
+.estimate input {
+  padding: 14px; /* Define o espaço interno. */
+  border-radius: 16px; /* Arredonda cantos do elemento. */
+  border: 1px solid var(--line); /* Desenha a borda do elemento. */
+  font: inherit; /* Personalização de font. */
+}
+/* Estilo aplicado a .estimate-total. */
+.estimate-total {
+  display: flex; /* Define o modo de distribuição do elemento. */
+  justify-content: space-between; /* Distribui os elementos na direção principal. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+  padding: 18px; /* Define o espaço interno. */
+  border-radius: 20px; /* Arredonda cantos do elemento. */
+  background: #eef4fb; /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .estimate-total strong. */
+.estimate-total strong {
+  font-size: 2rem; /* Define o tamanho das letras. */
+}
+/* Estilo aplicado a .cta-box. */
+.cta-box {
+  padding: 24px; /* Define o espaço interno. */
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: .9fr 1.1fr; /* Organiza as colunas do grid. */
+  gap: 18px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .clean-form. */
+.clean-form {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: 1fr 1fr; /* Organiza as colunas do grid. */
+  gap: 12px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .clean-form input,.clean-form select,.clean-form textarea. */
+.clean-form input,.clean-form select,.clean-form textarea {
+  padding: 14px 16px; /* Define o espaço interno. */
+  border-radius: 16px; /* Arredonda cantos do elemento. */
+  border: 1px solid var(--line); /* Desenha a borda do elemento. */
+  font: inherit; /* Personalização de font. */
+  background: white; /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .clean-form textarea. */
+.clean-form textarea {
+  grid-column: 1/-1; /* Define quantas colunas o elemento ocupa. */
+  min-height: 120px; /* Define a altura mínima. */
+}
+/* Estilo aplicado a .dialog. */
+.dialog {
+  max-width: 720px; /* Limita a largura máxima. */
+  padding: 22px; /* Define o espaço interno. */
+  border: none; /* Desenha a borda do elemento. */
+}
+/* Estilo aplicado a .dialog img. */
+.dialog img {
+  width: 100%; /* Controla a largura disponível. */
+  aspect-ratio: 16/10; /* Mantém a proporção da área de imagem. */
+  object-fit: cover; /* Enquadra fotos sem deformá-las. */
+  border-radius: 18px; /* Arredonda cantos do elemento. */
+}
+/* Estilo aplicado a .dialog-close. */
+.dialog-close {
+  position: absolute; /* Define o posicionamento do elemento. */
+  top: 10px; /* Define a distância do topo. */
+  right: 10px; /* Define a distância da direita. */
+  width: 40px; /* Controla a largura disponível. */
+  height: 40px; /* Controla a altura disponível. */
+  border: none; /* Desenha a borda do elemento. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  background: #203247; /* Define o fundo do elemento. */
+  color: white; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .open. */
+.open {
+  display: flex !important; /* Define o modo de distribuição do elemento. */
+}
+/* Regras específicas de media: (max-width:920px). */
+@media (max-width:920px) {
+  /* Estilo aplicado a .hero-box,.pricing-box,.cta-box,.stepper,.clean-form. */
+  .hero-box,.pricing-box,.cta-box,.stepper,.clean-form {
+    grid-template-columns: 1fr; /* Organiza as colunas do grid. */
+  }
+  /* Estilo aplicado a .service-card. */
+  .service-card {
+    grid-template-columns: 1fr; /* Organiza as colunas do grid. */
+  }
+  /* Estilo aplicado a .nav-links. */
+  .nav-links {
+    display: none; /* Define o modo de distribuição do elemento. */
+    position: absolute; /* Define o posicionamento do elemento. */
+    top: 70px; /* Define a distância do topo. */
+    right: 16px; /* Define a distância da direita. */
+    flex-direction: column; /* Orienta os elementos flexíveis. */
+    background: white; /* Define o fundo do elemento. */
+    padding: 16px; /* Define o espaço interno. */
+    border: 1px solid var(--line); /* Desenha a borda do elemento. */
+    border-radius: 18px; /* Arredonda cantos do elemento. */
+    box-shadow: 0 18px 30px rgba(32,50,71,.12); /* Aplica sombra para criar profundidade. */
+  }
+  /* Estilo aplicado a .menu-toggle. */
+  .menu-toggle {
+    display: inline-flex; /* Define o modo de distribuição do elemento. */
+    padding: 10px 12px; /* Define o espaço interno. */
+    border: 1px solid var(--line); /* Desenha a borda do elemento. */
+    border-radius: 12px; /* Arredonda cantos do elemento. */
+    background: white; /* Define o fundo do elemento. */
+  }
+  /* Estilo aplicado a .hero-card,.service-card img. */
+  .hero-card,.service-card img {
+    max-height: none; /* Limita a altura máxima. */
+  }
+}
+
+/* Rodapé discreto para identificar a demo e evitar confusão com empresa real. */
+.moss-credit {
+  padding: 18px 24px; /* Cria um espaço confortável para leitura. */
+  background: #152233; /* Diferencia o aviso sem alterar o layout principal. */
+  color: #ffffff; /* Garante leitura no fundo escuro. */
+  font-size: 0.86rem; /* Mantém o rodapé discreto. */
+  text-align: center; /* Centraliza o aviso no espaço disponível. */
+}
+.moss-credit a {
+  color: #b7eaff; /* Destaca o link do desenvolvedor. */
+  text-decoration: underline; /* Indica que o endereço é clicável. */
+}

@@ -1,0 +1,420 @@
+/* Estilo aplicado a :root. */
+:root {
+  --bg: #07111f; /* Personalização de --bg. */
+  --panel: #0d1b2d; /* Personalização de --panel. */
+  --line: #1f3350; /* Personalização de --line. */
+  --text: #ecf3ff; /* Personalização de --text. */
+  --muted: #9cb3d4; /* Personalização de --muted. */
+  --accent: #28c7ff; /* Personalização de --accent. */
+  --accent-2: #7ef7c8; /* Personalização de --accent-2. */
+}
+/* Estilo aplicado a *. */
+* {
+  box-sizing: border-box; /* Personalização de box-sizing. */
+}
+/* Estilo aplicado a html. */
+html {
+  scroll-behavior: smooth; /* Personalização de scroll-behavior. */
+}
+/* Estilo aplicado a body. */
+body {
+  margin: 0; /* Define o espaço externo. */
+  font-family: Inter,Arial,sans-serif; /* Define a família tipográfica. */
+  background: radial-gradient(circle at top right,#10284a,transparent 35%),var(--bg); /* Define o fundo do elemento. */
+  color: var(--text); /* Define a cor do texto. */
+}
+/* Estilo aplicado a a. */
+a {
+  text-decoration: none; /* Personalização de text-decoration. */
+  color: inherit; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .mobile-bar. */
+.mobile-bar {
+  display: none; /* Define o modo de distribuição do elemento. */
+}
+/* Estilo aplicado a .shell. */
+.shell {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: 280px 1fr; /* Organiza as colunas do grid. */
+  min-height: 100vh; /* Define a altura mínima. */
+}
+/* Estilo aplicado a .sidebar. */
+.sidebar {
+  padding: 28px; /* Define o espaço interno. */
+  border-right: 1px solid var(--line); /* Personalização de border-right. */
+  position: sticky; /* Define o posicionamento do elemento. */
+  top: 0; /* Define a distância do topo. */
+  height: 100vh; /* Controla a altura disponível. */
+  background: rgba(5,12,22,.85); /* Define o fundo do elemento. */
+  backdrop-filter: blur(18px); /* Personalização de backdrop-filter. */
+}
+/* Estilo aplicado a .logo. */
+.logo {
+  display: block; /* Define o modo de distribuição do elemento. */
+  font-size: 2rem; /* Define o tamanho das letras. */
+  font-weight: 800; /* Controla o peso da fonte. */
+  margin-bottom: 26px; /* Personalização de margin-bottom. */
+}
+/* Estilo aplicado a .logo small. */
+.logo small {
+  display: block; /* Define o modo de distribuição do elemento. */
+  color: var(--muted); /* Define a cor do texto. */
+  font-size: .8rem; /* Define o tamanho das letras. */
+  margin-top: 6px; /* Personalização de margin-top. */
+  font-weight: 500; /* Controla o peso da fonte. */
+}
+/* Estilo aplicado a .menu-toggle. */
+.menu-toggle {
+  display: none; /* Define o modo de distribuição do elemento. */
+}
+/* Estilo aplicado a .nav-links. */
+.nav-links {
+  list-style: none; /* Personalização de list-style. */
+  padding: 0; /* Define o espaço interno. */
+  margin: 0; /* Define o espaço externo. */
+  display: grid; /* Define o modo de distribuição do elemento. */
+  gap: 10px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .nav-links a. */
+.nav-links a {
+  display: block; /* Define o modo de distribuição do elemento. */
+  padding: 14px 16px; /* Define o espaço interno. */
+  border: 1px solid var(--line); /* Desenha a borda do elemento. */
+  border-radius: 16px; /* Arredonda cantos do elemento. */
+  background: #0b1627; /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .nav-links a:hover. */
+.nav-links a:hover {
+  border-color: var(--accent); /* Personalização de border-color. */
+  transform: translateX(4px); /* Desloca ou transforma visualmente. */
+}
+/* Estilo aplicado a .wa-side. */
+.wa-side {
+  display: block; /* Define o modo de distribuição do elemento. */
+  margin-top: 24px; /* Personalização de margin-top. */
+  padding: 16px; /* Define o espaço interno. */
+  border-radius: 18px; /* Arredonda cantos do elemento. */
+  background: linear-gradient(135deg,var(--accent),#1d83ff); /* Define o fundo do elemento. */
+  color: #001522; /* Define a cor do texto. */
+  font-weight: 800; /* Controla o peso da fonte. */
+  text-align: center; /* Define alinhamento do texto. */
+}
+/* Estilo aplicado a .content. */
+.content {
+  padding: 34px; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .hero-panel. */
+.hero-panel {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: 1.05fr .95fr; /* Organiza as colunas do grid. */
+  gap: 24px; /* Ajusta o espaço entre elementos. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+}
+/* Estilo aplicado a .eyebrow. */
+.eyebrow {
+  letter-spacing: .18em; /* Personalização de letter-spacing. */
+  font-size: .73rem; /* Define o tamanho das letras. */
+  color: var(--accent-2); /* Define a cor do texto. */
+  text-transform: uppercase; /* Personalização de text-transform. */
+}
+/* Estilo aplicado a .hero-copy h1. */
+.hero-copy h1 {
+  font-size: clamp(2.4rem,4vw,4.3rem); /* Define o tamanho das letras. */
+  line-height: 1.05; /* Define o espaço entre linhas de texto. */
+  margin: .55rem 0 1rem; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .hero-copy p. */
+.hero-copy p {
+  font-size: 1.06rem; /* Define o tamanho das letras. */
+  color: var(--muted); /* Define a cor do texto. */
+  max-width: 60ch; /* Limita a largura máxima. */
+}
+/* Estilo aplicado a .hero-actions. */
+.hero-actions {
+  display: flex; /* Define o modo de distribuição do elemento. */
+  gap: 12px; /* Ajusta o espaço entre elementos. */
+  margin-top: 24px; /* Personalização de margin-top. */
+  flex-wrap: wrap; /* Permite quebrar elementos em novas linhas. */
+}
+/* Estilo aplicado a .btn. */
+.btn {
+  display: inline-flex; /* Define o modo de distribuição do elemento. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+  justify-content: center; /* Distribui os elementos na direção principal. */
+  padding: 14px 22px; /* Define o espaço interno. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  font-weight: 700; /* Controla o peso da fonte. */
+  border: 1px solid transparent; /* Desenha a borda do elemento. */
+}
+/* Estilo aplicado a .btn.primary. */
+.btn.primary {
+  background: linear-gradient(135deg,var(--accent),#1d83ff); /* Define o fundo do elemento. */
+  color: #001522; /* Define a cor do texto. */
+}
+/* Estilo aplicado a .btn.ghost. */
+.btn.ghost {
+  border-color: var(--line); /* Personalização de border-color. */
+  background: #081424; /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .card-frame. */
+.card-frame {
+  background: linear-gradient(180deg,#102746,#08121f); /* Define o fundo do elemento. */
+  border: 1px solid var(--line); /* Desenha a borda do elemento. */
+  padding: 18px; /* Define o espaço interno. */
+  border-radius: 30px; /* Arredonda cantos do elemento. */
+  box-shadow: 0 28px 50px rgba(0,0,0,.35); /* Aplica sombra para criar profundidade. */
+}
+/* Estilo aplicado a .card-frame img. */
+.card-frame img {
+  width: 100%; /* Controla a largura disponível. */
+  aspect-ratio: 4/3; /* Mantém a proporção da área de imagem. */
+  object-fit: cover; /* Enquadra fotos sem deformá-las. */
+  border-radius: 22px; /* Arredonda cantos do elemento. */
+  display: block; /* Define o modo de distribuição do elemento. */
+}
+/* Estilo aplicado a .tag-grid. */
+.tag-grid {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: repeat(4,1fr); /* Organiza as colunas do grid. */
+  gap: 10px; /* Ajusta o espaço entre elementos. */
+  margin-top: 14px; /* Personalização de margin-top. */
+}
+/* Estilo aplicado a .tag-grid span. */
+.tag-grid span {
+  text-align: center; /* Define alinhamento do texto. */
+  padding: 10px; /* Define o espaço interno. */
+  border: 1px solid var(--line); /* Desenha a borda do elemento. */
+  border-radius: 14px; /* Arredonda cantos do elemento. */
+  background: #091522; /* Define o fundo do elemento. */
+  font-weight: 700; /* Controla o peso da fonte. */
+}
+/* Estilo aplicado a .status-grid. */
+.status-grid {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: repeat(4,1fr); /* Organiza as colunas do grid. */
+  gap: 16px; /* Ajusta o espaço entre elementos. */
+  margin: 26px 0; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .status-grid article,.tech-card,.project-card,.simulator,.contact-card,.dialog. */
+.status-grid article,.tech-card,.project-card,.simulator,.contact-card,.dialog {
+  background: rgba(10,20,34,.85); /* Define o fundo do elemento. */
+  border: 1px solid var(--line); /* Desenha a borda do elemento. */
+  border-radius: 26px; /* Arredonda cantos do elemento. */
+  box-shadow: 0 16px 36px rgba(0,0,0,.2); /* Aplica sombra para criar profundidade. */
+}
+/* Estilo aplicado a .status-grid article. */
+.status-grid article {
+  padding: 22px; /* Define o espaço interno. */
+  text-align: center; /* Define alinhamento do texto. */
+}
+/* Estilo aplicado a .status-grid strong. */
+.status-grid strong {
+  font-size: 2rem; /* Define o tamanho das letras. */
+  display: block; /* Define o modo de distribuição do elemento. */
+  color: var(--accent); /* Define a cor do texto. */
+}
+/* Estilo aplicado a .status-grid span. */
+.status-grid span {
+  color: var(--muted); /* Define a cor do texto. */
+}
+/* Estilo aplicado a .section. */
+.section {
+  margin: 36px 0; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .heading h2. */
+.heading h2 {
+  font-size: 2rem; /* Define o tamanho das letras. */
+  margin: .35rem 0 0.8rem; /* Define o espaço externo. */
+}
+/* Estilo aplicado a .solution-grid. */
+.solution-grid {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: repeat(3,1fr); /* Organiza as colunas do grid. */
+  gap: 18px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .tech-card. */
+.tech-card {
+  padding: 16px; /* Define o espaço interno. */
+  display: grid; /* Define o modo de distribuição do elemento. */
+  gap: 14px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .media img. */
+.media img {
+  width: 100%; /* Controla a largura disponível. */
+  aspect-ratio: 4/3; /* Mantém a proporção da área de imagem. */
+  object-fit: cover; /* Enquadra fotos sem deformá-las. */
+  border-radius: 18px; /* Arredonda cantos do elemento. */
+  display: block; /* Define o modo de distribuição do elemento. */
+}
+/* Estilo aplicado a .link-detail. */
+.link-detail {
+  background: none; /* Define o fundo do elemento. */
+  border: none; /* Desenha a borda do elemento. */
+  color: var(--accent); /* Define a cor do texto. */
+  font-weight: 700; /* Controla o peso da fonte. */
+  padding: 0; /* Define o espaço interno. */
+  cursor: pointer; /* Define o cursor do mouse. */
+}
+/* Estilo aplicado a .project-columns. */
+.project-columns {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: repeat(3,1fr); /* Organiza as colunas do grid. */
+  gap: 18px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .project-card. */
+.project-card {
+  padding: 24px; /* Define o espaço interno. */
+}
+/* Estilo aplicado a .simulator. */
+.simulator {
+  padding: 24px; /* Define o espaço interno. */
+  display: grid; /* Define o modo de distribuição do elemento. */
+  gap: 16px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a input[type=range]. */
+input[type=range] {
+  width: 100%; /* Controla a largura disponível. */
+}
+/* Estilo aplicado a .sim-result. */
+.sim-result {
+  display: flex; /* Define o modo de distribuição do elemento. */
+  justify-content: space-between; /* Distribui os elementos na direção principal. */
+  align-items: center; /* Alinha os elementos na direção transversal. */
+  padding: 18px; /* Define o espaço interno. */
+  border-radius: 18px; /* Arredonda cantos do elemento. */
+  background: #08121d; /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .sim-result strong. */
+.sim-result strong {
+  font-size: 2rem; /* Define o tamanho das letras. */
+  color: var(--accent-2); /* Define a cor do texto. */
+}
+/* Estilo aplicado a .contact-card. */
+.contact-card {
+  padding: 26px; /* Define o espaço interno. */
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: .8fr 1.2fr; /* Organiza as colunas do grid. */
+  gap: 20px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .form-grid. */
+.form-grid {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  grid-template-columns: repeat(2,1fr); /* Organiza as colunas do grid. */
+  gap: 14px; /* Ajusta o espaço entre elementos. */
+}
+/* Estilo aplicado a .form-grid label. */
+.form-grid label {
+  display: grid; /* Define o modo de distribuição do elemento. */
+  gap: 8px; /* Ajusta o espaço entre elementos. */
+  color: var(--muted); /* Define a cor do texto. */
+  text-transform: lowercase; /* Personalização de text-transform. */
+}
+/* Estilo aplicado a .form-grid input,.form-grid textarea,.form-grid select. */
+.form-grid input,.form-grid textarea,.form-grid select {
+  width: 100%; /* Controla a largura disponível. */
+  padding: 14px 16px; /* Define o espaço interno. */
+  border-radius: 16px; /* Arredonda cantos do elemento. */
+  border: 1px solid var(--line); /* Desenha a borda do elemento. */
+  background: #08111d; /* Define o fundo do elemento. */
+  color: var(--text); /* Define a cor do texto. */
+}
+/* Estilo aplicado a .full. */
+.full {
+  grid-column: 1/-1; /* Define quantas colunas o elemento ocupa. */
+}
+/* Estilo aplicado a .dialog. */
+.dialog {
+  max-width: 720px; /* Limita a largura máxima. */
+  padding: 24px; /* Define o espaço interno. */
+  color: var(--text); /* Define a cor do texto. */
+}
+/* Estilo aplicado a .dialog::backdrop. */
+.dialog::backdrop {
+  background: rgba(0,0,0,.7); /* Define o fundo do elemento. */
+}
+/* Estilo aplicado a .dialog img. */
+.dialog img {
+  width: 100%; /* Controla a largura disponível. */
+  aspect-ratio: 16/10; /* Mantém a proporção da área de imagem. */
+  object-fit: cover; /* Enquadra fotos sem deformá-las. */
+  border-radius: 20px; /* Arredonda cantos do elemento. */
+  margin-bottom: 12px; /* Personalização de margin-bottom. */
+}
+/* Estilo aplicado a .dialog-close. */
+.dialog-close {
+  position: absolute; /* Define o posicionamento do elemento. */
+  top: 10px; /* Define a distância do topo. */
+  right: 10px; /* Define a distância da direita. */
+  border: none; /* Desenha a borda do elemento. */
+  background: #12233c; /* Define o fundo do elemento. */
+  color: white; /* Define a cor do texto. */
+  border-radius: 999px; /* Arredonda cantos do elemento. */
+  width: 42px; /* Controla a largura disponível. */
+  height: 42px; /* Controla a altura disponível. */
+  font-size: 1.2rem; /* Define o tamanho das letras. */
+}
+/* Estilo aplicado a .open. */
+.open {
+  display: grid !important; /* Define o modo de distribuição do elemento. */
+}
+/* Regras específicas de media: (max-width:980px). */
+@media (max-width:980px) {
+  /* Estilo aplicado a .shell. */
+  .shell {
+    grid-template-columns: 1fr; /* Organiza as colunas do grid. */
+  }
+  /* Estilo aplicado a .sidebar. */
+  .sidebar {
+    position: relative; /* Define o posicionamento do elemento. */
+    height: auto; /* Controla a altura disponível. */
+    border-right: none; /* Personalização de border-right. */
+    border-bottom: 1px solid var(--line); /* Personalização de border-bottom. */
+  }
+  /* Estilo aplicado a .menu-toggle. */
+  .menu-toggle {
+    display: inline-flex; /* Define o modo de distribuição do elemento. */
+    margin: 12px 0 16px; /* Define o espaço externo. */
+    padding: 12px 16px; /* Define o espaço interno. */
+    border-radius: 14px; /* Arredonda cantos do elemento. */
+    border: 1px solid var(--line); /* Desenha a borda do elemento. */
+    background: #0d1b2d; /* Define o fundo do elemento. */
+    color: white; /* Define a cor do texto. */
+  }
+  /* Estilo aplicado a .nav-links. */
+  .nav-links {
+    display: none; /* Define o modo de distribuição do elemento. */
+  }
+  /* Estilo aplicado a .hero-panel,.contact-card,.solution-grid,.project-columns,.status-grid. */
+  .hero-panel,.contact-card,.solution-grid,.project-columns,.status-grid {
+    grid-template-columns: 1fr; /* Organiza as colunas do grid. */
+  }
+  /* Estilo aplicado a .content. */
+  .content {
+    padding: 20px; /* Define o espaço interno. */
+  }
+  /* Estilo aplicado a .mobile-bar. */
+  .mobile-bar {
+    display: block; /* Define o modo de distribuição do elemento. */
+    padding: 10px 16px; /* Define o espaço interno. */
+    background: #0a1728; /* Define o fundo do elemento. */
+    color: var(--muted); /* Define a cor do texto. */
+    font-size: .86rem; /* Define o tamanho das letras. */
+  }
+  /* Estilo aplicado a .form-grid. */
+  .form-grid {
+    grid-template-columns: 1fr; /* Organiza as colunas do grid. */
+  }
+}
+
+/* Rodapé discreto para identificar a demo e evitar confusão com empresa real. */
+.moss-credit {
+  padding: 18px 24px; /* Cria um espaço confortável para leitura. */
+  background: #152233; /* Diferencia o aviso sem alterar o layout principal. */
+  color: #ffffff; /* Garante leitura no fundo escuro. */
+  font-size: 0.86rem; /* Mantém o rodapé discreto. */
+  text-align: center; /* Centraliza o aviso no espaço disponível. */
+}
+.moss-credit a {
+  color: #b7eaff; /* Destaca o link do desenvolvedor. */
+  text-decoration: underline; /* Indica que o endereço é clicável. */
+}

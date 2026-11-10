@@ -1,0 +1,78 @@
+/* Tema 54 — painel corporativo com navegação lateral: exclusivo desta demo. */
+:root { --navy:#142439; --ink:#162d41; --muted:#687d90; --line:#dce5eb; --gold:#efb94c; --cream:#f6f8fb; --white:#fff; } /* Paleta. */
+* { box-sizing:border-box; } /* Evita ultrapassar a largura disponível. */
+html { scroll-behavior:smooth; } /* Navegação suave. */
+body { margin:0; font-family:Arial,Helvetica,sans-serif; background:var(--cream); color:var(--ink); } /* Estilo base. */
+a { color:inherit; text-decoration:none; } /* Links limpos. */
+button,input,textarea { font:inherit; } /* Formulários consistentes. */
+button { cursor:pointer; } /* Cursor de ação. */
+.notice { padding:9px 20px; background:#fbead0; font-size:12px; text-align:center; color:#5d461e; font-weight:700; } /* Aviso demonstrativo. */
+.app { display:grid; grid-template-columns:260px minmax(0,1fr); } /* Barra lateral fixa na largura. */
+.sidebar { background:var(--navy); color:#fff; padding:30px 22px; min-height:100vh; display:flex; flex-direction:column; gap:18px; } /* Navegação tipo portal. */
+.logo { font-weight:900; font-size:23px; letter-spacing:-1px; } /* Marca. */
+.logo span { color:var(--gold); } /* Símbolo. */
+.logo em { color:var(--gold); font-style:normal; } /* Identidade. */
+.small { color:#adbdcc; margin:-10px 0 8px; font-size:13px; } /* Descritivo. */
+.sidebar nav { display:grid; gap:8px; } /* Links em coluna. */
+.sidebar nav a { background:#1d3550; padding:14px 16px; border-radius:13px; font-weight:700; } /* Itens do menu. */
+.sidebar nav a:hover { background:#2b4969; } /* Realce. */
+.side-note { margin-top:20px; background:#213e59; padding:20px; border-radius:20px; } /* Ajuda lateral. */
+.side-note p { color:#d1dbe5; line-height:1.5; font-size:13px; } /* Explicação. */
+.wa { background:var(--gold); padding:16px; color:#192838; text-align:center; border-radius:14px; font-weight:900; } /* Contato. */
+.main { min-width:0; padding:25px clamp(16px,3vw,52px) 32px; } /* Área principal. */
+.top { display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:12px; margin-bottom:24px; } /* Indicador topo. */
+.kicker { font-size:12px; font-weight:800; letter-spacing:2px; color:#b17725; } /* Selo editorial. */
+.hero { display:grid; grid-template-columns:1.12fr .88fr; align-items:center; gap:24px; background:var(--white); padding:clamp(20px,3vw,42px); border:1px solid var(--line); border-radius:30px; } /* Capa assimétrica. */
+.hero h1 { font-size:clamp(28px,3.5vw,55px); line-height:1.08; letter-spacing:-1.5px; margin:18px 0; max-width:660px; } /* Chamada principal. */
+.hero p { color:var(--muted); line-height:1.7; } /* Texto da capa. */
+.pill { background:#fff2d5; color:#8d6119; border-radius:30px; padding:10px 14px; font-size:12px; font-weight:900; } /* Destaque. */
+.buttons { display:flex; gap:10px; flex-wrap:wrap; margin-top:25px; } /* Ações. */
+.primary,.secondary { display:inline-block; border:0; padding:14px 18px; border-radius:12px; font-weight:800; } /* Botões. */
+.primary { background:var(--navy); color:#fff; } /* CTA principal. */
+.secondary { border:1px solid var(--line); background:var(--cream); } /* CTA secundário. */
+.hero-image { position:relative; min-width:0; } /* Foto de capa. */
+.hero-image img { width:100%; aspect-ratio:4/4; object-fit:cover; border-radius:22px; display:block; } /* Foto proporcional. */
+.image-tag { position:absolute; bottom:16px; left:15px; right:15px; background:#142439e0; color:#fff; font-size:12px; border-radius:10px; padding:12px; } /* Legenda. */
+.stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px; margin:18px 0 32px; } /* Indicadores. */
+.stats article { background:#fff; padding:20px; border:1px solid var(--line); border-radius:17px; } /* Cartões. */
+.stats strong { display:block; font-size:18px; } /* Número ou status. */
+.stats span { display:block; color:var(--muted); font-size:12px; margin-top:7px; } /* Explicação. */
+.catalogo,.quote,.process { margin-top:38px; } /* Ritmo vertical. */
+.section-head { display:flex; justify-content:space-between; align-items:end; gap:20px; } /* Cabeçalho de seção. */
+.section-head h2 { font-size:30px; margin:7px 0 16px; } /* Título. */
+.section-head p { color:var(--muted); max-width:350px; font-size:13px; line-height:1.5; } /* Observações. */
+.filters { display:flex; flex-wrap:wrap; gap:9px; margin:13px 0 20px; } /* Filtros. */
+.filters button { background:#fff; border:1px solid var(--line); color:var(--ink); border-radius:30px; padding:10px 17px; } /* Botões de filtro. */
+.filters button.active { background:var(--navy); color:#fff; } /* Selecionado. */
+.product-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:13px; } /* Vitrine compacta B2B. */
+.product { min-width:0; border-radius:18px; overflow:hidden; border:1px solid var(--line); background:#fff; display:flex; flex-direction:column; } /* Card. */
+.product[hidden] { display:none; } /* Esconde item filtrado. */
+.product img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; } /* Foto sem deformar. */
+.product-body { padding:16px; display:flex; flex-direction:column; gap:9px; flex:1; } /* Conteúdo do card. */
+.sku { font-size:10px; color:#ac791f; font-weight:800; letter-spacing:1px; } /* Código. */
+.product h3 { margin:0; font-size:16px; } /* Nome. */
+.product p { margin:0; font-size:13px; color:var(--muted); line-height:1.45; flex:1; } /* Descrição. */
+.product b { font-size:17px; } /* Preço ilustrativo. */
+.product b small { color:var(--muted); font-size:11px; font-weight:400; } /* Unidade. */
+.product button { background:#f2f6fa; border:1px solid var(--line); color:var(--ink); padding:10px; border-radius:11px; font-weight:800; } /* Adicionar. */
+.quote-layout { display:grid; grid-template-columns:1.3fr .7fr; gap:15px; } /* Área de cotação. */
+.quote-panel,.summary { background:#fff; padding:20px; border-radius:19px; border:1px solid var(--line); } /* Blocos. */
+.cart-row { display:grid; grid-template-columns:minmax(0,1fr) 75px 86px 30px; align-items:center; gap:10px; padding:11px 0; border-bottom:1px solid var(--line); } /* Linha de item. */
+.cart-row small { display:block; color:var(--muted); } /* Texto secundário. */
+.cart-row input { width:100%; padding:9px; border:1px solid var(--line); border-radius:8px; } /* Quantidade. */
+.cart-row button { background:transparent; color:#ba4c39; border:0; font-weight:900; } /* Remover. */
+.summary { display:grid; align-content:start; gap:10px; } /* Formulário lateral. */
+.summary label { font-size:12px; font-weight:800; } /* Rótulo. */
+.summary input,.summary textarea { width:100%; border:1px solid var(--line); padding:12px; border-radius:10px; } /* Campos. */
+.summary textarea { min-height:90px; resize:vertical; } /* Observação. */
+.sumline { display:flex; justify-content:space-between; gap:10px; margin-top:12px; padding:14px 0; border-top:1px solid var(--line); } /* Subtotal. */
+.sumline strong { font-size:20px; } /* Valor. */
+.process h2 { font-size:28px; } /* Título de etapas. */
+.process-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; } /* Três passos. */
+.process-grid article { background:#eaf0f6; border-radius:16px; padding:20px; } /* Cartão de etapa. */
+.process-grid article span { display:block; color:#b17725; font-weight:900; font-size:23px; margin-bottom:8px; } /* Número. */
+.process-grid article p { color:var(--muted); line-height:1.5; font-size:13px; } /* Instrução. */
+footer { border-top:1px solid var(--line); padding-top:23px; margin-top:40px; color:var(--muted); font-size:12px; } /* Rodapé. */
+@media (max-width:1120px) { .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .hero { grid-template-columns:1fr; } .hero-image img { aspect-ratio:16/9; } } /* Tablet. */
+@media (max-width:800px) { .app { display:block; } .sidebar { min-height:auto; padding:20px; } .sidebar nav { grid-template-columns:repeat(2,1fr); } .main { padding:20px 14px; } .quote-layout { grid-template-columns:1fr; } } /* Celular. */
+@media (max-width:520px) { .stats { grid-template-columns:1fr; } .section-head { display:block; } .product-grid { grid-template-columns:1fr 1fr; } .product-body { padding:10px; } .product h3 { font-size:14px; } .cart-row { grid-template-columns:1fr 52px 70px 20px; gap:4px; } .cart-row input { padding:5px; } .process-grid { grid-template-columns:1fr; } } /* Celular compacto. */

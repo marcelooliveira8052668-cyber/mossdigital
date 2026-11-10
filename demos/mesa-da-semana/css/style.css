@@ -1,0 +1,45 @@
+/* Regras de base: elementos acessíveis e componentes sem dependências externas. */
+* {box-sizing:border-box;} /* Impede bordas de ampliar dimensões. */
+html {scroll-behavior:smooth;} /* Rolagem suave, com alternativa abaixo. */
+body {margin:0;} /* Remove margem padrão. */
+img {display:block;max-width:100%;} /* Evita imagens fora dos contêineres. */
+button, input, select, textarea {font:inherit;} /* Tipografia consistente. */
+button {cursor:pointer;} /* Indica ações clicáveis. */
+a {color:inherit;text-decoration:none;} /* Links usam estilo da demo. */
+[hidden] {display:none!important;} /* Esconde itens filtrados. */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {outline:3px solid #0ea5e9;outline-offset:3px;} /* Teclado. */
+.sr-only {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;} /* Leitor de tela. */
+#feedback {position:fixed;bottom:15px;left:15px;max-width:min(90vw,460px);z-index:50;background:#17233a;color:white;border-radius:13px;padding:10px 14px;font-size:.9rem;pointer-events:none;} /* Avisos. */
+#feedback:empty {display:none;} /* Não mostra caixa vazia. */
+.photo {position:relative;overflow:hidden;} /* Espaço com enquadramento controlado. */
+.photo img {width:100%;height:100%;object-fit:cover;object-position:center;} /* Fotografia preenche sem distorcer. */
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}} /* Reduz movimento. */
+
+/* 63: agenda semanal de refeições, com coluna lateral e planejador de dias. */
+:root{--green:#1d4b3d;--sage:#cce5c9;--cream:#f7f3e9;--terra:#c9714b;--ink:#23392e;--line:#d8dccf;} /* Paleta natural. */
+body{background:var(--cream);color:var(--ink);font:1rem/1.6 system-ui,-apple-system,Segoe UI,sans-serif;} /* Base. */
+.announcement{background:var(--terra);color:white;text-align:center;padding:7px;font-size:.69rem;font-weight:800;letter-spacing:.12em;} /* Aviso. */
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);} /* Layout distinto com sidebar. */
+.side-nav{background:var(--green);color:white;min-height:100vh;padding:30px 20px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;} /* Coluna fixa. */
+.brand{font-size:1.6rem;font-weight:1000;letter-spacing:-.05em;line-height:1.2;}.brand span{color:#c8e7b5;}.brand small{display:block;font-size:.75rem;font-weight:500;letter-spacing:0;margin-top:8px;} /* Marca. */
+.side-nav nav{display:grid;gap:5px;margin:45px 0;}.side-nav nav a{padding:14px 12px;border-bottom:1px solid #5a806f;font-weight:700;}.side-nav nav a:hover{background:#2b6150;} /* Menu. */
+.side-nav>button{display:none;background:#fff1e3;border:0;border-radius:10px;padding:10px;font-weight:800;} /* Menu móvel. */
+.sidebar-note{margin-top:auto;padding:20px 15px;background:#2d6152;border-radius:17px;}.sidebar-note p{font-size:.85rem;color:#d7e9dd;}.sidebar-note a{text-decoration:underline;font-weight:900;} /* CTA lateral. */
+.intro{display:grid;grid-template-columns:1.1fr .9fr;background:#e4ebdb;min-height:460px;}.intro-text{display:flex;flex-direction:column;justify-content:center;align-items:start;padding:clamp(26px,5vw,75px);}.eyebrow{letter-spacing:.17em;text-transform:uppercase;color:var(--terra);font-size:.73rem;font-weight:900;} /* Chamada. */
+h1,h2{font-family:Georgia,serif;line-height:1.1;}h1{font-size:clamp(2.7rem,4.8vw,4.9rem);font-weight:500;letter-spacing:-.045em;margin:16px 0;}h1 em{color:var(--terra);font-weight:500;} /* Hero. */
+.intro p{max-width:54ch;}.intro-photo{min-height:360px;}.cta{display:inline-block;background:var(--green);color:white;padding:14px 19px;border-radius:12px;font-weight:900;border:0;margin-top:10px;} /* Botão. */
+.section{padding:65px clamp(20px,5vw,75px);}.steps{background:#fffaf1;}.step-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:15px;}.step-row article{border-top:3px solid var(--terra);padding:16px 10px;}.step-row b{color:var(--terra);}.step-row h2{font-size:1.45rem;margin:8px 0;}.step-row p{margin:0;color:#536657;} /* Passos. */
+.section-head h2,.plan-heading h2{font-size:clamp(2rem,3.4vw,3.4rem);margin:10px 0;}.section-head p{color:#5b6b5c;} /* Títulos. */
+.day-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:24px;} /* Calendário semanal. */
+.day-card{background:#fffdf7;border:2px solid var(--line);border-radius:15px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .18s;}.day-card:has(input:checked){border-color:var(--terra);box-shadow:0 8px 0 #efd0bc;}.day-card:hover{transform:translateY(-3px);} /* Seleção. */
+.day-top{display:flex;flex-direction:column;gap:5px;padding:13px;}.day-top strong{font-size:1.08rem;}.check-label{font-size:.73rem;color:#4e6557;}.day-card>input{position:absolute;opacity:0;}.day-card:has(input:focus-visible){outline:3px solid #0ea5e9;} /* Acessibilidade. */
+.day-photo{aspect-ratio:4/3;}.meal-name{font-weight:900;padding:15px 13px 3px;line-height:1.25;}.meal-desc{padding:0 13px 17px;font-size:.82rem;color:#5d6d60;} /* Itens. */
+.plan{background:#ebeadc;}.plan-layout{display:grid;grid-template-columns:1fr .82fr;gap:25px;margin-top:24px;}.plan-controls{background:white;padding:25px;border-radius:16px;}.plan-controls fieldset{border:0;border-bottom:1px solid var(--line);margin:0 0 18px;padding:0 0 18px;}.plan-controls legend{font-weight:900;font-size:1.1rem;margin-bottom:10px;}.plan-controls label{display:flex;align-items:center;gap:12px;padding:10px 0;flex-wrap:wrap;}.plan-controls label strong{margin-left:auto;}.plan-controls input[type=radio]{accent-color:var(--terra);width:19px;height:19px;} /* Planos. */
+.customer-label{font-weight:800;display:grid!important;gap:7px!important;}.customer-label input{width:100%;padding:13px;border:1px solid #b6c6b5;border-radius:9px;}.small{color:#5a675b;font-size:.8rem;} /* Dados. */
+.summary{background:var(--green);color:white;border-radius:16px;padding:28px;align-self:start;position:sticky;top:16px;}.summary h3{font:1.8rem Georgia,serif;margin:0 0 20px;}.summary #summary-days{line-height:1.8;color:#d6efdb;}.summary-row{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid #57816a;}.summary-row.total strong{font-size:1.55rem;color:#ffdeae;}.summary .cta{width:100%;background:#f6c78f;color:#2d3f2f;cursor:pointer;}.summary p{font-size:.81rem;color:#cfe7d5;} /* Resumo. */
+.end{padding:75px clamp(24px,5vw,75px);display:flex;align-items:center;justify-content:space-between;gap:30px;background:#e1ebda;}.end h2{font-size:2.5rem;max-width:20ch;}.end p{max-width:62ch;}.end a{color:var(--green);border-bottom:2px solid var(--terra);font-weight:800;padding:12px;} /* Fechamento. */
+footer{padding:26px;text-align:center;color:#557062;background:#d5e0cd;font-size:.83rem;} /* Rodapé. */
+@media(max-width:1150px){.day-grid{grid-template-columns:repeat(3,minmax(0,1fr));}.layout{grid-template-columns:190px minmax(0,1fr);}.side-nav{padding:24px 14px;}.intro{grid-template-columns:1fr;}.intro-photo{min-height:300px;}} /* Tablet. */
+@media(max-width:760px){.layout{display:block;}.side-nav{position:relative;height:auto;min-height:auto;flex-direction:row;align-items:center;justify-content:space-between;gap:15px;z-index:20;}.side-nav>button{display:block;}.side-nav nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--green);padding:15px;flex-direction:column;margin:0;}.side-nav nav.open{display:flex;}.sidebar-note{display:none;}.intro-text{padding:45px 22px;}.day-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.plan-layout,.step-row{grid-template-columns:1fr;}.summary{position:static;}.end{flex-direction:column;align-items:start;}} /* Celular. */
+@media(max-width:430px){.day-grid{grid-template-columns:1fr;}.section{padding:42px 17px;}.day-photo{aspect-ratio:16/9;}.intro-photo{min-height:240px;}} /* Celular compacto. */
+

@@ -1,0 +1,102 @@
+<!DOCTYPE html> <!-- Documento HTML5 sem frameworks. -->
+<html lang="pt-BR"> <!-- Idioma português do Brasil. -->
+<head> <!-- Informações invisíveis aos visitantes. -->
+  <meta charset="UTF-8"> <!-- Acentuação correta. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Visualização em celular. -->
+  <meta name="description" content="Demonstração MaxLoc para Locação de equipamentos e máquinas. Projeto ilustrativo criado pela MOSS Digital."> <!-- Descrição para buscadores. -->
+  <meta name="theme-color" content="#17242c"> <!-- Cor da barra do navegador. -->
+  <title>MaxLoc | Demonstração MOSS Digital</title> <!-- Texto da aba. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- Estilos exclusivos da demo. -->
+  <script src="js/script.js" defer></script> <!-- Interações exclusivas da demo. -->
+</head>
+<body data-demo="MaxLoc" data-mode="maxloc"> <!-- Identificação usada pelo script. -->
+<!-- Fita mantém claro que empresa, preços e serviços são ilustrativos. -->
+<div class="announcement">Demonstração MOSS Digital · Marca e dados ilustrativos · Fotos a inserir</div>
+<!-- Cabeçalho com navegação interna e WhatsApp real autorizado. -->
+<header class="site-header"><nav class="container nav" aria-label="Navegação principal">
+ <a class="brand" href="#inicio"><span class="brand-icon" aria-hidden="true">▣</span><span>MaxLoc<small>Locação de equipamentos e máquinas</small></span></a> <!-- Identidade do projeto. -->
+ <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menu">☰</button> <!-- Menu para celular. -->
+ <ul id="nav-links" class="nav-links"><li><a href="#solucoes">Equipamentos</a></li><li><a href="#processo">Como funciona</a></li><li><a href="#galeria">Galeria</a></li><li><a href="#orcamento">Orçamento</a></li><li><a href="#perguntas">Dúvidas</a></li></ul> <!-- Links para seções existentes. -->
+ <a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a> <!-- Contato direto. -->
+</nav></header>
+<main id="inicio"> <!-- Conteúdo principal. -->
+ <!-- CAPA: texto e espaço de imagem. Basta inserir assets/img/capa.webp para trocar o SVG. -->
+ <section class="hero"><div class="container hero-grid">
+  <div><span class="eyebrow">FORÇA PARA FAZER ACONTECER</span><h1>O equipamento certo para cada etapa da sua obra.</h1><p class="lead">Mostre máquinas, organize solicitações e apresente uma estimativa de locação sem complicar o atendimento.</p><div class="actions"><a class="btn btn-dark" href="#orcamento">Solicitar informações ↗</a><a class="btn btn-secondary" href="#solucoes">Explorar equipamentos</a></div></div> <!-- Texto comercial. -->
+  <div class="hero-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/capa.webp" alt="Foto principal a inserir: Equipamento compacto de obra profissional com fundo industrial" width="1200" height="900"><span class="image-label">FOTO DE CAPA · assets/img/capa.webp</span></div> <!-- Foto trocada automaticamente ao encontrar o arquivo. -->
+ </div></section>
+ <!-- Diferenciais: três razões resumidas para considerar os serviços. -->
+ <div class="container trust"><article class="trust-item"><span>01</span><h3>Catálogo objetivo</h3><p>Escolha por necessidade, sem excesso de informações.</p></article> <!-- Diferencial 01. -->
+<article class="trust-item"><span>02</span><h3>Orçamento organizado</h3><p>Equipamento, dias e quantidade reunidos no pedido.</p></article> <!-- Diferencial 02. -->
+<article class="trust-item"><span>03</span><h3>Segurança primeiro</h3><p>Condições confirmadas antes de qualquer locação.</p></article> <!-- Diferencial 03. --></div>
+ <!-- CATÁLOGO: filtros de categoria e quatro cards clicáveis. -->
+ <section id="solucoes" class="section section-white"><div class="container">
+  <div class="section-heading"><div><span class="eyebrow">NOSSA ESPECIALIDADE</span><h2>Praticidade para tirar o projeto do papel.</h2></div><p>Equipamentos e condições ilustrativos; atendimento confirma capacidade, segurança, estoque e entrega.</p></div>
+  <div class="filters" role="group" aria-label="Filtros por categoria"><button class="filter" type="button" data-filter="todos" aria-pressed="true">Todos</button> <!-- Filtro: Todos. -->
+<button class="filter" type="button" data-filter="preparo" aria-pressed="false">Preparo</button> <!-- Filtro: Preparo. -->
+<button class="filter" type="button" data-filter="estrutura" aria-pressed="false">Estrutura</button> <!-- Filtro: Estrutura. -->
+<button class="filter" type="button" data-filter="terreno" aria-pressed="false">Terreno</button> <!-- Filtro: Terreno. -->
+<button class="filter" type="button" data-filter="energia" aria-pressed="false">Energia</button> <!-- Filtro: Energia. --></div>
+  <div class="cards" id="service-cards"><!-- Serviço 1: imagem local substituída automaticamente quando betoneira.webp existir. -->
+<article class="card" data-category="preparo">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/betoneira.webp" alt="Espaço para fotografia: Betoneira" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Betoneira</h3><p>Equipamento para preparo de mistura conforme especificações técnicas.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Betoneira">Ver detalhes +</button></div>
+</article>
+<!-- Serviço 2: imagem local substituída automaticamente quando andaimes.webp existir. -->
+<article class="card" data-category="estrutura">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/andaimes.webp" alt="Espaço para fotografia: Kit andaimes" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Kit andaimes</h3><p>Soluções de acesso para usos permitidos e montagem por profissional capacitado.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Kit andaimes">Ver detalhes +</button></div>
+</article>
+<!-- Serviço 3: imagem local substituída automaticamente quando compactador.webp existir. -->
+<article class="card" data-category="terreno">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/compactador.webp" alt="Espaço para fotografia: Compactador de solo" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Compactador de solo</h3><p>Equipamento de compactação mediante orientação técnica adequada.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Compactador de solo">Ver detalhes +</button></div>
+</article>
+<!-- Serviço 4: imagem local substituída automaticamente quando gerador.webp existir. -->
+<article class="card" data-category="energia">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/gerador.webp" alt="Espaço para fotografia: Gerador portátil" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Gerador portátil</h3><p>Apoio elétrico conforme potência, instalação e requisitos de segurança.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Gerador portátil">Ver detalhes +</button></div>
+</article></div>
+ </div></section>
+ <!-- PROCESSO: explica o atendimento sem prometer agendamento ou pagamento. -->
+ <section id="processo" class="section"><div class="container"><div class="section-heading"><div><span class="eyebrow">DO PRIMEIRO CONTATO À PROPOSTA</span><h2>Simples, transparente e organizado.</h2></div></div><div class="step-grid"><article class="step"><b>PASSO 1</b><h3>Escolha o equipamento</h3><p>Confira a finalidade e os detalhes da solução.</p></article> <!-- Etapa 1. -->
+<article class="step"><b>PASSO 2</b><h3>Simule a locação</h3><p>Informe quantidade, dias e região.</p></article> <!-- Etapa 2. -->
+<article class="step"><b>PASSO 3</b><h3>Confirme o orçamento</h3><p>O fornecedor verifica estoque, entrega e condições técnicas.</p></article> <!-- Etapa 3. --></div></div></section>
+ <!-- GALERIA: três imagens locais fáceis de substituir e sem links remotos. -->
+ <section id="galeria" class="section section-white"><div class="container"><div class="section-heading"><div><span class="eyebrow">CONHEÇA MAIS</span><h2>Detalhes que fazem diferença.</h2></div><p>Os espaços abaixo são reservas de fotos. Coloque seus arquivos autorizados e as imagens aparecem automaticamente.</p></div><div class="gallery"><!-- Galeria 1: adicione assets/img/deposito-equipamentos.webp para substituir a imagem de instrução. -->
+<figure><img src="assets/img/placeholder.svg" data-photo="assets/img/deposito-equipamentos.webp" alt="Foto de exemplo a substituir: Detalhe do ambiente" width="750" height="560" loading="lazy"><figcaption>Detalhe do ambiente</figcaption></figure>
+<!-- Galeria 2: adicione assets/img/transporte-maquinas.webp para substituir a imagem de instrução. -->
+<figure><img src="assets/img/placeholder.svg" data-photo="assets/img/transporte-maquinas.webp" alt="Foto de exemplo a substituir: Processo ou equipe" width="750" height="560" loading="lazy"><figcaption>Processo ou equipe</figcaption></figure>
+<!-- Galeria 3: adicione assets/img/equipe-tecnica.webp para substituir a imagem de instrução. -->
+<figure><img src="assets/img/placeholder.svg" data-photo="assets/img/equipe-tecnica.webp" alt="Foto de exemplo a substituir: Resultado do serviço" width="750" height="560" loading="lazy"><figcaption>Resultado do serviço</figcaption></figure></div></div></section>
+ <!-- CONTATO: as informações são transmitidas pela abertura do WhatsApp, sem banco de dados. -->
+ <section id="orcamento" class="section"><div class="container contact-grid">
+  <div><span class="eyebrow">ATENDIMENTO PERSONALIZADO</span><h2>Solicite uma proposta de locação.</h2><p class="lead">Estimativa didática: os valores não representam uma oferta, frete, caução ou disponibilidade real.</p><p><strong>WhatsApp da demo:</strong> (11) 94203-8103</p><p class="form-note">Este site é demonstrativo. O envio não cria cadastro, não cobra pagamento e não confirma serviços.</p></div>
+  <form id="lead-form" class="form-card"><div class="form-grid"><!-- Campo Seu nome: preenchimento pelo visitante. -->
+<div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" placeholder="Como podemos chamar você?" maxlength="70" autocomplete="name" required></div>
+<!-- Campo Equipamento: preenchimento pelo visitante. -->
+<div class="field"><label for="escolha">Equipamento</label><select id="escolha" name="escolha" required><option value="">Selecione...</option><option value="betoneira">Betoneira</option><option value="andaime">Kit andaimes</option><option value="compactador">Compactador de solo</option><option value="gerador">Gerador portátil</option></select></div>
+<!-- Campo Quantidade de equipamentos: preenchimento pelo visitante. -->
+<div class="field"><label for="quantidade">Quantidade de equipamentos</label><input id="quantidade" name="quantidade" type="number" placeholder="" min="1" max="20" step="1" value="1" required></div>
+<!-- Campo Dias de locação: preenchimento pelo visitante. -->
+<div class="field"><label for="dias">Dias de locação</label><input id="dias" name="dias" type="number" placeholder="" min="1" max="90" step="1" value="1" required></div>
+<!-- Campo Região de entrega: preenchimento pelo visitante. -->
+<div class="field"><label for="regiao">Região de entrega</label><input id="regiao" name="regiao" type="text" placeholder="Cidade e bairro" maxlength="90" required></div>
+<!-- Campo Observações da obra: preenchimento pelo visitante. -->
+<div class="field"><label for="observacao">Observações da obra</label><textarea id="observacao" name="observacao" maxlength="350" placeholder="Descreva a necessidade sem dados pessoais"></textarea></div></div><p class="estimate" id="estimate" role="status" aria-live="polite">Preencha os campos para visualizar a estimativa ilustrativa.</p> <!-- Resultado atualizado pelo JavaScript. --><button class="btn btn-dark" type="submit">Enviar pedido pelo WhatsApp ↗</button><p class="form-note">Ao clicar, abre uma mensagem no WhatsApp para você revisar e enviar.</p></form>
+ </div></section>
+ <!-- DÚVIDAS: componentes nativos acessíveis via teclado, sem dependências JS. -->
+ <section class="section section-white" id="perguntas"><div class="container"><div class="faq"><span class="eyebrow">PRECISA SABER MAIS?</span><h2>Perguntas frequentes</h2><details><summary>A estimativa inclui frete e caução?</summary><p>Não. São itens que o fornecedor deverá avaliar separadamente.</p></details> <!-- Pergunta frequente. -->
+<details><summary>A locação é aprovada automaticamente?</summary><p>Não. O contato é enviado ao WhatsApp e depende de análise.</p></details> <!-- Pergunta frequente. -->
+<details><summary>Pode integrar estoque e contratos?</summary><p>Sim, em projeto futuro com banco de dados, gestão de equipamentos, contratos e pagamentos.</p></details> <!-- Pergunta frequente. --></div></div></section>
+ <!-- Convite final para conhecer o serviço. -->
+ <section class="section"><div class="container"><div class="banner"><div><h2>Uma conversa pode começar por aqui.</h2><p>Veja como a apresentação digital aproxima o negócio de seus clientes.</p></div><a class="btn" data-whatsapp href="https://wa.me/5511942038103">Falar no WhatsApp ↗</a></div></div></section>
+</main>
+<!-- Rodapé com créditos da demo e aviso para não confundir com uma empresa real. -->
+<footer><div class="container"><div class="footer-grid"><div><h3>MaxLoc</h3><p>Locação de equipamentos e máquinas.</p><small>Marca demonstrativa criada para portfólio. Não representa operação empresarial real.</small></div><div><h3>Navegação</h3><p><a href="#solucoes">Serviços</a></p><p><a href="#galeria">Galeria</a></p><p><a href="#orcamento">Contato</a></p></div><div><h3>Desenvolvimento</h3><p>MOSS Digital</p><p><a href="https://www.mossdigital.com.br" target="_blank" rel="noopener noreferrer">www.mossdigital.com.br</a></p></div></div><div class="footer-bottom">© MaxLoc · Demo de portfólio · Preços, imagens e serviços ilustrativos.</div></div></footer>
+<!-- Atalho fixo de WhatsApp, com mensagem preenchida pelo JavaScript. -->
+<a class="float-wa" data-whatsapp href="https://wa.me/5511942038103" aria-label="Conversar com a MOSS Digital pelo WhatsApp" target="_blank" rel="noopener noreferrer">✆ WhatsApp</a>
+<!-- Diálogo nativo aberto pelo botão de detalhes de cada serviço. -->
+<dialog class="dialog" id="details-dialog" aria-labelledby="dialog-title"><img id="dialog-photo" src="assets/img/placeholder.svg" alt="Imagem ilustrativa do serviço"><div class="dialog-copy"><div class="dialog-head"><h2 id="dialog-title">Detalhes</h2><button class="dialog-close" id="dialog-close" type="button" aria-label="Fechar janela">×</button></div><p id="dialog-text"></p><a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103">Perguntar no WhatsApp ↗</a></div></dialog>
+</body> <!-- Final do conteúdo. -->
+</html> <!-- Final do documento. -->

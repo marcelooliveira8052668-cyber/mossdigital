@@ -1,0 +1,37 @@
+<!doctype html> <!-- HTML5. -->
+<html lang="pt-BR"> <!-- Idioma. -->
+<head> <!-- Metadados. -->
+  <meta charset="utf-8"> <!-- Acentos. -->
+  <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Telas pequenas. -->
+  <meta name="description" content="ExtinControl: painel demonstrativo de acompanhamento administrativo de equipamentos e datas."> <!-- SEO. -->
+  <meta name="theme-color" content="#121c2d"> <!-- Barra mobile. -->
+  <title>ExtinControl | Painel de Equipamentos</title> <!-- Nome da aba. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- CSS separado. -->
+  <script src="js/script.js" defer></script> <!-- JavaScript separado. -->
+</head>
+<body> <!-- Interface. -->
+  <div class="app-layout"> <!-- Painel em colunas. -->
+    <aside class="sidebar"> <!-- Menu lateral no estilo SaaS. -->
+      <a class="logo" href="#inicio"><span>◈</span> EXTIN<span class="accent">CONTROL</span><small>GESTÃO DEMONSTRATIVA</small></a> <!-- Marca. -->
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-controls="side-nav" aria-expanded="false">☰ Menu</button> <!-- Navegação móvel. -->
+      <nav id="side-nav" class="side-nav" aria-label="Navegação"><a href="#inicio" class="active">◧ Visão geral</a><a href="#equipamentos">▤ Equipamentos</a><a href="#agenda">◷ Agenda</a><a href="#apoio">▧ Como funciona</a></nav> <!-- Links. -->
+      <div class="sidebar-card"><b>Demo local</b><p>Nenhum registro é enviado a servidor ou compartilhado entre funcionários.</p><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vim%20pela%20demo%20ExtinControl%20da%20MOSS." target="_blank" rel="noopener noreferrer">Falar com a MOSS ↗</a></div> <!-- Caixa de orientação. -->
+      <div class="sidebar-foot">MOSS DIGITAL · MODELO 42</div> <!-- Crédito. -->
+    </aside>
+    <main class="dashboard" id="inicio"> <!-- Aplicação demonstrativa. -->
+      <div class="topbar"><div><span class="eyebrow">PAINEL OPERACIONAL</span><h1>Visão geral</h1></div><div class="topbar-right"><span class="demo-label">● Dados apenas neste navegador</span><span id="today-label"></span></div></div> <!-- Contexto e data. -->
+      <div class="disclaimer">⚠️ Demonstração administrativa. Não realiza inspeção, manutenção, testes, certificação nem garante conformidade com normas. Empresas habilitadas devem definir os procedimentos e prazos reais.</div> <!-- Aviso essencial de segurança. -->
+      <section class="metrics" aria-label="Indicadores"><article class="metric"><span>Total de registros</span><strong id="metric-total">0</strong><small>Unidades cadastradas</small></article><article class="metric"><span>Vencidos na data informada</span><strong id="metric-overdue">0</strong><small>Agenda simulada</small></article><article class="metric"><span>Até 30 dias</span><strong id="metric-soon">0</strong><small>Próximos agendamentos</small></article><article class="metric"><span>Mais de 30 dias</span><strong id="metric-ok">0</strong><small>Sem urgência na agenda</small></article></section> <!-- KPIs. -->
+      <section class="register-row" id="equipamentos"> <!-- Cadastro local de equipamento. -->
+        <div class="register-info"><span class="eyebrow">CONTROLE DO DIA A DIA</span><h2>Registre equipamentos e acompanhe datas.</h2><p>Use um identificador genérico, local e data escolhida apenas para experimentar esta ferramenta.</p><div class="register-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/painel-equipamentos.webp" alt="Fotografia de equipamentos organizados em área comercial a inserir" width="900" height="675"></div></div>
+        <form id="asset-form" class="asset-form"><h3>Novo registro</h3><label>Identificador interno<input id="asset-name" type="text" maxlength="60" placeholder="Ex.: EXT-001" required></label><label>Local de referência<input id="asset-location" type="text" maxlength="60" placeholder="Ex.: depósito" required></label><label>Data de acompanhamento<input id="asset-date" type="date" required></label><button type="submit">+ Registrar equipamento</button><p>Guarde somente dados fictícios; sem nomes de funcionários, fotos pessoais ou dados sensíveis.</p></form> <!-- Cadastro. -->
+      </section>
+      <section class="list-section" id="agenda"> <!-- Agenda com status administrativo. -->
+        <div class="list-title"><div><span class="eyebrow">AGENDA DE ACOMPANHAMENTO</span><h2>Registros recentes</h2></div><div class="list-actions"><label>Filtrar por prazo<select id="filter-status"><option value="todos">Todos</option><option value="atrasado">Data ultrapassada</option><option value="proximo">Próximos 30 dias</option><option value="futuro">Mais de 30 dias</option></select></label><button type="button" id="clear-all">Limpar dados</button></div></div>
+        <div class="table-scroller"><table><thead><tr><th>Identificador</th><th>Local</th><th>Data informada</th><th>Indicador de agenda</th><th>Ação</th></tr></thead><tbody id="asset-body"></tbody></table></div><p id="empty-state" class="empty" aria-live="polite"></p> <!-- Tabela gerada pelo JS. -->
+      </section>
+      <section id="apoio" class="help-section"><div><span class="eyebrow">DA DEMO AO SISTEMA REAL</span><h2>Que conexões serão necessárias?</h2></div><div class="help-grid"><article><b>01 · Supabase</b><p>Banco de dados e autenticação para usuários e empresas.</p></article><article><b>02 · Permissões</b><p>Perfis de funcionários, logs de mudanças e histórico.</p></article><article><b>03 · Notificações</b><p>Alertas de agenda, validados por responsável técnico.</p></article></div></section> <!-- Plano de evolução, sem ativar serviços. -->
+      <footer class="footer">ExtinControl — marca fictícia para demonstração MOSS Digital · Não substitui software certificado ou controle exigido pela legislação.</footer> <!-- Rodapé. -->
+    </main>
+  </div>
+</body></html>

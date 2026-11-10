@@ -1,0 +1,47 @@
+<!doctype html> <!-- HTML5, sem bibliotecas ou servidor. -->
+<html lang="pt-BR"> <!-- Idioma principal. -->
+<head> <!-- Metadados da página. -->
+  <meta charset="utf-8"> <!-- Acentuação brasileira. -->
+  <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Responsividade. -->
+  <meta name="description" content="Sola Viva: demonstração de sapataria e reparos com controle local de serviços, criada pela MOSS Digital."> <!-- SEO. -->
+  <meta name="theme-color" content="#482e26"> <!-- Cor da interface móvel. -->
+  <title>Sola Viva | Sapataria & Ateliê de Reparos</title> <!-- Título do navegador. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- Estilos exclusivos da demo. -->
+  <script src="js/script.js" defer></script> <!-- Lógica exclusiva da demo. -->
+</head>
+<body> <!-- Início da interface. -->
+  <div class="demo-ribbon">PROJETO DEMONSTRATIVO MOSS DIGITAL · Dados fictícios · Sem vendas automáticas</div> <!-- Aviso de transparência. -->
+  <header class="site-header" id="inicio"> <!-- Cabeçalho editorial. -->
+    <a href="#inicio" class="brand">SOLA<span>VIVA.</span><small>SAPATARIA & REPAROS</small></a> <!-- Marca do modelo. -->
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">☰ Menu</button> <!-- Abertura de menu móvel. -->
+    <nav id="main-nav" class="nav" aria-label="Menu principal"> <!-- Links internos. -->
+      <a href="#atelier">O ateliê</a><a href="#servicos">Serviços</a><a href="#fichas">Minhas fichas</a><a href="#solicitar">Orçamento</a> <!-- Seções. -->
+    </nav>
+    <a class="top-contact" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vim%20pela%20demo%20Sola%20Viva." target="_blank" rel="noopener noreferrer">Conversar <span aria-hidden="true">↗</span></a> <!-- Contato real autorizado. -->
+  </header>
+  <main> <!-- Conteúdo principal. -->
+    <section class="hero" aria-labelledby="hero-title"> <!-- Composição assimétrica. -->
+      <div class="hero-marker" aria-hidden="true">DESDE 1985 <span>✦</span> FEITO PARA DURAR</div> <!-- Texto ilustrativo. -->
+      <div class="hero-copy"><span class="eyebrow">MAIS HISTÓRIAS EM CADA PASSO</span><h1 id="hero-title">Reparar também é uma forma de <em>cuidar.</em></h1><p>Do sapato favorito à bolsa especial. Apresente serviços, receba pedidos e organize o andamento das peças em uma só página.</p><a class="btn btn-dark" href="#solicitar">Pedir avaliação <span aria-hidden="true">→</span></a></div> <!-- Mensagem principal. -->
+      <div class="hero-media photo-frame"><img src="assets/img/placeholder.svg" data-photo="assets/img/capa-sapateiro.webp" alt="Foto de artesão trabalhando com reparo de calçados, a inserir" width="1200" height="900"><span class="photo-note">capa-sapateiro.webp</span></div> <!-- Espaço de foto. -->
+      <div class="hero-seal">RESTAURAR · REUTILIZAR · VALORIZAR</div> <!-- Destaque lateral. -->
+    </section>
+    <section class="intro-bar" id="atelier"><span>01. Reparos</span><span>02. Cuidado artesanal</span><span>03. Acompanhamento de peças</span></section> <!-- Linha editorial. -->
+    <section class="services section-wrap" id="servicos"> <!-- Serviços sem cards repetitivos. -->
+      <div class="section-head"><span class="eyebrow">O QUE FAZEMOS</span><h2>Peças especiais merecem uma segunda vida.</h2></div> <!-- Título da seção. -->
+      <div class="service-list"> <!-- Lista horizontal de serviços. -->
+        <article class="service-row"><div class="service-number">01</div><div class="service-photo"><img src="assets/img/placeholder.svg" data-photo="assets/img/restauracao-calcados.webp" alt="Foto de restauração de calçados a inserir" width="900" height="675"></div><div><h3>Restauração de calçados</h3><p>Troca de solados, colagens e pequenos reparos.</p></div><button type="button" data-service="Restauração de calçados">Solicitar ↗</button></article> <!-- Serviço 01. -->
+        <article class="service-row"><div class="service-number">02</div><div class="service-photo"><img src="assets/img/placeholder.svg" data-photo="assets/img/reparo-bolsas.webp" alt="Foto de reparo de bolsa a inserir" width="900" height="675"></div><div><h3>Bolsas e acessórios</h3><p>Alças, costuras, ferragens e acabamento.</p></div><button type="button" data-service="Bolsas e acessórios">Solicitar ↗</button></article> <!-- Serviço 02. -->
+        <article class="service-row"><div class="service-number">03</div><div class="service-photo"><img src="assets/img/placeholder.svg" data-photo="assets/img/cuidados-couro.webp" alt="Foto de tratamento de couro a inserir" width="900" height="675"></div><div><h3>Tratamento de couro</h3><p>Limpeza, hidratação e conservação ilustrativas.</p></div><button type="button" data-service="Tratamento de couro">Solicitar ↗</button></article> <!-- Serviço 03. -->
+      </div>
+    </section>
+    <section class="orders" id="fichas"> <!-- Painel operacional local. -->
+      <div class="section-wrap orders-layout"><div class="orders-info"><span class="eyebrow">FERRAMENTA PARA A ROTINA</span><h2>Controle suas fichas de serviço.</h2><p>Experimente cadastrar peças, escolher uma etapa e acompanhar o trabalho. Os dados ficam somente neste navegador.</p><p class="notice">⚠️ Use apenas dados fictícios: sem login, backup ou compartilhamento entre dispositivos.</p><div class="order-kpis"><div><strong id="kpi-total">0</strong><span>fichas</span></div><div><strong id="kpi-progress">0</strong><span>em andamento</span></div></div></div>
+        <div class="workboard"><form id="ticket-form" class="ticket-form"><h3>Nova ficha</h3><div class="form-line"><label for="ticket-item">Peça / serviço</label><input id="ticket-item" name="peca" placeholder="Ex.: bota preta — solado" maxlength="65" required></div><div class="form-line"><label for="ticket-status">Etapa inicial</label><select id="ticket-status" name="status"><option value="Recebido">Recebido</option><option value="Em reparo">Em reparo</option><option value="Pronto">Pronto</option></select></div><button class="btn btn-copper" type="submit">Adicionar ficha +</button></form><div class="ticket-toolbar"><strong>Fichas locais</strong><button id="clear-demo" type="button">Limpar fichas</button></div><div id="ticket-list" class="ticket-list" aria-live="polite"></div></div>
+      </div>
+    </section>
+    <section class="section-wrap contact" id="solicitar"><div><span class="eyebrow">SEU PEDIDO EM UM TOQUE</span><h2>Conte o que precisa reparar.</h2><p>A avaliação final é feita pela equipe. O formulário apenas prepara a mensagem do WhatsApp, sem enviar automaticamente.</p></div><form id="lead-form" class="lead-form"><label>Nome (pode usar nome fictício)<input name="Nome" required maxlength="60" placeholder="Seu nome"></label><label>Serviço<select name="Serviço" id="lead-service" required><option value="">Selecione</option><option>Restauração de calçados</option><option>Bolsas e acessórios</option><option>Tratamento de couro</option></select></label><label>Descrição<textarea name="Detalhes" maxlength="360" placeholder="Tipo de peça e problema"></textarea></label><button class="btn btn-dark" type="submit">Preparar mensagem no WhatsApp ↗</button></form></section> <!-- Contato. -->
+  </main>
+  <footer class="footer"><strong>SOLA VIVA.</strong><p>Demo ilustrativa criada pela MOSS Digital. Sem estabelecimento real ou valores vinculantes.</p><a href="https://www.mossdigital.com.br" target="_blank" rel="noopener noreferrer">MOSS Digital ↗</a></footer>
+</body>
+</html>

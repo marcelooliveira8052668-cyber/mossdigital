@@ -1,0 +1,126 @@
+/* Identidade premium com foco em contraste, legibilidade e responsividade. */
+:root{--ink:#142025;--gold:#bd9b60;--cream:#f8f6f1;--muted:#6b7376;--line:#e6e3dc;--white:#fff}
+/* Reset de margens e comportamento de caixas. */
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+/* Aviso demonstrativo e cabeçalho principal. */
+.demo-strip{background:#b79a64;color:#111;text-align:center;padding:8px 14px;font-size:11px;letter-spacing:.12em;font-weight:700}.header{background:var(--white);display:flex;align-items:center;justify-content:space-between;padding:17px max(5%,calc((100vw - 1320px)/2));gap:25px;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #00000009}.brand{display:flex;align-items:center;gap:11px;font-size:17px;letter-spacing:.15em;white-space:nowrap}.brand b,.footer-brand b{color:var(--gold);font-weight:500}.header nav{display:flex;gap:32px;font-size:13px;color:#4c5356}.header nav a:hover{color:var(--gold)}.cart-trigger{border:1px solid var(--line);padding:10px 15px;background:white;white-space:nowrap}.cart-trigger span{background:var(--ink);color:white;border-radius:50%;padding:3px 7px;margin-left:5px;font-size:11px}.menu-toggle{display:none;background:transparent;border:0}
+/* Hero com chamada principal e imagem ilustrativa. */
+.hero{min-height:530px;background:#152127;color:#fff;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;overflow:hidden}.hero-copy{padding:75px 8% 75px max(9%,calc((100vw - 1190px)/2));max-width:780px}.eyebrow{color:var(--gold);letter-spacing:.25em;font-size:11px;font-weight:700}.hero h1{font-family:Georgia,serif;font-size:clamp(46px,6vw,88px);line-height:1.08;font-weight:400;letter-spacing:-.05em;margin:25px 0}.hero h1 em{color:#c9ab75;font-weight:400}.hero p{color:#cbd1d2;max-width:480px}.hero small{display:block;margin-top:18px;color:#aeb6b7}.hero-art{height:100%;display:grid;place-items:center;background:radial-gradient(circle,#34444a,#152127 68%);padding:55px}.hero-art img{width:min(100%,440px);border-radius:50%;box-shadow:0 25px 80px #0007}.btn{display:inline-flex;align-items:center;justify-content:center;gap:15px;padding:15px 24px;border:0;font-weight:700;font-size:13px}.gold{background:var(--gold);color:#14191a}.gold:hover{background:#d3b77f}.benefits{display:flex;justify-content:space-evenly;flex-wrap:wrap;gap:20px;background:#eae6dd;padding:20px;color:#4e5758;font-size:12px;letter-spacing:.04em}
+/* Catálogo e filtros. */
+.section{padding:85px max(5%,calc((100vw - 1200px)/2))}.section h2{font:400 clamp(32px,4vw,50px)/1.15 Georgia,serif;margin:14px 0 18px}.section-top{display:flex;align-items:end;justify-content:space-between;gap:30px}.section-top p{color:var(--muted);max-width:600px}.result-count{font-size:12px;color:var(--muted);white-space:nowrap}.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin:35px 0 25px}.filters input,.filters select{width:100%;padding:14px;border:1px solid var(--line);background:white;color:var(--ink);border-radius:0}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}.product-card{background:white;min-width:0;border:1px solid var(--line);transition:transform .2s,box-shadow .2s}.product-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #00000012}.product-image{background:#f0eee9;border:0;width:100%;padding:0;display:block}.product-image img{width:100%;aspect-ratio:1.1;object-fit:cover}.product-body{padding:18px}.category-label{font-size:10px;letter-spacing:.1em;color:#8b744e;text-transform:uppercase}.product-body h3{font:400 20px Georgia,serif;margin:8px 0}.price{font-weight:700;font-size:16px}.product-actions{display:flex;gap:8px;margin-top:16px}.product-actions button{flex:1;padding:10px 7px;font-size:12px;border:1px solid var(--ink);background:white}.product-actions .add{background:var(--ink);color:white}.empty{padding:30px;text-align:center}
+/* Seções institucionais e perguntas frequentes. */
+.about{background:#eae6dd;display:grid;grid-template-columns:1fr 1fr;gap:70px}.about p{color:#566064}.faq{max-width:950px;margin:auto}.faq details{border-bottom:1px solid var(--line);padding:18px 0}.faq summary{cursor:pointer;font-weight:700}.faq details p{color:var(--muted)}.contact{background:#1b292f;color:white;display:flex;align-items:center;justify-content:space-between;gap:35px}.contact p{color:#c1cacc}.contact .btn[aria-disabled=true]{opacity:.55;cursor:not-allowed}footer{background:#101a1e;color:#c2c9cb;padding:60px max(5%,calc((100vw - 1200px)/2)) 20px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px}.footer-grid a{display:block;margin:10px 0}.footer-brand{color:white;font-size:20px;letter-spacing:.16em}.footer-grid h3{color:white;font-size:14px}.footer-bottom{margin-top:50px;border-top:1px solid #364046;padding-top:20px;font-size:12px}
+/* Janelas nativas de detalhes e carrinho. */
+dialog{border:0;box-shadow:0 30px 90px #0006;max-height:90vh;overflow:auto;padding:25px;color:var(--ink)}dialog::backdrop{background:#071116b8}.product-dialog{width:min(850px,95vw)}.product-detail{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}.product-detail img{background:#eee}.product-detail h2{font:400 34px Georgia,serif}.product-detail p{color:var(--muted)}.close{border:0;background:transparent;font-size:30px;line-height:1;padding:5px;float:right}.cart-dialog{width:min(470px,95vw);height:min(780px,95vh);margin:auto 0 auto auto}.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.cart-item{display:grid;grid-template-columns:65px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.cart-item img{width:65px}.cart-item strong{display:block}.cart-item button{border:1px solid var(--line);background:white;padding:3px 8px}.cart-controls{display:flex;align-items:center;gap:8px;margin-top:8px}.cart-bottom{margin-top:30px}.cart-total{display:flex;justify-content:space-between;font-size:18px;margin-bottom:20px}.full{width:100%}.payment-info{background:#f3f0e9;padding:12px;margin-top:20px;font-size:12px}.payment-info p,#checkoutNotice{font-size:12px;color:var(--muted)}
+/* Layout fluido para tablets e celulares. */
+@media(max-width:1000px){.product-grid{grid-template-columns:repeat(3,1fr)}.header nav{gap:15px}.hero-copy{padding-left:7%}}@media(max-width:720px){.header{flex-wrap:wrap;padding:12px 5%}.menu-toggle{display:block}.header nav{display:none;width:100%;order:5;flex-direction:column;padding:15px 0}.header nav.open{display:flex}.brand{font-size:13px}.hero{grid-template-columns:1fr}.hero-copy{padding:65px 7% 30px}.hero-art{padding:20px 20px 50px}.hero-art img{max-width:260px}.section{padding:60px 5%}.section-top{display:block}.filters{grid-template-columns:1fr}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product-body{padding:12px}.product-body h3{font-size:16px}.product-actions{flex-direction:column}.about,.footer-grid,.product-detail{grid-template-columns:1fr;gap:18px}.contact{display:block}.contact .btn{margin-top:20px}.cart-dialog{margin:auto;max-height:95vh}}@media(max-width:390px){.product-grid{grid-template-columns:1fr}.header{gap:10px}.cart-trigger{padding:7px}.brand img{width:32px}}
+
+/* Formas de pagamento com campos acessíveis e boa leitura no celular. */
+.payment-choice{border:1px solid #b4a78b;border-radius:12px;padding:12px;margin:12px 0;display:flex;gap:16px;flex-wrap:wrap;}
+/* Título das formas de pagamento. */
+.payment-choice legend{font-weight:700;padding:0 6px;}
+/* Seleção de Pix ou cartão. */
+.payment-choice label{display:inline-flex;align-items:center;gap:8px;cursor:pointer;}
+/* Texto informativo da integração. */
+.payment-preview{padding:12px;border-radius:10px;background:rgba(150,135,90,.12);font-size:.92rem;line-height:1.5;margin-bottom:12px;}
+/* Botão alternativo para pedido por mensagem. */
+.btn.secondary{margin-top:9px;background:transparent;border:1px solid currentColor;color:inherit;}
+
+/* Refinamento visual da vitrine: cores, profundidade e ritmo de leitura. */
+:root{--ink:#172027;--gold:#c4a16c;--cream:#f7f5f0;--line:#e9e4dc}
+/* Transições suaves com respeito às preferências de acessibilidade. */
+:focus-visible{outline:3px solid #bd8d37;outline-offset:3px}
+/* Navegação elegante e estável. */
+.header{backdrop-filter:blur(12px);border-bottom:1px solid #eee9e0}
+.header nav a{position:relative;transition:color .2s}
+.header nav a::after{content:"";position:absolute;bottom:-7px;left:0;width:0;height:2px;background:var(--gold);transition:width .2s}
+.header nav a:hover::after{width:100%}
+/* Área de destaque com iluminação e moldura sofisticadas. */
+.hero{background:radial-gradient(ellipse at 70% 40%,#34434a 0%,#1b282e 42%,#111c22 100%)}
+.hero-art{background:radial-gradient(circle,#58636a33 0%,#17242a00 70%)}
+.hero-art img{border:8px solid #ffffff14;box-shadow:0 30px 90px #0009;transform:rotate(-8deg);transition:transform .5s}
+.hero-art img:hover{transform:rotate(-3deg) scale(1.03)}
+/* Cartões com acabamento de catálogo editorial. */
+.product-card{border-radius:12px;overflow:hidden;box-shadow:0 5px 22px #17202709}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 20px 45px #1720271c}
+.product-image{position:relative;overflow:hidden;background:linear-gradient(135deg,#f4f1e9,#e9e5dd)}
+.product-image img{transition:transform .45s;object-fit:contain;padding:16px}
+.product-image:hover img{transform:scale(1.07)}
+.product-body h3{min-height:2.2em}
+.product-actions button{border-radius:6px;transition:background .2s,color .2s}
+.product-actions .add:hover{background:#34434a}
+/* Etiqueta honesta sobre a natureza da imagem de cada produto. */
+.image-status{display:inline-block;font-size:10px;letter-spacing:.04em;color:#685e4d;background:#f4eee1;padding:5px 8px;border-radius:4px;margin-top:9px}
+/* Seções, campos e botões refinados. */
+.filters input,.filters select{border-radius:8px;min-height:48px}
+.btn{border-radius:7px;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.product-dialog,.cart-dialog{border-radius:14px}
+/* Movimentos reduzidos para quem preferir menos animações. */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Organiza os atalhos de categoria em linhas flexíveis para celular e computador. */
+.category-shortcuts { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 12px; }
+/* Define o aspecto dos botões de categoria com contraste acessível. */
+.category-shortcuts button { border:1px solid #bba77e; border-radius:999px; padding:9px 15px; background:transparent; color:inherit; cursor:pointer; font:inherit; }
+/* Destaca a categoria escolhida e deixa evidente o filtro ativo. */
+.category-shortcuts button.active { background:#c7a668; color:#161616; border-color:#c7a668; font-weight:700; }
+/* Dá uma indicação visível para navegação por teclado. */
+.category-shortcuts button:focus-visible, .reset-filters:focus-visible { outline:3px solid #c7a668; outline-offset:3px; }
+/* Mantém a ação de limpar filtros discreta e fácil de encontrar. */
+.reset-filters { margin-bottom:18px; background:transparent; border:0; color:inherit; text-decoration:underline; cursor:pointer; font:inherit; }
+
+/* Permite posicionar o coração de favoritos sobre a imagem do relógio. */
+.product-card { position:relative; }
+/* Botão de favoritos com tamanho adequado para toque em celulares. */
+.favorite-toggle { position:absolute;top:12px;right:12px;z-index:2;width:42px;height:42px;border:1px solid #ddd4c5;border-radius:50%;background:#fffdf2;color:#4b3c29;font-size:25px;line-height:1;display:grid;place-items:center;box-shadow:0 3px 10px #0002; }
+/* Cor que indica que um relógio já está salvo nos favoritos. */
+.favorite-toggle.selected { color:#a33943;background:#fff1f1; }
+/* Botão que filtra a coleção para mostrar somente os favoritos. */
+.favorites-filter { margin:0 14px 18px 0;padding:10px 15px;border:1px solid #bba77e;border-radius:8px;background:#fff;color:#172027;font:inherit; }
+/* Destaca o filtro quando o visitante está vendo seus favoritos. */
+.favorites-filter.active { background:#172027;color:#fff; }
+/* Mantém a navegação por teclado visível nos novos controles. */
+.favorite-toggle:focus-visible,.favorites-filter:focus-visible { outline:3px solid #bd8d37;outline-offset:3px; }
+
+/* ALTERE AQUI: aparência do botão que abre a comparação de produtos. */
+.compare-open { display:block; margin:1rem 0; padding:.85rem 1.1rem; border:1px solid #b99a62; border-radius:8px; background:#201d1a; color:#f6e7c6; cursor:pointer; }
+/* Explica visualmente quando ainda não há dois relógios escolhidos. */
+.compare-open:disabled { opacity:.5; cursor:not-allowed; }
+/* Organiza o botão de comparação dentro dos cards existentes. */
+.compare-card-button { padding:.5rem; border:1px solid #a98c5e; border-radius:6px; background:transparent; color:inherit; cursor:pointer; }
+/* Destaca relógios que já estão selecionados para comparação. */
+.compare-card-button[aria-pressed="true"] { background:#a98c5e; color:#101010; }
+/* Mantém a janela de comparação confortável em telas grandes e pequenas. */
+.compare-dialog { width:min(94vw,980px); max-height:90vh; overflow:auto; padding:1.5rem; border:1px solid #a98c5e; border-radius:14px; background:#171717; color:#f5f1e8; }
+/* Alinha o título e o botão de fechar a comparação. */
+.compare-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+/* Distribui até três relógios em colunas adaptáveis. */
+.compare-content { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1rem; margin-top:1.5rem; }
+/* Apresenta cada relógio em seu próprio painel. */
+.compare-item { padding:1rem; border:1px solid #4a4136; border-radius:10px; }
+/* Impede que as imagens de comparação ultrapassem os cartões. */
+.compare-item img { width:100%; max-height:180px; object-fit:contain; }
+/* Melhora a navegação por teclado nos botões novos. */
+.compare-open:focus-visible,.compare-card-button:focus-visible { outline:3px solid #e3bc77; outline-offset:3px; }
+
+/* VERSÃO 07: mantém a ficha técnica organizada em linhas fáceis de consultar. */
+.product-detail-v7 { align-items:start; gap:clamp(20px,4vw,44px); }
+/* Impede que imagens ilustrativas fiquem maiores do que a área disponível. */
+.product-detail-v7 .detail-visual img { width:100%; max-height:410px; object-fit:contain; }
+/* Identifica visualmente a origem demonstrativa da fotografia. */
+.detail-caption { text-align:center; font-size:.83rem; color:#75634b; margin:10px 0; }
+/* Ajusta o espaço do texto de detalhes sem ultrapassar a janela. */
+.detail-information { min-width:0; }
+/* Organiza a lista de especificações do produto. */
+.detail-specs { margin:14px 0 22px; border-top:1px solid #d8d1c5; }
+/* Cada linha mostra o nome do atributo e o valor correspondente. */
+.spec-row { display:grid; grid-template-columns:minmax(110px,40%) 1fr; gap:12px; padding:10px 0; border-bottom:1px solid #e6dfd5; }
+/* Destaca os nomes dos atributos. */
+.spec-row dt { font-weight:700; }
+/* Permite que informações extensas quebrem linha em telas pequenas. */
+.spec-row dd { margin:0; overflow-wrap:anywhere; }
+/* Destaca avisos que evitam confundir a demonstração com venda real. */
+.detail-warning { font-size:.87rem; color:#725b3d; }
+/* Mantém a ficha legível mesmo em celulares estreitos. */
+@media(max-width:620px){.spec-row{grid-template-columns:1fr;gap:3px}.product-detail-v7 .detail-visual img{max-height:260px}}

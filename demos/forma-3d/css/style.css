@@ -1,0 +1,65 @@
+/* Fundamentos de acessibilidade e comportamento responsivo. */
+* { box-sizing: border-box; } /* Larguras incluem bordas e espaçamentos. */
+html { scroll-behavior: smooth; } /* Permite navegação suave entre seções. */
+body { margin: 0; } /* Remove margens padrão do navegador. */
+a { color: inherit; text-decoration: none; } /* Mantém links alinhados à identidade de cada site. */
+button, input, select, textarea { font: inherit; } /* Respeita tipografia do tema também nos formulários. */
+button { cursor: pointer; } /* Informa visualmente que o botão é interativo. */
+button:disabled { opacity: .5; cursor: not-allowed; } /* Diferencia controles indisponíveis. */
+[hidden] { display: none !important; } /* Esconde elementos sem quebrar o layout. */
+img { max-width: 100%; } /* Protege contra imagens que ultrapassam seus contêineres. */
+:focus-visible { outline: 3px solid #2ab5c8; outline-offset: 3px; } /* Mantém foco visível ao navegar pelo teclado. */
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: .01ms !important; transition-duration: .01ms !important; } } /* Respeita preferência por menos movimento. */
+
+/* 47 – Estúdio de impressão 3D: cores elétricas e blocos com tipografia editorial. */
+:root { --bg:#140e22; --panel:#251936; --purple:#9d7afa; --lime:#ddff83; --text:#f8f2ff; --line:#46365e; }
+body { color:var(--text); background:var(--bg); font-family:Arial,sans-serif; }
+.announcement { padding:9px; background:var(--lime); color:#201a2e; font-size:.74rem; text-align:center; font-weight:800; }
+.navigation { padding:20px max(5vw,20px); display:flex; align-items:center; justify-content:space-between; gap:18px; position:relative; }
+.logo { font-size:1.8rem; font-weight:1000; letter-spacing:-.08em; }
+.logo span { color:var(--lime); }
+.logo small { display:block; font-size:.65rem; font-weight:400; letter-spacing:.04em; color:#a89ab9; margin-top:3px; }
+.nav-links { display:flex; gap:24px; font-weight:700; color:#e2d4ef; }
+.contact-top, .primary { display:inline-flex; justify-content:center; border:0; color:#17101f; background:var(--lime); border-radius:8px; font-weight:900; padding:15px 19px; }
+.menu-btn { display:none; }
+.hero { display:grid; grid-template-columns:.92fr 1.08fr; min-height:560px; }
+.hero-left { padding:clamp(48px,9vw,130px) max(5vw,22px); background:radial-gradient(circle at top left,#34205d,var(--bg)); }
+.overline { font-size:.73rem; letter-spacing:.2em; color:var(--lime); font-weight:800; }
+.hero h1 { font-size:clamp(3.5rem,7vw,7rem); letter-spacing:-.075em; line-height:.94; margin:20px 0; }
+.hero h1 em { color:var(--purple); font-style:normal; }
+.hero p { max-width:490px; line-height:1.7; color:#c4b9d0; }
+.hero-visual { background:#2a1b3e; position:relative; min-height:330px; overflow:hidden; }
+.hero-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.hero-visual span { position:absolute; bottom:25px; left:25px; background:#231638; padding:15px; font-weight:900; transform:rotate(-2deg); }
+.hero-visual b { color:var(--lime); }
+.portfolio { padding:75px max(5vw,20px); }
+.section-header { max-width:1200px; margin:0 auto; }
+h2 { font-size:clamp(2.2rem,3.3vw,3.5rem); letter-spacing:-.055em; }
+.portfolio-grid { display:grid; grid-template-columns:1.4fr 1fr; grid-template-rows:235px 235px; gap:18px; max-width:1200px; margin:auto; }
+.work { position:relative; overflow:hidden; border-radius:18px; background:#36234e; }
+.work.large { grid-row:span 2; }
+.work img { width:100%; height:100%; object-fit:cover; }
+.work::after { content:''; position:absolute; inset:0; background:linear-gradient(0deg,#140e22eb,transparent 70%); }
+.work div { position:absolute; z-index:1; left:22px; bottom:20px; }
+.work span { font-size:.72rem; letter-spacing:.13em; color:var(--lime); }
+.work h3 { font-size:1.6rem; margin:7px 0; }
+.estimate-section { background:#e9e2fc; color:#2b2040; padding:70px max(5vw,20px); display:grid; grid-template-columns:.85fr 1.15fr; gap:35px; }
+.estimate-intro .overline { color:#7653b4; }
+.estimate-intro p { max-width:500px; line-height:1.7; }
+.math-explain { display:grid; gap:8px; border-left:5px solid var(--purple); padding:16px; background:#d8cff3; }
+.estimate-form { background:white; padding:28px; border-radius:25px; display:grid; gap:18px; box-shadow:0 25px 45px #38245822; }
+.estimate-form label { display:grid; gap:8px; font-weight:800; }
+.estimate-form select,.estimate-form input { min-width:0; width:100%; padding:13px; border:1px solid #d3cce5; border-radius:12px; }
+.double { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.estimate-value { display:flex; align-items:center; justify-content:space-between; padding:20px; border-radius:15px; background:#f0ebfd; }
+.estimate-value strong { font-size:2rem; }
+.full { width:100%; }
+.small { color:#746b83; font-size:.82rem; margin:0; }
+.steps { padding:75px max(5vw,20px); }
+.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.steps-grid div { border:1px solid var(--line); padding:25px; background:var(--panel); border-radius:17px; }
+.steps-grid b { color:var(--lime); }
+.steps-grid p { color:#bbb0cd; line-height:1.7; }
+footer { border-top:1px solid var(--line); padding:30px max(5vw,20px); display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px; }
+@media (max-width:940px) { .menu-btn { display:block; background:#35244d; color:white; border:1px solid #564171; border-radius:8px; padding:10px; } .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:var(--panel); padding:19px; flex-direction:column; z-index:10; } .nav-links.open { display:flex; } .contact-top { display:none; } .hero,.estimate-section { grid-template-columns:1fr; } .hero-visual { min-height:330px; } }
+@media (max-width:650px) { .portfolio-grid,.steps-grid,.double { grid-template-columns:1fr; grid-template-rows:auto; } .work,.work.large { min-height:260px; grid-row:auto; } .estimate-form { padding:17px; } .estimate-value { align-items:start; flex-direction:column; gap:8px; } }

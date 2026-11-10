@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Configurações para acentuação, responsividade e identificação do site. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f0eb">
+  <meta name="description" content="Pulse Fashion: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.">
+  <title>Pulse Fashion | Demo de loja MOSS Digital</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body id="inicio" data-site="Pulse Fashion">
+<!-- Barra informativa: site demonstrativo, com produtos e valores fictícios. -->
+<div class="announcement">PROJETO DEMONSTRATIVO · Produtos, imagens e preços ilustrativos · Pedidos por WhatsApp</div>
+
+<header class="fashion-header"><div class="container fashion-nav"><a href="#inicio" class="brand" aria-label="Página inicial Pulse Fashion"><span class="brand-mark">P/</span><span>Pulse Fashion</span></a><nav class="nav-links" id="menu-links"><a href="#colecao">Coleção</a><a href="#catalogo">Loja</a><a href="#conceito">Manifesto</a></nav><div class="fashion-actions"><button id="show-favorites" class="icon-btn" type="button" aria-label="Mostrar favoritos">♡</button><button id="open-cart" class="fashion-bag" type="button" aria-label="Abrir sacola">Sacola <span class="cart-count">0</span></button><button class="nav-toggle" aria-controls="menu-links" aria-expanded="false">☰</button></div></div></header>
+<main><section class="fashion-hero container" id="colecao"><div class="fashion-headline"><span class="eyebrow">COLEÇÃO / 01 — ESTILO SEM PRESSA</span><h1>O essencial<br>é <i>singular.</i></h1><p>Peças para expressar sua identidade. Escolha com atenção, combine do seu jeito.</p><a href="#catalogo" class="btn btn-fashion">Descobrir coleção ↗</a><span class="edition">Edição demonstrativa · 2026</span></div><div class="fashion-image"><img src="assets/img/hero.svg" alt="Colagem ilustrativa de moda contemporânea"/><div class="fashion-number">01 / NOVO OLHAR</div></div><div class="fashion-side"><span>MAIS QUE ROUPA</span><strong>Estilo em cada detalhe.</strong><p>Modelos, tamanhos e seleção pessoal.</p></div></section>
+<section class="container fashion-concept" id="conceito"><span class="eyebrow">NOSSOS PRINCÍPIOS</span><h2>Um guarda-roupa com intenção. Uma vitrine com personalidade.</h2><p>Escolha suas peças favoritas e monte sua sacola. Atendimento e disponibilidade são combinados diretamente com a loja.</p></section>
+<section class="container fashion-catalog" id="catalogo"><div class="section-heading"><div><span class="eyebrow">A CURADORIA</span><h2>Peças para descobrir.</h2></div><label class="fashion-search"><span class="sr-only">Buscar peças</span><input type="search" id="product-search" placeholder="Buscar uma peça..."/></label></div><div id="filter-row" class="filter-row"></div><div class="products-grid fashion-products" id="products-grid"></div><p id="empty-msg" class="empty" hidden>Nenhuma peça encontrada.</p></section>
+<section class="container fashion-footer-banner"><h2>Seu estilo,<br><i>sem fórmulas.</i></h2><p>Um catálogo editorial que pode crescer com sua marca.</p><a href="#catalogo">Explorar agora ↗</a></section></main>
+
+<!-- Gaveta de carrinho: todas as informações permanecem neste navegador. -->
+<div class="overlay" id="drawer-overlay" hidden></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Carrinho de cotação" aria-hidden="true">
+ <div class="drawer-head"><div><span class="eyebrow">SELEÇÃO DE PRODUTOS</span><h2>Minha lista</h2></div><button id="close-cart" class="close-btn" type="button" aria-label="Fechar carrinho">×</button></div>
+ <div id="cart-items" class="cart-items"><p>Seu carrinho está vazio.</p></div>
+ <div class="drawer-bottom"><div class="cart-total"><span>Total estimado</span><strong id="cart-total">R$ 0,00</strong></div><p>Não realiza pagamento. A loja confirma estoque, frete e valores.</p><a id="checkout-link" class="btn btn-checkout" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511942038103">Enviar pedido pelo WhatsApp ↗</a></div>
+</aside>
+<!-- Janela de informações. -->
+<dialog id="product-dialog" class="product-dialog"><button id="close-dialog" type="button" class="close-btn" aria-label="Fechar detalhes">×</button><div id="dialog-content"></div></dialog>
+
+<!-- Rodapé de transparência comercial. -->
+<footer class="footer"><div><strong>Pulse Fashion</strong><span> · Vitrine demonstrativa criada pela MOSS Digital</span></div><p>Valores ilustrativos. Sem estoque confirmado, pagamento ou entrega automática.</p><a href="#inicio">Voltar ao início ↑</a></footer>
+<!-- Área de anúncios acessíveis para ações do usuário. -->
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

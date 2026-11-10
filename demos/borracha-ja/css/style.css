@@ -1,0 +1,65 @@
+/* Fundamentos de acessibilidade e comportamento responsivo. */
+* { box-sizing: border-box; } /* Larguras incluem bordas e espaçamentos. */
+html { scroll-behavior: smooth; } /* Permite navegação suave entre seções. */
+body { margin: 0; } /* Remove margens padrão do navegador. */
+a { color: inherit; text-decoration: none; } /* Mantém links alinhados à identidade de cada site. */
+button, input, select, textarea { font: inherit; } /* Respeita tipografia do tema também nos formulários. */
+button { cursor: pointer; } /* Informa visualmente que o botão é interativo. */
+button:disabled { opacity: .5; cursor: not-allowed; } /* Diferencia controles indisponíveis. */
+[hidden] { display: none !important; } /* Esconde elementos sem quebrar o layout. */
+img { max-width: 100%; } /* Protege contra imagens que ultrapassam seus contêineres. */
+:focus-visible { outline: 3px solid #2ab5c8; outline-offset: 3px; } /* Mantém foco visível ao navegar pelo teclado. */
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: .01ms !important; transition-duration: .01ms !important; } } /* Respeita preferência por menos movimento. */
+
+/* 44 – Layout industrial assimétrico com ênfase em solicitação rápida. */
+:root { --night:#16191c; --panel:#22262b; --ink:#f8f7f2; --muted:#abb0b6; --orange:#ff7f33; --line:#42474c; }
+body { background:var(--night); color:var(--ink); font-family:Arial,sans-serif; }
+.demo-strip { padding:9px 18px; text-align:center; font-size:.72rem; background:#ff7f33; color:#20180f; font-weight:800; letter-spacing:.05em; }
+.top { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:18px max(5vw,22px); border-bottom:1px solid var(--line); }
+.brand { display:flex; gap:12px; align-items:center; font-weight:900; font-size:1.3rem; }
+.brand small { display:block; font-size:.68rem; font-weight:400; color:var(--muted); margin-top:4px; }
+.brand-mark { display:grid; place-items:center; width:44px; height:44px; transform:skew(-8deg); background:var(--orange); color:#181818; border-radius:9px; }
+.nav-links { display:flex; align-items:center; gap:22px; font-size:.92rem; }
+.nav-links a:hover { color:var(--orange); }
+.head-wa, .btn-orange { border:0; background:var(--orange); color:#171717; border-radius:5px; padding:15px 20px; font-weight:900; display:inline-flex; justify-content:center; }
+.hamb { display:none; }
+.hero { display:grid; grid-template-columns:1.1fr .9fr; min-height:590px; max-width:1600px; margin:auto; }
+.hero-copy { padding:clamp(35px,7vw,100px) clamp(24px,5vw,86px); }
+.eyebrow { display:inline-block; color:var(--orange); font-size:.73rem; letter-spacing:.16em; font-weight:900; text-transform:uppercase; }
+h1 { font-size:clamp(2.7rem,5.3vw,5.1rem); line-height:.98; letter-spacing:-.055em; margin:23px 0; max-width:700px; }
+.hero-copy p { color:var(--muted); line-height:1.7; max-width:620px; }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin:29px 0; }
+.btn-outline { padding:14px 20px; border:1px solid var(--line); font-weight:800; border-radius:5px; }
+.hero-points { display:flex; flex-wrap:wrap; gap:14px; font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:#cad1d5; }
+.hero-points span::before { content:'◆ '; color:var(--orange); }
+.hero-media { position:relative; min-height:420px; overflow:hidden; background:#242729; }
+.hero-media img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+.hero-sticker { position:absolute; right:22px; bottom:22px; background:var(--orange); color:#151515; padding:16px 19px; transform:rotate(-3deg); font-weight:900; letter-spacing:.08em; }
+.triage { display:grid; grid-template-columns:.72fr 1.28fr; gap:36px; padding:64px max(5vw,20px); background:#f5f3ee; color:#1f2529; }
+.triage-intro h2, .section-heading h2, .process h2 { font-size:clamp(2rem,3vw,3.3rem); line-height:1.08; max-width:480px; }
+.triage-intro p { color:#687078; line-height:1.65; }
+.stepchips { display:flex; flex-direction:column; gap:10px; margin-top:26px; }
+.stepchips span { border-left:4px solid var(--orange); background:#e7e5df; padding:12px; font-weight:800; }
+.triage-form { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:15px; background:white; border-radius:18px; padding:clamp(20px,3vw,35px); box-shadow:0 25px 60px #1010101a; }
+.triage-form label { display:grid; gap:8px; font-size:.88rem; font-weight:800; }
+.triage-form input, .triage-form select, .triage-form textarea { width:100%; min-height:48px; padding:12px; background:#fbfbfa; border:1px solid #d7d9d9; border-radius:8px; }
+.triage-form textarea { resize:vertical; min-height:110px; }
+.wide { grid-column:1/-1; }
+.micro { margin:0; color:#66717a; font-size:.77rem; }
+.services { padding:70px max(5vw,20px); }
+.section-heading { max-width:1100px; margin:0 auto 30px; }
+.service-track { display:grid; gap:15px; max-width:1100px; margin:auto; }
+.service { display:grid; grid-template-columns:70px 1fr 240px; align-items:center; gap:25px; padding:16px; border:1px solid var(--line); border-radius:16px; background:var(--panel); }
+.service-num { color:var(--orange); font-size:2.2rem; font-weight:900; }
+.service h3 { margin:0 0 8px; font-size:1.4rem; }
+.service p { color:var(--muted); margin:0; }
+.service img { width:100%; height:150px; object-fit:cover; border-radius:12px; }
+.process { padding:65px max(5vw,20px); display:grid; grid-template-columns:.8fr 1.2fr; gap:20px; background:#24282c; }
+.process ol { list-style:none; padding:0; margin:0; display:grid; gap:14px; }
+.process li { display:flex; align-items:center; gap:20px; border-bottom:1px solid var(--line); padding:16px 0; }
+.process b { color:var(--orange); font-size:1.5rem; }
+footer { padding:35px max(5vw,20px); display:flex; gap:20px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+footer span { color:var(--muted); font-size:.85rem; }
+footer a { color:var(--orange); font-weight:900; }
+@media (max-width:950px) { .top { flex-wrap:wrap; } .hamb { display:block; background:#333; color:white; border:1px solid var(--line); padding:10px 16px; } .nav-links { display:none; order:5; width:100%; flex-direction:column; align-items:flex-start; } .nav-links.open { display:flex; } .head-wa { margin-left:auto; } .hero, .triage, .process { grid-template-columns:1fr; } .hero-media { min-height:320px; } .service { grid-template-columns:46px 1fr; } .service img { grid-column:1/-1; height:220px; } }
+@media (max-width:600px) { .head-wa { display:none; } .triage-form { grid-template-columns:1fr; } .service { gap:12px; } .hero-copy { padding:44px 22px; } }

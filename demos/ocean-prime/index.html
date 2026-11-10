@@ -1,0 +1,101 @@
+<!DOCTYPE html> <!-- Documento HTML5 sem frameworks. -->
+<html lang="pt-BR"> <!-- Idioma português do Brasil. -->
+<head> <!-- Informações invisíveis aos visitantes. -->
+  <meta charset="UTF-8"> <!-- Acentuação correta. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Visualização em celular. -->
+  <meta name="description" content="Demonstração Ocean Prime para Experiências e soluções náuticas. Projeto ilustrativo criado pela MOSS Digital."> <!-- Descrição para buscadores. -->
+  <meta name="theme-color" content="#092238"> <!-- Cor da barra do navegador. -->
+  <title>Ocean Prime | Demonstração MOSS Digital</title> <!-- Texto da aba. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- Estilos exclusivos da demo. -->
+  <script src="js/script.js" defer></script> <!-- Interações exclusivas da demo. -->
+</head>
+<body data-demo="Ocean Prime" data-mode="ocean"> <!-- Identificação usada pelo script. -->
+<!-- Fita mantém claro que empresa, preços e serviços são ilustrativos. -->
+<div class="announcement">Demonstração MOSS Digital · Marca e dados ilustrativos · Fotos a inserir</div>
+<!-- Cabeçalho com navegação interna e WhatsApp real autorizado. -->
+<header class="site-header"><nav class="container nav" aria-label="Navegação principal">
+ <a class="brand" href="#inicio"><span class="brand-icon" aria-hidden="true">≈</span><span>Ocean Prime<small>Experiências e soluções náuticas</small></span></a> <!-- Identidade do projeto. -->
+ <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menu">☰</button> <!-- Menu para celular. -->
+ <ul id="nav-links" class="nav-links"><li><a href="#solucoes">Experiências</a></li><li><a href="#processo">Como funciona</a></li><li><a href="#galeria">Galeria</a></li><li><a href="#orcamento">Orçamento</a></li><li><a href="#perguntas">Dúvidas</a></li></ul> <!-- Links para seções existentes. -->
+ <a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp ↗</a> <!-- Contato direto. -->
+</nav></header>
+<main id="inicio"> <!-- Conteúdo principal. -->
+ <!-- CAPA: texto e espaço de imagem. Basta inserir assets/img/capa.webp para trocar o SVG. -->
+ <section class="hero"><div class="container hero-grid">
+  <div><span class="eyebrow">LIBERDADE PARA EXPLORAR</span><h1>O oceano é o começo de novas experiências.</h1><p class="lead">Uma vitrine refinada para passeios, embarcações e serviços náuticos com atendimento individualizado.</p><div class="actions"><a class="btn btn-dark" href="#orcamento">Solicitar informações ↗</a><a class="btn btn-secondary" href="#solucoes">Explorar experiências</a></div></div> <!-- Texto comercial. -->
+  <div class="hero-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/capa.webp" alt="Foto principal a inserir: Lancha contemporânea em marina ao entardecer" width="1200" height="900"><span class="image-label">FOTO DE CAPA · assets/img/capa.webp</span></div> <!-- Foto trocada automaticamente ao encontrar o arquivo. -->
+ </div></section>
+ <!-- Diferenciais: três razões resumidas para considerar os serviços. -->
+ <div class="container trust"><article class="trust-item"><span>01</span><h3>Experiência planejada</h3><p>Roteiros e serviços sujeitos a condições e avaliação.</p></article> <!-- Diferencial 01. -->
+<article class="trust-item"><span>02</span><h3>Atendimento dedicado</h3><p>Pedido personalizado com informações essenciais.</p></article> <!-- Diferencial 02. -->
+<article class="trust-item"><span>03</span><h3>Apresentação clara</h3><p>Galerias e explicações por tipo de solução.</p></article> <!-- Diferencial 03. --></div>
+ <!-- CATÁLOGO: filtros de categoria e quatro cards clicáveis. -->
+ <section id="solucoes" class="section section-white"><div class="container">
+  <div class="section-heading"><div><span class="eyebrow">NOSSA ESPECIALIDADE</span><h2>Descubra a melhor maneira de viver o mar.</h2></div><p>Opções de referência para um futuro catálogo de serviços náuticos, com contratação sujeita à disponibilidade e condições.</p></div>
+  <div class="filters" role="group" aria-label="Filtros por categoria"><button class="filter" type="button" data-filter="todos" aria-pressed="true">Todos</button> <!-- Filtro: Todos. -->
+<button class="filter" type="button" data-filter="passeios" aria-pressed="false">Passeios</button> <!-- Filtro: Passeios. -->
+<button class="filter" type="button" data-filter="embarcacoes" aria-pressed="false">Embarcações</button> <!-- Filtro: Embarcações. -->
+<button class="filter" type="button" data-filter="servicos" aria-pressed="false">Serviços</button> <!-- Filtro: Serviços. --></div>
+  <div class="cards" id="service-cards"><!-- Serviço 1: imagem local substituída automaticamente quando passeio-lancha.webp existir. -->
+<article class="card" data-category="passeios">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/passeio-lancha.webp" alt="Espaço para fotografia: Passeios privativos" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Passeios privativos</h3><p>Experiências com roteiro a combinar e orientação da operação habilitada.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Passeios privativos">Ver detalhes +</button></div>
+</article>
+<!-- Serviço 2: imagem local substituída automaticamente quando embarcacao.webp existir. -->
+<article class="card" data-category="embarcacoes">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/embarcacao.webp" alt="Espaço para fotografia: Embarcações em destaque" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Embarcações em destaque</h3><p>Vitrine de modelos e características para consultas personalizadas.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Embarcações em destaque">Ver detalhes +</button></div>
+</article>
+<!-- Serviço 3: imagem local substituída automaticamente quando manutencao-nautica.webp existir. -->
+<article class="card" data-category="servicos">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/manutencao-nautica.webp" alt="Espaço para fotografia: Serviços de manutenção" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Serviços de manutenção</h3><p>Apresentação de revisão e conservação conforme avaliação técnica.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Serviços de manutenção">Ver detalhes +</button></div>
+</article>
+<!-- Serviço 4: imagem local substituída automaticamente quando consultoria-nautica.webp existir. -->
+<article class="card" data-category="servicos">
+  <div class="card-image"><img src="assets/img/placeholder.svg" data-photo="assets/img/consultoria-nautica.webp" alt="Espaço para fotografia: Consultoria náutica" loading="lazy" width="900" height="675"></div>
+  <div class="card-copy"><h3>Consultoria náutica</h3><p>Apoio na escolha de soluções adequadas ao perfil do cliente.</p><button class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Consultoria náutica">Ver detalhes +</button></div>
+</article></div>
+ </div></section>
+ <!-- PROCESSO: explica o atendimento sem prometer agendamento ou pagamento. -->
+ <section id="processo" class="section"><div class="container"><div class="section-heading"><div><span class="eyebrow">DO PRIMEIRO CONTATO À PROPOSTA</span><h2>Simples, transparente e organizado.</h2></div></div><div class="step-grid"><article class="step"><b>PASSO 1</b><h3>Explore as opções</h3><p>Escolha o tipo de experiência ou serviço desejado.</p></article> <!-- Etapa 1. -->
+<article class="step"><b>PASSO 2</b><h3>Envie as preferências</h3><p>Informe pessoas, data e local de interesse.</p></article> <!-- Etapa 2. -->
+<article class="step"><b>PASSO 3</b><h3>Aguarde a confirmação</h3><p>A operação confirma disponibilidade, segurança e condições.</p></article> <!-- Etapa 3. --></div></div></section>
+ <!-- GALERIA: três imagens locais fáceis de substituir e sem links remotos. -->
+ <section id="galeria" class="section section-white"><div class="container"><div class="section-heading"><div><span class="eyebrow">CONHEÇA MAIS</span><h2>Detalhes que fazem diferença.</h2></div><p>Os espaços abaixo são reservas de fotos. Coloque seus arquivos autorizados e as imagens aparecem automaticamente.</p></div><div class="gallery"><!-- Galeria 1: adicione assets/img/marina.webp para substituir a imagem de instrução. -->
+<figure><img src="assets/img/placeholder.svg" data-photo="assets/img/marina.webp" alt="Foto de exemplo a substituir: Detalhe do ambiente" width="750" height="560" loading="lazy"><figcaption>Detalhe do ambiente</figcaption></figure>
+<!-- Galeria 2: adicione assets/img/detalhe-conves.webp para substituir a imagem de instrução. -->
+<figure><img src="assets/img/placeholder.svg" data-photo="assets/img/detalhe-conves.webp" alt="Foto de exemplo a substituir: Processo ou equipe" width="750" height="560" loading="lazy"><figcaption>Processo ou equipe</figcaption></figure>
+<!-- Galeria 3: adicione assets/img/por-do-sol-mar.webp para substituir a imagem de instrução. -->
+<figure><img src="assets/img/placeholder.svg" data-photo="assets/img/por-do-sol-mar.webp" alt="Foto de exemplo a substituir: Resultado do serviço" width="750" height="560" loading="lazy"><figcaption>Resultado do serviço</figcaption></figure></div></div></section>
+ <!-- CONTATO: as informações são transmitidas pela abertura do WhatsApp, sem banco de dados. -->
+ <section id="orcamento" class="section"><div class="container contact-grid">
+  <div><span class="eyebrow">ATENDIMENTO PERSONALIZADO</span><h2>Uma experiência sob medida começa aqui.</h2><p class="lead">Descreva sua ideia para receber retorno. Esta demonstração não reserva embarcações nem valida condições marítimas.</p><p><strong>WhatsApp da demo:</strong> (11) 94203-8103</p><p class="form-note">Este site é demonstrativo. O envio não cria cadastro, não cobra pagamento e não confirma serviços.</p></div>
+  <form id="lead-form" class="form-card"><div class="form-grid"><!-- Campo Seu nome: preenchimento pelo visitante. -->
+<div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text" placeholder="Como podemos chamar você?" maxlength="70" autocomplete="name" required></div>
+<!-- Campo Interesse principal: preenchimento pelo visitante. -->
+<div class="field"><label for="escolha">Interesse principal</label><select id="escolha" name="escolha" required><option value="">Selecione...</option><option value="Locação de lancha">Locação de lancha</option><option value="Passeio privativo">Passeio privativo</option><option value="Manutenção náutica">Manutenção náutica</option><option value="Consultoria de embarcações">Consultoria de embarcações</option></select></div>
+<!-- Campo Quantidade de pessoas: preenchimento pelo visitante. -->
+<div class="field"><label for="pessoas">Quantidade de pessoas</label><input id="pessoas" name="pessoas" type="number" placeholder="Ex.: 6" min="1" max="30" step="1" required></div>
+<!-- Campo Data de preferência: preenchimento pelo visitante. -->
+<div class="field"><label for="data">Data de preferência</label><input id="data" name="data" type="date" placeholder="" ></div>
+<!-- Campo Local de embarque desejado: preenchimento pelo visitante. -->
+<div class="field"><label for="local">Local de embarque desejado</label><input id="local" name="local" type="text" placeholder="Ex.: litoral de São Paulo" maxlength="90"></div>
+<!-- Campo Observações sobre a experiência: preenchimento pelo visitante. -->
+<div class="field"><label for="observacao">Observações sobre a experiência</label><textarea id="observacao" name="observacao" maxlength="350" placeholder="Conte o que espera do serviço"></textarea></div></div><button class="btn btn-dark" type="submit">Enviar pedido pelo WhatsApp ↗</button><p class="form-note">Ao clicar, abre uma mensagem no WhatsApp para você revisar e enviar.</p></form>
+ </div></section>
+ <!-- DÚVIDAS: componentes nativos acessíveis via teclado, sem dependências JS. -->
+ <section class="section section-white" id="perguntas"><div class="container"><div class="faq"><span class="eyebrow">PRECISA SABER MAIS?</span><h2>Perguntas frequentes</h2><details><summary>O passeio fica reservado automaticamente?</summary><p>Não. O atendimento precisa confirmar embarcação, habilitação, meteorologia e disponibilidade.</p></details> <!-- Pergunta frequente. -->
+<details><summary>O site recebe pagamentos?</summary><p>Não. A demo encaminha pedidos pelo WhatsApp, sem checkout.</p></details> <!-- Pergunta frequente. -->
+<details><summary>Posso conectar agenda e sinal de reserva?</summary><p>Sim, em versão futura com inventário de embarcações, datas, backend e checkout seguro.</p></details> <!-- Pergunta frequente. --></div></div></section>
+ <!-- Convite final para conhecer o serviço. -->
+ <section class="section"><div class="container"><div class="banner"><div><h2>Uma conversa pode começar por aqui.</h2><p>Veja como a apresentação digital aproxima o negócio de seus clientes.</p></div><a class="btn" data-whatsapp href="https://wa.me/5511942038103">Falar no WhatsApp ↗</a></div></div></section>
+</main>
+<!-- Rodapé com créditos da demo e aviso para não confundir com uma empresa real. -->
+<footer><div class="container"><div class="footer-grid"><div><h3>Ocean Prime</h3><p>Experiências e soluções náuticas.</p><small>Marca demonstrativa criada para portfólio. Não representa operação empresarial real.</small></div><div><h3>Navegação</h3><p><a href="#solucoes">Serviços</a></p><p><a href="#galeria">Galeria</a></p><p><a href="#orcamento">Contato</a></p></div><div><h3>Desenvolvimento</h3><p>MOSS Digital</p><p><a href="https://www.mossdigital.com.br" target="_blank" rel="noopener noreferrer">www.mossdigital.com.br</a></p></div></div><div class="footer-bottom">© Ocean Prime · Demo de portfólio · Preços, imagens e serviços ilustrativos.</div></div></footer>
+<!-- Atalho fixo de WhatsApp, com mensagem preenchida pelo JavaScript. -->
+<a class="float-wa" data-whatsapp href="https://wa.me/5511942038103" aria-label="Conversar com a MOSS Digital pelo WhatsApp" target="_blank" rel="noopener noreferrer">✆ WhatsApp</a>
+<!-- Diálogo nativo aberto pelo botão de detalhes de cada serviço. -->
+<dialog class="dialog" id="details-dialog" aria-labelledby="dialog-title"><img id="dialog-photo" src="assets/img/placeholder.svg" alt="Imagem ilustrativa do serviço"><div class="dialog-copy"><div class="dialog-head"><h2 id="dialog-title">Detalhes</h2><button class="dialog-close" id="dialog-close" type="button" aria-label="Fechar janela">×</button></div><p id="dialog-text"></p><a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103">Perguntar no WhatsApp ↗</a></div></dialog>
+</body> <!-- Final do conteúdo. -->
+</html> <!-- Final do documento. -->

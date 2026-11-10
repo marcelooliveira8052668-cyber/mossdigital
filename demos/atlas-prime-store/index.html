@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Configurações para acentuação, responsividade e identificação do site. -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#15202c">
+  <meta name="description" content="Atlas Prime: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.">
+  <title>Atlas Prime | Demo de loja MOSS Digital</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body id="inicio" data-site="Atlas Prime">
+<!-- Barra informativa: site demonstrativo, com produtos e valores fictícios. -->
+<div class="announcement">PROJETO DEMONSTRATIVO · Produtos, imagens e preços ilustrativos · Pedidos por WhatsApp</div>
+
+<header class="atlas-head"><div class="container atlas-primary"><a href="#inicio" class="brand" aria-label="Página inicial Atlas Prime"><span class="brand-mark">▰</span><span>Atlas Prime</span></a><label class="atlas-search"><span class="sr-only">Buscar produtos</span><input id="product-search" type="search" placeholder="O que você está procurando?"/><span>⌕</span></label><button id="open-cart" class="atlas-cart" type="button">🛒 Carrinho <span class="cart-count">0</span></button><button class="nav-toggle" aria-controls="menu-links" aria-expanded="false">☰</button></div><nav id="menu-links" class="atlas-subnav nav-links"><div class="container"><a href="#catalogo">☷ Departamentos</a><a href="#promos">Seleção Atlas</a><a href="#catalogo">Eletrônicos</a><a href="#catalogo">Casa & Vida</a><a href="#ajuda">Como comprar</a></div></nav></header>
+<main><section class="atlas-hero" id="promos"><div class="container atlas-hero-inner"><div class="atlas-copy"><span class="eyebrow">TECNOLOGIA & COTIDIANO</span><h1>Mais escolhas.<br><em>Menos complicação.</em></h1><p>Uma loja completa para pesquisar, descobrir características e montar sua lista de compra.</p><a href="#catalogo" class="btn btn-orange">Conhecer produtos →</a></div><div class="atlas-visual"><img src="assets/img/hero.svg" alt="Ilustração de produtos de diferentes departamentos"/><span class="hero-label">ESCOLHAS PARA TODOS OS DIAS</span></div></div></section>
+<section class="container atlas-tiles"><article><span>DEPARTAMENTO</span><h2>Eletrônicos<br>que acompanham você.</h2><b>📱</b><a href="#catalogo">Ver produtos ↗</a></article><article><span>SELEÇÃO DA CASA</span><h2>O essencial com<br>design inteligente.</h2><b>☕</b><a href="#catalogo">Conhecer ↗</a></article><article><span>PRATICIDADE</span><h2>Sua lista, organizada.</h2><b>🛒</b><a href="#ajuda">Saiba como ↗</a></article></section>
+<section class="container atlas-catalog" id="catalogo"><div class="section-heading"><div><span class="eyebrow">SELEÇÃO POR DEPARTAMENTOS</span><h2>Produtos para o seu ritmo.</h2></div><select id="sort-select" aria-label="Ordenação dos produtos"><option value="featured">Selecionados</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select></div><div class="filter-row" id="filter-row"></div><div class="products-grid" id="products-grid"></div><p id="empty-msg" class="empty" hidden>Nenhum produto encontrado.</p></section>
+<section class="container atlas-help" id="ajuda"><div><span class="eyebrow">COMPRA ASSISTIDA</span><h2>O atendimento continua humano.</h2><p>Consulte especificações, selecione produtos e envie sua lista. Os valores e a disponibilidade serão confirmados pela loja.</p></div><button id="help-cart" class="btn btn-light" type="button">Abrir minha lista →</button></section></main>
+
+<!-- Gaveta de carrinho: todas as informações permanecem neste navegador. -->
+<div class="overlay" id="drawer-overlay" hidden></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Carrinho de cotação" aria-hidden="true">
+ <div class="drawer-head"><div><span class="eyebrow">SELEÇÃO DE PRODUTOS</span><h2>Minha lista</h2></div><button id="close-cart" class="close-btn" type="button" aria-label="Fechar carrinho">×</button></div>
+ <div id="cart-items" class="cart-items"><p>Seu carrinho está vazio.</p></div>
+ <div class="drawer-bottom"><div class="cart-total"><span>Total estimado</span><strong id="cart-total">R$ 0,00</strong></div><p>Não realiza pagamento. A loja confirma estoque, frete e valores.</p><a id="checkout-link" class="btn btn-checkout" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511942038103">Enviar pedido pelo WhatsApp ↗</a></div>
+</aside>
+<!-- Janela de informações. -->
+<dialog id="product-dialog" class="product-dialog"><button id="close-dialog" type="button" class="close-btn" aria-label="Fechar detalhes">×</button><div id="dialog-content"></div></dialog>
+
+<!-- Rodapé de transparência comercial. -->
+<footer class="footer"><div><strong>Atlas Prime</strong><span> · Vitrine demonstrativa criada pela MOSS Digital</span></div><p>Valores ilustrativos. Sem estoque confirmado, pagamento ou entrega automática.</p><a href="#inicio">Voltar ao início ↑</a></footer>
+<!-- Área de anúncios acessíveis para ações do usuário. -->
+<div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

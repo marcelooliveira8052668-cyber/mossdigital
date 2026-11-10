@@ -1,0 +1,323 @@
+<!DOCTYPE html> <!-- Documento HTML5 sem frameworks. -->
+<html lang="pt-BR"> <!-- Idioma português do Brasil. -->
+
+<head> <!-- Informações invisíveis aos visitantes. -->
+  <meta charset="UTF-8"> <!-- Acentuação correta. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Visualização em celular. -->
+  <meta name="description"
+    content="Demonstração Black Diamond para Estética automotiva premium. Projeto ilustrativo criado pela MOSS Digital.">
+  <!-- Descrição para buscadores. -->
+  <meta name="theme-color" content="#141418"> <!-- Cor da barra do navegador. -->
+  <title>Black Diamond | Demonstração MOSS Digital</title> <!-- Texto da aba. -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"> <!-- Ícone da aba, evita o erro 404 do favicon. -->
+  <link rel="stylesheet" href="css/style.css"> <!-- Estilos exclusivos da demo. -->
+  <script src="js/script.js" defer></script> <!-- Interações exclusivas da demo. -->
+</head>
+
+<body data-demo="Black Diamond" data-mode="auto"> <!-- Identificação usada pelo script. -->
+  <!-- Fita mantém claro que empresa, preços e serviços são ilustrativos. -->
+  <div class="announcement">Demonstração MOSS Digital · Marca e dados ilustrativos · Fotos de banco com licença livre
+  </div>
+  <!-- Cabeçalho com navegação interna e WhatsApp real autorizado. -->
+  <header class="site-header">
+    <nav class="container nav" aria-label="Navegação principal">
+      <a class="brand" href="#inicio"><span class="brand-icon" aria-hidden="true">◆</span><span>Black
+          Diamond<small>Estética automotiva premium</small></span></a> <!-- Identidade do projeto. -->
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="nav-links" aria-expanded="false"
+        aria-label="Abrir menu">☰</button> <!-- Menu para celular. -->
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#solucoes">Tratamentos</a></li>
+        <li><a href="#processo">Como funciona</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#orcamento">Orçamento</a></li>
+        <li><a href="#perguntas">Dúvidas</a></li>
+      </ul> <!-- Links para seções existentes. -->
+      <a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103" target="_blank"
+        rel="noopener noreferrer">Conversar no WhatsApp ↗</a> <!-- Contato direto. -->
+    </nav>
+  </header>
+  <main id="inicio"> <!-- Conteúdo principal. -->
+    <!-- CAPA: texto e espaço de imagem. Basta inserir assets/img/capa.webp para trocar o SVG. -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div><span class="eyebrow">CUIDADO AUTOMOTIVO DE ALTO PADRÃO</span>
+          <h1>Seu carro em destaque. Cada detalhe importa.</h1>
+          <p class="lead">Uma vitrine sofisticada para apresentar serviços de estética, pacotes demonstrativos e
+            atendimento direto pelo WhatsApp.</p>
+          <div class="actions"><a class="btn btn-dark" href="#orcamento">Solicitar informações ↗</a><a
+              class="btn btn-secondary" href="#solucoes">Explorar tratamentos</a></div>
+        </div> <!-- Texto comercial. -->
+        <div class="hero-image"><img
+            src="https://th.bing.com/th/id/R.02dc7695f67440089b2744348f9a43ed?rik=U0t8OsiR89Uc1A&pid=ImgRaw&r=0"
+            data-photo="assets/img/capa.webp"
+            alt="Carro de luxo na garagem de estética automotiva - higienização e acabamento - imagem ilustrativa"
+            width="1200" height="900"><span class="image-label">FOTO DE CAPA · assets/img/capa.webp</span></div>
+        <!-- Foto trocada automaticamente ao encontrar o arquivo. -->
+      </div>
+    </section>
+    <!-- Diferenciais: três razões resumidas para considerar os serviços. -->
+    <div class="container trust">
+      <article class="trust-item"><span>01</span>
+        <h3>Avaliação dedicada</h3>
+        <p>Serviços indicados conforme condição do veículo.</p>
+      </article> <!-- Diferencial 01. -->
+      <article class="trust-item"><span>02</span>
+        <h3>Apresentação premium</h3>
+        <p>Detalhes, materiais e acabamentos em evidência.</p>
+      </article> <!-- Diferencial 02. -->
+      <article class="trust-item"><span>03</span>
+        <h3>Orçamento direto</h3>
+        <p>Pedido organizado pelo WhatsApp.</p>
+      </article> <!-- Diferencial 03. -->
+    </div>
+    <!-- CATÁLOGO: filtros de categoria e quatro cards clicáveis. -->
+    <section id="solucoes" class="section section-white">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">NOSSA ESPECIALIDADE</span>
+            <h2>Tratamentos para cada necessidade.</h2>
+          </div>
+          <p>Conheça serviços ilustrativos e solicite uma avaliação profissional antes de contratar.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filtros por categoria"><button class="filter" type="button"
+            data-filter="todos" aria-pressed="true">Todos</button> <!-- Filtro: Todos. -->
+          <button class="filter" type="button" data-filter="externo" aria-pressed="false">Exterior</button>
+          <!-- Filtro: Exterior. -->
+          <button class="filter" type="button" data-filter="interno" aria-pressed="false">Interior</button>
+          <!-- Filtro: Interior. -->
+          <button class="filter" type="button" data-filter="protecao" aria-pressed="false">Proteção</button>
+          <!-- Filtro: Proteção. -->
+        </div>
+        <div class="cards" id="service-cards">
+          <!-- Serviço 1: imagem local substituída automaticamente quando polimento.webp existir. -->
+          <article class="card" data-category="externo">
+            <div class="card-image"><img
+                src="https://tse3.mm.bing.net/th/id/OIP.rXkF8RlXiepvDMz0WVZRUgHaEC?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+                data-photo="assets/img/polimento.webp"
+                alt="Polimento técnico em pintura automotiva - imagem ilustrativa" loading="lazy" width="900"
+                height="675"></div>
+            <div class="card-copy">
+              <h3>Polimento técnico</h3>
+              <p>Correção estética visual com avaliação prévia da pintura.</p><button class="text-action" type="button"
+                data-detail aria-label="Ver detalhes sobre Polimento técnico">Ver detalhes +</button>
+            </div>
+          </article>
+          <!-- Serviço 2: imagem local substituída automaticamente quando vitrificacao.webp existir. -->
+          <article class="card" data-category="protecao">
+            <div class="card-image"><img
+                src="https://blogaragem.com.br/wp-content/uploads/2024/07/Antes-e-depois-da-vitrificacao-de-pintua-768x461.png"
+                data-photo="assets/img/vitrificacao.webp" alt="Vitrificação de pintura automotiva - imagem ilustrativa"
+                loading="lazy" width="900" height="675"></div>
+            <div class="card-copy">
+              <h3>Vitrificação</h3>
+              <p>Opções de proteção da superfície conforme preparação e produto utilizado.</p><button
+                class="text-action" type="button" data-detail aria-label="Ver detalhes sobre Vitrificação">Ver detalhes
+                +</button>
+            </div>
+          </article>
+          <!-- Serviço 3: imagem local substituída automaticamente quando higienizacao.webp existir. -->
+          <article class="card" data-category="interno">
+            <div class="card-image"><img src="https://tse4.mm.bing.net/th/id/OIP.VkY7M88R4Kmo5gYgUCIajAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" data-photo="assets/img/higienizacao.webp"
+                alt="Higienização interna de carro esportivo - imagem ilustrativa" loading="lazy" width="900"
+                height="675"></div>
+            <div class="card-copy">
+              <h3>Higienização interna</h3>
+              <p>Cuidados com bancos, carpetes e pontos de contato.</p><button class="text-action" type="button"
+                data-detail aria-label="Ver detalhes sobre Higienização interna">Ver detalhes +</button>
+            </div>
+          </article>
+          <!-- Serviço 4: imagem local substituída automaticamente quando protecao-ppf.webp existir. -->
+          <article class="card" data-category="protecao">
+            <div class="card-image"><img src="https://tse3.mm.bing.net/th/id/OIP.OauvrmCbk_mWLNopwQ_vSgHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" data-photo="assets/img/protecao-ppf.webp"
+                alt="Proteção PPF (filme protetor de pintura) em capô de carro - imagem ilustrativa" loading="lazy"
+                width="900" height="675"></div>
+            <div class="card-copy">
+              <h3>Proteção PPF</h3>
+              <p>Película de proteção em áreas selecionadas mediante avaliação.</p><button class="text-action"
+                type="button" data-detail aria-label="Ver detalhes sobre Proteção PPF">Ver detalhes +</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- PROCESSO: explica o atendimento sem prometer agendamento ou pagamento. -->
+    <section id="processo" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">DO PRIMEIRO CONTATO À PROPOSTA</span>
+            <h2>Simples, transparente e organizado.</h2>
+          </div>
+        </div>
+        <div class="step-grid">
+          <article class="step"><b>PASSO 1</b>
+            <h3>Escolha os cuidados</h3>
+            <p>Explore os serviços e o tipo de veículo.</p>
+          </article> <!-- Etapa 1. -->
+          <article class="step"><b>PASSO 2</b>
+            <h3>Monte uma estimativa</h3>
+            <p>Veja valores fictícios apenas para demonstração do site.</p>
+          </article> <!-- Etapa 2. -->
+          <article class="step"><b>PASSO 3</b>
+            <h3>Solicite avaliação</h3>
+            <p>O prestador confirma diagnóstico e preço real pelo WhatsApp.</p>
+          </article> <!-- Etapa 3. -->
+        </div>
+      </div>
+    </section>
+    <!-- GALERIA: três imagens locais fáceis de substituir e sem links remotos. -->
+    <section id="galeria" class="section section-white">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">CONHEÇA MAIS</span>
+            <h2>Detalhes que fazem diferença.</h2>
+          </div>
+          <p>Os espaços abaixo são reservas de fotos. Coloque seus arquivos autorizados e as imagens aparecem
+            automaticamente.</p>
+        </div>
+        <div class="gallery">
+          <!-- Galeria 1: adicione assets/img/antes-detalhamento.webp para substituir a imagem de instrução. -->
+          <figure tabindex="0" role="button" aria-label="Ampliar foto: Detalhe do ambiente"><img
+              src="assets/img/placeholder.svg" data-photo="assets/img/antes-detalhamento.webp"
+              alt="Garagem de detalhamento automotivo - ambiente - imagem ilustrativa a substituir" width="750"
+              height="560" loading="lazy">
+            <figcaption>Detalhe do ambiente</figcaption>
+          </figure>
+          <!-- Galeria 2: assets/img/depois-detalhamento.webp mostra o processo da equipe. -->
+          <figure tabindex="0" role="button" aria-label="Ampliar foto: Processo ou equipe"><img
+              src="assets/img/placeholder.svg" data-photo="assets/img/depois-detalhamento.webp"
+              alt="Profissional trabalhando na oficina automotiva - processo - imagem ilustrativa a substituir"
+              width="750" height="560" loading="lazy">
+            <figcaption>Processo ou equipe</figcaption>
+          </figure>
+          <!-- Galeria 3: assets/img/ambiente-estudio.webp mostra o resultado final. -->
+          <figure tabindex="0" role="button" aria-label="Ampliar foto: Resultado do serviço"><img
+              src="assets/img/placeholder.svg" data-photo="assets/img/ambiente-estudio.webp"
+              alt="Carro acabado sob luzes do estúdio de estética automotiva - resultado final - imagem ilustrativa a substituir"
+              width="750" height="560" loading="lazy">
+            <figcaption>Resultado do serviço</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- CONTATO: as informações são transmitidas pela abertura do WhatsApp, sem banco de dados. -->
+    <section id="orcamento" class="section">
+      <div class="container contact-grid">
+        <div><span class="eyebrow">ATENDIMENTO PERSONALIZADO</span>
+          <h2>Monte sua estimativa ilustrativa</h2>
+          <p class="lead">Valores são exemplos de funcionamento. Não são tabela comercial ou orçamento definitivo.</p>
+          <p><strong>WhatsApp da demo:</strong> (11) 94203-8103</p>
+          <p class="form-note">Este site é demonstrativo. O envio não cria cadastro, não cobra pagamento e não confirma
+            serviços.</p>
+        </div>
+        <form id="lead-form" class="form-card">
+          <div class="form-grid"><!-- Campo Seu nome: preenchimento pelo visitante. -->
+            <div class="field"><label for="nome">Seu nome</label><input id="nome" name="nome" type="text"
+                placeholder="Como podemos chamar você?" maxlength="70" autocomplete="name" required></div>
+            <!-- Campo Serviço desejado: preenchimento pelo visitante. -->
+            <div class="field"><label for="escolha">Serviço desejado</label><select id="escolha" name="escolha"
+                required>
+                <option value="">Selecione...</option>
+                <option value="Polimento técnico">Polimento técnico</option>
+                <option value="Vitrificação">Vitrificação</option>
+                <option value="Higienização interna">Higienização interna</option>
+                <option value="Proteção PPF">Proteção PPF</option>
+              </select></div>
+            <!-- Campo Porte do veículo: preenchimento pelo visitante. -->
+            <div class="field"><label for="porte">Porte do veículo</label><select id="porte" name="porte" required>
+                <option value="">Selecione...</option>
+                <option value="hatch">Hatch / compacto</option>
+                <option value="sedan">Sedã</option>
+                <option value="suv">SUV / utilitário</option>
+              </select></div>
+            <!-- Campo Observações: preenchimento pelo visitante. -->
+            <div class="field"><label for="observacao">Observações</label><textarea id="observacao" name="observacao"
+                maxlength="350" placeholder="Marca/modelo e estado geral da pintura"></textarea></div>
+          </div>
+          <p class="estimate" id="estimate" role="status" aria-live="polite">Preencha os campos para visualizar a
+            estimativa ilustrativa.</p> <!-- Resultado atualizado pelo JavaScript. --><button class="btn btn-dark"
+            type="submit">Enviar pedido pelo WhatsApp ↗</button>
+          <p class="form-note">Ao clicar, abre uma mensagem no WhatsApp para você revisar e enviar.</p>
+        </form>
+      </div>
+    </section>
+    <!-- DÚVIDAS: componentes nativos acessíveis via teclado, sem dependências JS. -->
+    <section class="section section-white" id="perguntas">
+      <div class="container">
+        <div class="faq"><span class="eyebrow">PRECISA SABER MAIS?</span>
+          <h2>Perguntas frequentes</h2>
+          <details>
+            <summary>O valor do simulador é o preço real?</summary>
+            <p>Não. Todos os valores são ilustrativos e precisam ser substituídos pelo prestador.</p>
+          </details> <!-- Pergunta frequente. -->
+          <details>
+            <summary>O agendamento é automático?</summary>
+            <p>Não. O atendimento confirma disponibilidade pelo WhatsApp.</p>
+          </details> <!-- Pergunta frequente. -->
+          <details>
+            <summary>Pode receber sinal por cartão ou Pix?</summary>
+            <p>É possível implementar checkout hospedado e confirmação por webhook em outra etapa.</p>
+          </details> <!-- Pergunta frequente. -->
+        </div>
+      </div>
+    </section>
+    <!-- Convite final para conhecer o serviço. -->
+    <section class="section">
+      <div class="container">
+        <div class="banner">
+          <div>
+            <h2>Uma conversa pode começar por aqui.</h2>
+            <p>Veja como a apresentação digital aproxima o negócio de seus clientes.</p>
+          </div><a class="btn" data-whatsapp href="https://wa.me/5511942038103">Falar no WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Rodapé com créditos da demo e aviso para não confundir com uma empresa real. -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Black Diamond</h3>
+          <p>Estética automotiva premium.</p><small>Marca demonstrativa criada para portfólio. Não representa operação
+            empresarial real.</small>
+        </div>
+        <div>
+          <h3>Navegação</h3>
+          <p><a href="#solucoes">Serviços</a></p>
+          <p><a href="#galeria">Galeria</a></p>
+          <p><a href="#orcamento">Contato</a></p>
+        </div>
+        <div>
+          <h3>Desenvolvimento</h3>
+          <p>MOSS Digital</p>
+          <p><a href="https://www.mossdigital.com.br" target="_blank"
+              rel="noopener noreferrer">www.mossdigital.com.br</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">© Black Diamond · Demo de portfólio · Preços, imagens e serviços ilustrativos.</div>
+    </div>
+  </footer>
+  <!-- Atalho fixo de WhatsApp, com mensagem preenchida pelo JavaScript. -->
+  <a class="float-wa" data-whatsapp href="https://wa.me/5511942038103"
+    aria-label="Conversar com a MOSS Digital pelo WhatsApp" target="_blank" rel="noopener noreferrer">✆ WhatsApp</a>
+  <!-- Diálogo nativo aberto pelo botão de detalhes de cada serviço. -->
+  <dialog class="dialog" id="details-dialog" aria-labelledby="dialog-title"><img id="dialog-photo"
+      src="assets/img/placeholder.svg" alt="Imagem ilustrativa do serviço">
+    <div class="dialog-copy">
+      <div class="dialog-head">
+        <h2 id="dialog-title">Detalhes</h2><button class="dialog-close" id="dialog-close" type="button"
+          aria-label="Fechar janela">×</button>
+      </div>
+      <p id="dialog-text"></p><a class="btn btn-dark" data-whatsapp href="https://wa.me/5511942038103">Perguntar no
+        WhatsApp ↗</a>
+    </div>
+  </dialog>
+  <!-- Diálogo da galeria: amplia a foto escolhida, sem dependências externas. -->
+  <dialog class="dialog dialog-lightbox" id="lightbox" aria-label="Foto ampliada da galeria"><button
+      class="dialog-close" id="lightbox-close" type="button" aria-label="Fechar imagem">×</button><img
+      id="lightbox-photo" src="assets/img/placeholder.svg" alt="">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </dialog>
+</body> <!-- Final do conteúdo. -->
+
+</html> <!-- Final do documento. -->

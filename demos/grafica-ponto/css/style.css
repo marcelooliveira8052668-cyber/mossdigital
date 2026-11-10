@@ -1,0 +1,401 @@
+/* MOSS Digital — CSS didático em português brasileiro. */
+/* Estilo do seletor :root. */
+:root {
+  --black: #191919; /* Variável reutilizável de cor ou espaçamento. */
+  --yellow: #ffe85c; /* Variável reutilizável de cor ou espaçamento. */
+  --pink: #ff7d97; /* Variável reutilizável de cor ou espaçamento. */
+  --cream: #fffef4; /* Variável reutilizável de cor ou espaçamento. */
+  --blue: #1f72e1; /* Variável reutilizável de cor ou espaçamento. */
+}
+/* Estilo do seletor *. */
+* {
+  box-sizing: border-box; /* Inclui borda e padding no tamanho final. */
+}
+/* Estilo do seletor html. */
+html {
+  scroll-behavior: smooth; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor body. */
+body {
+  font-family: Arial,Helvetica,sans-serif; /* Seleciona a família de fontes. */
+  margin: 0; /* Define o espaço externo. */
+  background: var(--cream); /* Define a cor ou o gradiente do fundo. */
+  color: var(--black); /* Define a cor do texto. */
+  line-height: 1.5; /* Controla o espaçamento entre linhas. */
+}
+/* Estilo do seletor a. */
+a {
+  color: inherit; /* Define a cor do texto. */
+  text-decoration: none; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor button,input,select. */
+button,input,select {
+  font: inherit; /* Configura a apresentação de texto e campos. */
+}
+/* Estilo do seletor .header. */
+.header {
+  border-bottom: 3px solid var(--black); /* Desenha a borda inferior. */
+  padding: 16px clamp(18px,5vw,75px); /* Define o espaço interno. */
+  display: flex; /* Define a estratégia de exibição. */
+  align-items: center; /* Alinha os elementos no eixo cruzado. */
+  justify-content: space-between; /* Controla o alinhamento horizontal de um conjunto. */
+  gap: 18px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .brand. */
+.brand {
+  font-weight: 1000; /* Ajusta o peso da fonte. */
+  letter-spacing: -.05em; /* Ajusta o espaço entre letras. */
+  font-size: 1.44rem; /* Ajusta o tamanho do texto. */
+  white-space: nowrap; /* Controla quebras e espaços do texto. */
+}
+/* Estilo do seletor .brand span. */
+.brand span {
+  color: var(--pink); /* Define a cor do texto. */
+}
+/* Estilo do seletor .header nav. */
+.header nav {
+  display: flex; /* Define a estratégia de exibição. */
+  gap: 22px; /* Separa os elementos internos. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .nav-contact. */
+.nav-contact {
+  border: 2px solid var(--black); /* Desenha a borda do elemento. */
+  padding: 8px 15px; /* Define o espaço interno. */
+  box-shadow: 4px 4px 0 var(--black); /* Aplica uma sombra de profundidade. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .hero. */
+.hero {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1.13fr .87fr; /* Divide o conteúdo em colunas. */
+  min-height: 550px; /* Define a altura mínima. */
+  background: var(--yellow); /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .hero-copy. */
+.hero-copy {
+  padding: clamp(34px,6vw,85px); /* Define o espaço interno. */
+  display: flex; /* Define a estratégia de exibição. */
+  flex-direction: column; /* Define a direção dos elementos flexíveis. */
+  align-items: flex-start; /* Alinha os elementos no eixo cruzado. */
+  justify-content: center; /* Controla o alinhamento horizontal de um conjunto. */
+}
+/* Estilo do seletor .eyebrow. */
+.eyebrow {
+  font-size: .74rem; /* Ajusta o tamanho do texto. */
+  letter-spacing: .11em; /* Ajusta o espaço entre letras. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .hero h1. */
+.hero h1 {
+  font-weight: 1000; /* Ajusta o peso da fonte. */
+  font-size: clamp(3.5rem,8vw,8.3rem); /* Ajusta o tamanho do texto. */
+  letter-spacing: -.09em; /* Ajusta o espaço entre letras. */
+  line-height: .91; /* Controla o espaçamento entre linhas. */
+  margin: 20px 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .hero h1 span. */
+.hero h1 span {
+  color: var(--blue); /* Define a cor do texto. */
+}
+/* Estilo do seletor .hero-copy p:not(.eyebrow). */
+.hero-copy p:not(.eyebrow) {
+  font-size: 1.09rem; /* Ajusta o tamanho do texto. */
+  max-width: 55ch; /* Limita a largura máxima. */
+}
+/* Estilo do seletor .button. */
+.button {
+  display: inline-flex; /* Define a estratégia de exibição. */
+  justify-content: center; /* Controla o alinhamento horizontal de um conjunto. */
+  align-items: center; /* Alinha os elementos no eixo cruzado. */
+  background: var(--pink); /* Define a cor ou o gradiente do fundo. */
+  border: 2px solid var(--black); /* Desenha a borda do elemento. */
+  padding: 13px 22px; /* Define o espaço interno. */
+  box-shadow: 5px 5px 0 var(--black); /* Aplica uma sombra de profundidade. */
+  font-weight: 1000; /* Ajusta o peso da fonte. */
+  cursor: pointer; /* Indica o comportamento do ponteiro. */
+  color: var(--black); /* Define a cor do texto. */
+}
+/* Estilo do seletor .button.dark. */
+.button.dark {
+  background: var(--black); /* Define a cor ou o gradiente do fundo. */
+  color: #fff; /* Define a cor do texto. */
+  box-shadow: 5px 5px 0 var(--blue); /* Aplica uma sombra de profundidade. */
+}
+/* Estilo do seletor .graphic-hero. */
+.graphic-hero {
+  position: relative; /* Define o tipo de posicionamento. */
+  background: var(--pink); /* Define a cor ou o gradiente do fundo. */
+  border-left: 3px solid var(--black); /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .graphic-hero img. */
+.graphic-hero img {
+  position: absolute; /* Define o tipo de posicionamento. */
+  inset: 0; /* Personaliza esta propriedade visual. */
+  width: 100%; /* Define a largura do elemento. */
+  height: 100%; /* Define a altura do elemento. */
+  object-fit: cover; /* Controla o enquadramento da foto sem distorcer. */
+}
+/* Estilo do seletor .graphic-hero>span. */
+.graphic-hero>span {
+  position: absolute; /* Define o tipo de posicionamento. */
+  left: 20px; /* Personaliza esta propriedade visual. */
+  bottom: 20px; /* Personaliza esta propriedade visual. */
+  background: var(--yellow); /* Define a cor ou o gradiente do fundo. */
+  padding: 13px; /* Define o espaço interno. */
+  font-weight: 1000; /* Ajusta o peso da fonte. */
+  transform: rotate(-5deg); /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .services,.quote,.closing. */
+.services,.quote,.closing {
+  padding: 66px clamp(20px,5vw,75px); /* Define o espaço interno. */
+}
+/* Estilo do seletor .section-label. */
+.section-label {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: .6fr 1.4fr; /* Divide o conteúdo em colunas. */
+  gap: 24px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .section-label span. */
+.section-label span {
+  font-size: .72rem; /* Ajusta o tamanho do texto. */
+  letter-spacing: .16em; /* Ajusta o espaço entre letras. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .section-label h2,.quote h2,.closing h2. */
+.section-label h2,.quote h2,.closing h2 {
+  font-size: clamp(2rem,3vw,3.4rem); /* Ajusta o tamanho do texto. */
+  line-height: 1.05; /* Controla o espaçamento entre linhas. */
+  letter-spacing: -.045em; /* Ajusta o espaço entre letras. */
+  margin: 0 0 30px; /* Define o espaço externo. */
+}
+/* Estilo do seletor .service-grid. */
+.service-grid {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: repeat(3,1fr); /* Divide o conteúdo em colunas. */
+  gap: 20px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .service-grid article. */
+.service-grid article {
+  border: 2px solid var(--black); /* Desenha a borda do elemento. */
+  background: #fff; /* Define a cor ou o gradiente do fundo. */
+  padding: 15px; /* Define o espaço interno. */
+  box-shadow: 6px 6px 0 var(--black); /* Aplica uma sombra de profundidade. */
+}
+/* Estilo do seletor .service-grid article>span. */
+.service-grid article>span {
+  font-size: .7rem; /* Ajusta o tamanho do texto. */
+  font-weight: 1000; /* Ajusta o peso da fonte. */
+  display: block; /* Define a estratégia de exibição. */
+  margin: 0 0 12px; /* Define o espaço externo. */
+}
+/* Estilo do seletor .service-grid img. */
+.service-grid img {
+  display: block; /* Define a estratégia de exibição. */
+  width: 100%; /* Define a largura do elemento. */
+  aspect-ratio: 4/3; /* Preserva a proporção visual do espaço. */
+  object-fit: cover; /* Controla o enquadramento da foto sem distorcer. */
+  border: 2px solid var(--black); /* Desenha a borda do elemento. */
+}
+/* Estilo do seletor .service-grid h3. */
+.service-grid h3 {
+  font-size: 1.4rem; /* Ajusta o tamanho do texto. */
+  margin: 12px 0 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .service-grid p. */
+.service-grid p {
+  margin: 6px 0 8px; /* Define o espaço externo. */
+}
+/* Estilo do seletor .quote. */
+.quote {
+  background: #e8eafd; /* Define a cor ou o gradiente do fundo. */
+  border-top: 3px solid var(--black); /* Desenha a borda superior. */
+  border-bottom: 3px solid var(--black); /* Desenha a borda inferior. */
+}
+/* Estilo do seletor .quote-head. */
+.quote-head {
+  display: flex; /* Define a estratégia de exibição. */
+  justify-content: space-between; /* Controla o alinhamento horizontal de um conjunto. */
+  align-items: start; /* Alinha os elementos no eixo cruzado. */
+  gap: 24px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .quote-head>div. */
+.quote-head>div {
+  max-width: 660px; /* Limita a largura máxima. */
+}
+/* Estilo do seletor .badge. */
+.badge {
+  background: var(--yellow); /* Define a cor ou o gradiente do fundo. */
+  padding: 15px; /* Define o espaço interno. */
+  transform: rotate(3deg); /* Personaliza esta propriedade visual. */
+  border: 2px solid var(--black); /* Desenha a borda do elemento. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .quote-grid. */
+.quote-grid {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1.15fr .85fr; /* Divide o conteúdo em colunas. */
+  gap: 22px; /* Separa os elementos internos. */
+  margin-top: 25px; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .quote form,.quote-summary. */
+.quote form,.quote-summary {
+  background: white; /* Define a cor ou o gradiente do fundo. */
+  border: 2px solid var(--black); /* Desenha a borda do elemento. */
+  padding: 24px; /* Define o espaço interno. */
+  box-shadow: 7px 7px 0 var(--black); /* Aplica uma sombra de profundidade. */
+}
+/* Estilo do seletor .quote form. */
+.quote form {
+  display: grid; /* Define a estratégia de exibição. */
+  gap: 22px; /* Separa os elementos internos. */
+  align-content: start; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .two. */
+.two {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1fr 1fr; /* Divide o conteúdo em colunas. */
+  gap: 15px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .quote label. */
+.quote label {
+  font-weight: 900; /* Ajusta o peso da fonte. */
+  display: grid; /* Define a estratégia de exibição. */
+  gap: 7px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .quote input,.quote select. */
+.quote input,.quote select {
+  border: 2px solid var(--black); /* Desenha a borda do elemento. */
+  padding: 12px; /* Define o espaço interno. */
+  width: 100%; /* Define a largura do elemento. */
+  background: white; /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .quote-summary h3. */
+.quote-summary h3 {
+  margin: 0; /* Define o espaço externo. */
+  font-size: 1.4rem; /* Ajusta o tamanho do texto. */
+}
+/* Estilo do seletor .quote-summary ol. */
+.quote-summary ol {
+  padding-left: 22px; /* Personaliza esta propriedade visual. */
+  min-height: 80px; /* Define a altura mínima. */
+}
+/* Estilo do seletor .quote-summary li. */
+.quote-summary li {
+  padding: 9px 0; /* Define o espaço interno. */
+  border-bottom: 1px solid #ddd; /* Desenha a borda inferior. */
+}
+/* Estilo do seletor .total. */
+.total {
+  border-top: 3px solid var(--black); /* Desenha a borda superior. */
+  display: flex; /* Define a estratégia de exibição. */
+  justify-content: space-between; /* Controla o alinhamento horizontal de um conjunto. */
+  align-items: center; /* Alinha os elementos no eixo cruzado. */
+  padding: 18px 0; /* Define o espaço interno. */
+  gap: 15px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .total strong. */
+.total strong {
+  font-size: 1.65rem; /* Ajusta o tamanho do texto. */
+}
+/* Estilo do seletor .full. */
+.full {
+  width: 100%; /* Define a largura do elemento. */
+  margin-top: 18px; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .form-note,.quote-summary small. */
+.form-note,.quote-summary small {
+  font-size: .78rem; /* Ajusta o tamanho do texto. */
+  color: #555; /* Define a cor do texto. */
+}
+/* Estilo do seletor .closing. */
+.closing {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1fr .5fr; /* Divide o conteúdo em colunas. */
+  gap: 30px; /* Separa os elementos internos. */
+  align-items: center; /* Alinha os elementos no eixo cruzado. */
+  background: var(--yellow); /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .checker. */
+.checker {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: repeat(3,1fr); /* Divide o conteúdo em colunas. */
+  gap: 7px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .checker span. */
+.checker span {
+  background: var(--pink); /* Define a cor ou o gradiente do fundo. */
+  padding: 18px 8px; /* Define o espaço interno. */
+  transform: rotate(-5deg); /* Personaliza esta propriedade visual. */
+  font-weight: 1000; /* Ajusta o peso da fonte. */
+  text-align: center; /* Personaliza esta propriedade visual. */
+  border: 2px solid var(--black); /* Desenha a borda do elemento. */
+}
+/* Estilo do seletor footer. */
+footer {
+  background: var(--black); /* Define a cor ou o gradiente do fundo. */
+  color: #fff; /* Define a cor do texto. */
+  text-align: center; /* Personaliza esta propriedade visual. */
+  padding: 28px; /* Define o espaço interno. */
+  font-size: .85rem; /* Ajusta o tamanho do texto. */
+}
+/* Regra responsiva ou de estilo especial. */
+@media (max-width:850px) {
+  /* Estilo do seletor .header nav. */
+  .header nav {
+    display: none; /* Define a estratégia de exibição. */
+  }
+  /* Estilo do seletor .hero,.quote-grid,.closing,.section-label. */
+  .hero,.quote-grid,.closing,.section-label {
+    grid-template-columns: 1fr; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .graphic-hero. */
+  .graphic-hero {
+    min-height: 340px; /* Define a altura mínima. */
+    border-left: 0; /* Personaliza esta propriedade visual. */
+    border-top: 3px solid var(--black); /* Desenha a borda superior. */
+  }
+  /* Estilo do seletor .service-grid. */
+  .service-grid {
+    grid-template-columns: 1fr; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .hero h1. */
+  .hero h1 {
+    font-size: 4.4rem; /* Ajusta o tamanho do texto. */
+  }
+  /* Estilo do seletor .quote-head. */
+  .quote-head {
+    display: block; /* Define a estratégia de exibição. */
+  }
+  /* Estilo do seletor .badge. */
+  .badge {
+    display: inline-block; /* Define a estratégia de exibição. */
+  }
+  /* Estilo do seletor .two. */
+  .two {
+    grid-template-columns: 1fr; /* Divide o conteúdo em colunas. */
+  }
+}
+/* Regra responsiva ou de estilo especial. */
+@media (max-width:480px) {
+  /* Estilo do seletor .header. */
+  .header {
+    padding: 14px; /* Define o espaço interno. */
+  }
+  /* Estilo do seletor .brand. */
+  .brand {
+    font-size: 1.08rem; /* Ajusta o tamanho do texto. */
+  }
+  /* Estilo do seletor .nav-contact. */
+  .nav-contact {
+    font-size: .68rem; /* Ajusta o tamanho do texto. */
+  }
+  /* Estilo do seletor .hero h1. */
+  .hero h1 {
+    font-size: 3.1rem; /* Ajusta o tamanho do texto. */
+  }
+  /* Estilo do seletor .hero-copy. */
+  .hero-copy {
+    padding: 36px 22px; /* Define o espaço interno. */
+  }
+}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Pastelaria Sabor de Feira: pastéis crocantes, bebidas e pedidos pelo WhatsApp.">
+  <title>Pastelaria Sabor de Feira | Cardápio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="topo" id="inicio">
+    <a class="marca" href="#inicio" aria-label="Pastelaria Sabor de Feira, início"><span>🥟</span> Sabor de Feira</a>
+    <nav aria-label="Menu principal"><a href="#cardapio">Cardápio</a><a href="#sobre">Nossa história</a><a href="#pedido">Meu pedido <span id="contador">0</span></a></nav>
+  </header>
+  <main>
+    <section class="hero"><div class="hero-texto"><span class="etiqueta">Feito na hora • Crocante de verdade</span><h1>O sabor da feira, <em>todo dia.</em></h1><p>Pastéis douradinhos, recheio caprichado e aquele caldo de cana geladinho. Escolha seus favoritos e monte seu pedido!</p><a class="botao principal" href="#cardapio">Ver cardápio <span aria-hidden="true">↗</span></a><div class="selo">★ 100% sabor e carinho</div></div><div class="hero-foto" role="img" aria-label="Pastéis dourados servidos em uma mesa"></div></section>
+    <section class="beneficios" aria-label="Diferenciais"><div>🔥 <strong>Feitos na hora</strong><small>Sempre fresquinhos</small></div><div>🥟 <strong>Recheio generoso</strong><small>Receitas especiais</small></div><div>💬 <strong>Peça pelo WhatsApp</strong><small>Simples e rápido</small></div></section>
+    <section class="secao" id="cardapio"><div class="secao-topo"><div><span class="sobretitulo">NOSSO CARDÁPIO</span><h2>Escolha seu favorito</h2><p>Do tradicional ao especial. Tem pastel para todo gosto!</p></div><div class="filtros" role="group" aria-label="Filtrar cardápio"><button class="filtro ativo" data-filtro="todos" aria-pressed="true">Todos</button><button class="filtro" data-filtro="salgados" aria-pressed="false">Salgados</button><button class="filtro" data-filtro="doces" aria-pressed="false">Doces</button><button class="filtro" data-filtro="bebidas" aria-pressed="false">Bebidas</button></div></div><div id="produtos" class="grade" aria-live="polite"></div></section>
+    <section class="sobre" id="sobre"><div><span class="sobretitulo">FEITO COM CARINHO</span><h2>Tradição em cada mordida.</h2><p>Aqui, o pastel é protagonista: massa crocante, ingredientes selecionados e aquele atendimento que faz você se sentir em casa.</p><a class="botao secundario" href="#cardapio">Escolher meu pastel</a></div><div class="sobre-foto" role="img" aria-label="Pastéis frescos e crocantes"></div></section>
+    <section class="secao pedido-secao" id="pedido"><span class="sobretitulo">QUASE LÁ!</span><h2>Seu pedido</h2><p>Confira os itens e envie sua lista para a pastelaria.</p><div class="pedido-box"><div id="itens-pedido" aria-live="polite">Seu carrinho está vazio. Escolha um pastel no cardápio!</div><div class="total"><strong>Total estimado</strong><strong id="total">R$ 0,00</strong></div><label for="nome">Seu nome</label><input id="nome" maxlength="80" placeholder="Como podemos chamar você?"><label for="observacoes">Observações (opcional)</label><textarea id="observacoes" rows="3" maxlength="300" placeholder="Ex.: sem cebola"></textarea><button class="botao principal enviar" id="enviar">Enviar pedido pelo WhatsApp ↗</button><p class="aviso" id="aviso" role="status">Demo demonstrativa: configure o WhatsApp da pastelaria no arquivo JavaScript antes de receber pedidos reais.</p></div></section>
+  </main>
+  <footer><strong>🥟 Sabor de Feira</strong><span>Uma demo de pastelaria • Desenvolvida para apresentação pela MOSS Digital</span><a href="#inicio">Voltar ao topo ↑</a></footer>
+</body>
+</html>

@@ -1,0 +1,392 @@
+/* MOSS Digital — CSS didático em português brasileiro. */
+/* Estilo do seletor :root. */
+:root {
+  --ink: #132d30; /* Variável reutilizável de cor ou espaçamento. */
+  --muted: #627879; /* Variável reutilizável de cor ou espaçamento. */
+  --cream: #f6f5f0; /* Variável reutilizável de cor ou espaçamento. */
+  --line: #dae1df; /* Variável reutilizável de cor ou espaçamento. */
+  --accent: #c7a16e; /* Variável reutilizável de cor ou espaçamento. */
+}
+/* Estilo do seletor *. */
+* {
+  box-sizing: border-box; /* Inclui borda e padding no tamanho final. */
+}
+/* Estilo do seletor html. */
+html {
+  scroll-behavior: smooth; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor body. */
+body {
+  margin: 0; /* Define o espaço externo. */
+  font-family: Arial,Helvetica,sans-serif; /* Seleciona a família de fontes. */
+  color: var(--ink); /* Define a cor do texto. */
+  background: var(--cream); /* Define a cor ou o gradiente do fundo. */
+  line-height: 1.5; /* Controla o espaçamento entre linhas. */
+}
+/* Estilo do seletor a. */
+a {
+  color: inherit; /* Define a cor do texto. */
+  text-decoration: none; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor button,input,select. */
+button,input,select {
+  font: inherit; /* Configura a apresentação de texto e campos. */
+}
+/* Estilo do seletor .demo-flag. */
+.demo-flag {
+  padding: 7px; /* Define o espaço interno. */
+  text-align: center; /* Personaliza esta propriedade visual. */
+  background: #193437; /* Define a cor ou o gradiente do fundo. */
+  color: white; /* Define a cor do texto. */
+  font-size: .75rem; /* Ajusta o tamanho do texto. */
+}
+/* Estilo do seletor .header. */
+.header {
+  display: flex; /* Define a estratégia de exibição. */
+  align-items: center; /* Alinha os elementos no eixo cruzado. */
+  justify-content: space-between; /* Controla o alinhamento horizontal de um conjunto. */
+  padding: 20px clamp(20px,5vw,90px); /* Define o espaço interno. */
+  gap: 18px; /* Separa os elementos internos. */
+  border-bottom: 1px solid var(--line); /* Desenha a borda inferior. */
+}
+/* Estilo do seletor .wordmark. */
+.wordmark {
+  font-size: 1.38rem; /* Ajusta o tamanho do texto. */
+  letter-spacing: .06em; /* Ajusta o espaço entre letras. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .wordmark span. */
+.wordmark span {
+  color: var(--accent); /* Define a cor do texto. */
+}
+/* Estilo do seletor .wordmark small. */
+.wordmark small {
+  display: block; /* Define a estratégia de exibição. */
+  font-size: .61rem; /* Ajusta o tamanho do texto. */
+  letter-spacing: .18em; /* Ajusta o espaço entre letras. */
+}
+/* Estilo do seletor .header nav. */
+.header nav {
+  display: flex; /* Define a estratégia de exibição. */
+  gap: 22px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .nav-cta. */
+.nav-cta {
+  font-weight: 800; /* Ajusta o peso da fonte. */
+  border-bottom: 2px solid var(--accent); /* Desenha a borda inferior. */
+}
+/* Estilo do seletor .showroom. */
+.showroom {
+  min-height: 570px; /* Define a altura mínima. */
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1fr 1fr; /* Divide o conteúdo em colunas. */
+}
+/* Estilo do seletor .show-text. */
+.show-text {
+  padding: clamp(30px,6vw,90px); /* Define o espaço interno. */
+  display: flex; /* Define a estratégia de exibição. */
+  flex-direction: column; /* Define a direção dos elementos flexíveis. */
+  justify-content: center; /* Controla o alinhamento horizontal de um conjunto. */
+  align-items: flex-start; /* Alinha os elementos no eixo cruzado. */
+}
+/* Estilo do seletor .overline. */
+.overline {
+  font-size: .7rem; /* Ajusta o tamanho do texto. */
+  letter-spacing: .2em; /* Ajusta o espaço entre letras. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+  color: #86724f; /* Define a cor do texto. */
+}
+/* Estilo do seletor .show-text h1. */
+.show-text h1 {
+  font-family: Georgia,serif; /* Seleciona a família de fontes. */
+  line-height: 1.04; /* Controla o espaçamento entre linhas. */
+  font-size: clamp(2.7rem,5vw,5rem); /* Ajusta o tamanho do texto. */
+  letter-spacing: -.04em; /* Ajusta o espaço entre letras. */
+  margin: 12px 0 20px; /* Define o espaço externo. */
+}
+/* Estilo do seletor .show-text>p:not(.overline). */
+.show-text>p:not(.overline) {
+  max-width: 54ch; /* Limita a largura máxima. */
+  color: var(--muted); /* Define a cor do texto. */
+}
+/* Estilo do seletor .cta. */
+.cta {
+  display: inline-flex; /* Define a estratégia de exibição. */
+  justify-content: center; /* Controla o alinhamento horizontal de um conjunto. */
+  align-items: center; /* Alinha os elementos no eixo cruzado. */
+  padding: 15px 24px; /* Define o espaço interno. */
+  border: none; /* Desenha a borda do elemento. */
+  background: var(--ink); /* Define a cor ou o gradiente do fundo. */
+  color: #fff; /* Define a cor do texto. */
+  font-weight: 800; /* Ajusta o peso da fonte. */
+  margin-top: 20px; /* Personaliza esta propriedade visual. */
+  cursor: pointer; /* Indica o comportamento do ponteiro. */
+}
+/* Estilo do seletor .show-image. */
+.show-image {
+  position: relative; /* Define o tipo de posicionamento. */
+  min-height: 520px; /* Define a altura mínima. */
+  background: #d7e3e3; /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .show-image img. */
+.show-image img {
+  width: 100%; /* Define a largura do elemento. */
+  height: 100%; /* Define a altura do elemento. */
+  object-fit: cover; /* Controla o enquadramento da foto sem distorcer. */
+  position: absolute; /* Define o tipo de posicionamento. */
+  inset: 0; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .photo-tag. */
+.photo-tag {
+  position: absolute; /* Define o tipo de posicionamento. */
+  bottom: 24px; /* Personaliza esta propriedade visual. */
+  left: 24px; /* Personaliza esta propriedade visual. */
+  padding: 12px 16px; /* Define o espaço interno. */
+  background: #fff; /* Define a cor ou o gradiente do fundo. */
+  color: var(--ink); /* Define a cor do texto. */
+  letter-spacing: .1em; /* Ajusta o espaço entre letras. */
+  font-size: .72rem; /* Ajusta o tamanho do texto. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .work-list,.portfolio. */
+.work-list,.portfolio {
+  padding: 74px clamp(20px,5vw,90px); /* Define o espaço interno. */
+}
+/* Estilo do seletor .section-header. */
+.section-header {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1fr 2fr; /* Divide o conteúdo em colunas. */
+  gap: 28px; /* Separa os elementos internos. */
+  align-items: start; /* Alinha os elementos no eixo cruzado. */
+}
+/* Estilo do seletor .section-header>span. */
+.section-header>span {
+  font-size: .72rem; /* Ajusta o tamanho do texto. */
+  color: #86724f; /* Define a cor do texto. */
+  letter-spacing: .12em; /* Ajusta o espaço entre letras. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .section-header h2. */
+.section-header h2 {
+  font-family: Georgia,serif; /* Seleciona a família de fontes. */
+  font-size: clamp(2.2rem,4vw,3.5rem); /* Ajusta o tamanho do texto. */
+  margin: 0 0 30px; /* Define o espaço externo. */
+  line-height: 1.08; /* Controla o espaçamento entre linhas. */
+}
+/* Estilo do seletor .rows article. */
+.rows article {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 55px 1fr 1.4fr 36px; /* Divide o conteúdo em colunas. */
+  gap: 16px; /* Separa os elementos internos. */
+  border-top: 1px solid var(--line); /* Desenha a borda superior. */
+  align-items: center; /* Alinha os elementos no eixo cruzado. */
+  padding: 27px 0; /* Define o espaço interno. */
+}
+/* Estilo do seletor .rows article:last-child. */
+.rows article:last-child {
+  border-bottom: 1px solid var(--line); /* Desenha a borda inferior. */
+}
+/* Estilo do seletor .rows h3. */
+.rows h3 {
+  font-size: 1.4rem; /* Ajusta o tamanho do texto. */
+  margin: 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .rows p. */
+.rows p {
+  color: var(--muted); /* Define a cor do texto. */
+  margin: 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .number. */
+.number {
+  font-weight: 900; /* Ajusta o peso da fonte. */
+  color: #a9916b; /* Define a cor do texto. */
+}
+/* Estilo do seletor .arrow. */
+.arrow {
+  font-size: 1.7rem; /* Ajusta o tamanho do texto. */
+}
+/* Estilo do seletor .measure. */
+.measure {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1fr 1fr; /* Divide o conteúdo em colunas. */
+  gap: clamp(25px,5vw,80px); /* Separa os elementos internos. */
+  padding: 74px clamp(20px,5vw,90px); /* Define o espaço interno. */
+  background: #e8efed; /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .measure-intro h2. */
+.measure-intro h2 {
+  font-family: Georgia,serif; /* Seleciona a família de fontes. */
+  font-size: clamp(2.3rem,4vw,3.7rem); /* Ajusta o tamanho do texto. */
+  line-height: 1.05; /* Controla o espaçamento entre linhas. */
+  margin: 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .measure-intro>p:not(.overline). */
+.measure-intro>p:not(.overline) {
+  color: var(--muted); /* Define a cor do texto. */
+  max-width: 55ch; /* Limita a largura máxima. */
+}
+/* Estilo do seletor .illustration. */
+.illustration {
+  padding: 25px; /* Define o espaço interno. */
+  border: 1px solid #c3d3cf; /* Desenha a borda do elemento. */
+  margin-top: 38px; /* Personaliza esta propriedade visual. */
+  display: grid; /* Define a estratégia de exibição. */
+  place-items: center; /* Personaliza esta propriedade visual. */
+  gap: 10px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .glass. */
+.glass {
+  height: 180px; /* Define a altura do elemento. */
+  width: 210px; /* Define a largura do elemento. */
+  border: 7px solid #9cbfc2; /* Desenha a borda do elemento. */
+  background: linear-gradient(125deg,#faffff80 25%,#b6d8dc80 50%,#f8ffff85 70%); /* Define a cor ou o gradiente do fundo. */
+  display: grid; /* Define a estratégia de exibição. */
+  place-items: center; /* Personaliza esta propriedade visual. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .illustration>span. */
+.illustration>span {
+  font-size: .75rem; /* Ajusta o tamanho do texto. */
+  color: #536e70; /* Define a cor do texto. */
+}
+/* Estilo do seletor .form. */
+.form {
+  background: white; /* Define a cor ou o gradiente do fundo. */
+  box-shadow: 0 20px 48px #19343718; /* Aplica uma sombra de profundidade. */
+  padding: 34px; /* Define o espaço interno. */
+  display: grid; /* Define a estratégia de exibição. */
+  gap: 18px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .form label. */
+.form label {
+  display: grid; /* Define a estratégia de exibição. */
+  gap: 6px; /* Separa os elementos internos. */
+  font-weight: 700; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .form input,.form select. */
+.form input,.form select {
+  padding: 12px; /* Define o espaço interno. */
+  border: 1px solid #cbd8d5; /* Desenha a borda do elemento. */
+  width: 100%; /* Define a largura do elemento. */
+  background: white; /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .two. */
+.two {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1fr 1fr; /* Divide o conteúdo em colunas. */
+  gap: 15px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .result. */
+.result {
+  display: grid; /* Define a estratégia de exibição. */
+  gap: 10px; /* Separa os elementos internos. */
+  border-top: 1px solid var(--line); /* Desenha a borda superior. */
+  padding-top: 18px; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .result span. */
+.result span {
+  display: flex; /* Define a estratégia de exibição. */
+  justify-content: space-between; /* Controla o alinhamento horizontal de um conjunto. */
+  gap: 18px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .result strong. */
+.result strong {
+  font-size: 1.15rem; /* Ajusta o tamanho do texto. */
+}
+/* Estilo do seletor .form .cta. */
+.form .cta {
+  margin-top: 0; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .small. */
+.small {
+  font-size: .77rem; /* Ajusta o tamanho do texto. */
+  color: var(--muted); /* Define a cor do texto. */
+  margin: 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .photo-grid. */
+.photo-grid {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1.2fr 1fr 1fr; /* Divide o conteúdo em colunas. */
+  gap: 18px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .photo-grid figure. */
+.photo-grid figure {
+  margin: 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .photo-grid img. */
+.photo-grid img {
+  width: 100%; /* Define a largura do elemento. */
+  aspect-ratio: 4/5; /* Preserva a proporção visual do espaço. */
+  object-fit: cover; /* Controla o enquadramento da foto sem distorcer. */
+  display: block; /* Define a estratégia de exibição. */
+}
+/* Estilo do seletor .photo-grid figcaption. */
+.photo-grid figcaption {
+  font-weight: 800; /* Ajusta o peso da fonte. */
+  margin-top: 12px; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .footer. */
+.footer {
+  background: #132d30; /* Define a cor ou o gradiente do fundo. */
+  color: white; /* Define a cor do texto. */
+  padding: 34px clamp(20px,5vw,90px); /* Define o espaço interno. */
+}
+/* Estilo do seletor .footer p. */
+.footer p {
+  opacity: .7; /* Controla a transparência. */
+}
+/* Regra responsiva ou de estilo especial. */
+@media (max-width:850px) {
+  /* Estilo do seletor .header nav. */
+  .header nav {
+    display: none; /* Define a estratégia de exibição. */
+  }
+  /* Estilo do seletor .showroom,.measure,.section-header. */
+  .showroom,.measure,.section-header {
+    grid-template-columns: 1fr; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .show-image. */
+  .show-image {
+    min-height: 330px; /* Define a altura mínima. */
+  }
+  /* Estilo do seletor .show-text. */
+  .show-text {
+    padding: 34px 22px; /* Define o espaço interno. */
+  }
+  /* Estilo do seletor .rows article. */
+  .rows article {
+    grid-template-columns: 40px 1fr 30px; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .rows p. */
+  .rows p {
+    grid-column: 2; /* Posiciona o bloco nas colunas da grade. */
+    grid-row: 2; /* Define a posição entre linhas da grade. */
+  }
+  /* Estilo do seletor .photo-grid. */
+  .photo-grid {
+    grid-template-columns: 1fr 1fr; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .photo-grid figure:last-child. */
+  .photo-grid figure:last-child {
+    grid-column: 1/-1; /* Posiciona o bloco nas colunas da grade. */
+  }
+}
+/* Regra responsiva ou de estilo especial. */
+@media (max-width:520px) {
+  /* Estilo do seletor .photo-grid,.two. */
+  .photo-grid,.two {
+    grid-template-columns: 1fr; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .photo-grid figure:last-child. */
+  .photo-grid figure:last-child {
+    grid-column: auto; /* Posiciona o bloco nas colunas da grade. */
+  }
+  /* Estilo do seletor .form. */
+  .form {
+    padding: 22px; /* Define o espaço interno. */
+  }
+  /* Estilo do seletor .work-list,.portfolio,.measure. */
+  .work-list,.portfolio,.measure {
+    padding: 48px 20px; /* Define o espaço interno. */
+  }
+}

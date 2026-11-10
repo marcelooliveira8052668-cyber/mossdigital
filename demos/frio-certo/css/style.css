@@ -1,0 +1,425 @@
+/* MOSS Digital — CSS didático em português brasileiro. */
+/* Estilo do seletor :root. */
+:root {
+  --ink: #143b56; /* Variável reutilizável de cor ou espaçamento. */
+  --blue: #0a8fd4; /* Variável reutilizável de cor ou espaçamento. */
+  --mint: #e6f7ff; /* Variável reutilizável de cor ou espaçamento. */
+  --pale: #f7fcff; /* Variável reutilizável de cor ou espaçamento. */
+  --border: #d6e8ef; /* Variável reutilizável de cor ou espaçamento. */
+  --muted: #547184; /* Variável reutilizável de cor ou espaçamento. */
+}
+/* Estilo do seletor *. */
+* {
+  box-sizing: border-box; /* Inclui borda e padding no tamanho final. */
+}
+/* Estilo do seletor html. */
+html {
+  scroll-behavior: smooth; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor body. */
+body {
+  font-family: Arial,Helvetica,sans-serif; /* Seleciona a família de fontes. */
+  line-height: 1.5; /* Controla o espaçamento entre linhas. */
+  color: var(--ink); /* Define a cor do texto. */
+  margin: 0; /* Define o espaço externo. */
+  background: #fff; /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .container. */
+.container {
+  width: min(1130px,calc(100% - 36px)); /* Define a largura do elemento. */
+  margin: auto; /* Define o espaço externo. */
+}
+/* Estilo do seletor a. */
+a {
+  text-decoration: none; /* Personaliza esta propriedade visual. */
+  color: inherit; /* Define a cor do texto. */
+}
+/* Estilo do seletor .top. */
+.top {
+  position: sticky; /* Define o tipo de posicionamento. */
+  top: 0; /* Personaliza esta propriedade visual. */
+  z-index: 20; /* Define a ordem de sobreposição. */
+  background: #fffefef0; /* Define a cor ou o gradiente do fundo. */
+  border-bottom: 1px solid var(--border); /* Desenha a borda inferior. */
+  backdrop-filter: blur(12px); /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .head. */
+.head {
+  display: flex; /* Define a estratégia de exibição. */
+  justify-content: space-between; /* Controla o alinhamento horizontal de um conjunto. */
+  align-items: center; /* Alinha os elementos no eixo cruzado. */
+  gap: 20px; /* Separa os elementos internos. */
+  min-height: 73px; /* Define a altura mínima. */
+}
+/* Estilo do seletor .logo. */
+.logo {
+  font-size: 1.5rem; /* Ajusta o tamanho do texto. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .logo span. */
+.logo span {
+  color: var(--blue); /* Define a cor do texto. */
+}
+/* Estilo do seletor .head nav. */
+.head nav {
+  display: flex; /* Define a estratégia de exibição. */
+  gap: 25px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .head nav a. */
+.head nav a {
+  font-weight: 700; /* Ajusta o peso da fonte. */
+  color: #47687e; /* Define a cor do texto. */
+}
+/* Estilo do seletor .hotline. */
+.hotline {
+  background: var(--blue); /* Define a cor ou o gradiente do fundo. */
+  color: white; /* Define a cor do texto. */
+  padding: 11px 18px; /* Define o espaço interno. */
+  border-radius: 999px; /* Arredonda os cantos. */
+  font-weight: 800; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .hero. */
+.hero {
+  background: linear-gradient(135deg,#effaff,#cbeafc); /* Define a cor ou o gradiente do fundo. */
+  padding: 54px 0; /* Define o espaço interno. */
+}
+/* Estilo do seletor .hero-row. */
+.hero-row {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1fr .85fr; /* Divide o conteúdo em colunas. */
+  gap: 35px; /* Separa os elementos internos. */
+  align-items: center; /* Alinha os elementos no eixo cruzado. */
+}
+/* Estilo do seletor .pill,.overline. */
+.pill,.overline {
+  font-size: .7rem; /* Ajusta o tamanho do texto. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+  letter-spacing: .16em; /* Ajusta o espaço entre letras. */
+  color: #096d9e; /* Define a cor do texto. */
+}
+/* Estilo do seletor .hero h1. */
+.hero h1 {
+  font-size: clamp(2.45rem,4.7vw,4.65rem); /* Ajusta o tamanho do texto. */
+  line-height: 1.07; /* Controla o espaçamento entre linhas. */
+  letter-spacing: -.05em; /* Ajusta o espaço entre letras. */
+  margin: 13px 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .hero h1 span. */
+.hero h1 span {
+  color: #048bcd; /* Define a cor do texto. */
+}
+/* Estilo do seletor .hero p. */
+.hero p {
+  color: #4b697b; /* Define a cor do texto. */
+  font-size: 1.07rem; /* Ajusta o tamanho do texto. */
+  max-width: 55ch; /* Limita a largura máxima. */
+}
+/* Estilo do seletor .btn. */
+.btn {
+  display: inline-block; /* Define a estratégia de exibição. */
+  border: 0; /* Desenha a borda do elemento. */
+  cursor: pointer; /* Indica o comportamento do ponteiro. */
+  padding: 14px 23px; /* Define o espaço interno. */
+  border-radius: 12px; /* Arredonda os cantos. */
+  font-weight: 800; /* Ajusta o peso da fonte. */
+  text-align: center; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .primary. */
+.primary {
+  background: var(--blue); /* Define a cor ou o gradiente do fundo. */
+  color: #fff; /* Define a cor do texto. */
+}
+/* Estilo do seletor .photo. */
+.photo {
+  background: #fff; /* Define a cor ou o gradiente do fundo. */
+  border-radius: 26px; /* Arredonda os cantos. */
+  box-shadow: 0 22px 45px #1d638c26; /* Aplica uma sombra de profundidade. */
+  padding: 14px; /* Define o espaço interno. */
+  position: relative; /* Define o tipo de posicionamento. */
+}
+/* Estilo do seletor .photo img. */
+.photo img {
+  width: 100%; /* Define a largura do elemento. */
+  aspect-ratio: 5/4; /* Preserva a proporção visual do espaço. */
+  object-fit: cover; /* Controla o enquadramento da foto sem distorcer. */
+  border-radius: 18px; /* Arredonda os cantos. */
+  display: block; /* Define a estratégia de exibição. */
+}
+/* Estilo do seletor .photo-label. */
+.photo-label {
+  position: absolute; /* Define o tipo de posicionamento. */
+  bottom: 24px; /* Personaliza esta propriedade visual. */
+  left: 24px; /* Personaliza esta propriedade visual. */
+  background: #fff; /* Define a cor ou o gradiente do fundo. */
+  padding: 10px 14px; /* Define o espaço interno. */
+  border-radius: 9px; /* Arredonda os cantos. */
+  font-size: .7rem; /* Ajusta o tamanho do texto. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .features. */
+.features {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: repeat(3,1fr); /* Divide o conteúdo em colunas. */
+  gap: 16px; /* Separa os elementos internos. */
+  margin-top: 24px; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .features article. */
+.features article {
+  padding: 22px; /* Define o espaço interno. */
+  border: 1px solid var(--border); /* Desenha a borda do elemento. */
+  border-radius: 20px; /* Arredonda os cantos. */
+  background: #fff; /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .features article span. */
+.features article span {
+  color: var(--blue); /* Define a cor do texto. */
+  display: block; /* Define a estratégia de exibição. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+  margin-bottom: 7px; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .features p. */
+.features p {
+  margin: 6px 0 0; /* Define o espaço externo. */
+  color: var(--muted); /* Define a cor do texto. */
+}
+/* Estilo do seletor .services. */
+.services {
+  padding: 70px 0; /* Define o espaço interno. */
+}
+/* Estilo do seletor .title span,.faq>div>span. */
+.title span,.faq>div>span {
+  font-size: .7rem; /* Ajusta o tamanho do texto. */
+  letter-spacing: .16em; /* Ajusta o espaço entre letras. */
+  color: #2380b0; /* Define a cor do texto. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .title h2,.booking h2,.faq h2. */
+.title h2,.booking h2,.faq h2 {
+  font-size: clamp(1.9rem,3vw,3rem); /* Ajusta o tamanho do texto. */
+  letter-spacing: -.035em; /* Ajusta o espaço entre letras. */
+  margin: 9px 0 25px; /* Define o espaço externo. */
+}
+/* Estilo do seletor .service-cards. */
+.service-cards {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: repeat(3,1fr); /* Divide o conteúdo em colunas. */
+  gap: 19px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .service-cards article. */
+.service-cards article {
+  border: 1px solid var(--border); /* Desenha a borda do elemento. */
+  border-radius: 21px; /* Arredonda os cantos. */
+  overflow: hidden; /* Controla o que acontece com conteúdo excedente. */
+}
+/* Estilo do seletor .card-photo img. */
+.card-photo img {
+  width: 100%; /* Define a largura do elemento. */
+  aspect-ratio: 4/3; /* Preserva a proporção visual do espaço. */
+  object-fit: cover; /* Controla o enquadramento da foto sem distorcer. */
+  display: block; /* Define a estratégia de exibição. */
+}
+/* Estilo do seletor .service-cards article>div:last-child. */
+.service-cards article>div:last-child {
+  padding: 18px; /* Define o espaço interno. */
+}
+/* Estilo do seletor .service-cards h3. */
+.service-cards h3 {
+  font-size: 1.22rem; /* Ajusta o tamanho do texto. */
+  margin: 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .service-cards p. */
+.service-cards p {
+  color: var(--muted); /* Define a cor do texto. */
+}
+/* Estilo do seletor .service-cards a. */
+.service-cards a {
+  font-weight: 800; /* Ajusta o peso da fonte. */
+  color: #067fbd; /* Define a cor do texto. */
+}
+/* Estilo do seletor .booking. */
+.booking {
+  padding: 65px 0; /* Define o espaço interno. */
+  background: #ecf7fc; /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .booking-row. */
+.booking-row {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: .8fr 1.2fr; /* Divide o conteúdo em colunas. */
+  gap: 50px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .booking-row>div>p. */
+.booking-row>div>p {
+  max-width: 46ch; /* Limita a largura máxima. */
+  color: var(--muted); /* Define a cor do texto. */
+}
+/* Estilo do seletor .progress. */
+.progress {
+  display: grid; /* Define a estratégia de exibição. */
+  gap: 14px; /* Separa os elementos internos. */
+  margin-top: 34px; /* Personaliza esta propriedade visual. */
+  font-weight: 900; /* Ajusta o peso da fonte. */
+  color: #0778b1; /* Define a cor do texto. */
+}
+/* Estilo do seletor .booking-form. */
+.booking-form {
+  background: white; /* Define a cor ou o gradiente do fundo. */
+  padding: 28px; /* Define o espaço interno. */
+  border-radius: 22px; /* Arredonda os cantos. */
+  box-shadow: 0 24px 50px #1d638c18; /* Aplica uma sombra de profundidade. */
+  display: grid; /* Define a estratégia de exibição. */
+  gap: 14px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .booking-form label. */
+.booking-form label {
+  display: grid; /* Define a estratégia de exibição. */
+  gap: 7px; /* Separa os elementos internos. */
+  font-weight: 800; /* Ajusta o peso da fonte. */
+}
+/* Estilo do seletor .booking-form input,.booking-form select,.booking-form textarea. */
+.booking-form input,.booking-form select,.booking-form textarea {
+  font: inherit; /* Configura a apresentação de texto e campos. */
+  width: 100%; /* Define a largura do elemento. */
+  padding: 12px; /* Define o espaço interno. */
+  border: 1px solid #c7e0ed; /* Desenha a borda do elemento. */
+  border-radius: 10px; /* Arredonda os cantos. */
+  background: white; /* Define a cor ou o gradiente do fundo. */
+}
+/* Estilo do seletor .booking-form textarea. */
+.booking-form textarea {
+  min-height: 90px; /* Define a altura mínima. */
+}
+/* Estilo do seletor .booking-form fieldset. */
+.booking-form fieldset {
+  border: 0; /* Desenha a borda do elemento. */
+  padding: 0; /* Define o espaço interno. */
+  margin: 0; /* Define o espaço externo. */
+}
+/* Estilo do seletor .booking-form legend. */
+.booking-form legend {
+  font-weight: 800; /* Ajusta o peso da fonte. */
+  margin-bottom: 8px; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .choices. */
+.choices {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1fr 1fr; /* Divide o conteúdo em colunas. */
+  gap: 12px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .choices label. */
+.choices label {
+  cursor: pointer; /* Indica o comportamento do ponteiro. */
+}
+/* Estilo do seletor .choices label input. */
+.choices label input {
+  position: absolute; /* Define o tipo de posicionamento. */
+  width: 1px; /* Define a largura do elemento. */
+  height: 1px; /* Define a altura do elemento. */
+  opacity: 0; /* Controla a transparência. */
+}
+/* Estilo do seletor .choices span. */
+.choices span {
+  display: block; /* Define a estratégia de exibição. */
+  text-align: center; /* Personaliza esta propriedade visual. */
+  padding: 13px; /* Define o espaço interno. */
+  border: 1px solid #c7e0ed; /* Desenha a borda do elemento. */
+  border-radius: 11px; /* Arredonda os cantos. */
+}
+/* Estilo do seletor .choices input:checked+span. */
+.choices input:checked+span {
+  background: #d5f0ff; /* Define a cor ou o gradiente do fundo. */
+  border-color: #0a8fd4; /* Personaliza esta propriedade visual. */
+}
+/* Estilo do seletor .two. */
+.two {
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: 1fr 1fr; /* Divide o conteúdo em colunas. */
+  gap: 12px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .booking-form small. */
+.booking-form small {
+  color: var(--muted); /* Define a cor do texto. */
+}
+/* Estilo do seletor .full. */
+.full {
+  width: 100%; /* Define a largura do elemento. */
+}
+/* Estilo do seletor .faq. */
+.faq {
+  padding: 70px 0; /* Define o espaço interno. */
+  display: grid; /* Define a estratégia de exibição. */
+  grid-template-columns: .8fr 1.2fr; /* Divide o conteúdo em colunas. */
+  gap: 40px; /* Separa os elementos internos. */
+}
+/* Estilo do seletor .faq details. */
+.faq details {
+  border-bottom: 1px solid var(--border); /* Desenha a borda inferior. */
+  padding: 17px 0; /* Define o espaço interno. */
+}
+/* Estilo do seletor .faq summary. */
+.faq summary {
+  font-weight: 800; /* Ajusta o peso da fonte. */
+  cursor: pointer; /* Indica o comportamento do ponteiro. */
+}
+/* Estilo do seletor .faq p. */
+.faq p {
+  color: var(--muted); /* Define a cor do texto. */
+}
+/* Estilo do seletor footer. */
+footer {
+  background: var(--ink); /* Define a cor ou o gradiente do fundo. */
+  color: white; /* Define a cor do texto. */
+  text-align: center; /* Personaliza esta propriedade visual. */
+  padding: 30px 18px; /* Define o espaço interno. */
+  font-size: .86rem; /* Ajusta o tamanho do texto. */
+}
+/* Regra responsiva ou de estilo especial. */
+@media (max-width:800px) {
+  /* Estilo do seletor .head nav. */
+  .head nav {
+    display: none; /* Define a estratégia de exibição. */
+  }
+  /* Estilo do seletor .hero-row,.booking-row,.faq. */
+  .hero-row,.booking-row,.faq {
+    grid-template-columns: 1fr; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .service-cards. */
+  .service-cards {
+    grid-template-columns: 1fr; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .features. */
+  .features {
+    grid-template-columns: 1fr; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .hero. */
+  .hero {
+    padding: 32px 0; /* Define o espaço interno. */
+  }
+  /* Estilo do seletor .booking-row. */
+  .booking-row {
+    gap: 25px; /* Separa os elementos internos. */
+  }
+  /* Estilo do seletor .services. */
+  .services {
+    padding: 48px 0; /* Define o espaço interno. */
+  }
+}
+/* Regra responsiva ou de estilo especial. */
+@media (max-width:500px) {
+  /* Estilo do seletor .two. */
+  .two {
+    grid-template-columns: 1fr; /* Divide o conteúdo em colunas. */
+  }
+  /* Estilo do seletor .booking-form. */
+  .booking-form {
+    padding: 18px; /* Define o espaço interno. */
+  }
+  /* Estilo do seletor .logo. */
+  .logo {
+    font-size: 1.16rem; /* Ajusta o tamanho do texto. */
+  }
+  /* Estilo do seletor .hotline. */
+  .hotline {
+    padding: 10px; /* Define o espaço interno. */
+    font-size: .76rem; /* Ajusta o tamanho do texto. */
+  }
+}

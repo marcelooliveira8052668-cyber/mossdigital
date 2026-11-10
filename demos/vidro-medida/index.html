@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!-- Demo de orçamento, não sistema fiscal. -->
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Vidra&ccedil;aria com estimativa ilustrativa de metragem e pedido de or&ccedil;amento pelo WhatsApp."
+        name="description" />
+    <title>
+        Vidro &amp; Medida | Solu&ccedil;&otilde;es em vidro
+    </title>
+    <!-- Arquivo de estilos da demo. -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- Script JavaScript da demo. -->
+    <script defer="" src="js/script.js">
+    </script>
+</head>
+
+<body>
+    <div class="demo-flag">
+        Portf&oacute;lio MOSS Digital &middot; Medidas e pre&ccedil;os demonstrativos
+    </div>
+    <!-- Cabeçalho e acesso rápido aos serviços. -->
+    <header class="header">
+        <a class="wordmark" href="#inicio">
+            VIDRO
+            <span>
+                &amp;
+            </span>
+            MEDIDA
+            <small>
+                PROJETOS SOB MEDIDA
+            </small>
+        </a>
+        <!-- Navegação para seções do site. -->
+        <nav>
+            <a href="#servicos">
+                Solu&ccedil;&otilde;es
+            </a>
+            <a href="#calculadora">
+                Or&ccedil;amento
+            </a>
+            <a href="#portfolio">
+                Galeria
+            </a>
+        </nav>
+        <a class="nav-cta" href="https://wa.me/5511942038103">
+            Atendimento &nearrow;
+        </a>
+    </header>
+    <!-- Início do conteúdo principal. -->
+    <main id="inicio">
+        <!-- Seção de conteúdo do projeto. -->
+        <section class="showroom">
+            <div class="show-text">
+                <p class="overline">
+                    ARQUITETURA E FUNCIONALIDADE
+                </p>
+                <h1>
+                    Transpar&ecirc;ncia em cada detalhe.
+                </h1>
+                <p>
+                    Uma apresenta&ccedil;&atilde;o arquitet&ocirc;nica com cat&aacute;logo de projetos, metragem
+                    estimada e or&ccedil;amento assistido &mdash; sem precisar de pagamento online.
+                </p>
+                <a class="cta" href="#calculadora">
+                    Calcular meu projeto &nearrow;
+                </a>
+            </div>
+            <div class="show-image">
+                <!-- Imagem substituível, conforme FOTOS-PARA-OPENCODE.md. -->
+                <img alt="Fachada de vidro arquitet&ocirc;nico: imagem a adicionar"
+                    data-photo="assets/img/hero-fachada-vidro.webp"  height="600" src="https://http2.mlstatic.com/D_NQ_NP_2X_879206-MLA99506939528_112025-F.webp"
+                    width="1100" />
+                <span class="photo-tag">
+                    PROJETO PERSONALIZADO
+                </span>
+            </div>
+        </section>
+        <!-- Seção de conteúdo do projeto. -->
+        <section class="work-list" id="servicos">
+            <div class="section-header">
+                <span>
+                    01 / SOLU&Ccedil;&Otilde;ES
+                </span>
+                <h2>
+                    Do detalhe ao ambiente.
+                </h2>
+            </div>
+            <div class="rows">
+                <!-- Bloco de serviço, produto ou informação. -->
+                <article>
+                    <span class="number">
+                        01
+                    </span>
+                    <h3>
+                        Box de banheiro
+                    </h3>
+                    <p>
+                        Fechamentos modernos e solu&ccedil;&otilde;es sob medida.
+                    </p>
+                    <span class="arrow">
+                        &nearrow;
+                    </span>
+                </article>
+                <!-- Bloco de serviço, produto ou informação. -->
+                <article>
+                    <span class="number">
+                        02
+                    </span>
+                    <h3>
+                        Espelhos
+                    </h3>
+                    <p>
+                        Acabamentos para lojas, sal&otilde;es e resid&ecirc;ncias.
+                    </p>
+                    <span class="arrow">
+                        &nearrow;
+                    </span>
+                </article>
+                <!-- Bloco de serviço, produto ou informação. -->
+                <article>
+                    <span class="number">
+                        03
+                    </span>
+                    <h3>
+                        Portas e divis&oacute;rias
+                    </h3>
+                    <p>
+                        Integra&ccedil;&atilde;o de ambientes e valoriza&ccedil;&atilde;o de espa&ccedil;os.
+                    </p>
+                    <span class="arrow">
+                        &nearrow;
+                    </span>
+                </article>
+            </div>
+        </section>
+        <!-- Seção de conteúdo do projeto. -->
+        <section class="measure" id="calculadora">
+            <div class="measure-intro">
+                <p class="overline">
+                    02 / SIMULE
+                </p>
+                <h2>
+                    Um or&ccedil;amento que come&ccedil;a pela medida.
+                </h2>
+                <p>
+                    Informe dimens&otilde;es aproximadas. O c&aacute;lculo &eacute; apenas uma refer&ecirc;ncia
+                    comercial: espessura, ferragens, instala&ccedil;&atilde;o e normas t&eacute;cnicas exigem
+                    avalia&ccedil;&atilde;o profissional.
+                </p>
+                <div class="illustration">
+                    <div class="glass">
+                        <span id="glass-label">
+                            1,20 &times; 1,50 m
+                        </span>
+                    </div>
+                    <span>
+                        Esquema ilustrativo de uma pe&ccedil;a
+                    </span>
+                </div>
+            </div>
+            <!-- Formulário funcional com saída para WhatsApp ou cadastro local. -->
+            <form class="form" id="measure-form">
+                <label>
+                    Tipo de vidro
+                    <select id="type" name="tipo">
+                        <option value="temperado">
+                            Temperado (exemplo R$ 340/m&sup2;)
+                        </option>
+                        <option value="laminado">
+                            Laminado (R$ 440/m&sup2;)
+                        </option>
+                        <option value="espelho">
+                            Espelho (R$ 260/m&sup2;)
+                        </option>
+                    </select>
+                </label>
+                <div class="two">
+                    <label>
+                        Largura (cm)
+                        <input id="width" max="400" min="20" name="largura" required="" step="1" type="number"
+                            value="120" />
+                    </label>
+                    <label>
+                        Altura (cm)
+                        <input id="height" max="400" min="20" name="altura" required="" step="1" type="number"
+                            value="150" />
+                    </label>
+                </div>
+                <label>
+                    Quantidade de pe&ccedil;as
+                    <input id="pieces" max="30" min="1" name="quantidade" required="" type="number" value="1" />
+                </label>
+                <label>
+                    Acabamento
+                    <select id="finish" name="acabamento">
+                        <option value="padrao">
+                            Borda padr&atilde;o (estimativa base)
+                        </option>
+                        <option value="premium">
+                            Acabamento especial (+15%)
+                        </option>
+                    </select>
+                </label>
+                <div class="result">
+                    <span>
+                        &Aacute;rea total estimada
+                        <strong id="area">
+                            1,80 m&sup2;
+                        </strong>
+                    </span>
+                    <span>
+                        Refer&ecirc;ncia ilustrativa
+                        <strong id="estimate">
+                            R$ 612,00
+                        </strong>
+                    </span>
+                </div>
+                <button class="cta" type="submit">
+                    Solicitar or&ccedil;amento por WhatsApp &nearrow;
+                </button>
+                <p class="small">
+                    A simula&ccedil;&atilde;o n&atilde;o &eacute; proposta, n&atilde;o registra dados em servidor nem
+                    confirma venda.
+                </p>
+            </form>
+        </section>
+        <!-- Seção de conteúdo do projeto. -->
+        <section class="portfolio" id="portfolio">
+            <div class="section-header">
+                <span>
+                    03 / REFER&Ecirc;NCIAS VISUAIS
+                </span>
+                <h2>
+                    Projetos que mostram possibilidades.
+                </h2>
+            </div>
+            <div class="photo-grid">
+                <figure>
+                    <img alt="Foto a adicionar: box de banheiro" data-photo="assets/img/box-banheiro.webp" height="700"
+                        src="https://tse1.mm.bing.net/th/id/OIP.AjPvb6VZIso05FNj47hkWQHaI-?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" width="900" />
+                    <figcaption>
+                        Box de banheiro
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img alt="Foto a adicionar: espelho decorativo" data-photo="assets/img/espelho-ambiente.webp"
+                        height="700" src="https://m.media-amazon.com/images/I/61HcmdZcztL._AC_SY300_SX300_QL70_ML2_.jpg" width="900" />
+                    <figcaption>
+                        Espelhos
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img alt="Foto a adicionar: divis&oacute;ria de vidro" data-photo="assets/img/divisoria-vidro.webp"
+                        height="700" src="assets/img/placeholder.svg" width="900" />
+                    <figcaption>
+                        Divis&oacute;rias
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+    <!-- Informações finais da demo. -->
+    <footer class="footer">
+        <strong>
+            VIDRO &amp; MEDIDA
+        </strong>
+        <p>
+            Projeto demonstrativo da MOSS Digital. Entre em contato: (11) 94203-8103
+        </p>
+    </footer>
+</body>
+
+</html>

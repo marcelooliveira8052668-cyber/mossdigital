@@ -1,0 +1,77 @@
+/* Regras básicas exclusivas desta demo, sem bibliotecas externas. */
+*, *::before, *::after { box-sizing: border-box; } /* Mantém dimensões previsíveis. */
+html { scroll-behavior: smooth; } /* Rolagem suave até as seções. */
+body { margin: 0; } /* Remove a margem padrão. */
+a { color: inherit; text-decoration: none; } /* Herda cor da marca. */
+button, input, select, textarea { font: inherit; } /* Usa a mesma tipografia. */
+button { cursor: pointer; } /* Indica botões clicáveis. */
+img { display: block; max-width: 100%; } /* Impede imagens maiores que o espaço. */
+[hidden] { display: none !important; } /* Respeita ocultação de itens. */
+:focus-visible { outline: 3px solid #faab36; outline-offset: 3px; } /* Acesso por teclado. */
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } } /* Reduz movimento se necessário. */
+
+/* Painel administrativo de estacionamento com visual diferente de loja ou site comercial. */
+:root { --escuro:#0e1a25; --painel:#142433; --carta:#1c3041; --linha:#31485a; --verde:#55d6a0; --texto:#eff9fa; --muted:#a5bfca; --cinza:#cad7dd; } /* Variáveis do dashboard. */
+body { font-family:Arial,Helvetica,sans-serif; background:var(--escuro); color:var(--texto); } /* Fundo escuro. */
+.aviso { background:#274153; color:#d8e7ed; font-size:.68rem; letter-spacing:.08em; text-align:center; padding:9px 12px; } /* Nota legal visível. */
+.estrutura { display:grid; grid-template-columns:250px minmax(0,1fr); min-height:100vh; } /* Barra lateral + painel. */
+.lateral { background:#0b1621; border-right:1px solid var(--linha); padding:30px 18px; display:flex; flex-direction:column; gap:25px; } /* Navegação de aplicativo. */
+.marca { font-weight:900; font-size:1.45rem; letter-spacing:-.055em; } /* Nome da ferramenta. */
+.marca span { color:var(--verde); } /* Símbolo de destaque. */
+.marca small { display:block; font-size:.56rem; color:var(--muted); letter-spacing:.22em; margin-top:8px; } /* Subtítulo. */
+.linha-div { border-top:1px solid var(--linha); } /* Divisor. */
+.nav-lateral { display:grid; gap:10px; } /* Lista vertical. */
+.nav-lateral a { padding:15px; border-radius:10px; font-weight:700; color:#afc6d0; font-size:.86rem; } /* Item do menu. */
+.nav-lateral a:hover,.nav-lateral a.selecionado { background:#23394a; color:white; } /* Destaque do menu. */
+.lateral-rodape { margin-top:auto; background:#162634; border:1px solid var(--linha); padding:15px; border-radius:12px; line-height:1.45; } /* Avisos fixos do painel. */
+.lateral-rodape p { font-size:.78rem; color:var(--muted); } /* Aviso de armazenamento. */
+.lateral-rodape a { color:var(--verde); font-size:.78rem; font-weight:700; } /* Contato. */
+.conteudo { min-width:0; padding:clamp(20px,3vw,48px); } /* Coluna principal. */
+.topo { display:flex; justify-content:space-between; align-items:center; gap:28px; padding:5px 0 28px; } /* Cabeçalho operacional. */
+.legenda { font-size:.67rem; color:var(--verde); font-weight:800; letter-spacing:.15em; } /* Etiqueta. */
+h1 { font-size:clamp(2.3rem,4vw,4.3rem); margin:10px 0; line-height:1.05; letter-spacing:-.065em; } /* Título amplo. */
+h1 em { color:var(--verde); font-style:normal; } /* Destaque. */
+.topo p { color:var(--muted); line-height:1.5; } /* Descrição do painel. */
+.status-ativo { border:1px solid #355b53; color:#b9eedd; background:#14382e; padding:12px 16px; border-radius:50px; font-size:.68rem; font-weight:700; white-space:nowrap; } /* Indicador de modo demo. */
+.ponto { display:inline-block; width:9px; height:9px; margin-right:8px; border-radius:99px; background:var(--verde); } /* Ponto de status. */
+.resumo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:20px; } /* Indicadores. */
+.resumo-grid article { border:1px solid var(--linha); background:var(--painel); padding:24px; border-radius:16px; } /* Cartão de indicador. */
+.resumo-grid article span { font-size:.7rem; color:var(--muted); letter-spacing:.1em; font-weight:800; } /* Título do indicador. */
+.resumo-grid article strong { display:block; margin:12px 0; font-size:clamp(2rem,3.4vw,3.5rem); letter-spacing:-.07em; } /* Métrica. */
+.resumo-grid article small { color:var(--muted); } /* Legenda. */
+.grid-painel { display:grid; grid-template-columns:minmax(260px,.7fr) minmax(0,1.3fr); gap:16px; align-items:start; } /* Entrada e movimentação. */
+.entrada,.movimento { background:var(--painel); border:1px solid var(--linha); border-radius:16px; padding:24px; min-width:0; } /* Áreas de gestão. */
+.secao-topo h2 { font-size:1.45rem; letter-spacing:-.03em; margin:8px 0; } /* Títulos pequenos. */
+.secao-topo p { font-size:.83rem; color:var(--muted); line-height:1.5; } /* Contexto. */
+.formulario { display:grid; gap:15px; padding:18px 0; } /* Entrada em coluna. */
+.formulario label { display:grid; gap:8px; color:#dbe8ef; font-weight:700; font-size:.82rem; } /* Rótulos. */
+.formulario input,.formulario select { padding:14px; width:100%; background:#0f1d29; color:white; border:1px solid var(--linha); border-radius:9px; } /* Campos escuros. */
+.botao { padding:14px 18px; background:var(--verde); border:0; color:#10241d; font-weight:900; border-radius:9px; } /* Confirmação principal. */
+.tarifas { margin-top:14px; border-top:1px solid var(--linha); padding-top:16px; } /* Tabela de tarifas didáticas. */
+.tarifas h3 { font-size:.9rem; } /* Título. */
+.tarifas div { display:flex; justify-content:space-between; gap:10px; margin:10px 0; font-size:.8rem; } /* Linhas de tarifa. */
+.tarifas span,.tarifas small { color:var(--muted); } /* Descrição. */
+.tarifas small { display:block; margin-top:13px; } /* Nota. */
+.acoes { display:flex; flex-wrap:wrap; gap:10px; margin:15px 0; } /* Barra de ações. */
+.acao-secundaria { padding:10px 14px; background:#25394a; color:white; border:1px solid var(--linha); border-radius:9px; font-weight:700; } /* Botão secundário. */
+.acao-secundaria.perigo { color:#ffc4bc; } /* Alerta de exclusão. */
+.tabela-wrap { overflow:auto; width:100%; } /* Permite tabela dentro do celular. */
+table { width:100%; border-collapse:collapse; min-width:540px; text-align:left; } /* Colunas legíveis. */
+th,td { padding:14px 11px; border-bottom:1px solid var(--linha); font-size:.78rem; } /* Células. */
+th { color:var(--muted); font-size:.7rem; letter-spacing:.06em; } /* Cabeçalho de tabela. */
+td button { padding:8px 11px; border-radius:8px; border:0; background:#d0f1e2; color:#16372b; font-size:.75rem; font-weight:800; } /* Ação de saída. */
+.tag-status { display:inline-block; padding:6px 8px; border-radius:7px; background:#194034; color:#b9efd8; } /* Situação aberta. */
+.tag-status.fechado { background:#3c4350; color:#e1e6ee; } /* Situação encerrada. */
+.mensagem { color:var(--verde); min-height:1.2em; font-size:.83rem; } /* Retorno de ações. */
+.evolucao { display:flex; justify-content:space-between; align-items:center; gap:30px; background:#1a3140; border:1px solid var(--linha); border-radius:16px; margin-top:18px; padding:24px; } /* Seção de próximos passos. */
+.evolucao h2 { margin:8px 0; } /* Título. */
+.evolucao p { color:var(--muted); max-width:700px; line-height:1.5; } /* Integrações. */
+.evolucao a { font-weight:800; color:var(--verde); white-space:nowrap; } /* Link MOSS. */
+.dialogo { width:min(480px,calc(100% - 24px)); background:#172938; border:1px solid var(--linha); border-radius:18px; padding:24px; color:white; } /* Confirmação de saída. */
+.dialogo::backdrop { background:#000a; } /* Fundo do diálogo. */
+.dialogo-topo { display:flex; align-items:center; justify-content:space-between; } /* Cabeçalho da confirmação. */
+.dialogo-topo button { background:none; border:0; color:white; font-size:1.7rem; } /* Fechar. */
+.dialogo-acoes { display:flex; flex-wrap:wrap; gap:10px; } /* Botões. */
+.nota { color:var(--muted); font-size:.78rem; line-height:1.4; } /* Nota legal. */
+@media(max-width:1050px) { .estrutura{grid-template-columns:1fr}.lateral{padding:18px;gap:14px}.nav-lateral{grid-template-columns:repeat(4,1fr);gap:6px}.nav-lateral a{padding:9px;font-size:.74rem}.lateral-rodape,.linha-div{display:none}.grid-painel{grid-template-columns:1fr} } /* Tablet. */
+@media(max-width:620px) { .conteudo{padding:18px 12px}.resumo-grid{grid-template-columns:1fr}.resumo-grid article{padding:17px}.resumo-grid article strong{margin:5px 0}.topo{display:block}.status-ativo{display:inline-flex;margin-top:12px}.evolucao{display:block}.nav-lateral{grid-template-columns:1fr 1fr}.entrada,.movimento{padding:18px} } /* Celular. */

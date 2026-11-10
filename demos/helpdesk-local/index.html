@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!-- HTML5. -->
+<html lang="pt-BR">
+ <!-- Português do Brasil. -->
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Demo de help desk para inform&aacute;tica com chamados locais e contato pelo WhatsApp." name="description"/>
+  <title>
+   HelpDesk Local | Suporte para neg&oacute;cios
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+  <script defer="" src="js/script.js">
+  </script>
+ </head>
+ <!-- Arquivos da demo. -->
+ <body>
+  <!-- Estrutura de mini-aplicativo. -->
+  <div class="notice">
+   DEMONSTRA&Ccedil;&Atilde;O MOSS DIGITAL &middot; dados fict&iacute;cios &middot; somente neste navegador &middot; n&atilde;o &eacute; suporte contratado
+  </div>
+  <!-- Limitações do produto. -->
+  <div class="app">
+   <!-- Grid completo do painel. -->
+   <aside class="sidebar">
+    <a class="brand" href="#inicio">
+     <span class="brand-symbol">
+      H/
+     </span>
+     HelpDesk
+     <small>
+      LOCAL
+     </small>
+    </a>
+    <nav aria-label="Menu lateral">
+     <a href="#inicio">
+      Vis&atilde;o geral
+     </a>
+     <a href="#chamados">
+      Chamados
+     </a>
+     <a href="#abrir">
+      Novo chamado
+     </a>
+     <a href="#servicos">
+      Servi&ccedil;os
+     </a>
+    </nav>
+    <div class="support">
+     <span>
+      Suporte comercial
+     </span>
+     <a href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20vi%20a%20demo%20HelpDesk%20Local." rel="noopener noreferrer" target="_blank">
+      WhatsApp &nearrow;
+     </a>
+    </div>
+   </aside>
+   <!-- Barra lateral exclusiva da demo. -->
+   <main class="main" id="inicio">
+    <!-- Conteúdo de painel. -->
+    <header class="top">
+     <div>
+      <span class="eyebrow">
+       PAINEL DE OPERA&Ccedil;&Atilde;O
+      </span>
+      <h1>
+       Chamados sem complica&ccedil;&atilde;o.
+      </h1>
+      <p>
+       Experimente como um pequeno prestador de suporte poderia organizar solicita&ccedil;&otilde;es.
+      </p>
+     </div>
+     <div class="hero-photo">
+      <!-- FOTO: acrescente imagem autorizada em assets/img/mesa-suporte.webp e atualize o src para ela. -->
+      <img alt="Foto reservada: mesa de suporte de TI" data-photo="assets/img/mesa-suporte.webp" height="600" src="assets/img/placeholder.svg" width="900"/>
+     </div>
+    </header>
+    <!-- Apresentação compacta. -->
+    <section aria-label="Indicadores do painel" class="metrics">
+     <article>
+      <span>
+       Total
+      </span>
+      <strong id="total-count">
+       0
+      </strong>
+     </article>
+     <article>
+      <span>
+       Abertos
+      </span>
+      <strong id="open-count">
+       0
+      </strong>
+     </article>
+     <article>
+      <span>
+       Em andamento
+      </span>
+      <strong id="doing-count">
+       0
+      </strong>
+     </article>
+     <article>
+      <span>
+       Resolvidos
+      </span>
+      <strong id="done-count">
+       0
+      </strong>
+     </article>
+    </section>
+    <!-- Métricas calculadas em JS. -->
+    <section class="board" id="chamados">
+     <div class="board-head">
+      <div>
+       <span class="eyebrow">
+        MINHA FILA
+       </span>
+       <h2>
+        Painel de chamados
+       </h2>
+      </div>
+      <div class="board-actions">
+       <label for="filter">
+        Filtrar status
+       </label>
+       <select id="filter">
+        <option value="Todos">
+         Todos
+        </option>
+        <option value="Aberto">
+         Aberto
+        </option>
+        <option value="Em andamento">
+         Em andamento
+        </option>
+        <option value="Resolvido">
+         Resolvido
+        </option>
+       </select>
+      </div>
+     </div>
+     <div aria-live="polite" class="ticket-list" id="ticket-list">
+      <p class="empty">
+       Nenhum chamado nesta demonstra&ccedil;&atilde;o.
+      </p>
+     </div>
+     <p class="warning">
+      Aten&ccedil;&atilde;o: os chamados s&atilde;o guardados apenas no navegador usado. N&atilde;o use informa&ccedil;&otilde;es reais, senhas, n&uacute;meros de documentos ou dados de clientes neste prot&oacute;tipo.
+     </p>
+    </section>
+    <!-- Lista local sem servidor. -->
+    <section class="new-ticket" id="abrir">
+     <div class="panel-info">
+      <span class="eyebrow">
+       CADASTRO LOCAL
+      </span>
+      <h2>
+       Criar chamado de exemplo
+      </h2>
+      <p>
+       Registre uma solicita&ccedil;&atilde;o fict&iacute;cia para testar prioridades e andamento.
+      </p>
+      <div class="info-image">
+       <!-- FOTO: acrescente imagem autorizada em assets/img/equipe-suporte.webp e atualize o src para ela. -->
+       <img alt="Foto reservada: equipe de inform&aacute;tica" data-photo="assets/img/equipe-suporte.webp" height="650" src="assets/img/placeholder.svg" width="900"/>
+      </div>
+     </div>
+     <form class="ticket-form" id="ticket-form">
+      <label>
+       Assunto do chamado
+       <input maxlength="80" name="title" placeholder="Ex.: Impressora n&atilde;o imprime" required=""/>
+      </label>
+      <div class="two">
+       <label>
+        Categoria
+        <select name="category" required="">
+         <option>
+          Computadores
+         </option>
+         <option>
+          Redes
+         </option>
+         <option>
+          Impressoras
+         </option>
+         <option>
+          Software
+         </option>
+        </select>
+       </label>
+       <label>
+        Prioridade
+        <select name="priority" required="">
+         <option>
+          Baixa
+         </option>
+         <option>
+          M&eacute;dia
+         </option>
+         <option>
+          Alta
+         </option>
+        </select>
+       </label>
+      </div>
+      <label>
+       Descri&ccedil;&atilde;o curta
+       <textarea maxlength="220" name="description" placeholder="Use dados fict&iacute;cios para testar."></textarea>
+      </label>
+      <button type="submit">
+       Adicionar chamado ao painel +
+      </button>
+      <small>
+       N&atilde;o envia mensagens nem cria atendimento real.
+      </small>
+     </form>
+    </section>
+    <!-- Formulário de registro local. -->
+    <section class="service-strip" id="servicos">
+     <span>
+      COMO ESSA DEMO PODE VIRAR SISTEMA REAL
+     </span>
+     <div>
+      <article>
+       <b>
+        01
+       </b>
+       <h3>
+        Acesso por usu&aacute;rio
+       </h3>
+       <p>
+        Login e permiss&otilde;es para equipe.
+       </p>
+      </article>
+      <article>
+       <b>
+        02
+       </b>
+       <h3>
+        Hist&oacute;rico centralizado
+       </h3>
+       <p>
+        Supabase e banco de dados para chamados.
+       </p>
+      </article>
+      <article>
+       <b>
+        03
+       </b>
+       <h3>
+        Alertas
+       </h3>
+       <p>
+        Notifica&ccedil;&otilde;es e registro de atendimento.
+       </p>
+      </article>
+     </div>
+    </section>
+    <!-- Caminho didático das integrações. -->
+   </main>
+  </div>
+  <footer>
+   HelpDesk Local &middot; Demo MOSS Digital &middot;
+   <span>
+    (11) 94203-8103
+   </span>
+  </footer>
+  <!-- Rodapé do painel. -->
+ </body>
+</html>

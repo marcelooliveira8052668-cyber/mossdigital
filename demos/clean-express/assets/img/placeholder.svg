@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+<title>Espaço reservado para fotografia</title>
+<desc>Use este arquivo como marcador até adicionar a foto real indicada no README.</desc>
+<defs>
+<linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#dfe7f0"/><stop offset="100%" stop-color="#aab7c8"/></linearGradient>
+</defs>
+<rect fill="url(#g)" width="1200" height="900" rx="42"/>
+<g fill="#415267" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+<text x="600" y="410" font-size="42" font-weight="700">FOTO A INSERIR</text>
+<text x="600" y="470" font-size="26">Substitua por um arquivo real com o nome indicado.</text>
+<text x="600" y="520" font-size="22">MOSS Digital · Espaço reservado para fotografia</text>
+</g>
+</svg>

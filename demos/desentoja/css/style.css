@@ -1,0 +1,63 @@
+/* Regras básicas exclusivas desta demo, sem bibliotecas externas. */
+*, *::before, *::after { box-sizing: border-box; } /* Mantém dimensões previsíveis. */
+html { scroll-behavior: smooth; } /* Rolagem suave até as seções. */
+body { margin: 0; } /* Remove a margem padrão. */
+a { color: inherit; text-decoration: none; } /* Herda cor da marca. */
+button, input, select, textarea { font: inherit; } /* Usa a mesma tipografia. */
+button { cursor: pointer; } /* Indica botões clicáveis. */
+img { display: block; max-width: 100%; } /* Impede imagens maiores que o espaço. */
+[hidden] { display: none !important; } /* Respeita ocultação de itens. */
+:focus-visible { outline: 3px solid #faab36; outline-offset: 3px; } /* Acesso por teclado. */
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } } /* Reduz movimento se necessário. */
+
+/* Identidade: fundo quase preto, amarelo de sinalização e tipografia forte. */
+:root { --preto:#14191b; --amarelo:#fbd34c; --cinza:#a6afb4; --linha:#3e464a; --claro:#f1f3f2; } /* Paleta de serviços rápidos. */
+body { font-family:Arial,Helvetica,sans-serif; background:var(--preto); color:white; } /* Base escura. */
+.avisolegal { padding:9px 15px; background:#293136; color:#c9d2d5; text-align:center; font-size:.68rem; letter-spacing:.09em; } /* Identifica a demo. */
+.topo { position:sticky; top:0; z-index:20; display:flex; gap:18px; justify-content:space-between; align-items:center; padding:19px clamp(17px,4vw,70px); background:#151b1df0; border-bottom:1px solid var(--linha); backdrop-filter:blur(8px); } /* Navegação sempre acessível. */
+.marca { font-size:clamp(1.35rem,2.2vw,2rem); font-weight:900; letter-spacing:-.055em; } /* Marca forte. */
+.marca span { color:var(--amarelo); } /* Nome em destaque. */
+.marca small { display:block; letter-spacing:.18em; font-size:.53rem; font-weight:700; color:var(--cinza); margin-top:3px; } /* Slogan técnico. */
+.menu { display:flex; align-items:center; gap:clamp(10px,2vw,28px); font-size:.88rem; } /* Navegação compacta. */
+.contato-mini { color:var(--amarelo); font-weight:800; } /* Canal prioritário. */
+.menu-btn { display:none; padding:11px; background:#293136; color:white; border:1px solid var(--linha); border-radius:7px; } /* Menu mobile. */
+.hero { display:grid; grid-template-columns:1.15fr .85fr; gap:34px; align-items:center; padding:clamp(44px,6vw,94px) clamp(18px,5vw,80px); min-height:620px; } /* Capa horizontal. */
+.tag { font-size:.72rem; font-weight:800; letter-spacing:.15em; color:var(--amarelo); } /* Etiqueta técnica. */
+h1 { font-size:clamp(2.5rem,5vw,5.8rem); letter-spacing:-.065em; line-height:1.03; margin:22px 0; } /* Título de impacto. */
+h1 em { font-style:normal; color:var(--amarelo); } /* Contraste. */
+.hero p { color:#c4ced1; font-size:1.06rem; line-height:1.7; max-width:610px; } /* Explicação da oferta. */
+.botao { display:inline-flex; align-items:center; justify-content:center; gap:12px; padding:16px 22px; background:var(--amarelo); color:var(--preto); border:0; font-weight:900; border-radius:7px; margin-top:16px; } /* Chamada de ação. */
+.nota { font-size:.75rem; margin-top:20px; color:var(--cinza); } /* Sem promessas infundadas. */
+.visual { position:relative; padding:12px; border:1px solid var(--linha); background:#20292c; border-radius:16px; } /* Moldura industrial. */
+.visual img { width:100%; aspect-ratio:4/4.1; object-fit:cover; border-radius:9px; } /* Foto bem contida. */
+.etiqueta { position:absolute; bottom:27px; left:26px; right:26px; background:#151b1ded; border:1px solid var(--linha); padding:17px; display:flex; flex-direction:column; gap:5px; } /* Etiqueta sobre foto. */
+.etiqueta span { color:var(--cinza); } /* Descrição discreta. */
+.faixa-servicos { background:var(--claro); color:var(--preto); padding:64px clamp(18px,5vw,80px); } /* Área clara para problemas. */
+.titulo h2,.coluna-texto h2,.processo h2 { font-size:clamp(2rem,3.5vw,3.3rem); letter-spacing:-.04em; margin:12px 0 24px; } /* Títulos consistentes. */
+.faixa-servicos .tag { color:#856200; } /* Etiqueta legível no claro. */
+.cards-problema { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; } /* Serviços lado a lado. */
+.problema { display:flex; flex-direction:column; gap:22px; min-height:205px; text-align:left; padding:24px; border:2px solid #d5d9da; background:white; color:var(--preto); border-radius:8px; } /* Botões grandes de seleção. */
+.problema.ativo { border-color:#9d7a00; background:#fff7d7; } /* Serviço selecionado. */
+.problema span { font-weight:900; font-size:1.3rem; } /* Número de serviço. */
+.problema strong { font-size:1.2rem; } /* Nome do serviço. */
+.problema small { color:#525e65; line-height:1.4; } /* Descrição curta. */
+.solicitacao { display:grid; grid-template-columns:.83fr 1.17fr; gap:clamp(22px,5vw,90px); padding:80px clamp(18px,5vw,80px); } /* Texto e formulário. */
+.coluna-texto p { color:#c7d0d3; line-height:1.7; } /* Contexto. */
+.coluna-texto img { margin-top:22px; width:100%; aspect-ratio:5/3; object-fit:cover; border:1px solid var(--linha); border-radius:9px; } /* Foto de apoio. */
+.formulario { background:#222a2e; border:1px solid #4b5559; padding:clamp(18px,3vw,34px); border-radius:14px; display:grid; gap:16px; } /* Ficha de atendimento. */
+.form-head { display:flex; justify-content:space-between; align-items:center; gap:10px; border-bottom:1px solid var(--linha); padding-bottom:14px; } /* Topo da ficha. */
+.form-head span { font-size:.73rem; color:var(--cinza); } /* Aviso. */
+.formulario label { display:grid; gap:9px; font-size:.83rem; font-weight:700; } /* Rótulos claros. */
+.formulario input,.formulario select,.formulario textarea { width:100%; padding:13px 14px; background:#12191c; color:white; border:1px solid #4f5a5e; border-radius:6px; } /* Campos escuros. */
+.formulario textarea { min-height:110px; resize:vertical; } /* Descrição ampla. */
+.duas { display:grid; grid-template-columns:1fr 1fr; gap:15px; } /* Campos lado a lado. */
+.formulario small { color:#bbc4c8; line-height:1.5; } /* Nota. */
+.processo { background:#242d30; padding:64px clamp(18px,5vw,80px); } /* Etapas do atendimento. */
+.passos { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; } /* Sequência em três colunas. */
+.passos article { border-top:4px solid var(--amarelo); padding-top:22px; } /* Identidade de etapa. */
+.passos b { font-size:2.4rem; color:var(--amarelo); } /* Indicador da etapa. */
+.passos p { color:var(--cinza); line-height:1.55; } /* Explicação. */
+.rodape { padding:25px; color:var(--cinza); text-align:center; } /* Rodapé discreto. */
+.rodape a { color:var(--amarelo); } /* Atalho visível. */
+@media(max-width:950px) { .hero,.solicitacao{grid-template-columns:1fr}.cards-problema{grid-template-columns:repeat(2,1fr)}.visual img{aspect-ratio:16/9}.menu{display:none;position:absolute;top:100%;left:12px;right:12px;flex-direction:column;align-items:stretch;background:#20292c;border:1px solid var(--linha);padding:20px}.menu.aberto{display:flex}.menu-btn{display:block} } /* Tablet. */
+@media(max-width:550px) { .cards-problema,.passos,.duas{grid-template-columns:1fr}.problema{min-height:150px;gap:10px}.hero{padding:50px 18px}.solicitacao{padding:50px 18px} } /* Celular. */

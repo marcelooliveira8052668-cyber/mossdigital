@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Espaço reservado para fotografia">
+<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#231c39"/><stop offset="1" stop-color="#c69bfa"/></linearGradient><pattern id="p" width="58" height="58" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="1.5" fill="white" opacity=".15"/></pattern></defs>
+<rect width="1200" height="800" fill="url(#g)"/><rect width="1200" height="800" fill="url(#p)"/><circle cx="960" cy="130" r="240" fill="white" opacity=".055"/><circle cx="150" cy="700" r="320" fill="white" opacity=".055"/>
+<rect x="92" y="95" width="1016" height="610" rx="40" fill="none" stroke="white" stroke-opacity=".28" stroke-width="3" stroke-dasharray="15 15"/>
+<g transform="translate(528 238)" stroke="white" stroke-width="13" fill="none" stroke-linejoin="round"><rect x="0" y="0" width="144" height="110" rx="18"/><circle cx="40" cy="35" r="13"/><path d="M13 88 56 48 91 78 116 56 130 70"/></g>
+<text x="600" y="455" font-family="Arial, sans-serif" font-size="47" font-weight="700" text-anchor="middle" fill="white">INSERIR FOTO AUTORIZADA</text>
+<text x="600" y="510" font-family="Arial, sans-serif" font-size="23" letter-spacing="4" text-anchor="middle" fill="white" opacity=".83">SUBSTITUA POR FOTO AUTORIZADA</text>
+<text x="600" y="562" font-family="Arial, sans-serif" font-size="22" text-anchor="middle" fill="white" opacity=".72">MOSS DIGITAL · DEMONSTRAÇÃO</text>
+</svg>

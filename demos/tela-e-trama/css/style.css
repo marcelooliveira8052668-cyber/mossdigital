@@ -1,0 +1,58 @@
+/* Regras de base: elementos acessíveis e componentes sem dependências externas. */
+* {box-sizing:border-box;} /* Impede bordas de ampliar dimensões. */
+html {scroll-behavior:smooth;} /* Rolagem suave, com alternativa abaixo. */
+body {margin:0;} /* Remove margem padrão. */
+img {display:block;max-width:100%;} /* Evita imagens fora dos contêineres. */
+button, input, select, textarea {font:inherit;} /* Tipografia consistente. */
+button {cursor:pointer;} /* Indica ações clicáveis. */
+a {color:inherit;text-decoration:none;} /* Links usam estilo da demo. */
+[hidden] {display:none!important;} /* Esconde itens filtrados. */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {outline:3px solid #0ea5e9;outline-offset:3px;} /* Teclado. */
+.sr-only {position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;} /* Leitor de tela. */
+#feedback {position:fixed;bottom:15px;left:15px;max-width:min(90vw,460px);z-index:50;background:#17233a;color:white;border-radius:13px;padding:10px 14px;font-size:.9rem;pointer-events:none;} /* Avisos. */
+#feedback:empty {display:none;} /* Não mostra caixa vazia. */
+.photo {position:relative;overflow:hidden;} /* Espaço com enquadramento controlado. */
+.photo img {width:100%;height:100%;object-fit:cover;object-position:center;} /* Fotografia preenche sem distorcer. */
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}} /* Reduz movimento. */
+
+/* 59: Editorial cinematográfico, com títulos serifados e pôsteres verticais. */
+:root{--ink:#eff1fb;--muted:#bbb9ce;--bg:#0c0c17;--accent:#df9b64;--purple:#262139;} /* Paleta. */
+body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,sans-serif;} /* Ambiente noturno. */
+.announcement{background:#201b30;text-align:center;padding:8px 10px;font-size:.72rem;letter-spacing:.08em;color:#d9d1e1;} /* Fita de aviso. */
+.head{display:flex;align-items:center;gap:24px;justify-content:space-between;padding:16px clamp(16px,5vw,70px);border-bottom:1px solid #353044;background:#10101d;position:sticky;top:0;z-index:20;} /* Navegação editorial. */
+.wordmark{font-weight:900;letter-spacing:.13em;font-size:1.28rem;white-space:nowrap;} /* Marca de demonstração. */
+.wordmark span{color:var(--accent);}.head nav{display:flex;gap:20px;}.head nav a{font-size:.92rem;color:#d1ced9;} /* Links. */
+.head-cta,.primary{border-radius:3px;background:var(--accent);color:#201521;padding:12px 17px;font-weight:800;display:inline-block;} /* CTAs. */
+.hamburger{display:none;background:transparent;color:white;border:1px solid #54485f;border-radius:4px;padding:9px;} /* Menu móvel. */
+.hero{background:radial-gradient(circle at 70% 25%,#352a4b,transparent 55%);padding:clamp(40px,6vw,90px) 0;} /* Capa. */
+.hero-grid,.container{max-width:1180px;margin:0 auto;padding:0 22px;} /* Largura. */
+.hero-grid{display:grid;grid-template-columns:1fr .84fr;align-items:center;gap:clamp(20px,5vw,80px);} /* Layout editorial de duas colunas. */
+.kicker{color:var(--accent);letter-spacing:.23em;font-size:.7rem;font-weight:800;text-transform:uppercase;} /* Chamada. */
+h1,h2{font-family:Georgia,'Times New Roman',serif;line-height:1.08;letter-spacing:-.02em;} /* Títulos cinematográficos. */
+h1{font-size:clamp(2.7rem,5.2vw,5.4rem);margin:15px 0 22px;}h1 em{color:var(--accent);} /* Destaque. */
+.hero-text>p{font-size:1.07rem;line-height:1.8;color:var(--muted);max-width:52ch;} /* Descrição. */
+.hero-facts{display:flex;gap:20px;border-top:1px solid #40394f;margin-top:35px;padding-top:24px;flex-wrap:wrap;} /* Fatos. */
+.hero-facts span{display:grid;color:var(--muted);font-size:.82rem;}.hero-facts strong{font-size:1.55rem;color:white;} /* Dados. */
+.hero-feature{aspect-ratio:4/5;border:12px solid #1d1c2c;transform:rotate(2deg);box-shadow:30px 30px 0 #30273b;} /* Arte inclinada. */
+.photo-badge{position:absolute;bottom:16px;left:16px;right:16px;text-align:center;padding:12px;background:#17121bdc;color:white;font-family:Georgia,serif;font-size:1.2rem;} /* Legenda. */
+.catalog{padding-top:80px;padding-bottom:75px;} /* Seção de catálogo. */
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;}.section-head h2{font-size:clamp(2rem,3vw,3rem);margin:12px 0;}.section-head p{color:var(--muted);max-width:35ch;line-height:1.6;} /* Cabeçalho. */
+.filters{display:flex;gap:16px;align-items:center;justify-content:space-between;border-block:1px solid #353044;padding:22px 0;margin:22px 0 30px;} /* Barra filtro. */
+.search{flex:1;}.search input{width:min(100%,400px);background:#1b1a2a;border:1px solid #484052;border-radius:6px;color:#fff;padding:14px;} /* Busca. */
+.chips{display:flex;gap:8px;}.chips button{background:#1a1a28;color:var(--ink);border:1px solid #51495c;border-radius:4px;padding:12px 16px;} /* Chips. */
+.chips button[aria-pressed=true]{background:var(--accent);color:#171122;border-color:var(--accent);} /* Ativo. */
+.movie-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;} /* Pôsteres. */
+.movie{background:#161625;border:1px solid #322d41;min-width:0;}.poster{aspect-ratio:2/3;}.movie-meta{padding:17px;}.movie-meta>span{font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;} /* Metadados. */
+.movie h3{font-family:Georgia,serif;font-size:1.45rem;margin:10px 0;}.movie p{color:var(--muted);line-height:1.6;min-height:54px;} /* Texto. */
+.movie-actions{display:flex;gap:8px;flex-wrap:wrap;}.movie-actions button{background:transparent;border:1px solid #746779;color:white;border-radius:5px;padding:9px 10px;font-size:.8rem;} /* Ações. */
+.movie-actions button[aria-pressed=true]{background:#3a2b38;border-color:var(--accent);color:#ffd6b4;} /* Favorito. */
+.empty{color:#d6c7d4;padding:24px;}.mylist{background:#242032;padding:65px 0;}.mylist-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;} /* Lista. */
+.mylist h2{font-size:2.65rem;}.mylist p{color:var(--muted);line-height:1.7;}.mylist-card{padding:26px;background:#141321;border:1px solid #473c56;display:grid;gap:10px;} /* Caixa seleção. */
+.mylist-card strong{font-size:3rem;color:var(--accent);}.mylist-card ul{padding-left:18px;line-height:1.9;}.mylist-card button{padding:13px;background:var(--accent);border:none;font-weight:800;color:#201521;} /* Compartilhar. */
+.foot-note{padding-top:70px;padding-bottom:75px;}.foot-note h2{font-size:2.4rem;max-width:20ch;}.foot-note p{color:var(--muted);max-width:65ch;line-height:1.7;}.foot-note a{display:inline-block;border-bottom:2px solid var(--accent);padding:12px 0;color:var(--accent);} /* Final. */
+.footer{text-align:center;padding:26px;color:#aaa3b5;border-top:1px solid #353044;font-size:.86rem;} /* Rodapé. */
+dialog{background:#211d2f;color:white;border:1px solid #5e4e70;padding:32px;max-width:min(92vw,570px);border-radius:8px;} /* Sinopse. */
+dialog::backdrop{background:#000b;}dialog button{float:right;background:#4f415a;color:white;border:0;padding:8px 14px;border-radius:5px;} /* Fechar. */
+@media(max-width:860px){.hero-grid,.mylist-grid{grid-template-columns:1fr;}.hero-feature{max-width:470px;transform:none;box-shadow:14px 14px 0 #30273b;}.movie-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.head-cta{display:none;}.hamburger{display:block;}.head nav{display:none;position:absolute;top:100%;left:0;right:0;padding:18px;background:#1b192a;flex-direction:column;}.head nav.open{display:flex;}} /* Tablet. */
+@media(max-width:520px){.movie-grid{grid-template-columns:1fr;}.filters,.section-head{flex-direction:column;align-items:stretch;}.chips{flex-wrap:wrap;}.hero-facts{gap:14px;}.catalog{padding-top:42px;}.hero-feature{aspect-ratio:4/3;}} /* Celular. */
+

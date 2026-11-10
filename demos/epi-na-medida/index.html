@@ -1,0 +1,36 @@
+<!DOCTYPE html> <!-- Padrão HTML5. -->
+<html lang="pt-BR"> <!-- Documento em português brasileiro. -->
+<head> <!-- Configurações da página. -->
+<meta charset="utf-8"> <!-- Permite acentos. -->
+<meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Adapta ao celular. -->
+<meta name="theme-color" content="#142439"> <!-- Cor da barra do navegador. -->
+<meta name="description" content="Portal de EPIs com cotação de produtos por quantidade e tamanho."> <!-- Descrição do projeto. -->
+<title>EPI na Medida | Demonstração MOSS Digital</title> <!-- Título da aba. -->
+<link rel="stylesheet" href="css/style.css"> <!-- CSS isolado da demo. -->
+<script src="js/script.js" defer></script> <!-- Comportamentos exclusivos da demo. -->
+</head>
+<body>
+<!-- Aviso para distinguir demonstração de distribuidora real. -->
+<div class="notice">MODELO DEMONSTRATIVO • preços e estoque ilustrativos • pedidos só por WhatsApp</div>
+<div class="app">
+<!-- Barra lateral com navegação do catálogo corporativo. -->
+<aside class="sidebar"><a class="logo" href="#inicio"><span>◈</span> EPI <em>na Medida</em></a><p class="small">Suprimentos para equipes</p><nav aria-label="Navegação"><a href="#inicio">Visão geral</a><a href="#catalogo">Equipamentos</a><a href="#cotacao">Minha cotação</a><a href="#processo">Como comprar</a></nav><div class="side-note"><strong>Compra empresarial</strong><p>Selecione produtos e quantidades. Nossa equipe confirma estoque e valores pelo WhatsApp.</p></div><a class="wa" data-wa="Olá! Quero conversar sobre fornecimento de EPIs para minha empresa." href="https://wa.me/5511942038103">Solicitar atendimento ↗</a></aside>
+<main id="inicio" class="main">
+<header class="top"><span class="kicker">CATÁLOGO PARA PEQUENAS E MÉDIAS EMPRESAS</span><span>Atendimento: (11) 94203-8103</span></header>
+<!-- Capa assimétrica com destaque corporativo. -->
+<section class="hero"><div><span class="pill">SEGURANÇA NO TRABALHO</span><h1>O equipamento certo para cada atividade.</h1><p>Monte um pedido de cotação sem perder tempo. Aqui você vê tamanhos, quantidades e valores de referência.</p><div class="buttons"><a class="primary" href="#catalogo">Montar cotação</a><a class="secondary" href="#cotacao">Ver itens selecionados</a></div></div><div class="hero-image"><img class="" src="assets/img/placeholder.svg" data-photo="assets/img/capa-operacao.webp" alt="Espaço reservado: Trabalhadores utilizando equipamentos de proteção" loading="eager" width="1200" height="900"><span class="image-tag">Foto da equipe / operação</span></div></section>
+<!-- Informações curtas e verificáveis sobre a versão demonstrativa. -->
+<section class="stats"><article><strong>4 grupos</strong><span>Produtos de exemplo</span></article><article><strong>Sem checkout</strong><span>Atendimento assistido</span></article><article><strong>100% local</strong><span>Até conectar banco</span></article></section>
+<section id="catalogo" class="catalogo"><div class="section-head"><div><span class="kicker">CATÁLOGO</span><h2>Selecione para cotar</h2></div><p>Preços fictícios para demonstrar o cálculo. Confirme valores e disponibilidade antes de vender.</p></div>
+<div class="filters" role="group" aria-label="Filtrar produtos"><button class="active" data-filter="todos" type="button">Todos</button><button data-filter="maos" type="button">Mãos</button><button data-filter="cabeca" type="button">Cabeça</button><button data-filter="visao" type="button">Visão</button><button data-filter="calcados" type="button">Calçados</button></div>
+<div class="product-grid" id="product-grid">
+<article class="product" data-category="maos"><img class="" src="assets/img/placeholder.svg" data-photo="assets/img/luvas.webp" alt="Espaço reservado: Luvas de proteção" loading="lazy" width="1200" height="900"><div class="product-body"><span class="sku">EP-101 • MÃOS</span><h3>Luvas de proteção</h3><p>Par reforçado para serviços gerais.</p><b>R$ 19,90 <small>/ par • exemplo</small></b><button type="button" data-add="luva">Adicionar à cotação +</button></div></article>
+<article class="product" data-category="cabeca"><img class="" src="assets/img/placeholder.svg" data-photo="assets/img/capacete.webp" alt="Espaço reservado: Capacete" loading="lazy" width="1200" height="900"><div class="product-body"><span class="sku">EP-102 • CABEÇA</span><h3>Capacete classe B</h3><p>Ajuste regulável. Verificar CA aplicável.</p><b>R$ 49,90 <small>/ un • exemplo</small></b><button type="button" data-add="capacete">Adicionar à cotação +</button></div></article>
+<article class="product" data-category="visao"><img class="" src="assets/img/placeholder.svg" data-photo="assets/img/oculos.webp" alt="Espaço reservado: Óculos de proteção" loading="lazy" width="1200" height="900"><div class="product-body"><span class="sku">EP-103 • VISÃO</span><h3>Óculos transparente</h3><p>Proteção ocular para uso profissional.</p><b>R$ 17,50 <small>/ un • exemplo</small></b><button type="button" data-add="oculos">Adicionar à cotação +</button></div></article>
+<article class="product" data-category="calcados"><img class="" src="assets/img/placeholder.svg" data-photo="assets/img/botina.webp" alt="Espaço reservado: Botina de segurança" loading="lazy" width="1200" height="900"><div class="product-body"><span class="sku">EP-104 • CALÇADOS</span><h3>Botina de segurança</h3><p>Numeração informada no atendimento.</p><b>R$ 109,90 <small>/ par • exemplo</small></b><button type="button" data-add="botina">Adicionar à cotação +</button></div></article></div></section>
+<!-- Construtor de cotação: dados ficam só nesta página. -->
+<section id="cotacao" class="quote"><div class="section-head"><div><span class="kicker">SIMULAÇÃO</span><h2>Sua cotação</h2></div><p>Sem compra automática; itens e preços são apenas referências.</p></div><div class="quote-layout"><div class="quote-panel"><div id="cart-items" aria-live="polite"><p>Adicione produtos para começar.</p></div></div><div class="summary"><label for="company">Nome da empresa (opcional)</label><input id="company" maxlength="70" placeholder="Minha empresa"><label for="size">Tamanhos / observações</label><textarea id="size" maxlength="250" placeholder="Ex.: luvas G, botinas 41"></textarea><div class="sumline"><span>Total ilustrativo</span><strong id="total">R$ 0,00</strong></div><button id="send-quote" type="button" class="primary">Enviar cotação pelo WhatsApp ↗</button></div></div></section>
+<section id="processo" class="process"><h2>O pedido segue três passos.</h2><div class="process-grid"><article><span>01</span><strong>Selecionar</strong><p>Adicione itens e confira as quantidades.</p></article><article><span>02</span><strong>Descrever</strong><p>Informe tamanhos e aplicação dos materiais.</p></article><article><span>03</span><strong>Confirmar</strong><p>O vendedor revisa estoque, CA e condições.</p></article></div></section>
+<footer>Projeto demonstrativo da MOSS Digital • sem certificação ou consulta real de estoque • www.mossdigital.com.br</footer>
+</main></div>
+</body></html>
