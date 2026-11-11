@@ -1,4 +1,5 @@
 # robots.txt — mossdigital.com.br
+# Revisao de publicacao: site com catalogos de demos e video de apresentacao.
 # Eu permito que o Google indexe todas as páginas públicas do site.
 User-agent: *
 Allow: /
