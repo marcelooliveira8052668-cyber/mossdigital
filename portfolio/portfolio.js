@@ -78,7 +78,8 @@ const templateProfissional = (s) => {
   body{font-family:Georgia,'Times New Roman',serif;background:#fbfaf7;color:#221f1a;line-height:1.6;padding:34px 26px;-webkit-font-smoothing:antialiased}
   main{max-width:640px;margin:0 auto}
   header{display:flex;gap:22px;align-items:center;border-bottom:3px solid var(--ac);padding-bottom:20px;margin-bottom:18px}
-  .p-photo{width:118px;height:118px;border-radius:18px;object-fit:cover;border:3px solid var(--ac);flex:0 0 auto}
+  /* Foto proporcional, limitada e sem cortes no modelo Profissional. */
+  .p-photo{display:block;width:108px;height:108px;max-width:108px;max-height:108px;object-fit:contain;border-radius:16px;border:3px solid var(--ac);background:#eeeae4;flex:0 0 108px;overflow:hidden}
   .p-name{font-size:2.1rem;letter-spacing:-.02em;line-height:1.1}
   .p-role{color:var(--ac);font:700 .68rem Arial,Helvetica,sans-serif;letter-spacing:.22em;text-transform:uppercase;margin-top:6px}
   .p-cidade{font:.72rem Arial,Helvetica,sans-serif;color:#6b665c;display:block;margin-top:4px}
@@ -130,14 +131,17 @@ const templateCriativo = (s) => {
   :root{--ac:${s.cor}}
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:#101010;color:#f2ede2;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
-  main{display:grid;grid-template-columns:.42fr .58fr;min-height:100vh}
-  .c-photo{position:relative;overflow:hidden;min-height:100vh}
-  .c-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(.98) saturate(.92)}
+  /* A coluna da foto tem largura fixa máxima, deixando espaço para os projetos. */
+  main{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);align-items:start;gap:24px;max-width:1100px;margin:0 auto;padding:28px}
+  /* Moldura compacta, sem exigir altura de tela inteira. */
+  .c-photo{position:relative;overflow:hidden;width:100%;height:320px;min-height:0;border:1px solid #39342a;border-radius:14px;background:#171511}
+  /* object-fit contain evita cortes mesmo em fotografias horizontais. */
+  .c-photo img{width:100%;height:100%;object-fit:contain;display:block;filter:contrast(.98) saturate(.92)}
   .c-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--ac),#241f04);font:900 4rem Arial;color:#f5c14a}
-  .c-right{padding:44px 36px;display:flex;flex-direction:column}
+  .c-right{padding:10px 6px 28px;min-width:0;display:flex;flex-direction:column}
   .c-kicker{display:flex;align-items:center;gap:14px;font:700 .66rem Arial;letter-spacing:.28em;text-transform:uppercase;color:#f5c14a}
   .c-kicker::before{content:"";width:44px;height:6px;background:var(--ac)}
-  h1{font-size:clamp(3rem,8vw,4.6rem);line-height:.96;letter-spacing:-.045em;font-family:'Arial Black',Arial,sans-serif;margin:14px 0 10px;word-break:break-word}
+  h1{font-size:clamp(2.15rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.04em;font-family:'Arial Black',Arial,sans-serif;margin:14px 0 10px;overflow-wrap:anywhere}
   .c-role{font-size:1.05rem;color:#f5c14a;font-style:italic}
   .c-cidade{font-size:.72rem;color:#b8b09e;text-transform:uppercase;letter-spacing:.2em;margin-top:8px}
   .c-sobre{color:#cdc6b6;font-size:.95rem;margin:22px 0;max-width:46ch}
@@ -152,7 +156,8 @@ const templateCriativo = (s) => {
   footer{margin-top:auto;padding-top:22px;font:700 .74rem Arial;color:#f5c14a;display:flex;gap:14px}
   footer a{color:#f5c14a;text-decoration:none;text-transform:uppercase;letter-spacing:.14em}
   .c-sep{color:#4a463d}
-  @media(max-width:520px){main{grid-template-columns:1fr}.c-photo{min-height:260px}.c-grid{grid-template-columns:1fr}}
+  /* Celular: foto compacta e centralizada antes dos textos. */
+  @media(max-width:700px){main{grid-template-columns:1fr;gap:18px;padding:18px}.c-photo{width:min(100%,260px);height:300px;margin:0 auto}.c-right{padding:8px 4px 28px}.c-grid{grid-template-columns:1fr}}
 </style></head><body><main>
   ${painel}
   <div class="c-right">
@@ -197,7 +202,8 @@ const templateTecnologia = (s) => {
   .t-bar span{margin-left:auto;font-size:.62rem;color:#3e6a8d}
   .t-body{padding:24px}
   .t-head{display:flex;gap:18px;align-items:center;border-bottom:1px dashed #123047;padding-bottom:18px;margin-bottom:16px}
-  .t-photo{width:96px;height:96px;object-fit:cover;border-radius:14px;border:2px solid var(--ac);box-shadow:0 0 22px rgba(34,211,238,.25);flex:0 0 auto}
+  /* Foto do modelo Tecnologia: tamanho controlado e imagem inteira visível. */
+  .t-photo{display:block;width:104px;height:104px;max-width:104px;max-height:104px;object-fit:contain;border-radius:14px;border:2px solid var(--ac);background:#0c2436;box-shadow:0 0 22px rgba(34,211,238,.25);flex:0 0 104px;overflow:hidden}
   .t-ph{display:flex;align-items:center;justify-content:center;background:#0c2436;color:var(--ac);font-size:1.6rem;font-weight:700}
   h1{font-size:1.55rem;color:#eaf6ff;letter-spacing:0}
   .t-role{color:var(--ac);font-size:.76rem;margin-top:6px}
