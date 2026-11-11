@@ -77,7 +77,7 @@
         <li><span>1</span><div><h3>Escolha o modelo</h3><p>Profissional, Criativo ou Tecnologia. Você muda quando quiser.</p></div></li>
         <li><span>2</span><div><h3>Adicione sua foto</h3><p>JPEG, PNG ou WebP. Ela é usada só na prévia, no seu navegador — nada é enviado automaticamente.</p></div></li>
         <li><span>3</span><div><h3>Preencha seus projetos</h3><p>Até 4 projetos com nome, descrição e link. Habilidades e apresentação no seu tom de voz.</p></div></li>
-        <li><span>4</span><div><h3>Chame no WhatsApp</h3><p>Confirme o pagamento e o prazo. Nós montamos o seu portfólio final e enviamos os arquivos.</p></div></li>
+        <li><span>4</span><div><h3>Envie o pedido à MOSS</h3><p>Abra o WhatsApp com todos os dados preenchidos, toque em Enviar e encaminhe sua foto separadamente, se desejar. Depois combine pagamento e entrega.</p></div></li>
       </ol>
     </section>
 
@@ -86,7 +86,7 @@
       <div class="builder-head wrap">
         <p class="eyebrow">PRÉVIA GRATUITA</p>
         <h2 id="montar-t">Monte agora. <em>Veja funcionando.</em></h2>
-        <p>Preencha à vontade — nada é gravado e nada sai do seu navegador. Quando estiver satisfeito, o botão abaixo abre uma conversa com a MOSS para fechar os R$ 39,90.</p>
+        <p>Preencha à vontade — nada é armazenado automaticamente. Ao clicar em enviar, o WhatsApp abre com os dados do formulário. <strong>Você ainda precisa tocar em Enviar na conversa</strong> para a MOSS receber o pedido.</p>
       </div>
 
       <div class="builder-grid wrap">
@@ -115,7 +115,7 @@
           </fieldset>
 
           <label class="campo"><span>Nome completo *</span><input type="text" id="nome" name="nome" maxlength="80" autocomplete="name" required placeholder="Ex.: Ana Souza"></label>
-          <label class="campo"><span>Profissão *</span><input type="text" id="funcao" name="funcao" maxlength="80" placeholder="Ex.: Fotógrafa, Desenvolvedor Front-End…"></label>
+          <label class="campo"><span>Profissão *</span><input type="text" id="funcao" name="funcao" maxlength="80" required placeholder="Ex.: Fotógrafa, Desenvolvedor Front-End…"></label>
           <label class="campo"><span>Cidade <span class="opt">(opcional)</span></span><input type="text" id="cidade" name="cidade" maxlength="60" placeholder="Ex.: São Paulo — SP"></label>
           <label class="campo"><span class="campo-label">Sobre você <output id="sobre-count">0</output>/600</span><textarea id="sobre" name="sobre" maxlength="600" rows="3" placeholder="Quem você é, o que faz de melhor, que tipo de trabalho procura."></textarea></label>
           <label class="campo"><span>Habilidades <span class="opt">(até 6, separadas por vírgula)</span></span><input type="text" id="habilidades" name="habilidades" maxlength="200" placeholder="Ex.: React, Fotografia, Gestão de projetos"></label>
@@ -142,10 +142,14 @@
           </fieldset>
 
           <div class="form-footer">
-            <button type="button" class="cta big" id="whatsapp-cta">Quero meu portfólio por <b>R$ 39,90</b> ↗</button>
-            <!-- A versão pública serve apenas para visualizar. A entrega dos arquivos ocorre após o pagamento. -->
-            <p class="cta-note">Prévia gratuita, sem download de arquivos. O portfólio final é entregue pela MOSS após a confirmação do pagamento combinado no WhatsApp.</p>
-            <p class="cta-note">A conversa acontece no WhatsApp. Você confere prazo, forma de entrega e condições antes de pagar. Nada é cobrado nesta página.</p>
+            <!-- A prévia é gratuita; este botão não faz upload automático nem libera PDF. -->
+            <button type="button" class="cta big" id="whatsapp-cta">Enviar meu pedido à MOSS · R$ 39,90 ↗</button>
+            <!-- Alternativa acessível caso o WhatsApp não abra no dispositivo. -->
+            <button type="button" class="ghost" id="copiar-pedido">Copiar todos os dados do pedido</button>
+            <p class="cta-note"><strong>Destino: WhatsApp da MOSS — (11) 94203-8103.</strong> Confira a mensagem e toque em <strong>Enviar</strong>. A foto não é anexada automaticamente: envie-a separadamente na mesma conversa.</p>
+            <p class="cta-note">Nenhum arquivo é salvo em uma pasta ou enviado sozinho. A MOSS só recebe sua mensagem quando você a envia pelo WhatsApp. O PDF final é entregue após a confirmação do pagamento.</p>
+            <p class="cta-note">Ao copiar, você recebe apenas os dados em texto, não o portfólio em PDF. Preço, prazo e forma de entrega são combinados antes do pagamento.</p>
+            <p class="cta-note" id="pedido-msg" role="status" aria-live="polite" hidden></p>
           </div>
         </form>
 
@@ -179,7 +183,7 @@
           <p class="price-label">Pagamento único</p>
           <p class="price">R$ <strong>39,90</strong></p>
           <p class="price-note">Sem mensalidade. Sem letras miúdas.</p>
-          <button type="button" class="cta big" id="whatsapp-cta-2">Quero o meu ↗</button>
+          <button type="button" class="cta big" id="whatsapp-cta-2">Enviar pedido por WhatsApp ↗</button>
           <p class="small-note">Abertura no WhatsApp (11) 94203-8103</p>
         </div>
       </div>
@@ -189,6 +193,7 @@
     <section class="faq wrap" aria-labelledby="faq-t">
       <p class="eyebrow">PERGUNTAS DIRETAS</p>
       <h2 id="faq-t">Sem letra miúda.</h2>
+      <details><summary>Para onde vão os dados do portfólio?</summary><p>O WhatsApp da MOSS Digital abre com os dados preenchidos (modelo, textos, projetos, links e cor). A MOSS só recebe o pedido depois que você toca em Enviar na conversa. Não há salvamento automático em pasta, e a foto deve ser encaminhada à parte.</p></details>
       <details><summary>A foto enviada fica guardada em algum lugar?</summary><p>Não. A foto usada na prévia vive apenas na memória do seu navegador. Limpar a página ou fechar a aba descarta tudo. Na finalização, você envia a foto que quiser pelo WhatsApp.</p></details>
       <details><summary>Preciso saber mexer com site para ter um portfólio?</summary><p>Não. Você monta a prévia gratuita aqui e, após combinar as condições no WhatsApp e confirmar o pagamento, nós finalizamos e entregamos os arquivos prontos. Você também recebe um passo a passo de como publicar, se quiser colocar no ar.</p></details>
        <details><summary>Posso baixar o portfólio diretamente nesta página?</summary><p>Não. Aqui você pode preencher seus dados e visualizar os modelos. O arquivo final é entregue pela MOSS Digital após a confirmação do pagamento.</p></details>
@@ -207,6 +212,6 @@
     </div>
   </footer>
 
-  <script src="portfolio.js?v=20261111-previa-publica" defer></script>
+  <script src="portfolio.js?v=20261111-pedido-completo" defer></script>
 </body>
 </html>
