@@ -130,7 +130,9 @@ em{font-style:normal;color:var(--cyan)}
 .form-footer{margin-top:6px;border-top:1px solid var(--edge);padding-top:18px;display:flex;flex-direction:column;gap:8px}
 .cta-note,.small-note{color:var(--muted);font-size:.72rem}
 .preview-col{position:sticky;top:20px;display:flex;flex-direction:column;gap:12px}
-.preview-frame{border:1px solid var(--edge-2);border-radius:var(--radius);overflow:hidden;background:#0d1626;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.preview-frame{position:relative;border:1px solid var(--edge-2);border-radius:var(--radius);overflow:hidden;background:#0d1626;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+/* Identificação discreta da demonstração, sem bloquear a interação com a prévia. */
+.preview-frame::after{content:"PRÉVIA · NÃO É O ARQUIVO FINAL";position:absolute;right:12px;bottom:12px;z-index:2;pointer-events:none;max-width:calc(100% - 24px);background:rgba(7,13,24,.87);color:#d6e6fa;border:1px solid rgba(100,217,255,.45);padding:6px 10px;border-radius:7px;font:700 .62rem var(--mono);letter-spacing:.06em;text-align:center}
 .preview-bar{display:flex;align-items:center;gap:6px;background:#0b1322;padding:10px 14px;border-bottom:1px solid var(--edge)}
 .dot{width:11px;height:11px;border-radius:50%}
 .dot.r{background:#ef6a5a}.dot.y{background:#f5bd4f}.dot.g{background:#62c554}
