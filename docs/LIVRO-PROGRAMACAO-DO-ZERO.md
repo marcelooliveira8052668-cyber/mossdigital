@@ -24,9 +24,9 @@ Não houve alteração dos catálogos, demos, área do cliente, DNS ou configura
 
 ## Estado da integração
 
-Preparada em branch para revisão. A página mantém `noindex, nofollow` até a aprovação
-da oferta e das condições comerciais. Não foi adicionada ao sitemap enquanto está assim.
-Retirar a diretiva somente quando a página estiver aprovada para divulgação e indexação.
+Publicação aprovada expressamente pelo responsável em 11/11/2026. A página usa
+`index, follow` e foi incluída no sitemap. A integração é feita pelo PR nº 7,
+sem publicar os arquivos pagos. Não há garantia de prazo de indexação em buscadores.
 
 Antes de abrir vendas, o responsável deve confirmar seus direitos de distribuição,
 identificação do vendedor, obrigações fiscais, prazo de entrega e condições de reembolso.
