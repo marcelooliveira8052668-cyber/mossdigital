@@ -325,28 +325,106 @@ function tratarFoto(file) {
   reader.readAsDataURL(file);
 }
 
-/* ---------- Prévia pública: sem geração de arquivo para download ----------
-   A página pública somente mostra uma demonstração. A entrega dos arquivos
-   finais é realizada pela MOSS após confirmar o pagamento no WhatsApp. */
+/* ---------- Pedido completo por WhatsApp ----------
+   A página NÃO armazena dados nem envia fotos automaticamente.
+   O cliente deve confirmar o envio da mensagem na conversa do WhatsApp.
+   O texto do pedido é a alternativa segura sem backend, não o arquivo PDF. */
 
-/* ---------- WhatsApp ---------- */
-function mensagemWhatsApp() {
-  const s = coletar();
-  const nome = s.nome || "(sem nome)";
-  const funcao = s.funcao || "(não informada)";
-  const projetos = s.projetos.length ? s.projetos.length + " projeto(s): " + s.projetos.map((p) => p.nome || "sem nome").join(", ") : "nenhum projeto";
-  return (
-    "Olá! Montei a prévia do meu portfólio e quero finalizar o meu por R$ 39,90.\n" +
-    "Modelo: " + s.template.charAt(0).toUpperCase() + s.template.slice(1) + "\n" +
-    "Nome: " + nome + "\n" +
-    "Profissão: " + funcao + "\n" +
-    "Projetos: " + projetos
-  );
+/* Comunica o status real ao cliente, sem dizer que o envio foi confirmado. */
+function mostrarStatusPedido(texto) {
+  const aviso = $("#pedido-msg");
+  aviso.textContent = texto;
+  aviso.hidden = false;
 }
 
+/* Nome e profissão são necessários para não receber pedidos anônimos. */
+function validarPedido() {
+  const nome = $("#nome");
+  const profissao = $("#funcao");
+  if (!nome.value.trim()) {
+    mostrarStatusPedido("Preencha seu nome completo antes de enviar o pedido.");
+    nome.focus();
+    return false;
+  }
+  if (!profissao.value.trim()) {
+    mostrarStatusPedido("Preencha sua profissão antes de enviar o pedido.");
+    profissao.focus();
+    return false;
+  }
+  return true;
+}
+
+/* Gera o resumo COMPLETO de todos os campos, sem incluir a foto em base64. */
+function mensagemWhatsApp() {
+  const s = coletar();
+  const linhas = [
+    "*PEDIDO DE PORTFÓLIO — MOSS DIGITAL*",
+    "Olá! Montei meu portfólio e gostaria de finalizar o serviço de R$ 39,90.",
+    "",
+    "*Modelo:* " + s.template.charAt(0).toUpperCase() + s.template.slice(1),
+    "*Nome completo:* " + (s.nome || "Não informado"),
+    "*Profissão:* " + (s.funcao || "Não informada"),
+    "*Cidade:* " + (s.cidade || "Não informada"),
+    "*Sobre mim:* " + (s.sobre || "Não informado"),
+    "*Habilidades:* " + (s.habilidades.join(", ") || "Não informadas"),
+    "*Cor principal:* " + s.cor,
+    "*E-mail público:* " + (s.email || "Não informado"),
+    "*Site ou GitHub:* " + (s.site || "Não informado"),
+    "",
+    "*PROJETOS (" + s.projetos.length + ")*"
+  ];
+  if (!s.projetos.length) {
+    linhas.push("Nenhum projeto informado.");
+  }
+  s.projetos.forEach((projeto, i) => {
+    linhas.push(
+      "",
+      "*Projeto " + (i + 1) + ":* " + (projeto.nome || "Sem título"),
+      "Descrição: " + (projeto.desc || "Não informada"),
+      "Link: " + (projeto.link || "Não informado")
+    );
+  });
+  linhas.push(
+    "",
+    "*Foto escolhida na prévia:* " + (s.foto ? "Sim, vou enviá-la separadamente" : "Não"),
+    "A foto não é anexada automaticamente pelo gerador.",
+    "",
+    "Por favor, confirmem prazo, pagamento e entrega antes de finalizar."
+  );
+  return linhas.join("\n");
+}
+
+/* Abre o WhatsApp, mas NÃO afirma que a mensagem foi enviada. */
 function abrirWhatsApp() {
+  if (!validarPedido()) return;
   const url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mensagemWhatsApp());
   window.open(url, "_blank", "noopener,noreferrer");
+  mostrarStatusPedido("Confira o WhatsApp e toque em Enviar para a MOSS receber os dados. Envie também sua foto na conversa, se desejar. Se a janela não abrir, use 'Copiar todos os dados do pedido'.");
+}
+
+/* Permite copiar somente os dados escritos, nunca o PDF final. */
+async function copiarPedido() {
+  if (!validarPedido()) return;
+  const conteudo = mensagemWhatsApp();
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(conteudo);
+    } else {
+      const auxiliar = document.createElement("textarea");
+      auxiliar.value = conteudo;
+      auxiliar.style.position = "fixed";
+      auxiliar.style.opacity = "0";
+      document.body.appendChild(auxiliar);
+      auxiliar.focus();
+      auxiliar.select();
+      const copiou = document.execCommand("copy");
+      auxiliar.remove();
+      if (!copiou) throw new Error("Cópia não disponível");
+    }
+    mostrarStatusPedido("Dados copiados! Abra o WhatsApp (11) 94203-8103, cole a mensagem e toque em Enviar. A foto deve ser enviada separadamente.");
+  } catch (erro) {
+    mostrarStatusPedido("Não foi possível copiar automaticamente. Use o botão 'Enviar meu pedido à MOSS' para abrir o WhatsApp.");
+  }
 }
 
 /* ---------- Inicialização ---------- */
@@ -380,6 +458,7 @@ $("#cor-custom").addEventListener("input", (e) => {
 });
 // Seleciona os DOIS botões de WhatsApp; o seletor simples $ não gera lista.
 $$("#whatsapp-cta, #whatsapp-cta-2").forEach((btn) => btn.addEventListener("click", abrirWhatsApp));
+$("#copiar-pedido").addEventListener("click", copiarPedido);
 FORM.addEventListener("input", atualizarPreview);
 FORM.addEventListener("change", atualizarPreview);
 FORM.addEventListener("submit", (e) => e.preventDefault());
