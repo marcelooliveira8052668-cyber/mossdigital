@@ -1,0 +1,11 @@
+/* Divulgação do livro: escopo restrito à seção, sem alterar os preços dos serviços. */
+.moss-home .book-promo { margin-block: 32px 48px; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 32px; align-items: center; }
+.moss-home .book-promo h2 { max-width: 24ch; }
+.moss-home .book-promo .book-price { color: #d8efac; font-size: 1.5rem; }
+.moss-home .book-promo .book-note { font-size: .8rem; }
+.moss-home .book-promo .book-actions { display:flex; gap:18px; align-items:center; flex-wrap:wrap; margin-top:22px; }
+.moss-home .book-promo .book-sample { color: #c4edff; text-decoration: underline; text-underline-offset: 4px; }
+.moss-home .book-promo img { display:block; width:180px; height:auto; border-radius:5px; box-shadow:0 12px 26px #0004; }
+:root[data-moss-theme="light"] .moss-home .book-promo .book-sample { color:#075978; }
+:root[data-moss-theme="light"] .moss-home .book-promo .book-price { color:#234b34; }
+@media(max-width:680px){ .moss-home .book-promo { grid-template-columns:1fr; } .moss-home .book-promo img { width:160px; justify-self:center; order:-1; } }
