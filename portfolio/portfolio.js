@@ -319,6 +319,50 @@ function tratarFoto(file) {
   reader.readAsDataURL(file);
 }
 
+/* ---------- Download local da prévia em um arquivo HTML único ---------- */
+function baixarPreviaHTML() {
+  // Coleta os campos diretamente do formulário para salvar a versão mais recente.
+  const dados = coletar();
+  const aviso = $("#download-msg");
+
+  // Nome e profissão são necessários para gerar um portfólio identificável.
+  if (!dados.nome || !dados.funcao) {
+    aviso.textContent = "Preencha seu nome e sua função/profissão antes de baixar.";
+    aviso.style.color = "#ffb1b1";
+    aviso.hidden = false;
+    (!dados.nome ? $("#nome") : $("#funcao")).focus();
+    return;
+  }
+
+  try {
+    // Os modelos já incluem CSS; a foto também fica incorporada ao HTML em base64.
+    const titulo = "<title>Portfólio de " + esc(dados.nome) + "</title>";
+    const html = templates[dados.template](dados).replace("</head>", titulo + "</head>");
+    const nomeArquivo = "portfolio-" + slug(dados.nome) + ".html";
+    const arquivo = new Blob([html], { type: "text/html;charset=utf-8" });
+    const enderecoTemporario = URL.createObjectURL(arquivo);
+
+    // Dispara o download diretamente no navegador, sem hospedar dados pessoais.
+    const link = document.createElement("a");
+    link.href = enderecoTemporario;
+    link.download = nomeArquivo;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    // Libera os recursos após o navegador ter tempo de iniciar o download.
+    window.setTimeout(() => URL.revokeObjectURL(enderecoTemporario), 60000);
+    aviso.style.color = "";
+    aviso.textContent = "Download solicitado: " + nomeArquivo + ". Confira a pasta Downloads ou o histórico de downloads do navegador.";
+    aviso.hidden = false;
+  } catch (erro) {
+    console.error("Falha ao baixar a prévia:", erro);
+    aviso.textContent = "Não foi possível iniciar o download. Verifique se o navegador está bloqueando downloads e tente novamente.";
+    aviso.style.color = "#ffb1b1";
+    aviso.hidden = false;
+  }
+}
+
 /* ---------- WhatsApp ---------- */
 function mensagemWhatsApp() {
   const s = coletar();
@@ -368,7 +412,8 @@ $("#cor-custom").addEventListener("input", (e) => {
   $$(".swatch").forEach((b) => b.classList.remove("active"));
   atualizarPreview();
 });
-$$("#whatsapp-cta, #whatsapp-cta-2").forEach((btn) => btn.addEventListener("click", abrirWhatsApp));
+$("#baixar-previa").addEventListener("click", baixarPreviaHTML);
+$("#whatsapp-cta, #whatsapp-cta-2").forEach((btn) => btn.addEventListener("click", abrirWhatsApp));
 FORM.addEventListener("input", atualizarPreview);
 FORM.addEventListener("change", atualizarPreview);
 FORM.addEventListener("submit", (e) => e.preventDefault());
