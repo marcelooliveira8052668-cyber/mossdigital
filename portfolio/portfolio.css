@@ -34,7 +34,7 @@ em{font-style:normal;color:var(--cyan)}
 .cta{background:var(--cyan);color:#04223a;box-shadow:0 0 34px rgba(100,217,255,.25);transition:transform .18s,box-shadow .18s}
 .cta:hover{transform:translateY(-2px);box-shadow:0 0 48px rgba(100,217,255,.4)}
 .cta.big{font-size:1rem;padding:17px 26px}
-.ghost{border:1px solid var(--edge-2);color:var(--text)}
+.ghost{border:1px solid var(--edge-2);color:var(--text);background:transparent;cursor:pointer;font-family:inherit}
 .ghost:hover{border-color:var(--cyan);color:var(--cyan)}
 /* --- hero mock --- */
 .hero-visual{display:flex;justify-content:center}
