@@ -415,7 +415,8 @@ $("#cor-custom").addEventListener("input", (e) => {
   atualizarPreview();
 });
 $("#baixar-previa").addEventListener("click", baixarPreviaHTML);
-$("#whatsapp-cta, #whatsapp-cta-2").forEach((btn) => btn.addEventListener("click", abrirWhatsApp));
+// Seleciona os DOIS botões de WhatsApp; o seletor simples $ não gera lista.
+$$("#whatsapp-cta, #whatsapp-cta-2").forEach((btn) => btn.addEventListener("click", abrirWhatsApp));
 FORM.addEventListener("input", atualizarPreview);
 FORM.addEventListener("change", atualizarPreview);
 FORM.addEventListener("submit", (e) => e.preventDefault());
