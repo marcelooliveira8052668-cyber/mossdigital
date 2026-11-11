@@ -1,0 +1,15 @@
+# Verificação isolada: esta rotina não publica nem altera o site oficial.
+name: Diagnóstico GitHub Actions MOSS
+on:
+  push:
+    branches:
+      - diagnostico-actions-moss-20261111
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirmar inicialização
+        run: echo "GitHub Actions iniciou normalmente; sem deploy do site."
