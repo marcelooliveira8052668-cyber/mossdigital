@@ -99,7 +99,7 @@ const templateProfissional = (s) => {
 </style></head><body><main>
   <header>
     ${s.foto ? `<img class="p-photo" src="${s.foto}" alt="Foto de ${esc(s.nome)}">` : `<div class="p-photo" style="display:flex;align-items:center;justify-content:center;background:var(--ac);color:#fff;font:700 1.8rem Georgia">${esc(iniciais(s.nome))}</div>`}
-    <div><h1 class="p-name">${esc(s.nome || "Seu nome")}</h1><p class="p-role">${esc(s.funcao || "Sua função")}</p>${cidade}</div>
+    <div><h1 class="p-name">${esc(s.nome || "Seu nome")}</h1><p class="p-role">${esc(s.funcao || "Sua profissão")}</p>${cidade}</div>
   </header>
   ${sobre}
   ${chips ? `<div class="p-skills">${chips}</div>` : ""}
@@ -163,7 +163,7 @@ const templateCriativo = (s) => {
   <div class="c-right">
     <p class="c-kicker">Portfólio</p>
     <h1>${esc(s.nome || "Seu nome")}</h1>
-    <p class="c-role">${esc(s.funcao || "Sua função")}</p>
+    <p class="c-role">${esc(s.funcao || "Sua profissão")}</p>
     ${cidade}
     ${sobre}
     ${chips ? `<div class="c-skills">${chips}</div>` : ""}
@@ -228,7 +228,7 @@ const templateTecnologia = (s) => {
   <div class="t-body">
     <div class="t-head">
       ${painel}
-      <div><h1>${esc(s.nome || "seu-nome")}</h1><p class="t-role">${esc(s.funcao || "sua funcao")}</p>${cidade}</div>
+      <div><h1>${esc(s.nome || "seu-nome")}</h1><p class="t-role">${esc(s.funcao || "sua profissão")}</p>${cidade}</div>
     </div>
     ${sobre}
     ${chips ? `<div class="t-skills">${chips}</div>` : ""}
@@ -333,7 +333,7 @@ function baixarPreviaHTML() {
 
   // Nome e profissão são necessários para gerar um portfólio identificável.
   if (!dados.nome || !dados.funcao) {
-    aviso.textContent = "Preencha seu nome e sua função/profissão antes de baixar.";
+    aviso.textContent = "Preencha seu nome e sua profissão antes de baixar.";
     aviso.style.color = "#ffb1b1";
     aviso.hidden = false;
     (!dados.nome ? $("#nome") : $("#funcao")).focus();
@@ -381,7 +381,7 @@ function mensagemWhatsApp() {
     "Olá! Montei a prévia do meu portfólio e quero finalizar o meu por R$ 39,90.\n" +
     "Modelo: " + s.template.charAt(0).toUpperCase() + s.template.slice(1) + "\n" +
     "Nome: " + nome + "\n" +
-    "Função: " + funcao + "\n" +
+    "Profissão: " + funcao + "\n" +
     "Projetos: " + projetos
   );
 }
