@@ -1,0 +1,22 @@
+MOSS City — CAPA INSTAGRAM
+
+STATUS: arte preparada para análise. A criação da capa não autoriza postagem nas redes sociais.
+Formato: PNG de 1080 x 1350 px (4:5).
+Fonte editável: Capa Instagram - MOSS City.html
+Imagem: captura-demo.webp, captura real da própria demonstração (demos/moss-city/).
+
+LEGENDA SUGERIDA
+
+MOSS City. Um projeto de site para gestão urbana, criado pela MOSS Digital.
+
+Cada demonstração tem identidade, navegação e recursos próprios, pensados para o celular e o computador, com foco em clareza e experiência de uso.
+
+⚠️ Projeto demonstrativo. Marcas, dados, clientes e resultados são fictícios ou ilustrativos. Sem operação real, cadastro ou banco de dados conectado.
+
+#MOSSDigital #WebDesign #SitesProfessionais #DesignResponsivo #gestão urbana
+
+ENDEREÇO
+Conferir o endereço público da demonstração antes de divulgar. Não usar localhost nem inventar link.
+
+IDENTIDADE
+A capa usa a captura da própria demo e as cores do projeto. Editar textos no HTML e recriar o PNG na medida 1080 x 1350. Manter a identificação de demonstração e evitar depoimentos, números de registro ou resultados inventados.
