@@ -164,7 +164,11 @@
           profissao: dados.funcao,
           modelo: dados.template,
           emailContato: emailDeContato,
-          resumo: mensagemWhatsApp(),
+          resumo: mensagemWhatsApp().split("\\n").filter((linha) =>
+            !linha.startsWith("*Foto escolhida na prévia:*") &&
+            !linha.startsWith("A foto não é anexada automaticamente") &&
+            !linha.startsWith("Por favor, confirmem prazo")
+          ).join("\\n") + "\\nFoto: incluída no PDF anexado, quando selecionada.",
           pdfBase64,
           turnstileToken: token,
           consentimento: true
