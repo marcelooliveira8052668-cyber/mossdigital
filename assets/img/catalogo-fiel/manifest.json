@@ -3,6 +3,12 @@
   "notice": "Capturas das próprias demonstrações, sem dados reais de clientes.",
   "previews": [
     {
+      "key": "/demos/passo-atelier/",
+      "title": "PASSO Atelier — Loja de calçados",
+      "src": "demos/passo-atelier/img/capa-card.webp",
+      "url": "https://mossdigital.com.br/demos/passo-atelier/"
+    },
+    {
       "key": "/demos/moss-news/",
       "title": "MOSS News — Portal informativo",
       "src": "demos/moss-news/assets/capa-card.webp",
