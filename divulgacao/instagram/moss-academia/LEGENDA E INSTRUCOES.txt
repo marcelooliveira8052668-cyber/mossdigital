@@ -1,0 +1,28 @@
+MOSS ACADEMIA — CAPA INSTAGRAM
+
+STATUS: publicação da demonstração no site autorizada em 12/11/2026. Postagem desta arte no Instagram ainda depende de aprovação específica.
+PNG: 1080 × 1350 px, proporção 4:5.
+Fonte editável: Capa Instagram - MOSS Academia.html
+Imagem usada: captura-demo.webp, captura da própria demonstração.
+
+LEGENDA SUGERIDA
+
+Uma experiência digital com energia de sobra. ⚡
+
+Conheça o conceito MOSS Academia: design premium, modalidades, galeria interativa, planos e área do aluno demonstrativa — com navegação pensada para celular e computador.
+
+Um projeto da MOSS Digital para mostrar como uma academia pode apresentar seu universo na web.
+
+⚠️ Demonstração fictícia. Fotografias ilustrativas. Marca, planos, horários e depoimentos não representam uma operação real. Matrículas, reservas e visitas são apenas simulações; não há pagamentos ou banco de dados conectado.
+
+#MOSSDigital #WebDesign #SiteParaAcademia #Academia #Fitness #DesignResponsivo
+
+ENDEREÇO
+URL autorizada: https://mossdigital.com.br/demos/moss-academia/
+Conferir o endereço no navegador antes de postar. Não divulgar localhost. A autorização para publicar o site não equivale a autorização de postagem no Instagram.
+
+EDIÇÃO
+Editar textos e cores no HTML. Preservar a identificação de demonstração. Renderizar em navegador com viewport de 1080 × 1350 e escala 1, ou executar tools/make_promo.py dentro da pasta da demo. O script também atualiza a cópia em 04 - Divulgacao.
+
+FOTOS
+A captura mostra fotos Pexels usadas como referências do segmento, não como instalações reais. Fontes/licença em demos/moss-academia/FONTES-FOTOS.json.
