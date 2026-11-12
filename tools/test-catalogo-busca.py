@@ -22,7 +22,7 @@ def main():
         page.goto(base+'/modelos.html',wait_until='load')
         page.wait_for_function("document.documentElement.dataset.mossPreviews==='ready'",timeout=30000)
         total = page.locator('#cards .card').count()
-        assert total == 121, total
+        assert total == 125, total  # Inclui as demos aprovadas, até MOSS Academia.
         assert 'modelos disponíveis' in page.locator('#count').inner_text()
         # Busca por nome, ignorando acentos e maiúsculas.
         page.locator('#busca-modelo').fill('clinica')

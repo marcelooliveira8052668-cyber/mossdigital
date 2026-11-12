@@ -1,0 +1,12 @@
+{
+  "status": "publicacao-autorizada",
+  "aprovacao": "pode publicar — autorização explícita do proprietário em 12/11/2026",
+  "url": "https://mossdigital.com.br/demos/moss-academia/",
+  "nome": "MOSS Academia",
+  "segmento": "Academia premium e fitness",
+  "descricao": "Musculação, aquático, lutas e funcional em uma experiência interativa com 24 fotos, vídeo-conceito, planos e área do aluno demonstrativa.",
+  "destino_relativo_raiz": "demos/moss-academia/",
+  "imagem_relativa_raiz": "demos/moss-academia/entrega/card-moss-academia.webp",
+  "tags": ["academia", "fitness", "musculação", "natação", "lutas", "funcional", "área do aluno"],
+  "aviso": "Marca, valores, depoimentos e horários fictícios. Sem banco conectado, autenticação ou pagamentos reais. Publicação do site autorizada; não inclui postagem nas redes sociais."
+}
