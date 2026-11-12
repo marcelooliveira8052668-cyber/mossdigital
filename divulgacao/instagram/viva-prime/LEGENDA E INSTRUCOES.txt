@@ -1,0 +1,27 @@
+VIVA PRIME IMÓVEIS — CAPA INSTAGRAM
+
+STATUS: demonstração e arte para análise. Sem autorização de publicação do site ou de postagem nas redes sociais.
+Formato: PNG de 1080 × 1350 px (4:5).
+Fonte editável: Capa Instagram - VIVA Prime.html.
+Imagem: captura-demo.webp, captura real da própria demo.
+
+LEGENDA SUGERIDA
+
+Um portal. Muitas formas de viver. 🌿
+
+VIVA Prime Imóveis é um conceito de experiência imobiliária criado pela MOSS Digital: arquitetura editorial, busca completa, favoritos, comparação e planejamento ilustrativo — com atenção aos detalhes e ao seu próximo capítulo.
+
+Compra, aluguel, temporada e novas possibilidades em uma demonstração premium que pode ser personalizada para uma operação real.
+
+⚠️ Marca, anúncios, equipe, valores e características fictícios. Fotos de banco são referências visuais, não fotografias dos imóveis. Galerias com espaços identificados para inclusão de fotos reais autorizadas do mesmo imóvel. Sem disponibilidade confirmada, reserva, financiamento aprovado, cadastro ou banco conectado.
+
+#MOSSDigital #SiteImobiliario #PortalImobiliario #WebDesign #DesignEditorial #Imobiliaria #DesignResponsivo
+
+ENDEREÇO
+Ainda não há URL pública aprovada desta demo. Não divulgar localhost, inventar endereço ou reutilizar a autorização de publicação de outra demonstração. Após aprovação específica e publicação, conferir o endereço final antes de acrescentá-lo à legenda.
+
+EDIÇÃO E RECRIAÇÃO
+Editar cores e textos no HTML. Preservar a identificação de demonstração e a informação sobre imagens ilustrativas. A fonte usa apenas uma captura da própria página e formas autorais. Executar demos/viva-prime/tools/make_promo.py na raiz mossdigital para renderizar o PNG e atualizar a cópia em 04 - Divulgacao/VIVA Prime Imoveis.
+
+LICENÇAS
+Fontes das imagens de referência da demo em demos/viva-prime/FONTES-FOTOS.json. A fotografia de uma propriedade não significa que ela esteja anunciada ou disponível. Não inserir depoimentos, números de CRECI ou resultados comerciais inventados na capa.

@@ -1,0 +1,11 @@
+{
+  "nome": "VIVA Prime Imóveis",
+  "status": "aguardando-aprovacao-explicita-desta-demo",
+  "publicado": false,
+  "categoria": "Serviços",
+  "segmento": "Portal imobiliário premium",
+  "destino_relativo_raiz": "demos/viva-prime/",
+  "capa_relativa_raiz": "demos/viva-prime/entrega/card-viva-prime.webp",
+  "descricao": "Portal imobiliário editorial com 12 anúncios fictícios, filtros, favoritos, comparador, simulador e painel local demonstrativo. Galerias com cinco espaços para fotos reais, sem atribuição enganosa de imagens de banco.",
+  "aviso": "Não inserir na home ou catálogo públicos antes da aprovação específica. Não há imóveis reais, disponibilidade, CRECI verificado, backend ou financiamento aprovado."
+}
