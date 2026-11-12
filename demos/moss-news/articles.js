@@ -62,7 +62,7 @@ const MOSS_ARTICLES = [
       {title:'Uma rotina mais cuidadosa pode incluir',items:['Deixar água acessível e respeitar suas necessidades individuais.','Ajustar iluminação e tamanho do texto para facilitar a leitura.','Organizar a mesa para evitar esforços desnecessários.','Reservar momentos sem notificações para atividades que exigem atenção.','Planejar atividade física adequada às suas condições e preferências.']},
       {title:'Bem-estar não se resolve com uma dica isolada',text:'Dor persistente, alterações de visão, cansaço intenso ou dificuldade frequente para dormir merecem avaliação profissional. Orientações gerais na internet não substituem consulta. Se você tem restrições de saúde ou dúvidas sobre exercícios, busque uma equipe de saúde antes de mudar a prática.'},
       {title:'Comece pelo que é viável',text:'Escolha um hábito pequeno e observe como ele se encaixa na semana. Ajuste quando necessário. O objetivo não é cumprir uma rotina perfeita, mas construir um dia em que descanso, movimento e necessidades reais tenham espaço.'}
-    ],sources:[{name:'Ministério da Saúde — Saúde Brasil',url:'https://www.gov.br/saude/pt-br/assuntos/saude-brasil'},{name:'OMS — informações sobre atividade física',url:'https://www.who.int/news-room/fact-sheets/detail/physical-activity'}]
+    ],sources:[{name:'Ministério da Saúde — Saúde de A a Z',url:'https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z'},{name:'OMS — informações sobre atividade física',url:'https://www.who.int/news-room/fact-sheets/detail/physical-activity'}]
   },
   {
     id:'cultura-perto',category:'Cultura',title:'A cultura pode estar mais perto do que você imagina',
