@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MOSS News: guias para entender tecnologia, negócios, segurança digital e qualidade de vida. Conheça uma nova experiência de informação.">
+  <meta name="theme-color" content="#0d2b52">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://mossdigital.com.br/demos/moss-news/">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="MOSS Digital — Demonstrações">
+  <meta property="og:title" content="MOSS News — Modelo de portal informativo | MOSS Digital">
+  <meta property="og:description" content="Conheça um modelo de portal com guias educativos, editorias, busca, fotos e vídeo. Demonstração, sem cobertura jornalística em tempo real.">
+  <meta property="og:url" content="https://mossdigital.com.br/demos/moss-news/">
+  <meta property="og:image" content="https://mossdigital.com.br/demos/moss-news/assets/capa-card.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>MOSS News — Informação que faz parte da sua vida</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="articles.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="utility"><div class="container utility-inner"><a href="https://mossdigital.com.br/" target="_blank" rel="noopener noreferrer">Uma experiência MOSS Digital ↗</a><span>PROJETO DEMONSTRATIVO · GUIAS INFORMATIVOS</span></div></div>
+  <header class="masthead">
+    <div class="container masthead-inner">
+      <a class="brand" href="./" aria-label="MOSS News, início">MOSS<span>NEWS<span class="brand-dot">.</span></span></a>
+      <p class="brand-caption">O mundo muda.<br><strong>A informação aproxima.</strong></p>
+      <div class="header-actions"><a class="button button-outline" href="#videos">▷ &nbsp; Vídeos</a><button class="icon-button" id="theme" type="button" aria-label="Ativar tema escuro" aria-pressed="false">◐</button></div>
+    </div>
+    <nav class="navigation" aria-label="Editorias"><div class="container nav-inner" id="categories"></div></nav>
+  </header>
+  <main id="conteudo" class="container">
+    <div class="edition"><span><span class="status-dot"></span> CONHECIMENTO PARA O SEU DIA A DIA</span><span id="today"></span></div>
+    <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow">INFORMAÇÃO COM PROPÓSITO</p><h1 id="page-title">Um olhar além da manchete<span>.</span></h1><p>Contexto, boas ideias e respostas para as decisões que importam.</p></div><form class="search" role="search" id="search-form"><label class="sr-only" for="search">Buscar guias e assuntos</label><input id="search" type="search" placeholder="O que você quer entender?" autocomplete="off"><button aria-label="Buscar" type="submit">⌕</button></form></section>
+    <section id="highlights" class="hero-grid" aria-label="Guias em destaque"></section>
+    <section class="topics" aria-label="Atalhos de assuntos"><span>NA SUA ROTINA</span><button type="button" data-query="segurança">Segurança digital ↗</button><button type="button" data-query="negócio">Seu negócio na internet ↗</button><button type="button" data-query="inteligência">Inteligência artificial ↗</button><button type="button" data-query="consumo">Consumo consciente ↗</button></section>
+    <div class="content-layout">
+      <section class="library" aria-labelledby="library-title"><div class="section-heading"><div><p class="eyebrow">VALE A LEITURA</p><h2 id="library-title">Explore. Entenda. Aplique.</h2></div><span id="result-count" role="status" aria-live="polite"></span></div><div id="articles" class="article-grid"></div><button id="reset" class="button button-outline reset" type="button" hidden>Ver todos os guias</button></section>
+      <aside class="sidebar" aria-label="Conteúdo complementar"><section class="editors-note"><span class="small-label">CARTA AO LEITOR</span><h2>Menos ruído.<br>Mais contexto.</h2><p>Informação boa não termina no título. Aqui, cada guia traz explicações, cuidados e caminhos para você se aprofundar.</p><a href="#sobre">Conheça a proposta <span>↗</span></a></section><section class="reading-list"><p class="eyebrow">COMECE POR AQUI</p><h2>Essenciais da semana</h2><ol id="reading-list"></ol><p class="aside-note">Seleção editorial de guias, não um ranking de audiência.</p></section><section class="business-box"><span class="small-label">PARA QUEM EMPREENDE</span><h2>Seu próximo capítulo começa no digital.</h2><p>Conheça os modelos de sites e soluções da MOSS Digital para apresentar melhor o seu negócio.</p><a class="button button-yellow" href="https://mossdigital.com.br/" target="_blank" rel="noopener noreferrer">Conhecer a MOSS ↗</a><small>Espaço institucional · MOSS Digital</small></section></aside>
+    </div>
+    <section class="video-section" id="videos" aria-labelledby="video-title"><div class="section-heading"><div><p class="eyebrow">OUTRAS FORMAS DE EXPLORAR</p><h2 id="video-title">Dê play na curiosidade<span>.</span></h2></div><span class="video-label">IMAGEM, CIÊNCIA & APRENDIZADO</span></div><div class="video-grid"><article class="video-feature"><div class="video-frame"><video controls preload="none" playsinline poster="assets/nature.jpg" aria-label="Vídeo demonstrativo de flores ao vento"><source src="assets/flowers.mp4" type="video/mp4">Seu navegador não suporta vídeo. <a href="assets/flowers.mp4">Abrir vídeo.</a></video></div><div class="video-copy"><span class="small-label">EXPERIÊNCIA MULTIMÍDIA · SEM NARRAÇÃO</span><h3>Uma pausa para observar a natureza</h3><p>Clipe ilustrativo de flores ao vento. Demonstração do player do portal; não é uma reportagem ou registro de um acontecimento noticiado.</p><a href="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" target="_blank" rel="noopener noreferrer">Origem: acervo de exemplos MDN · CC0 ↗</a></div></article><div class="video-links"><a class="video-link" href="https://www.youtube.com/@NASA" target="_blank" rel="noopener noreferrer"><span class="play-circle" aria-hidden="true">▷</span><div><span class="eyebrow">CIÊNCIA & ESPAÇO</span><h3>Explore o universo com a NASA</h3><p>Vídeos e transmissões no canal oficial. Conteúdo em inglês.</p><span class="external-label">ABRIR CANAL NO YOUTUBE ↗</span></div></a><a class="video-link" href="https://www.youtube.com/user/Sebrae" target="_blank" rel="noopener noreferrer"><span class="play-circle" aria-hidden="true">▷</span><div><span class="eyebrow">EMPREENDEDORISMO</span><h3>Aprenda com o Sebrae</h3><p>Gestão, planejamento e caminhos para pequenos negócios.</p><span class="external-label">ABRIR CANAL NO YOUTUBE ↗</span></div></a><p class="video-disclaimer">Links externos abrem os canais das instituições, não vídeos produzidos pela MOSS. Disponibilidade e programação são responsabilidade de cada canal.</p></div></div></section>
+    <section class="manifesto" id="sobre"><div><p class="eyebrow">TRANSPARÊNCIA EDITORIAL</p><h2>Informação útil.<br>Sem notícia inventada.</h2></div><div><p>Este é um modelo de portal da MOSS Digital, com guias educativos originais. Não há cobertura em tempo real, redação jornalística ou notícias verificadas nesta demonstração.</p><p>As fotografias são ilustrativas, não documentam os textos. Os guias apresentam referências para consulta e não substituem orientação profissional. Não coletamos e-mails nem simulamos assinaturas.</p><button class="text-button" id="credits" type="button">Fontes, imagens e privacidade ↗</button></div></section>
+    <noscript><p class="empty">Ative o JavaScript para acessar os guias, a busca e os filtros. As informações sobre o projeto e a área de vídeos permanecem disponíveis.</p></noscript>
+  </main>
+  <footer><div class="container footer-top"><div><a class="brand footer-brand" href="./">MOSS<span>NEWS<span class="brand-dot">.</span></span></a><p>Informação que faz parte da sua vida.</p></div><div class="footer-links"><a href="#conteudo">Voltar ao início ↑</a><a href="#sobre">Sobre o projeto</a><a href="manual.html">Manual do comprador</a><a href="https://mossdigital.com.br/" target="_blank" rel="noopener noreferrer">MOSS Digital ↗</a></div></div><div class="container footer-bottom"><span>© <span id="year"></span> MOSS Digital · Modelo demonstrativo.</span><span>Feito para ler com calma. Em qualquer tela.</span></div></footer>
+  <dialog id="reader" aria-labelledby="reader-title"><div class="reader-toolbar"><span>MOSS NEWS / LEITURA</span><button class="icon-button" id="close-reader" type="button" aria-label="Fechar leitura">✕</button></div><div id="reader-content"></div><div class="reader-bottom"><span id="share-status" role="status" aria-live="polite"></span><button class="button button-outline" id="share" type="button">Compartilhar guia ↗</button></div></dialog>
+  <dialog id="credits-dialog" aria-labelledby="credits-title"><div class="reader-toolbar"><span>TRANSPARÊNCIA</span><button class="icon-button" id="close-credits" type="button" aria-label="Fechar informações">✕</button></div><div class="credits-body"><h2 id="credits-title">Sobre os materiais e seus dados</h2><h3>Textos e referências</h3><p>Guias educativos preparados para este modelo. As fontes indicadas em cada guia são caminhos de aprofundamento, não endossos ao portal. Confira as regras vigentes diretamente com os órgãos responsáveis antes de tomar decisões.</p><h3>Fotografias ilustrativas</h3><p>Fotos do Unsplash, armazenadas junto ao projeto. Veja as URLs de origem e a licença no arquivo <a href="CREDITOS.md" target="_blank" rel="noopener">CREDITOS.md</a>. Não retratam os acontecimentos dos textos.</p><h3>Vídeo</h3><p>Clipe Flower, distribuído como exemplo CC0 pela MDN. Links para NASA e Sebrae abrem sites de terceiros; não há incorporação automática de YouTube.</p><h3>Privacidade</h3><p>Esta versão não usa formulários de cadastro, rastreadores, cookies próprios ou analytics. A preferência de tema pode ser salva apenas neste navegador. Links compartilhados não são enviados a um servidor da MOSS pelo portal. Sites externos possuem suas próprias políticas. Quando hospedado, o provedor de hospedagem poderá registrar acessos conforme sua política.</p></div></dialog>
+</body>
+</html>

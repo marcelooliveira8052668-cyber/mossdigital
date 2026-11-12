@@ -1,0 +1,23 @@
+MOSS NEWS — NOVO MODELO DE PORTAL INFORMATIVO
+
+Informação bem apresentada faz diferença na experiência de quem lê.
+
+Conheça o MOSS News, uma demonstração de portal da MOSS Digital com guias educativos, editorias, busca por assunto, fotos, vídeo e tema claro/escuro. Um layout pensado para celular e computador.
+
+Explore a demo:
+https://mossdigital.com.br/demos/moss-news/
+
+Quer conversar sobre um portal para o seu projeto?
+https://wa.me/5511942038103
+
+Transparência: modelo demonstrativo com fotografias ilustrativas e guias educativos. Não é um jornal em tempo real e não possui banco de dados ou CMS conectado. Recursos adicionais são definidos no orçamento.
+
+#MOSSDigital #MOSSNews #PortalInformativo #CriacaoDeSites #WebDesign #SitesProfissionais
+
+ARQUIVOS
+- capa.png: imagem final 1080 × 1350 pixels.
+- capa.html: fonte editável; usa logo da MOSS e captura da própria demonstração, incluídas no repositório.
+- A fonte referencia arquivos por caminhos relativos ao repositório. Para editar fora dele, leve junto o logo e a captura e ajuste os caminhos.
+- Cópia de fácil acesso em ../04 - Divulgacao/MOSS News/.
+
+Publicação desta arte em redes sociais depende de autorização própria; a aprovação do site não foi tratada como autorização para postar no Instagram.
