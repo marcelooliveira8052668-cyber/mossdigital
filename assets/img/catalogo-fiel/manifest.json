@@ -3,6 +3,12 @@
   "notice": "Capturas das próprias demonstrações, sem dados reais de clientes.",
   "previews": [
     {
+      "key": "/demos/moss-news/",
+      "title": "MOSS News — Portal informativo",
+      "src": "demos/moss-news/assets/capa-card.webp",
+      "url": "https://mossdigital.com.br/demos/moss-news/"
+    },
+    {
       "key": "/agenda-pro/",
       "title": "MOSS Agenda Pro",
       "src": "assets/img/catalogo-fiel/moss-agenda-pro-ece456fe9f.webp",
