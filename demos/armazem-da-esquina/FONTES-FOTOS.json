@@ -1,0 +1,242 @@
+[
+  {
+    "id": "pao-frances",
+    "arquivo": "assets/img/pao-frances.webp",
+    "capa": "assets/img/card-pao-frances.webp",
+    "titulo": "File:20080215-18 Wenen (126).jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:20080215-18_Wenen_(126).jpg",
+    "licenca": "CC BY 3.0",
+    "autor": "Donar Reiskoffer",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "croissant",
+    "arquivo": "assets/img/croissant.webp",
+    "capa": "assets/img/card-croissant.webp",
+    "titulo": "File:00 Croissant. Yum.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:00_Croissant._Yum.jpg",
+    "licenca": "CC BY 2.0",
+    "autor": "Mark Mitchell",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "bolo-chocolate",
+    "arquivo": "assets/img/bolo-chocolate.webp",
+    "capa": "assets/img/card-bolo-chocolate.webp",
+    "titulo": "File:020211219 151114 Christmas market in Sanok.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:020211219_151114_Christmas_market_in_Sanok.jpg",
+    "licenca": "CC BY-SA 4.0",
+    "autor": "Silar",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "bisnaguinha",
+    "arquivo": "assets/img/bisnaguinha.webp",
+    "capa": "assets/img/card-bisnaguinha.webp",
+    "titulo": "File:3523.Сахарное печенье со вкусом апельсина «Mini orange cookies» вес.2,1кг Зарканд.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:3523.%D0%A1%D0%B0%D1%85%D0%B0%D1%80%D0%BD%D0%BE%D0%B5_%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D1%8C%D0%B5_%D1%81%D0%BE_%D0%B2%D0%BA%D1%83%D1%81%D0%BE%D0%BC_%D0%B0%D0%BF%D0%B5%D0%BB%D1%8C%D1%81%D0%B8%D0%BD%D0%B0_%C2%ABMini_orange_cookies%C2%BB_%D0%B2%D0%B5%D1%81.2,1%D0%BA%D0%B3_%D0%97%D0%B0%D1%80%D0%BA%D0%B0%D0%BD%D0%B4.jpg",
+    "licenca": "CC BY-SA 4.0",
+    "autor": "NosirNurmuhammad",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "banana-prata",
+    "arquivo": "assets/img/banana-prata.webp",
+    "capa": "assets/img/card-banana-prata.webp",
+    "titulo": "File:181 365+1 Banana (7623220032).jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:181_365%2B1_Banana_(7623220032).jpg",
+    "licenca": "CC BY-SA 2.0",
+    "autor": "Dave Crosby from Devon, England",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "tomate-italiano",
+    "arquivo": "assets/img/tomate-italiano.webp",
+    "capa": "assets/img/card-tomate-italiano.webp",
+    "titulo": "File:2010-365-102 Dude, Where's My Yellow? (4516362539).jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:2010-365-102_Dude,_Where%27s_My_Yellow%3F_(4516362539).jpg",
+    "licenca": "CC BY 2.0",
+    "autor": "cogdogblog",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "maca-gala",
+    "arquivo": "assets/img/maca-gala.webp",
+    "capa": "assets/img/card-maca-gala.webp",
+    "titulo": "File:2013. Крым 069.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:2013._%D0%9A%D1%80%D1%8B%D0%BC_069.jpg",
+    "licenca": "CC BY-SA 3.0",
+    "autor": "Andrey Butko",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "alface-crespa",
+    "arquivo": "assets/img/alface-crespa.webp",
+    "capa": "assets/img/card-alface-crespa.webp",
+    "titulo": "File:2010-06-18-supermarkt-by-RalfR-3.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:2010-06-18-supermarkt-by-RalfR-3.jpg",
+    "licenca": "GFDL 1.2",
+    "autor": "Ralf Roletschek (talk) - Fahrradtechnik auf fahrradmonteur.de",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "batata-inglesa",
+    "arquivo": "assets/img/batata-inglesa.webp",
+    "capa": "assets/img/card-batata-inglesa.webp",
+    "titulo": "File:110303 CNPP LSC 0409 (13065204745) (2).jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:110303_CNPP_LSC_0409_(13065204745)_(2).jpg",
+    "licenca": "Public domain",
+    "autor": "U.S. Department of Agriculture\n\nLance Chueng/Visual Information Specialist/USDA",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "laranja-largo",
+    "arquivo": "assets/img/laranja-largo.webp",
+    "capa": "assets/img/card-laranja-largo.webp",
+    "titulo": "File:(330-365) Healthy (6195816251).jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:(330-365)_Healthy_(6195816251).jpg",
+    "licenca": "CC BY-SA 2.0",
+    "autor": "Sander van der Wel from Netherlands",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "arroz-agulha",
+    "arquivo": "assets/img/arroz-agulha.webp",
+    "capa": "assets/img/card-arroz-agulha.webp",
+    "titulo": "File:Uncooked ST25 rice on bamboo surface.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Uncooked_ST25_rice_on_bamboo_surface.jpg",
+    "licenca": "CC BY-SA 4.0",
+    "autor": "VinhNguyen.1257",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "feijao-carioca",
+    "arquivo": "assets/img/feijao-carioca.webp",
+    "capa": "assets/img/card-feijao-carioca.webp",
+    "titulo": "File:Ab food 18.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Ab_food_18.jpg",
+    "licenca": "CC BY-SA 3.0",
+    "autor": "Andrey Butko",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "macarrao-parafuso",
+    "arquivo": "assets/img/macarrao-parafuso.webp",
+    "capa": "assets/img/card-macarrao-parafuso.webp",
+    "titulo": "File:Barilla penne 1.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Barilla_penne_1.jpg",
+    "licenca": "CC0",
+    "autor": "Mx. Granger",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "azeite-oliva",
+    "arquivo": "assets/img/azeite-oliva.webp",
+    "capa": "assets/img/card-azeite-oliva.webp",
+    "titulo": "File:Artisan bread with olive oil and salt.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Artisan_bread_with_olive_oil_and_salt.jpg",
+    "licenca": "CC BY 2.0",
+    "autor": "Neeta Lind",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "acucar-cristal",
+    "arquivo": "assets/img/acucar-cristal.webp",
+    "capa": "assets/img/card-acucar-cristal.webp",
+    "titulo": "File:Azucar Blanco Refino.JPG",
+    "origem": "https://commons.wikimedia.org/wiki/File:Azucar_Blanco_Refino.JPG",
+    "licenca": "CC BY-SA 3.0",
+    "autor": "Ivan2010",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "cafe-torrado",
+    "arquivo": "assets/img/cafe-torrado.webp",
+    "capa": "assets/img/card-cafe-torrado.webp",
+    "titulo": "File:20150223 2017 WMAT 1013.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:20150223_2017_WMAT_1013.jpg",
+    "licenca": "CC BY-SA 3.0 at",
+    "autor": "Ailura",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "oleo-soja",
+    "arquivo": "assets/img/oleo-soja.webp",
+    "capa": "assets/img/card-oleo-soja.webp",
+    "titulo": "File:Bottle 1 liter Sunflower refined oil.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Bottle_1_liter_Sunflower_refined_oil.jpg",
+    "licenca": "CC BY-SA 4.0",
+    "autor": "Exgsp Gmbh LLC BOTTLE 1 liter Sunflower refined oil",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "farinha-mandioca",
+    "arquivo": "assets/img/farinha-mandioca.webp",
+    "capa": "assets/img/card-farinha-mandioca.webp",
+    "titulo": "File:Cassava flour.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Cassava_flour.jpg",
+    "licenca": "CC BY-SA 4.0",
+    "autor": "Hajia Hijjah",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "leite-integral",
+    "arquivo": "assets/img/leite-integral.webp",
+    "capa": "assets/img/card-leite-integral.webp",
+    "titulo": "File:Bottle, milk (AM 1997.80.37-1).jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Bottle,_milk_(AM_1997.80.37-1).jpg",
+    "licenca": "CC BY 4.0",
+    "autor": "New Zealand Co-operative Dairy Co Ltd",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "ovos-caixa",
+    "arquivo": "assets/img/ovos-caixa.webp",
+    "capa": "assets/img/card-ovos-caixa.webp",
+    "titulo": "File:Egg cartons with chicken eggs 01.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Egg_cartons_with_chicken_eggs_01.jpg",
+    "licenca": "CC BY-SA 4.0",
+    "autor": "Krzysztof Golik",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "iogurte-natural",
+    "arquivo": "assets/img/iogurte-natural.webp",
+    "capa": "assets/img/card-iogurte-natural.webp",
+    "titulo": "File:(20260209) Bayernland Echt Bulgara Joghurt 01.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:(20260209)_Bayernland_Echt_Bulgara_Joghurt_01.jpg",
+    "licenca": "CC BY-SA 4.0",
+    "autor": "Roy Zuo",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "agua-mineral",
+    "arquivo": "assets/img/agua-mineral.webp",
+    "capa": "assets/img/card-agua-mineral.webp",
+    "titulo": "File:2008 0622Szentkirály0110.JPG",
+    "origem": "https://commons.wikimedia.org/wiki/File:2008_0622Szentkir%C3%A1ly0110.JPG",
+    "licenca": "Public domain",
+    "autor": "Crosstor at Esperanto Wikipedia",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "suco-uva",
+    "arquivo": "assets/img/suco-uva.webp",
+    "capa": "assets/img/card-suco-uva.webp",
+    "titulo": "File:Glass of grape juice.jpeg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Glass_of_grape_juice.jpeg",
+    "licenca": "CC BY-SA 3.0",
+    "autor": "Oyp",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  },
+  {
+    "id": "detergente",
+    "arquivo": "assets/img/detergente.webp",
+    "capa": "assets/img/card-detergente.webp",
+    "titulo": "File:Afwasmiddel.jpg",
+    "origem": "https://commons.wikimedia.org/wiki/File:Afwasmiddel.jpg",
+    "licenca": "CC BY-SA 3.0",
+    "autor": "M.Minderhoud",
+    "uso": "Fotografia do Wikimedia Commons usada como referencia visual do item ficticio do catalogo."
+  }
+]

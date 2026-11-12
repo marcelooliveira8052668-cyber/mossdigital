@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Formulario para o comerciante: previa local, sem envio automatico. -->
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#124435">
+  <title>Anuncie no mercadinho — ARMAZÉM DA ESQUINA</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="css/style.css">
+  <script src="js/data.js" defer></script><script src="js/app.js" defer></script>
+</head>
+<body data-page="advertise">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="demo-strip">MOSS DIGITAL • MERCADINHO DEMONSTRATIVO • PRODUTOS, PREÇOS E PEDIDOS FICTÍCIOS</div>
+  <div class="awning" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="conteudo">
+    <section class="wrap page-head"><p class="eyebrow">ANUNCIE NO MERCADINHO</p><h1>Sua loja,<br>no bairro e na tela</h1><p>Este formulário é demonstrativo: gera uma prévia local do anúncio e não envia nada. Use somente dados fictícios.</p></section>
+    <div class="wrap cart-layout">
+      <form class="form-grid" id="shop-form"><h2 style="margin-bottom:22px">Conte sobre o comércio.</h2>
+        <div class="field-pair"><label>Nome da loja<input name="nome" required minlength="2" maxlength="60" autocomplete="off" placeholder="Mercearia do Exemplo"></label><label>Seu nome fictício<input name="contato" required minlength="2" maxlength="60" autocomplete="off" placeholder="Alex Demo"></label></div>
+        <div class="field-pair"><label>WhatsApp fictício<input name="whatsapp" inputmode="numeric" maxlength="20" placeholder="Somente para demonstração"></label><label>E-mail fictício<input name="email" type="email" maxlength="120" placeholder="alex@example.com"></label></div>
+        <div class="field-pair"><label>Bairro de atendimento<input name="bairro" required maxlength="60" autocomplete="off" placeholder="Bairro Exemplo"></label><label>Categoria principal<select name="categoria" id="shop-categoria"></select></label></div>
+        <label>Quantos itens você tem no catálogo?<input name="itens" type="number" min="1" max="5000" value="60" required></label>
+        <label>O que você quer?<select name="objetivo"><option>Quero uma vitrine online para receber pedidos</option><option>Quero divulgar produtos e horários</option><option>Quero substituir o catálogo de papel</option><option>Quero começar pelo WhatsApp</option></select></label>
+        <label>Tenho fotos autorizadas dos produtos?<select name="fotos"><option>Sim, tenho fotos com autorização</option><option>Tenho fotos, mas preciso de orientação</option><option>Ainda não tenho fotos</option></select></label>
+        <label class="form-note" style="margin-bottom:20px">Nenhuma foto é enviada por este formulário. Nada sai do seu navegador: os dados só seriam transmitidos quando um servidor real estiver configurado e a pessoa confirmar o envio.</label>
+        <button class="button full" type="submit">GERAR PRÉVIA DO ANÚNCIO ↗</button>
+        <p class="form-error" id="shop-error" role="status"></p>
+      </form>
+      <aside><div class="info-box"><strong>O que a demo mostra</strong><p>Catálogo por categoria, top 10 mais pedidos, ofertas do dia, busca, carrinho com entrega ou retirada, painel do comerciante e mensagem pronta para o WhatsApp.</p></div>
+        <div class="info-box" style="background:var(--areia)"><strong>O que a demo não faz</strong><p>Não cobra, não envia pedidos, não autentica o comerciante, não guarda dados pessoais e não substitui um sistema real de estoque e pagamento.</p></div>
+        <section id="shop-preview" hidden style="margin-top:24px" aria-live="polite"><div class="form-grid"><p class="eyebrow">PRÉVIA LOCAL / NÃO ENVIADA</p><h3 style="margin-bottom:16px">Seu anúncio, em palavras.</h3><pre id="shop-text" style="white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px;line-height:1.8;color:var(--cinza)"></pre><button class="button full" type="button" id="shop-copy" style="margin-top:16px">COPIAR ANÚNCIO</button><a class="button secondary full" id="shop-send" style="margin-top:10px" hidden target="_blank" rel="noopener noreferrer">ABRIR WHATSAPP CONFIGURADO ↗</a></div></section>
+      </aside>
+    </div>
+  </main>
+  <div id="site-footer"></div><div id="site-dialogs"></div>
+</body>
+</html>
