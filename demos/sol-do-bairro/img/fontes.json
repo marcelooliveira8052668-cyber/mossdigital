@@ -1,0 +1,132 @@
+{
+  "licenca": "https://www.pexels.com/license/",
+  "aviso": "Fotos reais de banco, ilustrativas de energia solar. Não representam instalações, equipe, clientes ou resultados da marca fictícia.",
+  "fotos": [
+    {
+      "arquivo": "img/instaladora.webp",
+      "id": "4254159",
+      "uso": "hero",
+      "origem": "https://www.pexels.com/photo/4254159/",
+      "download": "https://images.pexels.com/photos/4254159/pexels-photo-4254159.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Pessoa de capacete conferindo um painel solar no telhado",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/painel-grama.webp",
+      "id": "4320475",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/4320475/",
+      "download": "https://images.pexels.com/photos/4320475/pexels-photo-4320475.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Fileira de painéis solares ao lado de um gramado verde",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/casa-paineis.webp",
+      "id": "35237908",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/35237908/",
+      "download": "https://images.pexels.com/photos/35237908/pexels-photo-35237908.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Casa com painéis solares instalados no telhado",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/instalacao.webp",
+      "id": "9875405",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/9875405/",
+      "download": "https://images.pexels.com/photos/9875405/pexels-photo-9875405.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Pessoa trabalhando na instalação de painéis no telhado",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/inversores.webp",
+      "id": "11924298",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/11924298/",
+      "download": "https://images.pexels.com/photos/11924298/pexels-photo-11924298.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": " Inversores e equipamentos de energia solar na parede",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/medidor.webp",
+      "id": "38603325",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/38603325/",
+      "download": "https://images.pexels.com/photos/38603325/pexels-photo-38603325.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Medidor inteligente de energia com visor amarelo",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/painel-verde.webp",
+      "id": "17965455",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/17965455/",
+      "download": "https://images.pexels.com/photos/17965455/pexels-photo-17965455.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Painéis solares com vegetação ao redor",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/telha-vermelha.webp",
+      "id": "29114658",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/29114658/",
+      "download": "https://images.pexels.com/photos/29114658/pexels-photo-29114658.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Painéis solares sobre telhado de barro vermelho",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/tecnico.webp",
+      "id": "39057094",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/39057094/",
+      "download": "https://images.pexels.com/photos/39057094/pexels-photo-39057094.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Técnico trabalhando no equipamento de energia solar",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/campo-solar.webp",
+      "id": "27041410",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/27041410/",
+      "download": "https://images.pexels.com/photos/27041410/pexels-photo-27041410.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Vista ampla de uma área com painéis solares",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/capa-card.webp",
+      "id": "18306342",
+      "uso": "capa",
+      "origem": "https://www.pexels.com/photo/18306342/",
+      "download": "https://images.pexels.com/photos/18306342/pexels-photo-18306342.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Painéis solares iluminados pelo pôr do sol",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/telhado-moderno.webp",
+      "id": "12606669",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/12606669/",
+      "download": "https://images.pexels.com/photos/12606669/pexels-photo-12606669.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Painéis solares sobre um telhado moderno",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/ajuste-painel.webp",
+      "id": "9875418",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/9875418/",
+      "download": "https://images.pexels.com/photos/9875418/pexels-photo-9875418.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Pessoa ajustando a inclinação de um painel solar",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    },
+    {
+      "arquivo": "img/equipe-telhado.webp",
+      "id": "13199323",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/13199323/",
+      "download": "https://images.pexels.com/photos/13199323/pexels-photo-13199323.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Duas pessoas trabalhando em um telhado com painéis",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é instalação da marca fictícia."
+    }
+  ]
+}

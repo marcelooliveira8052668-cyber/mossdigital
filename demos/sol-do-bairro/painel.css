@@ -1,0 +1,33 @@
+:root{color-scheme:light;--azul:#0b3a5e;--ouro:#f5a524;--papel:#f7fafd;--texto:#123049;--fraco:#5b7288;--linha:#dce7f2;--verde:#1c9a6b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--texto);font:15px/1.6 'Segoe UI',system-ui,Arial,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 5%;border-bottom:1px solid var(--linha);background:#fff;flex-wrap:wrap}
+header>a:last-child{font-size:13px;font-weight:700;color:var(--azul);text-decoration:none}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;font-weight:800}
+.sol{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 34% 30%,#ffe9a8,var(--ouro) 62%,#e08b12);flex:none}
+.marca small{display:block;font-size:10px;font-weight:600;color:var(--fraco);letter-spacing:.14em;text-transform:uppercase}
+main{max-width:1000px;margin:auto;padding:36px 22px}
+h1{font-size:40px;line-height:1.08;margin:0 0 14px;color:var(--azul);letter-spacing:-.5px}
+h2,h3{color:var(--azul)}
+section,form#nova-proposta{background:#fff;border:1px solid var(--linha);border-radius:20px;padding:24px;margin:26px 0}
+label{display:flex;flex-direction:column;gap:7px;margin:15px 0;font-size:13.5px}
+input,select,textarea{font:inherit;width:100%;min-width:0;border:1px solid var(--linha);border-radius:10px;padding:12px;background:#fff;color:var(--texto)}
+textarea{resize:vertical}
+button{font:inherit;font-weight:700;border:0;border-radius:999px;background:var(--azul);color:#fff;padding:12px 22px;cursor:pointer;min-height:44px}
+button:disabled{opacity:.5;cursor:wait}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.barra{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:26px}
+.barra label{min-width:210px;margin:0}
+.barra h2{margin:0}
+.proposta{border:1px solid var(--linha);border-radius:16px;padding:18px;margin:14px 0;background:var(--papel);overflow-wrap:anywhere}
+.proposta h3{margin:0 0 6px;font-size:17px}
+.proposta p{margin:0 0 10px;font-size:13.5px;color:var(--fraco);white-space:pre-line}
+.proposta label{margin:12px 0 8px}
+.proposta .salvar{margin-right:10px;background:var(--azul)}
+.proposta .excluir{background:#fff;color:#a33;border:1px solid #e4c4c4}
+.dica{font-size:12.5px;color:var(--fraco);max-width:780px}
+#painel-status,#aviso-config{white-space:pre-wrap;overflow-wrap:anywhere;border-top:1px solid var(--linha);padding-top:18px}
+footer{font-size:12.5px;color:var(--fraco);margin:32px 0}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
+@media(max-width:640px){.dupla{grid-template-columns:1fr;gap:0}h1{font-size:31px}main{padding:26px 16px}section,form#nova-proposta{padding:18px}}

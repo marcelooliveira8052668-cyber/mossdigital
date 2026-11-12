@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sol do Bairro: demonstração de site para instaladora de energia solar. Simulador de economia, painéis, instalação e proposta pelo WhatsApp, com painel opcional no Supabase.">
+  <meta name="robots" content="noindex, follow">
+  <title>Sol do Bairro — Energia solar para a sua casa</title>
+  <link rel="icon" href="icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script><script src="banco.js" defer></script><script src="site.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <p class="aviso">Modelo MOSS Digital · <strong>Marca fictícia</strong> · fotografias de banco ilustrativas · <a href="../../index.html">Conheça a MOSS ↗</a></p>
+
+  <header class="topo">
+    <div class="topo-linha">
+      <a class="marca" href="#inicio" aria-label="Sol do Bairro — início">
+        <span class="sol-marca" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#5b3800" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="4.4" fill="#5b3800" stroke="none"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg></span>
+        <span class="marca-texto">Sol do Bairro<small>Energia solar</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu <span aria-hidden="true">☰</span></button>
+      <nav class="menu" id="menu" aria-label="Navegação principal">
+        <a href="#servicos">Serviços</a><a href="#simulador">Simulador</a><a href="#como-funciona">Como funciona</a><a href="#area">Onde atendemos</a><a href="#galeria">Fotos</a>
+        <a class="destaque" href="#proposta">Pedir proposta ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="titulo">
+      <div class="hero-grade">
+        <div>
+          <p class="selo">☀ Instalação, manutenção e suporte</p>
+          <h1 id="titulo">A luz do sol<br>cabe no seu <em>telhado.</em></h1>
+          <p>Sol do Bairro é um modelo de site para instaladoras de energia solar. O visitante simula a economia, conhece os serviços e pede uma proposta pelo WhatsApp.</p>
+          <div class="hero-acoes">
+            <a class="botao" href="#simulador">Simular minha economia</a>
+            <a class="botao ouro" href="#proposta">Pedir proposta</a>
+          </div>
+          <div class="hero-notas">
+            <span><i>✓</i> Análise do telhado</span>
+            <span><i>✓</i> Projeto e instalação</span>
+            <span><i>✓</i> Acompanhamento de energia</span>
+          </div>
+        </div>
+        <figure class="hero-foto">
+          <img src="img/instaladora.webp" alt="Pessoa de capacete conferindo um painel solar instalado no telhado" width="900" height="1125" fetchpriority="high">
+          <figcaption class="hero-selo">
+            <span class="icone" aria-hidden="true">☀</span>
+            <span><strong>2 a 4</strong><span>painéis é o ponto<br>de partida mais comum</span></span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="numeros" aria-label="Números do serviço">
+      <div class="numeros-linha">
+        <div><strong>15+</strong><span>anos de experiência eminstalação</span></div>
+        <div><strong>100%</strong><span>projetos dimensionados antes da obra</span></div>
+        <div><strong>24h</strong><span>resposta a emergências elétricas</span></div>
+        <div><strong>1</strong><span>equipe responsável do início ao fim</span></div>
+      </div>
+    </section>
+
+    <section class="secao" id="servicos" aria-labelledby="titulo-servicos">
+      <div class="secao-cab">
+        <span class="rotulo">01 · Serviços</span>
+        <h2 id="titulo-servicos">Do projeto à energia na conta</h2>
+        <p>Cada etapa é feita por gente que conhece telhado, rede elétrica e a rotina de quem precisa usar o sol todos os dias.</p>
+      </div>
+      <div class="servicos" id="lista-servicos">
+        <article class="servico"><img src="img/instalacao.webp" alt="Pessoa trabalhando na instalação de painéis solares" width="600" height="380" loading="lazy"><div class="servico-corpo"><h3>Instalação completa</h3><p>Projeto, estrutura, painéis e inversor. Você acompanha cada etapa e recebe a orientação de uso.</p><a href="#proposta" data-servico="instalacao">Quero instalar →</a></div></article>
+        <article class="servico"><img src="img/inversores.webp" alt="Inversores e equipamentos de energia solar instalados na parede" width="600" height="380" loading="lazy"><div class="servico-corpo"><h3>Manutenção e suporte</h3><p>Limpeza, revisão elétrica e acompanhamento da geração. Atendimento para o seu sistema, não para o vizinho.</p><a href="#proposta" data-servico="manutencao">Quero suporte →</a></div></article>
+        <article class="servico"><img src="img/medidor.webp" alt="Medidor inteligente de energia com visor amarelo" width="600" height="380" loading="lazy"><div class="servico-corpo"><h3>Monitoramento</h3><p>Acompanhe a geração do celular e saiba quando algo saiu do esperado, antes de receber uma conta alta.</p><a href="#proposta" data-servico="monitoramento">Quero acompanhar →</a></div></article>
+      </div>
+      <p class="nota" id="modo-banco" style="font-size:13px;color:#5b7288;margin-top:20px">Serviços demonstrativos. O valor real é apresentado na proposta, após a análise do telhado.</p>
+    </section>
+
+    <section class="secao" id="simulador" aria-labelledby="titulo-simulador">
+      <div class="simulador">
+        <div class="simulador-grade">
+          <div>
+            <span class="rotulo" style="background:rgba(255,255,255,.14);color:#ffd98a">02 · Simulador</span>
+            <h2 id="titulo-simulador">Quanto o sol pode render na sua conta?</h2>
+            <p class="intro">Ajuste os dois valores da sua conta de luz. O cálculo é feito aqui no navegador, com estimativas explicadas — nada é enviado e nada é gravado.</p>
+            <div class="campo-sim">
+              <label for="sim-conta">Conta de luz mensal <output id="sim-conta-valor">R$ 320</output></label>
+              <input id="sim-conta" type="range" min="80" max="1500" step="10" value="320">
+              <div class="escala"><span>R$ 80</span><span>R$ 1.500</span></div>
+            </div>
+            <div class="campo-sim">
+              <label for="sim-consumo">Consumo médio (kWh por mês) <output id="sim-consumo-valor">350 kWh</output></label>
+              <input id="sim-consumo" type="range" min="50" max="1500" step="10" value="350">
+              <div class="escala"><span>50 kWh</span><span>1.500 kWh</span></div>
+            </div>
+            <div class="premissas">
+              <strong>Premissas usadas neste cálculo</strong>
+              <ul>
+                <li>Cada painel de cerca de 2 m² gera em média 13,5 kWh por mês na nossa região — o valor real depende do sol, da inclinação e da sombra.</li>
+                <li>A energia gerada pode abater a fatura conforme as regras de compensação da sua distribuidora. Consideramos de 70% a 100% da geração compensada.</li>
+                <li>A tarifa por kWh é estimada a partir da sua própria conta (valor ÷ consumo), sem descontar a parte fixa.</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="resultados">
+              <div class="resultado"><strong id="sim-paineis">26</strong><span>painéis sugeridos para começar</span></div>
+              <div class="resultado"><strong id="sim-area">52 m²</strong><span>de área aproximada de telhado</span></div>
+              <div class="resultado"><strong id="sim-geracao">351 kWh</strong><span>geração estimada por mês</span></div>
+              <div class="resultado"><strong id="sim-economia">R$ 190</strong><span>de economia estimada por mês</span></div>
+            </div>
+            <div class="simulador-acoes">
+              <button class="botao" type="button" id="sim-proposta">Quero a proposta com esses números</button>
+              <button class="botao fantasma" type="button" id="sim-limpar">Recomeçar</button>
+            </div>
+            <p id="sim-status">Estimativa para orientação. Não é proposta, não é garantia de economia e não substitui a análise técnica do telhado.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="como-funciona" aria-labelledby="titulo-processo">
+      <div class="secao-cab">
+        <span class="rotulo">03 · Como funciona</span>
+        <h2 id="titulo-processo">Quatro passos, sem surpresa</h2>
+      </div>
+      <ol class="passos">
+        <li class="passo"><span class="numero">1</span><h3>Contato e simulação</h3><p>Você manda a conta de luz e conta onde fica a instalação.</p></li>
+        <li class="passo"><span class="numero">2</span><h3>Visita técnica</h3><p>Avaliamos telhado, rede elétrica, sombreamento e padrão de consumo.</p></li>
+        <li class="passo"><span class="numero">3</span><h3>Proposta escrita</h3><p>Você recebe o projeto, o investimento, o prazo e a garantia, por escrito.</p></li>
+        <li class="passo"><span class="numero">4</span><h3>Instalação e acompanhamento</h3><p>Instalamos, testamos com você e passamos a monitorar a geração.</p></li>
+      </ol>
+    </section>
+
+    <section class="secao" id="area" aria-labelledby="titulo-area">
+      <div class="area-grade">
+        <div>
+          <span class="rotulo">04 · Onde atendemos</span>
+          <h2 id="titulo-area" style="font-size:clamp(28px,3.4vw,42px);color:#0b3a5e;margin:14px 0 16px">Vizinhança com nome</h2>
+          <p style="color:#5b7288">Esta é uma demonstração com bairros fictícios. No site real, informe apenas as regiões que você realmente atende, para não prometer viagem que não existe.</p>
+          <div class="bairros">
+            <span>Jardim Sol</span><span>Vila Boa Vista</span><span>Parque das Águas</span><span>Bela Vista</span><span>Central</span><span>Alto da Serra</span><span>Porto Seco</span><span>São Judas</span>
+          </div>
+          <p style="color:#5b7288;font-size:14px;margin-top:22px">Fora da área, a instalação é orçada caso a caso, com o deslocamento descrito na proposta.</p>
+        </div>
+        <aside class="destaque-solar">
+          <h3>O que entra na análise</h3>
+          <p>Sem análise, não há proposta. Estes são os pontos que conferimos antes de recomendar qualquer painel.</p>
+          <ul>
+            <li>Inclinação, área útil e estado do telhado</li>
+            <li>Sombreamento de árvores e construções vizinhas</li>
+            <li>Quadro elétrico, aterramento e padrão de entrada</li>
+            <li>Consumo real dos últimos 12 meses</li>
+            <li>Distribuidora, modalidade de compensação e prazo de ligação</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="secao" id="galeria" aria-labelledby="titulo-galeria">
+      <div class="galeria-cab">
+        <div>
+          <span class="rotulo">05 · Galeria</span>
+          <h2 id="titulo-galeria" style="font-size:clamp(28px,3.4vw,42px);color:#0b3a5e;margin-top:12px">Instalações e materiais</h2>
+        </div>
+        <div class="filtros" role="group" aria-label="Filtrar fotografias">
+          <button type="button" data-filtro="todas" aria-pressed="true">Todas</button>
+          <button type="button" data-filtro="instalacao" aria-pressed="false">Instalação</button>
+          <button type="button" data-filtro="painel" aria-pressed="false">Painéis</button>
+          <button type="button" data-filtro="residencias" aria-pressed="false">Residências</button>
+        </div>
+      </div>
+      <p class="sr-only" id="galeria-contagem" aria-live="polite">8 fotografias</p>
+      <div class="galeria">
+        <button type="button" class="foto" data-categoria="painel" data-legenda="Fileira de painéis solares junto a um gramado."><img src="img/painel-grama.webp" alt="Painéis solares instalados ao lado de um gramado verde" width="500" height="380" loading="lazy"><span>Painéis <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="residencias" data-legenda="Casa com painéis solares no telhado."><img src="img/casa-paineis.webp" alt="Casa residencial com painéis solares no telhado" width="500" height="380" loading="lazy"><span>Casa com painéis <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="instalacao" data-legenda="Ajuste da inclinação de um painel durante a instalação."><img src="img/ajuste-painel.webp" alt="Pessoa ajustando a inclinação de um painel solar" width="500" height="380" loading="lazy"><span>Ajuste fino <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="residencias" data-legenda="Painéis sobre telhado de barro vermelho."><img src="img/telha-vermelha.webp" alt="Painéis solares instalados sobre um telhado de barro vermelho" width="500" height="380" loading="lazy"><span>Telhado de barro <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="instalacao" data-legenda="Técnico trabalhando no equipamento de energia solar."><img src="img/tecnico.webp" alt="Técnico trabalhando no equipamento de geração de energia solar" width="500" height="380" loading="lazy"><span>Equipe em campo <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="painel" data-legenda="Vista ampla de uma área de geração solar."><img src="img/campo-solar.webp" alt="Vista ampla de uma área com painéis solares" width="500" height="380" loading="lazy"><span>Vista geral <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="painel" data-legenda="Painéis com vegetação ao redor."><img src="img/painel-verde.webp" alt="Painéis solares instalados com vegetação ao redor" width="500" height="380" loading="lazy"><span>Energia e verde <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="instalacao" data-legenda="Duas pessoas trabalhando em um telhado com painéis."><img src="img/equipe-telhado.webp" alt="Duas pessoas trabalhando em um telhado com painéis solares" width="500" height="380" loading="lazy"><span>Equipe no telhado <b>ampliar ↗</b></span></button>
+      </div>
+      <p style="font-size:13px;color:#5b7288;margin-top:18px">Fotografias de banco selecionadas pelo assunto. Não são instalações da marca fictícia, nem antes e depois de um serviço real.</p>
+    </section>
+
+    <section class="secao" id="proposta" aria-labelledby="titulo-proposta">
+      <div class="proposta">
+        <div class="proposta-texto">
+          <span class="rotulo">06 · Proposta</span>
+          <h2 id="titulo-proposta">Vamos analisar<br>o seu telhado</h2>
+          <p>Descreva a instalação e a gente responde com os próximos passos, o que precisa ser enviado e o prazo de cada etapa.</p>
+          <p>Se você rodou o simulador, os números podem ir junto na mensagem. Nada é enviado sozinho: você confere e toca em enviar.</p>
+          <div class="recorte">Use dados verdadeiros e apenas o necessário. Não envie CPF, documentos, dados de saúde ou número de cartão. Este formulário não salva nem envia dados ao banco.</div>
+        </div>
+        <form class="ficha" id="form-proposta" novalidate>
+          <h3>Pedido de proposta</h3>
+          <label class="campo"><span>Seu nome *</span><input id="pr-nome" name="nome" required maxlength="80" autocomplete="name" placeholder="Como podemos chamar você"></label>
+          <label class="campo"><span>WhatsApp *</span><input id="pr-contato" name="contato" type="tel" required maxlength="30" autocomplete="tel" placeholder="(11) 90000-0000"></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <label class="campo"><span>Bairro *</span><input id="pr-bairro" name="bairro" required maxlength="80" placeholder="Ex.: Jardim Sol"></label>
+            <label class="campo"><span>Serviço</span><select id="pr-servico" name="servico" required>
+              <option value="">Selecione</option>
+              <option value="instalacao">Instalação completa</option>
+              <option value="manutencao">Manutenção e suporte</option>
+              <option value="monitoramento">Monitoramento</option>
+            </select></label>
+          </div>
+          <label class="campo"><span>Conte sobre a instalação</span><textarea id="pr-detalhes" name="detalhes" rows="4" maxlength="700" placeholder="Ex.: Telhado de barro, residence com 3 quartos, conta de luz de R$ 380."></textarea></label>
+          <button class="botao" type="submit">Preparar mensagem</button>
+          <p class="nota">Ao enviar, a conversa continua no WhatsApp. Nenhum pagamento é registrado por aqui.</p>
+          <p id="proposta-status" role="status" aria-live="polite"></p>
+          <div id="proposta-pronta" hidden>
+            <strong style="color:#0b3a5e">Confira antes de enviar:</strong>
+            <pre id="proposta-texto"></pre>
+            <a class="botao" id="proposta-whats" href="https://wa.me/5511942038103" target="_blank" rel="noopener noreferrer">Continuar no WhatsApp ↗</a>
+            <p class="nota">Toque em Enviar no WhatsApp. Fotos da instalação, se houver, são anexadas por você, manualmente.</p>
+          </div>
+          <button class="limpar" type="reset">Limpar formulário</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="secao" id="duvidas" aria-labelledby="titulo-duvidas">
+      <div class="duvidas">
+        <div>
+          <span class="rotulo">07 · Dúvidas</span>
+          <h2 id="titulo-duvidas">Perguntas<br>honestas</h2>
+        </div>
+        <div>
+          <details><summary>A economia é garantida?</summary><p>Não. O resultado depende do seu consumo, do sol na sua região, do sombreamento e da tarifa da sua distribuidora. Por isso o simulador é uma estimativa e a proposta vem depois da análise técnica do telhado.</p></details>
+          <details><summary>Quanto tempo a instalação leva?</summary><p>Depende do tamanho do sistema, da condição do telhado e da fila da distribuidora para a ligação. O prazo aparece na proposta, junto com as etapas que dependem de terceiros.</p></details>
+          <details><summary>Vocês atendem a clientes com telhado em más condições?</summary><p>A avaliação técnica dirá. Em telhado que precisa de reparo antes, o caminho é resolver o telhado e depois instalar. Isso é conversado na visita, sem custo.</p></details>
+          <details><summary>Existe garantia?</summary><p>Os equipamentos têm garantia do fabricante e o serviço tem prazo de garantia próprio, informado por escrito na proposta. Os termos dependem do que for contratado.</p></details>
+          <details><summary>As fotos são de instalações reais da empresa?</summary><p>Não. Sol do Bairro é uma marca fictícia criada para demonstrar este site. As fotos são de banco e ilustram painéis, instalações e equipamentos. Em um projeto real, podem ser substituídas por fotos autorizadas do serviço.</p></details>
+          <details><summary>Este site usa banco de dados?</summary><p>A vitrine e o simulador funcionam sem banco. A integração opcional com Supabase carrega os serviços publicados e oferece um painel autenticado para o responsável registrar as propostas recebidas pelo WhatsApp. A instalação está explicada no manual.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-linha">
+      <div>
+        <a class="marca" href="#inicio"><span class="sol-marca" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#5b3800" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="4.4" fill="#5b3800" stroke="none"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg></span><span class="marca-texto">Sol do Bairro<small>Energia solar</small></span></a>
+        <p>Marca fictícia criada como demonstração pela MOSS Digital. Não há instalação solar em funcionamento, preço real nem proposta válida neste modelo.</p>
+      </div>
+      <nav aria-label="Links do rodapé">
+        <a href="fontes-fotos.html">Créditos das fotos</a>
+        <a href="MANUAL-DO-CLIENTE.html">Manual do comprador</a>
+        <a href="painel.html">Painel do responsável</a>
+        <a href="../../index.html">MOSS Digital ↗</a>
+      </nav>
+    </div>
+  </footer>
+
+  <dialog id="lightbox" aria-labelledby="foto-legenda">
+    <div class="lightbox-topo"><span>Galeria · Sol do Bairro</span><button type="button" id="fechar-foto">Fechar ×</button></div>
+    <img id="foto-ampliada" src="img/painel-grama.webp" alt="">
+    <p id="foto-legenda"></p>
+    <div class="lightbox-acoes"><button type="button" id="foto-anterior">← Anterior</button><span id="foto-numero"></span><button type="button" id="foto-proxima">Próxima →</button></div>
+  </dialog>
+  <noscript><p class="sem-js">Ative o JavaScript para usar o simulador, os filtros e a preparação da mensagem. Você ainda pode <a href="https://wa.me/5511942038103">falar com a MOSS pelo WhatsApp</a>.</p></noscript>
+</body>
+</html>
