@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Catalogo completo com filtros combinaveis, executados apenas no navegador. -->
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#124435">
+  <title>Catálogo — ARMAZÉM DA ESQUINA</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="css/style.css">
+  <script src="js/data.js" defer></script><script src="js/app.js" defer></script>
+</head>
+<body data-page="catalog">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="demo-strip">MOSS DIGITAL • MERCADINHO DEMONSTRATIVO • PRODUTOS, PREÇOS E PEDIDOS FICTÍCIOS</div>
+  <div class="awning" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="conteudo">
+    <section class="wrap page-head"><p class="eyebrow">CATÁLOGO COMPLETO</p><h1>Tudo o que tem<br>na prateleira</h1><p>24 itens fictícios em seis categorias. Filtre por nome, categoria, faixa de preço, promoções e os mais pedidos. Nada é reservado nem cobrado aqui.</p></section>
+    <div class="wrap catalogo-layout">
+      <!-- Filtros combináveis, todos com estado visível. -->
+      <aside class="filters"><h3>Ajustar a busca</h3><button class="text-link" id="clear-filters" type="button">LIMPAR FILTROS</button>
+        <div class="group"><span>Palavra</span><input type="search" id="f-busca" placeholder="Ex.: pão, café, banana" style="margin-top:8px"></div>
+        <div class="group"><span>Categoria</span><div id="f-categorias"></div></div>
+        <div class="group"><span>Preço máximo</span><input type="number" id="f-preco" min="0" step="0.5" placeholder="Sem limite" style="margin-top:8px"></div>
+        <div class="group"><span>Prefiro</span><label><input type="checkbox" id="f-top10"> Só o top 10 mais pedidos</label><label><input type="checkbox" id="f-ofertas"> Só as ofertas do dia</label><label><input type="checkbox" id="f-disponivel"> Só itens disponíveis</label></div>
+      </aside>
+      <section><div class="results-bar"><p id="result-count" aria-live="polite"></p><label style="margin:0;font-weight:700">Ordenar por<select id="f-ordem"><option value="destaque">Destaques</option><option value="barato">Menor preço</option><option value="caro">Maior preço</option><option value="top">Mais pedidos</option><option value="nome">Nome</option></select></label></div>
+        <div class="product-grid" id="catalog-grid"></div>
+        <div class="no-results" id="no-results" hidden><h2>Não achei essa prateleira.</h2><p>Tente outro termo, aumente o preço máximo ou limpe os filtros.</p><button class="button" type="button" id="reset-filters">LIMPAR TUDO</button></div>
+        <p class="media-note">Todas as imagens são referências de banco, usadas para ilustrar o item fictício. Preços, unidades e estoque são exemplos de cadastro e não representam oferta comercial.</p>
+      </section>
+    </div>
+  </main>
+  <div id="site-footer"></div><div id="site-dialogs"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Painel do comerciante: gestao local de catalogo, sem autenticacao real. -->
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#124435">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Painel do comerciante — ARMAZÉM DA ESQUINA</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="css/style.css">
+  <script src="js/data.js" defer></script><script src="js/app.js" defer></script><script src="js/panel.js" defer></script>
+</head>
+<body data-page="panel">
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="demo-strip">MOSS DIGITAL • MERCADINHO DEMONSTRATIVO • PRODUTOS, PREÇOS E PEDIDOS FICTÍCIOS</div>
+  <div class="awning" aria-hidden="true"></div>
+  <div id="site-header"></div>
+  <main id="conteudo">
+    <section class="wrap page-head"><p class="eyebrow">PAINEL DO COMERCIANTE</p><h1>Seu estoque,<br>sempre em dia</h1><p>Ajuste preço, marque esgotado e veja como fica a vitrine. Tudo fica apenas neste navegador, sem servidor e sem conta.</p></section>
+    <div class="wrap"><div class="warning-box"><strong>ESTA ÁREA NÃO É UMA ADMINISTRAÇÃO SEGURA.</strong>Não existe login, permissão por função, banco de dados nem servidor. Qualquer pessoa com acesso a este navegador pode mudar os dados. Não cadastre produtos reais, clientes ou preços verdadeiros nesta demonstração.</div>
+      <div class="panel-layout"><nav class="panel-menu" aria-label="Seções do painel"><button data-panel-tab="produtos" aria-pressed="true">Produtos e preços</button><button data-panel-tab="destaques" aria-pressed="false">Top 10 e ofertas</button><button data-panel-tab="pedidos" aria-pressed="false">Pedidos de exemplo</button><button data-panel-tab="loja" aria-pressed="false">Dados da loja</button></nav>
+        <div><section id="panel-produtos"><div class="results-bar"><p id="panel-count"></p><button class="button" type="button" id="panel-reset">RESTAURAR CATÁLOGO ORIGINAL</button></div><div style="overflow-x:auto;max-width:100%"><table class="panel-table"><thead><tr><th scope="col">Produto</th><th scope="col">Preço</th><th scope="col">Estoque</th><th scope="col">Vitrine</th><th scope="col">Ações</th></tr></thead><tbody id="panel-rows"></tbody></table></div></section>
+          <section id="panel-destaques" hidden><div class="form-grid"><h3 style="margin-bottom:18px">Top 10 e ofertas</h3><p class="form-note">Escolha até dez itens do top 10 e marque as ofertas do dia. A vitrine pública usa essas marcações.</p><div id="panel-top"></div></section>
+          <section id="panel-pedidos" hidden><div class="info-box"><strong>Pedidos de exemplo</strong><p>Os pedidos abaixo são fictícios e servem para mostrar como a tela funciona. Nenhum pedido real é recebido nesta demonstração, porque não há servidor nem envio de dados.</p></div><div style="overflow-x:auto;margin-top:22px"><table class="panel-table"><thead><tr><th scope="col">Cliente fictício</th><th scope="col">Itens de exemplo</th><th scope="col">Total</th><th scope="col">Situação</th></tr></thead><tbody id="panel-orders"></tbody></table></div></section>
+          <section id="panel-loja" hidden><form class="form-grid" id="store-form"><h3 style="margin-bottom:18px">Dados da loja</h3><div class="field-pair"><label>Nome da loja<input name="nome" required maxlength="60"></label><label>WhatsApp autorizado<input name="whatsapp" inputmode="numeric" pattern="[0-9]{10,15}" maxlength="15" placeholder="Somente se for um número real e autorizado"></label></div><label>Mensagem de boas-vindas<input name="boasVindas" maxlength="200"></label><label>Área de entrega e prazo<input name="entrega" maxlength="200"></label><label class="form-note" style="margin-bottom:18px">O número do WhatsApp só é usado para abrir a conversa quando o visitante pede. Nada é enviado sozinho. Confira os dados antes de salvar.</label><button class="button" type="submit">SALVAR NESTE NAVEGADOR ↗</button><p class="form-error" id="store-error" role="status"></p></form></section>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div><div id="site-dialogs"></div>
+</body>
+</html>

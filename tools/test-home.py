@@ -41,15 +41,15 @@ async def test(base, output, browser_path, axe_path):
         await page.evaluate('document.fonts.ready')
         assert await page.locator('h1').count() == 1
         assert await page.locator('main').count() == 1
-        assert await page.locator('#modelos .card').count() == 6
-        assert await page.locator('#modelos .card .card-actions a').count() == 12
+        assert await page.locator('#modelos .card').count() == 15
+        assert await page.locator('#modelos .card .card-actions a').count() == 30
         assert await page.locator('video').count() == 1
         assert await page.locator('.hero video').count() == 1
         checks.append('vídeo único no topo, dentro da seção principal de apresentação')
         ids = await page.locator('[id]').evaluate_all('(els) => els.map(el => el.id)')
         assert len(ids) == len(set(ids)), 'IDs duplicados'
         json.loads(await page.locator('script[type="application/ld+json"]').inner_text())
-        checks.append('semântica, seis projetos, doze ações e metadados válidos')
+        checks.append('semântica, quinze projetos, trinta ações e metadados válidos')
 
         links = await page.locator('a[href], img[src], link[href], source[src], track[src], video[poster]').evaluate_all('''els => els.map(el => el.getAttribute('href') || el.getAttribute('src') || el.getAttribute('poster'))''')
         for link in links:
@@ -78,7 +78,7 @@ async def test(base, output, browser_path, axe_path):
         assert await page.locator('.skip-link').evaluate('(el) => el === document.activeElement')
         await page.keyboard.press('Enter')
         assert urlsplit(page.url).fragment == 'conteudo'
-        summary = page.locator('.faq-list summary').first
+        summary = page.locator('.video-transcript summary').first
         await summary.focus()
         await page.keyboard.press('Enter')
         assert await summary.locator('..').get_attribute('open') is not None
@@ -91,6 +91,13 @@ async def test(base, output, browser_path, axe_path):
             await page.set_viewport_size({'width': width, 'height': 900})
             await page.evaluate('window.scrollTo(0, 0)')
             assert await page.evaluate('document.documentElement.scrollWidth <= innerWidth'), f'Transbordamento em {width}px'
+            # Rolagem gradual: um salto direto ao fim não dispara as imagens com loading="lazy".
+            altura = await page.evaluate('document.body.scrollHeight')
+            pos = 0
+            while pos < altura:
+                pos += 700
+                await page.evaluate(f'window.scrollTo(0, {pos})')
+                await page.wait_for_timeout(150)
             await page.locator('.home-contact').scroll_into_view_if_needed()
             await page.wait_for_function('Array.from(document.images).every(img => img.complete && img.naturalWidth > 0)')
             assert await page.evaluate('document.documentElement.scrollWidth <= innerWidth'), f'Transbordamento no rodapé em {width}px'
@@ -110,7 +117,7 @@ async def test(base, output, browser_path, axe_path):
 
         await page.set_viewport_size({'width': 1440, 'height': 1000})
         await page.locator('#apresentacao').screenshot(path=str(output / 'apresentacao-video.png'))
-        await page.locator('#como-funciona').screenshot(path=str(output / 'como-contratar.png'))
+        await page.locator('#site-preco').screenshot(path=str(output / 'como-contratar.png'))
         await page.locator('#modelos').screenshot(path=str(output / 'projetos-destaque.png'))
         await page.locator('video').evaluate('(v) => { v.muted = true; return v.play(); }')
         await page.wait_for_function('document.querySelector("video").currentTime > 0.2')
@@ -123,9 +130,9 @@ async def test(base, output, browser_path, axe_path):
         nojs = await browser.new_context(java_script_enabled=False, viewport={'width': 390, 'height': 844})
         fallback = await nojs.new_page()
         await fallback.goto(base, wait_until='networkidle')
-        assert await fallback.locator('#modelos .card').count() == 6
-        await fallback.locator('.faq-list summary').first.click()
-        assert await fallback.locator('.faq-list details').first.get_attribute('open') is not None
+        assert await fallback.locator('#modelos .card').count() == 15
+        await fallback.locator('.video-transcript summary').first.click()
+        assert await fallback.locator('.video-transcript').get_attribute('open') is not None
         assert await fallback.locator('#contato a[href*="wa.me"]').is_visible()
         checks.append('catálogo, dúvidas e contato acessíveis também sem JavaScript')
         assert not errors, errors
