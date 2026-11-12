@@ -72,3 +72,5 @@ Orçamento total: ${orcamento}.
 Sei que os roteiros são ilustrativos. Podem me orientar?`); // Não cria reserva real.
 });
 desenharRoteiros(); // Inicia a listagem.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

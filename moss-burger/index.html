@@ -15,6 +15,8 @@
     <!-- O React vai "engatar" todo o site dentro desta div -->
     <div id="root"></div>
     <!-- type="module" permite usar import/export modernos no navegador -->
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- A aplicação pronta está na rota pública; JSX não roda diretamente no Pages. -->
+    <script>location.replace('../moss-burger-online/' + location.search + location.hash);</script>
+    <noscript><p><a href="../moss-burger-online/">Abrir a demonstração MOSS Burger</a></p></noscript>
   </body>
 </html>

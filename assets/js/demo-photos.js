@@ -69,7 +69,7 @@
             return false;
           });
           var old = card.querySelector('img');
-          if (found && old) {
+          if (found && old && !old.dataset.mossSnapshot) {
             var img = image(sets[found][0], 'moss-photo-catalog');
             img.loading = 'lazy';
             old.replaceWith(img);
@@ -79,7 +79,7 @@
         if (cards && !document.getElementById('photo-disclosure')) {
           var note = document.createElement('p');
           note.id = 'photo-disclosure'; note.className = 'moss-catalog-photo-note';
-          note.append('Fotos de referência ilustrativas; não representam clientes, equipes ou produtos das marcas fictícias. ', creditLink());
+          note.append('Capas revisadas com capturas das próprias demonstrações. Fotos internas de banco são ilustrativas, não representam clientes, equipes ou produtos das marcas fictícias. ', creditLink());
           cards.before(note);
         }
       } else if (sets[slug]) {

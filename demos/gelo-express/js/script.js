@@ -70,3 +70,5 @@ document.getElementById('order-form').addEventListener('submit',(e)=>{ // Pedido
  abrirWhatsApp(msg.join('\n')); // Encaminha ao vendedor sem efetuar a venda.
 });
 calcular(); // Mostra estado inicial.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

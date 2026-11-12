@@ -86,7 +86,7 @@ a {
 /* Estilo aplicado a .hero-grid. */
 .hero-grid {
   display: grid; /* Define o modo de distribuição do elemento. */
-  grid-template-columns: .95fr 1.05fr; /* Organiza as colunas do grid. */
+  grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr); /* Permite encolher as imagens no grid. */
   gap: 28px; /* Ajusta o espaço entre elementos. */
   align-items: center; /* Alinha os elementos na direção transversal. */
 }
@@ -133,6 +133,7 @@ a {
 }
 /* Estilo aplicado a .hero-magazine. */
 .hero-magazine {
+  min-width: 0;
   position: relative; /* Define o posicionamento do elemento. */
   background: var(--paper); /* Define o fundo do elemento. */
   padding: 16px; /* Define o espaço interno. */
@@ -141,6 +142,7 @@ a {
 }
 /* Estilo aplicado a .hero-magazine img. */
 .hero-magazine img {
+  max-width: 100%;
   display: block; /* Define o modo de distribuição do elemento. */
   width: 100%; /* Controla a largura disponível. */
   aspect-ratio: 4/3; /* Mantém a proporção da área de imagem. */

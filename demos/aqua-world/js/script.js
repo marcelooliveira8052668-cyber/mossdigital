@@ -114,3 +114,5 @@ document.addEventListener('DOMContentLoaded', () => {
     calculate();
   }
 });
+// Identifica as fotografias de banco e disponibiliza as fontes da revisão.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

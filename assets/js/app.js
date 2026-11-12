@@ -751,7 +751,7 @@
       // Se o cliente nao configurou API, o pedido vai para o WhatsApp dele
       // com a mensagem ja escrita. E o que funciona de verdade no dia a dia.
       const modo = CFG.contact.formMode ||
-                   (CFG.dataSource.provider === 'local' ? 'whatsapp' : 'api');
+                   ((!CFG.dataSource || CFG.dataSource.provider === 'local') ? 'whatsapp' : 'api');
 
       if (modo === 'whatsapp' && CFG.contact.whatsapp) {
         const numero = String(CFG.contact.whatsapp).replace(/\D/g, '');
@@ -776,6 +776,7 @@
 
         const link = 'https://wa.me/' + numero + '?text=' + encodeURIComponent(mensagem);
         const janela = window.open(link, '_blank');
+        if (janela) janela.opener = null;
         if (!janela) location.href = link;
 
         msg.className = 'form__msg is-ok';
@@ -791,14 +792,17 @@
       btn.disabled = false;
       btn.innerHTML = original;
 
-      msg.className = 'form__msg ' + (result.ok ? 'is-ok' : 'is-error');
-      msg.textContent = result.ok
+      const confirmado = result.ok && result.persisted !== false && !result.pending;
+      msg.className = 'form__msg ' + (confirmado ? 'is-ok' : 'is-error');
+      msg.textContent = result.pending
+        ? 'Não foi possível confirmar o recebimento no servidor. Use o WhatsApp para confirmar sua solicitação; os campos foram mantidos.'
+        : result.ok
         ? (result.persisted === false
-            ? 'Recebemos sua solicitação! (salva localmente — banco indisponível no momento)'
+            ? 'Sua solicitação NÃO foi enviada ao atendimento. Uma cópia ficou apenas neste navegador. Use o WhatsApp para concluir o envio.'
             : (CFG.contact.formSuccess || 'Recebemos sua solicitação! Responderemos em breve.'))
         : 'Não foi possível enviar agora. Tente o WhatsApp.';
 
-      if (result.ok) form.reset();
+      if (result.ok && result.persisted !== false) form.reset();
     });
 
     $$('input, textarea, select', form).forEach(el => {
@@ -1064,7 +1068,7 @@
     initForm();
 
     console.log('%cSite pronto!', 'color:#e8590c;font-weight:700',
-      'Banco configurado:', window.DataLayer.provider());
+      'Banco configurado:', window.DataLayer?.provider?.() || 'local');
   }
 
   if (document.readyState === 'loading') {

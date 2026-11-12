@@ -1,0 +1,634 @@
+{
+  "license": "https://www.pexels.com/license/",
+  "notice": "Fotos de banco ilustrativas do segmento. Não comprovam produtos, equipes, clientes ou locais das marcas fictícias.",
+  "photos": [
+    {
+      "key": "eventos",
+      "id": 50675,
+      "source": "https://images.pexels.com/photos/50675/banquet-wedding-society-deco-50675.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Mesas e cadeiras preparadas para um evento",
+      "targets": [
+        "aluga-festa/capa-eventos.webp",
+        "aluga-festa/mesas.webp",
+        "aluga-festa/cadeiras.webp"
+      ],
+      "page": "https://www.pexels.com/photo/50675/",
+      "download": "https://images.pexels.com/photos/50675/banquet-wedding-society-deco-50675.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/eventos-50675.webp"
+    },
+    {
+      "key": "aquario",
+      "id": 12829679,
+      "alt": "Peixes e corais em um aquário",
+      "targets": [
+        "aqua-world/capa-aquario.webp"
+      ],
+      "page": "https://www.pexels.com/photo/12829679/",
+      "download": "https://images.pexels.com/photos/12829679/pexels-photo-12829679.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/aquario-12829679.webp"
+    },
+    {
+      "key": "peixes",
+      "id": 32024485,
+      "alt": "Peixes coloridos em um aquário",
+      "targets": [
+        "aqua-world/peixes-coloridos.webp"
+      ],
+      "page": "https://www.pexels.com/photo/32024485/",
+      "download": "https://images.pexels.com/photos/32024485/pexels-photo-32024485.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/peixes-32024485.webp"
+    },
+    {
+      "key": "pneus",
+      "id": 6870311,
+      "alt": "Mecânico examinando um pneu em uma oficina",
+      "targets": [
+        "borracha-ja/hero-borracharia.webp",
+        "borracha-ja/oficina-pneus.webp"
+      ],
+      "page": "https://www.pexels.com/photo/6870311/",
+      "download": "https://images.pexels.com/photos/6870311/pexels-photo-6870311.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/pneus-6870311.webp"
+    },
+    {
+      "key": "troca-pneu",
+      "id": 8986133,
+      "alt": "Mecânico trabalhando na roda de um carro",
+      "targets": [
+        "borracha-ja/troca-pneu.webp",
+        "borracha-ja/reparo-pneu.webp"
+      ],
+      "page": "https://www.pexels.com/photo/8986133/",
+      "download": "https://images.pexels.com/photos/8986133/pexels-photo-8986133.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/troca-pneu-8986133.webp"
+    },
+    {
+      "key": "convivencia",
+      "id": 38658640,
+      "alt": "Casal idoso cuidando de plantas em um jardim",
+      "targets": [
+        "casa-acolher/capa-convivencia.webp"
+      ],
+      "page": "https://www.pexels.com/photo/38658640/",
+      "download": "https://images.pexels.com/photos/38658640/pexels-photo-38658640.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/convivencia-38658640.webp"
+    },
+    {
+      "key": "queijos",
+      "id": 543733,
+      "alt": "Tábua com queijos, biscoitos e azeitonas",
+      "targets": [
+        "casa-do-queijo/capa-tabua.webp"
+      ],
+      "page": "https://www.pexels.com/photo/543733/",
+      "download": "https://images.pexels.com/photos/543733/pexels-photo-543733.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/queijos-543733.webp"
+    },
+    {
+      "key": "brie",
+      "id": 28603409,
+      "alt": "Composição com queijo brie, biscoitos e frios",
+      "targets": [
+        "casa-do-queijo/brie-cremoso.webp"
+      ],
+      "page": "https://www.pexels.com/photo/28603409/",
+      "download": "https://images.pexels.com/photos/28603409/pexels-photo-28603409.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/brie-28603409.webp"
+    },
+    {
+      "key": "mel",
+      "id": 4921856,
+      "alt": "Pedaços de favo de mel em um recipiente",
+      "targets": [
+        "casa-do-queijo/geleias-mel.webp"
+      ],
+      "page": "https://www.pexels.com/photo/4921856/",
+      "download": "https://images.pexels.com/photos/4921856/pexels-photo-4921856.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/mel-4921856.webp"
+    },
+    {
+      "key": "queijaria",
+      "id": 13079969,
+      "alt": "Seleção de queijos artesanais em uma loja",
+      "targets": [
+        "casa-do-queijo/loja-emporio.webp"
+      ],
+      "page": "https://www.pexels.com/photo/13079969/",
+      "download": "https://images.pexels.com/photos/13079969/pexels-photo-13079969.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/queijaria-13079969.webp"
+    },
+    {
+      "key": "lavanderia",
+      "id": 9669475,
+      "alt": "Máquinas de lavar em uma lavanderia",
+      "targets": [
+        "clean-express/capa-lavanderia.webp",
+        "clean-express/lavagem-roupas.webp"
+      ],
+      "page": "https://www.pexels.com/photo/9669475/",
+      "download": "https://images.pexels.com/photos/9669475/pexels-photo-9669475.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/lavanderia-9669475.webp"
+    },
+    {
+      "key": "contabilidade",
+      "id": 17065743,
+      "alt": "Calculadora e pastas sobre uma mesa de escritório",
+      "targets": [
+        "contabil-organiza/capa-contabilidade.webp"
+      ],
+      "page": "https://www.pexels.com/photo/17065743/",
+      "download": "https://images.pexels.com/photos/17065743/pexels-photo-17065743.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/contabilidade-17065743.webp"
+    },
+    {
+      "key": "encanamento",
+      "id": 7220892,
+      "alt": "Reparo de tubulação sob uma pia",
+      "targets": [
+        "desentoja/inspecao-encanamento.webp",
+        "desentoja/equipe-tecnica.webp"
+      ],
+      "page": "https://www.pexels.com/photo/7220892/",
+      "download": "https://images.pexels.com/photos/7220892/pexels-photo-7220892.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/encanamento-7220892.webp"
+    },
+    {
+      "key": "bolo",
+      "id": 23384637,
+      "alt": "Bolo de aniversário decorado com velas",
+      "targets": [
+        "doce-sob-medida/hero-bolo.webp",
+        "doce-sob-medida/bolo-festa.webp"
+      ],
+      "page": "https://www.pexels.com/photo/23384637/",
+      "download": "https://images.pexels.com/photos/23384637/pexels-photo-23384637.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/bolo-23384637.webp"
+    },
+    {
+      "key": "bolo-chocolate",
+      "id": 12616001,
+      "alt": "Bolo de chocolate decorado para aniversário",
+      "targets": [
+        "doce-sob-medida/bolo-chocolate.webp"
+      ],
+      "page": "https://www.pexels.com/photo/12616001/",
+      "download": "https://images.pexels.com/photos/12616001/pexels-photo-12616001.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/bolo-chocolate-12616001.webp"
+    },
+    {
+      "key": "sorvete",
+      "id": 29269196,
+      "alt": "Bolas de sorvete com cobertura de castanhas",
+      "targets": [
+        "dolce-neve/capa-sorveteria.webp"
+      ],
+      "page": "https://www.pexels.com/photo/29269196/",
+      "download": "https://images.pexels.com/photos/29269196/pexels-photo-29269196.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/sorvete-29269196.webp"
+    },
+    {
+      "key": "capacete",
+      "id": 34965713,
+      "alt": "Capacete de segurança amarelo em um canteiro de obras",
+      "targets": [
+        "epi-na-medida/capa-operacao.webp",
+        "epi-na-medida/capacete.webp"
+      ],
+      "page": "https://www.pexels.com/photo/34965713/",
+      "download": "https://images.pexels.com/photos/34965713/pexels-photo-34965713.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/capacete-34965713.webp"
+    },
+    {
+      "key": "extintores",
+      "id": 18329661,
+      "alt": "Extintores de incêndio organizados em uma fileira",
+      "targets": [
+        "extincontrol/painel-equipamentos.webp"
+      ],
+      "page": "https://www.pexels.com/photo/18329661/",
+      "download": "https://images.pexels.com/photos/18329661/pexels-photo-18329661.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/extintores-18329661.webp"
+    },
+    {
+      "key": "impressao-3d",
+      "id": 24859620,
+      "alt": "Impressora 3D em funcionamento em uma oficina",
+      "targets": [
+        "forma-3d/hero-peca-3d.webp"
+      ],
+      "page": "https://www.pexels.com/photo/24859620/",
+      "download": "https://images.pexels.com/photos/24859620/pexels-photo-24859620.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/impressao-3d-24859620.webp"
+    },
+    {
+      "key": "gelo",
+      "id": 7254237,
+      "alt": "Cubos de gelo transparentes em um copo",
+      "targets": [
+        "gelo-express/capa-gelo.webp",
+        "gelo-express/gelo-cubo.webp"
+      ],
+      "page": "https://www.pexels.com/photo/7254237/",
+      "download": "https://images.pexels.com/photos/7254237/pexels-photo-7254237.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/gelo-7254237.webp"
+    },
+    {
+      "key": "flores",
+      "id": 36739287,
+      "alt": "Buquês coloridos em uma floricultura",
+      "targets": [
+        "jardim-secreto/capa.webp"
+      ],
+      "page": "https://www.pexels.com/photo/36739287/",
+      "download": "https://images.pexels.com/photos/36739287/pexels-photo-36739287.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/flores-36739287.webp"
+    },
+    {
+      "key": "papelaria",
+      "id": 8099373,
+      "alt": "Caderno azul e lápis coloridos sobre uma mesa",
+      "targets": [
+        "lista-certa/capa-papelaria.webp"
+      ],
+      "page": "https://www.pexels.com/photo/8099373/",
+      "download": "https://images.pexels.com/photos/8099373/pexels-photo-8099373.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/papelaria-8099373.webp"
+    },
+    {
+      "key": "blazer",
+      "id": 19531045,
+      "alt": "Blazer bege exposto em um manequim",
+      "targets": [
+        "maison-reuse/capa-boutique.webp",
+        "maison-reuse/blazer-atelier.webp"
+      ],
+      "page": "https://www.pexels.com/photo/19531045/",
+      "download": "https://images.pexels.com/photos/19531045/pexels-photo-19531045.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/blazer-19531045.webp"
+    },
+    {
+      "key": "betoneira",
+      "id": 6082416,
+      "alt": "Operação de uma betoneira em um canteiro de obras",
+      "targets": [
+        "maxloc/capa.webp",
+        "maxloc/betoneira.webp"
+      ],
+      "page": "https://www.pexels.com/photo/6082416/",
+      "download": "https://images.pexels.com/photos/6082416/pexels-photo-6082416.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/betoneira-6082416.webp"
+    },
+    {
+      "key": "marmita",
+      "id": 1640771,
+      "alt": "Refeições preparadas em recipientes com legumes, arroz e grãos",
+      "targets": [
+        "mesa-da-semana/capa-marmitas.webp"
+      ],
+      "page": "https://www.pexels.com/photo/1640771/",
+      "download": "https://images.pexels.com/photos/1640771/pexels-photo-1640771.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/marmita-1640771.webp"
+    },
+    {
+      "key": "guitarras",
+      "id": 36222557,
+      "alt": "Diversas guitarras expostas em uma loja de instrumentos",
+      "targets": [
+        "music-house/capa.webp",
+        "music-house/parede-guitarras.webp"
+      ],
+      "page": "https://www.pexels.com/photo/36222557/",
+      "download": "https://images.pexels.com/photos/36222557/pexels-photo-36222557.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/guitarras-36222557.webp"
+    },
+    {
+      "key": "estudio",
+      "id": 7091308,
+      "alt": "Ensaio de uma banda em um estúdio de gravação",
+      "targets": [
+        "music-house/estudio-instrumentos.webp"
+      ],
+      "page": "https://www.pexels.com/photo/7091308/",
+      "download": "https://images.pexels.com/photos/7091308/pexels-photo-7091308.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/estudio-7091308.webp"
+    },
+    {
+      "key": "cabana",
+      "id": 17402875,
+      "alt": "Cabana de madeira cercada por árvores em uma floresta",
+      "targets": [
+        "nature-escape/capa.webp",
+        "nature-escape/cabana-horizonte.webp"
+      ],
+      "page": "https://www.pexels.com/photo/17402875/",
+      "download": "https://images.pexels.com/photos/17402875/pexels-photo-17402875.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/cabana-17402875.webp"
+    },
+    {
+      "key": "coworking",
+      "id": 7651639,
+      "alt": "Espaço de trabalho compartilhado com computadores",
+      "targets": [
+        "nexo-work/coworking-principal.webp",
+        "nexo-work/mesa-flex.webp"
+      ],
+      "page": "https://www.pexels.com/photo/7651639/",
+      "download": "https://images.pexels.com/photos/7651639/pexels-photo-7651639.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/coworking-7651639.webp"
+    },
+    {
+      "key": "reuniao",
+      "id": 6773670,
+      "alt": "Reunião em uma sala de trabalho",
+      "targets": [
+        "nexo-work/sala-reuniao.webp"
+      ],
+      "page": "https://www.pexels.com/photo/6773670/",
+      "download": "https://images.pexels.com/photos/6773670/pexels-photo-6773670.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/reuniao-6773670.webp"
+    },
+    {
+      "key": "marina",
+      "id": 15452603,
+      "alt": "Vista aérea de embarcações atracadas em uma marina",
+      "targets": [
+        "ocean-prime/capa.webp",
+        "ocean-prime/marina.webp"
+      ],
+      "page": "https://www.pexels.com/photo/15452603/",
+      "download": "https://images.pexels.com/photos/15452603/pexels-photo-15452603.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/marina-15452603.webp"
+    },
+    {
+      "key": "iate",
+      "id": 20320004,
+      "alt": "Embarcações atracadas junto ao mar",
+      "targets": [
+        "ocean-prime/embarcacao.webp"
+      ],
+      "page": "https://www.pexels.com/photo/20320004/",
+      "download": "https://images.pexels.com/photos/20320004/pexels-photo-20320004.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/iate-20320004.webp"
+    },
+    {
+      "key": "marmore",
+      "id": 37153440,
+      "alt": "Cozinha com ilha e bancada de mármore",
+      "targets": [
+        "pedra-exata/capa-marmoraria.webp",
+        "pedra-exata/cozinha-planejada.webp"
+      ],
+      "page": "https://www.pexels.com/photo/37153440/",
+      "download": "https://images.pexels.com/photos/37153440/pexels-photo-37153440.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/marmore-37153440.webp"
+    },
+    {
+      "key": "futsal",
+      "id": 14690053,
+      "alt": "Jogadores em uma partida de futsal em quadra coberta",
+      "targets": [
+        "quadra-livre/hero-quadra.webp",
+        "quadra-livre/futsal.webp"
+      ],
+      "page": "https://www.pexels.com/photo/14690053/",
+      "download": "https://images.pexels.com/photos/14690053/pexels-photo-14690053.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/futsal-14690053.webp"
+    },
+    {
+      "key": "beach-tennis",
+      "id": 38471576,
+      "alt": "Jogador praticando beach tennis ao ar livre",
+      "targets": [
+        "quadra-livre/beach-tennis.webp"
+      ],
+      "page": "https://www.pexels.com/photo/38471576/",
+      "download": "https://images.pexels.com/photos/38471576/pexels-photo-38471576.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/beach-tennis-38471576.webp"
+    },
+    {
+      "key": "viagem-serra",
+      "id": 38168267,
+      "alt": "Paisagem de montanhas com construções alpinas",
+      "targets": [
+        "rota-viva/capa-roteiro.webp",
+        "rota-viva/serra-charme.webp"
+      ],
+      "page": "https://www.pexels.com/photo/38168267/",
+      "download": "https://images.pexels.com/photos/38168267/pexels-photo-38168267.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/viagem-serra-38168267.webp"
+    },
+    {
+      "key": "camera-seguranca",
+      "id": 5966513,
+      "alt": "Câmera de vigilância instalada em um ambiente interno",
+      "targets": [
+        "safehome/cameras-cftv.webp"
+      ],
+      "page": "https://www.pexels.com/photo/5966513/",
+      "download": "https://images.pexels.com/photos/5966513/pexels-photo-5966513.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/camera-seguranca-5966513.webp"
+    },
+    {
+      "key": "drone",
+      "id": 1336211,
+      "alt": "Drone segurado por uma pessoa em uma praia",
+      "targets": [
+        "sky-vision/capa-drone.webp"
+      ],
+      "page": "https://www.pexels.com/photo/1336211/",
+      "download": "https://images.pexels.com/photos/1336211/pexels-photo-1336211.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/drone-1336211.webp"
+    },
+    {
+      "key": "sapateiro",
+      "id": 34510831,
+      "alt": "Sapateiro trabalhando em um calçado de couro",
+      "targets": [
+        "sola-viva/capa-sapateiro.webp",
+        "sola-viva/restauracao-calcados.webp"
+      ],
+      "page": "https://www.pexels.com/photo/34510831/",
+      "download": "https://images.pexels.com/photos/34510831/pexels-photo-34510831.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/sapateiro-34510831.webp"
+    },
+    {
+      "key": "cinema",
+      "id": 19374140,
+      "alt": "Sala com equipamentos antigos de projeção de cinema",
+      "targets": [
+        "tela-e-trama/capa-cinema.webp"
+      ],
+      "page": "https://www.pexels.com/photo/19374140/",
+      "download": "https://images.pexels.com/photos/19374140/pexels-photo-19374140.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/cinema-19374140.webp"
+    },
+    {
+      "key": "telhado",
+      "id": 29114658,
+      "alt": "Telhado coberto com telhas vermelhas",
+      "targets": [
+        "telha-certa/capa-telhado.webp",
+        "telha-certa/telhas.webp"
+      ],
+      "page": "https://www.pexels.com/photo/29114658/",
+      "download": "https://images.pexels.com/photos/29114658/pexels-photo-29114658.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/telhado-29114658.webp"
+    },
+    {
+      "key": "toldo",
+      "id": 18182523,
+      "alt": "Terraço de restaurante com mesas sob um toldo listrado",
+      "targets": [
+        "toldoforma/capa-toldo-varanda.webp"
+      ],
+      "page": "https://www.pexels.com/photo/18182523/",
+      "download": "https://images.pexels.com/photos/18182523/pexels-photo-18182523.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/toldo-18182523.webp"
+    },
+    {
+      "key": "toldo-listrado",
+      "id": 17756397,
+      "alt": "Toldo listrado amarelo e branco em uma fachada",
+      "targets": [
+        "toldoforma/toldo-retratil.webp"
+      ],
+      "page": "https://www.pexels.com/photo/17756397/",
+      "download": "https://images.pexels.com/photos/17756397/pexels-photo-17756397.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/toldo-listrado-17756397.webp"
+    },
+    {
+      "key": "cacamba",
+      "id": 9669805,
+      "alt": "Caçamba industrial contendo peças de madeira e resíduos",
+      "targets": [
+        "cacamba-certa/capa-cacamba.webp"
+      ],
+      "page": "https://www.pexels.com/photo/9669805/",
+      "download": "https://images.pexels.com/photos/9669805/pexels-photo-9669805.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/cacamba-9669805.webp"
+    },
+    {
+      "key": "sala-de-aula",
+      "id": 36650154,
+      "alt": "Sala de aula vazia com carteiras e quadro",
+      "targets": [
+        "colegio-aurora-prime/campus.webp"
+      ],
+      "page": "https://www.pexels.com/photo/36650154/",
+      "download": "https://images.pexels.com/photos/36650154/pexels-photo-36650154.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/sala-de-aula-36650154.webp"
+    },
+    {
+      "key": "dojo",
+      "id": 8042000,
+      "alt": "Instrutor e aluno praticando uma técnica de artes marciais",
+      "targets": [
+        "dojo-essencia/dojo.webp"
+      ],
+      "page": "https://www.pexels.com/photo/8042000/",
+      "download": "https://images.pexels.com/photos/8042000/pexels-photo-8042000.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/dojo-8042000.webp"
+    },
+    {
+      "key": "embalagem",
+      "id": 12725398,
+      "alt": "Pessoa segurando uma embalagem de papelão para alimentos",
+      "targets": [
+        "embalagem-direta/capa-embalagens.webp"
+      ],
+      "page": "https://www.pexels.com/photo/12725398/",
+      "download": "https://images.pexels.com/photos/12725398/pexels-photo-12725398.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/embalagem-12725398.webp"
+    },
+    {
+      "key": "impressos",
+      "id": 7648514,
+      "alt": "Folhetos impressos organizados sobre uma superfície",
+      "targets": [
+        "grafica-ponto/capa-grafica.webp",
+        "grafica-ponto/panfletos.webp"
+      ],
+      "page": "https://www.pexels.com/photo/7648514/",
+      "download": "https://images.pexels.com/photos/7648514/pexels-photo-7648514.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/impressos-7648514.webp"
+    },
+    {
+      "key": "mudanca",
+      "id": 5025483,
+      "alt": "Profissional com uma caixa diante de um caminhão carregado",
+      "targets": [
+        "mudaja/capa-mudanca.webp",
+        "mudaja/caminhao-mudanca.webp"
+      ],
+      "page": "https://www.pexels.com/photo/5025483/",
+      "download": "https://images.pexels.com/photos/5025483/pexels-photo-5025483.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/mudanca-5025483.webp"
+    },
+    {
+      "key": "laboratorio-informatica",
+      "id": 39178044,
+      "alt": "Laboratório de informática com monitores e cadeiras",
+      "targets": [
+        "orbita-cursos/campus-tech.webp"
+      ],
+      "page": "https://www.pexels.com/photo/39178044/",
+      "download": "https://images.pexels.com/photos/39178044/pexels-photo-39178044.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/laboratorio-informatica-39178044.webp"
+    },
+    {
+      "key": "piscina-jardim",
+      "id": 27573416,
+      "alt": "Piscina ao ar livre cercada por vegetação",
+      "targets": [
+        "piscina-em-dia/piscina-capa.webp"
+      ],
+      "page": "https://www.pexels.com/photo/27573416/",
+      "download": "https://images.pexels.com/photos/27573416/pexels-photo-27573416.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/piscina-jardim-27573416.webp"
+    },
+    {
+      "key": "monitoramento",
+      "id": 30692441,
+      "alt": "Profissional diante de telas de monitoramento de segurança",
+      "targets": [
+        "safehome/capa-dashboard.webp"
+      ],
+      "page": "https://www.pexels.com/photo/30692441/",
+      "download": "https://images.pexels.com/photos/30692441/pexels-photo-30692441.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/monitoramento-30692441.webp"
+    },
+    {
+      "key": "uniformes",
+      "id": 4484152,
+      "alt": "Trabalhadores uniformizados em um depósito organizado",
+      "targets": [
+        "uniforme-pro/capa-uniformes.webp"
+      ],
+      "page": "https://www.pexels.com/photo/4484152/",
+      "download": "https://images.pexels.com/photos/4484152/pexels-photo-4484152.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/uniformes-4484152.webp"
+    },
+    {
+      "key": "natacao",
+      "id": 40068492,
+      "alt": "Piscina coberta com raias demarcadas para natação",
+      "targets": [
+        "azul-vivo-natacao/piscina.webp"
+      ],
+      "page": "https://www.pexels.com/photo/40068492/",
+      "download": "https://images.pexels.com/photos/40068492/pexels-photo-40068492.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/natacao-40068492.webp"
+    },
+    {
+      "key": "estudos",
+      "id": 7092523,
+      "alt": "Estudantes concentrados em uma avaliação em sala de aula",
+      "targets": [
+        "aprovalab-cursinho/turma.webp"
+      ],
+      "page": "https://www.pexels.com/photo/7092523/",
+      "download": "https://images.pexels.com/photos/7092523/pexels-photo-7092523.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "file": "assets/img/fotos-revisadas/estudos-7092523.webp"
+    }
+  ]
+}

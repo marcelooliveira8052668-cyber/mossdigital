@@ -71,3 +71,5 @@ Gostaria de confirmar preço e disponibilidade.`; // Mensagem editável.
  abrirWhatsApp(mensagem); // Abre WhatsApp somente após clique.
 });
 calcularNexo(); // Preenche total inicial.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

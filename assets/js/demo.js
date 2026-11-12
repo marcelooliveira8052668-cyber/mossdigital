@@ -110,9 +110,12 @@
     const preset = presets[atual];
     if (!preset) return;
 
+    // Mantém o provedor padrão ao copiar presets sem dataSource próprio.
+    const configuracao = Object.assign({}, window.SITE_CONFIG, preset);
+    configuracao.dataSource = configuracao.dataSource || { provider: 'local' };
     const texto =
       CABECALHO_CONFIG +
-      'window.SITE_CONFIG = ' + comentar(JSON.stringify(preset, null, 2)) + ';\n';
+      'window.SITE_CONFIG = ' + comentar(JSON.stringify(configuracao, null, 2)) + ';\n';
 
     const feito = function () {
       copyB.textContent = 'Copiado!';

@@ -31,3 +31,5 @@ document.querySelector('#visita-form').addEventListener('submit', evento => { //
   const mensagem = `Olá! Gostaria de informações sobre uma visita ao Colégio Aurora Prime.\nResponsável: ${nome}\nEtapa: ${etapa}\nTurno preferido: ${turno}\nAguardo confirmação.`; // Declara um dado ou referência utilizada nesta funcionalidade.
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`, '_blank', 'noopener,noreferrer'); // Abre a conversa do WhatsApp com mensagem codificada.
 }); // Encerra o bloco ou a função anterior.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

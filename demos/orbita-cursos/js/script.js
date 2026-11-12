@@ -58,3 +58,5 @@ document.querySelector('#send-courses').addEventListener('click',()=>{ // Regist
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`,'_blank','noopener,noreferrer'); // Abre a conversa do WhatsApp com mensagem codificada.
 }); // Encerra o bloco ou a função anterior.
 renderizar(); // Executa uma etapa da interação descrita acima.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

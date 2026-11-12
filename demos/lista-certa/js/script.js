@@ -116,3 +116,5 @@ function iniciarDemo() { // Inicia catálogo e carrinho.
   }); // Finaliza envio.
   renderProdutos(); renderPedido(); // Apresenta o estado inicial.
 } // Finaliza a loja demonstrativa.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

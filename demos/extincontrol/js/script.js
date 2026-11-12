@@ -53,3 +53,5 @@
   $('#clear-all').addEventListener('click',()=>{if(confirm('Apagar todos os registros fictícios deste navegador?')){records=[];persist();render();}}); // Limpa após confirmação.
   render(); // Estado inicial.
 })(); // Finaliza.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

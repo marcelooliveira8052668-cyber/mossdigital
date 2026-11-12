@@ -26,3 +26,5 @@ form.addEventListener('submit',event=>{ // Envia consulta somente com ação do 
   window.open(`https://wa.me/5511942038103?text=${encodeURIComponent(lines.join('\n'))}`,'_blank','noopener,noreferrer'); // Abre WhatsApp.
 });
 calculate(); // Estado inicial.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

@@ -29,3 +29,5 @@ form.addEventListener('submit',event=>{ // Abre o WhatsApp somente após ação 
   window.open(`https://wa.me/5511942038103?text=${encodeURIComponent(lines.join('\n'))}`,'_blank','noopener,noreferrer'); // Abre conversa.
 });
 calculate(); // Exibe valor inicial.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

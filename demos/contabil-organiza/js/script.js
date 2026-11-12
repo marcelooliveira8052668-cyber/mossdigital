@@ -77,3 +77,5 @@ document.getElementById('contact-form').addEventListener('submit',(e)=>{ // Cont
 // Disponibiliza aviso de persistência sem guardar documentos.
 const nota=document.createElement('small');nota.id='storage-note';nota.textContent='Dados deste exemplo ficam somente neste navegador.';document.querySelector('.tasks').append(nota); // Nota visível.
 renderizar(); // Monta checklist inicial.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

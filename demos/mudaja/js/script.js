@@ -24,3 +24,5 @@ form.addEventListener('submit',event=>{ // Abre conversa comercial.
   msg.push('A data e o valor só serão confirmados pelo atendimento.'); // Evita promessas falsas.
   window.open(`https://wa.me/5511942038103?text=${encodeURIComponent(msg.join('\n'))}`,'_blank','noopener,noreferrer'); // Contato autorizado.
 });
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

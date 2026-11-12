@@ -36,3 +36,5 @@ $('send').addEventListener('click',()=>{ // Prepara mensagem de orçamento.
 });
 document.querySelectorAll('img[data-photo]').forEach(img=>{const check=new Image();check.onload=()=>img.src=img.dataset.photo;check.onerror=()=>{};check.src=img.dataset.photo;}); // Fotos opcionais.
 render(); // Estado inicial do balcão.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

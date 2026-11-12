@@ -82,3 +82,5 @@ leadForm.addEventListener('submit', (event) => { // Só atua quando o visitante 
   openWhatsApp(`Solicitação de atendimento de borracharia.\n${message}\nConfirmar disponibilidade e preço antes do serviço.`); // Abre a mensagem, sem prometer disponibilidade.
   $('#lead-status').textContent = 'Mensagem preparada! Revise e envie no WhatsApp.'; // Atualiza retorno acessível ao visitante.
 }); // Encerra a triagem.
+// Identifica as fotografias de banco e disponibiliza as fontes da revisão.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

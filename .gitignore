@@ -34,3 +34,10 @@ __pycache__/
 config-local.js
 *.key
 *.pem
+
+# Ferramenta local do proprietário e pedidos pessoais: nunca publicar
+.moss-local/
+pedido-portfolio-*.json
+previa-*.pdf
+portfolio-final-*.pdf
+Programacao_do_Zero_Moss_Digital.pdf

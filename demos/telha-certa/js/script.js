@@ -43,3 +43,5 @@ document.getElementById('form-telha').addEventListener('submit',(e)=>{ // Encami
   abrirWhatsApp([`Olá! Quero orçamento pela demo Telha Certa.`,`Dimensões: ${ultimo.largura} x ${ultimo.comprimento} m`,`Serviço: ${ultimo.tipo}`,`Área estimada: ${ultimo.area.toFixed(1)} m²`,`Referência ilustrativa: ${dinheiro(ultimo.valor)}`,`Favor agendar vistoria e confirmar materiais, custos e prazo.`].join('\n')); // Envio sem backend.
 });
 calcular(); // Cálculo inicial.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

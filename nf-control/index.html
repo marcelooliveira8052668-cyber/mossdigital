@@ -9088,10 +9088,9 @@
             );
 
 
-        salvarDados();
-
-        /* Se o navegador foi limpo, eu recupero do espelho. */
+        /* Recupera antes de salvar, para não sobrescrever o espelho com listas vazias. */
         recuperarEspelho();
+        salvarDados();
 
 
         atualizarSelectEmpresas();
@@ -9113,7 +9112,7 @@
     }
 
 
-    inicializar();
+    // A inicialização fica após todas as constantes e funções complementares.
 
 
         /* =========================================================
@@ -9494,6 +9493,7 @@
             mostrarToast("Trava de tela removida.");
         }
 
+        inicializar();
 </script>
 
 </body>
