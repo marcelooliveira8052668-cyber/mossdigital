@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-12T12:57:26.072376+00:00",
+  "capturedAt": "2026-11-12T13:41:46.359344+00:00",
   "notice": "Capturas das próprias demonstrações, sem dados reais de clientes.",
   "previews": [
     {
@@ -619,6 +619,12 @@
       "title": "Sky Vision",
       "src": "assets/img/catalogo-fiel/sky-vision-cbcdef6afa.webp",
       "url": "https://mossdigital.com.br/demos/sky-vision/"
+    },
+    {
+      "key": "/demos/sol-do-bairro/",
+      "title": "Sol do Bairro — Energia solar",
+      "src": "assets/img/catalogo-fiel/sol-do-bairro-energia-solar-3abc889d6a.webp",
+      "url": "https://mossdigital.com.br/demos/sol-do-bairro/"
     },
     {
       "key": "/demos/sola-viva/",
