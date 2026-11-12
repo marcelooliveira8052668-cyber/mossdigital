@@ -49,6 +49,7 @@ const root=path.resolve(__dirname,'..');
   await page.locator('#prepare').click();assert.match(await page.locator('#order-text').inputValue(),/Sem pedido enviado/);
   await page.context().grantPermissions(['clipboard-read','clipboard-write']);
   await page.locator('#copy-order').click();
+  await page.waitForFunction(()=>document.querySelector('#copy-status').textContent.length>0);
   assert.match(await page.locator('#copy-status').innerText(),/Seleção copiada/);
   assert.match(await page.evaluate(()=>navigator.clipboard.readText()),/SELEÇÃO DEMONSTRATIVA/);
   await page.locator('[data-remove="plataforma-vinho|34"]').click();assert.match(await page.locator('#bag-total').innerText(),/659,80/);
