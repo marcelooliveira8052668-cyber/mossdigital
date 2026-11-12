@@ -1,0 +1,10 @@
+# Cloudflare Worker da MOSS Digital para receber pedidos de portfólio.
+# NÃO colocar senhas ou chaves privadas neste arquivo.
+name = "moss-portfolio-email"
+main = "worker.js"
+compatibility_date = "2026-11-11"
+workers_dev = true
+
+# Exige que o serviço tenha sido configurado com as chaves no Cloudflare.
+[secrets]
+required = ["RESEND_API_KEY", "TURNSTILE_SECRET", "EMAIL_FROM"]
