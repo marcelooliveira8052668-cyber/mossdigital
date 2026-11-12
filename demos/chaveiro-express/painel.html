@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Chaveiro Express — Painel do responsável</title>
+  <link rel="icon" href="icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="painel.css">
+  <script src="config.js" defer></script><script src="banco.js" defer></script><script src="painel.js" defer></script>
+</head>
+<body>
+  <header><a class="marca" href="index.html"><span class="marca-icone" aria-hidden="true">CE</span><span>Chaveiro Express<small>Painel do responsável</small></span></a><a href="index.html">← Ver o site</a></header>
+  <main>
+    <h1>Chamados<br>em um só lugar.</h1>
+    <p>Integração opcional com Supabase. Esta entrega não tem clientes reais: registre apenas pedidos fictícios até você configurar o banco e as permissões.</p>
+    <p id="aviso-config" role="status"></p>
+
+    <section id="acesso">
+      <h2>Entrar no painel</h2>
+      <p>Use o usuário criado pelo responsável no Supabase. Não existe cadastro público de responsáveis.</p>
+      <form id="login">
+        <label>E-mail<input name="email" id="email" type="email" autocomplete="username" required maxlength="254"></label>
+        <label>Senha<input name="senha" id="senha" type="password" autocomplete="current-password" required maxlength="128"></label>
+        <button type="submit">Entrar</button>
+      </form>
+      <p class="dica">A sessão fica somente na memória desta aba. Recarregar ou fechar a página exige novo login. Senha esquecida: o administrador do projeto redefine pelo painel Supabase.</p>
+    </section>
+
+    <section id="gestao" hidden>
+      <div class="barra"><h2>Chamados recebidos</h2><button type="button" id="sair">Sair</button></div>
+      <p class="dica">O painel não lê suas conversas nem envia mensagens. Os status são registros internos, não confirmação de pagamento nem aviso ao cliente.</p>
+      <form id="novo-chamado">
+        <h3>Registrar um chamado do WhatsApp</h3>
+        <div class="dupla">
+          <label>Nome do cliente<input id="cliente" maxlength="100" autocomplete="off" required></label>
+          <label>Contato informado pelo cliente<input id="contato" maxlength="120" autocomplete="off" required></label>
+        </div>
+        <div class="dupla">
+          <label>Bairro ou região<input id="bairro" maxlength="120" autocomplete="off" required></label>
+          <label>Serviço<select id="servico" required>
+            <option value="abertura">Abertura de portas</option>
+            <option value="fechaduras">Troca de fechaduras</option>
+            <option value="copia">Cópia de chaves</option>
+            <option value="veiculo">Chave de veículo</option>
+          </select></label>
+        </div>
+        <label>Situação descrita<textarea id="descricao" rows="3" maxlength="1000" required></textarea></label>
+        <p class="dica">Registre apenas o necessário, com base legal adequada. Não anote CPF, documentos, dados de saúde ou dados de cartão.</p>
+        <button type="submit">Salvar chamado no banco</button>
+      </form>
+      <div class="barra">
+        <label>Filtrar por status<select id="filtro">
+          <option value="todos">Todos</option><option value="novo">Novo</option><option value="avaliacao">Em avaliação</option>
+          <option value="combinado">Combinado</option><option value="atendido">Atendido</option><option value="cancelado">Cancelado</option>
+        </select></label>
+        <button type="button" id="recarregar">Atualizar lista</button>
+      </div>
+      <p class="dica">Lista dos 100 chamados mais recentes. Registros anteriores continuam no banco; consulte-os no Table Editor se precisar.</p>
+      <div id="chamados"></div>
+    </section>
+
+    <p id="painel-status" role="status" aria-live="polite"></p>
+    <footer>Conexão, instalação e regras de acesso: consulte o manual entregue com o projeto.</footer>
+  </main>
+</body>
+</html>

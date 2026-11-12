@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chaveiro Express: demonstração de site para chaveiro e abertura de portas. Atendimento 24h, orçamento pelo WhatsApp e painel opcional de chamados.">
+  <meta name="robots" content="noindex, follow">
+  <title>Chaveiro Express — Abertura e chaves 24h</title>
+  <link rel="icon" href="icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script><script src="banco.js" defer></script><script src="site.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <div class="faixa-status">
+    <span class="ponto">Atendimento em operação</span>
+    <span class="dir">
+      <span>Chamadas: (11) 94203-8103</span>
+      <a href="tel:+5511942038103">Ligar agora</a>
+      <span>Marca fictícia · demonstração MOSS</span>
+    </span>
+  </div>
+  <header class="topo">
+    <div class="topo-linha">
+      <a class="marca" href="#inicio" aria-label="Chaveiro Express — início">
+        <span class="marca-icone" aria-hidden="true">CE</span>
+        <span class="marca-texto">Chaveiro Express<small>Abertura &amp; chaves · 24h</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu <span aria-hidden="true">☰</span></button>
+      <nav class="menu-lista" id="menu" aria-label="Navegação principal">
+        <a href="#servicos">Serviços</a><a href="#processo">Como funciona</a><a href="#atendimento">Atendimento</a><a href="#galeria">Fotos</a><a href="#duvidas">Dúvidas</a>
+        <a class="destaque" href="#chamado">Abrir chamado ↗</a>
+      </nav>
+    </div>
+  </header>
+  <div class="ticker" aria-hidden="true"><div class="ticker-faixa">
+    <span><b>24h</b> Abertura de portas</span><span>Chave na hora</span><span>Troca de fechaduras</span><span>Chave de veículo</span><span>Chaveiro residential</span>
+    <span><b>24h</b> Abertura de portas</span><span>Chave na hora</span><span>Troca de fechaduras</span><span>Chave de veículo</span><span>Chaveiro residential</span>
+  </div></div>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="titulo">
+      <div>
+        <p class="hero-selo"><span aria-hidden="true">▮</span> Resposta rápida · orçamento no WhatsApp</p>
+        <h1 id="titulo">Trancou?<span>A gente abre.</span></h1>
+        <p>Chaveiro Express é um modelo de site para chaveiros e equipes de abertura de portas. O visitante escolhe o serviço, descreve a situação e conversa direto com você pelo WhatsApp.</p>
+        <div class="hero-acoes">
+          <a class="botao" href="#chamado">Abrir um chamado</a>
+          <a class="botao secundario" href="https://wa.me/5511942038103" target="_blank" rel="noopener noreferrer">Falar no WhatsApp ↗</a>
+        </div>
+        <ul class="hero-servicos" aria-label="Serviços principais">
+          <li>Abertura de portas</li><li>Troca de fechadura</li><li>Cópia de chave</li><li>Chave de carro</li>
+        </ul>
+      </div>
+      <div class="hero-mosaico">
+        <figure><img src="img/mao-chaves.webp" alt="Mãos segurando um molho de chaves" width="700" height="900" fetchpriority="high"><figcaption>01 — chave na mão</figcaption></figure>
+        <figure><img src="img/ferramentas.webp" alt="Conjunto de ferramentas de chaveiro alinhadas" width="600" height="400" loading="lazy"><figcaption>02 — ferramental</figcaption></figure>
+        <figure><img src="img/cadeado-mao.webp" alt="Mão segurando um cadeado de latão" width="1200" height="400" loading="lazy"><figcaption>03 — segurança</figcaption></figure>
+      </div>
+    </section>
+
+    <div class="indicadores" aria-label="Destaques do serviço">
+      <div><strong>24h</strong><span>Atendimento todos os dias</span></div>
+      <div><strong>4</strong><span>Serviços principais</span></div>
+      <div><strong>100%</strong><span>Orçamento combinado antes</span></div>
+      <div><strong>0</strong><span>Cadastro no site</span></div>
+    </div>
+
+    <section class="secao" id="servicos" aria-labelledby="titulo-servicos">
+      <div class="secao-topo">
+        <div><span class="rotulo">01 / Serviços</span><h2 id="titulo-servicos">O que fazemos</h2></div>
+        <p>Cada serviço tem valor e prazo combinados antes do atendimento. O site não cobra, não agenda sozinho e não promete preço fechado.</p>
+      </div>
+      <div class="lista-servicos" id="lista-servicos">
+        <article><span class="codigo">SV-01</span><div><h3>Abertura de portas</h3><p>Porta com chave, fechadura quebrada ou chave perdida dentro. A viabilidade depende do tipo de fechadura e do local.</p></div><a href="#chamado" data-servico="abertura" aria-label="Abrir chamado de abertura de portas">Abrir chamado ↗</a></article>
+        <article><span class="codigo">SV-02</span><div><h3>Troca de fechaduras</h3><p>Substituição por modelo mais seguro, com explicação das diferenças entre fechadura de pino, cilindro e trava.</p></div><a href="#chamado" data-servico="fechaduras" aria-label="Abrir chamado de troca de fechaduras">Abrir chamado ↗</a></article>
+        <article><span class="codigo">SV-03</span><div><h3>Cópia de chaves</h3><p>Cópia de chaves de casa, apartamento, armário e de fechaduras comuns. Modelos com chave controladora exigem o original ou o código.</p></div><a href="#chamado" data-servico="copia" aria-label="Abrir chamado de cópia de chaves">Abrir chamado ↗</a></article>
+        <article><span class="codigo">SV-04</span><div><h3>Chave de veículo</h3><p>Chave-presença e programações simples, conforme o modelo do carro. Veículos com chave eletrônica dependem de concessionária ou equipamento compatível.</p></div><a href="#chamado" data-servico="veiculo" aria-label="Abrir chamado de chave de veículo">Abrir chamado ↗</a></article>
+      </div>
+      <p class="nota-modo" id="modo-banco" role="status">Catálogo demonstrativo local. Valores e prazos são combinados pelo WhatsApp.</p>
+    </section>
+
+    <section class="secao processo" id="processo" aria-labelledby="titulo-processo">
+      <div class="secao-topo">
+        <div><span class="rotulo">02 / Processo</span><h2 id="titulo-processo">Do chamado à porta</h2></div>
+        <p>Quatro passos simples. Nenhum cadastro, nenhuma cobrança automática e você decide quando e como responder.</p>
+      </div>
+      <ol class="linha-tempo">
+        <li><span class="marcador">1</span><h3>Você descreve</h3><p>Tipo de porta, problema e bairro. Se puder, envie uma foto pelo WhatsApp.</p></li>
+        <li><span class="marcador">2</span><h3>Recebemos o chamado</h3><p>A mensagem chega direto no atendimento. Ela não é gravada nem enviada sozinha pelo site.</p></li>
+        <li><span class="marcador">3</span><h3>Combinamos valor e prazo</h3><p>Você informa o valor, o prazo e a forma de pagamento antes de qualquer serviço.</p></li>
+        <li><span class="marcador">4</span><h3>Atendimento e garantia</h3><p>Serviço executado e conferido com você. Garantia e escopo são definidos na conversa.</p></li>
+      </ol>
+    </section>
+
+    <section class="secao" id="atendimento" aria-labelledby="titulo-atendimento">
+      <div class="atendimento">
+        <div>
+          <span class="rotulo" style="font:11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ambar);display:block;margin-bottom:14px">03 / Área de atendimento</span>
+          <h2 id="titulo-atendimento" style="font:900 clamp(32px,4.4vw,58px)/.98 var(--display);text-transform:uppercase;color:var(--branco);letter-spacing:-.5px">Onde atuamos</h2>
+          <p style="margin-top:18px;font-size:14px;color:var(--fraco);max-width:460px">Esta é uma demonstração com bairros fictícios. No site real, informe apenas as regiões onde você realmente atende, para não gerar deslocamento desnecessário.</p>
+          <div class="bairros">
+            <span>Centro</span><span>Jardim Aurora</span><span>Vila Nova</span><span>Parque das Águas</span><span>Bela Vista</span><span>Porto Seco</span><span>Alto da Serra</span><span>São Judas</span>
+          </div>
+          <small>Fora dessa área, vale conversar antes: o deslocamento pode mudar o valor e o prazo.</small>
+        </div>
+        <aside class="destaque-24">
+          <p class="relogio">24H</p>
+          <h3>Atendimento continuous para emergência</h3>
+          <p>Franjas de atendimento, plantão e combinações são definidos na conversa. Nada é agendado automaticamente.</p>
+          <ul>
+            <li>Chamadas e WhatsApp respondidos pelo atendimento</li>
+            <li>Sem formulário que trava a mensagem</li>
+            <li>Sem cadastro do visitante</li>
+            <li>Sem pagamento registrado pelo site</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="secao" id="galeria" aria-labelledby="titulo-galeria">
+      <div class="galeria-topo">
+        <div><span class="rotulo" style="font:11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ambar);display:block;margin-bottom:14px">04 / Galeria</span><h2 id="titulo-galeria" style="font:900 clamp(32px,4.4vw,58px)/.98 var(--display);text-transform:uppercase;color:var(--branco);letter-spacing:-.5px">O serviço de perto</h2></div>
+        <div class="filtros" role="group" aria-label="Filtrar fotografias">
+          <button type="button" data-filtro="todas" aria-pressed="true">Todas</button>
+          <button type="button" data-filtro="chaves" aria-pressed="false">Chaves</button>
+          <button type="button" data-filtro="fechaduras" aria-pressed="false">Fechaduras</button>
+          <button type="button" data-filtro="ferramentas" aria-pressed="false">Ferramentas</button>
+        </div>
+      </div>
+      <p class="sr-only" id="galeria-contagem" aria-live="polite">9 fotografias</p>
+      <div class="galeria">
+        <button type="button" class="foto" data-categoria="chaves" data-legenda="Chaves de diferentes formatos, penduradas em um painel escuro."><img src="img/chaves-escuro.webp" alt="Chaves de diferentes modelos suspensas sobre fundo escuro" width="600" height="400" loading="lazy"><span>01 — cada chave tem um formato <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="fechaduras" data-legenda="Cadeado de latão fechado na mão."><img src="img/cadeado-mao.webp" alt="Mão segurando um cadeado de latão fechado" width="600" height="400" loading="lazy"><span>02 — a trava que protege <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="fechaduras" data-legenda="Cadeado instalado em uma porta azul de tinta antiga."><img src="img/cadeado-azul.webp" alt="Cadeado de latão preso a uma porta azul descascada" width="600" height="400" loading="lazy"><span>03 — porta antiga, trava atual <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="fechaduras" data-legenda="Maçaneta de porta com sombra marcante."><img src="img/macaneta.webp" alt="Maçaneta de porta metálica com sombra de forte contraste" width="600" height="400" loading="lazy"><span>04 — o ponto de entrada <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="chaves" data-legenda="Chave inserida na fechadura de uma porta branca."><img src="img/chave-na-porta.webp" alt="Chave inserida na fechadura de uma porta branca" width="600" height="400" loading="lazy"><span>05 — o encaixe certo <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="ferramentas" data-legenda="Ferramentas de chaveiro alinhadas em uma bancada."><img src="img/ferramentas.webp" alt="Chaves de fenda e ferramentas de precisão alinhadas" width="600" height="400" loading="lazy"><span>06 — ferramenta certa <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="chaves" data-legenda="Chaves e argolas de metal sobre a bancada de trabalho."><img src="img/bancada-chaves.webp" alt="Chaves e argolas metálicas sobre uma bancada de trabalho" width="600" height="400" loading="lazy"><span>07 — a bancada do chaveiro <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="chaves" data-legenda="Chave com etiqueta de identificação."><img src="img/chave-etiqueta.webp" alt="Chave com etiqueta de papel sobre mesa de trabalho" width="600" height="400" loading="lazy"><span>08 — chave identificada <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="chaves" data-legenda="Monte de chaves metálicas sobre fundo escuro."><img src="img/monte-chaves.webp" alt="Monte de chaves metálicas alinhadas sobre fundo escuro" width="600" height="400" loading="lazy"><span>09 — o conjunto completo <b>ampliar ↗</b></span></button>
+      </div>
+      <p class="nota-modo">Fotografias de banco selecionadas pelo assunto. Não são um portfólio de clientes nem comparativos de serviço.</p>
+    </section>
+
+    <section class="chamado" id="chamado" aria-labelledby="titulo-chamado">
+      <div class="secao chamado-grade">
+        <div class="chamado-texto">
+          <span class="rotulo" style="font:11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ambar);display:block;margin-bottom:14px">05 / Chamado</span>
+          <h2 id="titulo-chamado">Descreva o problema.<br>Nós fazemos a conta.</h2>
+          <p>Preencha o formulário e a mensagem fica pronta para o WhatsApp. Você confere antes de enviar: o site não manda nada sozinho, não salva seus dados e não registra pagamento.</p>
+          <p class="aviso">Esta é uma demonstração criada pela MOSS Digital. O WhatsApp desta cópia atende a MOSS para falar sobre este modelo de site — não é um chaveiro em funcionamento.</p>
+        </div>
+        <form class="ficha" id="form-chamado" novalidate>
+          <div class="ficha-topo"><span>Chamado · demonstrate</span><span id="chamado-id">Nº ---</span></div>
+          <h3>Novo chamado</h3>
+          <p class="sub">Preencha o essencial. O restante é combinado na conversa.</p>
+          <label class="campo"><span>Como podemos chamar você? (opcional)</span><input id="ch-nome" name="nome" maxlength="80" autocomplete="name" placeholder="Seu nome"></label>
+          <label class="campo"><span>Serviço</span><select id="ch-servico" name="servico" required>
+            <option value="">Selecione o serviço</option>
+            <option value="abertura">Abertura de portas</option>
+            <option value="fechaduras">Troca de fechaduras</option>
+            <option value="copia">Cópia de chaves</option>
+            <option value="veiculo">Chave de veículo</option>
+          </select></label>
+          <label class="campo"><span>Bairro ou região</span><input id="ch-bairro" name="bairro" maxlength="80" required placeholder="Ex.: Centro"></label>
+          <label class="campo"><span>Contato (telefone)</span><input id="ch-contato" name="contato" type="tel" maxlength="30" required placeholder="(11) 90000-0000"></label>
+          <label class="campo"><span>Descreva a situação</span><textarea id="ch-descricao" name="descricao" rows="4" maxlength="700" required placeholder="Ex.: Porta de aço com fechadura antiga, chave quebrou dentro."></textarea></label>
+          <button class="botao" type="submit">Preparar mensagem</button>
+          <p class="nota">Não informe documentos, senhas, dados de saúde ou número de cartão. Este formulário não salva nem envia dados ao banco.</p>
+          <p id="chamado-status" role="status" aria-live="polite"></p>
+          <div id="chamado-pronto" hidden>
+            <strong style="color:var(--branco)">Confira antes de enviar:</strong>
+            <pre id="chamado-texto"></pre>
+            <a class="botao" id="chamado-whats" href="https://wa.me/5511942038103" target="_blank" rel="noopener noreferrer">Continuar no WhatsApp ↗</a>
+            <p class="nota">Toque em Enviar no WhatsApp. Fotos, quando houver, são anexadas por você, manualmente. Isto não agenda um atendimento nem registra pagamento.</p>
+          </div>
+          <button class="limpar" type="reset">Limpar formulário</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="secao" id="duvidas" aria-labelledby="titulo-duvidas">
+      <div class="duvidas">
+        <div><span class="rotulo" style="font:11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ambar);display:block;margin-bottom:14px">06 / Dúvidas</span><h2 id="titulo-duvidas">Perguntas<br>comuns</h2></div>
+        <div>
+          <details><summary>Toda porta pode ser aberta sem chave?</summary><p>Não sempre. Há fechaduras que exigem técnica e ferramentas específicas. Em alguns casos o caminho é danificar a fechadura ou a porta, e isso precisa ser combinado com você antes.</p></details>
+          <details><summary>Quanto custa o serviço?</summary><p>Este modelo não publica tabela de preços. O valor depende do tipo de fechadura, do horário, da distância e de eventual material. Combine tudo antes do atendimento.</p></details>
+          <details><summary>Vocês emitem nota fiscal?</summary><p>Isso depende da configuração do negócio e da cidade. O serviço e a documentação fiscal aplicável precisam ser definidos antes de prometer qualquer emissão.</p></details>
+          <details><summary>As fotos são de trabalhos do chaveiro?</summary><p>Não. Chaveiro Express é uma marca fictícia para demonstrar este site. As fotos são de banco e ilustram chaves, fechaduras e ferramentas. Em um projeto real, podem ser substituídas por fotos autorizadas do serviço.</p></details>
+          <details><summary>Este site usa banco de dados?</summary><p>A vitrine e a mensagem do WhatsApp funcionam sem banco. A integração opcional com Supabase carrega os serviços publicados e oferece um painel autenticado para o responsável registrar os chamados recebidos pelo WhatsApp. A instalação está explicada no manual.</p></details>
+          <details><summary>O pagamento é feito pelo site?</summary><p>Não. O site não processa pagamento, não guarda dados de cartão e não confirma contratação. O valor, o prazo e a forma de pagamento são combinados na conversa.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-linha">
+      <div>
+        <a class="marca" href="#inicio"><span class="marca-icone" aria-hidden="true">CE</span><span class="marca-texto">Chaveiro Express<small>Abertura &amp; chaves · 24h</small></span></a>
+        <p>Marca fictícia criada como demonstração pela MOSS Digital. Não há chaveiro em funcionamento, preço real nem atendimento real neste modelo.</p>
+      </div>
+      <nav aria-label="Links do rodapé">
+        <a href="fontes-fotos.html">Créditos das fotos</a>
+        <a href="MANUAL-DO-CLIENTE.html">Manual do comprador</a>
+        <a href="painel.html">Painel do responsável</a>
+        <a href="../../index.html">MOSS Digital ↗</a>
+      </nav>
+    </div>
+  </footer>
+
+  <dialog id="lightbox" aria-labelledby="foto-legenda">
+    <div class="lightbox-topo"><span>Galeria · Chaveiro Express</span><button type="button" id="fechar-foto">Fechar ×</button></div>
+    <img id="foto-ampliada" src="img/chaves-escuro.webp" alt="">
+    <p id="foto-legenda"></p>
+    <div class="lightbox-acoes"><button type="button" id="foto-anterior">← Anterior</button><span id="foto-numero"></span><button type="button" id="foto-proxima">Próxima →</button></div>
+  </dialog>
+  <noscript><p class="sem-js">Ative o JavaScript para usar filtros, ampliação e preparar a mensagem. Você ainda pode <a href="https://wa.me/5511942038103">falar com a MOSS pelo WhatsApp</a>.</p></noscript>
+</body>
+</html>

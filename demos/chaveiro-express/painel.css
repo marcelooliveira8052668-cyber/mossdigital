@@ -1,0 +1,33 @@
+:root{color-scheme:dark;--noite:#0d0e10;--grafite:#1c1f23;--linha:#2c3036;--ambar:#ffb300;--texto:#c9ccd1;--fraco:#8b9099;--mono:'Consolas',ui-monospace,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--noite);color:var(--texto);font:15px/1.6 system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 5%;border-bottom:1px solid var(--linha);flex-wrap:wrap}
+header>a:last-child{font:12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ambar)}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;font-weight:800}
+.marca-icone{width:38px;height:38px;display:grid;place-items:center;background:var(--ambar);color:#111;font:900 20px/1 system-ui}
+.marca small{display:block;font:10px/1.6 var(--mono);letter-spacing:.2em;color:var(--fraco);font-weight:400;text-transform:uppercase}
+main{max-width:1000px;margin:auto;padding:36px 22px}
+h1{font:900 42px/1.05 system-ui;color:#f7f7f5;margin:0 0 14px;letter-spacing:-.5px}
+h2,h3{font-weight:800;color:#f7f7f5}
+section,form#novo-chamado{background:var(--grafite);border:1px solid var(--linha);padding:22px;margin:26px 0}
+label{display:flex;flex-direction:column;gap:7px;margin:15px 0;font-size:13px}
+input,select,textarea{font:inherit;width:100%;min-width:0;background:var(--noite);border:1px solid #3b4048;color:#f7f7f5;padding:11px;border-radius:0}
+textarea{resize:vertical}
+button{font:inherit;font-weight:700;border:1px solid var(--ambar);background:var(--ambar);color:#111;padding:11px 20px;cursor:pointer;min-height:44px}
+button:disabled{opacity:.5;cursor:wait}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.barra{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:26px}
+.barra label{min-width:200px;margin:0}
+.barra h2{margin:0}
+.chamado{border:1px solid var(--linha-2);padding:18px;margin:14px 0;background:var(--noite);overflow-wrap:anywhere}
+.chamado h3{margin:0 0 6px;font-size:17px}
+.chamado p{margin:0 0 10px;font-size:13px;white-space:pre-line;color:var(--fraco)}
+.chamado label{margin:12px 0 8px}
+.chamado .salvar{margin-right:10px;background:transparent;color:var(--ambar)}
+.chamado .excluir{background:transparent;color:#ff7a7a;border-color:#7a3333}
+.dica{font-size:12px;color:var(--fraco);max-width:760px}
+#painel-status,#aviso-config{white-space:pre-wrap;overflow-wrap:anywhere;border-top:1px solid var(--linha);padding-top:18px}
+footer{font-size:12px;color:var(--fraco);margin:32px 0}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--ambar);outline-offset:3px}
+@media(max-width:640px){.dupla{grid-template-columns:1fr;gap:0}h1{font-size:32px}main{padding:26px 16px}section,form#novo-chamado{padding:17px}.chamado button{margin-bottom:8px}}

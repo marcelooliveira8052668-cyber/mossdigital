@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-12T11:52:44.478788+00:00",
+  "capturedAt": "2026-11-12T12:57:26.072376+00:00",
   "notice": "Capturas das próprias demonstrações, sem dados reais de clientes.",
   "previews": [
     {
@@ -253,6 +253,12 @@
       "title": "CasaNexa",
       "src": "assets/img/catalogo-fiel/casanexa-85da91154f.webp",
       "url": "https://mossdigital.com.br/demos/casanexa/"
+    },
+    {
+      "key": "/demos/chaveiro-express/",
+      "title": "Chaveiro Express — Abertura e chaves 24h",
+      "src": "assets/img/catalogo-fiel/chaveiro-express-abertura-e-chaves-24h-ac067d192b.webp",
+      "url": "https://mossdigital.com.br/demos/chaveiro-express/"
     },
     {
       "key": "/demos/chronos-prime/",

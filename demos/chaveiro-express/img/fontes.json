@@ -1,0 +1,114 @@
+{
+  "licenca": "https://www.pexels.com/license/",
+  "aviso": "Fotos reais de banco, ilustrativas do serviço de chaveiro. Não representam equipe, veículo, estabelecimento ou clientes da marca fictícia.",
+  "fotos": [
+    {
+      "arquivo": "img/mao-chaves.webp",
+      "id": "7642004",
+      "uso": "hero",
+      "origem": "https://www.pexels.com/photo/7642004/",
+      "download": "https://images.pexels.com/photos/7642004/pexels-photo-7642004.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Mãos segurando um molho de chaves",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/capa-card.webp",
+      "id": "36575138",
+      "uso": "capa",
+      "origem": "https://www.pexels.com/photo/36575138/",
+      "download": "https://images.pexels.com/photos/36575138/pexels-photo-36575138.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Chaves presas em um gancho de parede escura",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/chaves-escuro.webp",
+      "id": "29222871",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/29222871/",
+      "download": "https://images.pexels.com/photos/29222871/pexels-photo-29222871.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Chaves penduradas sobre fundo escuro",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/monte-chaves.webp",
+      "id": "333837",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/333837/",
+      "download": "https://images.pexels.com/photos/333837/pexels-photo-333837.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Monte de chaves metálicas sobre fundo escuro",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/ferramentas.webp",
+      "id": "6263062",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/6263062/",
+      "download": "https://images.pexels.com/photos/6263062/pexels-photo-6263062.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Conjunto de ferramentas de chaveiro alinhadas",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/bancada-chaves.webp",
+      "id": "31816627",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/31816627/",
+      "download": "https://images.pexels.com/photos/31816627/pexels-photo-31816627.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Chaves e argolas de metal sobre uma bancada de trabalho",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/chave-na-porta.webp",
+      "id": "7641991",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/7641991/",
+      "download": "https://images.pexels.com/photos/7641991/pexels-photo-7641991.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Chave inserida na fechadura de uma porta branca",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/cadeado-mao.webp",
+      "id": "36740854",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/36740854/",
+      "download": "https://images.pexels.com/photos/36740854/pexels-photo-36740854.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Mão segurando um cadeado de latão",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/cadeado-azul.webp",
+      "id": "5779299",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/5779299/",
+      "download": "https://images.pexels.com/photos/5779299/pexels-photo-5779299.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Cadeado de latão em uma porta azul descascada",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/macaneta.webp",
+      "id": "17026019",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/17026019/",
+      "download": "https://images.pexels.com/photos/17026019/pexels-photo-17026019.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Maçaneta de porta com sombra marcada",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/monte-chaves.webp",
+      "id": "333837",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/333837/",
+      "download": "https://images.pexels.com/photos/333837/pexels-photo-333837.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Monte de chaves metálicas sobre fundo escuro",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/chave-etiqueta.webp",
+      "id": "8250906",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/8250906/",
+      "download": "https://images.pexels.com/photos/8250906/pexels-photo-8250906.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Chave com etiqueta de papel sobre mesa de trabalho",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é trabalho da marca fictícia."
+    }
+  ]
+}
