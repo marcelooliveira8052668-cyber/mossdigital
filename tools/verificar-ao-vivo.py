@@ -47,12 +47,13 @@ checar('privacidade.html' in idx[idx.rfind('<footer>'):], 'index: link Privacida
 checar('rel="icon"' in idx, 'index: favicon declarado')
 
 _, mod = get('/modelos.html')
-n = mod.count('btn-create')
-checar(n >= 36, f'modelos: {n} botoes Criar o meu site gratis (>=36)')
-checar('Criar o meu site gratis' in mod or 'Criar o meu site gr\u00e1tis' in mod, 'modelos: texto do botao')
+n = mod.count('Quero este modelo')
+checar(n >= 10, f'modelos: {n} botoes de orcamento por modelo (>=10)')
+checar('wa.me/5511942038103' in mod, 'modelos: link de orcamento no WhatsApp')
+checar('demos/armazem-da-esquina/entrega/card-armazem-da-esquina.webp' in mod, 'modelos: cartao do Armazem da Esquina')
 
 _, sis = get('/sistemas.html')
-checar('zap-flutuante' in sis, 'sistemas: botao fixo')
+checar('noindex' in sis and 'url=./' in sis, 'sistemas: redireciona para o inicio com noindex')
 
 _, estr = get('/estrutura.html')
 checar('zap-flutuante' in estr, 'estrutura: botao fixo')
@@ -64,7 +65,12 @@ checar('MOSS DIGITAL / PRIVACIDADE' in priv, 'privacidade: eyebrow correto')
 _, sm = get('/sitemap.xml')
 checar('moss-cardapio' not in sm, 'sitemap: moss-cardapio removido')
 checar('privacidade.html' in sm, 'sitemap: privacidade presente')
-checar(sm.count('<loc>') == 16, f'sitemap: 16 URLs ({sm.count("<loc>")})')
+checar(sm.count('<loc>') >= 21, f'sitemap: ao menos 21 URLs ({sm.count("<loc>")})')
+
+print('\n=== DEMOS PUBLICADAS ===')
+for demo in ['/demos/moss-academia/', '/demos/viva-prime/', '/demos/armazem-da-esquina/']:
+    status, corpo = get(demo)
+    checar(status == 200, f'{demo} -> {status}')
 
 print('\n=== 404 PROFUNDO ===')
 status, corpo = get('/pagina-que-nao-existe-verificar')
