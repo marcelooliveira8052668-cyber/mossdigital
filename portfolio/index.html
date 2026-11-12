@@ -77,7 +77,7 @@
         <li><span>1</span><div><h3>Escolha o modelo</h3><p>Profissional, Criativo ou Tecnologia. Você muda quando quiser.</p></div></li>
         <li><span>2</span><div><h3>Adicione sua foto</h3><p>JPEG, PNG ou WebP. Ela é usada só na prévia, no seu navegador — nada é enviado automaticamente.</p></div></li>
         <li><span>3</span><div><h3>Preencha seus projetos</h3><p>Até 4 projetos com nome, descrição e link. Habilidades e apresentação no seu tom de voz.</p></div></li>
-        <li><span>4</span><div><h3>Envie o pedido à MOSS</h3><p>Abra o WhatsApp com todos os dados preenchidos, toque em Enviar e encaminhe sua foto separadamente, se desejar. Depois combine pagamento e entrega.</p></div></li>
+        <li><span>4</span><div><h3>Envie o pedido à MOSS</h3><p>Se o envio por e-mail estiver ativo, encaminhe o PDF à MOSS. Ou use o WhatsApp e envie a foto separadamente. Combinamos pagamento e entrega.</p></div></li>
       </ol>
     </section>
 
@@ -86,7 +86,7 @@
       <div class="builder-head wrap">
         <p class="eyebrow">PRÉVIA GRATUITA</p>
         <h2 id="montar-t">Monte agora. <em>Veja funcionando.</em></h2>
-        <p>Preencha à vontade — nada é armazenado automaticamente. Ao clicar em enviar, o WhatsApp abre com os dados do formulário. <strong>Você ainda precisa tocar em Enviar na conversa</strong> para a MOSS receber o pedido.</p>
+        <p>Preencha e confira a prévia gratuitamente. Se o envio do PDF por e-mail estiver ativado, você poderá enviar o arquivo diretamente à MOSS. Como alternativa, o WhatsApp abre com os dados preenchidos — nele, você precisa tocar em <strong>Enviar</strong>.</p>
       </div>
 
       <div class="builder-grid wrap">
@@ -108,7 +108,7 @@
                 <label class="btn-upload" for="foto">Escolher foto</label>
                 <input type="file" id="foto" name="foto" accept="image/jpeg,image/png,image/webp" hidden>
                 <button type="button" class="btn-remove" id="remover-foto" hidden>Remover foto</button>
-                <p class="foto-note">Quadrada, rosto centralizado · máx. 3 MB · fica só no seu navegador.</p>
+                <p class="foto-note">Quadrada, rosto centralizado · máx. 3 MB · usada apenas na prévia até você autorizar o envio do PDF por e-mail.</p>
               </div>
             </div>
             <p class="inline-msg" id="foto-msg" role="alert" hidden></p>
@@ -141,13 +141,31 @@
             </div>
           </fieldset>
 
+          <!-- Entrega automática de PDF: só aparece depois que Worker, Resend e Turnstile forem ativados. -->
+          <section class="email-panel" id="email-panel" aria-label="Receber seu pedido por e-mail" hidden>
+            <h3>Enviar meu portfólio pronto à MOSS</h3>
+            <p>Geramos o PDF do modelo escolhido e enviamos diretamente à MOSS Digital para conferir seu pedido. <strong>Não haverá download público.</strong> Após o pagamento de R$ 39,90, enviamos seu arquivo manualmente.</p>
+            <label class="campo" for="email-contato">
+              <span>E-mail para receber nossa resposta *</span>
+              <input type="email" id="email-contato" name="email-contato" maxlength="200" autocomplete="email" placeholder="seuemail@exemplo.com">
+            </label>
+            <label class="email-consentimento" for="email-consentimento">
+              <input type="checkbox" id="email-consentimento" name="email-consentimento">
+              <span>Autorizo o envio de meus dados, textos e foto incluída no PDF para a MOSS Digital, exclusivamente para atendimento, orçamento e entrega do portfólio.</span>
+            </label>
+            <div id="email-verificacao" aria-label="Verificação de segurança do envio"></div>
+            <button type="button" class="cta big" id="email-cta">Enviar PDF pronto à MOSS por e-mail</button>
+            <p class="cta-note">O PDF será enviado apenas à MOSS. A página não realiza cobranças e não envia o documento ao seu e-mail agora.</p>
+            <p class="email-msg" id="email-msg" role="status" aria-live="polite" hidden></p>
+          </section>
+
           <div class="form-footer">
             <!-- A prévia é gratuita; este botão não faz upload automático nem libera PDF. -->
             <button type="button" class="cta big" id="whatsapp-cta">Enviar meu pedido à MOSS · R$ 39,90 ↗</button>
             <!-- Alternativa acessível caso o WhatsApp não abra no dispositivo. -->
             <button type="button" class="ghost" id="copiar-pedido">Copiar todos os dados do pedido</button>
-            <p class="cta-note"><strong>Destino: WhatsApp da MOSS — (11) 94203-8103.</strong> Confira a mensagem e toque em <strong>Enviar</strong>. A foto não é anexada automaticamente: envie-a separadamente na mesma conversa.</p>
-            <p class="cta-note">Nenhum arquivo é salvo em uma pasta ou enviado sozinho. A MOSS só recebe sua mensagem quando você a envia pelo WhatsApp. O PDF final é entregue após a confirmação do pagamento.</p>
+            <p class="cta-note"><strong>Opção pelo WhatsApp — (11) 94203-8103.</strong> Confira a mensagem e toque em <strong>Enviar</strong>. Neste modo, a foto não é anexada automaticamente: envie-a separadamente na conversa.</p>
+            <p class="cta-note">Pelo WhatsApp, nenhum PDF é anexado automaticamente. Quando o envio por e-mail estiver ativado, o PDF irá diretamente à MOSS. Em qualquer opção, a entrega ao cliente acontece após a confirmação do pagamento.</p>
             <p class="cta-note">Ao copiar, você recebe apenas os dados em texto, não o portfólio em PDF. Preço, prazo e forma de entrega são combinados antes do pagamento.</p>
             <p class="cta-note" id="pedido-msg" role="status" aria-live="polite" hidden></p>
           </div>
@@ -193,8 +211,8 @@
     <section class="faq wrap" aria-labelledby="faq-t">
       <p class="eyebrow">PERGUNTAS DIRETAS</p>
       <h2 id="faq-t">Sem letra miúda.</h2>
-      <details><summary>Para onde vão os dados do portfólio?</summary><p>O WhatsApp da MOSS Digital abre com os dados preenchidos (modelo, textos, projetos, links e cor). A MOSS só recebe o pedido depois que você toca em Enviar na conversa. Não há salvamento automático em pasta, e a foto deve ser encaminhada à parte.</p></details>
-      <details><summary>A foto enviada fica guardada em algum lugar?</summary><p>Não. A foto usada na prévia vive apenas na memória do seu navegador. Limpar a página ou fechar a aba descarta tudo. Na finalização, você envia a foto que quiser pelo WhatsApp.</p></details>
+      <details><summary>Para onde vão os dados do portfólio?</summary><p>Quando o envio por e-mail estiver ativo, o PDF completo será encaminhado exclusivamente à MOSS Digital. No modo WhatsApp, é enviado somente o texto ao tocar em Enviar na conversa, e a foto deverá ser encaminhada à parte. Não há pasta pública de arquivos.</p></details>
+      <details><summary>A foto enviada fica guardada em algum lugar?</summary><p>Antes de enviar o pedido, ela fica somente na memória do navegador. Se você escolher o envio por e-mail quando estiver ativado, a foto será incluída no PDF e enviada diretamente à MOSS com sua autorização. Pelo WhatsApp, a foto deverá ser encaminhada separadamente.</p></details>
       <details><summary>Preciso saber mexer com site para ter um portfólio?</summary><p>Não. Você monta a prévia gratuita aqui e, após combinar as condições no WhatsApp e confirmar o pagamento, nós finalizamos e entregamos os arquivos prontos. Você também recebe um passo a passo de como publicar, se quiser colocar no ar.</p></details>
        <details><summary>Posso baixar o portfólio diretamente nesta página?</summary><p>Não. Aqui você pode preencher seus dados e visualizar os modelos. O arquivo final é entregue pela MOSS Digital após a confirmação do pagamento.</p></details>
       <details><summary>Qual é o prazo de entrega?</summary><p>Combinado no WhatsApp, antes do pagamento. Projetos normalmente levam alguns dias úteis, dependendo do volume e das fotos. Prazo realista, sem promessa impossível.</p></details>
@@ -213,5 +231,9 @@
   </footer>
 
   <script src="portfolio.js?v=20261111-pedido-completo" defer></script>
+  <!-- Chaves públicas e endereço do serviço, nunca segredos. -->
+  <script src="email-config.js?v=20261111-preparacao" defer></script>
+  <!-- Só ativa o novo botão quando o backend estiver configurado. -->
+  <script src="email-pdf.js?v=20261111-preparacao" defer></script>
 </body>
 </html>
