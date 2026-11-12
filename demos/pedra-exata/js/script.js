@@ -48,3 +48,5 @@
   });
   calculate(); // Preenche a estimativa inicial.
 })(); // Fim do módulo.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

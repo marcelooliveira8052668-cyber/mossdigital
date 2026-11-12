@@ -34,3 +34,5 @@ form.addEventListener('submit',event=>{ // Encaminha solicitação ao WhatsApp.
   lines.push(`Volume geométrico estimado: ${liters.textContent}`,'A data é apenas uma preferência, sujeito a confirmação.'); // Contexto sem recomendação técnica.
   window.open(`https://wa.me/5511942038103?text=${encodeURIComponent(lines.join('\n'))}`,'_blank','noopener,noreferrer'); // Abre conversa.
 });
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

@@ -386,8 +386,8 @@ function mensagemWhatsApp() {
   });
   linhas.push(
     "",
-    "*Foto escolhida na prévia:* " + (s.foto ? "Sim, vou enviá-la separadamente" : "Não"),
-    "A foto não é anexada automaticamente pelo gerador.",
+    "*Foto escolhida na prévia:* " + (s.foto ? "Sim, incluída no arquivo do pedido" : "Não"),
+    "Vou anexar manualmente o arquivo pedido-portfolio (.json), com os dados e a foto, e a prévia em PDF.",
     "",
     "Por favor, confirmem prazo, pagamento e entrega antes de finalizar."
   );
@@ -399,7 +399,7 @@ function abrirWhatsApp() {
   if (!validarPedido()) return;
   const url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mensagemWhatsApp());
   window.open(url, "_blank", "noopener,noreferrer");
-  mostrarStatusPedido("Confira o WhatsApp e toque em Enviar para a MOSS receber os dados. Envie também sua foto na conversa, se desejar. Se a janela não abrir, use 'Copiar todos os dados do pedido'.");
+  mostrarStatusPedido("No WhatsApp, anexe como Documento o arquivo pedido-portfolio (.json) e a prévia em PDF que você baixou. Toque em Enviar. Nenhum arquivo é anexado automaticamente. Se não conseguir anexar, envie os dados e a foto separadamente.");
 }
 
 /* Permite copiar somente os dados escritos, nunca o PDF final. */
@@ -421,13 +421,15 @@ async function copiarPedido() {
       auxiliar.remove();
       if (!copiou) throw new Error("Cópia não disponível");
     }
-    mostrarStatusPedido("Dados copiados! Abra o WhatsApp (11) 94203-8103, cole a mensagem e toque em Enviar. A foto deve ser enviada separadamente.");
+    mostrarStatusPedido("Dados copiados! Cole no WhatsApp (11) 94203-8103 e anexe o arquivo do pedido (.json) e a prévia em PDF como documentos. Depois toque em Enviar.");
   } catch (erro) {
     mostrarStatusPedido("Não foi possível copiar automaticamente. Use o botão 'Enviar meu pedido à MOSS' para abrir o WhatsApp.");
   }
 }
 
 /* ---------- Inicialização ---------- */
+// A ferramenta local de finalização reutiliza os modelos, sem o formulário público.
+if (FORM) {
 projetosLista.appendChild(linhaProjeto(1));
 projetosLista.appendChild(linhaProjeto(2));
 addProjetoBtn.addEventListener("click", adicionarProjeto);
@@ -465,3 +467,4 @@ FORM.addEventListener("submit", (e) => e.preventDefault());
 
 atualizarContadorProjetos();
 atualizarPreview();
+}

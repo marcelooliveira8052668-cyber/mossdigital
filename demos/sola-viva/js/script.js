@@ -68,3 +68,5 @@
   $('#clear-demo')?.addEventListener('click',()=>{if(confirm('Apagar todas as fichas fictícias deste navegador?')){tickets=[];save();render();}}); // Confirma exclusão geral.
   render(); // Desenha estado inicial.
 })(); // Encerra módulo.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

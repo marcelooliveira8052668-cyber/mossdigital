@@ -22,3 +22,5 @@ document.querySelector('#experiment-form').addEventListener('submit',evento=>{ /
   const msg=`Olá! Quero saber mais sobre as aulas da Azul Vivo.\nNome: ${nome}\nFaixa etária: ${idade}\nModalidade: ${modalidade}\nPeríodo preferido: ${turno}${objetivo?`\nObservação: ${objetivo}`:''}\nAguardo informações e confirmação de disponibilidade.`; // Declara um dado ou referência utilizada nesta funcionalidade.
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer'); // Abre a conversa do WhatsApp com mensagem codificada.
 }); // Encerra o bloco ou a função anterior.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

@@ -75,3 +75,5 @@ document.getElementById('send-quote').addEventListener('click',()=>{ // Envio po
   abrirWhatsApp(linhas.join('\n')); // Abre a conversa.
 });
 atualizarCotacao(); // Primeira exibição.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

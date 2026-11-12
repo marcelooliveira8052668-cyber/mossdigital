@@ -104,3 +104,5 @@ submit.addEventListener('click', () => { // Envia consulta, nunca uma reserva co
   openWhatsApp(`Quero consultar disponibilidade (não é reserva).\nModalidade: ${sport.options[sport.selectedIndex].text}\nData: ${date.value}\nHorário: ${selectedSlot}\nDuração: ${duration.value} hora(s)\nValor ilustrativo: ${estimate.textContent}`); // Abre mensagem ao estabelecimento.
 }); // Encerra consulta de agenda.
 recalculate(); // Exibe custo e estado inicial.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

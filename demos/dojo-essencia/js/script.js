@@ -28,3 +28,5 @@ document.querySelector('#dojo-form').addEventListener('submit',evento=>{ // Regi
   const msg=`Olá! Quero informações sobre o Dojô Essência.\nResponsável ou interessado: ${nome}\nTurma: ${turma}\nPeríodo de preferência: ${periodo}\nGostaria de saber sobre horários e possibilidade de visita. Aguardo confirmação.`; // Declara um dado ou referência utilizada nesta funcionalidade.
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer'); // Abre a conversa do WhatsApp com mensagem codificada.
 }); // Encerra o bloco ou a função anterior.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

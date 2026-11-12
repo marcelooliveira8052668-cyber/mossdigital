@@ -75,3 +75,5 @@
   $('#clear-order').addEventListener('click',()=>{if(confirm('Esvaziar o pedido fictício?')){basket={};save();renderBasket();}}); // Apaga a cesta.
   renderCatalog();renderBasket(); // Inicialização.
 })(); // Fim.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

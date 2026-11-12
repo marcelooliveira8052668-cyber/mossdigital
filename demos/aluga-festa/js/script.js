@@ -46,3 +46,5 @@ form.addEventListener('submit',(evento)=>{ // Prepara solicitação.
   abrirWhatsApp(msg.join('\n')); // Abre WhatsApp.
 });
 calcular(); // Estado inicial.
+// Identifica as fotografias de banco e disponibiliza as fontes da revisão.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

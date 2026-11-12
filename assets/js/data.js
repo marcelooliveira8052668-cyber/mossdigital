@@ -35,7 +35,7 @@
 const DataLayer = (function () {
   'use strict';
 
-  const cfg = window.SITE_CONFIG.dataSource;
+  const cfg = (window.SITE_CONFIG || {}).dataSource || { provider: 'local' };
   const LOCAL_KEY = 'bb_leads';
 
   // Evita requisições repetidas em caso de erro
@@ -65,9 +65,9 @@ const DataLayer = (function () {
         list.push(Object.assign({ id: Date.now(), criadoEm: new Date().toISOString() }, lead));
         window.localStorage.setItem(LOCAL_KEY, JSON.stringify(list));
         log('lead salvo no navegador:', lead);
-        return { ok: true, local: true };
+        return { ok: true, local: true, persisted: false };
       } catch (e) {
-        return { ok: true, local: true };
+        return { ok: false, local: true, persisted: false, error: 'Não foi possível salvar no navegador.' };
       }
     }
   };
@@ -149,8 +149,10 @@ const DataLayer = (function () {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(lead)
       });
-      // no-cors devolve status 0; tratamos como sucesso
-      return { ok: true, opaque: res.type === 'opaque' };
+      // Uma resposta opaca não permite confirmar se o servidor aceitou os dados.
+      if (res.type === 'opaque') return { ok: true, pending: true, persisted: false };
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return { ok: true };
     }
   };
 
@@ -202,8 +204,8 @@ const DataLayer = (function () {
         return Object.assign({ persisted: true }, r);
       } catch (e) {
         log('banco indisponível (' + e.message + ') — salvo localmente');
-        await local.sendLead(payload);
-        return { ok: true, persisted: false, error: e.message };
+        const backup = await local.sendLead(payload);
+        return { ok: backup.ok, local: true, persisted: false, error: e.message };
       }
     },
 

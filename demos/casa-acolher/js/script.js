@@ -54,3 +54,5 @@ function initDemo(){ // Inicializa fluxo da residência.
  });
 }
 
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

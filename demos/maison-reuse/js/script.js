@@ -71,3 +71,5 @@ function initDemo(){ // Prepara catálogo da boutique.
  render(); // Inicializa.
 }
 
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

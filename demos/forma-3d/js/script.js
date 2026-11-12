@@ -97,3 +97,5 @@ ask.addEventListener('click', () => { // Prepara mensagem solicitada pelo visita
   $('#estimate-status').textContent = 'Mensagem preparada. O arquivo 3D deve ser enviado manualmente pela conversa, se necessário.'; // Reforça limite técnico.
 }); // Encerra a consulta.
 calculate(); // Calcula a estimativa inicial da demo.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

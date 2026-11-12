@@ -1,0 +1,798 @@
+{
+  "capturedAt": "2026-11-12T10:35:15.373177+00:00",
+  "notice": "Capturas das próprias demonstrações, sem dados reais de clientes.",
+  "previews": [
+    {
+      "key": "/agenda-pro/",
+      "title": "MOSS Agenda Pro",
+      "src": "assets/img/catalogo-fiel/moss-agenda-pro-ece456fe9f.webp",
+      "url": "https://mossdigital.com.br/agenda-pro/?v=agenda-20261027"
+    },
+    {
+      "key": "/comandas/",
+      "title": "Comanda Fácil",
+      "src": "assets/img/catalogo-fiel/comanda-facil-9acc8c1c75.webp",
+      "url": "https://mossdigital.com.br/comandas/index.html"
+    },
+    {
+      "key": "/demo.html?preset=academia",
+      "title": "🏋️ Academia",
+      "src": "assets/img/catalogo-fiel/academia-031b6e2cee.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=academia&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=advocacia",
+      "title": "⚖️ Advocacia",
+      "src": "assets/img/catalogo-fiel/advocacia-a18ee7606b.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=advocacia&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=arquiteto",
+      "title": "📐 Arquiteto",
+      "src": "assets/img/catalogo-fiel/arquiteto-33be747ddb.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=arquiteto&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=assistencia",
+      "title": "📱 Assistência de Celular",
+      "src": "assets/img/catalogo-fiel/assistencia-de-celular-ce064e4e98.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=assistencia&v=assistencia-20261101"
+    },
+    {
+      "key": "/demo.html?preset=bar",
+      "title": "🍸 Bar e Coquetelaria",
+      "src": "assets/img/catalogo-fiel/bar-e-coquetelaria-5cf470ddd4.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=bar&v=bar-20261101"
+    },
+    {
+      "key": "/demo.html?preset=barbearia",
+      "title": "💈 Barbearia",
+      "src": "assets/img/catalogo-fiel/barbearia-68d8ecc1f6.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=barbearia&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=clinica",
+      "title": "🦷 Clínica",
+      "src": "assets/img/catalogo-fiel/clinica-aa46353b1d.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=clinica&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=dentista",
+      "title": "🦷 Dentista",
+      "src": "assets/img/catalogo-fiel/dentista-92c9b2cfb0.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=dentista&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=escola",
+      "title": "🎓 Escola e cursos",
+      "src": "assets/img/catalogo-fiel/escola-e-cursos-1b9cd0e3c0.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=escola&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=estetica",
+      "title": "💫 Clínica estética",
+      "src": "assets/img/catalogo-fiel/clinica-estetica-03ddae882b.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=estetica&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=festas",
+      "title": "🎉 Casa de Festas",
+      "src": "assets/img/catalogo-fiel/casa-de-festas-dd9a2cc4c0.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=festas&v=festas-20261101"
+    },
+    {
+      "key": "/demo.html?preset=fisioterapia",
+      "title": "🦵 Fisioterapia",
+      "src": "assets/img/catalogo-fiel/fisioterapia-e05421c114.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=fisioterapia&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=fotografo",
+      "title": "📷 Fotógrafo",
+      "src": "assets/img/catalogo-fiel/fotografo-185ba819df.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=fotografo&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=fretes",
+      "title": "🚚 Fretes e Transportes",
+      "src": "assets/img/catalogo-fiel/fretes-e-transportes-ac61f2e915.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=fretes&v=fretes-20261101"
+    },
+    {
+      "key": "/demo.html?preset=hotel",
+      "title": "🏨 Hotel e pousada",
+      "src": "assets/img/catalogo-fiel/hotel-e-pousada-c276320e94.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=hotel&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=imobiliaria",
+      "title": "🏠 Imobiliária",
+      "src": "assets/img/catalogo-fiel/imobiliaria-89a341cfd4.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=imobiliaria&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=lanchonete",
+      "title": "🍔 Lanchonete",
+      "src": "assets/img/catalogo-fiel/lanchonete-ed5dbc9a82.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=lanchonete&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=locadora",
+      "title": "🚗 Locadora",
+      "src": "assets/img/catalogo-fiel/locadora-1666663b9c.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=locadora&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=nutricionista",
+      "title": "🥗 Nutricionista",
+      "src": "assets/img/catalogo-fiel/nutricionista-1e5bc178ca.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=nutricionista&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=oficina",
+      "title": "🔧 Oficina",
+      "src": "assets/img/catalogo-fiel/oficina-3345f36b81.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=oficina&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=padaria",
+      "title": "🥐 Padaria e café",
+      "src": "assets/img/catalogo-fiel/padaria-e-cafe-27eebe8921.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=padaria&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=petshop",
+      "title": "🐾 Pet shop",
+      "src": "assets/img/catalogo-fiel/pet-shop-e0b779f5ca.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=petshop&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=pizzaria",
+      "title": "🍕 Pizzaria",
+      "src": "assets/img/catalogo-fiel/pizzaria-1dbcbc63a4.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=pizzaria&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=psicologo",
+      "title": "🧠 Psicólogo",
+      "src": "assets/img/catalogo-fiel/psicologo-7b2d58decb.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=psicologo&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=salao",
+      "title": "💇 Salão de beleza",
+      "src": "assets/img/catalogo-fiel/salao-de-beleza-e6dec688a8.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=salao&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=servicos",
+      "title": "🛠️ Prestação de serviço",
+      "src": "assets/img/catalogo-fiel/prestacao-de-servico-5fe41ac5b7.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=servicos&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demo.html?preset=tatuagem",
+      "title": "🖋️ Studio de Tatuagem",
+      "src": "assets/img/catalogo-fiel/studio-de-tatuagem-4b637bd40e.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=tatuagem&v=tatuagem-20261101"
+    },
+    {
+      "key": "/demo.html?preset=veterinario",
+      "title": "🐾 Clínica veterinária",
+      "src": "assets/img/catalogo-fiel/clinica-veterinaria-4fcdf82cf3.webp",
+      "url": "https://mossdigital.com.br/demo.html?preset=veterinario&fotos=fotos-20261027"
+    },
+    {
+      "key": "/demos/acessoaberto/",
+      "title": "acesso aberto — Guia de Acessibilidade Urbana",
+      "src": "assets/img/catalogo-fiel/acesso-aberto-guia-de-acessibilidade-urbana-4347c4e9dd.webp",
+      "url": "https://mossdigital.com.br/demos/acessoaberto/index.html"
+    },
+    {
+      "key": "/demos/aluga-festa/",
+      "title": "Aluga Festa",
+      "src": "assets/img/catalogo-fiel/aluga-festa-f202ca1b8d.webp",
+      "url": "https://mossdigital.com.br/demos/aluga-festa/"
+    },
+    {
+      "key": "/demos/aprovalab-cursinho/",
+      "title": "AprovaLab",
+      "src": "assets/img/catalogo-fiel/aprovalab-2f1f75909a.webp",
+      "url": "https://mossdigital.com.br/demos/aprovalab-cursinho/"
+    },
+    {
+      "key": "/demos/aqua-world/",
+      "title": "Aqua World",
+      "src": "assets/img/catalogo-fiel/aqua-world-c3058e32c1.webp",
+      "url": "https://mossdigital.com.br/demos/aqua-world/"
+    },
+    {
+      "key": "/demos/atlas-prime-store/",
+      "title": "Atlas Prime",
+      "src": "assets/img/catalogo-fiel/atlas-prime-fdb2b7b360.webp",
+      "url": "https://mossdigital.com.br/demos/atlas-prime-store/"
+    },
+    {
+      "key": "/demos/azul-vivo-natacao/",
+      "title": "Azul Vivo",
+      "src": "assets/img/catalogo-fiel/azul-vivo-858b6f2423.webp",
+      "url": "https://mossdigital.com.br/demos/azul-vivo-natacao/"
+    },
+    {
+      "key": "/demos/black-diamond/",
+      "title": "Black Diamond",
+      "src": "assets/img/catalogo-fiel/black-diamond-7eb284111d.webp",
+      "url": "https://mossdigital.com.br/demos/black-diamond/"
+    },
+    {
+      "key": "/demos/borracha-ja/",
+      "title": "Borracha Já",
+      "src": "assets/img/catalogo-fiel/borracha-ja-e91d9e27fe.webp",
+      "url": "https://mossdigital.com.br/demos/borracha-ja/"
+    },
+    {
+      "key": "/demos/cacamba-certa/",
+      "title": "Caçamba Certa",
+      "src": "assets/img/catalogo-fiel/cacamba-certa-c47be9954c.webp",
+      "url": "https://mossdigital.com.br/demos/cacamba-certa/"
+    },
+    {
+      "key": "/demos/casa-acolher/",
+      "title": "Casa Acolher",
+      "src": "assets/img/catalogo-fiel/casa-acolher-9ba60e22d7.webp",
+      "url": "https://mossdigital.com.br/demos/casa-acolher/"
+    },
+    {
+      "key": "/demos/casa-do-queijo/",
+      "title": "Casa do Queijo",
+      "src": "assets/img/catalogo-fiel/casa-do-queijo-9e18806ac1.webp",
+      "url": "https://mossdigital.com.br/demos/casa-do-queijo/"
+    },
+    {
+      "key": "/demos/casamento/",
+      "title": "Clara & Tomás — Site de casamento",
+      "src": "assets/img/catalogo-fiel/clara-tomas-site-de-casamento-2671233c89.webp",
+      "url": "https://mossdigital.com.br/demos/casamento/"
+    },
+    {
+      "key": "/demos/casanexa/",
+      "title": "CasaNexa",
+      "src": "assets/img/catalogo-fiel/casanexa-85da91154f.webp",
+      "url": "https://mossdigital.com.br/demos/casanexa/"
+    },
+    {
+      "key": "/demos/chronos-prime/",
+      "title": "Chronos Prime",
+      "src": "assets/img/catalogo-fiel/chronos-prime-8251ca1656.webp",
+      "url": "https://mossdigital.com.br/demos/chronos-prime/"
+    },
+    {
+      "key": "/demos/clean-express/",
+      "title": "Clean Express",
+      "src": "assets/img/catalogo-fiel/clean-express-ecee9b4ae7.webp",
+      "url": "https://mossdigital.com.br/demos/clean-express/"
+    },
+    {
+      "key": "/demos/colegio-aurora-prime/",
+      "title": "Colégio Aurora Prime",
+      "src": "assets/img/catalogo-fiel/colegio-aurora-prime-0e0fc0b84e.webp",
+      "url": "https://mossdigital.com.br/demos/colegio-aurora-prime/"
+    },
+    {
+      "key": "/demos/contabil-organiza/",
+      "title": "Contábil Organiza",
+      "src": "assets/img/catalogo-fiel/contabil-organiza-9b8ea5de6f.webp",
+      "url": "https://mossdigital.com.br/demos/contabil-organiza/"
+    },
+    {
+      "key": "/demos/contabilidade/",
+      "title": "Eixo Contábil — Contabilidade",
+      "src": "assets/img/catalogo-fiel/eixo-contabil-contabilidade-fbcfa004dc.webp",
+      "url": "https://mossdigital.com.br/demos/contabilidade/"
+    },
+    {
+      "key": "/demos/cor-e-medida/",
+      "title": "Cor & Medida",
+      "src": "assets/img/catalogo-fiel/cor-medida-5008a39485.webp",
+      "url": "https://mossdigital.com.br/demos/cor-e-medida/"
+    },
+    {
+      "key": "/demos/dentaltech/",
+      "title": "DentalTech",
+      "src": "assets/img/catalogo-fiel/dentaltech-7c25045ace.webp",
+      "url": "https://mossdigital.com.br/demos/dentaltech/"
+    },
+    {
+      "key": "/demos/desentoja/",
+      "title": "DesentoJá",
+      "src": "assets/img/catalogo-fiel/desentoja-311cba6ba0.webp",
+      "url": "https://mossdigital.com.br/demos/desentoja/"
+    },
+    {
+      "key": "/demos/direcao-prime/",
+      "title": "Direção Prime",
+      "src": "assets/img/catalogo-fiel/direcao-prime-8c6a54b987.webp",
+      "url": "https://mossdigital.com.br/demos/direcao-prime/"
+    },
+    {
+      "key": "/demos/distribuidora/",
+      "title": "MOSS Distribuidora",
+      "src": "assets/img/catalogo-fiel/moss-distribuidora-da9858af5d.webp",
+      "url": "https://mossdigital.com.br/demos/distribuidora/"
+    },
+    {
+      "key": "/demos/doce-sob-medida/",
+      "title": "Doce Sob Medida",
+      "src": "assets/img/catalogo-fiel/doce-sob-medida-48aa1eaf01.webp",
+      "url": "https://mossdigital.com.br/demos/doce-sob-medida/"
+    },
+    {
+      "key": "/demos/dojo-essencia/",
+      "title": "Dojô Essência",
+      "src": "assets/img/catalogo-fiel/dojo-essencia-02e0230a56.webp",
+      "url": "https://mossdigital.com.br/demos/dojo-essencia/"
+    },
+    {
+      "key": "/demos/dolce-neve/",
+      "title": "Dolce Neve",
+      "src": "assets/img/catalogo-fiel/dolce-neve-55199820f9.webp",
+      "url": "https://mossdigital.com.br/demos/dolce-neve/"
+    },
+    {
+      "key": "/demos/editora-farol/",
+      "title": "Editora Farol",
+      "src": "assets/img/catalogo-fiel/editora-farol-73827a79ae.webp",
+      "url": "https://mossdigital.com.br/demos/editora-farol/"
+    },
+    {
+      "key": "/demos/embalagem-direta/",
+      "title": "Embalagem Direta",
+      "src": "assets/img/catalogo-fiel/embalagem-direta-4114e09a10.webp",
+      "url": "https://mossdigital.com.br/demos/embalagem-direta/"
+    },
+    {
+      "key": "/demos/entrelares/",
+      "title": "EntreLares - Profissionais para sua casa",
+      "src": "assets/img/catalogo-fiel/entrelares-profissionais-para-sua-casa-cd0e41ab16.webp",
+      "url": "https://mossdigital.com.br/demos/entrelares/index.html"
+    },
+    {
+      "key": "/demos/epi-na-medida/",
+      "title": "EPI na Medida",
+      "src": "assets/img/catalogo-fiel/epi-na-medida-6b2bd812b9.webp",
+      "url": "https://mossdigital.com.br/demos/epi-na-medida/"
+    },
+    {
+      "key": "/demos/estaciona-plus/",
+      "title": "Estaciona+",
+      "src": "assets/img/catalogo-fiel/estaciona-2162bca74e.webp",
+      "url": "https://mossdigital.com.br/demos/estaciona-plus/"
+    },
+    {
+      "key": "/demos/estoque-miudo/",
+      "title": "Estoque Miúdo",
+      "src": "assets/img/catalogo-fiel/estoque-miudo-b72702947c.webp",
+      "url": "https://mossdigital.com.br/demos/estoque-miudo/"
+    },
+    {
+      "key": "/demos/extincontrol/",
+      "title": "ExtinControl",
+      "src": "assets/img/catalogo-fiel/extincontrol-8fcf521883.webp",
+      "url": "https://mossdigital.com.br/demos/extincontrol/"
+    },
+    {
+      "key": "/demos/floricultura/",
+      "title": "Flora & Afeto — Floricultura",
+      "src": "assets/img/catalogo-fiel/flora-afeto-floricultura-2b94c0f541.webp",
+      "url": "https://mossdigital.com.br/demos/floricultura/"
+    },
+    {
+      "key": "/demos/forma-3d/",
+      "title": "Forma 3D",
+      "src": "assets/img/catalogo-fiel/forma-3d-79f30e9706.webp",
+      "url": "https://mossdigital.com.br/demos/forma-3d/"
+    },
+    {
+      "key": "/demos/frio-certo/",
+      "title": "Frio Certo",
+      "src": "assets/img/catalogo-fiel/frio-certo-fe74730fd2.webp",
+      "url": "https://mossdigital.com.br/demos/frio-certo/"
+    },
+    {
+      "key": "/demos/frota-em-dia/",
+      "title": "Frota em Dia",
+      "src": "assets/img/catalogo-fiel/frota-em-dia-6605d23a9f.webp",
+      "url": "https://mossdigital.com.br/demos/frota-em-dia/"
+    },
+    {
+      "key": "/demos/gelo-express/",
+      "title": "Gelo Express",
+      "src": "assets/img/catalogo-fiel/gelo-express-8a673c0c33.webp",
+      "url": "https://mossdigital.com.br/demos/gelo-express/"
+    },
+    {
+      "key": "/demos/grafica-ponto/",
+      "title": "Gráfica Ponto",
+      "src": "assets/img/catalogo-fiel/grafica-ponto-2dc30a3a9d.webp",
+      "url": "https://mossdigital.com.br/demos/grafica-ponto/"
+    },
+    {
+      "key": "/demos/helpdesk-local/",
+      "title": "HelpDesk Local",
+      "src": "assets/img/catalogo-fiel/helpdesk-local-a24230eb06.webp",
+      "url": "https://mossdigital.com.br/demos/helpdesk-local/"
+    },
+    {
+      "key": "/demos/jardim-secreto/",
+      "title": "Jardim Secreto",
+      "src": "assets/img/catalogo-fiel/jardim-secreto-efca3d2ebc.webp",
+      "url": "https://mossdigital.com.br/demos/jardim-secreto/"
+    },
+    {
+      "key": "/demos/junto/",
+      "title": "junto. — Voluntariado e Impacto Social",
+      "src": "assets/img/catalogo-fiel/junto-voluntariado-e-impacto-social-635b24ff26.webp",
+      "url": "https://mossdigital.com.br/demos/junto/index.html"
+    },
+    {
+      "key": "/demos/lista-certa/",
+      "title": "Lista Certa",
+      "src": "assets/img/catalogo-fiel/lista-certa-1b6e3d41dd.webp",
+      "url": "https://mossdigital.com.br/demos/lista-certa/"
+    },
+    {
+      "key": "/demos/maison-reuse/",
+      "title": "Maison Reuse",
+      "src": "assets/img/catalogo-fiel/maison-reuse-9274caefb8.webp",
+      "url": "https://mossdigital.com.br/demos/maison-reuse/"
+    },
+    {
+      "key": "/demos/maxloc/",
+      "title": "MaxLoc",
+      "src": "assets/img/catalogo-fiel/maxloc-436dcf6e8a.webp",
+      "url": "https://mossdigital.com.br/demos/maxloc/"
+    },
+    {
+      "key": "/demos/mercatto/",
+      "title": "Mercatto",
+      "src": "assets/img/catalogo-fiel/mercatto-d9a28fd6be.webp",
+      "url": "https://mossdigital.com.br/demos/mercatto/"
+    },
+    {
+      "key": "/demos/mesa-da-semana/",
+      "title": "Mesa da Semana",
+      "src": "assets/img/catalogo-fiel/mesa-da-semana-7d3739f73e.webp",
+      "url": "https://mossdigital.com.br/demos/mesa-da-semana/"
+    },
+    {
+      "key": "/demos/moss-agro/",
+      "title": "MOSS AGRO — Gestão Rural",
+      "src": "assets/img/catalogo-fiel/moss-agro-gestao-rural-cd4d73d1b9.webp",
+      "url": "https://mossdigital.com.br/demos/moss-agro/"
+    },
+    {
+      "key": "/demos/moss-city/",
+      "title": "MOSS CITY — Gestão Urbana",
+      "src": "assets/img/catalogo-fiel/moss-city-gestao-urbana-0dbc529c09.webp",
+      "url": "https://mossdigital.com.br/demos/moss-city/"
+    },
+    {
+      "key": "/demos/moss-condo/",
+      "title": "MOSS CONDO — Gestão de Condomínios",
+      "src": "assets/img/catalogo-fiel/moss-condo-gestao-de-condominios-d6d7af1b22.webp",
+      "url": "https://mossdigital.com.br/demos/moss-condo/"
+    },
+    {
+      "key": "/demos/moss-edu/",
+      "title": "MOSS EDU — Gestão Escolar",
+      "src": "assets/img/catalogo-fiel/moss-edu-gestao-escolar-e0c6589552.webp",
+      "url": "https://mossdigital.com.br/demos/moss-edu/"
+    },
+    {
+      "key": "/demos/moss-home-prime/",
+      "title": "🛋️ MOSS HOME PRIME — Móveis e decoração",
+      "src": "assets/img/catalogo-fiel/moss-home-prime-moveis-e-decoracao-11b407309e.webp",
+      "url": "https://mossdigital.com.br/demos/moss-home-prime/"
+    },
+    {
+      "key": "/demos/moss-motors/",
+      "title": "MOSS Motors — Loja de veículos",
+      "src": "assets/img/catalogo-fiel/moss-motors-loja-de-veiculos-5f286d78d6.webp",
+      "url": "https://mossdigital.com.br/demos/moss-motors/"
+    },
+    {
+      "key": "/demos/moss-sports/",
+      "title": "MOSS SPORTS — Loja Esportiva",
+      "src": "assets/img/catalogo-fiel/moss-sports-loja-esportiva-a15861d9fe.webp",
+      "url": "https://mossdigital.com.br/demos/moss-sports/"
+    },
+    {
+      "key": "/demos/moss-vision-prime/",
+      "title": "MOSS Vision Prime — Ótica",
+      "src": "assets/img/catalogo-fiel/moss-vision-prime-otica-9503afdbc2.webp",
+      "url": "https://mossdigital.com.br/demos/moss-vision-prime/"
+    },
+    {
+      "key": "/demos/mudaja/",
+      "title": "MudaJá",
+      "src": "assets/img/catalogo-fiel/mudaja-edaa1c7f3c.webp",
+      "url": "https://mossdigital.com.br/demos/mudaja/"
+    },
+    {
+      "key": "/demos/music-house/",
+      "title": "Music House",
+      "src": "assets/img/catalogo-fiel/music-house-59214d7d0e.webp",
+      "url": "https://mossdigital.com.br/demos/music-house/"
+    },
+    {
+      "key": "/demos/nature-escape/",
+      "title": "Nature Escape",
+      "src": "assets/img/catalogo-fiel/nature-escape-b9c542b07e.webp",
+      "url": "https://mossdigital.com.br/demos/nature-escape/"
+    },
+    {
+      "key": "/demos/nexo-work/",
+      "title": "Nexo Work",
+      "src": "assets/img/catalogo-fiel/nexo-work-2708ef17c9.webp",
+      "url": "https://mossdigital.com.br/demos/nexo-work/"
+    },
+    {
+      "key": "/demos/ocean-prime/",
+      "title": "Ocean Prime",
+      "src": "assets/img/catalogo-fiel/ocean-prime-70c8ba3c64.webp",
+      "url": "https://mossdigital.com.br/demos/ocean-prime/"
+    },
+    {
+      "key": "/demos/orbita-cursos/",
+      "title": "Órbita Cursos",
+      "src": "assets/img/catalogo-fiel/orbita-cursos-6b49832d52.webp",
+      "url": "https://mossdigital.com.br/demos/orbita-cursos/"
+    },
+    {
+      "key": "/demos/ordemfix/",
+      "title": "OrdemFix",
+      "src": "assets/img/catalogo-fiel/ordemfix-57bd8695a2.webp",
+      "url": "https://mossdigital.com.br/demos/ordemfix/"
+    },
+    {
+      "key": "/demos/otica/",
+      "title": "Lumina Ótica — Óculos de grau e sol",
+      "src": "assets/img/catalogo-fiel/lumina-otica-oculos-de-grau-e-sol-7f7622df6e.webp",
+      "url": "https://mossdigital.com.br/demos/otica/"
+    },
+    {
+      "key": "/demos/pastelaria-sabor-de-feira/",
+      "title": "Pastelaria Sabor de Feira",
+      "src": "assets/img/catalogo-fiel/pastelaria-sabor-de-feira-04382efdfe.webp",
+      "url": "https://mossdigital.com.br/demos/pastelaria-sabor-de-feira/"
+    },
+    {
+      "key": "/demos/pedra-exata/",
+      "title": "Pedra Exata",
+      "src": "assets/img/catalogo-fiel/pedra-exata-b7c91a96a4.webp",
+      "url": "https://mossdigital.com.br/demos/pedra-exata/"
+    },
+    {
+      "key": "/demos/pet-resort/",
+      "title": "Pet Resort",
+      "src": "assets/img/catalogo-fiel/pet-resort-5cabb04f61.webp",
+      "url": "https://mossdigital.com.br/demos/pet-resort/"
+    },
+    {
+      "key": "/demos/piscina-em-dia/",
+      "title": "Piscina em Dia",
+      "src": "assets/img/catalogo-fiel/piscina-em-dia-dbc18640a2.webp",
+      "url": "https://mossdigital.com.br/demos/piscina-em-dia/"
+    },
+    {
+      "key": "/demos/pontocomum/",
+      "title": "ponto comum — Coworking e Salas de Reuniao",
+      "src": "assets/img/catalogo-fiel/ponto-comum-coworking-e-salas-de-reuniao-9026646e69.webp",
+      "url": "https://mossdigital.com.br/demos/pontocomum/index.html"
+    },
+    {
+      "key": "/demos/pulse-fashion/",
+      "title": "Pulse Fashion",
+      "src": "assets/img/catalogo-fiel/pulse-fashion-a84a753336.webp",
+      "url": "https://mossdigital.com.br/demos/pulse-fashion/"
+    },
+    {
+      "key": "/demos/quadra-livre/",
+      "title": "Quadra Livre",
+      "src": "assets/img/catalogo-fiel/quadra-livre-7009e7a208.webp",
+      "url": "https://mossdigital.com.br/demos/quadra-livre/"
+    },
+    {
+      "key": "/demos/raizfeira/",
+      "title": "raiz / feira — Feira de Produtores Locais",
+      "src": "assets/img/catalogo-fiel/raiz-feira-feira-de-produtores-locais-a269ad081f.webp",
+      "url": "https://mossdigital.com.br/demos/raizfeira/index.html"
+    },
+    {
+      "key": "/demos/reciclo/",
+      "title": "ReCiclo — Reciclagem e Ecopontos",
+      "src": "assets/img/catalogo-fiel/reciclo-reciclagem-e-ecopontos-95ad06eaa4.webp",
+      "url": "https://mossdigital.com.br/demos/reciclo/index.html"
+    },
+    {
+      "key": "/demos/rota-viva/",
+      "title": "Rota Viva",
+      "src": "assets/img/catalogo-fiel/rota-viva-2dde53808f.webp",
+      "url": "https://mossdigital.com.br/demos/rota-viva/"
+    },
+    {
+      "key": "/demos/safehome/",
+      "title": "SafeHome",
+      "src": "assets/img/catalogo-fiel/safehome-f1bd5baec2.webp",
+      "url": "https://mossdigital.com.br/demos/safehome/"
+    },
+    {
+      "key": "/demos/sentinela-digital/",
+      "title": "Sentinela Digital",
+      "src": "assets/img/catalogo-fiel/sentinela-digital-29c8cf734c.webp",
+      "url": "https://mossdigital.com.br/demos/sentinela-digital/"
+    },
+    {
+      "key": "/demos/sky-vision/",
+      "title": "Sky Vision",
+      "src": "assets/img/catalogo-fiel/sky-vision-cbcdef6afa.webp",
+      "url": "https://mossdigital.com.br/demos/sky-vision/"
+    },
+    {
+      "key": "/demos/sola-viva/",
+      "title": "Sola Viva",
+      "src": "assets/img/catalogo-fiel/sola-viva-0df1f2d5ee.webp",
+      "url": "https://mossdigital.com.br/demos/sola-viva/"
+    },
+    {
+      "key": "/demos/talentop/",
+      "title": "TalentoP",
+      "src": "assets/img/catalogo-fiel/talentop-2ffd4a5a73.webp",
+      "url": "https://mossdigital.com.br/demos/talentop/"
+    },
+    {
+      "key": "/demos/tela-e-trama/",
+      "title": "Tela & Trama",
+      "src": "assets/img/catalogo-fiel/tela-trama-c815da1554.webp",
+      "url": "https://mossdigital.com.br/demos/tela-e-trama/"
+    },
+    {
+      "key": "/demos/telha-certa/",
+      "title": "Telha Certa",
+      "src": "assets/img/catalogo-fiel/telha-certa-c97e7d5a4a.webp",
+      "url": "https://mossdigital.com.br/demos/telha-certa/"
+    },
+    {
+      "key": "/demos/toldoforma/",
+      "title": "ToldoForma",
+      "src": "assets/img/catalogo-fiel/toldoforma-02b35476cd.webp",
+      "url": "https://mossdigital.com.br/demos/toldoforma/"
+    },
+    {
+      "key": "/demos/uniforme-pro/",
+      "title": "Uniforme Pro",
+      "src": "assets/img/catalogo-fiel/uniforme-pro-73ff7f9c6c.webp",
+      "url": "https://mossdigital.com.br/demos/uniforme-pro/"
+    },
+    {
+      "key": "/demos/vidro-medida/",
+      "title": "Vidro & Medida",
+      "src": "assets/img/catalogo-fiel/vidro-medida-ccc5658721.webp",
+      "url": "https://mossdigital.com.br/demos/vidro-medida/"
+    },
+    {
+      "key": "/demos/vivamall/",
+      "title": "VivaMall",
+      "src": "assets/img/catalogo-fiel/vivamall-1edde2dda8.webp",
+      "url": "https://mossdigital.com.br/demos/vivamall/"
+    },
+    {
+      "key": "/demos/wood-prime/",
+      "title": "Wood Prime",
+      "src": "assets/img/catalogo-fiel/wood-prime-d0a8b736bf.webp",
+      "url": "https://mossdigital.com.br/demos/wood-prime/"
+    },
+    {
+      "key": "/fotos-amigos/",
+      "title": "📸 Fotos entre Amigos",
+      "src": "assets/img/catalogo-fiel/fotos-entre-amigos-ffd63655cb.webp",
+      "url": "https://mossdigital.com.br/fotos-amigos/index.html"
+    },
+    {
+      "key": "/loja-virtual/",
+      "title": "NEXA Store",
+      "src": "assets/img/catalogo-fiel/nexa-store-b1b9c524d0.webp",
+      "url": "https://mossdigital.com.br/loja-virtual/index.html"
+    },
+    {
+      "key": "/moss-burger-online/",
+      "title": "MOSS Burger",
+      "src": "assets/img/catalogo-fiel/moss-burger-ca556af559.webp",
+      "url": "https://mossdigital.com.br/moss-burger-online/index.html"
+    },
+    {
+      "key": "/nf-control/",
+      "title": "NF Control",
+      "src": "assets/img/catalogo-fiel/nf-control-9b2680ebcf.webp",
+      "url": "https://mossdigital.com.br/nf-control/index.html"
+    },
+    {
+      "key": "/restaurante-360/",
+      "title": "Restaurante 360 — à la carte, buffet e rodízio",
+      "src": "assets/img/catalogo-fiel/restaurante-360-a-la-carte-buffet-e-rodizio-a9be445f39.webp",
+      "url": "https://mossdigital.com.br/restaurante-360/"
+    },
+    {
+      "key": "/restaurante-360/painel.html",
+      "title": "Restaurante 360 — operação mista",
+      "src": "assets/img/catalogo-fiel/restaurante-360-operacao-mista-d83a5e1601.webp",
+      "url": "https://mossdigital.com.br/restaurante-360/painel.html"
+    },
+    {
+      "key": "/site-de-turismo/",
+      "title": "Agência de viagens",
+      "src": "assets/img/catalogo-fiel/agencia-de-viagens-bda4a2c840.webp",
+      "url": "https://mossdigital.com.br/site-de-turismo/?v=vitrines-20261027"
+    },
+    {
+      "key": "/skillmatch/",
+      "title": "SkillMatch",
+      "src": "assets/img/catalogo-fiel/skillmatch-b39cf66697.webp",
+      "url": "https://mossdigital.com.br/skillmatch/index.html"
+    },
+    {
+      "key": "https://marcelooliveira8052668-cyber.github.io/Bicicleta-/",
+      "title": "Bike Center — Bicicletaria",
+      "src": "assets/img/catalogo-fiel/bike-center-bicicletaria-4842e9a2da.webp",
+      "url": "https://marcelooliveira8052668-cyber.github.io/Bicicleta-/"
+    },
+    {
+      "key": "https://marcelooliveira8052668-cyber.github.io/Bomboniere-/",
+      "title": "Doce Encanto — Bomboniere",
+      "src": "assets/img/catalogo-fiel/doce-encanto-bomboniere-c2169ff07a.webp",
+      "url": "https://marcelooliveira8052668-cyber.github.io/Bomboniere-/"
+    },
+    {
+      "key": "https://marcelooliveira8052668-cyber.github.io/CONSTRULAR-PRIME/",
+      "title": "Constrular Prime — Materiais de Construção",
+      "src": "assets/img/catalogo-fiel/constrular-prime-materiais-de-construcao-a9b42504d4.webp",
+      "url": "https://marcelooliveira8052668-cyber.github.io/CONSTRULAR-PRIME/"
+    },
+    {
+      "key": "https://marcelooliveira8052668-cyber.github.io/MOSS-FIT-FOOD/",
+      "title": "MOSS FIT FOOD — Alimentação Saudável",
+      "src": "assets/img/catalogo-fiel/moss-fit-food-alimentacao-saudavel-bc0b5af4ac.webp",
+      "url": "https://marcelooliveira8052668-cyber.github.io/MOSS-FIT-FOOD/"
+    },
+    {
+      "key": "https://marcelooliveira8052668-cyber.github.io/MOSS-STUDIO-PRO/",
+      "title": "MOSS Studio Pro — Criador Visual",
+      "src": "assets/img/catalogo-fiel/moss-studio-pro-criador-visual-449ec082c8.webp",
+      "url": "https://marcelooliveira8052668-cyber.github.io/MOSS-STUDIO-PRO/"
+    },
+    {
+      "key": "https://marcelooliveira8052668-cyber.github.io/mo-cursos/",
+      "title": "MO Cursos",
+      "src": "assets/img/catalogo-fiel/mo-cursos-288ef7e0f2.webp",
+      "url": "https://marcelooliveira8052668-cyber.github.io/mo-cursos/"
+    },
+    {
+      "key": "https://marcelooliveira8052668-cyber.github.io/mo-music/",
+      "title": "M.O Music — Site para artistas",
+      "src": "assets/img/catalogo-fiel/m-o-music-site-para-artistas-2e65b33837.webp",
+      "url": "https://marcelooliveira8052668-cyber.github.io/mo-music/"
+    },
+    {
+      "key": "https://marcelooliveira8052668-cyber.github.io/moss-cardapio/",
+      "title": "MOSS Cardápio",
+      "src": "assets/img/catalogo-fiel/moss-cardapio-6fbbef1964.webp",
+      "url": "https://marcelooliveira8052668-cyber.github.io/moss-cardapio/"
+    },
+    {
+      "key": "https://marcelooliveira8052668-cyber.github.io/moss-criador-de-sites/",
+      "title": "MOSS Criador de Sites",
+      "src": "assets/img/catalogo-fiel/moss-criador-de-sites-e80e84067b.webp",
+      "url": "https://marcelooliveira8052668-cyber.github.io/moss-criador-de-sites/"
+    }
+  ]
+}

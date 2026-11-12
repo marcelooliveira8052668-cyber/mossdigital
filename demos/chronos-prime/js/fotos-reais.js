@@ -13,6 +13,9 @@ const observadorDeFotos = new MutationObserver(() => {
     const correspondencia = imagem.getAttribute('src').match(/relogio-(\d{3})\.svg/);
     // EXPLICAÇÃO: ignora imagens que não correspondem ao padrão do catálogo.
     if (!correspondencia) return;
+    // Não associa uma fotografia de origem/modelo não confirmados a um SKU fictício.
+    const produto = PRODUTOS.find(p => String(p.id).padStart(3, '0') === correspondencia[1]);
+    if (!produto?.fotoValidada) return;
     // EXPLICAÇÃO: guarda a ilustração para restaurar em caso de foto ausente.
     const imagemOriginal = imagem.getAttribute('src');
     // EXPLICAÇÃO: cria a referência ao arquivo JPEG correspondente.
@@ -35,6 +38,8 @@ document.querySelectorAll('img[src*="/produtos/relogio-"]').forEach((imagem) => 
   const codigo = imagem.getAttribute('src').match(/relogio-(\d{3})\.svg/);
   // EXPLICAÇÃO: apenas arquivos com código válido participam da substituição.
   if (!codigo) return;
+  const produto = PRODUTOS.find(p => String(p.id).padStart(3, '0') === codigo[1]);
+  if (!produto?.fotoValidada) return;
   // EXPLICAÇÃO: a imagem real precisa estar na pasta local.
   const foto = new Image();
   // EXPLICAÇÃO: altera a foto de destaque somente após carregar com sucesso.

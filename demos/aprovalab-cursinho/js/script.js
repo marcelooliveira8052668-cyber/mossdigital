@@ -48,3 +48,5 @@ document.querySelector('#contato').addEventListener('click', () => { // Registra
   const texto = `Olá! Gostaria de conhecer a trilha ${trilha} do AprovaLab. Estou organizando meus estudos (${concluidas} de ${tarefas.length} tarefas marcadas neste navegador). Quais informações e condições vocês oferecem?`; // Declara um dado ou referência utilizada nesta funcionalidade.
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener,noreferrer'); // Abre a conversa do WhatsApp com mensagem codificada.
 }); // Encerra o bloco ou a função anterior.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();

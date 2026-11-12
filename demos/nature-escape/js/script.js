@@ -138,3 +138,5 @@ if (['pet','nature'].includes(MODE)) { // Limpa erro de data quando visitante co
   ['entrada','saida'].forEach(id => formulario.elements.namedItem(id).addEventListener('input', () => { formulario.elements.namedItem('saida').setCustomValidity(''); })); // Remove erro após editar.
 } // Termina configuração das datas.
 resumoSimulador(); // Atualiza estado inicial de possível simulador.
+// Fontes e identificação das fotografias ilustrativas.
+(() => { const s = document.createElement('script'); s.src = '../../assets/js/fotos-revisadas.js'; document.head.append(s); })();
