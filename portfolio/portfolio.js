@@ -265,7 +265,115 @@ function atualizarPreview() {
     const s = coletar();
     PREVIEW.srcdoc = templates[s.template](s);
     PREVIEW_URL.textContent = slug(s.nome) + ".mossdigital.com.br";
+    salvarRascunho();
   }, 120);
+}
+
+/* ---------- Rascunho local ----------
+   O preenchimento fica guardado neste navegador (localStorage) para não se
+   perder ao fechar a página. Nada sai do dispositivo: sem upload e sem servidor. */
+const CHAVE_RASCUNHO = "moss-portfolio-rascunho-v1";
+
+function dadosRascunho() {
+  const s = coletar();
+  return {
+    template: s.template, nome: s.nome, funcao: s.funcao, cidade: s.cidade,
+    sobre: s.sobre, habilidades: $("#habilidades").value, email: s.email,
+    site: $("#site").value, cor: s.cor, foto: s.foto, projetos: s.projetos
+  };
+}
+
+function rascunhoVazio(dados) {
+  return !dados.nome.trim() && !dados.funcao.trim() && !dados.cidade.trim() &&
+    !dados.sobre.trim() && !dados.habilidades.trim() && !dados.email.trim() &&
+    !dados.site.trim() && !dados.foto && !dados.projetos.length;
+}
+
+function mostrarNotaRascunho(texto) {
+  const linha = $("#rascunho-linha");
+  const nota = $("#rascunho-nota");
+  if (!linha || !nota) return;
+  linha.hidden = false;
+  nota.textContent = texto;
+}
+
+let salvarTimer = null;
+function salvarRascunho() {
+  clearTimeout(salvarTimer);
+  salvarTimer = setTimeout(() => {
+    const linha = $("#rascunho-linha");
+    if (!linha) return;
+    const dados = dadosRascunho();
+    if (rascunhoVazio(dados)) {
+      try { localStorage.removeItem(CHAVE_RASCUNHO); } catch { /* sem armazenamento */ }
+      linha.hidden = true;
+      return;
+    }
+    try {
+      localStorage.setItem(CHAVE_RASCUNHO, JSON.stringify(dados));
+      mostrarNotaRascunho("Rascunho salvo neste navegador — pode fechar a página que nada se perde.");
+    } catch {
+      // Quase sempre é a foto grande demais para o limite do navegador.
+      try {
+        localStorage.setItem(CHAVE_RASCUNHO, JSON.stringify({ ...dados, foto: null }));
+        mostrarNotaRascunho("Rascunho salvo neste navegador (textos e projetos; a foto não coube no limite de espaço).");
+      } catch {
+        mostrarNotaRascunho("Não deu para salvar o rascunho neste navegador. Baixe os arquivos antes de fechar a página.");
+      }
+    }
+  }, 400);
+}
+
+function restaurarRascunho() {
+  let bruto = null;
+  try { bruto = localStorage.getItem(CHAVE_RASCUNHO); } catch { return false; }
+  if (!bruto) return false;
+  let salvo = null;
+  try { salvo = JSON.parse(bruto); } catch { return false; }
+  if (!salvo || typeof salvo !== "object") return false;
+  const texto = (valor, max) => String(valor ?? "").slice(0, max);
+
+  const template = ["profissional", "criativo", "tecnologia"].includes(salvo.template) ? salvo.template : "profissional";
+  const radio = document.querySelector(`input[name="template"][value="${template}"]`);
+  if (radio) radio.checked = true;
+
+  $("#nome").value = texto(salvo.nome, 100);
+  $("#funcao").value = texto(salvo.funcao, 120);
+  $("#cidade").value = texto(salvo.cidade, 120);
+  $("#sobre").value = texto(salvo.sobre, 600);
+  $("#sobre-count").textContent = $("#sobre").value.length;
+  $("#habilidades").value = texto(salvo.habilidades, 200);
+  $("#email").value = texto(salvo.email, 254);
+  $("#site").value = texto(salvo.site, 300);
+
+  state.cor = corSegura(salvo.cor);
+  $("#cor-custom").value = state.cor;
+  $$(".swatch").forEach((b) => b.classList.toggle("active", b.dataset.cor === state.cor));
+
+  if (typeof salvo.foto === "string" &&
+      /^data:image\/(jpeg|png|webp);base64,/.test(salvo.foto) &&
+      salvo.foto.length <= 4.6 * 1024 * 1024) {
+    state.foto = salvo.foto;
+    $("#foto-preview").src = salvo.foto;
+    $("#foto-preview").hidden = false;
+    $("#remover-foto").hidden = false;
+  }
+
+  const projetos = Array.isArray(salvo.projetos) ? salvo.projetos.slice(0, MAX_PROJETOS) : [];
+  projetosLista.textContent = "";
+  for (let i = 0; i < Math.max(projetos.length, 1); i++) {
+    const linha = linhaProjeto(i + 1);
+    const p = projetos[i];
+    if (p && typeof p === "object") {
+      linha.querySelector(".p-nome").value = texto(p.nome, 80);
+      linha.querySelector(".p-desc").value = texto(p.desc, 220);
+      linha.querySelector(".p-link").value = texto(p.link, 140);
+    }
+    projetosLista.appendChild(linha);
+  }
+  atualizarContadorProjetos();
+  mostrarNotaRascunho("Rascunho recuperado deste navegador — continue de onde parou.");
+  return true;
 }
 
 /* ---------- Projetos dinâmicos ---------- */
@@ -430,8 +538,12 @@ async function copiarPedido() {
 /* ---------- Inicialização ---------- */
 // A ferramenta local de finalização reutiliza os modelos, sem o formulário público.
 if (FORM) {
-projetosLista.appendChild(linhaProjeto(1));
-projetosLista.appendChild(linhaProjeto(2));
+// Recupera o que a pessoa já tinha preenchido neste navegador, se existir.
+const restaurou = restaurarRascunho();
+if (!restaurou) {
+  projetosLista.appendChild(linhaProjeto(1));
+  projetosLista.appendChild(linhaProjeto(2));
+}
 addProjetoBtn.addEventListener("click", adicionarProjeto);
 $("#foto").addEventListener("change", (e) => {
   const file = e.target.files[0];
@@ -461,6 +573,13 @@ $("#cor-custom").addEventListener("input", (e) => {
 // Seleciona os DOIS botões de WhatsApp; o seletor simples $ não gera lista.
 $$("#whatsapp-cta, #whatsapp-cta-2").forEach((btn) => btn.addEventListener("click", abrirWhatsApp));
 $("#copiar-pedido").addEventListener("click", copiarPedido);
+// Apaga o rascunho guardado neste navegador, com confirmação.
+$("#apagar-rascunho").addEventListener("click", () => {
+  const confirmar = confirm("Apagar o rascunho salvo neste navegador? Os textos, a foto e os projetos preenchidos aqui serão perdidos.");
+  if (!confirmar) return;
+  try { localStorage.removeItem(CHAVE_RASCUNHO); } catch { /* sem armazenamento */ }
+  location.reload();
+});
 FORM.addEventListener("input", atualizarPreview);
 FORM.addEventListener("change", atualizarPreview);
 FORM.addEventListener("submit", (e) => e.preventDefault());

@@ -95,6 +95,66 @@ window.MossArquivos = (() => {
 
 if (document.getElementById("baixar-previa")) {
   let ocupado = false;
+
+  /* Resultado visível: o PDF aparece na própria página e cada arquivo gerado
+     é listado com o nome exato e o lugar onde o navegador o salvou. */
+  const painelResultado = document.getElementById("resultado-pdf");
+  const tituloResultado = document.getElementById("resultado-titulo");
+  const infoResultado = document.getElementById("resultado-info");
+  const quadroPdf = document.getElementById("resultado-frame");
+  const linkPdf = document.getElementById("resultado-baixar-pdf");
+  const listaArquivos = document.getElementById("lista-arquivos");
+  let urlPdfAtual = null;
+
+  const ONDE_SALVO = "Pasta Downloads do navegador — no Windows é a pasta Downloads, no iPhone é Arquivos › Downloads e no Android é Downloads.";
+
+  function registrarArquivo(nome, detalhe) {
+    if (!listaArquivos) return;
+    // Substitui a entrada anterior do mesmo arquivo, caso a pessoa gere de novo.
+    [...listaArquivos.children].forEach((item) => {
+      if (item.dataset.nome === nome) item.remove();
+    });
+    const item = document.createElement("li");
+    item.dataset.nome = nome;
+    const forte = document.createElement("strong");
+    forte.textContent = nome;
+    item.appendChild(forte);
+    item.append(" — " + detalhe);
+    listaArquivos.appendChild(item);
+  }
+
+  function prepararResultado() {
+    if (!painelResultado) return false;
+    painelResultado.hidden = false;
+    painelResultado.classList.remove("erro");
+    return true;
+  }
+
+  function mostrarPdfResultado(blob, nome) {
+    if (!prepararResultado()) return;
+    if (urlPdfAtual) URL.revokeObjectURL(urlPdfAtual);
+    urlPdfAtual = URL.createObjectURL(blob);
+    tituloResultado.textContent = "Sua prévia está pronta — o PDF é este:";
+    infoResultado.replaceChildren();
+    const forte = document.createElement("strong");
+    forte.textContent = nome;
+    infoResultado.append(forte, ` (${Math.max(1, Math.round(blob.size / 1024))} KB). Ele está aberto aqui embaixo e também foi salvo em ${ONDE_SALVO} Se o navegador mostrar uma barra de downloads, o arquivo está lá também.`);
+    if (quadroPdf) { quadroPdf.hidden = false; quadroPdf.src = urlPdfAtual; }
+    if (linkPdf) { linkPdf.hidden = false; linkPdf.href = urlPdfAtual; linkPdf.download = nome; }
+    registrarArquivo(nome, "prévia em PDF com marca-d'água. " + ONDE_SALVO);
+    painelResultado.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function mostrarErroResultado(mensagem) {
+    if (!prepararResultado()) return;
+    painelResultado.classList.add("erro");
+    tituloResultado.textContent = "Não foi possível gerar o PDF agora";
+    infoResultado.textContent = mensagem + " Confira a internet e desative o bloqueador de anúncio (ele pode barrar a biblioteca que monta o PDF) e clique de novo. O que você preencheu continua guardado neste navegador.";
+    if (quadroPdf) { quadroPdf.hidden = true; quadroPdf.removeAttribute("src"); }
+    if (linkPdf) { linkPdf.hidden = true; }
+    painelResultado.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
   document.getElementById("baixar-previa").addEventListener("click", async e => {
     if (ocupado || !validarPedido()) return;
     ocupado = true; e.target.disabled = true;
@@ -102,18 +162,32 @@ if (document.getElementById("baixar-previa")) {
     try {
       const dados = coletar();
       const blob = await MossArquivos.pdf(dados);
-      MossArquivos.baixar(blob, "previa-" + slug(dados.nome) + ".pdf");
-      mostrarStatusPedido("Prévia gerada! Baixe também o arquivo do pedido e anexe os dois como documentos no WhatsApp. Nada foi enviado à MOSS ainda.");
-    } catch (erro) { mostrarStatusPedido(erro.message); }
+      const nome = "previa-" + slug(dados.nome) + ".pdf";
+      MossArquivos.baixar(blob, nome);
+      mostrarPdfResultado(blob, nome);
+      mostrarStatusPedido("Prévia gerada! O PDF está aberto logo abaixo e também foi salvo na sua pasta Downloads. Baixe também o arquivo do pedido e anexe os dois como documentos no WhatsApp. Nada foi enviado à MOSS ainda.");
+    } catch (erro) {
+      mostrarStatusPedido(erro.message);
+      mostrarErroResultado(erro.message);
+    }
     finally { ocupado = false; e.target.disabled = false; }
   });
-  document.getElementById("baixar-pedido").addEventListener("click", () => {
+
+  function baixarPedido() {
     if (!validarPedido()) return;
     try {
       const dados = coletar();
       MossArquivos.validar(MossArquivos.pedido(dados));
-      MossArquivos.baixar(new Blob([JSON.stringify(MossArquivos.pedido(dados))], { type: "application/json" }), "pedido-portfolio-" + slug(dados.nome) + ".json");
+      const nome = "pedido-portfolio-" + slug(dados.nome) + ".json";
+      MossArquivos.baixar(new Blob([JSON.stringify(MossArquivos.pedido(dados))], { type: "application/json" }), nome);
+      prepararResultado();
+      registrarArquivo(nome, "dados, textos e foto do seu portfólio. " + ONDE_SALVO + " Guarde-o: é o arquivo que a MOSS precisa para finalizar o trabalho sem você preencher tudo de novo.");
+      painelResultado.scrollIntoView({ behavior: "smooth", block: "nearest" });
       mostrarStatusPedido("Arquivo do pedido gerado, com seus dados e foto. Ele não é o PDF. No WhatsApp, escolha Anexar > Documento, selecione este arquivo e toque em Enviar. Guarde-o com cuidado: contém dados pessoais.");
     } catch (erro) { mostrarStatusPedido(erro.message); }
-  });
+  }
+
+  document.getElementById("baixar-pedido").addEventListener("click", baixarPedido);
+  const botaoJsonResultado = document.getElementById("resultado-baixar-json");
+  if (botaoJsonResultado) botaoJsonResultado.addEventListener("click", baixarPedido);
 }

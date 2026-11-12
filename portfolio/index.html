@@ -7,7 +7,7 @@
   <meta name="description" content="Monte o seu portfólio profissional no navegador: escolha o modelo, adicione foto, projetos e habilidades, veja a prévia ao vivo e finalize com a Moss Digital por R$ 39,90.">
   <title>Portfólio Profissional — monte, veja ao vivo, finalize com a MOSS | R$ 39,90</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23244b6e'/%3E%3Ctext x='32' y='45' font-family='Arial Black, Arial' font-size='26' font-weight='900' fill='%2364d9ff' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="portfolio.css?v=20261111-email-preparacao">
+  <link rel="stylesheet" href="portfolio.css?v=20261112-resultado-e-rascunho">
 </head>
 <body>
   <a class="skip" href="#montar">Pular para o montador</a>
@@ -77,7 +77,7 @@
         <li><span>1</span><div><h3>Escolha o modelo</h3><p>Profissional, Criativo ou Tecnologia. Você muda quando quiser.</p></div></li>
         <li><span>2</span><div><h3>Adicione sua foto</h3><p>JPEG, PNG ou WebP. Ela é usada só na prévia, no seu navegador — nada é enviado automaticamente.</p></div></li>
         <li><span>3</span><div><h3>Preencha seus projetos</h3><p>Até 4 projetos com nome, descrição e link. Habilidades e apresentação no seu tom de voz.</p></div></li>
-        <li><span>4</span><div><h3>Baixe e envie pelo WhatsApp</h3><p>Baixe a prévia em PDF e o arquivo do pedido. Anexe os dois como documentos no WhatsApp. Combinamos pagamento e entrega final sem marca-d’água.</p></div></li>
+        <li><span>4</span><div><h3>Baixe e envie pelo WhatsApp</h3><p>A prévia em PDF abre na própria página e é salva na sua pasta Downloads, junto com o arquivo do pedido. Anexe os dois como documentos no WhatsApp. Combinamos pagamento e entrega final sem marca-d’água.</p></div></li>
       </ol>
     </section>
 
@@ -92,6 +92,12 @@
       <div class="builder-grid wrap">
         <!-- ===== FORM ===== -->
         <form class="form" id="form-portfolio" novalidate>
+
+          <!-- Rascunho local: o preenchimento não se perde ao fechar a página. -->
+          <div class="rascunho-linha" id="rascunho-linha" hidden>
+            <p class="rascunho-nota" id="rascunho-nota" role="status" aria-live="polite"></p>
+            <button type="button" class="rascunho-apagar" id="apagar-rascunho">Apagar meus dados deste navegador</button>
+          </div>
 
           <fieldset class="seg">
             <legend>Modelo</legend>
@@ -170,6 +176,18 @@
             <p class="cta-note">Baixar ou abrir o WhatsApp não envia nada à MOSS automaticamente. Não há cobrança nesta página. Combine prazo e pagamento; a versão final sem marca-d’água será entregue manualmente após a confirmação.</p>
             <p class="cta-note">Ao copiar, você recebe apenas os dados em texto, não o portfólio em PDF. Preço, prazo e forma de entrega são combinados antes do pagamento.</p>
             <p class="cta-note" id="pedido-msg" role="status" aria-live="polite" hidden></p>
+
+            <!-- Resultado visível: o PDF aparece na própria página e os arquivos gerados são listados aqui. -->
+            <section class="resultado" id="resultado-pdf" hidden aria-live="polite">
+              <h3 id="resultado-titulo">Sua prévia está pronta!</h3>
+              <p class="resultado-info" id="resultado-info"></p>
+              <iframe class="resultado-frame" id="resultado-frame" title="Seu portfólio em PDF" hidden></iframe>
+              <div class="resultado-acoes">
+                <a class="cta" id="resultado-baixar-pdf" download hidden>Baixar o PDF de novo</a>
+                <button type="button" class="ghost" id="resultado-baixar-json">Baixar o arquivo do pedido (.json)</button>
+              </div>
+              <ul class="lista-arquivos" id="lista-arquivos"></ul>
+            </section>
           </div>
         </form>
 
@@ -213,10 +231,10 @@
     <section class="faq wrap" aria-labelledby="faq-t">
       <p class="eyebrow">PERGUNTAS DIRETAS</p>
       <h2 id="faq-t">Sem letra miúda.</h2>
-      <details><summary>Para onde vão os dados do portfólio?</summary><p>Ficam no seu navegador até você baixar os arquivos. O arquivo do pedido (.json) inclui os textos e a foto para a MOSS finalizar o trabalho. Você escolhe anexá-lo no WhatsApp e confirmar o envio. Os arquivos não são publicados no GitHub. Guarde-os com cuidado e não compartilhe em grupos públicos.</p></details>
-      <details><summary>A foto enviada fica guardada em algum lugar?</summary><p>Ela fica na memória da aba e nos arquivos que você baixar. Ao enviar o arquivo do pedido pelo WhatsApp, você também encaminha a foto à MOSS para preparar o portfólio. Nada é salvo ou enviado automaticamente pelo site.</p></details>
+      <details><summary>Para onde vão os dados do portfólio?</summary><p>Ficam no seu navegador: além da memória da aba, o preenchimento é guardado como rascunho neste dispositivo, para você não perder o que criou se fechar a página. Use o botão “Apagar meus dados deste navegador” para removê-lo quando quiser. O arquivo do pedido (.json) inclui os textos e a foto para a MOSS finalizar o trabalho. Você escolhe anexá-lo no WhatsApp e confirmar o envio. Os arquivos não são publicados no GitHub e nada é enviado automaticamente. Guarde-os com cuidado e não compartilhe em grupos públicos.</p></details>
+      <details><summary>A foto enviada fica guardada em algum lugar?</summary><p>Ela fica na memória da aba, no rascunho local deste navegador e nos arquivos que você baixar. Ao enviar o arquivo do pedido pelo WhatsApp, você também encaminha a foto à MOSS para preparar o portfólio. Nada é enviado automaticamente pelo site, e você apaga tudo pelo botão “Apagar meus dados deste navegador”.</p></details>
       <details><summary>Preciso saber mexer com site para ter um portfólio?</summary><p>Não. Você monta a prévia gratuita aqui e, após combinar as condições no WhatsApp e confirmar o pagamento, nós finalizamos e entregamos os arquivos prontos. Você também recebe um passo a passo de como publicar, se quiser colocar no ar.</p></details>
-       <details><summary>Posso baixar o portfólio diretamente nesta página?</summary><p>Sim, uma prévia em PDF com marca-d’água. Baixe também o arquivo do pedido (.json) e envie os dois pelo WhatsApp. O PDF final sem marca é preparado pela MOSS após a confirmação do pagamento. A geração do PDF precisa de conexão com a internet para carregar uma biblioteca gratuita.</p></details>
+       <details><summary>Posso baixar o portfólio diretamente nesta página?</summary><p>Sim. Ao clicar em “Baixar prévia em PDF”, o documento aparece ali mesmo na página e também é salvo na pasta Downloads do navegador (no iPhone: Arquivos › Downloads; no Android: Downloads). Baixe também o arquivo do pedido (.json) e envie os dois pelo WhatsApp. O PDF final sem marca é preparado pela MOSS após a confirmação do pagamento. A geração do PDF precisa de conexão com a internet para carregar uma biblioteca gratuita.</p></details>
       <details><summary>Qual é o prazo de entrega?</summary><p>Combinado no WhatsApp, antes do pagamento. Projetos normalmente levam alguns dias úteis, dependendo do volume e das fotos. Prazo realista, sem promessa impossível.</p></details>
       <details><summary>Posso usar na minha vaga de emprego?</summary><p>Sim, o portfólio é seu. Nenhum certificado ou atestado é fornecido pela MOSS — o que vale é o que está no seu portfólio.</p></details>
       <details><summary>E se eu quiser publicar em domínio próprio?</summary><p>Domínio e hospedagem são à parte, com orçamento separado já na conversa do WhatsApp.</p></details>
@@ -232,8 +250,8 @@
     </div>
   </footer>
 
-  <script src="portfolio.js?v=20261111-fluxo-local" defer></script>
-  <script src="arquivos.js?v=20261111-fluxo-local" defer></script>
+  <script src="portfolio.js?v=20261112-resultado-e-rascunho" defer></script>
+  <script src="arquivos.js?v=20261112-resultado-e-rascunho" defer></script>
   <!-- Chaves públicas e endereço do serviço, nunca segredos. -->
   <script src="email-config.js?v=20261111-preparacao" defer></script>
   <!-- Só ativa o novo botão quando o backend estiver configurado. -->
