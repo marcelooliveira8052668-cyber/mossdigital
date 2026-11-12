@@ -176,3 +176,24 @@ em{font-style:normal;color:var(--cyan)}
   .promo{font-size:.7rem}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+
+
+/* ------- Pedido de PDF por e-mail: só aparece com serviço configurado ------- */
+.email-panel[hidden]{display:none!important}
+.email-panel{
+  display:flex;flex-direction:column;gap:14px;
+  padding:20px;margin-top:14px;
+  background:linear-gradient(150deg,#102b3b,#101e31);
+  border:1px solid var(--cyan);border-radius:var(--radius)
+}
+.email-panel h3{margin-bottom:0;color:var(--cyan)}
+.email-panel p{font-size:.84rem;color:#cdd8ec}
+.email-panel p strong{color:var(--text)}
+.email-panel .campo{width:100%}
+.email-consentimento{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:.8rem;line-height:1.45;color:#cdd8ec}
+.email-consentimento input{flex:0 0 18px;width:18px;height:18px;margin-top:2px;accent-color:var(--cyan)}
+#email-verificacao{min-height:30px}
+.email-panel button{justify-content:center;width:100%;font:700 .94rem var(--sans);cursor:pointer}
+.email-panel button:disabled{opacity:.6;cursor:wait}
+.email-panel .email-msg{padding:12px;background:#091929;border:1px solid var(--edge-2);border-radius:10px;color:#d7efff;font-size:.83rem}
+.email-panel .email-msg[hidden]{display:none!important}
