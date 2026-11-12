@@ -52,7 +52,7 @@ async def main():
             else: await route.continue_()
         await context.route('**/*', protect)
         page = await context.new_page()
-        for catalog in ('modelos.html', 'sistemas.html'):
+        for catalog in ('modelos.html',):
             await page.goto(origin + '/' + catalog, wait_until='domcontentloaded')
             await page.wait_for_timeout(1000)
             cards = await page.locator('#cards article.card,main .grid article.card').evaluate_all('''cards=>cards.map(c=>({title:c.querySelector('h2,h3')?.textContent.trim(),url:(c.querySelector('a.demo')||c.querySelector('a.access')||c.querySelector('a.preview'))?.href})).filter(x=>x.url)''')

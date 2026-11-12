@@ -1,0 +1,70 @@
+{
+  "licenca": "https://www.pexels.com/license/",
+  "aviso": "Fotos reais de banco, ilustrativas do universo de costura. Não representam clientes, local ou trabalhos da marca fictícia.",
+  "fotos": [
+    {
+      "arquivo": "img/maquina-costura.webp",
+      "id": 4621891,
+      "origem": "https://www.pexels.com/photo/4621891/",
+      "download": "https://images.pexels.com/photos/4621891/pexels-photo-4621891.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Mãos guiando tecido junto à agulha de uma máquina de costura",
+      "conferencia": "Conferida visualmente em 12/11/2026; imagem de banco, não trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/reparo-manual.webp",
+      "id": 11482124,
+      "origem": "https://www.pexels.com/photo/11482124/",
+      "download": "https://images.pexels.com/photos/11482124/pexels-photo-11482124.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Mãos fazendo reparo em tecido cinza",
+      "conferencia": "Conferida visualmente em 12/11/2026; imagem de banco, não trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/costura-tecido.webp",
+      "id": 4622206,
+      "origem": "https://www.pexels.com/photo/4622206/",
+      "download": "https://images.pexels.com/photos/4622206/pexels-photo-4622206.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Mãos guiando tecido claro no calcador",
+      "conferencia": "Conferida visualmente em 12/11/2026; imagem de banco, não trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/costura-manual.webp",
+      "id": 11482148,
+      "origem": "https://www.pexels.com/photo/11482148/",
+      "download": "https://images.pexels.com/photos/11482148/pexels-photo-11482148.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Costura manual em tecido azul",
+      "conferencia": "Conferida visualmente em 12/11/2026; imagem de banco, não trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/preparo-linha.webp",
+      "id": 4622215,
+      "origem": "https://www.pexels.com/photo/4622215/",
+      "download": "https://images.pexels.com/photos/4622215/pexels-photo-4622215.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Preparação de linha na máquina",
+      "conferencia": "Conferida visualmente em 12/11/2026; imagem de banco, não trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/tecido-branco.webp",
+      "id": 6876052,
+      "origem": "https://www.pexels.com/photo/6876052/",
+      "download": "https://images.pexels.com/photos/6876052/pexels-photo-6876052.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Costura manual em tecido branco",
+      "conferencia": "Conferida visualmente em 12/11/2026; imagem de banco, não trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/trabalho-maquina.webp",
+      "id": 4622216,
+      "origem": "https://www.pexels.com/photo/4622216/",
+      "download": "https://images.pexels.com/photos/4622216/pexels-photo-4622216.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Pessoa trabalhando à máquina",
+      "conferencia": "Conferida visualmente em 12/11/2026; imagem de banco, não trabalho da marca fictícia."
+    },
+    {
+      "arquivo": "img/alfinetes.webp",
+      "id": 7256913,
+      "origem": "https://www.pexels.com/photo/7256913/",
+      "download": "https://images.pexels.com/photos/7256913/pexels-photo-7256913.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Costura manual sobre mesa com alfinetes",
+      "conferencia": "Conferida visualmente em 12/11/2026; imagem de banco, não trabalho da marca fictícia."
+    }
+  ]
+}
