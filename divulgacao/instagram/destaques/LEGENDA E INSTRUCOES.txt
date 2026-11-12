@@ -1,0 +1,34 @@
+CAPAS DOS DESTAQUES DO INSTAGRAM - MOSS DIGITAL
+
+Formato: PNG, 1080 x 1080 px (quadrado).
+Fonte editavel: um HTML por capa, no mesmo lugar.
+
+Arquivos
+  Destaque Instagram - Modelos.html / .png
+  Destaque Instagram - Currículo.html / .png
+  Destaque Instagram - Livro.html / .png
+  Destaque Instagram - Contato.html / .png
+
+COMO USAR NO INSTAGRAM
+1. No perfil, toque em Editar perfil.
+2. Em Destaques, toque em "+" e escolha a capa correspondente.
+3. Dê um nome curto para o destaque. O nome aparece embaixo do círculo:
+   "Modelos", "Currículo", "Livro", "Contato".
+4. Repita para os quatro.
+
+O QUE COLOCAR EM CADA DESTAQUE
+Modelos  - 3 a 5 telas com as demos mais fortes e o link do catálogo.
+            Comece pelo Chaveiro Express e pela Ponto & Ajuste.
+Currículo - telas do montador (site/curriculo), o preço de R$ 19,90 e
+            o passo a passo de como comprar.
+Livro    - a capa do livro, a amostra gratuita e o preço de R$ 29,90.
+Contato  - o WhatsApp, o Instagram e o endereço mossdigital.com.br.
+
+OBSERVAÇÕES
+- O Instagram corta a capa em círculo. As capas já foram conferidas
+  com esse corte: o ícone e o nome ficam legíveis.
+- As cores seguem o site: azul e amarelo (modelos), verde (currículo),
+  roxo (livro) e vermelho suave (contato).
+- Os ícones são desenhos autorais, sem imagem de banco.
+- Criar os arquivos não publica nada no Instagram. A publicação é manual.
+- Copia de fácil acesso em E:\MOSS - Divulgacao\Destaques Instagram
