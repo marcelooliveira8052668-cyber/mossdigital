@@ -72,7 +72,12 @@ async def run():
                         if layout['scroll'] > width + 2:
                             item['layouts'].append(layout)
                     item['broken_images'] = await page.evaluate('''() => Array.from(document.images).filter(img=>img.complete && !img.naturalWidth && img.getAttribute('src')).map(img=>img.getAttribute('src'))''')
-                    if file in ('modelos.html', 'sistemas.html'):
+                    if file == 'sistemas.html':
+                        # A seção foi retirada; links antigos devem abrir o início.
+                        await page.wait_for_url(base)
+                        assert await page.locator('#hero-title').count() == 1
+                        item['redirect_to_home'] = True
+                    if file == 'modelos.html':
                         await page.wait_for_function("document.documentElement.dataset.mossPreviews === 'ready'", timeout=10000)
                         item['catalog'] = await page.evaluate(r'''() => {
                             const grades=Array.from(document.querySelectorAll('#cards,main .grid'));
