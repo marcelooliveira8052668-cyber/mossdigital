@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Crie seu currículo | MOSS Digital</title>
+  <meta name="description" content="Monte uma prévia de currículo para profissionais ou primeiro emprego. Entrega manual do PDF final por R$ 19,90 após conferir o pagamento.">
+  <link rel="canonical" href="https://mossdigital.com.br/curriculo/">
+  <link rel="stylesheet" href="style.css">
+  <script src="vendor/jspdf.umd.min.js" defer></script><script src="vendor/notosans.js" defer></script>
+  <script src="curriculo.js" defer></script><script src="montador.js" defer></script>
+</head>
+<body>
+<div class="faixa">Currículo por <strong>R$ 19,90</strong> · pagamento único · entrega manual</div>
+<header class="wrap topo"><a href="../" class="marca">MOSS <small>DIGITAL</small></a><a href="../">← Voltar ao site</a></header>
+<main>
+  <section class="wrap hero"><p class="etiqueta">PROFISSIONAIS E PRIMEIRO EMPREGO</p><h1>Sua próxima oportunidade<br>começa com um <em>bom currículo.</em></h1><p>Organize sua trajetória ou apresente sua formação e suas habilidades para o primeiro emprego. Você preenche, confere e envia o pedido pelo WhatsApp.</p><a href="#montar" class="botao">Montar minha prévia grátis ↓</a><p class="nota">Dois modelos · foto opcional · PDF com texto selecionável · sem cadastro</p></section>
+  <section class="wrap passos" aria-label="Como funciona"><article><b>1. Preencha</b><p>Escolha o público e o modelo. Use apenas informações verdadeiras.</p></article><article><b>2. Baixe dois arquivos</b><p>Prévia em PDF com marca-d’água e pedido em JSON com seus dados.</p></article><article><b>3. Envie no WhatsApp</b><p>Anexe os dois como documentos. Nada é enviado automaticamente.</p></article><article><b>4. Receba o final</b><p>Combine prazo e pagamento de R$ 19,90. A MOSS entrega o PDF sem marca após confirmar o recebimento.</p></article></section>
+  <section class="wrap" id="montar"><h2>Monte agora. <em>Confira antes de enviar.</em></h2><p class="intro">Não é necessário ter experiência profissional para criar o currículo. Para o primeiro emprego, priorizamos formação, cursos e atividades reais.</p>
+  <div class="montador">
+    <form id="cv-form">
+      <fieldset><legend>Para quem é o currículo?</legend><label><input type="radio" name="publico" value="profissional" checked> Profissional com experiência</label><label><input type="radio" name="publico" value="primeiro-emprego"> Primeiro emprego</label></fieldset>
+      <fieldset><legend>Escolha o modelo</legend><label><input type="radio" name="modelo" value="classico" checked> Essencial · claro, uma coluna</label><label><input type="radio" name="modelo" value="lateral"> Destaque · coluna lateral azul</label><label class="campo">Cor de destaque <input id="cv-cor" type="color" value="#166534"></label></fieldset>
+      <label class="campo">Nome completo *<input id="cv-nome" autocomplete="name" maxlength="100" required placeholder="Seu nome completo"></label>
+      <label class="campo">Profissão ou vaga desejada *<input id="cv-titulo" maxlength="100" required placeholder="Ex.: Auxiliar administrativo"></label>
+      <p class="nota">Informe pelo menos um contato para aparecer no currículo.</p>
+      <div class="dupla"><label class="campo">E-mail<input id="cv-email" type="email" autocomplete="email" maxlength="254" placeholder="voce@exemplo.com"></label><label class="campo">Telefone com DDD<input id="cv-telefone" type="tel" autocomplete="tel" maxlength="30" placeholder="(11) 90000-0000"></label></div>
+      <label class="campo">Cidade e estado (opcional)<input id="cv-cidade" maxlength="100" placeholder="São Paulo — SP"></label>
+      <label class="campo">LinkedIn ou site (opcional)<input id="cv-linkedin" inputmode="url" maxlength="250" placeholder="https://www.linkedin.com/in/seu-perfil"></label>
+      <label class="campo">Resumo ou objetivo<textarea id="cv-resumo" maxlength="600" rows="4" placeholder="Apresente sua área de interesse e o que você pode contribuir. Não invente experiências."></textarea></label>
+      <fieldset><legend>Foto opcional</legend><label class="campo">Escolher foto<input id="cv-foto" type="file" accept="image/jpeg,image/png,image/webp"></label><p class="nota">Não é obrigatória. JPEG, PNG ou WebP, até 3 MB. Use uma foto sua, se desejar. A foto será incluída nos arquivos baixados.</p><button id="cv-remover-foto" type="button" class="secundario" hidden>Remover foto</button></fieldset>
+      <fieldset id="cv-exp-grupo"><legend>Experiência profissional · até 4</legend><div id="cv-experiencias"></div><button id="cv-add-exp" type="button" class="secundario">+ Adicionar experiência</button></fieldset>
+      <fieldset><legend>Formação · até 3</legend><div id="cv-formacao"></div><button id="cv-add-form" type="button" class="secundario">+ Adicionar formação</button></fieldset>
+      <label class="campo">Cursos e certificações<textarea id="cv-cursos" rows="3" maxlength="500" placeholder="Nome do curso, instituição e ano. Inclua somente o que você realizou."></textarea></label>
+      <label class="campo">Habilidades<textarea id="cv-habilidades" rows="3" maxlength="300" placeholder="Ex.: Organização, atendimento ao público, planilhas básicas"></textarea></label>
+      <label class="campo">Idiomas e nível<textarea id="cv-idiomas" rows="2" maxlength="200" placeholder="Ex.: Inglês básico"></textarea></label>
+      <label class="campo">Projetos e atividades (opcional)<textarea id="cv-atividades" rows="4" maxlength="700" placeholder="Projetos escolares, trabalhos voluntários, atividades acadêmicas ou pessoais relevantes."></textarea></label>
+      <label class="campo">Informações adicionais (opcional)<textarea id="cv-informacoes" rows="3" maxlength="400" placeholder="Ex.: Disponibilidade de horário. Não inclua CPF, RG ou dados de saúde."></textarea></label>
+      <div class="acoes"><button type="button" id="cv-previa" class="botao">1. Baixar prévia em PDF · com marca</button><button type="button" id="cv-pedido" class="botao">2. Baixar arquivo do pedido · dados e foto</button><button type="button" id="cv-whats" class="botao">3. Abrir WhatsApp · R$ 19,90 ↗</button></div>
+      <p class="nota">O pedido termina em <strong>.json</strong> e contém seus dados e foto. No WhatsApp, escolha <strong>Anexar → Documento</strong>, selecione o pedido e a prévia e toque em Enviar. Não feche a aba antes de baixar: o preenchimento não é salvo automaticamente. Se alterar algo, baixe os dois arquivos novamente.</p>
+      <p id="cv-status" role="status" aria-live="polite"></p>
+    </form>
+    <aside class="previa"><p class="etiqueta">PRÉVIA VISUAL APROXIMADA</p><iframe id="cv-visual" sandbox="" title="Prévia do seu currículo"></iframe><p class="nota">O PDF usa paginação própria e texto selecionável. Confira todas as páginas do arquivo baixado.</p></aside>
+  </div></section>
+  <section class="wrap faq"><h2>Antes de fazer o pedido</h2><details><summary>Não tenho experiência. Posso montar?</summary><p>Sim. Escolha Primeiro emprego. O modelo destaca formação, cursos, habilidades e atividades reais. Não inventamos experiência, certificados ou qualificações.</p></details><details><summary>O que está incluído nos R$ 19,90?</summary><p>Preparação e entrega manual do currículo em PDF sem marca-d’água, com os dados e o modelo escolhidos, após conferir o pagamento. Combine prazo e ajustes antes de pagar. Não inclui consultoria de carreira, tradução ou promessa de contratação.</p></details><details><summary>Quem recebe meus dados?</summary><p>O preenchimento e a geração dos arquivos acontecem no navegador. Você decide baixá-los e anexá-los no WhatsApp da MOSS. Não há upload ou cobrança automáticos. O pedido JSON contém seus dados e deve ser guardado com cuidado. Não publique em grupos. <a href="../privacidade.html">Consulte a privacidade.</a></p></details><details><summary>Preciso colocar foto ou documentos?</summary><p>Foto é opcional. Não pedimos CPF, RG, endereço completo, data de nascimento, estado civil ou informações de saúde. Inclua apenas o necessário à candidatura.</p></details><details><summary>O currículo garante emprego ou aprovação em sistemas de seleção?</summary><p>Não. O PDF tem texto selecionável, mas cada vaga e sistema de candidatura pode ter exigências próprias. Confira o conteúdo e as instruções da empresa.</p></details></section>
+</main><footer class="wrap rodape">MOSS Digital · Atendimento pelo WhatsApp (11) 94203-8103 · <a href="../privacidade.html">Privacidade</a></footer>
+</body></html>
