@@ -21,4 +21,12 @@ Fluxo local previamente aprovado em Chromium/Playwright: dez fotos e produtos, f
 
 Executar novamente `tools/test-passo-atelier.cjs` antes do envio e conferir home, catálogo, captura, manual, créditos, configuração local e capa no endereço HTTPS após o deploy. Não alegar validação de RLS de produção a partir dos testes simulados.
 
-Revalidação local aprovada antes do envio, incluindo card único na home, entrada única encontrável pela busca no catálogo, respectivas imagens e destinos, e capa 1080 × 1350 sem cortes. Home com onze destaques e catálogo com 123 modelos. Nenhum erro JavaScript capturado. A validação pública depende do término do build do GitHub Pages.
+Revalidação local aprovada antes do envio, incluindo card único na home, entrada única encontrável pela busca no catálogo, respectivas imagens e destinos, e capa 1080 × 1350 sem cortes. Home com onze destaques e catálogo com 123 modelos. Nenhum erro JavaScript capturado.
+
+## Publicação
+
+PR #30, merge `5ed931e2c5b73d5ed86b1904099b57e2e724e81c`; GitHub Pages run `43268249554` concluída com sucesso.
+
+Conferência pública HTTPS aprovada após o deploy: demo respondendo 200 com dez produtos, título, `noindex,follow` e canonical corretos; home com onze destaques, card único da PASSO Atelier apontando para `demos/passo-atelier/`; catálogo com 123 modelos e busca retornando a entrada única na categoria Comércio; manual, créditos com dez itens, capa WebP e fotos de produto respondendo 200. Sem overflow em 320, 390 e 360 pixels. Demo ausente do sitemap de páginas indexáveis. Nenhum erro JavaScript nem resposta HTTP 4xx/5xx capturada.
+
+A suíte `tools/test-passo-atelier.cjs` também foi executada contra o endereço público, após ajuste do tempo de espera da cópia assíncrona para a área de transferência (PR #31, merge `8fa7523c0ef93516c99c7ca96b525b5887438058`): aprovada no ambiente local e no público. A correção afeta apenas o teste; a demo publicada não foi alterada.
