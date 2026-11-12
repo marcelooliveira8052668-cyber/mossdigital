@@ -27,3 +27,7 @@ Teste automatizado em Chromium/Playwright, com `tools/test-moss-news.cjs`: aprov
 Comando local: instalar Playwright e Chromium fora da pasta pública, definir `PLAYWRIGHT_MODULE` caso necessário, servir a raiz em `http://127.0.0.1:8770` e executar `node tools/test-moss-news.cjs`.
 
 Destino aprovado: https://mossdigital.com.br/demos/moss-news/. A conferência do deploy deve ocorrer após merge e build do GitHub Pages. A criação de material publicitário não significa postagem em redes sociais.
+
+Primeira publicação: PR #27, merge `04bfcf77844a7a5326b81913c497cda2040339ae`; GitHub Pages run `43263234055` concluída com sucesso. Conferência adicional identificou uma URL antiga do Sebrae: substituída pelo canal `https://www.youtube.com/@sebrae`, que respondeu HTTP 200 com título Sebrae. NASA, CERT.br, Consumidor.gov.br, ANPD e Biblioteca Nacional também responderam HTTP 200 na amostra verificada.
+
+Conferência pública HTTPS aprovada após o deploy: resposta 200, oito guias, leitura, busca, referências, fotos locais, metadados do MP4, manual, card da home, busca e captura do catálogo e PNG da capa. Sem erros JavaScript capturados.
