@@ -1,5 +1,9 @@
 # Template de Site Profissional
 
+## PULSE Academia
+
+Nova demonstração em [`academia-pulse/`](academia-pulse/README.md): estrutura, fotos clicáveis, piscina, lutas, vídeo, professores, objetivos de treino, planos, horários e formulários locais. Marca, equipe e condições fictícias. Sem matrícula, reserva, pagamento ou autenticação reais. Testes: `python tools/test-pulse-academia.py --online` (requer Playwright e Microsoft Edge).
+
 Template com **28 tipos de negócio prontos** e **54 exemplos** no portfólio (34 nichos
 do catálogo + 20 projetos independentes). Você troca cores, logo, fotos, textos e cards num
 único arquivo e entrega em minutos. Funciona para **qualquer tipo de negócio**.
