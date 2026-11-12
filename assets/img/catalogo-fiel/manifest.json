@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-12T10:35:15.373177+00:00",
+  "capturedAt": "2026-11-12T11:52:44.478788+00:00",
   "notice": "Capturas das próprias demonstrações, sem dados reais de clientes.",
   "previews": [
     {
@@ -7,12 +7,6 @@
       "title": "MOSS Agenda Pro",
       "src": "assets/img/catalogo-fiel/moss-agenda-pro-ece456fe9f.webp",
       "url": "https://mossdigital.com.br/agenda-pro/?v=agenda-20261027"
-    },
-    {
-      "key": "/comandas/",
-      "title": "Comanda Fácil",
-      "src": "assets/img/catalogo-fiel/comanda-facil-9acc8c1c75.webp",
-      "url": "https://mossdigital.com.br/comandas/index.html"
     },
     {
       "key": "/demo.html?preset=academia",
@@ -465,30 +459,6 @@
       "url": "https://mossdigital.com.br/demos/mesa-da-semana/"
     },
     {
-      "key": "/demos/moss-agro/",
-      "title": "MOSS AGRO — Gestão Rural",
-      "src": "assets/img/catalogo-fiel/moss-agro-gestao-rural-cd4d73d1b9.webp",
-      "url": "https://mossdigital.com.br/demos/moss-agro/"
-    },
-    {
-      "key": "/demos/moss-city/",
-      "title": "MOSS CITY — Gestão Urbana",
-      "src": "assets/img/catalogo-fiel/moss-city-gestao-urbana-0dbc529c09.webp",
-      "url": "https://mossdigital.com.br/demos/moss-city/"
-    },
-    {
-      "key": "/demos/moss-condo/",
-      "title": "MOSS CONDO — Gestão de Condomínios",
-      "src": "assets/img/catalogo-fiel/moss-condo-gestao-de-condominios-d6d7af1b22.webp",
-      "url": "https://mossdigital.com.br/demos/moss-condo/"
-    },
-    {
-      "key": "/demos/moss-edu/",
-      "title": "MOSS EDU — Gestão Escolar",
-      "src": "assets/img/catalogo-fiel/moss-edu-gestao-escolar-e0c6589552.webp",
-      "url": "https://mossdigital.com.br/demos/moss-edu/"
-    },
-    {
       "key": "/demos/moss-home-prime/",
       "title": "🛋️ MOSS HOME PRIME — Móveis e decoração",
       "src": "assets/img/catalogo-fiel/moss-home-prime-moveis-e-decoracao-11b407309e.webp",
@@ -583,6 +553,12 @@
       "title": "Piscina em Dia",
       "src": "assets/img/catalogo-fiel/piscina-em-dia-dbc18640a2.webp",
       "url": "https://mossdigital.com.br/demos/piscina-em-dia/"
+    },
+    {
+      "key": "/demos/ponto-ajuste/",
+      "title": "Ponto & Ajuste — Ateliê de costura",
+      "src": "assets/img/catalogo-fiel/ponto-ajuste-atelie-de-costura-756345f352.webp",
+      "url": "https://mossdigital.com.br/demos/ponto-ajuste/"
     },
     {
       "key": "/demos/pontocomum/",
@@ -699,46 +675,16 @@
       "url": "https://mossdigital.com.br/fotos-amigos/index.html"
     },
     {
-      "key": "/loja-virtual/",
-      "title": "NEXA Store",
-      "src": "assets/img/catalogo-fiel/nexa-store-b1b9c524d0.webp",
-      "url": "https://mossdigital.com.br/loja-virtual/index.html"
-    },
-    {
-      "key": "/moss-burger-online/",
-      "title": "MOSS Burger",
-      "src": "assets/img/catalogo-fiel/moss-burger-ca556af559.webp",
-      "url": "https://mossdigital.com.br/moss-burger-online/index.html"
-    },
-    {
-      "key": "/nf-control/",
-      "title": "NF Control",
-      "src": "assets/img/catalogo-fiel/nf-control-9b2680ebcf.webp",
-      "url": "https://mossdigital.com.br/nf-control/index.html"
-    },
-    {
       "key": "/restaurante-360/",
       "title": "Restaurante 360 — à la carte, buffet e rodízio",
       "src": "assets/img/catalogo-fiel/restaurante-360-a-la-carte-buffet-e-rodizio-a9be445f39.webp",
       "url": "https://mossdigital.com.br/restaurante-360/"
     },
     {
-      "key": "/restaurante-360/painel.html",
-      "title": "Restaurante 360 — operação mista",
-      "src": "assets/img/catalogo-fiel/restaurante-360-operacao-mista-d83a5e1601.webp",
-      "url": "https://mossdigital.com.br/restaurante-360/painel.html"
-    },
-    {
       "key": "/site-de-turismo/",
       "title": "Agência de viagens",
       "src": "assets/img/catalogo-fiel/agencia-de-viagens-bda4a2c840.webp",
       "url": "https://mossdigital.com.br/site-de-turismo/?v=vitrines-20261027"
-    },
-    {
-      "key": "/skillmatch/",
-      "title": "SkillMatch",
-      "src": "assets/img/catalogo-fiel/skillmatch-b39cf66697.webp",
-      "url": "https://mossdigital.com.br/skillmatch/index.html"
     },
     {
       "key": "https://marcelooliveira8052668-cyber.github.io/Bicicleta-/",
@@ -769,30 +715,6 @@
       "title": "MOSS Studio Pro — Criador Visual",
       "src": "assets/img/catalogo-fiel/moss-studio-pro-criador-visual-449ec082c8.webp",
       "url": "https://marcelooliveira8052668-cyber.github.io/MOSS-STUDIO-PRO/"
-    },
-    {
-      "key": "https://marcelooliveira8052668-cyber.github.io/mo-cursos/",
-      "title": "MO Cursos",
-      "src": "assets/img/catalogo-fiel/mo-cursos-288ef7e0f2.webp",
-      "url": "https://marcelooliveira8052668-cyber.github.io/mo-cursos/"
-    },
-    {
-      "key": "https://marcelooliveira8052668-cyber.github.io/mo-music/",
-      "title": "M.O Music — Site para artistas",
-      "src": "assets/img/catalogo-fiel/m-o-music-site-para-artistas-2e65b33837.webp",
-      "url": "https://marcelooliveira8052668-cyber.github.io/mo-music/"
-    },
-    {
-      "key": "https://marcelooliveira8052668-cyber.github.io/moss-cardapio/",
-      "title": "MOSS Cardápio",
-      "src": "assets/img/catalogo-fiel/moss-cardapio-6fbbef1964.webp",
-      "url": "https://marcelooliveira8052668-cyber.github.io/moss-cardapio/"
-    },
-    {
-      "key": "https://marcelooliveira8052668-cyber.github.io/moss-criador-de-sites/",
-      "title": "MOSS Criador de Sites",
-      "src": "assets/img/catalogo-fiel/moss-criador-de-sites-e80e84067b.webp",
-      "url": "https://marcelooliveira8052668-cyber.github.io/moss-criador-de-sites/"
     }
   ]
 }
