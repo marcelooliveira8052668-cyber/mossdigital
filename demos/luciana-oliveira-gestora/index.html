@@ -180,32 +180,188 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
 }
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .hero h1 .ouro{animation:none} .zap-flutuante,.btn,.publico,.servico{transition:none} }
 
-/* ===== Mobile: cabeçalho e hero compactos ===== */
-@media (max-width: 560px) {
-  .header-row { height: 62px; gap: 8px; padding-left: 14px; padding-right: 14px; }
-  .brand-name { font-size: .9rem; white-space: nowrap; letter-spacing: 0; }
-  .brand-name small { display: none; }
+/* ===== Botão hambúrguer (ícone de 3 linhas) — só aparece no mobile ===== */
+.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 46px; height: 44px; padding: 11px 10px; background: transparent; border: 1px solid var(--gold); border-radius: 10px; cursor: pointer; }
+.hamburger:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.hamburger .linha { display: block; height: 3px; border-radius: 3px; background: #fff; transition: transform .25s, opacity .25s; }
+.hamburger[aria-expanded="true"] .linha:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+.hamburger[aria-expanded="true"] .linha:nth-child(2) { opacity: 0; }
+.hamburger[aria-expanded="true"] .linha:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+.pill-curta { display: none; }
+/* ===== Navegação compacta até 1000px; acima disso, o desktop permanece intacto. ===== */
+@media (max-width: 1000px) {
+  .header-row { height: 64px; gap: 10px; padding-left: 12px; padding-right: 12px; }
+  .brand-name { font-size: .9rem; white-space: nowrap; }
+  .brand-name small { font-size: .5rem; letter-spacing: .16em; }
   .monogram { width: 32px; height: 32px; }
-  .pill { font-size: .68rem; padding: 10px 12px; white-space: nowrap; }
-  .site-header .nav { display: none; }
-  .hero { grid-template-columns: 1fr; gap: 26px; padding-top: 20px; min-height: auto; }
-  .hero h1 { font-size: 2.15rem; margin: 16px 0 18px; }
-  .eyebrow { font-size: .58rem; letter-spacing: .18em; }
+  .site-header .nav { display: none; }             /* linha de links some no mobile */
+  .hamburger { display: inline-flex; }              /* botão hambúrguer aparece */
+  .pill { font-size: .72rem; padding: 10px 13px; white-space: nowrap; }
+  .pill-longa { display: none; }                     /* texto comprido do botão */
+  .pill-curta { display: inline; }                   /* texto curto no mobile */
+  /* painel do menu mobile (abaixo do cabeçalho, todos os links) */
+  .menu-mobile { position: absolute; top: 100%; left: 0; right: 0; z-index: 50; display: flex; flex-direction: column; gap: 4px; background: rgba(11,11,12,.97); backdrop-filter: blur(14px); border-bottom: 1px solid var(--gold); padding: 10px 16px 18px; }
+  .menu-mobile[hidden] { display: none; }
+  .menu-mobile a { color: #fff; text-decoration: none; padding: 14px 12px; border-radius: 12px; font-size: .97rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .menu-mobile a:last-child { border-bottom: 0; }
+  .menu-mobile a:hover, .menu-mobile a:focus-visible { background: rgba(212,175,55,.12); color: var(--gold-2); outline: none; }
+  .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 22px; min-height: auto; }
+  .hero h1 { font-size: clamp(2rem, 9vw, 2.6rem); margin: 14px 0 18px; }
+  .eyebrow { font-size: .56rem; letter-spacing: .16em; }
   .lead { font-size: .93rem; margin-bottom: 20px; }
   .hero-acoes { gap: 10px; }
   .btn { padding: 13px 18px; font-size: .85rem; }
   .selos { gap: 12px; margin-top: 18px; }
   .selo b { font-size: .78rem; }
   .selo span { font-size: .62rem; }
-  .retrato { max-width: 280px; margin: 0 auto; width: 100%; }
+  .retrato { max-width: 300px; margin: 0 auto; width: 100%; }
   .retrato-legenda { flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 6px 6px; font-size: .66rem; }
   .section-head h2 { font-size: 1.55rem; }
   .bloco { padding: 48px 0; }
   .galeria { gap: 10px; }
   .trabalho { flex-basis: 190px; }
-  .zap-flutuante { padding: 11px 15px; font-size: .76rem; bottom: 16px; right: 16px; }
+  .zap-flutuante { padding: 11px 15px; font-size: .76rem; bottom: 14px; right: 14px; }
+}
+@media (max-width: 380px) {
+  .brand-name { font-size: .8rem; }
+  .brand-name small { font-size: .44rem; letter-spacing: .12em; }
+  .pill { font-size: .6rem; padding: 9px 9px; }
+  .hamburger { width: 44px; height: 44px; }
+  .header-row { padding-left: 10px; padding-right: 10px; gap: 6px; }
+}
+
+/* ===== Botão de tema (dia/noite) ===== */
+.tema { width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--gold); background: transparent; display: grid; place-items: center; cursor: pointer; color: #fff; transition: background .15s, color .15s; }
+.tema:hover { background: rgba(212,175,55,.12); }
+.tema:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.ico-sol { display: none; }
+html.tema-dia .ico-sol { display: block; }
+html.tema-dia .ico-lua { display: none; }
+html.tema-dia .tema { color: #141414; }
+.pill-ico { display: none; }
+@media (max-width: 380px) { .pill-ico { display: block; } .pill-curta { display: none; } }
+
+/* ===== TEMA DIA (preto e branco invertido, com dourado) ===== */
+html.tema-dia { color-scheme: light; }
+html.tema-dia body { background: #f5f5f5; color: #141414; }
+html.tema-dia .grade { opacity: .28; }
+html.tema-dia .site-header { background: rgba(255,255,255,.92); }
+html.tema-dia .brand-name { color: #141414; }
+html.tema-dia .brand-name small { color: #8a6a22; }
+html.tema-dia .nav a { color: #3c3c42; }
+html.tema-dia .nav a:hover { color: #8a6a22; }
+html.tema-dia .monogram rect { fill: #ffffff; stroke: #d8d8dc; }
+html.tema-dia .monogram path { fill: #d4af37 !important; }
+html.tema-dia .eyebrow { color: #8a6a22 !important; }
+html.tema-dia .bloco { border-top-color: rgba(138,106,34,.25); }
+html.tema-dia .hero h1 .ouro { background: none; color: #8a6a22; -webkit-text-fill-color: currentColor; animation: none; }
+html.tema-dia .lead strong,
+html.tema-dia .btn-ghost,
+html.tema-dia .retrato-legenda b,
+html.tema-dia .sobre-texto strong { color: #141414; }
+html.tema-dia .publico,
+html.tema-dia .servico,
+html.tema-dia .cred-card,
+html.tema-dia .passo,
+html.tema-dia .jornada,
+html.tema-dia .trabalho { background: #ffffff; border-color: #dcdcde; box-shadow: 0 1px 0 #e3e3e6; }
+html.tema-dia .servico-ic,
+html.tema-dia .publico-ic { background: #efeff1 !important; }
+html.tema-dia .servico-ic svg *,
+html.tema-dia .publico-ic svg * { stroke: #141414; }
+html.tema-dia .servico h3,
+html.tema-dia .publico h3,
+html.tema-dia .cred-card h3,
+html.tema-dia .passo h3,
+html.tema-dia .trabalho-info b,
+html.tema-dia .retrato-legenda { color: #141414; }
+html.tema-dia .trabalho-info span,
+html.tema-dia .servico p,
+html.tema-dia .publico p,
+html.tema-dia .cred-card p,
+html.tema-dia .passo p,
+html.tema-dia .retrato-legenda span,
+html.tema-dia .lead { color: #4a4a52; }
+html.tema-dia .metadados b, html.tema-dia .selo b { color: #8a6a22 !important; }
+html.tema-dia .chip { color: #8a6a22; border-color: rgba(138,106,34,.45); }
+html.tema-dia .selo { border-left-color: var(--gold) !important; }
+html.tema-dia .jornada-eyebrow,
+html.tema-dia .cred-tag,
+html.tema-dia .timeline li b { color: #8a6a22 !important; }
+html.tema-dia .timeline li span { color: #1c1c1f; }
+html.tema-dia .timeline li { border-bottom-color: rgba(138,106,34,.14); }
+html.tema-dia .timeline::before { background: linear-gradient(180deg, var(--gold) 0%, rgba(138,106,34,.08) 100%); }
+html.tema-dia blockquote { color: #2c2c30; border-left-color: var(--gold) !important; }
+html.tema-dia .hamburger .linha { background: #141414; }
+html.tema-dia .hamburger { border-color: var(--gold); }
+html.tema-dia .menu-mobile { background: rgba(255,255,255,.98); border-bottom: 1px solid var(--gold); }
+html.tema-dia .menu-mobile a { color: #141414; border-bottom-color: rgba(0,0,0,.08); }
+html.tema-dia .menu-mobile a:hover,
+html.tema-dia .menu-mobile a:focus-visible { background: rgba(212,175,55,.22); color: #8a6a22; }
+html.tema-dia .site-footer a { color: #8a6a22 !important; }
+html.tema-dia .previa-aviso { border-top-color: rgba(138,106,34,.3); }
+html.tema-dia .zap-flutuante { color: #0b0b0c; background: #ffffff; box-shadow: 0 0 0 2px var(--gold), 0 10px 30px rgba(0,0,0,.18) !important; }
+html.tema-dia .trabalho:hover { border-color: var(--gold) !important; }
+html.tema-dia .btn-gold { box-shadow: 0 10px 26px rgba(138,106,34,.3); }
+
+/* ===== 320–430px: cabeçalho encaixa sem cortar nada ===== */
+@media (max-width: 430px) {
+  .header-row { gap: 6px; padding-left: 10px; padding-right: 10px; }
+  .monogram { width: 28px; height: 28px; }
+  .brand-name { font-size: .76rem; letter-spacing: 0; }
+  .brand-name small { font-size: .4rem; letter-spacing: .1em; }
+  .hamburger { width: 42px; height: 42px; }
+  .tema { width: 40px; height: 40px; }
+  .pill { width: 44px; padding: 8px 0; justify-content: center; border-radius: 12px; }
+  .pill-ico { width: 18px; height: 18px; }
+  .pill-curta { display: none !important; }
+}
+
+/* ===== Correção 381–430px: pill só com ícone, mas com tamanho certo ===== */
+@media (max-width: 430px) {
+  .pill-ico { display: block; }
+  .pill { min-height: 44px; align-items: center; }
+}
+
+/* ===== Botões do cabeçalho nunca espremem ===== */
+.hamburger, .tema, .pill { flex-shrink: 0; }
+.brand { min-width: 0; }
+
+@media (max-width: 430px) {
+  .brand-name small { max-width: 110px; }
+}
+
+/* Dia: texto da legenda da foto visível (o cartão continua escuro) */
+html.tema-dia .retrato-legenda b { color: #f5f5f5 !important; }
+html.tema-dia .retrato-legenda span { color: #b9b9bf !important; }
+
+/* No celular, duas linhas preservam o nome, o subtítulo e o WhatsApp legível. */
+.eyebrow-mobile { display: none; }
+@media (max-width: 560px) {
+  html { scroll-padding-top: 220px; } /* Âncoras não ficam escondidas pelo cabeçalho fixo. */
+  .header-row { display: grid; grid-template-columns: minmax(0, 1fr) 44px 44px; height: auto; min-height: 64px; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+  .brand { grid-column: 1; }
+  .brand-name { white-space: normal; line-height: 1.15; }
+  .brand-name small { max-width: none; }
+  .hamburger { grid-column: 2; width: 44px; }
+  .tema { grid-column: 3; width: 44px; height: 44px; }
+  .pill { grid-column: 1 / -1; width: 100%; min-height: 44px; justify-content: center; padding: 10px 14px; }
+  .pill-ico { display: block; width: 20px; height: 20px; }
+  .pill-longa { display: inline; }
+  .pill-curta { display: none; }
+  /* Navegação já aberta no celular em pé, em vez de cobrir a foto. */
+  .menu-mobile:not([hidden]) { position: static; grid-column: 1 / -1; grid-row: 3; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 0; background: transparent; border: 0; backdrop-filter: none; }
+  .menu-mobile a { text-align: center; padding: 8px 4px; border: 1px solid var(--line); font-size: .8rem; }
+  .menu-mobile a:last-child { border-bottom: 1px solid var(--line); }
+  /* O atalho flutuante permanece acessível sem cobrir linhas inteiras de texto. */
+  .zap-flutuante { width: 48px; height: 48px; padding: 0; justify-content: center; border-radius: 50%; }
+  .zap-flutuante span { display: none; }
+  /* A apresentação aparece imediatamente após o cabeçalho, antes da foto. */
+  .hero .eyebrow-mobile { display: block; order: -2; }
+  .hero-copy > .eyebrow { display: none; } /* Mesmo texto já visível acima da foto. */
 }
 </style>
+<script>try{if(localStorage.getItem('temaLuciana')==='dia'){document.documentElement.classList.add('tema-dia')}}catch(e){}</script>
 </head>
 <body>
 <div class="grade"></div>
@@ -222,14 +378,32 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a class="pill" href="https://wa.me/5511999704755" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+    <button class="hamburger" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu">
+      <span class="linha"></span>
+      <span class="linha"></span>
+      <span class="linha"></span>
+    </button>
+    <!-- painel do menu mobile (abre ao tocar no hambúrguer) -->
+    <nav class="menu-mobile" id="menu-mobile" aria-label="Menu mobile" hidden>
+      <a href="#publicos">Para quem</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="tema" id="btn-tema" type="button" aria-pressed="false" aria-label="Alternar para o tema claro">
+      <svg class="ico-lua" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="ico-sol" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/></svg>
+    </button>
+    <a class="pill" href="https://wa.me/5511999704755" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp"><svg class="pill-ico" viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg><span class="pill-longa">Falar no WhatsApp</span><span class="pill-curta">WhatsApp</span></a>
   </div>
 </header>
 
 <main id="inicio">
   <!-- HERO -->
   <div class="wrap hero">
-    <div>
+    <!-- Cópia mobile da chamada: a original permanece no lugar no desktop. -->
+    <p class="eyebrow eyebrow-mobile">Especialista em Marketing Digital · Gestora de Tráfego Pago</p>
+    <div class="hero-copy">
       <p class="eyebrow">Especialista em Marketing Digital · Gestora de Tráfego Pago</p>
       <h1>Imagem, visibilidade e <span class="ouro">oportunidades</span> — com estratégia de verdade.</h1>
       <p class="lead">Ajudo <strong>empresários, atletas, árbitros, clubes, associações e profissionais da área pública</strong> a fortalecer a imagem, ampliar a visibilidade e atrair as oportunidades certas por meio do marketing digital.</p>
@@ -398,7 +572,7 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
 </footer>
 <p class="previa-aviso">PRÉVIA PARA VALIDAÇÃO COM A LUCIANA — fotos e depoimentos reais serão adicionados após o envio dela.</p>
 
-<a class="zap-flutuante" href="https://wa.me/5511999704755?text=Ol%C3%A1%20Luciana!%20Vim%20pelo%20seu%20site." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Luciana no WhatsApp"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</a>
+<a class="zap-flutuante" href="https://wa.me/5511999704755?text=Ol%C3%A1%20Luciana!%20Vim%20pelo%20seu%20site." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Luciana no WhatsApp"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span>WhatsApp</span></a>
 
 <script>
 (function(){
@@ -417,6 +591,57 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
     requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
+})();
+</script>
+<script>
+(function () {
+  var btn = document.getElementById('btn-menu');
+  var menu = document.getElementById('menu-mobile');
+  if (!btn || !menu) return;
+  var celularEmPe = window.matchMedia('(max-width: 560px)');
+  function alternar(abrir) {
+    var expandir = typeof abrir === 'boolean' ? abrir : btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(expandir));
+    btn.setAttribute('aria-label', expandir ? 'Fechar menu' : 'Abrir menu');
+    menu.hidden = !expandir;
+  }
+  /* No celular, os quatro links ficam visíveis assim que a página abre. */
+  if (celularEmPe.matches) alternar(true);
+  celularEmPe.addEventListener('change', function (evento) {
+    alternar(evento.matches);
+  });
+  btn.addEventListener('click', function () { alternar(); });
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a') && !celularEmPe.matches) alternar(false); /* No celular, links continuam visíveis. */
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') alternar(false);          /* Esc fecha o menu */
+  });
+  document.addEventListener('click', function (e) {
+    if (!celularEmPe.matches && !e.target.closest('.site-header')) alternar(false); /* No tablet, toque fora fecha. */
+  });
+})();
+</script>
+<script>
+(function () {
+  var btn = document.getElementById('btn-tema');
+  if (!btn) return;
+  var root = document.documentElement;
+  function aplicar(dia) {
+    root.classList.toggle('tema-dia', dia);
+    btn.setAttribute('aria-pressed', String(dia));
+    btn.setAttribute('aria-label', dia ? 'Alternar para o tema escuro' : 'Alternar para o tema claro');
+    try { localStorage.setItem('temaLuciana', dia ? 'dia' : 'noite'); } catch (e) {}
+  }
+  function estadoAtual() {
+    return root.classList.contains('tema-dia');
+  }
+  /* Sincroniza a descrição do botão com o tema salvo anteriormente. */
+  btn.setAttribute('aria-pressed', String(estadoAtual()));
+  btn.setAttribute('aria-label', estadoAtual() ? 'Alternar para o tema escuro' : 'Alternar para o tema claro');
+  btn.addEventListener('click', function () {
+    aplicar(!estadoAtual());
+  });
 })();
 </script>
 </body>
