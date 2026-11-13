@@ -56,195 +56,193 @@ const corSegura = (v) => (/^#[0-9a-fA-F]{6}$/.test(v) ? v : "#2563eb");
 
 /* ---------- Templates de prévia (HTML gerado localmente) ---------- */
 
-const templateProfissional = (s) => {
-  const chips = s.habilidades.map((h) => `<span class="p-chip">${esc(h)}</span>`).join("");
-  const projetos = s.projetos.map((p, i) => `
-    <article class="p-proj">
-      <span class="p-num">0${i + 1}</span>
-      <h3>${esc(p.nome || "Projeto")}</h3>
-      <p>${esc(p.desc)}</p>
-      ${p.link ? `<a href="${esc(p.link)}">ver projeto ↗</a>` : ""}
-    </article>`).join("");
-  const sobre = s.sobre ? `<p class="p-sobre">${esc(s.sobre)}</p>` : "";
-  const cidade = s.cidade ? `<span class="p-cidade">${esc(s.cidade)}</span>` : "";
-  const links = [
-    s.email ? `<a href="mailto:${esc(s.email)}">${esc(s.email)}</a>` : "",
-    s.site ? `<a href="${esc(s.site)}">${esc(s.site.replace(/^https?:\/\//, ""))}</a>` : "",
-  ].filter(Boolean).join("<span class='p-sep'>·</span>");
-  return `<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-  :root{--ac:${s.cor}}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:Georgia,'Times New Roman',serif;background:#fbfaf7;color:#221f1a;line-height:1.6;padding:34px 26px;-webkit-font-smoothing:antialiased}
-  main{max-width:640px;margin:0 auto}
-  header{display:flex;gap:22px;align-items:center;border-bottom:3px solid var(--ac);padding-bottom:20px;margin-bottom:18px}
-  /* Foto proporcional, limitada e sem cortes no modelo Profissional. */
-  .p-photo{display:block;width:108px;height:108px;max-width:108px;max-height:108px;object-fit:contain;border-radius:16px;border:3px solid var(--ac);background:#eeeae4;flex:0 0 108px;overflow:hidden}
-  .p-name{font-size:2.1rem;letter-spacing:-.02em;line-height:1.1}
-  .p-role{color:var(--ac);font:700 .68rem Arial,Helvetica,sans-serif;letter-spacing:.22em;text-transform:uppercase;margin-top:6px}
-  .p-cidade{font:.72rem Arial,Helvetica,sans-serif;color:#6b665c;display:block;margin-top:4px}
-  .p-sobre{font-size:1.02rem;color:#38342c;margin:16px 0 18px}
-  .p-skills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-  .p-chip{font:600 .66rem Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--ac);color:var(--ac);border-radius:99px;padding:5px 12px}
-  .p-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .p-proj{background:#fff;border:1px solid #e6e2d8;border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(20,18,12,.06)}
-  .p-num{font:800 .62rem Arial;color:var(--ac);letter-spacing:.15em}
-  .p-proj h3{font-size:1.02rem;margin:6px 0 6px}
-  .p-proj p{font-size:.8rem;color:#4d4940}
-  .p-proj a{font:700 .72rem Arial;color:var(--ac);text-decoration:none;display:inline-block;margin-top:8px}
-  footer{border-top:1px solid #e6e2d8;margin-top:18px;padding-top:12px;font:600 .78rem Arial;color:#38342c;display:flex;gap:12px;flex-wrap:wrap}
-  footer a{color:var(--ac);text-decoration:none}
-  .p-sep{color:#b7b2a5}
-  @media(max-width:480px){header{flex-direction:column;text-align:center}.p-grid{grid-template-columns:1fr}.p-name{font-size:1.7rem}}
-</style></head><body><main>
-  <header>
-    ${s.foto ? `<img class="p-photo" src="${s.foto}" alt="Foto de ${esc(s.nome)}">` : `<div class="p-photo" style="display:flex;align-items:center;justify-content:center;background:var(--ac);color:#fff;font:700 1.8rem Georgia">${esc(iniciais(s.nome))}</div>`}
-    <div><h1 class="p-name">${esc(s.nome || "Seu nome")}</h1><p class="p-role">${esc(s.funcao || "Sua profissão")}</p>${cidade}</div>
-  </header>
-  ${sobre}
-  ${chips ? `<div class="p-skills">${chips}</div>` : ""}
-  ${s.projetos.length ? `<div class="p-grid">${projetos}</div>` : ""}
-  ${links ? `<footer>${links}</footer>` : ""}
-</main></body></html>`;
-};
+const templateEditorial = (s) => {
+  /* Modelo único: "Editorial" — photobook de revista em formato paisagem.
+     Todas as medidas usam vw para a prévia ao vivo (iframe de largura
+     variável) e o PDF (iframe fixo) ficarem proporcionais em qualquer tamanho.
+     Uma página por <section class="pg">; o html2pdf vira cada página em uma
+     folha A4 paisagem. */
+  const cor = s.cor;
+  const nome = esc(s.nome || "Seu nome");
+  const funcao = esc(s.funcao || "Sua profissão");
+  const cidade = esc(s.cidade || "");
+  const sobre = esc(s.sobre || "");
+  const chips = s.habilidades.map((h) => `<span class="ed-chip">${esc(h)}</span>`).join("");
+  const nomeCaps = String(s.nome || "Seu nome").trim();
+  const monograma = esc(iniciais(s.nome));
+  const foto = s.foto;
+  const totalProjetos = s.projetos.length;
+  /* Folios (números de página no rodapé): capa 01, sobre 02, projetos em seguida, obrigado por último. */
+  const folio = (n) => String(n).padStart(2, "0");
+  const folioFim = folio(3 + totalProjetos);
 
-const templateCriativo = (s) => {
-  const chips = s.habilidades.map((h) => `<span class="c-chip">${esc(h)}</span>`).join("");
-  const projetos = s.projetos.map((p, i) => `
-    <article class="c-proj">
-      <span class="c-num">0${i + 1}</span>
-      <h3>${esc(p.nome || "Projeto")}</h3>
-      <p>${esc(p.desc)}</p>
-      ${p.link ? `<a href="${esc(p.link)}">abrir ↗</a>` : ""}
-    </article>`).join("");
-  const sobre = s.sobre ? `<p class="c-sobre">${esc(s.sobre)}</p>` : "";
-  const cidade = s.cidade ? `<span class="c-cidade">${esc(s.cidade)}</span>` : "";
-  const links = [
-    s.email ? `<a href="mailto:${esc(s.email)}">Email</a>` : "",
-    s.site ? `<a href="${esc(s.site)}">Meu site</a>` : "",
-  ].filter(Boolean).join("<span class='c-sep'>·</span>");
-  const painel = s.foto
-    ? `<div class="c-photo"><img src="${s.foto}" alt="Foto de ${esc(s.nome)}"></div>`
-    : `<div class="c-photo c-ph">${esc(iniciais(s.nome))}</div>`;
-  return `<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-  :root{--ac:${s.cor}}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#101010;color:#f2ede2;font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
-  /* A coluna da foto tem largura fixa máxima, deixando espaço para os projetos. */
-  main{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);align-items:start;gap:24px;max-width:1100px;margin:0 auto;padding:28px}
-  /* Moldura compacta, sem exigir altura de tela inteira. */
-  .c-photo{position:relative;overflow:hidden;width:100%;height:320px;min-height:0;border:1px solid #39342a;border-radius:14px;background:#171511}
-  /* object-fit contain evita cortes mesmo em fotografias horizontais. */
-  .c-photo img{width:100%;height:100%;object-fit:contain;display:block;filter:contrast(.98) saturate(.92)}
-  .c-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--ac),#241f04);font:900 4rem Arial;color:#f5c14a}
-  .c-right{padding:10px 6px 28px;min-width:0;display:flex;flex-direction:column}
-  .c-kicker{display:flex;align-items:center;gap:14px;font:700 .66rem Arial;letter-spacing:.28em;text-transform:uppercase;color:#f5c14a}
-  .c-kicker::before{content:"";width:44px;height:6px;background:var(--ac)}
-  h1{font-size:clamp(2.15rem,5vw,3.6rem);line-height:1.04;letter-spacing:-.04em;font-family:'Arial Black',Arial,sans-serif;margin:14px 0 10px;overflow-wrap:anywhere}
-  .c-role{font-size:1.05rem;color:#f5c14a;font-style:italic}
-  .c-cidade{font-size:.72rem;color:#b8b09e;text-transform:uppercase;letter-spacing:.2em;margin-top:8px}
-  .c-sobre{color:#cdc6b6;font-size:.95rem;margin:22px 0;max-width:46ch}
-  .c-skills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
-  .c-chip{font:700 .62rem Arial;letter-spacing:.12em;text-transform:uppercase;border:1px solid #3a382f;color:#f5c14a;border-radius:4px;padding:6px 12px}
-  .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .c-proj{border:1px solid #2a2924;border-radius:6px;padding:14px;background:#141413}
-  .c-num{font:800 .62rem Arial;color:var(--ac);letter-spacing:.2em}
-  .c-proj h3{font-size:.98rem;margin:8px 0 6px;color:#f2ede2}
-  .c-proj p{font-size:.76rem;color:#b8b09e}
-  .c-proj a{display:inline-block;margin-top:8px;font:700 .7rem Arial;letter-spacing:.08em;text-transform:uppercase;color:#f5c14a;text-decoration:none}
-  footer{margin-top:auto;padding-top:22px;font:700 .74rem Arial;color:#f5c14a;display:flex;gap:14px}
-  footer a{color:#f5c14a;text-decoration:none;text-transform:uppercase;letter-spacing:.14em}
-  .c-sep{color:#4a463d}
-  /* Celular: foto compacta e centralizada antes dos textos. */
-  @media(max-width:700px){main{grid-template-columns:1fr;gap:18px;padding:18px}.c-photo{width:min(100%,260px);height:300px;margin:0 auto}.c-right{padding:8px 4px 28px}.c-grid{grid-template-columns:1fr}}
-</style></head><body><main>
-  ${painel}
-  <div class="c-right">
-    <p class="c-kicker">Portfólio</p>
-    <h1>${esc(s.nome || "Seu nome")}</h1>
-    <p class="c-role">${esc(s.funcao || "Sua profissão")}</p>
-    ${cidade}
-    ${sobre}
-    ${chips ? `<div class="c-skills">${chips}</div>` : ""}
-    ${s.projetos.length ? `<div class="c-grid">${projetos}</div>` : ""}
-    ${links ? `<footer>${links}</footer>` : ""}
-  </div>
-</main></body></html>`;
-};
-
-const templateTecnologia = (s) => {
-  const chips = s.habilidades.map((h) => `<span class="t-chip">${esc(h)}</span>`).join("");
-  const projetos = s.projetos.map((p, i) => `
-    <article class="t-proj">
-      <p class="t-prompt"><span class="t-dollar">$</span> projeto-${String(i + 1).padStart(2, "0")} <span class="t-nome">${esc(p.nome || "projeto")}</span> EOF</p>
-      <p class="t-desc">${esc(p.desc)}</p>
-      ${p.link ? `<a class="t-link" href="${esc(p.link)}">→ ${esc(p.link.replace(/^https?:\/\//, ""))}</a>` : ""}
-    </article>`).join("");
-  const sobre = s.sobre ? `<p class="t-sobre"><span class="t-c">/*</span> ${esc(s.sobre)} <span class="t-c">*/</span></p>` : "";
-  const cidade = s.cidade ? `<span class="t-cidade">@ ${esc(s.cidade)}</span>` : "";
-  const links = [
-    s.email ? `<a href="mailto:${esc(s.email)}">${esc(s.email)}</a>` : "",
-    s.site ? `<a href="${esc(s.site)}">${esc(s.site.replace(/^https?:\/\//, ""))}</a>` : "",
-  ].filter(Boolean).join("<span class='t-sep'> | </span>");
-  const painel = s.foto
-    ? `<img class="t-photo" src="${s.foto}" alt="Foto de ${esc(s.nome)}">`
-    : `<div class="t-photo t-ph">${esc(iniciais(s.nome))}</div>`;
-  return `<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-  :root{--ac:${s.cor}}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#060d1c;color:#d7e6f7;font-family:Consolas,'Cascadia Code',Monaco,monospace;-webkit-font-smoothing:antialiased;padding:18px}
-  main{max-width:620px;margin:0 auto;border:1px solid #123047;border-radius:12px;background:#0a1322;box-shadow:0 0 44px rgba(34,211,238,.08)}
-  .t-bar{display:flex;gap:7px;align-items:center;background:#0d1b30;border-bottom:1px solid #123047;border-radius:12px 12px 0 0;padding:9px 14px}
-  .t-bar i{width:11px;height:11px;border-radius:50%;background:#1d3a55}
-  .t-bar i:nth-child(1){background:#ef6a5a}.t-bar i:nth-child(2){background:#f5bd4f}.t-bar i:nth-child(3){background:#62c554}
-  .t-bar span{margin-left:auto;font-size:.62rem;color:#3e6a8d}
-  .t-body{padding:24px}
-  .t-head{display:flex;gap:18px;align-items:center;border-bottom:1px dashed #123047;padding-bottom:18px;margin-bottom:16px}
-  /* Foto do modelo Tecnologia: tamanho controlado e imagem inteira visível. */
-  .t-photo{display:block;width:104px;height:104px;max-width:104px;max-height:104px;object-fit:contain;border-radius:14px;border:2px solid var(--ac);background:#0c2436;box-shadow:0 0 22px rgba(34,211,238,.25);flex:0 0 104px;overflow:hidden}
-  .t-ph{display:flex;align-items:center;justify-content:center;background:#0c2436;color:var(--ac);font-size:1.6rem;font-weight:700}
-  h1{font-size:1.55rem;color:#eaf6ff;letter-spacing:0}
-  .t-role{color:var(--ac);font-size:.76rem;margin-top:6px}
-  .t-role::before{content:"> ";opacity:.7}
-  .t-cidade{color:#3e6a8d;font-size:.7rem;display:block;margin-top:4px}
-  .t-sobre{color:#8faecb;font-size:.78rem;margin:6px 0 16px}
-  .t-c{color:#2b4a63}
-  .t-skills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
-  .t-chip{font-size:.66rem;letter-spacing:.08em;border:1px solid #123047;color:var(--ac);border-radius:4px;padding:4px 9px}
-  .t-proj{border:1px solid #0f2740;background:#081122;border-radius:8px;padding:12px 14px;margin-bottom:10px}
-  .t-prompt{color:var(--ac);font-size:.78rem}
-  .t-dollar{color:#5eead4}
-  .t-nome{color:#eaf6ff}
-  .t-desc{color:#8faecb;font-size:.76rem;margin:8px 0 0}
-  .t-link{color:#5eead4;text-decoration:none;font-size:.72rem}
-  footer{border-top:1px dashed #123047;padding-top:12px;margin-top:16px;font-size:.72rem;color:#8faecb}
-  footer a{color:#5eead4;text-decoration:none}
-  .t-sep{color:#123047}
-  @media(max-width:480px){.t-head{flex-direction:column;text-align:center}h1{font-size:1.3rem}}
-</style></head><body><main>
-  <div class="t-bar"><i></i><i></i><i></i><span>~/${esc(slug(s.nome))} — portfolio</span></div>
-  <div class="t-body">
-    <div class="t-head">
-      ${painel}
-      <div><h1>${esc(s.nome || "seu-nome")}</h1><p class="t-role">${esc(s.funcao || "sua profissão")}</p>${cidade}</div>
+  const paginaSobre = `<section class="pg pg-sobre">
+    <div class="sobre-numbox" aria-hidden="true"><span class="sobre-num">01</span><p class="kick">Sobre</p></div>
+    <div class="sobre-txtbox">
+      ${sobre ? `<p class="sobre-txt">${sobre}</p>` : `<p class="sobre-txt sobre-vazio">Conte aqui sobre você: quem é, o que faz de melhor e que tipo de trabalho procura.</p>`}
+      ${chips ? `<p class="hab-label">Habilidades</p><div class="hab-lista">${chips}</div>` : ""}
+      ${cidade ? `<div class="sobre-atual"><span class="sobre-atual-label">Atualmente</span><span class="sobre-atual-valor">${cidade}</span></div>` : ""}
     </div>
-    ${sobre}
-    ${chips ? `<div class="t-skills">${chips}</div>` : ""}
-    ${projetos}
-    ${links ? `<footer>${links}</footer>` : ""}
-  </div>
-</main></body></html>`;
-};
+    ${foto
+      ? `<div class="sobre-foto"><div class="foto-mat smol"><img src="${foto}" alt="Foto de ${nomeCaps}"></div><p class="foto-cap smol-cap">${nomeCaps}</p></div>`
+      : `<div class="sobre-art" aria-hidden="true"><span class="art-c1"></span><span class="art-c2"></span><span class="sobre-mono">${monograma}</span></div>`}
+    <div class="folio"><span>${nome}</span><span>02</span></div>
+  </section>`;
 
-const templates = { profissional: templateProfissional, criativo: templateCriativo, tecnologia: templateTecnologia };
+  const paginaProjeto = (p, i) => {
+    const numero = folio(i + 1);
+    const alt = i % 2 === 1 ? " alt" : "";
+    const pagina = folio(3 + i);
+    const link = p.link ? `<a class="proj-link" href="${esc(p.link)}">Ver projeto ↗</a>` : "";
+    return `<section class="pg pg-proj${alt}">
+    <div class="proj-numbox" aria-hidden="true">
+      <span class="art-c1"></span><span class="art-c2"></span><span class="art-ring"></span><span class="art-ring2"></span>
+      <span class="proj-num">${numero}</span>
+      <span class="proj-total">de ${folio(totalProjetos)}</span>
+    </div>
+    <div class="proj-txtbox">
+      <p class="kick">Projeto ${numero}</p>
+      <h2 class="proj-nome">${esc(p.nome || "Projeto")}</h2>
+      <div class="regra acento"></div>
+      <p class="proj-desc">${esc(p.desc)}</p>
+      ${link}
+    </div>
+    <div class="folio"><span>${nome}</span><span>${pagina}</span></div>
+  </section>`;
+  };
+  const paginasProjetos = s.projetos.map(paginaProjeto).join("\n  ");
+
+  const linhasContato = [
+    s.email ? `<div class="contato-linha"><span class="contato-label">E-mail</span><a class="contato-valor" href="mailto:${esc(s.email)}">${esc(s.email)}</a></div>` : "",
+    s.site ? `<div class="contato-linha"><span class="contato-label">Web</span><a class="contato-valor" href="${esc(s.site)}">${esc(s.site.replace(/^https?:\/\//, "").replace(/\/+$/, ""))}</a></div>` : "",
+    cidade ? `<div class="contato-linha"><span class="contato-label">Localidade</span><span class="contato-valor">${cidade}</span></div>` : "",
+  ].filter(Boolean).join("\n      ");
+  const letrasObrigado = [..."OBRIGADO"].map((letra) => `<span>${letra}</span>`).join("");
+  const paginaFim = `<section class="pg pg-fim">
+    <div class="fim-letras" aria-hidden="true">${letrasObrigado}</div>
+    <div class="fim-conteudo">
+      ${foto ? `<div class="fim-foto"><img src="${foto}" alt="Foto de ${nomeCaps}"></div>` : ""}
+      <p class="kick">Contato</p>
+      <h2 class="fim-titulo">Vamos<br>conversar?</h2>
+      <div class="regra dupla"></div>
+      ${linhasContato || '<p class="fim-sub">Disponível para novos projetos.</p>'}
+      <p class="fim-fim">Fim do portfólio · ${nome}</p>
+      <p class="fim-marca">MOSS Digital · mossdigital.com.br</p>
+    </div>
+    <div class="folio"><span>${nome}</span><span>${folioFim}</span></div>
+  </section>`;
+
+  return `<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{--ac:${cor}}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#efece3;color:#252219;-webkit-font-smoothing:antialiased}
+  /* Cada folha é uma "página" do photobook: 100vw de largura, altura proporcional ao A4 paisagem. */
+  .pg{position:relative;width:100vw;height:calc(70.707vw - 3px);overflow:hidden;background:#f7f4ec;display:flex;padding:4.3vw 5.2vw;page-break-after:always;break-after:page}
+  .pg:last-child{page-break-after:auto;break-after:auto}
+  .pg+.pg{box-shadow:inset 0 .09vw 0 rgba(37,34,25,.3)}
+  .kick{font:700 1.02vw Arial,Helvetica,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);white-space:nowrap}
+  .regra{border:0;border-top:.3vw solid #252219;margin:2vw 0}
+  .regra.acento{border-top:.32vw solid var(--ac);width:11vw;margin:0}
+  .regra.dupla{border-top:.09vw solid #252219;border-bottom:.32vw solid #252219;height:.62vw}
+  .folio{position:absolute;left:5.2vw;right:5.2vw;bottom:2.1vw;display:flex;justify-content:space-between;gap:2vw;
+    border-top:1px solid #c9c4b2;padding-top:1.1vw;
+    font:700 .95vw Arial,Helvetica,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#6f6a5c}
+  /* ---------- CAPA ---------- */
+  .pg-capa{display:grid;grid-template-columns:1.04fr .96fr;gap:5vw;align-items:center}
+  .capa-titulo{font-family:Didot,'Bodoni MT',Georgia,'Times New Roman',serif;font-weight:400;font-size:11.4vw;line-height:.94;letter-spacing:-.035em;margin:2.6vw 0 2.4vw;color:#252219}
+  .capa-nome{font:700 1.55vw Arial,Helvetica,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#252219;margin-top:2vw}
+  .capa-funcao{font-size:1.7vw;font-style:italic;color:#3c382d;margin-top:1vw}
+  .capa-cidade{font:700 1vw Arial,Helvetica,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#6f6a5c;margin-top:1.6vw}
+  .capa-dir{display:flex;flex-direction:column;gap:1.5vw}
+  /* Foto com "passe-partout" de galeria: moldura branca e sombra dura de impressão. */
+  .foto-mat{background:#fff;padding:1.4vw;border:1px solid #252219;box-shadow:.7vw .7vw 0 rgba(37,34,25,.88)}
+  .foto-mat img{display:block;width:100%;height:42vw;object-fit:cover;object-position:50% 18%;background:#e7e2d2}
+  .foto-mat.mono{display:flex;align-items:center;justify-content:center;height:44.8vw;background:#ece8db}
+  .foto-mat.mono span{font-size:10vw;font-family:Didot,'Bodoni MT',Georgia,serif;color:var(--ac)}
+  .foto-cap{text-align:center;font:700 .95vw Arial,Helvetica,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#6f6a5c}
+  /* ---------- SOBRE ---------- */
+  .pg-sobre{display:grid;grid-template-columns:auto 1fr auto;gap:4vw;align-items:center}
+  .sobre-numbox{display:flex;flex-direction:column;align-items:center;gap:1.6vw;border-right:1px solid #d5d0c2;padding-right:3.6vw}
+  .sobre-num{font-family:Didot,'Bodoni MT',Georgia,serif;font-size:13vw;line-height:1;color:#e0dbcb}
+  .sobre-txtbox{display:flex;flex-direction:column;gap:1.8vw;max-width:60ch}
+  .sobre-atual{display:flex;gap:1.6vw;align-items:baseline;border-top:1px solid #d5d0c2;padding-top:1.4vw}
+  .sobre-atual-label{font:700 .8vw Arial,Helvetica,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#6f6a5c}
+  .sobre-atual-valor{font-size:1.25vw;color:#252219}
+  .sobre-foto{display:flex;flex-direction:column;justify-content:center;gap:1.3vw;border-left:1px solid #d5d0c2;padding-left:3.6vw}
+  .foto-mat.smol{padding:1vw;box-shadow:.45vw .45vw 0 rgba(37,34,25,.88)}
+  .foto-mat.smol img{height:24vw;width:18.5vw;object-fit:cover;object-position:50% 15%}
+  /* Monograma quando não há foto: painel de arte em duotone. */
+  .sobre-art{position:relative;align-self:stretch;display:flex;align-items:center;justify-content:center;border-left:1px solid #d5d0c2;background:#f1ede1;overflow:hidden;width:17vw}
+  .sobre-mono{position:relative;font-family:Didot,'Bodoni MT',Georgia,serif;font-size:8.5vw;line-height:1;color:var(--ac);z-index:1}
+  .sobre-txt{font-size:1.66vw;line-height:1.8;color:#2e2b23}
+  .sobre-vazio{color:#8a857a;font-style:italic}
+  .hab-label{font:700 .95vw Arial,Helvetica,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#6f6a5c}
+  .hab-lista{display:flex;flex-wrap:wrap;gap:.7vw}
+  .ed-chip{display:inline-block;border:1px solid #252219;padding:.7vw 1.5vw;font:700 1vw Arial,Helvetica,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#252219}
+  /* ---------- PROJETOS ---------- */
+  .pg-proj{display:flex;align-items:stretch;padding:0}
+  /* Painel de arte generativa das páginas de projeto (duotone, composição fixa). */
+  .proj-numbox{position:relative;flex:0 0 33%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1vw;border-right:1px solid #d5d0c2;background:#f1ede1;overflow:hidden}
+  .pg-proj.alt{flex-direction:row-reverse}
+  .pg-proj.alt .proj-numbox{border-right:0;border-left:1px solid #d5d0c2}
+  .art-c1{position:absolute;width:24vw;height:24vw;border-radius:50%;background:var(--ac);opacity:.16;top:-8vw;left:-8vw}
+  .art-c2{position:absolute;width:13vw;height:13vw;border-radius:50%;background:var(--ac);opacity:.2;bottom:-4.5vw;right:-4.5vw}
+  .art-ring{position:absolute;width:32vw;height:32vw;border-radius:50%;border:.12vw solid rgba(37,34,25,.22);bottom:-13vw;left:-11vw}
+  .art-ring2{position:absolute;width:15vw;height:15vw;border-radius:50%;border:.12vw solid var(--ac);opacity:.55;top:4.5vw;right:2.2vw}
+  .proj-num{position:relative;z-index:1;font-family:Didot,'Bodoni MT',Georgia,serif;font-size:12.5vw;line-height:1;color:#252219}
+  .proj-total{font:700 .97vw Arial,Helvetica,sans-serif;letter-spacing:.34em;text-transform:uppercase;color:#8a857a}
+  .proj-txtbox{flex:1;display:flex;flex-direction:column;justify-content:center;gap:1.7vw;padding:0 4vw}
+  .proj-nome{font-family:Didot,'Bodoni MT',Georgia,'Times New Roman',serif;font-weight:400;font-size:4.7vw;line-height:1.02;letter-spacing:-.02em;color:#252219}
+  .proj-desc{font-size:1.3vw;line-height:1.85;color:#3c382d;max-width:56ch}
+  .proj-link{font:700 1.02vw Arial,Helvetica,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--ac);text-decoration:none;border-bottom:.18vw solid var(--ac);width:max-content;padding-bottom:.45vw}
+  /* ---------- OBRIGADO / CONTATO ---------- */
+  .pg-fim{display:flex;align-items:stretch;padding:0}
+  .fim-letras{flex:0 0 18%;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;border-right:1px solid #d5d0c2;background:#f1ede1;padding:2vw 0}
+  .fim-letras span{font-family:Didot,'Bodoni MT',Georgia,serif;font-size:4.6vw;line-height:1;color:#ddd8c8}
+  .fim-letras span:first-child{color:var(--ac)}
+  .fim-conteudo{flex:1;display:flex;flex-direction:column;justify-content:center;gap:1.4vw;padding:0 5vw}
+  .fim-titulo{font-family:Didot,'Bodoni MT',Georgia,'Times New Roman',serif;font-weight:400;font-size:6.2vw;line-height:.98;letter-spacing:-.02em}
+  .contato-linha{display:flex;justify-content:space-between;align-items:baseline;gap:2vw;border-bottom:1px solid #d5d0c2;padding:1.05vw 0}
+  .contato-label{font:700 .97vw Arial,Helvetica,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#6f6a5c}
+  .contato-valor{font-size:1.3vw;color:#252219;text-decoration:none;word-break:break-word;text-align:right}
+  a.contato-valor{color:var(--ac);border-bottom:1px solid transparent}
+  .fim-sub{font-size:1.3vw;font-style:italic;color:#3c382d}
+  .fim-foto{width:8.6vw;height:8.6vw;border-radius:50%;overflow:hidden;border:1px solid #252219;box-shadow:.45vw .45vw 0 rgba(37,34,25,.88)}
+  .fim-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+  .fim-fim{margin-top:1.6vw;font:700 .72vw Arial,Helvetica,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#b4afa0}
+  .fim-marca{margin-top:.6vw;font:700 .95vw Arial,Helvetica,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#6f6a5c}
+</style></head><body>
+  <section class="pg pg-capa">
+    <div class="capa-esq">
+      <p class="kick">Moss Digital · Apresenta</p>
+      <h1 class="capa-titulo">Portfólio</h1>
+      <div class="regra dupla"></div>
+      <p class="capa-nome">${nome}</p>
+      <p class="capa-funcao">${funcao}</p>
+      ${cidade ? `<p class="capa-cidade">${cidade}</p>` : ""}
+    </div>
+    <div class="capa-dir">
+      ${foto
+        ? `<div class="foto-mat"><img src="${foto}" alt="Foto de ${nomeCaps}"></div>`
+        : `<div class="foto-mat mono"><span>${monograma}</span></div>`}
+      <p class="foto-cap">${nomeCaps}${cidade ? " · " + cidade : ""}</p>
+    </div>
+    <div class="folio"><span>Moss · Portfólio</span><span>01</span></div>
+  </section>
+  ${paginaSobre}
+  ${paginasProjetos}
+  ${paginaFim}
+</body></html>`;
+};
+const templates = { editorial: templateEditorial };
+
 
 /* ---------- Montagem e renderização ---------- */
 
 function coletar() {
   return {
-    template: ($('input[name="template"]:checked') || {}).value || "profissional",
+    template: "editorial",
     foto: state.foto,
     nome: $("#nome").value.trim(),
     funcao: $("#funcao").value.trim(),
@@ -332,10 +330,6 @@ function restaurarRascunho() {
   try { salvo = JSON.parse(bruto); } catch { return false; }
   if (!salvo || typeof salvo !== "object") return false;
   const texto = (valor, max) => String(valor ?? "").slice(0, max);
-
-  const template = ["profissional", "criativo", "tecnologia"].includes(salvo.template) ? salvo.template : "profissional";
-  const radio = document.querySelector(`input[name="template"][value="${template}"]`);
-  if (radio) radio.checked = true;
 
   $("#nome").value = texto(salvo.nome, 100);
   $("#funcao").value = texto(salvo.funcao, 120);
@@ -469,7 +463,7 @@ function mensagemWhatsApp() {
     "*PEDIDO DE PORTFÓLIO — MOSS DIGITAL*",
     "Olá! Montei meu portfólio e gostaria de finalizar o serviço de R$ 39,90.",
     "",
-    "*Modelo:* " + s.template.charAt(0).toUpperCase() + s.template.slice(1),
+    "*Modelo:* Editorial (photobook, PDF paisagem)",
     "*Nome completo:* " + (s.nome || "Não informado"),
     "*Profissão:* " + (s.funcao || "Não informada"),
     "*Cidade:* " + (s.cidade || "Não informada"),
@@ -571,8 +565,23 @@ $("#cor-custom").addEventListener("input", (e) => {
   atualizarPreview();
 });
 // Seleciona os DOIS botões de WhatsApp; o seletor simples $ não gera lista.
+/* Abre a mesma prévia numa janela grande (about:blank), sem nenhum dado a mais —
+   só a leitura em conforto do que já está na tela. */
+function abrirPreviewGrande() {
+  const janela = window.open("about:blank", "_blank");
+  if (!janela) {
+    mostrarStatusPedido("O navegador bloqueou a nova janela. Permita pop-ups para este site — ou use ‘Baixar prévia em PDF’.");
+    return;
+  }
+  janela.document.open();
+  janela.document.write(PREVIEW.srcdoc);
+  janela.document.close();
+}
+
 $$("#whatsapp-cta, #whatsapp-cta-2").forEach((btn) => btn.addEventListener("click", abrirWhatsApp));
 $("#copiar-pedido").addEventListener("click", copiarPedido);
+const abrirPreviewBtn = $("#abrir-preview");
+if (abrirPreviewBtn) abrirPreviewBtn.addEventListener("click", abrirPreviewGrande);
 // Apaga o rascunho guardado neste navegador, com confirmação.
 $("#apagar-rascunho").addEventListener("click", () => {
   const confirmar = confirm("Apagar o rascunho salvo neste navegador? Os textos, a foto e os projetos preenchidos aqui serão perdidos.");

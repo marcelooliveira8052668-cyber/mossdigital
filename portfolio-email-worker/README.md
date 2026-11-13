@@ -4,7 +4,7 @@
 
 Este módulo prepara o fluxo solicitado pelo proprietário:
 
-1. O cliente cria o portfólio nos três modelos existentes, com foto, projetos e textos.
+1. O cliente cria o portfólio no modelo editorial (photobook paisagem), com foto, projetos e textos.
 2. Depois de preencher e autorizar, clica em **Enviar PDF pronto à MOSS por e-mail**.
 3. O navegador monta o PDF usando o modelo selecionado. Não disponibiliza botão de download.
 4. Um Cloudflare Worker valida o desafio anti-bot e usa Resend para mandar **um PDF anexado ao Gmail da MOSS**.

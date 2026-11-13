@@ -58,13 +58,13 @@ Não envie a ferramenta de finalização ao cliente. Não envie o JSON como se f
 - **Cliente mudou algo após baixar:** peça para baixar e enviar novamente os dois arquivos. A entrega usa o JSON selecionado, não a última prévia de uma aba diferente.
 - **Privacidade:** JSON inclui dados e foto. Não publique pedidos no GitHub ou em grupos. Guarde apenas durante o prazo necessário para atendimento e elimine as cópias conforme sua política de privacidade e obrigações aplicáveis.
 - **Segurança:** a ferramenta local não é um painel com login. Não coloque `.moss-local` no site. Ela está ignorada pelo Git. A marca-d’água não é proteção anticópia: alguém com conhecimento técnico pode recriar conteúdo exibido no navegador.
-- **Limitações do PDF:** o conteúdo é renderizado como imagem, podendo não ter texto selecionável. O arquivo deve ser revisado; os três modelos e textos longos podem produzir quantidades diferentes de páginas.
+- **Limitações do PDF:** o conteúdo é renderizado como imagem, podendo não ter texto selecionável. O arquivo deve ser revisado; o modelo editorial (paisagem) e textos longos podem produzir quantidades diferentes de páginas.
 - **Custos:** não há mensalidade ou conta de envio neste fluxo. Internet, banco e WhatsApp continuam sujeitos às condições normais dos respectivos serviços.
 
 ## Publicação e arquivos
 
-Publicar alterações em `portfolio/index.html`, `portfolio/portfolio.js`, o novo `portfolio/arquivos.js` e a atualização de `privacidade.html`. Manter os demais arquivos de estilo e os modelos existentes. A configuração de e-mail pode continuar vazia.
+Publicar alterações em `portfolio/index.html`, `portfolio/portfolio.js`, `portfolio/arquivos.js` e `portfolio/portfolio.css`. Manter os demais arquivos de estilo. A configuração de e-mail pode continuar vazia.
 
 **Nunca publicar** `.moss-local/`, pedidos, PDFs com dados de clientes ou o ZIP da ferramenta. A ferramenta particular precisa de `.moss-local/finalizar.html`, `portfolio/portfolio.js` e `portfolio/arquivos.js`, mantendo essa estrutura de pastas.
 
-Antes de anunciar o recurso, faça um pedido de teste com os três modelos, envie para seu WhatsApp, abra cada JSON na ferramenta, confira a marca em todas as páginas da prévia e confirme que o final não tem marca. Faça também um teste pelo celular.
+Antes de anunciar o recurso, faça um pedido de teste com o modelo editorial (inclusive um pedido antigo com um dos modelos removidos, para conferir o mapeamento), envie para seu WhatsApp, abra o JSON na ferramenta, confira a marca em todas as páginas da prévia e confirme que o final não tem marca. Faça também um teste pelo celular.

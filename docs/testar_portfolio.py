@@ -2,7 +2,7 @@
 
 Requer Playwright e Edge. Abre a página em HTTP local e valida:
 - carregamento sem erros e sem dependências externas;
-- prévia ao vivo responde aos campos (nome, função, habilidades, projetos, cor, modelo);
+- prévia ao vivo responde aos campos (nome, função, habilidades, projetos, cor; photobook editorial);
 - XSS no valor de nome é escapado na prévia;
 - CTA abre WhatsApp com mensagem correta (popup fechado, sem enviar);
 - layout sem transbordamento em 360 e 1366 px.
@@ -55,10 +55,8 @@ def testar():
             assert "fot" in texto and "grafa documental" in texto.replace("ó", "o")
             assert "ana souza" in texto
 
-            # trocar modelo Criativo → nova estrutura visível
-            page.click(".seg-card:has-text('Criativo')")
-            page.wait_for_timeout(300)
-            assert "c-kicker" in page.locator("#preview").evaluate("(el)=>el.srcdoc")
+            # o photobook editorial renderiza a capa com o nome
+            assert "capa-titulo" in page.locator("#preview").evaluate("(el)=>el.srcdoc")
             assert "Ana Souza" in page.locator("#preview").evaluate("(el)=>el.srcdoc")
 
             # XSS: nada de execução de script
@@ -88,7 +86,6 @@ def testar():
               window.open = function (url, target, features) { window.__opened.push(url); return null; };
             """)
             page.goto(base + "/portfolio/index.html", wait_until="domcontentloaded")
-            page.click(".seg-card:has-text('Profissional')")
             page.fill("#nome", "Ana Souza")
             page.fill("#funcao", "Fotógrafa")
             page.fill(".p-nome", "Projeto X")
