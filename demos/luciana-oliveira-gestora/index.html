@@ -65,10 +65,7 @@ a{color:inherit}
 .selo span{font-size:.68rem;color:var(--muted);letter-spacing:.03em}
 /* foto placeholder */
 .retrato{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:14px;box-shadow:0 40px 90px rgba(0,0,0,.4)}
-.retrato-slot{background:repeating-linear-gradient(135deg,#141419 0 18px,#17171c 18px 36px);border:2px dashed #33333a;border-radius:16px;aspect-ratio:4/4.6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:20px}
-.retrato-slot svg{stroke:#3d3d44}
-.retrato-slot b{color:#e6e6ea;font-size:.9rem}
-.retrato-slot span{color:var(--muted);font-size:.72rem;max-width:240px}
+.retrato-img{width:100%;aspect-ratio:4/4.4;object-fit:cover;object-position:center 14%;border-radius:16px;display:block}
 .retrato-legenda{display:flex;justify-content:space-between;align-items:center;padding:12px 8px 4px;font-size:.72rem;color:var(--muted)}
 .retrato-legenda b{color:#fff}
 /* ===== Seções ===== */
@@ -92,11 +89,39 @@ section.bloco{padding:76px 0;border-top:1px solid var(--line)}
 .servico p{font-size:.84rem;color:var(--muted)}
 /* Sobre */
 .sobre{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center}
-.sobre-card{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px}
-.sobre-linha{display:flex;gap:14px;align-items:baseline;border-bottom:1px solid var(--line);padding:13px 0;font-size:.88rem}
-.sobre-linha:last-child{border-bottom:0}
-.sobre-linha b{color:var(--gold-2);min-width:120px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
-.sobre-linha span{color:#e6e6ea}
+/* ===== Linhas douradas no preto e branco (hairlines elegantes) ===== */
+:root{ --gold:#d4af37; --gold-2:#f2d478; }
+.site-header { border-bottom: 1px solid transparent; border-image: linear-gradient(90deg, transparent, var(--gold), transparent) 1; }
+.eyebrow { color: var(--gold) !important; }
+.bloco { border-top: 1px solid rgba(212,175,55,.22); }
+.brand-name small { color: var(--gold); }
+.selo b { color: var(--gold-2) !important; }
+.selo { border-left-color: var(--gold) !important; }
+.chip { border-color: rgba(212,175,55,.55); color: var(--gold-2); }
+.cred-tag { color: var(--gold-2); }
+.monogram path { fill: var(--gold) !important; }
+.pill { box-shadow: 0 0 0 1px rgba(212,175,55,.7), 0 10px 26px rgba(212,175,55,.18); }
+.btn-gold { background: var(--gold); border: 1px solid var(--gold-2); box-shadow: 0 0 0 1px #f2d478 inset, 0 16px 40px rgba(212,175,55,.25); }
+.nav a:hover { color: var(--gold-2); }
+.sobre-texto em, .section-head em { color: var(--gold-2); }
+.trabalho:hover { border-color: var(--gold) !important; }
+.galeria { scrollbar-color: var(--gold) transparent; }
+blockquote { border-left-color: var(--gold) !important; }
+.retrato-legenda { border-top: 1px solid rgba(212,175,55,.3); }
+.zap-flutuante { box-shadow: 0 0 0 2px var(--gold), 0 14px 44px rgba(0,0,0,.5) !important; }
+.previa-aviso { border-top: 1px solid rgba(212,175,55,.25); padding-top: 14px; }
+.site-footer a { color: var(--gold-2) !important; }
+.passos { border-top: 1px solid rgba(212,175,55,.25); padding-top: 30px; }
+/* ===== Card de trajetória (timeline vertical) ===== */
+.jornada { background: linear-gradient(165deg, #1c1c1f, #121215); border: 1px solid #2b2b2f; border-top: 3px solid var(--gold); border-radius: var(--radius); padding: 30px 28px; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+.jornada-eyebrow { font-size: .66rem; font-weight: 800; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-2); margin-bottom: 6px; }
+.timeline { list-style: none; position: relative; padding-left: 28px; margin-top: 14px; }
+.timeline::before { content: ""; position: absolute; left: 8px; top: 12px; bottom: 12px; width: 2px; background: linear-gradient(180deg, var(--gold) 0%, rgba(212,175,55,.05) 100%); }
+.timeline li { position: relative; padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(212,175,55,.1); }
+.timeline li:last-child { border-bottom: 0; }
+.timeline li::before { content: ""; position: absolute; left: -28px; top: 18px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px rgba(212,175,55,.6); }
+.timeline li b { display: block; font-size: .64rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-2); }
+.timeline li span { display: block; font-size: .92rem; color: #f2f2f2; margin-top: 4px; line-height: 1.45; }
 .sobre-texto p{color:var(--muted);margin-bottom:15px}
 .sobre-texto strong{color:#fff}
 .sobre-texto em{color:var(--gold-2);font-style:italic}
@@ -191,11 +216,7 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
 
     <!-- Foto: aguardando envio da Luciana -->
     <div class="retrato" aria-label="Foto da Luciana">
-      <div class="retrato-slot">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
-        <b>Foto profissional da Luciana</b>
-        <span>Aguardando a Luciana enviar as fotos corporativas e esportivas — eu coloco aqui.</span>
-      </div>
+      <img class="retrato-img" src="assets/luciana.jpeg" alt="Luciana Oliveira sorrindo, tranças e camiseta preta" width="338" height="306">
       <div class="retrato-legenda"><span><b>Luciana Oliveira</b> · Marketing Digital e Tráfego Pago</span><span>@lucianaoliveiramvp</span></div>
     </div>
   </div>
@@ -221,7 +242,7 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
   <section class="bloco" id="servicos" aria-labelledby="servicos-title">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="servicos-title">O que eu faço <em style="color:var(--gold)">por você</em></h2>
+        <h2 id="servicos-title">O que faço <em style="color:#ffffff">pela sua marca</em></h2>
         <p>Do anúncio à autoridade — a estratégia completa para colocar a sua imagem no lugar certo.</p>
       </div>
       <div class="servicos">
@@ -238,13 +259,16 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
   <!-- SOBRE -->
   <section class="bloco" id="sobre" aria-labelledby="sobre-title">
     <div class="wrap sobre">
-      <div class="sobre-card">
-        <div class="sobre-linha"><b>Formação</b><span>Graduação em Matemática</span></div>
-        <div class="sobre-linha"><b>MBA</b><span>Gestão de Pessoas · FMU</span></div>
-        <div class="sobre-linha"><b>MBA</b><span>Executive Management e Marketing Estratégico · EUA (Califórnia)</span></div>
-        <div class="sobre-linha"><b>Gestão</b><span>Chefe de Gabinete · Secretaria Nacional de Esporte</span></div>
-        <div class="sobre-linha"><b>Esporte</b><span>Ex-atleta de basquete</span></div>
-        <div class="sobre-linha"><b>Marketing</b><span>Marketing de atletas, árbitros, empresários e projetos esportivos</span></div>
+      <div class="jornada" aria-label="A trajetória da Luciana">
+        <p class="jornada-eyebrow">A trajetória</p>
+        <ol class="timeline">
+          <li><b>Formação</b><span>Graduação em Matemática</span></li>
+          <li><b>Esporte</b><span>Ex-atleta de basquete</span></li>
+          <li><b>Gestão pública</b><span>Chefe de Gabinete — Secretaria Nacional de Esporte</span></li>
+          <li><b>MBA</b><span>Gestão de Pessoas · FMU</span></li>
+          <li><b>MBA</b><span>Executive Management e Marketing Estratégico · EUA (Califórnia)</span></li>
+          <li><b>Marketing</b><span>Marketing de atletas, árbitros, empresários e projetos esportivos</span></li>
+        </ol>
       </div>
       <div class="sobre-texto">
         <h2 id="sobre-title" style="font-family:Fraunces,serif;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.01em;margin-bottom:18px">Esporte, gestão <em style="color:var(--gold)">e estratégia</em> — a trajetória que me trouxe até aqui.</h2>
@@ -292,8 +316,8 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
   <section class="bloco" id="trabalhos" aria-labelledby="trabalhos-title">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="trabalhos-title">Quem confiou a <em style="color:#ffffff">imagem</em></h2>
-      <p>Artes e campanhas que eu mesma criei — de posters de palestrantes a fachadas de lojas.</p>
+      <h2 id="trabalhos-title">Cases e <em style="color:#ffffff">trabalhos realizados</em></h2>
+      <p>Campanhas e identidade visual para atletas, árbitros e negócios — do cartaz à fachada.</p>
     </div>
     <div class="galeria" tabindex="0" role="region" aria-label="Trabalhos recentes — role para o lado">
       <article class="trabalho"><img src="assets/clientes/danilo.png" alt="Arte de Danilo Castro, ex-jogador de basquete, divulgando palestras, clínicas e treinamentos" loading="lazy"><div class="trabalho-info"><b>Danilo Castro</b><span>Palestras e clínicas · ex-jogador de basquete</span></div></article>
@@ -309,7 +333,7 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
 <section class="bloco" id="processo" aria-labelledby="processo-title">
     <div class="wrap">
       <div class="section-head">
-        <h2 id="processo-title">Como a gente <em style="color:var(--gold)">trabalha</em></h2>
+        <h2 id="processo-title">Como funciona o <em style="color:#ffffff">atendimento</em></h2>
         <p>Do primeiro contato ao otimização contínua — sempre com você no controle.</p>
       </div>
       <div class="passos">
