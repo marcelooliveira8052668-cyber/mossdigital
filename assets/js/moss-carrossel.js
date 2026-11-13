@@ -16,7 +16,7 @@
     document.querySelector('.desktop-carousel-hint').textContent=running?'Deslizamento contínuo':'Use as setas ou inicie o movimento';
     if(!running)return;
     let previous=0,left=rail.scrollLeft,lastUpdate=0;
-    const speed=matchMedia('(max-width:650px)').matches?28:36;
+    const speed=matchMedia('(max-width:650px)').matches?56:48;
     const limit=rail.scrollWidth-rail.clientWidth;
     const animate=now=>{
       if(!previous)previous=now;
