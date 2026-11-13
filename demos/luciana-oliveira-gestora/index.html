@@ -4,141 +4,170 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Luciana Oliveira — Gestora de Tráfego Pago</title>
-<meta name="description" content="Gestão de tráfego pago e visibilidade para o seu negócio: anúncios que colocam a sua imagem na frente das pessoas certas. Fale com a Luciana Oliveira.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23d8b25a' d='M32 2 L58 24 L32 62 L6 24 Z'/%3E%3Cpath fill='%2314101c' d='M32 12 L49 26 L32 53 L15 26 Z'/%3E%3Ctext x='32' y='34' font-size='17' text-anchor='middle' fill='%23d8b25a' font-family='Georgia, serif' font-weight='bold'%3EL%3C/text%3E%3C/svg%3E">
+<title>Luciana Oliveira — Marketing Digital e Tráfego Pago | Esporte, Gestão e Estratégia</title>
+<meta name="description" content="Especialista em Marketing Digital e Gestora de Tráfego Pago: ajudamos empresários, atletas, árbitros, clubes, associações e a área pública a fortalecer imagem, ampliar visibilidade e atrair oportunidades — com Meta Ads e estratégia digital.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%230a1830'/%3E%3Cpath fill='%23d4af37' d='M22 44 L32 18 L42 44 Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
 :root{
-  --bg:#14101c; --panel:#1e182a; --panel-2:#251e33; --line:#332b45;
-  --gold:#d8b25a; --gold-2:#f0d189; --rose:#e8a7a0;
-  --text:#f5efe6; --muted:#b7adc9;
-  --radius:20px;
+  --bg:#0b0b0c; --panel:#161618; --panel-2:#1c1c1f; --line:#2b2b2f;
+  --gold:#ffffff; --gold-2:#ffffff; --azul:#232329; --azul-2:#1f1f24;
+  --text:#ffffff; --muted:#a8a8ad;
+  --radius:18px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:96px}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{background:var(--bg);color:var(--text);font:16px/1.6 Inter,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .wrap{max-width:1160px;margin:auto;width:calc(100% - 48px)}
-.serif{font-family:Fraunces,Georgia,serif}
-/* ===== Fundo com brilho de fundo ===== */
-.brilho{position:fixed;inset:0;z-index:-1;background:
-  radial-gradient(900px 500px at 85% -10%, rgba(216,178,90,.16), transparent 60%),
-  radial-gradient(700px 500px at -10% 30%, rgba(232,167,160,.10), transparent 60%),
-  radial-gradient(900px 600px at 50% 110%, rgba(216,178,90,.10), transparent 60%);}
+/* fundo tech com grade sutil */
+.grade{position:fixed;inset:0;z-index:-1;opacity:.55;
+  background-image:
+    linear-gradient(rgba(27,58,107,.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,58,107,.28) 1px, transparent 1px),
+    radial-gradient(900px 500px at 80% -10%, rgba(255,255,255,.08), transparent 55%),
+    radial-gradient(700px 500px at -10% 40%, rgba(27,58,107,.4), transparent 60%);
+  background-size:56px 56px,56px 56px,auto,auto;}
 /* ===== Header ===== */
-.site-header{position:sticky;top:0;z-index:40;background:rgba(20,16,28,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.site-header{position:sticky;top:0;z-index:40;background:rgba(5,10,20,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .header-row{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.mono{width:40px;height:40px;flex-shrink:0}
-.brand-name{font-weight:800;letter-spacing:.02em;font-size:1.02rem}
-.brand-name small{display:block;font-weight:500;font-size:.62rem;letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
-.nav{display:flex;gap:26px;font-size:.86rem;font-weight:600;color:var(--muted)}
+.monogram{width:42px;height:42px;flex-shrink:0}
+.brand-name{font-weight:800;font-size:1rem;letter-spacing:.02em}
+.brand-name small{display:block;font-weight:600;font-size:.58rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-top:2px}
+.nav{display:flex;gap:24px;font-size:.84rem;font-weight:600;color:var(--muted)}
 .nav a{text-decoration:none;padding:8px 0}
-.nav a:hover{color:var(--gold-2)}
-.pill{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#241a08;font-weight:800;font-size:.8rem;letter-spacing:.03em;border:0;border-radius:99px;padding:12px 20px;text-decoration:none;transition:transform .2s, box-shadow .2s}
-.pill:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(216,178,90,.3)}
+.nav a:hover{color:#fff}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#0b0b0c;font-weight:800;font-size:.8rem;border-radius:8px;padding:11px 18px;text-decoration:none;transition:transform .2s}
+.pill:hover{transform:translateY(-2px)}
+/* ===== Botão WhatsApp flutuante ===== */
+.zap-flutuante{position:fixed;bottom:24px;right:24px;z-index:60;background:#ffffff;color:#0b0b0c;border-radius:99px;padding:14px 20px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:.88rem;text-decoration:none;box-shadow:0 14px 40px rgba(255,255,255,.28);transition:transform .2s}
+.zap-flutuante:hover{transform:translateY(-3px) scale(1.03)}
 /* ===== Hero ===== */
-.hero{min-height:calc(100vh - 74px);display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:44px 0 60px;position:relative}
-.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
-.hero h1{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:clamp(2.6rem,5.6vw,4.5rem);line-height:1.04;letter-spacing:-.02em;margin:22px 0}
-.hero h1 em{font-style:italic;color:transparent;background:linear-gradient(115deg,#f0d189 0%,#d8b25a 35%,#fff6d8 52%,#d8b25a 68%,#8a6a22 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;animation:brilho 3.4s linear infinite}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;padding:56px 0 72px;min-height:calc(100vh - 74px)}
+.eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:clamp(2.4rem,5.2vw,4rem);line-height:1.06;letter-spacing:-.02em;margin:20px 0 22px}
+.hero h1 .ouro{color:#fff;background:linear-gradient(115deg,#ffffff 0%,#ffffff 30%,#fff7cf 50%,#ffffff 68%,#8a6a22 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:brilho 3.4s linear infinite}
 @keyframes brilho{from{background-position:0 0}to{background-position:220% 0}}
-.hero p.lead{font-size:1.06rem;color:var(--muted);max-width:470px;margin-bottom:30px}
-.hero p.lead strong{color:var(--text)}
+.lead{font-size:1.05rem;color:var(--muted);max-width:480px;margin-bottom:28px}
+.lead strong{color:#fff}
 .hero-acoes{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:10px;border-radius:14px;padding:15px 24px;font-weight:800;text-decoration:none;font-size:.92rem;transition:transform .2s}
-.btn-gold{background:var(--gold);color:#241a08}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:12px;padding:15px 24px;font-weight:800;text-decoration:none;font-size:.92rem;transition:transform .2s}
+.btn-gold{background:var(--gold);color:#0b0b0c}
 .btn-gold:hover{transform:translateY(-2px)}
-.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost{border:1px solid var(--line);color:#fff}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold-2)}
-.selos{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap}
-.selo{display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--gold);padding-left:12px}
-.selo b{font-size:1.05rem;color:var(--gold-2)}
-.selo span{font-size:.72rem;color:var(--muted);letter-spacing:.04em}
-/* ===== Painel direito: cartão de marca ===== */
-.cartao{position:relative;background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:28px;padding:42px 36px;text-align:center;box-shadow:0 40px 90px rgba(0,0,0,.45)}
-.cartao::before{content:"";position:absolute;inset:14px;border:1px solid rgba(216,178,90,.35);border-radius:18px;pointer-events:none}
-.diamond{width:120px;height:120px;margin:0 auto 18px;filter:drop-shadow(0 0 26px rgba(216,178,90,.35))}
-.cartao-nome{font-family:Fraunces,serif;font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
-.cartao-papel{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:8px 0 22px;font-weight:700}
-.cartao-divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px 0}
-.cartao-lista{display:flex;flex-direction:column;gap:12px;text-align:left}
-.cartao-item{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--text)}
-.cartao-item svg{flex-shrink:0;stroke:var(--gold)}
-.cartao-rodape{margin-top:18px;font-size:.68rem;color:var(--muted);letter-spacing:.06em}
+.selos{display:flex;gap:18px;margin-top:30px;flex-wrap:wrap}
+.selo{border-left:2px solid var(--gold);padding-left:12px}
+.selo b{display:block;font-size:.86rem;color:var(--gold-2)}
+.selo span{font-size:.68rem;color:var(--muted);letter-spacing:.03em}
+/* foto placeholder */
+.retrato{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:14px;box-shadow:0 40px 90px rgba(0,0,0,.4)}
+.retrato-slot{background:repeating-linear-gradient(135deg,#141419 0 18px,#17171c 18px 36px);border:2px dashed #33333a;border-radius:16px;aspect-ratio:4/4.6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:20px}
+.retrato-slot svg{stroke:#3d3d44}
+.retrato-slot b{color:#e6e6ea;font-size:.9rem}
+.retrato-slot span{color:var(--muted);font-size:.72rem;max-width:240px}
+.retrato-legenda{display:flex;justify-content:space-between;align-items:center;padding:12px 8px 4px;font-size:.72rem;color:var(--muted)}
+.retrato-legenda b{color:#fff}
 /* ===== Seções ===== */
-section.bloco{padding:72px 0;border-top:1px solid var(--line)}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:38px}
-.section-head h2{font-family:Fraunces,serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em;line-height:1.1;max-width:560px}
-.section-head p{color:var(--muted);max-width:320px;font-size:.92rem}
+section.bloco{padding:76px 0;border-top:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:36px}
+.section-head h2{font-family:Fraunces,serif;font-weight:800;font-size:clamp(1.7rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1.12;max-width:600px}
+.section-head p{color:var(--muted);max-width:330px;font-size:.9rem}
+/* Públicos */
+.publicos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.publico{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px 20px;transition:transform .25s,border-color .25s}
+.publico:hover{transform:translateY(-5px);border-color:var(--gold)}
+.publico h3{font-family:Fraunces,serif;font-size:1.02rem;font-weight:600;margin:14px 0 8px}
+.publico p{font-size:.8rem;color:var(--muted)}
+.publico-ic{width:46px;height:46px;border-radius:11px;background:var(--azul-2);display:grid;place-items:center}
 /* Serviços */
-.servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.servico{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:transform .25s,border-color .25s}
-.servico:hover{transform:translateY(-6px);border-color:var(--gold)}
-.servico-ic{width:52px;height:52px;border-radius:14px;background:rgba(216,178,90,.14);display:grid;place-items:center;margin-bottom:18px}
-.servico h3{font-family:Fraunces,serif;font-size:1.28rem;font-weight:600;margin-bottom:10px}
-.servico p{color:var(--muted);font-size:.9rem}
+.servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.servico{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;transition:transform .25s,border-color .25s}
+.servico:hover{transform:translateY(-5px);border-color:var(--gold)}
+.servico-ic{width:50px;height:50px;border-radius:12px;background:rgba(255,255,255,.08);display:grid;place-items:center;margin-bottom:16px}
+.servico h3{font-size:1.02rem;font-weight:700;margin-bottom:8px}
+.servico p{font-size:.84rem;color:var(--muted)}
 /* Sobre */
-.sobre{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
-.retrato{background:linear-gradient(160deg,#241d33,#1b1626);border:1px solid var(--line);border-radius:var(--radius);padding:36px 30px;text-align:center}
-.retrato-nome{font-family:Fraunces,serif;font-size:1.3rem;font-weight:800;margin-bottom:4px}
-.retrato-papel{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
-.retrato-cargo{margin-top:16px;font-size:.88rem;color:var(--muted)}
-.retrato-cargo b{color:var(--text)}
-.sobre-texto p{color:var(--muted);margin-bottom:16px}
-.sobre-texto strong{color:var(--gold-2)}
-blockquote{font-family:Fraunces,serif;font-style:italic;font-size:1.12rem;line-height:1.55;border-left:3px solid var(--rose);padding-left:18px;margin:22px 0;color:#e9ddd2}
-/* Como funciona */
-.passos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:passo}
-.passo{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px 20px 22px}
-.passo::after{counter-increment:passo;content:"0" counter(passo);position:absolute;top:14px;right:18px;font-family:Fraunces,serif;font-size:2rem;font-weight:800;color:rgba(216,178,90,.28)}
-.passo h3{font-size:1rem;font-weight:700;margin-bottom:8px;padding-right:36px}
-.passo p{font-size:.82rem;color:var(--muted)}
+.sobre{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center}
+.sobre-card{background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px}
+.sobre-linha{display:flex;gap:14px;align-items:baseline;border-bottom:1px solid var(--line);padding:13px 0;font-size:.88rem}
+.sobre-linha:last-child{border-bottom:0}
+.sobre-linha b{color:var(--gold-2);min-width:120px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.sobre-linha span{color:#e6e6ea}
+.sobre-texto p{color:var(--muted);margin-bottom:15px}
+.sobre-texto strong{color:#fff}
+.sobre-texto em{color:var(--gold-2);font-style:italic}
+blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;font-family:Fraunces,serif;font-style:italic;font-size:1.1rem;line-height:1.5;color:#e8e8e8}
+/* Credibilidade */
+.cred{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+.cred-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px}
+.cred-tag{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:800}
+.cred-card h3{font-size:1rem;margin:10px 0 6px;font-weight:700}
+.cred-card p{font-size:.82rem;color:var(--muted)}
+/* Processo */
+.passos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:p}
+.passo{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px 18px 20px}
+.passo::after{counter-increment:p;content:"0" counter(p);position:absolute;top:10px;right:16px;font-family:Fraunces,serif;font-size:1.9rem;font-weight:800;color:rgba(255,255,255,.3)}
+.passo h3{font-size:.92rem;font-weight:700;margin-bottom:8px;padding-right:30px}
+.passo p{font-size:.79rem;color:var(--muted)}
+/* Logo marquee dos públicos esportivos */
+.destaques{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.chip{border:1px solid rgba(255,255,255,.4);color:var(--gold-2);border-radius:99px;padding:7px 16px;font-size:.72rem;font-weight:700;letter-spacing:.04em}
 /* CTA final */
-.cta-final{background:linear-gradient(135deg,#2a2138,#1d182a);border:1px solid var(--gold);border-radius:28px;text-align:center;padding:56px 32px;margin:24px 0 0}
-.cta-final h2{font-family:Fraunces,serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
-.cta-final p{color:var(--muted);margin-bottom:26px}
-.cta-final .btn-gold{font-size:1rem;padding:17px 30px}
+.cta-final{background:linear-gradient(150deg,#1c1c1f,#0b0b0c);border:1px solid var(--azul);border-radius:24px;text-align:center;padding:56px 28px}
+.cta-final h2{font-family:Fraunces,serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+.cta-final p{color:var(--muted);margin-bottom:24px}
+.cta-botoes{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 /* Footer */
-.site-footer{border-top:1px solid var(--line);padding:30px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.site-footer{border-top:1px solid var(--line);padding:30px 0;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;font-size:.78rem;color:var(--muted)}
 .site-footer a{color:var(--gold-2);text-decoration:none}
-.previa-aviso{margin-top:14px;font-size:.68rem;color:#8a7f9e;text-align:center;letter-spacing:.05em}
+.previa-aviso{margin-top:12px;font-size:.64rem;color:#54545a;text-align:center;letter-spacing:.08em}
+/* Galeria de trabalhos */
+.galeria{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-color:#3d3d44 transparent}
+.galeria:focus-visible{outline:3px solid #fff;border-radius:12px}
+.trabalho{scroll-snap-align:start;flex:0 0 236px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-decoration:none;transition:transform .2s,border-color .2s}
+.trabalho:hover{transform:translateY(-4px);border-color:#ffffff}
+.trabalho img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-bottom:2px solid var(--line)}
+.trabalho-info{padding:12px 14px}
+.trabalho-info b{font-size:.88rem;display:block}
+.trabalho-info span{display:block;font-size:.7rem;color:var(--muted);margin-top:3px;line-height:1.45}
 /* ===== Responsivo ===== */
 @media (max-width: 1000px){
-  .hero{grid-template-columns:1fr;min-height:auto;padding-top:40px}
-  .cartao{order:-1;max-width:440px;margin:0 auto}
-  .servicos{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:36px}
+  .retrato{max-width:400px;margin:0 auto;order:-1}
+  .publicos{grid-template-columns:repeat(2,1fr)}
+  .servicos{grid-template-columns:repeat(2,1fr)}
   .passos{grid-template-columns:repeat(2,1fr)}
   .sobre{grid-template-columns:1fr}
-  .section-head{flex-direction:column;align-items:start;gap:12px}
+  .cred{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:start;gap:10px}
   .nav{display:none}
 }
 @media (max-width: 560px){
-  .passos{grid-template-columns:1fr}
-  .selos{gap:14px}
+  .publicos,.servicos,.passos{grid-template-columns:1fr}
 }
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .hero h1 em{animation:none} .servico,.pill,.btn{transition:none} }
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .hero h1 .ouro{animation:none} .zap-flutuante,.btn,.publico,.servico{transition:none} }
 </style>
 </head>
 <body>
-<div class="brilho"></div>
+<div class="grade"></div>
 
 <header class="site-header">
   <div class="wrap header-row">
     <a class="brand" href="#inicio" aria-label="Luciana Oliveira — início">
-      <svg class="mono" viewBox="0 0 64 64" aria-hidden="true"><path fill="#d8b25a" d="M32 2 L58 24 L32 62 L6 24 Z"/><path fill="#14101c" d="M32 12 L49 26 L32 53 L15 26 Z"/><text x="32" y="35" font-size="17" text-anchor="middle" fill="#d8b25a" font-family="Georgia, serif" font-weight="bold">LO</text></svg>
-      <span class="brand-name">Luciana Oliveira<small>Gestora de Tráfego</small></span>
+      <svg class="monogram" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#161618" stroke="#2b2b2f"/><path fill="#ffffff" d="M22 44 L32 16 L42 44 Z"/></svg>
+      <span class="brand-name">Luciana Oliveira<small>Marketing Digital · Tráfego Pago</small></span>
     </a>
     <nav class="nav" aria-label="Navegação">
+      <a href="#publicos">Para quem</a>
       <a href="#servicos">Serviços</a>
       <a href="#sobre">Sobre</a>
-      <a href="#processo">Como funciona</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a class="pill" href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Chamar no Instagram</a>
+    <a class="pill" href="https://wa.me/5511999704755" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
   </div>
 </header>
 
@@ -146,63 +175,62 @@ blockquote{font-family:Fraunces,serif;font-style:italic;font-size:1.12rem;line-h
   <!-- HERO -->
   <div class="wrap hero">
     <div>
-      <p class="eyebrow">Gestora de Anúncios · Tráfego Pago</p>
-      <h1>A sua imagem na frente de <em>quem precisa ver.</em></h1>
-      <p class="lead">Eu te ajudo a <strong>panfletar na internet e dar visibilidade à sua imagem</strong> — com anúncios bem feitos, para as pessoas certas, com o seu bolso respeitado.</p>
+      <p class="eyebrow">Especialista em Marketing Digital · Gestora de Tráfego Pago</p>
+      <h1>Imagem, visibilidade e <span class="ouro">oportunidades</span> — com estratégia de verdade.</h1>
+      <p class="lead">Ajudo <strong>empresários, atletas, árbitros, clubes, associações e profissionais da área pública</strong> a fortalecer a imagem, ampliar a visibilidade e atrair as oportunidades certas por meio do marketing digital.</p>
       <div class="hero-acoes">
-        <a class="btn btn-gold" href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Conversar no Instagram →</a>
-        <a class="btn btn-ghost" href="#servicos">Ver o que eu faço</a>
+        <a class="btn btn-gold" href="https://wa.me/5511999704755?text=Ol%C3%A1%20Luciana!%20Vim%20pelo%20seu%20site." target="_blank" rel="noopener noreferrer">Conversar no WhatsApp →</a>
+        <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
       </div>
       <div class="selos">
-        <div class="selo"><b>+3 mil</b><span>seguidores no Instagram</span></div>
-        <div class="selo"><b>Ex-Chefe</b><span>de Gabinete · Sec. Nac. de Esporte</span></div>
-        <div class="selo"><b>Tráfego</b><span>pago com estratégia</span></div>
+        <div class="selo"><b>Ex-atleta</b><span>de basquete</span></div>
+        <div class="selo"><b>Ex-Chefe de Gabinete</b><span>Sec. Nacional de Esporte</span></div>
+        <div class="selo"><b>MBA em Marketing</b><span>Estratégico · EUA</span></div>
       </div>
     </div>
 
-    <!-- Cartão de marca -->
-    <aside class="cartao" aria-label="Cartão de apresentação">
-      <svg class="diamond" viewBox="0 0 100 100" aria-hidden="true">
-        <path fill="#d8b25a" d="M50 2 L92 34 L50 98 L8 34 Z" opacity=".9"/>
-        <path fill="#14101c" d="M50 14 L79 36 L50 84 L21 36 Z"/>
-        <path fill="#d8b25a" d="M50 24 L70 38 L50 74 L30 38 Z" opacity=".35"/>
-      </svg>
-      <p class="cartao-nome">Luciana Oliveira</p>
-      <p class="cartao-papel">Gestora de Tráfego</p>
-      <div class="cartao-divider"></div>
-      <ul class="cartao-lista">
-        <li class="cartao-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 10"/></svg>Anúncios que rodam na internet</li>
-        <li class="cartao-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 10"/></svg>Visibilidade para a sua imagem</li>
-        <li class="cartao-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 10"/></svg>Estratégia pensando no seu bolso</li>
-      </ul>
-      <div class="cartao-divider"></div>
-      <p class="cartao-rodape">@lucianaoliveiramvp</p>
-    </aside>
+    <!-- Foto: aguardando envio da Luciana -->
+    <div class="retrato" aria-label="Foto da Luciana">
+      <div class="retrato-slot">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+        <b>Foto profissional da Luciana</b>
+        <span>Aguardando a Luciana enviar as fotos corporativas e esportivas — eu coloco aqui.</span>
+      </div>
+      <div class="retrato-legenda"><span><b>Luciana Oliveira</b> · Marketing Digital e Tráfego Pago</span><span>@lucianaoliveiramvp</span></div>
+    </div>
   </div>
+
+  <!-- PARA QUEM -->
+  <section class="bloco" id="publicos" aria-labelledby="publicos-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="publicos-title">Eu trabalho com quem <em style="color:var(--gold)">vive de imagem</em></h2>
+        <p>Attletas, dirigentes, empresários e entidades esportivas — cada um tem um jeito certo de ser apresentado ao mundo.</p>
+      </div>
+      <div class="publicos">
+        <div class="publico"><div class="publico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg></div><h3>Empresários</h3><p>Negócios que querem autoridade digital para atrair clientes e ampliar oportunidades.</p></div>
+        <div class="publico"><div class="publico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a7 7 0 0 0 7-7V5H5v3a7 7 0 0 0 7 7z"/><path d="M8 21h8M12 15v6"/></svg></div><h3>Atletas</h3><p>Imagem pessoal de atletas de alto rendimento — dentro e fora de quadra/campo.</p></div>
+        <div class="publico"><div class="publico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="10" r="2.4"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M15 20a6 6 0 0 1 8-5"/></svg></div><h3>Árbitros</h3><p>Visibilidade e posicionamento para árbitros e representantes técnicos — como a Fatiminha, da FIBA.</p></div>
+        <div class="publico"><div class="publico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg></div><h3>Clubes &amp; associações</h3><p>Comunicação e campanhas para clubes, associações e projetos esportivos.</p></div>
+      </div>
+      <div class="destaques"><span class="chip">Voz de quem já esteve na Secretaria Nacional de Esporte</span><span class="chip">Experiência real com grandes nomes do esporte</span></div>
+    </div>
+  </section>
 
   <!-- SERVIÇOS -->
   <section class="bloco" id="servicos" aria-labelledby="servicos-title">
     <div class="wrap">
       <div class="section-head">
         <h2 id="servicos-title">O que eu faço <em style="color:var(--gold)">por você</em></h2>
-        <p>Tráfego pago é sobre colocar a sua oferta na frente das pessoas certas — sem enrolação e com olho no resultado.</p>
+        <p>Do anúncio à autoridade — a estratégia completa para colocar a sua imagem no lugar certo.</p>
       </div>
       <div class="servicos">
-        <article class="servico">
-          <div class="servico-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d8b25a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="7"/><path d="M8.5 21l3.5-3.5L15.5 21"/></svg></div>
-          <h3>Gestão de anúncios</h3>
-          <p>Planejamento, criação e acompanhamento das campanhas na internet para o seu negócio aparecer para quem tem vontade de comprar — ou de te conhecer.</p>
-        </article>
-        <article class="servico">
-          <div class="servico-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d8b25a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8M12 18v4"/></svg></div>
-          <h3>Visibilidade para a sua imagem</h3>
-          <p>Para profissionais autônomos, prestadores e pequenos negócios que querem ser vistos: presença digital pensada para as pessoas certas te encontrarem.</p>
-        </article>
-        <article class="servico">
-          <div class="servico-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d8b25a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><polyline points="21 7 21 3 17 3"/></svg></div>
-          <h3>Estratégia que cabe no bolso</h3>
-          <p>Nada de gastar por gastar: plano pensado no seu orçamento, com as prioridades certas — do básico bem feito à campanha mais ousada.</p>
-        </article>
+        <div class="servico"><div class="servico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Gestão de tráfego pago (Meta Ads)</h3><p>Planejamento, criação, monitoramento e otimização das campanhas no Instagram e no Facebook para gerar resultado real.</p></div>
+        <div class="servico"><div class="servico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/></svg></div><h3>Gestão de redes sociais</h3><p>Presença organizada: o que postar, quando postar e como falar com o seu público — dia após dia.</p></div>
+        <div class="servico"><div class="servico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 16l4-7 4 5 3-4"/></svg></div><h3>Planejamento de conteúdo</h3><p>Linha editorial estratégica: conteúdos que constroem autoridade e preparam o terreno para a venda.</p></div>
+        <div class="servico"><div class="servico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 5.6 6.1.7-4.6 4.1 1.3 6-5.4-3.1L6.7 18.4l1.3-6L3.4 8.3l6.1-.7L12 2z"/></svg></div><h3>Criação de campanhas e anúncios</h3><p>O criativo certo, a mensagem certa e a segmentação certa — do rascunho ao ar com acompanhamento.</p></div>
+        <div class="servico"><div class="servico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z"/><path d="M9.5 12l2 2 3.5-4"/></svg></div><h3>Posicionamento e autoridade</h3><p>Construção de reputação digital: quem você é, o que representa e por que o mercado deve te escolher.</p></div>
+        <div class="servico"><div class="servico-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><polyline points="21 7 21 3 17 3"/></svg></div><h3>Estratégia para atrair clientes</h3><p>Do alcance à conversa: funis e mensagens para transformar atenção em oportunidade — e oportunidade em cliente.</p></div>
       </div>
     </div>
   </section>
@@ -210,34 +238,85 @@ blockquote{font-family:Fraunces,serif;font-style:italic;font-size:1.12rem;line-h
   <!-- SOBRE -->
   <section class="bloco" id="sobre" aria-labelledby="sobre-title">
     <div class="wrap sobre">
-      <div class="retrato">
-        <svg width="72" height="72" viewBox="0 0 64 64" style="margin:0 auto 14px" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#2a2338" stroke="#d8b25a" stroke-width="2"/><text x="32" y="40" font-size="20" text-anchor="middle" fill="#d8b25a" font-family="Georgia, serif" font-weight="bold">LO</text></svg>
-        <p class="retrato-nome">Luciana Oliveira</p>
-        <p class="retrato-papel">Gestora de Tráfego</p>
-        <p class="retrato-cargo"><b>Ex-Chefe de Gabinete</b><br>Secretaria Nacional de Esporte</p>
+      <div class="sobre-card">
+        <div class="sobre-linha"><b>Formação</b><span>Graduação em Matemática</span></div>
+        <div class="sobre-linha"><b>MBA</b><span>Gestão de Pessoas · FMU</span></div>
+        <div class="sobre-linha"><b>MBA</b><span>Executive Management e Marketing Estratégico · EUA (Califórnia)</span></div>
+        <div class="sobre-linha"><b>Gestão</b><span>Chefe de Gabinete · Secretaria Nacional de Esporte</span></div>
+        <div class="sobre-linha"><b>Esporte</b><span>Ex-atleta de basquete</span></div>
+        <div class="sobre-linha"><b>Marketing</b><span>Marketing de atletas, árbitros, empresários e projetos esportivos</span></div>
       </div>
       <div class="sobre-texto">
-        <h2 id="sobre-title" style="font-family:Fraunces,serif;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.01em;margin-bottom:18px">Já passei pelo <em style="color:var(--gold)">outro lado da mesa</em> — e isso muda tudo.</h2>
-        <p>Como <strong>Chefe de Gabinete da Secretaria Nacional de Esporte</strong>, aprendi na prática como funciona colocar um nome, um projeto ou uma pessoa na frente do Brasil — com organização, estratégia e cuidado com a imagem.</p>
-        <p>Hoje eu trago essa experiência para a <strong>internet</strong>: ajudo pequenos negócios, profissionais e autônomos a aparecerem para quem importa — <strong>sem prometer milagre, com trabalho sério e estratégia.</strong></p>
-        <blockquote>"Panfletagem é importante. Mas o seu panfleto pode ser a internet inteira — e chegar muito mais longe."</blockquote>
-        <a class="btn btn-gold" href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Me acompanhe no Instagram →</a>
+        <h2 id="sobre-title" style="font-family:Fraunces,serif;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.01em;margin-bottom:18px">Esporte, gestão <em style="color:var(--gold)">e estratégia</em> — a trajetória que me trouxe até aqui.</h2>
+        <p>Sou <strong>ex-atleta de basquete</strong>, formada em <strong>Matemática</strong> e com passagem como <strong>Chefe de Gabinete da Secretaria Nacional de Esporte</strong>. Vivi por dentro o que significa colocar um nome, um atleta ou um projeto à frente do Brasil — com organização, estratégia e cuidado com a imagem.</p>
+        <p>Hoje transformo essa vivência em <strong>marketing digital</strong>: ajudo empresários, atletas, árbitros, clubes e profissionais da área pública a construírem presença digital com <em>autoridade, visibilidade e oportunidades reais</em>.</p>
+        <blockquote>"Da quadra para a estratégia digital. Da Secretaria Nacional de Esporte para a autoridade de quem viveu o bastidor do esporte brasileiro."</blockquote>
+        <p>Já trabalhei com nomes de referência do esporte — da campeã mundial e medalhista olímpica <strong>Alessandra</strong> à árbitra e representante técnica da FIBA <strong>Fatiminha</strong>.</p>
+        <a class="btn btn-ghost" href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Ver o trabalho no Instagram →</a>
       </div>
     </div>
   </section>
 
-  <!-- COMO FUNCIONA -->
-  <section class="bloco" id="processo" aria-labelledby="processo-title">
+  <!-- CREDIBILIDADE -->
+  <section class="bloco" id="credibilidade" aria-labelledby="cred-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="cred-title" style="max-width:640px">Autoridade construída <em style="color:var(--gold)">dentro e fora de quadra</em></h2>
+      </div>
+      <div class="cred">
+        <div class="cred-card">
+          <p class="cred-tag">Esporte</p>
+          <h3>Alessandra</h3>
+          <p>Campeã mundial e medalhista olímpica — marketing de atleta com experiência de bastidor internacional.</p>
+        </div>
+        <div class="cred-card">
+          <p class="cred-tag">Arbitragem</p>
+          <h3>Fatiminha</h3>
+          <p>Árbitra e representante técnica da FIBA — posicionamento para a arbitragem de alto rendimento.</p>
+        </div>
+        <div class="cred-card">
+          <p class="cred-tag">Gestão pública</p>
+          <h3>Secretaria Nacional de Esporte</h3>
+          <p>Ex-Chefe de Gabinete — vivência direta com projetos, clubes, associações e a política do esporte brasileiro.</p>
+        </div>
+        <div class="cred-card">
+          <p class="cred-tag">Negócios</p>
+          <h3>Empresários e projetos esportivos</h3>
+          <p>Campanhas e estratégia de conteúdo para quem transforma esporte em marca, negócio e oportunidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="bloco" id="trabalhos" aria-labelledby="trabalhos-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="trabalhos-title">Quem confiou a <em style="color:#ffffff">imagem</em></h2>
+      <p>Artes e campanhas que eu mesma criei — de posters de palestrantes a fachadas de lojas.</p>
+    </div>
+    <div class="galeria" tabindex="0" role="region" aria-label="Trabalhos recentes — role para o lado">
+      <article class="trabalho"><img src="assets/clientes/danilo.png" alt="Arte de Danilo Castro, ex-jogador de basquete, divulgando palestras, clínicas e treinamentos" loading="lazy"><div class="trabalho-info"><b>Danilo Castro</b><span>Palestras e clínicas · ex-jogador de basquete</span></div></article>
+      <article class="trabalho"><img src="assets/clientes/alessandra.png" alt="Arte de Alessandra Santos de Oliveira, campeã mundial e medalhista olímpica, divulgando palestras" loading="lazy"><div class="trabalho-info"><b>Alessandra Santos de Oliveira</b><span>Campeã mundial e medalhista olímpica</span></div></article>
+      <article class="trabalho"><img src="assets/clientes/vanessa.png" alt="Arte de Vanessa Sassá, ex-Seleção Brasileira de basquete 3x3, divulgando palestras, clínicas e mentorias" loading="lazy"><div class="trabalho-info"><b>Vanessa Sassá</b><span>Ex-Seleção Brasileira · 3x3</span></div></article>
+      <article class="trabalho"><img src="assets/clientes/fatiminha.jpeg" alt="Poster de Fátima Fatiminha, árbitra e representante técnica da FIBA, para palestras e clínicas" loading="lazy"><div class="trabalho-info"><b>Fátima “Fatiminha”</b><span>Árbitra e representante técnica da FIBA</span></div></article>
+      <article class="trabalho"><img src="assets/clientes/wilson.png" alt="Arte de Wilson Rodrigues, ex-atleta de basquete, para mentoria de professores de Educação Física" loading="lazy"><div class="trabalho-info"><b>Wilson Rodrigues</b><span>Mentoria para professores · WR13 Esportes</span></div></article>
+      <article class="trabalho"><img src="assets/clientes/rhara.jpeg" alt="Fachada da Rhara Cosméticos com comunicação visual nova" loading="lazy"><div class="trabalho-info"><b>Rhara Cosméticos</b><span>Fachada e comunicação visual</span></div></article>
+      <article class="trabalho"><img src="assets/clientes/della.jpeg" alt="Fachada da Della Cosméticos com nova identidade visual" loading="lazy"><div class="trabalho-info"><b>Della Cosméticos</b><span>Fachada e identidade visual</span></div></article>
+    </div>
+  </div>
+</section>
+<section class="bloco" id="processo" aria-labelledby="processo-title">
     <div class="wrap">
       <div class="section-head">
         <h2 id="processo-title">Como a gente <em style="color:var(--gold)">trabalha</em></h2>
-        <p>Do primeiro oi ao anúncio no ar — sempre com você acompanhando de perto.</p>
+        <p>Do primeiro contato ao otimização contínua — sempre com você no controle.</p>
       </div>
       <div class="passos">
-        <div class="passo"><h3>A gente conversa</h3><p>Você me conta o que faz, para quem vende e o que espera. Sem enrolação.</p></div>
-        <div class="passo"><h3>Eu monto o plano</h3><p>Estratégia de anúncios e presença pensada no seu objetivo e no seu orçamento.</p></div>
-        <div class="passo"><h3>Campanha vai ao ar</h3><p>Criação, publicação e acompanhamento das campanhas — do jeito certo.</p></div>
-        <div class="passo"><h3>Ajuste e resultado</h3><p>Relatórios, aprendizados e otimização contínua para render cada vez mais.</p></div>
+        <div class="passo"><h3>Diagnóstico</h3><p>Entendo o seu momento, seu objetivo e o que já existe hoje.</p></div>
+        <div class="passo"><h3>Estratégia</h3><p>Definimos posicionamento, metas e o plano completo do que será feito.</p></div>
+        <div class="passo"><h3>Execução</h3><p>Criação de conteúdo, campanhas e configuração de tudo no ar.</p></div>
+        <div class="passo"><h3>Resultado</h3><p>Relatórios, ajustes e otimização contínua para render cada vez mais.</p></div>
       </div>
     </div>
   </section>
@@ -247,19 +326,24 @@ blockquote{font-family:Fraunces,serif;font-style:italic;font-size:1.12rem;line-h
     <div class="wrap">
       <div class="cta-final">
         <p class="eyebrow">Vamos conversar?</p>
-        <h2 id="cta-title">A sua visibilidade<br>começa com <em style="color:var(--gold)">uma conversa.</em></h2>
-        <p>Me chama no Instagram — eu respondo pessoalmente.</p>
-        <a class="btn btn-gold" href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Conversar no Instagram →</a>
-        <p style="margin-top:18px;font-size:.82rem;color:var(--muted)">ou veja meu <a href="https://linktr.ee/lucianaoliveiramvp" target="_blank" rel="noopener noreferrer" style="color:var(--gold-2)">link na bio completo</a></p>
+        <h2 id="cta-title">Pronto para ser visto<br><em style="color:var(--gold)">do jeito certo?</em></h2>
+        <p>Me chame no WhatsApp — eu respondo pessoalmente.</p>
+        <div class="cta-botoes">
+          <a class="btn btn-gold" href="https://wa.me/5511999704755?text=Ol%C3%A1%20Luciana!%20Quero%20conversar%20sobre%20seu%20trabalho." target="_blank" rel="noopener noreferrer">Chamar no WhatsApp →</a>
+          <a class="btn btn-ghost" href="mailto:lucianaoliveiramvp@hotmail.com">E-mail: lucianaoliveiramvp@hotmail.com</a>
+        </div>
+        <p style="margin-top:20px;font-size:.8rem;color:var(--muted)">ou no <a href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer" style="color:var(--gold-2)">Instagram</a> · <a href="https://linktr.ee/lucianaoliveiramvp" target="_blank" rel="noopener noreferrer" style="color:var(--gold-2)">link completo</a></p>
       </div>
     </div>
   </section>
 </main>
 
 <footer class="site-footer wrap">
-  <span>© Luciana Oliveira — Gestora de Tráfego Pago</span>
-  <nav><a href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://linktr.ee/lucianaoliveiramvp" target="_blank" rel="noopener noreferrer">Linktree</a></nav>
+  <span>© Luciana Oliveira — Marketing Digital e Tráfego Pago · Esporte, Gestão e Estratégia</span>
+  <nav><a href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="mailto:lucianaoliveiramvp@hotmail.com">lucianaoliveiramvp@hotmail.com</a> · <a href="https://linktr.ee/lucianaoliveiramvp" target="_blank" rel="noopener noreferrer">Linktree</a></nav>
 </footer>
-<p class="previa-aviso">PRÉVIA PARA VALIDAÇÃO COM A LUCIANA — nenhum conteúdo será publicado sem o ok dela.</p>
+<p class="previa-aviso">PRÉVIA PARA VALIDAÇÃO COM A LUCIANA — fotos e depoimentos reais serão adicionados após o envio dela.</p>
+
+<a class="zap-flutuante" href="https://wa.me/5511999704755?text=Ol%C3%A1%20Luciana!%20Vim%20pelo%20seu%20site." target="_blank" rel="noopener noreferrer" aria-label="Falar com a Luciana no WhatsApp"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>WhatsApp</a>
 </body>
 </html>
