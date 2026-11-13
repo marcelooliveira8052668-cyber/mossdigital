@@ -77,7 +77,12 @@ async def test(base, output, browser_path, axe_path):
         assert await theme() == 'light'
         await page.get_by_role('link', name='Modelos de Sites', exact=True).click()
         assert await theme() == 'light'
-        await page.get_by_role('link', name='Sistemas', exact=True).first.click()
+        # A página de sistemas saiu do menu em versões anteriores: navega direto quando falta o link.
+        link_sistemas = page.get_by_role('link', name='Sistemas', exact=True)
+        if await link_sistemas.count():
+            await link_sistemas.first.click()
+        else:
+            await page.goto(base + 'sistemas.html', wait_until='networkidle')
         assert await theme() == 'light'
         checks.append('escolha mantida ao navegar entre início, modelos e sistemas')
 

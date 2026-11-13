@@ -35,11 +35,8 @@ async def test(base, args, browser_path):
             response = await page.goto(base + path, wait_until='networkidle')
             assert response.status == 200
         await load('index.html')
-        link = page.locator('#como-funciona a[href="estrutura.html"]')
-        assert await link.count() == 1
-        assert await page.locator('a[href="estrutura.html"]').count() == 1
-        await link.click()
-        assert page.url.endswith('/estrutura.html')
+        # O guia visual virou página avulsa: a página inicial não tem mais link para ele.
+        await load('estrutura.html')
         assert await page.locator('.wire-block').count() == 7
         await page.get_by_role('button', name='Celular', exact=True).click()
         assert await page.locator('#wire-page').get_attribute('data-view') == 'mobile'
@@ -50,9 +47,9 @@ async def test(base, args, browser_path):
         assert await first.locator('..').get_attribute('open') is not None
         await page.keyboard.press('Enter')
         assert await first.locator('..').get_attribute('open') is None
-        await page.get_by_role('link', name='Voltar à contratação', exact=False).click()
-        assert page.url.endswith('index.html#como-funciona')
-        checks.append('guia separado: único link discreto, sete explicações por teclado e dois modos de visualização')
+        await page.get_by_role('link', name='Voltar à página inicial', exact=False).click()
+        assert page.url.endswith('index.html#contato')
+        checks.append('guia separado: sete explicações por teclado e dois modos de visualização')
 
         for slug, path in [('estrutura', 'estrutura.html'), ('casamento', 'demos/casamento/'), ('contabilidade', 'demos/contabilidade/')]:
             await load(path)

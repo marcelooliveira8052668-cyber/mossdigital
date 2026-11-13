@@ -46,4 +46,13 @@ O teste confere layout em cinco larguras, imagens e links locais, navegação po
 
 - Revisar textos do catálogo completo sobre agendamento, matrícula e pagamentos.
 - Acrescentar trabalhos de clientes e depoimentos somente com comprovação e autorização.
-- Substituir futuramente o vídeo por uma gravação da nova página inicial, se desejado.
+
+## Atualização de 12/11/2026 — vídeo gravado da página atual
+
+- `assets/video/moss-apresentacao-30s.mp4` foi regravado a partir da página inicial atual, que mostra o preço de R$ 500. A gravação antiga (que exibia R$ 400) ficou arquivada em `.moss-local/backup-video-20261112/`.
+- Narração refeita com voz neural em português do Brasil (`pt-BR-FranciscaNeural`), em velocidade de conversa, sem menção a preço.
+- Cada frase da narração define o início e o fim de um bloco de legenda; `moss-apresentacao-30s.vtt` e as legendas queimadas no vídeo usam os mesmos tempos.
+- As cenas do vídeo trocam junto com a narração: página inicial, apresentação, demonstrações em destaque, preço de R$ 500, produtos e contato, fechando com a tela da MOSS Digital.
+- `assets/img/destaques/video-poster.webp` foi refeita a partir do novo vídeo.
+- Ferramentas reproduzíveis em `tools/`: `gerar-narracao-30s.py` (narração + `.vtt` + tempos) e `recordar-apresentacao-30s.py` (captura vertical, mixagem e capa).
+- O teste da página inicial (`tools/test-home.py`) continua verde: o vídeo reproduz, as seis legendas são reconhecidas e a transcrição está disponível.
