@@ -52,7 +52,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
     assert.equal(await js(`(() => {const p=JSON.parse(${JSON.stringify(pedido)});p.dados.foto='data:image/svg+xml;base64,PHN2Zz4=';try{MossArquivos.validar(p);return false}catch{return true}})()`), true);
     assert.equal(await js(`(() => {const p=JSON.parse(${JSON.stringify(pedido)});p.dados.template='__proto__';try{MossArquivos.validar(p);return false}catch{return true}})()`), true);
     const foto = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=';
-    for (const modelo of ['profissional', 'criativo', 'tecnologia']) {
+    for (const modelo of ['editorial', 'profissional']) {
       console.log('Gerando prévia e final:', modelo);
       const r = await js(`(async()=>{
         const d=coletar();d.template=${JSON.stringify(modelo)};d.foto=${JSON.stringify(foto)};
@@ -80,7 +80,7 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
     await js("new Promise((resolve,reject)=>{const t=setInterval(()=>{if(window.__final){clearInterval(t);resolve(true)}else if(!document.getElementById('final').disabled){clearInterval(t);reject(Error(document.getElementById('status').textContent))}},100)})");
     assert.match(await js('window.__final.nome'), /^portfolio-final-/);
     assert.equal(errors.length, 0, JSON.stringify(errors));
-    console.log('OK: validação, pedido JSON, WhatsApp simulado, 3 modelos com/sem marca, 320/390 px e importação/finalização local.');
+    console.log('OK: validação, pedido JSON, WhatsApp simulado, modelo editorial (e pedido legado mapeado) com/sem marca, 320/390 px e importação/finalização local.');
     await cmd('Browser.close');
   } finally { if (ws) ws.close(); edge.kill(); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

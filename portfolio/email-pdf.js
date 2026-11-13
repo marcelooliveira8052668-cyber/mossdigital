@@ -1,7 +1,7 @@
 /* MOSS Digital — envio do PDF para o proprietário.
  * Esta função só é exibida após configurar endpoint e Turnstile.
  * O arquivo permanece na memória até ser enviado; NÃO há download público.
- * Os três modelos de portfólio continuam no arquivo portfolio.js.
+ * O modelo editorial (photobook paisagem) está em portfolio.js.
  */
 "use strict";
 
@@ -61,7 +61,7 @@
       frame.setAttribute("title", "Preparação temporária do PDF");
       frame.setAttribute("aria-hidden", "true");
       frame.setAttribute("sandbox", "allow-scripts");
-      frame.style.cssText = "position:fixed;left:-4000px;top:0;width:794px;height:1123px;border:0;pointer-events:none";
+      frame.style.cssText = "position:fixed;left:-4000px;top:0;width:1123px;height:794px;border:0;pointer-events:none";
       let encerrado = false;
 
       function finalizar(erro, pdfBase64) {
@@ -103,10 +103,10 @@
         'try {',
         'if (typeof html2pdf !== "function") throw new Error("Biblioteca indisponível");',
         'var pdf = await html2pdf().set({',
-        'margin: 4,',
+        'margin: 0,',
         'image: { type: "jpeg", quality: 0.88 },',
-        'html2canvas: { scale: 1.5, useCORS: false, backgroundColor: null },',
-        'jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },',
+        'html2canvas: { scale: 1.5, useCORS: false, backgroundColor: null, width: 1123, windowWidth: 1123 },',
+        'jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },',
         'pagebreak: { mode: ["css", "legacy"] }',
         '}).from(document.body).toPdf().outputPdf("datauristring");',
         'window.parent.postMessage({tipo:"MOSS_PDF_PRONTO",nonce:' + JSON.stringify(nonce) + ',pdf:pdf},"*");',

@@ -5,9 +5,11 @@
 
 ## O que há nesta entrega
 
-- Página própria com três modelos profissionais — **Profissional** (elegante, claro, serifado),
-  **Criativo** (editorial, foto em tela cheia, escuro) e **Tecnologia** (dark ciano, estética de terminal).
-- Espaços para foto em destaque nos três modelos (upload tipo JPEG/PNG/WebP, máx. 3 MB).
+- Página própria com um modelo único — **Editorial** (photobook em formato paisagem,
+  serifada Didot/Georgia, fundo papel): capa com a foto, sobre, um spread por projeto
+  e página de obrigado/contato. Pedidos antigos com os modelos removidos
+  (profissional/criativo/tecnologia) são lidos como editorial.
+- Espaço para foto em destaque na capa (upload tipo JPEG/PNG/WebP, máx. 3 MB).
 - Montador interativo no navegador: a prévia é gerada localmente;
   **nenhum dado é enviado automaticamente** para a MOSS ou terceiros.
 - CTA de finalização por **R$ 39,90** (pagamento único), com conversa no WhatsApp
@@ -48,7 +50,7 @@ NÃO foi mesclada nem publicada. Ao publicar:
 
 `python docs/testar_portfolio.py` — Edge/Chromium com servidor local:
 zero erros JavaScript, zero dependências externas, prévia responde a campos,
-todos os 3 modelos aplicados, XSS escapado, foto aceita/rejeitada, fluxo do WhatsApp correto,
+o modelo editorial aplicado em todas as páginas, XSS escapado, foto aceita/rejeitada, fluxo do WhatsApp correto,
 layout sem transbordamento em 360/1366 px.
 
 ## Pendência conhecida

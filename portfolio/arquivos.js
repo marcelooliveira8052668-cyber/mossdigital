@@ -5,9 +5,14 @@ window.MossArquivos = (() => {
   function validar(arquivo) {
     if (!arquivo || arquivo.tipo !== "moss-portfolio" || arquivo.versao !== 1) throw new Error("Este não é um arquivo de pedido MOSS válido.");
     const s = arquivo.dados;
-    if (!s || !Object.hasOwn(templates, s.template)) throw new Error("Modelo inválido.");
+    if (!s) throw new Error("Pedido inválido.");
+    // Pedidos antigos com os modelos removidos (profissional/criativo/tecnologia)
+    // são finais no modelo editorial atual, em vez de serem recusados.
+    const template = Object.hasOwn(templates, s.template) ? s.template
+      : (["profissional", "criativo", "tecnologia"].includes(s.template) ? "editorial" : null);
+    if (!template) throw new Error("Modelo inválido.");
     const limites = { nome: 100, funcao: 120, cidade: 120, sobre: 600, email: 254, site: 300 };
-    const dados = { template: s.template, cor: corSegura(s.cor), foto: null };
+    const dados = { template, cor: corSegura(s.cor), foto: null };
     for (const [campo, limite] of Object.entries(limites)) {
       if (typeof s[campo] !== "string" || s[campo].length > limite) throw new Error("Campo inválido: " + campo);
       dados[campo] = s[campo];
@@ -50,7 +55,7 @@ window.MossArquivos = (() => {
     // dos modelos fixos, com textos escapados e foto raster validada acima.
     frame.setAttribute("sandbox", "allow-scripts allow-same-origin");
     frame.setAttribute("aria-hidden", "true");
-    frame.style.cssText = "position:fixed;left:-10000px;top:0;width:794px;height:1123px;border:0";
+    frame.style.cssText = "position:fixed;left:-10000px;top:0;width:1123px;height:794px;border:0";
     const nonce = crypto.randomUUID();
     const resultado = new Promise((resolve, reject) => {
       const fim = (erro, valor) => {
@@ -72,14 +77,14 @@ window.MossArquivos = (() => {
       try {
         await document.fonts.ready;
         await Promise.all(Array.from(document.images, img => img.decode().catch(() => {})));
-        const worker = html2pdf().set({margin:8,image:{type:'jpeg',quality:0.92},html2canvas:{scale:1.5,backgroundColor:null},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['css','legacy'],avoid:['article','header','footer']}}).from(document.body).toPdf();
+        const worker = html2pdf().set({margin:0,image:{type:'jpeg',quality:0.92},html2canvas:{scale:1.5,backgroundColor:null,width:1123,windowWidth:1123},jsPDF:{unit:'mm',format:'a4',orientation:'landscape'},pagebreak:{mode:['css','legacy'],avoid:['article','header','footer']}}).from(document.body).toPdf();
         await worker;
         const doc = await worker.get('pdf');
         if (${previa === true}) {
           for(let p=1;p<=doc.internal.getNumberOfPages();p++) {
-            doc.setPage(p); doc.setTextColor(190,55,55); doc.setFontSize(22);
-            for(let y=55;y<290;y+=75) doc.text('PREVIA - MOSS DIGITAL',105,y,{align:'center'});
-            doc.setFontSize(10); doc.text('DEMONSTRACAO - NAO E O ARQUIVO FINAL',105,290,{align:'center'});
+            doc.setPage(p); doc.setTextColor(190,55,55); doc.setFontSize(26);
+            for(let y=45;y<200;y+=60) doc.text('PREVIA - MOSS DIGITAL',148.5,y,{align:'center'});
+            doc.setFontSize(10); doc.text('DEMONSTRACAO - NAO E O ARQUIVO FINAL',148.5,201,{align:'center'});
           }
         }
         parent.postMessage({nonce:${JSON.stringify(nonce)},pdf:doc.output('datauristring')},'*');
