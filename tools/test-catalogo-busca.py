@@ -1,4 +1,4 @@
-"""Busca e paginação do catálogo único, acessível também pelo endereço antigo."""
+"""Busca e carrossel do catálogo único, acessível também pelo endereço antigo."""
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -18,11 +18,11 @@ def main():
     try:
         with sync_playwright() as p:
             browser=p.chromium.launch(channel='msedge')
-            page=browser.new_page()
+            page=browser.new_page(reduced_motion='reduce')
             page.goto(f'http://127.0.0.1:{server.server_port}/modelos.html',wait_until='networkidle')
             page.wait_for_url('**/#modelos')
             assert page.locator('#cards > article').count()==127
-            assert page.locator('#cards > article:visible').count()==6
+            assert page.locator('#cards > article:visible').count()==127
             field=page.locator('#busca-modelo')
             field.fill('clinica')
             expected=page.locator('#cards > article:visible').count()
@@ -34,12 +34,13 @@ def main():
             page.locator('#categoria-modelo').select_option('Serviços')
             assert page.locator('#cards > article:visible').count()==0
             page.locator('[data-reset]').click()
-            page.locator('[data-more]').click()
-            assert page.locator('#cards > article:visible').count()==12
+            page.locator('[data-next]').click()
+            page.wait_for_function('document.querySelector("#cards").scrollLeft>100')
+            assert page.locator('#cards > article:visible').count()==127
             field.fill('academia')
             page.locator('[data-clear]').click()
             assert field.input_value()==''
-            assert page.locator('#cards > article:visible').count()==6
+            assert page.locator('#cards > article:visible').count()==127
             assert field.evaluate('(e)=>document.activeElement===e')
             field.fill('pizza');field.press('Escape')
             assert field.input_value()==''
@@ -47,7 +48,7 @@ def main():
             assert field.get_attribute('aria-describedby')=='count'
             assert page.locator('#count').get_attribute('role')=='status'
             browser.close()
-        print('OK: catálogo unificado, endereço antigo, busca sem acentos/por descrição, categorias, paginação, limpar, Esc, rótulo e foco.',flush=True)
+        print('OK: catálogo unificado, endereço antigo, busca sem acentos/por descrição, categorias, carrossel, limpar, Esc, rótulo e foco.',flush=True)
     finally:
         server.shutdown()
         server.server_close()
