@@ -1,701 +1,715 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>MOSS Digital | Demonstrações de Sites</title>
-    <meta name="description"
-        content="Explore demos de sites profissionais e vitrines digitais criados pela MOSS Digital. Conheça os modelos e veja os projetos em ação." />
-    <link rel="canonical" href="https://mossdigital.com.br/" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="author" content="MOSS Digital" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="MOSS Digital" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content="MOSS Digital | Demonstrações de Sites" />
-    <meta property="og:description"
-        content="Explore nossos modelos de sites em demonstração e encontre uma ideia para seu negócio." />
-    <meta property="og:url" content="https://mossdigital.com.br/" />
-    <meta property="og:image" content="https://mossdigital.com.br/assets/img/fotos/heroi-mosscriador.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MOSS Digital | Demonstrações de Sites" />
-    <meta name="twitter:description"
-        content="Demonstrações de sites da MOSS Digital. Navegue pelos projetos e conheça os modelos disponíveis." />
-    <meta name="twitter:image" content="https://mossdigital.com.br/assets/img/fotos/heroi-mosscriador.jpg" />
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "MOSS Digital",
-        "url": "https://mossdigital.com.br/",
-        "description": "Catálogo de demonstrações de sites da MOSS Digital.",
-        "publisher": {
-          "@type": "Organization",
-          "name": "MOSS Digital",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://mossdigital.com.br/assets/img/fotos/moss-logo-horizontal.webp"
-          }
-        }
-      }
-    </script>
-    <style>
-        :root {
-            --navy: #0d2b52;
-            --yellow: #ffc531;
-            --muted: #52657c
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        body {
-            margin: 0;
-            font: 16px/1.55 system-ui, -apple-system, Segoe UI, sans-serif;
-            background: #f6f8fb;
-            color: #18283b
-        }
-
-        a {
-            text-decoration: none
-        }
-
-        header {
-            background: white;
-            border-bottom: 1px solid #e3e8f0
-        }
-
-        .wrap {
-            max-width: 1160px;
-            margin: auto;
-            padding: 0 22px
-        }
-
-        .top {
-            min-height: 77px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap
-        }
-
-        .brand {
-            font-size: 1.45rem;
-            font-weight: 850;
-            color: var(--navy);
-            letter-spacing: .03em
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px
-        }
-
-        nav a {
-            font-size: .94rem;
-            color: var(--navy);
-            font-weight: 650
-        }
-
-        .hero {
-            background: var(--navy);
-            color: white;
-            text-align: center;
-            padding: 68px 20px 75px
-        }
-
-        .eyebrow {
-            color: var(--yellow);
-            font-size: .84rem;
-            letter-spacing: .12em;
-            font-weight: 800;
-            text-transform: uppercase
-        }
-
-        .hero h1 {
-            font-size: clamp(2.2rem, 5vw, 3.7rem);
-            max-width: 760px;
-            margin: 10px auto 15px;
-            line-height: 1.13
-        }
-
-        .hero p {
-            color: #dce7f4;
-            max-width: 680px;
-            margin: 0 auto 18px
-        }
-
-        .price {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--yellow);
-            margin: 16px 0 24px
-        }
-
-        .cta {
-            display: inline-block;
-            padding: 13px 22px;
-            border-radius: 10px;
-            background: #25d366;
-            color: #093b24;
-            font-weight: 800
-        }
-
-        .section {
-            padding: 48px 0 65px
-        }
-
-        .section h2 {
-            font-size: 1.8rem;
-            color: var(--navy);
-            margin: 0 0 6px
-        }
-
-        .intro {
-            color: var(--muted);
-            margin: 0 0 26px
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 23px
-        }
-
-        .card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 7px 20px rgba(13, 43, 82, .05);
-            display: flex;
-            flex-direction: column
-        }
-
-        .card img {
-            width: 100%;
-            height: 195px;
-            object-fit: cover
-        }
-
-        .body {
-            padding: 21px;
-            display: flex;
-            flex: 1;
-            flex-direction: column
-        }
-
-        .body h3 {
-            margin: 0 0 8px;
-            color: var(--navy);
-            font-size: 1.15rem
-        }
-
-        .body p {
-            color: var(--muted);
-            margin: 0 0 20px;
-            flex: 1;
-            font-size: .95rem
-        }
-
-        .btn-outline {
-            border: 1px solid #c6d4e6;
-            border-radius: 9px;
-            padding: 11px 14px;
-            color: var(--navy);
-            font-weight: 750;
-            text-align: center
-        }
-
-        .more {
-            background: #e7eef7;
-            border-radius: 14px;
-            padding: 26px;
-            margin-top: 34px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap
-        }
-
-        .more h2 {
-            font-size: 1.25rem;
-            margin: 0
-        }
-
-        .more p {
-            margin: 4px 0 0;
-            color: var(--muted)
-        }
-
-        .more a {
-            background: var(--navy);
-            color: white;
-            padding: 12px 18px;
-            border-radius: 9px;
-            font-weight: 750
-        }
-
-        footer {
-            background: white;
-            border-top: 1px solid #e2e8f0;
-            padding: 23px;
-            text-align: center;
-            color: var(--muted);
-            font-size: .9rem
-        }
-
-        @media(max-width:850px) {
-            .grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr))
-            }
-        }
-
-        @media(max-width:560px) {
-            .grid {
-                grid-template-columns: 1fr
-            }
-
-            .top {
-                padding-top: 18px;
-                padding-bottom: 18px;
-                justify-content: center
-            }
-
-            nav {
-                justify-content: center
-            }
-
-            .hero {
-                padding: 53px 20px
-            }
-
-            .card img {
-                height: 210px
-            }
-        }
-
-        nav a.client-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--navy);
-            color: #fff;
-            padding: 10px 16px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(13, 43, 82, .18)
-        }
-
-        nav a.client-link:hover,
-        nav a.client-link:focus-visible {
-            background: #16477f;
-            outline: 3px solid var(--yellow);
-            outline-offset: 2px
-        }
-
-        /* Faixa fixa no rodapé — estilo anúncio do Instagram */
-        .top-cta {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 900;
-            display: block;
-            /* Crio o fundo em degradê azul vibrante. */
-            background: linear-gradient(110deg, #0647C8 0%, #087BFA 100%);
-            /* Deixo o texto e a seta brancos. */
-            color: #FFFFFF;
-            text-decoration: none;
-            /* Adiciono uma sombra azul discreta. */
-            box-shadow: 0 -6px 24px rgba(0, 42, 110, 0.20);
-            transition: background .15s ease
-        }
-
-        /* Defino a aparência ao passar o mouse ou focar na barra. */
-        .top-cta:hover,
-        .top-cta:focus-visible {
-            /* Escureço suavemente o degradê. */
-            background: linear-gradient(110deg, #053AA7 0%, #0669DD 100%);
-            /* Mantenho as letras brancas. */
-            color: #FFFFFF
-        }
-
-        /* Destaco o foco para navegação por teclado. */
-        /* Este seletor (":root body a...") tem prioridade sobre as regras
-           gerais de foco do moss-futurista.css e do moss-theme.css, que
-           viriam depois e pintariam o contorno de outra cor. Assim o
-           contorno branco vale nos dois temas, sem alterar esses arquivos. */
-        :root body a.top-cta:focus-visible {
-            /* Adiciono um contorno branco. */
-            outline: 3px solid #FFFFFF;
-            /* Posiciono o contorno dentro da barra. */
-            outline-offset: -3px
-        }
-
-        .top-cta .wrap {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            min-height: 66px;
-            padding-top: 12px;
-            padding-bottom: 12px
-        }
-
-        .top-cta-text {
-            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
-            font-weight: 800;
-            letter-spacing: .01em;
-            line-height: 1.2
-        }
-
-        .top-cta-chevron {
-            font-size: clamp(1.7rem, 5vw, 2.2rem);
-            font-weight: 400;
-            line-height: 1;
-            flex: none
-        }
-
-        /* Espaço para a faixa não cobrir o fim da página */
-        body.moss-home {
-            padding-bottom: 70px
-        }
-
-        @media (max-width: 560px) {
-            .top-cta .wrap {
-                min-height: 60px
-            }
-        }
-    </style>
-    <style>
-        .card-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: auto
-        }
-
-        .card-actions a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 46px;
-            line-height: 1.25
-        }
-
-        .btn-whatsapp {
-            background: #167c4d;
-            color: #fff;
-            padding: 12px 14px;
-            border-radius: 9px;
-            font-weight: 750;
-            text-align: center
-        }
-
-        .btn-whatsapp:hover,
-        .btn-whatsapp:focus-visible {
-            background: #11653f
-        }
-
-        .btn-outline:hover,
-        .btn-outline:focus-visible {
-            background: #eef4fc
-        }
-
-        .card-actions a:focus-visible {
-            outline: 3px solid #ffc531;
-            outline-offset: 2px
-        }
-    </style>
-    <style>
-        .brand-logo {
-            display: block;
-            width: min(260px, 68vw);
-            height: auto;
-            max-height: 75px;
-            object-fit: contain
-        }
-
-        .brand,
-        .logo {
-            display: inline-flex;
-            align-items: center;
-            line-height: 1
-        }
-    </style>
-    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="assets/css/moss-futurista.css" />
-    <link rel="stylesheet" href="assets/css/moss-home.css" />
-    <!-- Estilos das seções de livro digital e portfólio. -->
-    <link rel="stylesheet" href="assets/css/moss-livro.css" />
-    <link rel="stylesheet" href="assets/css/moss-theme.css" />
-    <script src="assets/js/moss-theme.js"></script>
-    <link rel="stylesheet" href="assets/css/demo-photos.css">
-    <script src="assets/js/demo-photos.js" data-catalog defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="description" content="Conheça as demos da MOSS Digital e encontre uma ideia para seu negócio. Sites institucionais por R$ 500, com escopo combinado antes de começar.">
+  <meta name="theme-color" content="#f6f7f2">
+  <title>MOSS Digital — um site à altura do seu negócio</title>
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://mossdigital.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MOSS Digital">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="MOSS Digital — um site à altura do seu negócio">
+  <meta property="og:description" content="Todas as demos em um só lugar. Encontre uma inspiração para seu negócio e converse sobre seu próximo site.">
+  <meta property="og:url" content="https://mossdigital.com.br/">
+  <meta property="og:image" content="https://mossdigital.com.br/assets/img/fotos/moss-logo-horizontal.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"MOSS Digital","url":"https://mossdigital.com.br/","inLanguage":"pt-BR"}</script>
+  <link rel="stylesheet" href="/assets/css/moss-unificada.css?v=20261113">
+  <script src="/assets/js/moss-unificada.js?v=20261113" defer></script>
 </head>
-
-<body class="moss-home">
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <header>
-        <div class="wrap top"><a class="brand" href="index.html" aria-label="MOSS Digital — início"><img
-                    src="assets/img/fotos/moss-logo-horizontal.webp" alt="MOSS Digital" class="brand-logo"></a>
-            <nav aria-label="Navegação principal">
-              <a href="index.html" aria-current="page">Início</a>
-              <a href="modelos.html">Modelos de Sites</a>
-              <a href="portfolio/">Portfólio</a>
-              <a href="curriculo/">Currículo</a>
-              <a href="livros/programacao-do-zero/">Livro digital</a>
-              <a href="https://wa.me/5511942038103" rel="noopener" target="_blank">Contato</a>
-            </nav>
-        </div>
-    </header>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap hero-layout">
-        <div class="hero-copy">
-          <div class="eyebrow">MOSS DIGITAL · DEMONSTRAÇÕES</div>
-          <h1 id="hero-title">Explore nossas <em>demos de sites.</em></h1>
-          <p>Conheça modelos para vários tipos de negócios. Abra as demonstrações, explore o visual e veja os recursos disponíveis em cada projeto.</p>
-          <div class="hero-actions">
-            <a class="cta" href="#modelos">Ver demos em destaque <span aria-hidden="true">↓</span></a>
-            <a class="hero-secondary" href="modelos.html">Todos os modelos ↗</a>
-          </div>
-        </div>
-        <div class="hero-showcase hero-video" id="apresentacao">
-            <div class="showcase-label"><span>Conheça a MOSS Digital em 30 segundos</span></div>
-            <div class="video-frame">
-              <video controls playsinline preload="none" width="720" height="1280" poster="assets/img/destaques/video-poster.webp?v=20261113-capas" aria-label="Apresentação da MOSS Digital, 30 segundos">
-                <source src="assets/video/moss-apresentacao-30s.mp4?v=20261113-capas" type="video/mp4" />
-                <track kind="captions" src="assets/video/moss-apresentacao-30s.vtt" srclang="pt-BR" label="Português" default />
-                Seu navegador não reproduz este vídeo. <a href="assets/video/moss-apresentacao-30s.mp4?v=20261113-capas">Baixe a apresentação em MP4.</a>
-              </video>
-            </div>
-            <p class="video-hint">Dê o play para conhecer nosso trabalho.<br>O vídeo só começa quando você quiser.</p>
-            <details class="video-transcript"><summary>Ler a transcrição do vídeo</summary><p>Seu negócio merece destaque na internet! Na MOSS Digital, criamos sites profissionais, lojas virtuais e sistemas personalizados. Soluções para apresentar sua empresa, divulgar seus serviços e facilitar o dia a dia. Dê o próximo passo para fortalecer sua presença digital. Acesse: mossdigital.com.br. MOSS Digital. Seu negócio conectado a novas possibilidades.</p></details>
-        </div>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="#inicio" aria-label="MOSS Digital — início"><span class="brand-icon" aria-hidden="true">M</span><span class="brand-name">MOSS <span>DIGITAL</span></span></a>
+      <nav class="main-nav" aria-label="Navegação principal"><a href="#modelos">Demos</a><a href="#servicos">Serviços</a><a class="nav-contact" href="#contato">Contato</a></nav>
+    </div>
+  </header>
+  <main id="conteudo">
+    <section class="wrap hero" id="inicio" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Ideias que ganham presença.</p>
+        <h1 id="hero-title">Seu negócio merece<br>um site <em>à altura.</em></h1>
+        <p class="lead">Um site com a sua identidade, pronto para apresentar seu trabalho e aproximar clientes.</p>
+        <div class="hero-actions"><a class="button" href="#modelos">Encontre sua inspiração <span aria-hidden="true">↗</span></a><a class="link" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20meu%20site." target="_blank" rel="noopener noreferrer">Vamos conversar</a></div>
+        <a class="price-hint" href="#site-preco">Site institucional · R$ 500 · escopo combinado</a>
+      </div>
+      <div class="film" id="apresentacao">
+        <div class="film-label"><span>A MOSS EM MOVIMENTO</span><span>30 s</span></div>
+        <video controls playsinline preload="none" width="720" height="1280" poster="/assets/img/destaques/video-poster.webp?v=20261113-capas" aria-label="Conheça a MOSS Digital em 30 segundos">
+          <source src="/assets/video/moss-apresentacao-30s.mp4?v=20261113-capas" type="video/mp4">
+          <track kind="captions" src="/assets/video/moss-apresentacao-30s.vtt" srclang="pt-BR" label="Português" default>
+          <a href="/assets/video/moss-apresentacao-30s.mp4?v=20261113-capas">Baixar o vídeo de apresentação</a>
+        </video>
+        <p class="film-hint">Dê o play e conheça algumas ideias.</p>
+        <details class="transcript"><summary>Ler a transcrição</summary><p>Seu negócio merece destaque na internet! Na MOSS Digital, criamos sites profissionais, lojas virtuais e sistemas personalizados. Soluções para apresentar sua empresa, divulgar seus serviços e facilitar o dia a dia. Dê o próximo passo para fortalecer sua presença digital. Acesse: mossdigital.com.br. MOSS Digital. Seu negócio conectado a novas possibilidades.</p></details>
       </div>
     </section>
-    <main class="wrap home-main" id="conteudo">
-      <section class="section" id="modelos" aria-labelledby="destaques-title">
-        <div class="section-kicker"><span>Feito para o seu próximo passo</span><span aria-hidden="true">SELEÇÃO DE MODELOS / 15</span></div>
-        <h2 id="destaques-title">Demonstrações em destaque</h2>
-        <p class="intro">Explore quinze exemplos de sites. As fotos, marcas e informações são ilustrativas e não representam clientes reais. Abra as demos e conheça cada proposta.</p>
-        <div class="grid">
-            <!-- ARMAZÉM DA ESQUINA: publicação aprovada pelo proprietário em 12/11/2026. -->
-            <article class="card"><img alt="Captura da própria demo ARMAZÉM DA ESQUINA, mercadinho de bairro com toldo listrado em verde, vermelho e amarelo" loading="lazy" width="1200" height="750" src="demos/armazem-da-esquina/entrega/card-armazem-da-esquina.webp" data-moss-snapshot="true" />
-                <div class="body">
-                    <span class="category">MERCADINHO DE BAIRRO · NOVO MODELO</span><h3>ARMAZÉM DA ESQUINA</h3>
-                    <p>vinte e quatro produtos fictícios em seis seções, busca, filtros, carrinho e pedido preparado para o WhatsApp. Preços, endereço e entrega ilustrativos; sem venda, pagamento ou banco conectado.</p>
-                    <div class="card-actions"><a class="btn-outline" href="demos/armazem-da-esquina/">Conhecer a demo ↗</a><a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20site%20como%20o%20ARMAZ%C3%89M%20DA%20ESQUINA." target="_blank" rel="noopener noreferrer">Quero um site como este</a></div>
-                </div>
-            </article>
-            <!-- VIVA Prime Imóveis: publicação autorizada pelo proprietário em 12/11/2026. -->
-            <article class="card"><img alt="Captura da própria demo VIVA Prime Imóveis, com composição editorial em verde-petróleo e bege" loading="lazy" width="1200" height="750" src="demos/viva-prime/entrega/card-viva-prime.webp" data-moss-snapshot="true" />
-                <div class="body">
-                    <span class="category">PORTAL IMOBILIÁRIO · NOVO MODELO</span><h3>VIVA Prime Imóveis</h3>
-                    <p>dezesseis anúncios fictícios, busca completa, favoritos, comparador, simulador de financiamento e painel local. Galerias com espaços identificados para fotos reais do mesmo imóvel.</p>
-                    <div class="card-actions"><a class="btn-outline" href="demos/viva-prime/">Conhecer a demo ↗</a><a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20site%20como%20a%20VIVA%20Prime%20Im%C3%B3veis." target="_blank" rel="noopener noreferrer">Quero um site como este</a></div>
-                </div>
-            </article>
-            <!-- MOSS Academia: publicação autorizada pelo proprietário em 12/11/2026. -->
-            <article class="card"><img alt="Captura da própria demo MOSS Academia, com identidade preta e azul elétrico e esteiras profissionais" loading="lazy" width="1200" height="750" src="demos/moss-academia/entrega/card-moss-academia.webp" data-moss-snapshot="true" />
-                <div class="body">
-                    <span class="category">ACADEMIA PREMIUM · NOVO MODELO</span><h3>MOSS Academia</h3>
-                    <p>Musculação, piscina, lutas e funcional com 24 fotos, filme-conceito, planos e grade de aulas. Matrícula, visitas e área do aluno demonstrativas, sem pagamentos ou envio de dados.</p>
-                    <div class="card-actions"><a class="btn-outline" href="demos/moss-academia/">Conhecer a academia ↗</a><a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20site%20como%20a%20MOSS%20Academia." target="_blank" rel="noopener noreferrer">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Captura da PULSE Academia, com estrutura de musculação e identidade verde-lima" loading="lazy" width="1200" height="750" src="academia-pulse/capa.webp" />
-                <div class="body">
-                    <span class="category">ACADEMIA E BEM-ESTAR · NOVO MODELO</span><h3>PULSE Academia</h3>
-                    <p>Academia completa com fotos clicáveis, equipamentos, piscina, lutas, vídeo, professores, objetivos de treino, planos e grade de aulas. Matrícula e área do aluno demonstrativas.</p>
-                    <div class="card-actions"><a class="btn-outline" href="academia-pulse/">Conhecer a academia ↗</a><a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20site%20como%20a%20PULSE%20Academia." target="_blank" rel="noopener noreferrer">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Captura da própria demo PASSO Atelier, loja de calçados com tênis e sapatos clássicos" loading="lazy" width="1200" height="750" src="demos/passo-atelier/img/capa-card.webp" data-moss-snapshot="true" />
-                <div class="body">
-                    <span class="category">LOJA DE CALÇADOS · NOVO MODELO</span><h3>PASSO Atelier</h3>
-                    <p>Sapatos, tênis, sandálias e botas com filtros por estilo e tamanho, favoritos e sacola demonstrativa. Catálogo local, sem venda ou pagamento real; leitura opcional no Supabase documentada.</p>
-                    <div class="card-actions"><a class="btn-outline" href="demos/passo-atelier/">Conhecer a demo ↗</a><a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Quero%20uma%20loja%20de%20cal%C3%A7ados%20como%20a%20PASSO%20Atelier." target="_blank" rel="noopener noreferrer">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Captura da demo MOSS News, com destaques fotográficos e guias informativos" loading="lazy" width="1200" height="750" src="demos/moss-news/assets/capa-card.webp" data-moss-snapshot="true" />
-                <div class="body">
-                    <span class="category">PORTAL INFORMATIVO · NOVO MODELO</span><h3>MOSS News</h3>
-                    <p>Portal com oito guias educativos, editorias, busca, fotos, vídeo e tema claro/escuro. Demonstração sem notícias em tempo real, cadastro ou banco de dados conectado.</p>
-                    <div class="card-actions"><a class="btn-outline" href="demos/moss-news/">Conhecer a demo ↗</a><a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20um%20portal%20como%20o%20MOSS%20News." target="_blank" rel="noopener noreferrer">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Captura da demo Sol do Bairro, com o painel de energia solar e o título — a luz do sol cabe no seu telhado" loading="lazy" width="1200" height="750" src="demos/sol-do-bairro/img/capa-card.webp" />
-                <div class="body">
-                    <span class="category">ENERGIA SOLAR · NOVO MODELO</span><h3>Sol do Bairro</h3>
-                    <p>Site para instaladora de energia solar com simulador de economia que roda no navegador, premissas explicadas, proposta pelo WhatsApp e painel opcional de propostas.</p>
-                    <div class="card-actions"><a class="btn-outline" href="demos/sol-do-bairro/">Conhecer a demo ↗</a><a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20o%20modelo%20Sol%20do%20Bairro." target="_blank" rel="noopener noreferrer">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Chaves em um gancho de parede escura — foto ilustrativa da demo Chaveiro Express" loading="lazy" width="1200" height="750" src="demos/chaveiro-express/img/capa-card.webp" />
-                <div class="body">
-                    <span class="category">CHAVEIRO E ABERTURA · NOVO MODELO</span><h3>Chaveiro Express</h3>
-                    <p>Atendimento 24h com visual de alta visibilidade: serviços, área de atendimento, galeria de chaves e fechaduras, e chamado pronto para o WhatsApp. Banco de dados opcional.</p>
-                    <div class="card-actions"><a class="btn-outline" href="demos/chaveiro-express/">Conhecer a demo ↗</a><a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20o%20modelo%20Chaveiro%20Express." target="_blank" rel="noopener noreferrer">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Mãos trabalhando em uma máquina de costura — foto ilustrativa da demo Ponto & Ajuste" loading="lazy" width="1200" height="750" src="demos/ponto-ajuste/img/capa-card.webp" />
-                <div class="body">
-                    <span class="category">COSTURA E AJUSTES · NOVO MODELO</span><h3>Ponto & Ajuste</h3>
-                    <p>Uma nova história para suas roupas. Conheça um ateliê com visual editorial, galeria de costura e conversa pelo WhatsApp. Banco de dados opcional, com instalação explicada.</p>
-                    <div class="card-actions"><a class="btn-outline" href="demos/ponto-ajuste/">Conhecer o ateliê ↗</a><a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20conversar%20sobre%20o%20modelo%20Ponto%20%26%20Ajuste." target="_blank" rel="noopener noreferrer">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Tela da demonstração Restaurante 360" loading="lazy" width="960" height="640"
-                    src="assets/img/destaques/restaurante.webp" />
-                <div class="body">
-                    <span class="category">ALIMENTAÇÃO</span><h3>Restaurante 360</h3>
-                    <p>Apresentação do restaurante e cardápio. O painel de operação é um protótipo local, sem pagamentos reais ou sincronização entre aparelhos.</p>
-                    <div class="card-actions"><a class="btn-outline"
-                            href="restaurante-360/"
-                            rel="noopener noreferrer" target="_blank">Ver demonstração ↗</a><a class="btn-whatsapp"
-                            href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20como%20o%20Restaurante%20360."
-                            rel="noopener noreferrer" target="_blank">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Tela da demonstração de site para salão de beleza" loading="lazy" width="960" height="640"
-                    src="assets/img/destaques/beleza.webp" />
-                <div class="body">
-                    <span class="category">BELEZA</span><h3>Salão e beleza</h3>
-                    <p>Apresente serviços, equipe e galeria. O contato para solicitar um horário é pelo WhatsApp; não representa confirmação automática de agenda.</p>
-                    <div class="card-actions"><a class="btn-outline"
-                            href="demo.html?preset=salao&amp;fotos=fotos-20261027"
-                            rel="noopener noreferrer" target="_blank">Ver demonstração ↗</a><a class="btn-whatsapp"
-                            href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Manicure%20e%20beleza%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este."
-                            rel="noopener noreferrer" target="_blank">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Tela da NEXA Store, demonstração de loja virtual" loading="lazy" width="960" height="640"
-                    src="assets/img/destaques/loja.webp" />
-                <div class="body">
-                    <span class="category">COMÉRCIO DIGITAL</span><h3>NEXA Store</h3>
-                    <p>Explore uma vitrine de produtos e a experiência de carrinho. É uma demonstração: pagamentos e integrações de uma loja real exigem configuração e orçamento próprios.</p>
-                    <div class="card-actions"><a class="btn-outline"
-                            href="loja-virtual/"
-                            rel="noopener noreferrer" target="_blank">Ver demonstração ↗</a><a class="btn-whatsapp"
-                            href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20uma%20loja%20como%20a%20NEXA%20Store."
-                            rel="noopener noreferrer" target="_blank">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Tela da demonstração de portfólio de fotografia" loading="lazy" width="960" height="640"
-                    src="assets/img/destaques/fotografia.webp" />
-                <div class="body">
-                    <span class="category">PORTFÓLIO</span><h3>Fotografia e trabalhos criativos</h3>
-                    <p>Galeria, apresentação e serviços em um só lugar. Um modelo para valorizar seus trabalhos e receber pedidos de orçamento pelo WhatsApp.</p>
-                    <div class="card-actions"><a class="btn-outline"
-                            href="demo.html?preset=fotografo&amp;fotos=fotos-20261027"
-                            rel="noopener noreferrer" target="_blank">Ver demonstração ↗</a><a class="btn-whatsapp"
-                            href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20de%20fotografia."
-                            rel="noopener noreferrer" target="_blank">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Tela da EntreLares, demonstração de serviços para casa" loading="lazy" width="960" height="640"
-                    src="assets/img/destaques/entrelares.webp" />
-                <div class="body">
-                    <span class="category">SERVIÇOS PARA CASA</span><h3>EntreLares</h3>
-                    <p>Jornadas guiadas para quem procura serviços e para profissionais. Marca e dados fictícios, sem cadastro ou contratação automática.</p>
-                    <div class="card-actions"><a class="btn-outline"
-                            href="demos/entrelares/"
-                            rel="noopener noreferrer" target="_blank">Ver demonstração ↗</a><a class="btn-whatsapp"
-                            href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20como%20a%20EntreLares."
-                            rel="noopener noreferrer" target="_blank">Quero um site como este</a></div>
-                </div>
-            </article>
-            <article class="card"><img alt="Tela da Horizon Travel, demonstração de agência de turismo" loading="lazy" width="960" height="640"
-                    src="assets/img/destaques/turismo.webp" />
-                <div class="body">
-                    <span class="category">TURISMO</span><h3>Horizon Travel</h3>
-                    <p>Destinos, pacotes e galeria para apresentar viagens. O visitante pode solicitar um orçamento; a demo não emite passagens nem confirma reservas reais.</p>
-                    <div class="card-actions"><a class="btn-outline"
-                            href="site-de-turismo/"
-                            rel="noopener noreferrer" target="_blank">Ver demonstração ↗</a><a class="btn-whatsapp"
-                            href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20um%20site%20de%20turismo."
-                            rel="noopener noreferrer" target="_blank">Quero um site como este</a></div>
-                </div>
-            </article>
-        </div>
-        <p class="demo-disclosure">Portfólio demonstrativo, não uma lista de clientes atendidos. Marcas, valores, avaliações e dados presentes nos modelos podem ser fictícios. Os recursos do seu projeto serão definidos no orçamento.</p>
-
-
-        <div class="more">
-            <div>
-                <h2>Veja todos os modelos de sites</h2>
-                <p>Explore o catálogo completo e filtre por categoria.</p>
-            </div><a href="modelos.html">Ver todos os modelos ↗</a>
-        </div>
-      </section>
-
-      <section class="home-panel preco-home" id="site-preco" aria-labelledby="preco-title">
-        <div>
-          <span class="eyebrow">MOSS · Site institucional</span>
-          <h2 id="preco-title">Seu site no ar com preço definido.</h2>
-          <p><strong>R$ 500, preço fechado.</strong> Você sabe o valor antes de começar: o escopo é combinado por escrito, cada etapa é acompanhada e o site é publicado no endereço combinado.</p>
-          <p>Pagina institucional completa, feita para celular, com WhatsApp integrado, galeria, formulário e publicação inclusa. Lojas virtuais, sistemas e integrações têm orçamento à parte, combinado antes do início.</p>
-          <p><strong>Os R$ 500 são do site.</strong> Domínio e hospedagem são assinados pelo próprio cliente, no provedor que ele escolher, e pagos direto ao provedor. A MOSS orienta a contratar e acompanha a publicação, mas essa parte não passa por nós.</p>
-          <div class="home-links"><a class="button" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20site%20institucional%20com%20preço%20fechado%20de%20R%24%20500." target="_blank" rel="noopener noreferrer">Quero meu site ↗</a></div>
-        </div>
-      </section>
-      <section class="home-panel book-promo" id="livros-digitais" aria-labelledby="book-title">
-        <div>
-          <span class="eyebrow">Biblioteca Moss Digital · Livro escrito</span>
-          <h2 id="book-title">Programação do Zero — Seu Primeiro Projeto Web</h2>
-          <p>Comece pelos fundamentos e pratique construindo uma hamburgueria digital. O exemplo é uma hamburgueria; os conceitos ajudam a criar outros projetos.</p>
-          <p>74 aulas escritas, exemplos comentados e exercícios com respostas. PDF + bônus de consulta em HTML.</p>
-          <p class="book-price"><strong>R$ 29,90</strong> · pagamento único</p>
-          <p class="book-note">Compra e entrega manual pelo WhatsApp. Não inclui videoaulas, certificado ou mentoria. Este livro é uma oferta separada dos serviços de criação de sites.</p>
-          <div class="book-actions"><a class="cta" href="livros/programacao-do-zero/">Conhecer o livro →</a><a class="book-sample" href="livros/programacao-do-zero/amostra.pdf" download>Baixar amostra gratuita</a></div>
-        </div>
-        <img src="livros/programacao-do-zero/capa.png" alt="Capa do livro Programação do Zero — Seu Primeiro Projeto Web, da Moss Digital" width="596" height="843" loading="lazy">
-      </section>
-
-      <section class="home-panel book-promo" id="portfolio-promo" aria-labelledby="promo-title">
-        <div>
-          <span class="eyebrow">MOSS · Portfólio profissional</span>
-          <h2 id="promo-title">Monte o seu portfólio profissional</h2>
-          <p>Foto em destaque, seus projetos com as suas cores e três modelos profissionais: Profissional, Criativo ou Tecnologia. Monte a prévia grátis no navegador, sem cadastro.</p>
-          <p class="book-price"><strong>R$ 39,90</strong> · pagamento único · entrega manual</p>
-          <p class="book-note">A prévia é gerada no seu navegador; nada é enviado automaticamente. Finalização e entrega combinadas pelo WhatsApp. Produto separado dos serviços de criação de sites.</p>
-          <div class="book-actions"><a class="cta" href="portfolio/">Conhecer o Moss Portfólio →</a></div>
-        </div>
-      </section>
-
-      <section class="home-panel" id="curriculo-promo" aria-labelledby="cv-promo-title">
-        <p class="section-kicker">MOSS · Currículo profissional e primeiro emprego</p>
-        <h2 id="cv-promo-title">Crie seu currículo e apresente seu próximo passo.</h2>
-        <p>Dez modelos, com foto ou sem foto, e PDF com texto selecionável. Monte grátis, baixe a prévia com marca e envie o pedido pelo WhatsApp.</p>
-        <p><strong>R$ 19,90 · pagamento único · entrega manual.</strong> O PDF final sem marca é entregue após a confirmação do pagamento. Sem promessa de emprego ou aprovação em seleção.</p>
-        <div class="home-links"><a class="button" href="curriculo/">Criar meu currículo →</a></div>
-      </section>
-      <section class="home-contact home-panel" id="contato" aria-labelledby="contact-title">
-        <div>
-          <span class="eyebrow">Gostou de uma demonstração?</span>
-          <h2 id="contact-title">Podemos conversar sobre o seu projeto.</h2>
-          <p>Escolha uma demo como referência e conte o que você deseja personalizar.</p>
-        </div>
-        <div class="contact-actions">
-          <a class="btn-whatsapp" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Vi%20as%20demos%20da%20MOSS%20Digital%20e%20quero%20conversar." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp ↗</a>
-        </div>
-      </section>
-    </main>
-    <footer>© MOSS Digital · Catálogo de demonstrações.
-      <nav aria-label="Links do rodapé">
-        <a href="modelos.html">Todos os modelos</a>
-        <a href="https://www.instagram.com/mossdigital_sites/" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="privacidade.html">Privacidade</a>
-      </nav>
-    </footer>
-
-    <a class="zap-flutuante" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20MOSS%20Digital." target="_blank" rel="noopener noreferrer" aria-label="Falar com a MOSS Digital no WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg><span>WhatsApp</span></a>
+    <section class="wrap section catalog" id="modelos" aria-labelledby="catalog-title">
+      <p class="eyebrow">Uma ideia para cada negócio</p>
+      <div class="section-head"><h2 id="catalog-title">Explore. Imagine.<br>Faça do seu jeito.</h2><p>Todas as demos estão aqui.<br>Encontre uma referência para o seu site.</p></div>
+      <noscript><p class="noscript">Todas as demos estão disponíveis abaixo. Ative o JavaScript para usar a busca e os filtros.</p></noscript>
+      <div class="catalog-tools" role="search" aria-label="Buscar demonstrações">
+        <div class="field"><label for="busca-modelo">O que você procura?</label><div class="search-control"><input id="busca-modelo" type="search" placeholder="Academia, restaurante, clínica…" autocomplete="off" aria-controls="cards" aria-describedby="count"><button type="button" class="clear" data-clear hidden aria-label="Limpar busca">Limpar</button></div></div>
+        <div class="field"><label for="categoria-modelo">Categoria</label><select id="categoria-modelo" aria-controls="cards"><option value="Todos">Todas as categorias</option><option value="Alimentação">Alimentação</option><option value="Beleza e saúde">Beleza e saúde</option><option value="Comércio">Comércio</option><option value="Empreendedorismo">Empreendedorismo</option><option value="Eventos e fotografia">Eventos e fotografia</option><option value="Serviços">Serviços</option><option value="Utilidade pública">Utilidade pública</option></select></div>
+      </div>
+      <div class="catalog-meta"><p id="count" role="status">127 demos disponíveis</p><span>Exemplos, não clientes reais</span></div>
+      <div class="empty" data-empty hidden><p>Não encontramos uma demo com essa busca.</p><button type="button" data-reset>Limpar e ver todas</button></div>
+      <div id="cards" class="catalog-grid"><article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demos/moss-academia/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS Academia — Fitness premium"><img src="/demos/moss-academia/entrega/card-moss-academia.webp" width="1200" height="750" alt="Captura da própria demonstração MOSS Academia, em preto e azul elétrico" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>MOSS Academia — Fitness premium</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Musculação, natação, lutas e funcional com 24 fotos, filme-conceito, planos e horários. Matrícula, reservas, visitas e área do aluno demonstrativas, sem pagamentos, autenticação ou banco conectado.</p></details>
+                  <div class="demo-actions"><a href="/demos/moss-academia/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20um%20site%20como%20a%20MOSS%20Academia." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/passo-atelier/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: PASSO Atelier — Loja de calçados"><img src="/demos/passo-atelier/img/capa-card.webp" width="1200" height="750" alt="Captura da própria demonstração: PASSO Atelier — Loja de calçados" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>PASSO Atelier — Loja de calçados</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Sapatos, tênis, sandálias e botas com filtros por estilo e tamanho, favoritos e sacola demonstrativa. Marca e preços fictícios, sem venda ou pagamento real. Leitura opcional de catálogo no Supabase documentada.</p></details>
+                  <div class="demo-actions"><a href="/demos/passo-atelier/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20uma%20loja%20de%20cal%C3%A7ados%20como%20a%20PASSO%20Atelier." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/armazem-da-esquina/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: ARMAZÉM DA ESQUINA — Mercadinho de bairro"><img src="/demos/armazem-da-esquina/entrega/card-armazem-da-esquina.webp" width="1200" height="750" alt="Captura da própria demo ARMAZÉM DA ESQUINA, mercadinho de bairro com toldo listrado" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>ARMAZÉM DA ESQUINA — Mercadinho de bairro</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Vinte e quatro produtos fictícios em seis seções, busca, filtros, carrinho e pedido preparado para o WhatsApp, com catálogo em destaque e ofertas. Preços, endereço e entrega ilustrativos; sem venda, pagamento ou banco conectado.</p></details>
+                  <div class="demo-actions"><a href="/demos/armazem-da-esquina/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20um%20site%20como%20o%20ARMAZ%C3%89M%20DA%20ESQUINA." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/viva-prime/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: VIVA Prime Imóveis — Portal imobiliário"><img src="/demos/viva-prime/entrega/card-viva-prime.webp" width="1200" height="750" alt="Captura da própria demonstração VIVA Prime Imóveis, em verde-petróleo e bege" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>VIVA Prime Imóveis — Portal imobiliário</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Dezesseis anúncios fictícios, busca completa, favoritos, comparador, simulador de financiamento e painel local demonstrativo. Galerias com cinco espaços para fotos reais do mesmo imóvel. Sem disponibilidade, reserva ou financiamento confirmados.</p></details>
+                  <div class="demo-actions"><a href="/demos/viva-prime/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20um%20site%20como%20a%20VIVA%20Prime%20Im%C3%B3veis." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Empreendedorismo">
+                  <a class="demo-cover" href="/demos/moss-news/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS News — Portal informativo"><img src="/demos/moss-news/assets/capa-card.webp" width="1200" height="750" alt="Captura da própria demonstração: MOSS News — Portal informativo" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Empreendedorismo</span><h3>MOSS News — Portal informativo</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Oito guias educativos com referências, editorias, busca, fotos, vídeo e tema claro/escuro. Sem cobertura em tempo real ou banco conectado. Manual do comprador incluído.</p></details>
+                  <div class="demo-actions"><a href="/demos/moss-news/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20um%20portal%20como%20o%20MOSS%20News." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/academia-pulse/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: PULSE Academia"><img src="/academia-pulse/capa.webp" width="1200" height="750" alt="Captura da PULSE Academia com equipamentos de musculação" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>PULSE Academia</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Estrutura completa com piscina, lutas, galeria clicável, vídeo, professores, objetivos de treino, planos e horários. Interesse em matrícula e área do aluno demonstrativos, sem envio de dados ou cobranças.</p></details>
+                  <div class="demo-actions"><a href="/academia-pulse/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20a%20PULSE%20Academia." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=academia&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Academia"><img src="/assets/img/catalogo-fiel/academia-031b6e2cee.webp" width="1200" height="750" alt="Captura da própria demonstração: 🏋️ Academia" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Academia</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Aulas, planos e avaliação física</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=academia&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Academia%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Utilidade pública">
+                  <a class="demo-cover" href="/demos/acessoaberto/index.html" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: acesso aberto — Guia de Acessibilidade Urbana"><img src="/assets/img/catalogo-fiel/acesso-aberto-guia-de-acessibilidade-urbana-4347c4e9dd.webp" width="1200" height="750" alt="Captura da própria demonstração: acesso aberto — Guia de Acessibilidade Urbana" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Utilidade pública</span><h3>acesso aberto — Guia de Acessibilidade Urbana</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>O que importa para a sua visita? e planejamento interativo. Dados fictícios, sem confirmação automática.</p></details>
+                  <div class="demo-actions"><a href="/demos/acessoaberto/index.html" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20acessoaberto" target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=advocacia&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Advocacia"><img src="/assets/img/catalogo-fiel/advocacia-a18ee7606b.webp" width="1200" height="750" alt="Captura da própria demonstração: ⚖️ Advocacia" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Advocacia</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Áreas de atuação e casos do escritório</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=advocacia&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Advocacia%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/site-de-turismo/?v=vitrines-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Agência de viagens"><img src="/assets/img/catalogo-fiel/agencia-de-viagens-bda4a2c840.webp" width="1200" height="750" alt="Captura da própria demonstração: Agência de viagens" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Agência de viagens</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Destinos, pacotes, galeria ampliável e formulário para preparar pedidos de orçamento. Preços e avaliações demonstrativos.</p></details>
+                  <div class="demo-actions"><a href="/site-de-turismo/?v=vitrines-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20para%20ag%C3%AAncia%20de%20viagens." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Eventos e fotografia">
+                  <a class="demo-cover" href="/demos/aluga-festa/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Aluga Festa"><img src="/assets/img/catalogo-fiel/aluga-festa-f202ca1b8d.webp" width="1200" height="750" alt="Captura da própria demonstração: Aluga Festa" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Eventos e fotografia</span><h3>Aluga Festa</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Locação de cadeiras, mesas e decoração com calculadora ilustrativa para eventos.</p></details>
+                  <div class="demo-actions"><a href="/demos/aluga-festa/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Aluga%20Festa." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/aprovalab-cursinho/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: AprovaLab"><img src="/assets/img/catalogo-fiel/aprovalab-2f1f75909a.webp" width="1200" height="750" alt="Captura da própria demonstração: AprovaLab" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>AprovaLab</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>AprovaLab: demo de cursinho com trilhas, planejamento semanal e contato por WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/aprovalab-cursinho/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20AprovaLab." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/aqua-world/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Aqua World"><img src="/assets/img/catalogo-fiel/aqua-world-c3058e32c1.webp" width="1200" height="750" alt="Captura da própria demonstração: Aqua World" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Aqua World</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo Aqua World para aquarismo e produtos aquáticos.</p></details>
+                  <div class="demo-actions"><a href="/demos/aqua-world/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Aqua%20World." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=arquiteto&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Arquiteto"><img src="/assets/img/catalogo-fiel/arquiteto-33be747ddb.webp" width="1200" height="750" alt="Captura da própria demonstração: 📐 Arquiteto" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Arquiteto</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Projetos residenciais e comerciais</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=arquiteto&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Arquiteto%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=assistencia&amp;v=assistencia-20261101" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Assistência de Celular"><img src="/assets/img/catalogo-fiel/assistencia-de-celular-ce064e4e98.webp" width="1200" height="750" alt="Captura da própria demonstração: 📱 Assistência de Celular" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Assistência de Celular</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Reparos, preços e orçamento com foto no WhatsApp</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=assistencia&amp;v=assistencia-20261101" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Assist%C3%AAncia%20de%20Celular%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/atlas-prime-store/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Atlas Prime"><img src="/assets/img/catalogo-fiel/atlas-prime-fdb2b7b360.webp" width="1200" height="750" alt="Captura da própria demonstração: Atlas Prime" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Atlas Prime</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Atlas Prime: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.</p></details>
+                  <div class="demo-actions"><a href="/demos/atlas-prime-store/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Atlas%20Prime." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demos/azul-vivo-natacao/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Azul Vivo"><img src="/assets/img/catalogo-fiel/azul-vivo-858b6f2423.webp" width="1200" height="750" alt="Captura da própria demonstração: Azul Vivo" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Azul Vivo</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Azul Vivo: demo de escola de natação com modalidades e interesse em aula experimental.</p></details>
+                  <div class="demo-actions"><a href="/demos/azul-vivo-natacao/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Azul%20Vivo." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=bar&amp;v=bar-20261101" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Bar e Coquetelaria"><img src="/assets/img/catalogo-fiel/bar-e-coquetelaria-5cf470ddd4.webp" width="1200" height="750" alt="Captura da própria demonstração: 🍸 Bar e Coquetelaria" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Bar e Coquetelaria</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Drinks autorais, clássicos e música ao vivo</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=bar&amp;v=bar-20261101" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Bar%20e%20Coquetelaria%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demo.html?preset=barbearia&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Barbearia"><img src="/assets/img/catalogo-fiel/barbearia-68d8ecc1f6.webp" width="1200" height="750" alt="Captura da própria demonstração: 💈 Barbearia" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Barbearia</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Barba, corte e terapia quente</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=barbearia&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Barbearia%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="https://marcelooliveira8052668-cyber.github.io/Bicicleta-/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Bike Center — Bicicletaria"><img src="/assets/img/catalogo-fiel/bike-center-bicicletaria-4842e9a2da.webp" width="1200" height="750" alt="Captura da própria demonstração: Bike Center — Bicicletaria" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Bike Center — Bicicletaria</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Vitrine demonstrativa de bicicletas, acessórios e contato comercial.</p></details>
+                  <div class="demo-actions"><a href="https://marcelooliveira8052668-cyber.github.io/Bicicleta-/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Bike%20Center." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/black-diamond/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Black Diamond"><img src="/assets/img/catalogo-fiel/black-diamond-7eb284111d.webp" width="1200" height="750" alt="Captura da própria demonstração: Black Diamond" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Black Diamond</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Black Diamond para Estética automotiva premium. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/black-diamond/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Black%20Diamond." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/borracha-ja/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Borracha Já"><img src="/assets/img/catalogo-fiel/borracha-ja-e91d9e27fe.webp" width="1200" height="750" alt="Captura da própria demonstração: Borracha Já" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Borracha Já</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Borracha Já — demonstração de atendimento de borracharia com solicitação pelo WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/borracha-ja/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Borracha%20J%C3%A1." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/cacamba-certa/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Caçamba Certa"><img src="/assets/img/catalogo-fiel/cacamba-certa-c47be9954c.webp" width="1200" height="750" alt="Captura da própria demonstração: Caçamba Certa" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Caçamba Certa</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo de locação de caçambas com simulação de orçamento e atendimento pelo WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/cacamba-certa/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Ca%C3%A7amba%20Certa." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/casa-acolher/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Casa Acolher"><img src="/assets/img/catalogo-fiel/casa-acolher-9ba60e22d7.webp" width="1200" height="750" alt="Captura da própria demonstração: Casa Acolher" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Casa Acolher</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Casa Acolher para residência de convivência e cuidados para pessoas idosas. Projeto ilustrativo MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/casa-acolher/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Casa%20Acolher." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Eventos e fotografia">
+                  <a class="demo-cover" href="/demo.html?preset=festas&amp;v=festas-20261101" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Casa de Festas"><img src="/assets/img/catalogo-fiel/casa-de-festas-dd9a2cc4c0.webp" width="1200" height="750" alt="Captura da própria demonstração: 🎉 Casa de Festas" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Eventos e fotografia</span><h3>Casa de Festas</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Salão decorado, buffet e reserva de data</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=festas&amp;v=festas-20261101" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Casa%20de%20Festas%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/casa-do-queijo/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Casa do Queijo"><img src="/assets/img/catalogo-fiel/casa-do-queijo-9e18806ac1.webp" width="1200" height="750" alt="Captura da própria demonstração: Casa do Queijo" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Casa do Queijo</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo Casa do Queijo para empório de queijos e experiências gastronômicas.</p></details>
+                  <div class="demo-actions"><a href="/demos/casa-do-queijo/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Casa%20do%20Queijo." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/casanexa/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: CasaNexa"><img src="/assets/img/catalogo-fiel/casanexa-85da91154f.webp" width="1200" height="750" alt="Captura da própria demonstração: CasaNexa" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>CasaNexa</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>CasaNexa: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.</p></details>
+                  <div class="demo-actions"><a href="/demos/casanexa/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20CasaNexa." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/chaveiro-express/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Chaveiro Express — Abertura e chaves 24h"><img src="/assets/img/catalogo-fiel/chaveiro-express-abertura-e-chaves-24h-ac067d192b.webp" width="1200" height="750" alt="Captura da própria demonstração: Chaveiro Express — Abertura e chaves 24h" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Chaveiro Express — Abertura e chaves 24h</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Visual industrial de alta visibilidade, chamado pronto para o WhatsApp, galeria com filtros e painel opcional de chamados no Supabase.</p></details>
+                  <div class="demo-actions"><a href="/demos/chaveiro-express/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20Chaveiro%20Express." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/chronos-prime/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Chronos Prime"><img src="/assets/img/catalogo-fiel/chronos-prime-8251ca1656.webp" width="1200" height="750" alt="Captura da própria demonstração: Chronos Prime" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Chronos Prime</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>CHRONOS PRIME: demonstração de loja virtual de relógios.</p></details>
+                  <div class="demo-actions"><a href="/demos/chronos-prime/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Chronos%20Prime." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Eventos e fotografia">
+                  <a class="demo-cover" href="/demos/casamento/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Clara &amp; Tomás — Site de casamento"><img src="/assets/img/catalogo-fiel/clara-tomas-site-de-casamento-2671233c89.webp" width="1200" height="750" alt="Captura da própria demonstração: Clara &amp; Tomás — Site de casamento" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Eventos e fotografia</span><h3>Clara &amp; Tomás — Site de casamento</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>História, programação, ideias de presentes e confirmação de presença simulada. Casal e evento fictícios, sem cadastro real de convidados.</p></details>
+                  <div class="demo-actions"><a href="/demos/casamento/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20de%20casamento%20como%20a%20demo%20Clara%20%26%20Tom%C3%A1s." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/clean-express/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Clean Express"><img src="/assets/img/catalogo-fiel/clean-express-ecee9b4ae7.webp" width="1200" height="750" alt="Captura da própria demonstração: Clean Express" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Clean Express</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo Clean Express para lavanderia urbana e assinaturas.</p></details>
+                  <div class="demo-actions"><a href="/demos/clean-express/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Clean%20Express." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demo.html?preset=clinica&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Clínica"><img src="/assets/img/catalogo-fiel/clinica-aa46353b1d.webp" width="1200" height="750" alt="Captura da própria demonstração: 🦷 Clínica" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Clínica</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Tratamentos, avaliação e agenda online</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=clinica&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Cl%C3%ADnica%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demo.html?preset=estetica&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Clínica estética"><img src="/assets/img/catalogo-fiel/clinica-estetica-03ddae882b.webp" width="1200" height="750" alt="Captura da própria demonstração: 💫 Clínica estética" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Clínica estética</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Ficha completa de cada tratamento</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=estetica&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Cl%C3%ADnica%20est%C3%A9tica%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demo.html?preset=veterinario&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Clínica veterinária"><img src="/assets/img/catalogo-fiel/clinica-veterinaria-4fcdf82cf3.webp" width="1200" height="750" alt="Captura da própria demonstração: 🐾 Clínica veterinária" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Clínica veterinária</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Consultas, vacinas e emergência 24h</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=veterinario&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Cl%C3%ADnica%20veterin%C3%A1ria%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/colegio-aurora-prime/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Colégio Aurora Prime"><img src="/assets/img/catalogo-fiel/colegio-aurora-prime-0e0fc0b84e.webp" width="1200" height="750" alt="Captura da própria demonstração: Colégio Aurora Prime" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Colégio Aurora Prime</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Colégio Aurora Prime: demonstração de site para escola particular, com proposta pedagógica e solicitação de visitas.</p></details>
+                  <div class="demo-actions"><a href="/demos/colegio-aurora-prime/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Col%C3%A9gio%20Aurora%20Prime." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="https://marcelooliveira8052668-cyber.github.io/CONSTRULAR-PRIME/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Constrular Prime — Materiais de Construção"><img src="/assets/img/catalogo-fiel/constrular-prime-materiais-de-construcao-a9b42504d4.webp" width="1200" height="750" alt="Captura da própria demonstração: Constrular Prime — Materiais de Construção" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Constrular Prime — Materiais de Construção</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Loja demonstrativa de materiais de construção, com catálogo e recursos interativos.</p></details>
+                  <div class="demo-actions"><a href="https://marcelooliveira8052668-cyber.github.io/CONSTRULAR-PRIME/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Constrular%20Prime." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/contabil-organiza/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Contábil Organiza"><img src="/assets/img/catalogo-fiel/contabil-organiza-9b8ea5de6f.webp" width="1200" height="750" alt="Captura da própria demonstração: Contábil Organiza" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Contábil Organiza</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Escritório contábil com checklist demonstrativo mensal e atendimento via WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/contabil-organiza/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Cont%C3%A1bil%20Organiza." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/cor-e-medida/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Cor &amp; Medida"><img src="/assets/img/catalogo-fiel/cor-medida-5008a39485.webp" width="1200" height="750" alt="Captura da própria demonstração: Cor &amp; Medida" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Cor &amp; Medida</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Loja de tintas demonstrativa com calculadora de litros e escolha de cores.</p></details>
+                  <div class="demo-actions"><a href="/demos/cor-e-medida/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Cor%20%26%20Medida." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demos/dentaltech/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: DentalTech"><img src="/assets/img/catalogo-fiel/dentaltech-7c25045ace.webp" width="1200" height="750" alt="Captura da própria demonstração: DentalTech" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>DentalTech</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração DentalTech para Laboratório de próteses digitais. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/dentaltech/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20DentalTech." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demo.html?preset=dentista&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Dentista"><img src="/assets/img/catalogo-fiel/dentista-92c9b2cfb0.webp" width="1200" height="750" alt="Captura da própria demonstração: 🦷 Dentista" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Dentista</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Tratamentos, avaliação e agenda online</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=dentista&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Dentista%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/desentoja/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: DesentoJá"><img src="/assets/img/catalogo-fiel/desentoja-311cba6ba0.webp" width="1200" height="750" alt="Captura da própria demonstração: DesentoJá" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>DesentoJá</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Site demonstrativo para solicitação de serviço de desentupimento via WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/desentoja/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20DesentoJ%C3%A1." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/direcao-prime/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Direção Prime"><img src="/assets/img/catalogo-fiel/direcao-prime-8c6a54b987.webp" width="1200" height="750" alt="Captura da própria demonstração: Direção Prime" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Direção Prime</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Direção Prime para Autoescola e formação de condutores. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/direcao-prime/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Dire%C3%A7%C3%A3o%20Prime." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="https://marcelooliveira8052668-cyber.github.io/Bomboniere-/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Doce Encanto — Bomboniere"><img src="/assets/img/catalogo-fiel/doce-encanto-bomboniere-c2169ff07a.webp" width="1200" height="750" alt="Captura da própria demonstração: Doce Encanto — Bomboniere" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Doce Encanto — Bomboniere</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Catálogo demonstrativo de chocolates e doces com apresentação dos produtos.</p></details>
+                  <div class="demo-actions"><a href="https://marcelooliveira8052668-cyber.github.io/Bomboniere-/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Doce%20Encanto%20Bomboniere." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="/demos/doce-sob-medida/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Doce Sob Medida"><img src="/assets/img/catalogo-fiel/doce-sob-medida-48aa1eaf01.webp" width="1200" height="750" alt="Captura da própria demonstração: Doce Sob Medida" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Doce Sob Medida</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo comercial de confeitaria com montagem de encomenda e WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/doce-sob-medida/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Doce%20Sob%20Medida." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demos/dojo-essencia/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Dojô Essência"><img src="/assets/img/catalogo-fiel/dojo-essencia-02e0230a56.webp" width="1200" height="750" alt="Captura da própria demonstração: Dojô Essência" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Dojô Essência</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Dojô Essência: demo de academia de judô educativa, com turmas e interesse em aula experimental.</p></details>
+                  <div class="demo-actions"><a href="/demos/dojo-essencia/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Doj%C3%B4%20Ess%C3%AAncia." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="/demos/dolce-neve/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Dolce Neve"><img src="/assets/img/catalogo-fiel/dolce-neve-55199820f9.webp" width="1200" height="750" alt="Captura da própria demonstração: Dolce Neve" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Dolce Neve</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Dolce Neve para sorveteria e gelateria. Projeto ilustrativo MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/dolce-neve/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Dolce%20Neve." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/editora-farol/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Editora Farol"><img src="/assets/img/catalogo-fiel/editora-farol-73827a79ae.webp" width="1200" height="750" alt="Captura da própria demonstração: Editora Farol" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Editora Farol</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Modelo ilustrativo Editora Farol para editoras e distribuição de livros.</p></details>
+                  <div class="demo-actions"><a href="/demos/editora-farol/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Editora%20Farol." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/contabilidade/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Eixo Contábil — Contabilidade"><img src="/assets/img/catalogo-fiel/eixo-contabil-contabilidade-fbcfa004dc.webp" width="1200" height="750" alt="Captura da própria demonstração: Eixo Contábil — Contabilidade" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Eixo Contábil — Contabilidade</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Apresentação de serviços e roteiro interativo para uma primeira conversa. Marca fictícia, sem cálculos, diagnóstico ou atendimento contábil.</p></details>
+                  <div class="demo-actions"><a href="/demos/contabilidade/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20de%20contabilidade%20como%20a%20demo%20Eixo%20Cont%C3%A1bil." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/embalagem-direta/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Embalagem Direta"><img src="/assets/img/catalogo-fiel/embalagem-direta-4114e09a10.webp" width="1200" height="750" alt="Captura da própria demonstração: Embalagem Direta" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Embalagem Direta</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Embalagem Direta: demonstração para atacado de embalagens com catálogo e carrinho de cotação por WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/embalagem-direta/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Embalagem%20Direta." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/entrelares/index.html" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: EntreLares - Profissionais para sua casa"><img src="/assets/img/catalogo-fiel/entrelares-profissionais-para-sua-casa-cd0e41ab16.webp" width="1200" height="750" alt="Captura da própria demonstração: EntreLares - Profissionais para sua casa" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>EntreLares - Profissionais para sua casa</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Peça um trabalhador para casa: diarista, passadeira, cozinheira e organização, com dois caminhos guiados. Marca e dados fictícios, sem contratação automática.</p></details>
+                  <div class="demo-actions"><a href="/demos/entrelares/index.html" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20entrelares" target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/epi-na-medida/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: EPI na Medida"><img src="/assets/img/catalogo-fiel/epi-na-medida-6b2bd812b9.webp" width="1200" height="750" alt="Captura da própria demonstração: EPI na Medida" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>EPI na Medida</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Portal de EPIs com cotação de produtos por quantidade e tamanho.</p></details>
+                  <div class="demo-actions"><a href="/demos/epi-na-medida/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20EPI%20na%20Medida." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=escola&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Escola e cursos"><img src="/assets/img/catalogo-fiel/escola-e-cursos-1b9cd0e3c0.webp" width="1200" height="750" alt="Captura da própria demonstração: 🎓 Escola e cursos" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Escola e cursos</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Cursos, turmas e matrícula online</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=escola&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Escola%20e%20cursos%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/estaciona-plus/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Estaciona+"><img src="/assets/img/catalogo-fiel/estaciona-2162bca74e.webp" width="1200" height="750" alt="Captura da própria demonstração: Estaciona+" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Estaciona+</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo operacional de estacionamento com entradas, saídas, cálculo ilustrativo e exportação CSV.</p></details>
+                  <div class="demo-actions"><a href="/demos/estaciona-plus/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Estaciona%2B." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/estoque-miudo/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Estoque Miúdo"><img src="/assets/img/catalogo-fiel/estoque-miudo-b72702947c.webp" width="1200" height="750" alt="Captura da própria demonstração: Estoque Miúdo" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Estoque Miúdo</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Estoque Miúdo — demonstração de controle local de produtos e estoque mínimo.</p></details>
+                  <div class="demo-actions"><a href="/demos/estoque-miudo/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Estoque%20Mi%C3%BAdo." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/extincontrol/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: ExtinControl"><img src="/assets/img/catalogo-fiel/extincontrol-8fcf521883.webp" width="1200" height="750" alt="Captura da própria demonstração: ExtinControl" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>ExtinControl</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>ExtinControl: painel demonstrativo de acompanhamento administrativo de equipamentos e datas.</p></details>
+                  <div class="demo-actions"><a href="/demos/extincontrol/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20ExtinControl." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demo.html?preset=fisioterapia&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Fisioterapia"><img src="/assets/img/catalogo-fiel/fisioterapia-e05421c114.webp" width="1200" height="750" alt="Captura da própria demonstração: 🦵 Fisioterapia" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Fisioterapia</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Convênios, avaliação grátis e agenda</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=fisioterapia&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Fisioterapia%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/floricultura/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Flora &amp; Afeto — Floricultura"><img src="/assets/img/catalogo-fiel/flora-afeto-floricultura-2b94c0f541.webp" width="1200" height="750" alt="Captura da própria demonstração: Flora &amp; Afeto — Floricultura" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Flora &amp; Afeto — Floricultura</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Catálogo por ocasião e montador de buquê com flores, embalagem, cartão e subtotal ilustrativo. Marca fictícia, sem compra ou entrega reais.</p></details>
+                  <div class="demo-actions"><a href="/demos/floricultura/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20de%20floricultura%20como%20a%20demo%20Flora%20%26%20Afeto." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/forma-3d/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Forma 3D"><img src="/assets/img/catalogo-fiel/forma-3d-79f30e9706.webp" width="1200" height="750" alt="Captura da própria demonstração: Forma 3D" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Forma 3D</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Forma 3D — estúdio demonstrativo de impressão 3D e orçamento aproximado.</p></details>
+                  <div class="demo-actions"><a href="/demos/forma-3d/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Forma%203D." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=fotografo&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Fotógrafo"><img src="/assets/img/catalogo-fiel/fotografo-185ba819df.webp" width="1200" height="750" alt="Captura da própria demonstração: 📷 Fotógrafo" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Fotógrafo</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Portfólio e orçamento de ensaio</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=fotografo&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Fot%C3%B3grafo%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Eventos e fotografia">
+                  <a class="demo-cover" href="/fotos-amigos/index.html" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Fotos entre Amigos"><img src="/assets/img/catalogo-fiel/fotos-entre-amigos-ffd63655cb.webp" width="1200" height="750" alt="Captura da própria demonstração: 📸 Fotos entre Amigos" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Eventos e fotografia</span><h3>Fotos entre Amigos</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Álbum digital com 500 espaços para fotos e 50 para vídeos: filtros, busca, lightbox e apresentação automática — o cliente só arrasta as fotos dele.</p></details>
+                  <div class="demo-actions"><a href="/fotos-amigos/index.html" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Fotos%20entre%20Amigos%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20%C3%A1lbum%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=fretes&amp;v=fretes-20261101" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Fretes e Transportes"><img src="/assets/img/catalogo-fiel/fretes-e-transportes-ac61f2e915.webp" width="1200" height="750" alt="Captura da própria demonstração: 🚚 Fretes e Transportes" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Fretes e Transportes</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Fretes rápidos e logística para pessoas e empresas</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=fretes&amp;v=fretes-20261101" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Mudan%C3%A7as%20e%20Transportes%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/frio-certo/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Frio Certo"><img src="/assets/img/catalogo-fiel/frio-certo-fe74730fd2.webp" width="1200" height="750" alt="Captura da própria demonstração: Frio Certo" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Frio Certo</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração de climatização com triagem e solicitação de visita por WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/frio-certo/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Frio%20Certo." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/frota-em-dia/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Frota em Dia"><img src="/assets/img/catalogo-fiel/frota-em-dia-6605d23a9f.webp" width="1200" height="750" alt="Captura da própria demonstração: Frota em Dia" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Frota em Dia</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Frota em Dia — demo de planejamento local de manutenção de veículos.</p></details>
+                  <div class="demo-actions"><a href="/demos/frota-em-dia/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Frota%20em%20Dia." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="/demos/gelo-express/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Gelo Express"><img src="/assets/img/catalogo-fiel/gelo-express-8a673c0c33.webp" width="1200" height="750" alt="Captura da própria demonstração: Gelo Express" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Gelo Express</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Distribuidora de gelo para eventos e comércios com carrinho e seleção de período.</p></details>
+                  <div class="demo-actions"><a href="/demos/gelo-express/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Gelo%20Express." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/grafica-ponto/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Gráfica Ponto"><img src="/assets/img/catalogo-fiel/grafica-ponto-2dc30a3a9d.webp" width="1200" height="750" alt="Captura da própria demonstração: Gráfica Ponto" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Gráfica Ponto</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Gráfica rápida demonstrativa com cálculo de impressos e solicitação de orçamento pelo WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/grafica-ponto/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Gr%C3%A1fica%20Ponto." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/helpdesk-local/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: HelpDesk Local"><img src="/assets/img/catalogo-fiel/helpdesk-local-a24230eb06.webp" width="1200" height="750" alt="Captura da própria demonstração: HelpDesk Local" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>HelpDesk Local</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo de help desk para informática com chamados locais e contato pelo WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/helpdesk-local/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20HelpDesk%20Local." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demo.html?preset=hotel&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Hotel e pousada"><img src="/assets/img/catalogo-fiel/hotel-e-pousada-c276320e94.webp" width="1200" height="750" alt="Captura da própria demonstração: 🏨 Hotel e pousada" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Hotel e pousada</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Quartos, diária e reserva direta</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=hotel&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Hotel%20e%20pousada%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demo.html?preset=imobiliaria&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Imobiliária"><img src="/assets/img/catalogo-fiel/imobiliaria-89a341cfd4.webp" width="1200" height="750" alt="Captura da própria demonstração: 🏠 Imobiliária" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Imobiliária</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Imóveis à venda e avaliação gratuita</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=imobiliaria&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Imobili%C3%A1ria%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/jardim-secreto/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Jardim Secreto"><img src="/assets/img/catalogo-fiel/jardim-secreto-efca3d2ebc.webp" width="1200" height="750" alt="Captura da própria demonstração: Jardim Secreto" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Jardim Secreto</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Jardim Secreto para Floricultura e presentes especiais. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/jardim-secreto/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Jardim%20Secreto." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Utilidade pública">
+                  <a class="demo-cover" href="/demos/junto/index.html" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: junto. — Voluntariado e Impacto Social"><img src="/assets/img/catalogo-fiel/junto-voluntariado-e-impacto-social-635b24ff26.webp" width="1200" height="750" alt="Captura da própria demonstração: junto. — Voluntariado e Impacto Social" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Utilidade pública</span><h3>junto. — Voluntariado e Impacto Social</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Uma causa para chamar de sua e planejamento interativo. Dados fictícios, sem confirmação automática.</p></details>
+                  <div class="demo-actions"><a href="/demos/junto/index.html" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20junto" target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="/demo.html?preset=lanchonete&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Lanchonete"><img src="/assets/img/catalogo-fiel/lanchonete-ed5dbc9a82.webp" width="1200" height="750" alt="Captura da própria demonstração: 🍔 Lanchonete" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Lanchonete</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Cardápio com preço e pedido pelo WhatsApp</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=lanchonete&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Lanchonete%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/lista-certa/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Lista Certa"><img src="/assets/img/catalogo-fiel/lista-certa-1b6e3d41dd.webp" width="1200" height="750" alt="Captura da própria demonstração: Lista Certa" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Lista Certa</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Papelaria demonstrativa com busca, lista de materiais, quantidades e orçamento por WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/lista-certa/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Lista%20Certa." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demo.html?preset=locadora&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Locadora"><img src="/assets/img/catalogo-fiel/locadora-1666663b9c.webp" width="1200" height="750" alt="Captura da própria demonstração: 🚗 Locadora" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Locadora</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Frota com diária e reserva de datas</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=locadora&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Locadora%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/otica/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Lumina Ótica — Óculos de grau e sol"><img src="/assets/img/catalogo-fiel/lumina-otica-oculos-de-grau-e-sol-7f7622df6e.webp" width="1200" height="750" alt="Captura da própria demonstração: Lumina Ótica — Óculos de grau e sol" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Lumina Ótica — Óculos de grau e sol</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Coleção de armações com filtro, guia de estilo por formato de rosto e lista de prova local. Marca fictícia, sem venda, exame de vista ou envio de dados.</p></details>
+                  <div class="demo-actions"><a href="/demos/otica/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20de%20%C3%B3tica%20como%20a%20demo%20Lumina%20%C3%93tica." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/maison-reuse/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Maison Reuse"><img src="/assets/img/catalogo-fiel/maison-reuse-9274caefb8.webp" width="1200" height="750" alt="Captura da própria demonstração: Maison Reuse" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Maison Reuse</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Maison Reuse para brechó premium e moda circular. Projeto ilustrativo MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/maison-reuse/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Maison%20Reuse." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/maxloc/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MaxLoc"><img src="/assets/img/catalogo-fiel/maxloc-436dcf6e8a.webp" width="1200" height="750" alt="Captura da própria demonstração: MaxLoc" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>MaxLoc</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração MaxLoc para Locação de equipamentos e máquinas. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/maxloc/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MaxLoc." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/mercatto/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Mercatto"><img src="/assets/img/catalogo-fiel/mercatto-d9a28fd6be.webp" width="1200" height="750" alt="Captura da própria demonstração: Mercatto" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Mercatto</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Mercatto: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.</p></details>
+                  <div class="demo-actions"><a href="/demos/mercatto/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Mercatto." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="/demos/mesa-da-semana/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Mesa da Semana"><img src="/assets/img/catalogo-fiel/mesa-da-semana-7d3739f73e.webp" width="1200" height="750" alt="Captura da própria demonstração: Mesa da Semana" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Mesa da Semana</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Mesa da Semana para marmitaria e encomendas semanais. Projeto ilustrativo MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/mesa-da-semana/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Mesa%20da%20Semana." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/agenda-pro/?v=agenda-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS Agenda Pro"><img src="/assets/img/catalogo-fiel/moss-agenda-pro-ece456fe9f.webp" width="1200" height="750" alt="Captura da própria demonstração: MOSS Agenda Pro" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>MOSS Agenda Pro</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Modelo de agenda para organizar atendimentos, clientes e lembretes manuais. Demonstração local; sincronização depende de configuração.</p></details>
+                  <div class="demo-actions"><a href="/agenda-pro/?v=agenda-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20Agenda%20Pro." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/distribuidora/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS Distribuidora"><img src="/assets/img/catalogo-fiel/moss-distribuidora-da9858af5d.webp" width="1200" height="750" alt="Captura da própria demonstração: MOSS Distribuidora" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>MOSS Distribuidora</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Loja virtual com catálogo, promoções, carrinho de compras e pedidos pelo WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/distribuidora/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20Distribuidora." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="https://marcelooliveira8052668-cyber.github.io/MOSS-FIT-FOOD/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS FIT FOOD — Alimentação Saudável"><img src="/assets/img/catalogo-fiel/moss-fit-food-alimentacao-saudavel-bc0b5af4ac.webp" width="1200" height="750" alt="Captura da própria demonstração: MOSS FIT FOOD — Alimentação Saudável" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>MOSS FIT FOOD — Alimentação Saudável</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Cardápio demonstrativo de refeições e produtos de alimentação saudável.</p></details>
+                  <div class="demo-actions"><a href="https://marcelooliveira8052668-cyber.github.io/MOSS-FIT-FOOD/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20FIT%20FOOD." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/moss-home-prime/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS HOME PRIME — Móveis e decoração"><img src="/assets/img/catalogo-fiel/moss-home-prime-moveis-e-decoracao-11b407309e.webp" width="1200" height="750" alt="Captura da própria demonstração: 🛋️ MOSS HOME PRIME — Móveis e decoração" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>MOSS HOME PRIME — Móveis e decoração</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Catálogo demonstrativo com 60 móveis, cinco espaços de fotos por produto, busca, filtros, favoritos, comparação e carrinho via WhatsApp. Imagens e preços ilustrativos.</p></details>
+                  <div class="demo-actions"><a href="/demos/moss-home-prime/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ola%21%20Quero%20um%20orcamento%20do%20modelo%20MOSS%20HOME%20PRIME." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/moss-motors/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS Motors — Loja de veículos"><img src="/assets/img/catalogo-fiel/moss-motors-loja-de-veiculos-5f286d78d6.webp" width="1200" height="750" alt="Captura da própria demonstração: MOSS Motors — Loja de veículos" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>MOSS Motors — Loja de veículos</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Explore 20 veículos fictícios, filtros, detalhes, simulação de financiamento e painel demonstrativo local. Plataforma automotiva: funcionalidades extras sob orçamento.</p></details>
+                  <div class="demo-actions"><a href="/demos/moss-motors/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ola%21%20Vi%20a%20demonstracao%20MOSS%20Motors%20no%20site%20da%20MOSS%20Digital%20e%20quero%20um%20orcamento%20para%20um%20site%20automotivo%20completo." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/moss-sports/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS SPORTS — Loja Esportiva"><img src="/assets/img/catalogo-fiel/moss-sports-loja-esportiva-a15861d9fe.webp" width="1200" height="750" alt="Captura da própria demonstração: MOSS SPORTS — Loja Esportiva" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>MOSS SPORTS — Loja Esportiva</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Loja esportiva com 300+ produtos, bicicletas normais e elétricas, barracas, roupas e equipamentos para todos os esportes, carrinho e pedidos pelo WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/moss-sports/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20SPORTS." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Empreendedorismo">
+                  <a class="demo-cover" href="https://marcelooliveira8052668-cyber.github.io/MOSS-STUDIO-PRO/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS Studio Pro — Criador Visual"><img src="/assets/img/catalogo-fiel/moss-studio-pro-criador-visual-449ec082c8.webp" width="1200" height="750" alt="Captura da própria demonstração: MOSS Studio Pro — Criador Visual" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Empreendedorismo</span><h3>MOSS Studio Pro — Criador Visual</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração independente de um criador visual de sites.</p></details>
+                  <div class="demo-actions"><a href="https://marcelooliveira8052668-cyber.github.io/MOSS-STUDIO-PRO/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20Studio%20Pro." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/moss-vision-prime/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MOSS Vision Prime — Ótica"><img src="/assets/img/catalogo-fiel/moss-vision-prime-otica-9503afdbc2.webp" width="1200" height="750" alt="Captura da própria demonstração: MOSS Vision Prime — Ótica" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>MOSS Vision Prime — Ótica</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Ótica premium demonstrativa com 60 itens de grau, sol, esportivos e acessórios, favoritos, filtros, comparador e sacola.</p></details>
+                  <div class="demo-actions"><a href="/demos/moss-vision-prime/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20site%20como%20a%20MOSS%20Vision%20Prime." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/mudaja/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: MudaJá"><img src="/assets/img/catalogo-fiel/mudaja-edaa1c7f3c.webp" width="1200" height="750" alt="Captura da própria demonstração: MudaJá" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>MudaJá</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo de mudanças residenciais com checklist local e pedido de orçamento pelo WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/mudaja/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MudaJ%C3%A1." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/music-house/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Music House"><img src="/assets/img/catalogo-fiel/music-house-59214d7d0e.webp" width="1200" height="750" alt="Captura da própria demonstração: Music House" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Music House</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Music House para Instrumentos e soluções musicais. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/music-house/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Music%20House." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Eventos e fotografia">
+                  <a class="demo-cover" href="/demos/nature-escape/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Nature Escape"><img src="/assets/img/catalogo-fiel/nature-escape-b9c542b07e.webp" width="1200" height="750" alt="Captura da própria demonstração: Nature Escape" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Eventos e fotografia</span><h3>Nature Escape</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Nature Escape para Glamping e refúgios na natureza. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/nature-escape/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Nature%20Escape." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Empreendedorismo">
+                  <a class="demo-cover" href="/demos/nexo-work/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Nexo Work"><img src="/assets/img/catalogo-fiel/nexo-work-2708ef17c9.webp" width="1200" height="750" alt="Captura da própria demonstração: Nexo Work" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Empreendedorismo</span><h3>Nexo Work</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Modelo ilustrativo Nexo Work para coworking e salas compartilhadas.</p></details>
+                  <div class="demo-actions"><a href="/demos/nexo-work/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Nexo%20Work." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demo.html?preset=nutricionista&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Nutricionista"><img src="/assets/img/catalogo-fiel/nutricionista-1e5bc178ca.webp" width="1200" height="750" alt="Captura da própria demonstração: 🥗 Nutricionista" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Nutricionista</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Planos alimentares personalizados</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=nutricionista&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Nutricionista%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Eventos e fotografia">
+                  <a class="demo-cover" href="/demos/ocean-prime/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Ocean Prime"><img src="/assets/img/catalogo-fiel/ocean-prime-70c8ba3c64.webp" width="1200" height="750" alt="Captura da própria demonstração: Ocean Prime" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Eventos e fotografia</span><h3>Ocean Prime</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Ocean Prime para Experiências e soluções náuticas. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/ocean-prime/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Ocean%20Prime." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=oficina&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Oficina"><img src="/assets/img/catalogo-fiel/oficina-3345f36b81.webp" width="1200" height="750" alt="Captura da própria demonstração: 🔧 Oficina" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Oficina</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Serviços e orçamento no mesmo dia</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=oficina&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Oficina%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/orbita-cursos/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Órbita Cursos"><img src="/assets/img/catalogo-fiel/orbita-cursos-6b49832d52.webp" width="1200" height="750" alt="Captura da própria demonstração: Órbita Cursos" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Órbita Cursos</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Órbita Cursos: escola de cursos livres com catálogo interativo, busca, detalhes e lista de interesse.</p></details>
+                  <div class="demo-actions"><a href="/demos/orbita-cursos/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20%C3%93rbita%20Cursos." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/ordemfix/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: OrdemFix"><img src="/assets/img/catalogo-fiel/ordemfix-57bd8695a2.webp" width="1200" height="750" alt="Captura da própria demonstração: OrdemFix" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>OrdemFix</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Painel demonstrativo de ordens de serviço para assistência de eletrodomésticos, sem servidor.</p></details>
+                  <div class="demo-actions"><a href="/demos/ordemfix/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20OrdemFix." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="/demo.html?preset=padaria&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Padaria e café"><img src="/assets/img/catalogo-fiel/padaria-e-cafe-27eebe8921.webp" width="1200" height="750" alt="Captura da própria demonstração: 🥐 Padaria e café" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Padaria e café</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Cardápio da manhã e encomenda para negócio</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=padaria&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Padaria%20e%20caf%C3%A9%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="/demos/pastelaria-sabor-de-feira/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Pastelaria Sabor de Feira"><img src="/assets/img/catalogo-fiel/pastelaria-sabor-de-feira-04382efdfe.webp" width="1200" height="750" alt="Captura da própria demonstração: Pastelaria Sabor de Feira" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Pastelaria Sabor de Feira</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Pastelaria Sabor de Feira: pastéis crocantes, bebidas e pedidos pelo WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/pastelaria-sabor-de-feira/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Pastelaria%20Sabor%20de%20Feira." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/pedra-exata/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Pedra Exata"><img src="/assets/img/catalogo-fiel/pedra-exata-b7c91a96a4.webp" width="1200" height="750" alt="Captura da própria demonstração: Pedra Exata" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Pedra Exata</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Pedra Exata: demo de marmoraria com orçamento ilustrativo de peças sob medida.</p></details>
+                  <div class="demo-actions"><a href="/demos/pedra-exata/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Pedra%20Exata." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/pet-resort/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Pet Resort"><img src="/assets/img/catalogo-fiel/pet-resort-5cabb04f61.webp" width="1200" height="750" alt="Captura da própria demonstração: Pet Resort" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Pet Resort</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Pet Resort para Hospedagem e cuidados para pets. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/pet-resort/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Pet%20Resort." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demo.html?preset=petshop&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Pet shop"><img src="/assets/img/catalogo-fiel/pet-shop-e0b779f5ca.webp" width="1200" height="750" alt="Captura da própria demonstração: 🐾 Pet shop" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Pet shop</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Serviços, preços e agendamento</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=petshop&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Pet%20shop%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/piscina-em-dia/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Piscina em Dia"><img src="/assets/img/catalogo-fiel/piscina-em-dia-dbc18640a2.webp" width="1200" height="750" alt="Captura da própria demonstração: Piscina em Dia" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Piscina em Dia</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo para manutenção de piscinas: volume aproximado, checklist local e solicitação de visita.</p></details>
+                  <div class="demo-actions"><a href="/demos/piscina-em-dia/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Piscina%20em%20Dia." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="/demo.html?preset=pizzaria&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Pizzaria"><img src="/assets/img/catalogo-fiel/pizzaria-1dbcbc63a4.webp" width="1200" height="750" alt="Captura da própria demonstração: 🍕 Pizzaria" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Pizzaria</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Forno a lenha, cardápio e reserva de mesa</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=pizzaria&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Pizzaria%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/ponto-ajuste/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Ponto &amp; Ajuste — Ateliê de costura"><img src="/assets/img/catalogo-fiel/ponto-ajuste-atelie-de-costura-756345f352.webp" width="1200" height="750" alt="Captura da própria demonstração: Ponto &amp; Ajuste — Ateliê de costura" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Ponto &amp; Ajuste — Ateliê de costura</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Visual editorial, oito fotos de costura, galeria interativa e conversa pelo WhatsApp. Supabase opcional com painel restrito e manual de instalação.</p></details>
+                  <div class="demo-actions"><a href="/demos/ponto-ajuste/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20Ponto%20%26%20Ajuste." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Empreendedorismo">
+                  <a class="demo-cover" href="/demos/pontocomum/index.html" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: ponto comum — Coworking e Salas de Reuniao"><img src="/assets/img/catalogo-fiel/ponto-comum-coworking-e-salas-de-reuniao-9026646e69.webp" width="1200" height="750" alt="Captura da própria demonstração: ponto comum — Coworking e Salas de Reuniao" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Empreendedorismo</span><h3>ponto comum — Coworking e Salas de Reuniao</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Encontre o seu ponto e planejamento interativo. Dados fictícios, sem confirmação automática.</p></details>
+                  <div class="demo-actions"><a href="/demos/pontocomum/index.html" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20pontocomum" target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demo.html?preset=servicos&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Prestação de serviço"><img src="/assets/img/catalogo-fiel/prestacao-de-servico-5fe41ac5b7.webp" width="1200" height="750" alt="Captura da própria demonstração: 🛠️ Prestação de serviço" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Prestação de serviço</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Orçamento na hora e atendimento</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=servicos&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Presta%C3%A7%C3%A3o%20de%20servi%C3%A7o%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demo.html?preset=psicologo&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Psicólogo"><img src="/assets/img/catalogo-fiel/psicologo-7b2d58decb.webp" width="1200" height="750" alt="Captura da própria demonstração: 🧠 Psicólogo" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Psicólogo</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Terapia individual, casal e online</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=psicologo&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Psic%C3%B3logo%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/pulse-fashion/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Pulse Fashion"><img src="/assets/img/catalogo-fiel/pulse-fashion-a84a753336.webp" width="1200" height="750" alt="Captura da própria demonstração: Pulse Fashion" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Pulse Fashion</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Pulse Fashion: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.</p></details>
+                  <div class="demo-actions"><a href="/demos/pulse-fashion/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Pulse%20Fashion." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demos/quadra-livre/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Quadra Livre"><img src="/assets/img/catalogo-fiel/quadra-livre-7009e7a208.webp" width="1200" height="750" alt="Captura da própria demonstração: Quadra Livre" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Quadra Livre</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Quadra Livre — demo de consulta de horários para futsal e beach tennis.</p></details>
+                  <div class="demo-actions"><a href="/demos/quadra-livre/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Quadra%20Livre." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Empreendedorismo">
+                  <a class="demo-cover" href="/demos/raizfeira/index.html" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: raiz / feira — Feira de Produtores Locais"><img src="/assets/img/catalogo-fiel/raiz-feira-feira-de-produtores-locais-a269ad081f.webp" width="1200" height="750" alt="Captura da própria demonstração: raiz / feira — Feira de Produtores Locais" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Empreendedorismo</span><h3>raiz / feira — Feira de Produtores Locais</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Fresquinho na banca e planejamento interativo. Dados fictícios, sem confirmação automática.</p></details>
+                  <div class="demo-actions"><a href="/demos/raizfeira/index.html" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20raizfeira" target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Utilidade pública">
+                  <a class="demo-cover" href="/demos/reciclo/index.html" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: ReCiclo — Reciclagem e Ecopontos"><img src="/assets/img/catalogo-fiel/reciclo-reciclagem-e-ecopontos-95ad06eaa4.webp" width="1200" height="750" alt="Captura da própria demonstração: ReCiclo — Reciclagem e Ecopontos" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Utilidade pública</span><h3>ReCiclo — Reciclagem e Ecopontos</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Pontos de coleta e planejamento interativo. Dados fictícios, sem confirmação automática.</p></details>
+                  <div class="demo-actions"><a href="/demos/reciclo/index.html" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20reciclo" target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Alimentação">
+                  <a class="demo-cover" href="/restaurante-360/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Restaurante 360 — à la carte, buffet e rodízio"><img src="/assets/img/catalogo-fiel/restaurante-360-a-la-carte-buffet-e-rodizio-a9be445f39.webp" width="1200" height="750" alt="Captura da própria demonstração: Restaurante 360 — à la carte, buffet e rodízio" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Alimentação</span><h3>Restaurante 360 — à la carte, buffet e rodízio</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Site com identidade própria e painel de salão, cozinha/bar, caixa e estoque. Operação demonstrativa local, sem pagamentos ou sincronização reais.</p></details>
+                  <div class="demo-actions"><a href="/restaurante-360/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="/restaurante-360/painel.html" target="_blank" rel="noopener noreferrer">Testar operação ↗</a></div></div></article>
+<article class="demo-card" data-category="Eventos e fotografia">
+                  <a class="demo-cover" href="/demos/rota-viva/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Rota Viva"><img src="/assets/img/catalogo-fiel/rota-viva-2dde53808f.webp" width="1200" height="750" alt="Captura da própria demonstração: Rota Viva" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Eventos e fotografia</span><h3>Rota Viva</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Modelo ilustrativo Rota Viva para agências de turismo e experiências de viagem.</p></details>
+                  <div class="demo-actions"><a href="/demos/rota-viva/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Rota%20Viva." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/safehome/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: SafeHome"><img src="/assets/img/catalogo-fiel/safehome-f1bd5baec2.webp" width="1200" height="750" alt="Captura da própria demonstração: SafeHome" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>SafeHome</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo SafeHome para segurança eletrônica, criada pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/safehome/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20SafeHome." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demo.html?preset=salao&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Salão de beleza"><img src="/assets/img/catalogo-fiel/salao-de-beleza-e6dec688a8.webp" width="1200" height="750" alt="Captura da própria demonstração: 💇 Salão de beleza" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Salão de beleza</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Agenda online, sem fila de espera</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=salao&amp;fotos=fotos-20261027" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Sal%C3%A3o%20de%20beleza%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/sentinela-digital/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Sentinela Digital"><img src="/assets/img/catalogo-fiel/sentinela-digital-29c8cf734c.webp" width="1200" height="750" alt="Captura da própria demonstração: Sentinela Digital" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Sentinela Digital</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Modelo ilustrativo Sentinela Digital para consultoria de segurança da informação defensiva.</p></details>
+                  <div class="demo-actions"><a href="/demos/sentinela-digital/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Sentinela%20Digital." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/sky-vision/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Sky Vision"><img src="/assets/img/catalogo-fiel/sky-vision-cbcdef6afa.webp" width="1200" height="750" alt="Captura da própria demonstração: Sky Vision" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Sky Vision</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo Sky Vision para drones e produção aérea.</p></details>
+                  <div class="demo-actions"><a href="/demos/sky-vision/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Sky%20Vision." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/sol-do-bairro/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Sol do Bairro — Energia solar"><img src="/assets/img/catalogo-fiel/sol-do-bairro-energia-solar-3abc889d6a.webp" width="1200" height="750" alt="Captura da própria demonstração: Sol do Bairro — Energia solar" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Sol do Bairro — Energia solar</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Simulador de economia no navegador, proposta pelo WhatsApp com a simulação embutida e painel opcional de propostas no Supabase.</p></details>
+                  <div class="demo-actions"><a href="/demos/sol-do-bairro/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20Sol%20do%20Bairro." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/sola-viva/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Sola Viva"><img src="/assets/img/catalogo-fiel/sola-viva-0df1f2d5ee.webp" width="1200" height="750" alt="Captura da própria demonstração: Sola Viva" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Sola Viva</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Sola Viva: demonstração de sapataria e reparos com controle local de serviços, criada pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/sola-viva/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Sola%20Viva." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Beleza e saúde">
+                  <a class="demo-cover" href="/demo.html?preset=tatuagem&amp;v=tatuagem-20261101" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Studio de Tatuagem"><img src="/assets/img/catalogo-fiel/studio-de-tatuagem-4b637bd40e.webp" width="1200" height="750" alt="Captura da própria demonstração: 🖋️ Studio de Tatuagem" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Beleza e saúde</span><h3>Studio de Tatuagem</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Estilos, galeria de trabalhos e agendamento pelo WhatsApp</p></details>
+                  <div class="demo-actions"><a href="/demo.html?preset=tatuagem&amp;v=tatuagem-20261101" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Studio%20de%20Tatuagem%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Empreendedorismo">
+                  <a class="demo-cover" href="/demos/talentop/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: TalentoP"><img src="/assets/img/catalogo-fiel/talentop-2ffd4a5a73.webp" width="1200" height="750" alt="Captura da própria demonstração: TalentoP" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Empreendedorismo</span><h3>TalentoP</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Modelo ilustrativo TalentoP para recrutamento e vagas de emprego.</p></details>
+                  <div class="demo-actions"><a href="/demos/talentop/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20TalentoP." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/tela-e-trama/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Tela &amp; Trama"><img src="/assets/img/catalogo-fiel/tela-trama-c815da1554.webp" width="1200" height="750" alt="Captura da própria demonstração: Tela &amp; Trama" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Tela &amp; Trama</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Tela &amp; Trama para curadoria de filmes e séries. Projeto ilustrativo MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/tela-e-trama/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Tela%20%26%20Trama." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/telha-certa/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Telha Certa"><img src="/assets/img/catalogo-fiel/telha-certa-c97e7d5a4a.webp" width="1200" height="750" alt="Captura da própria demonstração: Telha Certa" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>Telha Certa</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Empresa de telhados e calhas com estimador ilustrativo de área de cobertura.</p></details>
+                  <div class="demo-actions"><a href="/demos/telha-certa/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Telha%20Certa." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Serviços">
+                  <a class="demo-cover" href="/demos/toldoforma/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: ToldoForma"><img src="/assets/img/catalogo-fiel/toldoforma-02b35476cd.webp" width="1200" height="750" alt="Captura da própria demonstração: ToldoForma" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Serviços</span><h3>ToldoForma</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>ToldoForma: demonstração de toldos e coberturas com orçamento assistido por etapas.</p></details>
+                  <div class="demo-actions"><a href="/demos/toldoforma/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20ToldoForma." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/uniforme-pro/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Uniforme Pro"><img src="/assets/img/catalogo-fiel/uniforme-pro-73ff7f9c6c.webp" width="1200" height="750" alt="Captura da própria demonstração: Uniforme Pro" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Uniforme Pro</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demo de uniformes corporativos com seleção de modelo, tamanhos e orçamento via WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/uniforme-pro/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Uniforme%20Pro." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/vidro-medida/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Vidro &amp; Medida"><img src="/assets/img/catalogo-fiel/vidro-medida-ccc5658721.webp" width="1200" height="750" alt="Captura da própria demonstração: Vidro &amp; Medida" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Vidro &amp; Medida</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Vidraçaria com estimativa ilustrativa de metragem e pedido de orçamento pelo WhatsApp.</p></details>
+                  <div class="demo-actions"><a href="/demos/vidro-medida/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Vidro%20%26%20Medida." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/vivamall/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: VivaMall"><img src="/assets/img/catalogo-fiel/vivamall-1edde2dda8.webp" width="1200" height="750" alt="Captura da própria demonstração: VivaMall" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>VivaMall</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>VivaMall: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.</p></details>
+                  <div class="demo-actions"><a href="/demos/vivamall/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20VivaMall." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article>
+<article class="demo-card" data-category="Comércio">
+                  <a class="demo-cover" href="/demos/wood-prime/" target="_blank" rel="noopener noreferrer" aria-label="Abrir demo: Wood Prime"><img src="/assets/img/catalogo-fiel/wood-prime-d0a8b736bf.webp" width="1200" height="750" alt="Captura da própria demonstração: Wood Prime" loading="lazy" decoding="async"></a>
+                  <div class="demo-body"><span class="demo-category">Comércio</span><h3>Wood Prime</h3>
+                  <details class="demo-details"><summary>Sobre esta demo</summary><p>Demonstração Wood Prime para Marcenaria e móveis sob medida. Projeto ilustrativo criado pela MOSS Digital.</p></details>
+                  <div class="demo-actions"><a href="/demos/wood-prime/" target="_blank" rel="noopener noreferrer">Abrir demo <span aria-hidden="true">↗</span></a><a href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Wood%20Prime." target="_blank" rel="noopener noreferrer">Quero um assim</a></div></div></article></div>
+      <div class="catalog-more"><button class="button secondary" type="button" data-more hidden>Ver mais demos</button></div>
+      <p class="catalog-note">As demos são ilustrativas: marcas, fotos, preços e dados podem ser fictícios. Recursos, integrações e valores do seu projeto são definidos no orçamento.</p>
+    </section>
+    <section class="wrap section" id="servicos" aria-labelledby="services-title">
+      <div class="offer" id="site-preco">
+        <div><p class="eyebrow">Seu próximo passo</p><h2 id="services-title">Seu site. Sua identidade.<br>Preço combinado.</h2><div class="offer-price">R$ 500<small>Site institucional · preço fechado</small></div><a class="button" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20site%20institucional%20por%20R%24%20500." target="_blank" rel="noopener noreferrer">Quero meu site <span aria-hidden="true">↗</span></a></div>
+        <div><ul><li>Uma página para apresentar seu negócio</li><li>Layout para celular e computador</li><li>WhatsApp, galeria e formulário</li><li>Publicação no endereço combinado</li></ul><p>Definimos o escopo por escrito antes de começar.</p><details><summary>O que é contratado à parte?</summary><p>Domínio e hospedagem são contratados e pagos pelo cliente diretamente ao provedor. A MOSS orienta a contratação e acompanha a publicação.</p><p>Lojas virtuais, sistemas, banco de dados e integrações têm orçamento próprio. O preço de R$ 500 se refere ao site institucional descrito acima.</p></details></div>
+      </div>
+      <div class="products" aria-label="Outras criações MOSS">
+        <article class="product" id="curriculo-promo"><p class="eyebrow">Seu próximo passo profissional</p><h3>Currículo</h3><p>Dez modelos, com foto ou sem. Monte sua prévia grátis.</p><div class="product-price">R$ 19,90</div><details><summary>Como funciona a entrega?</summary><p>Pagamento único. A prévia tem marca; o PDF final sem marca é entregue manualmente após a confirmação do pagamento. Sem promessa de emprego ou aprovação em seleção.</p></details><a href="/curriculo/">Criar meu currículo <span aria-hidden="true">↗</span></a></article>
+        <article class="product" id="portfolio-promo"><p class="eyebrow">Seus projetos em destaque</p><h3>Portfólio</h3><p>Três modelos para contar sua história e mostrar o que você faz.</p><div class="product-price">R$ 39,90</div><details><summary>Como funciona a entrega?</summary><p>Pagamento único, com prévia grátis no navegador. Nada é enviado automaticamente. Finalização e entrega manual combinadas pelo WhatsApp.</p></details><a href="/portfolio/">Montar meu portfólio <span aria-hidden="true">↗</span></a></article>
+        <article class="product" id="livros-digitais"><p class="eyebrow">Aprenda fazendo</p><h3>Programação do Zero</h3><p>74 aulas escritas para criar seu primeiro projeto web.</p><div class="product-price">R$ 29,90</div><details><summary>O que está incluído?</summary><p>Livro em PDF e material de consulta em HTML. Pagamento único e entrega manual pelo WhatsApp. Não inclui videoaulas, certificado ou mentoria.</p></details><a href="/livros/programacao-do-zero/">Conhecer o livro <span aria-hidden="true">↗</span></a></article>
+      </div>
+    </section>
+    <section class="wrap contact" id="contato" aria-labelledby="contact-title"><div><p class="eyebrow">Vamos tirar sua ideia do papel?</p><h2 id="contact-title">O próximo site<br>pode ser o seu.</h2><p>Conte o que você imagina. A gente conversa sobre o caminho.</p></div><a class="button" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-row"><span>© MOSS Digital · Ideias que ganham presença.</span><nav aria-label="Links do rodapé"><a href="https://www.instagram.com/mossdigital_sites/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="/privacidade.html">Privacidade</a><a href="#inicio">Voltar ao topo ↑</a></nav></div></footer>
 </body>
-
 </html>

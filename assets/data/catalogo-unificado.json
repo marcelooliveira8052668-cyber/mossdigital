@@ -1,0 +1,1780 @@
+[
+  {
+    "category": "Beleza e saúde",
+    "title": "MOSS Academia — Fitness premium",
+    "description": "Musculação, natação, lutas e funcional com 24 fotos, filme-conceito, planos e horários. Matrícula, reservas, visitas e área do aluno demonstrativas, sem pagamentos, autenticação ou banco conectado.",
+    "image": "/demos/moss-academia/entrega/card-moss-academia.webp",
+    "alt": "Captura da própria demonstração MOSS Academia, em preto e azul elétrico",
+    "demo": "/demos/moss-academia/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20um%20site%20como%20a%20MOSS%20Academia.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "PASSO Atelier — Loja de calçados",
+    "description": "Sapatos, tênis, sandálias e botas com filtros por estilo e tamanho, favoritos e sacola demonstrativa. Marca e preços fictícios, sem venda ou pagamento real. Leitura opcional de catálogo no Supabase documentada.",
+    "image": "/demos/passo-atelier/img/capa-card.webp",
+    "alt": "Captura da própria demonstração: PASSO Atelier — Loja de calçados",
+    "demo": "/demos/passo-atelier/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20uma%20loja%20de%20cal%C3%A7ados%20como%20a%20PASSO%20Atelier.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "ARMAZÉM DA ESQUINA — Mercadinho de bairro",
+    "description": "Vinte e quatro produtos fictícios em seis seções, busca, filtros, carrinho e pedido preparado para o WhatsApp, com catálogo em destaque e ofertas. Preços, endereço e entrega ilustrativos; sem venda, pagamento ou banco conectado.",
+    "image": "/demos/armazem-da-esquina/entrega/card-armazem-da-esquina.webp",
+    "alt": "Captura da própria demo ARMAZÉM DA ESQUINA, mercadinho de bairro com toldo listrado",
+    "demo": "/demos/armazem-da-esquina/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20um%20site%20como%20o%20ARMAZ%C3%89M%20DA%20ESQUINA.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "VIVA Prime Imóveis — Portal imobiliário",
+    "description": "Dezesseis anúncios fictícios, busca completa, favoritos, comparador, simulador de financiamento e painel local demonstrativo. Galerias com cinco espaços para fotos reais do mesmo imóvel. Sem disponibilidade, reserva ou financiamento confirmados.",
+    "image": "/demos/viva-prime/entrega/card-viva-prime.webp",
+    "alt": "Captura da própria demonstração VIVA Prime Imóveis, em verde-petróleo e bege",
+    "demo": "/demos/viva-prime/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20um%20site%20como%20a%20VIVA%20Prime%20Im%C3%B3veis.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Empreendedorismo",
+    "title": "MOSS News — Portal informativo",
+    "description": "Oito guias educativos com referências, editorias, busca, fotos, vídeo e tema claro/escuro. Sem cobertura em tempo real ou banco conectado. Manual do comprador incluído.",
+    "image": "/demos/moss-news/assets/capa-card.webp",
+    "alt": "Captura da própria demonstração: MOSS News — Portal informativo",
+    "demo": "/demos/moss-news/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20um%20portal%20como%20o%20MOSS%20News.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "PULSE Academia",
+    "description": "Estrutura completa com piscina, lutas, galeria clicável, vídeo, professores, objetivos de treino, planos e horários. Interesse em matrícula e área do aluno demonstrativos, sem envio de dados ou cobranças.",
+    "image": "/academia-pulse/capa.webp",
+    "alt": "Captura da PULSE Academia com equipamentos de musculação",
+    "demo": "/academia-pulse/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20a%20PULSE%20Academia.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Academia",
+    "description": "Aulas, planos e avaliação física",
+    "image": "/assets/img/catalogo-fiel/academia-031b6e2cee.webp",
+    "alt": "Captura da própria demonstração: 🏋️ Academia",
+    "demo": "/demo.html?preset=academia&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Academia%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Utilidade pública",
+    "title": "acesso aberto — Guia de Acessibilidade Urbana",
+    "description": "O que importa para a sua visita? e planejamento interativo. Dados fictícios, sem confirmação automática.",
+    "image": "/assets/img/catalogo-fiel/acesso-aberto-guia-de-acessibilidade-urbana-4347c4e9dd.webp",
+    "alt": "Captura da própria demonstração: acesso aberto — Guia de Acessibilidade Urbana",
+    "demo": "/demos/acessoaberto/index.html",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20acessoaberto",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Advocacia",
+    "description": "Áreas de atuação e casos do escritório",
+    "image": "/assets/img/catalogo-fiel/advocacia-a18ee7606b.webp",
+    "alt": "Captura da própria demonstração: ⚖️ Advocacia",
+    "demo": "/demo.html?preset=advocacia&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Advocacia%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Agência de viagens",
+    "description": "Destinos, pacotes, galeria ampliável e formulário para preparar pedidos de orçamento. Preços e avaliações demonstrativos.",
+    "image": "/assets/img/catalogo-fiel/agencia-de-viagens-bda4a2c840.webp",
+    "alt": "Captura da própria demonstração: Agência de viagens",
+    "demo": "/site-de-turismo/?v=vitrines-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20para%20ag%C3%AAncia%20de%20viagens.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Eventos e fotografia",
+    "title": "Aluga Festa",
+    "description": "Locação de cadeiras, mesas e decoração com calculadora ilustrativa para eventos.",
+    "image": "/assets/img/catalogo-fiel/aluga-festa-f202ca1b8d.webp",
+    "alt": "Captura da própria demonstração: Aluga Festa",
+    "demo": "/demos/aluga-festa/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Aluga%20Festa.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "AprovaLab",
+    "description": "AprovaLab: demo de cursinho com trilhas, planejamento semanal e contato por WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/aprovalab-2f1f75909a.webp",
+    "alt": "Captura da própria demonstração: AprovaLab",
+    "demo": "/demos/aprovalab-cursinho/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20AprovaLab.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Aqua World",
+    "description": "Demo Aqua World para aquarismo e produtos aquáticos.",
+    "image": "/assets/img/catalogo-fiel/aqua-world-c3058e32c1.webp",
+    "alt": "Captura da própria demonstração: Aqua World",
+    "demo": "/demos/aqua-world/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Aqua%20World.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Arquiteto",
+    "description": "Projetos residenciais e comerciais",
+    "image": "/assets/img/catalogo-fiel/arquiteto-33be747ddb.webp",
+    "alt": "Captura da própria demonstração: 📐 Arquiteto",
+    "demo": "/demo.html?preset=arquiteto&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Arquiteto%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Assistência de Celular",
+    "description": "Reparos, preços e orçamento com foto no WhatsApp",
+    "image": "/assets/img/catalogo-fiel/assistencia-de-celular-ce064e4e98.webp",
+    "alt": "Captura da própria demonstração: 📱 Assistência de Celular",
+    "demo": "/demo.html?preset=assistencia&v=assistencia-20261101",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Assist%C3%AAncia%20de%20Celular%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Atlas Prime",
+    "description": "Atlas Prime: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.",
+    "image": "/assets/img/catalogo-fiel/atlas-prime-fdb2b7b360.webp",
+    "alt": "Captura da própria demonstração: Atlas Prime",
+    "demo": "/demos/atlas-prime-store/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Atlas%20Prime.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Azul Vivo",
+    "description": "Azul Vivo: demo de escola de natação com modalidades e interesse em aula experimental.",
+    "image": "/assets/img/catalogo-fiel/azul-vivo-858b6f2423.webp",
+    "alt": "Captura da própria demonstração: Azul Vivo",
+    "demo": "/demos/azul-vivo-natacao/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Azul%20Vivo.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Bar e Coquetelaria",
+    "description": "Drinks autorais, clássicos e música ao vivo",
+    "image": "/assets/img/catalogo-fiel/bar-e-coquetelaria-5cf470ddd4.webp",
+    "alt": "Captura da própria demonstração: 🍸 Bar e Coquetelaria",
+    "demo": "/demo.html?preset=bar&v=bar-20261101",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Bar%20e%20Coquetelaria%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Barbearia",
+    "description": "Barba, corte e terapia quente",
+    "image": "/assets/img/catalogo-fiel/barbearia-68d8ecc1f6.webp",
+    "alt": "Captura da própria demonstração: 💈 Barbearia",
+    "demo": "/demo.html?preset=barbearia&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Barbearia%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Bike Center — Bicicletaria",
+    "description": "Vitrine demonstrativa de bicicletas, acessórios e contato comercial.",
+    "image": "/assets/img/catalogo-fiel/bike-center-bicicletaria-4842e9a2da.webp",
+    "alt": "Captura da própria demonstração: Bike Center — Bicicletaria",
+    "demo": "https://marcelooliveira8052668-cyber.github.io/Bicicleta-/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Bike%20Center.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Black Diamond",
+    "description": "Demonstração Black Diamond para Estética automotiva premium. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/black-diamond-7eb284111d.webp",
+    "alt": "Captura da própria demonstração: Black Diamond",
+    "demo": "/demos/black-diamond/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Black%20Diamond.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Borracha Já",
+    "description": "Borracha Já — demonstração de atendimento de borracharia com solicitação pelo WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/borracha-ja-e91d9e27fe.webp",
+    "alt": "Captura da própria demonstração: Borracha Já",
+    "demo": "/demos/borracha-ja/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Borracha%20J%C3%A1.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Caçamba Certa",
+    "description": "Demo de locação de caçambas com simulação de orçamento e atendimento pelo WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/cacamba-certa-c47be9954c.webp",
+    "alt": "Captura da própria demonstração: Caçamba Certa",
+    "demo": "/demos/cacamba-certa/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Ca%C3%A7amba%20Certa.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Casa Acolher",
+    "description": "Demonstração Casa Acolher para residência de convivência e cuidados para pessoas idosas. Projeto ilustrativo MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/casa-acolher-9ba60e22d7.webp",
+    "alt": "Captura da própria demonstração: Casa Acolher",
+    "demo": "/demos/casa-acolher/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Casa%20Acolher.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Eventos e fotografia",
+    "title": "Casa de Festas",
+    "description": "Salão decorado, buffet e reserva de data",
+    "image": "/assets/img/catalogo-fiel/casa-de-festas-dd9a2cc4c0.webp",
+    "alt": "Captura da própria demonstração: 🎉 Casa de Festas",
+    "demo": "/demo.html?preset=festas&v=festas-20261101",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Casa%20de%20Festas%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Casa do Queijo",
+    "description": "Demo Casa do Queijo para empório de queijos e experiências gastronômicas.",
+    "image": "/assets/img/catalogo-fiel/casa-do-queijo-9e18806ac1.webp",
+    "alt": "Captura da própria demonstração: Casa do Queijo",
+    "demo": "/demos/casa-do-queijo/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Casa%20do%20Queijo.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "CasaNexa",
+    "description": "CasaNexa: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.",
+    "image": "/assets/img/catalogo-fiel/casanexa-85da91154f.webp",
+    "alt": "Captura da própria demonstração: CasaNexa",
+    "demo": "/demos/casanexa/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20CasaNexa.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Chaveiro Express — Abertura e chaves 24h",
+    "description": "Visual industrial de alta visibilidade, chamado pronto para o WhatsApp, galeria com filtros e painel opcional de chamados no Supabase.",
+    "image": "/assets/img/catalogo-fiel/chaveiro-express-abertura-e-chaves-24h-ac067d192b.webp",
+    "alt": "Captura da própria demonstração: Chaveiro Express — Abertura e chaves 24h",
+    "demo": "/demos/chaveiro-express/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20Chaveiro%20Express.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Chronos Prime",
+    "description": "CHRONOS PRIME: demonstração de loja virtual de relógios.",
+    "image": "/assets/img/catalogo-fiel/chronos-prime-8251ca1656.webp",
+    "alt": "Captura da própria demonstração: Chronos Prime",
+    "demo": "/demos/chronos-prime/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Chronos%20Prime.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Eventos e fotografia",
+    "title": "Clara & Tomás — Site de casamento",
+    "description": "História, programação, ideias de presentes e confirmação de presença simulada. Casal e evento fictícios, sem cadastro real de convidados.",
+    "image": "/assets/img/catalogo-fiel/clara-tomas-site-de-casamento-2671233c89.webp",
+    "alt": "Captura da própria demonstração: Clara & Tomás — Site de casamento",
+    "demo": "/demos/casamento/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20de%20casamento%20como%20a%20demo%20Clara%20%26%20Tom%C3%A1s.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Clean Express",
+    "description": "Demo Clean Express para lavanderia urbana e assinaturas.",
+    "image": "/assets/img/catalogo-fiel/clean-express-ecee9b4ae7.webp",
+    "alt": "Captura da própria demonstração: Clean Express",
+    "demo": "/demos/clean-express/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Clean%20Express.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Clínica",
+    "description": "Tratamentos, avaliação e agenda online",
+    "image": "/assets/img/catalogo-fiel/clinica-aa46353b1d.webp",
+    "alt": "Captura da própria demonstração: 🦷 Clínica",
+    "demo": "/demo.html?preset=clinica&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Cl%C3%ADnica%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Clínica estética",
+    "description": "Ficha completa de cada tratamento",
+    "image": "/assets/img/catalogo-fiel/clinica-estetica-03ddae882b.webp",
+    "alt": "Captura da própria demonstração: 💫 Clínica estética",
+    "demo": "/demo.html?preset=estetica&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Cl%C3%ADnica%20est%C3%A9tica%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Clínica veterinária",
+    "description": "Consultas, vacinas e emergência 24h",
+    "image": "/assets/img/catalogo-fiel/clinica-veterinaria-4fcdf82cf3.webp",
+    "alt": "Captura da própria demonstração: 🐾 Clínica veterinária",
+    "demo": "/demo.html?preset=veterinario&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Cl%C3%ADnica%20veterin%C3%A1ria%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Colégio Aurora Prime",
+    "description": "Colégio Aurora Prime: demonstração de site para escola particular, com proposta pedagógica e solicitação de visitas.",
+    "image": "/assets/img/catalogo-fiel/colegio-aurora-prime-0e0fc0b84e.webp",
+    "alt": "Captura da própria demonstração: Colégio Aurora Prime",
+    "demo": "/demos/colegio-aurora-prime/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Col%C3%A9gio%20Aurora%20Prime.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Constrular Prime — Materiais de Construção",
+    "description": "Loja demonstrativa de materiais de construção, com catálogo e recursos interativos.",
+    "image": "/assets/img/catalogo-fiel/constrular-prime-materiais-de-construcao-a9b42504d4.webp",
+    "alt": "Captura da própria demonstração: Constrular Prime — Materiais de Construção",
+    "demo": "https://marcelooliveira8052668-cyber.github.io/CONSTRULAR-PRIME/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Constrular%20Prime.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Contábil Organiza",
+    "description": "Escritório contábil com checklist demonstrativo mensal e atendimento via WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/contabil-organiza-9b8ea5de6f.webp",
+    "alt": "Captura da própria demonstração: Contábil Organiza",
+    "demo": "/demos/contabil-organiza/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Cont%C3%A1bil%20Organiza.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Cor & Medida",
+    "description": "Loja de tintas demonstrativa com calculadora de litros e escolha de cores.",
+    "image": "/assets/img/catalogo-fiel/cor-medida-5008a39485.webp",
+    "alt": "Captura da própria demonstração: Cor & Medida",
+    "demo": "/demos/cor-e-medida/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Cor%20%26%20Medida.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "DentalTech",
+    "description": "Demonstração DentalTech para Laboratório de próteses digitais. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/dentaltech-7c25045ace.webp",
+    "alt": "Captura da própria demonstração: DentalTech",
+    "demo": "/demos/dentaltech/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20DentalTech.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Dentista",
+    "description": "Tratamentos, avaliação e agenda online",
+    "image": "/assets/img/catalogo-fiel/dentista-92c9b2cfb0.webp",
+    "alt": "Captura da própria demonstração: 🦷 Dentista",
+    "demo": "/demo.html?preset=dentista&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Dentista%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "DesentoJá",
+    "description": "Site demonstrativo para solicitação de serviço de desentupimento via WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/desentoja-311cba6ba0.webp",
+    "alt": "Captura da própria demonstração: DesentoJá",
+    "demo": "/demos/desentoja/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20DesentoJ%C3%A1.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Direção Prime",
+    "description": "Demonstração Direção Prime para Autoescola e formação de condutores. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/direcao-prime-8c6a54b987.webp",
+    "alt": "Captura da própria demonstração: Direção Prime",
+    "demo": "/demos/direcao-prime/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Dire%C3%A7%C3%A3o%20Prime.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Doce Encanto — Bomboniere",
+    "description": "Catálogo demonstrativo de chocolates e doces com apresentação dos produtos.",
+    "image": "/assets/img/catalogo-fiel/doce-encanto-bomboniere-c2169ff07a.webp",
+    "alt": "Captura da própria demonstração: Doce Encanto — Bomboniere",
+    "demo": "https://marcelooliveira8052668-cyber.github.io/Bomboniere-/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Doce%20Encanto%20Bomboniere.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Doce Sob Medida",
+    "description": "Demo comercial de confeitaria com montagem de encomenda e WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/doce-sob-medida-48aa1eaf01.webp",
+    "alt": "Captura da própria demonstração: Doce Sob Medida",
+    "demo": "/demos/doce-sob-medida/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Doce%20Sob%20Medida.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Dojô Essência",
+    "description": "Dojô Essência: demo de academia de judô educativa, com turmas e interesse em aula experimental.",
+    "image": "/assets/img/catalogo-fiel/dojo-essencia-02e0230a56.webp",
+    "alt": "Captura da própria demonstração: Dojô Essência",
+    "demo": "/demos/dojo-essencia/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Doj%C3%B4%20Ess%C3%AAncia.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Dolce Neve",
+    "description": "Demonstração Dolce Neve para sorveteria e gelateria. Projeto ilustrativo MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/dolce-neve-55199820f9.webp",
+    "alt": "Captura da própria demonstração: Dolce Neve",
+    "demo": "/demos/dolce-neve/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Dolce%20Neve.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Editora Farol",
+    "description": "Modelo ilustrativo Editora Farol para editoras e distribuição de livros.",
+    "image": "/assets/img/catalogo-fiel/editora-farol-73827a79ae.webp",
+    "alt": "Captura da própria demonstração: Editora Farol",
+    "demo": "/demos/editora-farol/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Editora%20Farol.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Eixo Contábil — Contabilidade",
+    "description": "Apresentação de serviços e roteiro interativo para uma primeira conversa. Marca fictícia, sem cálculos, diagnóstico ou atendimento contábil.",
+    "image": "/assets/img/catalogo-fiel/eixo-contabil-contabilidade-fbcfa004dc.webp",
+    "alt": "Captura da própria demonstração: Eixo Contábil — Contabilidade",
+    "demo": "/demos/contabilidade/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20de%20contabilidade%20como%20a%20demo%20Eixo%20Cont%C3%A1bil.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Embalagem Direta",
+    "description": "Embalagem Direta: demonstração para atacado de embalagens com catálogo e carrinho de cotação por WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/embalagem-direta-4114e09a10.webp",
+    "alt": "Captura da própria demonstração: Embalagem Direta",
+    "demo": "/demos/embalagem-direta/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Embalagem%20Direta.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "EntreLares - Profissionais para sua casa",
+    "description": "Peça um trabalhador para casa: diarista, passadeira, cozinheira e organização, com dois caminhos guiados. Marca e dados fictícios, sem contratação automática.",
+    "image": "/assets/img/catalogo-fiel/entrelares-profissionais-para-sua-casa-cd0e41ab16.webp",
+    "alt": "Captura da própria demonstração: EntreLares - Profissionais para sua casa",
+    "demo": "/demos/entrelares/index.html",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20entrelares",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "EPI na Medida",
+    "description": "Portal de EPIs com cotação de produtos por quantidade e tamanho.",
+    "image": "/assets/img/catalogo-fiel/epi-na-medida-6b2bd812b9.webp",
+    "alt": "Captura da própria demonstração: EPI na Medida",
+    "demo": "/demos/epi-na-medida/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20EPI%20na%20Medida.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Escola e cursos",
+    "description": "Cursos, turmas e matrícula online",
+    "image": "/assets/img/catalogo-fiel/escola-e-cursos-1b9cd0e3c0.webp",
+    "alt": "Captura da própria demonstração: 🎓 Escola e cursos",
+    "demo": "/demo.html?preset=escola&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Escola%20e%20cursos%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Estaciona+",
+    "description": "Demo operacional de estacionamento com entradas, saídas, cálculo ilustrativo e exportação CSV.",
+    "image": "/assets/img/catalogo-fiel/estaciona-2162bca74e.webp",
+    "alt": "Captura da própria demonstração: Estaciona+",
+    "demo": "/demos/estaciona-plus/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Estaciona%2B.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Estoque Miúdo",
+    "description": "Estoque Miúdo — demonstração de controle local de produtos e estoque mínimo.",
+    "image": "/assets/img/catalogo-fiel/estoque-miudo-b72702947c.webp",
+    "alt": "Captura da própria demonstração: Estoque Miúdo",
+    "demo": "/demos/estoque-miudo/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Estoque%20Mi%C3%BAdo.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "ExtinControl",
+    "description": "ExtinControl: painel demonstrativo de acompanhamento administrativo de equipamentos e datas.",
+    "image": "/assets/img/catalogo-fiel/extincontrol-8fcf521883.webp",
+    "alt": "Captura da própria demonstração: ExtinControl",
+    "demo": "/demos/extincontrol/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20ExtinControl.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Fisioterapia",
+    "description": "Convênios, avaliação grátis e agenda",
+    "image": "/assets/img/catalogo-fiel/fisioterapia-e05421c114.webp",
+    "alt": "Captura da própria demonstração: 🦵 Fisioterapia",
+    "demo": "/demo.html?preset=fisioterapia&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Fisioterapia%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Flora & Afeto — Floricultura",
+    "description": "Catálogo por ocasião e montador de buquê com flores, embalagem, cartão e subtotal ilustrativo. Marca fictícia, sem compra ou entrega reais.",
+    "image": "/assets/img/catalogo-fiel/flora-afeto-floricultura-2b94c0f541.webp",
+    "alt": "Captura da própria demonstração: Flora & Afeto — Floricultura",
+    "demo": "/demos/floricultura/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20de%20floricultura%20como%20a%20demo%20Flora%20%26%20Afeto.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Forma 3D",
+    "description": "Forma 3D — estúdio demonstrativo de impressão 3D e orçamento aproximado.",
+    "image": "/assets/img/catalogo-fiel/forma-3d-79f30e9706.webp",
+    "alt": "Captura da própria demonstração: Forma 3D",
+    "demo": "/demos/forma-3d/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Forma%203D.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Fotógrafo",
+    "description": "Portfólio e orçamento de ensaio",
+    "image": "/assets/img/catalogo-fiel/fotografo-185ba819df.webp",
+    "alt": "Captura da própria demonstração: 📷 Fotógrafo",
+    "demo": "/demo.html?preset=fotografo&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Fot%C3%B3grafo%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Eventos e fotografia",
+    "title": "Fotos entre Amigos",
+    "description": "Álbum digital com 500 espaços para fotos e 50 para vídeos: filtros, busca, lightbox e apresentação automática — o cliente só arrasta as fotos dele.",
+    "image": "/assets/img/catalogo-fiel/fotos-entre-amigos-ffd63655cb.webp",
+    "alt": "Captura da própria demonstração: 📸 Fotos entre Amigos",
+    "demo": "/fotos-amigos/index.html",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Fotos%20entre%20Amigos%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20%C3%A1lbum%20como%20este.",
+        "text": "Quero este álbum"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Fretes e Transportes",
+    "description": "Fretes rápidos e logística para pessoas e empresas",
+    "image": "/assets/img/catalogo-fiel/fretes-e-transportes-ac61f2e915.webp",
+    "alt": "Captura da própria demonstração: 🚚 Fretes e Transportes",
+    "demo": "/demo.html?preset=fretes&v=fretes-20261101",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Mudan%C3%A7as%20e%20Transportes%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Frio Certo",
+    "description": "Demonstração de climatização com triagem e solicitação de visita por WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/frio-certo-fe74730fd2.webp",
+    "alt": "Captura da própria demonstração: Frio Certo",
+    "demo": "/demos/frio-certo/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Frio%20Certo.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Frota em Dia",
+    "description": "Frota em Dia — demo de planejamento local de manutenção de veículos.",
+    "image": "/assets/img/catalogo-fiel/frota-em-dia-6605d23a9f.webp",
+    "alt": "Captura da própria demonstração: Frota em Dia",
+    "demo": "/demos/frota-em-dia/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Frota%20em%20Dia.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Gelo Express",
+    "description": "Distribuidora de gelo para eventos e comércios com carrinho e seleção de período.",
+    "image": "/assets/img/catalogo-fiel/gelo-express-8a673c0c33.webp",
+    "alt": "Captura da própria demonstração: Gelo Express",
+    "demo": "/demos/gelo-express/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Gelo%20Express.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Gráfica Ponto",
+    "description": "Gráfica rápida demonstrativa com cálculo de impressos e solicitação de orçamento pelo WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/grafica-ponto-2dc30a3a9d.webp",
+    "alt": "Captura da própria demonstração: Gráfica Ponto",
+    "demo": "/demos/grafica-ponto/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Gr%C3%A1fica%20Ponto.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "HelpDesk Local",
+    "description": "Demo de help desk para informática com chamados locais e contato pelo WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/helpdesk-local-a24230eb06.webp",
+    "alt": "Captura da própria demonstração: HelpDesk Local",
+    "demo": "/demos/helpdesk-local/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20HelpDesk%20Local.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Hotel e pousada",
+    "description": "Quartos, diária e reserva direta",
+    "image": "/assets/img/catalogo-fiel/hotel-e-pousada-c276320e94.webp",
+    "alt": "Captura da própria demonstração: 🏨 Hotel e pousada",
+    "demo": "/demo.html?preset=hotel&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Hotel%20e%20pousada%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Imobiliária",
+    "description": "Imóveis à venda e avaliação gratuita",
+    "image": "/assets/img/catalogo-fiel/imobiliaria-89a341cfd4.webp",
+    "alt": "Captura da própria demonstração: 🏠 Imobiliária",
+    "demo": "/demo.html?preset=imobiliaria&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Imobili%C3%A1ria%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Jardim Secreto",
+    "description": "Demonstração Jardim Secreto para Floricultura e presentes especiais. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/jardim-secreto-efca3d2ebc.webp",
+    "alt": "Captura da própria demonstração: Jardim Secreto",
+    "demo": "/demos/jardim-secreto/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Jardim%20Secreto.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Utilidade pública",
+    "title": "junto. — Voluntariado e Impacto Social",
+    "description": "Uma causa para chamar de sua e planejamento interativo. Dados fictícios, sem confirmação automática.",
+    "image": "/assets/img/catalogo-fiel/junto-voluntariado-e-impacto-social-635b24ff26.webp",
+    "alt": "Captura da própria demonstração: junto. — Voluntariado e Impacto Social",
+    "demo": "/demos/junto/index.html",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20junto",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Lanchonete",
+    "description": "Cardápio com preço e pedido pelo WhatsApp",
+    "image": "/assets/img/catalogo-fiel/lanchonete-ed5dbc9a82.webp",
+    "alt": "Captura da própria demonstração: 🍔 Lanchonete",
+    "demo": "/demo.html?preset=lanchonete&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Lanchonete%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Lista Certa",
+    "description": "Papelaria demonstrativa com busca, lista de materiais, quantidades e orçamento por WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/lista-certa-1b6e3d41dd.webp",
+    "alt": "Captura da própria demonstração: Lista Certa",
+    "demo": "/demos/lista-certa/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Lista%20Certa.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Locadora",
+    "description": "Frota com diária e reserva de datas",
+    "image": "/assets/img/catalogo-fiel/locadora-1666663b9c.webp",
+    "alt": "Captura da própria demonstração: 🚗 Locadora",
+    "demo": "/demo.html?preset=locadora&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Locadora%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Lumina Ótica — Óculos de grau e sol",
+    "description": "Coleção de armações com filtro, guia de estilo por formato de rosto e lista de prova local. Marca fictícia, sem venda, exame de vista ou envio de dados.",
+    "image": "/assets/img/catalogo-fiel/lumina-otica-oculos-de-grau-e-sol-7f7622df6e.webp",
+    "alt": "Captura da própria demonstração: Lumina Ótica — Óculos de grau e sol",
+    "demo": "/demos/otica/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20site%20de%20%C3%B3tica%20como%20a%20demo%20Lumina%20%C3%93tica.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Maison Reuse",
+    "description": "Demonstração Maison Reuse para brechó premium e moda circular. Projeto ilustrativo MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/maison-reuse-9274caefb8.webp",
+    "alt": "Captura da própria demonstração: Maison Reuse",
+    "demo": "/demos/maison-reuse/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Maison%20Reuse.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "MaxLoc",
+    "description": "Demonstração MaxLoc para Locação de equipamentos e máquinas. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/maxloc-436dcf6e8a.webp",
+    "alt": "Captura da própria demonstração: MaxLoc",
+    "demo": "/demos/maxloc/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MaxLoc.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Mercatto",
+    "description": "Mercatto: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.",
+    "image": "/assets/img/catalogo-fiel/mercatto-d9a28fd6be.webp",
+    "alt": "Captura da própria demonstração: Mercatto",
+    "demo": "/demos/mercatto/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Mercatto.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Mesa da Semana",
+    "description": "Demonstração Mesa da Semana para marmitaria e encomendas semanais. Projeto ilustrativo MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/mesa-da-semana-7d3739f73e.webp",
+    "alt": "Captura da própria demonstração: Mesa da Semana",
+    "demo": "/demos/mesa-da-semana/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Mesa%20da%20Semana.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "MOSS Agenda Pro",
+    "description": "Modelo de agenda para organizar atendimentos, clientes e lembretes manuais. Demonstração local; sincronização depende de configuração.",
+    "image": "/assets/img/catalogo-fiel/moss-agenda-pro-ece456fe9f.webp",
+    "alt": "Captura da própria demonstração: MOSS Agenda Pro",
+    "demo": "/agenda-pro/?v=agenda-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20Agenda%20Pro.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "MOSS Distribuidora",
+    "description": "Loja virtual com catálogo, promoções, carrinho de compras e pedidos pelo WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/moss-distribuidora-da9858af5d.webp",
+    "alt": "Captura da própria demonstração: MOSS Distribuidora",
+    "demo": "/demos/distribuidora/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20Distribuidora.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "MOSS FIT FOOD — Alimentação Saudável",
+    "description": "Cardápio demonstrativo de refeições e produtos de alimentação saudável.",
+    "image": "/assets/img/catalogo-fiel/moss-fit-food-alimentacao-saudavel-bc0b5af4ac.webp",
+    "alt": "Captura da própria demonstração: MOSS FIT FOOD — Alimentação Saudável",
+    "demo": "https://marcelooliveira8052668-cyber.github.io/MOSS-FIT-FOOD/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20FIT%20FOOD.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "MOSS HOME PRIME — Móveis e decoração",
+    "description": "Catálogo demonstrativo com 60 móveis, cinco espaços de fotos por produto, busca, filtros, favoritos, comparação e carrinho via WhatsApp. Imagens e preços ilustrativos.",
+    "image": "/assets/img/catalogo-fiel/moss-home-prime-moveis-e-decoracao-11b407309e.webp",
+    "alt": "Captura da própria demonstração: 🛋️ MOSS HOME PRIME — Móveis e decoração",
+    "demo": "/demos/moss-home-prime/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ola%21%20Quero%20um%20orcamento%20do%20modelo%20MOSS%20HOME%20PRIME.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "MOSS Motors — Loja de veículos",
+    "description": "Explore 20 veículos fictícios, filtros, detalhes, simulação de financiamento e painel demonstrativo local. Plataforma automotiva: funcionalidades extras sob orçamento.",
+    "image": "/assets/img/catalogo-fiel/moss-motors-loja-de-veiculos-5f286d78d6.webp",
+    "alt": "Captura da própria demonstração: MOSS Motors — Loja de veículos",
+    "demo": "/demos/moss-motors/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ola%21%20Vi%20a%20demonstracao%20MOSS%20Motors%20no%20site%20da%20MOSS%20Digital%20e%20quero%20um%20orcamento%20para%20um%20site%20automotivo%20completo.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "MOSS SPORTS — Loja Esportiva",
+    "description": "Loja esportiva com 300+ produtos, bicicletas normais e elétricas, barracas, roupas e equipamentos para todos os esportes, carrinho e pedidos pelo WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/moss-sports-loja-esportiva-a15861d9fe.webp",
+    "alt": "Captura da própria demonstração: MOSS SPORTS — Loja Esportiva",
+    "demo": "/demos/moss-sports/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20SPORTS.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Empreendedorismo",
+    "title": "MOSS Studio Pro — Criador Visual",
+    "description": "Demonstração independente de um criador visual de sites.",
+    "image": "/assets/img/catalogo-fiel/moss-studio-pro-criador-visual-449ec082c8.webp",
+    "alt": "Captura da própria demonstração: MOSS Studio Pro — Criador Visual",
+    "demo": "https://marcelooliveira8052668-cyber.github.io/MOSS-STUDIO-PRO/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MOSS%20Studio%20Pro.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "MOSS Vision Prime — Ótica",
+    "description": "Ótica premium demonstrativa com 60 itens de grau, sol, esportivos e acessórios, favoritos, filtros, comparador e sacola.",
+    "image": "/assets/img/catalogo-fiel/moss-vision-prime-otica-9503afdbc2.webp",
+    "alt": "Captura da própria demonstração: MOSS Vision Prime — Ótica",
+    "demo": "/demos/moss-vision-prime/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Quero%20um%20site%20como%20a%20MOSS%20Vision%20Prime.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "MudaJá",
+    "description": "Demo de mudanças residenciais com checklist local e pedido de orçamento pelo WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/mudaja-edaa1c7f3c.webp",
+    "alt": "Captura da própria demonstração: MudaJá",
+    "demo": "/demos/mudaja/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20MudaJ%C3%A1.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Music House",
+    "description": "Demonstração Music House para Instrumentos e soluções musicais. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/music-house-59214d7d0e.webp",
+    "alt": "Captura da própria demonstração: Music House",
+    "demo": "/demos/music-house/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Music%20House.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Eventos e fotografia",
+    "title": "Nature Escape",
+    "description": "Demonstração Nature Escape para Glamping e refúgios na natureza. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/nature-escape-b9c542b07e.webp",
+    "alt": "Captura da própria demonstração: Nature Escape",
+    "demo": "/demos/nature-escape/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Nature%20Escape.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Empreendedorismo",
+    "title": "Nexo Work",
+    "description": "Modelo ilustrativo Nexo Work para coworking e salas compartilhadas.",
+    "image": "/assets/img/catalogo-fiel/nexo-work-2708ef17c9.webp",
+    "alt": "Captura da própria demonstração: Nexo Work",
+    "demo": "/demos/nexo-work/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Nexo%20Work.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Nutricionista",
+    "description": "Planos alimentares personalizados",
+    "image": "/assets/img/catalogo-fiel/nutricionista-1e5bc178ca.webp",
+    "alt": "Captura da própria demonstração: 🥗 Nutricionista",
+    "demo": "/demo.html?preset=nutricionista&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Nutricionista%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Eventos e fotografia",
+    "title": "Ocean Prime",
+    "description": "Demonstração Ocean Prime para Experiências e soluções náuticas. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/ocean-prime-70c8ba3c64.webp",
+    "alt": "Captura da própria demonstração: Ocean Prime",
+    "demo": "/demos/ocean-prime/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Ocean%20Prime.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Oficina",
+    "description": "Serviços e orçamento no mesmo dia",
+    "image": "/assets/img/catalogo-fiel/oficina-3345f36b81.webp",
+    "alt": "Captura da própria demonstração: 🔧 Oficina",
+    "demo": "/demo.html?preset=oficina&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Oficina%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Órbita Cursos",
+    "description": "Órbita Cursos: escola de cursos livres com catálogo interativo, busca, detalhes e lista de interesse.",
+    "image": "/assets/img/catalogo-fiel/orbita-cursos-6b49832d52.webp",
+    "alt": "Captura da própria demonstração: Órbita Cursos",
+    "demo": "/demos/orbita-cursos/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20%C3%93rbita%20Cursos.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "OrdemFix",
+    "description": "Painel demonstrativo de ordens de serviço para assistência de eletrodomésticos, sem servidor.",
+    "image": "/assets/img/catalogo-fiel/ordemfix-57bd8695a2.webp",
+    "alt": "Captura da própria demonstração: OrdemFix",
+    "demo": "/demos/ordemfix/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20OrdemFix.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Padaria e café",
+    "description": "Cardápio da manhã e encomenda para negócio",
+    "image": "/assets/img/catalogo-fiel/padaria-e-cafe-27eebe8921.webp",
+    "alt": "Captura da própria demonstração: 🥐 Padaria e café",
+    "demo": "/demo.html?preset=padaria&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Padaria%20e%20caf%C3%A9%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Pastelaria Sabor de Feira",
+    "description": "Pastelaria Sabor de Feira: pastéis crocantes, bebidas e pedidos pelo WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/pastelaria-sabor-de-feira-04382efdfe.webp",
+    "alt": "Captura da própria demonstração: Pastelaria Sabor de Feira",
+    "demo": "/demos/pastelaria-sabor-de-feira/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Pastelaria%20Sabor%20de%20Feira.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Pedra Exata",
+    "description": "Pedra Exata: demo de marmoraria com orçamento ilustrativo de peças sob medida.",
+    "image": "/assets/img/catalogo-fiel/pedra-exata-b7c91a96a4.webp",
+    "alt": "Captura da própria demonstração: Pedra Exata",
+    "demo": "/demos/pedra-exata/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Pedra%20Exata.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Pet Resort",
+    "description": "Demonstração Pet Resort para Hospedagem e cuidados para pets. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/pet-resort-5cabb04f61.webp",
+    "alt": "Captura da própria demonstração: Pet Resort",
+    "demo": "/demos/pet-resort/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Pet%20Resort.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Pet shop",
+    "description": "Serviços, preços e agendamento",
+    "image": "/assets/img/catalogo-fiel/pet-shop-e0b779f5ca.webp",
+    "alt": "Captura da própria demonstração: 🐾 Pet shop",
+    "demo": "/demo.html?preset=petshop&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Pet%20shop%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Piscina em Dia",
+    "description": "Demo para manutenção de piscinas: volume aproximado, checklist local e solicitação de visita.",
+    "image": "/assets/img/catalogo-fiel/piscina-em-dia-dbc18640a2.webp",
+    "alt": "Captura da própria demonstração: Piscina em Dia",
+    "demo": "/demos/piscina-em-dia/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Piscina%20em%20Dia.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Pizzaria",
+    "description": "Forno a lenha, cardápio e reserva de mesa",
+    "image": "/assets/img/catalogo-fiel/pizzaria-1dbcbc63a4.webp",
+    "alt": "Captura da própria demonstração: 🍕 Pizzaria",
+    "demo": "/demo.html?preset=pizzaria&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Pizzaria%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Ponto & Ajuste — Ateliê de costura",
+    "description": "Visual editorial, oito fotos de costura, galeria interativa e conversa pelo WhatsApp. Supabase opcional com painel restrito e manual de instalação.",
+    "image": "/assets/img/catalogo-fiel/ponto-ajuste-atelie-de-costura-756345f352.webp",
+    "alt": "Captura da própria demonstração: Ponto & Ajuste — Ateliê de costura",
+    "demo": "/demos/ponto-ajuste/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20Ponto%20%26%20Ajuste.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Empreendedorismo",
+    "title": "ponto comum — Coworking e Salas de Reuniao",
+    "description": "Encontre o seu ponto e planejamento interativo. Dados fictícios, sem confirmação automática.",
+    "image": "/assets/img/catalogo-fiel/ponto-comum-coworking-e-salas-de-reuniao-9026646e69.webp",
+    "alt": "Captura da própria demonstração: ponto comum — Coworking e Salas de Reuniao",
+    "demo": "/demos/pontocomum/index.html",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20pontocomum",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Prestação de serviço",
+    "description": "Orçamento na hora e atendimento",
+    "image": "/assets/img/catalogo-fiel/prestacao-de-servico-5fe41ac5b7.webp",
+    "alt": "Captura da própria demonstração: 🛠️ Prestação de serviço",
+    "demo": "/demo.html?preset=servicos&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Presta%C3%A7%C3%A3o%20de%20servi%C3%A7o%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Psicólogo",
+    "description": "Terapia individual, casal e online",
+    "image": "/assets/img/catalogo-fiel/psicologo-7b2d58decb.webp",
+    "alt": "Captura da própria demonstração: 🧠 Psicólogo",
+    "demo": "/demo.html?preset=psicologo&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Psic%C3%B3logo%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Pulse Fashion",
+    "description": "Pulse Fashion: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.",
+    "image": "/assets/img/catalogo-fiel/pulse-fashion-a84a753336.webp",
+    "alt": "Captura da própria demonstração: Pulse Fashion",
+    "demo": "/demos/pulse-fashion/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Pulse%20Fashion.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Quadra Livre",
+    "description": "Quadra Livre — demo de consulta de horários para futsal e beach tennis.",
+    "image": "/assets/img/catalogo-fiel/quadra-livre-7009e7a208.webp",
+    "alt": "Captura da própria demonstração: Quadra Livre",
+    "demo": "/demos/quadra-livre/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Quadra%20Livre.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Empreendedorismo",
+    "title": "raiz / feira — Feira de Produtores Locais",
+    "description": "Fresquinho na banca e planejamento interativo. Dados fictícios, sem confirmação automática.",
+    "image": "/assets/img/catalogo-fiel/raiz-feira-feira-de-produtores-locais-a269ad081f.webp",
+    "alt": "Captura da própria demonstração: raiz / feira — Feira de Produtores Locais",
+    "demo": "/demos/raizfeira/index.html",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20raizfeira",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Utilidade pública",
+    "title": "ReCiclo — Reciclagem e Ecopontos",
+    "description": "Pontos de coleta e planejamento interativo. Dados fictícios, sem confirmação automática.",
+    "image": "/assets/img/catalogo-fiel/reciclo-reciclagem-e-ecopontos-95ad06eaa4.webp",
+    "alt": "Captura da própria demonstração: ReCiclo — Reciclagem e Ecopontos",
+    "demo": "/demos/reciclo/index.html",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20reciclo",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Alimentação",
+    "title": "Restaurante 360 — à la carte, buffet e rodízio",
+    "description": "Site com identidade própria e painel de salão, cozinha/bar, caixa e estoque. Operação demonstrativa local, sem pagamentos ou sincronização reais.",
+    "image": "/assets/img/catalogo-fiel/restaurante-360-a-la-carte-buffet-e-rodizio-a9be445f39.webp",
+    "alt": "Captura da própria demonstração: Restaurante 360 — à la carte, buffet e rodízio",
+    "demo": "/restaurante-360/",
+    "other": [
+      {
+        "href": "/restaurante-360/painel.html",
+        "text": "Testar operação ↗"
+      }
+    ]
+  },
+  {
+    "category": "Eventos e fotografia",
+    "title": "Rota Viva",
+    "description": "Modelo ilustrativo Rota Viva para agências de turismo e experiências de viagem.",
+    "image": "/assets/img/catalogo-fiel/rota-viva-2dde53808f.webp",
+    "alt": "Captura da própria demonstração: Rota Viva",
+    "demo": "/demos/rota-viva/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Rota%20Viva.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "SafeHome",
+    "description": "Demo SafeHome para segurança eletrônica, criada pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/safehome-f1bd5baec2.webp",
+    "alt": "Captura da própria demonstração: SafeHome",
+    "demo": "/demos/safehome/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20SafeHome.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Salão de beleza",
+    "description": "Agenda online, sem fila de espera",
+    "image": "/assets/img/catalogo-fiel/salao-de-beleza-e6dec688a8.webp",
+    "alt": "Captura da própria demonstração: 💇 Salão de beleza",
+    "demo": "/demo.html?preset=salao&fotos=fotos-20261027",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Sal%C3%A3o%20de%20beleza%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Sentinela Digital",
+    "description": "Modelo ilustrativo Sentinela Digital para consultoria de segurança da informação defensiva.",
+    "image": "/assets/img/catalogo-fiel/sentinela-digital-29c8cf734c.webp",
+    "alt": "Captura da própria demonstração: Sentinela Digital",
+    "demo": "/demos/sentinela-digital/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Sentinela%20Digital.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Sky Vision",
+    "description": "Demo Sky Vision para drones e produção aérea.",
+    "image": "/assets/img/catalogo-fiel/sky-vision-cbcdef6afa.webp",
+    "alt": "Captura da própria demonstração: Sky Vision",
+    "demo": "/demos/sky-vision/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Sky%20Vision.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Sol do Bairro — Energia solar",
+    "description": "Simulador de economia no navegador, proposta pelo WhatsApp com a simulação embutida e painel opcional de propostas no Supabase.",
+    "image": "/assets/img/catalogo-fiel/sol-do-bairro-energia-solar-3abc889d6a.webp",
+    "alt": "Captura da própria demonstração: Sol do Bairro — Energia solar",
+    "demo": "/demos/sol-do-bairro/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Quero%20conhecer%20o%20modelo%20Sol%20do%20Bairro.",
+        "text": "Quero este modelo"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Sola Viva",
+    "description": "Sola Viva: demonstração de sapataria e reparos com controle local de serviços, criada pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/sola-viva-0df1f2d5ee.webp",
+    "alt": "Captura da própria demonstração: Sola Viva",
+    "demo": "/demos/sola-viva/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Sola%20Viva.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Beleza e saúde",
+    "title": "Studio de Tatuagem",
+    "description": "Estilos, galeria de trabalhos e agendamento pelo WhatsApp",
+    "image": "/assets/img/catalogo-fiel/studio-de-tatuagem-4b637bd40e.webp",
+    "alt": "Captura da própria demonstração: 🖋️ Studio de Tatuagem",
+    "demo": "/demo.html?preset=tatuagem&v=tatuagem-20261101",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1%21%20Vi%20o%20modelo%20Studio%20de%20Tatuagem%20na%20MOSS%20Digital%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20site%20como%20este.",
+        "text": "Quero um site como este"
+      }
+    ]
+  },
+  {
+    "category": "Empreendedorismo",
+    "title": "TalentoP",
+    "description": "Modelo ilustrativo TalentoP para recrutamento e vagas de emprego.",
+    "image": "/assets/img/catalogo-fiel/talentop-2ffd4a5a73.webp",
+    "alt": "Captura da própria demonstração: TalentoP",
+    "demo": "/demos/talentop/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20TalentoP.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Tela & Trama",
+    "description": "Demonstração Tela & Trama para curadoria de filmes e séries. Projeto ilustrativo MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/tela-trama-c815da1554.webp",
+    "alt": "Captura da própria demonstração: Tela & Trama",
+    "demo": "/demos/tela-e-trama/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Tela%20%26%20Trama.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "Telha Certa",
+    "description": "Empresa de telhados e calhas com estimador ilustrativo de área de cobertura.",
+    "image": "/assets/img/catalogo-fiel/telha-certa-c97e7d5a4a.webp",
+    "alt": "Captura da própria demonstração: Telha Certa",
+    "demo": "/demos/telha-certa/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Telha%20Certa.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Serviços",
+    "title": "ToldoForma",
+    "description": "ToldoForma: demonstração de toldos e coberturas com orçamento assistido por etapas.",
+    "image": "/assets/img/catalogo-fiel/toldoforma-02b35476cd.webp",
+    "alt": "Captura da própria demonstração: ToldoForma",
+    "demo": "/demos/toldoforma/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20ToldoForma.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Uniforme Pro",
+    "description": "Demo de uniformes corporativos com seleção de modelo, tamanhos e orçamento via WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/uniforme-pro-73ff7f9c6c.webp",
+    "alt": "Captura da própria demonstração: Uniforme Pro",
+    "demo": "/demos/uniforme-pro/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Uniforme%20Pro.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Vidro & Medida",
+    "description": "Vidraçaria com estimativa ilustrativa de metragem e pedido de orçamento pelo WhatsApp.",
+    "image": "/assets/img/catalogo-fiel/vidro-medida-ccc5658721.webp",
+    "alt": "Captura da própria demonstração: Vidro & Medida",
+    "demo": "/demos/vidro-medida/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Vidro%20%26%20Medida.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "VivaMall",
+    "description": "VivaMall: demonstração original de loja virtual MOSS Digital, sem pagamentos reais.",
+    "image": "/assets/img/catalogo-fiel/vivamall-1edde2dda8.webp",
+    "alt": "Captura da própria demonstração: VivaMall",
+    "demo": "/demos/vivamall/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20VivaMall.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  },
+  {
+    "category": "Comércio",
+    "title": "Wood Prime",
+    "description": "Demonstração Wood Prime para Marcenaria e móveis sob medida. Projeto ilustrativo criado pela MOSS Digital.",
+    "image": "/assets/img/catalogo-fiel/wood-prime-d0a8b736bf.webp",
+    "alt": "Captura da própria demonstração: Wood Prime",
+    "demo": "/demos/wood-prime/",
+    "other": [
+      {
+        "href": "https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Wood%20Prime.",
+        "text": "Pedir orçamento"
+      }
+    ]
+  }
+]
