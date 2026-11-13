@@ -273,3 +273,11 @@
 /* No inicio, a faixa fixa ocupa o rodape: pila sobe para nao cobrir a seta */
 body:has(.top-cta) .zap-flutuante{bottom:82px}
 @media (max-width:640px){body:has(.top-cta) .zap-flutuante{bottom:74px}}
+
+/* Frase completa da MOSS Digital como título principal (hero). */
+:root .hero-copy h1.hero-frase {
+  font-size: clamp(1.8rem, 3.1vw, 2.4rem);
+  line-height: 1.22;
+  letter-spacing: -.035em;
+  margin: 20px 0;
+}
