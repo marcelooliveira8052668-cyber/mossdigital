@@ -179,6 +179,32 @@ blockquote{border-left:3px solid var(--gold);padding-left:18px;margin:20px 0;fon
   .publicos,.servicos,.passos{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .hero h1 .ouro{animation:none} .zap-flutuante,.btn,.publico,.servico{transition:none} }
+
+/* ===== Mobile: cabeçalho e hero compactos ===== */
+@media (max-width: 560px) {
+  .header-row { height: 62px; gap: 8px; padding-left: 14px; padding-right: 14px; }
+  .brand-name { font-size: .9rem; white-space: nowrap; letter-spacing: 0; }
+  .brand-name small { display: none; }
+  .monogram { width: 32px; height: 32px; }
+  .pill { font-size: .68rem; padding: 10px 12px; white-space: nowrap; }
+  .site-header .nav { display: none; }
+  .hero { grid-template-columns: 1fr; gap: 26px; padding-top: 20px; min-height: auto; }
+  .hero h1 { font-size: 2.15rem; margin: 16px 0 18px; }
+  .eyebrow { font-size: .58rem; letter-spacing: .18em; }
+  .lead { font-size: .93rem; margin-bottom: 20px; }
+  .hero-acoes { gap: 10px; }
+  .btn { padding: 13px 18px; font-size: .85rem; }
+  .selos { gap: 12px; margin-top: 18px; }
+  .selo b { font-size: .78rem; }
+  .selo span { font-size: .62rem; }
+  .retrato { max-width: 280px; margin: 0 auto; width: 100%; }
+  .retrato-legenda { flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 6px 6px; font-size: .66rem; }
+  .section-head h2 { font-size: 1.55rem; }
+  .bloco { padding: 48px 0; }
+  .galeria { gap: 10px; }
+  .trabalho { flex-basis: 190px; }
+  .zap-flutuante { padding: 11px 15px; font-size: .76rem; bottom: 16px; right: 16px; }
+}
 </style>
 </head>
 <body>
