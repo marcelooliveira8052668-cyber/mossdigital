@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Luciana Oliveira — Gestora de Tráfego Pago</title>
+<meta name="description" content="Gestão de tráfego pago e visibilidade para o seu negócio: anúncios que colocam a sua imagem na frente das pessoas certas. Fale com a Luciana Oliveira.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23d8b25a' d='M32 2 L58 24 L32 62 L6 24 Z'/%3E%3Cpath fill='%2314101c' d='M32 12 L49 26 L32 53 L15 26 Z'/%3E%3Ctext x='32' y='34' font-size='17' text-anchor='middle' fill='%23d8b25a' font-family='Georgia, serif' font-weight='bold'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#14101c; --panel:#1e182a; --panel-2:#251e33; --line:#332b45;
+  --gold:#d8b25a; --gold-2:#f0d189; --rose:#e8a7a0;
+  --text:#f5efe6; --muted:#b7adc9;
+  --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--bg);color:var(--text);font:16px/1.6 Inter,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1160px;margin:auto;width:calc(100% - 48px)}
+.serif{font-family:Fraunces,Georgia,serif}
+/* ===== Fundo com brilho de fundo ===== */
+.brilho{position:fixed;inset:0;z-index:-1;background:
+  radial-gradient(900px 500px at 85% -10%, rgba(216,178,90,.16), transparent 60%),
+  radial-gradient(700px 500px at -10% 30%, rgba(232,167,160,.10), transparent 60%),
+  radial-gradient(900px 600px at 50% 110%, rgba(216,178,90,.10), transparent 60%);}
+/* ===== Header ===== */
+.site-header{position:sticky;top:0;z-index:40;background:rgba(20,16,28,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.header-row{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mono{width:40px;height:40px;flex-shrink:0}
+.brand-name{font-weight:800;letter-spacing:.02em;font-size:1.02rem}
+.brand-name small{display:block;font-weight:500;font-size:.62rem;letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
+.nav{display:flex;gap:26px;font-size:.86rem;font-weight:600;color:var(--muted)}
+.nav a{text-decoration:none;padding:8px 0}
+.nav a:hover{color:var(--gold-2)}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#241a08;font-weight:800;font-size:.8rem;letter-spacing:.03em;border:0;border-radius:99px;padding:12px 20px;text-decoration:none;transition:transform .2s, box-shadow .2s}
+.pill:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(216,178,90,.3)}
+/* ===== Hero ===== */
+.hero{min-height:calc(100vh - 74px);display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:44px 0 60px;position:relative}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-family:Fraunces,Georgia,serif;font-weight:800;font-size:clamp(2.6rem,5.6vw,4.5rem);line-height:1.04;letter-spacing:-.02em;margin:22px 0}
+.hero h1 em{font-style:italic;color:transparent;background:linear-gradient(115deg,#f0d189 0%,#d8b25a 35%,#fff6d8 52%,#d8b25a 68%,#8a6a22 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;animation:brilho 3.4s linear infinite}
+@keyframes brilho{from{background-position:0 0}to{background-position:220% 0}}
+.hero p.lead{font-size:1.06rem;color:var(--muted);max-width:470px;margin-bottom:30px}
+.hero p.lead strong{color:var(--text)}
+.hero-acoes{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:14px;padding:15px 24px;font-weight:800;text-decoration:none;font-size:.92rem;transition:transform .2s}
+.btn-gold{background:var(--gold);color:#241a08}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-2)}
+.selos{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap}
+.selo{display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--gold);padding-left:12px}
+.selo b{font-size:1.05rem;color:var(--gold-2)}
+.selo span{font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+/* ===== Painel direito: cartão de marca ===== */
+.cartao{position:relative;background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:28px;padding:42px 36px;text-align:center;box-shadow:0 40px 90px rgba(0,0,0,.45)}
+.cartao::before{content:"";position:absolute;inset:14px;border:1px solid rgba(216,178,90,.35);border-radius:18px;pointer-events:none}
+.diamond{width:120px;height:120px;margin:0 auto 18px;filter:drop-shadow(0 0 26px rgba(216,178,90,.35))}
+.cartao-nome{font-family:Fraunces,serif;font-size:1.6rem;font-weight:800;letter-spacing:-.01em}
+.cartao-papel{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:8px 0 22px;font-weight:700}
+.cartao-divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px 0}
+.cartao-lista{display:flex;flex-direction:column;gap:12px;text-align:left}
+.cartao-item{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--text)}
+.cartao-item svg{flex-shrink:0;stroke:var(--gold)}
+.cartao-rodape{margin-top:18px;font-size:.68rem;color:var(--muted);letter-spacing:.06em}
+/* ===== Seções ===== */
+section.bloco{padding:72px 0;border-top:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:38px}
+.section-head h2{font-family:Fraunces,serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.02em;line-height:1.1;max-width:560px}
+.section-head p{color:var(--muted);max-width:320px;font-size:.92rem}
+/* Serviços */
+.servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.servico{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:transform .25s,border-color .25s}
+.servico:hover{transform:translateY(-6px);border-color:var(--gold)}
+.servico-ic{width:52px;height:52px;border-radius:14px;background:rgba(216,178,90,.14);display:grid;place-items:center;margin-bottom:18px}
+.servico h3{font-family:Fraunces,serif;font-size:1.28rem;font-weight:600;margin-bottom:10px}
+.servico p{color:var(--muted);font-size:.9rem}
+/* Sobre */
+.sobre{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+.retrato{background:linear-gradient(160deg,#241d33,#1b1626);border:1px solid var(--line);border-radius:var(--radius);padding:36px 30px;text-align:center}
+.retrato-nome{font-family:Fraunces,serif;font-size:1.3rem;font-weight:800;margin-bottom:4px}
+.retrato-papel{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.retrato-cargo{margin-top:16px;font-size:.88rem;color:var(--muted)}
+.retrato-cargo b{color:var(--text)}
+.sobre-texto p{color:var(--muted);margin-bottom:16px}
+.sobre-texto strong{color:var(--gold-2)}
+blockquote{font-family:Fraunces,serif;font-style:italic;font-size:1.12rem;line-height:1.55;border-left:3px solid var(--rose);padding-left:18px;margin:22px 0;color:#e9ddd2}
+/* Como funciona */
+.passos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:passo}
+.passo{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px 20px 22px}
+.passo::after{counter-increment:passo;content:"0" counter(passo);position:absolute;top:14px;right:18px;font-family:Fraunces,serif;font-size:2rem;font-weight:800;color:rgba(216,178,90,.28)}
+.passo h3{font-size:1rem;font-weight:700;margin-bottom:8px;padding-right:36px}
+.passo p{font-size:.82rem;color:var(--muted)}
+/* CTA final */
+.cta-final{background:linear-gradient(135deg,#2a2138,#1d182a);border:1px solid var(--gold);border-radius:28px;text-align:center;padding:56px 32px;margin:24px 0 0}
+.cta-final h2{font-family:Fraunces,serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.cta-final p{color:var(--muted);margin-bottom:26px}
+.cta-final .btn-gold{font-size:1rem;padding:17px 30px}
+/* Footer */
+.site-footer{border-top:1px solid var(--line);padding:30px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.site-footer a{color:var(--gold-2);text-decoration:none}
+.previa-aviso{margin-top:14px;font-size:.68rem;color:#8a7f9e;text-align:center;letter-spacing:.05em}
+/* ===== Responsivo ===== */
+@media (max-width: 1000px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:40px}
+  .cartao{order:-1;max-width:440px;margin:0 auto}
+  .servicos{grid-template-columns:1fr}
+  .passos{grid-template-columns:repeat(2,1fr)}
+  .sobre{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:start;gap:12px}
+  .nav{display:none}
+}
+@media (max-width: 560px){
+  .passos{grid-template-columns:1fr}
+  .selos{gap:14px}
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .hero h1 em{animation:none} .servico,.pill,.btn{transition:none} }
+</style>
+</head>
+<body>
+<div class="brilho"></div>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#inicio" aria-label="Luciana Oliveira — início">
+      <svg class="mono" viewBox="0 0 64 64" aria-hidden="true"><path fill="#d8b25a" d="M32 2 L58 24 L32 62 L6 24 Z"/><path fill="#14101c" d="M32 12 L49 26 L32 53 L15 26 Z"/><text x="32" y="35" font-size="17" text-anchor="middle" fill="#d8b25a" font-family="Georgia, serif" font-weight="bold">LO</text></svg>
+      <span class="brand-name">Luciana Oliveira<small>Gestora de Tráfego</small></span>
+    </a>
+    <nav class="nav" aria-label="Navegação">
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="pill" href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Chamar no Instagram</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- HERO -->
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Gestora de Anúncios · Tráfego Pago</p>
+      <h1>A sua imagem na frente de <em>quem precisa ver.</em></h1>
+      <p class="lead">Eu te ajudo a <strong>panfletar na internet e dar visibilidade à sua imagem</strong> — com anúncios bem feitos, para as pessoas certas, com o seu bolso respeitado.</p>
+      <div class="hero-acoes">
+        <a class="btn btn-gold" href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Conversar no Instagram →</a>
+        <a class="btn btn-ghost" href="#servicos">Ver o que eu faço</a>
+      </div>
+      <div class="selos">
+        <div class="selo"><b>+3 mil</b><span>seguidores no Instagram</span></div>
+        <div class="selo"><b>Ex-Chefe</b><span>de Gabinete · Sec. Nac. de Esporte</span></div>
+        <div class="selo"><b>Tráfego</b><span>pago com estratégia</span></div>
+      </div>
+    </div>
+
+    <!-- Cartão de marca -->
+    <aside class="cartao" aria-label="Cartão de apresentação">
+      <svg class="diamond" viewBox="0 0 100 100" aria-hidden="true">
+        <path fill="#d8b25a" d="M50 2 L92 34 L50 98 L8 34 Z" opacity=".9"/>
+        <path fill="#14101c" d="M50 14 L79 36 L50 84 L21 36 Z"/>
+        <path fill="#d8b25a" d="M50 24 L70 38 L50 74 L30 38 Z" opacity=".35"/>
+      </svg>
+      <p class="cartao-nome">Luciana Oliveira</p>
+      <p class="cartao-papel">Gestora de Tráfego</p>
+      <div class="cartao-divider"></div>
+      <ul class="cartao-lista">
+        <li class="cartao-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 10"/></svg>Anúncios que rodam na internet</li>
+        <li class="cartao-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 10"/></svg>Visibilidade para a sua imagem</li>
+        <li class="cartao-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 10"/></svg>Estratégia pensando no seu bolso</li>
+      </ul>
+      <div class="cartao-divider"></div>
+      <p class="cartao-rodape">@lucianaoliveiramvp</p>
+    </aside>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section class="bloco" id="servicos" aria-labelledby="servicos-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="servicos-title">O que eu faço <em style="color:var(--gold)">por você</em></h2>
+        <p>Tráfego pago é sobre colocar a sua oferta na frente das pessoas certas — sem enrolação e com olho no resultado.</p>
+      </div>
+      <div class="servicos">
+        <article class="servico">
+          <div class="servico-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d8b25a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="7"/><path d="M8.5 21l3.5-3.5L15.5 21"/></svg></div>
+          <h3>Gestão de anúncios</h3>
+          <p>Planejamento, criação e acompanhamento das campanhas na internet para o seu negócio aparecer para quem tem vontade de comprar — ou de te conhecer.</p>
+        </article>
+        <article class="servico">
+          <div class="servico-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d8b25a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8M12 18v4"/></svg></div>
+          <h3>Visibilidade para a sua imagem</h3>
+          <p>Para profissionais autônomos, prestadores e pequenos negócios que querem ser vistos: presença digital pensada para as pessoas certas te encontrarem.</p>
+        </article>
+        <article class="servico">
+          <div class="servico-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d8b25a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><polyline points="21 7 21 3 17 3"/></svg></div>
+          <h3>Estratégia que cabe no bolso</h3>
+          <p>Nada de gastar por gastar: plano pensado no seu orçamento, com as prioridades certas — do básico bem feito à campanha mais ousada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="bloco" id="sobre" aria-labelledby="sobre-title">
+    <div class="wrap sobre">
+      <div class="retrato">
+        <svg width="72" height="72" viewBox="0 0 64 64" style="margin:0 auto 14px" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#2a2338" stroke="#d8b25a" stroke-width="2"/><text x="32" y="40" font-size="20" text-anchor="middle" fill="#d8b25a" font-family="Georgia, serif" font-weight="bold">LO</text></svg>
+        <p class="retrato-nome">Luciana Oliveira</p>
+        <p class="retrato-papel">Gestora de Tráfego</p>
+        <p class="retrato-cargo"><b>Ex-Chefe de Gabinete</b><br>Secretaria Nacional de Esporte</p>
+      </div>
+      <div class="sobre-texto">
+        <h2 id="sobre-title" style="font-family:Fraunces,serif;font-size:clamp(1.6rem,3.4vw,2.2rem);letter-spacing:-.01em;margin-bottom:18px">Já passei pelo <em style="color:var(--gold)">outro lado da mesa</em> — e isso muda tudo.</h2>
+        <p>Como <strong>Chefe de Gabinete da Secretaria Nacional de Esporte</strong>, aprendi na prática como funciona colocar um nome, um projeto ou uma pessoa na frente do Brasil — com organização, estratégia e cuidado com a imagem.</p>
+        <p>Hoje eu trago essa experiência para a <strong>internet</strong>: ajudo pequenos negócios, profissionais e autônomos a aparecerem para quem importa — <strong>sem prometer milagre, com trabalho sério e estratégia.</strong></p>
+        <blockquote>"Panfletagem é importante. Mas o seu panfleto pode ser a internet inteira — e chegar muito mais longe."</blockquote>
+        <a class="btn btn-gold" href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Me acompanhe no Instagram →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="bloco" id="processo" aria-labelledby="processo-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="processo-title">Como a gente <em style="color:var(--gold)">trabalha</em></h2>
+        <p>Do primeiro oi ao anúncio no ar — sempre com você acompanhando de perto.</p>
+      </div>
+      <div class="passos">
+        <div class="passo"><h3>A gente conversa</h3><p>Você me conta o que faz, para quem vende e o que espera. Sem enrolação.</p></div>
+        <div class="passo"><h3>Eu monto o plano</h3><p>Estratégia de anúncios e presença pensada no seu objetivo e no seu orçamento.</p></div>
+        <div class="passo"><h3>Campanha vai ao ar</h3><p>Criação, publicação e acompanhamento das campanhas — do jeito certo.</p></div>
+        <div class="passo"><h3>Ajuste e resultado</h3><p>Relatórios, aprendizados e otimização contínua para render cada vez mais.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="bloco" id="contato" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta-final">
+        <p class="eyebrow">Vamos conversar?</p>
+        <h2 id="cta-title">A sua visibilidade<br>começa com <em style="color:var(--gold)">uma conversa.</em></h2>
+        <p>Me chama no Instagram — eu respondo pessoalmente.</p>
+        <a class="btn btn-gold" href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Conversar no Instagram →</a>
+        <p style="margin-top:18px;font-size:.82rem;color:var(--muted)">ou veja meu <a href="https://linktr.ee/lucianaoliveiramvp" target="_blank" rel="noopener noreferrer" style="color:var(--gold-2)">link na bio completo</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer wrap">
+  <span>© Luciana Oliveira — Gestora de Tráfego Pago</span>
+  <nav><a href="https://www.instagram.com/lucianaoliveiramvp/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://linktr.ee/lucianaoliveiramvp" target="_blank" rel="noopener noreferrer">Linktree</a></nav>
+</footer>
+<p class="previa-aviso">PRÉVIA PARA VALIDAÇÃO COM A LUCIANA — nenhum conteúdo será publicado sem o ok dela.</p>
+</body>
+</html>
