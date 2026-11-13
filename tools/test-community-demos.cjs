@@ -126,10 +126,14 @@ const ids=['reciclo','junto','raizfeira','pontocomum','acessoaberto'];
     await size(1280,1000);
     await cmd('Page.navigate',{url:pathToFileURL(path.join(repo,'modelos.html')).href});await sleep(600);
     await evaluate(`document.readyState==='complete'?true:new Promise(resolve=>window.addEventListener('load',()=>resolve(true),{once:true}))`);
-    await evaluate(`document.querySelector('[data-filter="Utilidade pública"]').click()`);
-    assert.equal(await evaluate(`document.querySelectorAll('#cards .card:not([hidden])').length`),3,'categoria pública');
-    await evaluate(`document.querySelector('[data-filter="Empreendedorismo"]').click()`);
-    assert.equal(await evaluate(`document.querySelectorAll('#cards .card:not([hidden])').length`),2,'categoria empreendedora');
+    // O filtro precisa mostrar exatamente os cards da categoria: a quantidade vem do catálogo.
+    const contarDaCategoria = async categoria => await evaluate(`[...document.querySelectorAll('#cards .card')].filter(c=>c.dataset.category===${JSON.stringify(categoria)}).length`);
+    for(const categoria of ['Utilidade pública','Empreendedorismo']){
+      await evaluate(`document.querySelector('[data-filter=${JSON.stringify(categoria)}]').click()`);
+      const esperado = await contarDaCategoria(categoria);
+      assert.ok(esperado>0,`categoria sem cards: ${categoria}`);
+      assert.equal(await evaluate(`document.querySelectorAll('#cards .card:not([hidden])').length`),esperado,`categoria ${categoria}`);
+    }
     assert.equal(runtimeErrors.length,0,JSON.stringify(runtimeErrors));
     const report={timestamp:new Date().toISOString(),runtimeErrors:0,results:reports};
     fs.writeFileSync(path.join(temp,'community-validation.json'),JSON.stringify(report,null,2));

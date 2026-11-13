@@ -46,6 +46,10 @@ def main():
         page.locator('#cv-whats').click()
         assert '5511942038103' in page.evaluate('window.__whats[0][0]')
         assert '19%2C90' in page.evaluate('window.__whats[0][0]')
+        # Grade visual: cada card de modelo marca o rádio correspondente.
+        for i,valor in enumerate(['classico','lateral','topo','minimal','moldura','blocos','semfoto','executivo','trajetoria','retrato']):
+            page.locator('.modelo-card').nth(i).click()
+            assert page.locator(f'[name=modelo][value={valor}]').is_checked(), valor
         page.locator('[name=publico][value=primeiro-emprego]').check()
         page.locator('#cv-pedido').click()
         first=json.loads(page.evaluate('window.__arquivo.text()'))
@@ -56,7 +60,7 @@ def main():
         fixture['formacao']*=3
         fixture['experiencias']*=4
         for publico in ['profissional','primeiro-emprego']:
-            for modelo in ['classico','lateral']:
+            for modelo in ['classico','lateral','topo','minimal','moldura','blocos','semfoto','executivo','trajetoria','retrato']:
                 for previa in [True,False]:
                     f={**fixture,'publico':publico,'modelo':modelo}
                     payload=json.dumps(f,ensure_ascii=False)
@@ -102,6 +106,6 @@ def main():
         assert not errors,errors
         b.close()
     server.shutdown()
-    print('OK: pedido, WhatsApp simulado, primeiro emprego sem experiências inventadas, 8 PDFs pesquisáveis/marcados/sem marca, importação/finalização local, 320/390px e validação de dados.')
+    print('OK: pedido, WhatsApp simulado, primeiro emprego sem experiências inventadas, grade visual de 10 modelos, 40 PDFs pesquisáveis/marcados/sem marca, importação/finalização local, 320/390px e validação de dados.')
 
 if __name__=='__main__':main()

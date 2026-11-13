@@ -5,7 +5,8 @@
   <title>Crie seu currículo | MOSS Digital</title>
   <meta name="description" content="Monte uma prévia de currículo para profissionais ou primeiro emprego. Entrega manual do PDF final por R$ 19,90 após conferir o pagamento.">
   <link rel="canonical" href="https://mossdigital.com.br/curriculo/">
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#101419">
+  <link rel="stylesheet" href="style.css?v=20261112-mesa">
   <script src="vendor/jspdf.umd.min.js" defer></script><script src="vendor/notosans.js" defer></script>
   <script src="curriculo.js" defer></script><script src="montador.js" defer></script>
 </head>
@@ -13,13 +14,24 @@
 <div class="faixa">Currículo por <strong>R$ 19,90</strong> · pagamento único · entrega manual</div>
 <header class="wrap topo"><a href="../" class="marca">MOSS <small>DIGITAL</small></a><a href="../">← Voltar ao site</a></header>
 <main>
-  <section class="wrap hero"><p class="etiqueta">PROFISSIONAIS E PRIMEIRO EMPREGO</p><h1>Sua próxima oportunidade<br>começa com um <em>bom currículo.</em></h1><p>Organize sua trajetória ou apresente sua formação e suas habilidades para o primeiro emprego. Você preenche, confere e envia o pedido pelo WhatsApp.</p><a href="#montar" class="botao">Montar minha prévia grátis ↓</a><p class="nota">Dois modelos · foto opcional · PDF com texto selecionável · sem cadastro</p></section>
+  <section class="wrap hero"><p class="etiqueta">PROFISSIONAIS E PRIMEIRO EMPREGO</p><h1>Sua próxima oportunidade<br>começa com um <em>bom currículo.</em></h1><p>Organize sua trajetória ou apresente sua formação e suas habilidades para o primeiro emprego. Você preenche, confere e envia o pedido pelo WhatsApp.</p><p class="hero-fan" aria-hidden="true"><span class="modelo-mini mini-classico"></span><span class="modelo-mini mini-lateral"></span><span class="modelo-mini mini-topo"></span><span class="modelo-mini mini-minimal"></span><span class="modelo-mini mini-moldura"></span><span class="modelo-mini mini-blocos"></span><span class="modelo-mini mini-semfoto"></span><span class="modelo-mini mini-executivo"></span><span class="modelo-mini mini-trajetoria"></span><span class="modelo-mini mini-retrato"></span></p><a href="#montar" class="botao">Montar minha prévia grátis ↓</a><p class="nota">Dez modelos na vitrine · com foto ou sem foto · simples, profissional e criativo · PDF com texto selecionável · sem cadastro</p></section>
   <section class="wrap passos" aria-label="Como funciona"><article><b>1. Preencha</b><p>Escolha o público e o modelo. Use apenas informações verdadeiras.</p></article><article><b>2. Baixe dois arquivos</b><p>Prévia em PDF com marca-d’água e pedido em JSON com seus dados.</p></article><article><b>3. Envie no WhatsApp</b><p>Anexe os dois como documentos. Nada é enviado automaticamente.</p></article><article><b>4. Receba o final</b><p>Combine prazo e pagamento de R$ 19,90. A MOSS entrega o PDF sem marca após confirmar o recebimento.</p></article></section>
   <section class="wrap" id="montar"><h2>Monte agora. <em>Confira antes de enviar.</em></h2><p class="intro">Não é necessário ter experiência profissional para criar o currículo. Para o primeiro emprego, priorizamos formação, cursos e atividades reais.</p>
   <div class="montador">
     <form id="cv-form">
       <fieldset><legend>Para quem é o currículo?</legend><label><input type="radio" name="publico" value="profissional" checked> Profissional com experiência</label><label><input type="radio" name="publico" value="primeiro-emprego"> Primeiro emprego</label></fieldset>
-      <fieldset><legend>Escolha o modelo</legend><label><input type="radio" name="modelo" value="classico" checked> Essencial · claro, uma coluna</label><label><input type="radio" name="modelo" value="lateral"> Destaque · coluna lateral azul</label><label class="campo">Cor de destaque <input id="cv-cor" type="color" value="#166534"></label></fieldset>
+      <fieldset><legend>Escolha o modelo · 10 opções</legend><div class="modelos">
+        <label class="modelo-card"><input type="radio" name="modelo" value="classico" checked><span class="modelo-mini mini-classico" aria-hidden="true"></span><strong>Essencial</strong><small>Claro · uma coluna</small></label>
+        <label class="modelo-card"><input type="radio" name="modelo" value="lateral"><span class="modelo-mini mini-lateral" aria-hidden="true"></span><strong>Destaque</strong><small>Coluna lateral colorida</small></label>
+        <label class="modelo-card"><input type="radio" name="modelo" value="topo"><span class="modelo-mini mini-topo" aria-hidden="true"></span><strong>Faixa</strong><small>Topo colorido, nome em branco</small></label>
+        <label class="modelo-card"><input type="radio" name="modelo" value="minimal"><span class="modelo-mini mini-minimal" aria-hidden="true"></span><strong>Minimalista</strong><small>Centralizado e elegante</small></label>
+        <label class="modelo-card"><input type="radio" name="modelo" value="moldura"><span class="modelo-mini mini-moldura" aria-hidden="true"></span><strong>Moldura</strong><small>Moldura colorida na página</small></label>
+        <label class="modelo-card"><input type="radio" name="modelo" value="blocos"><span class="modelo-mini mini-blocos" aria-hidden="true"></span><strong>Blocos</strong><small>Seções com fundo colorido</small></label>
+        <label class="modelo-card"><input type="radio" name="modelo" value="semfoto"><span class="modelo-mini mini-semfoto" aria-hidden="true"></span><strong>Sem foto</strong><small>Sem foto · texto em primeiro plano</small></label>
+        <label class="modelo-card"><input type="radio" name="modelo" value="executivo"><span class="modelo-mini mini-executivo" aria-hidden="true"></span><strong>Executivo</strong><small>Corporativo · barra de destaque</small></label>
+        <label class="modelo-card"><input type="radio" name="modelo" value="trajetoria"><span class="modelo-mini mini-trajetoria" aria-hidden="true"></span><strong>Trajetória</strong><small>Linha do tempo da sua carreira</small></label>
+        <label class="modelo-card"><input type="radio" name="modelo" value="retrato"><span class="modelo-mini mini-retrato" aria-hidden="true"></span><strong>Retrato</strong><small>Foto grande em destaque</small></label>
+      </div><label class="campo">Cor de destaque <input id="cv-cor" type="color" value="#166534"></label></fieldset>
       <label class="campo">Nome completo *<input id="cv-nome" autocomplete="name" maxlength="100" required placeholder="Seu nome completo"></label>
       <label class="campo">Profissão ou vaga desejada *<input id="cv-titulo" maxlength="100" required placeholder="Ex.: Auxiliar administrativo"></label>
       <p class="nota">Informe pelo menos um contato para aparecer no currículo.</p>

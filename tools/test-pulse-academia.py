@@ -83,6 +83,8 @@ def main():
         page.keyboard.press('Escape')
         for width in [1440, 768, 390, 320]:
             page.set_viewport_size({'width': width, 'height': 900})
+            # Deixa a media query e o layout assentarem antes de medir a largura.
+            page.wait_for_timeout(200)
             assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), f'Overflow: {width}'
         page.locator('.menu-toggle').click()
         assert page.locator('#main-nav').is_visible()

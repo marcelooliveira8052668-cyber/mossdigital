@@ -10,6 +10,7 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
+import re
 from pathlib import Path
 from threading import Thread
 from urllib.parse import unquote, urlsplit
@@ -41,15 +42,18 @@ async def test(base, output, browser_path, axe_path):
         await page.evaluate('document.fonts.ready')
         assert await page.locator('h1').count() == 1
         assert await page.locator('main').count() == 1
-        assert await page.locator('#modelos .card').count() == 15
-        assert await page.locator('#modelos .card .card-actions a').count() == 30
+        # A quantidade de destaques é a declarada no próprio título da seção.
+        declarado = await page.locator('#modelos .section-kicker span').nth(1).inner_text()
+        esperados = int(re.search(r'(\d+)\s*$', declarado).group(1))
+        assert await page.locator('#modelos .card').count() == esperados
+        assert await page.locator('#modelos .card .card-actions a').count() == esperados * 2
         assert await page.locator('video').count() == 1
         assert await page.locator('.hero video').count() == 1
         checks.append('vídeo único no topo, dentro da seção principal de apresentação')
         ids = await page.locator('[id]').evaluate_all('(els) => els.map(el => el.id)')
         assert len(ids) == len(set(ids)), 'IDs duplicados'
         json.loads(await page.locator('script[type="application/ld+json"]').inner_text())
-        checks.append('semântica, quinze projetos, trinta ações e metadados válidos')
+        checks.append(f'semântica, {esperados} projetos, {esperados * 2} ações e metadados válidos')
 
         links = await page.locator('a[href], img[src], link[href], source[src], track[src], video[poster]').evaluate_all('''els => els.map(el => el.getAttribute('href') || el.getAttribute('src') || el.getAttribute('poster'))''')
         for link in links:
@@ -130,7 +134,7 @@ async def test(base, output, browser_path, axe_path):
         nojs = await browser.new_context(java_script_enabled=False, viewport={'width': 390, 'height': 844})
         fallback = await nojs.new_page()
         await fallback.goto(base, wait_until='networkidle')
-        assert await fallback.locator('#modelos .card').count() == 15
+        assert await fallback.locator('#modelos .card').count() == esperados
         await fallback.locator('.video-transcript summary').first.click()
         assert await fallback.locator('.video-transcript').get_attribute('open') is not None
         assert await fallback.locator('#contato a[href*="wa.me"]').is_visible()

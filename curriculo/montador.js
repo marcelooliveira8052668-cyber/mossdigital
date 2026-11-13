@@ -4,6 +4,9 @@
   const api=window.MossCurriculo,$=id=>document.getElementById(id);
   let foto=null, fotoLendo=false, versaoFoto=0, ocupado=false;
   const status=t=>{$('cv-status').textContent=t;};
+  // Cor padrão e nome de apresentação de cada modelo.
+  const CORES_MODELO={classico:'#166534',lateral:'#075985',topo:'#0f766e',minimal:'#374151',moldura:'#1d4ed8',blocos:'#b91c1c',semfoto:'#334155',executivo:'#4338ca',trajetoria:'#7c3aed',retrato:'#b45309'};
+  const NOMES_MODELO={classico:'Essencial',lateral:'Destaque',topo:'Faixa',minimal:'Minimalista',moldura:'Moldura',blocos:'Blocos',semfoto:'Sem foto',executivo:'Executivo',trajetoria:'Trajetória',retrato:'Retrato'};
   function linha(tipo){
     const el=document.createElement('div');el.className='item';
     const campos=tipo==='experiencias'?[['cargo','Cargo',100],['empresa','Empresa',100],['periodo','Período (ex.: 2023–2025)',70],['descricao','Atividades e resultados verdadeiros',600]]:[['curso','Curso ou escolaridade',120],['instituicao','Instituição',120],['periodo','Período ou previsão de conclusão',70],['detalhes','Detalhes da formação (opcional)',300]];
@@ -24,7 +27,7 @@
   }
   function preparar(){if(fotoLendo)throw Error('Aguarde a foto terminar de carregar.');return api.validar(api.pacote(coletar()));}
   form.addEventListener('submit',e=>e.preventDefault());
-  form.querySelectorAll('[name=modelo]').forEach(input=>input.addEventListener('change',()=>{$('cv-cor').value=input.value==='lateral'?'#075985':'#166534';atualizar();}));
+  form.querySelectorAll('[name=modelo]').forEach(input=>input.addEventListener('change',()=>{$('cv-cor').value=CORES_MODELO[input.value]||'#166534';atualizar();}));
   let timer;form.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(atualizar,150);});form.addEventListener('change',atualizar);
   $('cv-add-exp').addEventListener('click',()=>{if($('cv-experiencias').children.length<4)linha('experiencias');});
   $('cv-add-form').addEventListener('click',()=>{if($('cv-formacao').children.length<3)linha('formacao');});
@@ -40,6 +43,6 @@
     try{const d=preparar();ocupado=true;$('cv-previa').disabled=true;status('Gerando prévia com marca-d’água...');const blob=await api.pdf(d,true);api.baixar(blob,'previa-curriculo-'+api.slug(d.nome)+'.pdf');status('Prévia gerada! Baixe também o arquivo do pedido (.json) e anexe os dois no WhatsApp. Nada foi enviado à MOSS.');}catch(e){status(e.message);}finally{ocupado=false;$('cv-previa').disabled=false;}
   });
   $('cv-pedido').addEventListener('click',()=>{try{const d=preparar();api.baixar(new Blob([JSON.stringify(api.pacote(d))],{type:'application/json'}),'pedido-curriculo-'+api.slug(d.nome)+'.json');status('Arquivo do pedido gerado com dados e foto. Ele não é o PDF. Anexe-o como Documento no WhatsApp, junto com a prévia.');}catch(e){status(e.message);}});
-  $('cv-whats').addEventListener('click',()=>{try{const d=preparar();const texto=`Olá! Montei meu currículo na MOSS Digital.\nNome: ${d.nome}\nVaga/área: ${d.titulo}\nTipo: ${d.publico}\nModelo: ${d.modelo}\nValor: R$ 19,90.\nVou anexar manualmente a prévia PDF e o arquivo do pedido (.json). Favor confirmar prazo, pagamento e entrega antes de finalizar.`;window.open('https://wa.me/5511942038103?text='+encodeURIComponent(texto),'_blank','noopener,noreferrer');status('Confira a conversa, anexe o PDF e o pedido JSON como Documentos e toque em Enviar. Nenhum arquivo foi anexado automaticamente.');}catch(e){status(e.message);}});
+  $('cv-whats').addEventListener('click',()=>{try{const d=preparar();const texto=`Olá! Montei meu currículo na MOSS Digital.\nNome: ${d.nome}\nVaga/área: ${d.titulo}\nTipo: ${d.publico}\nModelo: ${NOMES_MODELO[d.modelo]||d.modelo}\nValor: R$ 19,90.\nVou anexar manualmente a prévia PDF e o arquivo do pedido (.json). Favor confirmar prazo, pagamento e entrega antes de finalizar.`;window.open('https://wa.me/5511942038103?text='+encodeURIComponent(texto),'_blank','noopener,noreferrer');status('Confira a conversa, anexe o PDF e o pedido JSON como Documentos e toque em Enviar. Nenhum arquivo foi anexado automaticamente.');}catch(e){status(e.message);}});
   atualizar();linha('experiencias');linha('formacao');
 })();
