@@ -1,170 +1,185 @@
-"""Verifica a página inicial local sem enviar contatos nem publicar alterações.
-
-Requer Python + Playwright e Chrome ou Edge instalado.
-Uso: python tools/test-home.py --output DIRETORIO_DE_RELATORIOS
-"""
-
+"""Regressão da home unificada: catálogo, imagens, vídeo e acesso por teclado."""
 import argparse
-import asyncio
-from functools import partial
-from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
-import re
+from functools import partial
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from threading import Thread
 from urllib.parse import unquote, urlsplit
+from playwright.sync_api import sync_playwright
 
-from playwright.async_api import async_playwright
-
-REPO = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent
 
 
-class QuietHandler(SimpleHTTPRequestHandler):
+class Quiet(SimpleHTTPRequestHandler):
     def log_message(self, *args):
         pass
 
 
-async def test(base, output, browser_path, axe_path):
-    checks = []
-    errors = []
-    failed = []
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(executable_path=browser_path)
-        context = await browser.new_context(reduced_motion='reduce')
-        page = await context.new_page()
+class Server(ThreadingHTTPServer):
+    request_queue_size = 128
+
+
+def test(base, output, browser_path, axe_path):
+    errors, failed, requests, checks = [], [], [], []
+    inventory = json.loads((ROOT/'assets/data/catalogo-unificado.json').read_text(encoding='utf-8'))
+    total = len(inventory)
+    assert total == 127, total
+    source = (ROOT/'index.html').read_text(encoding='utf-8')
+    assert '.moss-local/' not in source and '127.0.0.1' not in source and 'localhost' not in source
+    assert 'noindex' not in source
+    with sync_playwright() as p:
+        browser = p.chromium.launch(executable_path=browser_path) if browser_path else p.chromium.launch(channel='msedge')
+        page = browser.new_page(viewport={'width':1440,'height':1000}, reduced_motion='reduce')
         page.on('pageerror', lambda error: errors.append(str(error)))
-        page.on('response', lambda response: failed.append(response.url) if response.status >= 400 and response.url.startswith(base) else None)
-        requests = []
-        page.on('request', lambda request: requests.append(request.url))
-        await page.set_viewport_size({'width': 1440, 'height': 1000})
-        await page.goto(base, wait_until='networkidle')
-        await page.evaluate('document.fonts.ready')
-        assert await page.locator('h1').count() == 1
-        assert await page.locator('main').count() == 1
-        # A quantidade de destaques é a declarada no próprio título da seção.
-        declarado = await page.locator('#modelos .section-kicker span').nth(1).inner_text()
-        esperados = int(re.search(r'(\d+)\s*$', declarado).group(1))
-        assert await page.locator('#modelos .card').count() == esperados
-        assert await page.locator('#modelos .card .card-actions a').count() == esperados * 2
-        assert await page.locator('video').count() == 1
-        assert await page.locator('.hero video').count() == 1
-        checks.append('vídeo único no topo, dentro da seção principal de apresentação')
-        ids = await page.locator('[id]').evaluate_all('(els) => els.map(el => el.id)')
+        page.on('response', lambda r: failed.append(r.url) if r.status >= 400 and r.url.startswith(base) else None)
+        page.on('request', lambda r: requests.append(r.url))
+        page.goto(base, wait_until='networkidle')
+        assert page.locator('h1').count() == 1
+        assert page.locator('main').count() == 1
+        ids = page.locator('[id]').evaluate_all('(els)=>els.map(el=>el.id)')
         assert len(ids) == len(set(ids)), 'IDs duplicados'
-        json.loads(await page.locator('script[type="application/ld+json"]').inner_text())
-        checks.append(f'semântica, {esperados} projetos, {esperados * 2} ações e metadados válidos')
+        json.loads(page.locator('script[type="application/ld+json"]').inner_text())
+        assert page.locator('link[rel="canonical"]').get_attribute('href') == 'https://mossdigital.com.br/'
+        assert page.locator('.main-nav a').all_text_contents() == ['Demos','Serviços','Contato']
+        assert page.locator('#cards > article').count() == total
+        assert page.locator('#cards > article:visible').count() == 6
+        assert page.locator('#cards > article details').count() == total
+        checks.append('127 demos em HTML; seis iniciais, menu único, semântica e metadados válidos')
 
-        links = await page.locator('a[href], img[src], link[href], source[src], track[src], video[poster]').evaluate_all('''els => els.map(el => el.getAttribute('href') || el.getAttribute('src') || el.getAttribute('poster'))''')
+        # Compara todos os destinos com o inventário aprovado, não só as primeiras demos.
+        actual = page.locator('#cards > article').evaluate_all('''cards=>cards.map(c=>({
+          category:c.dataset.category,
+          demo:c.querySelector('.demo-cover').getAttribute('href'),
+          image:c.querySelector('img').getAttribute('src')
+        }))''')
+        expected = [{'category':m['category'],'demo':m['demo'],'image':m['image']} for m in inventory]
+        assert actual == expected
+        assert len({m['demo'] for m in actual}) == total
+        links = page.locator('a[href],img[src],link[href],source[src],track[src],video[poster],script[src]').evaluate_all('''els=>els.map(el=>el.getAttribute('href')||el.getAttribute('src')||el.getAttribute('poster'))''')
         for link in links:
-            parsed = urlsplit(link)
-            if parsed.scheme or parsed.netloc:
+            url = urlsplit(link)
+            if url.scheme or url.netloc:
+                if url.netloc == 'wa.me':
+                    assert url.path == '/5511942038103', link
                 continue
-            if parsed.path:
-                # Caminho absoluto (ex.: /criar/) resolve dentro do repositório.
-                target = REPO / unquote(parsed.path).lstrip('/')
-                assert target.exists(), f'Recurso local ausente: {link}'
-                if target.is_dir():
-                    assert (target / 'index.html').exists(), f'Índice ausente: {link}'
-            elif parsed.fragment:
-                assert await page.locator('[id]').evaluate_all('(els, id) => els.some(el => el.id === id)', unquote(parsed.fragment)), f'Âncora ausente: {link}'
-        for link in await page.locator('a[href*="wa.me"]').evaluate_all('(els) => els.map(el => el.href)'):
-            assert urlsplit(link).path == '/5511942038103'
-        checks.append('arquivos, imagens, âncoras e número do WhatsApp conferidos sem enviar mensagens')
+            if url.path:
+                target = ROOT / unquote(url.path).lstrip('/')
+                assert target.exists(), link
+            elif url.fragment:
+                assert url.fragment in ids, link
+        checks.append('127 destinos e capas idênticos ao inventário; arquivos, âncoras e WhatsApp válidos')
 
-        assert not any('.mp4' in url for url in requests), 'Vídeo baixado antes de interação'
-        assert await page.locator('video').get_attribute('autoplay') is None
-        assert await page.locator('video').get_attribute('preload') == 'none'
-        assert await page.locator('video').evaluate('(v) => v.paused')
-        checks.append('vídeo não inicia nem baixa automaticamente')
-
-        await page.keyboard.press('Tab')
-        assert await page.locator('.skip-link').evaluate('(el) => el === document.activeElement')
-        await page.keyboard.press('Enter')
+        assert page.locator('video').count() == 1
+        assert page.locator('video').get_attribute('preload') == 'none'
+        assert page.locator('video').get_attribute('autoplay') is None
+        assert not any('.mp4' in r for r in requests), 'Download de vídeo antes da interação'
+        assert page.locator('video').evaluate('(v)=>v.paused')
+        page.keyboard.press('Tab')
+        assert page.locator('.skip').evaluate('(el)=>el===document.activeElement')
+        page.keyboard.press('Enter')
         assert urlsplit(page.url).fragment == 'conteudo'
-        summary = page.locator('.video-transcript summary').first
-        await summary.focus()
-        await page.keyboard.press('Enter')
-        assert await summary.locator('..').get_attribute('open') is not None
-        await page.keyboard.press('Enter')
-        assert await summary.locator('..').get_attribute('open') is None
-        await summary.evaluate('(el) => el.blur()')
-        checks.append('atalho de conteúdo e dúvidas operáveis por teclado')
+        summary = page.locator('.transcript summary')
+        summary.focus()
+        page.keyboard.press('Enter')
+        assert page.locator('.transcript').get_attribute('open') is not None
+        page.keyboard.press('Enter')
+        assert page.locator('.transcript').get_attribute('open') is None
+        checks.append('atalho e transcrição operáveis por teclado; vídeo só baixa após interação')
 
-        for width in [1440, 1024, 768, 390, 320]:
-            await page.set_viewport_size({'width': width, 'height': 900})
-            await page.evaluate('window.scrollTo(0, 0)')
-            assert await page.evaluate('document.documentElement.scrollWidth <= innerWidth'), f'Transbordamento em {width}px'
-            # Rolagem gradual: um salto direto ao fim não dispara as imagens com loading="lazy".
-            altura = await page.evaluate('document.body.scrollHeight')
-            pos = 0
-            while pos < altura:
-                pos += 700
-                await page.evaluate(f'window.scrollTo(0, {pos})')
-                await page.wait_for_timeout(150)
-            await page.locator('.home-contact').scroll_into_view_if_needed()
-            await page.wait_for_function('Array.from(document.images).every(img => img.complete && img.naturalWidth > 0)')
-            assert await page.evaluate('document.documentElement.scrollWidth <= innerWidth'), f'Transbordamento no rodapé em {width}px'
-            if width in (1440, 390):
-                await page.screenshot(path=str(output / f'pagina-inicial-{width}.png'), full_page=True, animations='disabled')
-        checks.append('imagens carregadas e sem rolagem horizontal em 320, 390, 768, 1024 e 1440px')
+        # O teste não depende de rolagem para solicitar as imagens fora da primeira página.
+        page.locator('#cards img').evaluate_all('(imgs)=>imgs.forEach(i=>{i.loading="eager"})')
+        page.wait_for_function('[...document.querySelectorAll("#cards img")].every(i=>i.complete)', timeout=60000)
+        broken = page.locator('#cards img').evaluate_all('(imgs)=>imgs.filter(i=>!i.naturalWidth).map(i=>i.src)')
+        assert not broken, broken
+        checks.append('127 fotos carregadas no navegador, inclusive cards escondidos; nenhuma quebrada')
 
+        search = page.locator('#busca-modelo')
+        search.fill('clinica')
+        found = page.locator('#cards > article:visible').count()
+        assert found > 0
+        search.fill('CLÍNICA')
+        assert page.locator('#cards > article:visible').count() == found
+        page.locator('#categoria-modelo').select_option('Alimentação')
+        search.fill('pizza')
+        assert page.locator('#cards > article:visible').count() == 1
+        search.fill('clinica')
+        assert page.locator('#cards > article:visible').count() == 0
+        assert page.locator('[data-empty]').is_visible()
+        page.locator('[data-reset]').click()
+        assert page.locator('#cards > article:visible').count() == 6
+        page.locator('[data-more]').click()
+        assert page.locator('#cards > article:visible').count() == 12
+        # Cada incremento mantém as demos anteriores e permite acessar o catálogo inteiro.
+        while page.locator('[data-more]').is_visible():
+            page.locator('[data-more]').click()
+        assert page.locator('#cards > article:visible').count() == total
+        search.fill('zzzzinexistente')
+        assert page.locator('[data-empty]').is_visible()
+        page.locator('[data-reset]').click()
+        assert page.locator('#cards > article:visible').count() == 6
+        search.fill('academia')
+        search.press('Escape')
+        assert search.input_value() == ''
+        checks.append('busca sem acentos, categoria combinada, vazio, limpar, Esc e paginação até todas as 127 demos')
+
+        for width in [1440,1024,768,390,320]:
+            page.set_viewport_size({'width':width,'height':900})
+            assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
+            if width in [1440,390]:
+                page.evaluate("scrollTo({top:0,behavior:'instant'})")
+                page.screenshot(path=str(output/f'home-{width}.png'),full_page=True)
+        checks.append('sem rolagem horizontal em 320, 390, 768, 1024 e 1440 px')
+
+        page.locator('video').evaluate('(v)=>{v.muted=true;return v.play()}')
+        page.wait_for_function('document.querySelector("video").currentTime>.2')
+        assert page.locator('video').evaluate('(v)=>Math.abs(v.duration-30)<.1')
+        page.wait_for_function('document.querySelector("track").readyState===2')
+        assert page.locator('video').evaluate('(v)=>v.textTracks[0].cues.length') == 6
+        page.locator('video').evaluate('(v)=>v.pause()')
+        checks.append('vídeo de sete capas: 30 segundos, reprodução e seis legendas disponíveis')
+
+        page.goto(base+'modelos.html',wait_until='networkidle')
+        page.wait_for_url('**/#modelos')
+        assert page.locator('#cards > article').count() == total
+        checks.append('endereço antigo modelos.html encaminha para a home unificada')
+        nojs = browser.new_context(java_script_enabled=False,viewport={'width':390,'height':844})
+        fallback = nojs.new_page()
+        fallback.goto(base,wait_until='networkidle')
+        assert fallback.locator('#cards > article:visible').count() == total
+        fallback.locator('.transcript summary').click()
+        assert fallback.locator('.transcript').get_attribute('open') is not None
+        assert fallback.locator('#contato a[href*="wa.me"]').count() == 1
+        fallback.goto(base+'modelos.html',wait_until='networkidle')
+        fallback.wait_for_url('**/#modelos')
+        checks.append('sem JavaScript: 127 demos, detalhes, contato e encaminhamento acessíveis')
         if axe_path:
-            await page.add_script_tag(path=str(axe_path))
-            audit = await page.evaluate('''async () => {
-                const result = await axe.run(document, {runOnly: {type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice']}});
-                return {violations: result.violations, passes: result.passes.length, incomplete: result.incomplete};
-            }''')
-            (output / 'acessibilidade-axe.json').write_text(json.dumps(audit, ensure_ascii=False, indent=2), encoding='utf-8')
-            assert not audit['violations'], json.dumps(audit['violations'], ensure_ascii=False)
-            checks.append('axe-core: nenhuma violação automática nos critérios verificados; revisão manual ainda necessária')
-
-        await page.set_viewport_size({'width': 1440, 'height': 1000})
-        await page.locator('#apresentacao').screenshot(path=str(output / 'apresentacao-video.png'))
-        await page.locator('#site-preco').screenshot(path=str(output / 'como-contratar.png'))
-        await page.locator('#modelos').screenshot(path=str(output / 'projetos-destaque.png'))
-        await page.locator('video').evaluate('(v) => { v.muted = true; return v.play(); }')
-        await page.wait_for_function('document.querySelector("video").currentTime > 0.2')
-        await page.locator('video').evaluate('(v) => v.pause()')
-        assert await page.locator('video').evaluate('(v) => Math.abs(v.duration - 30) < 0.1')
-        await page.wait_for_function('document.querySelector("track").readyState === 2')
-        assert await page.locator('video').evaluate('(v) => v.textTracks[0].cues.length') == 6
-        checks.append('reprodução do MP4 de 30 segundos, seis legendas e transcrição disponíveis')
-
-        nojs = await browser.new_context(java_script_enabled=False, viewport={'width': 390, 'height': 844})
-        fallback = await nojs.new_page()
-        await fallback.goto(base, wait_until='networkidle')
-        assert await fallback.locator('#modelos .card').count() == esperados
-        await fallback.locator('.video-transcript summary').first.click()
-        assert await fallback.locator('.video-transcript').get_attribute('open') is not None
-        assert await fallback.locator('#contato a[href*="wa.me"]').is_visible()
-        checks.append('catálogo, dúvidas e contato acessíveis também sem JavaScript')
+            page.goto(base,wait_until='networkidle')
+            page.add_script_tag(path=str(axe_path))
+            audit = page.evaluate('''async()=>{const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}});return {violations:r.violations,passes:r.passes.length}}''')
+            (output/'axe.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2),encoding='utf-8')
+            assert not audit['violations'], audit['violations']
+            checks.append('auditoria automática axe sem violações nos critérios verificados')
         assert not errors, errors
         assert not failed, failed
-        await browser.close()
-    report = {'checks': checks, 'runtime_errors': errors, 'local_http_errors': failed}
-    (output / 'testes-pagina-inicial.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
-    print(json.dumps(report, ensure_ascii=False, indent=2))
+        browser.close()
+    report = {'checks':checks,'runtime_errors':errors,'local_http_errors':failed}
+    (output/'testes-pagina-inicial.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+    print(json.dumps(report,ensure_ascii=False,indent=2),flush=True)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--browser-path', default=None)
-    parser.add_argument('--axe-path', type=Path, default=None, help='Cópia local opcional do axe-core para auditoria automática')
+    parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--browser-path')
+    parser.add_argument('--axe-path',type=Path)
     args = parser.parse_args()
-    args.output.mkdir(parents=True, exist_ok=True)
-    candidates = [
-        Path(os.environ.get('PROGRAMFILES', 'C:/Program Files')) / 'Google/Chrome/Application/chrome.exe',
-        Path(os.environ.get('PROGRAMFILES(X86)', 'C:/Program Files (x86)')) / 'Microsoft/Edge/Application/msedge.exe',
-    ]
-    browser_path = args.browser_path or next((str(path) for path in candidates if path.exists()), None)
-    if not browser_path:
-        parser.error('Informe --browser-path com o caminho do Chrome ou Edge.')
-    server = ThreadingHTTPServer(('127.0.0.1', 0), partial(QuietHandler, directory=str(REPO)))
-    Thread(target=server.serve_forever, daemon=True).start()
+    args.output.mkdir(parents=True,exist_ok=True)
+    server = Server(('127.0.0.1',0),partial(Quiet,directory=str(ROOT)))
+    Thread(target=server.serve_forever,daemon=True).start()
     try:
-        asyncio.run(test(f'http://127.0.0.1:{server.server_port}/', args.output, browser_path, args.axe_path))
+        test(f'http://127.0.0.1:{server.server_port}/',args.output,args.browser_path,args.axe_path)
     finally:
         server.shutdown()
         server.server_close()

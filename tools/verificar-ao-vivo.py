@@ -42,15 +42,17 @@ for caminho, esperado in [
 
 print('\n=== CONTEUDO ===')
 _, idx = get('/index.html')
-checar('zap-flutuante' in idx, 'index: botao fixo do WhatsApp')
-checar('privacidade.html' in idx[idx.rfind('<footer>'):], 'index: link Privacidade no rodape')
+checar('Conversar pelo WhatsApp' in idx and 'wa.me/5511942038103' in idx, 'index: contato pelo WhatsApp')
+checar('privacidade.html' in idx[idx.rfind('<footer'):], 'index: link Privacidade no rodape')
 checar('rel="icon"' in idx, 'index: favicon declarado')
+checar(idx.count('class="demo-card"') == 127, 'index: 127 demos na mesma pagina')
+checar('/assets/css/moss-unificada.css' in idx, 'index: identidade visual unificada')
+checar('127.0.0.1' not in idx and '.moss-local/' not in idx, 'index: sem enderecos temporarios')
 
 _, mod = get('/modelos.html')
-n = mod.count('Quero este modelo')
-checar(n >= 10, f'modelos: {n} botoes de orcamento por modelo (>=10)')
-checar('wa.me/5511942038103' in mod, 'modelos: link de orcamento no WhatsApp')
-checar('demos/armazem-da-esquina/entrega/card-armazem-da-esquina.webp' in mod, 'modelos: cartao do Armazem da Esquina')
+checar('http-equiv="refresh"' in mod and './#modelos' in mod, 'modelos: encaminha para a home unificada')
+checar('rel="canonical" href="https://mossdigital.com.br/"' in mod, 'modelos: URL principal unica')
+checar('demos/armazem-da-esquina/entrega/card-armazem-da-esquina.webp' in idx, 'index: cartao do Armazem da Esquina')
 
 _, sis = get('/sistemas.html')
 checar('noindex' in sis and 'url=./' in sis, 'sistemas: redireciona para o inicio com noindex')
