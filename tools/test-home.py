@@ -44,9 +44,10 @@ def test(base, output, browser_path, axe_path):
         assert page.locator('link[rel="canonical"]').get_attribute('href') == 'https://mossdigital.com.br/'
         assert page.locator('.main-nav a').all_text_contents() == ['Demos','Serviços','Contato']
         assert page.locator('#cards > article').count() == total
-        assert page.locator('#cards > article:visible').count() == 6
+        assert page.locator('#cards > article:visible').count() == total
         assert page.locator('#cards > article details').count() == total
-        checks.append('127 demos em HTML; seis iniciais, menu único, semântica e metadados válidos')
+        assert page.locator('#modelos').get_attribute('data-carousel-motion') == 'paused'
+        checks.append('127 demos em HTML, carrossel, menu único, semântica e metadados válidos; movimento reduzido respeitado')
 
         # Compara todos os destinos com o inventário aprovado, não só as primeiras demos.
         actual = page.locator('#cards > article').evaluate_all('''cards=>cards.map(c=>({
@@ -108,21 +109,23 @@ def test(base, output, browser_path, axe_path):
         assert page.locator('#cards > article:visible').count() == 0
         assert page.locator('[data-empty]').is_visible()
         page.locator('[data-reset]').click()
-        assert page.locator('#cards > article:visible').count() == 6
-        page.locator('[data-more]').click()
-        assert page.locator('#cards > article:visible').count() == 12
-        # Cada incremento mantém as demos anteriores e permite acessar o catálogo inteiro.
-        while page.locator('[data-more]').is_visible():
-            page.locator('[data-more]').click()
         assert page.locator('#cards > article:visible').count() == total
+        # Todas as demos continuam no trilho; as setas e o teclado mudam a posição.
+        rail=page.locator('#cards')
+        page.locator('[data-next]').click()
+        page.wait_for_function('document.querySelector("#cards").scrollLeft>100')
+        rail.focus();rail.press('End')
+        page.wait_for_function('document.querySelector("#cards").scrollLeft>=document.querySelector("#cards").scrollWidth-document.querySelector("#cards").clientWidth-3')
+        rail.press('Home')
+        page.wait_for_function('document.querySelector("#cards").scrollLeft<3')
         search.fill('zzzzinexistente')
         assert page.locator('[data-empty]').is_visible()
         page.locator('[data-reset]').click()
-        assert page.locator('#cards > article:visible').count() == 6
+        assert page.locator('#cards > article:visible').count() == total
         search.fill('academia')
         search.press('Escape')
         assert search.input_value() == ''
-        checks.append('busca sem acentos, categoria combinada, vazio, limpar, Esc e paginação até todas as 127 demos')
+        checks.append('busca sem acentos, categoria combinada, vazio, limpar, Esc e carrossel por setas/teclado com todas as 127 demos')
 
         for width in [1440,1024,768,390,320]:
             page.set_viewport_size({'width':width,'height':900})
@@ -131,6 +134,20 @@ def test(base, output, browser_path, axe_path):
                 page.evaluate("scrollTo({top:0,behavior:'instant'})")
                 page.screenshot(path=str(output/f'home-{width}.png'),full_page=True)
         checks.append('sem rolagem horizontal em 320, 390, 768, 1024 e 1440 px')
+
+        # Movimento contínuo real, em contexto sem redução de movimento.
+        automatic=browser.new_context(reduced_motion='no-preference',viewport={'width':1440,'height':1000})
+        animated=automatic.new_page()
+        animated.goto(base,wait_until='networkidle')
+        animated.evaluate('document.querySelector("#cards").scrollIntoView({block:"center",behavior:"instant"})')
+        animated.wait_for_function('document.querySelector("#cards").scrollLeft>50',timeout=12000)
+        animated.locator('.carousel-play').click()
+        assert animated.locator('#modelos').get_attribute('data-carousel-motion')=='paused'
+        before=animated.locator('#cards').evaluate('(r)=>r.scrollLeft')
+        animated.clock.install();animated.clock.fast_forward(6000)
+        assert abs(animated.locator('#cards').evaluate('(r)=>r.scrollLeft')-before)<3
+        automatic.close()
+        checks.append('deslizamento automático contínuo avança e para ao pausar')
 
         page.locator('video').evaluate('(v)=>{v.muted=true;return v.play()}')
         page.wait_for_function('document.querySelector("video").currentTime>.2')
