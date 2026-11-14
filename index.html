@@ -34,6 +34,15 @@
     #depoimentos .depoimentos-acoes { display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
     #depoimentos .depoimentos-acoes .button { text-align:center; width:100%; max-width:360px; }
     #depoimentos .depoimentos-nota { max-width:360px; font-size:.76rem; line-height:1.5; }
+
+    /* Card de avaliação real: visual da MOSS, isolado nesta seção. */
+    #depoimentos .depoimento-cliente { margin-top:22px; padding:24px; max-width:650px; border:1px solid #e4d6bf; border-left:4px solid #e6b83f; border-radius:16px; background:#fff; box-shadow:0 8px 25px rgba(18,48,83,.06); }
+    #depoimentos .depoimento-estrelas { color:#b77c00; font-size:1.35rem; letter-spacing:.12em; line-height:1.5; margin:0 0 10px; }
+    #depoimentos .depoimento-cliente blockquote { margin:0; padding:0; border:0; font-size:.94rem; line-height:1.7; color:#233b55; }
+    #depoimentos .depoimento-cliente blockquote p { margin:0 0 12px; }
+    #depoimentos .depoimento-cliente blockquote p:last-child { margin-bottom:0; }
+    #depoimentos .depoimento-autoria { margin:18px 0 0; color:#123753; font-weight:700; }
+    #depoimentos .depoimento-autorizado { margin:4px 0 0; color:#596b79; font-size:.78rem; }
     @media(max-width:720px) {
       #depoimentos { padding:30px 0 52px; }
       #depoimentos .depoimentos-painel { grid-template-columns:1fr; gap:22px; padding:24px; }
@@ -761,6 +770,18 @@
           <p class="eyebrow">A voz de quem confia</p>
           <h2 id="depoimentos-titulo">O que nossos clientes dizem</h2>
           <p class="depoimentos-descricao">Contratou a MOSS Digital? Conte como foi sua experiência! Seu relato ajuda outros negócios a conhecer nosso trabalho. Os depoimentos são publicados aqui somente com autorização.</p>
+          <!-- Depoimento real publicado com autorização da cliente. -->
+          <article class="depoimento-cliente" aria-label="Avaliação de 5 estrelas de Luciana Silva Oliveira">
+            <p class="depoimento-estrelas" aria-label="Nota: 5 de 5 estrelas">★★★★★</p>
+            <blockquote>
+              <p>Marcelo, quero agradecer pelo excelente trabalho realizado. Desde o atendimento até a conclusão do projeto, você demonstrou profissionalismo, atenção e comprometimento.</p>
+              <p>O desenvolvimento do site e a configuração do domínio profissional superaram minhas expectativas. Tudo foi conduzido com clareza, agilidade e cuidado em cada detalhe.</p>
+              <p>Fiquei muito satisfeita com o resultado final e com a experiência de trabalhar com você e com a MOSS Digital.</p>
+              <p>Recomendo seu trabalho a quem busca soluções digitais com qualidade, seriedade e confiança. Sucesso nessa caminhada! 👏💙</p>
+            </blockquote>
+            <p class="depoimento-autoria">Luciana Silva Oliveira</p>
+            <p class="depoimento-autorizado">Cliente MOSS Digital · Depoimento autorizado</p>
+          </article>
         </div>
         <div class="depoimentos-acoes">
           <a class="button" href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20MOSS%20Digital!%20Quero%20deixar%20uma%20avalia%C3%A7%C3%A3o%20verdadeira%20sobre%20o%20servi%C3%A7o%20prestado.%0A%0AMeu%20nome%3A%0ANome%20da%20empresa%20(opcional)%3A%0AMinha%20nota%20(1%20a%205)%3A%0AMeu%20depoimento%3A%0A%0AAutorizo%20a%20publica%C3%A7%C3%A3o%20do%20meu%20depoimento%20e%20nome%20no%20site%20da%20MOSS%20Digital%3F%20(Sim%2FN%C3%A3o)%3A" target="_blank" rel="noopener noreferrer" aria-label="Deixar avaliação pelo WhatsApp">⭐ Deixar minha avaliação <span aria-hidden="true">↗</span></a>
