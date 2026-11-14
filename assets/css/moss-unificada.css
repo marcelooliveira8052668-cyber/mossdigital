@@ -129,7 +129,10 @@ body { background: #0f2a63; color: #eaf0ff; }
 @media (max-width: 768px) { .video-card { grid-template-columns: 1fr; padding: 26px 22px; box-shadow: 8px 8px 0 #141109; } .video-card-tela video { max-height: 420px; } }
 
 /* Correção 320–400px: nav não estoura a largura */
+.site-header .nav-label-short { display: none; }
 @media (max-width: 650px) {
+  .site-header .nav-label-full { display: none; }
+  .site-header .nav-label-short { display: inline; }
   .site-header .main-nav { gap: 10px; }
   .site-header .header-row { gap: 10px; padding-left: 14px; padding-right: 14px; }
   .site-header .main-nav .nav-contact { padding: 6px 12px; font-size: .72rem; }
