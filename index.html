@@ -25,6 +25,21 @@
 
   <link rel="stylesheet" href="/assets/css/moss-carrossel.css?v=20261113-continuo">
   <script src="/assets/js/moss-carrossel.js?v=20261113-velocidade2" defer></script>
+  <!-- Estilos isolados da nova seção de depoimentos. -->
+  <style>
+    #depoimentos { padding: 40px 0 68px; }
+    #depoimentos .depoimentos-painel { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr); gap:32px; align-items:center; padding:clamp(24px,4.5vw,54px); border:1px solid #d4c7b3; border-radius:24px; background:#fffaf3; }
+    #depoimentos h2 { font-size:clamp(1.8rem,3.6vw,3rem); margin:12px 0 14px; max-width:630px; }
+    #depoimentos .depoimentos-descricao { max-width:580px; font-size:.96rem; }
+    #depoimentos .depoimentos-acoes { display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
+    #depoimentos .depoimentos-acoes .button { text-align:center; width:100%; max-width:360px; }
+    #depoimentos .depoimentos-nota { max-width:360px; font-size:.76rem; line-height:1.5; }
+    @media(max-width:720px) {
+      #depoimentos { padding:30px 0 52px; }
+      #depoimentos .depoimentos-painel { grid-template-columns:1fr; gap:22px; padding:24px; }
+      #depoimentos .depoimentos-acoes .button { max-width:none; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -737,6 +752,20 @@
         <article class="product product-1" id="curriculo-promo"><div class="product-band"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg><span class="product-tag">Para o primeiro emprego</span></div><div class="product-corpo"><p class="eyebrow">Seu próximo passo profissional</p><h3>Currículo</h3><p>Dez modelos, com foto ou sem. Monte sua prévia grátis e baixe no PDF.</p><div class="product-price">R$ 19,90</div><details><summary>Como funciona a entrega?</summary><p>Pagamento único. A prévia tem marca; o PDF final sem marca é entregue manualmente após a confirmação do pagamento. Sem promessa de emprego ou aprovação em seleção.</p></details><a class="product-cta" href="/curriculo/">Criar meu currículo <span aria-hidden="true">↗</span></a></div></article>
         <article class="product product-2" id="portfolio-promo"><div class="product-band"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L10 16l-4 1 1-4L16.5 3.5z"/></svg><span class="product-tag">Foto + projetos</span></div><div class="product-corpo"><p class="eyebrow">Seus projetos em destaque</p><h3>Portfólio</h3><p>Um photobook editorial em formato paisagem para contar sua história e mostrar o que você faz.</p><div class="product-price">R$ 39,90</div><details><summary>Como funciona a entrega?</summary><p>Pagamento único, com prévia grátis no navegador. Nada é enviado automaticamente. Finalização e entrega manual combinadas pelo WhatsApp.</p></details><a class="product-cta" href="/portfolio/">Montar meu portfólio <span aria-hidden="true">↗</span></a></div></article>
         <article class="product product-3" id="livros-digitais"><div class="product-band"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><span class="product-tag">74 aulas escritas</span></div><div class="product-corpo"><p class="eyebrow">Aprenda fazendo</p><h3>Programação do Zero</h3><p>Crie seu primeiro projeto web com a hamburgueria digital como exemplo.</p><div class="product-price">R$ 29,90</div><details><summary>O que está incluído?</summary><p>Livro em PDF e material de consulta em HTML. Pagamento único e entrega manual pelo WhatsApp. Não inclui videoaulas, certificado ou mentoria.</p></details><a class="product-cta" href="/livros/programacao-do-zero/">Conhecer o livro <span aria-hidden="true">↗</span></a></div></article>
+      </div>
+    </section>
+    <!-- Depoimentos: o envio abre o WhatsApp e a publicação é manual, com autorização. -->
+    <section class="wrap" id="depoimentos" aria-labelledby="depoimentos-titulo">
+      <div class="depoimentos-painel">
+        <div>
+          <p class="eyebrow">A voz de quem confia</p>
+          <h2 id="depoimentos-titulo">O que nossos clientes dizem</h2>
+          <p class="depoimentos-descricao">Contratou a MOSS Digital? Conte como foi sua experiência! Seu relato ajuda outros negócios a conhecer nosso trabalho. Os depoimentos são publicados aqui somente com autorização.</p>
+        </div>
+        <div class="depoimentos-acoes">
+          <a class="button" href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20MOSS%20Digital!%20Quero%20deixar%20uma%20avalia%C3%A7%C3%A3o%20verdadeira%20sobre%20o%20servi%C3%A7o%20prestado.%0A%0AMeu%20nome%3A%0ANome%20da%20empresa%20(opcional)%3A%0AMinha%20nota%20(1%20a%205)%3A%0AMeu%20depoimento%3A%0A%0AAutorizo%20a%20publica%C3%A7%C3%A3o%20do%20meu%20depoimento%20e%20nome%20no%20site%20da%20MOSS%20Digital%3F%20(Sim%2FN%C3%A3o)%3A" target="_blank" rel="noopener noreferrer" aria-label="Deixar avaliação pelo WhatsApp">⭐ Deixar minha avaliação <span aria-hidden="true">↗</span></a>
+          <p class="depoimentos-nota">Sua avaliação será enviada pelo WhatsApp. A publicação no site não é automática e depende da sua autorização.</p>
+        </div>
       </div>
     </section>
     <section class="wrap contact" id="contato" aria-labelledby="contact-title"><div><p class="eyebrow">Vamos tirar sua ideia do papel?</p><h2 id="contact-title">O próximo site<br>pode ser o seu.</h2><p>Conte o que você imagina. A gente conversa sobre o caminho.</p></div><a class="button" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a></section>
