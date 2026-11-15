@@ -157,3 +157,87 @@ body { background: #0f2a63; color: #eaf0ff; }
 .catalog-meta span { color: #dce8ff; }
 .empty p { color: #eaf0ff; }
 .footer-row { color: #dce8ff; }
+
+/* Alternância de tema da home MOSS: estilo original noturno + opção clara. */
+.moss-tema-botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  min-width: 88px; min-height: 42px; padding: 8px 13px; flex: 0 0 auto;
+  border: 2px solid #ffd22f; border-radius: 999px; background: #ffd22f;
+  color: #141109; font-size: .82rem; font-weight: 800; line-height: 1;
+  white-space: nowrap; cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.moss-tema-botao:hover { background: #ffe779; transform: translateY(-1px); }
+.moss-tema-botao:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.moss-tema-icone { font-size: 1.2rem; line-height: 1; }
+.moss-tema-texto { font-size: .8rem; }
+/* O painel de depoimentos é claro nos dois temas: seus títulos devem continuar escuros. */
+#depoimentos h2 { color: #182e4d; }
+#depoimentos .eyebrow { color: #235196; }
+.empty button { color: #ffd22f; }
+
+/* Modo dia: mantém amarelo e azul MOSS, mas ilumina as áreas de leitura. */
+html[data-tema="dia"] {
+  color-scheme: light;
+  --paper: #f6f8ff; --ink: #17355b; --text: #233c5b;
+  --muted: #435c7c; --line: #d4dff1;
+}
+html[data-tema="dia"] body { background: #f5f8ff; color: #213a59; }
+html[data-tema="dia"] .site-header {
+  background: rgba(255, 250, 239, .97); border-bottom: 1px solid #c7d5e8;
+}
+html[data-tema="dia"] .site-header .brand-name,
+html[data-tema="dia"] .site-header .main-nav a { color: #17345b; }
+html[data-tema="dia"] .site-header .nav-contact {
+  color: #141109; background: #ffd22f; border-color: #e1b027;
+}
+html[data-tema="dia"] .moss-tema-botao {
+  color: #fff; background: #173f83; border-color: #173f83;
+}
+html[data-tema="dia"] .moss-tema-botao:hover { background: #2859aa; }
+html[data-tema="dia"] .moss-tema-botao:focus-visible { outline-color: #173f83; }
+/* A vitrine continua azul para conservar a identidade da marca. */
+html[data-tema="dia"] .vitrine {
+  background: radial-gradient(900px 520px at 85% -10%, rgba(255,255,255,.28), transparent 60%),
+  linear-gradient(155deg, #3975ee 0%, #2a56cf 60%, #2345a7 100%);
+}
+html[data-tema="dia"] .eyebrow,
+html[data-tema="dia"] .field label { color: #204c91; }
+html[data-tema="dia"] h2 { color: #193658; }
+html[data-tema="dia"] .section-head p,
+html[data-tema="dia"] .contact p,
+html[data-tema="dia"] .catalog-note { color: #3d5472; }
+html[data-tema="dia"] .catalog-meta,
+html[data-tema="dia"] .catalog-meta p,
+html[data-tema="dia"] .catalog-meta span { color: #294763; }
+html[data-tema="dia"] .catalog-meta p { font-weight: 700; }
+html[data-tema="dia"] .carousel-caption,
+html[data-tema="dia"] .carousel-caption span { color: #355170; }
+html[data-tema="dia"] .carousel-caption strong { color: #184a92; }
+html[data-tema="dia"] .carousel-arrows button {
+  background: #fff; border-color: #8ca7c9; color: #184a92;
+}
+html[data-tema="dia"] .carousel-arrows button:hover { background: #eaf1ff; }
+html[data-tema="dia"] .empty { border-color: #9eb2cf; color: #213a59; }
+html[data-tema="dia"] .empty p { color: #294763; }
+html[data-tema="dia"] .empty button { color: #204c91; }
+html[data-tema="dia"] .offer .eyebrow { color: #141109; }
+html[data-tema="dia"] .site-footer {
+  background: #e8effe; border-top-color: #ccdaef; color: #2b4769;
+}
+html[data-tema="dia"] .site-footer a,
+html[data-tema="dia"] .footer-row { color: #25476d; }
+html[data-tema="dia"] .contact a[href^="mailto:"] { color: #2054a8 !important; }
+html[data-tema="dia"] #depoimentos h2 { color: #182e4d; }
+html[data-tema="dia"] #depoimentos .eyebrow { color: #235196; }
+@media (max-width: 650px) {
+  .moss-tema-botao { min-width: 42px; width: 42px; height: 42px; padding: 0; }
+  .moss-tema-texto { display: none; }
+  .moss-tema-icone { font-size: 1.2rem; }
+}
+@media (max-width: 370px) {
+  .moss-tema-botao { min-width: 38px; width: 38px; height: 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .moss-tema-botao { transition: none; }
+}
