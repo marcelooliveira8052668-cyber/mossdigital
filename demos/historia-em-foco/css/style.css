@@ -1,0 +1,525 @@
+/* ============================================================
+   História em Movimento — livro digital interativo
+   HTML · CSS · JavaScript puro
+   ============================================================ */
+
+:root {
+  --fundo: #191511;
+  --fundo-2: #241d15;
+  --tinta: #2b2118;
+  --texto: #26211b;
+  --creme: #fbf5e8;
+  --creme-2: #f3ebd8;
+  --ouro: #c9942f;
+  --ouro-claro: #e0b878;
+  --pau: #7a5430;
+  --selo: #6b2f14;
+  --fs: 16.5px;               /* tamanho base do texto do livro */
+  --pagina-w: 812px;
+  --pagina-h: 1130px;
+  --pad-x: 62px;
+  --pad-cima: 58px;
+  --pad-baixo: 62px;
+  --corpo-w: calc(var(--pagina-w) - 2 * var(--pad-x));
+  --corpo-h: calc(var(--pagina-h) - var(--pad-cima) - var(--pad-baixo));
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--fundo);
+  color: var(--creme);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.oculto { display: none !important; }
+
+/* ================= CAPA ================= */
+.capa-tela {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(120% 90% at 50% 110%, #4a3220 0%, #2b2118 55%, #191511 100%);
+}
+.capa-moldura {
+  width: min(420px, 88vw);
+  text-align: center;
+  border: 1px solid rgba(224, 184, 120, .4);
+  outline: 1px solid rgba(224, 184, 120, .25);
+  outline-offset: 6px;
+  padding: 46px 30px 34px;
+  background: rgba(0, 0, 0, .16);
+  border-radius: 4px;
+  animation: subir .8s ease both;
+}
+@keyframes subir { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.capa-colecao {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 10px;
+  letter-spacing: 3.4px;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+}
+.capa-ornamento {
+  height: 1px;
+  max-width: 46%;
+  margin: 18px auto;
+  background: linear-gradient(90deg, transparent, var(--ouro-claro), transparent);
+}
+.capa-titulo {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-size: clamp(30px, 7vw, 44px);
+  color: var(--creme);
+  letter-spacing: .5px;
+  line-height: 1.1;
+}
+.capa-subtitulo {
+  font-style: italic;
+  font-size: 15.5px;
+  color: var(--ouro-claro);
+  margin-top: 10px;
+  line-height: 1.55;
+}
+.capa-extra {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: rgba(251, 245, 232, .85);
+  margin-top: 6px;
+}
+.botao.abrir {
+  margin-top: 26px;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #241c12;
+  background: linear-gradient(180deg, #eecb8b, #d9a64a);
+  border: none;
+  border-radius: 40px;
+  padding: 14px 34px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .4);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.botao.abrir:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0, 0, 0, .5); }
+.capa-rodape {
+  font-style: italic;
+  font-size: 12px;
+  color: rgba(251, 245, 232, .6);
+  margin-top: 30px;
+}
+
+/* ================= LEITOR ================= */
+.leitor-tela {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.barra-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--fundo-2);
+  border-bottom: 1px solid rgba(224, 184, 120, .18);
+  z-index: 5;
+}
+.botoes-topo { display: flex; gap: 8px; align-items: center; }
+.titulo-topo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+.titulo-topo strong {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+  white-space: nowrap;
+}
+.titulo-topo span {
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(251, 245, 232, .62);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 46vw;
+}
+
+.botao-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 12.5px;
+  color: var(--creme);
+  background: transparent;
+  border: 1px solid rgba(224, 184, 120, .35);
+  border-radius: 20px;
+  padding: 6px 13px;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
+}
+.botao-chip:hover { background: rgba(224, 184, 120, .16); border-color: var(--ouro-claro); }
+
+.barra-progresso {
+  height: 3px;
+  background: rgba(251, 245, 232, .12);
+  position: relative;
+  z-index: 5;
+}
+.progresso-preenchido {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--ouro-claro), var(--ouro));
+  transition: width .35s ease;
+}
+
+.palco {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 12px;
+  position: relative;
+  background:
+    radial-gradient(90% 90% at 50% 0%, rgba(0,0,0,.18), transparent 60%);
+}
+
+.livro { position: relative; }
+.pagina-envolve { transform: scale(var(--escala, 1)); }
+
+.pagina {
+  width: var(--pagina-w);
+  height: var(--pagina-h);
+  background:
+    repeating-linear-gradient(0deg, rgba(122, 84, 48, .02) 0 2px, transparent 2px 4px),
+    radial-gradient(120% 100% at 50% 0%, #fffdf5 0%, var(--creme) 55%, var(--creme-2) 100%);
+  color: var(--texto);
+  border-radius: 4px;
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, .55),
+    inset 0 0 60px rgba(122, 84, 48, .08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: opacity .28s ease, transform .28s ease;
+}
+.pagina.virando { opacity: 0; transform: translateX(var(--dir, 0px)) scale(.985); }
+
+.pagina-cabecalho {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  color: #9a835f;
+  padding: var(--pad-cima) var(--pad-x) 6px;
+  text-transform: uppercase;
+}
+.pagina-cabecalho .pagina-parte { max-width: 55%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.pagina-corpo {
+  flex: 1;
+  min-height: 0;
+  padding: 4px var(--pad-x) 0;
+  font-size: var(--fs);
+  line-height: 1.72;
+  text-align: justify;
+}
+
+.pagina-rodape {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 4px var(--pad-x) var(--pad-baixo);
+}
+.pagina-rodape .linha {
+  width: 40px;
+  height: 1px;
+  background: #c9b48c;
+}
+.pagina-num {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  color: #8a6a3a;
+}
+
+/* ---- Conteúdo das páginas ---- */
+.pagina-corpo p { margin: 0 0 .72em; text-indent: 24px; }
+.pagina-corpo p.sem-indent { text-indent: 0; }
+
+.pagina-corpo .capnum {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: #a97125;
+  text-indent: 0;
+  margin-bottom: 6px;
+}
+.pagina-corpo h2.chapter-title {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 1.62em;
+  line-height: 1.2;
+  color: var(--tinta);
+  margin: 0 0 8px;
+  text-indent: 0;
+  text-wrap: pretty;
+}
+.pagina-corpo h3.chapter-sub {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.02em;
+  color: var(--pau);
+  margin: 0 0 16px;
+  text-indent: 0;
+}
+
+.pagina-corpo h3.sec,
+.pagina-corpo h3.parte-titulo {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 1.08em;
+  color: var(--selo);
+  margin: 1em 0 .4em;
+  text-indent: 0;
+}
+.pagina-corpo h3.parte-titulo {
+  text-align: center;
+  font-size: clamp(20px, 1.7em, 28px);
+  color: var(--selo);
+  letter-spacing: 1px;
+  margin: 3.2em 0 .4em;
+}
+.pagina-corpo .parte-intro {
+  text-align: center;
+  font-style: italic;
+  color: var(--pau);
+  text-indent: 0;
+  max-width: 34em;
+  margin: 0 auto .6em;
+}
+
+/* queda-de-capital no primeiro parágrafo de cada capítulo */
+.pagina-corpo p[data-primeiro]::first-letter {
+  font-family: Georgia, serif;
+  font-size: 3.1em;
+  line-height: .82;
+  float: left;
+  padding: .02em .1em 0 0;
+  color: var(--selo);
+}
+
+/* caixas */
+.pagina-corpo .caixa {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 14px 0;
+  page-break-inside: avoid;
+}
+.pagina-corpo .caixa.sintese { background: #eef1e0; border-left: 5px solid #7a9a3a; }
+.pagina-corpo .caixa.curiosidade { background: #f6ecda; border-left: 5px solid #c98a2e; }
+.pagina-corpo .caixa .boxtitle {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  text-indent: 0;
+  margin-bottom: 7px;
+}
+.pagina-corpo .caixa.sintese .boxtitle { color: #57701f; }
+.pagina-corpo .caixa.curiosidade .boxtitle { color: #9a6a1c; }
+.pagina-corpo .caixa p { text-indent: 0; }
+.pagina-corpo .caixa ul { margin: 2px 0 0 18px; padding: 0; }
+.pagina-corpo .caixa li { margin-bottom: 4px; }
+
+/* página de sumário (frente) */
+.pagina-corpo .total-geral {
+  text-align: center;
+  font-style: italic;
+  color: var(--pau);
+  text-indent: 0;
+  margin-bottom: 14px;
+}
+.pagina-corpo .capitulo-linha {
+  display: flow-root;
+  margin: 2px 0;
+  text-indent: 0;
+}
+.pagina-corpo .lembrete {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #a97125;
+  text-indent: 0;
+}
+.pagina-corpo .front-title {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  text-align: center;
+  font-size: 1.5em;
+  color: var(--tinta);
+  text-indent: 0;
+  margin: 1.4em 0 .8em;
+}
+
+/* ================= SETAS ================= */
+.seta {
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(224, 184, 120, .35);
+  background: rgba(36, 29, 21, .8);
+  color: var(--ouro-claro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+.seta:hover:not(:disabled) { background: rgba(224, 184, 120, .18); transform: scale(1.05); }
+.seta:disabled { opacity: .25; cursor: default; }
+
+/* ================= RODAPÉ ================= */
+.barra-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 18px;
+  background: var(--fundo-2);
+  border-top: 1px solid rgba(224, 184, 120, .18);
+  z-index: 5;
+  font-size: 12.5px;
+}
+.contador { font-family: Arial, "Helvetica Neue", sans-serif; color: var(--creme); }
+.contador-total { color: rgba(251, 245, 232, .5); font-size: 11.5px; }
+.atributo { font-style: italic; color: rgba(251, 245, 232, .5); }
+
+/* ================= GAVETA DO SUMÁRIO ================= */
+.escurecer {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 9, 6, .55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+  z-index: 40;
+}
+.escurecer.ativo { opacity: 1; visibility: visible; }
+
+.gaveta-sumarrio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(350px, 88vw);
+  background: #24190f;
+  border-right: 1px solid rgba(224, 184, 120, .25);
+  transform: translateX(-102%);
+  transition: transform .28s ease;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 20px 0 50px rgba(0, 0, 0, .5);
+}
+.gaveta-sumarrio.ativa { transform: translateX(0); }
+
+.gaveta-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 10px;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--ouro-claro);
+}
+.botao-fechar {
+  border: none;
+  background: transparent;
+  color: var(--creme);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+.filtro {
+  margin: 0 16px 12px;
+  padding: 9px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(224, 184, 120, .3);
+  background: rgba(251, 245, 232, .06);
+  color: var(--creme);
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  outline: none;
+}
+.filtro::placeholder { color: rgba(251, 245, 232, .45); }
+.filtro:focus { border-color: var(--ouro-claro); }
+
+.indice {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2px 10px 24px;
+}
+.indice ::-webkit-scrollbar { width: 9px; }
+.indice ::-webkit-scrollbar-thumb { background: rgba(224,184,120,.3); border-radius: 8px; }
+
+.indice-grupo-titulo {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--ouro);
+  padding: 14px 8px 4px;
+}
+.indice-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--creme);
+  font-family: Georgia, serif;
+  font-size: 13.5px;
+  line-height: 1.4;
+  padding: 7px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.indice-item:hover { background: rgba(224, 184, 120, .14); }
+.indice-item.ativo { background: rgba(224, 184, 120, .22); color: var(--ouro-claro); }
+.indice-item .num { color: var(--ouro-claro); }
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 760px) {
+  .seta { width: 38px; height: 38px; }
+  .titulo-topo strong { font-size: 11px; }
+  .botao-chip { padding: 5px 10px; font-size: 12px; }
+  .pagina { border-radius: 2px; }
+}

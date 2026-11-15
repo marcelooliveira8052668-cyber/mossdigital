@@ -231,6 +231,12 @@
       "url": "https://mossdigital.com.br/demos/cacamba-certa/"
     },
     {
+      "key": "/demos/calculadora-iphone/",
+      "title": "Calculadora iPhone Style — Científica",
+      "src": "assets/img/catalogo-fiel/calculadora-iphone-c359cf3366.webp",
+      "url": "https://mossdigital.com.br/demos/calculadora-iphone/"
+    },
+    {
       "key": "/demos/casa-acolher/",
       "title": "Casa Acolher",
       "src": "assets/img/catalogo-fiel/casa-acolher-9ba60e22d7.webp",
@@ -423,6 +429,12 @@
       "url": "https://mossdigital.com.br/demos/helpdesk-local/"
     },
     {
+      "key": "/demos/historia-em-foco/",
+      "title": "História em Foco — Livro digital gratuito",
+      "src": "assets/img/catalogo-fiel/historia-em-foco-f7a81b3dde.webp",
+      "url": "https://mossdigital.com.br/demos/historia-em-foco/"
+    },
+    {
       "key": "/demos/jardim-secreto/",
       "title": "Jardim Secreto",
       "src": "assets/img/catalogo-fiel/jardim-secreto-efca3d2ebc.webp",
@@ -433,6 +445,12 @@
       "title": "junto. — Voluntariado e Impacto Social",
       "src": "assets/img/catalogo-fiel/junto-voluntariado-e-impacto-social-635b24ff26.webp",
       "url": "https://mossdigital.com.br/demos/junto/index.html"
+    },
+    {
+      "key": "/demos/lina-tutor-ingles/",
+      "title": "Lina — Tutora de inglês com IA",
+      "src": "assets/img/catalogo-fiel/lina-tutor-ingles-931a65c8cc.webp",
+      "url": "https://mossdigital.com.br/demos/lina-tutor-ingles/"
     },
     {
       "key": "/demos/lista-certa/",

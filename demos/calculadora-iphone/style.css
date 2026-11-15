@@ -1,0 +1,579 @@
+﻿/* =========================================================
+   CALCULADORA CIENTÍFICA — VISUAL IPHONE
+   Desenvolvido por Prof. Marcelo Oliveira
+
+   Índice
+   1. Variáveis (paleta de cores)
+   2. Base e palco
+   3. Carcaça do celular
+   4. Barra de status e ferramentas
+   5. Display
+   6. Teclas (base, faixa, científicas, principal)
+   7. Histórico
+   8. Legenda lateral
+   9. Responsivo
+   10. Acessibilidade (foco) e movimento reduzido
+   ========================================================= */
+
+/* ---------- 1. Variáveis ---------- */
+:root {
+    --fundo:          #0b0d12;
+    --palco:          #101319;
+    --celular:        #17191f;
+    --borda-celular:  #33363f;
+    --tela:           #000000;
+    --superficie:     #14171e;
+    --borda-suave:    rgba(255, 255, 255, .08);
+
+    --texto:          #f4f6fb;
+    --texto-suave:    #9aa3b2;
+    --texto-fundo:    #0e1014;
+
+    --tecla:          #2a2d35;
+    --tecla-hover:    #343844;
+    --tecla-clara:    #a5a5a8;
+    --tecla-sci:      #171d28;
+    --tecla-sci-txt:  #9dc0ff;
+    --tecla-faixa:    #10131a;
+    --tecla-faixa-txt:#8b94a6;
+    --operador:       #ff9f0a;
+    --operador-hover: #ffb03d;
+    --azul:           #0a84ff;
+    --erro:           #ff453a;
+
+    --raio-tecla: 14px;
+    --raio-tela:  44px;
+    --sombra:     0 26px 60px rgba(0, 0, 0, .55);
+
+    font-size: 16px;
+}
+
+/* ---------- 2. Base e palco ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(60% 55% at 12% 8%,  rgba(10, 132, 255, .16) 0%, transparent 60%),
+        radial-gradient(55% 50% at 88% 92%, rgba(255, 159, 10, .12) 0%, transparent 60%),
+        var(--fundo);
+    color: var(--texto);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.palco {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    padding: 40px 24px;
+    flex-wrap: wrap;
+}
+
+/* ---------- 3. Carcaça do celular ---------- */
+.celular {
+    position: relative;
+    width: 344px;
+    padding: 13px;
+    background: linear-gradient(160deg, #24262e 0%, var(--celular) 45%, #0f1116 100%);
+    border: 1px solid var(--borda-celular);
+    border-radius: 56px;
+    box-shadow: var(--sombra), inset 0 1px 0 rgba(255, 255, 255, .12);
+    flex: 0 0 auto;
+}
+
+/* Detalhe lateral (botões físicos) */
+.entelado {
+    position: absolute;
+    inset: 84px auto 84px -3px;
+    width: 3px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #3b3f4a, #23262e);
+}
+
+.tela {
+    position: relative;
+    background: var(--tela);
+    border-radius: var(--raio-tela);
+    padding: 12px 14px 18px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Ilha (dynamic island) */
+.isla,
+.ilha {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92px;
+    height: 24px;
+    background: #050506;
+    border-radius: 15px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* ---------- 4. Barra de status e ferramentas ---------- */
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 34px;
+    /* espaço lateral para a ilha não cobrir hora nem ícones */
+    padding: 0 22px 0 20px;
+    color: var(--texto);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status__hora { letter-spacing: .3px; }
+
+.status__rede {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--texto);
+}
+
+.ferramentas {
+    display: flex;
+    gap: 8px;
+    padding: 4px 4px 10px;
+}
+
+.pill {
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .4px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--borda-suave);
+    background: var(--superficie);
+    color: var(--texto-suave);
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+}
+
+.pill:hover { background: #1c2029; color: var(--texto); }
+
+.pill--ativo {
+    background: rgba(255, 159, 10, .16);
+    border-color: rgba(255, 159, 10, .5);
+    color: var(--operador);
+}
+
+.pill--desligado { opacity: .45; }
+
+.pill--desligado.pill--ativo {
+    opacity: 1;
+    background: rgba(10, 132, 255, .18);
+    border-color: rgba(10, 132, 255, .55);
+    color: #7cc0ff;
+}
+
+/* ---------- 5. Display ---------- */
+.display {
+    padding: 6px 6px 10px;
+    min-height: 138px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;   /* alinha ambos os blocos à direita */
+    gap: 4px;
+    text-align: right;
+}
+
+.display__linha {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 26px;
+}
+
+.display__expressao {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--texto-suave);
+    text-align: right;
+    line-height: 1.35;
+    max-height: 52px;
+    overflow: hidden;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Botão de apagar agora vive na barra de ferramentas */
+.pill--apagar {
+    font-size: 15px;
+    line-height: 1;
+    padding: 4px 11px;
+}
+
+.display__expressao:empty { display: none; }
+
+.display__apagar:hover { color: var(--texto); background: #1c2029; }
+
+.display__resultado {
+    display: block;
+    align-self: flex-end;
+    max-width: 100%;
+    font-size: clamp(32px, 11vw, 52px);
+    font-weight: 300;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: var(--texto);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: break-word;
+    transition: color .2s;
+}
+
+.display__resultado[data-escala="medio"] { font-size: clamp(28px, 9vw, 42px); }
+.display__resultado[data-escala="pequeno"] { font-size: clamp(22px, 7vw, 32px); }
+.display__resultado[data-erro="sim"] { color: var(--erro); font-weight: 400; }
+
+/* ---------- 6. Teclas ---------- */
+.faixa,
+.cientifico,
+.principal {
+    display: grid;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.faixa       { grid-template-columns: repeat(5, 1fr); }
+.cientifico  { grid-template-columns: repeat(5, 1fr); }
+.principal   { grid-template-columns: repeat(4, 1fr); }
+
+.tecla {
+    font: inherit;
+    font-size: 21px;
+    font-weight: 500;
+    min-height: 52px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: var(--raio-tecla);
+    background: var(--tecla);
+    color: var(--texto);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .12s, transform .06s, box-shadow .12s;
+}
+
+.tecla:hover  { background: var(--tecla-hover); }
+.tecla:active { transform: translateY(1.5px) scale(.985); box-shadow: inset 0 3px 8px rgba(0, 0, 0, .45); }
+
+.tecla sup {
+    font-size: .58em;
+    vertical-align: super;
+    line-height: 0;
+    font-weight: 600;
+}
+
+/* Linha de memória */
+.tecla--faixa {
+    min-height: 32px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    background: var(--tecla-faixa);
+    color: var(--tecla-faixa-txt);
+    border-radius: 10px;
+}
+
+.tecla--faixa:hover { background: #191d26; color: var(--texto); }
+
+/* Científicas */
+.tecla--sci {
+    min-height: 44px;
+    font-size: 16px;
+    font-weight: 600;
+    background: var(--tecla-sci);
+    color: var(--tecla-sci-txt);
+}
+
+.tecla--sci:hover { background: #1f2737; }
+
+/* Teclas claras do topo do teclado principal */
+.tecla--clara {
+    background: var(--tecla-clara);
+    color: var(--texto-fundo);
+    font-weight: 500;
+}
+
+.tecla--clara:hover { background: #b9b9bd; }
+
+/* Operadores */
+.tecla--operador {
+    background: var(--operador);
+    color: var(--texto-fundo);
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.tecla--operador:hover { background: var(--operador-hover); }
+
+/* Igual: altura dobrada em coluna dupla visual */
+.tecla--igual {
+    background: var(--operador);
+    color: var(--texto-fundo);
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.tecla--igual:hover { background: var(--operador-hover); }
+
+.tecla--zero { grid-column: span 2; justify-content: flex-start; padding-left: 21px; }
+
+/* Estado de operador ativo (mostra qual será aplicado) */
+.tecla[data-ativo="sim"] { box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .55); }
+
+/* ---------- 7. Histórico ---------- */
+.historico {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background: rgba(8, 9, 13, .97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: var(--raio-tela);
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    animation: entra .18s ease-out;
+}
+
+@keyframes entra {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.historico[hidden] { display: none; }
+
+.historico__topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--borda-suave);
+}
+
+.historico__topo h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .3px;
+}
+
+.historico__topo div { display: flex; gap: 6px; }
+
+.historico__limpar,
+.historico__fechar {
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid var(--borda-suave);
+    background: var(--superficie);
+    color: var(--texto-suave);
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.historico__fechar { font-size: 17px; line-height: 1; padding: 3px 10px; }
+
+.historico__limpar:hover,
+.historico__fechar:hover { color: var(--texto); background: #1c2029; }
+
+.historico__lista {
+    list-style: none;
+    margin: 0;
+    padding: 6px 0 0;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.historico__lista:empty + .historico__vazio { display: block; }
+.historico__vazio { display: none; margin: 24px 0 0; text-align: center; font-size: 13px; color: var(--texto-suave); }
+
+.historico__item + .historico__item { margin-top: 4px; }
+
+.historico__botao {
+    font: inherit;
+    width: 100%;
+    text-align: right;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    color: var(--texto);
+    transition: background .12s;
+}
+
+.historico__botao:hover { background: rgba(255, 255, 255, .06); border-color: var(--borda-suave); }
+
+.historico__conta {
+    display: block;
+    font-size: 12px;
+    color: var(--texto-suave);
+    word-break: break-all;
+}
+
+.historico__valor {
+    display: block;
+    font-size: 19px;
+    font-weight: 600;
+    margin-top: 2px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 8. Legenda lateral ---------- */
+.legenda {
+    max-width: 420px;
+    flex: 1 1 320px;
+}
+
+.legenda h1 {
+    margin: 0 0 14px;
+    font-size: clamp(30px, 5vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -1.4px;
+    font-weight: 800;
+}
+
+.legenda h1 span {
+    display: block;
+    background: linear-gradient(100deg, var(--azul), #22d3ee 55%, var(--operador));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.legenda p {
+    margin: 0 0 16px;
+    color: var(--texto-suave);
+    line-height: 1.65;
+    font-size: 15.5px;
+}
+
+.legenda code {
+    font-family: "SF Mono", Consolas, "JetBrains Mono", monospace;
+    font-size: .88em;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid var(--borda-suave);
+    border-radius: 5px;
+    padding: 1px 5px;
+    color: #9dc0ff;
+}
+
+.legenda kbd {
+    font-family: inherit;
+    font-size: .8em;
+    background: var(--superficie);
+    border: 1px solid var(--borda-celular);
+    border-bottom-width: 2px;
+    border-radius: 5px;
+    padding: 2px 7px;
+    color: var(--texto);
+}
+
+.legenda ul {
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 9px;
+}
+
+.legenda li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--texto-suave);
+}
+
+.legenda li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .62em;
+    width: 8px;
+    height: 8px;
+    border-radius: 3px;
+    background: linear-gradient(135deg, var(--azul), var(--operador));
+}
+
+.legenda li b { color: var(--texto); font-weight: 700; }
+
+.legenda__rodape {
+    font-size: 13.5px !important;
+    padding-top: 14px;
+    border-top: 1px solid var(--borda-suave);
+}
+
+.legenda__rodape b { color: var(--operador); }
+.legenda__rodape a { color: var(--operador); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- 9. Responsivo ---------- */
+@media (max-width: 860px) {
+    .palco { gap: 34px; padding: 28px 18px; }
+    .legenda { order: 2; text-align: center; }
+    .legenda li { text-align: left; }
+}
+
+@media (max-width: 430px) {
+    .palco { padding: 14px 10px 30px; }
+
+    .celular {
+        width: 100%;
+        max-width: 380px;
+        padding: 9px;
+        border-radius: 44px;
+    }
+
+    .tela { border-radius: 36px; padding: 10px 11px 15px; }
+    .historico { border-radius: 36px; }
+
+    .ilha { top: 17px; width: 82px; height: 22px; }
+
+    .tecla { min-height: 48px; font-size: 20px; }
+    .tecla--sci { min-height: 42px; font-size: 15px; }
+    .tecla--faixa { min-height: 30px; font-size: 12px; }
+    .display { min-height: 116px; }
+}
+
+/* ---------- 10. Acessibilidade ---------- */
+button:focus-visible,
+.tecla:focus-visible {
+    outline: 2px solid var(--azul);
+    outline-offset: 2px;
+}
+
+.tecla--operador:focus-visible,
+.tecla--igual:focus-visible { outline-color: #ffffff; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}

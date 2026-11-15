@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' file: data:; script-src 'self' file: 'unsafe-inline'; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data:; font-src 'self' file:; connect-src 'none'; media-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="description" content="História em Foco: leitura online com 93 capítulos, do Egito Antigo ao Brasil de hoje. Livro digital gratuito, com busca, sumário, glossário e áudio.">
+<meta name="theme-color" content="#3b2a1c">
+<title>História em Foco — Uma viagem pela História</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body class="claro">
+
+<p class="aviso-moss">Livro digital gratuito da <strong>MOSS Digital</strong> · Obra do professor Marcelo Oliveira · <a href="../../index.html">Conheça a MOSS ↗</a></p>
+
+<header id="barra">
+  <button id="btnMenu" type="button" title="Abrir sumário">&#9776;</button>
+  <div id="edicao">História em Foco</div>
+  <div id="buscaBox">
+    <input id="txtBusca" type="search" placeholder="Buscar capítulo (ex.: 1.28) ou palavra" autocomplete="off" spellcheck="false">
+    <div id="sugestoes"></div>
+  </div>
+  <button id="btnTema" type="button" title="Alternar dia/noite">&#9790;</button>
+</header>
+
+<nav id="painel" aria-label="Sumário do livro">
+  <h4>Sumário</h4>
+  <div id="sumarioDiv"></div>
+</nav>
+<div id="cortina" hidden></div>
+
+<button id="setaE" class="seta" type="button" title="Página anterior">&#8249;</button>
+<button id="setaD" class="seta" type="button" title="Próxima página">&#8250;</button>
+
+<main id="palco">
+  <div id="folhaEsq" class="folha">
+    <div class="pagina" id="pagEsq"></div>
+    <div class="pag-num" id="numEsq"></div>
+  </div>
+  <div id="folhaDir" class="folha">
+    <div class="pagina" id="pagDir"></div>
+    <div class="pag-num" id="numDir"></div>
+  </div>
+  <div id="medidor"></div>
+</main>
+
+<div id="controles">
+  <button id="btnAnt" type="button" title="Anterior">&#171; Anterior</button>
+  <span id="indicador">&ndash;</span>
+  <button id="btnProx" type="button" title="Próxima">Próxima &#187;</button>
+  <button id="btnVoz" type="button" title="Ler a página em voz alta">&#128266;</button>
+</div>
+
+<div id="avisoBusca" hidden></div>
+<div id="tt" hidden></div>
+<div id="dica" hidden></div>
+<div id="viewer" hidden>
+  <span id="viewerFechar" title="Fechar">&#10005;</span>
+  <img id="viewerImg" alt="">
+  <p id="viewerCap"></p>
+</div>
+
+<script>
+  window.ORDEM = [];
+  window.ADICIONAR = function (partes) {
+    for (var i = 0; i < partes.length; i++) { window.ORDEM.push(partes[i]); }
+  };
+  window.LIVRO = {
+    titulo: "História em Foco",
+    subtitulo: "Uma viagem pela história da humanidade — do Egito ao Brasil de hoje.",
+    autor: "Professor Marcelo Oliveira-História Geral",
+    edicao: "1ª edição",
+    editora: "Editora Foco & Tempo",
+    citacao: "\u201CNão se conhece a si mesmo quem não conhece a sua história.\u201D",
+    capaTexto: "Capítulos 1.1 a 1.93",
+    sinopse: [
+      "Este livro é uma jornada pelo tempo: começa nas margens do Nilo e do Eufrates, atravessa a Idade Média, acompanha as grandes navegações, as revoluções que redesenharam o mundo e chega ao Brasil de ontem e de hoje.",
+      "Os 93 capítulos foram escritos em linguagem simples e direta, pensados para uma leitura leve, mas profunda. Palavras difíceis aparecem sublinhadas: toque ou passe o mouse sobre elas para ver o significado na hora.",
+      "Abra o capítulo que quiser ou siga a ordem das páginas. Boa viagem!"
+    ]
+  };
+</script>
+<script src="livro1.js"></script>
+<script src="livro2.js"></script>
+<script src="livro3.js"></script>
+<script src="livro4.js"></script>
+<script src="livro5.js"></script>
+<script src="imagens.js"></script>
+<script src="referencias.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

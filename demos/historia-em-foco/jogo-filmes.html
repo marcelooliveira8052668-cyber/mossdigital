@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<!-- Declaração do tipo do documento: informa ao navegador que este é um arquivo HTML5 -->
+<html lang="pt-BR">
+<!-- lang="pt-BR": define o idioma da página como português do Brasil (ajuda na tradução e acessibilidade) -->
+<head>
+<!-- <head> contém as informações de configuração da página (não aparecem na tela) -->
+
+    <meta charset="UTF-8">
+    <!-- charset="UTF-8": garante que acentos e emojis sejam exibidos corretamente -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- viewport: deixa o site responsivo, adaptando a largura ao tamanho da tela (celular, tablet, PC) -->
+
+    <title>Jogo de Filmes</title>
+    <!-- title: texto que aparece na aba do navegador -->
+
+    <style>
+        /* ============================================================
+           CSS: aqui fica TODA a estilização (cores, fontes, botões...)
+           ============================================================ */
+
+        * { box-sizing: border-box; }
+        /* box-sizing: border-box faz com que o padding e a borda
+           sejam contados dentro da largura/altura do elemento,
+           evitando que os elementos "estourem" o layout */
+
+        body {
+            font-family: "Segoe UI", system-ui, Arial, sans-serif;
+            /* font-family: define a fonte usada na página */
+
+            background: radial-gradient(circle at 20% 0%, #2a1d3a, #141022 55%, #0c0a14);
+            /* background: gradiente radial que cria um fundo roxo escuro,
+               simulando um "tema de cinema/neon" */
+
+            color: #f2eef7;
+            /* color: cor padrão do texto (quase branco) */
+
+            margin: 0;
+            /* margin: 0 elimina as margens padrão do navegador */
+
+            padding: 20px;
+            /* padding: espaço interno entre o conteúdo e a borda da página */
+
+            text-align: center;
+            /* text-align: centraliza todo o texto dentro do body */
+
+            min-height: 100vh;
+            /* min-height: 100vh garante que a página ocupe pelo menos
+               a altura total da janela (100% da "view height") */
+        }
+
+        .container {
+            /* .container: a "caixinha branca/roxa" central onde ficam todos os elementos */
+            max-width: 520px;
+            /* max-width: largura máxima da caixa (520px) */
+
+            margin: 30px auto;
+            /* margin: auto centraliza a caixa horizontalmente na tela */
+
+            background: #1d1730;
+            /* background: cor de fundo da caixa */
+
+            padding: 26px 24px 30px;
+            /* padding: 26px (topo), 24px (laterais), 30px (embaixo) */
+
+            border-radius: 18px;
+            /* border-radius: arredonda os cantos da caixa (18px) */
+
+            box-shadow: 0 10px 40px rgba(0,0,0,.5), 0 0 0 1px #3a2f55 inset;
+            /* box-shadow: dois efeitos juntos:
+               1) sombra externa (profundidade)
+               2) borda interna de 1px com cor sutil */
+        }
+
+        h1 {
+            /* h1: style do título principal "Adivinhe o Filme" */
+            margin: 0 0 4px;
+            font-size: 26px;
+            letter-spacing: .5px;
+            /* letter-spacing: espaça um pouco as letras */
+        }
+
+        h1 + p { margin: 0 0 18px; color: #a99fc4; font-size: 14px; }
+        /* h1 + p: estilo do parágrafo que vem logo depois do título
+           (texto de instrução menor e acinzentado) */
+
+        .placar {
+            /* .placar: barra que agrupa os três "chips" de pontuação */
+            display: flex;
+            /* display: flex deixa os filhos lado a lado */
+
+            justify-content: center;
+            /* justify-content: center centraliza os chips horizontalmente */
+
+            gap: 10px;
+            /* gap: espaçamento de 10px entre os chips */
+
+            margin-bottom: 18px;
+            /* margin-bottom: espaço abaixo da barra do placar */
+
+            flex-wrap: wrap;
+            /* flex-wrap: wrap permite que os chips quebrem de linha
+               em telas pequenas, em vez de estourar */
+        }
+
+        .chip {
+            /* .chip: bolinha/pílula que mostra Pontos, Acertos e Sequência */
+            background: #2a2347;
+            /* background: cor de fundo da pílula */
+
+            border-radius: 999px;
+            /* border-radius: 999px deixa o elemento completamente redondo
+               (formato de pílula/cápsula) */
+
+            padding: 6px 14px;
+            font-size: 13px;
+            color: #c9c0e0;
+            min-width: 92px;
+            /* min-width: largura mínima para os chips terem tamanho parecido */
+        }
+
+        .chip b { display: block; font-size: 17px; color: #fff; }
+        /* .chip b: o <b> (número do valor) fica em uma linha própria,
+           maior e branco, em cima do rótulo */
+
+        #pista {
+            /* #pista: a grande área central onde aparecem os emojis (ou o título revelado) */
+            min-height: 150px;
+            /* min-height: altura mínima para a área não "pular" de tamanho */
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* flex + center: centraliza os emojis no meio da área */
+
+            font-size: 46px;
+            /* font-size: emojis grandes (46px) */
+
+            line-height: 1.4;
+            margin: 6px 0 12px;
+            background: #241c3c;
+            border-radius: 14px;
+            border: 1px dashed #4a3d6b;
+            /* border dashed: borda pontilhada para dar um visual de "área em branco" */
+
+            padding: 14px;
+            word-break: break-word;
+            /* word-break: quebra palavras longas para não estourar a caixa */
+        }
+
+        #pista.derrota { border-color: #c2454d; background: #33202a; }
+        /* classe .derrota: (reservada) fundo avermelhado quando ocorre erro */
+
+        #pista.vitoria { border-color: #3fcc7a; background: #1c3327; }
+        /* classe .vitoria: (reservada) fundo esverdeado quando há acerto */
+
+        .tracos {
+            /* .tracos: grupo dos pontinhos que indicam quantas dicas foram abertas */
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin: 2px 0 14px;
+            min-height: 12px;
+        }
+
+        .traco { width: 8px; height: 8px; border-radius: 50%; background: #584c7d; }
+        /* .traco: um pontinho cinza = dica ainda não revelada */
+
+        .traco.aceso { background: #ffd166; }
+        /* .traco.aceso: o mesmo pontinho amarelo = dica já revelada */
+
+        .meta {
+            /* .meta: linha com o gênero e (depois) o ano do filme */
+            font-size: 13.5px;
+            color: #b3a8d2;
+            margin-bottom: 4px;
+        }
+        .meta span { color: #ffd166; }
+        /* .meta span: o valor (gênero/ano) aparece destacado em amarelo */
+
+        .tentativas { font-size: 12.5px; color: #8e83ab; margin-bottom: 14px; }
+        /* .tentativas: texto pequeno que mostra quantas tentativas erradas houve */
+
+        .entrada {
+            /* .entrada: agrupa o campo de texto e o botão Confirmar lado a lado */
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        #resposta {
+            /* #resposta: o campo onde o jogador digita o título do filme */
+            flex: 1;
+            /* flex: 1 faz o campo ocupar todo o espaço sobrando à esquerda */
+
+            padding: 12px 14px;
+            border: 1px solid #4d3f78;
+            border-radius: 10px;
+            background: #120d20;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            /* outline: none remove a "borda de foco" azul padrão do navegador */
+        }
+        #resposta:focus { border-color: #ffd166; }
+        /* :focus = quando o jogador clica/tabula no campo, a borda fica amarela */
+
+        #resposta::placeholder { color: #6d618c; }
+        /* ::placeholder = cor do texto cinza que some quando o jogador digita */
+
+        button {
+            /* button: estilo comum a TODOS os botões do jogo */
+            padding: 11px 16px;
+            margin: 4px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            /* cursor: pointer mostra a "mãozinha" ao passar o mouse */
+
+            font-size: 14.5px;
+            font-weight: 600;
+            /* font-weight: 600 deixa o texto dos botões em negrito */
+
+            transition: transform .12s, filter .12s;
+            /* transition: cria uma animação suave quando o botão muda de estado */
+        }
+        button:hover:not(:disabled) { filter: brightness(1.12); }
+        /* :hover = ao passar o mouse (e o botão estiver habilitado),
+           o filtro de brilho clareia o botão */
+
+        button:active:not(:disabled) { transform: scale(.97); }
+        /* :active = ao clicar, o botão "encolhe" levemente (efeito de pressionar) */
+
+        button:disabled { opacity: .45; cursor: default; }
+        /* :disabled = quando o botão está desabilitado fica esmaecido
+           e a "mãozinha" vira a seta normal */
+
+        #gerar { background: #ffd166; color: #221b04; }
+        /* #gerar: botão amarelo (destaque) que sorteia um novo filme */
+
+        #dicaExt { background: #3a7bd5; color: #fff; }
+        /* #dicaExt: botão azul que revela mais um emoji */
+
+        #revelar { background: #8a7fb0; color: #120d20; }
+        /* #revelar: botão lilás que mostra a resposta final */
+
+        #pular { background: #5a4f7d; color: #fff; }
+        /* #pular: botão roxo escuro que troca de filme */
+
+        #confirmar { background: #3fcc7a; color: #062412; }
+        /* #confirmar: botão verde que valida a resposta digitada */
+
+        #status {
+            /* #status: parágrafo que mostra mensagens ao jogador */
+            margin-top: 16px;
+            color: #c9c0e0;
+            font-size: 14.5px;
+            min-height: 22px;
+            /* min-height: reserva espaço para a mensagem não "empurrar" o layout */
+        }
+        #status.acerto { color: #3fcc7a; font-weight: 600; }
+        /* #status.acerto: mensagem de acerto fica verde */
+
+        #status.erro { color: #ff7b85; }
+        /* #status.erro: mensagem de erro fica vermelha */
+
+        #status.info { color: #ffd166; }
+        /* #status.info: mensagem informativa fica amarela */
+
+        #reiniciar {
+            /* #reiniciar: botão "fantasma" (transparente) que zera o jogo */
+            margin-top: 8px;
+            background: transparent;
+            color: #8e83ab;
+            font-size: 12.5px;
+            border: 1px solid #4d3f78;
+        }
+
+        @media (max-width: 480px) {
+            /* @media: regra de responsividade — vale para telas de até 480px
+               (celulares). Ajusta tamanhos para caberem na tela pequena. */
+            #pista { font-size: 36px; min-height: 130px; }
+            .entrada { flex-direction: column; }
+            /* column: o campo de texto e o botão Confirmar ficam empilhados */
+
+            button { padding: 10px 12px; }
+        }
+    </style>
+</head>
+
+<body>
+<!-- <body> contém TUDO que é visível ao jogador -->
+
+    <div class="container">
+    <!-- Caixa central que organiza todo o conteúdo -->
+
+        <h1>🍿 Adivinhe o Filme</h1>
+        <!-- Título principal com o emoji de pipoca -->
+
+        <p>Adivinhe a partir dos emojis e ganhe pontos!</p>
+        <!-- Instrução rápida de como jogar -->
+
+        <div class="placar">
+            <!-- Barra do placar com os três valores do jogador -->
+            <div class="chip">Pontos<b id="pontos">0</b></div>
+            <!-- chip "Pontos": o <b> com id="pontos" é atualizado pelo JavaScript -->
+
+            <div class="chip">Acertos<b id="acertos">0</b></div>
+            <!-- chip "Acertos": total de filmes adivinhados -->
+
+            <div class="chip">Sequência<b id="sequencia">0</b></div>
+            <!-- chip "Sequência": acertos seguidos (zera ao errar/pular/revelar) -->
+        </div>
+
+        <div class="tracos" id="tracos"></div>
+        <!-- Div vazia que o JavaScript preenche com os "pontinhos" de dicas -->
+
+        <div id="pista">🎬🎞️</div>
+        <!-- Área central: começa com claquetes e recebe os emojis do filme -->
+
+        <div class="meta" id="meta">&nbsp;</div>
+        <!-- Linha do gênero/ano. O "&nbsp;" é um espaço que evita vazio -->
+
+        <div class="tentativas" id="tentativas">&nbsp;</div>
+        <!-- Linha que mostra o número de tentativas erradas -->
+
+        <div class="entrada">
+            <!-- Linha com o campo de texto + botão de confirmar -->
+            <input id="resposta" type="text" placeholder="Digite o título do filme..."
+                   autocomplete="off" spellcheck="false" disabled>
+            <!-- input: campo de digitação
+                 disabled: começa desabilitado até o jogador clicar em "Gerar" -->
+
+            <button id="confirmar" disabled>Confirmar</button>
+            <!-- Botão que valida a resposta (também começa desabilitado) -->
+        </div>
+
+        <div>
+            <!-- Fileira dos botões de ação -->
+            <button id="gerar">Gerar</button>
+            <!-- Sorteia um novo filme e começa o turno -->
+
+            <button id="dicaExt" disabled>Mais dica</button>
+            <!-- Revela o próximo emoji (cada um reduz a pontuação) -->
+
+            <button id="pular" disabled>Pular</button>
+            <!-- Troca de filme sem pontuar -->
+
+            <button id="revelar" disabled>Revelar</button>
+            <!-- Mostra a resposta final (também sem pontuar) -->
+        </div>
+
+        <p id="status">Clique em "Gerar" para começar.</p>
+        <!-- Mensagem inicial de orientação -->
+
+        <button id="reiniciar">Reiniciar jogo</button>
+        <!-- Zera placar, histórico e volta ao estado inicial -->
+
+    </div>
+
+    <script>
+        /* ============================================================
+           JAVASCRIPT: toda a lógica do jogo
+           ============================================================ */
+
+        /* ---------------- 1. BANCO DE FILMES ---------------- */
+        /* Cada filme tem:
+           t   = título oficial (usado ao revelar)
+           ano = ano de lançamento (mostrado após 3 dicas)
+           gen = gênero (mostrado sempre)
+           dic = array com os 5 emojis-dica em ordem de dificuldade
+           alt = array de respostas alternativas aceitas (opcional) */
+        const filmes = [
+            { t: "Avatar", ano: 2009, gen: "Ficção científica", dic: ["👽", "💙", "🌿", "🌌", "🪐"] },
+            { t: "Titanic", ano: 1997, gen: "Romance e drama", dic: ["🚢", "❄️", "💑", "🗻", "💔"], alt: ["o titanic"] },
+            { t: "Star Wars", ano: 1977, gen: "Ficção científica", dic: ["⭐", "⚔️", "🌌", "🤖", "🪐"], alt: ["guerra nas estrelas"] },
+            { t: "Jurassic Park", ano: 1993, gen: "Aventura", dic: ["🦖", "🦕", "🏝️", "🚪", "🧬"], alt: ["parque dos dinossauros"] },
+            { t: "O Rei Leão", ano: 1994, gen: "Animação", dic: ["🦁", "👑", "🌅", "🐒", "🦓"], alt: ["rei leao", "the lion king"] },
+            { t: "Harry Potter", ano: 2001, gen: "Fantasia", dic: ["⚡", "🧙", "🦉", "🧹", "🐍"], alt: ["harry potter e a pedra filosofal"] },
+            { t: "Toy Story", ano: 1995, gen: "Animação", dic: ["🧸", "🤠", "🚀", "👨‍🚀", "🪀"] },
+            { t: "Shrek", ano: 2001, gen: "Animação", dic: ["👹", "🏰", "🧅", "💚", "🐴"] },
+            { t: "O Poderoso Chefão", ano: 1972, gen: "Crime e drama", dic: ["🚬", "👨‍🦳", "💐", "🐎", "⚰️"], alt: ["poderoso chefao", "the godfather"] },
+            { t: "Frozen", ano: 2013, gen: "Animação", dic: ["❄️", "👸", "☃️", "🫂", "⛄"], alt: ["frozen reino do gelo"] },
+            { t: "Matrix", ano: 1999, gen: "Ficção científica", dic: ["🕶️", "💊", "🔫", "🟢", "🕰️"] },
+            { t: "O Senhor dos Anéis", ano: 2001, gen: "Fantasia", dic: ["💍", "🧝", "🗡️", "🔥", "🧙"], alt: ["senhor dos aneis", "o senhor dos aneis a sociedade do anel"] },
+            { t: "Interestelar", ano: 2014, gen: "Ficção científica", dic: ["🚀", "🕳️", "🪐", "⏳", "🌾"], alt: ["interstellar"] },
+            { t: "Gladiador", ano: 2000, gen: "Ação", dic: ["🗡️", "🛡️", "🏟️", "⚔️", "🦁"], alt: ["gladiator"] },
+            { t: "Forrest Gump", ano: 1994, gen: "Drama", dic: ["🏃", "🍫", "🪶", "🪑", "🎖️"] },
+            { t: "Coco", ano: 2017, gen: "Animação", dic: ["🎸", "💀", "🌼", "🎉", "🇲🇽"] },
+            { t: "Procurando Nemo", ano: 2003, gen: "Animação", dic: ["🐠", "🐟", "🤿", "🌊", "🐢"], alt: ["finding nemo", "nemo"] },
+            { t: "E.T.", ano: 1982, gen: "Ficção científica", dic: ["🚲", "👽", "🌕", "✋", "🍬"], alt: ["et", "extraterrestre"] },
+            { t: "Batman", ano: 1989, gen: "Ação", dic: ["🦇", "🌃", "🦸", "🏙️", "🕵️"] },
+            { t: "Homem-Aranha", ano: 2002, gen: "Ação", dic: ["🕷️", "🕸️", "🦸", "🏙️", "📷"], alt: ["homem aranha", "spider man", "spiderman"] },
+            { t: "Vingadores: Ultimato", ano: 2019, gen: "Ação", dic: ["🛡️", "🔨", "⏱️", "🐜", "👊"], alt: ["vingadores", "avengers", "endgame"] },
+            { t: "A Era do Gelo", ano: 2002, gen: "Animação", dic: ["🦣", "🐿️", "🥶", "🌰", "🐯"], alt: ["era do gelo", "ice age"] },
+            { t: "Minions", ano: 2015, gen: "Animação", dic: ["🍌", "🎩", "👓", "🐤", "💛"] },
+            { t: "Up: Altas Aventuras", ano: 2009, gen: "Animação", dic: ["🎈", "🏠", "👴", "🐕", "🪶"], alt: ["up", "altas aventuras"] },
+            { t: "Os Incríveis", ano: 2004, gen: "Animação", dic: ["🦸", "🦸‍♂️", "🦸‍♀️", "👨‍👩‍👧‍👦", "🌪️"], alt: ["os incriveis", "the incredibles", "incriveis"] },
+            { t: "Corra!", ano: 2017, gen: "Terror", dic: ["🍵", "👁️", "🎫", "🌻", "🪑"], alt: ["corra", "get out"] },
+            { t: "Parasita", ano: 2019, gen: "Suspense", dic: ["🏠", "🪜", "🍚", "🌧️", "🔦"], alt: ["parasite"] },
+            { t: "Cidade de Deus", ano: 2002, gen: "Drama", dic: ["📷", "🔥", "🤕", "🕍", "🐓"] },
+            { t: "A Origem", ano: 2010, gen: "Ficção científica", dic: ["🌀", "💤", "🌆", "🕹️", "⏰"], alt: ["inception"] },
+            { t: "Os Caça-Fantasmas", ano: 1984, gen: "Comédia", dic: ["👻", "🚫", "🔫", "👟", "🌈"], alt: ["os caca fantasmas", "ghostbusters"] }
+        ];
+
+        /* ---------------- 2. REFERÊNCIAS AOS ELEMENTOS DA PÁGINA ---------------- */
+        /* document.getElementById() busca um elemento da tela pelo seu id.
+           Guardamos todos em constantes para facilitar o uso no código. */
+        const elPista = document.getElementById("pista");
+        /* Área central que mostra os emojis / título revelado */
+        const elTracos = document.getElementById("tracos");
+        /* Div dos pontinhos de dicas */
+        const elMeta = document.getElementById("meta");
+        /* Linha do gênero e ano */
+        const elTent = document.getElementById("tentativas");
+        /* Linha das tentativas erradas */
+        const elResposta = document.getElementById("resposta");
+        /* Campo onde o jogador digita o título */
+        const elConfirmar = document.getElementById("confirmar");
+        /* Botão Confirmar */
+        const elGerar = document.getElementById("gerar");
+        /* Botão Gerar */
+        const elDica = document.getElementById("dicaExt");
+        /* Botão Mais dica */
+        const elPular = document.getElementById("pular");
+        /* Botão Pular */
+        const elRevelar = document.getElementById("revelar");
+        /* Botão Revelar */
+        const elStatus = document.getElementById("status");
+        /* Parágrafo das mensagens */
+        const elPontos = document.getElementById("pontos");
+        /* Valor de pontos no placar */
+        const elAcertos = document.getElementById("acertos");
+        /* Valor de acertos no placar */
+        const elSeq = document.getElementById("sequencia");
+        /* Valor da sequência no placar */
+
+        /* ---------------- 3. ESTADO GLOBAL DO JOGO ---------------- */
+
+        /* Objeto que guarda o estado do turno atual:
+           filme   = objeto do filme sorteado (null = nenhum filme em jogo)
+           dicas   = quantos emojis já foram revelados (começa com 1)
+           erros   = tentativas erradas no turno atual
+           acertou = true quando o jogador acerta
+           revelado = true quando o jogador pede para revelar */
+        let jogo = { filme: null, dicas: 0, erros: 0, acertou: false, revelado: false };
+
+        const usados = new Set();
+        /* Set (conjunto) com os índices dos filmes já sorteados,
+           para um filme não repetir na mesma "rodada" */
+
+        let pontos = 0, acertos = 0, seq = 0;
+        /* Placar acumulado: pontos totais, total de acertos e sequência atual */
+
+        /* ---------------- 4. FUNÇÕES AUXILIARES ---------------- */
+
+        function normaliza(s) {
+            /* Transforma qualquer texto em um formato padrão para comparar:
+               - converte para minúsculas
+               - remove acentos (é -> e, ão -> ao)
+               - troca símbolos por espaço
+               - remove espaços duplicados e sobras nas pontas
+               Exemplo: "O Rei Leão" -> "o rei leao" */
+            return s.toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9 ]/g, " ")
+                .replace(/\s+/g, " ")
+                .trim();
+        }
+
+        function estaEmJogo() { return jogo.filme !== null; }
+        /* Retorna true se existe um filme em jogo (ou seja, foi clicado em Gerar) */
+
+        function renderPista() {
+            /* Atualiza o conteúdo da área central:
+               - se acertou ou revelou, mostra o TÍTULO do filme
+               - caso contrário, mostra os emojis já descobertos */
+            const f = jogo.filme;
+            elPista.textContent = (jogo.acertou || jogo.revelado)
+                ? f.t
+                : f.dic.slice(0, jogo.dicas).join(" ");
+            /* slice(0, dicas) pega só os emojis revelados;
+               join(" ") junta eles com espaço entre cada um */
+        }
+
+        function renderTracos() {
+            /* Desenha os pontinhos de progresso (um para cada dica) */
+            elTracos.innerHTML = "";   /* limpa os pontinhos anteriores */
+            const total = jogo.filme.dic.length;  /* quantas dicas o filme tem */
+            for (let i = 0; i < total; i++) {
+                const t = document.createElement("span");  /* cria o pontinho */
+                t.className = "traco" + (i < jogo.dicas ? " aceso" : "");
+                /* pontinhos já revelados recebem a classe "aceso" (amarelo) */
+                elTracos.appendChild(t);  /* adiciona o pontinho na tela */
+            }
+        }
+
+        function renderMeta() {
+            /* Mostra o gênero sempre; o ano aparece só a partir da 3ª dica */
+            const f = jogo.filme;
+            elMeta.innerHTML = "Gênero: <span>" + f.gen + "</span>";
+            if (jogo.dicas >= 3) {
+                elMeta.innerHTML += " &nbsp; Ano: <span>" + f.ano + "</span>";
+            }
+        }
+
+        function renderTent() {
+            /* Mostra o número de tentativas erradas (ou "nenhuma" quando é 0) */
+            elTent.textContent = (jogo.erros === 0)
+                ? (jogo.acertou ? "" : "Nenhuma tentativa ainda.")
+                : "Tentativas erradas: " + jogo.erros;
+        }
+
+        function placar() {
+            /* Atualiza os três números do placar na tela */
+            elPontos.textContent = pontos;
+            elAcertos.textContent = acertos;
+            elSeq.textContent = seq;
+        }
+
+        function msg(texto, tipo) {
+            /* Exibe uma mensagem no parágrafo #status;
+               o tipo (acerto/erro/info) muda a cor da mensagem */
+            elStatus.textContent = texto;
+            elStatus.className = tipo || "";
+        }
+
+        /* ---------------- 5. ATUALIZAÇÃO DA INTERFACE ---------------- */
+
+        function atualizar() {
+            /* Habilita/desabilita botões e campo de digitação de acordo com
+               o estado do jogo e redesenha toda a tela */
+            const ativo = estaEmJogo() && !jogo.acertou && !jogo.revelado;
+            /* "ativo" = existe filme em jogo E ainda não encerrou o turno */
+
+            elResposta.disabled = !ativo;     /* campo de texto */
+            elConfirmar.disabled = !ativo;    /* botão confirmar */
+            elDica.disabled = !ativo || jogo.dicas >= jogo.filme.dic.length;
+            /* "Mais dica" desativa também quando já mostra todas as dicas */
+            elPular.disabled = !ativo;        /* botão pular */
+            elRevelar.disabled = !ativo;      /* botão revelar */
+
+            renderPista();   /* emojis ou título */
+            renderTracos();  /* pontinhos de dica */
+            renderMeta();    /* gênero e ano */
+            renderTent();    /* tentativas erradas */
+        }
+
+        /* ---------------- 6. AÇÕES DO JOGO ---------------- */
+
+        function novoFilme() {
+            /* Sorteia um filme que ainda não foi usado nesta rodada */
+            if (usados.size >= filmes.length) usados.clear();
+            /* Se já passou por TODOS os filmes, esvazia o histórico
+               e deixa todos disponíveis de novo */
+
+            let indice;
+            do { indice = Math.floor(Math.random() * filmes.length); }
+            while (usados.has(indice));
+            /* Math.random() gera número entre 0 e 1;
+               Math.floor(... * length) transforma em um índice válido.
+               O loop repete enquanto o índice já tiver sido usado. */
+
+            usados.add(indice);  /* marca o filme como usado */
+            jogo = { filme: filmes[indice], dicas: 1, erros: 0, acertou: false, revelado: false };
+            /* começa com 1 dica revelada */
+
+            elResposta.value = "";         /* limpa o campo de texto */
+            msg("Um novo filme! Qual é?", "info");  /* mensagem de boas-vindas */
+            atualizar();                   /* atualiza a tela */
+        }
+
+        elGerar.addEventListener("click", novoFilme);
+        /* addEventListener: "escutador" de eventos.
+           Quando o jogador CLICA no botão Gerar, executa a função novoFilme. */
+
+        elDica.addEventListener("click", function () {
+            /* Quando clica em "Mais dica"... */
+            jogo.dicas += 1;               /* revela mais um emoji */
+            msg("Nova dica revelada!", "info");
+            atualizar();                   /* redesenha a tela */
+        });
+
+        elPular.addEventListener("click", function () {
+            /* Quando clica em "Pular"... */
+            seq = 0;                       /* perde a sequência de acertos */
+            elSeq.textContent = seq;
+            msg("Filmou! Próximo: " + jogo.filme.t, "info");
+            novoFilme();                   /* vai direto para outro filme */
+        });
+
+        elRevelar.addEventListener("click", function () {
+            /* Quando clica em "Revelar"... */
+            jogo.revelado = true;          /* encerra o turno marcando como revelado */
+            msg("A resposta era: " + jogo.filme.t + " (" + jogo.filme.ano + ")", "info");
+            seq = 0;                       /* zerou a sequência? Sim, é regra do jogo */
+            placar();
+            atualizar();                   /* agora mostra o título na pista */
+        });
+
+        elConfirmar.addEventListener("click", confirmar);
+        /* Botão Confirmar dispara a função confirmar */
+
+        elResposta.addEventListener("keydown", function (e) {
+            /* Escuta o teclado no campo de digitação:
+               se o jogador apertar ENTER (Enter), confirma a resposta */
+            if (e.key === "Enter") confirmar();
+        });
+
+        function confirmar() {
+            /* Valida a resposta digitada */
+            if (!estaEmJogo() || jogo.acertou || jogo.revelado) return;
+            /* Não faz nada se não há filme em jogo ou se o turno já acabou */
+
+            const entrada = normaliza(elResposta.value);
+            /* Normaliza o que o jogador digitou (ex.: "REI LEAO" -> "rei leao") */
+            if (!entrada) { msg("Digite um título antes de confirmar.", "erro"); return; }
+            /* Se o campo está vazio, avisa e para */
+
+            const alvos = [jogo.filme.t].concat(jogo.filme.alt || []);
+            /* Lista de respostas aceitas: título oficial + alternativas (se houver) */
+
+            const ehAcerto = alvos.some(function (v) {
+                /* some() testa se ALGUMA resposta aceita bate com o digitado */
+                const alvo = normaliza(v);
+                return alvo === entrada || (entrada.length >= 4 && alvo.indexOf(entrada) !== -1);
+                /* Acertou se: a resposta é EXATA, ou se o jogador digitou um
+                   pedaço do título com pelo menos 4 letras (ex.: "vingadores"). */
+            });
+
+            if (ehAcerto) {
+                /* ---- CASO ACERTO ---- */
+                jogo.acertou = true;                       /* marca o turno como vencido */
+                const ganhos = Math.max(0, 100 - (jogo.dicas - 1) * 20);
+                /* base = 100 pontos; cada dica extra (além da 1ª) tira 20.
+                   Math.max(0, ...) garante que nunca fique abaixo de 0. */
+                pontos += ganhos;   /* soma os pontos ganhos */
+                acertos += 1;       /* registra mais um acerto */
+                seq += 1;           /* aumenta a sequência */
+                placar();           /* atualiza o placar na tela */
+                atualizar();        /* mostra o título na pista */
+                const nota = ganhos === 100 ? "Perfeito!" : ganhos >= 60 ? "Bom!" : "Foi por pouco!";
+                /* Elogio de acordo com a pontuação da rodada */
+                msg(nota + " Você acertou: " + jogo.filme.t + " (+" + ganhos + " pts)", "acerto");
+                elResposta.value = "";   /* limpa o campo */
+            } else {
+                /* ---- CASO ERRO ---- */
+                jogo.erros += 1;         /* conta a tentativa errada */
+                msg("Hmm, não é esse. Tente de novo!", "erro");
+                renderTent();            /* atualiza o contador de erros */
+            }
+        }
+
+        document.getElementById("reiniciar").addEventListener("click", function () {
+            /* Quando clica em "Reiniciar jogo" — zera tudo e volta ao início */
+            pontos = 0; acertos = 0; seq = 0;   /* zera o placar */
+            placar();
+            usados.clear();                      /* libera todos os filmes de novo */
+            jogo = { filme: null, dicas: 0, erros: 0, acertou: false, revelado: false };
+                                                 /* estado inicial (sem filme) */
+            elPista.textContent = "🎬🎞️";        /* volta o ícone inicial */
+            elMeta.innerHTML = "&nbsp;";
+            elTent.innerHTML = "&nbsp;";
+            elTracos.innerHTML = "";
+            elResposta.value = "";
+            msg("Jogo reiniciado. Clique em \"Gerar\" para começar.", "info");
+            /* Reabilita só o Gerar; o resto volta desabilitado */
+            elResposta.disabled = true;
+            elConfirmar.disabled = true;
+            elDica.disabled = true;
+            elPular.disabled = true;
+            elRevelar.disabled = true;
+        });
+
+        /* ============================================================
+           Resumo do fluxo do jogo:
+           1) Clique em "Gerar" -> sorteia um filme e mostra 1 emoji
+           2) "Mais dica" -> revela os próximos emojis (custa 20 pts cada)
+           3) Jogador digita e clica "Confirmar" (ou aperta Enter)
+           4) Acertou  -> ganha pontos, atualiza placar
+           5) Errou    -> conta tentativa e permite tentar de novo
+           6) "Pular"/"Revelar" -> encerra o turno sem pontuar
+           7) "Reiniciar" -> volta tudo ao zero
+           ============================================================ */
+    </script>
+
+</body>
+</html>

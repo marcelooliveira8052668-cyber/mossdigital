@@ -69,6 +69,21 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://mossdigital.com.br/demos/lina-tutor-ingles/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mossdigital.com.br/demos/calculadora-iphone/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mossdigital.com.br/demos/historia-em-foco/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mossdigital.com.br/comandas/index.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
