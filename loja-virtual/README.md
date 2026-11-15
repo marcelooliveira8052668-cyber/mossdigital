@@ -61,20 +61,23 @@ cliente. Tudo o mais é opcional.
 
 | O que | Onde em `config.js` | Situação atual |
 | --- | --- | --- |
+| Modo demonstração | `CONFIG.demoPublica` | `true` — ligue `false` ao publicar |
 | Nome e slogan da loja | `CONFIG.loja` | `NEXA STORE` (fictício) |
-| WhatsApp de atendimento | `CONFIG.contato.whatsapp` | `5511999999999` (fictício) |
-| E-mail | `CONFIG.contato.email` | fictício |
-| Endereço e CEP | `CONFIG.loja` | fictício |
+| WhatsApp de atendimento | `CONFIG.loja.whatsapp` | `5511942038103` (MOSS Digital, na versão pública) |
+| E-mail | `CONFIG.loja.email` | `contato@mossdigital.com.br` |
+| Endereço e CEP | `CONFIG.endereco` | fictício |
 | Horário de atendimento | `CONFIG.loja` | fictício |
-| **Chave Pix** | `CONFIG.pagamento.pix.chave` | fictícia |
+| **Chave Pix** | `CONFIG.pagamento.pix.chave` | `11999999999` (fictícia, não recebe pagamento) |
 | Nome do titular Pix | `CONFIG.pagamento.pix.titular` | fictício |
 | Juros do crédito | `CONFIG.pagamento.jurosCredito` | `0.0399` (3,99% a.m.) |
 | Limite de parcelas sem juros | `CONFIG.pagamento.parcelasSemJuros` | `6` |
-| Valor do frete e mínimo para frete grátis | `CONFIG.entrega` | `R$ 24,90` / `R$ 199` |
+| Valor do frete e mínimo para frete grátis | `CONFIG.entrega` | `R$ 15,90` / `R$ 199` |
 | Cores da marca | `CONFIG.cores` | ver abaixo |
 
-> **Importante:** o site avisa o visitante de que é uma loja demonstrativa — no rodapé
-> e na página de contato. Essa advertência some sozinha assim que os dados em
+> **Importante:** com `CONFIG.demoPublica` em `true`, o site avisa que é uma
+> demonstração e manda as conversas do WhatsApp para a MOSS Digital, que é quem
+> responde. Ao publicar a loja do cliente, ponha `false` e troque WhatsApp, e-mail,
+> endereço e chave Pix. A advertência some sozinha assim que os dados em
 > `config.js` deixarem de ser os de exemplo.
 
 ---

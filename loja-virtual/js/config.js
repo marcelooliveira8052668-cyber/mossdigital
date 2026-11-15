@@ -11,6 +11,10 @@
 
 const CONFIG = {
 
+  /* Enquanto true, o site avisa que é demonstração e manda o WhatsApp para
+     a MOSS Digital. Ao publicar a loja do cliente, ponha false. */
+  demoPublica: true,
+
   /* ---------------- IDENTIDADE ---------------- */
   loja: {
     nome: "NEXA STORE",
@@ -19,8 +23,10 @@ const CONFIG = {
     slogan: "Tecnologia premium com entrega rápida para todo o Brasil.",
     assinatura: "Loja demonstrativa. Preços, endereço e contatos são fictícios.",
     telefone: "(11) 4000-0000",
-    whatsapp: "5511999999999",
-    email: "contato@nexastore.com.br",
+    /* Demo pública: o contato vai para a MOSS Digital, que é quem responde.
+       Ao comprar, troque pelo número da loja e volte a usar a loja real. */
+    whatsapp: "5511942038103",
+    email: "contato@mossdigital.com.br",
     horario: "Segunda a sexta, das 9h às 18h",
     instagram: "https://instagram.com/"
   },
@@ -47,6 +53,8 @@ const CONFIG = {
                    recebe pagamento de verdade.                          */
   pagamento: {
     pix: {
+      /* Chave fictícia: o QR é desenhado para mostrar o formato, mas não
+         recebe pagamento. Troque pela chave real da loja ao comprar. */
       chave: "11999999999",
       titular: "NEXA STORE LTDA",
       cidade: "SAO PAULO"
@@ -81,7 +89,11 @@ const CONFIG = {
 /* Monta o link de WhatsApp com a mensagem já preenchida. */
 function linkWhats(mensagem) {
   const numero = String(CONFIG.loja.whatsapp).replace(/\D/g, "");
-  const texto = mensagem || ("Olá! Vim pelo site " + CONFIG.loja.nome + " e gostaria de ajuda.");
+  /* Enquanto for demonstração pública, a conversa é com a MOSS Digital:
+     não há loja atendendo, então o texto pede um site parecido com o modelo. */
+  const texto = CONFIG.demoPublica
+    ? "Olá! Vi a demo NEXA STORE no site da MOSS Digital e quero um site assim."
+    : (mensagem || ("Olá! Vim pelo site " + CONFIG.loja.nome + " e gostaria de ajuda."));
   return "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
 }
 

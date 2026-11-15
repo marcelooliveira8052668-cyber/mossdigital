@@ -49,6 +49,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mossdigital.com.br/loja-virtual/produto.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mossdigital.com.br/loja-virtual/ofertas.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mossdigital.com.br/loja-virtual/checkout.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mossdigital.com.br/loja-virtual/pedido.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://mossdigital.com.br/comandas/index.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

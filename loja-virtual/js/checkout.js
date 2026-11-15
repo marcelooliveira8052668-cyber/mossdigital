@@ -154,6 +154,10 @@
             '<i class="fa-regular fa-copy" aria-hidden="true"></i> Copiar chave</button></div>' +
           '<p class="pix-aviso"><i class="fa-solid fa-lock" aria-hidden="true"></i> ' +
             'Pagamento processado pelo seu banco. Nós não guardamos nenhum dado da sua conta.</p>' +
+          '<p class="pix-aviso" style="background:#fff4d6;color:#4f3a13"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> ' +
+            'Demonstração MOSS Digital: o código acima usa uma chave Pix fictícia e ' +
+            'não recebe pagamento. Nenhum pedido é enviado a uma loja real. ' +
+            'Para publicar, configure a chave e o gateway de pagamento.</p>' +
         '</div>' +
       '</div>';
 

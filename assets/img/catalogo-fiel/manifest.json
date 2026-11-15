@@ -3,18 +3,6 @@
   "notice": "Capturas das próprias demonstrações, sem dados reais de clientes.",
   "previews": [
     {
-      "key": "/demos/passo-atelier/",
-      "title": "PASSO Atelier — Loja de calçados",
-      "src": "demos/passo-atelier/img/capa-card.webp",
-      "url": "https://mossdigital.com.br/demos/passo-atelier/"
-    },
-    {
-      "key": "/demos/moss-news/",
-      "title": "MOSS News — Portal informativo",
-      "src": "demos/moss-news/assets/capa-card.webp",
-      "url": "https://mossdigital.com.br/demos/moss-news/"
-    },
-    {
       "key": "/agenda-pro/",
       "title": "MOSS Agenda Pro",
       "src": "assets/img/catalogo-fiel/moss-agenda-pro-ece456fe9f.webp",
@@ -489,6 +477,12 @@
       "url": "https://mossdigital.com.br/demos/moss-motors/"
     },
     {
+      "key": "/demos/moss-news/",
+      "title": "MOSS News — Portal informativo",
+      "src": "demos/moss-news/assets/capa-card.webp",
+      "url": "https://mossdigital.com.br/demos/moss-news/"
+    },
+    {
       "key": "/demos/moss-sports/",
       "title": "MOSS SPORTS — Loja Esportiva",
       "src": "assets/img/catalogo-fiel/moss-sports-loja-esportiva-a15861d9fe.webp",
@@ -547,6 +541,12 @@
       "title": "Lumina Ótica — Óculos de grau e sol",
       "src": "assets/img/catalogo-fiel/lumina-otica-oculos-de-grau-e-sol-7f7622df6e.webp",
       "url": "https://mossdigital.com.br/demos/otica/"
+    },
+    {
+      "key": "/demos/passo-atelier/",
+      "title": "PASSO Atelier — Loja de calçados",
+      "src": "demos/passo-atelier/img/capa-card.webp",
+      "url": "https://mossdigital.com.br/demos/passo-atelier/"
     },
     {
       "key": "/demos/pastelaria-sabor-de-feira/",
@@ -697,6 +697,12 @@
       "title": "📸 Fotos entre Amigos",
       "src": "assets/img/catalogo-fiel/fotos-entre-amigos-ffd63655cb.webp",
       "url": "https://mossdigital.com.br/fotos-amigos/index.html"
+    },
+    {
+      "key": "/loja-virtual/",
+      "title": "NEXA STORE — Loja virtual de tecnologia",
+      "src": "assets/img/catalogo-fiel/nexa-store-b1b9c524d0.webp",
+      "url": "https://mossdigital.com.br/loja-virtual/index.html"
     },
     {
       "key": "/restaurante-360/",
