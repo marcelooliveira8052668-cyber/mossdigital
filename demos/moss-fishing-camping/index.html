@@ -1,0 +1,1544 @@
+
+<!DOCTYPE html>
+<!-- MOSS FISHING & CAMPING: demo comercial independente -->
+<html lang="pt-BR">
+
+<head>
+  <!-- Configurações da página -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b21">
+  <meta name="description" content="Modelo ilustrativo de loja de pesca e camping, com 50 produtos fictícios, busca, filtros e carrinho demonstrativo. Sem vendas ou pedidos reais.">
+  <meta name="robots" content="noindex,follow">
+  <title>MOSS Fishing & Camping | Sua aventura começa aqui</title>
+
+  <!-- CSS completo dentro do próprio HTML -->
+  <style>
+    /* Cores e configurações globais */
+    :root {
+      --verde: #173d2e;
+      --verde-escuro: #102b21;
+      --verde-claro: #e8f1e7;
+      --laranja: #ef983d;
+      --fundo: #f5f6f2;
+      --texto: #22332a;
+      --cinza: #69776e;
+      --branco: #fff;
+      --borda: #dce5dc;
+    }
+
+    /* Remove margens indesejadas */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Configuração da rolagem */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 105px;
+    }
+
+    /* Estilo do corpo */
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+    }
+
+    /* Padronização dos botões */
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Padronização dos links */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Melhora a navegação pelo teclado */
+    :focus-visible {
+      outline: 3px solid var(--laranja);
+      outline-offset: 3px;
+    }
+
+    /* Cabeçalho fixo */
+    .cabecalho {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--verde-escuro);
+      color: white;
+      box-shadow: 0 3px 16px #0003;
+    }
+
+    /* Conteúdo do cabeçalho */
+    .cabecalho-interno {
+      max-width: 1300px;
+      margin: auto;
+      padding: 13px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    /* Identidade da loja */
+    .marca {
+      display: flex;
+      flex-direction: column;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    /* Subtítulo da marca */
+    .marca small {
+      color: var(--laranja);
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-top: 4px;
+    }
+
+    /* Barra de navegação */
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+    }
+
+    /* Links da navegação */
+    .nav a {
+      font-size: 13px;
+      font-weight: bold;
+      transition: color .2s;
+    }
+
+    /* Efeito nos links */
+    .nav a:hover {
+      color: var(--laranja);
+    }
+
+    /* Botão do carrinho */
+    .btn-carrinho {
+      background: var(--laranja);
+      color: #202820;
+      border-radius: 10px;
+      padding: 12px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    /* Botão do menu móvel */
+    .menu-btn {
+      display: none;
+      background: transparent;
+      color: white;
+      font-size: 26px;
+      padding: 5px;
+    }
+
+    /* Banner principal */
+    .hero {
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, #102b21f5, #102b2199),
+        url("img/barraca.webp");
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    /* Conteúdo do banner */
+    .hero-conteudo {
+      max-width: 1300px;
+      width: 100%;
+      margin: auto;
+      padding: 65px 25px;
+    }
+
+    /* Texto superior do banner */
+    .hero-etiqueta {
+      color: #f6b66d;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+
+    /* Título principal */
+    .hero h1 {
+      max-width: 670px;
+      font-size: clamp(35px, 6vw, 65px);
+      line-height: 1.08;
+      margin: 17px 0;
+    }
+
+    /* Descrição do banner */
+    .hero p {
+      max-width: 550px;
+      line-height: 1.7;
+      color: #e0e9e0;
+    }
+
+    /* Botão principal */
+    .btn-principal {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 16px 25px;
+      border-radius: 10px;
+      background: var(--laranja);
+      color: #17271b;
+      font-weight: bold;
+    }
+
+    /* Benefícios da loja */
+    .beneficios {
+      max-width: 1250px;
+      margin: 25px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    /* Cartão de benefício */
+    .beneficio {
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 12px;
+      padding: 19px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* Conteúdo principal */
+    main {
+      max-width: 1300px;
+      margin: auto;
+      padding: 25px 20px;
+    }
+
+    /* Títulos de seção */
+    .titulo-secao {
+      font-size: clamp(26px, 4vw, 36px);
+      margin-bottom: 10px;
+    }
+
+    /* Descrições secundárias */
+    .subtitulo {
+      color: var(--cinza);
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    /* Barra de pesquisa */
+    .busca {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--borda);
+      margin-bottom: 18px;
+      background: white;
+    }
+
+    /* Barra de filtros */
+    .filtros {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 15px;
+    }
+
+    /* Botões dos filtros */
+    .filtros button {
+      background: white;
+      border: 1px solid var(--borda);
+      padding: 12px 17px;
+      border-radius: 30px;
+      white-space: nowrap;
+      font-weight: bold;
+      color: var(--verde);
+    }
+
+    /* Filtro selecionado */
+    .filtros button.ativo {
+      background: var(--verde);
+      color: white;
+    }
+
+    /* Contador de resultados */
+    .resultados {
+      color: var(--cinza);
+      margin: 15px 0;
+      font-size: 14px;
+    }
+
+    /* Grade dos produtos */
+    .grade {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    /* Card do produto */
+    .card {
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    /* Efeito do card */
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px #00000015;
+    }
+
+    /* Área da imagem */
+    .foto-produto {
+      position: relative;
+      overflow: hidden;
+      background: #e8ede7;
+    }
+
+    /* Imagem clicável */
+    .foto-produto img {
+      width: 100%;
+      height: 205px;
+      object-fit: cover;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* Etiqueta de promoção */
+    .etiqueta {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--laranja);
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    /* Conteúdo dos cards */
+    .card-conteudo {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    /* Categoria do produto */
+    .categoria {
+      font-size: 11px;
+      font-weight: bold;
+      color: #47835c;
+      text-transform: uppercase;
+    }
+
+    /* Nome do produto */
+    .card h3 {
+      font-size: 17px;
+      line-height: 1.35;
+      margin: 10px 0;
+      flex: 1;
+    }
+
+    /* Descrição curta */
+    .card p {
+      font-size: 13px;
+      color: var(--cinza);
+      line-height: 1.5;
+    }
+
+    /* Preço antigo */
+    .preco-antigo {
+      color: #8b948e;
+      text-decoration: line-through;
+      font-size: 13px;
+    }
+
+    /* Preço atual */
+    .preco {
+      font-size: 23px;
+      color: var(--verde);
+      font-weight: 900;
+      margin: 9px 0;
+    }
+
+    /* Botões dos cards */
+    .acao {
+      width: 100%;
+      padding: 12px;
+      border-radius: 9px;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    /* Botão de detalhes */
+    .detalhes-btn {
+      background: var(--verde-claro);
+      color: var(--verde);
+    }
+
+    /* Botão de compra */
+    .comprar-btn {
+      background: var(--verde);
+      color: white;
+    }
+
+    /* Seção de apresentação */
+    .sobre {
+      margin-top: 60px;
+      background: var(--verde);
+      color: white;
+      padding: 35px;
+      border-radius: 18px;
+      line-height: 1.8;
+    }
+
+    /* Seção de contato */
+    .contato {
+      padding: 40px 0;
+      line-height: 1.7;
+    }
+
+    /* Fundo das janelas */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: #000b;
+      padding: 15px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Janela aberta */
+    .overlay.aberto {
+      display: flex;
+    }
+
+    /* Caixa do modal */
+    .modal {
+      width: 100%;
+      max-width: 620px;
+      max-height: 92vh;
+      overflow-y: auto;
+      background: white;
+      padding: 23px;
+      border-radius: 18px;
+    }
+
+    /* Cabeçalho do modal */
+    .modal-topo {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    /* Botão de fechar */
+    .fechar {
+      background: #e8eee8;
+      width: 37px;
+      height: 37px;
+      border-radius: 50%;
+      font-size: 23px;
+      flex-shrink: 0;
+    }
+
+    /* Foto ampliada */
+    .foto-ampliada {
+      width: 100%;
+      max-height: 340px;
+      object-fit: contain;
+      background: #f0f3ef;
+      border-radius: 12px;
+      margin: 15px 0;
+    }
+
+    /* Lista de características */
+    .caracteristicas li {
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+    /* Linha do carrinho */
+    .item-carrinho {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--borda);
+      padding: 14px 0;
+    }
+
+    /* Controles de quantidade */
+    .quantidade {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    /* Botões de quantidade */
+    .quantidade button {
+      background: var(--verde-claro);
+      padding: 8px 11px;
+      border-radius: 7px;
+    }
+
+    /* Campos do formulário */
+    .campo {
+      width: 100%;
+      border: 1px solid var(--borda);
+      border-radius: 9px;
+      padding: 13px;
+      font: inherit;
+      margin: 7px 0 15px;
+    }
+
+    /* Rótulos do formulário */
+    label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* Rodapé */
+    footer {
+      background: var(--verde-escuro);
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+      line-height: 1.7;
+    }
+
+    /* Layout para tablets */
+    @media(max-width: 1000px) {
+      .grade {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .nav {
+        gap: 10px;
+      }
+
+      .nav a {
+        font-size: 12px;
+      }
+    }
+
+    /* Layout para celulares */
+    @media(max-width: 760px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--verde-escuro);
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        border-top: 1px solid #ffffff30;
+      }
+
+      .nav.aberta {
+        display: flex;
+      }
+
+      .nav a {
+        padding: 14px;
+        font-size: 15px;
+        border-bottom: 1px solid #ffffff15;
+      }
+
+      .marca {
+        font-size: 17px;
+      }
+
+      .grade {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .foto-produto img {
+        height: 145px;
+      }
+
+      .card-conteudo {
+        padding: 11px;
+      }
+
+      .card h3 {
+        font-size: 15px;
+      }
+
+      .preco {
+        font-size: 20px;
+      }
+
+      .beneficios {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 350px;
+      }
+
+      .hero-conteudo {
+        padding: 50px 20px;
+      }
+
+      .sobre {
+        padding: 23px;
+      }
+    }
+    .aviso-demo { margin: 0; padding: 9px 18px; text-align: center; background: #c9e8d1; color: #102b21; font-size: 13px; line-height: 1.5; }
+    .aviso-demo a, .subtitulo a, footer a { text-decoration: underline; text-underline-offset: 3px; }
+    .aviso-foto { position: absolute; left: 8px; bottom: 8px; padding: 5px 8px; border-radius: 5px; color: #fff; background: #102b21ed; font-size: 11px; }
+    #resumoPedido { white-space: pre-wrap; overflow-wrap: anywhere; background: #e8f1e7; color: #102b21; padding: 14px; border-radius: 8px; line-height: 1.5; }
+    .overlay a.acao { display: block; text-align: center; }
+    @media(max-width:370px) { .cabecalho-interno { padding: 10px 12px; gap: 8px; } .marca { font-size: 14px; letter-spacing: .2px; } .marca small { font-size: 9px; letter-spacing: 2px; } .btn-carrinho { padding: 9px; } }
+  </style>
+</head>
+
+<body>
+  <p class="aviso-demo">Modelo MOSS Digital · Marca e produtos fictícios · Preços ilustrativos · Sem vendas ou pedidos reais · <a href="../../index.html">Conheça a MOSS ↗</a></p>
+
+  <!-- Cabeçalho com navegação -->
+  <header class="cabecalho">
+    <div class="cabecalho-interno">
+
+      <!-- Marca da loja -->
+      <a href="#inicio" class="marca">
+        🎣 MOSS FISHING
+        <small>& CAMPING</small>
+      </a>
+
+      <!-- Botão do menu para celulares -->
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="navegacao"
+        onclick="alternarMenu()"
+      >☰</button>
+
+      <!-- Navegação principal -->
+      <nav class="nav" id="navegacao" aria-label="Navegação principal">
+        <a href="#inicio" onclick="fecharMenu()">Início</a>
+        <a href="#produtos" onclick="selecionarCategoria('Todos')">Produtos</a>
+        <a href="#produtos" onclick="selecionarCategoria('Pesca')">Pesca</a>
+        <a href="#produtos" onclick="selecionarCategoria('Camping')">Camping</a>
+        <a href="#produtos" onclick="selecionarCategoria('Ofertas')">Ofertas</a>
+        <a href="#sobre" onclick="fecharMenu()">Sobre</a>
+        <a href="#contato" onclick="fecharMenu()">Contato</a>
+      </nav>
+
+      <!-- Botão do carrinho -->
+      <button class="btn-carrinho" onclick="abrirCarrinho()">
+        🛒 <span id="contador">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Banner da loja -->
+  <section class="hero" id="inicio">
+    <div class="hero-conteudo">
+      <span class="hero-etiqueta">PESCA • CAMPING • AVENTURA</span>
+
+      <h1>Sua próxima aventura começa aqui!</h1>
+
+      <p>
+        Equipamentos para quem ama pescar, acampar
+        e explorar a natureza. Descubra nosso catálogo
+        com 50 exemplos de produtos. Esta é uma simulação, sem vendas reais.
+      </p>
+
+      <a href="#produtos" class="btn-principal">
+        Explorar produtos
+      </a>
+    </div>
+  </section>
+
+  <!-- Benefícios demonstrativos -->
+  <section class="beneficios">
+    <div class="beneficio">🎣 <strong>50 produtos</strong> no catálogo</div>
+    <div class="beneficio">🏕️ Equipamentos para suas aventuras</div>
+    <div class="beneficio">📱 Carrinho demonstrativo, sem pedidos reais</div>
+  </section>
+
+  <!-- Conteúdo principal -->
+  <main>
+
+    <!-- Catálogo de produtos -->
+    <section id="produtos">
+      <h2 class="titulo-secao">Explore o modelo de loja</h2>
+
+      <p class="subtitulo">
+        Produtos, preços e descontos são fictícios. As seis fotos são referências do segmento,
+        não imagens dos produtos anunciados. <a href="fontes-fotos.html">Veja os créditos das fotos.</a>
+      </p>
+
+      <!-- Busca -->
+      <input
+        class="busca"
+        id="busca"
+        type="search"
+        placeholder="🔎 Buscar vara, barraca, mochila..."
+        oninput="mostrarProdutos()"
+      >
+
+      <!-- Filtros -->
+      <div class="filtros" id="filtros"></div>
+
+      <!-- Contador de produtos -->
+      <p class="resultados" id="resultados"></p>
+
+      <!-- Cards gerados pelo JavaScript -->
+      <div class="grade" id="grade"></div>
+    </section>
+
+    <!-- História demonstrativa -->
+    <section class="sobre" id="sobre">
+      <h2>🌲 Nossa história</h2>
+
+      <p>
+        A MOSS FISHING & CAMPING é uma loja demonstrativa
+        desenvolvida pela MOSS Digital para negócios
+        especializados em pesca, camping e aventura.
+      </p>
+
+      <p>
+        Nossa proposta é reunir equipamentos e acessórios
+        em uma experiência de compra simples, moderna
+        e acessível pelo celular.
+      </p>
+
+      <p>
+        Personalize este espaço com a história verdadeira
+        do estabelecimento que adquirir o modelo.
+      </p>
+    </section>
+
+    <!-- Contato -->
+    <section class="contato" id="contato">
+      <h2 class="titulo-secao">Entre em contato</h2>
+
+      <p>
+        Gostou deste modelo de loja? Converse com a MOSS Digital sobre a criação de um site para o seu negócio.
+      </p>
+
+      <a
+        class="btn-principal"
+        href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20MOSS%20Digital!%20Vi%20a%20demo%20Fishing%20%26%20Camping%20e%20quero%20conversar%20sobre%20um%20site%20como%20este."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        💬 Falar sobre um site como este
+      </a>
+
+      <p>Não há loja de pesca em operação neste exemplo.</p>
+    </section>
+  </main>
+
+  <!-- Modal de detalhes do produto -->
+  <div class="overlay" id="modalProduto" role="dialog" aria-modal="true" aria-labelledby="nomeProduto">
+    <div class="modal">
+
+      <div class="modal-topo">
+        <h2 id="nomeProduto"></h2>
+
+        <button class="fechar" onclick="fecharProduto()" aria-label="Fechar detalhes">
+          ×
+        </button>
+      </div>
+
+      <!-- Foto ampliada -->
+      <img id="imagemProduto" class="foto-ampliada" alt="">
+
+      <!-- Categoria -->
+      <p id="categoriaProduto"></p>
+
+      <!-- Descrição -->
+      <p id="descricaoProduto"></p>
+
+      <!-- Características -->
+      <h3>📋 Características</h3>
+      <ul id="caracteristicasProduto" class="caracteristicas"></ul>
+
+      <!-- Preço -->
+      <h2 id="precoProduto"></h2>
+
+      <!-- Botão de compra -->
+      <button class="acao comprar-btn" id="adicionarDetalhe">
+          🛒 Adicionar ao carrinho
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal do carrinho -->
+  <div class="overlay" id="modalCarrinho" role="dialog" aria-modal="true" aria-labelledby="tituloCarrinho">
+    <div class="modal">
+
+      <div class="modal-topo">
+        <h2 id="tituloCarrinho">🛒 Seu carrinho</h2>
+
+        <button class="fechar" onclick="fecharCarrinho()" aria-label="Fechar carrinho">
+          ×
+        </button>
+      </div>
+
+      <!-- Itens do carrinho -->
+      <div id="itensCarrinho"></div>
+
+      <!-- Total -->
+      <h2 id="totalCarrinho"></h2>
+
+      <!-- Formulário -->
+        <form onsubmit="enviarPedido(event)">
+          <p>Simule o pedido usando informações inventadas. Nada será enviado a uma loja.</p>
+
+        <label for="nomeCliente">Seu nome</label>
+        <input
+          class="campo"
+          id="nomeCliente"
+          required
+          placeholder="Ex.: Cliente de exemplo"
+        >
+
+        <label for="recebimento">Como deseja receber?</label>
+        <select
+          class="campo"
+          id="recebimento"
+          onchange="atualizarCarrinho()"
+        >
+          <option value="retirada">Retirada na loja</option>
+          <option value="entrega">Solicitar entrega</option>
+        </select>
+
+        <!-- Endereço para entregas -->
+        <div id="areaEndereco" hidden>
+          <label for="endereco">Endereço de entrega</label>
+          <input
+            class="campo"
+            id="endereco"
+            placeholder="Ex.: Rua Fictícia, 10"
+          >
+        </div>
+
+        <!-- Observações -->
+        <label for="observacoes">Observações</label>
+        <textarea
+          class="campo"
+          id="observacoes"
+          rows="3"
+          placeholder="Ex.: pedido de exemplo"
+        ></textarea>
+
+        <!-- Finalização -->
+        <button class="acao comprar-btn" type="submit">
+          Ver exemplo de pedido
+        </button>
+        <pre id="resumoPedido" role="status" aria-live="polite" hidden></pre>
+        <a class="acao comprar-btn" href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20MOSS%20Digital!%20Vi%20a%20demo%20Fishing%20%26%20Camping%20e%20quero%20conversar%20sobre%20um%20site%20como%20este." target="_blank" rel="noopener noreferrer">Quero um site como este ↗</a>
+      </form>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <h3>🎣 MOSS FISHING & CAMPING</h3>
+    <p>Sua próxima aventura começa aqui!</p>
+    <p>Modelo demonstrativo desenvolvido pela MOSS Digital. Fotos de referência, não imagens dos produtos. Sem loja, estoque, pagamento ou pedidos reais.</p>
+    <p><a href="fontes-fotos.html">Créditos das fotos</a> · <a href="MANUAL-DO-CLIENTE.html">Manual do comprador</a> · <a href="../../index.html">MOSS Digital ↗</a></p>
+    <p>© 2026 — MOSS Digital</p>
+  </footer>
+
+  <!-- JavaScript completo -->
+  <script>
+
+    // ==========================================
+    // CONFIGURAÇÕES DA LOJA
+    // ==========================================
+
+    // Fotos locais de referência do segmento, não dos itens fictícios.
+    const imagemReserva = "img/barraca.webp";
+    function fotoTematica(nome, categoria) {
+      if (categoria === "Pesca") {
+        if (/isca/i.test(nome)) return "isca";
+        if (/molinete|carretilha/i.test(nome)) return "molinete";
+        return "vara";
+      }
+      if (/saco de dormir/i.test(nome)) return "saco-dormir";
+      if (categoria === "Camping" || categoria === "Lazer") return "barraca";
+      return "mochila";
+    }
+
+    // ==========================================
+    // CADASTRO DOS 50 PRODUTOS
+    // ==========================================
+
+    // Cada produto possui:
+    // Nome, categoria, preço, descrição,
+    // características, foto e desconto.
+    //
+    // Os preços e características são ilustrativos.
+    // Antes da venda real, substituir pelos dados
+    // confirmados do estabelecimento.
+
+    // Lista de dados dos produtos.
+    const dados = [
+
+      // DEZ PRODUTOS: PESCA
+      ["Vara Adventure 2,10 m", "Pesca", 129.90, "Vara para pesca recreativa.", "Comprimento ilustrativo: 2,10 m|Uso: pesca recreativa|Confirmar material e capacidade", 8, 0],
+      ["Molinete Adventure 4000", "Pesca", 189.90, "Molinete para diferentes pescarias.", "Modelo demonstrativo: 4000|Carretel e recolhimento: consultar fabricante|Confirmar compatibilidade", 9, 1],
+      ["Carretilha Explorer", "Pesca", 329.90, "Carretilha para pescadores.", "Uso: pesca recreativa|Especificações técnicas a confirmar|Consultar garantia", 10, 0],
+      ["Linha de Pesca 300 m", "Pesca", 39.90, "Linha para equipamentos de pesca.", "Comprimento ilustrativo: 300 m|Material: confirmar fabricante|Resistência: verificar embalagem", 8, 0],
+      ["Estojo de Iscas", "Pesca", 79.90, "Organizador para acessórios.", "Compartimentos internos|Fechamento portátil|Dimensões a confirmar", 5, 1],
+      ["Iscas Artificiais Coloridas", "Pesca", 59.90, "Conjunto demonstrativo de iscas.", "Cores variadas|Quantidade: consultar loja|Uso conforme equipamento", 7, 0],
+      ["Boia de Pesca", "Pesca", 12.90, "Acessório para pesca recreativa.", "Modelo leve|Tamanho a confirmar|Consultar disponibilidade", 8, 0],
+      ["Passaguá Dobrável", "Pesca", 89.90, "Rede auxiliar para pesca.", "Estrutura dobrável|Dimensões a confirmar|Material conforme fabricante", 9, 0],
+      ["Caixa Organizadora de Pesca", "Pesca", 119.90, "Guarde seus acessórios.", "Divisórias internas|Alça para transporte|Capacidade a confirmar", 5, 1],
+      ["Suporte para Vara", "Pesca", 49.90, "Suporte para organização.", "Uso recreativo|Fixação conforme modelo|Material a confirmar", 8, 0],
+
+      // DEZ PRODUTOS: CAMPING
+      ["Barraca para 2 Pessoas", "Camping", 299.90, "Barraca compacta para camping.", "Capacidade anunciada: 2 pessoas|Impermeabilidade a confirmar|Montagem conforme manual", 0, 1],
+      ["Barraca Familiar", "Camping", 699.90, "Barraca para acampamentos em família.", "Capacidade a confirmar|Dimensões conforme fabricante|Ventilação conforme modelo", 1, 0],
+      ["Saco de Dormir", "Camping", 159.90, "Acessório para descanso.", "Formato compacto|Faixa térmica a confirmar|Material conforme fabricante", 2, 0],
+      ["Colchonete de Camping", "Camping", 119.90, "Colchonete para acampamentos.", "Uso sobre superfície adequada|Dimensões a confirmar|Material conforme fabricante", 3, 1],
+      ["Lanterna LED Portátil", "Camping", 69.90, "Iluminação portátil.", "Tecnologia LED|Autonomia a confirmar|Alimentação conforme modelo", 4, 0],
+      ["Luminária para Barraca", "Camping", 89.90, "Iluminação para ambientes de camping.", "Uso portátil|Potência a confirmar|Consultar alimentação elétrica", 5, 0],
+      ["Cadeira Dobrável", "Camping", 139.90, "Cadeira portátil.", "Estrutura dobrável|Limite de peso a confirmar|Dimensões conforme fabricante", 6, 1],
+      ["Mesa Dobrável", "Camping", 249.90, "Mesa para atividades ao ar livre.", "Modelo portátil|Dimensões a confirmar|Carga máxima conforme fabricante", 7, 0],
+      ["Mochila Camping 40 L", "Camping", 219.90, "Mochila para viagens.", "Capacidade ilustrativa: 40 litros|Alças ajustáveis|Material a confirmar", 2, 0],
+      ["Lona Impermeável", "Camping", 99.90, "Cobertura auxiliar para camping.", "Dimensões a confirmar|Resistência à água conforme fabricante|Uso conforme manual", 4, 0],
+
+      // DEZ PRODUTOS: ACESSÓRIOS
+      ["Garrafa Térmica 1 L", "Acessórios", 89.90, "Garrafa para bebidas.", "Capacidade ilustrativa: 1 litro|Conservação térmica a confirmar|Material conforme fabricante", 3, 0],
+      ["Cooler Portátil", "Acessórios", 179.90, "Caixa térmica para passeios.", "Capacidade a confirmar|Uso com gelo conforme modelo|Material a confirmar", 6, 1],
+      ["Caneca Térmica", "Acessórios", 59.90, "Caneca para bebidas.", "Capacidade a confirmar|Tampa conforme modelo|Material a confirmar", 1, 0],
+      ["Bolsa Impermeável", "Acessórios", 79.90, "Bolsa para objetos pessoais.", "Proteção contra água a confirmar|Fechamento conforme modelo|Capacidade a confirmar", 5, 0],
+      ["Capa de Chuva", "Acessórios", 69.90, "Proteção para dias chuvosos.", "Tamanhos a confirmar|Material conforme fabricante|Uso externo", 4, 0],
+      ["Boné Aventura", "Acessórios", 49.90, "Boné para atividades ao ar livre.", "Tamanho ajustável conforme modelo|Cores variadas|Material a confirmar", 8, 0],
+      ["Chapéu de Camping", "Acessórios", 69.90, "Chapéu para passeios.", "Aba ampla|Tamanhos a confirmar|Material conforme fabricante", 9, 1],
+      ["Óculos de Sol Outdoor", "Acessórios", 119.90, "Óculos para uso externo.", "Proteção UV a confirmar|Material conforme fabricante|Consultar certificação", 10, 0],
+      ["Organizador de Mochila", "Acessórios", 39.90, "Organize seus pertences.", "Compartimentos internos|Tamanho a confirmar|Uso em viagens", 11, 0],
+      ["Toalha Compacta", "Acessórios", 34.90, "Toalha portátil.", "Tecido a confirmar|Dimensões conforme modelo|Fácil transporte", 3, 0],
+
+      // DEZ PRODUTOS: TRILHA
+      ["Mochila de Trilha 30 L", "Trilha", 199.90, "Mochila para caminhadas.", "Capacidade ilustrativa: 30 litros|Alças ajustáveis|Material a confirmar", 2, 1],
+      ["Bastão de Caminhada", "Trilha", 89.90, "Acessório para trilhas.", "Altura ajustável conforme modelo|Material a confirmar|Consultar recomendações de uso", 3, 0],
+      ["Cantil de Caminhada", "Trilha", 49.90, "Recipiente portátil para água.", "Capacidade a confirmar|Material conforme fabricante|Uso em passeios", 4, 0],
+      ["Bússola de Trilha", "Trilha", 39.90, "Instrumento de orientação.", "Modelo demonstrativo|Precisão conforme fabricante|Uso com conhecimentos de navegação", 5, 0],
+      ["Capa para Mochila", "Trilha", 59.90, "Proteção contra chuva.", "Tamanhos a confirmar|Resistência à água conforme modelo|Fixação ajustável", 6, 0],
+      ["Lanterna de Cabeça", "Trilha", 99.90, "Iluminação para caminhadas.", "Fixação ajustável|Autonomia a confirmar|Alimentação conforme fabricante", 7, 1],
+      ["Bolsa de Hidratação", "Trilha", 149.90, "Bolsa para transportar água.", "Capacidade a confirmar|Material próprio para água potável|Limpeza conforme manual", 8, 0],
+      ["Capa de Proteção Solar", "Trilha", 79.90, "Acessório para passeios.", "Tamanho a confirmar|Proteção UV somente se certificada|Material conforme fabricante", 9, 0],
+      ["Pochete Outdoor", "Trilha", 69.90, "Bolsa compacta.", "Compartimentos internos|Alça ajustável|Cores variadas", 10, 0],
+      ["Estojo Primeiros Socorros", "Trilha", 59.90, "Organizador de itens básicos.", "Conteúdo a confirmar|Não substitui atendimento médico|Verificar itens incluídos", 11, 0],
+
+      // DEZ PRODUTOS: LAZER
+      ["Rede de Descanso", "Lazer", 129.90, "Rede para momentos de descanso.", "Dimensões a confirmar|Limite de peso conforme fabricante|Instalação segura necessária", 1, 1],
+      ["Cadeira de Praia", "Lazer", 119.90, "Cadeira portátil.", "Estrutura dobrável|Capacidade a confirmar|Material conforme fabricante", 3, 0],
+      ["Guarda-Sol Portátil", "Lazer", 149.90, "Sombra para passeios.", "Diâmetro a confirmar|Fixação adequada necessária|Material conforme fabricante", 4, 0],
+      ["Mesa de Piquenique", "Lazer", 199.90, "Mesa dobrável para lazer.", "Dimensões a confirmar|Estrutura portátil|Carga máxima conforme fabricante", 5, 0],
+      ["Bolsa Térmica", "Lazer", 89.90, "Bolsa para bebidas e alimentos.", "Capacidade a confirmar|Conservação depende do uso|Material conforme fabricante", 6, 0],
+      ["Esteira para Piquenique", "Lazer", 79.90, "Esteira para atividades externas.", "Dimensões a confirmar|Modelo dobrável|Material conforme fabricante", 7, 1],
+      ["Kit Copos Reutilizáveis", "Lazer", 39.90, "Copos para passeios.", "Quantidade a confirmar|Material próprio para alimentos|Capacidade conforme modelo", 8, 0],
+      ["Mochila Térmica", "Lazer", 159.90, "Mochila para transportar alimentos.", "Capacidade a confirmar|Alças ajustáveis|Conservação conforme fabricante", 9, 0],
+      ["Organizador de Camping", "Lazer", 69.90, "Organizador de acessórios.", "Compartimentos internos|Material a confirmar|Dimensões conforme modelo", 10, 0],
+      ["Kit Talheres de Camping", "Lazer", 49.90, "Talheres reutilizáveis para passeios.", "Itens incluídos a confirmar|Material próprio para alimentos|Estojo conforme modelo", 11, 0]
+    ];
+
+    // Transforma os registros em objetos.
+    const produtos = dados.map((item, indice) => ({
+      id: indice + 1,
+      nome: item[0],
+      categoria: item[1],
+      preco: item[2],
+      descricao: item[3],
+      caracteristicas: item[4].split("|"),
+      imagem: "img/" + fotoTematica(item[0], item[1]) + ".webp",
+      oferta: item[6] === 1
+    }));
+
+    // Define a categoria selecionada.
+    let categoriaAtual = "Todos";
+
+    // ==========================================
+    // FUNÇÕES DE FORMATAÇÃO
+    // ==========================================
+
+    // Formata valores em reais.
+    function moeda(valor) {
+      return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
+
+    // Protege textos inseridos no HTML.
+    function escapar(texto) {
+      return String(texto).replace(/[&<>"']/g, c => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[c]);
+    }
+
+    // Calcula o preço original ilustrativo.
+    function precoOriginal(produto) {
+      return produto.oferta
+        ? Math.round((produto.preco / 0.9) * 100) / 100
+        : produto.preco;
+    }
+
+    // ==========================================
+    // MENU DE NAVEGAÇÃO
+    // ==========================================
+
+    // Abre ou fecha o menu móvel.
+    function alternarMenu() {
+      const nav = document.getElementById("navegacao");
+      const aberto = nav.classList.toggle("aberta");
+
+      document.getElementById("menuBtn")
+        .setAttribute("aria-expanded", String(aberto));
+    }
+
+    // Fecha o menu.
+    function fecharMenu() {
+      document.getElementById("navegacao")
+        .classList.remove("aberta");
+
+      document.getElementById("menuBtn")
+        .setAttribute("aria-expanded", "false");
+    }
+
+    // ==========================================
+    // FILTROS E CATÁLOGO
+    // ==========================================
+
+    // Cria os botões das categorias.
+    function mostrarFiltros() {
+      const categorias = [
+        "Todos", "Pesca", "Camping",
+        "Acessórios", "Trilha", "Lazer", "Ofertas"
+      ];
+
+      document.getElementById("filtros").innerHTML =
+        categorias.map(categoria => `
+          <button
+            class="${categoria === categoriaAtual ? "ativo" : ""}"
+            onclick="selecionarCategoria('${categoria}')"
+          >
+            ${categoria}
+          </button>
+        `).join("");
+    }
+
+    // Seleciona uma categoria.
+    function selecionarCategoria(categoria) {
+      categoriaAtual = categoria;
+
+      // Fecha o menu móvel.
+      fecharMenu();
+
+      // Atualiza os filtros.
+      mostrarFiltros();
+
+      // Atualiza os produtos.
+      mostrarProdutos();
+
+      // Leva o visitante ao catálogo.
+      document.getElementById("produtos")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Mostra os produtos.
+    function mostrarProdutos() {
+      // Lê o texto pesquisado.
+      const busca = document.getElementById("busca")
+        .value.toLocaleLowerCase("pt-BR");
+
+      // Filtra por categoria e pesquisa.
+      const lista = produtos.filter(produto => {
+        const categoriaCorreta =
+          categoriaAtual === "Todos" ||
+          (categoriaAtual === "Ofertas"
+            ? produto.oferta
+            : produto.categoria === categoriaAtual);
+
+        const pesquisaCorreta =
+          produto.nome.toLocaleLowerCase("pt-BR").includes(busca) ||
+          produto.descricao.toLocaleLowerCase("pt-BR").includes(busca);
+
+        return categoriaCorreta && pesquisaCorreta;
+      });
+
+      // Mostra a quantidade encontrada.
+      document.getElementById("resultados").textContent =
+        lista.length + " produto(s) encontrado(s)";
+
+      // Seleciona a grade.
+      const grade = document.getElementById("grade");
+
+      // Exibe uma mensagem se não houver resultados.
+      if (!lista.length) {
+        grade.innerHTML = "<p>Nenhum produto encontrado.</p>";
+        return;
+      }
+
+      // Monta os cartões dos produtos.
+      grade.innerHTML = lista.map(produto => `
+        <article class="card">
+
+          <!-- Fotografia clicável -->
+          <div class="foto-produto">
+
+            <img
+              src="${produto.imagem}"
+               alt="Foto temática de ${escapar(produto.categoria)}, não do produto fictício ${escapar(produto.nome)}"
+              loading="lazy"
+              tabindex="0"
+              role="button"
+              aria-label="Ver detalhes de ${escapar(produto.nome)}"
+              onclick="abrirProduto(${produto.id})"
+              onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();abrirProduto(${produto.id})}"
+               onerror="this.onerror=null;this.src='${imagemReserva}'"
+            >
+            <span class="aviso-foto">Foto temática · item fictício</span>
+
+            ${produto.oferta
+              ? '<span class="etiqueta">10% OFF</span>'
+              : ''}
+          </div>
+
+          <!-- Informações do card -->
+          <div class="card-conteudo">
+
+            <span class="categoria">
+              ${escapar(produto.categoria)}
+            </span>
+
+            <h3>${escapar(produto.nome)}</h3>
+
+            <p>${escapar(produto.descricao)}</p>
+
+            ${produto.oferta
+              ? `<span class="preco-antigo">
+                   ${moeda(precoOriginal(produto))}
+                 </span>`
+              : ''}
+
+            <div class="preco">
+              ${moeda(produto.preco)}
+            </div>
+
+            <!-- Abre os detalhes -->
+            <button
+              class="acao detalhes-btn"
+              onclick="abrirProduto(${produto.id})"
+            >
+              🔎 Ver detalhes
+            </button>
+
+            <!-- Adiciona ao carrinho -->
+            <button
+              class="acao comprar-btn"
+              onclick="adicionar(${produto.id})"
+            >
+              🛒 Adicionar
+            </button>
+
+          </div>
+        </article>
+      `).join("");
+    }
+
+    // ==========================================
+    // DETALHES DOS PRODUTOS
+    // ==========================================
+
+    // Abre a janela do produto.
+    function abrirProduto(id) {
+      // Procura o produto.
+      const produto = produtos.find(p => p.id === id);
+
+      // Verifica se foi encontrado.
+      if (!produto) return;
+
+      // Mostra o nome.
+      document.getElementById("nomeProduto").textContent =
+        produto.nome;
+
+      // Mostra a foto ampliada.
+      const imagem = document.getElementById("imagemProduto");
+
+      imagem.src = produto.imagem;
+
+      imagem.alt = "Foto temática de " + produto.categoria + ", não do produto fictício " + produto.nome;
+
+      imagem.onerror = function() {
+        this.onerror = null;
+        this.src = imagemReserva;
+      };
+
+      // Mostra a categoria.
+      document.getElementById("categoriaProduto").textContent =
+        "Categoria: " + produto.categoria;
+
+      // Mostra a descrição.
+      document.getElementById("descricaoProduto").textContent =
+        produto.descricao;
+
+      // Mostra as características.
+      document.getElementById("caracteristicasProduto").innerHTML =
+        produto.caracteristicas.map(item =>
+          `<li>${escapar(item)}</li>`
+        ).join("");
+
+      // Mostra o preço.
+      document.getElementById("precoProduto").textContent =
+        moeda(produto.preco);
+
+      // Configura o botão de compra.
+      document.getElementById("adicionarDetalhe").onclick =
+        () => adicionar(produto.id);
+
+      // Abre o modal.
+      document.getElementById("modalProduto")
+        .classList.add("aberto");
+    }
+
+    // Fecha os detalhes.
+    function fecharProduto() {
+      document.getElementById("modalProduto")
+        .classList.remove("aberto");
+    }
+
+    // ==========================================
+    // CARRINHO DE COMPRAS
+    // ==========================================
+
+    // Inicia o carrinho vazio.
+    let carrinho = [];
+
+    // Recupera dados armazenados no navegador.
+    try {
+      const salvo = JSON.parse(
+        localStorage.getItem("mossFishingCarrinho")
+      );
+
+      // Aceita apenas produtos válidos.
+      if (Array.isArray(salvo)) {
+        carrinho = salvo.filter(item =>
+          produtos.some(p => p.id === item.id) &&
+          Number.isInteger(item.quantidade) &&
+          item.quantidade > 0
+        );
+      }
+    } catch (erro) {
+      // Reinicia em caso de dados inválidos.
+      carrinho = [];
+    }
+
+    // Salva o carrinho.
+    function salvarCarrinho() {
+      try {
+        localStorage.setItem(
+          "mossFishingCarrinho",
+          JSON.stringify(carrinho)
+        );
+      } catch (erro) {
+        // O carrinho continua funcionando na sessão.
+        console.warn("Não foi possível salvar o carrinho.");
+      }
+
+      // Atualiza o contador.
+      atualizarContador();
+    }
+
+    // Atualiza o contador.
+    function atualizarContador() {
+      const total = carrinho.reduce(
+        (soma, item) => soma + item.quantidade,
+        0
+      );
+
+      document.getElementById("contador").textContent = total;
+    }
+
+    // Adiciona um produto.
+    function adicionar(id) {
+      // Procura o item no carrinho.
+      const item = carrinho.find(p => p.id === id);
+
+      // Aumenta a quantidade se já existir.
+      if (item) {
+        item.quantidade++;
+      } else {
+        // Adiciona o novo produto.
+        carrinho.push({ id, quantidade: 1 });
+      }
+
+      // Salva o carrinho.
+      salvarCarrinho();
+
+      // Atualiza a janela, caso esteja aberta.
+      if (document.getElementById("modalCarrinho")
+        .classList.contains("aberto")) {
+        atualizarCarrinho();
+      }
+    }
+
+    // Altera a quantidade.
+    function alterarQuantidade(id, diferenca) {
+      const item = carrinho.find(p => p.id === id);
+
+      // Interrompe caso o item não exista.
+      if (!item) return;
+
+      // Modifica a quantidade.
+      item.quantidade += diferenca;
+
+      // Remove itens zerados.
+      carrinho = carrinho.filter(p => p.quantidade > 0);
+
+      // Salva e atualiza.
+      salvarCarrinho();
+      atualizarCarrinho();
+    }
+
+    // Calcula o subtotal.
+    function calcularSubtotal() {
+      return carrinho.reduce((total, item) => {
+        const produto = produtos.find(p => p.id === item.id);
+
+        return total + produto.preco * item.quantidade;
+      }, 0);
+    }
+
+    // Abre o carrinho.
+    function abrirCarrinho() {
+      atualizarCarrinho();
+
+      document.getElementById("modalCarrinho")
+        .classList.add("aberto");
+    }
+
+    // Fecha o carrinho.
+    function fecharCarrinho() {
+      document.getElementById("modalCarrinho")
+        .classList.remove("aberto");
+    }
+
+    // Atualiza a lista de compras.
+    function atualizarCarrinho() {
+      const area = document.getElementById("itensCarrinho");
+
+      // Trata o carrinho vazio.
+      if (!carrinho.length) {
+        area.innerHTML = "<p>Seu carrinho está vazio.</p>";
+      } else {
+        // Monta cada item.
+        area.innerHTML = carrinho.map(item => {
+          const produto = produtos.find(p => p.id === item.id);
+
+          return `
+            <div class="item-carrinho">
+
+              <div>
+                <strong>${escapar(produto.nome)}</strong>
+
+                <p>
+                  ${moeda(produto.preco * item.quantidade)}
+                </p>
+              </div>
+
+              <div class="quantidade">
+                <button onclick="alterarQuantidade(${item.id}, -1)">−</button>
+
+                <strong>${item.quantidade}</strong>
+
+                <button onclick="alterarQuantidade(${item.id}, 1)">+</button>
+              </div>
+
+            </div>
+          `;
+        }).join("");
+      }
+
+      // Verifica a forma de recebimento.
+      const entrega =
+        document.getElementById("recebimento").value === "entrega";
+
+      // Exibe o campo de endereço.
+      document.getElementById("areaEndereco").hidden = !entrega;
+
+      // Torna o endereço obrigatório para entrega.
+      document.getElementById("endereco").required = entrega;
+
+      // Exibe o subtotal.
+      document.getElementById("totalCarrinho").textContent =
+        "Subtotal: " + moeda(calcularSubtotal());
+
+      // A taxa de entrega será confirmada pela loja.
+    }
+
+    // ==========================================
+    // PEDIDOS PELO WHATSAPP
+    // ==========================================
+
+      // Mostra um exemplo local sem abrir conversa nem enviar dados.
+    function enviarPedido(evento) {
+      // Impede o recarregamento da página.
+      evento.preventDefault();
+
+      // Impede pedidos vazios.
+      if (!carrinho.length) {
+        alert("Adicione produtos ao carrinho.");
+        return;
+      }
+
+      // Lê o nome do cliente.
+      const nome = document.getElementById("nomeCliente")
+        .value.trim();
+
+      // Lê a forma de recebimento.
+      const tipo = document.getElementById("recebimento").value;
+
+      // Lê o endereço.
+      const endereco = document.getElementById("endereco")
+        .value.trim();
+
+      // Lê as observações.
+      const observacoes = document.getElementById("observacoes")
+        .value.trim();
+
+      // Valida o endereço de entrega.
+      if (tipo === "entrega" && !endereco) {
+        alert("Informe o endereço de entrega.");
+        return;
+      }
+
+      // Cria a mensagem.
+      let mensagem = "🎣 *PEDIDO MOSS FISHING & CAMPING*\n\n";
+
+      // Adiciona o nome.
+      mensagem += "*Cliente:* " + nome + "\n\n";
+
+      // Adiciona o título da lista.
+      mensagem += "*PRODUTOS:*\n";
+
+      // Percorre os produtos escolhidos.
+      carrinho.forEach(item => {
+        const produto = produtos.find(p => p.id === item.id);
+
+        mensagem +=
+          `${item.quantidade}x ${produto.nome} - ` +
+          `${moeda(produto.preco * item.quantidade)}\n`;
+      });
+
+      // Adiciona o subtotal.
+      mensagem += "\n*Subtotal:* " +
+        moeda(calcularSubtotal()) + "\n";
+
+      // Adiciona a forma de recebimento.
+      mensagem += "*Recebimento:* " +
+        (tipo === "entrega" ? "Entrega" : "Retirada") + "\n";
+
+      // Adiciona o endereço quando necessário.
+      if (tipo === "entrega") {
+        mensagem += "*Endereço:* " + endereco + "\n";
+        mensagem += "*Frete:* a confirmar com a loja\n";
+      }
+
+      // Adiciona as observações.
+      if (observacoes) {
+        mensagem += "\n*Observações:* " + observacoes + "\n";
+      }
+
+      // Solicita confirmação do vendedor.
+      mensagem +=
+        "\nGostaria de confirmar disponibilidade, " +
+        "frete e valor final do pedido.";
+
+      const resumo = document.getElementById("resumoPedido");
+      resumo.textContent = mensagem + "\n\nSIMULAÇÃO: nada foi enviado. Produtos, preços, descontos e estoque são fictícios.";
+      resumo.hidden = false;
+    }
+
+    // ==========================================
+    // EVENTOS DAS JANELAS
+    // ==========================================
+
+    // Fecha os modais com a tecla Escape.
+    document.addEventListener("keydown", evento => {
+      if (evento.key === "Escape") {
+        fecharProduto();
+        fecharCarrinho();
+        fecharMenu();
+      }
+    });
+
+    // Fecha detalhes ao clicar no fundo.
+    document.getElementById("modalProduto")
+      .addEventListener("click", evento => {
+        if (evento.target.id === "modalProduto") {
+          fecharProduto();
+        }
+      });
+
+    // Fecha carrinho ao clicar no fundo.
+    document.getElementById("modalCarrinho")
+      .addEventListener("click", evento => {
+        if (evento.target.id === "modalCarrinho") {
+          fecharCarrinho();
+        }
+      });
+
+    // ==========================================
+    // INICIALIZAÇÃO DA DEMO
+    // ==========================================
+
+    // Mostra as categorias.
+    mostrarFiltros();
+
+    // Cria os 50 cartões.
+    mostrarProdutos();
+
+    // Atualiza o carrinho salvo.
+    atualizarContador();
+
+    // Confirma a quantidade de produtos no console.
+    console.log(
+      "MOSS Fishing & Camping: " +
+      produtos.length + " produtos cadastrados."
+    );
+
+  </script>
+</body>
+</html>
