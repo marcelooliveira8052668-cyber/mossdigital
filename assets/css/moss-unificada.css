@@ -150,3 +150,10 @@ body { background: #0f2a63; color: #eaf0ff; }
   .brand-name span { display: none; }
   .site-header .brand-icon { width: 24px; height: 24px; font-size: .7rem; }
 }
+
+/* Acessibilidade: textos legíveis sobre o fundo azul da MOSS (15/11/2026). */
+.catalog-meta { font-size: .82rem; }
+.catalog-meta p { color: #eaf0ff; font-weight: 650; }
+.catalog-meta span { color: #dce8ff; }
+.empty p { color: #eaf0ff; }
+.footer-row { color: #dce8ff; }
