@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Casa Impecável: demonstração de site para serviço de limpeza residencial. Monte seu plano de limpeza, conheça os serviços e peça um orçamento pelo WhatsApp.">
+  <meta name="robots" content="noindex, follow">
+  <title>Casa Impecável — Limpeza residencial com calma</title>
+  <link rel="icon" href="icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script><script src="banco.js" defer></script><script src="site.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <p class="aviso">Modelo MOSS Digital · <strong>Marca fictícia</strong> · fotografias de banco ilustrativas · <a href="../../index.html">Conheça a MOSS ↗</a></p>
+
+  <header class="topo">
+    <div class="topo-linha">
+      <a class="marca" href="#inicio" aria-label="Casa Impecável — início">
+        <span class="marca-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.2 12 4l9 7.2"/><path d="M5.6 9.6V20h12.8V9.6"/><path d="M9.6 20v-5.2h4.8V20"/></svg></span>
+        <span class="marca-texto">Casa Impecável<small>Limpeza residencial</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu <span aria-hidden="true">☰</span></button>
+      <nav class="menu" id="menu" aria-label="Navegação principal">
+        <a href="#servicos">Serviços</a><a href="#plano">Monte seu plano</a><a href="#passos">Como funciona</a><a href="#cuidados">Cuidados</a><a href="#galeria">Fotos</a>
+        <a class="destaque" href="#pedido">Simular pedido ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="titulo">
+      <div class="hero-conteudo">
+        <p class="selo">Modelo ilustrativo de limpeza residencial · sem equipe real</p>
+        <h1 id="titulo">Casa limpa,<em>sem perder a calma.</em></h1>
+        <p>Casa Impecável é um modelo de site para equipes de limpeza residencial. Experimente montar um plano e veja como seria um pedido. A MOSS cria sites; não presta serviços de limpeza.</p>
+        <div class="hero-acoes">
+          <a class="botao" href="#plano">Montar meu plano de limpeza</a>
+          <a class="botao coral" href="#pedido">Simular pedido</a>
+        </div>
+      </div>
+      <div class="foto-faixa">
+        <figure><img src="img/aspirando.webp" alt="Mulher passando aspirador em uma sala com cachorro" width="1000" height="700" fetchpriority="high"><figcaption>Cuidado com quem mora junto</figcaption></figure>
+        <figure><img src="img/equipe.webp" alt="Profissional de limpeza com uniforme e materiais de trabalho" width="600" height="400" loading="lazy"><figcaption>Foto ilustrativa</figcaption></figure>
+        <figure><img src="img/cozinha-pronta.webp" alt="Cozinha limpa e arrumada" width="600" height="400" loading="lazy"><figcaption>Ambiente ilustrativo</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="garantias" aria-label="Diferenciais do serviço">
+      <div class="garantias-linha">
+        <div><strong>Sem contrato</strong><span>avaliação e orçamento antes de qualquer serviço</span></div>
+        <div><strong>Material próprio</strong><span>produtos e equipamentos da equipe</span></div>
+        <div><strong>Equipe uniformizada</strong><span>identificada, com nome na camisa</span></div>
+        <div><strong>Agenda flexível</strong><span>combinação de dia e horário</span></div>
+      </div>
+    </section>
+
+    <section class="secao" id="servicos" aria-labelledby="titulo-servicos">
+      <div class="secao-cab">
+        <span class="rotulo">01 · Serviços</span>
+        <h2 id="titulo-servicos">O que a gente faz em cada casa</h2>
+        <p>Cada serviço tem uma lista de tarefas combinada antes. Você acompanha o que será feito e o que fica por sua conta.</p>
+      </div>
+      <div class="servicos" id="lista-servicos">
+        <article class="servico">
+          <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M7 20V9l5-4 5 4v11"/><path d="M10 20v-5h4v5"/></svg></span>
+          <h3>Manutenção semanal</h3>
+          <p>Limpeza de rotina para manter a casa em ordem: superfícies, piso, banheiros e louça. Frequência combinada.</p>
+          <p class="servico-detalhe">Inclui: cômodos marcados no plano, produtos básicos e material de reposição.</p>
+          <a href="#pedido" data-servico="manutencao">Quero esse serviço →</a>
+        </article>
+        <article class="servico">
+          <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15.5l-1.9-4.6L5.5 9l4.6-1.4z"/><path d="M18 15l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1z"/></svg></span>
+          <h3>Limpeza profunda</h3>
+          <p>Reset em detalhes que o dia a dia não alcança: atrás dos móveis, dentro de gavetas e nas bordas.</p>
+          <p class="servico-detalhe">Inclui: cômodos marcados, alcance completo e revisão junto com você no final.</p>
+          <a href="#pedido" data-servico="profunda">Quero esse serviço →</a>
+        </article>
+        <article class="servico">
+          <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-8 9 8"/><path d="M6 10v10h12V10"/><path d="M10 20v-5h4v5"/><path d="M3 12h18"/></svg></span>
+          <h3>Pré-mudança e entrega</h3>
+          <p>Limpeza antes de receber o imóvel ou antes de mudar: pontos altos, armários, Banheiros e áreas de circulação.</p>
+          <p class="servico-detalhe">Inclui: cômodos marcados e combinação de data com o horário da mudança.</p>
+          <a href="#pedido" data-servico="mudanca">Quero esse serviço →</a>
+        </article>
+      </div>
+      <p style="font-size:13px;color:#5b767a;margin-top:20px" id="modo-banco">Serviços demonstrativos. O valor é apresentado no orçamento, depois da visita.</p>
+    </section>
+
+    <section class="secao" id="plano" aria-labelledby="titulo-plano">
+      <div class="secao-cab">
+        <span class="rotulo">02 · Monte seu plano</span>
+        <h2 id="titulo-plano">Você diz o que precisa.<br>O plano se monta aqui.</h2>
+        <p>Escolha o tipo de limpeza, marque os ambientes e veja o que será feito. É uma estimativa de escopo e tempo, feita no navegador: nada é enviado e nada é gravado.</p>
+      </div>
+      <div class="plano">
+        <div class="plano-topo">
+          <span class="rotulo">Montador de plano</span>
+          <h2>Monte a sua limpeza</h2>
+          <p>Três escolhas rápidas para ver como ficaria um plano de limpeza. O exemplo não é enviado a ninguém.</p>
+        </div>
+        <div class="plano-corpo">
+          <div class="plano-form">
+            <div class="bloco">
+              <h3>1. Tipo de limpeza</h3>
+              <p class="dica-bloco">Todos incluem produto e material da equipe.</p>
+              <div class="opcoes" role="radiogroup" aria-label="Tipo de limpeza">
+                <label class="opcao"><input type="radio" name="tipo" value="manutencao" checked><span><b>Manutenção</b><i>Rotina da casa, com frequência combinada.</i></span></label>
+                <label class="opcao"><input type="radio" name="tipo" value="profunda"><span><b>Profunda</b><i>Detalhes que o dia a dia não alcança.</i></span></label>
+                <label class="opcao"><input type="radio" name="tipo" value="mudanca"><span><b>Pré-mudança</b><i>Antes de receber ou entregar o imóvel.</i></span></label>
+                <label class="opcao"><input type="radio" name="tipo" value="posobra"><span><b>Pós-obra</b><i>Limpeza pesada de reforma e obra.</i></span></label>
+              </div>
+            </div>
+            <div class="bloco">
+              <h3>2. Ambientes</h3>
+              <p class="dica-bloco">Marque tudo que entra no plano. Dá para marcar todos.</p>
+              <div class="comodos">
+                <label class="comodo"><input type="checkbox" name="ambiente" value="Sala" checked><span>Sala e estar</span></label>
+                <label class="comodo"><input type="checkbox" name="ambiente" value="Cozinha" checked><span>Cozinha</span></label>
+                <label class="comodo"><input type="checkbox" name="ambiente" value="Banheiro" checked><span>Banheiro</span></label>
+                <label class="comodo"><input type="checkbox" name="ambiente" value="Quartos" checked><span>Quartos</span></label>
+                <label class="comodo"><input type="checkbox" name="ambiente" value="Lavanderia"><span>Lavanderia</span></label>
+                <label class="comodo"><input type="checkbox" name="ambiente" value="Varanda e janelas"><span>Varanda e janelas</span></label>
+              </div>
+              <p class="dica-bloco" style="margin-top:14px"><button type="button" id="plano-todos" style="background:none;border:0;color:#137b7f;font:inherit;font-size:13px;font-weight:700;text-decoration:underline;cursor:pointer;padding:6px 0">Marcar todos</button> <button type="button" id="plano-limpar-ambientes" style="background:none;border:0;color:#137b7f;font:inherit;font-size:13px;font-weight:700;text-decoration:underline;cursor:pointer;padding:6px 0">Desmarcar</button></p>
+            </div>
+            <div class="bloco" style="margin-bottom:0">
+              <h3>3. Quantas pessoas moram na casa?</h3>
+              <p class="dica-bloco">Ajuda a dimensionar o tempo da equipe.</p>
+              <div class="pessoas">
+                <span>Pessoas:</span>
+                <div class="escolhas" role="group" aria-label="Número de pessoas">
+                  <button type="button" data-pessoas="1" aria-pressed="false">1</button>
+                  <button type="button" data-pessoas="2" aria-pressed="true">2</button>
+                  <button type="button" data-pessoas="3" aria-pressed="false">3</button>
+                  <button type="button" data-pessoas="4" aria-pressed="false">4</button>
+                  <button type="button" data-pessoas="5" aria-pressed="false">5+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <aside class="plano-resumo">
+            <h3>Seu plano</h3>
+            <div class="resumo-linha"><span>Tipo</span><b id="plano-tipo">Manutenção</b></div>
+            <div class="resumo-linha"><span>Ambientes</span><b id="plano-ambientes">4</b></div>
+            <div class="resumo-linha"><span>Tempo estimado</span><b id="plano-tempo">4 h</b></div>
+            <div class="resumo-linha"><span>Equipe sugerida</span><b id="plano-equipe">2 pessoas</b></div>
+            <ul class="lista-ambientes" id="plano-lista"></ul>
+            <div class="premissas-plano">
+              <strong>Como este tempo foi estimado</strong>
+              Tempos base por ambiente: sala 60 min, cozinha 75 min, banheiro 45 min, quarto 40 min, lavanderia 30 min e varanda/janelas 40 min. Multiplicadores: manutenção 1,0; profunda 1,6; pré-mudança 1,3; pós-obra 2,2. Soma 25 min por pessoa que mora na casa. São referências, não garantia: o tempo real depende do tamanho, do estado e do que estiver escolhido.
+            </div>
+            <button class="botao coral" type="button" id="plano-enviar">Usar plano na simulação</button>
+            <p id="plano-status">Estimativa de escopo e tempo. O valor é combinado na visita, antes do serviço.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" id="passos" aria-labelledby="titulo-passos">
+      <div class="secao-cab">
+        <span class="rotulo">03 · Como funciona</span>
+        <h2 id="titulo-passos">Do primeiro contato ao combinado</h2>
+      </div>
+      <ol class="passos">
+        <li><span class="numero">1</span><h3>Você monta o plano</h3><p>Escolhe o tipo de limpeza e marca os ambientes.</p></li>
+        <li><span class="numero">2</span><h3>Conversa no WhatsApp</h3><p>Enviamos sua lista. Você conta o tamanho e o que mais importa.</p></li>
+        <li><span class="numero">3</span><h3>Visita e orçamento</h3><p>Conhecemos a casa e apresentamos valor, data e escopo por escrito.</p></li>
+        <li><span class="numero">4</span><h3>Limpeza com conferência</h3><p>A equipe executa e a gente revisa junto com você no final.</p></li>
+      </ol>
+    </section>
+
+    <section class="secao" id="cuidados" aria-labelledby="titulo-cuidados">
+      <div class="diferenciais">
+        <div>
+          <span class="rotulo">04 · Cuidados</span>
+          <h2 id="titulo-cuidados" style="font-size:clamp(28px,3.4vw,42px);color:#0f5e63;margin:14px 0 16px">O que a gente leva a sério</h2>
+          <ul class="checklist">
+            <li><b>1</b><p><strong>Orçamento antes de tudo</strong>Nenhum serviço começa sem escopo, valor e data combinados com você.</p></li>
+            <li><b>2</b><p><strong>Material próprio</strong>Produtos e equipamentos são da equipe. Nada é exigido na sua casa.</p></li>
+            <li><b>3</b><p><strong>Cuidado com o que é seu</strong>Objetos de valor, pets e áreas delicadas são combinados antes.</p></li>
+            <li><b>4</b><p><strong>Conferência no final</strong>Você acompanha a revisão e aponta o que faltou, antes de encerrar.</p></li>
+          </ul>
+        </div>
+        <aside class="aviso-clean">
+          <h3>O que não fazemos</h3>
+          <p>Transparência também é parte do serviço. Esses pontos ficam fora do escopo:</p>
+          <ul>
+            <li>Não limpamos obras de risco alto sem equipe própria e equipamento adequado.</li>
+            <li>Não trocamos produtos, filtros ou peças da casa.</li>
+            <li>Não cuidamos de animais com medo ou agressividade sem combinar antes.</li>
+            <li>Não entramos em cômodos trancados ou com acesso não autorizado.</li>
+            <li>Não garantimos resultado em manchas sem avaliação prévia.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="secao" id="galeria" aria-labelledby="titulo-galeria">
+      <div class="galeria-cab">
+        <div>
+          <span class="rotulo">05 · Galeria</span>
+          <h2 id="titulo-galeria" style="font-size:clamp(28px,3.4vw,42px);color:#0f5e63;margin-top:12px">O dia a dia de uma casa limpa</h2>
+        </div>
+        <div class="filtros" role="group" aria-label="Filtrar fotografias">
+          <button type="button" data-filtro="todas" aria-pressed="true">Todas</button>
+          <button type="button" data-filtro="processo" aria-pressed="false">Processo</button>
+          <button type="button" data-filtro="resultado" aria-pressed="false">Resultado</button>
+          <button type="button" data-filtro="material" aria-pressed="false">Material</button>
+        </div>
+      </div>
+      <p class="sr-only" id="galeria-contagem" aria-live="polite">9 fotografias</p>
+      <div class="galeria">
+        <button type="button" class="foto" data-categoria="processo" data-legenda="Pessoa limpando a bancada da cozinha."><img src="img/cozinha-limpeza.webp" alt="Pessoa limpando a bancada da cozinha com pano" width="500" height="380" loading="lazy"><span>Bancada <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="processo" data-legenda="Esponja limpando azulejo."><img src="img/azulejo.webp" alt="Esponja limpando azulejo com água e produto" width="500" height="380" loading="lazy"><span>Detalhe fino <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="processo" data-legenda="Pessoa limpando superfície com spray."><img src="img/spray.webp" alt="Pessoa limpando uma superfície com spray e pano" width="500" height="380" loading="lazy"><span>Desinfecção <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="processo" data-legenda="Pessoa limpando janelas."><img src="img/vidros.webp" alt="Pessoa limpando janelas com equipamento próprio" width="500" height="380" loading="lazy"><span>Vidros <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="resultado" data-legenda="Cozinha limpa e arrumada."><img src="img/cozinha-pronta.webp" alt="Cozinha limpa e arrumada com bancada livre" width="500" height="380" loading="lazy"><span>Cozinha livre <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="resultado" data-legenda="Sala arrumada com decoração."><img src="img/sala-pronta.webp" alt="Sala arrumada com decoração e tapete" width="500" height="380" loading="lazy"><span>Sala <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="resultado" data-legenda="Cama arrumada com roupa de cama dobrada."><img src="img/cama-feita.webp" alt="Cama arrumada com roupa de cama dobrada" width="500" height="380" loading="lazy"><span>Quarto <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="material" data-legenda="Cesta com materiais de limpeza."><img src="img/cesta.webp" alt="Cesta com materiais de limpeza e vassouras" width="500" height="380" loading="lazy"><span>Material <b>ampliar ↗</b></span></button>
+        <button type="button" class="foto" data-categoria="material" data-legenda="Luvas e esponjas de limpeza."><img src="img/luvas.webp" alt="Luvas de limpeza amarelas e esponja sobre azulejo" width="500" height="380" loading="lazy"><span>Proteção <b>ampliar ↗</b></span></button>
+      </div>
+      <p style="font-size:13px;color:#5b767a;margin-top:18px">Fotografias de banco selecionadas pelo assunto. Não são antes e depois de um serviço real nem trabalhos da marca fictícia.</p>
+    </section>
+
+    <section class="secao" id="pedido" aria-labelledby="titulo-pedido">
+      <div class="pedido">
+        <div class="pedido-texto">
+          <span class="rotulo">06 · Orçamento</span>
+          <h2 id="titulo-pedido">Veja como seria<br>um pedido</h2>
+          <p>Preencha com dados inventados para simular o pedido de limpeza. A mensagem aparece aqui para você conferir; ela não é enviada para uma equipe de limpeza.</p>
+          <p>Se quiser um site como este, há um link separado para falar com a MOSS pelo WhatsApp.</p>
+          <div class="recorte">Não use dados pessoais reais, CPF, RG, informações de saúde ou cartão. Este formulário é apenas uma simulação e não envia nem salva dados.</div>
+        </div>
+        <form class="ficha" id="form-pedido" novalidate>
+          <h3>Exemplo de pedido</h3>
+          <label class="campo"><span>Seu nome *</span><input id="pe-nome" name="nome" required maxlength="80" autocomplete="name" placeholder="Como podemos chamar você"></label>
+          <label class="campo"><span>WhatsApp *</span><input id="pe-contato" name="contato" type="tel" required maxlength="30" autocomplete="tel" placeholder="(11) 90000-0000"></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <label class="campo"><span>Bairro *</span><input id="pe-bairro" name="bairro" required maxlength="80" placeholder="Ex.: Vila Boa Vista"></label>
+            <label class="campo"><span>Serviço</span><select id="pe-servico" name="servico" required>
+              <option value="">Selecione</option>
+              <option value="manutencao">Manutenção semanal</option>
+              <option value="profunda">Limpeza profunda</option>
+              <option value="mudanca">Pré-mudança e entrega</option>
+            </select></label>
+          </div>
+          <label class="campo"><span>Quando você prefere?</span><input id="pe-quando" name="quando" maxlength="120" placeholder="Ex.: terças de manhã, a cada 15 dias"></label>
+          <label class="campo"><span>Conte sobre a casa</span><textarea id="pe-detalhes" name="detalhes" rows="4" maxlength="700" placeholder="Ex.: apartamento de 64 m², 2 quartos, 1 banheiro, cachorro."></textarea></label>
+          <button class="botao coral" type="submit">Ver exemplo de mensagem</button>
+          <p class="nota">Simulação local. Nenhum pedido de limpeza ou pagamento é registrado aqui.</p>
+          <p id="pedido-status" role="status" aria-live="polite"></p>
+          <div id="pedido-pronto" hidden>
+            <strong style="color:#0f5e63">Mensagem ilustrativa (não enviada):</strong>
+            <pre id="pedido-texto"></pre>
+            <a class="botao" id="pedido-whats" href="https://wa.me/5511942038103" target="_blank" rel="noopener noreferrer">Quero um site como este ↗</a>
+            <p class="nota">O link abre o atendimento da MOSS para criação de sites. Os dados da simulação não vão junto.</p>
+          </div>
+          <button class="limpar" type="reset">Limpar formulário</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="secao" id="duvidas" aria-labelledby="titulo-duvidas">
+      <div class="duvidas">
+        <div>
+          <span class="rotulo">07 · Dúvidas</span>
+          <h2 id="titulo-duvidas">Perguntas<br>diretas</h2>
+        </div>
+        <div>
+          <details><summary>Quanto custa?</summary><p>Este modelo não publica tabela de preços. O valor depende do tamanho da casa, do estado, do tipo de limpeza e da frequência. Depois da visita você recebe o orçamento por escrito, antes de qualquer serviço.</p></details>
+          <details><summary>Vocês limpam dentro de armários e gavetas?</summary><p>Sim, na limpeza profunda, com combinado prévio. Se houver objetos de valor, a melhor opção é retirá-los antes — a equipe avisa se precisar.</p></details>
+          <details><summary>Preciso comprar produtos?</summary><p>Não. A equipe leva produto e material. Se você preferir produto específico, ou tiver alergia ou restrição, avise na conversa.</p></details>
+          <details><summary>Como funciona a chave?</summary><p>Por segurança, a chave fica com a pessoa responsável da casa ou em cofre combinado. A equipe não guarda chave entre os serviços.</p></details>
+          <details><summary>As fotos são de casas atendidas?</summary><p>Não. Casa Impecável é uma marca fictícia criada para demonstrar este site. As fotos são de banco e ilustram limpeza e resultado. Em um projeto real, podem ser substituídas por fotos autorizadas do serviço.</p></details>
+          <details><summary>Este site usa banco de dados?</summary><p>A vitrine e o montador de plano funcionam sem banco. A integração opcional com Supabase carrega os serviços publicados e oferece um painel autenticado para o responsável registrar os pedidos recebidos pelo WhatsApp. A instalação está explicada no manual.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-linha">
+      <div>
+        <a class="marca" href="#inicio"><span class="marca-icone" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.2 12 4l9 7.2"/><path d="M5.6 9.6V20h12.8V9.6"/><path d="M9.6 20v-5.2h4.8V20"/></svg></span><span class="marca-texto">Casa Impecável<small>Limpeza residencial</small></span></a>
+        <p>Marca fictícia criada como demonstração pela MOSS Digital. Não há equipe de limpeza em funcionamento, preço real nem garantia de resultado neste modelo.</p>
+      </div>
+      <nav aria-label="Links do rodapé">
+        <a href="fontes-fotos.html">Créditos das fotos</a>
+        <a href="MANUAL-DO-CLIENTE.html">Manual do comprador</a>
+        <a href="painel.html">Painel do responsável</a>
+        <a href="../../index.html">MOSS Digital ↗</a>
+      </nav>
+    </div>
+  </footer>
+
+  <dialog id="lightbox" aria-labelledby="foto-legenda">
+    <div class="lightbox-topo"><span>Galeria · Casa Impecável</span><button type="button" id="fechar-foto">Fechar ×</button></div>
+    <img id="foto-ampliada" src="img/cozinha-pronta.webp" alt="">
+    <p id="foto-legenda"></p>
+    <div class="lightbox-acoes"><button type="button" id="foto-anterior">← Anterior</button><span id="foto-numero"></span><button type="button" id="foto-proxima">Próxima →</button></div>
+  </dialog>
+  <noscript><p class="sem-js">Ative o JavaScript para usar o montador de plano, os filtros e a preparação da mensagem. Você ainda pode <a href="https://wa.me/5511942038103">falar com a MOSS pelo WhatsApp</a>.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,132 @@
+{
+  "licenca": "https://www.pexels.com/license/",
+  "aviso": "Fotos reais de banco, ilustrativas de limpeza residencial. Não representam equipe, clientes, casas ou trabalhos da marca fictícia.",
+  "fotos": [
+    {
+      "arquivo": "img/aspirando.webp",
+      "id": "27176670",
+      "uso": "hero",
+      "origem": "https://www.pexels.com/photo/27176670/",
+      "download": "https://images.pexels.com/photos/27176670/pexels-photo-27176670.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Mulher passando aspirador em uma sala com cachorro",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/equipe.webp",
+      "id": "6195118",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/6195118/",
+      "download": "https://images.pexels.com/photos/6195118/pexels-photo-6195118.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Profissional de limpeza com uniforme e materiais de trabalho",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/spray.webp",
+      "id": "5317154",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/5317154/",
+      "download": "https://images.pexels.com/photos/5317154/pexels-photo-5317154.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Pessoa limpando superfície com spray e pano",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/cozinha-limpeza.webp",
+      "id": "5591860",
+      "uso": "servico",
+      "origem": "https://www.pexels.com/photo/5591860/",
+      "download": "https://images.pexels.com/photos/5591860/pexels-photo-5591860.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Pessoa limpando a bancada da cozinha com pano",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/vidros.webp",
+      "id": "17041922",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/17041922/",
+      "download": "https://images.pexels.com/photos/17041922/pexels-photo-17041922.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Pessoa limpando janelas com equipamento próprio",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/azulejo.webp",
+      "id": "9462111",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/9462111/",
+      "download": "https://images.pexels.com/photos/9462111/pexels-photo-9462111.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Esponja limpando azulejo com água e produto",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/materiais.webp",
+      "id": "9462138",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/9462138/",
+      "download": "https://images.pexels.com/photos/9462138/pexels-photo-9462138.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Aspirador e materiais de limpeza no chão",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/cozinha-pronta.webp",
+      "id": "7703311",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/7703311/",
+      "download": "https://images.pexels.com/photos/7703311/pexels-photo-7703311.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Cozinha limpa e arrumada com bancada livre",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/sala-pronta.webp",
+      "id": "18285958",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/18285958/",
+      "download": "https://images.pexels.com/photos/18285958/pexels-photo-18285958.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Sala arrumada com decoração e tapete",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/cama-feita.webp",
+      "id": "35009501",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/35009501/",
+      "download": "https://images.pexels.com/photos/35009501/pexels-photo-35009501.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Cama arrumada com roupa de cama dobrada",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/cesta.webp",
+      "id": "10558196",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/10558196/",
+      "download": "https://images.pexels.com/photos/10558196/pexels-photo-10558196.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Cesta com materiais de limpeza e Vassouras",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/sala-livre.webp",
+      "id": "4046082",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/4046082/",
+      "download": "https://images.pexels.com/photos/4046082/pexels-photo-4046082.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Sala limpa e arrumada com objetos no lugar",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/luvas.webp",
+      "id": "4239129",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/4239129/",
+      "download": "https://images.pexels.com/photos/4239129/pexels-photo-4239129.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Luvas de limpeza amarelas sobre azulejo",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    },
+    {
+      "arquivo": "img/esponja.webp",
+      "id": "9462748",
+      "uso": "galeria",
+      "origem": "https://www.pexels.com/photo/9462748/",
+      "download": "https://images.pexels.com/photos/9462748/pexels-photo-9462748.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "alt": "Mão com esponja limpando uma superfície",
+      "conferencia": "Conferida visualmente em 12/11/2026. Imagem de banco, não é serviço da marca fictícia."
+    }
+  ]
+}
