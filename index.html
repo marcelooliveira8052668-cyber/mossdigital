@@ -66,6 +66,17 @@
     #depoimentos .depoimentos-contador { color:#123753; font-size:.85rem; }
     @media(max-width:1000px) { #depoimentos .depoimentos-painel { grid-template-columns:1fr; } }
     @media(max-width:720px) { #depoimentos .depoimentos-trilho .depoimento-cliente { flex-basis:100%; } }
+    /* Correção responsiva: impedir que o carrossel de avaliações alargue a página. */
+    #depoimentos .depoimentos-painel > *,
+    #depoimentos .depoimentos-trilho,
+    #depoimentos .depoimento-cliente { min-width:0; max-width:100%; }
+    #depoimentos .depoimento-cliente { overflow-wrap:anywhere; }
+    @media(max-width:720px) {
+      #depoimentos .depoimentos-painel { width:100%; min-width:0; }
+      #depoimentos .depoimentos-trilho { width:100%; }
+      #depoimentos .depoimentos-trilho .depoimento-cliente { flex:0 0 100%; box-sizing:border-box; }
+      #depoimentos h2 { overflow-wrap:break-word; }
+    }
     @media(prefers-reduced-motion:reduce) { #depoimentos .depoimentos-trilho { scroll-behavior:auto; } }
     @media(max-width:720px) {
       #depoimentos { padding:30px 0 52px; }
