@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VidaFarma — demonstração fictícia de site para farmácia: produtos por necessidade, fichas, lembrete local e encomendas simuladas.">
+<title>VidaFarma | Cuidado de verdade, do seu jeito — Demo MOSS Digital</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f6e63'/%3E%3Cpath fill='%23fff' d='M27 12h10v15h15v10H37v15H27V37H12V27h15z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="fita">Demonstração fictícia da MOSS Digital · nomes e preços inventados · <b>nenhuma venda, pagamento ou orientação médica real</b></div>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#topo" aria-label="VidaFarma — início">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><path d="M32 8c7 7 10 14 10 21a10 10 0 0 1-20 0c0-7 3-14 10-21z" fill="#fff" opacity=".95"/><path d="M23 43h18M32 43v12" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand-txt"><b>VidaFarma</b><span>cuidado que acompanha</span></span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#necessidades">Por necessidade</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#lembrete">Meu lembrete</a>
+      <a href="#como">Como funciona</a>
+      <a href="#galeria">Fotos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="hamburger" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="btn btn-verde" href="#encomenda" style="padding:11px 16px">Montar encomenda</a>
+  </div>
+  <nav class="menu-mobile" id="menu-mobile" aria-label="Menu mobile">
+    <a href="#necessidades">Por necessidade</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#lembrete">Meu lembrete</a>
+    <a href="#como">Como funciona</a>
+    <a href="#galeria">Fotos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main id="topo">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="overline">Farmácia · cuidado e bem-estar</span>
+        <h1>Cuidado de verdade,<br><em>do seu jeito.</em></h1>
+        <p class="hero-lead">Aqui você encontra o que precisa por necessidade, tira dúvidas com o farmacêutico e monta sua encomenda para retirar ou receber em casa. Simples, humano e sem complicação.</p>
+        <div class="hero-cta">
+          <a href="#necessidades" class="btn btn-verde">Encontrar o que preciso →</a>
+          <a href="#produtos" class="btn btn-contorno">Ver produtos</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img class="hero-foto" src="assets/img/farmacia-ilustrativa.webp" alt="Interior de farmácia — foto ilustrativa" width="1050" height="1400">
+        <span class="selo-foto">Foto ilustrativa</span>
+        <div class="cartao-farma"><b>💬 Fale com o farmacêutico</b><span>Nesta demo, o contato é pelo formulário de encomenda.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="confiança">
+    <div class="wrap confiança-inner">
+      <div>💚 Atendimento farmacêutico</div>
+      <div>🛵 Entrega e retirada</div>
+      <div>🧾 Preço claro por unidade</div>
+      <div>♻️ Descarte responsável</div>
+    </div>
+  </div>
+
+  <!-- NECESSIDADES -->
+  <section class="bloco" id="necessidades">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="overline">Comece por aqui</span><h2>O que você <em>precisa hoje?</em></h2></div>
+        <p>Escolha uma necessidade e o catálogo já filtra os produtos para você. É um jeito mais simples de navegar do que uma lista longa.</p>
+      </div>
+      <div class="necessidades">
+        <button type="button" class="nec" data-nec="Dor e febre"><span class="nec-ic">💊</span><b>Dor e febre</b><span>Comprimidos, cápsulas e apresentações para o dia a dia.</span><small>Ver produtos →</small></button>
+        <button type="button" class="nec" data-nec="Vitaminas"><span class="nec-ic">🍊</span><b>Vitaminas</b><span>Suplementos e organizadores para sua rotina.</span><small>Ver produtos →</small></button>
+        <button type="button" class="nec" data-nec="Primeiros socorros"><span class="nec-ic">🩹</span><b>Primeiros socorros</b><span>Kits, ataduras e termômetros para ter em casa.</span><small>Ver produtos →</small></button>
+        <button type="button" class="nec" data-nec="Higiene e cuidados"><span class="nec-ic">🧼</span><b>Higiene e cuidados</b><span>Itens de higiene, cuidado pessoal e bucal.</span><small>Ver produtos →</small></button>
+        <button type="button" class="nec" data-nec="Bebê e mamãe"><span class="nec-ic">🍼</span><b>Bebê e mamãe</b><span>Mamadeiras e itens para o cuidado do bebê.</span><small>Ver produtos →</small></button>
+        <button type="button" class="nec" data-nec="Bem-estar"><span class="nec-ic">🍵</span><b>Bem-estar</b><span>Chás e aparelhos para acompanhar sua saúde.</span><small>Ver produtos →</small></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVISO RESPONSÁVEL -->
+  <section class="bloco" style="padding-top:42px">
+    <div class="wrap">
+      <div class="aviso-responsavel">
+        <div class="ic" aria-hidden="true">⚠️</div>
+        <div>
+          <b>Uma farmácia responsável</b>
+          <p>Medicamentos com restrição exigem receita e não são vendidos sem prescrição. Este site <strong>não dá orientação médica</strong>: em caso de emergência ou dúvida sobre saúde, procure um profissional ou o serviço de saúde mais próximo. Leia sempre a bula dos produtos.</p>
+        </div>
+      </div>
+
+      <!-- MEDICAMENTOS SOB PRESCRIÇÃO -->
+      <div class="receita-box" style="margin-top:34px">
+        <div class="receita-head">
+          <span class="overline">Sob prescrição médica</span>
+          <h2>Medicamentos que <em>exigem receita</em></h2>
+          <p>Losartana, indapamida, sinvastatina e as canetas injetáveis para controle de peso só podem ser dispensados com prescrição válida e acompanhamento profissional. Aparecem aqui <strong>apenas como informação</strong>: não têm preço, não entram na sacola e não são vendidos nesta demonstração.</p>
+        </div>
+        <div class="receita-grid">
+          <article class="receita-card">
+            <span class="receita-badge">📋 Receita obrigatória</span>
+            <h3>Losartana</h3>
+            <p>Anti-hipertensivo de uso contínuo. A dose e o esquema são definidos pelo médico.</p>
+          </article>
+          <article class="receita-card">
+            <span class="receita-badge">📋 Receita obrigatória</span>
+            <h3>Indapamida</h3>
+            <p>Diurético utilizado no controle da pressão arterial, sempre sob prescrição.</p>
+          </article>
+          <article class="receita-card">
+            <span class="receita-badge">📋 Receita obrigatória</span>
+            <h3>Sinvastatina</h3>
+            <p>Estatina utilizada no controle de colesterol, com uso definido pelo médico.</p>
+          </article>
+          <article class="receita-card">
+            <span class="receita-badge">💉 Receita + acompanhamento</span>
+            <h3>Caneta injetável (GLP-1)</h3>
+            <p>Medicamento para controle de peso com uso restrito a prescrição e acompanhamento médico. Nunca use por conta própria.</p>
+          </article>
+        </div>
+        <p class="receita-nota">⚠️ Nunca inicie, interrompa ou altere tratamento sem orientação. Em caso de dúvida, procure seu médico ou o farmacêutico. Este site não fornece prescrição nem orientação médica.</p>
+      </div>
+
+      <!-- PRODUTOS -->
+      <div class="head" style="margin-top:44px">
+        <div><span class="overline">O catálogo inteiro</span><h2>Nossos <em>produtos</em></h2></div>
+        <p>21 itens com fotos reais ilustrativas. Clique em qualquer card para ver a ficha com apresentação e cuidados.</p>
+      </div>
+      <div class="balcao">
+        <aside class="filtros" aria-label="Filtrar produtos">
+          <h3>Categorias</h3>
+          <div class="filtros-lista" id="filtros-lista"></div>
+          <input class="busca" id="busca" type="search" placeholder="Buscar produto..." aria-label="Buscar produto">
+        </aside>
+        <div>
+          <div class="vitrine-topo"><p id="contador">— produtos</p><span class="muted" style="font-size:.74rem">Valores fictícios por unidade</span></div>
+          <div class="grid" id="produtos"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEMBRETE -->
+  <section class="bloco" id="lembrete">
+    <div class="wrap">
+      <div class="lembrete">
+        <div>
+          <span class="overline" style="color:#bfe3d8">Organize sua rotina</span>
+          <h2>Meu lembrete</h2>
+          <p>Anote o nome e o horário para não esquecer. A lista fica salva apenas neste navegador — é uma ferramenta simples, não um serviço de saúde.</p>
+          <form id="form-lembrete">
+            <div><label for="lem-nome">O que lembrar?</label><input id="lem-nome" placeholder="Ex.: tomar água" required></div>
+            <div><label for="lem-hora">Horário</label><input id="lem-hora" type="time" value="08:00" required></div>
+            <button type="submit" class="btn btn-claro">Adicionar</button>
+          </form>
+          <p class="lembrete-aviso">Aviso: isto não substitui orientação médica nem prescrição. Nada é enviado a servidor algum.</p>
+        </div>
+        <div>
+          <span class="overline" style="color:#bfe3d8">Salvos neste navegador</span>
+          <ul class="lista-lembretes" id="lista-lembretes"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENCOMENDA -->
+  <section class="bloco" id="encomenda">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="overline">Monte sua encomenda</span><h2>Fácil de <em>organizar</em></h2></div>
+        <p>Seus itens ficam neste navegador. Ao confirmar, você recebe um código demonstrativo — sem pagamento, sem envio e sem dados indo para servidor.</p>
+      </div>
+      <div class="pedido-grid">
+        <div class="painel">
+          <h3>Sua sacola</h3>
+          <div id="carrinho-itens"></div>
+          <div class="total-linha"><span>Total estimado</span><b id="total-carrinho">R$ 0,00</b></div>
+        </div>
+        <div class="painel">
+          <h3>Dados da encomenda</h3>
+          <form id="form-encomenda" class="form-grid">
+            <div class="campo full"><label for="enc-nome">Seu nome *</label><input id="enc-nome" required placeholder="Como podemos chamar?" autocomplete="name"></div>
+            <div class="campo full"><label for="enc-tel">Telefone / WhatsApp *</label><input id="enc-tel" required placeholder="(11) 90000-0000" inputmode="tel" autocomplete="tel"></div>
+            <div class="campo"><label for="enc-tipo">Recebimento *</label><select id="enc-tipo"><option>Retirada na loja</option><option>Entrega em casa</option></select></div>
+            <div class="campo"><label for="enc-data">Data *</label><input id="enc-data" type="date" required></div>
+            <div class="campo"><label for="enc-hora">Horário *</label><input id="enc-hora" type="time" value="10:00" required></div>
+            <div class="campo full"><label for="enc-obs">Observações</label><textarea id="enc-obs" rows="2" placeholder="Alguma orientação importante?"></textarea></div>
+            <div class="campo full"><button type="submit" class="btn btn-verde" style="width:100%">Confirmar encomenda demonstrativa</button></div>
+          </form>
+          <p class="erro" id="erro-form" role="alert"></p>
+          <div class="ok" id="ok-encomenda" role="status">
+            <b>Encomenda registrada nesta demonstração.</b><br>
+            Código: <strong id="ok-codigo"></strong><br><span id="ok-resumo"></span><br>
+            <small class="muted">Nada foi enviado. O registro fica apenas no armazenamento local deste navegador.</small>
+          </div>
+          <p class="nota-local">Modo local: pedidos e lembretes ficam no <strong>localStorage</strong> deste navegador. Isso <strong>não</strong> é um banco conectado. O manual explica como ligar a demo a um banco real com autenticação e RLS.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="bloco" id="como">
+    <div class="wrap">
+      <div class="head"><div><span class="overline">Passo a passo</span><h2>Como <em>funciona</em></h2></div></div>
+      <div class="passos">
+        <div class="passo"><div class="passo-ic">🔎</div><h3>Encontre</h3><p>Escolha uma necessidade ou busque pelo produto no catálogo.</p></div>
+        <div class="passo"><div class="passo-ic">📋</div><h3>Confira a ficha</h3><p>Veja apresentação, cuidados e o valor antes de decidir.</p></div>
+        <div class="passo"><div class="passo-ic">🛍️</div><h3>Monte a sacola</h3><p>Adicione itens e ajuste as quantidades. O total aparece na hora.</p></div>
+        <div class="passo"><div class="passo-ic">📅</div><h3>Encomende</h3><p>Escolha retirada ou entrega, data e horário. Guarde o código.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="bloco" id="galeria">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="overline">Em imagens</span><h2>Um olhar na <em>vitrine</em></h2></div>
+        <p>Fotos reais e ilustrativas. Fontes e licenças estão em <code>assets/img/FONTES.md</code>.</p>
+      </div>
+      <div class="galeria" id="galeria" tabindex="0" role="region" aria-label="Fotos dos produtos — role para o lado">
+        <figure><img src="assets/img/farmacia-ilustrativa.webp" alt="Interior de farmácia, imagem ilustrativa"><figcaption>Espaço de farmácia (ilustrativo)</figcaption></figure>
+        <figure><img src="assets/img/comprimidos-revestidos.webp" alt="Comprimidos brancos"><figcaption>Comprimidos</figcaption></figure>
+        <figure><img src="assets/img/vitamina-b.webp" alt="Comprimidos de vitamina B"><figcaption>Suplementos</figcaption></figure>
+        <figure><img src="assets/img/kit-primeiros-socorros.webp" alt="Itens de primeiros socorros"><figcaption>Primeiros socorros</figcaption></figure>
+        <figure><img src="assets/img/alcool-gel.webp" alt="Frasco de álcool em gel"><figcaption>Higiene</figcaption></figure>
+        <figure><img src="assets/img/mamadeira.webp" alt="Bebê com mamadeira"><figcaption>Cuidado com o bebê</figcaption></figure>
+        <figure><img src="assets/img/cha-ervas.webp" alt="Folhas secas de chá"><figcaption>Chá de ervas</figcaption></figure>
+        <figure><img src="assets/img/monitor-pressao.webp" alt="Monitor de pressão arterial"><figcaption>Saúde em casa</figcaption></figure>
+      </div>
+      <div class="galeria-controles">
+        <button type="button" data-galeria="-1" aria-label="Fotos anteriores">←</button>
+        <button type="button" data-galeria="1" aria-label="Próximas fotos">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="bloco" id="contato">
+    <div class="wrap">
+      <div class="contato">
+        <span class="overline" style="color:#bfe3d8">Estamos aqui</span>
+        <h2>Cuidar também é<br>estar por perto.</h2>
+        <p>Nesta demonstração, o contato acontece pelo formulário de encomenda acima. Nenhum telefone real é usado.</p>
+        <div class="contato-acoes">
+          <a href="#encomenda" class="btn btn-claro">Montar encomenda →</a>
+          <a href="#produtos" class="btn btn-contorno" style="border-color:#fff;color:#fff">Ver produtos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand-txt"><b>VidaFarma</b><span>cuidado que acompanha</span></div>
+        <p style="margin-top:10px;max-width:330px">Demonstração fictícia criada para mostrar como um site de farmácia pode organizar produtos por necessidade, fichas e encomendas.</p>
+      </div>
+      <div><h4>Horário (fictício)</h4><p>Seg a sáb: 8h às 20h<br>Domingo: 9h às 13h</p></div>
+      <div><h4>Onde ficaria (fictício)</h4><p>Rua das Flores, 210<br>Vila Nova — São Paulo/SP</p></div>
+    </div>
+    <div class="rodape-fino">
+      © 2026 VidaFarma · Demonstração da MOSS Digital. Nomes, preços, endereço e telefones fictícios.<br>
+      Não realiza vendas, pagamentos nem dá orientação médica. Fotografias reais do Wikimedia Commons, usadas apenas como ilustração — veja <strong>assets/img/FONTES.md</strong>.
+    </div>
+  </div>
+</footer>
+
+<button class="botao-carrinho" id="abrir-carrinho" type="button" aria-label="Abrir sacola de encomenda">🛍️ Minha sacola <span id="badge-carrinho">0</span></button>
+<div class="overlay" id="overlay" aria-hidden="true"></div>
+<aside class="gaveta" id="gaveta" role="dialog" aria-modal="true" aria-label="Sacola de encomenda" aria-hidden="true">
+  <div class="gaveta-topo"><h3>Minha sacola</h3><button type="button" id="fechar-carrinho" aria-label="Fechar sacola">✕</button></div>
+  <div class="gaveta-corpo" id="gaveta-itens"></div>
+  <div class="gaveta-pe">
+    <div class="total-linha"><span>Total estimado</span><b id="gaveta-total">R$ 0,00</b></div>
+    <a href="#encomenda" class="btn btn-verde" style="width:100%;margin-top:12px" onclick="document.getElementById('overlay').classList.remove('aberto');document.getElementById('gaveta').classList.remove('aberto')">Ir para a encomenda →</a>
+  </div>
+</aside>
+
+<!-- FICHA DO PRODUTO -->
+<div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal-topo"><span>Ficha do produto · demonstração</span><button type="button" id="modal-fechar" aria-label="Fechar ficha">✕</button></div>
+    <div class="modal-corpo">
+      <img class="modal-foto" id="modal-foto" src="assets/img/comprimidos-revestidos.webp" alt="Foto do produto selecionado">
+      <div>
+        <span class="card-cat" id="modal-cat"></span>
+        <h2 id="modal-titulo"></h2>
+        <div class="modal-preco"><b id="modal-preco"></b><small>/ un.</small></div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="ficha-linha"><b>Apresentação</b><span id="modal-apresentacao"></span></div>
+        <div class="ficha-linha"><b>Cuidados</b><span id="modal-cuidado"></span></div>
+        <div class="modal-calc">
+          <label for="modal-qtd">Quantas unidades?</label>
+          <input type="range" id="modal-qtd" min="1" max="20" step="1" value="1" aria-label="Quantidade de unidades">
+          <div class="modal-calc-linha"><span id="modal-qtd-label">1 unidade</span><b id="modal-total">R$ 0,00</b></div>
+          <button type="button" class="btn btn-verde" id="modal-add">Adicionar à encomenda</button>
+        </div>
+        <div style="margin-top:14px"><button type="button" class="btn btn-contorno" id="modal-fechar-2" style="width:100%">Voltar ao catálogo</button></div>
+        <p class="modal-aviso">Informações ilustrativas e genéricas. Leia a bula e procure o farmacêutico antes de usar qualquer produto. Preços e fotos não representam itens reais.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/produtos.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
