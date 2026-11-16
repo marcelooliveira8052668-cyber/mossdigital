@@ -50,6 +50,14 @@
     #depoimentos .depoimento-autorizado { margin:4px 0 0; color:#596b79; font-size:.78rem; }
     /* Carrossel: dois cartões no computador e um no celular. */
     #depoimentos .depoimentos-trilho { display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:thin; padding:4px 3px 14px; }
+    /* Cartões compactos: sem esticar até a altura do depoimento mais longo. */
+    #depoimentos .depoimentos-trilho { align-items:flex-start; }
+    #depoimentos .depoimentos-trilho .depoimento-cliente { padding:18px; }
+    #depoimentos .depoimento-cliente blockquote { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:6; overflow:hidden; }
+    #depoimentos .depoimento-cliente.depoimento-expandido blockquote { display:block; overflow:visible; }
+    #depoimentos .depoimento-ler-mais { display:inline-block; margin-top:12px; padding:7px 11px; background:#fff7e4; border:1px solid #d8a72b; border-radius:8px; color:#123753; font:inherit; font-weight:700; cursor:pointer; }
+    #depoimentos .depoimento-ler-mais:focus-visible { outline:3px solid #123753; outline-offset:2px; }
+
     #depoimentos .depoimentos-trilho .depoimento-cliente { flex:0 0 calc((100% - 18px)/2); min-width:0; max-width:none; margin-top:0; scroll-snap-align:start; }
     #depoimentos .depoimentos-controles { display:flex; align-items:center; gap:12px; margin-top:14px; }
     #depoimentos .depoimentos-seta { background:#123753; color:#fff; border:0; border-radius:999px; width:44px; height:44px; cursor:pointer; font-size:1.4rem; }
@@ -815,6 +823,7 @@
               <p>Fiquei muito satisfeita com o resultado final e com a experiência de trabalhar com você e com a MOSS Digital.</p>
               <p>Recomendo seu trabalho a quem busca soluções digitais com qualidade, seriedade e confiança. Sucesso nessa caminhada! 👏💙</p>
             </blockquote>
+            <button type="button" class="depoimento-ler-mais" aria-expanded="false">Ler depoimento completo</button>
             <p class="depoimento-autoria">Luciana Silva Oliveira</p>
             <p class="depoimento-autorizado">Cliente MOSS Digital · Depoimento autorizado</p>
           </article>
@@ -824,6 +833,7 @@
               <p>Gostamos muito do trabalho realizado pela MOSS Digital. Nosso site ficou bonito, organizado, profissional e fácil de navegar. O projeto conseguiu apresentar nossos serviços de maneira clara e acolhedora.</p>
               <p>Agradecemos pela dedicação, atenção aos detalhes e cuidado durante o desenvolvimento. Ficamos muito satisfeitas com o resultado e recomendamos o trabalho da MOSS Digital!</p>
             </blockquote>
+            <button type="button" class="depoimento-ler-mais" aria-expanded="false">Ler depoimento completo</button>
             <p class="depoimento-autoria">Elaine &amp; Sandra — Neuropsicopedagogia Clínica</p>
             <p class="depoimento-autorizado">Clientes MOSS Digital · Depoimento aprovado</p>
             <p><a href="https://github.com/marcelooliveira8052668-cyber/Elaine-Sandrinha" target="_blank" rel="noopener noreferrer">Conhecer o projeto ↗</a></p>
@@ -835,6 +845,7 @@
               <p>O atendimento foi atencioso, e o resultado ficou excelente. Agora tenho um espaço na internet para mostrar meus trabalhos e facilitar o contato com novos clientes.</p>
               <p>Recomendo a MOSS Digital pela qualidade e dedicação!</p>
             </blockquote>
+            <button type="button" class="depoimento-ler-mais" aria-expanded="false">Ler depoimento completo</button>
             <p class="depoimento-autoria">Antonio Marcos — ATM-Sistemas</p>
             <p class="depoimento-autorizado">Cliente MOSS Digital · Depoimento aprovado</p>
             <p><a href="https://marcelooliveira8052668-cyber.github.io/t-instalacao/" target="_blank" rel="noopener noreferrer">Visitar o site ↗</a></p>
@@ -849,6 +860,7 @@
               <p>Estou muito satisfeita e recomendo a MOSS Digital a todos que desejam transformar suas ideias em realidade com profissionalismo, criatividade e dedicação.</p>
               <p>Muito obrigada por esse trabalho tão especial! ❤️🎶</p>
             </blockquote>
+            <button type="button" class="depoimento-ler-mais" aria-expanded="false">Ler depoimento completo</button>
             <p class="depoimento-autoria">Fafa Silva — Music</p>
             <p class="depoimento-autorizado">Cliente MOSS Digital · Depoimento aprovado</p>
             <p><a href="https://marcelooliveira8052668-cyber.github.io/fatica-music/" target="_blank" rel="noopener noreferrer">Conhecer o site musical ↗</a></p>
@@ -873,6 +885,16 @@
         const trilho = document.getElementById('depoimentos-trilho');
         if (!trilho) return;
         const cards = [...trilho.querySelectorAll('.depoimento-cliente')];
+        // Expandir apenas o cartão escolhido, mantendo os demais compactos.
+        trilho.addEventListener('click', (evento) => {
+          const botao = evento.target.closest('.depoimento-ler-mais');
+          if (!botao) return;
+          const cartao = botao.closest('.depoimento-cliente');
+          const expandido = cartao.classList.toggle('depoimento-expandido');
+          botao.setAttribute('aria-expanded', String(expandido));
+          botao.textContent = expandido ? 'Mostrar menos' : 'Ler depoimento completo';
+        });
+
         const contador = document.getElementById('depoimentos-contador');
         const pausa = document.getElementById('depoimentos-pausa');
         const anterior = document.getElementById('depoimentos-anterior');
