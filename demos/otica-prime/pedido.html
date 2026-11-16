@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acompanhar pedido | Ótica Prime</title>
+<link rel="icon" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<section style="padding:26px 0 70px">
+  <div class="container" style="max-width:900px">
+    <div class="section-head">
+      <div><div class="overline" style="color:var(--gold-dark)">Rastreio</div><h1 style="font-size:1.6rem">Acompanhar pedido</h1></div>
+    </div>
+
+    <div class="card-panel" style="margin-bottom:18px;display:flex;gap:10px;flex-wrap:wrap">
+      <input id="busca-codigo" placeholder="Digite seu código: OP-2026-0001" style="flex:1;min-width:220px;border:1px solid var(--line);border-radius:10px;padding:12px;font-size:.95rem;text-transform:uppercase">
+      <button class="btn btn-navy" id="btn-buscar">Buscar</button>
+    </div>
+
+    <div id="pedido-box" class="hidden"></div>
+  </div>
+</section>
+
+<script src="assets/js/local-data.js"></script>
+<script src="assets/js/local-api.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const STATUS = {
+  aguardando_receita: ['Aguardando receita', 'status-warn'],
+  receita_em_analise: ['Receita em análise', 'status-warn'],
+  receita_aprovada: ['Receita aprovada', 'status-ok'],
+  em_producao: ['Em produção', 'status-ok'],
+  enviado: ['Enviado', 'status-ok'],
+  entregue: ['Entregue', 'status-ok'],
+  cancelado: ['Cancelado', 'status-bad'],
+};
+
+async function buscar(codigo) {
+  codigo = (codigo || $('#busca-codigo').value).trim().toUpperCase();
+  if (!codigo) return;
+  const box = $('#pedido-box');
+  try {
+    const p = await OP.api('/api/pedidos/' + encodeURIComponent(codigo));
+    const [label, cls] = STATUS[p.status] || [p.status, ''];
+    const entregaTxt = p.entrega.tipo === 'retirada'
+      ? 'Retirada na loja — Av. Paulista, 1000'
+      : `Entrega: ${p.entrega.endereco}, ${p.entrega.numero}${p.entrega.complemento ? ' — ' + p.entrega.complemento : ''} · ${p.entrega.bairro} · ${p.entrega.cidade}/${p.entrega.uf} · CEP ${p.entrega.cep}`;
+    box.innerHTML = `
+      <div class="card-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div><h2 style="font-size:1.3rem;color:var(--navy)">${p.codigo}</h2><small style="color:var(--muted)">Feito em ${new Date(p.criadoEm).toLocaleDateString('pt-BR')}</small></div>
+          <span class="status-pill ${cls}">${label}</span>
+        </div>
+        <div style="margin:14px 0;border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:12px">
+          ${p.itens.map(i => `
+            <div class="cart-item">
+              <img src="${i.imagem}" alt="${i.nome}" onerror="this.onerror=null;this.src='assets/img/glasses/${i.productId}.svg'">
+              <div class="grow"><b>${i.nome}</b><div style="color:var(--muted);font-size:.72rem">${i.lenteNome || 'Armação'}${i.tratamentos?.length ? ' · +' + i.tratamentos.length + ' tratamento(s)' : ''} · qtd ${i.qtd}</div></div>
+              <div style="font-weight:800;color:var(--navy);font-size:.85rem">${OP.moeda(i.precoTotal)}</div>
+            </div>`).join('')}
+        </div>
+        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);padding-top:12px;font-size:.9rem">
+          <div><div style="color:var(--muted);font-size:.72rem">TOTAL PAGO</div><strong style="font-size:1.15rem;color:var(--navy)">${OP.moeda(p.total)}</strong>${p.frete === 0 ? ' <small style="color:var(--ok)">frete grátis</small>' : ''}</div>
+          <div><div style="color:var(--muted);font-size:.72rem">PAGAMENTO</div><strong>${p.pagamento.bandeira || 'Cartão'} ••${p.pagamento.last4}</strong><br><small>${p.pagamento.parcelas}x sem juros · ${p.pagamento.status}</small></div>
+        </div>
+        <p style="margin-top:12px;font-size:.85rem;color:var(--muted)">${entregaTxt}</p>
+        ${p.rastreio ? `<p style="margin-top:6px;font-size:.9rem"><strong>Rastreio:</strong> <code style="background:#eef2f8;padding:3px 8px;border-radius:6px">${p.rastreio}</code></p>` : ''}
+      </div>
+
+      <div class="card-panel" style="margin-top:16px">
+        <h3 style="font-size:1rem;margin-bottom:12px">Linha do tempo</h3>
+        <div class="timeline">
+          ${(p.eventos || []).map(ev => `<div class="tl-item"><strong>${STATUS[ev.status]?.[0] || ev.status}</strong><br><span style="font-size:.85rem">${ev.descricao}</span><br><small>${new Date(ev.criado_em).toLocaleString('pt-BR')}</small></div>`).join('')}
+        </div>
+      </div>
+
+      ${p.status === 'aguardando_receita' ? `
+      <div class="card-panel" style="margin-top:16px;border-color:var(--gold)">
+        <h3 style="font-size:1rem;color:var(--gold-dark)">Falta só sua receita!</h3>
+        <p style="font-size:.85rem;color:var(--muted);margin:6px 0 12px">Preencha abaixo e envie agora — assim que chegarmos, seu pedido entra em produção.</p>
+        <div class="form-grid">
+          <div class="field"><label>OD — Esfera</label><input id="u-od-e" placeholder="-2,50"></div>
+          <div class="field"><label>OE — Esfera</label><input id="u-oe-e" placeholder="-2,25"></div>
+          <div class="field"><label>OD — Cilindro</label><input id="u-od-c" placeholder="-0,75"></div>
+          <div class="field"><label>OE — Cilindro</label><input id="u-oe-c" placeholder="-0,50"></div>
+          <div class="field"><label>OD — Eixo</label><input id="u-od-a" placeholder="180"></div>
+          <div class="field"><label>OE — Eixo</label><input id="u-oe-a" placeholder="170"></div>
+          <div class="field"><label>OD — Adição</label><input id="u-od-ad" placeholder="+2,00"></div>
+          <div class="field"><label>OE — Adição</label><input id="u-oe-ad" placeholder="+2,00"></div>
+          <div class="field"><label>DNP OD</label><input id="u-dnp-od" placeholder="32"></div>
+          <div class="field"><label>DNP OE</label><input id="u-dnp-oe" placeholder="31"></div>
+          <div class="field"><label>Médico</label><input id="u-medico" placeholder="Dra. Lúcia"></div>
+          <div class="field"><label>CRM</label><input id="u-crm" placeholder="CRM-SP 123456"></div>
+          <div class="field full"><label for="u-foto">Foto da receita</label><input id="u-foto" type="file" accept="image/*"></div>
+        </div>
+        <button class="btn btn-gold btn-block" id="btn-enviar-receita" style="margin-top:12px">Enviar receita agora</button>
+      </div>` : ''}
+      <div style="margin-top:14px;text-align:center"><button class="btn btn-ghost" onclick="window.print()">🖨️ Imprimir comprovante</button></div>`;
+    box.classList.remove('hidden');
+
+    const btn = document.getElementById('btn-enviar-receita');
+    if (btn) btn.addEventListener('click', async () => {
+      btn.disabled = true; btn.textContent = 'Enviando...';
+      let foto = null;
+      const f = document.getElementById('u-foto').files[0];
+      if (f) foto = await new Promise(r => { const rd = new FileReader(); rd.onload = () => r(rd.result); rd.readAsDataURL(f); });
+      try {
+        await OP.api('/api/pedidos/' + encodeURIComponent(codigo) + '/receita', {
+          method: 'POST',
+          body: {
+            odEsfera: $('#u-od-e').value, odCilindro: $('#u-od-c').value, odEixo: $('#u-od-a').value, odAdicao: $('#u-od-ad').value,
+            oeEsfera: $('#u-oe-e').value, oeCilindro: $('#u-oe-c').value, oeEixo: $('#u-oe-a').value, oeAdicao: $('#u-oe-ad').value,
+            dnpOd: $('#u-dnp-od').value, dnpOe: $('#u-dnp-oe').value, medico: $('#u-medico').value, crm: $('#u-crm').value, foto,
+          },
+        });
+        OP.toast('Receita enviada! 🎉');
+        buscar(codigo);
+      } catch (err) {
+        btn.disabled = false; btn.textContent = 'Enviar receita agora';
+        OP.toast('Erro ao enviar receita. Tente novamente.');
+      }
+    });
+  } catch (err) {
+    box.innerHTML = '<div class="card-panel"><p style="color:var(--bad)">Pedido não encontrado. Confira o código (ex.: OP-2026-0001).</p></div>';
+    box.classList.remove('hidden');
+  }
+}
+
+$('#btn-buscar').addEventListener('click', () => buscar());
+$('#busca-codigo').addEventListener('keydown', e => { if (e.key === 'Enter') buscar(); });
+const pre = new URLSearchParams(location.search).get('codigo');
+if (pre) { $('#busca-codigo').value = pre; buscar(pre); }
+</script>
+</body>
+</html>

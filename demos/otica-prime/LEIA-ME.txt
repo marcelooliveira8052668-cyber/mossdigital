@@ -1,0 +1,13 @@
+OTICA PRIME - VERSAO ESTATICA (HTML + CSS + JAVASCRIPT PURO)
+
+1. Abra index.html. Funciona em qualquer hospedagem, inclusive HTTPS estatico.
+2. Tudo roda no navegador: catalogo com 50 fotos reais, 12 lentes/focos,
+   tratamentos, provador virtual com IA (MediaPipe local), carrinho,
+   envio de receita, checkout simulado, acompanhamento e painel demo.
+3. Pedidos/receitas ficam no localStorage do navegador. Nao ha servidor,
+   login real nem cobranca: pagamento e 100% simulado.
+4. Cartao de teste aprovado: 4242 4242 4242 4242 / validade futura / CVV 123.
+   Recusado: 4000 0000 0000 0002.
+5. Camera: abra por HTTPS (ou localhost) e permita o acesso.
+6. Para publicar na MOSS Digital: envie esta pasta inteira para a pasta
+   do demo no seu site (ex.: /demos/otica-prime/).

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo de armações | Ótica Prime</title>
+<link rel="icon" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<section style="padding:26px 0 60px">
+  <div class="container">
+    <div class="section-head" style="margin-bottom:18px">
+      <div><div class="overline" style="color:var(--gold-dark)">62 modelos reais</div><h1 style="font-size:1.6rem">Catálogo de armações</h1></div>
+    </div>
+    <div class="catalog-layout">
+      <aside class="filters" aria-label="Filtros">
+        <h3>Refinar busca</h3>
+        <label for="f-q">Buscar</label>
+        <input id="f-q" type="text" placeholder="Ex.: redondo, tartaruga...">
+        <label for="f-cat">Categoria</label>
+        <select id="f-cat"><option value="">Todas</option></select>
+        <label for="f-formato">Formato</label>
+        <select id="f-formato"><option value="">Todos</option></select>
+        <label for="f-material">Material</label>
+        <select id="f-material"><option value="">Todos</option></select>
+        <label for="f-cor">Cor</label>
+        <select id="f-cor"><option value="">Todas</option></select>
+        <label for="f-preco">Preço máximo: <span id="f-preco-valor">R$ 1.200</span></label>
+        <input id="f-preco" type="range" min="300" max="1400" step="50" value="1400">
+        <button class="btn btn-navy btn-block" id="f-limpar" style="margin-top:14px;font-size:.82rem">Limpar filtros</button>
+      </aside>
+      <div>
+        <div class="toolbar">
+          <span class="result-count" id="result-count">Carregando...</span>
+          <select id="f-ordenar" style="border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:.85rem;background:#fff">
+            <option value="destaque">Ordenar: Destaques</option>
+            <option value="menor-preco">Menor preço</option>
+            <option value="maior-preco">Maior preço</option>
+            <option value="avaliacao">Melhor avaliadas</option>
+          </select>
+        </div>
+        <div class="grid" id="catalog-grid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/local-data.js"></script>
+<script src="assets/js/local-api.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const els = {
+  q: document.getElementById('f-q'), cat: document.getElementById('f-cat'), formato: document.getElementById('f-formato'),
+  material: document.getElementById('f-material'), cor: document.getElementById('f-cor'), preco: document.getElementById('f-preco'),
+  precoValor: document.getElementById('f-preco-valor'), grid: document.getElementById('catalog-grid'),
+  count: document.getElementById('result-count'), ordenar: document.getElementById('f-ordenar'),
+};
+const estrelas = n => '★'.repeat(Math.round(n)) + '☆'.repeat(5 - Math.round(n));
+
+async function filtros(){
+  const f = await OP.api('/api/filtros');
+  for (const [id, lista] of [['f-cat', f.categorias], ['f-formato', f.formatos], ['f-material', f.materiais], ['f-cor', f.cores]]) {
+    const sel = document.getElementById(id);
+    for (const v of lista) sel.insertAdjacentHTML('beforeend', `<option value="${v}">${v}</option>`);
+  }
+  if (params.get('q')) els.q.value = params.get('q');
+  if (params.get('formato')) els.formato.value = params.get('formato');
+  if (params.get('categoria')) els.cat.value = params.get('categoria');
+  await carregar();
+}
+
+async function carregar(){
+  const p = new URLSearchParams();
+  if (els.q.value.trim()) p.set('q', els.q.value.trim());
+  if (els.cat.value) p.set('categoria', els.cat.value);
+  if (els.formato.value) p.set('formato', els.formato.value);
+  if (els.material.value) p.set('material', els.material.value);
+  if (els.cor.value) p.set('cor', els.cor.value);
+  p.set('precoMax', els.preco.value);
+  p.set('ordenar', els.ordenar.value);
+  let produtos = [];
+  try { produtos = await OP.api('/api/produtos?' + p.toString()); } catch { produtos = []; }
+  els.count.textContent = produtos.length + (produtos.length === 1 ? ' armação encontrada' : ' armações encontradas');
+  els.grid.innerHTML = produtos.length ? produtos.map(p0 => `
+    <article class="card">
+      ${p0.destaque ? '<span class="badge">Destaque</span>' : ''}
+      <a class="media" href="produto.html?id=${p0.id}"><img src="${p0.imagem}" alt="${p0.nome} — ${p0.cor}" loading="lazy" onerror="this.onerror=null;this.src='assets/img/glasses/${p0.id}.svg'"></a>
+      <div class="card-body">
+        <span class="brand-sm">${p0.marca}</span>
+        <h3><a href="produto.html?id=${p0.id}">${p0.nome}</a></h3>
+        <div class="meta">${p0.formato} · ${p0.material} · ${p0.cor}</div>
+        <div class="stars">${estrelas(p0.avaliacao)} <em>${p0.avaliacao.toFixed(1)} (${p0.nAval})</em></div>
+        <div class="price-row"><span class="price">${OP.moeda(p0.preco)}</span><small style="color:var(--muted)">à vista</small></div>
+        <div class="card-actions">
+          <a class="btn btn-navy" style="flex:2" href="produto.html?id=${p0.id}">Ver oferta</a>
+          <a class="btn btn-ghost" href="experimentar.html?id=${p0.id}" title="Experimentar no rosto">🤳</a>
+        </div>
+      </div>
+    </article>`).join('') : '<div class="card-panel" style="grid-column:1/-1;text-align:center;color:var(--muted)">Nenhuma armação encontrada com esses filtros. <button class="btn btn-ghost" id="clear2" style="margin-left:8px">Limpar filtros</button></div>';
+  document.getElementById('clear2')?.addEventListener('click', limpar);
+}
+
+function limpar(){
+  els.q.value = ''; els.cat.value = ''; els.formato.value = ''; els.material.value = ''; els.cor.value = '';
+  els.preco.value = 1400; els.precoValor.textContent = 'R$ 1.400'; els.ordenar.value = 'destaque';
+  carregar();
+}
+
+['q','cat','formato','material','cor','ordenar'].forEach(k => {
+  els[k].addEventListener('input', () => carregar());
+  els[k].addEventListener('change', () => carregar());
+});
+els.preco.addEventListener('input', () => { els.precoValor.textContent = OP.moeda(els.preco.value).replace(',00',''); carregar(); });
+document.getElementById('f-limpar').addEventListener('click', limpar);
+filtros();
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Área do profissional | Ótica Prime</title>
+<link rel="icon" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<section style="padding:26px 0 70px">
+  <div class="container">
+
+    <div id="login-box" class="card-panel hidden" style="max-width:420px;margin:30px auto;text-align:center">
+      <img src="assets/img/logo.svg" alt="Ótica Prime" style="height:52px;margin-bottom:8px">
+      <h1 style="font-size:1.3rem;color:var(--navy)">Área do profissional</h1>
+      <p style="color:var(--muted);font-size:.85rem;margin:6px 0 16px">Avalie receitas e acompanhe a produção dos pedidos.</p>
+      <form id="login-form" style="display:flex;flex-direction:column;gap:10px;text-align:left">
+        <div class="field"><label for="l-login">Login</label><input id="l-login" autocomplete="username" placeholder="admin" required></div>
+        <div class="field"><label for="l-senha">Senha</label><input id="l-senha" type="password" autocomplete="current-password" placeholder="••••••••" required></div>
+        <p id="login-erro" class="hidden" style="color:var(--bad);font-size:.85rem"></p>
+        <button type="submit" class="btn btn-navy btn-block">Entrar</button>
+      </form>
+      <p style="font-size:.72rem;color:var(--muted);margin-top:14px">Acesso restrito à equipe técnica. (Demo: <code>admin</code> / <code>admin123</code>)</p>
+    </div>
+
+    <div id="admin-panel" class="hidden">
+      <div class="section-head">
+        <div><div class="overline" style="color:var(--gold-dark)">Painel interno</div><h1 style="font-size:1.6rem">Olá, <span id="admin-nome"></span> 👋</h1></div>
+        <button class="btn btn-ghost" id="btn-logout">Sair</button>
+      </div>
+
+      <div class="admin-grid">
+        <div class="kpi"><small>Faturamento</small><b id="k-fat">—</b></div>
+        <div class="kpi"><small>Pedidos</small><b id="k-ped">—</b></div>
+        <div class="kpi"><small>Receitas p/ análise</small><b id="k-rec" style="color:var(--warn)">—</b></div>
+        <div class="kpi"><small>Armações ativas</small><b id="k-prod">—</b></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="pedidos">Pedidos</button>
+        <button class="tab-btn" data-tab="receitas">Receitas para análise <span id="badge-rec"></span></button>
+      </div>
+
+      <div id="tab-pedidos">
+        <div class="card-panel" style="overflow:auto">
+          <table class="table">
+            <thead><tr><th>Pedido</th><th>Cliente</th><th>Total</th><th>Entrega</th><th>Status</th><th>Rastreio / Nota</th></tr></thead>
+            <tbody id="tbody-pedidos"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="tab-receitas" class="hidden">
+        <div id="lista-receitas"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/local-data.js"></script>
+<script src="assets/js/local-api.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const STATUS_OPCOES = [
+  ['aguardando_receita','Aguardando receita'],['receita_em_analise','Receita em análise'],['receita_aprovada','Receita aprovada'],
+  ['em_producao','Em produção'],['enviado','Enviado'],['entregue','Entregue'],['cancelado','Cancelado'],
+];
+
+async function checkAuth() {
+  try { const me = await OP.api('/api/admin/me'); mostrarPainel(me); }
+  catch { mostrarLogin(); }
+}
+function mostrarLogin(){ $('#login-box').classList.remove('hidden'); $('#admin-panel').classList.add('hidden'); }
+async function mostrarPainel(me){
+  $('#login-box').classList.add('hidden'); $('#admin-panel').classList.remove('hidden');
+  $('#admin-nome').textContent = me.nome;
+  await Promise.all([carregarDashboard(), carregarPedidos(), carregarReceitas()]);
+}
+
+$('#login-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  $('#login-erro').classList.add('hidden');
+  try {
+    const me = await OP.api('/api/admin/login', { method: 'POST', body: { login: $('#l-login').value, senha: $('#l-senha').value } });
+    mostrarPainel(me);
+  } catch (err) {
+    $('#login-erro').textContent = err.message; $('#login-erro').classList.remove('hidden');
+  }
+});
+$('#btn-logout').addEventListener('click', async () => { await OP.api('/api/admin/logout', { method: 'POST' }); mostrarLogin(); });
+
+async function carregarDashboard() {
+  const d = await OP.api('/api/admin/dashboard');
+  $('#k-fat').textContent = OP.moeda(d.faturamento);
+  $('#k-ped').textContent = d.totalPedidos;
+  $('#k-rec').textContent = d.receitasPendentes;
+  $('#k-prod').textContent = d.totalProdutos;
+}
+
+async function carregarPedidos() {
+  const pedidos = await OP.api('/api/admin/pedidos');
+  $('#tbody-pedidos').innerHTML = pedidos.map(p => `
+    <tr data-row="${p.id}">
+      <td><strong>${p.codigo}</strong><br><small style="color:var(--muted)">${new Date(p.criadoEm).toLocaleDateString('pt-BR')}</small></td>
+      <td>${p.cliente.nome}<br><small style="color:var(--muted)">${p.cliente.email}</small></td>
+      <td><strong>${OP.moeda(p.total)}</strong><br><small>${p.pagamento.parcelas}x ${p.pagamento.bandeira}</small></td>
+      <td>${p.entrega.tipo === 'retirada' ? '🏪 Retirada' : '🚚 Casa'}</td>
+      <td>
+        <select class="status-select" style="border:1px solid var(--line);border-radius:8px;padding:6px;font-size:.8rem">
+          ${STATUS_OPCOES.map(([v, l]) => `<option value="${v}" ${v === p.status ? 'selected' : ''}>${l}</option>`).join('')}
+        </select>
+      </td>
+      <td>
+        <input class="rastreio-input" placeholder="Código de rastreio" value="${p.rastreio || ''}" style="border:1px solid var(--line);border-radius:8px;padding:6px;font-size:.8rem;width:150px">
+        <input class="nota-input" placeholder="Nota p/ cliente" style="border:1px solid var(--line);border-radius:8px;padding:6px;font-size:.8rem;width:150px;margin-top:4px">
+        <button class="btn btn-navy btn-salvar-status" style="padding:6px 12px;font-size:.75rem;margin-top:4px">Salvar</button>
+      </td>
+    </tr>`).join('');
+
+  $$('.btn-salvar-status').forEach(b => b.addEventListener('click', async () => {
+    const row = b.closest('tr');
+    const id = row.dataset.row;
+    const status = row.querySelector('.status-select').value;
+    const rastreio = row.querySelector('.rastreio-input').value.trim();
+    const descricao = row.querySelector('.nota-input').value.trim() || 'Atualizado pelo painel.';
+    try {
+      await OP.api('/api/admin/pedidos/' + id + '/status', { method: 'POST', body: { status, rastreio, descricao } });
+      OP.toast('Pedido atualizado! ✅');
+      await Promise.all([carregarPedidos(), carregarDashboard()]);
+    } catch (err) { OP.toast('Erro ao salvar. Tente de novo.'); }
+  }));
+}
+
+async function carregarReceitas() {
+  const receitas = await OP.api('/api/admin/receitas');
+  const pendentes = receitas.filter(r => r.status === 'em_analise');
+  const outras = receitas.filter(r => r.status !== 'em_analise');
+  $('#badge-rec').textContent = pendentes.length ? `(${pendentes.length})` : '';
+  const fmt = v => v || '—';
+  const card = r => `
+    <div class="receita-card">
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <h3 style="font-size:.95rem;color:var(--navy)">${r.codigo} — ${r.clienteNome}</h3>
+          <small style="color:var(--muted)">${r.email} · ${r.telefone || ''}</small>
+          <p style="font-size:.82rem;margin:8px 0"><strong>OD:</strong> ${fmt(r.od.esfera)} / ${fmt(r.od.cilindro)} x ${fmt(r.od.eixo)}${r.od.adicao ? ' · Adição ' + r.od.adicao : ''}<br><strong>OE:</strong> ${fmt(r.oe.esfera)} / ${fmt(r.oe.cilindro)} x ${fmt(r.oe.eixo)}${r.oe.adicao ? ' · Adição ' + r.oe.adicao : ''}<br>DNP: ${fmt(r.dnpOd)} / ${fmt(r.dnpOe)} mm · AP: ${fmt(r.alturaPupilar)} mm</p>
+          <p style="font-size:.82rem"><strong>Médico:</strong> ${fmt(r.medico)} ${r.crm ? '· ' + r.crm : ''} · Exame: ${fmt(r.dataExame)} · Validade: ${fmt(r.validade)}</p>
+          ${r.observacoes ? `<p style="font-size:.8rem;color:var(--muted)">Obs.: ${r.observacoes}</p>` : ''}
+          ${r.foto ? `<img src="${r.foto}" alt="Foto da receita" style="margin-top:8px">` : '<p style="font-size:.75rem;color:var(--muted);margin-top:8px">Sem foto anexada.</p>'}
+        </div>
+        <div style="min-width:260px;display:flex;flex-direction:column;gap:8px">
+          <span class="status-pill ${r.status === 'aprovada' ? 'status-ok' : r.status === 'com_pendencia' ? 'status-bad' : 'status-warn'}">${r.status === 'em_analise' ? 'Aguardando análise' : r.status === 'aprovada' ? 'Aprovada' : 'Com pendência'}</span>
+          <textarea class="nota-revisor" data-id="${r.id}" rows="2" placeholder="Nota para o cliente (obrigatória se pedir correção)" style="border:1px solid var(--line);border-radius:10px;padding:8px;font-size:.82rem">${r.notaRevisor || ''}</textarea>
+          <button class="btn btn-navy btn-aprovar" data-id="${r.id}" style="font-size:.85rem">✅ Aprovar receita</button>
+          <button class="btn btn-ghost btn-pendencia" data-id="${r.id}" style="font-size:.85rem">✏️ Pedir correção</button>
+        </div>
+      </div>
+    </div>`;
+  $('#lista-receitas').innerHTML =
+    (pendentes.length ? `<h2 style="font-size:.95rem;color:var(--warn);margin:6px 0 10px">⏳ Aguardando análise (${pendentes.length})</h2>` + pendentes.map(card).join('') : '<p style="color:var(--muted);padding:20px;text-align:center">Nenhuma receita pendente. 🎉</p>')
+    + (outras.length ? `<h2 style="font-size:.95rem;color:var(--muted);margin:18px 0 10px">Analisadas recentemente</h2>` + outras.slice(0, 5).map(card).join('') : '');
+
+  $$('.btn-aprovar').forEach(b => b.addEventListener('click', () => revisar(b.dataset.id, 'aprovada')));
+  $$('.btn-pendencia').forEach(b => b.addEventListener('click', () => revisar(b.dataset.id, 'com_pendencia')));
+}
+
+async function revisar(id, status) {
+  const nota = $(`.nota-revisor[data-id="${id}"]`)?.value || '';
+  if (status === 'com_pendencia' && !nota.trim()) { OP.toast('Descreva o que precisa ser corrigido.'); return; }
+  await OP.api('/api/admin/receitas/' + id + '/revisar', { method: 'POST', body: { status, nota } });
+  OP.toast(status === 'aprovada' ? 'Receita aprovada! ✅' : 'Pendência enviada ao cliente.');
+  await Promise.all([carregarReceitas(), carregarDashboard(), carregarPedidos()]);
+}
+
+$$('.tab-btn').forEach(b => b.addEventListener('click', () => {
+  $$('.tab-btn').forEach(x => x.classList.toggle('active', x === b));
+  $('#tab-pedidos').classList.toggle('hidden', b.dataset.tab !== 'pedidos');
+  $('#tab-receitas').classList.toggle('hidden', b.dataset.tab !== 'receitas');
+}));
+
+checkAuth();
+</script>
+</body>
+</html>

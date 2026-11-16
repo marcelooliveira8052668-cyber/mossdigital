@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Provador virtual | Ótica Prime</title>
+<link rel="icon" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.tryon-layout{display:grid;grid-template-columns:1fr 340px;gap:22px;align-items:start}
+.stage{position:relative;background:#0b1f3a;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;max-height:620px;touch-action:none;user-select:none;box-shadow:var(--shadow)}
+.stage video,.stage .user-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage.mirrored video,.stage.mirrored .user-photo{transform:scaleX(-1)}
+.tryon-overlay{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);width:62%;z-index:3;pointer-events:none;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.face-guide{position:absolute;left:50%;top:38%;width:52%;aspect-ratio:.72;border:2.5px dashed rgba(255,255,255,.55);border-radius:50%;transform:translate(-50%,-50%);z-index:2;pointer-events:none}
+.stage-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#c8d6ea;text-align:center;padding:24px;z-index:1}
+.stage-placeholder div:first-child{font-size:3rem}
+.hint{position:absolute;bottom:12px;left:0;right:0;text-align:center;color:rgba(255,255,255,.75);font-size:.72rem;z-index:4;pointer-events:none}
+.auto-badge{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:6;background:var(--gold);color:#2a1f06;font-weight:800;font-size:.9rem;padding:8px 18px;border-radius:30px;box-shadow:0 6px 18px rgba(0,0,0,.3);pointer-events:none}
+.auto-badge b{font-size:1.25rem}
+.controls-panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow-sm)}
+.controls-panel select,.controls-panel input[type=range]{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:.9rem;background:#fff}
+.controls-panel input[type=range]{padding:0;border:none;background:none}
+.ctrl-row{display:flex;gap:8px}
+.ctrl-row .btn{flex:1;padding:10px 6px;font-size:.78rem}
+.price-tag{background:var(--bg);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center}
+@media(max-width:860px){
+  .controls-panel input[type=range]{-webkit-appearance:none;appearance:none;height:34px;background:none;border:none}
+  .controls-panel input[type=range]::-webkit-slider-runnable-track{height:9px;border-radius:6px;background:var(--line)}
+  .controls-panel input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--gold);border:3px solid var(--navy);margin-top:-11px}
+  .controls-panel input[type=range]::-moz-range-track{height:9px;border-radius:6px;background:var(--line)}
+  .controls-panel input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--gold);border:3px solid var(--navy)}
+  .controls-panel .btn{min-height:52px}
+  .controls-panel label{font-size:.82rem}
+  .controls-panel .hint{font-size:.82rem}
+}
+.snap-modal{position:fixed;inset:0;background:rgba(11,31,58,.86);z-index:120;display:flex;align-items:center;justify-content:center;padding:16px}
+.snap-box{background:#fff;border-radius:18px;padding:16px;max-width:430px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.snap-box img{width:100%;border-radius:12px;display:block;margin:10px 0;background:#eef2f8}
+.snap-head{display:flex;justify-content:space-between;align-items:center}
+@media(max-width:980px){.tryon-layout{grid-template-columns:1fr}.stage{max-height:70vh}}
+</style>
+</head>
+<body>
+<section style="padding:26px 0 70px">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="overline" style="color:var(--gold-dark)">Provador virtual</div><h1 style="font-size:1.6rem">Experimente no seu rosto</h1></div>
+      <a href="catalogo.html" class="link">← Voltar ao catálogo</a>
+    </div>
+
+    <div class="tryon-layout">
+      <div class="stage" id="stage">
+        <video id="cam" autoplay playsinline muted class="hidden"></video>
+        <img class="user-photo hidden" id="userPhoto" alt="Sua foto">
+        <img class="tryon-overlay" id="overlayImg" alt="Armação sobre o rosto">
+        <div class="face-guide" id="faceGuide"></div>
+        <div class="stage-placeholder" id="placeholder">
+          <div>📷</div>
+          <p><strong>Ative a câmera ou envie uma selfie</strong><br>para ver a armação em você</p>
+        </div>
+        <div class="hint" id="stage-hint">Aponte a câmera para o rosto — a IA ajusta e dispara sozinha</div>
+        <div class="auto-badge hidden" id="auto-badge">📸 Foto em <b id="auto-num">3</b></div>
+      </div>
+
+      <div class="controls-panel">
+        <div class="field">
+          <label for="sel-produto">Armação</label>
+          <select id="sel-produto"></select>
+        </div>
+
+        <div class="ctrl-row">
+          <button class="btn btn-navy" id="btn-camera">📷 Usar câmera</button>
+          <button class="btn btn-ghost" id="btn-upload">🖼️ Enviar foto</button>
+          <input type="file" id="file-input" accept="image/*" hidden>
+        </div>
+
+        <div class="field"><label for="ctrl-size">Tamanho da armação: <span id="size-val">62%</span></label>
+          <input type="range" id="ctrl-size" min="35" max="95" value="62"></div>
+        <div class="field"><label for="ctrl-y">Altura no rosto: <span id="y-val">40%</span></label>
+          <input type="range" id="ctrl-y" min="25" max="70" value="40"></div>
+
+        <div class="ctrl-row">
+          <button class="btn btn-ghost" id="btn-mirror">🪞 Espelhar</button>
+          <button class="btn btn-ghost" id="btn-guide">🎯 Guia: ligado</button>
+        </div>
+        <button class="btn btn-gold btn-block" id="btn-ia" style="font-size:.88rem">🤖 Rastreio automático: LIGADO</button>
+        <button class="btn btn-navy btn-block" id="btn-auto" style="font-size:.88rem">⚡ Disparo automático: LIGADO</button>
+        <small id="ia-status" style="color:var(--muted);font-size:.72rem;text-align:center;display:block;margin-top:-6px">A armação se ajusta sozinha nos seus olhos</small>
+
+        <button class="btn btn-gold btn-block" id="btn-snap">📸 Tirar foto com esta armação</button>
+
+        <div class="price-tag"><span style="font-size:.78rem;color:var(--muted)">Preço da armação</span><strong id="price-tag" style="color:var(--navy)">—</strong></div>
+        <a class="btn btn-navy btn-block" id="go-product" href="#">Gostei! Ver oferta →</a>
+      </div>
+    </div>
+
+    <div id="snap-modal" class="snap-modal hidden" role="dialog" aria-label="Foto do provador">
+      <div class="snap-box">
+        <div class="snap-head"><h3 style="font-size:1rem;color:var(--navy)">Sua foto com a armação</h3><button class="icon-btn" id="snap-close" aria-label="Fechar">✕</button></div>
+        <img id="snap-img" alt="Foto tirada no provador virtual">
+        <p style="font-size:.78rem;color:var(--muted);text-align:center;margin:6px 0 10px">Olha como ficou! Manda para alguém ou salve no celular.</p>
+        <div class="ctrl-row">
+          <button class="btn btn-gold" id="snap-share">📤 Compartilhar</button>
+          <button class="btn btn-navy" id="snap-download">💾 Salvar</button>
+        </div>
+        <button class="btn btn-ghost btn-block" id="snap-retry" style="font-size:.85rem;margin-top:8px">📸 Tirar outra</button>
+      </div>
+    </div>
+
+    <p style="font-size:.72rem;color:var(--muted);margin-top:14px;text-align:center">No celular: aponte a câmera para o rosto — a IA ajusta a armação sozinha. Se não ajustar, toque em "Tentar IA de novo".</p>
+  </div>
+</section>
+
+<script src="assets/js/local-data.js"></script>
+<script src="assets/js/local-api.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const stage = $('#stage');
+const overlayImg = $('#overlayImg');
+const cam = $('#cam');
+const userPhoto = $('#userPhoto');
+const placeholder = $('#placeholder');
+const faceGuide = $('#faceGuide');
+
+const btnIA = $('#btn-ia');
+const iaStatus = $('#ia-status');
+
+let produtos = [];
+let atual = null;
+let mirror = true;
+let guide = true;
+let usandoCamera = false;
+
+/* ---------- rastreio automático (IA) ---------- */
+let iaLigado = true;
+let landmarker = null;
+let iaCarregada = false;
+let iaFalhou = false;
+let tsVideo = 0;
+let autoFoto = true;        // disparo automático ligado por padrão
+let autoArmed = true;       // pode disparar (liberado depois de salvar)
+let autoEstavel = 0;        // frames com rosto parado no círculo
+let autoPerdas = 0;         // frames sem detectar rosto (tolerância)
+let autoUltima = null;      // última posição para medir estabilidade
+let autoTimer = null;       // contagem regressiva
+const smooth = { x: null, y: null, size: null, rot: 0 };
+let rot = 0;
+const pos = { x: 0.5, y: 0.40, size: 0.62 };
+
+function atualizarSlidersUI() {
+  const s = $('#ctrl-size'), y = $('#ctrl-y');
+  s.value = Math.round(pos.size * 100);
+  y.value = Math.round(pos.y * 100);
+  $('#size-val').textContent = Math.round(pos.size * 100) + '%';
+  $('#y-val').textContent = Math.round(pos.y * 100) + '%';
+}
+
+function aplicar() {
+  const w = stage.clientWidth;
+  overlayImg.style.width = (w * pos.size) + 'px';
+  overlayImg.style.left = (pos.x * 100) + '%';
+  overlayImg.style.top = (pos.y * 100) + '%';
+  overlayImg.style.transform = `translate(-50%, -50%) rotate(${rot}deg)` + (mirror ? ' scaleX(-1)' : '');
+}
+
+const obs = new ResizeObserver(aplicar);
+obs.observe(stage);
+
+// arrastar sobre o palco
+let dragging = false;
+stage.addEventListener('pointerdown', (e) => { dragging = true; stage.setPointerCapture(e.pointerId); desligaIA(); mover(e); });
+stage.addEventListener('pointermove', (e) => { if (dragging) mover(e); });
+stage.addEventListener('pointerup', () => dragging = false);
+stage.addEventListener('pointercancel', () => dragging = false);
+function mover(e) {
+  const r = stage.getBoundingClientRect();
+  pos.x = Math.min(0.85, Math.max(0.15, (e.clientX - r.left) / r.width));
+  pos.y = Math.min(0.72, Math.max(0.22, (e.clientY - r.top) / r.height));
+  rot = 0;
+  atualizarSlidersUI();
+  aplicar();
+}
+
+$('#ctrl-size').addEventListener('input', e => { desligaIA(); pos.size = Number(e.target.value) / 100; rot = 0; $('#size-val').textContent = e.target.value + '%'; aplicar(); });
+$('#ctrl-y').addEventListener('input', e => { desligaIA(); pos.y = Number(e.target.value) / 100; rot = 0; $('#y-val').textContent = e.target.value + '%'; aplicar(); });
+
+$('#btn-mirror').addEventListener('click', () => { mirror = !mirror; stage.classList.toggle('mirrored', mirror); aplicar(); });
+$('#btn-guide').addEventListener('click', () => { guide = !guide; faceGuide.style.display = guide ? 'block' : 'none'; $('#btn-guide').textContent = guide ? '🎯 Guia: ligado' : '🎯 Guia: desligado'; });
+$('#btn-ia').addEventListener('click', () => {
+  if (iaFalhou) {
+    iaFalhou = false; landmarker = null; iaCarregada = false;
+    btnIA.disabled = false; btnIA.style.opacity = 1;
+    aplicarEstadoIA();
+    carregarIA();
+    return;
+  }
+  iaLigado = !iaLigado; aplicarEstadoIA();
+});
+$('#btn-auto').addEventListener('click', () => {
+  autoFoto = !autoFoto;
+  $('#btn-auto').innerHTML = autoFoto ? '⚡ Disparo automático: LIGADO' : '⚡ Disparo automático: desligado';
+  $('#btn-auto').style.background = autoFoto ? '' : '#eef2f8';
+  $('#btn-auto').style.color = autoFoto ? '' : 'var(--navy)';
+  if (!autoFoto) cancelarContagem();
+});
+function cancelarContagem() {
+  clearInterval(autoTimer);
+  autoTimer = null;
+  document.getElementById('auto-badge')?.classList.add('hidden');
+  autoEstavel = 0;
+}
+function checarAutoFoto() {
+  if (!autoFoto || !autoArmed || !usandoCamera) return;
+  // o centro dos olhos precisa estar dentro do círculo guia
+  const noCirculo = Math.abs(pos.x - 0.5) < 0.20 && Math.abs(pos.y - 0.38) < 0.17;
+  if (!noCirculo) { cancelarContagem(); autoUltima = null; return; }
+  if (autoUltima) {
+    const delta = Math.abs(pos.x - autoUltima.x) + Math.abs(pos.y - autoUltima.y) + Math.abs(pos.size - autoUltima.size);
+    if (delta < 0.012) autoEstavel++;
+    else { autoEstavel = 0; cancelarContagem(); }
+  }
+  autoUltima = { x: pos.x, y: pos.y, size: pos.size };
+  if (autoEstavel < 5 || autoTimer) return;
+  let n = 3;
+  const badge = document.getElementById('auto-badge');
+  badge.classList.remove('hidden');
+  document.getElementById('auto-num').textContent = n;
+  autoTimer = setInterval(() => {
+    n--;
+    if (n <= 0) {
+      clearInterval(autoTimer); autoTimer = null;
+      badge.classList.add('hidden');
+      autoArmed = false;
+      tirarFoto();
+      setTimeout(() => { autoArmed = true; autoUltima = null; autoEstavel = 0; }, 5000);
+    } else {
+      document.getElementById('auto-num').textContent = n;
+    }
+  }, 750);
+}
+function desligaIA() { if (iaLigado) { iaLigado = false; aplicarEstadoIA(); } cancelarContagem(); }
+function aplicarEstadoIA() {
+  btnIA.innerHTML = iaFalhou ? '🤖 Tentar IA de novo' : (iaLigado ? '🤖 Rastreio automático: LIGADO' : '🤖 Rastreio automático: desligado');
+  btnIA.style.background = iaLigado && !iaFalhou ? 'linear-gradient(180deg,var(--gold2),var(--gold-dark))' : '#eef2f8';
+  btnIA.style.color = iaLigado && !iaFalhou ? '#2a1f06' : 'var(--navy)';
+  iaStatus.textContent = iaFalhou ? 'Toque no botão acima para tentar de novo' : iaLigado ? (iaCarregada ? 'A armação se ajusta sozinha nos seus olhos' : 'Carregando IA…') : 'Ajuste manual pelos controles';
+}
+
+function resetSmooth() { smooth.x = null; smooth.y = null; smooth.size = null; smooth.rot = 0; }
+
+async function usarCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 960 } }, audio: false });
+    cam.srcObject = stream;
+    await cam.play();
+    cam.classList.remove('hidden');
+    userPhoto.classList.add('hidden');
+    placeholder.classList.add('hidden');
+    usandoCamera = true;
+    resetSmooth();
+    atualizarSlidersUI();
+    OP.toast('Câmera ativada! A armação se ajusta sozinha 🤖');
+  } catch (e) {
+    placeholder.classList.remove('hidden');
+    placeholder.innerHTML = '<div>🙊</div><p><strong>Câmera indisponível ou negada</strong><br>Envie uma selfie para experimentar assim mesmo</p>';
+    OP.toast('Não foi possível acessar a câmera. Envie uma foto!');
+  }
+}
+
+$('#btn-camera').addEventListener('click', usarCamera);
+$('#btn-upload').addEventListener('click', () => $('#file-input').click());
+$('#file-input').addEventListener('change', (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  const url = URL.createObjectURL(f);
+  userPhoto.src = url;
+  userPhoto.onload = () => { userPhoto.classList.remove('hidden'); cam.classList.add('hidden'); placeholder.classList.add('hidden'); usandoCamera = false; resetSmooth(); detectarIANaFoto(); };
+});
+
+async function detectarIANaFoto() {
+  const lm = await carregarIA();
+  if (!lm) return;
+  try {
+    const res = lm.detectForVideo(userPhoto, performance.now());
+    const L = res && res.faceLandmarks && res.faceLandmarks[0];
+    if (L) { aplicarPose(L, userPhoto, true); setTimeout(tirarFoto, 600); }
+    else OP.toast('Nenhum rosto detectado na foto — arraste manualmente');
+  } catch (e) { OP.toast('Não consegui detectar na foto'); }
+}
+
+function poseDe(L) {
+  const l = L[468], r = L[473], le = L[33], re = L[263];
+  return { cx: (l.x + r.x) / 2, cy: (l.y + r.y) / 2, dx: r.x - l.x, dy: r.y - l.y, le, re };
+}
+
+function aplicarPose(L, fonte, snap) {
+  const vw = fonte.videoWidth || fonte.naturalWidth;
+  const vh = fonte.videoHeight || fonte.naturalHeight;
+  if (!vw || !vh) return;
+  const cw = stage.clientWidth, ch = stage.clientHeight;
+  const scale = Math.max(cw / vw, ch / vh);
+  const dw = vw * scale, dh = vh * scale;
+  const offX = (cw - dw) / 2, offY = (ch - dh) / 2;
+  const p = poseDe(L);
+  const cX = offX + p.cx * dw;
+  const cY = offY + p.cy * dh;
+  const canthiPx = Math.hypot((p.re.x - p.le.x) * dw, (p.re.y - p.le.y) * dh);
+  let rotD = Math.atan2(p.dy * dh, p.dx * dw) * 180 / Math.PI;
+  let dispX = cX;
+  if (mirror) { dispX = cw - cX; rotD = -rotD; }
+  const target = Math.min(0.78, Math.max(0.18, (canthiPx * 1.52) / cw));
+  if (snap) {
+    pos.x = dispX / cw; pos.y = cY / ch; pos.size = target; rot = rotD;
+  } else {
+    if (smooth.x == null) { smooth.x = dispX; smooth.y = cY; smooth.size = target; smooth.rot = rotD; }
+    smooth.x += (dispX - smooth.x) * 0.35;
+    smooth.y += (cY - smooth.y) * 0.35;
+    smooth.size += (target - smooth.size) * 0.3;
+    smooth.rot += (rotD - smooth.rot) * 0.3;
+    pos.x = smooth.x / cw; pos.y = smooth.y / ch; pos.size = smooth.size; rot = smooth.rot;
+  }
+  atualizarSlidersUI();
+  aplicar();
+}
+
+let rafIA = null;
+function loopIA() {
+  cancelAnimationFrame(rafIA);
+  const tick = () => {
+    rafIA = requestAnimationFrame(tick);
+    if (!iaLigado || !usandoCamera || !landmarker || cam.readyState < 2 || !cam.videoWidth) return;
+    const now = performance.now();
+    // no celular, 10 detecções por segundo já acompanham o rosto e gastam menos bateria
+    if (now - tsVideo < 100) return;
+    tsVideo = now;
+    try {
+      const res = landmarker.detectForVideo(cam, now);
+      const L = res && res.faceLandmarks && res.faceLandmarks[0];
+      if (L) {
+        autoPerdas = 0;
+        aplicarPose(L, cam, false);
+        checarAutoFoto();
+      } else {
+        autoPerdas++;
+        if (autoPerdas >= 6) { cancelarContagem(); autoUltima = null; autoPerdas = 0; }
+      }
+    } catch (e) { /* ignora o frame */ }
+  };
+  tick();
+}
+
+async function carregarIA() {
+  if (landmarker || iaFalhou) return landmarker;
+  try {
+    const mod = await import('./assets/vendor/vision_bundle.mjs');
+    const vision = await mod.FilesetResolver.forVisionTasks('./assets/vendor/wasm');
+    const opts = (delegate) => ({
+      baseOptions: { modelAssetPath: './assets/vendor/face_landmarker.task', delegate },
+      runningMode: 'VIDEO', numFaces: 1,
+    });
+    try {
+      landmarker = await mod.FaceLandmarker.createFromOptions(vision, opts('GPU'));
+    } catch (eGPU) {
+      console.warn('GPU indisponível, usando CPU:', eGPU);
+      landmarker = await mod.FaceLandmarker.createFromOptions(vision, opts('CPU'));
+    }
+    iaCarregada = true;
+    aplicarEstadoIA();
+    return landmarker;
+  } catch (e) {
+    console.error('MediaPipe IA:', e);
+    iaFalhou = true;
+    btnIA.disabled = true;
+    btnIA.style.opacity = .5;
+    iaStatus.textContent = 'IA indisponível neste aparelho — ajuste manual';
+    return null;
+  }
+}
+
+function tirarFoto() {
+  const w = stage.clientWidth, h = stage.clientHeight;
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const cv = document.createElement('canvas');
+  cv.width = Math.round(w * dpr);
+  cv.height = Math.round(h * dpr);
+  const ctx = cv.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  // fundo: mesmo recorte "cover" que a prévia (centralizado), espelhado se preciso
+  const fundo = usandoCamera ? cam : userPhoto;
+  const vw = usandoCamera ? cam.videoWidth : userPhoto.naturalWidth;
+  const vh = usandoCamera ? cam.videoHeight : userPhoto.naturalHeight;
+  const fundoPronto = fundo && (usandoCamera ? cam.readyState >= 2 : userPhoto.complete);
+  if (fundoPronto && vw && vh) {
+    const scale = Math.max(w / vw, h / vh);
+    const dw = vw * scale, dh = vh * scale;
+    const dx = (w - dw) / 2, dy = (h - dh) / 2;
+    ctx.save();
+    if (mirror) { ctx.translate(w, 0); ctx.scale(-1, 1); }
+    ctx.drawImage(fundo, dx, dy, dw, dh);
+    ctx.restore();
+  } else {
+    ctx.fillStyle = '#123a6b';
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  // armação: desenhada na mesma posição da prévia, invertida no próprio eixo quando espelhada
+  const ow = overlayImg.clientWidth;
+  const aspect = (overlayImg.naturalWidth && overlayImg.naturalHeight) ? overlayImg.naturalHeight / overlayImg.naturalWidth : 0.42;
+  const oh = ow * aspect;
+  const cx = pos.x * w, cy = pos.y * h;
+  ctx.save();
+  ctx.translate(cx, cy);
+  if (mirror) ctx.scale(-1, 1);
+  ctx.drawImage(overlayImg, -ow / 2, -oh / 2, ow, oh);
+  ctx.restore();
+
+  const urlFoto = cv.toDataURL('image/png');
+  document.getElementById('snap-img').src = urlFoto;
+  document.getElementById('snap-modal').classList.remove('hidden');
+  window._fotoProvador = urlFoto;
+}
+$('#btn-snap').addEventListener('click', tirarFoto);
+
+function baixarFoto() {
+  const a = document.createElement('a');
+  a.download = 'otica-prime-provador.png';
+  a.href = window._fotoProvador;
+  a.click();
+}
+
+function fecharPreview() {
+  document.getElementById('snap-modal').classList.add('hidden');
+  cancelarContagem();
+  autoUltima = null;
+  autoEstavel = 0;
+  autoArmed = false;
+  setTimeout(() => { autoArmed = true; }, 3000);
+}
+document.getElementById('snap-close').addEventListener('click', fecharPreview);
+document.getElementById('snap-retry').addEventListener('click', fecharPreview);
+document.getElementById('snap-download').addEventListener('click', baixarFoto);
+document.getElementById('snap-share').addEventListener('click', async () => {
+  try {
+    const blob = await (await fetch(window._fotoProvador)).blob();
+    const arquivo = new File([blob], 'otica-prime-provador.png', { type: 'image/png' });
+    if (navigator.canShare && navigator.canShare({ files: [arquivo] })) {
+      await navigator.share({ files: [arquivo], title: 'Ótica Prime', text: 'Olha como ficou a armação em mim! 👓' });
+    } else {
+      baixarFoto();
+      OP.toast('Compartilhamento não disponível — foto salva!');
+    }
+  } catch (e) {
+    if (e.name !== 'AbortError') baixarFoto();
+  }
+});
+
+async function init() {
+  aplicarEstadoIA();
+  produtos = await OP.api('/api/produtos');
+  const sel = $('#sel-produto');
+  sel.innerHTML = produtos.map(p => `<option value="${p.id}">${p.nome} — ${OP.moeda(p.preco)}</option>`).join('');
+  const pre = new URLSearchParams(location.search).get('id');
+  if (pre && produtos.some(p => p.id === pre)) sel.value = pre;
+  const aplicarProduto = () => {
+    atual = produtos.find(p => p.id === sel.value) || produtos[0];
+    overlayImg.src = 'assets/img/glasses/' + atual.id + '.svg';
+    overlayImg.onerror = () => { overlayImg.onerror = null; overlayImg.src = 'assets/img/glasses/' + atual.id + '.svg'; };
+    $('#price-tag').textContent = OP.moeda(atual.preco);
+    $('#go-product').href = 'produto.html?id=' + atual.id;
+    resetSmooth();
+    aplicar();
+  };
+  sel.addEventListener('change', aplicarProduto);
+  aplicarProduto();
+  carregarIA();
+  loopIA();
+  usarCamera();
+}
+init();
+</script>
+</body>
+</html>

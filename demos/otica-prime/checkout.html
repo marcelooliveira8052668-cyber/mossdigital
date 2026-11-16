@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finalizar compra | Ótica Prime</title>
+<link rel="icon" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<section style="padding:26px 0 70px">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="overline" style="color:var(--gold-dark)">Checkout seguro</div><h1 style="font-size:1.6rem">Finalizar compra</h1></div>
+      <a href="catalogo.html" class="link">← Continuar comprando</a>
+    </div>
+
+    <div id="checkout-empty" class="card-panel hidden" style="text-align:center;padding:50px">
+      <div style="font-size:2.6rem">🛒</div>
+      <h2 style="margin:10px 0">Seu carrinho está vazio</h2>
+      <p style="color:var(--muted)">Escolha uma armação, monte sua lente e volte aqui.</p>
+      <a href="catalogo.html" class="btn btn-navy" style="margin-top:12px">Ver catálogo</a>
+    </div>
+
+    <div id="checkout-ok" class="card-panel hidden" style="text-align:center;padding:50px;border-color:var(--ok)">
+      <div style="font-size:3rem">✅</div>
+      <h2 style="margin:10px 0">Pedido confirmado!</h2>
+      <p style="color:var(--muted)">Obrigado pela confiança. Anote o código do seu pedido:</p>
+      <div style="font-family:'Poppins';font-size:1.8rem;font-weight:800;color:var(--navy);margin:12px 0" id="ok-codigo"></div>
+      <p style="font-size:.9rem" id="ok-detalhe"></p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+        <a class="btn btn-navy" id="ok-acompanhar" href="#">Acompanhar pedido →</a>
+        <a class="btn btn-ghost" href="index.html">Voltar à loja</a>
+      </div>
+    </div>
+
+    <form id="checkout-form" style="display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:start">
+      <div class="card-panel">
+        <h2 style="font-size:1.05rem;margin-bottom:12px">Seu pedido</h2>
+        <div id="resumo-itens" style="display:flex;flex-direction:column;gap:10px"></div>
+        <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:12px;font-size:.9rem">
+          <div style="display:flex;justify-content:space-between"><span>Subtotal</span><span id="r-subtotal">—</span></div>
+          <div style="display:flex;justify-content:space-between"><span>Frete</span><span id="r-frete">—</span></div>
+          <div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.1rem;color:var(--navy);margin-top:6px"><span>Total</span><span id="r-total">—</span></div>
+          <p style="font-size:.72rem;color:var(--muted);margin-top:6px">Frete grátis para compras acima de R$ 500 · 5% off à vista na loja</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card-panel">
+          <h2 style="font-size:1.05rem;margin-bottom:12px">Seus dados</h2>
+          <div class="form-grid">
+            <div class="field full"><label for="c-nome">Nome completo *</label><input id="c-nome" required placeholder="Como está na identidade"></div>
+            <div class="field"><label for="c-email">E-mail *</label><input id="c-email" type="email" required></div>
+            <div class="field"><label for="c-cpf">CPF *</label><input id="c-cpf" required placeholder="000.000.000-00" maxlength="14"></div>
+            <div class="field full"><label for="c-tel">Telefone / WhatsApp</label><input id="c-tel" placeholder="(11) 99999-0000"></div>
+          </div>
+        </div>
+
+        <div class="card-panel">
+          <h2 style="font-size:1.05rem;margin-bottom:12px">Entrega</h2>
+          <div class="seg" id="seg-entrega">
+            <button type="button" class="chip active" data-entrega="casa">🚚 Receber em casa</button>
+            <button type="button" class="chip" data-entrega="retirada">🏪 Retirar na loja</button>
+          </div>
+          <div class="form-grid" id="endereco-box" style="margin-top:12px">
+            <div class="field"><label for="c-cep">CEP *</label><input id="c-cep" placeholder="01310-100" maxlength="9"></div>
+            <div class="field"><label for="c-uf">UF *</label><input id="c-uf" placeholder="SP" maxlength="2"></div>
+            <div class="field full"><label for="c-end">Endereço *</label><input id="c-end" placeholder="Av. Paulista"></div>
+            <div class="field"><label for="c-num">Número *</label><input id="c-num" placeholder="1000"></div>
+            <div class="field"><label for="c-comp">Complemento</label><input id="c-comp" placeholder="Apto 82"></div>
+            <div class="field"><label for="c-bairro">Bairro</label><input id="c-bairro" placeholder="Bela Vista"></div>
+            <div class="field"><label for="c-cidade">Cidade *</label><input id="c-cidade" placeholder="São Paulo"></div>
+          </div>
+          <p id="retirada-info" class="hidden" style="margin-top:12px;font-size:.85rem;background:#fffdf4;border-radius:10px;padding:10px">Retirada em: <strong>Av. Paulista, 1000 — Loja 12</strong> (Seg–Sex 9h às 18h30 · Sáb 9h às 13h). Avisamos pelo WhatsApp quando estiver pronto.</p>
+        </div>
+
+        <div class="card-panel">
+          <h2 style="font-size:1.05rem;margin-bottom:12px">Receita médica</h2>
+          <div class="seg" id="seg-receita">
+            <button type="button" class="chip active" data-modo="anexar">Anexar agora</button>
+            <button type="button" class="chip" data-modo="codigo">Tenho o código</button>
+            <button type="button" class="chip" data-modo="depois">Enviar depois</button>
+          </div>
+
+          <div id="receita-anexar" style="margin-top:12px">
+            <div class="form-grid">
+              <div class="field"><label>OD — Esfera</label><input class="r-od-e" placeholder="-2,50"></div>
+              <div class="field"><label>OE — Esfera</label><input class="r-oe-e" placeholder="-2,25"></div>
+              <div class="field"><label>OD — Cilindro</label><input class="r-od-c" placeholder="-0,75"></div>
+              <div class="field"><label>OE — Cilindro</label><input class="r-oe-c" placeholder="-0,50"></div>
+              <div class="field"><label>OD — Eixo</label><input class="r-od-a" placeholder="180"></div>
+              <div class="field"><label>OE — Eixo</label><input class="r-oe-a" placeholder="170"></div>
+              <div class="field"><label>OD — Adição</label><input class="r-od-ad" placeholder="+2,00"></div>
+              <div class="field"><label>OE — Adição</label><input class="r-oe-ad" placeholder="+2,00"></div>
+              <div class="field"><label>DNP OD</label><input class="r-dnp-od" placeholder="32"></div>
+              <div class="field"><label>DNP OE</label><input class="r-dnp-oe" placeholder="31"></div>
+              <div class="field"><label>Médico</label><input class="r-medico" placeholder="Dra. Lúcia"></div>
+              <div class="field"><label>CRM</label><input class="r-crm" placeholder="CRM-SP 123456"></div>
+              <div class="field full"><label for="r-foto">Foto da receita (opcional)</label><input id="r-foto" type="file" accept="image/*"></div>
+            </div>
+          </div>
+          <div id="receita-codigo" class="hidden" style="margin-top:12px">
+            <div class="field"><label for="r-codigo">Código da receita (RC-...)</label><input id="r-codigo" placeholder="RC-2026-0001"></div>
+          </div>
+          <p id="receita-depois" class="hidden" style="margin-top:12px;font-size:.85rem;color:var(--muted)">Sem problema — seu pedido fica em <strong>aguardando receita</strong> e você envia depois, pelo link do pedido.</p>
+        </div>
+
+        <div class="card-panel">
+          <h2 style="font-size:1.05rem;margin-bottom:12px">Pagamento com cartão</h2>
+          <div class="form-grid">
+            <div class="field full"><label for="p-num">Número do cartão *</label><input id="p-num" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="19"></div>
+            <div class="field full"><label for="p-titular">Nome impresso no cartão *</label><input id="p-titular" autocomplete="cc-name" placeholder="NOME COMO ESTÁ NO CARTÃO" style="text-transform:uppercase"></div>
+            <div class="field"><label for="p-val">Validade *</label><input id="p-val" inputmode="numeric" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp"></div>
+            <div class="field"><label for="p-cvv">CVV *</label><input id="p-cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div>
+            <div class="field full"><label for="p-parc">Parcelas</label>
+              <select id="p-parc">
+                <option value="1">1x de X sem juros</option>
+                <option value="2">2x de X sem juros</option>
+                <option value="3">3x de X sem juros</option>
+                <option value="4">4x de X sem juros</option>
+                <option value="5">5x de X sem juros</option>
+                <option value="6">6x de X sem juros</option>
+              </select>
+            </div>
+          </div>
+          <p style="font-size:.72rem;color:var(--muted);margin-top:10px">🔒 Pagamento criptografado. Testes: <code>4242 4242 4242 4242</code> (aprovado) · <code>4000 0000 0000 0002</code> (recusado)</p>
+          <p id="erro-pagamento" class="hidden" style="color:var(--bad);font-size:.85rem;margin-top:8px"></p>
+          <button type="submit" class="btn btn-gold btn-block" id="btn-finalizar" style="margin-top:12px;font-size:1rem">Pagar e finalizar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script src="assets/js/local-data.js"></script>
+<script src="assets/js/local-api.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+let entrega = 'casa';
+let modoReceita = 'anexar';
+
+const FAIXA_GRATIS = 500, FRETE = 29.9;
+
+function totais() {
+  const items = OP.cart.get();
+  const subtotal = items.reduce((s, i) => s + i.precoUnit * i.qtd, 0);
+  const frete = entrega === 'retirada' ? 0 : (subtotal >= FAIXA_GRATIS ? 0 : FRETE);
+  return { subtotal, frete, total: subtotal + frete };
+}
+
+function renderResumo() {
+  const items = OP.cart.get();
+  if (!items.length) {
+    $('#checkout-empty').classList.remove('hidden');
+    $('#checkout-form').classList.add('hidden');
+    return;
+  }
+  $('#checkout-form').classList.remove('hidden');
+  $('#resumo-itens').innerHTML = items.map(i => `
+    <div class="cart-item">
+      <img src="${i.imagem}" alt="${i.nome}" onerror="this.onerror=null;this.src='assets/img/glasses/${i.productId}.svg'">
+      <div class="grow"><b>${i.nome}</b><div style="color:var(--muted);font-size:.72rem">${i.lenteNome || ''} · qtd ${i.qtd}</div></div>
+      <div style="font-weight:800;color:var(--navy);font-size:.85rem">${OP.moeda(i.precoUnit * i.qtd)}</div>
+    </div>`).join('');
+  const t = totais();
+  $('#r-subtotal').textContent = OP.moeda(t.subtotal);
+  $('#r-frete').textContent = t.frete === 0 ? 'Grátis' : OP.moeda(t.frete);
+  $('#r-total').textContent = OP.moeda(t.total);
+  const total = t.total;
+  $$('#p-parc option').forEach((o, i) => { o.textContent = `${i + 1}x de ${OP.moeda(total / (i + 1))} sem juros`; });
+  $('#btn-finalizar').textContent = `Pagar ${OP.moeda(t.total)} e finalizar`;
+}
+
+$$('#seg-entrega .chip').forEach(b => b.addEventListener('click', () => {
+  entrega = b.dataset.entrega;
+  $$('#seg-entrega .chip').forEach(x => x.classList.toggle('active', x === b));
+  $('#endereco-box').classList.toggle('hidden', entrega === 'retirada');
+  $('#retirada-info').classList.toggle('hidden', entrega !== 'retirada');
+  renderResumo();
+}));
+
+$$('#seg-receita .chip').forEach(b => b.addEventListener('click', () => {
+  modoReceita = b.dataset.modo;
+  $$('#seg-receita .chip').forEach(x => x.classList.toggle('active', x === b));
+  $('#receita-anexar').classList.toggle('hidden', modoReceita !== 'anexar');
+  $('#receita-codigo').classList.toggle('hidden', modoReceita !== 'codigo');
+  $('#receita-depois').classList.toggle('hidden', modoReceita !== 'depois');
+}));
+
+// máscaras
+$('#p-num').addEventListener('input', e => {
+  const d = e.target.value.replace(/\D/g, '').slice(0, 16);
+  e.target.value = d.replace(/(\d{4})(?=\d)/g, '$1 ').trim();
+});
+$('#c-cpf').addEventListener('input', e => {
+  const d = e.target.value.replace(/\D/g, '').slice(0, 11);
+  e.target.value = d.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, (m, a, b, c, dd) => [a, b, c].filter(Boolean).join('.') + (dd ? '-' + dd : ''));
+});
+$('#c-cep').addEventListener('input', e => {
+  const d = e.target.value.replace(/\D/g, '').slice(0, 8);
+  e.target.value = d.length > 5 ? d.slice(0, 5) + '-' + d.slice(5) : d;
+});
+$('#p-val').addEventListener('input', e => {
+  const d = e.target.value.replace(/\D/g, '').slice(0, 4);
+  e.target.value = d.length > 2 ? d.slice(0, 2) + '/' + d.slice(2) : d;
+});
+
+async function enviarReceitaFoto() {
+  const f = $('#r-foto').files[0];
+  if (!f) return null;
+  return await new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsDataURL(f);
+  });
+}
+
+$('#checkout-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = $('#btn-finalizar');
+  btn.disabled = true; btn.textContent = 'Processando pagamento...';
+  $('#erro-pagamento').classList.add('hidden');
+
+  const itens = OP.cart.get().map(i => ({ produtoId: i.productId, qtd: i.qtd, lenteId: i.lenteId, materialId: i.materialId, tratamentos: i.tratamentos || [] }));
+  const foto = await enviarReceitaFoto();
+  const body = {
+    itens,
+    entrega,
+    cliente: {
+      nome: $('#c-nome').value.trim(), email: $('#c-email').value.trim(), cpf: $('#c-cpf').value,
+      telefone: $('#c-tel').value, cep: $('#c-cep').value, endereco: $('#c-end').value,
+      numero: $('#c-num').value, complemento: $('#c-comp').value, bairro: $('#c-bairro').value,
+      cidade: $('#c-cidade').value, uf: $('#c-uf').value.toUpperCase(),
+    },
+    pagamento: { numero: $('#p-num').value, validade: $('#p-val').value, cvv: $('#p-cvv').value, titular: $('#p-titular').value, parcelas: Number($('#p-parc').value) },
+  };
+  if (modoReceita === 'anexar') {
+    body.receita = {
+      odEsfera: $('.r-od-e').value, odCilindro: $('.r-od-c').value, odEixo: $('.r-od-a').value, odAdicao: $('.r-od-ad').value,
+      oeEsfera: $('.r-oe-e').value, oeCilindro: $('.r-oe-c').value, oeEixo: $('.r-oe-a').value, oeAdicao: $('.r-oe-ad').value,
+      dnpOd: $('.r-dnp-od').value, dnpOe: $('.r-dnp-oe').value, medico: $('.r-medico').value, crm: $('.r-crm').value, foto,
+    };
+  } else if (modoReceita === 'codigo') {
+    body.receitaCodigo = $('#r-codigo').value.trim().toUpperCase();
+  }
+
+  try {
+    const r = await OP.api('/api/pedidos', { method: 'POST', body });
+    OP.cart.clear();
+    $('#checkout-form').classList.add('hidden');
+    $('#checkout-ok').classList.remove('hidden');
+    $('#ok-codigo').textContent = r.codigo;
+    $('#ok-detalhe').textContent = `Total pago: ${OP.moeda(r.total)} · ${r.entrega === 'retirada' ? 'Retirada na loja' : 'Entrega em casa'}${r.receitaId ? ' · Receita recebida e em análise' : ' · Aguardando envio da receita'}`;
+    $('#ok-acompanhar').href = 'pedido.html?codigo=' + r.codigo;
+    OP.toast('Pedido confirmado! 🎉');
+    window.scrollTo(0, 0);
+  } catch (err) {
+    const erros = err.data?.erros || [err.message];
+    $('#erro-pagamento').textContent = erros.join(' ');
+    $('#erro-pagamento').classList.remove('hidden');
+    btn.disabled = false; btn.textContent = 'Pagar e finalizar';
+    renderResumo();
+  }
+});
+
+renderResumo();
+</script>
+<style>
+@media(max-width:980px){#checkout-form{grid-template-columns:1fr !important}}
+</style>
+</body>
+</html>

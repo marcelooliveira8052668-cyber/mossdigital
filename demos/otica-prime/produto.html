@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armação | Ótica Prime</title>
+<link rel="icon" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<section style="padding:22px 0 60px">
+  <div class="container">
+    <nav style="font-size:.78rem;color:var(--muted);margin-bottom:14px"><a href="index.html">Início</a> › <a href="catalogo.html">Catálogo</a> › <span id="crumb">...</span></nav>
+    <div class="product-layout">
+      <div class="gallery">
+        <img id="p-img" src="" alt="Armação">
+        <a class="tryon-cta" id="tryon-link" href="#">🤳 Experimentar esta armação no seu rosto — é grátis</a>
+      </div>
+      <div class="info">
+        <span class="brand-sm" id="p-marca"></span>
+        <h1 id="p-nome">Carregando...</h1>
+        <div class="meta" id="p-meta"></div>
+        <div class="stars" id="p-stars"></div>
+        <p class="desc" id="p-desc"></p>
+
+        <div class="price-box">
+          <div class="price-big" id="p-total-big">...</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-top:4px" id="p-total-detalhe"></div>
+        </div>
+
+        <div class="opt-group">
+          <label for="sel-lente">Tipo de lente (foco)</label>
+          <select id="sel-lente"></select>
+        </div>
+
+        <div class="opt-group">
+          <label for="sel-material">Material / índice de refração</label>
+          <select id="sel-material"></select>
+        </div>
+
+        <div class="opt-group">
+          <label>Tratamentos (opcionais)</label>
+          <div class="trat-grid" id="trat-list"></div>
+        </div>
+
+        <div class="summary">
+          <span>Subtotal com lentes: <strong id="sum-lente">—</strong></span>
+          <span>Total: <strong id="sum-total" style="color:var(--navy)">—</strong></span>
+        </div>
+        <div class="prazo" id="prazo">⏱️ Pronto em até 4 dias úteis</div>
+
+        <div class="opt-group" style="margin-top:14px">
+          <label for="qtd">Quantidade</label>
+          <input id="qtd" type="number" min="1" max="10" value="1" style="width:90px;border:1px solid var(--line);border-radius:10px;padding:10px">
+        </div>
+
+        <div class="buy-row">
+          <button class="btn btn-navy" id="btn-add">Adicionar ao carrinho</button>
+          <button class="btn btn-gold" id="btn-buy">Comprar agora</button>
+        </div>
+        <a href="receita.html" class="btn btn-ghost btn-block" style="margin-top:10px;font-size:.82rem">📋 Enviar minha receita para avaliação</a>
+      </div>
+    </div>
+
+    <div style="margin-top:38px">
+      <div class="section-head"><h2>Você também pode gostar</h2></div>
+      <div class="grid" id="relacionados"></div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/local-data.js"></script>
+<script src="assets/js/local-api.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+const id = new URLSearchParams(location.search).get('id');
+const $ = s => document.querySelector(s);
+let produto = null;
+
+function estrelas(n){ return '★'.repeat(Math.round(n)) + '☆'.repeat(5 - Math.round(n)); }
+
+async function init(){
+  if (!id) { document.body.innerHTML = '<section><div class="container"><h1>Produto não informado.</h1><a href="catalogo.html" class="btn btn-navy">Voltar ao catálogo</a></div></section>'; return; }
+  const [p, lentes, tratamentos, materiais] = await Promise.all([
+    OP.api('/api/produtos/' + encodeURIComponent(id)),
+    OP.api('/api/lentes'),
+    OP.api('/api/tratamentos'),
+    OP.api('/api/materiais'),
+  ]);
+  produto = p;
+  document.title = `${p.nome} | Ótica Prime`;
+  $('#crumb').textContent = p.nome;
+  $('#p-img').src = p.imagem;
+  $('#p-img').alt = p.nome;
+  $('#p-img').onerror = () => { $('#p-img').onerror = null; $('#p-img').src = 'assets/img/glasses/' + p.id + '.svg'; };
+  $('#p-marca').textContent = p.marca;
+  $('#p-nome').textContent = p.nome;
+  $('#p-meta').textContent = `${p.formato} · ${p.material} · Cor: ${p.cor} · Estoque: ${p.estoque} un.`;
+  $('#p-stars').innerHTML = estrelas(p.avaliacao) + ` <em>${p.avaliacao.toFixed(1)} · ${p.nAval} avaliações</em>`;
+  $('#p-desc').textContent = p.descricao;
+  $('#tryon-link').href = 'experimentar.html?id=' + p.id;
+
+  // agrupa lentes por foco
+  const grupos = {};
+  for (const l of lentes) (grupos[l.foco] = grupos[l.foco] || []).push(l);
+  $('#sel-lente').innerHTML = Object.entries(grupos).map(([foco, lista]) =>
+    `<optgroup label="${foco}">${lista.map(l => `<option value="${l.id}">${l.nome} (+ ${OP.moeda(l.preco)})</option>`).join('')}</optgroup>`
+  ).join('');
+  $('#sel-material').innerHTML = materiais.map(m => `<option value="${m.id}">${m.nome} — ${m.descricao}</option>`).join('');
+  $('#trat-list').innerHTML = tratamentos.map(t => `
+    <label class="trat"><input type="checkbox" value="${t.id}" class="trat-check"><span><strong>${t.nome}</strong> <small>+ ${OP.moeda(t.preco)} · ${t.descricao}</small></span></label>`).join('');
+
+  $('#relacionados').innerHTML = (p.relacionados || []).map(r => `
+    <article class="card"><a class="media" href="produto.html?id=${r.id}"><img src="${r.imagem}" alt="${r.nome}" loading="lazy" onerror="this.onerror=null;this.src='assets/img/glasses/${r.id}.svg'"></a>
+      <div class="card-body"><h3 style="min-height:auto"><a href="produto.html?id=${r.id}">${r.nome}</a></h3><div class="price-row"><span class="price">${OP.moeda(r.preco)}</span></div></div></article>`).join('');
+
+  $('#sel-lente').addEventListener('change', atualizar);
+  $('#sel-material').addEventListener('change', atualizar);
+  document.querySelectorAll('.trat-check').forEach(c => c.addEventListener('change', atualizar));
+  $('#btn-add').addEventListener('click', () => adicionar(false));
+  $('#btn-buy').addEventListener('click', () => adicionar(true));
+  atualizar();
+}
+
+function configAtual(){
+  return {
+    produtoId: id,
+    lenteId: $('#sel-lente').value,
+    materialId: $('#sel-material').value,
+    tratamentos: [...document.querySelectorAll('.trat-check:checked')].map(c => c.value),
+  };
+}
+
+async function atualizar(){
+  if (!produto) return;
+  try {
+    const o = await OP.api('/api/orcamento', { method: 'POST', body: configAtual() });
+    $('#p-total-big').innerHTML = `${OP.moeda(o.total)} <small>à vista / ou 6x sem juros</small>`;
+    $('#p-total-detalhe').textContent = `Armação ${OP.moeda(o.armacao)} + lente ${OP.moeda(o.lente)}`;
+    $('#sum-lente').textContent = OP.moeda(o.lente);
+    $('#sum-total').textContent = OP.moeda(o.total);
+    $('#prazo').textContent = `⏱️ Pronto em até ${o.prazoDias} dias úteis após aprovação da receita`;
+  } catch (e) {
+    $('#p-total-detalhe').textContent = 'Não foi possível calcular. Tente novamente.';
+  }
+}
+
+async function adicionar(comprar){
+  const o = await OP.api('/api/orcamento', { method: 'POST', body: configAtual() });
+  const qtd = Math.max(1, Math.min(10, Number($('#qtd').value) || 1));
+  const lenteNome = $('#sel-lente').selectedOptions[0]?.textContent || 'Armação';
+  OP.cart.add({
+    productId: id, nome: produto.nome, imagem: produto.imagem, qtd,
+    lenteId: configAtual().lenteId, materialId: configAtual().materialId,
+    tratamentos: configAtual().tratamentos, lenteNome,
+    precoUnit: o.total,
+  });
+  atualizarBadgeEAviso(comprar);
+}
+function atualizarBadgeEAviso(comprar){
+  if (comprar) { location.href = 'checkout.html'; return; }
+  OP.toast('Adicionado ao carrinho! 🎉');
+}
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enviar receita | Ótica Prime</title>
+<link rel="icon" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<section style="padding:26px 0 70px">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="overline" style="color:var(--gold-dark)">Receita avaliada por profissional</div><h1 style="font-size:1.6rem">Envie sua receita</h1></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start" id="receita-grid">
+      <form class="card-panel" id="form-receita">
+        <h2 style="font-size:1.05rem;margin-bottom:14px">Dados da receita</h2>
+        <div class="form-grid">
+          <div class="field full"><label for="r-nome">Nome completo *</label><input id="r-nome" required placeholder="Como está na identidade"></div>
+          <div class="field"><label for="r-email">E-mail *</label><input id="r-email" type="email" required placeholder="voce@email.com"></div>
+          <div class="field"><label for="r-tel">Telefone / WhatsApp</label><input id="r-tel" placeholder="(11) 99999-0000"></div>
+
+          <div class="field"><label for="od-e">OD — Esfera (longe)</label><input id="od-e" placeholder="-2,50"></div>
+          <div class="field"><label for="oe-e">OE — Esfera (longe)</label><input id="oe-e" placeholder="-2,25"></div>
+          <div class="field"><label for="od-c">OD — Cilindro</label><input id="od-c" placeholder="-0,75"></div>
+          <div class="field"><label for="oe-c">OE — Cilindro</label><input id="oe-c" placeholder="-0,50"></div>
+          <div class="field"><label for="od-a">OD — Eixo</label><input id="od-a" placeholder="180"></div>
+          <div class="field"><label for="oe-a">OE — Eixo</label><input id="oe-a" placeholder="170"></div>
+          <div class="field"><label for="od-ad">OD — Adição (multifocal)</label><input id="od-ad" placeholder="+2,00"></div>
+          <div class="field"><label for="oe-ad">OE — Adição (multifocal)</label><input id="oe-ad" placeholder="+2,00"></div>
+          <div class="field"><label for="dnp-od">DNP olho direito (mm)</label><input id="dnp-od" placeholder="32"></div>
+          <div class="field"><label for="dnp-oe">DNP olho esquerdo (mm)</label><input id="dnp-oe" placeholder="31"></div>
+          <div class="field"><label for="ap">Altura pupilar (mm)</label><input id="ap" placeholder="18"></div>
+          <div class="field"><label for="medico">Médico oftalmologista</label><input id="medico" placeholder="Dra. Lúcia Mendes"></div>
+          <div class="field"><label for="crm">CRM</label><input id="crm" placeholder="CRM-SP 123456"></div>
+          <div class="field"><label for="exame">Data do exame</label><input id="exame" type="date"></div>
+          <div class="field"><label for="validade">Validade da receita</label><input id="validade" type="date"></div>
+          <div class="field full"><label for="obs">Observações</label><textarea id="obs" rows="2" placeholder="Ex.: uso para computador, fotofobia..."></textarea></div>
+          <div class="field full">
+            <label for="foto">Foto da receita (opcional, mas recomendado)</label>
+            <input id="foto" type="file" accept="image/*">
+            <img id="preview" alt="Pré-visualização da receita" class="hidden" style="max-height:160px;border-radius:10px;border:1px solid var(--line);margin-top:8px">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-gold btn-block" id="btn-enviar" style="margin-top:14px">Enviar para avaliação →</button>
+        <p id="erro-receita" class="hidden" style="color:var(--bad);font-size:.85rem;margin-top:10px"></p>
+      </form>
+
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card-panel" id="resultado-receita" style="display:none;border-color:var(--ok)">
+          <h2 style="font-size:1rem;color:var(--ok)">✅ Receita enviada!</h2>
+          <p style="font-size:.9rem;margin:8px 0">Código da sua receita:</p>
+          <div style="font-family:'Poppins';font-size:1.5rem;font-weight:800;color:var(--navy);letter-spacing:.06em" id="codigo-gerado"></div>
+          <p style="font-size:.8rem;color:var(--muted);margin:10px 0">Use este código na finalização da compra para vincular a receita ao seu pedido — ou envie depois, pelo link do pedido.</p>
+          <a href="catalogo.html" class="btn btn-navy btn-block">Escolher minha armação →</a>
+        </div>
+
+        <div class="card-panel">
+          <h2 style="font-size:1rem;margin-bottom:10px">Consultar situação</h2>
+          <div class="field"><label for="consulta-codigo">Código da receita (RC-...)</label><input id="consulta-codigo" placeholder="RC-2026-0001"></div>
+          <button class="btn btn-ghost btn-block" id="btn-consultar" style="margin-top:10px">Consultar</button>
+          <div id="consulta-resultado" style="margin-top:12px;font-size:.85rem"></div>
+        </div>
+
+        <div class="card-panel" style="background:#fffdf4;border-color:var(--gold)">
+          <h2 style="font-size:.95rem;color:var(--gold-dark)">Por que avaliar a receita?</h2>
+          <ul style="font-size:.8rem;color:var(--muted);margin:8px 0 0 16px">
+            <li>Evita lentes cortadas erradas (cilindro e eixo exigem conferência)</li>
+            <li>Confere a validade e a dosagem de adição</li>
+            <li>Ajusta a altura pupilar para multifocais perfeitos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="assets/js/local-data.js"></script>
+<script src="assets/js/local-api.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+
+$('#foto').addEventListener('change', e => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader();
+  r.onload = ev => { const img = $('#preview'); img.src = ev.target.result; img.classList.remove('hidden'); };
+  r.readAsDataURL(f);
+});
+
+function dadosReceita() {
+  return {
+    clienteNome: $('#r-nome').value.trim(), email: $('#r-email').value.trim(), telefone: $('#r-tel').value.trim(),
+    odEsfera: $('#od-e').value, odCilindro: $('#od-c').value, odEixo: $('#od-a').value, odAdicao: $('#od-ad').value,
+    oeEsfera: $('#oe-e').value, oeCilindro: $('#oe-c').value, oeEixo: $('#oe-a').value, oeAdicao: $('#oe-ad').value,
+    dnpOd: $('#dnp-od').value, dnpOe: $('#dnp-oe').value, alturaPupilar: $('#ap').value,
+    medico: $('#medico').value, crm: $('#crm').value, dataExame: $('#exame').value, validade: $('#validade').value,
+    observacoes: $('#obs').value,
+    foto: $('#preview').src && $('#preview').src.startsWith('data:') ? $('#preview').src : null,
+  };
+}
+
+$('#form-receita').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = $('#btn-enviar'); btn.disabled = true; btn.textContent = 'Enviando...';
+  $('#erro-receita').classList.add('hidden');
+  try {
+    const r = await OP.api('/api/receitas', { method: 'POST', body: dadosReceita() });
+    $('#form-receita').classList.add('hidden');
+    $('#resultado-receita').style.display = 'block';
+    $('#codigo-gerado').textContent = r.codigo;
+    const meusCodigos = JSON.parse(localStorage.getItem('op_receitas') || '[]');
+    meusCodigos.unshift({ codigo: r.codigo, em: new Date().toISOString() });
+    localStorage.setItem('op_receitas', JSON.stringify(meusCodigos.slice(0, 10)));
+    OP.toast('Receita enviada para análise! 📋');
+  } catch (err) {
+    $('#erro-receita').textContent = err.data?.erros?.join(' ') || err.message;
+    $('#erro-receita').classList.remove('hidden');
+    btn.disabled = false; btn.textContent = 'Enviar para avaliação →';
+  }
+});
+
+$('#btn-consultar').addEventListener('click', consultar);
+$('#consulta-codigo').addEventListener('keydown', e => { if (e.key === 'Enter') consultar(); });
+async function consultar() {
+  const codigo = $('#consulta-codigo').value.trim().toUpperCase();
+  const box = $('#consulta-resultado');
+  if (!codigo) return;
+  try {
+    const r = await OP.api('/api/receitas/' + encodeURIComponent(codigo));
+    const map = { em_analise: ['Em análise', 'status-warn'], aprovada: ['Aprovada', 'status-ok'], com_pendencia: ['Com pendência', 'status-bad'] };
+    const [label, cls] = map[r.status] || [r.status, ''];
+    box.innerHTML = `<div style="border:1px solid var(--line);border-radius:12px;padding:12px">
+      <span class="status-pill ${cls}">${label}</span>
+      <p style="margin-top:8px"><strong>${r.clienteNome || ''}</strong></p>
+      ${r.observacoes ? `<p style="color:var(--muted);font-size:.8rem">${r.observacoes}</p>` : ''}
+      ${r.notaRevisor ? `<p style="margin-top:8px;background:#fffdf4;border-radius:8px;padding:8px"><strong>Profissional:</strong> ${r.notaRevisor}</p>` : ''}
+    </div>`;
+  } catch (err) {
+    box.innerHTML = '<p style="color:var(--bad)">Receita não encontrada. Confira o código.</p>';
+  }
+}
+</script>
+<style>
+@media(max-width:980px){#receita-grid{grid-template-columns:1fr !important}}
+</style>
+</body>
+</html>
