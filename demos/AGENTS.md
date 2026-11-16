@@ -37,3 +37,19 @@ Preferência expressa do usuário: sempre que construir uma nova demo, criar tam
 - Identificar claramente demonstrações com marcas e valores fictícios.
 - Conferir se o texto cabe na capa e se o endereço divulgado está correto.
 - Criar a capa faz parte da entrega; não implica autorização para publicar no site ou nas redes sociais.
+
+Preferência expressa do usuário (16/11/2026): sempre que a demo receber pedidos
+e/ou pagamento no site — mesmo que seja simulação — entregar um manual desde a
+primeira versão, sem precisar pedir depois.
+
+- Criar `MANUAL.md` dentro da pasta da demo e deixar `README.md` como resumo com link para ele.
+- O manual deve cobrir: como testar, checklist de verificação, como trocar fotos,
+  preços, contatos e textos para um cliente real, como publicar, dependências,
+  limites, créditos/licenças das fotos e status da entrega.
+- Na parte de pedidos/pagamento, explicar com honestidade o modo local (localStorage
+  ou equivalente), o que é necessário para pedidos reais (WhatsApp, e-mail ou
+  banco/servidor) e o que é necessário para cobrança real (gateway com chave secreta
+  no servidor, confirmação por webhook, autenticação e RLS quando houver dados pessoais).
+- Nunca afirmar que pedido foi enviado ou pagamento aprovado sem confirmação real;
+  se a cobrança for simulada, dizer explicitamente que é simulação.
+- Não considerar a demonstração pronta para entrega sem esse manual.
