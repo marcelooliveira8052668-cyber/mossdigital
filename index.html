@@ -875,36 +875,46 @@
         const cards = [...trilho.querySelectorAll('.depoimento-cliente')];
         const contador = document.getElementById('depoimentos-contador');
         const pausa = document.getElementById('depoimentos-pausa');
-        const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        let pausado = reduzirMovimento;
-        const indiceAtual = () => cards.reduce((melhor, card, i) =>
-          Math.abs(card.offsetLeft - trilho.offsetLeft - trilho.scrollLeft) <
-          Math.abs(cards[melhor].offsetLeft - trilho.offsetLeft - trilho.scrollLeft) ? i : melhor, 0);
-        const atualizar = () => { contador.textContent = (indiceAtual() + 1) + ' de ' + cards.length; };
-        const mover = (passo) => {
-          const proximo = (indiceAtual() + passo + cards.length) % cards.length;
-          trilho.scrollTo({ left: cards[proximo].offsetLeft - trilho.offsetLeft, behavior: reduzirMovimento ? 'instant' : 'smooth' });
-          contador.textContent = (proximo + 1) + ' de ' + cards.length;
+        const anterior = document.getElementById('depoimentos-anterior');
+        const proximoBotao = document.getElementById('depoimentos-proximo');
+        const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let indice = 0; // Posição do primeiro cartão visível.
+        let pausado = movimentoReduzido; // Respeita a acessibilidade do dispositivo.
+        let interagindo = false; // Impede o avanço enquanto a pessoa lê ou toca.
+        let destinoProgramado = false;
+        const posicao = (card) => card.getBoundingClientRect().left - trilho.getBoundingClientRect().left + trilho.scrollLeft;
+        const atualizar = () => { contador.textContent = (indice + 1) + ' de ' + cards.length; };
+        const irPara = (novoIndice) => {
+          indice = (novoIndice + cards.length) % cards.length;
+          destinoProgramado = true;
+          trilho.scrollTo({ left: posicao(cards[indice]), behavior: movimentoReduzido ? 'instant' : 'smooth' });
+          atualizar();
+          window.setTimeout(() => { destinoProgramado = false; }, 800);
         };
-        document.getElementById('depoimentos-anterior').addEventListener('click', () => mover(-1));
-        document.getElementById('depoimentos-proximo').addEventListener('click', () => mover(1));
+        anterior.addEventListener('click', () => irPara(indice - 1));
+        proximoBotao.addEventListener('click', () => irPara(indice + 1));
         pausa.addEventListener('click', () => {
           pausado = !pausado;
           pausa.textContent = pausado ? 'Continuar' : 'Pausar';
           pausa.setAttribute('aria-pressed', String(pausado));
         });
-        if (reduzirMovimento) { pausa.textContent = 'Continuar'; pausa.setAttribute('aria-pressed', 'true'); }
-        trilho.addEventListener('scroll', atualizar, { passive:true });
-        // Não movimentar enquanto o usuário lê, aponta ou navega pelo teclado.
-        let interagindo = false;
+        if (pausado) { pausa.textContent = 'Continuar'; pausa.setAttribute('aria-pressed', 'true'); }
+        // Após arrastar manualmente, descobrir qual cartão ficou mais próximo.
+        trilho.addEventListener('scroll', () => {
+          if (destinoProgramado) return;
+          indice = cards.reduce((melhor, card, i) =>
+            Math.abs(posicao(card) - trilho.scrollLeft) < Math.abs(posicao(cards[melhor]) - trilho.scrollLeft) ? i : melhor, 0);
+          atualizar();
+        }, { passive:true });
         trilho.addEventListener('mouseenter', () => { interagindo = true; });
         trilho.addEventListener('mouseleave', () => { interagindo = false; });
         trilho.addEventListener('focusin', () => { interagindo = true; });
         trilho.addEventListener('focusout', () => { interagindo = false; });
         trilho.addEventListener('touchstart', () => { interagindo = true; }, { passive:true });
-        trilho.addEventListener('touchend', () => { interagindo = false; }, { passive:true });
+        trilho.addEventListener('touchend', () => { window.setTimeout(() => { interagindo = false; }, 1800); }, { passive:true });
+        // Avançar automaticamente, sem atrapalhar a leitura ou uma aba oculta.
         window.setInterval(() => {
-          if (!pausado && !interagindo && !document.hidden) mover(1);
+          if (!pausado && !interagindo && !document.hidden) irPara(indice + 1);
         }, 6500);
         atualizar();
       })();
