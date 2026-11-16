@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Açougue do Bairro — demonstração fictícia de site para açougue: cortes bovinos, suínos, aves, linguiças e peixes com fotos, calculadora de peso e encomendas.">
+<title>Açougue do Bairro | Corte na hora, preço honesto — Demo MOSS Digital</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%238e231c'/%3E%3Cpath fill='%23fff' d='M14 40h28v5H14zm2-6 24-14 5 8-24 14z'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="fita">Demonstração fictícia da MOSS Digital · nomes, preços e fotos são ilustrativos · nenhum pedido real</div>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#topo" aria-label="Açougue do Bairro — início">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><path d="M12 42h30v6H12z" fill="#fff"/><path d="M16 36 42 18l6 9-26 18z" fill="#fff"/><circle cx="49" cy="46" r="6" stroke="#fff" stroke-width="3"/></svg>
+      </span>
+      <span class="brand-txt"><b>Açougue do Bairro</b><span>corte na hora · preço honesto</span></span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#cortes">Cortes</a>
+      <a href="#calculadora">Calcular peso</a>
+      <a href="#encomenda">Encomendar</a>
+      <a href="#como">Como funciona</a>
+      <a href="#galeria">Fotos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="hamburger" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="btn btn-vermelho" href="#cortes" style="padding:11px 16px">Ver cortes</a>
+  </div>
+  <nav class="menu-mobile" id="menu-mobile" aria-label="Menu mobile">
+    <a href="#cortes">Cortes</a>
+    <a href="#calculadora">Calcular peso</a>
+    <a href="#encomenda">Encomendar</a>
+    <a href="#como">Como funciona</a>
+    <a href="#galeria">Fotos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main id="topo">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="overline">Açougue de bairro · desde 1998 (fictício)</span>
+        <h1>Carne boa<br><em>não espera.</em></h1>
+        <p class="hero-lead">Corte na hora, embalagem caprichada e preço por quilo bem claro. Escolha entre bovinos, suínos, aves, linguiças e peixes — e encomende para retirar ou receber em casa.</p>
+        <div class="hero-cta">
+          <a href="#cortes" class="btn btn-vermelho">Ver todos os cortes →</a>
+          <a href="#calculadora" class="btn btn-contorno">Calcular meu peso</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img class="hero-foto" src="assets/img/picanha-grelha.webp" alt="Picanha grelhada em espetos — foto ilustrativa" width="640" height="640">
+        <span class="selo-demo">Foto ilustrativa</span>
+        <div class="etiqueta-preco"><small>Destaque da semana</small><b>Picanha</b><small>R$ 89,90 / kg</small></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap strip-inner">
+      <div>🔪 Corte sob medida</div>
+      <div>⚖️ Preço por quilo</div>
+      <div>🛵 Entrega no bairro</div>
+      <div>📦 Embalagem a vácuo</div>
+    </div>
+  </div>
+
+  <!-- CORTES -->
+  <section class="bloco" id="cortes">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="overline">O balcão inteiro</span><h2>Nosso <em>cortes</em></h2></div>
+        <p>Bovinos, suínos, aves, linguiças e peixes. Fotos reais e ilustrativas de cada tipo de corte, com valores fictícios por quilo.</p>
+      </div>
+      <div class="balcao">
+        <aside class="filtros" aria-label="Filtrar cortes">
+          <h3>Categorias</h3>
+          <div class="filtros-lista" id="filtros-lista"></div>
+          <input class="busca" id="busca" type="search" placeholder="Buscar corte..." aria-label="Buscar corte">
+        </aside>
+        <div>
+          <div class="vitrine-topo"><p id="contador">— cortes</p><span class="muted" style="font-size:.76rem">Valores por kg · demonstração</span></div>
+          <div class="grid-produtos" id="produtos"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA -->
+  <section class="bloco" id="calculadora">
+    <div class="wrap">
+      <div class="calc">
+        <div>
+          <span class="overline" style="color:#e8c9a8">Sem surpresa na hora de pagar</span>
+          <h2>Quanto vai <em>me custar?</em></h2>
+          <p>Escolha o corte, arraste até a quantidade que precisa e veja o valor estimado na hora. Depois é só adicionar à encomenda.</p>
+          <label for="calc-produto">Escolha o corte</label>
+          <select id="calc-produto"></select>
+          <label for="calc-kg" style="margin-top:18px">Quantidade (quilos)</label>
+          <input class="calc-slider" id="calc-kg" type="range" min="0.2" max="10" step="0.1" value="1" aria-label="Quantidade em quilos">
+          <div class="calc-linha"><span>0,2 kg</span><input id="calc-num" type="text" inputmode="decimal" value="1,0" aria-label="Quantidade digitada em quilos" style="width:78px;text-align:center;background:#fff;border:0;border-radius:8px;padding:6px;color:#251f1b;font-weight:800"><span>10 kg</span></div>
+        </div>
+        <div class="calc-total">
+          <small>Valor estimado</small>
+          <b id="calc-total">R$ 0,00</b>
+          <span>cálculo simples: preço por kg × quantidade</span>
+          <button type="button" class="btn btn-vermelho" id="calc-add" style="margin-top:18px;width:100%">Adicionar à encomenda</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENCOMENDA -->
+  <section class="bloco" id="encomenda">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="overline">Monte seu pedido</span><h2>Sua <em>encomenda</em></h2></div>
+        <p>Seus itens ficam neste navegador. Ao confirmar, você recebe um código demonstrativo — sem pagamento, sem envio e sem dados indo para servidor algum.</p>
+      </div>
+      <div class="pedido-grid">
+        <div class="painel">
+          <h3>Balcão montado</h3>
+          <div id="carrinho-itens"></div>
+          <div class="total-linha"><span>Total estimado</span><b id="total-carrinho">R$ 0,00</b></div>
+        </div>
+        <div class="painel">
+          <h3>Dados para a encomenda</h3>
+          <form id="form-encomenda" class="form-grid">
+            <div class="campo full"><label for="enc-nome">Seu nome *</label><input id="enc-nome" required placeholder="Como podemos chamar?" autocomplete="name"></div>
+            <div class="campo full"><label for="enc-tel">Telefone / WhatsApp *</label><input id="enc-tel" required placeholder="(11) 90000-0000" inputmode="tel" autocomplete="tel"></div>
+            <div class="campo"><label for="enc-tipo">Recebimento *</label>
+              <select id="enc-tipo"><option>Retirada na loja</option><option>Entrega no bairro</option></select>
+            </div>
+            <div class="campo"><label for="enc-data">Data *</label><input id="enc-data" type="date" required></div>
+            <div class="campo"><label for="enc-hora">Horário *</label><input id="enc-hora" type="time" value="10:00" required></div>
+            <div class="campo full"><label for="enc-obs">Observações</label><textarea id="enc-obs" rows="2" placeholder="Ponto da carne, embalagem, etc."></textarea></div>
+            <div class="campo full"><button type="submit" class="btn btn-vermelho" style="width:100%">Confirmar encomenda demonstrativa</button></div>
+          </form>
+          <p class="erro" id="erro-form" role="alert"></p>
+          <div class="ok" id="ok-encomenda" role="status">
+            <b>Encomenda registrada nesta demonstração.</b><br>
+            Código: <strong id="ok-codigo"></strong><br>
+            <span id="ok-resumo"></span><br>
+            <small class="muted">Nada foi enviado. O registro fica apenas no armazenamento local deste navegador.</small>
+          </div>
+          <p class="aviso">Modo local: os pedidos são salvos somente no <strong>localStorage</strong> deste navegador. Isso <strong>não</strong> é um banco de dados conectado. O manual explica como ligar a demo a um banco real (Supabase) com autenticação e RLS.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="bloco" id="como">
+    <div class="wrap">
+      <div class="head"><div><span class="overline">Simples assim</span><h2>Como <em>funciona</em></h2></div></div>
+      <div class="passos">
+        <div class="passo"><div class="passo-ic">1</div><h3>Escolha o corte</h3><p>Navegue por categoria ou busque pelo nome. Cada item tem foto e preço por quilo.</p></div>
+        <div class="passo"><div class="passo-ic">2</div><h3>Defina o peso</h3><p>Use a calculadora ou adicione 0,5 kg por vez. Ajuste a quantidade no balcão.</p></div>
+        <div class="passo"><div class="passo-ic">3</div><h3>Encomende</h3><p>Preencha nome, contato, data e se quer retirar ou receber em casa.</p></div>
+        <div class="passo"><div class="passo-ic">4</div><h3>Guarde o código</h3><p>Você recebe um código demonstrativo. Em uma loja real, ele acompanharia o pedido.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="bloco" id="galeria">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="overline">Fotos para conhecer</span><h2>Na <em>vitrine</em></h2></div>
+        <p>Imagens reais de cortes e produtos, usadas apenas como ilustração do segmento. As fontes e licenças estão em <code>assets/img/FONTES.md</code>.</p>
+      </div>
+      <div class="galeria" id="galeria" tabindex="0" role="region" aria-label="Fotos dos produtos — role para o lado">
+        <figure><img src="assets/img/contrafile-fresco.webp" alt="Cortes de carne bovina crua"><figcaption>Cortes bovinos frescos</figcaption></figure>
+        <figure><img src="assets/img/costelinha-suina.webp" alt="Costelinha suína crua"><figcaption>Costelinha suína</figcaption></figure>
+        <figure><img src="assets/img/coxa-frango.webp" alt="Coxas de frango cruas"><figcaption>Coxas de frango</figcaption></figure>
+        <figure><img src="assets/img/linguca-calabresa.webp" alt="Linguiças calabresas frescas"><figcaption>Linguiça calabresa</figcaption></figure>
+        <figure><img src="assets/img/embutidos.webp" alt="Embutidos variados em açougue"><figcaption>Embutidos variados</figcaption></figure>
+        <figure><img src="assets/img/file-salmao.webp" alt="Filés de salmão crus"><figcaption>Filé de salmão</figcaption></figure>
+        <figure><img src="assets/img/camarao.webp" alt="Camarões frescos crus"><figcaption>Camarão fresco</figcaption></figure>
+        <figure><img src="assets/img/carne-moida.webp" alt="Carne moída crua"><figcaption>Carne moída na hora</figcaption></figure>
+      </div>
+      <div class="galeria-controles">
+        <button type="button" data-galeria="-1" aria-label="Fotos anteriores">←</button>
+        <button type="button" data-galeria="1" aria-label="Próximas fotos">→</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="bloco">
+    <div class="wrap">
+      <div class="head"><div><span class="overline">O que fazemos diferente</span><h2>Por que a <em>gente</em></h2></div></div>
+      <div class="diferenciais">
+        <div class="dif"><b>Corte do seu jeito</b><p>Fatias mais grossas, mais finas, em pedaços... você define na observação do pedido.</p></div>
+        <div class="dif"><b>Preço transparente</b><p>O valor por quilo aparece em cada produto e no total da encomenda.</p></div>
+        <div class="dif"><b>Embalagem caprichada</b><p>A vácuo ou em papel de açougue, sempre identificada com o código do pedido.</p></div>
+        <div class="dif"><b>Retirada ágil</b><p>Escolha o horário e retire pronto. Ou receba em casa dentro do bairro.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="bloco" id="contato">
+    <div class="wrap">
+      <div class="contato">
+        <span class="overline" style="color:#f0c9a8">Bora encomendar?</span>
+        <h2>Carne boa<br>na sua mesa.</h2>
+        <p>Nesta demonstração, o contato acontece pelo formulário de encomenda acima. Nenhum número de WhatsApp real é usado.</p>
+        <div class="contato-acoes">
+          <a href="#encomenda" class="btn btn-claro">Fazer encomenda →</a>
+          <a href="#cortes" class="btn btn-contorno" style="border-color:#fff;color:#fff">Ver os cortes</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand-txt"><b>Açougue do Bairro</b><span>corte na hora · preço honesto</span></div>
+        <p style="margin-top:10px;max-width:320px">Demonstração fictícia criada para mostrar como um site de açougue pode organizar catálogo, pesos e encomendas.</p>
+      </div>
+      <div><h4>Horário (fictício)</h4><p>Seg a sáb: 7h às 19h<br>Domingo: 7h às 12h</p></div>
+      <div><h4>Onde ficaria (fictício)</h4><p>Rua do Açougue, 123<br>Vila Nova — São Paulo/SP</p></div>
+    </div>
+    <div class="rodape-fino">
+      © 2026 Açougue do Bairro · Demonstração da MOSS Digital. Nomes, preços, endereço e telefones são fictícios.<br>
+      Fotografias reais do Wikimedia Commons, usadas apenas como ilustração — veja <strong>assets/img/FONTES.md</strong>. Nenhum pedido ou pagamento real.
+    </div>
+  </div>
+</footer>
+
+<button class="botao-carrinho" id="abrir-carrinho" type="button" aria-label="Abrir balcão de encomenda">
+  🛒 Meu balcão <span id="badge-carrinho">0</span>
+</button>
+
+<div class="overlay" id="overlay" aria-hidden="true"></div>
+<aside class="gaveta" id="gaveta" role="dialog" aria-modal="true" aria-label="Balcão de encomenda" aria-hidden="true">
+  <div class="gaveta-topo">
+    <h3>Meu balcão</h3>
+    <button type="button" id="fechar-carrinho" aria-label="Fechar balcão">✕</button>
+  </div>
+  <div class="gaveta-corpo" id="gaveta-itens"></div>
+  <div class="gaveta-pe">
+    <div class="total-linha"><span>Total estimado</span><b id="gaveta-total">R$ 0,00</b></div>
+    <a href="#encomenda" class="btn btn-vermelho" id="ir-encomenda" style="width:100%;margin-top:12px" onclick="document.getElementById('overlay').classList.remove('aberto');document.getElementById('gaveta').classList.remove('aberto')">Ir para a encomenda →</a>
+  </div>
+</aside>
+
+<!-- FICHA DO CORTE (abre ao clicar em qualquer card do catálogo) -->
+<div class="modal-overlay" id="modal-overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" id="modal">
+    <div class="modal-topo">
+      <span>Ficha do corte · demonstração</span>
+      <button type="button" id="modal-fechar" aria-label="Fechar ficha do corte">✕</button>
+    </div>
+    <div class="modal-corpo">
+      <img class="modal-foto" id="modal-foto" src="assets/img/picanha-grelha.webp" alt="Foto do corte selecionado">
+      <div>
+        <span class="card-cat" id="modal-cat"></span>
+        <h2 id="modal-titulo"></h2>
+        <div class="modal-preco"><b id="modal-preco"></b><small>/ kg</small></div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="ficha-linha"><b>Ideal para</b><span id="modal-uso"></span></div>
+        <div class="ficha-linha"><b>Dica de preparo</b><span id="modal-dica"></span></div>
+        <div class="ficha-linha"><b>Rendimento</b><span id="modal-rend"></span></div>
+        <div class="modal-calc">
+          <label for="modal-kg">Quanto você quer levar?</label>
+          <input type="range" id="modal-kg" min="0.2" max="10" step="0.1" value="1" aria-label="Quantidade em quilos">
+          <div class="modal-calc-linha"><span id="modal-kg-label">1,0 kg</span><b id="modal-total">R$ 0,00</b></div>
+          <button type="button" class="btn btn-vermelho" id="modal-add" style="width:100%">Adicionar à encomenda</button>
+        </div>
+        <div class="modal-acoes">
+          <button type="button" class="btn btn-contorno" id="modal-fechar-2">Voltar ao catálogo</button>
+        </div>
+        <p class="modal-aviso">Valor estimado = preço por kg × quantidade. Sugestões de preparo são genéricas e ilustrativas; fotos e preços não representam produtos reais.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/produtos.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
