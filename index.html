@@ -48,6 +48,17 @@
     #depoimentos .depoimento-cliente blockquote p:last-child { margin-bottom:0; }
     #depoimentos .depoimento-autoria { margin:18px 0 0; color:#123753; font-weight:700; }
     #depoimentos .depoimento-autorizado { margin:4px 0 0; color:#596b79; font-size:.78rem; }
+    /* Carrossel: dois cartões no computador e um no celular. */
+    #depoimentos .depoimentos-trilho { display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:thin; padding:4px 3px 14px; }
+    #depoimentos .depoimentos-trilho .depoimento-cliente { flex:0 0 calc((100% - 18px)/2); min-width:0; max-width:none; margin-top:0; scroll-snap-align:start; }
+    #depoimentos .depoimentos-controles { display:flex; align-items:center; gap:12px; margin-top:14px; }
+    #depoimentos .depoimentos-seta { background:#123753; color:#fff; border:0; border-radius:999px; width:44px; height:44px; cursor:pointer; font-size:1.4rem; }
+    #depoimentos .depoimentos-seta:focus-visible { outline:3px solid #b77c00; outline-offset:3px; }
+    #depoimentos .depoimentos-pausa { border:1px solid #123753; color:#123753; background:#fff; padding:10px 14px; border-radius:999px; cursor:pointer; }
+    #depoimentos .depoimentos-contador { color:#123753; font-size:.85rem; }
+    @media(max-width:1000px) { #depoimentos .depoimentos-painel { grid-template-columns:1fr; } }
+    @media(max-width:720px) { #depoimentos .depoimentos-trilho .depoimento-cliente { flex-basis:100%; } }
+    @media(prefers-reduced-motion:reduce) { #depoimentos .depoimentos-trilho { scroll-behavior:auto; } }
     @media(max-width:720px) {
       #depoimentos { padding:30px 0 52px; }
       #depoimentos .depoimentos-painel { grid-template-columns:1fr; gap:22px; padding:24px; }
@@ -794,7 +805,8 @@
           <p class="eyebrow">A voz de quem confia</p>
           <h2 id="depoimentos-titulo">O que nossos clientes dizem</h2>
           <p class="depoimentos-descricao">Contratou a MOSS Digital? Conte como foi sua experiência! Seu relato ajuda outros negócios a conhecer nosso trabalho. Os depoimentos são publicados aqui somente com autorização.</p>
-          <!-- Depoimento real publicado com autorização da cliente. -->
+          <!-- Carrossel com avaliações autorizadas, sem alterar o conteúdo dos outros setores. -->
+          <div class="depoimentos-trilho" id="depoimentos-trilho" role="region" aria-label="Depoimentos dos clientes" tabindex="0">
           <article class="depoimento-cliente" aria-label="Avaliação de 5 estrelas de Luciana Silva Oliveira">
             <p class="depoimento-estrelas" aria-label="Nota: 5 de 5 estrelas">★★★★★</p>
             <blockquote>
@@ -806,7 +818,6 @@
             <p class="depoimento-autoria">Luciana Silva Oliveira</p>
             <p class="depoimento-autorizado">Cliente MOSS Digital · Depoimento autorizado</p>
           </article>
-          <!-- Depoimentos de clientes aprovados e projeto musical em destaque. -->
           <article class="depoimento-cliente" aria-label="Avaliação de 5 estrelas de Elaine e Sandra">
             <p class="depoimento-estrelas" aria-label="Nota: 5 de 5 estrelas">★★★★★</p>
             <blockquote>
@@ -828,13 +839,27 @@
             <p class="depoimento-autorizado">Cliente MOSS Digital · Depoimento aprovado</p>
             <p><a href="https://marcelooliveira8052668-cyber.github.io/t-instalacao/" target="_blank" rel="noopener noreferrer">Visitar o site ↗</a></p>
           </article>
-          <!-- Fafa Silva: mostrar projeto, sem atribuir avaliação antes da aprovação da artista. -->
-          <article class="depoimento-cliente" aria-label="Projeto musical de Fafa Silva">
+          <article class="depoimento-cliente" aria-label="Avaliação de 5 estrelas de Fafa Silva">
+            <p class="depoimento-estrelas" aria-label="Nota: 5 de 5 estrelas">★★★★★</p>
+            <blockquote>
+              <p>Quero agradecer à MOSS Digital pelo maravilhoso trabalho realizado na criação do meu site!</p>
+              <p>Fiquei muito feliz com o resultado. Meu site ficou lindo, moderno, organizado e cheio de personalidade. Agora tenho um espaço especial na internet onde posso compartilhar minhas músicas, minhas composições e um pouco da minha trajetória artística.</p>
+              <p>Gostei muito do cuidado com cada detalhe, da dedicação e da paciência durante todo o desenvolvimento. Tudo foi pensado com muito carinho para valorizar meu trabalho musical.</p>
+              <p>Ver minhas músicas reunidas em um site tão bonito foi uma alegria enorme!</p>
+              <p>Estou muito satisfeita e recomendo a MOSS Digital a todos que desejam transformar suas ideias em realidade com profissionalismo, criatividade e dedicação.</p>
+              <p>Muito obrigada por esse trabalho tão especial! ❤️🎶</p>
+            </blockquote>
             <p class="depoimento-autoria">Fafa Silva — Music</p>
-            <p>Site musical criado pela MOSS Digital para apresentar composições, músicas, fotografias e novidades da artista.</p>
-            <p class="depoimento-autorizado">Projeto realizado · Depoimento escrito aguardando aprovação</p>
+            <p class="depoimento-autorizado">Cliente MOSS Digital · Depoimento aprovado</p>
             <p><a href="https://marcelooliveira8052668-cyber.github.io/fatica-music/" target="_blank" rel="noopener noreferrer">Conhecer o site musical ↗</a></p>
           </article>
+          </div>
+          <div class="depoimentos-controles" aria-label="Controles dos depoimentos">
+            <button class="depoimentos-seta" type="button" id="depoimentos-anterior" aria-label="Depoimentos anteriores">‹</button>
+            <button class="depoimentos-seta" type="button" id="depoimentos-proximo" aria-label="Próximos depoimentos">›</button>
+            <button class="depoimentos-pausa" type="button" id="depoimentos-pausa" aria-pressed="false">Pausar</button>
+            <span class="depoimentos-contador" id="depoimentos-contador" aria-live="off">1 de 4</span>
+          </div>
         </div>
         <div class="depoimentos-acoes">
           <a class="button" href="https://wa.me/5511942038103?text=Ol%C3%A1%2C%20MOSS%20Digital!%20Quero%20deixar%20uma%20avalia%C3%A7%C3%A3o%20verdadeira%20sobre%20o%20servi%C3%A7o%20prestado.%0A%0AMeu%20nome%3A%0ANome%20da%20empresa%20(opcional)%3A%0AMinha%20nota%20(1%20a%205)%3A%0AMeu%20depoimento%3A%0A%0AAutorizo%20a%20publica%C3%A7%C3%A3o%20do%20meu%20depoimento%20e%20nome%20no%20site%20da%20MOSS%20Digital%3F%20(Sim%2FN%C3%A3o)%3A" target="_blank" rel="noopener noreferrer" aria-label="Deixar avaliação pelo WhatsApp">⭐ Deixar minha avaliação <span aria-hidden="true">↗</span></a>
@@ -842,6 +867,48 @@
         </div>
       </div>
     </section>
+    <script>
+      // Controles do carrossel: setas, toque, pausa e movimento automático.
+      (() => {
+        const trilho = document.getElementById('depoimentos-trilho');
+        if (!trilho) return;
+        const cards = [...trilho.querySelectorAll('.depoimento-cliente')];
+        const contador = document.getElementById('depoimentos-contador');
+        const pausa = document.getElementById('depoimentos-pausa');
+        const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let pausado = reduzirMovimento;
+        const indiceAtual = () => cards.reduce((melhor, card, i) =>
+          Math.abs(card.offsetLeft - trilho.offsetLeft - trilho.scrollLeft) <
+          Math.abs(cards[melhor].offsetLeft - trilho.offsetLeft - trilho.scrollLeft) ? i : melhor, 0);
+        const atualizar = () => { contador.textContent = (indiceAtual() + 1) + ' de ' + cards.length; };
+        const mover = (passo) => {
+          const proximo = (indiceAtual() + passo + cards.length) % cards.length;
+          trilho.scrollTo({ left: cards[proximo].offsetLeft - trilho.offsetLeft, behavior: reduzirMovimento ? 'instant' : 'smooth' });
+          contador.textContent = (proximo + 1) + ' de ' + cards.length;
+        };
+        document.getElementById('depoimentos-anterior').addEventListener('click', () => mover(-1));
+        document.getElementById('depoimentos-proximo').addEventListener('click', () => mover(1));
+        pausa.addEventListener('click', () => {
+          pausado = !pausado;
+          pausa.textContent = pausado ? 'Continuar' : 'Pausar';
+          pausa.setAttribute('aria-pressed', String(pausado));
+        });
+        if (reduzirMovimento) { pausa.textContent = 'Continuar'; pausa.setAttribute('aria-pressed', 'true'); }
+        trilho.addEventListener('scroll', atualizar, { passive:true });
+        // Não movimentar enquanto o usuário lê, aponta ou navega pelo teclado.
+        let interagindo = false;
+        trilho.addEventListener('mouseenter', () => { interagindo = true; });
+        trilho.addEventListener('mouseleave', () => { interagindo = false; });
+        trilho.addEventListener('focusin', () => { interagindo = true; });
+        trilho.addEventListener('focusout', () => { interagindo = false; });
+        trilho.addEventListener('touchstart', () => { interagindo = true; }, { passive:true });
+        trilho.addEventListener('touchend', () => { interagindo = false; }, { passive:true });
+        window.setInterval(() => {
+          if (!pausado && !interagindo && !document.hidden) mover(1);
+        }, 6500);
+        atualizar();
+      })();
+    </script>
     <section class="wrap contact" id="contato" aria-labelledby="contact-title"><div><p class="eyebrow">Vamos tirar sua ideia do papel?</p><h2 id="contact-title">O próximo site<br>pode ser o seu.</h2><p>Conte o que você imagina. A gente conversa sobre o caminho.</p><p>Prefere falar por e-mail? <a href="mailto:mossdigital.contato@gmail.com" style="color:#ffd22f;font-weight:700;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere;">mossdigital.contato@gmail.com</a></p></div><a class="button" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp <span aria-hidden="true">↗</span></a></section>
   </main>
   <footer class="site-footer"><div class="wrap footer-row"><span>© MOSS Digital · Ideias que ganham presença.</span><nav aria-label="Links do rodapé"><a href="https://www.instagram.com/mossdigital_sites/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="/privacidade.html">Privacidade</a><a href="#inicio">Voltar ao topo ↑</a></nav></div></footer>
