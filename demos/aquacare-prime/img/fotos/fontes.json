@@ -1,0 +1,62 @@
+[
+  {
+    "arquivo": "img/fotos/foto01.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Kids playing in the pool",
+    "fonte": "https://www.flickr.com/photos/52179521@N07/4867585468",
+    "licenca": "by 2.0",
+    "autor": "Jared Wong",
+    "url_imagem": "https://live.staticflickr.com/4079/4867585468_cce9e7f093_b.jpg",
+    "descricao": "Piscina residencial"
+  },
+  {
+    "arquivo": "img/fotos/foto02.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "RDECOM solar panels, Djibouti, May 2011",
+    "fonte": "https://www.flickr.com/photos/36281822@N08/5729070957",
+    "licenca": "by 2.0",
+    "autor": "US Army Africa",
+    "url_imagem": "https://live.staticflickr.com/5082/5729070957_ef44a2233e_b.jpg",
+    "descricao": "Limpeza de piscina"
+  },
+  {
+    "arquivo": "img/fotos/foto03.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Pool Water Blue Reflection Brandon",
+    "fonte": "https://www.flickr.com/photos/53313745@N00/4719559832",
+    "licenca": "by 2.0",
+    "autor": "cdsessums",
+    "url_imagem": "https://live.staticflickr.com/4035/4719559832_98effa56b4_b.jpg",
+    "descricao": "Água da piscina"
+  },
+  {
+    "arquivo": "img/fotos/foto04.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "United State of Art",
+    "fonte": "https://www.flickr.com/photos/55943778@N00/3658781959",
+    "licenca": "by-sa 2.0",
+    "autor": "qthomasbower",
+    "url_imagem": "https://live.staticflickr.com/3642/3658781959_1d09219c4c_b.jpg",
+    "descricao": "Azulejos da piscina"
+  },
+  {
+    "arquivo": "img/fotos/foto05.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "swimming",
+    "fonte": "https://www.flickr.com/photos/48439369@N00/14398980953",
+    "licenca": "by 2.0",
+    "autor": "Tim Pierce",
+    "url_imagem": "https://live.staticflickr.com/3916/14398980953_5925595b40_b.jpg",
+    "descricao": "Piscina de resort"
+  },
+  {
+    "arquivo": "img/fotos/foto06.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Africa swimming pool cleaning",
+    "fonte": "https://www.flickr.com/photos/50631797@N00/5461076372",
+    "licenca": "by 2.0",
+    "autor": "liberalmind1012",
+    "url_imagem": "https://live.staticflickr.com/5260/5461076372_3f917f13a7_b.jpg",
+    "descricao": "Equipamento de limpeza de piscina"
+  }
+]

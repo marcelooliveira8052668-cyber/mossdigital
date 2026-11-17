@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f5a5c">
+<meta name="description" content="ECOANALYTICS PRIME — demonstração de laboratório de análises ambientais com amostras, resultados fictícios e relatórios ilustrativos.">
+<title>ECOANALYTICS PRIME — Análises Ambientais | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  ECOANALYTICS PRIME — DEMONSTRAÇÃO 08 DO CATÁLOGO MOSS DIGITAL
+  ============================================================================
+  Arquivo único (HTML + CSS + JS + SVGs inline).
+
+  ⚠️ TODOS OS RESULTADOS, VALORES, CÓDIGOS E RELATÓRIOS SÃO FICTÍCIOS.
+  Não há certificados de acreditação, laudos oficiais, normas citadas ou
+  resultados reais. Nenhum dado de laboratório verdadeiro aparece aqui.
+
+  ONDE EDITAR:
+  - Análises do catálogo: ANALISES (JS)
+  - Amostras iniciais: AMOSTRAS_FICTICIAS (JS)
+  - Parâmetros/resultados fictícios: RESULTADOS_FICTICIOS (JS)
+  - WhatsApp MOSS: WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — científico: verde-azul, azul, branco */
+:root{
+ --teal-900:#0b3e40;--teal-800:#0f5a5c;--teal-700:#157477;--teal-600:#209397;
+ --azul-700:#1d6094;--ciano:#5fc9c9;
+ --branco:#fff;--fundo:#f2f8f8;--tinta:#203438;--suave:#60777a;
+ --borda:#d1e4e4;--sombra:0 8px 24px rgba(11,62,64,.10);--sombra-forte:0 18px 42px rgba(11,62,64,.18);
+ --raio:10px;--raio-s:6px;
+ --titulo:"Trebuchet MS","Segoe UI",sans-serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.6}
+h1,h2,h3,h4{font-family:var(--titulo);line-height:1.18;color:var(--teal-900);margin:0 0 .5em}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--teal-700)}
+button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--ciano);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--teal-800);color:#fff;padding:.6rem 1rem;z-index:999}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0}
+.secao--fundo{background:var(--fundo)}
+.secao--escura{background:var(--teal-900);color:#cbe6e5}
+.secao--escura h2,.secao--escura h3{color:#fff}
+.cabecalho-secao{max-width:690px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-600);font-weight:700}
+.titulo-secao{font-size:clamp(1.9rem,3.8vw,2.6rem)}
+.subtitulo-secao{color:var(--suave)}
+.secao--escura .subtitulo-secao{color:#a9cdcb}
+.centro{text-align:center;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.78rem 1.25rem;border:2px solid transparent;border-radius:var(--raio-s);
+ font-weight:700;cursor:pointer;text-decoration:none;font-size:.88rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn--teal{background:var(--teal-700);color:#fff}.btn--teal:hover{background:var(--teal-600)}
+.btn--azul{background:var(--azul-700);color:#fff}
+.btn--contorno{border-color:var(--teal-600);color:var(--teal-800);background:transparent}.btn--contorno:hover{background:rgba(21,116,119,.08)}
+.btn--claro{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+.btn--pequeno{padding:.35rem .6rem;font-size:.72rem}
+.btn--bloco{width:100%}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+/* Barra/cabeçalho */
+.barra{background:var(--teal-900);color:#a9cdcb;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.cabecalho{background:rgba(255,255,255,.97);border-bottom:1px solid var(--borda);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--teal-900)}
+.logo svg{width:42px;height:42px}
+.logo strong{display:block;font-family:var(--titulo);font-size:1.1rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--teal-600)}
+.nav{display:flex;align-items:center;gap:1.2rem}
+.nav a{text-decoration:none;color:var(--tinta);font-weight:600;font-size:.86rem}.nav a:hover{color:var(--teal-600)}
+.menu-toggle{display:none;background:none;border:1px solid var(--borda);color:var(--teal-900);padding:.45rem;cursor:pointer;border-radius:6px}
+.menu-toggle svg{width:24px;height:24px}
+
+/* Hero */
+.hero{background:linear-gradient(125deg,var(--teal-900),var(--teal-800));color:#fff;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
+.hero h1{color:#fff;font-size:clamp(2.1rem,4.8vw,3.4rem)}
+.hero h1 em{color:var(--ciano);font-style:normal}
+.hero__texto{color:#c2dedd;max-width:34rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero__arte{border:1px solid rgba(95,201,201,.3);border-radius:var(--raio);padding:1rem;background:rgba(255,255,255,.04)}
+.hero__arte svg{width:100%;height:auto}
+.hero__nota{font-size:.75rem;color:#c2dedd;border-left:3px solid var(--ciano);padding:.5rem .8rem;margin-top:1.2rem}
+
+/* Análises */
+.analises{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.analise{padding:1.4rem;transition:transform .2s}
+.analise:hover{transform:translateY(-3px)}
+.analise svg{width:44px;height:44px;margin-bottom:.7rem}
+.analise h3{font-size:1.05rem}.analise p{font-size:.84rem;color:var(--suave);margin:0}
+
+/* Solicitação */
+.solicitacao{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:start}
+.form-card{padding:1.5rem}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+.campo label{font-weight:700;font-size:.82rem;color:var(--teal-800)}
+.campo input,.campo select,.campo textarea{width:100%;padding:.65rem .75rem;border:1px solid var(--borda);border-radius:var(--raio-s)}
+.campo textarea{min-height:80px;resize:vertical}
+.campo .erro{color:#b04a4a;font-size:.74rem;min-height:1.1em}
+.campo.invalido input,.campo.invalido select{border-color:#b04a4a}
+.painel-info{background:var(--teal-800);color:#fff;border-radius:var(--raio);padding:1.5rem;position:sticky;top:90px}
+.painel-info h3{color:#fff;font-size:1.1rem}
+.passo-lista{list-style:none;padding:0}
+.passo-lista li{font-size:.84rem;padding:.5rem 0;border-bottom:1px dashed rgba(255,255,255,.2)}
+.passo-lista li strong{color:var(--ciano)}
+.aviso{font-size:.76rem;color:#c2dedd;background:rgba(255,255,255,.07);border-left:3px solid var(--ciano);padding:.7rem;margin-top:1rem}
+
+/* Painel de amostras */
+.indicadores{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.indicador{padding:1rem 1.1rem;border-top:3px solid var(--teal-600)}
+.indicador strong{display:block;font-family:var(--mono);font-size:2rem;color:var(--teal-900);line-height:1.1}
+.indicador span{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--suave);font-weight:700}
+.painel-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:1.5rem;align-items:start}
+.painel-layout>*{min-width:0}
+.busca-linha{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.8rem}
+.busca-linha input{flex:1;min-width:180px;padding:.6rem .7rem;border:1px solid var(--borda);border-radius:var(--raio-s)}
+.rolagem{overflow-x:auto;max-width:100%}
+.tabela{width:100%;border-collapse:collapse;font-size:.82rem;min-width:480px}
+.tabela th{background:var(--teal-800);color:#fff;text-align:left;padding:.55rem .65rem;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase}
+.tabela td{padding:.6rem .65rem;border-bottom:1px solid var(--borda)}
+.tabela tr{cursor:pointer}.tabela tbody tr:hover{background:#f0f8f8}
+.tabela tr.selecionado{background:#eaf7f6}
+.codigo{font-family:var(--mono);font-weight:700;color:var(--teal-700)}
+.etiqueta{display:inline-block;padding:.18rem .5rem;border-radius:999px;font-size:.66rem;font-weight:700;background:var(--fundo);color:var(--teal-800)}
+.lateral{padding:1.2rem;position:sticky;top:90px}
+.lateral h3{font-size:1rem}
+.etapas{list-style:none;padding:0 0 0 .9rem;border-left:1px solid var(--borda);margin:.6rem 0}
+.etapas li{position:relative;font-size:.8rem;padding-bottom:.6rem}
+.etapas li::before{content:"";position:absolute;left:-1.15rem;top:.25rem;width:8px;height:8px;border-radius:50%;background:var(--teal-600)}
+.tabela-resultados{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:.6rem}
+.tabela-resultados th,.tabela-resultados td{border:1px solid var(--borda);padding:.4rem .5rem;text-align:left}
+.ficticio{font-family:var(--mono);font-size:.66rem;color:#b04a4a;font-weight:700}
+
+/* Métodos */
+.metodos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.metodo{padding:1.3rem}.metodo h3{font-size:1rem}.metodo p{font-size:.84rem;color:var(--suave);margin:0}
+
+/* Contato */
+.contato{display:grid;grid-template-columns:.85fr 1.15fr;gap:2rem}
+.contato__info li{font-size:.88rem;margin-bottom:.5rem}
+.confirmacao{display:none;background:#e9f6f3;border:1px solid #b7ddd6;border-radius:var(--raio-s);padding:.9rem;margin-top:1rem;color:#26645d;font-size:.85rem}
+.confirmacao.visivel{display:block}
+
+/* Rodapé */
+.rodape{background:var(--teal-900);color:#a9cdcb;padding:2.6rem 0 1.4rem;border-top:4px solid var(--ciano)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.rodape__marca strong{color:#fff;font-family:var(--titulo)}
+.moss-bloco{border:1px solid rgba(95,201,201,.4);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+.moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+.rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--teal-700);color:#fff;
+ font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+#areaImpressao{display:none}
+@media print{
+ body *{visibility:hidden!important}
+ #areaImpressao,#areaImpressao *{visibility:visible!important}
+ #areaImpressao{display:block!important;position:absolute;left:0;top:0;width:100%;color:#000}
+ #areaImpressao h1{font-size:18pt}
+ #areaImpressao table{width:100%;border-collapse:collapse;margin-top:10pt}
+ #areaImpressao th,#areaImpressao td{border:1px solid #000;padding:5pt;text-align:left;font-size:9pt}
+}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem;box-shadow:var(--sombra)}
+ .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid var(--borda)}
+ .menu-toggle{display:block}
+ .hero .container,.solicitacao,.painel-layout,.contato{grid-template-columns:1fr}
+ .analises,.metodos{grid-template-columns:repeat(2,1fr)}
+ .indicadores{grid-template-columns:repeat(2,1fr)}
+ .painel-info,.lateral{position:static}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.4rem,var(--largura))}
+ .analises,.metodos,.indicadores,.grade-2{grid-template-columns:1fr}
+ .selo-demo{font-size:.55rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ LABORATÓRIO DEMONSTRATIVO · ANÁLISES AMBIENTAIS</span><span>RESULTADOS FICTÍCIOS · SEM LAUDOS OFICIAIS</span></div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="ECOANALYTICS PRIME — início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Marca ECOANALYTICS PRIME">
+   <rect width="48" height="48" rx="10" fill="#0f5a5c"/>
+   <path d="M24 8c6 8 10 13 10 19a10 10 0 01-20 0c0-6 4-11 10-19z" fill="none" stroke="#5fc9c9" stroke-width="2.5"/>
+   <path d="M18 28c2 4 10 4 12 0" fill="none" stroke="#fff" stroke-width="2"/>
+   <circle cx="24" cy="27" r="3" fill="#5fc9c9"/>
+  </svg>
+  <span><strong>ECOANALYTICS PRIME</strong><small>ANÁLISES AMBIENTAIS</small></span>
+ </a>
+ <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#catalogo">Análises</a><a href="#solicitar">Coleta</a><a href="#painel">Amostras</a>
+  <a href="#metodos">Métodos</a><a href="#contato">Contato</a>
+  <a class="btn btn--teal" href="#solicitar">Solicitar coleta</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <span class="eyebrow">Ciência aplicada · demonstração</span>
+   <h1>Dados que ajudam a <em>cuidar do planeta</em>.</h1>
+   <p class="hero__texto">Um laboratório demonstrativo de análises ambientais: catálogo de ensaios, solicitação de coleta, acompanhamento de amostras e relatórios ilustrativos para impressão.</p>
+   <div class="hero__acoes">
+    <a class="btn btn--teal" href="#solicitar">Solicitar coleta →</a>
+    <a class="btn btn--claro" href="#painel">Ver painel de amostras</a>
+   </div>
+   <p class="hero__nota">Todos os resultados, valores e relatórios são <strong>fictícios</strong>. Não há certificados, laudos oficiais nem resultados reais nesta página.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração de laboratório com frascos, microscópio e gota de água">
+   <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="400" fill="#0b3e40"/>
+    <g stroke="#155c5e" stroke-width="1"><path d="M0 50h520M0 100h520M0 150h520M0 200h520M0 250h520M0 300h520M0 350h520"/></g>
+    <!-- bancada -->
+    <rect x="30" y="290" width="460" height="16" fill="#157477"/>
+    <!-- frasco 1 -->
+    <path d="M90 180h70l18 110H72z" fill="rgba(95,201,201,.25)" stroke="#5fc9c9" stroke-width="2.5"/>
+    <path d="M78 245h94l8 45H70z" fill="#5fc9c9" opacity=".7"/>
+    <rect x="108" y="162" width="34" height="18" rx="3" fill="#0b3e40" stroke="#5fc9c9" stroke-width="2"/>
+    <!-- frasco 2 -->
+    <path d="M200 210h60l14 80H186z" fill="rgba(95,201,201,.2)" stroke="#5fc9c9" stroke-width="2.5"/>
+    <path d="M193 258h74l7 32H186z" fill="#1d6094" opacity=".75"/>
+    <rect x="215" y="194" width="30" height="16" rx="3" fill="#0b3e40" stroke="#5fc9c9" stroke-width="2"/>
+    <!-- microscópio -->
+    <g stroke="#cbe6e5" stroke-width="3" fill="none" stroke-linejoin="round">
+     <path d="M330 290l20-90h50l20 90"/><rect x="350" y="170" width="55" height="35" rx="5"/>
+     <path d="M378 205v40M360 245h36"/><circle cx="378" cy="225" r="12"/>
+    </g>
+    <!-- gota -->
+    <path d="M460 90c12 16 18 24 18 33a18 18 0 01-36 0c0-9 6-17 18-33z" fill="#5fc9c9"/>
+    <path d="M452 132a8 8 0 008 8" fill="none" stroke="#fff" stroke-width="2" opacity=".7"/>
+   </svg>
+  </div>
+ </div></section>
+
+ <!-- Catálogo -->
+ <section class="secao secao--fundo" id="catalogo"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Catálogo de análises</span>
+   <h2 class="titulo-secao">Tipos de ensaio ilustrativos</h2>
+   <p class="subtitulo-secao">Descrições genéricas de serviços, apresentadas apenas para demonstrar a interface. Nenhum método normatizado é citado.</p></div>
+  <div class="analises" id="gradeAnalises"></div>
+ </div></section>
+
+ <!-- Solicitação de coleta -->
+ <section class="secao" id="solicitar"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Solicitação demonstrativa</span>
+   <h2 class="titulo-secao">Agende uma coleta ilustrativa</h2>
+   <p class="subtitulo-secao">O formulário gera um código de amostra fictício e adiciona o registro ao painel desta página. Nada é enviado a servidor.</p></div>
+  <div class="solicitacao">
+   <form class="card form-card" id="formColeta" novalidate>
+    <div class="grade-2">
+     <div class="campo"><label for="responsavel">Responsável *</label><input id="responsavel" placeholder="Nome fictício"><span class="erro" aria-live="polite"></span></div>
+     <div class="campo"><label for="localColeta">Local da coleta *</label><input id="localColeta" placeholder="Ex.: Reserva Exemplo"><span class="erro" aria-live="polite"></span></div>
+    </div>
+    <div class="grade-2">
+     <div class="campo"><label for="tipoAnalise">Tipo de análise</label><select id="tipoAnalise"></select></div>
+     <div class="campo"><label for="dataColeta">Data desejada *</label><input type="date" id="dataColeta"><span class="erro" aria-live="polite"></span></div>
+    </div>
+    <div class="campo"><label for="observacoes">Observações ilustrativas</label><textarea id="observacoes" placeholder="Descreva apenas informações fictícias"></textarea></div>
+    <button class="btn btn--teal btn--bloco" type="submit">Gerar amostra fictícia</button>
+   </form>
+   <aside class="painel-info">
+    <span class="eyebrow">Fluxo da amostra</span>
+    <h3>Como a amostra é acompanhada</h3>
+    <ol class="passo-lista">
+     <li><strong>1. Solicitação:</strong> dados ilustrativos são registrados.</li>
+     <li><strong>2. Coleta:</strong> data fictícia é exibida no painel.</li>
+     <li><strong>3. Recebimento:</strong> amostra entra na lista de acompanhamento.</li>
+     <li><strong>4. Análise:</strong> resultados demonstrativos são gerados.</li>
+     <li><strong>5. Relatório:</strong> resumo ilustrativo para impressão.</li>
+    </ol>
+    <p class="aviso">⚠ Nenhuma etapa é executada de fato. A ferramenta simula apenas a apresentação visual do fluxo.</p>
+   </aside>
+  </div>
+ </div></section>
+
+ <!-- Painel -->
+ <section class="secao secao--fundo" id="painel"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Painel demonstrativo</span>
+   <h2 class="titulo-secao">Amostras fictícias em acompanhamento</h2>
+   <p class="subtitulo-secao">Busque por código, clique em uma linha para ver etapas e resultados ilustrativos, e gere um relatório para impressão.</p></div>
+  <div class="indicadores" id="indicadores" aria-live="polite"></div>
+  <div class="painel-layout">
+   <div class="card" style="padding:1rem">
+    <div class="busca-linha">
+     <input type="search" id="buscaAmostra" placeholder="Buscar por código, local ou tipo..." aria-label="Buscar amostras">
+     <button class="btn btn--contorno btn--pequeno" id="limparBusca">Limpar</button>
+    </div>
+    <div class="rolagem">
+     <table class="tabela"><thead><tr><th>Código</th><th>Tipo</th><th>Local fictício</th><th>Coleta</th><th>Etapa</th></tr></thead>
+      <tbody id="corpoAmostras"></tbody></table>
+    </div>
+   </div>
+   <aside class="card lateral" id="lateralAmostra" aria-live="polite"></aside>
+  </div>
+ </div></section>
+
+ <!-- Métodos -->
+ <section class="secao" id="metodos"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Métodos e serviços</span>
+   <h2 class="titulo-secao">Como as informações são apresentadas</h2></div>
+  <div class="metodos">
+   <div class="card metodo"><h3>Amostragem ilustrativa</h3><p>Descrição genérica de coleta e identificação de amostras, sem procedimentos técnicos reais.</p></div>
+   <div class="card metodo"><h3>Resultados demonstrativos</h3><p>Números inventados para mostrar uma tabela organizada — sem valor de análise laboratorial.</p></div>
+   <div class="card metodo"><h3>Relatório de exemplo</h3><p>Documento gerado para impressão, explicitamente identificado como simulação.</p></div>
+  </div>
+ </div></section>
+
+ <!-- Contato -->
+ <section class="secao secao--escura" id="contato"><div class="container">
+  <div class="contato">
+   <div class="contato__info">
+    <span class="eyebrow">Fale com a MOSS Digital</span>
+    <h2>Quer uma interface como esta?</h2>
+    <p>Este laboratório é fictício. O contato abaixo é da MOSS Digital, desenvolvedora da demonstração — não é o atendimento do laboratório inventado.</p>
+    <ul><li>◇ Painel de amostras ilustrativo</li><li>◇ Relatórios para impressão</li><li>◇ Sem resultados ou laudos reais</li></ul>
+   </div>
+   <form class="card" id="formContato" style="padding:1.4rem" novalidate>
+    <div class="grade-2">
+     <div class="campo"><label for="nomeContato">Nome *</label><input id="nomeContato" placeholder="Seu nome"><span class="erro" aria-live="polite"></span></div>
+     <div class="campo"><label for="emailContato">E-mail *</label><input type="email" id="emailContato" placeholder="voce@exemplo.com"><span class="erro" aria-live="polite"></span></div>
+    </div>
+    <div class="campo"><label for="mensagemContato">Mensagem *</label><textarea id="mensagemContato" placeholder="Como podemos ajudar?"></textarea><span class="erro" aria-live="polite"></span></div>
+    <button class="btn btn--teal" type="submit">Enviar (demonstração)</button>
+    <div class="confirmacao" id="confirmacaoContato" role="status">✓ Mensagem registrada nesta demonstração. Nada foi enviado.</div>
+   </form>
+  </div>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Laboratório ambiental" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Laboratório ambiental<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Tubos de ensaio" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Tubos de ensaio<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Frasco de amostra" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Frasco de amostra<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Microscópio de laboratório" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Microscópio de laboratório<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Vidraria de laboratório" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Vidraria de laboratório<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Coleta de amostra de água" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Coleta de amostra de água<small>Imagem ilustrativa · cc0 1.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div class="rodape__marca"><strong>ECOANALYTICS PRIME</strong>
+   <p style="font-size:.82rem;max-width:430px;margin-top:.5rem">Demonstração com amostras, resultados e relatórios fictícios. Não emite laudos, certificados ou documentos oficiais.</p></div>
+  <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou? Crie um site assim para sua empresa.</p>
+   <a class="btn btn--teal" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+ </div>
+ <div class="rodape__base"><span>© 2026 ECOANALYTICS PRIME — Demo MOSS Digital</span><span>Resultados fictícios · Sem laudos oficiais</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+<div id="areaImpressao"></div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — catálogo, solicitação, painel, resultados, impressão
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='ECOANALYTICS PRIME (Demo 08 — Laboratório ambiental)';
+const CHAVE='ecoanalytics-prime-v1';
+function daquiDias(n){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
+function fmt(iso){if(!iso)return '—';const [a,m,d]=iso.split('-');return `${d}/${m}/${a}`;}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+
+/* ---------- 1. Dados fictícios --------------------------------------------- */
+const ANALISES=[
+ {nome:'Análise de água',icone:'got',desc:'Apresentação ilustrativa de parâmetros físico-químicos de amostras de água.'},
+ {nome:'Análise de solo',icone:'solo',desc:'Visualização demonstrativa de resultados de amostras de solo.'},
+ {nome:'Qualidade do ar',icone:'ar',desc:'Painel ilustrativo de medições de qualidade do ar.'},
+ {nome:'Efluentes',icone:'efluente',desc:'Tabela fictícia de parâmetros de efluentes para demonstração.'},
+ {nome:'Resíduos',icone:'residuo',desc:'Classificação ilustrativa de resíduos, sem enquadramento legal.'},
+ {nome:'Ruído',icone:'ruido',desc:'Exemplo de gráfico de níveis de ruído, sem medição real.'}
+];
+const ICONES={
+ got:'<svg viewBox="0 0 48 48" fill="none" stroke="#0f5a5c" stroke-width="2"><path d="M24 6c8 11 12 17 12 24a12 12 0 01-24 0c0-7 4-13 12-24z"/><path d="M18 30c2 4 10 4 12 0"/></svg>',
+ solo:'<svg viewBox="0 0 48 48" fill="none" stroke="#0f5a5c" stroke-width="2"><path d="M6 34c6-6 12 4 18-2s12 4 18-2v18H6z"/><path d="M14 20v10M24 16v10M34 20v10"/></svg>',
+ ar:'<svg viewBox="0 0 48 48" fill="none" stroke="#0f5a5c" stroke-width="2"><path d="M6 18h26a6 6 0 10-6-6M6 28h32a5 5 0 11-5 5M6 38h20"/></svg>',
+ efluente:'<svg viewBox="0 0 48 48" fill="none" stroke="#0f5a5c" stroke-width="2"><path d="M24 6v24M16 30h16l-4 10H20z"/><path d="M18 14h12"/></svg>',
+ residuo:'<svg viewBox="0 0 48 48" fill="none" stroke="#0f5a5c" stroke-width="2"><path d="M14 16h20l-2 26H16zM18 16l2-6h8l2 6"/></svg>',
+ ruido:'<svg viewBox="0 0 48 48" fill="none" stroke="#0f5a5c" stroke-width="2"><path d="M8 24h6l4-10 6 22 5-16 4 8h7"/></svg>'
+};
+const AMOSTRAS_FICTICIAS=[
+ {id:'AM-2401',tipo:'Análise de água',local:'Reserva Exemplo',coleta:daquiDias(-6),etapa:4},
+ {id:'AM-2402',tipo:'Análise de solo',local:'Sítio Demonstração',coleta:daquiDias(-3),etapa:2},
+ {id:'AM-2403',tipo:'Qualidade do ar',local:'Praça Exemplo',coleta:daquiDias(-1),etapa:1},
+ {id:'AM-2404',tipo:'Efluentes',local:'Estação Fictícia',coleta:daquiDias(-10),etapa:5},
+ {id:'AM-2405',tipo:'Análise de água',local:'Lago Exemplo',coleta:daquiDias(-2),etapa:3}
+];
+const ETAPAS=['Coleta','Recebimento','Análise','Revisão','Relatório demo'];
+// Resultados inventados — sem unidades normatizadas ou faixas oficiais.
+const RESULTADOS_FICTICIOS=[
+ {parametro:'Parâmetro ilustrativo A',valor:'12,4',unidade:'u.i.',faixa:'faixa fictícia'},
+ {parametro:'Parâmetro ilustrativo B',valor:'7,1',unidade:'u.i.',faixa:'faixa fictícia'},
+ {parametro:'Parâmetro ilustrativo C',valor:'0,38',unidade:'u.i.',faixa:'faixa fictícia'},
+ {parametro:'Parâmetro ilustrativo D',valor:'24,0',unidade:'u.i.',faixa:'faixa fictícia'}
+];
+
+/* ---------- 2. Estado e persistência --------------------------------------- */
+let amostras=carregar();let selecionada=AMOSTRAS_FICTICIAS[0].id;let termo='';
+function carregar(){try{const s=localStorage.getItem(CHAVE);if(s){const d=JSON.parse(s);if(Array.isArray(d))return d;}}catch(e){}return clone(AMOSTRAS_FICTICIAS);}
+function salvar(){try{localStorage.setItem(CHAVE,JSON.stringify(amostras));}catch(e){}}
+
+/* ---------- 3. Catálogo e selects ------------------------------------------ */
+const grade=document.getElementById('gradeAnalises');
+ANALISES.forEach(a=>{const c=document.createElement('article');c.className='card analise';
+ c.innerHTML=`<div>${ICONES[a.icone]}</div><h3>${a.nome}</h3><p>${a.desc}</p>`;grade.appendChild(c);});
+const sel=document.getElementById('tipoAnalise');
+ANALISES.forEach(a=>sel.add(new Option(a.nome,a.nome)));
+
+/* ---------- 4. Solicitação de coleta --------------------------------------- */
+document.getElementById('formColeta').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ [{id:'responsavel',t:v=>v.trim().length>=2,m:'Informe o responsável fictício.'},
+  {id:'localColeta',t:v=>v.trim().length>=3,m:'Informe o local fictício.'},
+  {id:'dataColeta',t:v=>!!v,m:'Escolha uma data ilustrativa.'}].forEach(o=>{
+  const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+  const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(!valido)return;
+ const id='AM-'+(2400+amostras.length+1);
+ amostras.unshift({id,tipo:document.getElementById('tipoAnalise').value,local:document.getElementById('localColeta').value.trim(),
+  coleta:document.getElementById('dataColeta').value,etapa:1});
+ salvar();selecionada=id;renderizarIndicadores();renderizarTabela();renderizarLateral();
+ e.target.reset();alert('Amostra fictícia '+id+' adicionada ao painel.');
+});
+
+/* ---------- 5. Painel, busca e indicadores --------------------------------- */
+function renderizarIndicadores(){
+ const emAnalise=amostras.filter(a=>a.etapa>=2&&a.etapa<=3).length;
+ const concluidas=amostras.filter(a=>a.etapa===5).length;
+ document.getElementById('indicadores').innerHTML=`
+  <div class="card indicador"><strong>${amostras.length}</strong><span>Amostras fictícias</span></div>
+  <div class="card indicador"><strong>${emAnalise}</strong><span>Em análise</span></div>
+  <div class="card indicador"><strong>${concluidas}</strong><span>Relatórios demo</span></div>
+  <div class="card indicador"><strong>${amostras.filter(a=>a.etapa===1).length}</strong><span>Aguardando coleta</span></div>`;
+}
+function filtradas(){const t=termo.trim().toLowerCase();
+ return amostras.filter(a=>!t||(a.id+' '+a.tipo+' '+a.local).toLowerCase().includes(t));}
+function renderizarTabela(){
+ const itens=filtradas();
+ const corpo=document.getElementById('corpoAmostras');
+ if(!itens.length){corpo.innerHTML='<tr><td colspan="5" style="text-align:center;padding:1rem;color:#60777a">Nenhuma amostra encontrada.</td></tr>';return;}
+ corpo.innerHTML=itens.map(a=>`<tr data-id="${a.id}" class="${a.id===selecionada?'selecionado':''}">
+  <td class="codigo">${a.id}</td><td>${a.tipo}</td><td>${a.local}</td><td>${fmt(a.coleta)}</td>
+  <td><span class="etiqueta">${ETAPAS[a.etapa-1]}</span></td></tr>`).join('');
+ corpo.querySelectorAll('tr[data-id]').forEach(tr=>tr.addEventListener('click',()=>{selecionada=tr.dataset.id;renderizarTabela();renderizarLateral();}));
+}
+document.getElementById('buscaAmostra').addEventListener('input',e=>{termo=e.target.value;renderizarTabela();});
+document.getElementById('limparBusca').addEventListener('click',()=>{document.getElementById('buscaAmostra').value='';termo='';renderizarTabela();});
+
+/* ---------- 6. Lateral: etapas, resultados e relatório --------------------- */
+function renderizarLateral(){
+ const a=amostras.find(x=>x.id===selecionada);
+ const lat=document.getElementById('lateralAmostra');
+ if(!a){lat.innerHTML='<p style="font-size:.85rem;color:#60777a">Selecione uma amostra.</p>';return;}
+ const etapas=ETAPAS.map((n,i)=>`<li class="${i<a.etapa?'concluido':''}"><strong>${n}</strong>${i<a.etapa?' ✓':''}</li>`).join('');
+ const linhas=RESULTADOS_FICTICIOS.map(r=>`<tr><th>${r.parametro}</th><td>${r.valor} ${r.unidade}</td><td>${r.faixa}</td></tr>`).join('');
+ lat.innerHTML=`
+  <span class="eyebrow">Detalhes da amostra</span>
+  <h3>${a.id}</h3>
+  <p style="font-size:.82rem;color:#60777a">${a.tipo} · ${a.local}<br>Coleta ilustrativa: ${fmt(a.coleta)}</p>
+  <h4 style="font-size:.8rem">Etapas (simulação)</h4>
+  <ul class="etapas">${etapas}</ul>
+  <h4 style="font-size:.8rem">Resultados <span class="ficticio">FICTÍCIOS</span></h4>
+  <table class="tabela-resultados"><thead><tr><th>Parâmetro</th><th>Valor</th><th>Referência</th></tr></thead><tbody>${linhas}</tbody></table>
+  <button class="btn btn--teal btn--pequeno" id="imprimirRelatorio" style="margin-top:1rem">Gerar relatório demo (imprimir)</button>
+  <p class="aviso" style="color:#60777a;background:#f2f8f8;border-left-color:#5fc9c9">Valores inventados. Este relatório não é um laudo e não tem validade técnica.</p>`;
+ document.getElementById('imprimirRelatorio').addEventListener('click',()=>gerarRelatorio(a));
+}
+function gerarRelatorio(a){
+ const linhas=RESULTADOS_FICTICIOS.map(r=>`<tr><td>${r.parametro}</td><td>${r.valor} ${r.unidade}</td><td>${r.faixa}</td></tr>`).join('');
+ const etapas=ETAPAS.map((n,i)=>`<tr><td>${n}</td><td>${i<a.etapa?'Concluída (simulação)':'Pendente (simulação)'}</td></tr>`).join('');
+ document.getElementById('areaImpressao').innerHTML=`
+  <h1>Relatório demonstrativo de análise ambiental</h1>
+  <p><strong>AMOSTRA FICTÍCIA — SEM VALIDADE DE LAUDO OU CERTIFICADO</strong></p>
+  <table><tr><th>Código</th><td>${a.id}</td></tr><tr><th>Tipo</th><td>${a.tipo}</td></tr>
+  <tr><th>Local fictício</th><td>${a.local}</td></tr><tr><th>Coleta ilustrativa</th><td>${fmt(a.coleta)}</td></tr></table>
+  <h2>Etapas</h2><table><tr><th>Etapa</th><th>Situação</th></tr>${etapas}</table>
+  <h2>Resultados fictícios</h2><table><tr><th>Parâmetro</th><th>Valor</th><th>Referência</th></tr>${linhas}</table>
+  <p style="margin-top:12pt;font-size:9pt">Gerado por ECOANALYTICS PRIME — demonstração MOSS Digital.</p>`;
+ window.print();
+}
+
+/* ---------- 7. Contato, menu, WhatsApp ------------------------------------- */
+document.getElementById('formContato').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ ['nomeContato','emailContato','mensagemContato'].forEach(id=>{
+  const c=document.getElementById(id),erro=c.parentElement.querySelector('.erro');
+  let msg='';if(!c.value.trim())msg='Campo obrigatório.';
+  else if(id==='emailContato'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.value))msg='E-mail inválido.';
+  erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(valido)document.getElementById('confirmacaoContato').classList.add('visivel');
+});
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+
+renderizarIndicadores();renderizarTabela();renderizarLateral();
+</script>
+</body>
+</html>

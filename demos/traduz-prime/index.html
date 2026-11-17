@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#162943">
+  <meta name="description" content="TRADUZ PRIME — demonstração editorial de tradução e interpretação: idiomas, documentos, simulador de orçamento e acompanhamento.">
+  <title>TRADUZ PRIME — Tradução &amp; Interpretação | Demonstração MOSS Digital</title>
+
+  <!--
+    ============================================================================
+    TRADUZ PRIME — DEMONSTRAÇÃO 05 DO CATÁLOGO MOSS DIGITAL
+    ============================================================================
+    Arquivo único (HTML + CSS + JS + SVGs inline).
+
+    ⚠️ Esta demonstração NÃO envia, recebe nem armazena documentos pessoais
+    reais. Não são assumidas credenciais profissionais verdadeiras — o
+    perfil exibido é fictício e identificado como tal.
+
+    ONDE EDITAR:
+    - Idiomas: array IDIOMAS (JS)
+    - Tipos de documento e preços: CONFIG (JS)
+    - Pedidos de acompanhamento: PEDIDOS (JS)
+    - WhatsApp MOSS: WHATSAPP_MOSS (JS)
+    - Cores: :root (CSS)
+    ============================================================================
+  -->
+
+  <style>
+    /* 1. Variáveis — azul-marinho, creme e detalhes editoriais */
+    :root{
+      --marinho-900:#102038;--marinho-800:#162943;--marinho-700:#20395c;--marinho-600:#2e4d75;
+      --creme-100:#faf6ed;--creme-200:#f1e9d8;--creme-300:#e2d5bd;
+      --branco:#fffefb;--tinta:#26344a;--tinta-suave:#6d788a;
+      --dourado:#b08a4a;--verde:#3f8068;--borda:#ddd3bf;
+      --sombra:0 10px 26px rgba(16,32,56,.10);--raio:3px;
+      --titulo:Georgia,"Times New Roman",serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas","Courier New",monospace;
+      --largura:1160px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.65}
+    h1,h2,h3,h4{font-family:var(--titulo);font-weight:500;line-height:1.2;color:var(--marinho-900);margin:0 0 .5em}
+    p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--marinho-700)}
+    button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+    :focus-visible{outline:3px solid var(--dourado);outline-offset:3px}
+    .skip-link{position:absolute;left:-9999px;top:0;background:var(--dourado);color:#fff;padding:.6rem 1rem;z-index:999}
+    .skip-link:focus{left:0}
+    .container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+    .secao{padding:clamp(3rem,6vw,5rem) 0}
+    .secao--creme{background:var(--creme-100)}
+    .secao--marinho{background:var(--marinho-800);color:var(--creme-200)}
+    .secao--marinho h2,.secao--marinho h3{color:#fff}
+    .cabecalho-secao{max-width:680px;margin-bottom:2.2rem}
+    .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dourado);font-weight:700}
+    .titulo-secao{font-size:clamp(1.8rem,3.6vw,2.5rem)}
+    .subtitulo-secao{color:var(--tinta-suave)}
+    .secao--marinho .subtitulo-secao{color:var(--creme-300)}
+    .centro{text-align:center;margin-inline:auto}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.75rem 1.25rem;border:2px solid transparent;border-radius:var(--raio);
+      font-weight:700;cursor:pointer;text-decoration:none;font-size:.9rem;transition:transform .18s,background .18s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn--dourado{background:var(--dourado);color:#fff}.btn--dourado:hover{background:#96733c}
+    .btn--marinho{background:var(--marinho-700);color:#fff}.btn--marinho:hover{background:var(--marinho-600)}
+    .btn--contorno{border-color:var(--dourado);color:var(--marinho-700);background:transparent}.btn--contorno:hover{background:rgba(176,138,74,.08)}
+    .btn--claro{border-color:rgba(255,255,255,.45);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+    .btn--bloco{width:100%}
+    .card{background:var(--branco);border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+    /* Barra/cabeçalho editoriais */
+    .barra{border-bottom:1px solid var(--borda);background:var(--creme-100);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--tinta-suave)}
+    .barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+    .cabecalho{background:var(--branco);border-bottom:1px solid var(--borda);position:sticky;top:0;z-index:50}
+    .cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+    .logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--marinho-900)}
+    .logo__marca{font-family:var(--titulo);font-size:1.6rem;border:1px solid var(--dourado);width:42px;height:42px;display:grid;place-items:center;color:var(--marinho-800)}
+    .logo strong{display:block;font-family:var(--titulo);font-size:1.15rem;letter-spacing:.06em;line-height:1}
+    .logo small{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--dourado)}
+    .nav{display:flex;align-items:center;gap:1.3rem}
+    .nav a{text-decoration:none;color:var(--tinta);font-weight:600;font-size:.88rem}
+    .nav a:hover{color:var(--dourado)}
+    .menu-toggle{display:none;background:none;border:1px solid var(--borda);color:var(--marinho-900);padding:.45rem;cursor:pointer;border-radius:3px}
+    .menu-toggle svg{width:24px;height:24px}
+
+    /* Hero */
+    .hero{background:var(--creme-100);border-bottom:1px solid var(--borda)}
+    .hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5rem)}
+    .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:400}
+    .hero h1 em{color:var(--dourado);font-style:italic}
+    .hero__texto{color:var(--tinta-suave);max-width:34rem}
+    .hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+    .hero__arte{border-top:1px solid var(--dourado);border-bottom:1px solid var(--dourado);padding:1rem 0}
+    .hero__arte svg{width:100%;height:auto}
+    .sha{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dourado)}
+
+    /* Idiomas */
+    .idiomas{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+    .idioma{padding:1.2rem .8rem;text-align:center;transition:transform .2s}
+    .idioma:hover{transform:translateY(-3px)}
+    .bandeira{width:52px;height:52px;margin:0 auto .7rem;border-radius:50%;overflow:hidden;border:1px solid var(--borda)}
+    .bandeira svg{width:100%;height:100%}
+    .idioma strong{display:block;font-size:.9rem;color:var(--marinho-800)}
+    .idioma small{font-family:var(--mono);font-size:.66rem;color:var(--tinta-suave)}
+
+    /* Documentos */
+    .documentos{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .documento{padding:1.3rem;position:relative}
+    .documento::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--dourado)}
+    .documento h3{font-size:1.05rem}.documento p{font-size:.85rem;color:var(--tinta-suave);margin:0}
+
+    /* Simulador */
+    .simulador{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:start}
+    .sim-form{padding:1.5rem}
+    .sim-resultado{background:var(--marinho-800);color:#fff;padding:1.5rem;position:sticky;top:90px}
+    .sim-resultado h3{color:#fff;font-size:1.1rem}
+    .sim-resultado .valor{font-family:var(--mono);font-size:2rem;color:#e8c98a;margin:.4rem 0}
+    .sim-linha{display:flex;justify-content:space-between;gap:1rem;font-size:.84rem;padding:.5rem 0;border-bottom:1px dashed rgba(255,255,255,.18)}
+    .aviso{font-size:.76rem;color:var(--creme-300);background:rgba(255,255,255,.06);border-left:3px solid var(--dourado);padding:.7rem;margin-top:1rem}
+    .grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+    .campo{display:flex;flex-direction:column;gap:.25rem;margin-bottom:.9rem}
+    .campo label{font-weight:700;font-size:.82rem;color:var(--marinho-800)}
+    .campo input,.campo select,.campo textarea{width:100%;padding:.65rem .75rem;border:1px solid var(--borda);border-radius:var(--raio);background:#fff}
+    .campo textarea{min-height:90px;resize:vertical}
+    .campo .erro{color:#b04a4a;font-size:.74rem;min-height:1.1em}
+    .campo.invalido input,.campo.invalido select,.campo.invalido textarea{border-color:#b04a4a}
+    .slider-linha{display:flex;align-items:center;gap:.8rem}
+    input[type=range]{flex:1;accent-color:var(--marinho-600)}
+    .slider-valor{font-family:var(--mono);font-weight:700;color:var(--marinho-700);min-width:60px;text-align:right}
+
+    /* Fluxo */
+    .fluxo{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;position:relative}
+    .etapa{text-align:center;padding:1rem .5rem;position:relative}
+    .etapa::before{content:"";position:absolute;top:22px;left:50%;width:100%;height:1px;background:var(--creme-300);z-index:0;transform:translateX(-50%)}
+    .etapa:last-child::before{display:none}
+    .etapa__num{position:relative;z-index:1;width:44px;height:44px;margin:0 auto .6rem;border-radius:50%;background:var(--marinho-700);color:#fff;
+      display:grid;place-items:center;font-family:var(--mono);font-size:.85rem;font-weight:700}
+    .etapa h4{font-family:var(--corpo);font-size:.85rem;font-weight:700;margin-bottom:.2rem}
+    .etapa p{font-size:.74rem;color:var(--tinta-suave);margin:0}
+
+    /* Acompanhamento */
+    .acompanhar{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+    .busca-pedido{display:flex;gap:.5rem;flex-wrap:wrap}
+    .busca-pedido input{flex:1;min-width:180px;padding:.7rem .8rem;border:1px solid var(--borda);border-radius:var(--raio)}
+    .resultado-pedido{margin-top:1rem;background:var(--creme-200);border-left:3px solid var(--dourado);padding:1.1rem;border-radius:3px}
+    .passos{list-style:none;padding:0;display:grid;gap:.5rem;margin-top:.8rem}
+    .passos li{display:flex;gap:.6rem;align-items:center;font-size:.84rem;color:var(--tinta-suave)}
+    .passos li.feito{color:var(--verde);font-weight:700}
+    .erro-pedido{color:#b04a4a;font-size:.82rem;min-height:1.2em;margin-top:.5rem}
+
+    /* FAQ */
+    .faq{max-width:820px;margin-inline:auto}
+    details{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);margin-bottom:.6rem;padding:.9rem 1.1rem}
+    summary{cursor:pointer;font-weight:700;color:var(--marinho-800);list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::before{content:"+ ";color:var(--dourado);font-weight:700}
+    details[open] summary::before{content:"− "}
+    details p{font-size:.88rem;color:var(--tinta-suave);margin:.7rem 0 0}
+
+    /* Rodapé */
+    .rodape{background:var(--marinho-900);color:var(--creme-300);padding:2.6rem 0 1.4rem;border-top:3px solid var(--dourado)}
+    .rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+    .rodape__marca strong{color:#fff;font-family:var(--titulo);letter-spacing:.06em}
+    .moss-bloco{border:1px solid rgba(176,138,74,.4);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+    .moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+    .rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+    .selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--dourado);color:#fff;
+      font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+    /* Responsividade */
+    @media(max-width:980px){
+      .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--branco);flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem;box-shadow:var(--sombra)}
+      .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid var(--borda)}
+      .menu-toggle{display:block}
+      .hero .container,.simulador,.acompanhar{grid-template-columns:1fr}
+      .idiomas,.fluxo{grid-template-columns:repeat(3,1fr)}
+      .documentos{grid-template-columns:repeat(2,1fr)}
+      .sim-resultado{position:static}
+    }
+    @media(max-width:600px){
+      .container{width:min(100% - 1.4rem,var(--largura))}
+      .idiomas,.documentos,.fluxo,.grade-2{grid-template-columns:1fr}
+      .selo-demo{font-size:.55rem}
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ ESTÚDIO DE TRADUÇÃO · DEMONSTRAÇÃO EDITORIAL</span><span>PERFIL FICTÍCIO · SEM CREDENCIAIS REAIS</span></div></div>
+
+<header class="cabecalho"><div class="container">
+  <a class="logo" href="#inicio" aria-label="TRADUZ PRIME — início">
+    <span class="logo__marca" aria-hidden="true">T</span>
+    <span><strong>TRADUZ PRIME</strong><small>TRADUÇÃO &amp; INTERPRETAÇÃO</small></span>
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </button>
+  <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+    <a href="#idiomas">Idiomas</a><a href="#documentos">Documentos</a><a href="#simulador">Orçamento</a>
+    <a href="#acompanhar">Acompanhe</a><a href="#faq">Dúvidas</a>
+    <a class="btn btn--dourado" href="#simulador">Simular orçamento</a>
+  </nav>
+</div></header>
+
+<main id="conteudo">
+  <!-- Hero -->
+  <section class="hero" id="inicio"><div class="container">
+    <div>
+      <span class="sha">Palavras que atravessam fronteiras</span>
+      <h1>Tradução com <em>precisão</em>, interpretação com presença.</h1>
+      <p class="hero__texto">Um estúdio demonstrativo de tradução e interpretação comercial. Conheça os idiomas, os tipos de documento, o fluxo de entrega e simule um orçamento ilustrativo.</p>
+      <div class="hero__acoes">
+        <a class="btn btn--marinho" href="#simulador">Simular orçamento →</a>
+        <a class="btn btn--contorno" href="#documentos">Ver documentos</a>
+      </div>
+      <p class="sha" style="margin-top:1.2rem;color:var(--tinta-suave)">Perfil fictício criado para demonstração — nenhuma credencial real é assumida.</p>
+    </div>
+    <div class="hero__arte" role="img" aria-label="Ilustração editorial de um livro aberto com globo e marcas de tradução">
+      <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
+        <rect width="520" height="360" fill="#faf6ed"/>
+        <!-- globo -->
+        <circle cx="380" cy="120" r="82" fill="none" stroke="#162943" stroke-width="2"/>
+        <ellipse cx="380" cy="120" rx="34" ry="82" fill="none" stroke="#162943" stroke-width="1.4"/>
+        <path d="M298 120h164M312 80h136M312 160h136" stroke="#162943" stroke-width="1.4" fill="none"/>
+        <path d="M330 70 Q360 90 350 120 Q340 150 370 165" fill="none" stroke="#b08a4a" stroke-width="3"/>
+        <!-- livro aberto -->
+        <path d="M60 215 Q150 190 250 220 Q350 190 450 215 L450 320 Q350 295 250 325 Q150 295 60 320Z" fill="#fffefb" stroke="#162943" stroke-width="2"/>
+        <path d="M250 220v105" stroke="#b08a4a" stroke-width="2"/>
+        <g stroke="#c9c2b2" stroke-width="3">
+          <path d="M90 240h130M90 258h130M90 276h110M90 294h125"/>
+          <path d="M270 240h130M270 258h130M270 276h110M270 294h125"/>
+        </g>
+        <g fill="#b08a4a"><circle cx="250" cy="210" r="5"/><circle cx="105" cy="312" r="4"/><circle cx="395" cy="312" r="4"/></g>
+        <text x="60" y="40" font-family="Georgia" font-size="14" fill="#b08a4a" font-style="italic">traduzir é aproximar mundos</text>
+      </svg>
+    </div>
+  </div></section>
+
+  <!-- Idiomas -->
+  <section class="secao secao--creme" id="idiomas"><div class="container">
+    <div class="cabecalho-secao centro"><span class="eyebrow">Idiomas de trabalho (ilustrativo)</span>
+      <h2 class="titulo-secao">Pares de idiomas disponíveis</h2>
+      <p class="subtitulo-secao">Bandeiras estilizadas e originais — nenhuma marca oficial de terceiros.</p></div>
+    <div class="idiomas" id="gradeIdiomas"></div>
+  </div></section>
+
+  <!-- Documentos -->
+  <section class="secao" id="documentos"><div class="container">
+    <div class="cabecalho-secao"><span class="eyebrow">Catálogo de documentos</span>
+      <h2 class="titulo-secao">O que pode ser traduzido</h2>
+      <p class="subtitulo-secao">Tipos de documento apresentados apenas para demonstrar o escopo do serviço. Não envie documentos reais nesta página.</p></div>
+    <div class="documentos" id="gradeDocumentos"></div>
+  </div></section>
+
+  <!-- Simulador -->
+  <section class="secao secao--creme" id="simulador"><div class="container">
+    <div class="cabecalho-secao"><span class="eyebrow">Simulador demonstrativo</span>
+      <h2 class="titulo-secao">Estime o valor da sua tradução</h2>
+      <p class="subtitulo-secao">Selecione idiomas, tipo de documento, páginas e prazo. Valores ilustrativos e configuráveis — não são proposta comercial.</p></div>
+    <div class="simulador">
+      <form class="card sim-form" id="formSimulador" novalidate>
+        <div class="grade-2">
+          <div class="campo"><label for="origem">Idioma de origem *</label><select id="origem"></select></div>
+          <div class="campo"><label for="destino">Idioma de destino *</label><select id="destino"></select></div>
+        </div>
+        <div class="campo"><label for="tipoDoc">Tipo de documento</label><select id="tipoDoc"></select></div>
+        <div class="campo">
+          <label for="paginas">Quantidade de páginas</label>
+          <div class="slider-linha"><input type="range" id="paginas" min="1" max="60" value="8"><output class="slider-valor" id="paginasVal">8 pág.</output></div>
+        </div>
+        <div class="campo"><label for="prazo">Prazo solicitado</label>
+          <select id="prazo"><option value="normal">Prazo normal (exemplo)</option><option value="expresso">Expresso (exemplo)</option><option value="urgente">Urgente (exemplo)</option></select>
+        </div>
+        <button class="btn btn--marinho btn--bloco" type="submit">Calcular estimativa</button>
+      </form>
+      <aside class="sim-resultado" aria-live="polite">
+        <span class="eyebrow">Resultado da simulação</span>
+        <h3>Estimativa ilustrativa</h3>
+        <div class="valor" id="valorSimulado">R$ —</div>
+        <div id="faixaSimulada" style="font-size:.82rem;color:var(--creme-300)">Preencha os dados e clique em calcular.</div>
+        <div style="margin-top:1rem">
+          <div class="sim-linha"><span>Par de idiomas</span><strong id="linhaIdiomas">—</strong></div>
+          <div class="sim-linha"><span>Tipo de documento</span><strong id="linhaDoc">—</strong></div>
+          <div class="sim-linha"><span>Páginas</span><strong id="linhaPag">—</strong></div>
+          <div class="sim-linha"><span>Ajuste de prazo</span><strong id="linhaPrazo">—</strong></div>
+          <div class="sim-linha"><span>Valor por página (base)</span><strong id="linhaUnit">—</strong></div>
+        </div>
+        <p class="aviso">⚠ Valores <strong>ilustrativos e configuráveis</strong>. Não representam orçamento, proposta ou tabela de preços real. A cotação definitiva depende de análise do texto e das normas aplicáveis.</p>
+      </aside>
+    </div>
+  </div></section>
+
+  <!-- Fluxo visual -->
+  <section class="secao secao--marinho" id="fluxo"><div class="container">
+    <div class="cabecalho-secao centro"><span class="eyebrow">Como funciona</span>
+      <h2 class="titulo-secao">Do pedido à entrega</h2>
+      <p class="subtitulo-secao">Fluxo visual demonstrativo das etapas de atendimento.</p></div>
+    <div class="fluxo">
+      <div class="etapa"><div class="etapa__num">01</div><h4>Solicitação</h4><p>Você descreve o projeto (simulação).</p></div>
+      <div class="etapa"><div class="etapa__num">02</div><h4>Análise</h4><p>Amostra e escopo são avaliados.</p></div>
+      <div class="etapa"><div class="etapa__num">03</div><h4>Tradução</h4><p>Execução pelo par de idiomas.</p></div>
+      <div class="etapa"><div class="etapa__num">04</div><h4>Revisão</h4><p>Conferência terminológica e de estilo.</p></div>
+      <div class="etapa"><div class="etapa__num">05</div><h4>Entrega</h4><p>Arquivo final disponibilizado.</p></div>
+    </div>
+  </div></section>
+
+  <!-- Acompanhamento -->
+  <section class="secao" id="acompanhar"><div class="container">
+    <div class="cabecalho-secao"><span class="eyebrow">Área do cliente (simulação)</span>
+      <h2 class="titulo-secao">Acompanhe seu pedido</h2>
+      <p class="subtitulo-secao">Códigos de demonstração: <strong>TR-2026-001</strong>, <strong>TR-2026-002</strong> e <strong>TR-2026-003</strong>. Nenhum dado pessoal é consultado.</p></div>
+    <div class="acompanhar">
+      <div>
+        <div class="busca-pedido"><input id="codigoPedido" placeholder="Ex.: TR-2026-001" aria-label="Código do pedido"><button class="btn btn--marinho" id="buscarPedido">Buscar</button></div>
+        <div class="erro-pedido" id="erroPedido" aria-live="polite"></div>
+      </div>
+      <div class="resultado-pedido" id="resultadoPedido" aria-live="polite">
+        <p style="margin:0;font-size:.85rem;color:var(--tinta-suave)">Digite um código e clique em buscar para ver o andamento ilustrativo.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- Formulário de atendimento -->
+  <section class="secao secao--creme" id="contato"><div class="container">
+    <div class="cabecalho-secao centro"><span class="eyebrow">Atendimento demonstrativo</span>
+      <h2 class="titulo-secao">Solicite atendimento</h2>
+      <p class="subtitulo-secao">Formulário de simulação: valida os campos e exibe confirmação local. <strong>Não anexe nem envie documentos pessoais reais nesta demonstração.</strong></p></div>
+    <form class="card" id="formAtendimento" style="padding:1.5rem;max-width:760px;margin-inline:auto" novalidate>
+      <div class="grade-2">
+        <div class="campo"><label for="nome">Nome *</label><input id="nome" placeholder="Seu nome"><span class="erro" aria-live="polite"></span></div>
+        <div class="campo"><label for="email">E-mail *</label><input type="email" id="email" placeholder="voce@exemplo.com"><span class="erro" aria-live="polite"></span></div>
+      </div>
+      <div class="grade-2">
+        <div class="campo"><label for="parIdiomas">Par de idiomas</label><input id="parIdiomas" placeholder="Ex.: PT-BR → EN"></div>
+        <div class="campo"><label for="tipoDocForm">Tipo de documento</label><input id="tipoDocForm" placeholder="Ex.: contrato, artigo, site"></div>
+      </div>
+      <div class="campo"><label for="detalhes">Breve descrição do projeto *</label><textarea id="detalhes" placeholder="Descreva o projeto sem incluir dados pessoais ou conteúdo confidencial"></textarea><span class="erro" aria-live="polite"></span></div>
+      <button class="btn btn--dourado btn--bloco" type="submit">Registrar solicitação (demonstração)</button>
+      <div class="confirmacao" id="confirmacao" role="status" style="display:none;background:#eef5ee;border:1px solid #c5dcc6;border-radius:3px;padding:.9rem;margin-top:1rem;color:#2f6a4f;font-size:.85rem">
+        <strong>✓ Solicitação registrada nesta demonstração.</strong>
+        <p style="margin:.4rem 0">Nada foi enviado. Resumo:</p>
+        <div id="resumoAtendimento" style="font-family:var(--mono);font-size:.75rem;background:#fff;padding:.7rem;border-radius:3px;white-space:pre-wrap"></div>
+      </div>
+    </form>
+  </div></section>
+
+  <!-- FAQ -->
+  <section class="secao" id="faq"><div class="container">
+    <div class="cabecalho-secao centro"><span class="eyebrow">Perguntas frequentes</span><h2 class="titulo-secao">Dúvidas comuns</h2></div>
+    <div class="faq">
+      <details><summary>Esta demonstração emite traduções juramentadas?</summary><p>Não. Este é um site demonstrativo. O perfil apresentado é fictício e nenhuma credencial profissional real é assumida. Não são emitidos documentos com validade oficial.</p></details>
+      <details><summary>Posso enviar meu documento pelo formulário?</summary><p>Não. Esta página não recebe nem armazena arquivos. Para evitar exposição de dados pessoais, não anexe documentos reais. O formulário apenas valida campos e gera um resumo local.</p></details>
+      <details><summary>Os valores do simulador são preços reais?</summary><p>Não. São estimativas ilustrativas e configuráveis, usadas para demonstrar o funcionamento da calculadora. A tabela de preços de um serviço real depende de análise específica.</p></details>
+      <details><summary>Os códigos de acompanhamento consultam dados reais?</summary><p>Não. São códigos fictícios fixos nesta página. Nenhuma consulta a sistema externo é realizada.</p></details>
+    </div>
+  </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias de tradução e interpretação</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Documentos para tradução" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Documentos para tradução<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Dicionários empilhados" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Dicionários empilhados<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Conferência internacional" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Conferência internacional<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Documento datilografado" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Documento datilografado<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Mesa de tradução" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Mesa de tradução<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Documentos de viagem" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Documentos de viagem<small>Imagem ilustrativa · cc0 1.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+  <div class="rodape__topo">
+    <div class="rodape__marca"><strong>TRADUZ PRIME</strong>
+      <p style="font-size:.82rem;max-width:420px;margin-top:.5rem">Demonstração editorial com perfil, idiomas, documentos e pedidos fictícios. Não emite traduções com validade oficial.</p></div>
+    <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou? Crie um site assim para o seu negócio.</p>
+      <a class="btn btn--dourado" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+  </div>
+  <div class="rodape__base"><span>© 2026 TRADUZ PRIME — Demo MOSS Digital</span><span>Perfil fictício · Nenhum documento real</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — dados, simulador, acompanhamento, formulário, menu
+   ========================================================================== */
+'use strict';
+
+/* ---------- 1. Dados -------------------------------------------------------- */
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='TRADUZ PRIME (Demo 05 — Tradutor público)';
+
+// Bandeiras estilizadas (SVG original, sem uso de marcas oficiais).
+const IDIOMAS=[
+  {codigo:'PT-BR',nome:'Português',bandeira:'<svg viewBox="0 0 60 60"><rect width="60" height="60" fill="#2e6b4f"/><path d="M30 8l22 22-22 22L8 30z" fill="#f2d35c"/><circle cx="30" cy="30" r="9" fill="#28538a"/></svg>'},
+  {codigo:'EN',nome:'Inglês',bandeira:'<svg viewBox="0 0 60 60"><rect width="60" height="60" fill="#274b86"/><path d="M0 0h60v60H0z" fill="#274b86"/><path d="M0 0l60 60M60 0L0 60M30 0v60M0 30h60" stroke="#fff" stroke-width="6"/><path d="M0 0h60v60H0z" fill="none" stroke="#cf3b4e" stroke-width="8"/></svg>'},
+  {codigo:'ES',nome:'Espanhol',bandeira:'<svg viewBox="0 0 60 60"><rect width="60" height="60" fill="#c0392b"/><rect y="15" width="60" height="30" fill="#f2c53d"/><rect x="14" y="22" width="10" height="16" fill="#c0392b"/></svg>'},
+  {codigo:'FR',nome:'Francês',bandeira:'<svg viewBox="0 0 60 60"><rect width="20" height="60" fill="#2b4c8c"/><rect x="20" width="20" height="60" fill="#fff"/><rect x="40" width="20" height="60" fill="#d4454f"/></svg>'},
+  {codigo:'DE',nome:'Alemão',bandeira:'<svg viewBox="0 0 60 60"><rect width="60" height="20" fill="#222"/><rect y="20" width="60" height="20" fill="#c93a3a"/><rect y="40" width="60" height="20" fill="#e8b93b"/></svg>'}
+];
+
+// Tipos de documento com multiplicadores ilustrativos.
+const CONFIG={
+  valorPorPagina:42,
+  taxaMinima:120,
+  tipos:[
+    {id:'texto',nome:'Texto geral / artigo',mult:1.00},
+    {id:'comercial',nome:'Documento comercial',mult:1.20},
+    {id:'tecnico',nome:'Texto técnico',mult:1.45},
+    {id:'site',nome:'Site / aplicativo',mult:1.30},
+    {id:'audiovisual',nome:'Legenda / audiovisual',mult:1.35}
+  ],
+  prazos:{normal:1,expresso:1.4,urgente:1.8},
+  nomesPrazo:{normal:'Normal (×1,00)',expresso:'Expresso (×1,40)',urgente:'Urgente (×1,80)'}
+};
+
+const PEDIDOS={
+  'TR-2026-001':{par:'PT-BR → EN',tipo:'Documento comercial',etapa:3,previsao:'em 3 dias úteis (ilustrativo)'},
+  'TR-2026-002':{par:'EN → PT-BR',tipo:'Texto técnico',etapa:5,previsao:'entregue (ilustrativo)'},
+  'TR-2026-003':{par:'ES → PT-BR',tipo:'Site / aplicativo',etapa:1,previsao:'em 8 dias úteis (ilustrativo)'}
+};
+const ETAPAS=['Solicitação','Análise','Tradução','Revisão','Entrega'];
+
+/* ---------- 2. Idiomas e documentos na tela -------------------------------- */
+const gradeIdiomas=document.getElementById('gradeIdiomas');
+IDIOMAS.forEach(i=>{
+  const card=document.createElement('article');card.className='card idioma';
+  card.innerHTML=`<div class="bandeira">${i.bandeira}</div><strong>${i.codigo}</strong><small>${i.nome}</small>`;
+  gradeIdiomas.appendChild(card);
+});
+const gradeDocumentos=document.getElementById('gradeDocumentos');
+[['Contratos e acordos','Textos comerciais e instrumentos fictícios para demonstração.'],
+ ['Materiais de marketing','Peças publicitárias, sites e campanhas (exemplos).'],
+ ['Documentação técnica','Manuais, especificações e artigos (exemplos).'],
+ ['Legendas e audiovisual','Tradução de legendas e roteiros (exemplos).'],
+ ['Correspondências','E-mails e comunicações comerciais (exemplos).'],
+ ['Conteúdo editorial','Livros, artigos e textos acadêmicos (exemplos).']].forEach(([t,d])=>{
+  const card=document.createElement('article');card.className='card documento';
+  card.innerHTML=`<h3>${t}</h3><p>${d}</p>`;gradeDocumentos.appendChild(card);
+});
+
+/* ---------- 3. Simulador ---------------------------------------------------- */
+const selOrigem=document.getElementById('origem'),selDestino=document.getElementById('destino'),selTipo=document.getElementById('tipoDoc');
+IDIOMAS.forEach(i=>{
+  selOrigem.add(new Option(i.nome+' ('+i.codigo+')',i.codigo));
+  selDestino.add(new Option(i.nome+' ('+i.codigo+')',i.codigo));
+});
+selOrigem.value='PT-BR';selDestino.value='EN';
+CONFIG.tipos.forEach(t=>selTipo.add(new Option(t.nome,t.id)));
+
+const paginas=document.getElementById('paginas'),paginasVal=document.getElementById('paginasVal');
+paginas.addEventListener('input',()=>{paginasVal.textContent=paginas.value+' pág.';});
+
+const fmtMoeda=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+document.getElementById('formSimulador').addEventListener('submit',e=>{
+  e.preventDefault();
+  const origem=selOrigem.value,destino=selDestino.value;
+  const erro=Array.from(document.querySelectorAll('#formSimulador .erro'))[0];
+  if(origem===destino){
+    // Insere aviso dinâmico caso não exista
+    let av=document.getElementById('erroIdioma');
+    if(!av){av=document.createElement('span');av.id='erroIdioma';av.className='erro';av.style.color='#b04a4a';av.style.fontSize='.74rem';
+      selDestino.parentElement.appendChild(av);}
+    av.textContent='Escolha idiomas diferentes.';selDestino.focus();return;
+  }
+  const av=document.getElementById('erroIdioma');if(av)av.textContent='';
+  const qtd=Number(paginas.value);
+  const tipo=CONFIG.tipos.find(t=>t.id===selTipo.value);
+  const prazo=document.getElementById('prazo').value;
+  const bruto=qtd*CONFIG.valorPorPagina*tipo.mult*CONFIG.prazos[prazo];
+  const total=Math.max(bruto,CONFIG.taxaMinima);
+
+  document.getElementById('valorSimulado').textContent=fmtMoeda(total);
+  document.getElementById('faixaSimulada').textContent=`Faixa ilustrativa: ${fmtMoeda(total*0.9)} a ${fmtMoeda(total*1.15)}`;
+  document.getElementById('linhaIdiomas').textContent=origem+' → '+destino;
+  document.getElementById('linhaDoc').textContent=tipo.nome+' (×'+tipo.mult.toFixed(2)+')';
+  document.getElementById('linhaPag').textContent=qtd+' páginas';
+  document.getElementById('linhaPrazo').textContent=CONFIG.nomesPrazo[prazo];
+  document.getElementById('linhaUnit').textContent=fmtMoeda(CONFIG.valorPorPagina)+' / pág.';
+  document.querySelector('.sim-resultado').animate([{boxShadow:'0 0 0 0 rgba(176,138,74,.5)'},{boxShadow:'0 0 0 10px rgba(176,138,74,0)'}],{duration:500});
+});
+
+/* ---------- 4. Acompanhamento ---------------------------------------------- */
+const resultadoPedido=document.getElementById('resultadoPedido'),erroPedido=document.getElementById('erroPedido');
+function buscarPedido(){
+  const codigo=document.getElementById('codigoPedido').value.trim().toUpperCase();
+  const p=PEDIDOS[codigo];
+  if(!p){erroPedido.textContent='Código não encontrado. Use um dos códigos de demonstração acima.';
+    resultadoPedido.innerHTML='<p style="margin:0;font-size:.85rem;color:var(--tinta-suave)">Nenhum pedido selecionado.</p>';return;}
+  erroPedido.textContent='';
+  const lista=ETAPAS.map((nome,i)=>`<li class="${i<p.etapa?'feito':''}"><span>${i<p.etapa?'✓':'○'}</span>${nome}</li>`).join('');
+  resultadoPedido.innerHTML=`<span class="eyebrow">Pedido ${codigo} · fictício</span>
+    <h3 style="font-size:1.15rem">${p.par} · ${p.tipo}</h3>
+    <p style="font-size:.82rem">Etapa atual: <strong>${ETAPAS[p.etapa-1]}</strong> — ${p.previsao}</p>
+    <ul class="passos">${lista}</ul>`;
+}
+document.getElementById('buscarPedido').addEventListener('click',buscarPedido);
+document.getElementById('codigoPedido').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();buscarPedido();}});
+
+/* ---------- 5. Formulário de atendimento ----------------------------------- */
+document.getElementById('formAtendimento').addEventListener('submit',e=>{
+  e.preventDefault();let valido=true;
+  [{id:'nome',t:v=>v.trim().length>=2,m:'Informe seu nome.'},
+   {id:'email',t:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),m:'E-mail inválido.'},
+   {id:'detalhes',t:v=>v.trim().length>=10,m:'Descreva o projeto (mínimo 10 caracteres).'}].forEach(o=>{
+    const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+    const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+  });
+  if(!valido)return;
+  document.getElementById('resumoAtendimento').textContent=
+    `Nome: ${document.getElementById('nome').value.trim()}\nE-mail: ${document.getElementById('email').value.trim()}\n`+
+    `Par: ${document.getElementById('parIdiomas').value||'(não informado)'}\n`+
+    `Documento: ${document.getElementById('tipoDocForm').value||'(não informado)'}\n`+
+    `Projeto: ${document.getElementById('detalhes').value.trim()}`;
+  document.getElementById('confirmacao').style.display='block';
+  document.getElementById('confirmacao').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+/* ---------- 6. Menu e WhatsApp --------------------------------------------- */
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+</script>
+</body>
+</html>

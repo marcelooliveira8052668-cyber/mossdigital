@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#163b5e">
+<meta name="description" content="SAFEWORK PRIME — demonstração corporativa de consultoria em segurança do trabalho com treinamentos, documentos e vencimentos fictícios.">
+<title>SAFEWORK PRIME — Consultoria em Segurança | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  SAFEWORK PRIME — DEMONSTRAÇÃO 14 DO CATÁLOGO MOSS DIGITAL
+  ============================================================================
+  Arquivo único (HTML + CSS + JS + SVGs inline).
+
+  ⚠️ Esta demonstração NÃO gera certificados, documentos regulamentares nem
+  declarações de conformidade. Nenhuma norma específica é citada — apenas
+  referências genéricas e ilustrativas. Todos os dados são fictícios.
+  Verifique sempre as regras vigentes com profissional habilitado.
+
+  ONDE EDITAR:
+  - Consultorias: CONSULTORIAS (JS)
+  - Treinamentos: TREINAMENTOS (JS)
+  - Empresas e documentos fictícios: EMPRESAS / DOCUMENTOS (JS)
+  - WhatsApp MOSS: WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — corporativo industrial: azul, grafite, laranja */
+:root{
+ --azul-900:#0f2d49;--azul-800:#163b5e;--azul-700:#1d4f79;--azul-600:#2a6799;
+ --grafite:#33383f;--grafite-2:#4a515b;
+ --laranja:#ed7d31;--laranja-escuro:#c8621f;
+ --branco:#fff;--fundo:#f4f6f8;--tinta:#243342;--suave:#6b7a89;
+ --borda:#d8e0e7;--sombra:0 8px 22px rgba(15,45,73,.10);--sombra-forte:0 18px 42px rgba(15,45,73,.18);
+ --raio:8px;--titulo:"Segoe UI","Trebuchet MS",sans-serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.6}
+h1,h2,h3,h4{font-family:var(--titulo);line-height:1.18;color:var(--azul-900);margin:0 0 .5em}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--azul-700)}
+button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--laranja);color:#fff;padding:.6rem 1rem;z-index:999}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0}
+.secao--fundo{background:var(--fundo)}
+.secao--azul{background:var(--azul-900);color:#cfdde9}
+.secao--azul h2,.secao--azul h3{color:#fff}
+.cabecalho-secao{max-width:700px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--laranja);font-weight:800}
+.titulo-secao{font-size:clamp(1.8rem,3.6vw,2.5rem)}
+.subtitulo-secao{color:var(--suave)}
+.secao--azul .subtitulo-secao{color:#b6cadb}
+.centro{text-align:center;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.78rem 1.25rem;border:2px solid transparent;border-radius:var(--raio);
+ font-weight:700;cursor:pointer;text-decoration:none;font-size:.88rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn--laranja{background:var(--laranja);color:#fff}.btn--laranja:hover{background:var(--laranja-escuro)}
+.btn--azul{background:var(--azul-800);color:#fff}.btn--azul:hover{background:var(--azul-700)}
+.btn--contorno{border-color:var(--azul-600);color:var(--azul-800);background:transparent}.btn--contorno:hover{background:rgba(42,103,153,.08)}
+.btn--claro{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+.btn--bloco{width:100%}.btn--pequeno{padding:.4rem .7rem;font-size:.75rem}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+/* Barra/cabeçalho */
+.barra{background:var(--azul-900);color:#b6cadb;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.cabecalho{background:rgba(255,255,255,.97);border-bottom:3px solid var(--laranja);position:sticky;top:0;z-index:50}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--azul-900)}
+.logo svg{width:44px;height:44px}
+.logo strong{display:block;font-size:1.1rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;color:var(--laranja)}
+.nav{display:flex;align-items:center;gap:1.1rem}
+.nav a{color:var(--tinta);text-decoration:none;font-weight:600;font-size:.86rem}.nav a:hover{color:var(--laranja)}
+.menu-toggle{display:none;padding:.45rem .7rem;border:1px solid var(--borda);background:#fff;color:var(--azul-900);cursor:pointer;border-radius:var(--raio);font-weight:700}
+
+/* Hero */
+.hero{background:linear-gradient(125deg,var(--azul-900),var(--azul-800));color:#fff;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5rem)}
+.hero h1{color:#fff;font-size:clamp(2.1rem,4.8vw,3.4rem)}
+.hero h1 em{color:var(--laranja);font-style:normal}
+.hero__texto{color:#c9dae8;max-width:34rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero__arte{border:1px solid rgba(237,125,49,.4);border-radius:var(--raio);padding:1rem;background:rgba(255,255,255,.04)}
+.hero__arte svg{width:100%;height:auto}
+.hero__nota{font-size:.75rem;color:#c9dae8;border-left:3px solid var(--laranja);padding:.5rem .8rem;margin-top:1.2rem}
+
+/* Consultorias */
+.consultorias{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.consultoria{padding:1.4rem;border-top:4px solid var(--laranja)}
+.consultoria h3{font-size:1.05rem}.consultoria p{font-size:.85rem;color:var(--suave);margin:0}
+
+/* Indicadores */
+.indicadores{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.indicador{padding:1rem 1.1rem;border-top:3px solid var(--azul-600)}
+.indicador--alerta{border-top-color:var(--laranja)}
+.indicador strong{display:block;font-family:var(--mono);font-size:2rem;color:var(--azul-900);line-height:1.1}
+.indicador span{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--suave);font-weight:700}
+
+/* Painel */
+.painel{display:grid;grid-template-columns:1.2fr .8fr;gap:1.5rem;align-items:start}
+.painel>*{min-width:0}
+.rolagem{overflow-x:auto;max-width:100%}
+.tabela{width:100%;border-collapse:collapse;font-size:.82rem;min-width:460px}
+.tabela th{background:var(--azul-800);color:#fff;padding:.55rem .65rem;text-align:left;font-size:.7rem}
+.tabela td{padding:.55rem .65rem;border-bottom:1px solid var(--borda)}
+.etiqueta{display:inline-block;padding:.18rem .5rem;border-radius:999px;font-size:.66rem;font-weight:700;background:var(--fundo);color:var(--azul-800)}
+.etiqueta--alerta{background:#fdeee2;color:var(--laranja-escuro)}
+.progresso-mini{height:8px;background:var(--fundo);border-radius:999px;overflow:hidden;min-width:70px}
+.progresso-mini span{display:block;height:100%;background:var(--azul-600)}
+
+/* Documentos */
+.documentos{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.documento{padding:1.1rem;display:flex;gap:.8rem;align-items:flex-start}
+.documento svg{width:36px;height:36px;flex:0 0 36px}
+.documento strong{display:block;font-size:.88rem}
+.documento small{display:block;color:var(--suave);font-size:.75rem}
+.selo-doc{display:inline-block;margin-top:.4rem;padding:.18rem .5rem;border-radius:4px;font-family:var(--mono);font-size:.66rem;font-weight:700}
+.selo-doc--ok{background:#e7f4ec;color:#226b45}
+.selo-doc--aviso{background:#fdf0e3;color:#a4521a}
+.selo-doc--vencido{background:#fdeaea;color:#a52626}
+
+/* Calendário */
+.calendario{padding:1.2rem}
+.cal-topo{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.cal-topo h3{margin:0;font-size:1rem}
+.cal-botoes{display:flex;gap:.3rem}
+.cal-botoes button{width:30px;height:30px;border:1px solid var(--borda);background:#fff;cursor:pointer;border-radius:6px}
+.grade-dias{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.dia-semana{text-align:center;font-size:.62rem;font-weight:700;color:var(--suave);padding-bottom:.3rem}
+.dia{aspect-ratio:1;border:1px solid var(--borda);border-radius:6px;padding:.2rem;font-size:.72rem;background:#fff}
+.dia.vazio{border:0;background:transparent}
+.dia.com-atividade{background:#fdf0e3;border-color:var(--laranja);font-weight:700;cursor:pointer}
+.dia.hoje{outline:2px solid var(--azul-700);outline-offset:-2px}
+.dia .pontinho{display:block;width:5px;height:5px;border-radius:50%;background:var(--laranja);margin:2px auto 0}
+
+/* Cadastro e checklist */
+.cadastro{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+.form-card{padding:1.4rem}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.8rem}
+.campo label{font-weight:700;font-size:.82rem;color:var(--azul-900)}
+.campo input,.campo select,.campo textarea{width:100%;padding:.65rem .75rem;border:1px solid var(--borda);border-radius:var(--raio)}
+.campo .erro{color:#b04a4a;font-size:.74rem;min-height:1.1em}
+.campo.invalido input,.campo.invalido select{border-color:#b04a4a}
+.checklist{list-style:none;padding:0}
+.checklist li{display:flex;gap:.5rem;align-items:flex-start;font-size:.85rem;padding:.35rem 0}
+.checklist input{accent-color:var(--laranja);margin-top:.2rem;width:17px;height:17px}
+.confirmacao{display:none;background:#eaf4ec;border:1px solid #b9dcc4;border-radius:var(--raio);padding:.8rem;margin-top:1rem;color:#276245;font-size:.82rem}
+.confirmacao.visivel{display:block}
+.aviso{font-size:.75rem;color:var(--suave);background:var(--fundo);border-left:3px solid var(--laranja);padding:.7rem;margin-top:1rem}
+
+/* Rodapé */
+.rodape{background:var(--azul-900);color:#b6cadb;padding:2.6rem 0 1.4rem;border-top:4px solid var(--laranja)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.rodape__marca strong{color:#fff;font-size:1.1rem}
+.moss-bloco{border:1px solid rgba(237,125,49,.45);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+.moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+.rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--laranja);color:#fff;
+ font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+#areaImpressao{display:none}
+@media print{
+ body *{visibility:hidden!important}
+ #areaImpressao,#areaImpressao *{visibility:visible!important}
+ #areaImpressao{display:block!important;position:absolute;left:0;top:0;width:100%;color:#000}
+ #areaImpressao table{width:100%;border-collapse:collapse;margin-top:10pt}
+ #areaImpressao th,#areaImpressao td{border:1px solid #000;padding:5pt;text-align:left;font-size:9pt}
+}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem;box-shadow:var(--sombra)}
+ .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid var(--borda)}
+ .menu-toggle{display:block}
+ .hero .container,.painel,.cadastro{grid-template-columns:1fr}
+ .consultorias,.documentos{grid-template-columns:repeat(2,1fr)}
+ .indicadores{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.4rem,var(--largura))}
+ .consultorias,.documentos,.indicadores,.grade-2{grid-template-columns:1fr}
+ .dia{font-size:.65rem}
+ .selo-demo{font-size:.55rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ CONSULTORIA EM SEGURANÇA · DEMONSTRAÇÃO CORPORATIVA</span><span>SEM CERTIFICADOS OU DECLARAÇÕES DE CONFORMIDADE</span></div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="SAFEWORK PRIME — início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Marca SAFEWORK PRIME">
+   <rect width="48" height="48" rx="8" fill="#163b5e"/>
+   <path d="M10 20q0-14 14-14t14 14v10H10z" fill="#ed7d31"/>
+   <path d="M6 38h36" stroke="#fff" stroke-width="3"/>
+   <path d="M24 14v10M19 20h10" stroke="#fff" stroke-width="2"/>
+  </svg>
+  <span><strong>SAFEWORK PRIME</strong><small>SEGURANÇA &amp; GESTÃO</small></span>
+ </a>
+ <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navPrincipal">Menu ☰</button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#consultorias">Serviços</a><a href="#painel">Painel</a><a href="#documentos">Documentos</a>
+  <a href="#cadastro">Cadastros</a><a href="#orcamento">Orçamento</a>
+  <a class="btn btn--laranja" href="#orcamento" data-cta>Solicitar orçamento</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <span class="eyebrow">Gestão administrativa · demonstração</span>
+   <h1>Organização que <em>tranquiliza</em> a operação.</h1>
+   <p class="hero__texto">Um painel demonstrativo de consultoria em segurança do trabalho: treinamentos, calendário de atividades, gestão visual de documentos, controles de vencimento e relatórios administrativos.</p>
+   <div class="hero__acoes">
+    <a class="btn btn--laranja" href="#painel">Explorar painel →</a>
+    <a class="btn btn--claro" href="#servicos">Ver serviços</a>
+   </div>
+   <p class="hero__nota">⚠ Esta demonstração <strong>não emite certificados, documentos regulamentares nem declarações de conformidade</strong>. Nenhuma norma específica é citada — verifique as regras vigentes com profissional habilitado.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração de capacete, prancheta de checklist e prédio industrial">
+   <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="380" fill="#0f2d49"/>
+    <g stroke="#1d4f79" stroke-width="1"><path d="M0 60h520M0 120h520M0 180h520M0 240h520M0 300h520"/></g>
+    <!-- prédio -->
+    <g fill="#163b5e" stroke="#2a6799" stroke-width="2"><rect x="300" y="120" width="170" height="230"/><rect x="60" y="200" width="200" height="150"/></g>
+    <g fill="#ed7d31"><rect x="330" y="150" width="30" height="30"/><rect x="380" y="150" width="30" height="30"/><rect x="430" y="150" width="30" height="30"/><rect x="330" y="210" width="30" height="30"/><rect x="380" y="210" width="30" height="30"/></g>
+    <!-- capacete -->
+    <path d="M70 180q0-58 58-58t58 58v22H70z" fill="#ed7d31" stroke="#fff" stroke-width="3"/>
+    <path d="M50 202h156" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+    <!-- prancheta -->
+    <rect x="120" y="240" width="120" height="100" rx="6" fill="#f4f6f8" stroke="#ed7d31" stroke-width="3"/>
+    <g stroke="#9fb0bd" stroke-width="3"><path d="M138 268h84M138 286h84M138 304h60"/></g>
+    <path d="M150 268l6 6 10-12" stroke="#2a6799" stroke-width="3" fill="none"/>
+   </svg>
+  </div>
+ </div></section>
+
+ <section class="secao secao--fundo" id="servicos"><div class="container" id="consultorias">
+  <div class="cabecalho-secao"><span class="eyebrow">Catálogo de consultorias</span>
+   <h2 class="titulo-secao">Áreas de atuação ilustrativas</h2>
+   <p class="subtitulo-secao">Descrições genéricas, sem citação de normas ou exigências legais específicas.</p></div>
+  <div class="consultorias" id="gradeConsultorias"></div>
+ </div></section>
+
+ <!-- Painel -->
+ <section class="secao" id="painel"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Painel demonstrativo</span>
+   <h2 class="titulo-secao">Treinamentos e indicadores</h2>
+   <p class="subtitulo-secao">D fictícios e calculados a partir de registros inventados. Nenhum dado real de empresa é exibido.</p></div>
+  <div class="indicadores" id="indicadores" aria-live="polite"></div>
+  <div class="painel">
+   <div class="card" style="padding:1rem">
+    <h3 style="font-size:1rem;margin-bottom:.8rem">Treinamentos (fictícios)</h3>
+    <div class="rolagem">
+     <table class="tabela"><thead><tr><th>ID</th><th>Treinamento ilustrativo</th><th>Turma</th><th>Progresso</th><th>Situação</th></tr></thead>
+      <tbody id="corpoTreinamentos"></tbody></table>
+    </div>
+   </div>
+   <div class="card calendario">
+    <div class="cal-topo"><h3 id="mesCalendario">—</h3>
+     <div class="cal-botoes"><button id="mesAnterior" aria-label="Mês anterior">‹</button><button id="mesSeguinte" aria-label="Próximo mês">›</button></div></div>
+    <div class="grade-dias" id="gradeDias" role="grid" aria-label="Calendário de atividades"></div>
+    <p class="aviso">Clique em um dia marcado para filtrar os treinamentos.</p>
+   </div>
+  </div>
+ </div></section>
+
+ <!-- Documentos -->
+ <section class="secao secao--fundo" id="documentos"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Gestão visual de documentos</span>
+   <h2 class="titulo-secao">Controle ilustrativo de vencimentos</h2>
+   <p class="subtitulo-secao">Os selos abaixo indicam apenas situações fictícias calculadas a partir de datas inventadas.</p></div>
+  <div class="documentos" id="gradeDocumentos"></div>
+  <button class="btn btn--azul" id="imprimirRelatorio" style="margin-top:1.5rem">Gerar relatório administrativo (imprimir)</button>
+  <p class="aviso">O relatório é ilustrativo e não substitui documento técnico ou regulamentar.</p>
+ </div></section>
+
+ <!-- Cadastros e checklist -->
+ <section class="secao" id="cadastro"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Cadastros e rotina</span>
+   <h2 class="titulo-secao">Empresas fictícias e checklist genérico</h2>
+   <p class="subtitulo-secao">Registros ficam apenas neste navegador. Não insira dados de empresas reais.</p></div>
+  <div class="cadastro">
+   <form class="card form-card" id="formEmpresa" novalidate>
+    <h3 style="font-size:1.05rem">Nova empresa fictícia</h3>
+    <div class="campo"><label for="nomeEmpresa">Nome da empresa *</label><input id="nomeEmpresa" placeholder="Ex.: Empresa Exemplo Ltda."><span class="erro" aria-live="polite"></span></div>
+    <div class="grade-2">
+     <div class="campo"><label for="setor">Setor</label><select id="setor"><option>Comércio</option><option>Indústria</option><option>Serviços</option><option>Construção</option></select></div>
+     <div class="campo"><label for="responsavel">Responsável fictício</label><input id="responsavel" placeholder="Nome inventado"></div>
+    </div>
+    <button class="btn btn--azul" type="submit">Adicionar empresa fictícia</button>
+    <div class="confirmacao" id="confirmacaoEmpresa" role="status">✓ Empresa fictícia adicionada ao painel.</div>
+   </form>
+   <div class="card" style="padding:1.4rem">
+    <h3 style="font-size:1.05rem">Checklist genérico de rotina</h3>
+    <ul class="checklist" id="checklistRotina"></ul>
+   </div>
+  </div>
+ </div></section>
+
+ <!-- Orçamento -->
+ <section class="secao secao--azul" id="orcamento"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Atendimento comercial</span>
+   <h2 class="titulo-secao">Solicite um orçamento demonstrativo</h2>
+   <p class="subtitulo-secao">Formulário de simulação: valida os campos e exibe confirmação local. Nada é enviado a servidor.</p></div>
+  <form class="card" id="formOrcamento" style="padding:1.4rem;max-width:760px" novalidate>
+   <div class="grade-2">
+    <div class="campo"><label for="nome">Nome *</label><input id="nome" placeholder="Seu nome"><span class="erro" aria-live="polite"></span></div>
+    <div class="campo"><label for="email">E-mail *</label><input type="email" id="email" placeholder="voce@exemplo.com"><span class="erro" aria-live="polite"></span></div>
+   </div>
+   <div class="campo"><label for="interesse">Área de interesse</label><input id="interesse" placeholder="Ex.: treinamentos, gestão de documentos"></div>
+   <div class="campo"><label for="detalhes">Mensagem *</label><textarea id="detalhes" placeholder="Descreva sua necessidade fictícia"></textarea><span class="erro" aria-live="polite"></span></div>
+   <button class="btn btn--laranja" type="submit">Enviar solicitação (demonstração)</button>
+   <div class="confirmacao" id="confirmacaoOrc" role="status">✓ Solicitação registrada nesta demonstração. Nada foi enviado.</div>
+  </form>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Capacete de segurança" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Capacete de segurança<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Treinamento de segurança" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Treinamento de segurança<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Capacete e colete" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Capacete e colete<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Reunião de equipe" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Reunião de equipe<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Treinamento de incêndio" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Treinamento de incêndio<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Treinamento de segurança" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Treinamento de segurança<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div class="rodape__marca"><strong>SAFEWORK PRIME</strong>
+   <p style="font-size:.82rem;max-width:430px;margin-top:.5rem">Demonstração corporativa com dados fictícios. Não emite certificados, laudos ou declarações de conformidade, e não cita normas específicas.</p></div>
+  <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou do painel? Crie um site assim para sua empresa.</p>
+   <a class="btn btn--laranja" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+ </div>
+ <div class="rodape__base"><span>© 2026 SAFEWORK PRIME — Demo MOSS Digital</span><span>Sem certificados · Dados fictícios</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+<div id="areaImpressao"></div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — painel, documentos, calendário, cadastros, relatório
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='SAFEWORK PRIME (Demo 14 — Segurança do trabalho)';
+const CHAVE='safework-prime-v1';
+function daquiDias(n){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
+function fmt(iso){if(!iso)return '—';const [a,m,d]=iso.split('-');return `${d}/${m}/${a}`;}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+
+/* ---------- 1. Dados fictícios --------------------------------------------- */
+const CONSULTORIAS=[
+ {nome:'Diagnóstico organizacional',desc:'Análise ilustrativa de rotinas e documentação, sem diagnóstico real.'},
+ {nome:'Planejamento de treinamentos',desc:'Organização demonstrativa de turmas e cronogramas fictícios.'},
+ {nome:'Gestão documental',desc:'Controle visual ilustrativo de prazos e situações de documentos.'},
+ {nome:'Rotinas de campo',desc:'Checklists genéricos para acompanhamento demonstrativo.'},
+ {nome:'Indicadores administrativos',desc:'Painéis ilustrativos com números inventados.'},
+ {nome:'Revisão de processos',desc:'Sugestões genéricas de organização, sem prescrição técnica.'}
+];
+const TREINAMENTOS_FICTICIOS=[
+ {id:'TR-01',nome:'Boas práticas gerais (ilustrativo)',turma:'Turma A',progresso:80,data:daquiDias(-2),situacao:'Em andamento'},
+ {id:'TR-02',nome:'Rotinas de segurança (ilustrativo)',turma:'Turma B',progresso:100,data:daquiDias(-5),situacao:'Concluído'},
+ {id:'TR-03',nome:'Primeiros socorros (ilustrativo)',turma:'Turma C',progresso:35,data:daquiDias(3),situacao:'Em andamento'},
+ {id:'TR-04',nome:'Organização documental (ilustrativo)',turma:'Turma D',progresso:0,data:daquiDias(6),situacao:'Agendado'}
+];
+const DOCUMENTOS_FICTICIOS=[
+ {nome:'Documento ilustrativo A',tipo:'Registro interno',vencimento:daquiDias(4)},
+ {nome:'Documento ilustrativo B',tipo:'Controle administrativo',vencimento:daquiDias(25)},
+ {nome:'Documento ilustrativo C',tipo:'Comprovante fictício',vencimento:daquiDias(-3)},
+ {nome:'Documento ilustrativo D',tipo:'Ficha demonstrativa',vencimento:daquiDias(60)}
+];
+const CHECKLIST_ITENS=[
+ 'Conferir a lista de participantes (ilustrativo)',
+ 'Organizar a documentação da turma (ilustrativo)',
+ 'Agendar a próxima atividade (ilustrativo)',
+ 'Registrar observações gerais (ilustrativo)',
+ 'Arquivar o resumo da visita (ilustrativo)'
+];
+
+/* ---------- 2. Estado ------------------------------------------------------- */
+let empresas=carregar();let treinamentos=clone(TREINAMENTOS_FICTICIOS);let mesAtual=new Date();mesAtual.setDate(1);
+function carregar(){try{const s=localStorage.getItem(CHAVE);if(s){const d=JSON.parse(s);if(Array.isArray(d))return d;}}catch(e){}return clone([]);}
+function salvar(){try{localStorage.setItem(CHAVE,JSON.stringify(empresas));}catch(e){}}
+
+/* ---------- 3. Renderizações ------------------------------------------------ */
+const gradeCons=document.getElementById('gradeConsultorias');
+CONSULTORIAS.forEach(c=>{const el=document.createElement('article');el.className='card consultoria';
+ el.innerHTML=`<h3>${c.nome}</h3><p>${c.desc}</p>`;gradeCons.appendChild(el);});
+
+const iconeDoc=`<svg viewBox="0 0 48 48" fill="none" stroke="#1d4f79" stroke-width="2"><path d="M10 6h20l8 8v28H10z"/><path d="M30 6v8h8M16 24h16M16 30h16M16 36h10"/></svg>`;
+function statusDoc(dias){
+ if(dias<0)return {classe:'vencido',texto:'VENCIDO (ilustração)'};
+ if(dias<=7)return {classe:'aviso',texto:'VENCENDO (ilustração)'};
+ return {classe:'ok',texto:'EM DIA (ilustração)'};
+}
+function renderizarDocumentos(){
+ document.getElementById('gradeDocumentos').innerHTML=DOCUMENTOS_FICTICIOS.map(d=>{
+  const dias=Math.round((new Date(d.vencimento+'T12:00:00')-new Date())/86400000);
+  const st=statusDoc(dias);
+  return `<div class="card documento">${iconeDoc}<div><strong>${d.nome}</strong>
+   <small>${d.tipo} · vence em ${fmt(d.vencimento)}</small>
+   <span class="selo-doc selo-doc--${st.classe}">${st.texto}</span></div></div>`;
+ }).join('');
+}
+function renderizarIndicadores(){
+ const alertas=DOCUMENTOS_FICTICIOS.filter(d=>Math.round((new Date(d.vencimento+'T12:00:00')-new Date())/86400000)<=7).length;
+ const concluidos=treinamentos.filter(t=>t.situacao==='Concluído').length;
+ document.getElementById('indicadores').innerHTML=`
+  <div class="card indicador"><strong>${treinamentos.length}</strong><span>Treinamentos fictícios</span></div>
+  <div class="card indicador"><strong>${concluidos}</strong><span>Concluídos</span></div>
+  <div class="card indicador"><strong>${empresas.length}</strong><span>Empresas fictícias</span></div>
+  <div class="card indicador indicador--alerta"><strong>${alertas}</strong><span>Alertas ilustrativos</span></div>`;
+}
+function renderizarTreinamentos(filtroData){
+ const itens=filtroData?treinamentos.filter(t=>t.data===filtroData):treinamentos;
+ document.getElementById('corpoTreinamentos').innerHTML=itens.length?itens.map(t=>
+  `<tr><td class="codigo">${t.id}</td><td>${t.nome}<small style="display:block;color:#6b7a89">Data: ${fmt(t.data)}</small></td>
+   <td>${t.turma}</td><td><div class="progresso-mini"><span style="width:${t.progresso}%"></span></div><small>${t.progresso}%</small></td>
+   <td><span class="etiqueta">${t.situacao}</span></td></tr>`).join(''):'<tr><td colspan="5">Nenhuma atividade nesta data.</td></tr>';
+}
+function renderizarCalendario(){
+ const ano=mesAtual.getFullYear(),mes=mesAtual.getMonth(),primeiro=new Date(ano,mes,1),dias=new Date(ano,mes+1,0).getDate();
+ const nome=primeiro.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+ document.getElementById('mesCalendario').textContent=nome.charAt(0).toUpperCase()+nome.slice(1);
+ const datas=new Set(treinamentos.map(t=>t.data)),hoje=new Date().toISOString().slice(0,10);
+ let html=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'].map(d=>`<div class="dia-semana">${d}</div>`).join('');
+ for(let i=0;i<primeiro.getDay();i++)html+='<div class="dia vazio"></div>';
+ for(let d=1;d<=dias;d++){
+  const iso=`${ano}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,tem=datas.has(iso);
+  html+=`<div class="dia ${tem?'com-atividade':''} ${hoje===iso?'hoje':''}" ${tem?`role="button" tabindex="0" data-dia="${iso}" aria-label="Atividade em ${fmt(iso)}"`:''}>
+   ${d}${tem?'<span class="pontinho"></span>':''}</div>`;
+ }
+ document.getElementById('gradeDias').innerHTML=html;
+ document.querySelectorAll('[data-dia]').forEach(el=>{
+  const ir=()=>renderizarTreinamentos(el.dataset.dia);
+  el.addEventListener('click',ir);
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ir();}});
+ });
+}
+document.getElementById('mesAnterior').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()-1);renderizarCalendario();});
+document.getElementById('mesSeguinte').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()+1);renderizarCalendario();});
+
+document.getElementById('checklistRotina').innerHTML=CHECKLIST_ITENS.map((t,i)=>
+ `<li><input type="checkbox" id="rot${i}"><label for="rot${i}">${t}</label></li>`).join('');
+
+/* ---------- 4. Cadastro de empresa ----------------------------------------- */
+document.getElementById('formEmpresa').addEventListener('submit',e=>{
+ e.preventDefault();
+ const c=document.getElementById('nomeEmpresa'),erro=c.parentElement.querySelector('.erro');
+ erro.textContent=c.value.trim().length<3?'Informe um nome fictício (mínimo 3 caracteres).':'';
+ c.parentElement.classList.toggle('invalido',!!erro.textContent);
+ if(erro.textContent)return;
+ empresas.unshift({nome:c.value.trim(),setor:document.getElementById('setor').value,
+  responsavel:document.getElementById('responsavel').value.trim()||'Responsável fictício'});
+ salvar();renderizarIndicadores();
+ document.getElementById('confirmacaoEmpresa').classList.add('visivel');
+ e.target.reset();
+});
+
+/* ---------- 5. Orçamento ---------------------------------------------------- */
+document.getElementById('formOrcamento').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ [{id:'nome',t:v=>v.trim().length>=2,m:'Informe o nome.'},
+  {id:'email',t:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),m:'E-mail inválido.'},
+  {id:'detalhes',t:v=>v.trim().length>=10,m:'Descreva a necessidade (mínimo 10 caracteres).'}].forEach(o=>{
+  const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+  const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(valido)document.getElementById('confirmacaoOrc').classList.add('visivel');
+});
+
+/* ---------- 6. Relatório administrativo para impressão --------------------- */
+document.getElementById('imprimirRelatorio').addEventListener('click',()=>{
+ const linhas=treinamentos.map(t=>`<tr><td>${t.id}</td><td>${t.nome}</td><td>${t.turma}</td><td>${t.progresso}%</td><td>${t.situacao}</td></tr>`).join('');
+ const docs=DOCUMENTOS_FICTICIOS.map(d=>{
+  const dias=Math.round((new Date(d.vencimento+'T12:00:00')-new Date())/86400000);
+  return `<tr><td>${d.nome}</td><td>${fmt(d.vencimento)}</td><td>${statusDoc(dias).texto}</td></tr>`;
+ }).join('');
+ document.getElementById('areaImpressao').innerHTML=`
+  <h1>Relatório administrativo ilustrativo</h1>
+  <p><strong>DOCUMENTO DEMONSTRATIVO — SEM VALIDADE REGULAMENTAR OU CONTRATUAL</strong></p>
+  <p>Empresas fictícias cadastradas: ${empresas.length}</p>
+  <h2>Treinamentos ilustrativos</h2><table><tr><th>ID</th><th>Treinamento</th><th>Turma</th><th>Progresso</th><th>Situação</th></tr>${linhas}</table>
+  <h2>Controle de documentos ilustrativo</h2><table><tr><th>Documento</th><th>Vencimento</th><th>Situação</th></tr>${docs}</table>
+  <p style="margin-top:12pt;font-size:9pt">Gerado por SAFEWORK PRIME — demonstração MOSS Digital.</p>`;
+ window.print();
+});
+
+/* ---------- 7. Menu e WhatsApp --------------------------------------------- */
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));
+ menuToggle.textContent=a?'Fechar ✕':'Menu ☰';});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='Menu ☰';}));
+document.querySelectorAll('[data-cta]').forEach(cta=>cta.addEventListener('click',()=>{
+ setTimeout(()=>document.getElementById('nome')?.focus({preventScroll:true}),400);}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+
+renderizarIndicadores();renderizarTreinamentos();renderizarDocumentos();renderizarCalendario();
+</script>
+</body>
+</html>

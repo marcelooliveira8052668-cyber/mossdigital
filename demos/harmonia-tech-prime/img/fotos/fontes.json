@@ -1,0 +1,62 @@
+[
+  {
+    "arquivo": "img/fotos/foto03.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Saxophone Instrument Music Edited 2020",
+    "fonte": "https://www.flickr.com/photos/186095195@N02/49312265153",
+    "licenca": "by 2.0",
+    "autor": "chocolatedazzles",
+    "url_imagem": "https://live.staticflickr.com/65535/49312265153_8ea5366112_b.jpg",
+    "descricao": "Teclas de piano"
+  },
+  {
+    "arquivo": "img/fotos/foto04.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Recording Studio",
+    "fonte": "https://www.flickr.com/photos/82832950@N00/120880629",
+    "licenca": "by-sa 2.0",
+    "autor": "wetwebwork",
+    "url_imagem": "https://live.staticflickr.com/37/120880629_65e0e99ed3_b.jpg",
+    "descricao": "Saxofone"
+  },
+  {
+    "arquivo": "img/fotos/foto05.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Workshop - tools",
+    "fonte": "https://www.flickr.com/photos/13596279@N03/3524030233",
+    "licenca": "by-sa 2.0",
+    "autor": "Reggie Alvey",
+    "url_imagem": "https://live.staticflickr.com/3647/3524030233_f7bbccb975_b.jpg",
+    "descricao": "Bateria"
+  },
+  {
+    "arquivo": "img/fotos/foto06.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Workshop #5",
+    "fonte": "https://www.flickr.com/photos/59262395@N00/905475473",
+    "licenca": "by 2.0",
+    "autor": "beanmunster",
+    "url_imagem": "https://live.staticflickr.com/1272/905475473_ba60ce4190_b.jpg",
+    "descricao": "Oficina de instrumentos musicais"
+  },
+  {
+    "arquivo": "img/fotos/foto01.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Madame Tussauds 03-03-2004",
+    "fonte": "https://www.flickr.com/photos/28752865@N08/4391497813",
+    "licenca": "by 2.0",
+    "autor": "Karen Roe",
+    "url_imagem": "https://live.staticflickr.com/4048/4391497813_0449b7fbca_b.jpg",
+    "descricao": "Violino em detalhe"
+  },
+  {
+    "arquivo": "img/fotos/foto02.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Workshop - Old vs New",
+    "fonte": "https://www.flickr.com/photos/13596279@N03/3524060537",
+    "licenca": "by-sa 2.0",
+    "autor": "Reggie Alvey",
+    "url_imagem": "https://live.staticflickr.com/3566/3524060537_768f54c9d1_b.jpg",
+    "descricao": "Oficina de guitarra"
+  }
+]

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1e4a34">
+<meta name="description" content="BIOCONTROL PRIME — demonstração comercial de controle de pragas: orçamento, planos, agenda e acompanhamento. Serviços executados por profissionais habilitados.">
+<title>BIOCONTROL PRIME — Controle de Pragas | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  BIOCONTROL PRIME — DEMONSTRAÇÃO 06 DO CATÁLOGO MOSS DIGITAL
+  ============================================================================
+  Arquivo único (HTML + CSS + JS + SVGs inline).
+
+  ⚠️ Esta demonstração NÃO publica instruções de aplicação de produtos
+  perigosos. Os serviços são descritos de forma genérica, como executados
+  por profissionais habilitados. Orientações de prevenção são apenas
+  recomendações gerais de higiene e manutenção.
+
+  ONDE EDITAR:
+  - Serviços: array SERVICOS (JS)
+  - Planos: array PLANOS (JS)
+  - Preços do orçamento: CONFIG (JS)
+  - Visitas/agenda: array VISITAS (JS)
+  - WhatsApp MOSS: WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — verde-escuro, branco e amarelo */
+:root{
+ --verde-900:#143426;--verde-800:#1e4a34;--verde-700:#2a6344;--verde-600:#3a7d55;
+ --amarelo:#f2c230;--amarelo-escuro:#d9a515;
+ --branco:#fff;--fundo:#f6f8f5;--tinta:#25352d;--suave:#66756c;
+ --borda:#d8e2d9;--sombra:0 8px 24px rgba(20,52,38,.10);--sombra-forte:0 18px 40px rgba(20,52,38,.20);
+ --raio:16px;--raio-s:8px;
+ --titulo:"Trebuchet MS","Segoe UI",sans-serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.6}
+h1,h2,h3,h4{font-family:var(--titulo);line-height:1.18;color:var(--verde-900);margin:0 0 .5em}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--verde-700)}
+button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--amarelo-escuro);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--amarelo);color:var(--verde-900);padding:.6rem 1rem;z-index:999}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0}
+.secao--fundo{background:var(--fundo)}
+.secao--verde{background:var(--verde-800);color:#e6f0e8}
+.secao--verde h2,.secao--verde h3{color:#fff}
+.cabecalho-secao{max-width:680px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amarelo-escuro);font-weight:700}
+.titulo-secao{font-size:clamp(1.9rem,3.8vw,2.6rem)}
+.subtitulo-secao{color:var(--suave)}
+.secao--verde .subtitulo-secao{color:#bdd4c4}
+.centro{text-align:center;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.3rem;border:2px solid transparent;border-radius:999px;
+ font-weight:700;cursor:pointer;text-decoration:none;font-size:.9rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn--amarelo{background:var(--amarelo);color:var(--verde-900)}
+.btn--amarelo:hover{background:var(--amarelo-escuro)}
+.btn--verde{background:var(--verde-700);color:#fff}.btn--verde:hover{background:var(--verde-600)}
+.btn--contorno{border-color:var(--verde-600);color:var(--verde-700);background:transparent}.btn--contorno:hover{background:rgba(58,125,85,.08)}
+.btn--claro{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+.btn--bloco{width:100%}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+/* Barra e cabeçalho */
+.barra{background:var(--verde-900);color:#c8ddcd;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.cabecalho{background:rgba(255,255,255,.97);border-bottom:1px solid var(--borda);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--verde-900)}
+.logo svg{width:42px;height:42px}
+.logo strong{display:block;font-family:var(--titulo);font-size:1.15rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;color:var(--amarelo-escuro)}
+.nav{display:flex;align-items:center;gap:1.3rem}
+.nav a{text-decoration:none;color:var(--tinta);font-weight:600;font-size:.88rem}.nav a:hover{color:var(--amarelo-escuro)}
+.menu-toggle{display:none;background:none;border:1px solid var(--borda);color:var(--verde-900);padding:.45rem;cursor:pointer;border-radius:var(--raio-s)}
+.menu-toggle svg{width:24px;height:24px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--verde-800),var(--verde-900));color:#fff;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
+.hero h1{color:#fff;font-size:clamp(2.2rem,5vw,3.6rem)}
+.hero h1 em{color:var(--amarelo);font-style:normal}
+.hero__texto{color:#cfe0d3;max-width:34rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero__arte{border-radius:var(--raio);background:rgba(255,255,255,.06);padding:1rem;border:1px solid rgba(242,194,48,.25)}
+.hero__arte svg{width:100%;height:auto}
+.hero__nota{font-size:.75rem;color:#cfe0d3;border-left:3px solid var(--amarelo);padding:.5rem .8rem;margin-top:1.2rem}
+
+/* Serviços */
+.servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.servico{padding:1.6rem;transition:transform .2s,box-shadow .2s}
+.servico:hover{transform:translateY(-4px);box-shadow:var(--sombra-forte)}
+.servico__icone{width:50px;height:50px;margin-bottom:.8rem}
+.servico h3{font-size:1.12rem}.servico p{font-size:.88rem;color:var(--suave);margin:0}
+
+/* Orçamento */
+.orcamento{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:start}
+.form-card{padding:1.6rem}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem;margin-bottom:1rem}
+.campo label{font-weight:700;font-size:.84rem;color:var(--verde-800)}
+.campo input,.campo select,.campo textarea{width:100%;padding:.7rem .8rem;border:1px solid var(--borda);border-radius:var(--raio-s)}
+.campo textarea{min-height:90px;resize:vertical}
+.campo .erro{color:#b04a4a;font-size:.74rem;min-height:1.1em}
+.campo.invalido input,.campo.invalido select,.campo.invalido textarea{border-color:#b04a4a}
+.slider-linha{display:flex;align-items:center;gap:.8rem}
+input[type=range]{flex:1;accent-color:var(--verde-600)}
+.slider-valor{font-family:var(--mono);font-weight:700;color:var(--verde-700);min-width:80px;text-align:right}
+.resultado{background:var(--verde-800);color:#fff;border-radius:var(--raio);padding:1.6rem;position:sticky;top:90px}
+.resultado h3{color:#fff;font-size:1.15rem}
+.resultado .valor{font-family:var(--mono);font-size:2.1rem;color:var(--amarelo);margin:.3rem 0}
+.res-linha{display:flex;justify-content:space-between;gap:1rem;font-size:.84rem;padding:.5rem 0;border-bottom:1px dashed rgba(255,255,255,.2)}
+.aviso{font-size:.76rem;color:#d6e6d9;background:rgba(255,255,255,.07);border-left:3px solid var(--amarelo);padding:.7rem;margin-top:1rem}
+.confirmacao{display:none;background:#eaf5ec;border:1px solid #bfdfc7;border-radius:var(--raio-s);padding:.9rem;margin-top:1rem;color:#275c3a;font-size:.85rem}
+.confirmacao.visivel{display:block}
+
+/* Planos */
+.planos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.plano{padding:1.6rem;display:flex;flex-direction:column}
+.plano.destaque{border:2px solid var(--amarelo)}
+.plano__nome{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amarelo-escuro);font-weight:700}
+.plano__preco{font-family:var(--mono);font-size:1.7rem;color:var(--verde-800);margin:.4rem 0}
+.plano ul{list-style:none;padding:0;margin:0 0 1rem;flex:1}
+.plano li{font-size:.85rem;padding:.3rem 0}.plano li::before{content:"✓ ";color:var(--verde-600);font-weight:700}
+
+/* Painel: agenda + visitas */
+.painel{display:grid;grid-template-columns:1.1fr .9fr;gap:1.5rem;align-items:start}
+.calendario{padding:1.2rem}
+.cal-topo{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.cal-topo h3{margin:0;font-size:1.05rem}
+.cal-botoes{display:flex;gap:.3rem}
+.cal-botoes button{width:30px;height:30px;border:1px solid var(--borda);background:#fff;cursor:pointer;border-radius:6px}
+.grade-dias{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.dia-semana{text-align:center;font-size:.62rem;font-weight:700;color:var(--suave);padding-bottom:.3rem}
+.dia{aspect-ratio:1;border:1px solid var(--borda);border-radius:6px;padding:.2rem;font-size:.72rem;background:#fff}
+.dia.vazio{border:0;background:transparent}
+.dia.com-visita{background:#fff8dd;border-color:var(--amarelo);font-weight:700;cursor:pointer}
+.dia.hoje{outline:2px solid var(--verde-600);outline-offset:-2px}
+.dia .pontinho{display:block;width:5px;height:5px;border-radius:50%;background:var(--amarelo-escuro);margin:2px auto 0}
+.visitas{padding:1.2rem}
+.lista-visitas{list-style:none;padding:0;margin:0}
+.visita{display:flex;gap:.7rem;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--borda);font-size:.84rem}
+.visita:last-child{border:0}
+.visita time{font-family:var(--mono);font-size:.72rem;color:var(--amarelo-escuro);white-space:nowrap}
+.etiqueta{display:inline-block;padding:.18rem .5rem;border-radius:999px;font-size:.66rem;font-weight:700;background:var(--fundo);color:var(--verde-700)}
+.checklist{list-style:none;padding:0}
+.checklist li{display:flex;gap:.5rem;align-items:flex-start;font-size:.84rem;padding:.3rem 0}
+.checklist input{accent-color:var(--verde-600);margin-top:.2rem}
+
+/* Prevenção */
+.prevenção{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.dica{padding:1.4rem}
+.dica__num{font-family:var(--mono);font-size:.75rem;color:var(--amarelo-escuro);font-weight:700}
+.dica h3{font-size:1rem}.dica p{font-size:.85rem;color:var(--suave);margin:0}
+
+/* Rodapé */
+.rodape{background:var(--verde-900);color:#c8ddcd;padding:2.6rem 0 1.4rem;border-top:4px solid var(--amarelo)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.rodape__marca strong{color:#fff;font-family:var(--titulo)}
+.moss-bloco{border:1px solid rgba(242,194,48,.4);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+.moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+.rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--amarelo);color:var(--verde-900);
+ font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem;box-shadow:var(--sombra)}
+ .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid var(--borda)}
+ .menu-toggle{display:block}
+ .hero .container,.orcamento,.painel{grid-template-columns:1fr}
+ .servicos,.planos,.prevenção{grid-template-columns:repeat(2,1fr)}
+ .resultado{position:static}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.4rem,var(--largura))}
+ .servicos,.planos,.prevenção,.grade-2{grid-template-columns:1fr}
+ .dia{font-size:.65rem}
+ .selo-demo{font-size:.55rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ CONTROLE DE PRAGAS · DEMONSTRAÇÃO COMERCIAL</span><span>SERVIÇOS EXECUTADOS POR PROFISSIONAIS HABILITADOS</span></div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="BIOCONTROL PRIME — início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Marca BIOCONTROL PRIME">
+   <rect width="48" height="48" rx="12" fill="#1e4a34"/>
+   <path d="M24 8l12 5v11c0 8-5 13-12 16-7-3-12-8-12-16V13z" fill="none" stroke="#f2c230" stroke-width="2.5"/>
+   <path d="M18 24l4 4 8-9" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span><strong>BIOCONTROL PRIME</strong><small>CONTROLE DE PRAGAS</small></span>
+ </a>
+ <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#servicos">Serviços</a><a href="#orcamento">Orçamento</a><a href="#planos">Planos</a>
+  <a href="#painel">Agenda</a><a href="#prevencao">Prevenção</a>
+  <a class="btn btn--amarelo" href="#orcamento" data-cta>Solicitar orçamento</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <span class="eyebrow">Ambientes protegidos · demonstração</span>
+   <h1>Mais tranquilidade para <em>cada ambiente</em>.</h1>
+   <p class="hero__texto">Conheça uma demonstração de empresa de controle de pragas: serviços, orçamento ilustrativo, planos de manutenção, agenda de visitas e orientações gerais de prevenção.</p>
+   <div class="hero__acoes">
+    <a class="btn btn--amarelo" href="#orcamento">Pedir orçamento →</a>
+    <a class="btn btn--claro" href="#servicos">Ver serviços</a>
+   </div>
+   <p class="hero__nota">Os serviços são descritos de forma genérica e executados por profissionais habilitados. Esta página não ensina a aplicar produtos químicos.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração de uma casa protegida por um escudo e ícones de insetos estilizados">
+   <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="400" fill="#1a402d"/>
+    <g stroke="#2b5c40" stroke-width="1"><path d="M0 50h520M0 100h520M0 150h520M0 200h520M0 250h520M0 300h520M0 350h520"/></g>
+    <!-- casa -->
+    <path d="M120 210L240 120l120 90v150H120z" fill="#2f6d49" stroke="#f2c230" stroke-width="2"/>
+    <path d="M106 214L240 110l134 104" fill="none" stroke="#f2c230" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="205" y="250" width="70" height="110" fill="#1a402d" stroke="#c8ddcd" stroke-width="2"/>
+    <rect x="145" y="240" width="45" height="40" fill="#f2c230" opacity=".75"/>
+    <rect x="290" y="240" width="45" height="40" fill="#f2c230" opacity=".75"/>
+    <!-- escudo -->
+    <g transform="translate(370,110)">
+     <path d="M0 -45l34 13v26c0 20-14 33-34 41-20-8-34-21-34-41v-26z" fill="#f2c230"/>
+     <path d="M-15 0l10 11 20-23" fill="none" stroke="#1e4a34" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <!-- insetos estilizados -->
+    <g fill="#f2c230" opacity=".85">
+     <circle cx="70" cy="90" r="9"/><circle cx="52" cy="76" r="4"/><circle cx="88" cy="76" r="4"/>
+     <circle cx="100" cy="330" r="7"/><circle cx="86" cy="319" r="3"/>
+    </g>
+    <g stroke="#f2c230" stroke-width="2" opacity=".7"><path d="M70 90L52 76M70 90L88 76M100 330l-14-11"/></g>
+   </svg>
+  </div>
+ </div></section>
+
+ <section class="secao secao--fundo" id="servicos"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Serviços</span>
+   <h2 class="titulo-secao">Controle por tipo de praga</h2>
+   <p class="subtitulo-secao">Atendimentos genéricos ilustrativos, realizados por profissionais habilitados — sem detalhes de produtos ou técnicas de aplicação.</p></div>
+  <div class="servicos" id="gradeServicos"></div>
+ </div></section>
+
+ <section class="secao" id="orcamento"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Simulador demonstrativo</span>
+   <h2 class="titulo-secao">Solicite um orçamento ilustrativo</h2>
+   <p class="subtitulo-secao">Informe o tipo de imóvel, a área e a data desejada. Valores configuráveis, não representam proposta comercial.</p></div>
+  <div class="orcamento">
+   <form class="card form-card" id="formOrcamento" novalidate>
+    <div class="grade-2">
+     <div class="campo"><label for="nome">Nome *</label><input id="nome" placeholder="Seu nome"><span class="erro" aria-live="polite"></span></div>
+     <div class="campo"><label for="telefone">Telefone *</label><input id="telefone" placeholder="(00) 00000-0000"><span class="erro" aria-live="polite"></span></div>
+    </div>
+    <div class="grade-2">
+     <div class="campo"><label for="tipoImovel">Tipo de imóvel</label>
+      <select id="tipoImovel"><option value="casa">Casa</option><option value="apto">Apartamento</option><option value="comercio">Comércio</option><option value="industria">Indústria / galpão</option></select></div>
+     <div class="campo"><label for="tipoPraga">Foco do atendimento</label>
+      <select id="tipoPraga"><option>Insetos em geral</option><option>Roedores</option><option>Cupins</option><option>Baratas</option><option>Mosquitos</option><option>Inspeção preventiva</option></select></div>
+    </div>
+    <div class="campo">
+     <label for="area">Área aproximada (m²)</label>
+     <div class="slider-linha"><input type="range" id="area" min="20" max="5000" step="20" value="180"><output class="slider-valor" id="areaVal">180 m²</output></div>
+    </div>
+    <div class="campo"><label for="dataVisita">Data desejada para visita (ilustrativa)</label><input type="date" id="dataVisita"><span class="erro" aria-live="polite"></span></div>
+    <button class="btn btn--verde btn--bloco" type="submit">Calcular e registrar solicitação</button>
+    <div class="confirmacao" id="confirmacao" role="status">
+     <strong>✓ Solicitação registrada nesta demonstração.</strong>
+     <p style="margin:.4rem 0">Nada foi enviado. Resumo local gerado abaixo.</p>
+     <div id="resumo" style="font-family:var(--mono);font-size:.75rem;background:#fff;padding:.7rem;border-radius:6px;white-space:pre-wrap"></div>
+    </div>
+   </form>
+   <aside class="resultado" aria-live="polite">
+    <span class="eyebrow">Resultado da simulação</span>
+    <h3>Estimativa ilustrativa</h3>
+    <div class="valor" id="valorOrcamento">R$ —</div>
+    <div id="faixaOrcamento" style="font-size:.82rem;color:#d6e6d9">Preencha e clique em calcular.</div>
+    <div style="margin-top:1rem">
+     <div class="res-linha"><span>Imóvel</span><strong id="linhaImovel">—</strong></div>
+     <div class="res-linha"><span>Área</span><strong id="linhaArea">—</strong></div>
+     <div class="res-linha"><span>Foco</span><strong id="linhaFoco">—</strong></div>
+     <div class="res-linha"><span>Visita desejada</span><strong id="linhaData">—</strong></div>
+    </div>
+    <p class="aviso">⚠ Estimativa <strong>ilustrativa e configurável</strong>. Não é medição, proposta ou preço garantido. A cotação real depende de inspeção por profissional habilitado.</p>
+   </aside>
+  </div>
+ </div></section>
+
+ <section class="secao secao--fundo" id="planos"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Planos de manutenção</span>
+   <h2 class="titulo-secao">Acompanhamento periódico</h2>
+   <p class="subtitulo-secao">Planos ilustrativos para demonstrar a ideia de manutenção preventiva.</p></div>
+  <div class="planos" id="gradePlanos"></div>
+ </div></section>
+
+ <section class="secao" id="painel"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Rotina demonstrativa</span>
+   <h2 class="titulo-secao">Agenda e serviços realizados</h2>
+   <p class="subtitulo-secao">Visitas fictícias marcadas no calendário. Clique em um dia com marcação para filtrar a lista.</p></div>
+  <div class="painel">
+   <div class="card calendario">
+    <div class="cal-topo"><h3 id="mesCalendario">—</h3>
+     <div class="cal-botoes"><button id="mesAnterior" aria-label="Mês anterior">‹</button><button id="mesSeguinte" aria-label="Próximo mês">›</button></div></div>
+    <div class="grade-dias" id="gradeDias" role="grid" aria-label="Calendário de visitas"></div>
+   </div>
+   <div class="card visitas">
+    <span class="eyebrow">Serviços realizados (fictícios)</span>
+    <h3 style="font-size:1.1rem">Visitas recentes</h3>
+    <ul class="lista-visitas" id="listaVisitas"></ul>
+    <h4 style="font-family:var(--corpo);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--suave);margin-top:1.2rem">Checklist de visita (ilustrativo)</h4>
+    <ul class="checklist" id="checklistVisita"></ul>
+   </div>
+  </div>
+ </div></section>
+
+ <section class="secao secao--verde" id="prevencao"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Orientações gerais</span>
+   <h2 class="titulo-secao">Prevenção no dia a dia</h2>
+   <p class="subtitulo-secao">Recomendações gerais de higiene e manutenção — não envolvem produtos químicos nem substituem avaliação profissional.</p></div>
+  <div class="prevenção">
+   <div class="card dica"><span class="dica__num">01</span><h3>Vedar frestas</h3><p>Manter portas, janelas e rodapés bem vedados ajuda a reduzir o acesso de insetos e roedores.</p></div>
+   <div class="card dica"><span class="dica__num">02</span><h3>Armazenar alimentos</h3><p>Guardar alimentos em recipientes fechados e manter a cozinha limpa reduz atração de pragas.</p></div>
+   <div class="card dica"><span class="dica__num">03</span><h3>Evitar água parada</h3><p>Esvaziar vasos, calhas e recipientes periodicamente ajuda na prevenção de mosquitos.</p></div>
+   <div class="card dica"><span class="dica__num">04</span><h3>Manter a limpeza</h3><p>Remover resíduos e manter áreas externas organizadas diminui focos de proliferação.</p></div>
+   <div class="card dica"><span class="dica__num">05</span><h3>Observar sinais</h3><p>Fique atento a marcas, fezes ou ruídos e procure um profissional habilitado para avaliar.</p></div>
+   <div class="card dica"><span class="dica__num">06</span><h3>Não improvisar</h3><p>Não manuseie produtos perigosos sem orientação. A aplicação deve ser feita por profissional habilitado.</p></div>
+  </div>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Inseto ilustrativo do segmento" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Inseto ilustrativo do segmento<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Armadilha para roedores" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Armadilha para roedores<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Inseto ilustrativo" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Inseto ilustrativo<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Mosquito em detalhe" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Mosquito em detalhe<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Armadilha para roedores" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Armadilha para roedores<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Armadilha de monitoramento de insetos" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Armadilha de monitoramento de insetos<small>Imagem ilustrativa · cc0 1.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div class="rodape__marca"><strong>BIOCONTROL PRIME</strong>
+   <p style="font-size:.82rem;max-width:430px;margin-top:.5rem">Demonstração comercial com dados fictícios. Não ensina aplicação de produtos perigosos e não substitui avaliação de profissional habilitado.</p></div>
+  <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou da ideia? Crie um site assim para sua empresa.</p>
+   <a class="btn btn--amarelo" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+ </div>
+ <div class="rodape__base"><span>© 2026 BIOCONTROL PRIME — Demo MOSS Digital</span><span>Dados fictícios · Profissionais habilitados</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — dados, orçamento, planos, agenda, checklist, menu
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='BIOCONTROL PRIME (Demo 06 — Dedetizadora)';
+function daquiDias(n){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
+function fmt(iso){if(!iso)return '—';const [a,m,d]=iso.split('-');return `${d}/${m}/${a}`;}
+
+/* ---------- 1. Dados -------------------------------------------------------- */
+const SERVICOS=[
+ {nome:'Controle de insetos',icone:'inseto',desc:'Inspeção e atendimento para insetos rasteiros e voadores, executados por profissional habilitado.'},
+ {nome:'Controle de roedores',icone:'roedor',desc:'Avaliação e manejo em áreas comerciais e residenciais, com registro ilustrativo da visita.'},
+ {nome:'Tratamento contra cupins',icone:'cupim',desc:'Inspeção de madeira e estruturas, com laudo demonstrativo — sem detalhes de aplicação.'},
+ {nome:'Controle de baratas',icone:'barata',desc:'Atendimento em cozinhas, áreas de serviço e estabelecimentos, feito por equipe habilitada.'},
+ {nome:'Controle de mosquitos',icone:'mosquito',desc:'Inspeção de focos e orientações gerais de prevenção, sem uso de produtos nesta demo.'},
+ {nome:'Inspeção preventiva',icone:'olho',desc:'Visita técnica ilustrativa para identificar pontos de atenção e registrar observações.'}
+];
+const ICONES={
+ inseto:'<svg viewBox="0 0 48 48" fill="none" stroke="#2a6344" stroke-width="2"><ellipse cx="24" cy="26" rx="7" ry="11"/><circle cx="24" cy="11" r="5"/><path d="M17 20l-8-6M31 20l8-6M17 28l-9 4M31 28l9 4"/></svg>',
+ roedor:'<svg viewBox="0 0 48 48" fill="none" stroke="#2a6344" stroke-width="2"><ellipse cx="24" cy="30" rx="12" ry="9"/><circle cx="14" cy="20" r="6"/><circle cx="34" cy="20" r="6"/><path d="M32 37c6 3 10 2 12-1"/></svg>',
+ cupim:'<svg viewBox="0 0 48 48" fill="none" stroke="#2a6344" stroke-width="2"><rect x="10" y="20" width="28" height="16" rx="2"/><path d="M10 26h28M14 20v16M24 20v16M34 20v16"/></svg>',
+ barata:'<svg viewBox="0 0 48 48" fill="none" stroke="#2a6344" stroke-width="2"><ellipse cx="24" cy="26" rx="9" ry="13"/><path d="M24 13v26M15 20l-7-6M33 20l7-6M15 30l-8 5M33 30l8 5"/></svg>',
+ mosquito:'<svg viewBox="0 0 48 48" fill="none" stroke="#2a6344" stroke-width="2"><path d="M24 20v18M24 20l-12-8M24 20l12-8M20 14l-8-6M28 14l8-6"/><ellipse cx="24" cy="30" rx="3" ry="8"/></svg>',
+ olho:'<svg viewBox="0 0 48 48" fill="none" stroke="#2a6344" stroke-width="2"><path d="M6 24s8-12 18-12 18 12 18 12-8 12-18 12S6 24 6 24z"/><circle cx="24" cy="24" r="5"/></svg>'
+};
+const PLANOS=[
+ {nome:'Mensal',preco:'R$ 189',itens:['Visita ilustrativa a cada mês','Relatório de acompanhamento','Orientações gerais de prevenção']},
+ {nome:'Trimestral',preco:'R$ 149',itens:['Visita ilustrativa a cada 3 meses','Relatório de acompanhamento','Prioridade de agendamento (exemplo)'],destaque:true},
+ {nome:'Semestral',preco:'R$ 119',itens:['Visita ilustrativa a cada 6 meses','Relatório de acompanhamento','Revisão preventiva (exemplo)']}
+];
+const CONFIG={base:0.85,minimo:150,tipos:{casa:1,apto:0.85,comercio:1.3,industria:1.7},nomes:{casa:'Casa',apto:'Apartamento',comercio:'Comércio',industria:'Indústria / galpão'}};
+const VISITAS=[
+ {data:daquiDias(2),local:'Residencial Exemplo',tipo:'Inspeção preventiva',status:'Agendada'},
+ {data:daquiDias(-3),local:'Comércio Modelo',tipo:'Controle de insetos',status:'Realizada'},
+ {data:daquiDias(-8),local:'Condomínio Exemplo',tipo:'Controle de roedores',status:'Realizada'},
+ {data:daquiDias(6),local:'Galpão Demonstração',tipo:'Tratamento contra cupins',status:'Agendada'}
+];
+const CHECKLIST=['Identificação do local (ilustrativo)','Inspeção de pontos críticos (ilustrativo)','Registro fotográfico fictício','Orientações gerais ao cliente','Registro da visita concluída'];
+
+/* ---------- 2. Renderizações iniciais -------------------------------------- */
+const gradeServicos=document.getElementById('gradeServicos');
+SERVICOS.forEach(s=>{const c=document.createElement('article');c.className='card servico';
+ c.innerHTML=`<div class="servico__icone">${ICONES[s.icone]}</div><h3>${s.nome}</h3><p>${s.desc}</p>`;gradeServicos.appendChild(c);});
+const gradePlanos=document.getElementById('gradePlanos');
+PLANOS.forEach(p=>{const c=document.createElement('div');c.className='card plano'+(p.destaque?' destaque':'');
+ c.innerHTML=`<span class="plano__nome">${p.nome}${p.destaque?' · mais escolhido (exemplo)':''}</span>
+ <div class="plano__preco">${p.preco}<small style="font-size:.65rem;color:#66756c"> /visita ilustrativa</small></div>
+ <ul>${p.itens.map(i=>`<li>${i}</li>`).join('')}</ul>
+ <button class="btn ${p.destaque?'btn--amarelo':'btn--contorno'}" type="button">Selecionar plano (simulação)</button>`;
+ gradePlanos.appendChild(c);});
+
+/* ---------- 3. Orçamento ---------------------------------------------------- */
+const area=document.getElementById('area'),areaVal=document.getElementById('areaVal');
+area.addEventListener('input',()=>{areaVal.textContent=Number(area.value).toLocaleString('pt-BR')+' m²';});
+const fmtMoeda=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+document.getElementById('formOrcamento').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ [{id:'nome',t:v=>v.trim().length>=2,m:'Informe seu nome.'},
+  {id:'telefone',t:v=>v.replace(/\D/g,'').length>=10,m:'Telefone incompleto.'},
+  {id:'dataVisita',t:v=>!!v,m:'Escolha uma data ilustrativa.'}].forEach(o=>{
+   const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+   const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(!valido)return;
+ const m2=Number(area.value),tipo=document.getElementById('tipoImovel').value;
+ const total=Math.max(m2*CONFIG.base*CONFIG.tipos[tipo],CONFIG.minimo);
+ document.getElementById('valorOrcamento').textContent=fmtMoeda(total);
+ document.getElementById('faixaOrcamento').textContent=`Faixa ilustrativa: ${fmtMoeda(total*0.9)} a ${fmtMoeda(total*1.15)}`;
+ document.getElementById('linhaImovel').textContent=CONFIG.nomes[tipo];
+ document.getElementById('linhaArea').textContent=m2.toLocaleString('pt-BR')+' m²';
+ document.getElementById('linhaFoco').textContent=document.getElementById('tipoPraga').value;
+ document.getElementById('linhaData').textContent=fmt(document.getElementById('dataVisita').value);
+ document.getElementById('resumo').textContent=
+  `Nome: ${document.getElementById('nome').value.trim()}\nTelefone: ${document.getElementById('telefone').value.trim()}\n`+
+  `Imóvel: ${CONFIG.nomes[tipo]} · ${m2} m²\nFoco: ${document.getElementById('tipoPraga').value}\n`+
+  `Visita desejada: ${fmt(document.getElementById('dataVisita').value)}\nEstimativa: ${fmtMoeda(total)} (ilustrativa)`;
+ document.getElementById('confirmacao').classList.add('visivel');
+ document.getElementById('confirmacao').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+/* ---------- 4. Agenda e visitas -------------------------------------------- */
+let mesAtual=new Date();mesAtual.setDate(1);
+function renderizarCalendario(){
+ const ano=mesAtual.getFullYear(),mes=mesAtual.getMonth();
+ const primeiro=new Date(ano,mes,1),dias=new Date(ano,mes+1,0).getDate();
+ const nome=primeiro.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+ document.getElementById('mesCalendario').textContent=nome.charAt(0).toUpperCase()+nome.slice(1);
+ const datas=new Set(VISITAS.map(v=>v.data));
+ const hoje=new Date().toISOString().slice(0,10);
+ let html=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'].map(d=>`<div class="dia-semana">${d}</div>`).join('');
+ for(let i=0;i<primeiro.getDay();i++)html+='<div class="dia vazio"></div>';
+ for(let d=1;d<=dias;d++){
+  const iso=`${ano}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  const tem=datas.has(iso);
+  html+=`<div class="dia ${tem?'com-visita':''} ${hoje===iso?'hoje':''}" ${tem?`role="button" tabindex="0" data-dia="${iso}" aria-label="Visita ilustrativa em ${fmt(iso)}"`:''}>
+   ${d}${tem?'<span class="pontinho"></span>':''}</div>`;
+ }
+ document.getElementById('gradeDias').innerHTML=html;
+ document.querySelectorAll('[data-dia]').forEach(el=>{
+  const ir=()=>renderizarVisitas(el.dataset.dia);
+  el.addEventListener('click',ir);
+  el.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();ir();}});
+ });
+}
+function renderizarVisitas(filtro){
+ const itens=filtro?VISITAS.filter(v=>v.data===filtro):VISITAS;
+ document.getElementById('listaVisitas').innerHTML=itens.length?itens.map(v=>
+  `<li class="visita"><time>${fmt(v.data)}</time><span><strong>${v.local}</strong><br><small>${v.tipo}</small></span>
+   <span class="etiqueta">${v.status}</span></li>`).join(''):'<li class="visita">Nenhuma visita nesta data.</li>';
+}
+document.getElementById('mesAnterior').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()-1);renderizarCalendario();});
+document.getElementById('mesSeguinte').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()+1);renderizarCalendario();});
+document.getElementById('checklistVisita').innerHTML=CHECKLIST.map((t,i)=>
+ `<li><input type="checkbox" id="ck${i}" data-ck="${i}"><label for="ck${i}">${t}</label></li>`).join('');
+document.querySelectorAll('[data-ck]').forEach(cb=>cb.addEventListener('change',()=>{}));
+
+/* ---------- 5. Menu e WhatsApp --------------------------------------------- */
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');}));
+document.querySelectorAll('[data-cta]').forEach(cta=>cta.addEventListener('click',()=>{
+ setTimeout(()=>document.getElementById('nome')?.focus({preventScroll:true}),400);}));
+const msg=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msg}`;
+
+renderizarCalendario();renderizarVisitas();
+</script>
+</body>
+</html>

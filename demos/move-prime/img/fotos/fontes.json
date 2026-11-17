@@ -1,0 +1,62 @@
+[
+  {
+    "arquivo": "img/fotos/foto01.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "I got it! Moving box on back.",
+    "fonte": "https://www.flickr.com/photos/46362618@N06/5346367887",
+    "licenca": "by-sa 2.0",
+    "autor": "Meathead Movers",
+    "url_imagem": "https://live.staticflickr.com/5163/5346367887_c23f0ed8b7_b.jpg",
+    "descricao": "Caixas de mudança"
+  },
+  {
+    "arquivo": "img/fotos/foto02.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Moving Truck",
+    "fonte": "https://www.flickr.com/photos/68975104@N00/2800396184",
+    "licenca": "by-sa 2.0",
+    "autor": "phil_g",
+    "url_imagem": "https://live.staticflickr.com/3269/2800396184_aee6e3bdc5_b.jpg",
+    "descricao": "Caminhão de mudanças"
+  },
+  {
+    "arquivo": "img/fotos/foto03.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "packing up",
+    "fonte": "https://www.flickr.com/photos/66992990@N00/6532911971",
+    "licenca": "by 2.0",
+    "autor": "Joanna Bourne",
+    "url_imagem": "https://live.staticflickr.com/7032/6532911971_7b1433704f_b.jpg",
+    "descricao": "Caixas embaladas"
+  },
+  {
+    "arquivo": "img/fotos/foto05.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Mediq Sverige Kungsbacka warehouse",
+    "fonte": "https://www.flickr.com/photos/43669498@N05/6205837092",
+    "licenca": "by-sa 2.0",
+    "autor": "Gwan Kho",
+    "url_imagem": "https://live.staticflickr.com/6148/6205837092_1b518ccf7b_b.jpg",
+    "descricao": "Caixas em depósito"
+  },
+  {
+    "arquivo": "img/fotos/foto04.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "I'm not going to BrickCon",
+    "fonte": "https://www.flickr.com/photos/39911510@N00/5010669569",
+    "licenca": "by 2.0",
+    "autor": "breadman017",
+    "url_imagem": "https://live.staticflickr.com/4107/5010669569_cac3edc117_b.jpg",
+    "descricao": "Caixas de mudança embaladas"
+  },
+  {
+    "arquivo": "img/fotos/foto06.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Loading large boxes up the ramp onto removal truck photo",
+    "fonte": "https://www.flickr.com/photos/128772241@N07/15576657311",
+    "licenca": "by 2.0",
+    "autor": "sunset_removals",
+    "url_imagem": "https://live.staticflickr.com/3932/15576657311_1785ec4566_b.jpg",
+    "descricao": "Equipe carregando mudança"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "arquivo": "img/fotos/foto01.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "_D3S9656FL",
+    "fonte": "https://www.flickr.com/photos/46886434@N04/5663979295",
+    "licenca": "by-sa 2.0",
+    "autor": "U.S. Embassy Jerusalem",
+    "url_imagem": "https://live.staticflickr.com/5149/5663979295_5017cc13e8_b.jpg",
+    "descricao": "Laboratório ambiental"
+  },
+  {
+    "arquivo": "img/fotos/foto02.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Test tubes",
+    "fonte": "https://www.flickr.com/photos/57519914@N00/310155894",
+    "licenca": "by-sa 2.0",
+    "autor": "jepoirrier",
+    "url_imagem": "https://live.staticflickr.com/103/310155894_2e5b7517c2_b.jpg",
+    "descricao": "Tubos de ensaio"
+  },
+  {
+    "arquivo": "img/fotos/foto03.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "School laboratory microscope",
+    "fonte": "https://www.flickr.com/photos/121935927@N06/13691723024",
+    "licenca": "by 2.0",
+    "autor": "Siyavula Education",
+    "url_imagem": "https://live.staticflickr.com/7104/13691723024_9bbd228a39_b.jpg",
+    "descricao": "Frasco de amostra"
+  },
+  {
+    "arquivo": "img/fotos/foto04.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Chemistry Lab",
+    "fonte": "https://www.flickr.com/photos/78147607@N00/2097750586",
+    "licenca": "by-sa 2.0",
+    "autor": "euthman",
+    "url_imagem": "https://live.staticflickr.com/2060/2097750586_04cf1cf897_b.jpg",
+    "descricao": "Microscópio de laboratório"
+  },
+  {
+    "arquivo": "img/fotos/foto05.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Laszlo Sagi & Hartmut Nies (02813607)",
+    "fonte": "https://www.flickr.com/photos/35068899@N03/11099197544",
+    "licenca": "by-sa 2.0",
+    "autor": "IAEA Imagebank",
+    "url_imagem": "https://live.staticflickr.com/2841/11099197544_6ae9c957e8_b.jpg",
+    "descricao": "Vidraria de laboratório"
+  },
+  {
+    "arquivo": "img/fotos/foto06.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Water Sampling",
+    "fonte": "https://www.flickr.com/photos/27784370@N05/4688602298",
+    "licenca": "cc0 1.0",
+    "autor": "U.S. Geological Survey",
+    "url_imagem": "https://live.staticflickr.com/4054/4688602298_c6cab939f3_b.jpg",
+    "descricao": "Coleta de amostra de água"
+  }
+]

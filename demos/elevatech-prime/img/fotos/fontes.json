@@ -1,0 +1,62 @@
+[
+  {
+    "arquivo": "img/fotos/foto01.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Elevator shaft",
+    "fonte": "https://www.flickr.com/photos/30624156@N00/7355004828",
+    "licenca": "by-sa 2.0",
+    "autor": "Loozrboy",
+    "url_imagem": "https://live.staticflickr.com/7080/7355004828_90dcd0ac46_b.jpg",
+    "descricao": "Poço de elevador"
+  },
+  {
+    "arquivo": "img/fotos/foto02.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Mori Tower Elevator.jpg",
+    "fonte": "https://commons.wikimedia.org/wiki/File:Mori_Tower_Elevator.jpg",
+    "licenca": "CC BY-SA 3.0",
+    "autor": "Syced",
+    "url_imagem": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Mori_Tower_Elevator.jpg/1920px-Mori_Tower_Elevator.jpg",
+    "descricao": "Interior de cabine de elevador"
+  },
+  {
+    "arquivo": "img/fotos/foto03.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "elevator mechanism at the bradbury building",
+    "fonte": "https://www.flickr.com/photos/81342178@N00/23281504",
+    "licenca": "by 2.0",
+    "autor": "jimw",
+    "url_imagem": "https://live.staticflickr.com/18/23281504_3bcb74401c_b.jpg",
+    "descricao": "Técnico em manutenção de elevador"
+  },
+  {
+    "arquivo": "img/fotos/foto04.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Elevators button",
+    "fonte": "https://www.flickr.com/photos/57519914@N00/358660656",
+    "licenca": "by-sa 2.0",
+    "autor": "jepoirrier",
+    "url_imagem": "https://live.staticflickr.com/166/358660656_62031e7185_b.jpg",
+    "descricao": "Painel de controle do elevador"
+  },
+  {
+    "arquivo": "img/fotos/foto05.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Mall Escalator",
+    "fonte": "https://www.flickr.com/photos/14771153@N04/9576699929",
+    "licenca": "by 2.0",
+    "autor": "slgckgc",
+    "url_imagem": "https://live.staticflickr.com/7389/9576699929_c0f3cb6f33_b.jpg",
+    "descricao": "Escada rolante"
+  },
+  {
+    "arquivo": "img/fotos/foto06.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Elevator doors",
+    "fonte": "https://www.flickr.com/photos/41652235@N00/2311260401",
+    "licenca": "by 2.0",
+    "autor": "ricardodiaz11",
+    "url_imagem": "https://live.staticflickr.com/2138/2311260401_fc894e7e7f_b.jpg",
+    "descricao": "Portas de elevador"
+  }
+]

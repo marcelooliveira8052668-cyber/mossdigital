@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c2340">
+<meta name="description" content="SOLAR PRIME — demonstração de dimensionamento técnico ilustrativo de energia solar com comparação de cenários e projeção financeira.">
+<title>SOLAR PRIME — Engenharia Solar | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  SOLAR PRIME — DEMONSTRAÇÃO 09 DO CATÁLOGO MOSS DIGITAL
+  ============================================================================
+  PROPOSTA DIFERENCIADA: o catálogo MOSS já possui "Sol do Bairro — Energia
+  solar" (simulador de economia + proposta WhatsApp). Esta demo NÃO repete
+  essa fórmula: o foco é DIMENSIONAMENTO TÉCNICO ILUSTRATIVO, COMPARAÇÃO DE
+  CENÁRIOS e PROJEÇÃO FINANCEIRA COM GRÁFICOS.
+
+  ⚠️ Todas as hipóteses, tarifas, irradiação, geração, economia e projeções
+  são configuráveis e ilustrativas. Nenhuma economia é garantida. Não há
+  cálculo de irradiação real, projeto técnico, laudo ou certificado.
+
+  ONDE EDITAR:
+  - Hipóteses de cálculo: objeto HIPOTESES (JS)
+  - Cenários: array CENARIOS (JS)
+  - Instalações da galeria: array INSTALACOES (JS)
+  - WhatsApp MOSS: WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — tecnológico: amarelo solar, azul-escuro, branco */
+:root{
+ --navio-900:#0c2340;--navio-800:#123153;--navio-700:#1b4570;--navio-600:#2a5e90;
+ --sol:#ffc727;--sol-escuro:#e0a800;
+ --branco:#fff;--fundo:#f3f7fb;--tinta:#1c3047;--suave:#62778d;
+ --borda:#d5e2ee;--sombra:0 10px 26px rgba(12,35,64,.10);--sombra-forte:0 20px 44px rgba(12,35,64,.20);
+ --raio:12px;--raio-s:7px;
+ --titulo:"Trebuchet MS","Segoe UI",sans-serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.6}
+h1,h2,h3,h4{font-family:var(--titulo);line-height:1.17;color:var(--navio-900);margin:0 0 .5em}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--navio-700)}
+button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--sol);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--sol);color:var(--navio-900);padding:.6rem 1rem;z-index:999}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0}
+.secao--fundo{background:var(--fundo)}
+.secao--navio{background:var(--navio-900);color:#cbdcef}
+.secao--navio h2,.secao--navio h3{color:#fff}
+.cabecalho-secao{max-width:700px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sol-escuro);font-weight:700}
+.titulo-secao{font-size:clamp(1.9rem,3.8vw,2.6rem)}
+.subtitulo-secao{color:var(--suave)}
+.secao--navio .subtitulo-secao{color:#b6cee8}
+.centro{text-align:center;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.3rem;border:2px solid transparent;border-radius:var(--raio-s);
+ font-weight:700;cursor:pointer;text-decoration:none;font-size:.88rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn--sol{background:var(--sol);color:var(--navio-900)}.btn--sol:hover{background:var(--sol-escuro)}
+.btn--navio{background:var(--navio-700);color:#fff}.btn--navio:hover{background:var(--navio-600)}
+.btn--contorno{border-color:var(--navio-600);color:var(--navio-700);background:transparent}.btn--contorno:hover{background:rgba(42,94,144,.08)}
+.btn--claro{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+.btn--bloco{width:100%}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+/* Barra/cabeçalho */
+.barra{background:var(--navio-900);color:#b6cee8;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.cabecalho{background:rgba(255,255,255,.97);border-bottom:1px solid var(--borda);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--navio-900)}
+.logo svg{width:44px;height:44px}
+.logo strong{display:block;font-family:var(--titulo);font-size:1.15rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--sol-escuro)}
+.nav{display:flex;align-items:center;gap:1.2rem}
+.nav a{text-decoration:none;color:var(--tinta);font-weight:600;font-size:.86rem}.nav a:hover{color:var(--sol-escuro)}
+.menu-toggle{display:none;background:none;border:1px solid var(--borda);color:var(--navio-900);padding:.45rem;cursor:pointer;border-radius:6px}
+.menu-toggle svg{width:24px;height:24px}
+
+/* Hero */
+.hero{background:linear-gradient(125deg,var(--navio-900),var(--navio-800));color:#fff;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
+.hero h1{color:#fff;font-size:clamp(2.1rem,4.8vw,3.4rem)}
+.hero h1 em{color:var(--sol);font-style:normal}
+.hero__texto{color:#c6daf0;max-width:34rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero__arte svg{width:100%;height:auto;filter:drop-shadow(0 14px 22px rgba(0,0,0,.3))}
+.hero__nota{font-size:.75rem;color:#c6daf0;border-left:3px solid var(--sol);padding:.5rem .8rem;margin-top:1.2rem}
+
+/* Hipóteses */
+.hipoteses{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.hipotese{padding:1.1rem;border-top:3px solid var(--sol)}
+.hipotese strong{display:block;font-family:var(--mono);font-size:1.2rem;color:var(--navio-900)}
+.hipotese span{font-size:.74rem;color:var(--suave)}
+
+/* Simulador */
+.sim-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.sim-form{padding:1.5rem}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+.campo label{font-weight:700;font-size:.82rem;color:var(--navio-800)}
+.campo input,.campo select{width:100%;padding:.68rem .75rem;border:1px solid var(--borda);border-radius:var(--raio-s)}
+.campo .erro{color:#b04a4a;font-size:.74rem;min-height:1.1em}
+.campo.invalido input,.campo.invalido select{border-color:#b04a4a}
+.cenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1rem}
+.cenario{border:2px solid var(--borda);border-radius:var(--raio-s);padding:.7rem .5rem;text-align:center;cursor:pointer;background:#fff;transition:border .18s,background .18s}
+.cenario[aria-pressed="true"]{border-color:var(--sol-escuro);background:#fffaf0}
+.cenario strong{display:block;font-size:.85rem;color:var(--navio-900)}
+.cenario small{font-size:.7rem;color:var(--suave)}
+.painel-resultado{background:var(--navio-900);color:#fff;border-radius:var(--raio);padding:1.5rem;position:sticky;top:90px}
+.painel-resultado h3{color:#fff;font-size:1.1rem}
+.metricas{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1rem 0}
+.metrica{background:rgba(255,255,255,.06);border-radius:var(--raio-s);padding:.8rem}
+.metrica strong{display:block;font-family:var(--mono);font-size:1.4rem;color:var(--sol)}
+.metrica span{font-size:.72rem;color:#c6daf0}
+.res-linha{display:flex;justify-content:space-between;gap:1rem;font-size:.82rem;padding:.45rem 0;border-bottom:1px dashed rgba(255,255,255,.18)}
+.aviso{font-size:.75rem;color:#c6daf0;background:rgba(255,255,255,.06);border-left:3px solid var(--sol);padding:.7rem;margin-top:1rem}
+.hipotese-linha{font-family:var(--mono);font-size:.7rem;color:#a9c4e0;margin-top:.6rem}
+
+/* Comparação e gráfico */
+.comparativo{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.barras{padding:1.4rem}
+.barra-item{margin-bottom:1rem}
+.barra-topo{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:.3rem}
+.trilha{height:18px;background:#e6eef6;border-radius:99px;overflow:hidden}
+.trilha span{display:block;height:100%;background:linear-gradient(90deg,var(--navio-600),var(--sol));border-radius:99px;transition:width .4s}
+.grafico{padding:1.4rem}
+.grafico svg{width:100%;height:auto}
+
+/* Galeria */
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.instalacao__imagem{aspect-ratio:4/3;background:var(--fundo)}
+.instalacao__imagem svg{width:100%;height:100%}
+.instalacao__corpo{padding:1rem 1.1rem 1.2rem}
+.instalacao__corpo h3{font-size:1.05rem;margin-bottom:.2rem}
+.instalacao__corpo p{font-size:.84rem;color:var(--suave);margin:0}
+
+/* FAQ */
+.faq{max-width:840px;margin-inline:auto}
+details{background:#fff;border:1px solid var(--borda);border-radius:var(--raio-s);margin-bottom:.6rem;padding:.9rem 1.1rem}
+summary{cursor:pointer;font-weight:700;color:var(--navio-800);list-style:none}
+summary::-webkit-details-marker{display:none}summary::before{content:"+ ";color:var(--sol-escuro);font-weight:700}
+details[open] summary::before{content:"− "}
+details p{font-size:.86rem;color:var(--suave);margin:.7rem 0 0}
+
+/* Rodapé */
+.rodape{background:var(--navio-900);color:#b6cee8;padding:2.6rem 0 1.4rem;border-top:4px solid var(--sol)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.rodape__marca strong{color:#fff;font-family:var(--titulo)}
+.moss-bloco{border:1px solid rgba(255,199,39,.4);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+.moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+.rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--sol);color:var(--navio-900);
+ font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem;box-shadow:var(--sombra)}
+ .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid var(--borda)}
+ .menu-toggle{display:block}
+ .hero .container,.sim-layout,.comparativo{grid-template-columns:1fr}
+ .hipoteses,.galeria{grid-template-columns:repeat(2,1fr)}
+ .painel-resultado{position:static}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.4rem,var(--largura))}
+ .hipoteses,.galeria,.grade-2,.cenarios,.metricas{grid-template-columns:1fr}
+ .selo-demo{font-size:.55rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ ENGENHARIA SOLAR · DEMONSTRAÇÃO TÉCNICA ILUSTRATIVA</span><span>HIPÓTESES CONFIGURÁVEIS · ECONOMIA NÃO GARANTIDA</span></div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="SOLAR PRIME — início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Marca SOLAR PRIME">
+   <rect width="48" height="48" rx="10" fill="#0c2340"/>
+   <circle cx="34" cy="14" r="7" fill="#ffc727"/>
+   <path d="M6 32h36l-3-12H9z" fill="#1b4570" stroke="#ffc727" stroke-width="2"/>
+   <path d="M18 20v12M30 20v12M9 26h30" stroke="#ffc727" stroke-width="1.5"/>
+  </svg>
+  <span><strong>SOLAR PRIME</strong><small>DIMENSIONAMENTO &amp; PROJEÇÃO</small></span>
+ </a>
+ <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#hipoteses">Hipóteses</a><a href="#simulador">Dimensionar</a><a href="#comparativo">Cenários</a>
+  <a href="#projetos">Projetos</a><a href="#faq">Dúvidas</a>
+  <a class="btn btn--sol" href="#simulador">Fazer simulação</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <span class="eyebrow">Engenharia solar · proposta demonstrativa</span>
+   <h1>Dimensione, compare e <em>projete</em> sua energia.</h1>
+   <p class="hero__texto">Uma ferramenta ilustrativa de dimensionamento: estime quantos painéis são necessários, compare três cenários de cobertura e visualize uma projeção financeira com hipóteses explícitas.</p>
+   <div class="hero__acoes">
+    <a class="btn btn--sol" href="#simulador">Começar simulação →</a>
+    <a class="btn btn--claro" href="#hipoteses">Ver hipóteses</a>
+   </div>
+   <p class="hero__nota">Esta demonstração difere do modelo "Sol do Bairro" do catálogo MOSS: aqui o foco é técnico e analítico, sem proposta comercial embutida. Nenhuma economia é garantida.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração de painéis solares sobre o telhado de uma casa com sol">
+   <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="380" fill="#0e2b49"/>
+    <circle cx="415" cy="80" r="42" fill="#ffc727"/>
+    <g stroke="#ffc727" stroke-width="3" stroke-linecap="round" opacity=".7"><path d="M415 20v-8M415 148v8M355 80h-8M483 80h8M372 37l-6-6M458 123l6 6M458 37l6-6M372 123l-6 6"/></g>
+    <!-- casa -->
+    <path d="M110 215L230 130l120 85v130H110z" fill="#1b4570" stroke="#ffc727" stroke-width="2"/>
+    <path d="M96 218L230 122l134 96" fill="none" stroke="#ffc727" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="205" y="255" width="55" height="90" fill="#0e2b49" stroke="#cbdcef" stroke-width="2"/>
+    <!-- painéis inclinados -->
+    <g transform="translate(140,150) skewY(-16)">
+     <rect width="190" height="72" rx="3" fill="#123153" stroke="#ffc727" stroke-width="2.5"/>
+     <g stroke="#ffc727" stroke-width="1.4"><path d="M47.5 0v72M95 0v72M142.5 0v72M0 36h190"/></g>
+     <g fill="#5b93c9" opacity=".55"><rect x="4" y="4" width="39" height="28"/><rect x="100" y="4" width="39" height="28"/><rect x="52" y="40" width="39" height="28"/><rect x="148" y="40" width="38" height="28"/></g>
+    </g>
+    <path d="M150 218v-20M320 200v-20" stroke="#cbdcef" stroke-width="3"/>
+    <rect x="20" y="345" width="480" height="6" fill="#1b4570"/>
+   </svg>
+  </div>
+ </div></section>
+
+ <!-- Hipóteses -->
+ <section class="secao secao--fundo" id="hipoteses"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Hipóteses declaradas</span>
+   <h2 class="titulo-secao">Tudo que a simulação considera</h2>
+   <p class="subtitulo-secao">Os números abaixo são premissas ilustrativas e configuráveis no JavaScript. A simulação não consulta irradiação real, tarifas oficiais ou bancos de dados.</p></div>
+  <div class="hipoteses">
+   <div class="card hipotese"><strong id="hipotesePainel">—</strong><span>Potência por painel (exemplo)</span></div>
+   <div class="card hipotese"><strong id="hipoteseIrradiacao">—</strong><span>Irradiação diária ilustrativa</span></div>
+   <div class="card hipotese"><strong id="hipoteseArea">—</strong><span>Área por painel (exemplo)</span></div>
+   <div class="card hipotese"><strong id="hipotesePerdas">—</strong><span>Perdas estimadas (exemplo)</span></div>
+  </div>
+  <p class="aviso" style="color:var(--suave);background:var(--branco);border-left-color:var(--sol-escuro);margin-top:1rem">A geração real depende de muitos fatores (clima, sombreamento, inclinação, manutenção, equipamentos). Esta ferramenta é apenas uma demonstração de interface e cálculo.</p>
+ </div></section>
+
+ <!-- Simulador -->
+ <section class="secao" id="simulador"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Dimensionador ilustrativo</span>
+   <h2 class="titulo-secao">Estime o tamanho do seu sistema</h2>
+   <p class="subtitulo-secao">Informe consumo, tarifa, região ilustrativa e área disponível. Escolha um cenário de cobertura e veja os resultados.</p></div>
+  <div class="sim-layout">
+   <form class="card sim-form" id="formSim" novalidate>
+    <div class="grade-2">
+     <div class="campo"><label for="consumo">Consumo mensal (kWh) *</label><input type="number" id="consumo" min="50" max="50000" value="450"><span class="erro" aria-live="polite"></span></div>
+     <div class="campo"><label for="tarifa">Tarifa de energia (R$/kWh) *</label><input type="number" id="tarifa" min="0.3" max="3" step="0.01" value="0.92"><span class="erro" aria-live="polite"></span></div>
+    </div>
+    <div class="grade-2">
+     <div class="campo"><label for="regiao">Região ilustrativa</label><select id="regiao">
+      <option value="1.00">Sudeste (fator ilustrativo 1,00)</option>
+      <option value="1.08">Nordeste (fator ilustrativo 1,08)</option>
+      <option value="0.94">Sul (fator ilustrativo 0,94)</option>
+      <option value="1.05">Centro-Oeste (fator ilustrativo 1,05)</option>
+      <option value="0.88">Norte (fator ilustrativo 0,88)</option>
+     </select></div>
+     <div class="campo"><label for="areaTelhado">Área de telhado disponível (m²) *</label><input type="number" id="areaTelhado" min="5" max="5000" value="60"><span class="erro" aria-live="polite"></span></div>
+    </div>
+    <div class="campo"><label>Cenário de cobertura desejada</label>
+     <div class="cenarios" role="group" aria-label="Cenários de cobertura">
+      <button class="cenario" type="button" data-cenario="0" aria-pressed="false"><strong>Econômico</strong><small>60% do consumo</small></button>
+      <button class="cenario" type="button" data-cenario="1" aria-pressed="true"><strong>Equilibrado</strong><small>85% do consumo</small></button>
+      <button class="cenario" type="button" data-cenario="2" aria-pressed="false"><strong>Máximo</strong><small>100% do consumo</small></button>
+     </div>
+    </div>
+    <button class="btn btn--navio btn--bloco" type="submit">Calcular dimensionamento</button>
+   </form>
+
+   <aside class="painel-resultado" aria-live="polite">
+    <span class="eyebrow">Resultado preliminar</span>
+    <h3>Dimensionamento ilustrativo</h3>
+    <div class="metricas">
+     <div class="metrica"><strong id="mGeração">—</strong><span>geração mensal estimada (kWh)</span></div>
+     <div class="metrica"><strong id="mPainel">—</strong><span>painéis (exemplo)</span></div>
+     <div class="metrica"><strong id="mPotencia">—</strong><span>potência do inversor (kWp)</span></div>
+     <div class="metrica"><strong id="mArea">—</strong><span>área necessária (m²)</span></div>
+    </div>
+    <div class="res-linha"><span>Cobertura do consumo</span><strong id="rCobertura">—</strong></div>
+    <div class="res-linha"><span>Economia mensal ilustrativa</span><strong id="rEconomia">—</strong></div>
+    <div class="res-linha"><span>Equivalente CO₂ (exemplo)</span><strong id="rCo2">—</strong></div>
+    <div class="res-linha"><span>Adequação do telhado</span><strong id="rArea">—</strong></div>
+    <p class="hipotese-linha" id="linhaHipoteses">Hipóteses aplicadas: —</p>
+    <p class="aviso">⚠ Estimativa <strong>preliminar e configurável</strong>. Não é projeto técnico, não promete economia garantida e não substitui análise de engenheiro responsável. Valores fictícios para demonstração.</p>
+   </aside>
+  </div>
+ </div></section>
+
+ <!-- Comparação + projeção -->
+ <section class="secao secao--navio" id="comparativo"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Comparação e projeção</span>
+   <h2 class="titulo-secao">Três cenários, uma projeção ilustrativa</h2>
+   <p class="subtitulo-secao">As barras mostram a geração mensal estimada de cada cenário. A linha abaixo projeta a economia acumulada hipotética ao longo de 10 anos — com premissas configuráveis.</p></div>
+  <div class="comparativo">
+   <div class="card barras" id="graficoBarras"></div>
+   <div class="card grafico">
+    <h3 style="font-size:1.05rem">Projeção acumulada (exemplo)</h3>
+    <svg id="graficoLinha" viewBox="0 0 460 260" role="img" aria-label="Gráfico ilustrativo de economia acumulada em 10 anos"></svg>
+    <p class="aviso" style="color:var(--suave);background:var(--fundo);border-left-color:var(--sol-escuro)">Projeção hipotética: não considera reajustes de tarifa, inflação, manutenção, financiamento ou impostos. Payback indicado é apenas ilustrativo.</p>
+   </div>
+  </div>
+ </div></section>
+
+ <!-- Projetos -->
+ <section class="secao" id="projetos"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Galeria ilustrativa</span>
+   <h2 class="titulo-secao">Tipos de instalação</h2>
+   <p class="subtitulo-secao">Ilustrações SVG originais — nenhuma foto de instalação real.</p></div>
+  <div class="galeria" id="gradeInstalacoes"></div>
+ </div></section>
+
+ <!-- FAQ -->
+ <section class="secao secao--fundo" id="faq"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Perguntas frequentes</span><h2 class="titulo-secao">Dúvidas sobre a simulação</h2></div>
+  <div class="faq">
+   <details><summary>A economia exibida está garantida?</summary><p>Não. É uma estimativa ilustrativa baseada em hipóteses configuráveis. A economia real depende de fatores climáticos, técnicos e contratuais não considerados aqui.</p></details>
+   <details><summary>Este é o mesmo projeto "Sol do Bairro" do catálogo?</summary><p>Não. O catálogo MOSS já possui o "Sol do Bairro", voltado a simulador de economia e proposta via WhatsApp. SOLAR PRIME tem proposta diferente: dimensionamento técnico, comparação de cenários e projeção com gráficos.</p></details>
+   <details><summary>O sistema consulta irradiação ou tarifa real?</summary><p>Não. Todas as premissas são fixas nesta página e podem ser alteradas no código. Nenhuma API externa é utilizada.</p></details>
+   <details><summary>Posso usar isto como laudo ou projeto técnico?</summary><p>Não. Esta é uma demonstração comercial. Não emite laudos, projetos, ART ou documentos técnicos de qualquer natureza.</p></details>
+  </div>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Painéis solares" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Painéis solares<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Instalação de painéis" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Instalação de painéis<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Telhado com geração solar" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Telhado com geração solar<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Usina solar" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Usina solar<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Conjunto de painéis" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Conjunto de painéis<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Inversor solar" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Inversor solar<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div class="rodape__marca"><strong>SOLAR PRIME</strong>
+   <p style="font-size:.82rem;max-width:430px;margin-top:.5rem">Demonstração de dimensionamento e projeção ilustrativos. Proposta diferenciada do catálogo MOSS. Sem economia garantida ou laudo técnico.</p></div>
+  <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou da abordagem? Crie um site assim para sua empresa.</p>
+   <a class="btn btn--sol" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+ </div>
+ <div class="rodape__base"><span>© 2026 SOLAR PRIME — Demo MOSS Digital</span><span>Hipóteses ilustrativas · Sem garantia de economia</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — hipóteses, cenários, cálculo, gráficos, galeria
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='SOLAR PRIME (Demo 09 — Energia solar)';
+
+/* ---------- 1. Hipóteses configuráveis ------------------------------------ */
+const HIPOTESES={
+ potenciaPainelW:550,        // W por painel (exemplo)
+ irradiacaoKwh:4.5,          // kWh/m²/dia ilustrativo
+ areaPorPainelM2:2.6,        // m² por painel (exemplo)
+ perdas:0.14,                // 14% de perdas (exemplo)
+ horasPorMes:30,
+ kgCo2PorKwh:0.08,           // equivalente ilustrativo
+ custoPorKwp:2800,           // R$/kWp ilustrativo (para projeção)
+ anosProjecao:10
+};
+const CENARIOS=[
+ {nome:'Econômico',cobertura:0.60},
+ {nome:'Equilibrado',cobertura:0.85},
+ {nome:'Máximo',cobertura:1.00}
+];
+const INSTALACOES=[
+ {titulo:'Telhado residencial',desc:'Ilustração de painéis em cobertura residencial.',tipo:'casa'},
+ {titulo:'Cobertura comercial',desc:'Ilustração de painéis em galpão comercial.',tipo:'galpao'},
+ {titulo:'Sistema em solo',desc:'Ilustração de estrutura montada no solo.',tipo:'solo'}
+];
+
+/* ---------- 2. Exibe hipóteses -------------------------------------------- */
+document.getElementById('hipotesePainel').textContent=HIPOTESES.potenciaPainelW+' W';
+document.getElementById('hipoteseIrradiacao').textContent=HIPOTESES.irradiacaoKwh.toFixed(1).replace('.',',')+' kWh/m²/dia';
+document.getElementById('hipoteseArea').textContent=HIPOTESES.areaPorPainelM2.toFixed(1).replace('.',',')+' m²';
+document.getElementById('hipotesePerdas').textContent=Math.round(HIPOTESES.perdas*100)+'%';
+
+/* ---------- 3. Galeria ----------------------------------------------------- */
+function ilustracaoInstalacao(tipo){
+ const base='<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de instalação solar">';
+ let corpo='';
+ if(tipo==='casa') corpo=`<rect width="400" height="300" fill="#0e2b49"/><circle cx="330" cy="60" r="28" fill="#ffc727"/>
+  <path d="M60 180L200 90l140 90v100H60z" fill="#1b4570" stroke="#ffc727" stroke-width="2"/>
+  <g transform="translate(95,130) skewY(-14)"><rect width="210" height="60" fill="#123153" stroke="#ffc727" stroke-width="2"/><path d="M52 0v60M105 0v60M158 0v60M0 30h210" stroke="#ffc727" stroke-width="1"/></g>`;
+ else if(tipo==='galpao') corpo=`<rect width="400" height="300" fill="#123153"/><circle cx="60" cy="55" r="24" fill="#ffc727"/>
+  <rect x="30" y="150" width="340" height="110" fill="#1b4570" stroke="#ffc727" stroke-width="2"/>
+  <path d="M20 150l180-45 180 45" fill="none" stroke="#ffc727" stroke-width="3"/>
+  <g transform="translate(60,110)"><rect width="280" height="52" fill="#0c2340" stroke="#ffc727" stroke-width="2"/><path d="M70 0v52M140 0v52M210 0v52" stroke="#ffc727" stroke-width="1.4"/></g>`;
+ else corpo=`<rect width="400" height="300" fill="#0e2b49"/><circle cx="330" cy="55" r="26" fill="#ffc727"/>
+  <path d="M0 230h400v70H0z" fill="#1b4570"/>
+  <g transform="translate(70,120)"><path d="M0 90L60 20h260l60 70z" fill="#123153" stroke="#ffc727" stroke-width="2"/>
+  <path d="M85 20v70M160 20v70M235 20v70M20 55h340" stroke="#ffc727" stroke-width="1.3"/></g>`;
+ return base+corpo+'</svg>';
+}
+const gradeInst=document.getElementById('gradeInstalacoes');
+INSTALACOES.forEach(i=>{const c=document.createElement('article');c.className='card instalacao';
+ c.innerHTML=`<div class="instalacao__imagem">${ilustracaoInstalacao(i.tipo)}</div>
+  <div class="instalacao__corpo"><h3>${i.titulo}</h3><p>${i.desc}</p></div>`;gradeInst.appendChild(c);});
+
+/* ---------- 4. Cálculo ----------------------------------------------------- */
+let cenarioAtual=1, ultimo=null;
+const fmtMoeda=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const fmtNum=(v,d=0)=>Number(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+function calcular(){
+ const consumo=Number(document.getElementById('consumo').value);
+ const tarifa=Number(document.getElementById('tarifa').value);
+ const fator=Number(document.getElementById('regiao').value);
+ const areaDisp=Number(document.getElementById('areaTelhado').value);
+ const cobertura=CENARIOS[cenarioAtual].cobertura;
+
+ // Geração diária por painel (kWh): potência kW × irradiacao × (1 - perdas)
+ const porPainelDia=(HIPOTESES.potenciaPainelW/1000)*HIPOTESES.irradiacaoKwh*fator*(1-HIPOTESES.perdas);
+ const geracaoAlvo=consumo*cobertura;                       // kWh/mês desejados
+ const painéis=Math.max(1,Math.ceil(geracaoAlvo/(porPainelDia*HIPOTESES.horasPorMes)));
+ const geracaoReal=painéis*porPainelDia*HIPOTESES.horasPorMes; // kWh/mês estimados
+ const potencia=painéis*HIPOTESES.potenciaPainelW/1000;      // kWp
+ const areaNecessaria=painéis*HIPOTESES.areaPorPainelM2;
+ const economia=geracaoReal*tarifa;
+ const co2=geracaoReal*HIPOTESES.kgCo2PorKwh;
+ const cabe=areaNecessaria<=areaDisp;
+
+ document.getElementById('mGeração').textContent=fmtNum(geracaoReal);
+ document.getElementById('mPainel').textContent=fmtNum(painéis);
+ document.getElementById('mPotencia').textContent=fmtNum(potencia,1).replace('.',',');
+ document.getElementById('mArea').textContent=fmtNum(areaNecessaria,1).replace('.',',');
+ document.getElementById('rCobertura').textContent=fmtNum(Math.min(100,geracaoReal/consumo*100),0)+'%';
+ document.getElementById('rEconomia').textContent=fmtMoeda(economia);
+ document.getElementById('rCo2').textContent=fmtNum(co2,0)+' kg/mês';
+ document.getElementById('rArea').textContent=cabe?'Cabe no telhado ilustrativo':'Área insuficiente (ilustrativo)';
+ document.getElementById('linhaHipoteses').textContent=
+  `Hipóteses: ${HIPOTESES.potenciaPainelW} W/painel · ${HIPOTESES.irradiacaoKwh} kWh/m²/dia · ${Math.round(HIPOTESES.perdas*100)}% perdas · fator ${fator}`;
+
+ ultimo={consumo,tarifa,painéis,geracaoReal,economia,potencia,cenario:CENARIOS[cenarioAtual].nome};
+ desenharGraficos();
+ return ultimo;
+}
+
+document.querySelectorAll('.cenario').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.cenario').forEach(b=>b.setAttribute('aria-pressed','false'));
+ btn.setAttribute('aria-pressed','true');cenarioAtual=Number(btn.dataset.cenario);calcular();
+}));
+document.getElementById('formSim').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ [{id:'consumo',t:v=>Number(v)>=50&&Number(v)<=50000,m:'Informe consumo entre 50 e 50.000 kWh.'},
+  {id:'tarifa',t:v=>Number(v)>=0.3&&Number(v)<=3,m:'Informe tarifa entre 0,30 e 3,00.'},
+  {id:'areaTelhado',t:v=>Number(v)>=5&&Number(v)<=5000,m:'Informe área entre 5 e 5.000 m².'}].forEach(o=>{
+  const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+  const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(valido)calcular();
+});
+['consumo','tarifa','regiao','areaTelhado'].forEach(id=>document.getElementById(id).addEventListener('input',calcular));
+
+/* ---------- 5. Gráficos SVG gerados --------------------------------------- */
+function desenharGraficos(){
+ const consumo=Number(document.getElementById('consumo').value)||450;
+ const tarifa=Number(document.getElementById('tarifa').value)||0.92;
+ const fator=Number(document.getElementById('regiao').value)||1;
+ const porPainelDia=(HIPOTESES.potenciaPainelW/1000)*HIPOTESES.irradiacaoKwh*fator*(1-HIPOTESES.perdas);
+
+ // Barras: geração mensal por cenário
+ const dados=CENARIOS.map(c=>{
+  const alvo=consumo*c.cobertura;
+  const n=Math.max(1,Math.ceil(alvo/(porPainelDia*HIPOTESES.horasPorMes)));
+  return {nome:c.nome,valor:n*porPainelDia*HIPOTESES.horasPorMes,painéis:n};
+ });
+ const max=Math.max(...dados.map(d=>d.valor),1);
+ document.getElementById('graficoBarras').innerHTML=`<h3 style="font-size:1.05rem">Geração mensal por cenário (kWh)</h3>`+
+  dados.map(d=>`<div class="barra-item"><div class="barra-topo"><strong>${d.nome}</strong><span>${fmtNum(d.valor)} kWh · ${d.painéis} painéis</span></div>
+   <div class="trilha"><span style="width:${Math.round(d.valor/max*100)}%"></span></div></div>`).join('')+
+  `<p class="aviso" style="color:var(--suave);background:var(--fundo);border-left-color:var(--sol-escuro)">Valores ilustrativos calculados com as mesmas hipóteses declaradas.</p>`;
+
+ // Linha: economia acumulada em 10 anos (cenário atual)
+ const economiaAnual=(ultimo?ultimo.economia:0)*12;
+ const investimento=(ultimo?ultimo.potencia:0)*HIPOTESES.custoPorKwp;
+ const valores=[];for(let a=0;a<=HIPOTESES.anosProjecao;a++)valores.push(economiaAnual*a-investimento);
+ const min=Math.min(...valores,0),maxV=Math.max(...valores,1),range=maxV-min||1;
+ const W=460,H=260,padX=38,padY=24;
+ const x=a=>padX+a/HIPOTESES.anosProjecao*(W-padX-12);
+ const y=v=>H-padY-((v-min)/range)*(H-padY-30);
+ const pontos=valores.map((v,a)=>`${x(a)},${y(v)}`).join(' ');
+ let linhaZero='';if(min<0&&maxV>0)linhaZero=`<path d="M${padX} ${y(0)}H${W-12}" stroke="#9fb6cc" stroke-dasharray="4 4" stroke-width="1"/>`;
+ const grade=[0,0.25,0.5,0.75,1].map(f=>{
+  const yy=padY+f*(H-padY-30);return `<line x1="${padX}" y1="${yy}" x2="${W-12}" y2="${yy}" stroke="#e2ecf5" stroke-width="1"/>`;
+ }).join('');
+ const anos=valores.map((v,a)=>`<text x="${x(a)}" y="${H-6}" text-anchor="middle" font-size="9" fill="#8fa6bd">${a}</text>`).join('');
+ let payback='—';const idx=valores.findIndex(v=>v>=0);if(idx>0)payback='ano '+idx;
+ document.getElementById('graficoLinha').innerHTML=`
+  ${grade}${linhaZero}
+  <polyline points="${pontos}" fill="none" stroke="#ffc727" stroke-width="3" stroke-linejoin="round"/>
+  ${valores.map((v,a)=>`<circle cx="${x(a)}" cy="${y(v)}" r="3.5" fill="#ffc727"/>`).join('')}
+  ${anos}
+  <text x="${padX}" y="16" font-size="10" fill="#cbdcef" font-family="monospace">R$ acumulado (ilustrativo) · payback: ${payback}</text>`;
+}
+
+/* ---------- 6. Menu e WhatsApp -------------------------------------------- */
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');}));
+document.querySelectorAll('[data-cta], .nav a[href="#simulador"]').forEach(cta=>cta.addEventListener('click',()=>{
+ setTimeout(()=>document.getElementById('consumo')?.focus({preventScroll:true}),400);}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+
+calcular();
+</script>
+</body>
+</html>

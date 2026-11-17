@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b8f92">
+<meta name="description" content="AQUACARE PRIME — demonstração elegante de manutenção de piscinas com calculadora de volume, agenda, indicadores ilustrativos e galeria.">
+<title>AQUACARE PRIME — Cuidado com Piscinas | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  AQUACARE PRIME — DEMONSTRAÇÃO 11 DO CATÁLOGO MOSS DIGITAL
+  ============================================================================
+  Arquivo único (HTML + CSS + JS + SVGs inline).
+
+  ⚠️ Indicadores de qualidade da água são ILUSTRATIVOS, não são medições,
+  análises laboratoriais nem recomendações de dosagem química. Nenhum valor
+  deve ser interpretado como resultado real. Avaliação e produtos devem ser
+  definidos por profissional habilitado.
+
+  ONDE EDITAR:
+  - Serviços: SERVICOS (JS) - Planos: PLANOS (JS)
+  - Indicadores ilustrativos: INDICADORES (JS)
+  - Clientes/visitas: CLIENTES_FICTICIOS / VISITAS (JS)
+  - WhatsApp MOSS (rodapé): WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — turquesa elegante, branco e areia */
+:root{
+ --tq-900:#075c60;--tq-800:#0b8f92;--tq-700:#12a8aa;--tq-600:#2ac1c0;
+ --areia:#f4efe4;--areia-2:#e9e0cd;
+ --branco:#fff;--fundo:#f4fbfa;--tinta:#1e3438;--suave:#658085;
+ --borda:#cfe6e4;--sombra:0 10px 26px rgba(7,92,96,.10);--sombra-forte:0 20px 44px rgba(7,92,96,.18);
+ --raio:16px;--raio-s:8px;
+ --titulo:Georgia,"Times New Roman",serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.6}
+h1,h2,h3,h4{font-family:var(--titulo);font-weight:500;line-height:1.2;color:var(--tq-900);margin:0 0 .5em}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--tq-800)}
+button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--tq-600);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--tq-800);color:#fff;padding:.6rem 1rem;z-index:999}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0}
+.secao--fundo{background:var(--fundo)}
+.secao--areia{background:var(--areia)}
+.secao--tq{background:var(--tq-900);color:#d3eceb}
+.secao--tq h2,.secao--tq h3{color:#fff}
+.cabecalho-secao{max-width:690px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tq-700);font-weight:700}
+.titulo-secao{font-size:clamp(1.9rem,3.8vw,2.6rem)}
+.subtitulo-secao{color:var(--suave)}
+.secao--tq .subtitulo-secao{color:#a8d1cf}
+.centro{text-align:center;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.3rem;border:2px solid transparent;border-radius:999px;
+ font-weight:700;cursor:pointer;text-decoration:none;font-size:.88rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn--tq{background:var(--tq-800);color:#fff}.btn--tq:hover{background:var(--tq-700)}
+.btn--areia{background:var(--areia-2);color:var(--tq-900)}.btn--areia:hover{background:#dbcfb6}
+.btn--contorno{border-color:var(--tq-600);color:var(--tq-800);background:transparent}.btn--contorno:hover{background:rgba(18,168,170,.08)}
+.btn--claro{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+.btn--bloco{width:100%}
+.btn--pequeno{padding:.4rem .7rem;font-size:.76rem}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+/* Barra/cabeçalho */
+.barra{background:var(--tq-900);color:#a8d1cf;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.cabecalho{background:rgba(255,255,255,.97);border-bottom:1px solid var(--borda);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--tq-900)}
+.logo svg{width:44px;height:44px}
+.logo strong{display:block;font-family:var(--titulo);font-size:1.2rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.57rem;letter-spacing:.16em;color:var(--tq-700)}
+.nav{display:flex;align-items:center;gap:1.2rem}
+.nav a{text-decoration:none;color:var(--tinta);font-weight:600;font-size:.87rem}.nav a:hover{color:var(--tq-700)}
+.menu-toggle{display:none;background:none;border:1px solid var(--borda);color:var(--tq-900);padding:.45rem;cursor:pointer;border-radius:8px}
+.menu-toggle svg{width:24px;height:24px}
+
+/* Hero */
+.hero{background:linear-gradient(150deg,var(--tq-900),var(--tq-800));color:#fff;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
+.hero h1{color:#fff;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:400}
+.hero h1 em{color:#bdf0e6;font-style:italic}
+.hero__texto{color:#c9e8e6;max-width:34rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero__arte{border-radius:var(--raio);overflow:hidden;border:1px solid rgba(255,255,255,.25)}
+.hero__arte svg{width:100%;height:auto}
+.hero__nota{font-size:.75rem;color:#c9e8e6;border-left:3px solid #bdf0e6;padding:.5rem .8rem;margin-top:1.2rem}
+
+/* Serviços */
+.servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.servico{padding:1.5rem}
+.servico svg{width:46px;height:46px;margin-bottom:.7rem}
+.servico h3{font-size:1.1rem}.servico p{font-size:.86rem;color:var(--suave);margin:0}
+
+/* Calculadora + orçamento */
+.calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.form-card{padding:1.5rem}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+.campo label{font-weight:700;font-size:.82rem;color:var(--tq-900)}
+.campo input,.campo select,.campo textarea{width:100%;padding:.68rem .75rem;border:1px solid var(--borda);border-radius:var(--raio-s)}
+.campo .erro{color:#b04a4a;font-size:.74rem;min-height:1.1em}
+.campo.invalido input,.campo.invalido select{border-color:#b04a4a}
+.resultado{background:var(--tq-900);color:#fff;border-radius:var(--raio);padding:1.5rem;position:sticky;top:90px}
+.resultado h3{color:#fff;font-size:1.05rem}
+.resultado .valor{font-family:var(--mono);font-size:2rem;color:#bdf0e6;margin:.3rem 0}
+.res-linha{display:flex;justify-content:space-between;gap:1rem;font-size:.82rem;padding:.45rem 0;border-bottom:1px dashed rgba(255,255,255,.18)}
+.aviso{font-size:.75rem;color:#c9e8e6;background:rgba(255,255,255,.06);border-left:3px solid #bdf0e6;padding:.7rem;margin-top:1rem}
+.confirmacao{display:none;background:#eaf8f5;border:1px solid #b6e0d9;border-radius:var(--raio-s);padding:.8rem;margin-top:1rem;color:#216157;font-size:.82rem}
+.confirmacao.visivel{display:block}
+
+/* Planos */
+.planos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.plano{padding:1.5rem;display:flex;flex-direction:column}
+.plano.destaque{border:2px solid var(--tq-700)}
+.plano small{font-family:var(--mono);font-size:.7rem;color:var(--tq-700);font-weight:700}
+.plano__preco{font-family:var(--mono);font-size:1.7rem;color:var(--tq-900);margin:.4rem 0}
+.plano ul{list-style:none;padding:0;margin:0 0 1rem;flex:1}
+.plano li{font-size:.85rem;padding:.3rem 0}.plano li::before{content:"✓ ";color:var(--tq-700);font-weight:700}
+
+/* Painel: agenda + clientes */
+.painel{display:grid;grid-template-columns:1.1fr .9fr;gap:1.5rem;align-items:start}
+.painel>*{min-width:0}
+.calendario{padding:1.2rem}
+.cal-topo{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.cal-topo h3{margin:0;font-size:1rem}
+.cal-botoes{display:flex;gap:.3rem}
+.cal-botoes button{width:30px;height:30px;border:1px solid var(--borda);background:#fff;cursor:pointer;border-radius:8px}
+.grade-dias{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.dia-semana{text-align:center;font-size:.62rem;font-weight:700;color:var(--suave);padding-bottom:.3rem}
+.dia{aspect-ratio:1;border:1px solid var(--borda);border-radius:6px;padding:.2rem;font-size:.72rem;background:#fff}
+.dia.vazio{border:0;background:transparent}
+.dia.com-visita{background:#e4f7f4;border-color:var(--tq-700);font-weight:700;cursor:pointer}
+.dia.hoje{outline:2px solid var(--tq-800);outline-offset:-2px}
+.dia .pontinho{display:block;width:5px;height:5px;border-radius:50%;background:var(--tq-700);margin:2px auto 0}
+.clientes{padding:1.2rem}
+.rolagem{overflow-x:auto;max-width:100%}
+.tabela{min-width:420px}
+.tabela{width:100%;border-collapse:collapse;font-size:.82rem;min-width:420px}
+.tabela th{background:var(--tq-900);color:#fff;padding:.55rem .65rem;text-align:left;font-size:.68rem}
+.tabela td{padding:.55rem .65rem;border-bottom:1px solid var(--borda)}
+.etiqueta{display:inline-block;padding:.18rem .5rem;border-radius:999px;font-size:.66rem;font-weight:700;background:var(--fundo);color:var(--tq-900)}
+.checklist{list-style:none;padding:0}
+.checklist li{display:flex;gap:.5rem;align-items:flex-start;font-size:.84rem;padding:.3rem 0}
+.checklist input{accent-color:var(--tq-800);margin-top:.2rem}
+
+/* Indicadores ilustrativos */
+.indicadores{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.indicador{text-align:center;padding:1.4rem}
+.indicador svg{width:110px;height:110px;margin:0 auto .6rem}
+.indicador h3{font-size:1rem;color:var(--tq-900)}
+.indicador p{font-size:.8rem;color:var(--suave);margin:0}
+.selo-ilustrativo{font-family:var(--mono);font-size:.65rem;color:#b04a4a;font-weight:700;letter-spacing:.06em}
+
+/* Galeria */
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.galeria__img{aspect-ratio:4/3;border-radius:var(--raio) var(--raio) 0 0;overflow:hidden}
+.galeria__img svg{width:100%;height:100%}
+.galeria__corpo{padding:1rem 1.1rem 1.2rem}
+.galeria__corpo h3{font-size:1rem;margin-bottom:.2rem}
+.galeria__corpo p{font-size:.82rem;color:var(--suave);margin:0}
+
+/* Rodapé */
+.rodape{background:var(--tq-900);color:#a8d1cf;padding:2.6rem 0 1.4rem;border-top:4px solid var(--tq-600)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.rodape__marca strong{color:#fff;font-family:var(--titulo)}
+.moss-bloco{border:1px solid rgba(42,193,192,.4);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+.moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+.rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--tq-700);color:#fff;
+ font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem;box-shadow:var(--sombra)}
+ .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid var(--borda)}
+ .menu-toggle{display:block}
+ .hero .container,.calc-layout,.painel{grid-template-columns:1fr}
+ .servicos,.planos,.galeria,.indicadores{grid-template-columns:repeat(2,1fr)}
+ .resultado{position:static}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.4rem,var(--largura))}
+ .servicos,.planos,.galeria,.indicadores,.grade-2{grid-template-columns:1fr}
+ .dia{font-size:.65rem}
+ .selo-demo{font-size:.55rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ CUIDADO COM PISCINAS · DEMONSTRAÇÃO ELEGANTE</span><span>INDICADORES ILUSTRATIVOS · NÃO SÃO ANÁLISES REAIS</span></div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="AQUACARE PRIME — início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Marca AQUACARE PRIME">
+   <rect width="48" height="48" rx="12" fill="#0b8f92"/>
+   <path d="M6 30c6-5 10 5 18 0s12 5 18 0v10H6z" fill="none" stroke="#bdf0e6" stroke-width="2.5"/>
+   <path d="M6 22c6-5 10 5 18 0s12 5 18 0" fill="none" stroke="#fff" stroke-width="2"/>
+   <circle cx="34" cy="12" r="5" fill="#bdf0e6"/>
+  </svg>
+  <span><strong>AQUACARE PRIME</strong><small>PISCINAS &amp; BEM-ESTAR</small></span>
+ </a>
+ <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#servicos">Serviços</a><a href="#orcamento">Orçamento</a><a href="#planos">Planos</a>
+  <a href="#painel">Agenda</a><a href="#qualidade">Água</a><a href="#galeria">Galeria</a>
+  <a class="btn btn--tq" href="#orcamento" data-cta>Contratar manutenção</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <span class="eyebrow">Piscinas sempre prontas · demonstração</span>
+   <h1>A água do seu lazer, <em>bem cuidada</em>.</h1>
+   <p class="hero__texto">Um site demonstrativo de manutenção de piscinas: serviços, planos, cálculo ilustrativo de volume, agenda de visitas e indicadores visuais — todos fictícios.</p>
+   <div class="hero__acoes">
+    <a class="btn btn--areia" href="#orcamento">Solicitar orçamento →</a>
+    <a class="btn btn--claro" href="#servicos">Ver serviços</a>
+   </div>
+   <p class="hero__nota">Indicadores e leituras exibidos são ilustrativos. Não são medições, análises laboratoriais nem recomendações de dosagem química.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração tropical de uma piscina com palmeira e espreguiçadeiras">
+   <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="380" fill="#e9f7f5"/>
+    <circle cx="430" cy="70" r="40" fill="#f6df9c"/>
+    <!-- palmeira -->
+    <path d="M70 250 Q80 160 95 100" fill="none" stroke="#a67c4d" stroke-width="9" stroke-linecap="round"/>
+    <g fill="#2f9e83"><path d="M95 100 Q50 70 20 90 Q60 85 95 110z"/><path d="M95 100 Q140 60 175 80 Q135 80 100 110z"/>
+     <path d="M95 100 Q60 40 90 25 Q100 65 100 105z"/><path d="M95 100 Q145 45 160 60 Q120 75 100 108z"/></g>
+    <!-- piscina -->
+    <path d="M120 210h360v150H120z" fill="#1aa7ad"/>
+    <path d="M120 210h360v30H120z" fill="#7fd6d3"/>
+    <g stroke="#bdf0e6" stroke-width="4" fill="none" opacity=".8"><path d="M150 260q20-10 40 0t40 0M280 290q20-10 40 0t40 0M200 330q20-10 40 0t40 0"/></g>
+    <!-- espreguiçadeira -->
+    <path d="M390 180l50 20-30 30-45-20z" fill="#f4efe4" stroke="#0b8f92" stroke-width="2"/>
+    <path d="M370 210l-15 25" stroke="#0b8f92" stroke-width="4"/>
+   </svg>
+  </div>
+ </div></section>
+
+ <!-- Serviços -->
+ <section class="secao secao--fundo" id="servicos"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Serviços</span>
+   <h2 class="titulo-secao">Cuidado em cada visita</h2>
+   <p class="subtitulo-secao">Atendimentos ilustrativos executados por profissionais habilitados, sem prescrição de produtos.</p></div>
+  <div class="servicos" id="gradeServicos"></div>
+ </div></section>
+
+ <!-- Orçamento + volume -->
+ <section class="secao" id="orcamento"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Calculadora e orçamento</span>
+   <h2 class="titulo-secao">Descubra o volume da sua piscina</h2>
+   <p class="subtitulo-secao">Estime o volume em litros a partir de medidas aproximadas. O resultado alimenta uma estimativa ilustrativa de manutenção.</p></div>
+  <div class="calc-layout">
+   <form class="card form-card" id="formOrcamento" novalidate>
+    <span class="eyebrow">Passo 1 · volume aproximado</span>
+    <div class="grade-2">
+     <div class="campo"><label for="forma">Formato</label><select id="forma">
+      <option value="retangular">Retangular</option><option value="oval">Oval</option><option value="circular">Circular</option></select></div>
+     <div class="campo"><label for="profundidade">Profundidade média (m)</label><input type="number" id="profundidade" min="0.4" max="4" step="0.1" value="1.4"></div>
+    </div>
+    <div class="grade-2">
+     <div class="campo"><label for="comprimento">Comprimento (m)</label><input type="number" id="comprimento" min="1" max="50" step="0.1" value="8"></div>
+     <div class="campo"><label for="largura">Largura (m)</label><input type="number" id="largura" min="1" max="30" step="0.1" value="4"></div>
+    </div>
+    <span class="eyebrow">Passo 2 · solicitação (fictícia)</span>
+    <div class="grade-2">
+     <div class="campo"><label for="nome">Nome *</label><input id="nome" placeholder="Nome fictício"><span class="erro" aria-live="polite"></span></div>
+     <div class="campo"><label for="telefone">Telefone *</label><input id="telefone" placeholder="(00) 00000-0000"><span class="erro" aria-live="polite"></span></div>
+    </div>
+    <div class="campo"><label for="dataVisita">Data desejada (ilustrativa) *</label><input type="date" id="dataVisita"><span class="erro" aria-live="polite"></span></div>
+    <button class="btn btn--tq btn--bloco" type="submit">Calcular e solicitar</button>
+    <div class="confirmacao" id="confirmacao" role="status">
+     <strong>✓ Solicitação registrada nesta demonstração.</strong>
+     <p style="margin:.4rem 0">Nada foi enviado. Compartilhe o resumo abaixo, se quiser.</p>
+     <button class="btn btn--tq btn--pequeno" id="btnWhats" type="button">Compartilhar no WhatsApp</button>
+    </div>
+   </form>
+   <aside class="resultado" aria-live="polite">
+    <span class="eyebrow">Resultado ilustrativo</span>
+    <h3>Volume aproximado</h3>
+    <div class="valor" id="volumeLitros">— litros</div>
+    <div class="res-linha"><span>Formato considerado</span><strong id="rForma">—</strong></div>
+    <div class="res-linha"><span>Dimensões</span><strong id="rDimensoes">—</strong></div>
+    <div class="res-linha"><span>Manutenção ilustrativa</span><strong id="rManutencao">—</strong></div>
+    <p class="aviso">⚠ Volume calculado por fórmulas geométricas simplificadas. Não é medição exata. A manutenção e qualquer produto devem ser definidos por profissional habilitado.</p>
+   </aside>
+  </div>
+ </div></section>
+
+ <!-- Planos -->
+ <section class="secao secao--areia" id="planos"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Planos de manutenção</span>
+   <h2 class="titulo-secao">Escolha a frequência</h2>
+   <p class="subtitulo-secao">Planos ilustrativos para demonstrar a ideia de acompanhamento periódico.</p></div>
+  <div class="planos" id="gradePlanos"></div>
+ </div></section>
+
+ <!-- Painel -->
+ <section class="secao" id="painel"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Rotina demonstrativa</span>
+   <h2 class="titulo-secao">Agenda e clientes fictícios</h2>
+   <p class="subtitulo-secao">Clique em uma data marcada para filtrar as visitas. Checklist ilustrativo de visita abaixo.</p></div>
+  <div class="painel">
+   <div class="card calendario">
+    <div class="cal-topo"><h3 id="mesCalendario">—</h3>
+     <div class="cal-botoes"><button id="mesAnterior" aria-label="Mês anterior">‹</button><button id="mesSeguinte" aria-label="Próximo mês">›</button></div></div>
+    <div class="grade-dias" id="gradeDias" role="grid" aria-label="Calendário de visitas"></div>
+   </div>
+   <div class="card clientes">
+    <span class="eyebrow">Clientes fictícios</span>
+    <div class="rolagem">
+     <table class="tabela"><thead><tr><th>Cliente</th><th>Plano</th><th>Próxima visita</th><th>Status</th></tr></thead>
+      <tbody id="corpoClientes"></tbody></table>
+    </div>
+    <h4 style="font-family:var(--corpo);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--suave);margin-top:1.2rem">Checklist de visita (ilustrativo)</h4>
+    <ul class="checklist" id="checklistVisita"></ul>
+   </div>
+  </div>
+ </div></section>
+
+ <!-- Indicadores ilustrativos -->
+ <section class="secao secao--tq" id="qualidade"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Painel visual</span>
+   <h2 class="titulo-secao">Indicadores ilustrativos da água</h2>
+   <p class="subtitulo-secao">Os gráficos abaixo são apenas demonstrações visuais. <strong>Não representam medições, análises laboratoriais nem recomendações químicas.</strong></p></div>
+  <div class="indicadores" id="gradeIndicadores"></div>
+  <p class="aviso">⚠ Nenhum valor exibido aqui é uma leitura real. Não use estes indicadores para decidir dosagens ou tratamentos — procure um profissional habilitado.</p>
+ </div></section>
+
+ <!-- Galeria -->
+ <section class="secao" id="galeria"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Galeria ilustrativa</span>
+   <h2 class="titulo-secao">Ambientes com piscina</h2>
+   <p class="subtitulo-secao">Ilustrações SVG originais — nenhuma foto de cliente real.</p></div>
+  <div class="galeria" id="gradeGaleria"></div>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Piscina residencial" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Piscina residencial<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Limpeza de piscina" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Limpeza de piscina<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Água da piscina" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Água da piscina<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Azulejos da piscina" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Azulejos da piscina<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Piscina de resort" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Piscina de resort<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Equipamento de limpeza de piscina" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Equipamento de limpeza de piscina<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div class="rodape__marca"><strong>AQUACARE PRIME</strong>
+   <p style="font-size:.82rem;max-width:430px;margin-top:.5rem">Demonstração com clientes, visitas e indicadores fictícios. Não emite laudos nem recomenda dosagens químicas.</p></div>
+  <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou? Crie um site assim para sua empresa.</p>
+   <a class="btn btn--areia" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+ </div>
+ <div class="rodape__base"><span>© 2026 AQUACARE PRIME — Demo MOSS Digital</span><span>Indicadores ilustrativos · Sem dosagens químicas</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — volume, orçamento, planos, agenda, indicadores, galeria
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='AQUACARE PRIME (Demo 11 — Limpeza de piscinas)';
+function daquiDias(n){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
+function fmt(iso){if(!iso)return '—';const [a,m,d]=iso.split('-');return `${d}/${m}/${a}`;}
+
+/* ---------- 1. Dados -------------------------------------------------------- */
+const SERVICOS=[
+ {nome:'Limpeza periódica',icone:'piscina',desc:'Visita ilustrativa para manutenção geral da piscina.'},
+ {nome:'Tratamento da água',icone:'gota',desc:'Avaliação visual demonstrativa, sem prescrição de produtos.'},
+ {nome:'Limpeza de filtro',icone:'filtro',desc:'Checklist ilustrativo de manutenção do sistema de filtragem.'},
+ {nome:'Revisão de bomba',icone:'bomba',desc:'Inspeção genérica ilustrativa de equipamentos.'},
+ {nome:'Preparação para eventos',icone:'festa',desc:'Visita demonstrativa antes de comemorações.'},
+ {nome:'Acompanhamento mensal',icone:'calendario',desc:'Relatório ilustrativo de acompanhamento.'}
+];
+const ICONES={
+ piscina:'<svg viewBox="0 0 48 48" fill="none" stroke="#0b8f92" stroke-width="2"><path d="M4 28c6-4 10 4 20 0s14 4 20 0v14H4z"/><path d="M4 20c6-4 10 4 20 0s14 4 20 0"/></svg>',
+ gota:'<svg viewBox="0 0 48 48" fill="none" stroke="#0b8f92" stroke-width="2"><path d="M24 6c9 12 13 18 13 25a13 13 0 01-26 0c0-7 4-13 13-25z"/></svg>',
+ filtro:'<svg viewBox="0 0 48 48" fill="none" stroke="#0b8f92" stroke-width="2"><rect x="12" y="8" width="24" height="32" rx="4"/><path d="M16 18h16M16 26h16M16 34h16"/></svg>',
+ bomba:'<svg viewBox="0 0 48 48" fill="none" stroke="#0b8f92" stroke-width="2"><circle cx="20" cy="26" r="10"/><path d="M30 26h12M8 38h32"/></svg>',
+ festa:'<svg viewBox="0 0 48 48" fill="none" stroke="#0b8f92" stroke-width="2"><path d="M8 24l16-14 16 14zM12 24v16h24V24M20 40V30h8v10"/></svg>',
+ calendario:'<svg viewBox="0 0 48 48" fill="none" stroke="#0b8f92" stroke-width="2"><rect x="8" y="10" width="32" height="30" rx="4"/><path d="M8 20h32M16 6v8M32 6v8"/></svg>'
+};
+const PLANOS=[
+ {nome:'Essencial',preco:'R$ 99',itens:['Visita ilustrativa a cada 2 semanas','Checklist de visita','Relatório demonstrativo']},
+ {nome:'Completo',preco:'R$ 149',itens:['Visita ilustrativa semanal','Checklist de visita','Acompanhamento mensal'],destaque:true},
+ {nome:'Premium',preco:'R$ 199',itens:['Visita ilustrativa semanal','Relatório demonstrativo','Prioridade de agenda (exemplo)']}
+];
+const CLIENTES_FICTICIOS=[
+ {nome:'Residencial Exemplo 1',plano:'Completo',proxima:daquiDias(2),status:'Agendada'},
+ {nome:'Condomínio Exemplo',plano:'Essencial',proxima:daquiDias(5),status:'Agendada'},
+ {nome:'Residencial Exemplo 2',plano:'Premium',proxima:daquiDias(-3),status:'Realizada'},
+ {nome:'Clube Demonstração',plano:'Completo',proxima:daquiDias(9),status:'Agendada'}
+];
+const VISITAS=[
+ {data:daquiDias(2),cliente:'Residencial Exemplo 1',tipo:'Limpeza periódica',status:'Agendada'},
+ {data:daquiDias(-3),cliente:'Residencial Exemplo 2',tipo:'Acompanhamento mensal',status:'Realizada'},
+ {data:daquiDias(5),cliente:'Condomínio Exemplo',tipo:'Limpeza de filtro',status:'Agendada'},
+ {data:daquiDias(9),cliente:'Clube Demonstração',tipo:'Revisão de bomba',status:'Agendada'}
+];
+const CHECKLIST=['Identificação da piscina (ilustrativo)','Inspeção visual da água (ilustrativo)',
+ 'Verificação do filtro (ilustrativo)','Registro fotográfico fictício','Orientações gerais ao cliente'];
+// Indicadores fictícios — apenas demonstração visual.
+const INDICADORES=[
+ {nome:'Clareza visual',valor:72,cor:'#2ac1c0',texto:'Escala ilustrativa de aparência'},
+ {nome:'Índice ilustrativo A',valor:58,cor:'#7fd6d3',texto:'Valor fictício — sem medição'},
+ {nome:'Índice ilustrativo B',valor:85,cor:'#bdf0e6',texto:'Valor fictício — sem medição'}
+];
+const GALERIA=[
+ {titulo:'Piscina residencial',desc:'Ilustração de área externa com piscina.',tipo:'res'},
+ {titulo:'Piscina de condomínio',desc:'Ilustração de piscina coletiva.',tipo:'cond'},
+ {titulo:'Piscina tropical',desc:'Ilustração com palmeiras e sol.',tipo:'trop'}
+];
+
+/* ---------- 2. Renderizações ------------------------------------------------ */
+const gradeServicos=document.getElementById('gradeServicos');
+SERVICOS.forEach(s=>{const c=document.createElement('article');c.className='card servico';
+ c.innerHTML=`<div>${ICONES[s.icone]}</div><h3>${s.nome}</h3><p>${s.desc}</p>`;gradeServicos.appendChild(c);});
+const gradePlanos=document.getElementById('gradePlanos');
+PLANOS.forEach(p=>{const c=document.createElement('div');c.className='card plano'+(p.destaque?' destaque':'');
+ c.innerHTML=`<small>${p.nome}</small><div class="plano__preco">${p.preco}</div>
+ <ul>${p.itens.map(i=>`<li>${i}</li>`).join('')}</ul>
+ <button class="btn ${p.destaque?'btn--tq':'btn--contorno'}" type="button">Selecionar plano (simulação)</button>`;
+ gradePlanos.appendChild(c);});
+document.getElementById('checklistVisita').innerHTML=CHECKLIST.map((t,i)=>
+ `<li><input type="checkbox" id="ck${i}"><label for="ck${i}">${t}</label></li>`).join('');
+
+/* Indicadores: anéis SVG ilustrativos */
+const gradeInd=document.getElementById('gradeIndicadores');
+INDICADORES.forEach(ind=>{
+ const r=42,c=2*Math.PI*r,off=c*(1-ind.valor/100);
+ const card=document.createElement('div');card.className='card indicador';
+ card.innerHTML=`<svg viewBox="0 0 110 110" role="img" aria-label="${ind.nome}: ${ind.valor} ilustrativo">
+  <circle cx="55" cy="55" r="${r}" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="10"/>
+  <circle cx="55" cy="55" r="${r}" fill="none" stroke="${ind.cor}" stroke-width="10" stroke-linecap="round"
+   stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 55 55)"/>
+  <text x="55" y="60" text-anchor="middle" font-size="20" fill="#fff" font-family="monospace">${ind.valor}</text></svg>
+  <h3>${ind.nome}</h3><p>${ind.texto}</p><span class="selo-ilustrativo">ILUSTRATIVO</span>`;
+ gradeInd.appendChild(card);
+});
+
+/* Galeria SVG */
+function artePiscina(tipo){
+ const base='<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de piscina">';
+ if(tipo==='res') return base+`<rect width="400" height="300" fill="#e9f7f5"/><rect y="200" width="400" height="100" fill="#a8dccf"/>
+  <rect x="60" y="110" width="280" height="110" rx="8" fill="#1aa7ad" stroke="#fff" stroke-width="4"/>
+  <path d="M60 110h280v24H60z" fill="#7fd6d3"/><circle cx="330" cy="60" r="26" fill="#f6df9c"/></svg>`;
+ if(tipo==='cond') return base+`<rect width="400" height="300" fill="#dff1ef"/><rect x="30" y="40" width="340" height="180" fill="#f4efe4"/>
+  <rect x="60" y="150" width="280" height="80" rx="6" fill="#1aa7ad" stroke="#0b8f92" stroke-width="3"/>
+  <g fill="#0b8f92"><rect x="90" y="70" width="30" height="60"/><rect x="180" y="70" width="30" height="60"/><rect x="270" y="70" width="30" height="60"/></g></svg>`;
+ return base+`<rect width="400" height="300" fill="#e9f7f5"/><circle cx="330" cy="55" r="28" fill="#f6df9c"/>
+  <path d="M60 220 Q70 140 85 90" stroke="#a67c4d" stroke-width="8" fill="none"/>
+  <g fill="#2f9e83"><path d="M85 90Q45 60 20 80Q60 75 88 100z"/><path d="M85 90Q130 55 165 75Q125 75 90 100z"/></g>
+  <rect x="120" y="190" width="250" height="90" rx="8" fill="#1aa7ad" stroke="#fff" stroke-width="4"/></svg>`;
+}
+const gradeGal=document.getElementById('gradeGaleria');
+GALERIA.forEach(g=>{const c=document.createElement('article');c.className='card';
+ c.innerHTML=`<div class="galeria__img">${artePiscina(g.tipo)}</div>
+  <div class="galeria__corpo"><h3>${g.titulo}</h3><p>${g.desc}</p></div>`;gradeGal.appendChild(c);});
+
+/* ---------- 3. Volume e orçamento ------------------------------------------ */
+const fmtMoeda=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+let ultimoResumo=null;
+function calcularVolume(){
+ const forma=document.getElementById('forma').value;
+ const c=Number(document.getElementById('comprimento').value)||0;
+ const l=Number(document.getElementById('largura').value)||0;
+ const p=Number(document.getElementById('profundidade').value)||0;
+ let m3=0;
+ if(forma==='retangular') m3=c*l*p;
+ else if(forma==='oval') m3=Math.PI*(c/2)*(l/2)*p;
+ else m3=Math.PI*Math.pow(c/2,2)*p; // circular usa comprimento como diâmetro
+ const litros=Math.round(m3*1000);
+ document.getElementById('volumeLitros').textContent=litros.toLocaleString('pt-BR')+' litros';
+ document.getElementById('rForma').textContent=forma==='retangular'?'Retangular':forma==='oval'?'Oval':'Circular';
+ document.getElementById('rDimensoes').textContent=`${c} × ${l} × ${p} m`;
+ const estimativa=Math.max(89,Math.round(litros/1000*9));
+ document.getElementById('rManutencao').textContent=fmtMoeda(estimativa)+' / visita (ilustrativo)';
+ return {litros,estimativa,forma,c,l,p};
+}
+['forma','comprimento','largura','profundidade'].forEach(id=>document.getElementById(id).addEventListener('input',calcularVolume));
+calcularVolume();
+
+document.getElementById('formOrcamento').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ [{id:'nome',t:v=>v.trim().length>=2,m:'Informe o nome.'},
+  {id:'telefone',t:v=>v.replace(/\D/g,'').length>=10,m:'Telefone incompleto.'},
+  {id:'dataVisita',t:v=>!!v,m:'Escolha uma data ilustrativa.'}].forEach(o=>{
+  const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+  const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(!valido)return;
+ const v=calcularVolume();
+ ultimoResumo=`Nome: ${document.getElementById('nome').value.trim()}\nTelefone: ${document.getElementById('telefone').value.trim()}\n`+
+  `Volume aproximado: ${v.litros.toLocaleString('pt-BR')} litros\nManutenção ilustrativa: ${fmtMoeda(v.estimativa)}\n`+
+  `Visita desejada: ${fmt(document.getElementById('dataVisita').value)}`;
+ document.getElementById('confirmacao').classList.add('visivel');
+ document.getElementById('confirmacao').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+/* ---------- 4. Agenda ------------------------------------------------------- */
+let mesAtual=new Date();mesAtual.setDate(1);
+function renderizarCalendario(){
+ const ano=mesAtual.getFullYear(),mes=mesAtual.getMonth(),primeiro=new Date(ano,mes,1),dias=new Date(ano,mes+1,0).getDate();
+ const nome=primeiro.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+ document.getElementById('mesCalendario').textContent=nome.charAt(0).toUpperCase()+nome.slice(1);
+ const datas=new Set(VISITAS.map(v=>v.data)),hoje=new Date().toISOString().slice(0,10);
+ let html=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'].map(d=>`<div class="dia-semana">${d}</div>`).join('');
+ for(let i=0;i<primeiro.getDay();i++)html+='<div class="dia vazio"></div>';
+ for(let d=1;d<=dias;d++){
+  const iso=`${ano}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,tem=datas.has(iso);
+  html+=`<div class="dia ${tem?'com-visita':''} ${hoje===iso?'hoje':''}" ${tem?`role="button" tabindex="0" data-dia="${iso}" aria-label="Visita em ${fmt(iso)}"`:''}>
+   ${d}${tem?'<span class="pontinho"></span>':''}</div>`;
+ }
+ document.getElementById('gradeDias').innerHTML=html;
+ document.querySelectorAll('[data-dia]').forEach(el=>{
+  const ir=()=>{document.getElementById('corpoClientes').innerHTML=CLIENTES_FICTICIOS.filter(c=>c.proxima===el.dataset.dia).map(c=>
+   `<tr><td>${c.nome}</td><td>${c.plano}</td><td>${fmt(c.proxima)}</td><td><span class="etiqueta">${c.status}</span></td></tr>`).join('')||
+   '<tr><td colspan="4">Nenhum cliente nesta data ilustrativa.</td></tr>';};
+  el.addEventListener('click',ir);
+  el.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();ir();}});
+ });
+}
+function renderizarClientes(){document.getElementById('corpoClientes').innerHTML=CLIENTES_FICTICIOS.map(c=>
+ `<tr><td>${c.nome}</td><td>${c.plano}</td><td>${fmt(c.proxima)}</td><td><span class="etiqueta">${c.status}</span></td></tr>`).join('');}
+document.getElementById('mesAnterior').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()-1);renderizarCalendario();});
+document.getElementById('mesSeguinte').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()+1);renderizarCalendario();});
+renderizarCalendario();renderizarClientes();
+
+/* ---------- 5. WhatsApp e menu --------------------------------------------- */
+document.getElementById('btnWhats').addEventListener('click',()=>{
+ if(!ultimoResumo)return;
+ const texto=encodeURIComponent('Olá! Solicitação da demonstração AQUACARE PRIME:\n'+ultimoResumo+
+  '\n\n(Valores e indicadores ilustrativos — demonstração MOSS Digital)');
+ window.open('https://wa.me/?text='+texto,'_blank','noopener');
+});
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');}));
+document.querySelectorAll('[data-cta]').forEach(cta=>cta.addEventListener('click',()=>{
+ setTimeout(()=>document.getElementById('nome')?.focus({preventScroll:true}),400);}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+calcularVolume();
+</script>
+</body>
+</html>

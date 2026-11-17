@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <rect width="1080" height="1350" fill="#1553a0"/>
+  <image href="captura-demo.webp" x="40" y="40" width="1000" height="625"/>
+  <text x="60" y="800" font-family="Arial" font-weight="bold" font-size="68" fill="#f2684f">MOVE PRIME</text>
+  <text x="60" y="895" font-family="Arial" font-size="34" fill="#fff">Mudanças e transportes</text>
+  <text x="60" y="965" font-family="Arial" font-size="27" fill="#fff">Inventário interativo, volume aproximado e estimativa de mudança.</text>
+  <rect x="60" y="1075" width="960" height="4" fill="#f2684f"/>
+  <text x="60" y="1140" font-family="Arial" font-size="34" fill="#fff">Demonstração desenvolvida pela MOSS Digital</text>
+  <text x="60" y="1195" font-family="Arial" font-size="22" fill="#C9D6DE">Imagens, nomes e valores fictícios</text>
+  <text x="60" y="1235" font-family="Arial" font-size="22" fill="#f2684f">mossdigital.com.br</text>
+</svg>

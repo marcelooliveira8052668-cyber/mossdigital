@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d3b4f">
+  <meta name="description" content="TOPO PRIME — demonstração de serviços de topografia, georreferenciamento e levantamentos com precisão.">
+  <title>TOPO PRIME — Topografia de Precisão | Demonstração MOSS Digital</title>
+
+  <!--
+    ============================================================================
+    TOPO PRIME — DEMONSTRAÇÃO 01 DO CATÁLOGO MOSS DIGITAL
+    ============================================================================
+    Arquivo único (HTML + CSS + JS) para facilitar o uso no Koder do iPhone.
+    Todas as ilustrações são SVG originais, embutidas no próprio HTML:
+    não há imagens externas, links frágeis nem dependências de rede.
+
+    ONDE EDITAR:
+    - Serviços: array "SERVICOS" no JavaScript (ou os cards em #servicos).
+    - Preços da calculadora: objeto "CONFIG_ORCAMENTO" no JavaScript.
+    - Portfólio: array "PROJETOS" no JavaScript.
+    - Whatsapp da MOSS: constante "WHATSAPP_MOSS" no JavaScript.
+    - Cores/tipografia: variáveis em :root no CSS.
+    ============================================================================
+  -->
+
+  <style>
+    /* ==========================================================================
+       CSS — ORGANIZAÇÃO DO VISUAL
+       1. Variáveis de tema (paleta azul-petróleo, areia e branco)
+       2. Reset e base
+       3. Utilitários de layout (container, grid, flex)
+       4. Componentes (botões, cards, badges, formulários)
+       5. Seções específicas
+       6. Responsividade (360 / 390 / 768 / 1366 px)
+       ========================================================================== */
+
+    /* 1. Variáveis de tema ---------------------------------------------------- */
+    :root {
+      --petroleo-900: #082b39;
+      --petroleo-800: #0d3b4f;
+      --petroleo-700: #13516b;
+      --petroleo-600: #1b6a8a;
+      --areia-100: #faf6ee;
+      --areia-200: #f1e8d8;
+      --areia-300: #e4d5b8;
+      --areia-400: #cdb88e;
+      --branco: #ffffff;
+      --tinta: #172a33;
+      --tinta-suave: #4c6069;
+      --cobre: #b9782f;
+      --cobre-claro: #d99a49;
+      --sucesso: #2f7d5b;
+      --borda: rgba(13, 59, 79, 0.14);
+      --sombra-suave: 0 10px 30px rgba(8, 43, 57, 0.10);
+      --sombra-forte: 0 20px 50px rgba(8, 43, 57, 0.20);
+      --raio: 14px;
+      --fonte-titulo: "Trebuchet MS", "Segoe UI", sans-serif;
+      --fonte-corpo: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --fonte-tecnica: "Consolas", "Courier New", monospace;
+      --max-largura: 1180px;
+    }
+
+    /* 2. Reset e base --------------------------------------------------------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--fonte-corpo);
+      color: var(--tinta);
+      background: var(--branco);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: var(--fonte-titulo); line-height: 1.15; margin: 0 0 .5em; color: var(--petroleo-900); }
+    p { margin: 0 0 1em; }
+    a { color: var(--petroleo-700); }
+    img, svg { max-width: 100%; display: block; }
+    button, input, select, textarea { font: inherit; }
+    ul { margin: 0; padding-left: 1.2rem; }
+
+    /* Acessibilidade: foco visível e link para pular conteúdo */
+    :focus-visible { outline: 3px solid var(--cobre-claro); outline-offset: 3px; border-radius: 4px; }
+    .skip-link {
+      position: absolute; left: -9999px; top: 0; z-index: 999;
+      background: var(--cobre); color: #fff; padding: .6rem 1rem; border-radius: 0 0 8px 0;
+    }
+    .skip-link:focus { left: 0; }
+
+    /* 3. Utilitários de layout ------------------------------------------------ */
+    .container { width: min(100% - 2.5rem, var(--max-largura)); margin-inline: auto; }
+    .secao { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+    .secao--areia { background: var(--areia-100); }
+    .secao--petroleo { background: var(--petroleo-900); color: var(--areia-200); }
+    .secao--petroleo h2, .secao--petroleo h3 { color: var(--branco); }
+    .cabecalho-secao { max-width: 680px; margin-bottom: 2.5rem; }
+    .eyebrow {
+      display: inline-block; font-family: var(--fonte-tecnica); font-size: .78rem;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--cobre);
+      font-weight: 700; margin-bottom: .75rem;
+    }
+    .secao--petroleo .eyebrow { color: var(--cobre-claro); }
+    .titulo-secao { font-size: clamp(1.9rem, 4vw, 2.7rem); }
+    .subtitulo-secao { color: var(--tinta-suave); font-size: 1.05rem; }
+    .secao--petroleo .subtitulo-secao { color: var(--areia-300); }
+
+    /* 4. Componentes ---------------------------------------------------------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      padding: .85rem 1.35rem; border-radius: 8px; border: 2px solid transparent;
+      font-weight: 700; cursor: pointer; text-decoration: none; line-height: 1.2;
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
+      font-size: .95rem;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn--primario { background: var(--cobre); color: #fff; box-shadow: 0 8px 20px rgba(185,120,47,.28); }
+    .btn--primario:hover { background: #a5681f; }
+    .btn--petroleo { background: var(--petroleo-700); color: #fff; }
+    .btn--petroleo:hover { background: var(--petroleo-600); }
+    .btn--outline { border-color: var(--petroleo-600); color: var(--petroleo-700); background: transparent; }
+    .btn--outline:hover { background: rgba(27,106,138,.08); }
+    .btn--claro { border-color: rgba(255,255,255,.5); color: #fff; background: transparent; }
+    .btn--claro:hover { background: rgba(255,255,255,.10); }
+    .btn--bloco { width: 100%; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: .4rem; font-family: var(--fonte-tecnica);
+      font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+      background: rgba(13,59,79,.07); border: 1px solid var(--borda);
+      padding: .35rem .6rem; border-radius: 999px; color: var(--petroleo-700);
+    }
+    .card {
+      background: var(--branco); border: 1px solid var(--borda);
+      border-radius: var(--raio); box-shadow: var(--sombra-suave);
+      overflow: hidden;
+    }
+
+    /* Formulários */
+    .campo { display: flex; flex-direction: column; gap: .35rem; margin-bottom: 1rem; }
+    .campo label { font-weight: 600; font-size: .9rem; color: var(--petroleo-800); }
+    .campo input, .campo select, .campo textarea {
+      width: 100%; padding: .75rem .85rem; border: 1px solid #c9d6dc; border-radius: 8px;
+      background: #fff; color: var(--tinta); transition: border .18s ease, box-shadow .18s ease;
+    }
+    .campo input:focus, .campo select:focus, .campo textarea:focus {
+      outline: none; border-color: var(--petroleo-600); box-shadow: 0 0 0 3px rgba(27,106,138,.15);
+    }
+    .campo textarea { min-height: 100px; resize: vertical; }
+    .campo .erro { color: #b3261e; font-size: .8rem; min-height: 1.1em; }
+    .campo.invalido input, .campo.invalido select, .campo.invalido textarea { border-color: #b3261e; }
+    .agrupamento { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 1rem; }
+
+    /* 5. Seções específicas --------------------------------------------------- */
+
+    /* Barra técnica superior */
+    .barra-tecnica {
+      background: var(--petroleo-900); color: var(--areia-300);
+      font-family: var(--fonte-tecnica); font-size: .74rem; letter-spacing: .05em;
+    }
+    .barra-tecnica .container { display: flex; justify-content: space-between; gap: 1rem; padding-block: .45rem; flex-wrap: wrap; }
+    .barra-tecnica span { display: inline-flex; align-items: center; gap: .4rem; }
+
+    /* Cabeçalho */
+    .cabecalho { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px); border-bottom: 1px solid var(--borda); }
+    .cabecalho .container { display: flex; align-items: center; justify-content: space-between; min-height: 70px; gap: 1rem; }
+    .logo { display: flex; align-items: center; gap: .65rem; text-decoration: none; color: var(--petroleo-900); }
+    .logo__marca { width: 38px; height: 38px; flex: 0 0 38px; }
+    .logo__texto strong { font-family: var(--fonte-titulo); font-size: 1.2rem; letter-spacing: .06em; display: block; line-height: 1; }
+    .logo__texto small { font-family: var(--fonte-tecnica); font-size: .62rem; color: var(--cobre); letter-spacing: .18em; }
+    .nav { display: flex; align-items: center; gap: 1.5rem; }
+    .nav a { text-decoration: none; color: var(--tinta); font-weight: 600; font-size: .92rem; }
+    .nav a:hover { color: var(--cobre); }
+    .menu-toggle { display: none; background: none; border: 0; cursor: pointer; padding: .5rem; color: var(--petroleo-900); }
+    .menu-toggle svg { width: 28px; height: 28px; }
+
+    /* Hero */
+    .hero { background: linear-gradient(160deg, var(--petroleo-800) 0%, var(--petroleo-900) 100%); color: #fff; overflow: hidden; }
+    .hero__grade { position: absolute; inset: 0; opacity: .12;
+      background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
+      background-size: 44px 44px; pointer-events: none; }
+    .hero .container { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 3rem; align-items: center;
+      padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+    .hero h1 { color: #fff; font-size: clamp(2.3rem, 5.5vw, 4rem); letter-spacing: -.02em; }
+    .hero h1 em { color: var(--cobre-claro); font-style: normal; }
+    .hero__subtitle { color: var(--areia-200); font-size: clamp(1rem, 2vw, 1.2rem); max-width: 34rem; }
+    .hero__acoes { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.8rem; }
+    .hero__metricas { display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .metrica { border-left: 2px solid var(--cobre); padding-left: .9rem; }
+    .metrica strong { display: block; font-family: var(--fonte-tecnica); font-size: 1.5rem; color: #fff; }
+    .metrica span { font-size: .8rem; color: var(--areia-300); }
+    .hero__arte { position: relative; }
+    .hero__arte svg { width: 100%; height: auto; filter: drop-shadow(0 20px 30px rgba(0,0,0,.35)); }
+
+    /* Faixa de confiança */
+    .faixa { background: var(--areia-200); border-block: 1px solid var(--areia-300); }
+    .faixa .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2.5rem; padding-block: 1.1rem;
+      font-family: var(--fonte-tecnica); font-size: .8rem; color: var(--petroleo-700); letter-spacing: .05em; }
+    .faixa span { display: inline-flex; align-items: center; gap: .5rem; }
+
+    /* Serviços */
+    .grade-servicos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .servico { padding: 1.6rem; transition: transform .2s ease, box-shadow .2s ease; }
+    .servico:hover { transform: translateY(-4px); box-shadow: var(--sombra-forte); }
+    .servico__icone { width: 46px; height: 46px; margin-bottom: 1rem; }
+    .servico h3 { font-size: 1.15rem; }
+    .servico p { color: var(--tinta-suave); font-size: .92rem; margin-bottom: 0; }
+
+    /* Calculadora */
+    .calculadora { display: grid; grid-template-columns: 1.15fr .85fr; gap: 2rem; align-items: start; }
+    .calc-form { padding: 1.8rem; }
+    .calc-resultado { background: var(--petroleo-800); color: #fff; border-radius: var(--raio); padding: 1.8rem; position: sticky; top: 90px; }
+    .calc-resultado h3 { color: #fff; font-size: 1.2rem; }
+    .calc-resultado .valor { font-family: var(--fonte-tecnica); font-size: clamp(1.7rem, 4vw, 2.3rem); color: var(--cobre-claro); margin: .4rem 0; }
+    .calc-resultado .faixa-valor { font-size: .85rem; color: var(--areia-300); }
+    .calc-linha { display: flex; justify-content: space-between; gap: 1rem; padding: .55rem 0; border-bottom: 1px dashed rgba(255,255,255,.18); font-size: .88rem; }
+    .calc-linha:last-of-type { border-bottom: 0; }
+    .aviso { font-size: .78rem; line-height: 1.5; color: var(--areia-300); background: rgba(255,255,255,.06);
+      border-left: 3px solid var(--cobre-claro); padding: .7rem .8rem; border-radius: 4px; margin-top: 1rem; }
+    .slider-linha { display: flex; align-items: center; gap: 1rem; }
+    input[type="range"] { flex: 1; accent-color: var(--petroleo-600); }
+    .slider-valor { font-family: var(--fonte-tecnica); font-weight: 700; color: var(--petroleo-700); min-width: 86px; text-align: right; }
+    .checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; margin-top: .3rem; }
+    .checks label { display: flex; align-items: center; gap: .5rem; font-weight: 500; font-size: .88rem; cursor: pointer; color: var(--tinta); }
+    .checks input { width: 17px; height: 17px; accent-color: var(--petroleo-600); }
+
+    /* Portfólio */
+    .filtros { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+    .filtro { padding: .5rem 1rem; border-radius: 999px; border: 1px solid var(--borda); background: #fff;
+      cursor: pointer; font-weight: 600; font-size: .85rem; color: var(--tinta-suave); }
+    .filtro[aria-pressed="true"] { background: var(--petroleo-700); color: #fff; border-color: var(--petroleo-700); }
+    .grade-portfolio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .projeto { opacity: 1; transition: opacity .25s ease, transform .25s ease; }
+    .projeto[oculto] { display: none; }
+    .projeto__imagem { aspect-ratio: 4/3; background: var(--areia-200); }
+    .projeto__imagem svg { width: 100%; height: 100%; }
+    .projeto__corpo { padding: 1.1rem 1.2rem 1.3rem; }
+    .projeto__corpo h3 { font-size: 1.1rem; margin-bottom: .25rem; }
+    .projeto__corpo p { font-size: .87rem; color: var(--tinta-suave); margin-bottom: .6rem; }
+
+    /* Simulação de planta */
+    .planta { display: grid; grid-template-columns: 1.3fr .7fr; gap: 2rem; align-items: stretch; }
+    .planta__canvas { background: var(--areia-100); border: 1px solid var(--areia-300); border-radius: var(--raio);
+      padding: 1rem; position: relative; overflow: hidden; }
+    .planta__canvas svg { width: 100%; height: auto; }
+    .planta__controles { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+    .planta__controles button { padding: .45rem .8rem; font-size: .8rem; border-radius: 6px; cursor: pointer;
+      border: 1px solid var(--borda); background: #fff; color: var(--petroleo-800); font-weight: 600; }
+    .planta__controles button[aria-pressed="true"] { background: var(--petroleo-700); color: #fff; border-color: var(--petroleo-700); }
+    .planta__info { background: var(--petroleo-800); color: #fff; border-radius: var(--raio); padding: 1.6rem; }
+    .planta__info h3 { color: #fff; }
+    .coord { font-family: var(--fonte-tecnica); background: rgba(255,255,255,.08); border-radius: 8px;
+      padding: .9rem; font-size: .9rem; line-height: 1.8; }
+    .coord strong { color: var(--cobre-claro); }
+    .legenda { list-style: none; padding: 0; margin: 1rem 0 0; font-size: .85rem; color: var(--areia-200); }
+    .legenda li { display: flex; align-items: center; gap: .5rem; margin-bottom: .4rem; }
+    .ponto-visivel { cursor: pointer; }
+    .ponto-visivel:hover circle { r: 7; fill: var(--cobre-claro); }
+
+    /* Galeria de equipamentos */
+    .grade-galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .equipamento { text-align: center; padding: 1rem; cursor: pointer; background: #fff; }
+    .equipamento svg { width: 100%; height: 120px; margin-bottom: .6rem; }
+    .equipamento strong { display: block; font-size: .92rem; color: var(--petroleo-800); }
+    .equipamento small { color: var(--tinta-suave); font-size: .78rem; }
+
+    /* Formulário de visita */
+    .contato { display: grid; grid-template-columns: .85fr 1.15fr; gap: 2.5rem; }
+    .contato__info h3 { font-size: 1.3rem; }
+    .contato__info ul { list-style: none; padding: 0; }
+    .contato__info li { display: flex; gap: .7rem; margin-bottom: .8rem; color: var(--areia-200); font-size: .93rem; }
+    .contato__info li svg { flex: 0 0 20px; width: 20px; height: 20px; margin-top: .15rem; }
+    .form-card { background: #fff; border-radius: var(--raio); padding: clamp(1.4rem, 4vw, 2.2rem); box-shadow: var(--sombra-forte); }
+    .confirmacao { display: none; background: #eef7f1; border: 1px solid #bfe3cd; border-radius: 10px;
+      padding: 1rem; margin-top: 1rem; color: #1d5e42; font-size: .9rem; }
+    .confirmacao.visivel { display: block; }
+    .resumo { font-family: var(--fonte-tecnica); font-size: .8rem; background: #fff; padding: .7rem;
+      border-radius: 6px; margin: .6rem 0; white-space: pre-wrap; }
+
+    /* Rodapé / identidade MOSS */
+    .rodape { background: var(--petroleo-900); color: var(--areia-300); padding: 3rem 0 2rem; border-top: 1px solid rgba(255,255,255,.08); }
+    .rodape__topo { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: center; }
+    .rodape__marca { display: flex; align-items: center; gap: .8rem; }
+    .rodape__marca svg { width: 42px; height: 42px; }
+    .rodape__marca strong { color: #fff; font-family: var(--fonte-titulo); letter-spacing: .08em; }
+    .moss-bloco { border: 1px solid rgba(255,255,255,.18); border-radius: var(--raio); padding: 1.2rem 1.4rem;
+      background: rgba(255,255,255,.04); max-width: 420px; }
+    .moss-bloco p { font-size: .86rem; margin-bottom: .8rem; }
+    .moss-bloco .btn { font-size: .85rem; padding: .65rem 1rem; }
+    .rodape__base { border-top: 1px solid rgba(255,255,255,.1); margin-top: 2rem; padding-top: 1.2rem;
+      display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .78rem; }
+    .rodape__base a { color: var(--areia-300); }
+
+    /* Janela modal (ampliador de equipamento) */
+    .modal { position: fixed; inset: 0; background: rgba(8,43,57,.75); display: none; z-index: 100;
+      align-items: center; justify-content: center; padding: 1rem; }
+    .modal.aberto { display: flex; }
+    .modal__conteudo { background: #fff; border-radius: var(--raio); padding: 1.5rem; max-width: 420px; width: 100%; text-align: center; }
+    .modal__conteudo svg { width: 100%; height: 180px; }
+    .modal__fechar { margin-top: 1rem; }
+
+    /* Aviso de demonstração fixo */
+    .selo-demo { position: fixed; right: 1rem; bottom: 1rem; z-index: 40; background: var(--cobre);
+      color: #fff; font-family: var(--fonte-tecnica); font-size: .68rem; letter-spacing: .1em;
+      padding: .45rem .7rem; border-radius: 999px; box-shadow: var(--sombra-suave); pointer-events: none; }
+
+    /* Respeito a quem prefere menos movimento */
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+
+    /* 6. Responsividade ------------------------------------------------------- */
+
+    /* Tablet (até 900px) */
+    @media (max-width: 900px) {
+      .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff;
+        flex-direction: column; align-items: stretch; gap: 0; padding: .5rem 1.25rem 1rem;
+        box-shadow: var(--sombra-suave); border-bottom: 1px solid var(--borda); }
+      .nav.ativa { display: flex; }
+      .nav a { padding: .8rem 0; border-bottom: 1px solid var(--borda); }
+      .menu-toggle { display: block; }
+      .hero .container, .calculadora, .planta, .contato { grid-template-columns: 1fr; }
+      .hero__arte { max-width: 520px; margin-inline: auto; }
+      .grade-servicos, .grade-portfolio { grid-template-columns: repeat(2, 1fr); }
+      .grade-galeria { grid-template-columns: repeat(2, 1fr); }
+      .calc-resultado { position: static; }
+    }
+
+    /* Celular (até 600px) */
+    @media (max-width: 600px) {
+      .container { width: min(100% - 1.5rem, var(--max-largura)); }
+      .hero__metricas { gap: 1rem; }
+      .metrica { padding-left: .6rem; }
+      .metrica strong { font-size: 1.2rem; }
+      .grade-servicos, .grade-portfolio, .grade-galeria, .agrupamento, .checks { grid-template-columns: 1fr; }
+      .barra-tecnica .container { justify-content: center; text-align: center; }
+      .rodape__topo { flex-direction: column; align-items: flex-start; }
+      .selo-demo { font-size: .58rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- =========================================================================
+       BARRA TÉCNICA — faixa superior com dados "de engenharia" (visual temático)
+       ========================================================================= -->
+  <div class="barra-tecnica">
+    <div class="container">
+      <span>◎ SISTEMA DE COORDENADAS • SIRGAS 2000</span>
+      <span>PRECISÃO MILIMÉTRICA • DEMONSTRAÇÃO</span>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       CABEÇALHO — logotipo, navegação (menu hambúrguer no celular) e CTA
+       ========================================================================= -->
+  <header class="cabecalho">
+    <div class="container">
+      <a class="logo" href="#inicio" aria-label="TOPO PRIME — início">
+        <!-- Marca original: alvo de precisão sobre malha -->
+        <svg class="logo__marca" viewBox="0 0 48 48" role="img" aria-label="Logotipo TOPO PRIME">
+          <rect width="48" height="48" rx="10" fill="#0d3b4f"/>
+          <g stroke="#e4d5b8" fill="none" stroke-width="1.6">
+            <path d="M24 7v34M7 24h34"/>
+            <circle cx="24" cy="24" r="11"/>
+            <circle cx="24" cy="24" r="4" fill="#d99a49" stroke="none"/>
+          </g>
+        </svg>
+        <span class="logo__texto"><strong>TOPO PRIME</strong><small>GEODÉSIA &amp; PRECISÃO</small></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+        <a href="#servicos">Serviços</a>
+        <a href="#orcamento">Orçamento</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#planta">Simulação</a>
+        <a href="#contato">Contato</a>
+        <a class="btn btn--primario" href="#orcamento" data-cta>Solicitar orçamento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- =======================================================================
+         HERO — apresentação com ilustração SVG original de um topógrafo em campo
+         ======================================================================= -->
+    <section class="hero" id="inicio">
+      <div class="hero__grade" aria-hidden="true"></div>
+      <div class="container">
+        <div>
+          <span class="eyebrow">Topografia • Georreferenciamento • Cadastro</span>
+          <h1>Precisão que vira <em>terra firme</em> para o seu projeto.</h1>
+          <p class="hero__subtitle">Levantamentos técnicos, plantas e georreferenciamento executados com equipamentos de última geração. Da medição ao projeto, cada detalhe importa.</p>
+          <div class="hero__acoes">
+            <a class="btn btn--primario" href="#orcamento" data-cta>Solicitar orçamento →</a>
+            <a class="btn btn--claro" href="#portfolio">Ver levantamentos</a>
+          </div>
+          <div class="hero__metricas">
+            <div class="metrica"><strong>± 2 mm</strong><span>Precisão demonstrativa</span></div>
+            <div class="metrica"><strong>24 h</strong><span>Resposta ilustrativa</span></div>
+            <div class="metrica"><strong>100%</strong><span>Documentação digital</span></div>
+          </div>
+        </div>
+
+        <!-- Ilustração original: cenário de levantamento com estação total -->
+        <div class="hero__arte" role="img" aria-label="Ilustração de um técnico usando estação total em um terreno com curvas de nível">
+          <svg viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ceu" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1b6a8a"/><stop offset="100%" stop-color="#0d3b4f"/>
+              </linearGradient>
+              <linearGradient id="terra" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e4d5b8"/><stop offset="100%" stop-color="#cdb88e"/>
+              </linearGradient>
+            </defs>
+            <!-- céu e sol -->
+            <rect width="520" height="440" rx="16" fill="url(#ceu)"/>
+            <circle cx="410" cy="90" r="46" fill="#d99a49" opacity=".85"/>
+            <circle cx="410" cy="90" r="62" fill="#d99a49" opacity=".12"/>
+            <!-- serras ao fundo -->
+            <path d="M0 200 L90 120 L160 180 L250 95 L340 180 L430 120 L520 190 L520 440 L0 440Z" fill="#0a3244" opacity=".9"/>
+            <path d="M0 240 L80 180 L170 235 L280 150 L390 235 L520 170 L520 440 L0 440Z" fill="#0c3a4e"/>
+            <!-- terreno com curvas de nível -->
+            <path d="M0 280 Q130 250 260 285 T520 270 L520 440 L0 440Z" fill="url(#terra)"/>
+            <g fill="none" stroke="#b9a273" stroke-width="1.4" opacity=".8">
+              <path d="M0 310 Q140 285 270 315 T520 300"/>
+              <path d="M0 345 Q150 320 280 350 T520 335"/>
+              <path d="M0 382 Q160 358 300 388 T520 372"/>
+            </g>
+            <!-- tripé e estação total -->
+            <g stroke="#082b39" stroke-width="4" fill="none" stroke-linecap="round">
+              <path d="M150 300 L120 380 M150 300 L180 380 M150 300 L150 385"/>
+            </g>
+            <rect x="128" y="268" width="44" height="26" rx="4" fill="#f1e8d8" stroke="#082b39" stroke-width="3"/>
+            <rect x="136" y="252" width="28" height="18" rx="3" fill="#1b6a8a" stroke="#082b39" stroke-width="3"/>
+            <circle cx="150" cy="261" r="4" fill="#d99a49"/>
+            <path d="M164 258 l24 -12" stroke="#082b39" stroke-width="3"/>
+            <!-- raio de medição -->
+            <path d="M188 246 L360 168" stroke="#d99a49" stroke-width="2" stroke-dasharray="6 6" opacity=".9"/>
+            <circle cx="360" cy="168" r="5" fill="#d99a49"/>
+            <!-- técnico simplificado -->
+            <g fill="#0a3244">
+              <circle cx="300" cy="300" r="13"/>
+              <rect x="288" y="313" width="24" height="46" rx="8"/>
+              <path d="M290 320 l-18 34 M310 320 l20 30 M294 358 l-10 34 M306 358 l12 34" stroke="#0a3244" stroke-width="7" stroke-linecap="round" fill="none"/>
+            </g>
+            <rect x="286" y="292" width="28" height="6" rx="3" fill="#d99a49"/>
+            <!-- baliza / prisma -->
+            <path d="M360 168 L360 250" stroke="#f1e8d8" stroke-width="4"/>
+            <path d="M360 168 l-10 14 h20 Z" fill="#d99a49"/>
+            <!-- retícula decorativa -->
+            <g stroke="#e4d5b8" stroke-width="1" opacity=".35">
+              <path d="M24 24h48M24 24v48M496 24h-48M496 24v48M24 416h48M24 416v-48M496 416h-48M496 416v-48"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         FAIXA DE CONFIANÇA — termos técnicos reforçam a identidade visual
+         ======================================================================= -->
+    <div class="faixa">
+      <div class="container">
+        <span>✦ LEVANTAMENTO TOPOGRÁFICO</span>
+        <span>✦ GEORREFERENCIAMENTO</span>
+        <span>✦ PLANTA CADASTRAL</span>
+        <span>✦ NIVELAMENTO</span>
+        <span>✦ DRONE E FOTOGRAMETRIA</span>
+      </div>
+    </div>
+
+    <!-- =======================================================================
+         SERVIÇOS — catálogo. Edite o array SERVICOS no JS para alterar os cards.
+         ======================================================================= -->
+    <section class="secao" id="servicos">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">O que fazemos</span>
+          <h2 class="titulo-secao">Serviços de topografia e geodésia</h2>
+          <p class="subtitulo-secao">Soluções para obras, imóveis, infraestrutura e regularização — executadas por profissionais habilitados.</p>
+        </div>
+        <div class="grade-servicos" id="gradeServicos">
+          <!-- Os cards são gerados pelo JavaScript a partir do array SERVICOS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         CALCULADORA — orçamento ilustrativo. CONFIG_ORCAMENTO controla os preços.
+         ======================================================================= -->
+    <section class="secao secao--areia" id="orcamento">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">Simulador demonstrativo</span>
+          <h2 class="titulo-secao">Estime o investimento do seu levantamento</h2>
+          <p class="subtitulo-secao">Informe os dados do terreno e veja uma estimativa ilustrativa. Ajuste os valores em <code>CONFIG_ORCAMENTO</code> no código.</p>
+        </div>
+
+        <div class="calculadora">
+          <!-- Formulário de entrada -->
+          <form class="card calc-form" id="formOrcamento" novalidate>
+            <div class="campo">
+              <label for="area">Área aproximada do terreno (m²)</label>
+              <div class="slider-linha">
+                <input type="range" id="area" name="area" min="100" max="20000" step="100" value="1200" aria-describedby="areaVal">
+                <output class="slider-valor" id="areaVal" for="area">1.200 m²</output>
+              </div>
+              <span class="erro" id="erroArea" aria-live="polite"></span>
+            </div>
+
+            <div class="campo">
+              <label for="tipo">Tipo de levantamento</label>
+              <select id="tipo" name="tipo">
+                <option value="topografico">Levantamento topográfico plano</option>
+                <option value="cadastral">Planta cadastral para regularização</option>
+                <option value="georreferenciamento">Georreferenciamento (imóvel rural)</option>
+                <option value="nivelamento">Nivelamento geométrico</option>
+                <option value="drone">Mapeamento com drone / fotogrametria</option>
+                <option value="acompanhamento">Acompanhamento de obra</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label>Características do terreno (multiplicadores ilustrativos)</label>
+              <div class="checks">
+                <label><input type="checkbox" name="carac" value="plano"> Terreno plano</label>
+                <label><input type="checkbox" name="carac" value="aclive"> Aclive / declive</label>
+                <label><input type="checkbox" name="carac" value="vegetacao"> Vegetação densa</label>
+                <label><input type="checkbox" name="carac" value="urbano"> Área urbana</label>
+                <label><input type="checkbox" name="carac" value="acesso"> Acesso difícil</label>
+                <label><input type="checkbox" name="carac" value="urgencia"> Prazo urgente</label>
+              </div>
+            </div>
+
+            <button class="btn btn--petroleo btn--bloco" type="submit">Calcular estimativa</button>
+          </form>
+
+          <!-- Painel de resultado (atualizado pelo JavaScript) -->
+          <aside class="calc-resultado" aria-live="polite">
+            <span class="eyebrow">Resultado da simulação</span>
+            <h3>Estimativa ilustrativa</h3>
+            <div class="valor" id="valorEstimado">R$ —</div>
+            <div class="faixa-valor" id="faixaValor">Preencha os dados e clique em calcular.</div>
+            <div style="margin-top:1.2rem">
+              <div class="calc-linha"><span>Área considerada</span><strong id="linhaArea">—</strong></div>
+              <div class="calc-linha"><span>Serviço base</span><strong id="linhaTipo">—</strong></div>
+              <div class="calc-linha"><span>Ajustes aplicados</span><strong id="linhaAjustes">—</strong></div>
+              <div class="calc-linha"><span>Valor por m² (base)</span><strong id="linhaM2">—</strong></div>
+            </div>
+            <p class="aviso">⚠️ Esta é uma <strong>estimativa ilustrativa e configurável</strong>, criada para demonstração. Não constitui medição, proposta técnica ou orçamento definitivo. O valor real depende de visita técnica e análise de cada imóvel.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         PORTFÓLIO — projetos fictícios com filtros. Array PROJETOS no JS.
+         ======================================================================= -->
+    <section class="secao" id="portfolio">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">Portfólio demonstrativo</span>
+          <h2 class="titulo-secao">Levantamentos realizados</h2>
+          <p class="subtitulo-secao">Projetos ilustrativos para apresentar o tipo de entrega. Filtre por categoria.</p>
+        </div>
+        <div class="filtros" role="group" aria-label="Filtrar projects por categoria">
+          <button class="filtro" data-filtro="todos" aria-pressed="true">Todos</button>
+          <button class="filtro" data-filtro="urbano" aria-pressed="false">Urbano</button>
+          <button class="filtro" data-filtro="rural" aria-pressed="false">Rural</button>
+          <button class="filtro" data-filtro="infra" aria-pressed="false">Infraestrutura</button>
+        </div>
+        <div class="grade-portfolio" id="gradePortfolio"></div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SIMULAÇÃO VISUAL DE PLANTA — SVG interativo com camadas e coordenadas
+         ======================================================================= -->
+    <section class="secao secao--areia" id="planta">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">Visualização interativa</span>
+          <h2 class="titulo-secao">Simulação de planta de levantamento</h2>
+          <p class="subtitulo-secao">Ative camadas, ajuste o zoom e clique nos pontos para ver coordenadas fictícias. Ilustração didática — não é uma planta técnica real.</p>
+        </div>
+
+        <div class="planta">
+          <div class="planta__canvas">
+            <div class="planta__controles" role="group" aria-label="Controles da planta">
+              <button id="btnCurvas" aria-pressed="true">Curvas de nível</button>
+              <button id="btnPontos" aria-pressed="true">Pontos de medição</button>
+              <button id="btnLotes" aria-pressed="true">Divisão de lotes</button>
+              <button id="btnZoomIn" aria-label="Aproximar">+</button>
+              <button id="btnZoomOut" aria-label="Afastar">−</button>
+            </div>
+
+            <!-- SVG da planta: elementos com ids são controlados via JavaScript -->
+            <svg id="svgPlanta" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Planta ilustrativa de um terreno com lotes, curvas de nível e pontos de medição">
+              <rect width="600" height="400" fill="#faf6ee"/>
+              <!-- malha de fundo -->
+              <g stroke="#e4d5b8" stroke-width="1">
+                <path d="M0 50H600M0 100H600M0 150H600M0 200H600M0 250H600M0 300H600M0 350H600"/>
+                <path d="M50 0V400M100 0V400M150 0V400M200 0V400M250 0V400M300 0V400M350 0V400M400 0V400M450 0V400M500 0V400M550 0V400"/>
+              </g>
+
+              <g id="camadaCurvas" fill="none" stroke="#b9a273" stroke-width="1.6">
+                <path d="M40 330 Q160 290 300 320 T560 300"/>
+                <path d="M40 290 Q170 250 310 280 T560 260"/>
+                <path d="M40 250 Q180 210 320 240 T560 220"/>
+                <path d="M40 210 Q190 170 330 200 T560 180"/>
+              </g>
+
+              <g id="camadaLotes" fill="rgba(27,106,138,.07)" stroke="#1b6a8a" stroke-width="2">
+                <rect x="90" y="90" width="130" height="110"/>
+                <rect x="230" y="90" width="130" height="110"/>
+                <rect x="370" y="90" width="130" height="110"/>
+                <rect x="90" y="215" width="130" height="110"/>
+                <rect x="230" y="215" width="130" height="110"/>
+                <rect x="370" y="215" width="130" height="110"/>
+              </g>
+
+              <g id="camadaPontos">
+                <g class="ponto-visivel" data-ponto="P01" data-x="90" data-y="90" tabindex="0" role="button" aria-label="Ponto P01">
+                  <circle cx="90" cy="90" r="5" fill="#b9782f"/><text x="98" y="84" font-size="11" fill="#082b39" font-family="monospace">P01</text>
+                </g>
+                <g class="ponto-visivel" data-ponto="P02" data-x="360" data-y="90" tabindex="0" role="button" aria-label="Ponto P02">
+                  <circle cx="360" cy="90" r="5" fill="#b9782f"/><text x="368" y="84" font-size="11" fill="#082b39" font-family="monospace">P02</text>
+                </g>
+                <g class="ponto-visivel" data-ponto="P03" data-x="500" data-y="200" tabindex="0" role="button" aria-label="Ponto P03">
+                  <circle cx="500" cy="200" r="5" fill="#b9782f"/><text x="508" y="194" font-size="11" fill="#082b39" font-family="monospace">P03</text>
+                </g>
+                <g class="ponto-visivel" data-ponto="P04" data-x="220" data-y="325" tabindex="0" role="button" aria-label="Ponto P04">
+                  <circle cx="220" cy="325" r="5" fill="#b9782f"/><text x="228" y="319" font-size="11" fill="#082b39" font-family="monospace">P04</text>
+                </g>
+              </g>
+
+              <!-- rosa dos ventos -->
+              <g transform="translate(545,60)" stroke="#082b39" fill="none" stroke-width="1.5">
+                <circle r="24" fill="#fff" opacity=".8"/>
+                <path d="M0 -20 L5 0 L0 20 L-5 0 Z" fill="#1b6a8a"/>
+                <text x="-4" y="-28" font-size="12" fill="#082b39" stroke="none" font-family="monospace" font-weight="bold">N</text>
+              </g>
+              <!-- escala gráfica -->
+              <g transform="translate(40,370)" stroke="#082b39" stroke-width="1.5">
+                <path d="M0 0h100M0 -5v10M50 -4v8M100 -5v10"/>
+                <text x="0" y="-10" font-size="10" fill="#082b39" stroke="none" font-family="monospace">0</text>
+                <text x="88" y="-10" font-size="10" fill="#082b39" stroke="none" font-family="monospace">20 m</text>
+              </g>
+            </svg>
+          </div>
+
+          <aside class="planta__info">
+            <span class="eyebrow">Inventor de pontos</span>
+            <h3>Coordenadas do ponto</h3>
+            <div class="coord" id="coordInfo">Clique em um ponto laranja na planta para ver suas coordenadas demonstrativas.</div>
+            <ul class="legenda">
+              <li><span style="width:12px;height:12px;background:#b9782f;display:inline-block;border-radius:50%"></span> Ponto de medição</li>
+              <li><span style="width:12px;height:2px;background:#b9a273;display:inline-block"></span> Curva de nível</li>
+              <li><span style="width:12px;height:12px;background:rgba(27,106,138,.2);border:1px solid #1b6a8a;display:inline-block"></span> Lote</li>
+            </ul>
+            <p class="aviso" style="margin-top:1rem">Coordenadas e cotas são <strong>fictícias</strong>, geradas apenas para demonstrar a interação.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         GALERIA — equipamentos ilustrados. Clique amplia em modal.
+         ======================================================================= -->
+    <section class="secao" id="equipamentos">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">Tecnologia em campo</span>
+          <h2 class="titulo-secao">Equipamentos utilizados</h2>
+          <p class="subtitulo-secao">Ilustrações originais. Clique em um item para ampliar.</p>
+        </div>
+        <div class="grade-galeria" id="gradeGaleria"></div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         CONTATO — formulário de visita com validação e confirmação demonstrativa
+         ======================================================================= -->
+    <section class="secao secao--petroleo" id="contato">
+      <div class="container">
+        <div class="contato">
+          <div class="contato__info">
+            <span class="eyebrow">Vamos conversar</span>
+            <h3>Solicite uma visita técnica</h3>
+            <p>Conte-nos sobre o seu terreno. Nesta demonstração, o envio é simulado: você recebe uma confirmação e um resumo copiável — nenhuma mensagem é enviada de fato.</p>
+            <ul>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d99a49" stroke-width="2"><path d="M12 21s-7-6.3-7-11a7 7 0 1114 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Atendimento regional ilustrativo
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d99a49" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                Resposta em até 24 h (exemplo)
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d99a49" stroke-width="2"><path d="M4 4h16v12H4z"/><path d="M8 20h8"/></svg>
+                Orçamento após visita técnica
+              </li>
+            </ul>
+          </div>
+
+          <form class="form-card" id="formVisita" novalidate>
+            <div class="agrupamento">
+              <div class="campo">
+                <label for="nome">Nome completo *</label>
+                <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Seu nome">
+                <span class="erro" aria-live="polite"></span>
+              </div>
+              <div class="campo">
+                <label for="telefone">Telefone / WhatsApp *</label>
+                <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(00) 00000-0000">
+                <span class="erro" aria-live="polite"></span>
+              </div>
+            </div>
+            <div class="agrupamento">
+              <div class="campo">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="voce@exemplo.com">
+                <span class="erro" aria-live="polite"></span>
+              </div>
+              <div class="campo">
+                <label for="cidade">Cidade / região *</label>
+                <input type="text" id="cidade" name="cidade" placeholder="Ex.: São Paulo - SP">
+                <span class="erro" aria-live="polite"></span>
+              </div>
+            </div>
+            <div class="campo">
+              <label for="servicoVisita">Serviço de interesse</label>
+              <select id="servicoVisita" name="servicoVisita">
+                <option>Levantamento topográfico</option>
+                <option>Planta cadastral</option>
+                <option>Georreferenciamento</option>
+                <option>Nivelamento</option>
+                <option>Drone / fotogrametria</option>
+                <option>Acompanhamento de obra</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="mensagem">Descreva o terreno / necessidade</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Área aproximada, tipo de imóvel, finalidade..."></textarea>
+            </div>
+            <button class="btn btn--primario btn--bloco" type="submit">Enviar solicitação (demonstração)</button>
+
+            <div class="confirmacao" id="confirmacao" role="status">
+              <strong>✓ Solicitação registrada nesta demonstração.</strong>
+              <p style="margin:.4rem 0">Nenhuma mensagem foi enviada. Veja o resumo gerado:</p>
+              <div class="resumo" id="resumoVisita"></div>
+              <button type="button" class="btn btn--outline" id="copiarResumo">Copiar resumo</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       RODAPÉ — identidade MOSS Digital + botão comercial (WhatsApp real da MOSS)
+       ========================================================================= -->
+    <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Equipe em levantamento de campo" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Equipe em levantamento de campo<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Estação total em uso" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Estação total em uso<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Equipamentos de topografia" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Equipamentos de topografia<small>Imagem ilustrativa · cc0 1.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Mapa topográfico ilustrativo" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Mapa topográfico ilustrativo<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Canteiro de obras" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Canteiro de obras<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Instrumento de topografia em tripé" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Instrumento de topografia em tripé<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape">
+    <div class="container">
+      <div class="rodape__topo">
+        <div>
+          <div class="rodape__marca">
+            <svg viewBox="0 0 48 48" role="img" aria-label="Marca TOPO PRIME"><rect width="48" height="48" rx="10" fill="#13516b"/><g stroke="#e4d5b8" fill="none" stroke-width="1.6"><path d="M24 7v34M7 24h34"/><circle cx="24" cy="24" r="11"/><circle cx="24" cy="24" r="4" fill="#d99a49" stroke="none"/></g></svg>
+            <div><strong>TOPO PRIME</strong><div style="font-size:.78rem;color:#e4d5b8">Topografia de precisão — demonstração</div></div>
+          </div>
+          <p style="font-size:.82rem;margin-top:1rem;max-width:420px">Página demonstrativa com dados, projetos e valores fictícios. Não é um site corporativo real nem substitui serviço técnico profissional.</p>
+        </div>
+
+        <div class="moss-bloco">
+          <p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Quer transformar ideias como esta em um site real para o seu negócio?</p>
+          <a class="btn btn--primario" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a>
+        </div>
+      </div>
+      <div class="rodape__base">
+        <span>© 2026 TOPO PRIME • Demonstração MOSS Digital</span>
+        <span>Navegação acessível · Conteúdo ilustrativo</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+  <!-- Modal de ampliação de equipamento -->
+  <div class="modal" id="modalEquip" role="dialog" aria-modal="true" aria-label="Ampliação do equipamento">
+    <div class="modal__conteudo">
+      <div id="modalConteudo"></div>
+      <h3 id="modalTitulo" style="font-size:1.1rem"></h3>
+      <p id="modalDescricao" style="font-size:.85rem;color:#4c6069"></p>
+      <button class="btn btn--petroleo modal__fechar" id="fecharModal">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       JAVASCRIPT — CONTROLE DOS COMPONENTES
+       Blocos:
+       1. Dados configuráveis (serviços, preços, projetos, equipamentos)
+       2. Menu mobile
+       3. Renderização de cards
+       4. Calculadora de orçamento
+       5. Filtros do portfólio
+       6. Planta interativa
+       7. Galeria / modal
+       8. Formulário de visita
+       9. Botão comercial MOSS (WhatsApp)
+       ========================================================================== */
+
+    'use strict';
+
+    /* ---------- 1. Dados configuráveis -------------------------------------- */
+
+    // Constantes comerciais — ONDE TROCAR O CONTATO DA MOSS --------------------
+    const WHATSAPP_MOSS = '5511942038103'; // WhatsApp comercial da MOSS Digital
+    const NOME_DEMO = 'TOPO PRIME (Demo 01 — Topógrafo)';
+
+    // Catálogo de serviços. Para editar: altere título, descrição e ícone (SVG).
+    const SERVICOS = [
+      { titulo: 'Levantamento topográfico', icone: 'malha', desc: 'Medição de distâncias, ângulos e altitudes para gerar plantas e perfis do terreno.' },
+      { titulo: 'Georreferenciamento', icone: 'satelite', desc: 'Vinculação do imóvel ao sistema de coordenadas oficial, com relatório técnico.' },
+      { titulo: 'Planta cadastral', icone: 'planta', desc: 'Documentação gráfica para regularização, desmembramento e registro cartorário.' },
+      { titulo: 'Nivelamento geométrico', icone: 'nivel', desc: 'Determinação precisa de cotas para projetos de drenagem, pavimento e obras.' },
+      { titulo: 'Mapeamento com drone', icone: 'drone', desc: 'Imagens aéreas, ortofotos e modelos 3D com agilidade e alta resolução.' },
+      { titulo: 'Acompanhamento de obra', icone: 'obra', desc: 'Controle de locação, volumes e conferência de projetos durante a execução.' }
+    ];
+
+    // Configuração de preços da calculadora (VALORES ILUSTRATIVOS).
+    const CONFIG_ORCAMENTO = {
+      basePorM2: 1.80,          // valor base por metro quadrado
+      taxaMinima: 900,          // valor mínimo de mobilização
+      tipoMultiplicador: {
+        topografico: 1.00,
+        cadastral: 1.25,
+        georreferenciamento: 1.45,
+        nivelamento: 1.10,
+        drone: 1.60,
+        acompanhamento: 1.30
+      },
+      nomeTipo: {
+        topografico: 'Topográfico plano',
+        cadastral: 'Planta cadastral',
+        georreferenciamento: 'Georreferenciamento',
+        nivelamento: 'Nivelamento',
+        drone: 'Drone / fotogrametria',
+        acompanhamento: 'Acompanhamento de obra'
+      },
+      caracMultiplicador: {
+        plano: 0.95,
+        aclive: 1.10,
+        vegetacao: 1.15,
+        urbano: 1.05,
+        acesso: 1.20,
+        urgencia: 1.25
+      }
+    };
+
+    // Projetos fictícios do portfólio. Categoria: urbano | rural | infra.
+    const PROJETOS = [
+      { titulo: 'Loteamento Jardim Norte', cat: 'urbano', desc: 'Levantamento e divisão de 42 lotes para regularização municipal.', ilustra: 'lotes' },
+      { titulo: 'Fazenda São Mateus', cat: 'rural', desc: 'Georreferenciamento de 180 ha com memorial descritivo ilustrativo.', ilustra: 'rural' },
+      { titulo: 'Corredor Viário Leste', cat: 'infra', desc: 'Perfis transversais e longitudinais para projeto de pavimentação.', ilustra: 'estrada' },
+      { titulo: 'Residencial Alto Verde', cat: 'urbano', desc: 'Planta cadastral e nivelamento para aprovação de projeto arquitetônico.', ilustra: 'predio' },
+      { titulo: 'Área de Preservação', cat: 'rural', desc: 'Mapeamento com drone e delimitação de área de preservação.', ilustra: 'preservacao' },
+      { titulo: 'Ponte sobre o Rio Claro', cat: 'infra', desc: 'Monitoramento de deformações com medições periódicas demonstrativas.', ilustra: 'ponte' }
+    ];
+
+    // Equipamentos ilustrados na galeria.
+    const EQUIPAMENTOS = [
+      { titulo: 'Estação total', descricao: 'Ilustração de equipamento para medição de ângulos e distâncias.', tipo: 'estacao' },
+      { titulo: 'Receptor GNSS', descricao: 'Ilustração de receptor para posicionamento por satélite.', tipo: 'gnss' },
+      { titulo: 'Nível óptico', descricao: 'Ilustração de nível para determinação de cotas.', tipo: 'nivel' },
+      { titulo: 'Drone', descricao: 'Ilustração de aeronave para mapeamento aéreo.', tipo: 'drone' }
+    ];
+
+    /* ---------- 2. Menu mobile ---------------------------------------------- */
+    // Alterna a classe "ativa" no menu e atualiza aria-expanded para leitores de tela.
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('navPrincipal');
+    menuToggle.addEventListener('click', () => {
+      const aberta = nav.classList.toggle('ativa');
+      menuToggle.setAttribute('aria-expanded', String(aberta));
+    });
+    // Fecha o menu ao clicar em um link (útil no celular).
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('ativa');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---------- 3. Renderização de cards ------------------------------------ */
+    // Geramos o SVG de cada ícone a partir de um dicionário para manter o HTML limpo.
+    const ICONES = {
+      malha: '<svg viewBox="0 0 48 48" fill="none" stroke="#0d3b4f" stroke-width="2"><rect x="6" y="6" width="36" height="36" rx="4"/><path d="M6 18h36M6 30h36M18 6v36M30 6v36"/></svg>',
+      satelite: '<svg viewBox="0 0 48 48" fill="none" stroke="#0d3b4f" stroke-width="2"><circle cx="24" cy="24" r="7"/><path d="M24 4v8M24 36v8M4 24h8M36 24h8M10 10l6 6M32 32l6 6M38 10l-6 6M16 32l-6 6"/></svg>',
+      planta: '<svg viewBox="0 0 48 48" fill="none" stroke="#0d3b4f" stroke-width="2"><path d="M8 40V8h32v32z"/><path d="M8 24h32M24 8v32M8 16h10M30 32h10"/></svg>',
+      nivel: '<svg viewBox="0 0 48 48" fill="none" stroke="#0d3b4f" stroke-width="2"><path d="M8 34h32M24 34V12M16 12h16l-8 10z"/></svg>',
+      drone: '<svg viewBox="0 0 48 48" fill="none" stroke="#0d3b4f" stroke-width="2"><rect x="20" y="20" width="8" height="8" rx="2"/><path d="M20 22l-7-7M28 22l7-7M20 26l-7 7M28 26l7 7"/><circle cx="10" cy="12" r="5"/><circle cx="38" cy="12" r="5"/><circle cx="10" cy="36" r="5"/><circle cx="38" cy="36" r="5"/></svg>',
+      obra: '<svg viewBox="0 0 48 48" fill="none" stroke="#0d3b4f" stroke-width="2"><path d="M8 40L24 10l16 30zM18 26h12M14 33h20"/></svg>'
+    };
+
+    const gradeServicos = document.getElementById('gradeServicos');
+    SERVICOS.forEach(s => {
+      const card = document.createElement('article');
+      card.className = 'card servico';
+      card.innerHTML = `<div class="servico__icone">${ICONES[s.icone]}</div>
+        <h3>${s.titulo}</h3><p>${s.desc}</p>`;
+      gradeServicos.appendChild(card);
+    });
+
+    /* ---------- 4. Calculadora de orçamento --------------------------------- */
+    // Função chamada no submit: lê entradas, valida, calcula e atualiza o painel.
+    const formOrcamento = document.getElementById('formOrcamento');
+    const areaInput = document.getElementById('area');
+    const areaVal = document.getElementById('areaVal');
+    const erroArea = document.getElementById('erroArea');
+    const formatarMoeda = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+
+    // Atualiza o rótulo do slider enquanto o usuário arrasta.
+    areaInput.addEventListener('input', () => {
+      areaVal.textContent = Number(areaInput.value).toLocaleString('pt-BR') + ' m²';
+      erroArea.textContent = '';
+    });
+
+    formOrcamento.addEventListener('submit', e => {
+      e.preventDefault(); // evita recarregar a página
+
+      const area = Number(areaInput.value);
+      const tipo = document.getElementById('tipo').value;
+      const checks = Array.from(document.querySelectorAll('input[name="carac"]:checked'));
+
+      // Validação: área deve estar entre 100 e 20.000 m².
+      if (!area || area < 100 || area > 20000) {
+        erroArea.textContent = 'Informe uma área entre 100 e 20.000 m².';
+        areaInput.focus();
+        return;
+      }
+      erroArea.textContent = '';
+
+      // Cálculo: valor base por m² × multiplicadores, com valor mínimo.
+      const multTipo = CONFIG_ORCAMENTO.tipoMultiplicador[tipo];
+      const multCarac = checks.reduce((acc, c) => acc * CONFIG_ORCAMENTO.caracMultiplicador[c.value], 1);
+      const bruto = area * CONFIG_ORCAMENTO.basePorM2 * multTipo * multCarac;
+      const total = Math.max(bruto, CONFIG_ORCAMENTO.taxaMinima);
+      const faixaBaixa = total * 0.9;
+      const faixaAlta = total * 1.15;
+
+      // Atualiza o painel de resultado com os valores calculados.
+      document.getElementById('valorEstimado').textContent = formatarMoeda(total);
+      document.getElementById('faixaValor').textContent =
+        `Faixa ilustrativa: ${formatarMoeda(faixaBaixa)} a ${formatarMoeda(faixaAlta)}`;
+      document.getElementById('linhaArea').textContent = area.toLocaleString('pt-BR') + ' m²';
+      document.getElementById('linhaTipo').textContent = CONFIG_ORCAMENTO.nomeTipo[tipo] + ' (×' + multTipo.toFixed(2) + ')';
+      document.getElementById('linhaAjustes').textContent = checks.length
+        ? checks.length + ' aplicado(s) (×' + multCarac.toFixed(2) + ')'
+        : 'Nenhum';
+      document.getElementById('linhaM2').textContent = formatarMoeda(CONFIG_ORCAMENTO.basePorM2) + ' / m²';
+
+      // Se o resultado mudou, damos um leve destaque visual.
+      const painel = document.querySelector('.calc-resultado');
+      painel.animate(
+        [{ boxShadow: '0 0 0 0 rgba(217,154,73,.6)' }, { boxShadow: '0 0 0 12px rgba(217,154,73,0)' }],
+        { duration: 500 }
+      );
+    });
+
+    /* ---------- 5. Filtros do portfólio ------------------------------------- */
+    // Ilustrações de projeto em SVG geradas por função (mantém o JS organizado).
+    function ilustracaoProjeto(tipo) {
+      const ceu = '#0d3b4f', areia = '#e4d5b8', cobre = '#b9782f', azul = '#1b6a8a';
+      const base = `<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de ${tipo}">
+        <rect width="400" height="300" fill="${ceu}"/><circle cx="330" cy="60" r="30" fill="${cobre}" opacity=".8"/>`;
+      if (tipo === 'lotes') return base + `<path d="M0 180 Q100 150 200 180 T400 170 V300 H0Z" fill="${areia}"/>
+        <g stroke="${azul}" stroke-width="2" fill="rgba(27,106,138,.15)"><rect x="40" y="170" width="90" height="70"/><rect x="150" y="165" width="90" height="75"/><rect x="260" y="170" width="90" height="70"/></g></svg>`;
+      if (tipo === 'rural') return base + `<path d="M0 160 Q140 110 400 170 V300 H0Z" fill="#7fa06a"/>
+        <path d="M0 220 Q200 180 400 230 V300 H0Z" fill="${areia}"/>
+        <g stroke="${cobre}" stroke-width="2" fill="none"><path d="M0 250 Q200 210 400 260"/><path d="M0 275 Q200 235 400 285"/></g>
+        <rect x="180" y="120" width="40" height="30" fill="#f1e8d8"/><path d="M175 120l25-18 25 18z" fill="${cobre}"/></svg>`;
+      if (tipo === 'estrada') return base + `<path d="M0 300 L150 150 L230 150 L400 300Z" fill="#3a4a52"/>
+        <path d="M195 150 L205 150 L270 300 H120Z" fill="${areia}"/>
+        <g stroke="#f1e8d8" stroke-width="3" stroke-dasharray="10 12"><path d="M200 160 L200 290"/></g></svg>`;
+      if (tipo === 'preservacao') return base + `<path d="M0 170 Q120 130 240 170 T400 160 V300 H0Z" fill="#4f7a5c"/>
+        <path d="M0 235 Q200 200 400 240 V300 H0Z" fill="#7fa06a"/>
+        <path d="M0 270 Q120 245 240 272 T400 265" stroke="#5aa0c4" stroke-width="14" fill="none"/>
+        <g fill="#2f5a3f"><path d="M60 235l16-46 16 46zM110 245l14-40 14 40zM300 240l18-52 18 52zM350 252l13-38 13 38z"/></g>
+        <g stroke="${cobre}" stroke-width="2" fill="none" stroke-dasharray="5 4"><rect x="150" y="190" width="110" height="70" rx="6"/></g>
+        <g stroke="#f1e8d8" stroke-width="2" fill="none"><rect x="186" y="50" width="22" height="12" rx="3"/><path d="M186 54l-12-8M208 54l12-8M186 58l-12 8M208 58l12 8"/></g></svg>`;
+      if (tipo === 'ponte') return base + `<path d="M0 250 Q100 235 200 250 T400 245 V300 H0Z" fill="#3e7f9c"/>
+        <path d="M0 268 Q120 256 240 270 T400 262" stroke="#8fc3d8" stroke-width="3" fill="none"/>
+        <rect x="40" y="150" width="320" height="18" rx="3" fill="#d9cdb4" stroke="${azul}" stroke-width="2"/>
+        <g fill="#b9a273"><rect x="90" y="168" width="18" height="90"/><rect x="290" y="168" width="18" height="90"/></g>
+        <g stroke="${azul}" stroke-width="2" fill="none"><path d="M55 150 L100 100 L300 100 L345 150"/><path d="M100 100v50M150 100v50M200 100v50M250 100v50M300 100v50"/></g>
+        <g fill="${cobre}"><circle cx="100" cy="100" r="4"/><circle cx="200" cy="100" r="4"/><circle cx="300" cy="100" r="4"/></g></svg>`;
+      // predio
+      return base + `<path d="M0 230 H400 V300 H0Z" fill="${areia}"/>
+        <g fill="#f1e8d8" stroke="${azul}" stroke-width="2"><rect x="120" y="90" width="70" height="140"/><rect x="200" y="60" width="80" height="170"/></g>
+        <g fill="${azul}"><rect x="135" y="110" width="14" height="18"/><rect x="160" y="110" width="14" height="18"/><rect x="135" y="145" width="14" height="18"/><rect x="160" y="145" width="14" height="18"/><rect x="218" y="85" width="16" height="20"/><rect x="246" y="85" width="16" height="20"/><rect x="218" y="125" width="16" height="20"/><rect x="246" y="125" width="16" height="20"/></g></svg>`;
+    }
+
+    const gradePortfolio = document.getElementById('gradePortfolio');
+    PROJETOS.forEach(p => {
+      const card = document.createElement('article');
+      card.className = 'card projeto';
+      card.dataset.categoria = p.cat;
+      card.innerHTML = `<div class="projeto__imagem">${ilustracaoProjeto(p.ilustra)}</div>
+        <div class="projeto__corpo"><span class="badge">${p.cat}</span>
+        <h3>${p.titulo}</h3><p>${p.desc}</p></div>`;
+      gradePortfolio.appendChild(card);
+    });
+
+    // Botões de filtro: atualizam aria-pressed e escondem/mostram cards.
+    const filtros = document.querySelectorAll('.filtro');
+    filtros.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filtros.forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        const cat = btn.dataset.filtro;
+        document.querySelectorAll('.projeto').forEach(card => {
+          card.hidden = !(cat === 'todos' || card.dataset.categoria === cat);
+        });
+      });
+    });
+
+    /* ---------- 6. Planta interativa ---------------------------------------- */
+    const svgPlanta = document.getElementById('svgPlanta');
+    let escalaAtual = 1;
+
+    // Alterna visibilidade de cada camada (curvas, pontos, lotes).
+    function alternarCamada(botaoId, camadaId) {
+      const botao = document.getElementById(botaoId);
+      const camada = document.getElementById(camadaId);
+      botao.addEventListener('click', () => {
+        const visivel = camada.style.display !== 'none';
+        camada.style.display = visivel ? 'none' : '';
+        botao.setAttribute('aria-pressed', String(!visivel));
+      });
+    }
+    alternarCamada('btnCurvas', 'camadaCurvas');
+    alternarCamada('btnPontos', 'camadaPontos');
+    alternarCamada('btnLotes', 'camadaLotes');
+
+    // Zoom: altera o atributo viewBox do SVG (aproxima/afasta o desenho).
+    function aplicarZoom(fator) {
+      escalaAtual = Math.max(0.7, Math.min(2.2, escalaAtual + fator));
+      const largura = 600 / escalaAtual, altura = 400 / escalaAtual;
+      const x = (600 - largura) / 2, y = (400 - altura) / 2;
+      svgPlanta.setAttribute('viewBox', `${x} ${y} ${largura} ${altura}`);
+    }
+    document.getElementById('btnZoomIn').addEventListener('click', () => aplicarZoom(0.25));
+    document.getElementById('btnZoomOut').addEventListener('click', () => aplicarZoom(-0.25));
+
+    // Clique/teclado nos pontos: mostra coordenadas fictícias no painel lateral.
+    const coordInfo = document.getElementById('coordInfo');
+    document.querySelectorAll('.ponto-visivel').forEach(ponto => {
+      const selecionar = () => {
+        const nome = ponto.dataset.ponto;
+        const x = Number(ponto.dataset.x);
+        const y = Number(ponto.dataset.y);
+        // Coordenadas e cota geradas de forma determinística a partir dos dados do ponto.
+        const leste = (300000 + x * 3.2).toFixed(2);
+        const norte = (7800000 - y * 2.7).toFixed(2);
+        const cota = (720 + x * 0.05 + y * 0.03).toFixed(2);
+        coordInfo.innerHTML = `<strong>Ponto ${nome}</strong><br>
+          E (leste): ${leste} m<br>N (norte): ${norte} m<br>Cota: ${cota} m<br>
+          <span style="font-size:.75rem;color:#e4d5b8">Coordenadas fictícias · SIRGAS 2000 (simulação)</span>`;
+      };
+      ponto.addEventListener('click', selecionar);
+      ponto.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selecionar(); }
+      });
+    });
+
+    /* ---------- 7. Galeria / modal ------------------------------------------ */
+    // SVGs dos equipamentos (versão pequena reaproveitada no modal).
+    const SVG_EQUIP = {
+      estacao: `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="160" fill="#f1e8d8" rx="8"/><g stroke="#082b39" stroke-width="4" fill="none" stroke-linecap="round"><path d="M100 70 L70 140 M100 70 L130 140 M100 70 L100 145"/></g><rect x="78" y="44" width="44" height="28" rx="4" fill="#fff" stroke="#082b39" stroke-width="3"/><rect x="86" y="28" width="28" height="18" rx="3" fill="#1b6a8a" stroke="#082b39" stroke-width="3"/><circle cx="100" cy="37" r="4" fill="#d99a49"/></svg>`,
+      gnss: `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="160" fill="#f1e8d8" rx="8"/><path d="M100 130V70" stroke="#082b39" stroke-width="5"/><path d="M70 130h60" stroke="#082b39" stroke-width="5"/><ellipse cx="100" cy="50" rx="34" ry="12" fill="#1b6a8a" stroke="#082b39" stroke-width="3"/><rect x="86" y="45" width="28" height="14" rx="3" fill="#fff" stroke="#082b39" stroke-width="2"/><circle cx="100" cy="30" r="5" fill="#d99a49"/></svg>`,
+      nivel: `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="160" fill="#f1e8d8" rx="8"/><g stroke="#082b39" stroke-width="4" fill="none"><path d="M100 75 L72 140 M100 75 L128 140 M100 75 L100 140"/></g><rect x="78" y="50" width="44" height="26" rx="4" fill="#fff" stroke="#082b39" stroke-width="3"/><circle cx="100" cy="63" r="8" fill="#1b6a8a"/><path d="M70 40h60" stroke="#d99a49" stroke-width="3"/></svg>`,
+      drone: `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="160" fill="#f1e8d8" rx="8"/><rect x="86" y="70" width="28" height="20" rx="4" fill="#1b6a8a" stroke="#082b39" stroke-width="3"/><g stroke="#082b39" stroke-width="3" fill="none"><path d="M86 74L55 50M114 74L145 50M86 86L55 110M114 86L145 110"/></g><g fill="#fff" stroke="#082b39" stroke-width="2"><circle cx="48" cy="44" r="12"/><circle cx="152" cy="44" r="12"/><circle cx="48" cy="116" r="12"/><circle cx="152" cy="116" r="12"/></g></svg>`
+    };
+
+    const gradeGaleria = document.getElementById('gradeGaleria');
+    EQUIPAMENTOS.forEach(eq => {
+      const btn = document.createElement('button');
+      btn.className = 'card equipamento';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Ampliar ' + eq.titulo);
+      btn.innerHTML = `${SVG_EQUIP[eq.tipo]}<strong>${eq.titulo}</strong><small>Toque para ampliar</small>`;
+      btn.addEventListener('click', () => abrirModal(eq));
+      gradeGaleria.appendChild(btn);
+    });
+
+    const modal = document.getElementById('modalEquip');
+    function abrirModal(eq) {
+      document.getElementById('modalConteudo').innerHTML = SVG_EQUIP[eq.tipo];
+      document.getElementById('modalTitulo').textContent = eq.titulo;
+      document.getElementById('modalDescricao').textContent = eq.descricao;
+      modal.classList.add('aberto');
+      document.getElementById('fecharModal').focus();
+    }
+    function fecharModal() { modal.classList.remove('aberto'); }
+    document.getElementById('fecharModal').addEventListener('click', fecharModal);
+    modal.addEventListener('click', e => { if (e.target === modal) fecharModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+
+    /* ---------- 8. Formulário de visita ------------------------------------- */
+    // Validação simples e confirmação demonstrativa (nenhum dado é enviado).
+    const formVisita = document.getElementById('formVisita');
+    formVisita.addEventListener('submit', e => {
+      e.preventDefault();
+      let valido = true;
+      const obrigatorios = ['nome', 'telefone', 'email', 'cidade'];
+
+      obrigatorios.forEach(id => {
+        const campo = document.getElementById(id);
+        const erro = campo.parentElement.querySelector('.erro');
+        let msg = '';
+        if (!campo.value.trim()) msg = 'Campo obrigatório.';
+        else if (id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(campo.value)) msg = 'E-mail inválido.';
+        else if (id === 'telefone' && campo.value.replace(/\D/g, '').length < 10) msg = 'Telefone incompleto.';
+        erro.textContent = msg;
+        campo.parentElement.classList.toggle('invalido', !!msg);
+        if (msg) valido = false;
+      });
+
+      if (!valido) return;
+
+      // Monta um resumo textual com os dados informados.
+      const resumo =
+        `Nome: ${document.getElementById('nome').value.trim()}\n` +
+        `Telefone: ${document.getElementById('telefone').value.trim()}\n` +
+        `E-mail: ${document.getElementById('email').value.trim()}\n` +
+        `Cidade: ${document.getElementById('cidade').value.trim()}\n` +
+        `Serviço: ${document.getElementById('servicoVisita').value}\n` +
+        `Mensagem: ${document.getElementById('mensagem').value.trim() || '(não informada)'}`;
+
+      document.getElementById('resumoVisita').textContent = resumo;
+      const conf = document.getElementById('confirmacao');
+      conf.classList.add('visivel');
+      conf.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // Não enviamos nada a servidor nem ao WhatsApp da MOSS: esta é uma simulação.
+    });
+
+    // Botão "copiar resumo" usa a API de clipboard quando disponível.
+    document.getElementById('copiarResumo').addEventListener('click', async () => {
+      const texto = document.getElementById('resumoVisita').textContent;
+      try {
+        await navigator.clipboard.writeText(texto);
+        alert('Resumo copiado para a área de transferência.');
+      } catch (err) {
+        // Fallback para navegadores sem permissão de clipboard.
+        const ta = document.createElement('textarea');
+        ta.value = texto; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); ta.remove();
+        alert('Resumo copiado.');
+      }
+    });
+
+    /* ---------- 9. Botão comercial MOSS (WhatsApp) --------------------------- */
+    // Mensagem identifica QUAL demo despertou o interesse (exigência da MOSS).
+    const mensagemMoss = encodeURIComponent(
+      'Olá! Sou da equipe MOSS Digital. A demonstração ' + NOME_DEMO +
+      ' despertou meu interesse e gostaria de saber mais sobre a criação de um site como este.'
+    );
+    const linkMoss = document.getElementById('btnMoss');
+    linkMoss.href = `https://wa.me/${WHATSAPP_MOSS}?text=${mensagemMoss}`;
+
+    // Os CTAs "Solicitar orçamento" levam à calculadora (ação útil e verificável).
+    document.querySelectorAll('[data-cta]').forEach(cta => {
+      // O link âncora já faz o papel; aqui apenas garantimos o foco no campo de área.
+      cta.addEventListener('click', () => {
+        setTimeout(() => document.getElementById('area')?.focus({ preventScroll: true }), 400);
+      });
+    });
+  </script>
+</body>
+</html>

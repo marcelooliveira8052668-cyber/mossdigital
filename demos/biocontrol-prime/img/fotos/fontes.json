@@ -1,0 +1,62 @@
+[
+  {
+    "arquivo": "img/fotos/foto01.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Hissing cockroach",
+    "fonte": "https://www.flickr.com/photos/27261720@N00/146627814",
+    "licenca": "by 2.0",
+    "autor": "scragz",
+    "url_imagem": "https://live.staticflickr.com/53/146627814_e6780d7092_b.jpg",
+    "descricao": "Inseto ilustrativo do segmento"
+  },
+  {
+    "arquivo": "img/fotos/foto02.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "The Rat Trap",
+    "fonte": "https://www.flickr.com/photos/78428166@N00/6241906797",
+    "licenca": "by 2.0",
+    "autor": "Tobyotter",
+    "url_imagem": "https://live.staticflickr.com/6230/6241906797_408a824fd0_b.jpg",
+    "descricao": "Armadilha para roedores"
+  },
+  {
+    "arquivo": "img/fotos/foto03.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Aren't They Cute?",
+    "fonte": "https://www.flickr.com/photos/98528214@N00/2385527094",
+    "licenca": "by-sa 2.0",
+    "autor": "Furryscaly",
+    "url_imagem": "https://live.staticflickr.com/3135/2385527094_f4cd305090_b.jpg",
+    "descricao": "Inseto ilustrativo"
+  },
+  {
+    "arquivo": "img/fotos/foto04.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Mosquito up close....",
+    "fonte": "https://www.flickr.com/photos/10222491@N06/4379142623",
+    "licenca": "by-sa 2.0",
+    "autor": "Ashok666",
+    "url_imagem": "https://live.staticflickr.com/2789/4379142623_ac375b500e_b.jpg",
+    "descricao": "Mosquito em detalhe"
+  },
+  {
+    "arquivo": "img/fotos/foto05.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "German cockroaches on a rodent trap",
+    "fonte": "https://www.flickr.com/photos/99758165@N06/9789550186",
+    "licenca": "by 2.0",
+    "autor": "The NYSIPM Image Gallery",
+    "url_imagem": "https://live.staticflickr.com/3687/9789550186_dfe1a428f2_b.jpg",
+    "descricao": "Armadilha para roedores"
+  },
+  {
+    "arquivo": "img/fotos/foto06.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Artlab workshop: Caring for Collections, Kingscote 25-26 March 2015",
+    "fonte": "https://www.flickr.com/photos/59809888@N06/16386465613",
+    "licenca": "cc0 1.0",
+    "autor": "South Australian History Network",
+    "url_imagem": "https://live.staticflickr.com/8704/16386465613_c3639a76dc_b.jpg",
+    "descricao": "Armadilha de monitoramento de insetos"
+  }
+]

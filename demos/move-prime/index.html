@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1553a0">
+<meta name="description" content="MOVE PRIME — demonstração de mudanças e transportes com calculadora ilustrativa de frete, inventário, checklist e acompanhamento.">
+<title>MOVE PRIME — Mudanças &amp; Transportes | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  MOVE PRIME — DEMONSTRAÇÃO 07 DO CATÁLOGO MOSS DIGITAL
+  ============================================================================
+  Arquivo único (HTML + CSS + JS + SVGs inline).
+
+  ⚠️ A calculadora é ILUSTRATIVA: não calcula rotas reais, distâncias nem
+  preços garantidos. Origem/destino são apenas rótulos informativos.
+  O botão de orçamento abre o WhatsApp com mensagem preenchida, sem número
+  fixo (wa.me/?text=...) — o visitante escolhe o contato. Isso evita
+  confundir o contato da MOSS com o da empresa fictícia.
+
+  ONDE EDITAR:
+  - Itens do inventário e preços: CONFIG (JS)
+  - Serviços adicionais: CONFIG.adicionais (JS)
+  - Checklist: CHECKLIST (JS)
+  - Códigos de acompanhamento: PEDIDOS (JS)
+  - WhatsApp MOSS (rodapé): WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — azul, branco e coral */
+:root{
+ --azul-900:#0d3a73;--azul-800:#1553a0;--azul-700:#1d68bd;--azul-600:#3485d6;
+ --coral:#f2684f;--coral-escuro:#d9503a;
+ --branco:#fff;--fundo:#f4f8fd;--tinta:#1d2d40;--suave:#63758a;
+ --borda:#d7e3f0;--sombra:0 10px 26px rgba(13,58,115,.10);--sombra-forte:0 20px 44px rgba(13,58,115,.20);
+ --raio:14px;--raio-s:8px;
+ --titulo:"Trebuchet MS","Segoe UI",sans-serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.6}
+h1,h2,h3,h4{font-family:var(--titulo);line-height:1.16;color:var(--azul-900);margin:0 0 .5em}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--azul-800)}
+button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--coral);color:#fff;padding:.6rem 1rem;z-index:999}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0}
+.secao--fundo{background:var(--fundo)}
+.secao--azul{background:var(--azul-900);color:#d8e7f8}
+.secao--azul h2,.secao--azul h3{color:#fff}
+.cabecalho-secao{max-width:690px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:700}
+.titulo-secao{font-size:clamp(1.9rem,3.8vw,2.7rem)}
+.subtitulo-secao{color:var(--suave)}
+.secao--azul .subtitulo-secao{color:#b8d2ee}
+.centro{text-align:center;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.3rem;border:2px solid transparent;border-radius:var(--raio-s);
+ font-weight:700;cursor:pointer;text-decoration:none;font-size:.9rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn--coral{background:var(--coral);color:#fff}.btn--coral:hover{background:var(--coral-escuro)}
+.btn--azul{background:var(--azul-800);color:#fff}.btn--azul:hover{background:var(--azul-700)}
+.btn--contorno{border-color:var(--azul-600);color:var(--azul-800);background:transparent}.btn--contorno:hover{background:rgba(52,133,214,.08)}
+.btn--claro{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+.btn--bloco{width:100%}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+/* Barra/cabeçalho */
+.barra{background:var(--azul-900);color:#c6dcf3;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.cabecalho{background:rgba(255,255,255,.97);border-bottom:1px solid var(--borda);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--azul-900)}
+.logo svg{width:44px;height:44px}
+.logo strong{display:block;font-family:var(--titulo);font-size:1.15rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;color:var(--coral)}
+.nav{display:flex;align-items:center;gap:1.3rem}
+.nav a{text-decoration:none;color:var(--tinta);font-weight:600;font-size:.88rem}.nav a:hover{color:var(--coral)}
+.menu-toggle{display:none;background:none;border:1px solid var(--borda);color:var(--azul-900);padding:.45rem;cursor:pointer;border-radius:8px}
+.menu-toggle svg{width:24px;height:24px}
+
+/* Hero */
+.hero{background:linear-gradient(120deg,var(--azul-900),var(--azul-800));color:#fff;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
+.hero h1{color:#fff;font-size:clamp(2.2rem,5vw,3.6rem)}
+.hero h1 em{color:var(--coral);font-style:normal}
+.hero__texto{color:#cfe1f6;max-width:34rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero__arte svg{width:100%;height:auto;filter:drop-shadow(0 16px 24px rgba(0,0,0,.25))}
+.hero__nota{font-size:.75rem;color:#cfe1f6;border-left:3px solid var(--coral);padding:.5rem .8rem;margin-top:1.2rem}
+
+/* Vantagens */
+.vantagens{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.vantagem{padding:1.2rem;text-align:center}
+.vantagem svg{width:42px;height:42px;margin:0 auto .6rem}
+.vantagem strong{display:block;font-size:.9rem;color:var(--azul-900)}
+.vantagem small{font-size:.75rem;color:var(--suave)}
+
+/* Calculadora */
+.calc-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:start}
+.calc-form{padding:1.5rem}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.grade-3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+.campo label{font-weight:700;font-size:.82rem;color:var(--azul-900)}
+.campo input,.campo select,.campo textarea{width:100%;padding:.65rem .75rem;border:1px solid var(--borda);border-radius:var(--raio-s)}
+.campo .erro{color:#c0392b;font-size:.74rem;min-height:1.1em}
+.campo.invalido input,.campo.invalido select{border-color:#c0392b}
+.grupo-titulo{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--azul-800);font-weight:700;
+ border-bottom:1px solid var(--borda);padding-bottom:.4rem;margin:1rem 0 .8rem}
+.inventario{list-style:none;padding:0;margin:0}
+.item-inv{display:grid;grid-template-columns:1fr auto auto;gap:.8rem;align-items:center;padding:.5rem 0;border-bottom:1px dashed var(--borda)}
+.item-inv strong{font-size:.85rem}.item-inv small{display:block;color:var(--suave);font-size:.72rem}
+.stepper{display:flex;align-items:center;gap:.4rem}
+.stepper button{width:28px;height:28px;border:1px solid var(--borda);background:#fff;cursor:pointer;border-radius:6px;font-weight:700;color:var(--azul-800)}
+.stepper output{min-width:24px;text-align:center;font-family:var(--mono);font-weight:700}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.checks label{display:flex;gap:.5rem;align-items:center;font-size:.82rem;cursor:pointer}
+.checks input{accent-color:var(--coral);width:16px;height:16px}
+.resultado{background:var(--azul-900);color:#fff;border-radius:var(--raio);padding:1.6rem;position:sticky;top:90px}
+.resultado h3{color:#fff;font-size:1.1rem}
+.resultado .valor{font-family:var(--mono);font-size:2.1rem;color:var(--coral);margin:.3rem 0}
+.res-linha{display:flex;justify-content:space-between;gap:1rem;font-size:.84rem;padding:.45rem 0;border-bottom:1px dashed rgba(255,255,255,.18)}
+.aviso{font-size:.76rem;color:#cfe1f6;background:rgba(255,255,255,.07);border-left:3px solid var(--coral);padding:.7rem;margin-top:1rem}
+.volumetria{margin-top:1rem;font-size:.82rem;color:#cfe1f6}
+
+/* Checklist */
+.checklist-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.progresso-wrap{margin-top:1rem}
+.barra-progresso{height:10px;background:#dbe7f5;border-radius:999px;overflow:hidden}
+.barra-progresso span{display:block;height:100%;background:var(--coral);transition:width .35s}
+.lista-check{list-style:none;padding:0}
+.lista-check li{display:flex;gap:.6rem;align-items:flex-start;padding:.45rem 0;font-size:.86rem;border-bottom:1px solid var(--borda)}
+.lista-check input{accent-color:var(--coral);margin-top:.2rem;width:17px;height:17px}
+.lista-check li.feito{color:var(--suave);text-decoration:line-through}
+
+/* Acompanhamento */
+.acompanhar{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.busca-pedido{display:flex;gap:.5rem;flex-wrap:wrap}
+.busca-pedido input{flex:1;min-width:180px;padding:.7rem .8rem;border:1px solid var(--borda);border-radius:var(--raio-s)}
+.resultado-pedido{margin-top:1rem;background:var(--fundo);border-left:3px solid var(--coral);padding:1.1rem;border-radius:var(--raio-s)}
+.passos{list-style:none;padding:0;display:grid;gap:.5rem;margin-top:.8rem}
+.passos li{display:flex;gap:.6rem;align-items:center;font-size:.84rem;color:var(--suave)}
+.passos li.feito{color:var(--azul-800);font-weight:700}
+.erro-pedido{color:#c0392b;font-size:.82rem;min-height:1.2em;margin-top:.5rem}
+
+/* Rodapé */
+.rodape{background:var(--azul-900);color:#c6dcf3;padding:2.6rem 0 1.4rem;border-top:4px solid var(--coral)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.rodape__marca strong{color:#fff;font-family:var(--titulo)}
+.moss-bloco{border:1px solid rgba(242,104,79,.45);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+.moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+.rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--coral);color:#fff;
+ font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem;box-shadow:var(--sombra)}
+ .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid var(--borda)}
+ .menu-toggle{display:block}
+ .hero .container,.calc-layout,.checklist-layout,.acompanhar{grid-template-columns:1fr}
+ .vantagens{grid-template-columns:repeat(2,1fr)}
+ .resultado{position:static}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.4rem,var(--largura))}
+ .vantagens,.grade-2,.grade-3,.checks{grid-template-columns:1fr}
+ .selo-demo{font-size:.55rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ TRANSPORTES E MUDANÇAS · DEMONSTRAÇÃO</span><span>ESTIMATIVAS ILUSTRATIVAS · SEM CÁLCULO DE ROTA REAL</span></div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="MOVE PRIME — início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Marca MOVE PRIME">
+   <rect width="48" height="48" rx="10" fill="#1553a0"/>
+   <path d="M6 28h22v9H6zM28 22h9l5 6v9h-4" fill="none" stroke="#f2684f" stroke-width="2.5" stroke-linejoin="round"/>
+   <circle cx="14" cy="38" r="3" fill="#fff"/><circle cx="34" cy="38" r="3" fill="#fff"/>
+  </svg>
+  <span><strong>MOVE PRIME</strong><small>MUDANÇAS &amp; TRANSPORTES</small></span>
+ </a>
+ <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#calculadora">Orçamento</a><a href="#checklist">Preparação</a><a href="#acompanhar">Acompanhe</a>
+  <a class="btn btn--coral" href="#calculadora" data-cta>Simular mudança</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <span class="eyebrow">Mudanças sem complicação</span>
+   <h1>Sua mudança, do jeito que <em>você planejou</em>.</h1>
+   <p class="hero__texto">Monte seu inventário, veja um volume aproximado e receba uma estimativa ilustrativa de mudança. Uma demonstração de como a tecnologia pode organizar o dia da mudança.</p>
+   <div class="hero__acoes">
+    <a class="btn btn--coral" href="#calculadora">Simular agora →</a>
+    <a class="btn btn--claro" href="#checklist">Ver checklist</a>
+   </div>
+   <p class="hero__nota">Estimativas configuráveis: não são preços garantidos nem rotas calculadas. Origem e destino são apenas rótulos informativos.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração de um caminhão de mudanças com caixas em movimento">
+   <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="360" fill="none"/>
+    <!-- estrada -->
+    <path d="M0 300h520" stroke="#2a68b8" stroke-width="4" opacity=".5"/>
+    <g stroke="#7db1e8" stroke-width="3" stroke-dasharray="18 16" opacity=".6"><path d="M0 320h520"/></g>
+    <!-- caminhão -->
+    <rect x="40" y="150" width="250" height="130" rx="8" fill="#f2684f" stroke="#fff" stroke-width="3"/>
+    <rect x="290" y="195" width="120" height="85" rx="8" fill="#fff" stroke="#f2684f" stroke-width="3"/>
+    <path d="M305 205h60l30 30v35h-90z" fill="#bcd8f5"/>
+    <rect x="60" y="170" width="90" height="50" rx="4" fill="#fff" opacity=".9"/>
+    <text x="105" y="202" text-anchor="middle" font-family="Trebuchet MS" font-size="18" fill="#1553a0" font-weight="bold">MOVE</text>
+    <circle cx="110" cy="285" r="26" fill="#0d3a73" stroke="#fff" stroke-width="4"/><circle cx="110" cy="285" r="9" fill="#9fc4ea"/>
+    <circle cx="355" cy="285" r="26" fill="#0d3a73" stroke="#fff" stroke-width="4"/><circle cx="355" cy="285" r="9" fill="#9fc4ea"/>
+    <!-- caixas -->
+    <rect x="430" y="245" width="45" height="40" fill="#f2c230"/><rect x="438" y="208" width="36" height="36" fill="#fff"/>
+    <path d="M430 265h45M452 245v40" stroke="#d9a515" stroke-width="2"/>
+    <!-- setas de movimento -->
+    <g stroke="#7db1e8" stroke-width="4" stroke-linecap="round" opacity=".8"><path d="M20 100h70M10 120h45M30 140h35"/></g>
+   </svg>
+  </div>
+ </div></section>
+
+ <div class="secao" style="padding-block:1.6rem;background:var(--fundo)"><div class="container vantagens">
+  <div class="card vantagem"><svg viewBox="0 0 48 48" fill="none" stroke="#1d68bd" stroke-width="2"><path d="M24 6l5 12 13 1-10 9 3 13-11-7-11 7 3-13-10-9 13-1z"/></svg><strong>Atendimento ágil</strong><small>Exemplo ilustrativo</small></div>
+  <div class="card vantagem"><svg viewBox="0 0 48 48" fill="none" stroke="#1d68bd" stroke-width="2"><path d="M6 30h36M10 30V18h28v12M16 18v-6h16v6"/></svg><strong>Inventário organizado</strong><small>Exemplo ilustrativo</small></div>
+  <div class="card vantagem"><svg viewBox="0 0 48 48" fill="none" stroke="#1d68bd" stroke-width="2"><path d="M24 6v36M6 24h36"/><circle cx="24" cy="24" r="12"/></svg><strong>Acompanhamento</strong><small>Exemplo ilustrativo</small></div>
+  <div class="card vantagem"><svg viewBox="0 0 48 48" fill="none" stroke="#1d68bd" stroke-width="2"><path d="M12 36V18l12-8 12 8v18zM20 36V26h8v10"/></svg><strong>Cuidado com os bens</strong><small>Exemplo ilustrativo</small></div>
+ </div></div>
+
+ <!-- Calculadora -->
+ <section class="secao" id="calculadora"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Simulador ilustrativo</span>
+   <h2 class="titulo-secao">Monte sua mudança e veja a estimativa</h2>
+   <p class="subtitulo-secao">Preencha origem, destino e características. A calculadora usa apenas números configuráveis nesta página — nenhuma rota é consultada.</p></div>
+  <div class="calc-layout">
+   <form class="card calc-form" id="formCalculadora" novalidate>
+    <div class="grade-2">
+     <div class="campo"><label for="origem">Origem (rótulo informativo) *</label><input id="origem" placeholder="Ex.: São Paulo - SP"><span class="erro" aria-live="polite"></span></div>
+     <div class="campo"><label for="destino">Destino (rótulo informativo) *</label><input id="destino" placeholder="Ex.: Campinas - SP"><span class="erro" aria-live="polite"></span></div>
+    </div>
+    <div class="grade-3">
+     <div class="campo"><label for="tipoImovel">Tipo de imóvel</label>
+      <select id="tipoImovel"><option value="apto">Apartamento</option><option value="casa">Casa</option><option value="comercio">Comércio / escritório</option></select></div>
+     <div class="campo"><label for="andares">Andares</label><input type="number" id="andares" min="0" max="30" value="2"></div>
+     <div class="campo"><label for="elevador">Elevador</label><select id="elevador"><option value="sim">Sim</option><option value="nao">Não</option></select></div>
+    </div>
+
+    <div class="grupo-titulo">Inventário interativo (quantidades)</div>
+    <ul class="inventario" id="inventario"></ul>
+
+    <div class="grupo-titulo">Serviços adicionais (ilustrativos)</div>
+    <div class="checks" id="adicionais"></div>
+
+    <button class="btn btn--azul btn--bloco" type="submit" style="margin-top:1.2rem">Calcular estimativa</button>
+   </form>
+
+   <aside class="resultado" aria-live="polite">
+    <span class="eyebrow">Resultado da simulação</span>
+    <h3>Estimativa ilustrativa</h3>
+    <div class="valor" id="valorEstimativa">R$ —</div>
+    <div id="faixaEstimativa" style="font-size:.82rem;color:#cfe1f6">Monte o inventário e clique em calcular.</div>
+    <div class="volumetria" id="volumetria">Volume aproximado: —</div>
+    <div style="margin-top:.8rem">
+     <div class="res-linha"><span>Origem → Destino</span><strong id="linhaRotulo">—</strong></div>
+     <div class="res-linha"><span>Itens no inventário</span><strong id="linhaItens">—</strong></div>
+     <div class="res-linha"><span>Andares / elevador</span><strong id="linhaAcesso">—</strong></div>
+     <div class="res-linha"><span>Serviços adicionais</span><strong id="linhaAdicionais">—</strong></div>
+    </div>
+    <p class="aviso">⚠ Valores <strong>ilustrativos e configuráveis</strong>. Não são preços garantidos, não há cálculo de distância ou rota e nada aqui substitui uma cotação real. O WhatsApp abre com um resumo para você compartilhar.</p>
+    <button class="btn btn--coral btn--bloco" id="btnWhats" style="margin-top:1rem">Solicitar orçamento via WhatsApp</button>
+    <small style="display:block;text-align:center;color:#cfe1f6;margin-top:.5rem">Abre o WhatsApp sem número fixo: escolha o contato desejado.</small>
+   </aside>
+  </div>
+ </div></section>
+
+ <!-- Checklist -->
+ <section class="secao secao--fundo" id="checklist"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Checklist de preparação</span>
+   <h2 class="titulo-secao">Antes do dia da mudança</h2>
+   <p class="subtitulo-secao">Marque os itens concluídos. O progresso aparece abaixo e fica apenas nesta página.</p></div>
+  <div class="checklist-layout">
+   <div class="card" style="padding:1.3rem">
+    <ul class="lista-check" id="listaCheck"></ul>
+   </div>
+   <div class="card" style="padding:1.3rem">
+    <h3 style="font-size:1.2rem">Seu progresso</h3>
+    <div class="progresso-wrap">
+     <div class="barra-progresso"><span id="barraCheck" style="width:0%"></span></div>
+     <p style="font-family:var(--mono);font-size:.85rem;color:var(--suave);margin-top:.6rem" id="textoProgresso">0 de 0 itens concluídos</p>
+    </div>
+    <p class="aviso" style="color:var(--suave);background:var(--fundo);border-left-color:var(--coral)">Lista genérica de organização, sem instruções técnicas ou exigências contratuais.</p>
+   </div>
+  </div>
+ </div></section>
+
+ <!-- Acompanhamento -->
+ <section class="secao secao--azul" id="acompanhar"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Acompanhamento demonstrativo</span>
+   <h2 class="titulo-secao">Acompanhe sua mudança</h2>
+   <p class="subtitulo-secao">Códigos de exemplo: <strong>MV-1024</strong>, <strong>MV-1030</strong> e <strong>MV-1042</strong>. Nenhum dado real é consultado.</p></div>
+  <div class="acompanhar">
+   <div>
+    <div class="busca-pedido"><input id="codigoPedido" placeholder="Ex.: MV-1024" aria-label="Código da mudança"><button class="btn btn--coral" id="buscarPedido">Buscar</button></div>
+    <div class="erro-pedido" id="erroPedido" aria-live="polite"></div>
+   </div>
+   <div class="resultado-pedido" id="resultadoPedido" aria-live="polite">
+    <p style="margin:0;font-size:.85rem;color:var(--suave)">Digite um código e clique em buscar.</p>
+   </div>
+  </div>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Caixas de mudança" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Caixas de mudança<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Caminhão de mudanças" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Caminhão de mudanças<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Caixas embaladas" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Caixas embaladas<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Caixas em depósito" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Caixas em depósito<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Caixas de mudança embaladas" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Caixas de mudança embaladas<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Equipe carregando mudança" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Equipe carregando mudança<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div class="rodape__marca"><strong>MOVE PRIME</strong>
+   <p style="font-size:.82rem;max-width:430px;margin-top:.5rem">Demonstração com inventário, volumes e estimativas fictícios. Sem rotas reais ou preços garantidos.</p></div>
+  <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou? Crie um site assim para o seu negócio.</p>
+   <a class="btn btn--coral" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+ </div>
+ <div class="rodape__base"><span>© 2026 MOVE PRIME — Demo MOSS Digital</span><span>Estimativas ilustrativas · Sem rotas reais</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — inventário, cálculo, checklist, acompanhamento, WhatsApp
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='MOVE PRIME (Demo 07 — Empresa de mudanças)';
+
+/* ---------- 1. Configuração ------------------------------------------------- */
+const CONFIG={
+  taxaBase:180,          // mobilização ilustrativa
+  valorPorM3:38,         // valor por metro cúbico estimado
+  tipos:{apto:1, casa:1.15, comercio:1.25},
+  nomeTipos:{apto:'Apartamento',casa:'Casa',comercio:'Comércio / escritório'},
+  andarPorUnidade:14,    // acréscimo ilustrativo por andar sem elevador
+  itens:[
+    {id:'sofa',nome:'Sofá 3 lugares',volume:1.8},
+    {id:'geladeira',nome:'Geladeira',volume:1.0},
+    {id:'cama',nome:'Cama casal',volume:1.2},
+    {id:'mesa',nome:'Mesa de jantar',volume:0.9},
+    {id:'armario',nome:'Armário / guarda-roupa',volume:1.6},
+    {id:'caixa',nome:'Caixa de papelão',volume:0.12},
+    {id:'tv',nome:'Televisão',volume:0.3},
+    {id:'maquina',nome:'Máquina de lavar',volume:0.7}
+  ],
+  adicionais:[
+    {id:'embalagem',nome:'Embalagem',valor:120},
+    {id:'desmontagem',nome:'Desmontagem',valor:150},
+    {id:'montagem',nome:'Montagem no destino',valor:180},
+    {id:'guarda',nome:'Guarda temporária',valor:220}
+  ]
+};
+const CHECKLIST=[
+ 'Separar documentos e objetos de valor',
+ 'Embalar itens frágeis com identificação',
+ 'Desligar geladeira e eletrodomésticos',
+ 'Esvaziar gavetas e armários',
+ 'Confirmar data e horário com a equipe',
+ 'Deixar acesso livre ao elevador e corredores',
+ 'Conferir a lista de bens no dia da mudança'
+];
+const PEDIDOS={
+ 'MV-1024':{rota:'São Paulo → Campinas (ilustrativo)',etapa:2,previsao:'em 2 dias úteis (exemplo)'},
+ 'MV-1030':{rota:'São Paulo → Santos (ilustrativo)',etapa:4,previsao:'em 1 dia útil (exemplo)'},
+ 'MV-1042':{rota:'Campinas → Rio Claro (ilustrativo)',etapa:1,previsao:'em 5 dias úteis (exemplo)'}
+};
+const ETAPAS=['Solicitação','Visita / inventário','Embalagem','Transporte','Entrega'];
+
+/* ---------- 2. Inventário interativo --------------------------------------- */
+const quantidades={};CONFIG.itens.forEach(i=>quantidades[i.id]=0);
+const listaInv=document.getElementById('inventario');
+CONFIG.itens.forEach(item=>{
+ const li=document.createElement('li');li.className='item-inv';
+ li.innerHTML=`<div><strong>${item.nome}</strong><small>~ ${item.volume.toFixed(2)} m³ por unidade</small></div>
+  <div class="stepper"><button type="button" data-acao="menos" data-id="${item.id}" aria-label="Diminuir ${item.nome}">−</button>
+  <output data-qtd="${item.id}">0</output>
+  <button type="button" data-acao="mais" data-id="${item.id}" aria-label="Aumentar ${item.nome}">+</button></div>`;
+ listaInv.appendChild(li);
+});
+listaInv.addEventListener('click',e=>{
+ const btn=e.target.closest('[data-acao]');if(!btn)return;
+ const id=btn.dataset.id;
+ quantidades[id]=Math.max(0,Math.min(99,quantidades[id]+(btn.dataset.acao==='mais'?1:-1)));
+ document.querySelector(`[data-qtd="${id}"]`).textContent=quantidades[id];
+ calcular(false);
+});
+const checksBox=document.getElementById('adicionais');
+CONFIG.adicionais.forEach(a=>{
+ const label=document.createElement('label');
+ label.innerHTML=`<input type="checkbox" value="${a.id}"> ${a.nome} <small style="color:var(--suave)">(+ ${a.valor} ilustrativo)</small>`;
+ checksBox.appendChild(label);
+});
+
+/* ---------- 3. Cálculo ------------------------------------------------------ */
+const fmtMoeda=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+let ultimoCalculo=null;
+
+function calcular(comValidar){
+ if(comValidar){
+  let valido=true;
+  ['origem','destino'].forEach(id=>{
+   const c=document.getElementById(id),erro=c.parentElement.querySelector('.erro');
+   const msg=c.value.trim().length<3?'Informe o rótulo (mínimo 3 caracteres).':'';
+   erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+  });
+  if(!valido)return null;
+ }
+ const totalItens=Object.values(quantidades).reduce((a,b)=>a+b,0);
+ if(totalItens===0){
+  document.getElementById('valorEstimativa').textContent='R$ —';
+  document.getElementById('faixaEstimativa').textContent='Adicione itens ao inventário.';
+  document.getElementById('volumetria').textContent='Volume aproximado: —';
+  return null;
+ }
+ const volume=CONFIG.itens.reduce((acc,i)=>acc+quantidades[i.id]*i.volume,0);
+ const tipo=document.getElementById('tipoImovel').value;
+ const andares=Math.max(0,Number(document.getElementById('andares').value)||0);
+ const temElevador=document.getElementById('elevador').value==='sim';
+ const adicionais=Array.from(checksBox.querySelectorAll('input:checked')).map(c=>c.value);
+ const valorAdicionais=adicionais.reduce((acc,id)=>acc+CONFIG.adicionais.find(a=>a.id===id).valor,0);
+ const custoAndares=temElevador?0:andares*CONFIG.andarPorUnidade;
+ const total=Math.max((CONFIG.taxaBase+volume*CONFIG.valorPorM3*CONFIG.tipos[tipo]+custoAndares+valorAdicionais),CONFIG.taxaBase);
+
+ document.getElementById('valorEstimativa').textContent=fmtMoeda(total);
+ document.getElementById('faixaEstimativa').textContent=`Faixa ilustrativa: ${fmtMoeda(total*0.9)} a ${fmtMoeda(total*1.12)}`;
+ document.getElementById('volumetria').textContent=`Volume aproximado: ${volume.toFixed(2).replace('.',',')} m³`;
+ document.getElementById('linhaRotulo').textContent=(document.getElementById('origem').value||'—')+' → '+(document.getElementById('destino').value||'—');
+ document.getElementById('linhaItens').textContent=totalItens+' item(ns)';
+ document.getElementById('linhaAcesso').textContent=andares+' andar(es) · '+(temElevador?'com elevador':'sem elevador');
+ document.getElementById('linhaAdicionais').textContent=adicionais.length?adicionais.length+' selecionado(s)':'Nenhum';
+
+ ultimoCalculo={
+  origem:document.getElementById('origem').value,destino:document.getElementById('destino').value,
+  tipo:CONFIG.nomeTipos[tipo],volume:volume.toFixed(2),andares,temElevador,
+  adicionais:adicionais.map(id=>CONFIG.adicionais.find(a=>a.id===id).nome),
+  total:fmtMoeda(total)
+ };
+ return ultimoCalculo;
+}
+document.getElementById('formCalculadora').addEventListener('submit',e=>{e.preventDefault();calcular(true);});
+document.getElementById('adicionais').addEventListener('change',()=>calcular(false));
+['tipoImovel','andares','elevador'].forEach(id=>document.getElementById(id).addEventListener('change',()=>calcular(false)));
+
+/* ---------- 4. Checklist ---------------------------------------------------- */
+const listaCheck=document.getElementById('listaCheck');
+CHECKLIST.forEach((t,i)=>{
+ const li=document.createElement('li');
+ li.innerHTML=`<input type="checkbox" id="chk${i}" data-chk="${i}"><label for="chk${i}">${t}</label>`;
+ listaCheck.appendChild(li);
+});
+function atualizarProgresso(){
+ const cbs=Array.from(listaCheck.querySelectorAll('input'));
+ const feitos=cbs.filter(c=>c.checked).length;
+ document.getElementById('barraCheck').style.width=Math.round(feitos/cbs.length*100)+'%';
+ document.getElementById('textoProgresso').textContent=`${feitos} de ${cbs.length} itens concluídos`;
+ listaCheck.querySelectorAll('li').forEach((li,i)=>li.classList.toggle('feito',cbs[i].checked));
+}
+listaCheck.addEventListener('change',e=>{if(e.target.matches('[data-chk]'))atualizarProgresso();});
+atualizarProgresso();
+
+/* ---------- 5. Acompanhamento ---------------------------------------------- */
+const resultadoPedido=document.getElementById('resultadoPedido'),erroPedido=document.getElementById('erroPedido');
+function buscarPedido(){
+ const codigo=document.getElementById('codigoPedido').value.trim().toUpperCase();
+ const p=PEDIDOS[codigo];
+ if(!p){erroPedido.textContent='Código não encontrado. Use um dos códigos de demonstração.';
+  resultadoPedido.innerHTML='<p style="margin:0;font-size:.85rem">Nenhuma mudança selecionada.</p>';return;}
+ erroPedido.textContent='';
+ const itens=ETAPAS.map((nome,i)=>`<li class="${i<p.etapa?'feito':''}"><span>${i<p.etapa?'✓':'○'}</span>${nome}</li>`).join('');
+ resultadoPedido.innerHTML=`<span class="eyebrow">Mudança ${codigo} · fictícia</span>
+  <h3 style="font-size:1.1rem">${p.rota}</h3>
+  <p style="font-size:.82rem">Etapa atual: <strong>${ETAPAS[p.etapa-1]}</strong> · ${p.previsao}</p>
+  <ul class="passos">${itens}</ul>`;
+}
+document.getElementById('buscarPedido').addEventListener('click',buscarPedido);
+document.getElementById('codigoPedido').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();buscarPedido();}});
+
+/* ---------- 6. WhatsApp (sem número fixo) ---------------------------------- */
+document.getElementById('btnWhats').addEventListener('click',()=>{
+ const dados=ultimoCalculo||calcular(true);
+ if(!dados)return;
+ const texto=encodeURIComponent(
+  'Olá! Gostaria de um orçamento de mudança (demonstração MOVE PRIME).\n'+
+  'Origem: '+dados.origem+'\nDestino: '+dados.destino+'\n'+
+  'Imóvel: '+dados.tipo+' · '+dados.andares+' andar(es) · '+(dados.temElevador?'com elevador':'sem elevador')+'\n'+
+  'Volume aproximado: '+dados.volume+' m³\n'+
+  'Adicionais: '+(dados.adicionais.join(', ')||'nenhum')+'\n'+
+  'Estimativa ilustrativa: '+dados.total
+ );
+ window.open('https://wa.me/?text='+texto,'_blank','noopener');
+});
+
+/* ---------- 7. Menu e rodapé MOSS ------------------------------------------ */
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');}));
+document.querySelectorAll('[data-cta]').forEach(cta=>cta.addEventListener('click',()=>{
+ setTimeout(()=>document.getElementById('origem')?.focus({preventScroll:true}),400);}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+
+calcular(false);
+</script>
+</body>
+</html>

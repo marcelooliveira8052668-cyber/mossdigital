@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<meta name="description" content="CHAVEIRO EXPRESS PRIME — demonstração urbana de central de chamados, orçamento ilustrativo e atendimento por região.">
+<title>CHAVEIRO EXPRESS PRIME — Central de Atendimento | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  CHAVEIRO EXPRESS PRIME — DEMONSTRAÇÃO 10 DO CATÁLOGO MOSS DIGITAL
+  ============================================================================
+  Arquivo único (HTML + CSS + JS + SVGs inline).
+
+  ⚠️ Não solicite chaves, códigos, segredos ou qualquer informação sensível.
+  O formulário pede apenas tipo de serviço, região e contato fictício.
+  O WhatsApp usado é wa.me/?text= sem número fixo: o visitante escolhe o
+  destinatário — evita confundir com o contato da MOSS.
+
+  ONDE EDITAR:
+  - Serviços e preços: array SERVICOS / CONFIG (JS)
+  - Regiões do mapa: array REGIOES (JS)
+  - Chamados iniciais: CHAMADOS_FICTICIOS (JS)
+  - WhatsApp MOSS (rodapé): WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — urbano: preto, amarelo, branco */
+:root{
+ --preto:#111111;--preto-2:#1c1c1c;--cinza-900:#2a2a2a;--cinza-700:#555;--cinza-400:#aaa;
+ --amarelo:#ffd400;--amarelo-escuro:#e0b900;
+ --branco:#fff;--fundo:#f5f5f2;--tinta:#1a1a1a;--suave:#6d6d6d;
+ --borda:#ddd;--sombra:0 8px 22px rgba(0,0,0,.12);--sombra-forte:0 18px 42px rgba(0,0,0,.22);
+ --raio:6px;--titulo:"Arial Black","Arial Narrow",sans-serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.6}
+h1,h2,h3,h4{font-family:var(--titulo);letter-spacing:-.01em;line-height:1.1;color:var(--preto);margin:0 0 .5em;text-transform:uppercase}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--preto)}
+button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--amarelo-escuro);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--amarelo);color:var(--preto);padding:.6rem 1rem;z-index:999}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0}
+.secao--fundo{background:var(--fundo)}
+.secao--preta{background:var(--preto);color:#ddd}
+.secao--preta h2,.secao--preta h3{color:#fff}
+.cabecalho-secao{max-width:700px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amarelo-escuro);font-weight:700}
+.titulo-secao{font-size:clamp(1.8rem,3.6vw,2.5rem)}
+.subtitulo-secao{color:var(--suave)}
+.secao--preta .subtitulo-secao{color:#bbb}
+.centro{text-align:center;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.82rem 1.3rem;border:2px solid transparent;border-radius:var(--raio);
+ font-weight:800;cursor:pointer;text-decoration:none;font-size:.88rem;text-transform:uppercase;letter-spacing:.03em;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn--amarelo{background:var(--amarelo);color:var(--preto)}.btn--amarelo:hover{background:var(--amarelo-escuro)}
+.btn--preto{background:var(--preto);color:#fff}.btn--preto:hover{background:var(--cinza-900)}
+.btn--contorno{border-color:var(--preto);color:var(--preto);background:transparent}.btn--contorno:hover{background:rgba(0,0,0,.06)}
+.btn--claro{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+.btn--bloco{width:100%}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+/* Barra/cabeçalho */
+.barra{background:var(--preto);color:var(--amarelo);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.cabecalho{background:var(--preto);color:#fff;border-bottom:4px solid var(--amarelo);position:sticky;top:0;z-index:50}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff}
+.logo svg{width:44px;height:44px}
+.logo strong{display:block;font-family:var(--titulo);font-size:1.1rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--amarelo)}
+.nav{display:flex;align-items:center;gap:1.2rem}
+.nav a{color:#ddd;text-decoration:none;font-weight:700;font-size:.84rem;text-transform:uppercase}.nav a:hover{color:var(--amarelo)}
+.menu-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.3);color:#fff;padding:.45rem;cursor:pointer;border-radius:4px}
+.menu-toggle svg{width:24px;height:24px}
+
+/* Hero */
+.hero{background:var(--preto);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;opacity:.08;
+ background:repeating-linear-gradient(45deg,#fff 0 2px,transparent 2px 26px)}
+.hero .container{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
+.hero h1{color:#fff;font-size:clamp(2.2rem,5.2vw,3.7rem)}
+.hero h1 em{color:var(--amarelo);font-style:normal}
+.hero__texto{color:#ccc;max-width:34rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero__arte{position:relative}
+.hero__arte svg{width:100%;height:auto}
+.hero__nota{font-size:.75rem;color:#bbb;border-left:3px solid var(--amarelo);padding:.5rem .8rem;margin-top:1.2rem}
+.selo-24{position:absolute;right:4%;top:6%;width:94px;height:94px;border-radius:50%;background:var(--amarelo);color:var(--preto);
+ display:grid;place-items:center;text-align:center;font-family:var(--titulo);font-size:.8rem;line-height:1.1;transform:rotate(12deg);box-shadow:var(--sombra-forte)}
+
+/* Serviços */
+.servicos{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.servico{padding:1.4rem;border-top:4px solid var(--amarelo)}
+.servico svg{width:44px;height:44px;margin-bottom:.7rem}
+.servico h3{font-size:1rem}.servico p{font-size:.84rem;color:var(--suave);margin:0}
+.servico strong.preco{display:block;font-family:var(--mono);font-size:.9rem;color:var(--preto);margin-top:.6rem}
+
+/* Pedido: formulário + mapa */
+.pedido{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.form-card{padding:1.5rem}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+.campo label{font-weight:700;font-size:.82rem;color:var(--preto)}
+.campo input,.campo select,.campo textarea{width:100%;padding:.68rem .75rem;border:1px solid var(--borda);border-radius:var(--raio-s)}
+.campo textarea{min-height:80px;resize:vertical}
+.campo .erro{color:#b3261e;font-size:.74rem;min-height:1.1em}
+.campo.invalido input,.campo.invalido select,.campo.invalido textarea{border-color:#b3261e}
+.mapa-card{padding:1.2rem}
+.mapa-card svg{width:100%;height:auto;border-radius:var(--raio-s)}
+.zona{cursor:pointer;transition:opacity .18s}
+.zona:hover{opacity:.8}
+.zona.selecionada{stroke:var(--amarelo-escuro);stroke-width:4}
+.lista-zonas{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.lista-zonas button{padding:.42rem .7rem;border:1px solid var(--borda);background:#fff;cursor:pointer;border-radius:999px;font-size:.78rem;font-weight:700}
+.lista-zonas button[aria-pressed="true"]{background:var(--amarelo);border-color:var(--amarelo);color:var(--preto)}
+.resultado{background:var(--preto);color:#fff;border-radius:var(--raio);padding:1.5rem;position:sticky;top:90px}
+.resultado h3{color:#fff;font-size:1rem}
+.resultado .valor{font-family:var(--mono);font-size:2rem;color:var(--amarelo);margin:.3rem 0}
+.res-linha{display:flex;justify-content:space-between;gap:1rem;font-size:.82rem;padding:.45rem 0;border-bottom:1px dashed rgba(255,255,255,.2)}
+.aviso{font-size:.75rem;color:#bbb;background:rgba(255,255,255,.07);border-left:3px solid var(--amarelo);padding:.7rem;margin-top:1rem}
+.confirmacao{display:none;background:#fffbe0;border:1px solid var(--amarelo);border-radius:var(--raio-s);padding:.8rem;margin-top:1rem;color:#4a4100;font-size:.82rem}
+.confirmacao.visivel{display:block}
+
+/* Painel de chamados — colunas */
+.quadro{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.coluna{background:var(--fundo);border:1px solid var(--borda);border-radius:var(--raio);padding:.9rem;min-height:180px}
+.coluna h3{font-size:.82rem;background:var(--preto);color:#fff;padding:.5rem .7rem;border-radius:var(--raio-s);margin-bottom:.8rem;display:flex;justify-content:space-between}
+.chamado{background:#fff;border:1px solid var(--borda);border-left:4px solid var(--amarelo);border-radius:var(--raio-s);padding:.7rem;margin-bottom:.6rem;font-size:.8rem}
+.chamado strong{font-family:var(--mono);display:block}
+.chamado small{color:var(--suave)}
+.chamado select{margin-top:.5rem;width:100%;padding:.35rem;border:1px solid var(--borda);border-radius:4px;font-size:.75rem}
+.vazio-coluna{font-size:.78rem;color:var(--suave);text-align:center;padding:1rem}
+.historico{margin-top:1.5rem}
+.tabela{width:100%;border-collapse:collapse;font-size:.82rem;min-width:460px}
+.tabela th{background:var(--preto);color:#fff;padding:.55rem .65rem;text-align:left;font-size:.7rem}
+.tabela td{padding:.55rem .65rem;border-bottom:1px solid var(--borda)}
+.rolagem{overflow-x:auto;max-width:100%}
+
+/* FAQ */
+.faq{max-width:840px;margin-inline:auto}
+details{background:#fff;border:1px solid var(--borda);border-radius:var(--raio-s);margin-bottom:.6rem;padding:.9rem 1.1rem}
+summary{cursor:pointer;font-weight:700;color:var(--preto);list-style:none}
+summary::-webkit-details-marker{display:none}summary::before{content:"+ ";color:var(--amarelo-escuro);font-weight:700}
+details[open] summary::before{content:"− "}
+details p{font-size:.86rem;color:var(--suave);margin:.7rem 0 0}
+
+/* Rodapé */
+.rodape{background:var(--preto);color:#bbb;padding:2.6rem 0 1.4rem;border-top:4px solid var(--amarelo)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.rodape__marca strong{color:#fff;font-family:var(--titulo)}
+.moss-bloco{border:1px solid rgba(255,212,0,.4);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+.moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+.rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--amarelo);color:var(--preto);
+ font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--preto);flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem}
+ .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+ .menu-toggle{display:block}
+ .hero .container,.pedido{grid-template-columns:1fr}
+ .servicos,.quadro{grid-template-columns:repeat(2,1fr)}
+ .resultado{position:static}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.4rem,var(--largura))}
+ .servicos,.quadro,.grade-2{grid-template-columns:1fr}
+ .selo-demo{font-size:.55rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ CENTRAL DE ATENDIMENTO · DEMONSTRAÇÃO URBANA</span><span>NÃO INFORME CHAVES, CÓDIGOS OU DADOS SENSÍVEIS</span></div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="CHAVEIRO EXPRESS PRIME — início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Marca CHAVEIRO EXPRESS PRIME">
+   <rect width="48" height="48" rx="6" fill="#111"/><circle cx="18" cy="18" r="9" fill="none" stroke="#ffd400" stroke-width="4"/>
+   <path d="M24 24l14 14M32 32l4-4M36 36l4-4" stroke="#ffd400" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+  <span><strong>CHAVEIRO EXPRESS</strong><small>ATENDIMENTO RÁPIDO · DEMO</small></span>
+ </a>
+ <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#servicos">Serviços</a><a href="#pedido">Solicitar</a><a href="#painel">Chamados</a><a href="#faq">Dúvidas</a>
+  <a class="btn btn--amarelo" href="#pedido" data-cta>Pedir atendimento</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <span class="eyebrow">Central de despacho · demonstração</span>
+   <h1>Chave perdida? <em>Solução a caminho.</em></h1>
+   <p class="hero__texto">Uma central demonstrativa de chaveiro: escolha o serviço, selecione a região no mapa, veja uma estimativa ilustrativa e acompanhe o chamado no quadro de atendimento.</p>
+   <div class="hero__acoes">
+    <a class="btn btn--amarelo" href="#pedido">Solicitar atendimento →</a>
+    <a class="btn btn--claro" href="#painel">Ver chamados</a>
+   </div>
+   <p class="hero__nota">⚠ Por segurança, <strong>não peça chaves, códigos, senhas ou qualquer informação sensível</strong> nesta demonstração. Os valores são ilustrativos.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração de um chaveiro com chaves e um carrinho de atendimento">
+   <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="380" fill="#1c1c1c"/>
+    <g stroke="#333" stroke-width="1"><path d="M0 60h520M0 120h520M0 180h520M0 240h520M0 300h520"/></g>
+    <!-- balcão -->
+    <rect x="40" y="270" width="440" height="18" fill="#ffd400"/>
+    <!-- chaves gigantes -->
+    <g stroke="#ffd400" stroke-width="9" fill="none" stroke-linecap="round">
+     <circle cx="160" cy="160" r="42"/><path d="M190 190l90 90M250 250l20-20M275 275l20-20"/>
+    </g>
+    <circle cx="160" cy="160" r="16" fill="#1c1c1c"/>
+    <!-- segunda chave -->
+    <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" opacity=".8">
+     <circle cx="330" cy="120" r="30"/><path d="M354 143l60 60M390 190l16-16M408 208l16-16"/>
+    </g>
+    <circle cx="330" cy="120" r="11" fill="#1c1c1c"/>
+    <!-- etiqueta -->
+    <rect x="70" y="60" width="150" height="44" rx="4" fill="#ffd400"/>
+    <text x="145" y="88" text-anchor="middle" font-family="Arial Black" font-size="16" fill="#111">EXPRESS</text>
+   </svg>
+   <div class="selo-24" aria-hidden="true">24h<br>DEMO</div>
+  </div>
+ </div></section>
+
+ <!-- Serviços -->
+ <section class="secao secao--fundo" id="servicos"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Catálogo de serviços</span>
+   <h2 class="titulo-secao">O que a equipe faz</h2>
+   <p class="subtitulo-secao">Serviços fictícios com preços ilustrativos. Nenhuma informação de fechadura ou código é solicitada.</p></div>
+  <div class="servicos" id="gradeServicos"></div>
+ </div></section>
+
+ <!-- Pedido + mapa -->
+ <section class="secao" id="pedido"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Solicitação demonstrativa</span>
+   <h2 class="titulo-secao">Monte seu chamado</h2>
+   <p class="subtitulo-secao">Selecione o serviço e a região — o mapa é ilustrativo e não representa cobertura real.</p></div>
+  <div class="pedido">
+   <div>
+    <form class="card form-card" id="formPedido" novalidate>
+     <div class="grade-2">
+      <div class="campo"><label for="nome">Nome *</label><input id="nome" placeholder="Nome fictício"><span class="erro" aria-live="polite"></span></div>
+      <div class="campo"><label for="telefone">Telefone *</label><input id="telefone" placeholder="(00) 00000-0000"><span class="erro" aria-live="polite"></span></div>
+     </div>
+     <div class="grade-2">
+      <div class="campo"><label for="tipoServico">Tipo de atendimento</label><select id="tipoServico"></select></div>
+      <div class="campo"><label for="urgencia">Urgência</label><select id="urgencia"><option value="1">Normal (exemplo)</option><option value="1.35">Prioritário (exemplo)</option></select></div>
+     </div>
+     <div class="campo"><label for="endereco">Bairro / referência (opcional, fictício)</label><input id="endereco" placeholder="Ex.: Centro — apenas ilustração"></div>
+     <button class="btn btn--preto btn--bloco" type="submit">Calcular e abrir chamado</button>
+     <div class="confirmacao" id="confirmacao" role="status">
+      <strong>✓ Chamado fictício registrado no quadro.</strong>
+      <p style="margin:.4rem 0">Nada foi enviado. Use o botão abaixo para compartilhar o resumo no WhatsApp.</p>
+      <button class="btn btn--amarelo btn--bloco" id="btnWhats" type="button">Compartilhar no WhatsApp</button>
+     </div>
+    </form>
+   </div>
+   <aside>
+    <div class="card mapa-card">
+     <span class="eyebrow">Mapa ilustrativo de regiões</span>
+     <h3 style="font-size:1rem">Selecione uma zona</h3>
+     <svg id="mapa" viewBox="0 0 400 260" role="img" aria-label="Mapa ilustrativo com quatro regiões selecionáveis">
+      <rect width="400" height="260" fill="#f5f5f2"/>
+      <g fill="#e8e8e2" stroke="#999" stroke-width="1">
+       <rect x="20" y="20" width="170" height="100" rx="4"/>
+       <rect x="210" y="20" width="170" height="100" rx="4"/>
+       <rect x="20" y="140" width="170" height="100" rx="4"/>
+       <rect x="210" y="140" width="170" height="100" rx="4"/>
+      </g>
+      <g class="zona" data-zona="centro" role="button" tabindex="0" aria-label="Região Centro"><rect x="20" y="20" width="170" height="100" rx="4" fill="#fff" stroke="#888"/></g>
+      <g class="zona" data-zona="norte" role="button" tabindex="0" aria-label="Região Norte"><rect x="210" y="20" width="170" height="100" rx="4" fill="#fff" stroke="#888"/></g>
+      <g class="zona" data-zona="sul" role="button" tabindex="0" aria-label="Região Sul"><rect x="20" y="140" width="170" height="100" rx="4" fill="#fff" stroke="#888"/></g>
+      <g class="zona" data-zona="leste" role="button" tabindex="0" aria-label="Região Leste"><rect x="210" y="140" width="170" height="100" rx="4" fill="#fff" stroke="#888"/></g>
+      <g font-family="monospace" font-size="13" font-weight="bold" fill="#333" pointer-events="none">
+       <text x="105" y="76">CENTRO</text><text x="295" y="76">NORTE</text><text x="105" y="196">SUL</text><text x="295" y="196">LESTE</text>
+      </g>
+     </svg>
+     <ul class="lista-zonas" id="listaZonas"></ul>
+    </div>
+    <div class="card resultado" style="margin-top:1rem" aria-live="polite">
+     <span class="eyebrow">Estimativa ilustrativa</span>
+     <h3>Prévia do atendimento</h3>
+     <div class="valor" id="valorEstimativa">R$ —</div>
+     <div class="res-linha"><span>Serviço</span><strong id="rServico">—</strong></div>
+     <div class="res-linha"><span>Região</span><strong id="rRegiao">—</strong></div>
+     <div class="res-linha"><span>Urgência</span><strong id="rUrgencia">—</strong></div>
+     <p class="aviso">⚠ Valor ilustrativo, sem deslocamento real calculado. Não é preço garantido nem proposta comercial.</p>
+    </div>
+   </aside>
+  </div>
+ </div></section>
+
+ <!-- Painel -->
+ <section class="secao secao--preta" id="painel"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Quadro de atendimento</span>
+   <h2 class="titulo-secao">Chamados fictícios em tempo real (simulação)</h2>
+   <p class="subtitulo-secao">Altere o status de cada chamado para movimentá-lo entre as colunas. Os dados ficam apenas neste navegador.</p></div>
+  <div class="quadro" id="quadro">
+   <div class="coluna"><h3><span>ABERTO</span><span id="cntAberto">0</span></h3><div id="colAberto"></div></div>
+   <div class="coluna"><h3><span>EM ROTA</span><span id="cntRota">0</span></h3><div id="colRota"></div></div>
+   <div class="coluna"><h3><span>CONCLUÍDO</span><span id="cntConcluido">0</span></h3><div id="colConcluido"></div></div>
+  </div>
+  <div class="historico">
+   <h3 style="font-size:1rem;margin-bottom:.8rem">Histórico de solicitações (fictícias)</h3>
+   <div class="rolagem">
+    <table class="tabela"><thead><tr><th>Código</th><th>Serviço</th><th>Região</th><th>Status</th><th>Registro</th></tr></thead>
+     <tbody id="corpoHistorico"></tbody></table>
+   </div>
+  </div>
+ </div></section>
+
+ <!-- FAQ -->
+ <section class="secao secao--fundo" id="faq"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Perguntas frequentes</span><h2 class="titulo-secao">Dúvidas comuns</h2></div>
+  <div class="faq">
+   <details><summary>O formulário pede códigos ou informações de fechaduras?</summary><p>Não. Esta demonstração não solicita chaves, códigos, segredos, senhas ou qualquer informação sensível. Apenas serviço, região e contato fictício.</p></details>
+   <details><summary>Os valores são preços garantidos?</summary><p>Não. São estimativas ilustrativas e configuráveis, sem cálculo de distância ou deslocamento real.</p></details>
+   <details><summary>O mapa mostra cobertura real?</summary><p>Não. As quatro zonas são ilustrações SVG fixas, usadas apenas para demonstrar a seleção de região.</p></details>
+   <details><summary>O WhatsApp abre com um número fixo?</summary><p>Não. É usado o link wa.me/?text=, que abre o aplicativo com a mensagem pronta para você escolher o contato — evita confundir com o atendimento da MOSS.</p></details>
+  </div>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Ferramentas de chaveiro" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Ferramentas de chaveiro<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Máquina de cortar chaves" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Máquina de cortar chaves<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Chaves em chaveiro" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Chaves em chaveiro<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Fechadura de porta" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Fechadura de porta<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Veículo de chaveiro" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Veículo de chaveiro<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Chaves em chaveiro" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Chaves em chaveiro<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div class="rodape__marca"><strong>CHAVEIRO EXPRESS PRIME</strong>
+   <p style="font-size:.82rem;max-width:430px;margin-top:.5rem">Demonstração urbana com chamados, regiões e valores fictícios. Nunca informe dados sensíveis em páginas demonstrativas.</p></div>
+  <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou? Crie um site assim para seu negócio.</p>
+   <a class="btn btn--amarelo" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+ </div>
+ <div class="rodape__base"><span>© 2026 CHAVEIRO EXPRESS PRIME — Demo MOSS Digital</span><span>Sem dados sensíveis · Valores ilustrativos</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — serviços, regiões, cálculo, quadro de chamados, WhatsApp
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='CHAVEIRO EXPRESS PRIME (Demo 10 — Chaveiro)';
+const CHAVE='chaveiro-express-v1';
+
+/* ---------- 1. Dados -------------------------------------------------------- */
+const SERVICOS=[
+ {nome:'Abertura de porta residencial',valor:120,icone:'porta'},
+ {nome:'Cópia de chave',valor:35,icone:'chave'},
+ {nome:'Troca de fechadura',valor:150,icone:'fechadura'},
+ {nome:'Atendimento automotivo',valor:140,icone:'carro'},
+ {nome:'Chave de veículo com chip',valor:220,icone:'chip'},
+ {nome:'Emergência fora de hora',valor:190,icone:'raio'}
+];
+const ICONES={
+ porta:'<svg viewBox="0 0 48 48" fill="none" stroke="#111" stroke-width="2.5"><rect x="12" y="6" width="24" height="36"/><circle cx="30" cy="25" r="2"/></svg>',
+ chave:'<svg viewBox="0 0 48 48" fill="none" stroke="#111" stroke-width="3"><circle cx="16" cy="18" r="8"/><path d="M22 24l16 16M31 33l5-5"/></svg>',
+ fechadura:'<svg viewBox="0 0 48 48" fill="none" stroke="#111" stroke-width="2.5"><rect x="12" y="20" width="24" height="20" rx="3"/><path d="M17 20v-6a7 7 0 0114 0v6"/></svg>',
+ carro:'<svg viewBox="0 0 48 48" fill="none" stroke="#111" stroke-width="2.5"><path d="M6 30h36l-3-12H9zM10 30v6M38 30v6"/></svg>',
+ chip:'<svg viewBox="0 0 48 48" fill="none" stroke="#111" stroke-width="2.5"><rect x="16" y="16" width="16" height="16" rx="2"/><path d="M20 6v10M28 6v10M20 32v10M28 32v10M6 20h10M6 28h10M32 20h10M32 28h10"/></svg>',
+ raio:'<svg viewBox="0 0 48 48" fill="none" stroke="#111" stroke-width="2.5"><path d="M26 4L12 28h10l-4 16 18-26H26z"/></svg>'
+};
+const REGIOES=[
+ {id:'centro',nome:'Centro',mult:1.00},
+ {id:'norte',nome:'Zona Norte',mult:1.10},
+ {id:'sul',nome:'Zona Sul',mult:1.15},
+ {id:'leste',nome:'Zona Leste',mult:1.20}
+];
+const STATUS=['Aberto','Em rota','Concluído'];
+const CHAMADOS_FICTICIOS=[
+ {codigo:'CH-9001',servico:'Abertura de porta residencial',regiao:'Centro',status:'Aberto',data:'hoje'},
+ {codigo:'CH-9002',servico:'Cópia de chave',regiao:'Zona Norte',status:'Em rota',data:'hoje'},
+ {codigo:'CH-9003',servico:'Troca de fechadura',regiao:'Zona Sul',status:'Concluído',data:'ontem'},
+ {codigo:'CH-9004',servico:'Atendimento automotivo',regiao:'Zona Leste',status:'Aberto',data:'hoje'}
+];
+
+/* ---------- 2. Estado ------------------------------------------------------- */
+let chamados=carregar();let regiaoAtual='centro';let ultimoResumo=null;
+function carregar(){try{const s=localStorage.getItem(CHAVE);if(s){const d=JSON.parse(s);if(Array.isArray(d))return d;}}catch(e){}return clone(CHAMADOS_FICTICIOS);}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function salvar(){try{localStorage.setItem(CHAVE,JSON.stringify(chamados));}catch(e){}}
+
+/* ---------- 3. Serviços e regiões na tela ---------------------------------- */
+const gradeServicos=document.getElementById('gradeServicos');
+SERVICOS.forEach(s=>{
+ const card=document.createElement('article');card.className='card servico';
+ card.innerHTML=`<div>${ICONES[s.icone]}</div><h3>${s.nome}</h3><p>Serviço ilustrativo executado por profissional habilitado (fictício).</p>
+  <strong class="preco">~ R$ ${s.valor.toFixed(2).replace('.',',')} (ilustrativo)</strong>`;
+ gradeServicos.appendChild(card);
+});
+const selServico=document.getElementById('tipoServico');
+SERVICOS.forEach(s=>selServico.add(new Option(s.nome,s.nome)));
+const listaZonas=document.getElementById('listaZonas');
+REGIOES.forEach(r=>{
+ const btn=document.createElement('button');btn.type='button';btn.textContent=r.nome;
+ btn.setAttribute('aria-pressed',String(r.id==='centro'));btn.dataset.zona=r.id;
+ btn.addEventListener('click',()=>selecionarZona(r.id));listaZonas.appendChild(btn);
+});
+function selecionarZona(id){
+ regiaoAtual=id;
+ document.querySelectorAll('[data-zona]').forEach(el=>el.classList.toggle('selecionada',el.dataset.zona===id));
+ document.querySelectorAll('#listaZonas button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.zona===id)));
+ calcular();
+}
+document.querySelectorAll('#mapa .zona').forEach(z=>{
+ const escolher=()=>selecionarZona(z.dataset.zona);
+ z.addEventListener('click',escolher);
+ z.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();escolher();}});
+});
+selecionarZona('centro');
+
+/* ---------- 4. Cálculo e pedido -------------------------------------------- */
+function fmt(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});}
+function calcular(){
+ const servico=SERVICOS.find(s=>s.nome===selServico.value)||SERVICOS[0];
+ const regiao=REGIOES.find(r=>r.id===regiaoAtual);
+ const urg=Number(document.getElementById('urgencia').value);
+ const total=Math.round(servico.valor*regiao.mult*urg);
+ document.getElementById('valorEstimativa').textContent=fmt(total);
+ document.getElementById('rServico').textContent=servico.nome;
+ document.getElementById('rRegiao').textContent=regiao.nome+' (×'+regiao.mult.toFixed(2)+')';
+ document.getElementById('rUrgencia').textContent=urg>1?'Prioritário (×1,35)':'Normal (×1,00)';
+ return total;
+}
+selServico.addEventListener('change',calcular);
+document.getElementById('urgencia').addEventListener('change',calcular);
+calcular();
+
+document.getElementById('formPedido').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ [{id:'nome',t:v=>v.trim().length>=2,m:'Informe o nome fictício.'},
+  {id:'telefone',t:v=>v.replace(/\D/g,'').length>=10,m:'Telefone incompleto.'}].forEach(o=>{
+  const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+  const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(!valido)return;
+ const total=calcular();
+ const codigo='CH-'+(9000+chamados.length+1);
+ chamados.unshift({codigo,servico:selServico.value,regiao:REGIOES.find(r=>r.id===regiaoAtual).nome,status:'Aberto',data:'agora'});
+ salvar();renderizarQuadro();
+ ultimoResumo=`Código: ${codigo}\nServiço: ${selServico.value}\nRegião: ${REGIOES.find(r=>r.id===regiaoAtual).nome}\n`+
+  `Urgência: ${document.getElementById('urgencia').value>1?'Prioritário':'Normal'}\nEstimativa ilustrativa: ${fmt(total)}\n`+
+  `Contato: ${document.getElementById('telefone').value.trim()}`;
+ document.getElementById('confirmacao').classList.add('visivel');
+ document.getElementById('confirmacao').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+/* ---------- 5. Quadro de chamados ------------------------------------------ */
+function renderizarQuadro(){
+ const colunas={Aberto:document.getElementById('colAberto'),'Em rota':document.getElementById('colRota'),Concluído:document.getElementById('colConcluido')};
+ Object.values(colunas).forEach(c=>c.innerHTML='');
+ STATUS.forEach(st=>{
+  const itens=chamados.filter(c=>c.status===st);
+  const idContador={Aberto:'cntAberto','Em rota':'cntRota','Concluído':'cntConcluido'}[st];
+  document.getElementById(idContador).textContent=itens.length;
+  if(!itens.length){colunas[st].innerHTML='<p class="vazio-coluna">Nenhum chamado</p>';return;}
+  itens.forEach(c=>{
+   const div=document.createElement('div');div.className='chamado';
+   div.innerHTML=`<strong>${c.codigo}</strong>${c.servico}<br><small>${c.regiao} · ${c.data}</small>
+    <select aria-label="Alterar status de ${c.codigo}" data-codigo="${c.codigo}">
+     ${STATUS.map(s=>`<option ${s===c.status?'selected':''}>${s}</option>`).join('')}</select>`;
+   colunas[st].appendChild(div);
+  });
+ });
+ // Histórico
+ document.getElementById('corpoHistorico').innerHTML=chamados.map(c=>
+  `<tr><td class="codigo">${c.codigo}</td><td>${c.servico}</td><td>${c.regiao}</td><td>${c.status}</td><td>${c.data}</td></tr>`).join('');
+ // Eventos dos selects
+ document.querySelectorAll('[data-codigo]').forEach(sel=>sel.addEventListener('change',e=>{
+  const c=chamados.find(x=>x.codigo===e.target.dataset.codigo);if(c){c.status=e.target.value;salvar();renderizarQuadro();}
+ }));
+}
+renderizarQuadro();
+
+/* ---------- 6. WhatsApp sem número fixo ------------------------------------ */
+document.getElementById('btnWhats').addEventListener('click',()=>{
+ if(!ultimoResumo)return;
+ const texto=encodeURIComponent('Olá! Segue solicitação da demonstração CHAVEIRO EXPRESS PRIME:\n'+ultimoResumo+
+  '\n\n(Valores ilustrativos — demonstração MOSS Digital)');
+ window.open('https://wa.me/?text='+texto,'_blank','noopener');
+});
+
+/* ---------- 7. Menu e WhatsApp MOSS ---------------------------------------- */
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');}));
+document.querySelectorAll('[data-cta]').forEach(cta=>cta.addEventListener('click',()=>{
+ setTimeout(()=>document.getElementById('nome')?.focus({preventScroll:true}),400);}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+calcular();
+</script>
+</body>
+</html>

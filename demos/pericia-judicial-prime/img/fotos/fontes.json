@@ -1,0 +1,62 @@
+[
+  {
+    "arquivo": "img/fotos/foto02.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Courtroom Interior",
+    "fonte": "https://www.flickr.com/photos/68317878@N04/53377518188",
+    "licenca": "by 2.0",
+    "autor": "Salem State Archives and Special Collections",
+    "url_imagem": "https://live.staticflickr.com/65535/53377518188_8718366814_b.jpg",
+    "descricao": "Sala de tribunal"
+  },
+  {
+    "arquivo": "img/fotos/foto03.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Traveling Light #1",
+    "fonte": "https://www.flickr.com/photos/8875143@N04/2594685837",
+    "licenca": "by 2.0",
+    "autor": "rintakumpu",
+    "url_imagem": "https://live.staticflickr.com/3135/2594685837_3dc7536678_b.jpg",
+    "descricao": "Pastas de documentos"
+  },
+  {
+    "arquivo": "img/fotos/foto04.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Primary pulmonary sarcoma, NOS - Case 299",
+    "fonte": "https://www.flickr.com/photos/30950973@N03/16197022059",
+    "licenca": "by-sa 2.0",
+    "autor": "Pulmonary Pathology",
+    "url_imagem": "https://live.staticflickr.com/7367/16197022059_ef2d40e499_b.jpg",
+    "descricao": "Microscópio de laboratório"
+  },
+  {
+    "arquivo": "img/fotos/foto05.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Law library books",
+    "fonte": "https://www.flickr.com/photos/10799299@N00/6685196157",
+    "licenca": "by 2.0",
+    "autor": "j3net",
+    "url_imagem": "https://live.staticflickr.com/7174/6685196157_d9a2c489eb_b.jpg",
+    "descricao": "Livros de direito"
+  },
+  {
+    "arquivo": "img/fotos/foto01.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Forensics Scene",
+    "fonte": "https://www.flickr.com/photos/34754790@N00/11943423",
+    "licenca": "by 2.0",
+    "autor": "Andrew Mason",
+    "url_imagem": "https://live.staticflickr.com/8/11943423_314997c736_b.jpg",
+    "descricao": "Exame forense de documentos"
+  },
+  {
+    "arquivo": "img/fotos/foto06.webp",
+    "legenda": "Imagem ilustrativa — não representa a empresa fictícia",
+    "titulo_original": "Sutherlandshire Constabulary Rules & Instructions Book 1859",
+    "fonte": "https://www.flickr.com/photos/91779914@N00/8540699142",
+    "licenca": "by 2.0",
+    "autor": "conner395",
+    "url_imagem": "https://live.staticflickr.com/8107/8540699142_9e6391a341_b.jpg",
+    "descricao": "Documento histórico ilustrativo"
+  }
+]

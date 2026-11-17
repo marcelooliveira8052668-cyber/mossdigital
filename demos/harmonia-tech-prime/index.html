@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4a1f2e">
+<meta name="description" content="HARMONIA TECH PRIME — demonstração de oficina de instrumentos musicais com ordens de serviço, orçamento ilustrativo e acompanhamento.">
+<title>HARMONIA TECH PRIME — Oficina de Instrumentos | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  HARMONIA TECH PRIME — DEMONSTRAÇÃO 12 DO CATÁLOGO MOSS DIGITAL
+  ============================================================================
+  Arquivo único (HTML + CSS + JS + SVGs inline).
+
+  Instrumentos, marcas, ordens, prazos e valores são FICTÍCIOS. Nenhuma
+  marca comercial real é representada. Ilustrações SVG originais.
+
+  ONDE EDITAR:
+  - Instrumentos e preços: CONFIG.instrumentos / CONFIG.servicos (JS)
+  - Ordens iniciais: ORDENS_FICTICIAS (JS)
+  - Portfólio: PORTFOLIO (JS)
+  - WhatsApp MOSS: WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — vinho, grafite e dourado */
+:root{
+ --vinho-900:#33131f;--vinho-800:#4a1f2e;--vinho-700:#652c40;--vinho-600:#87415a;
+ --grafite:#2b2b30;--grafite-2:#3d3d44;
+ --ouro:#c9a55c;--ouro-claro:#e3c98d;
+ --branco:#fffdf9;--fundo:#faf6f1;--tinta:#332a2c;--suave:#7c7073;
+ --borda:#e2d6c9;--sombra:0 10px 28px rgba(51,19,31,.12);--sombra-forte:0 20px 46px rgba(51,19,31,.22);
+ --raio:10px;--raio-s:6px;
+ --titulo:Georgia,"Times New Roman",serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.6}
+h1,h2,h3,h4{font-family:var(--titulo);font-weight:500;line-height:1.18;color:var(--vinho-900);margin:0 0 .5em}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--vinho-700)}
+button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--ouro);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--ouro);color:var(--vinho-900);padding:.6rem 1rem;z-index:999}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0}
+.secao--fundo{background:var(--fundo)}
+.secao--vinho{background:var(--vinho-900);color:#eedddf}
+.secao--vinho h2,.secao--vinho h3{color:#fff}
+.cabecalho-secao{max-width:690px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ouro);font-weight:700}
+.titulo-secao{font-size:clamp(1.9rem,3.8vw,2.6rem)}
+.subtitulo-secao{color:var(--suave)}
+.secao--vinho .subtitulo-secao{color:#d3b9bf}
+.centro{text-align:center;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.3rem;border:2px solid transparent;border-radius:var(--raio-s);
+ font-weight:700;cursor:pointer;text-decoration:none;font-size:.88rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn--ouro{background:var(--ouro);color:var(--vinho-900)}.btn--ouro:hover{background:var(--ouro-claro)}
+.btn--vinho{background:var(--vinho-800);color:#fff}.btn--vinho:hover{background:var(--vinho-700)}
+.btn--contorno{border-color:var(--ouro);color:var(--vinho-800);background:transparent}.btn--contorno:hover{background:rgba(201,165,92,.1)}
+.btn--claro{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+.btn--bloco{width:100%}
+.btn--pequeno{padding:.4rem .7rem;font-size:.75rem}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+/* Barra/cabeçalho */
+.barra{background:var(--vinho-900);color:#d3b9bf;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.cabecalho{background:rgba(255,253,249,.97);border-bottom:1px solid var(--borda);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--vinho-900)}
+.logo svg{width:44px;height:44px}
+.logo strong{display:block;font-family:var(--titulo);font-size:1.15rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--ouro)}
+.nav{display:flex;align-items:center;gap:1.2rem}
+.nav a{text-decoration:none;color:var(--tinta);font-weight:600;font-size:.86rem}.nav a:hover{color:var(--vinho-700)}
+.menu-toggle{display:none;background:none;border:1px solid var(--borda);color:var(--vinho-900);padding:.45rem;cursor:pointer;border-radius:6px}
+.menu-toggle svg{width:24px;height:24px}
+
+/* Hero */
+.hero{background:linear-gradient(130deg,var(--vinho-900),var(--grafite));color:#fff;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5.5rem)}
+.hero h1{color:#fff;font-size:clamp(2.1rem,4.8vw,3.4rem);font-weight:400}
+.hero h1 em{color:var(--ouro-claro);font-style:italic}
+.hero__texto{color:#dcc8cc;max-width:34rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero__arte{border:1px solid rgba(201,165,92,.35);padding:1rem;border-radius:var(--raio);background:rgba(255,255,255,.03)}
+.hero__arte svg{width:100%;height:auto}
+.hero__nota{font-size:.75rem;color:#dcc8cc;border-left:3px solid var(--ouro);padding:.5rem .8rem;margin-top:1.2rem}
+
+/* Galeria instrumentos */
+.instrumentos{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.instrumento{padding:1.1rem;text-align:center}
+.instrumento svg{width:100%;height:110px;margin-bottom:.6rem}
+.instrumento strong{display:block;font-size:.9rem;color:var(--vinho-800)}
+.instrumento small{font-size:.74rem;color:var(--suave)}
+
+/* Serviços */
+.servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.servico{padding:1.4rem}
+.servico h3{font-size:1.05rem}.servico p{font-size:.85rem;color:var(--suave);margin:0}
+.servico__num{font-family:var(--mono);font-size:.72rem;color:var(--ouro)}
+
+/* Ordem de serviço */
+.os-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:start}
+.form-card{padding:1.5rem}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+.campo label{font-weight:700;font-size:.82rem;color:var(--vinho-800)}
+.campo input,.campo select,.campo textarea{width:100%;padding:.68rem .75rem;border:1px solid var(--borda);border-radius:var(--raio-s)}
+.campo textarea{min-height:90px;resize:vertical}
+.campo .erro{color:#b04a4a;font-size:.74rem;min-height:1.1em}
+.campo.invalido input,.campo.invalido select,.campo.invalido textarea{border-color:#b04a4a}
+.painel-os{background:var(--vinho-900);color:#eedddf;border-radius:var(--raio);padding:1.5rem;position:sticky;top:90px}
+.painel-os h3{color:#fff;font-size:1.05rem}
+.painel-os .valor{font-family:var(--mono);font-size:2rem;color:var(--ouro-claro);margin:.3rem 0}
+.res-linha{display:flex;justify-content:space-between;gap:1rem;font-size:.82rem;padding:.45rem 0;border-bottom:1px dashed rgba(255,255,255,.18)}
+.aviso{font-size:.75rem;color:#dcc8cc;background:rgba(255,255,255,.06);border-left:3px solid var(--ouro);padding:.7rem;margin-top:1rem}
+.confirmacao{display:none;background:#f6efe4;border:1px solid var(--ouro);border-radius:var(--raio-s);padding:.8rem;margin-top:1rem;color:#5a4326;font-size:.82rem}
+.confirmacao.visivel{display:block}
+
+/* Painel OS + calendário */
+.painel{display:grid;grid-template-columns:1.15fr .85fr;gap:1.5rem;align-items:start}
+.painel>*{min-width:0}
+.rolagem{overflow-x:auto;max-width:100%}
+.tabela{width:100%;border-collapse:collapse;font-size:.82rem;min-width:460px}
+.tabela th{background:var(--vinho-900);color:#fff;padding:.55rem .65rem;text-align:left;font-size:.68rem}
+.tabela td{padding:.55rem .65rem;border-bottom:1px solid var(--borda)}
+.tabela tr{cursor:pointer}.tabela tbody tr:hover{background:#faf3eb}
+.etiqueta{display:inline-block;padding:.18rem .5rem;border-radius:999px;font-size:.66rem;font-weight:700;background:var(--fundo);color:var(--vinho-800)}
+.calendario{padding:1.2rem}
+.cal-topo{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.cal-topo h3{margin:0;font-size:1rem}
+.cal-botoes{display:flex;gap:.3rem}
+.cal-botoes button{width:30px;height:30px;border:1px solid var(--borda);background:#fff;cursor:pointer;border-radius:6px}
+.grade-dias{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.dia-semana{text-align:center;font-size:.62rem;font-weight:700;color:var(--suave);padding-bottom:.3rem}
+.dia{aspect-ratio:1;border:1px solid var(--borda);border-radius:6px;padding:.2rem;font-size:.72rem;background:#fff}
+.dia.vazio{border:0;background:transparent}
+.dia.com-servico{background:#f8efdf;border-color:var(--ouro);font-weight:700;cursor:pointer}
+.dia.hoje{outline:2px solid var(--vinho-700);outline-offset:-2px}
+.dia .pontinho{display:block;width:5px;height:5px;border-radius:50%;background:var(--ouro);margin:2px auto 0}
+.lateral{padding:1.2rem;position:sticky;top:90px}
+.etapas{list-style:none;padding:0 0 0 .9rem;border-left:1px solid var(--borda);margin:.6rem 0}
+.etapas li{position:relative;font-size:.8rem;padding-bottom:.6rem}
+.etapas li::before{content:"";position:absolute;left:-1.15rem;top:.25rem;width:8px;height:8px;border-radius:50%;background:var(--ouro)}
+
+/* Portfólio */
+.portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.trabalho__img{aspect-ratio:4/3;background:var(--fundo)}
+.trabalho__img svg{width:100%;height:100%}
+.trabalho__corpo{padding:1rem 1.1rem 1.2rem}
+.trabalho__corpo h3{font-size:1rem;margin-bottom:.2rem}
+.trabalho__corpo p{font-size:.82rem;color:var(--suave);margin:0}
+
+/* Rodapé */
+.rodape{background:var(--vinho-900);color:#d3b9bf;padding:2.6rem 0 1.4rem;border-top:4px solid var(--ouro)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.rodape__marca strong{color:#fff;font-family:var(--titulo)}
+.moss-bloco{border:1px solid rgba(201,165,92,.4);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+.moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+.rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--ouro);color:var(--vinho-900);
+ font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--branco);flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem;box-shadow:var(--sombra)}
+ .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid var(--borda)}
+ .menu-toggle{display:block}
+ .hero .container,.os-layout,.painel{grid-template-columns:1fr}
+ .instrumentos{grid-template-columns:repeat(3,1fr)}
+ .servicos,.portfolio{grid-template-columns:repeat(2,1fr)}
+ .painel-os,.lateral{position:static}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.4rem,var(--largura))}
+ .servicos,.portfolio,.grade-2,.instrumentos{grid-template-columns:1fr}
+ .dia{font-size:.65rem}
+ .selo-demo{font-size:.55rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ OFICINA DE INSTRUMENTOS · DEMONSTRAÇÃO</span><span>INSTRUMENTOS, MARCAS E VALORES FICTÍCIOS</span></div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="HARMONIA TECH PRIME — início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Marca HARMONIA TECH PRIME">
+   <rect width="48" height="48" rx="10" fill="#4a1f2e"/>
+   <path d="M18 34V12l16-4v22" fill="none" stroke="#c9a55c" stroke-width="2.5"/>
+   <ellipse cx="14" cy="35" rx="6" ry="4" fill="#c9a55c"/>
+   <ellipse cx="30" cy="31" rx="6" ry="4" fill="#c9a55c"/>
+   <path d="M18 20l16-4" stroke="#c9a55c" stroke-width="1"/>
+  </svg>
+  <span><strong>HARMONIA TECH PRIME</strong><small>OFICINA DE INSTRUMENTOS</small></span>
+ </a>
+ <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+ </button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#instrumentos">Instrumentos</a><a href="#servicos">Serviços</a><a href="#ordem">Ordem de serviço</a>
+  <a href="#painel">Acompanhe</a><a href="#portfolio">Trabalhos</a>
+  <a class="btn btn--ouro" href="#ordem" data-cta>Abrir ordem</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <span class="eyebrow">Oficina artesanal · demonstração</span>
+   <h1>Seu instrumento merece <em>ouvir o mundo de novo</em>.</h1>
+   <p class="hero__texto">Uma oficina demonstrativa de manutenção e restauração de instrumentos musicais: galeria, ordens de serviço, orçamento ilustrativo, acompanhamento de reparos e portfólio.</p>
+   <div class="hero__acoes">
+    <a class="btn btn--ouro" href="#ordem">Abrir ordem de serviço →</a>
+    <a class="btn btn--claro" href="#portfolio">Ver trabalhos</a>
+   </div>
+   <p class="hero__nota">Instrumentos, marcas, ordens e prazos são fictícios. Nenhuma marca comercial real é representada nesta demonstração.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração de um violino e uma guitarra sobre fundo vinho">
+   <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="380" fill="#33131f"/>
+    <g stroke="#5a2a3c" stroke-width="1"><path d="M0 60h520M0 120h520M0 180h520M0 240h520M0 300h520"/></g>
+    <!-- violino -->
+    <g transform="translate(90,40)">
+     <path d="M70 40c-26 0-30 26-16 44-16 18-12 52 16 52 18 0 20 16 20 34 0 18 20 18 20 0 0-18 2-34 20-34 28 0 32-34 16-52 14-18 10-44-16-44-14 0-20 14-30 14s-16-14-30-14z" fill="#8a4a2f" stroke="#e3c98d" stroke-width="2"/>
+     <rect x="92" y="150" width="16" height="80" rx="3" fill="#5a2f1e" stroke="#e3c98d" stroke-width="2"/>
+     <path d="M84 70h32M84 90h32" stroke="#e3c98d" stroke-width="1"/>
+     <path d="M92 180v44M100 180v44M108 180v44" stroke="#f4e3b8" stroke-width="1"/>
+    </g>
+    <!-- guitarra -->
+    <g transform="translate(300,60)">
+     <ellipse cx="80" cy="110" rx="62" ry="72" fill="#a85a38" stroke="#e3c98d" stroke-width="3"/>
+     <ellipse cx="80" cy="110" rx="18" ry="20" fill="#33131f"/>
+     <rect x="66" y="10" width="28" height="60" fill="#5a2f1e" stroke="#e3c98d" stroke-width="2"/>
+     <path d="M70 20v50M80 20v50M90 20v50" stroke="#f4e3b8" stroke-width="1"/>
+    </g>
+    <text x="260" y="360" text-anchor="middle" font-family="Georgia" font-size="14" fill="#c9a55c" font-style="italic">cada nota, um cuidado</text>
+   </svg>
+  </div>
+ </div></section>
+
+ <!-- Instrumentos -->
+ <section class="secao secao--fundo" id="instrumentos"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Galeria</span>
+   <h2 class="titulo-secao">Instrumentos que atendemos</h2>
+   <p class="subtitulo-secao">Ilustrações SVG originais e estilizadas — sem fotos de instrumentos reais.</p></div>
+  <div class="instrumentos" id="gradeInstrumentos"></div>
+ </div></section>
+
+ <!-- Serviços -->
+ <section class="secao" id="servicos"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Serviços da oficina</span>
+   <h2 class="titulo-secao">Manutenção e restauração</h2>
+   <p class="subtitulo-secao">Serviços ilustrativos, executados por técnicos habilitados na versão comercial.</p></div>
+  <div class="servicos" id="gradeServicos"></div>
+ </div></section>
+
+ <!-- Ordem de serviço -->
+ <section class="secao secao--fundo" id="ordem"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Abertura de ordem</span>
+   <h2 class="titulo-secao">Conte a história do seu instrumento</h2>
+   <p class="subtitulo-secao">Escolha o instrumento, descreva o problema e registre um equipamento fictício. A estimativa é ilustrativa.</p></div>
+  <div class="os-layout">
+   <form class="card form-card" id="formOS" novalidate>
+    <div class="grade-2">
+     <div class="campo"><label for="nome">Nome *</label><input id="nome" placeholder="Nome fictício"><span class="erro" aria-live="polite"></span></div>
+     <div class="campo"><label for="telefone">Telefone *</label><input id="telefone" placeholder="(00) 00000-0000"><span class="erro" aria-live="polite"></span></div>
+    </div>
+    <div class="grade-2">
+     <div class="campo"><label for="instrumento">Instrumento *</label><select id="instrumento"></select></div>
+     <div class="campo"><label for="servico">Serviço principal</label><select id="servico"></select></div>
+    </div>
+    <div class="grade-2">
+     <div class="campo"><label for="marca">Marca / modelo (fictício)</label><input id="marca" placeholder="Ex.: Modelo Exemplo A-12"></div>
+     <div class="campo"><label for="ano">Ano aproximado</label><input id="ano" placeholder="Ex.: 1998"></div>
+    </div>
+    <div class="campo"><label for="problema">Descrição do problema *</label><textarea id="problema" placeholder="Ex.: cordas desafinam rapidamente"></textarea><span class="erro" aria-live="polite"></span></div>
+    <button class="btn btn--vinho btn--bloco" type="submit">Abrir ordem (demonstração)</button>
+    <div class="confirmacao" id="confirmacao" role="status">✓ Ordem fictícia criada e adicionada ao painel.</div>
+   </form>
+   <aside class="painel-os" aria-live="polite">
+    <span class="eyebrow">Estimativa ilustrativa</span>
+    <h3>Prévia do orçamento</h3>
+    <div class="valor" id="valorOS">R$ —</div>
+    <div class="res-linha"><span>Instrumento</span><strong id="rInstrumento">—</strong></div>
+    <div class="res-linha"><span>Serviço</span><strong id="rServico">—</strong></div>
+    <div class="res-linha"><span>Prazo ilustrativo</span><strong id="rPrazo">—</strong></div>
+    <p class="aviso">⚠ Valores e prazos são configuráveis e ilustrativos. Não são proposta comercial nem diagnóstico técnico.</p>
+   </aside>
+  </div>
+ </div></section>
+
+ <!-- Painel -->
+ <section class="secao secao--vinho" id="painel"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Acompanhamento</span>
+   <h2 class="titulo-secao">Ordens e calendário de serviços</h2>
+   <p class="subtitulo-secao">Clique em uma ordem para ver as etapas. Use o calendário para filtrar por data ilustrativa.</p></div>
+  <div class="painel">
+   <div class="card" style="padding:1rem">
+    <div class="rolagem">
+     <table class="tabela"><thead><tr><th>Ordem</th><th>Instrumento</th><th>Serviço</th><th>Entrada</th><th>Status</th></tr></thead>
+      <tbody id="corpoOrdens"></tbody></table>
+    </div>
+   </div>
+   <aside>
+    <div class="card calendario">
+     <div class="cal-topo"><h3 id="mesCalendario">—</h3>
+      <div class="cal-botoes"><button id="mesAnterior" aria-label="Mês anterior">‹</button><button id="mesSeguinte" aria-label="Próximo mês">›</button></div></div>
+     <div class="grade-dias" id="gradeDias" role="grid" aria-label="Calendário de serviços"></div>
+    </div>
+    <div class="card lateral" id="lateralOS" style="margin-top:1rem" aria-live="polite"></div>
+   </aside>
+  </div>
+ </div></section>
+
+ <!-- Portfólio -->
+ <section class="secao" id="portfolio"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Portfólio ilustrativo</span>
+   <h2 class="titulo-secao">Trabalhos concluídos</h2>
+   <p class="subtitulo-secao">Projetos fictícios apresentados para demonstrar o estilo da oficina.</p></div>
+  <div class="portfolio" id="gradePortfolio"></div>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Teclas de piano" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Teclas de piano<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Saxofone" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Saxofone<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Bateria" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Bateria<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Oficina de instrumentos musicais" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Oficina de instrumentos musicais<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Violino em detalhe" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Violino em detalhe<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Oficina de guitarra" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Oficina de guitarra<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div class="rodape__marca"><strong>HARMONIA TECH PRIME</strong>
+   <p style="font-size:.82rem;max-width:430px;margin-top:.5rem">Demonstração de oficina de instrumentos com ordens, prazos e valores fictícios. Nenhuma marca real é representada.</p></div>
+  <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou? Crie um site assim para seu negócio.</p>
+   <a class="btn btn--ouro" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+ </div>
+ <div class="rodape__base"><span>© 2026 HARMONIA TECH PRIME — Demo MOSS Digital</span><span>Dados fictícios · Sem marcas reais</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — galeria, ordens, orçamento, painel, calendário
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='HARMONIA TECH PRIME (Demo 12 — Instrumentos musicais)';
+const CHAVE='harmonia-tech-v1';
+function daquiDias(n){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
+function fmt(iso){if(!iso)return '—';const [a,m,d]=iso.split('-');return `${d}/${m}/${a}`;}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+
+/* ---------- 1. Dados -------------------------------------------------------- */
+const CONFIG={
+ instrumentos:[
+  {id:'violao',nome:'Violão',base:120,icone:'violao'},
+  {id:'violino',nome:'Violino',base:180,icone:'violino'},
+  {id:'teclado',nome:'Teclado / piano',base:220,icone:'teclado'},
+  {id:'sax',nome:'Saxofone',base:200,icone:'sax'},
+  {id:'bateria',nome:'Bateria',base:160,icone:'bateria'}
+ ],
+ servicos:[
+  {id:'afinacao',nome:'Afinação e regulagem',mult:0.6},
+  {id:'limpeza',nome:'Limpeza geral',mult:0.7},
+  {id:'cordas',nome:'Troca de cordas',mult:0.5},
+  {id:'restauro',nome:'Restauração completa',mult:2.2},
+  {id:'eletronica',nome:'Revisão de eletrônica',mult:1.1}
+ ]
+};
+const ICONES={
+ violao:`<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="78" rx="34" ry="38" fill="#a85a38" stroke="#c9a55c" stroke-width="2"/><circle cx="50" cy="78" r="10" fill="#33131f"/><rect x="43" y="10" width="14" height="44" fill="#5a2f1e" stroke="#c9a55c"/><path d="M46 14v40M50 14v40M54 14v40" stroke="#f4e3b8"/></svg>`,
+ violino:`<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg"><path d="M50 18c-16 0-18 16-10 28-10 10-8 32 10 32s20-22 10-32c8-12 6-28-10-28z" fill="#8a4a2f" stroke="#c9a55c" stroke-width="2"/><rect x="44" y="76" width="12" height="38" fill="#5a2f1e"/></svg>`,
+ teclado:`<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="40" width="84" height="48" rx="4" fill="#f4e3b8" stroke="#2b2b30" stroke-width="2"/><path d="M20 40v28M32 40v28M44 40v28M56 40v28M68 40v28M80 40v28" stroke="#2b2b30"/><rect x="16" y="68" width="68" height="12" fill="#2b2b30"/></svg>`,
+ sax:`<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg"><path d="M58 12c-18 6-28 26-24 50 3 18 12 32 30 34" fill="none" stroke="#c9a55c" stroke-width="10" stroke-linecap="round"/><path d="M62 96q14 8 22-4" fill="none" stroke="#c9a55c" stroke-width="10" stroke-linecap="round"/><circle cx="34" cy="62" r="4" fill="#33131f"/></svg>`,
+ bateria:`<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="74" rx="36" ry="18" fill="#c9a55c" stroke="#2b2b30" stroke-width="2"/><path d="M14 74v22M86 74v22" stroke="#2b2b30" stroke-width="3"/><path d="M28 40l14-18M72 40L58 22" stroke="#2b2b30" stroke-width="3"/></svg>`
+};
+const ORDENS_FICTICIAS=[
+ {codigo:'OS-5101',instrumento:'Violão',servico:'Troca de cordas',entrada:daquiDias(-4),status:'Concluído',etapa:5,previsao:'entregue (ilustração)'},
+ {codigo:'OS-5102',instrumento:'Violino',servico:'Restauração completa',entrada:daquiDias(-2),status:'Em andamento',etapa:3,previsao:'em 6 dias (ilustração)'},
+ {codigo:'OS-5103',instrumento:'Teclado / piano',servico:'Revisão de eletrônica',entrada:daquiDias(-1),status:'Aguardando',etapa:1,previsao:'em 9 dias (ilustração)'},
+ {codigo:'OS-5104',instrumento:'Saxofone',servico:'Limpeza geral',entrada:daquiDias(-6),status:'Concluído',etapa:5,previsao:'entregue (ilustração)'}
+];
+const ETAPAS=['Recebimento','Diagnóstico','Execução','Acabamento','Entrega'];
+const PORTFOLIO=[
+ {titulo:'Violão restaurado',desc:'Estrutura recuperada e acabamento ilustrativo.',tipo:'violao'},
+ {titulo:'Violino revisado',desc:'Regulagem e limpeza demonstrativas.',tipo:'violino'},
+ {titulo:'Teclado recuperado',desc:'Revisão ilustrativa de teclas e circuitos.',tipo:'teclado'}
+];
+
+/* ---------- 2. Renderizações iniciais -------------------------------------- */
+const gradeInst=document.getElementById('gradeInstrumentos');
+CONFIG.instrumentos.forEach(i=>{const c=document.createElement('article');c.className='card instrumento';
+ c.innerHTML=`${ICONES[i.icone]}<strong>${i.nome}</strong><small>Atendimento ilustrativo</small>`;gradeInst.appendChild(c);});
+const gradeServ=document.getElementById('gradeServicos');
+CONFIG.servicos.forEach((s,n)=>{const c=document.createElement('article');c.className='card servico';
+ c.innerHTML=`<span class="servico__num">0${n+1}</span><h3>${s.nome}</h3><p>Serviço fictício executado por técnico habilitado na versão comercial.</p>`;
+ gradeServ.appendChild(c);});
+const gradePort=document.getElementById('gradePortfolio');
+PORTFOLIO.forEach(p=>{const c=document.createElement('article');c.className='card';
+ c.innerHTML=`<div class="trabalho__img" style="display:grid;place-items:center">${ICONES[p.tipo]}</div>
+  <div class="trabalho__corpo"><h3>${p.titulo}</h3><p>${p.desc}</p></div>`;gradePort.appendChild(c);});
+
+const selInst=document.getElementById('instrumento'),selServ=document.getElementById('servico');
+CONFIG.instrumentos.forEach(i=>selInst.add(new Option(i.nome,i.id)));
+CONFIG.servicos.forEach(s=>selServ.add(new Option(s.nome,s.id)));
+function calcularOS(){
+ const inst=CONFIG.instrumentos.find(i=>i.id===selInst.value)||CONFIG.instrumentos[0];
+ const serv=CONFIG.servicos.find(s=>s.id===selServ.value)||CONFIG.servicos[0];
+ const total=Math.round(inst.base*serv.mult);
+ document.getElementById('valorOS').textContent=fmtMoeda(total);
+ document.getElementById('rInstrumento').textContent=inst.nome;
+ document.getElementById('rServico').textContent=serv.nome;
+ document.getElementById('rPrazo').textContent=serv.id==='restauro'?'até 15 dias (ilustração)':'até 5 dias (ilustração)';
+ return total;
+}
+function fmtMoeda(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});}
+selInst.addEventListener('change',calcularOS);
+selServ.addEventListener('change',calcularOS);
+
+/* ---------- 3. Estado ------------------------------------------------------- */
+let ordens=carregar();let selecionada=ORDENS_FICTICIAS[0].codigo;let mesAtual=new Date();mesAtual.setDate(1);
+function carregar(){try{const s=localStorage.getItem(CHAVE);if(s){const d=JSON.parse(s);if(Array.isArray(d))return d;}}catch(e){}return clone(ORDENS_FICTICIAS);}
+function salvar(){try{localStorage.setItem(CHAVE,JSON.stringify(ordens));}catch(e){}}
+
+/* ---------- 4. Ordem -------------------------------------------------------- */
+document.getElementById('formOS').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ [{id:'nome',t:v=>v.trim().length>=2,m:'Informe o nome.'},
+  {id:'telefone',t:v=>v.replace(/\D/g,'').length>=10,m:'Telefone incompleto.'},
+  {id:'problema',t:v=>v.trim().length>=10,m:'Descreva o problema (mínimo 10 caracteres).'}].forEach(o=>{
+  const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+  const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(!valido)return;
+ const total=calcularOS();
+ const inst=CONFIG.instrumentos.find(i=>i.id===selInst.value),serv=CONFIG.servicos.find(s=>s.id===selServ.value);
+ const codigo='OS-'+(5100+ordens.length+1);
+ ordens.unshift({codigo,instrumento:inst.nome,servico:serv.nome,entrada:daquiDias(0),status:'Aguardando',etapa:1,
+  previsao:'até 5 dias (ilustração)',valor:total});
+ salvar();selecionada=codigo;renderizarOrdens();renderizarCalendario();renderizarLateral();
+ document.getElementById('confirmacao').classList.add('visivel');
+ e.target.reset();
+});
+
+/* ---------- 5. Painel e calendário ----------------------------------------- */
+function renderizarOrdens(){
+ document.getElementById('corpoOrdens').innerHTML=ordens.map(o=>
+  `<tr data-codigo="${o.codigo}" class="${o.codigo===selecionada?'selecionado':''}"><td class="codigo">${o.codigo}</td>
+   <td>${o.instrumento}</td><td>${o.servico}</td><td>${fmt(o.entrada)}</td><td><span class="etiqueta">${o.status}</span></td></tr>`).join('');
+ document.querySelectorAll('#corpoOrdens tr[data-codigo]').forEach(tr=>tr.addEventListener('click',()=>{
+  selecionada=tr.dataset.codigo;renderizarOrdens();renderizarLateral();
+ }));
+}
+function renderizarLateral(){
+ const o=ordens.find(x=>x.codigo===selecionada),lat=document.getElementById('lateralOS');
+ if(!o){lat.innerHTML='<p style="font-size:.85rem">Selecione uma ordem.</p>';return;}
+ const lista=ETAPAS.map((n,i)=>`<li>${i<o.etapa?'✓ ':''}${n}${i===o.etapa-1?' (atual)':''}</li>`).join('');
+ lat.innerHTML=`<span class="eyebrow">Ordem ${o.codigo}</span><h3>${o.instrumento}</h3>
+  <p style="font-size:.82rem;color:#d3b9bf">${o.servico} · ${o.status}<br>Entrada: ${fmt(o.entrada)}</p>
+  <h4 style="font-size:.8rem">Etapas (simulação)</h4><ul class="etapas">${lista}</ul>
+  <p style="font-size:.78rem">Previsão: ${o.previsao}</p>
+  <p class="aviso">Etapas e prazos ilustrativos, sem diagnóstico técnico real.</p>`;
+}
+function renderizarCalendario(){
+ const ano=mesAtual.getFullYear(),mes=mesAtual.getMonth(),primeiro=new Date(ano,mes,1),dias=new Date(ano,mes+1,0).getDate();
+ const nome=primeiro.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+ document.getElementById('mesCalendario').textContent=nome.charAt(0).toUpperCase()+nome.slice(1);
+ const datas=new Set(ordens.map(o=>o.entrada)),hoje=new Date().toISOString().slice(0,10);
+ let html=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'].map(d=>`<div class="dia-semana">${d}</div>`).join('');
+ for(let i=0;i<primeiro.getDay();i++)html+='<div class="dia vazio"></div>';
+ for(let d=1;d<=dias;d++){
+  const iso=`${ano}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,tem=datas.has(iso);
+  html+=`<div class="dia ${tem?'com-servico':''} ${hoje===iso?'hoje':''}" ${tem?`role="button" tabindex="0" data-dia="${iso}" aria-label="Ordem em ${fmt(iso)}"`:''}>
+   ${d}${tem?'<span class="pontinho"></span>':''}</div>`;
+ }
+ document.getElementById('gradeDias').innerHTML=html;
+ document.querySelectorAll('[data-dia]').forEach(el=>{
+  const ir=()=>{const itens=ordens.filter(o=>o.entrada===el.dataset.dia);
+   document.getElementById('corpoOrdens').innerHTML=itens.map(o=>
+    `<tr data-codigo="${o.codigo}"><td class="codigo">${o.codigo}</td><td>${o.instrumento}</td><td>${o.servico}</td><td>${fmt(o.entrada)}</td><td>${o.status}</td></tr>`).join('')||
+    '<tr><td colspan="5">Nenhuma ordem nesta data.</td></tr>';};
+  el.addEventListener('click',ir);
+  el.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();ir();}});
+ });
+}
+document.getElementById('mesAnterior').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()-1);renderizarCalendario();});
+document.getElementById('mesSeguinte').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()+1);renderizarCalendario();});
+
+/* ---------- 6. Menu e WhatsApp --------------------------------------------- */
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');}));
+document.querySelectorAll('[data-cta]').forEach(cta=>cta.addEventListener('click',()=>{
+ setTimeout(()=>document.getElementById('nome')?.focus({preventScroll:true}),400);}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+
+calcularOS();renderizarOrdens();renderizarCalendario();renderizarLateral();
+</script>
+</body>
+</html>

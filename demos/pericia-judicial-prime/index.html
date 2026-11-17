@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#23272e">
+  <meta name="description" content="PERÍCIA JUDICIAL PRIME — painel demonstrativo de perícias, prazos, documentos e linha do tempo. Todos os dados são fictícios.">
+  <title>PERÍCIA JUDICIAL PRIME — Gestão de Perícias | Demonstração MOSS Digital</title>
+
+  <!--
+    ============================================================================
+    PERÍCIA JUDICIAL PRIME — DEMONSTRAÇÃO 02 DO CATÁLOGO MOSS DIGITAL
+    ============================================================================
+    Arquivo único (HTML + CSS + JS). Todas as ilustrações são SVG originais.
+
+    ⚠️ IMPORTANTE: TODOS OS DADOS SÃO FICTÍCIOS.
+    Nenhuma informação judicial real, confidencial ou sigilosa deve ser
+    inserida nesta demonstração. O LocalStorage guarda apenas registros
+    inventados para simular o funcionamento do painel.
+
+    ONDE EDITAR:
+    - Processos iniciais: array PROCESSOS_FICTICIOS (JS)
+    - Perito/apresentação: seção #sobre no HTML
+    - WhatsApp da MOSS: constante WHATSAPP_MOSS (JS)
+    - Cores: variáveis em :root (CSS)
+    ============================================================================
+  -->
+
+  <style>
+    /* ==========================================================================
+       CSS — 1. Variáveis (grafite, branco e dourado discreto)
+       2. Base · 3. Layout · 4. Componentes · 5. Seções · 6. Responsividade
+       ========================================================================== */
+    :root {
+      --grafite-900: #1b1f24;
+      --grafite-800: #23272e;
+      --grafite-700: #31363f;
+      --grafite-600: #474e59;
+      --papel: #f7f5f0;
+      --papel-2: #eeece5;
+      --branco: #ffffff;
+      --tinta: #23272e;
+      --tinta-suave: #6b7280;
+      --ouro: #b89a5b;
+      --ouro-claro: #d4b97f;
+      --borda: #dedbd2;
+      --verde: #3f7d63;
+      --vermelho: #b04a4a;
+      --amarelo: #c2913a;
+      --azul: #3a6b8c;
+      --sombra: 0 8px 24px rgba(27,31,36,.10);
+      --sombra-forte: 0 18px 45px rgba(27,31,36,.18);
+      --raio: 6px;
+      --fonte-titulo: Georgia, "Times New Roman", serif;
+      --fonte-corpo: "Segoe UI", Arial, sans-serif;
+      --fonte-num: "Consolas", "Courier New", monospace;
+      --largura: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--fonte-corpo); color: var(--tinta); background: var(--papel); line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height: 1.2; color: var(--grafite-900); margin: 0 0 .5em; }
+    p { margin: 0 0 1em; }
+    ul { margin: 0; padding-left: 1.1rem; }
+    a { color: var(--grafite-700); }
+    button, input, select, textarea { font: inherit; }
+    svg { display: block; max-width: 100%; }
+
+    :focus-visible { outline: 2px solid var(--ouro); outline-offset: 3px; }
+    .skip-link { position: absolute; left: -9999px; top: 0; background: var(--ouro); color: #fff; padding: .6rem 1rem; z-index: 999; }
+    .skip-link:focus { left: 0; }
+
+    .container { width: min(100% - 2.5rem, var(--largura)); margin-inline: auto; }
+    .secao { padding: clamp(3rem, 6vw, 5rem) 0; }
+    .secao--branco { background: var(--branco); }
+    .secao--grafite { background: var(--grafite-800); color: var(--papel-2); }
+    .secao--grafite h2, .secao--grafite h3 { color: #fff; }
+    .cabecalho-secao { max-width: 660px; margin-bottom: 2.2rem; }
+    .eyebrow { font-family: var(--fonte-num); font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ouro); font-weight: 700; }
+    .titulo-secao { font-size: clamp(1.8rem, 3.6vw, 2.5rem); }
+    .subtitulo-secao { color: var(--tinta-suave); }
+    .secao--grafite .subtitulo-secao { color: #b9bdc4; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .75rem 1.2rem;
+      border: 1px solid transparent; border-radius: var(--raio); font-weight: 600; cursor: pointer; text-decoration: none;
+      font-size: .9rem; transition: background .18s, transform .18s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn--ouro { background: var(--ouro); color: #fff; }
+    .btn--ouro:hover { background: #a3854a; }
+    .btn--grafite { background: var(--grafite-800); color: #fff; }
+    .btn--grafite:hover { background: var(--grafite-700); }
+    .btn--fantasma { border-color: var(--borda); color: var(--grafite-700); background: #fff; }
+    .btn--fantasma:hover { background: var(--papel); }
+    .btn--pequeno { padding: .4rem .7rem; font-size: .78rem; }
+
+    .card { background: #fff; border: 1px solid var(--borda); border-radius: var(--raio); box-shadow: var(--sombra); }
+
+    /* Barra superior e cabeçalho */
+    .barra { border-bottom: 1px solid var(--borda); background: var(--branco); font-family: var(--fonte-num); font-size: .7rem; letter-spacing: .08em; color: var(--grafite-600); }
+    .barra .container { display: flex; justify-content: space-between; gap: 1rem; padding-block: .5rem; flex-wrap: wrap; }
+    .barra .destaque { color: var(--vermelho); font-weight: 700; }
+    .cabecalho { background: var(--grafite-900); color: #fff; border-bottom: 3px solid var(--ouro); }
+    .cabecalho .container { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 1rem; }
+    .logo { display: flex; align-items: center; gap: .9rem; text-decoration: none; color: #fff; }
+    .logo__selo { width: 42px; height: 42px; border: 1px solid var(--ouro); display: grid; place-items: center; font-family: var(--fonte-titulo); color: var(--ouro-claro); font-size: 1rem; letter-spacing: .05em; }
+    .logo strong { display: block; font-family: var(--fonte-titulo); font-size: 1.05rem; letter-spacing: .04em; }
+    .logo small { display: block; font-family: var(--fonte-num); font-size: .6rem; letter-spacing: .18em; color: var(--ouro-claro); }
+    .nav { display: flex; align-items: center; gap: 1.4rem; }
+    .nav a { color: #d9dce0; text-decoration: none; font-size: .88rem; font-weight: 600; }
+    .nav a:hover { color: var(--ouro-claro); }
+    .nav .btn { color: #fff; border-color: var(--ouro); }
+    .menu-toggle { display: none; background: none; border: 1px solid rgba(255,255,255,.3); color: #fff; padding: .5rem; cursor: pointer; border-radius: 4px; }
+    .menu-toggle svg { width: 24px; height: 24px; }
+
+    /* Hero */
+    .hero { background: var(--grafite-800); color: #fff; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: repeating-linear-gradient(90deg, transparent 0 79px, rgba(184,154,91,.06) 79px 80px); pointer-events: none; }
+    .hero .container { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 3rem; align-items: center; padding-block: clamp(3rem, 7vw, 5.5rem); }
+    .hero h1 { color: #fff; font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 400; }
+    .hero h1 em { color: var(--ouro-claro); font-style: italic; }
+    .hero__texto { color: #c8ccd2; max-width: 34rem; }
+    .hero__acoes { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.6rem; }
+    .hero__arte { border: 1px solid rgba(184,154,91,.35); padding: .8rem; }
+    .hero__arte svg { width: 100%; height: auto; }
+    .marcador { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--fonte-num); font-size: .72rem; letter-spacing: .12em; color: var(--ouro-claro); text-transform: uppercase; }
+
+    /* Sobre */
+    .sobre { display: grid; grid-template-columns: .8fr 1.2fr; gap: 3rem; align-items: center; }
+    .retrato { border: 1px solid var(--borda); padding: .7rem; background: #fff; }
+    .retrato svg { width: 100%; height: auto; }
+    .sobre__texto h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); }
+    .sobre__lista { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem 1.2rem; margin-top: 1rem; }
+    .sobre__lista li { display: flex; gap: .5rem; font-size: .9rem; }
+    .sobre__lista li::before { content: "◆"; color: var(--ouro); font-size: .7rem; }
+
+    /* Indicadores */
+    .indicadores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .indicador { padding: 1.2rem; position: relative; }
+    .indicador::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--ouro); }
+    .indicador span { display: block; font-size: .78rem; color: var(--tinta-suave); text-transform: uppercase; letter-spacing: .06em; }
+    .indicador strong { display: block; font-family: var(--fonte-num); font-size: 2rem; color: var(--grafite-800); line-height: 1.2; }
+    .indicador small { font-size: .75rem; color: var(--tinta-suave); }
+
+    /* Painel */
+    .painel { display: grid; grid-template-columns: 1fr 340px; gap: 1.5rem; align-items: start; }
+    .painel__principal { min-width: 0; }
+    .barra-controles { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; margin-bottom: 1rem; }
+    .busca { flex: 1 1 220px; position: relative; }
+    .busca input { width: 100%; padding: .65rem .8rem .65rem 2.2rem; border: 1px solid var(--borda); border-radius: var(--raio); }
+    .busca svg { position: absolute; left: .7rem; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--tinta-suave); }
+    .filtros { display: flex; gap: .35rem; flex-wrap: wrap; }
+    .filtro { padding: .42rem .7rem; font-size: .78rem; border: 1px solid var(--borda); background: #fff; cursor: pointer; border-radius: 999px; color: var(--grafite-600); }
+    .filtro[aria-pressed="true"] { background: var(--grafite-800); color: #fff; border-color: var(--grafite-800); }
+
+    .lista-processos { display: flex; flex-direction: column; gap: .6rem; }
+    .processo { display: grid; grid-template-columns: 1.4fr 1.1fr .8fr .9fr .9fr auto; gap: .8rem; align-items: center;
+      padding: .9rem 1rem; border: 1px solid var(--borda); border-radius: var(--raio); background: #fff; cursor: pointer; transition: border .18s, box-shadow .18s; }
+    .processo:hover { border-color: var(--ouro); box-shadow: var(--sombra); }
+    .processo.selecionado { border-color: var(--ouro); background: #fffdf7; }
+    .processo__num { font-family: var(--fonte-num); font-size: .82rem; font-weight: 700; color: var(--grafite-800); }
+    .processo__tipo { font-size: .85rem; }
+    .processo small { display: block; color: var(--tinta-suave); font-size: .72rem; }
+    .etiqueta { display: inline-block; padding: .2rem .5rem; border-radius: 999px; font-size: .7rem; font-weight: 700; letter-spacing: .04em; }
+    .etiqueta--alta { background: #fbe9e9; color: var(--vermelho); }
+    .etiqueta--media { background: #fbf1e0; color: var(--amarelo); }
+    .etiqueta--baixa { background: #e8f1ea; color: var(--verde); }
+    .situacao { font-size: .8rem; font-weight: 600; }
+    .situacao::before { content: "●"; margin-right: .35rem; font-size: .65rem; }
+    .situacao--andamento { color: var(--azul); }
+    .situacao--aguardando { color: var(--amarelo); }
+    .situacao--concluido { color: var(--verde); }
+    .vazio { text-align: center; padding: 2rem; color: var(--tinta-suave); border: 1px dashed var(--borda); border-radius: var(--raio); }
+
+    /* Detalhe */
+    .detalhe { position: sticky; top: 1rem; }
+    .detalhe__cabecalho { padding: 1.1rem 1.2rem; border-bottom: 1px solid var(--borda); }
+    .detalhe__cabecalho h3 { font-size: 1.15rem; margin: 0; }
+    .detalhe__corpo { padding: 1.1rem 1.2rem; max-height: 70vh; overflow: auto; }
+    .detalhe__secao { margin-bottom: 1.4rem; }
+    .detalhe__secao h4 { font-family: var(--fonte-corpo); font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--tinta-suave); margin-bottom: .6rem; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { display: flex; gap: .5rem; align-items: flex-start; font-size: .85rem; padding: .25rem 0; }
+    .checklist input { margin-top: .25rem; accent-color: var(--ouro); }
+    .timeline { list-style: none; padding: 0 0 0 1rem; border-left: 1px solid var(--borda); margin: 0; }
+    .timeline li { position: relative; padding-bottom: .9rem; font-size: .83rem; }
+    .timeline li::before { content: ""; position: absolute; left: -1.3rem; top: .25rem; width: 9px; height: 9px; background: var(--ouro); border-radius: 50%; }
+    .timeline strong { display: block; }
+    .timeline time { font-family: var(--fonte-num); font-size: .7rem; color: var(--tinta-suave); }
+
+    /* Cadastro */
+    .cadastro { margin-top: 1.5rem; padding: 1.2rem; }
+    .cadastro h3 { font-size: 1.1rem; }
+    .form-grade { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+    .campo { display: flex; flex-direction: column; gap: .25rem; }
+    .campo label { font-size: .78rem; font-weight: 700; color: var(--grafite-700); }
+    .campo input, .campo select, .campo textarea { width: 100%; padding: .6rem .7rem; border: 1px solid var(--borda); border-radius: var(--raio); }
+    .campo textarea { grid-column: 1 / -1; min-height: 70px; resize: vertical; }
+    .campo .erro { color: var(--vermelho); font-size: .72rem; min-height: 1em; }
+    .campo.invalido input, .campo.invalido select { border-color: var(--vermelho); }
+    .nota { font-size: .78rem; color: var(--tinta-suave); background: var(--papel); border-left: 3px solid var(--ouro); padding: .6rem .8rem; margin-top: .8rem; }
+
+    /* Calendário */
+    .calendario-layout { display: grid; grid-template-columns: 1fr 300px; gap: 1.5rem; align-items: start; }
+    .calendario { padding: 1.2rem; }
+    .calendario__topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .calendario__topo h3 { margin: 0; font-size: 1.2rem; }
+    .calendario__botoes { display: flex; gap: .4rem; }
+    .calendario__botoes button { width: 32px; height: 32px; border: 1px solid var(--borda); background: #fff; cursor: pointer; border-radius: 4px; }
+    .grade-dias { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+    .dia-semana { text-align: center; font-size: .68rem; font-weight: 700; color: var(--tinta-suave); padding-bottom: .3rem; text-transform: uppercase; }
+    .dia { aspect-ratio: 1; border: 1px solid var(--borda); border-radius: 4px; padding: .25rem; font-size: .78rem; background: #fff; position: relative; cursor: default; }
+    .dia.vazio { border: 0; background: transparent; }
+    .dia.com-prazo { background: #fdf8ec; border-color: var(--ouro); font-weight: 700; cursor: pointer; }
+    .dia.com-prazo:hover { background: #f7edd4; }
+    .dia.hoje { outline: 2px solid var(--azul); outline-offset: -2px; }
+    .dia span.pontinho { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; background: var(--ouro); border-radius: 50%; }
+    .agenda-lateral { padding: 1.2rem; }
+    .agenda-lateral h4 { font-family: var(--fonte-corpo); font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--tinta-suave); }
+    .agenda-item { display: flex; gap: .7rem; padding: .6rem 0; border-bottom: 1px solid var(--borda); font-size: .82rem; }
+    .agenda-item:last-child { border: 0; }
+    .agenda-item time { font-family: var(--fonte-num); font-size: .72rem; color: var(--ouro); white-space: nowrap; }
+
+    /* Rodapé */
+    .rodape { background: var(--grafite-900); color: #c8ccd2; padding: 2.8rem 0 1.6rem; border-top: 3px solid var(--ouro); }
+    .rodape__topo { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; align-items: center; }
+    .rodape__marca strong { color: #fff; font-family: var(--fonte-titulo); letter-spacing: .05em; }
+    .moss-bloco { border: 1px solid rgba(184,154,91,.4); padding: 1.1rem 1.3rem; border-radius: var(--raio); max-width: 430px; background: rgba(255,255,255,.03); }
+    .moss-bloco p { font-size: .85rem; margin-bottom: .8rem; }
+    .rodape__base { border-top: 1px solid rgba(255,255,255,.1); margin-top: 2rem; padding-top: 1rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .76rem; }
+
+    .selo-demo { position: fixed; right: 1rem; bottom: 1rem; z-index: 40; background: var(--vermelho); color: #fff;
+      font-family: var(--fonte-num); font-size: .66rem; letter-spacing: .1em; padding: .45rem .7rem; border-radius: 999px; pointer-events: none; }
+
+    /* Área de impressão: só aparece quando imprimimos o resumo */
+    #areaImpressao { display: none; }
+    @media print {
+      body * { visibility: hidden !important; }
+      #areaImpressao, #areaImpressao * { visibility: visible !important; }
+      #areaImpressao { display: block !important; position: absolute; left: 0; top: 0; width: 100%; color: #000; font-family: Georgia, serif; }
+      #areaImpressao h1 { font-size: 20pt; }
+      #areaImpressao table { width: 100%; border-collapse: collapse; margin-top: 12pt; }
+      #areaImpressao th, #areaImpressao td { border: 1px solid #000; padding: 6pt; text-align: left; font-size: 10pt; }
+      .nao-imprimir { display: none !important; }
+    }
+
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+
+    /* Responsividade */
+    @media (max-width: 980px) {
+      .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--grafite-900); flex-direction: column; gap: 0; padding: .5rem 1.25rem 1rem; z-index: 20; }
+      .nav.ativa { display: flex; }
+      .nav a { padding: .7rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .menu-toggle { display: block; }
+      .hero .container, .sobre, .painel, .calendario-layout { grid-template-columns: 1fr; }
+      .indicadores { grid-template-columns: repeat(2, 1fr); }
+      .detalhe { position: static; }
+      .processo { grid-template-columns: 1.2fr 1fr .8fr; }
+      .processo__prazo, .processo__acao { grid-column: span 1; }
+    }
+    @media (max-width: 600px) {
+      .container { width: min(100% - 1.4rem, var(--largura)); }
+      .indicadores, .sobre__lista, .form-grade { grid-template-columns: 1fr; }
+      .processo { grid-template-columns: 1fr 1fr; }
+      .processo__num, .processo__tipo { grid-column: 1 / -1; }
+      .dia { font-size: .68rem; }
+      .selo-demo { font-size: .56rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Barra superior: aviso de dados fictícios (importante para não induzir erro) -->
+  <div class="barra">
+    <div class="container">
+      <span>◎ AMBIENTE DEMONSTRATIVO</span>
+      <span class="destaque">⚠ TODOS OS PROCESSOS E PRAZOS SÃO FICTÍCIOS</span>
+    </div>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header class="cabecalho">
+    <div class="container">
+      <a class="logo" href="#inicio" aria-label="PERÍCIA JUDICIAL PRIME — início">
+        <span class="logo__selo" aria-hidden="true">PJ</span>
+        <span><strong>PERÍCIA JUDICIAL PRIME</strong><small>ÉTICA · TÉCNICA · CLAREZA</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+        <a href="#sobre">O profissional</a>
+        <a href="#painel">Painel</a>
+        <a href="#calendario">Prazos</a>
+        <a href="#contato">Contato</a>
+        <a class="btn btn--ouro" href="#painel">Abrir painel demonstrativo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div>
+          <span class="marcador">◇ Perícia judicial · demonstração</span>
+          <h1>Análise técnica, <em>clareza</em> e responsabilidade em cada perícia.</h1>
+          <p class="hero__texto">Conheça um ambiente demonstrativo de gestão de perícias: processos organizados, prazos sob controle, documentos conferidos e histórico de atividades — tudo com dados inventados para mostrar o potencial da ferramenta.</p>
+          <div class="hero__acoes">
+            <a class="btn btn--ouro" href="#painel">Explorar o painel →</a>
+            <a class="btn btn--fantasma" href="#sobre" style="border-color:rgba(255,255,255,.35);color:#fff;background:transparent">Conheça o profissional</a>
+          </div>
+        </div>
+        <!-- Ilustração original: documento pericial com lupa e selo -->
+        <div class="hero__arte" role="img" aria-label="Ilustração de um laudo pericial com lupa, carimbo e linhas de texto">
+          <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="520" height="400" fill="#2b3038"/>
+            <g stroke="#3d434d" stroke-width="1"><path d="M0 40h520M0 80h520M0 120h520M0 160h520M0 200h520M0 240h520M0 280h520M0 320h520M0 360h520"/></g>
+            <!-- folha -->
+            <rect x="70" y="35" width="290" height="330" fill="#f7f5f0" stroke="#b89a5b" stroke-width="2"/>
+            <rect x="90" y="55" width="250" height="290" fill="none" stroke="#dedbd2"/>
+            <!-- título e linhas -->
+            <rect x="110" y="75" width="150" height="9" fill="#31363f"/>
+            <rect x="110" y="94" width="210" height="4" fill="#c9c6bd"/>
+            <g fill="#d8d5cc">
+              <rect x="110" y="115" width="210" height="4"/><rect x="110" y="130" width="195" height="4"/>
+              <rect x="110" y="145" width="210" height="4"/><rect x="110" y="160" width="170" height="4"/>
+              <rect x="110" y="175" width="210" height="4"/><rect x="110" y="190" width="200" height="4"/>
+              <rect x="110" y="205" width="210" height="4"/><rect x="110" y="220" width="140" height="4"/>
+            </g>
+            <!-- selo dourado -->
+            <circle cx="310" cy="285" r="42" fill="none" stroke="#b89a5b" stroke-width="3"/>
+            <circle cx="310" cy="285" r="34" fill="none" stroke="#b89a5b" stroke-width="1"/>
+            <text x="310" y="281" text-anchor="middle" font-size="9" fill="#b89a5b" font-family="Georgia">PERÍCIA</text>
+            <text x="310" y="296" text-anchor="middle" font-size="9" fill="#b89a5b" font-family="Georgia">JUDICIAL</text>
+            <path d="M290 312h40" stroke="#b89a5b" stroke-width="1"/>
+            <!-- lupa -->
+            <g transform="translate(330,150)">
+              <circle r="62" fill="rgba(184,154,91,.10)" stroke="#d4b97f" stroke-width="7"/>
+              <path d="M44 44 L88 88" stroke="#d4b97f" stroke-width="14" stroke-linecap="round"/>
+              <path d="M-25 -10 Q0 -30 25 -10" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre o profissional (dados explicitamente fictícios) -->
+    <section class="secao secao--branco" id="sobre">
+      <div class="container sobre">
+        <div class="retrato" role="img" aria-label="Ilustração de um perito com pasta de documentos">
+          <svg viewBox="0 0 340 360" xmlns="http://www.w3.org/2000/svg">
+            <rect width="340" height="360" fill="#eeece5"/>
+            <rect x="20" y="20" width="300" height="320" fill="none" stroke="#b89a5b"/>
+            <!-- busto -->
+            <ellipse cx="170" cy="330" rx="110" ry="40" fill="#d8d5cc"/>
+            <path d="M95 330 Q100 215 170 215 Q240 215 245 330Z" fill="#31363f"/>
+            <path d="M150 215 L170 250 L190 215 Z" fill="#f7f5f0"/>
+            <rect x="163" y="205" width="14" height="22" fill="#c9a887"/>
+            <circle cx="170" cy="175" r="42" fill="#d9b795"/>
+            <path d="M128 168 Q130 125 170 125 Q210 125 212 168 Q200 145 170 145 Q140 145 128 168Z" fill="#4a4a4a"/>
+            <circle cx="156" cy="178" r="3" fill="#31363f"/><circle cx="184" cy="178" r="3" fill="#31363f"/>
+            <path d="M160 196 Q170 202 180 196" fill="none" stroke="#8a6b52" stroke-width="2"/>
+            <!-- pasta -->
+            <rect x="220" y="255" width="92" height="62" rx="4" fill="#b89a5b"/>
+            <rect x="228" y="248" width="76" height="12" rx="3" fill="#8e7441"/>
+            <rect x="262" y="280" width="16" height="9" rx="2" fill="#f7f5f0"/>
+          </svg>
+        </div>
+        <div class="sobre__texto">
+          <span class="eyebrow">Apresentação</span>
+          <h2>Dr. Alexandre Moreira <span style="color:var(--ouro);font-size:.6em">— perfil fictício</span></h2>
+          <p>Este é um <strong>personagem criado para a demonstração</strong>. Não representa profissional real, não possui credenciais verdadeiras e não emite laudos. O objetivo é mostrar como um perito poderia organizar sua rotina em uma interface clara e segura.</p>
+          <p>O painel a seguir simula o fluxo de trabalho: cadastro de perícias, acompanhamento por situação e prioridade, prazos, checklist documental e linha do tempo das atividades.</p>
+          <ul class="sobre__lista">
+            <li>Perícias de engenharia (exemplo)</li>
+            <li>Perícias contábeis (exemplo)</li>
+            <li>Avaliação de danos (exemplo)</li>
+            <li>Vistorias técnicas (exemplo)</li>
+          </ul>
+          <p class="nota">⚠️ Nenhuma informação judicial real ou confidencial deve ser inserida aqui. Esta é uma aplicação pública de demonstração.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Painel demonstrativo -->
+    <section class="secao" id="painel">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">Painel administrativo</span>
+          <h2 class="titulo-secao">Gestão demonstrativa de perícias</h2>
+          <p class="subtitulo-secao">Busque, filtre, cadastre registros fictícios e acompanhe cada etapa. Os dados ficam apenas neste navegador (LocalStorage) e podem ser restaurados pelo botão abaixo.</p>
+        </div>
+
+        <!-- Indicadores calculados a partir dos dados -->
+        <div class="indicadores" id="indicadores" aria-live="polite"></div>
+
+        <div class="painel">
+          <div class="painel__principal">
+            <div class="barra-controles">
+              <div class="busca">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+                <input type="search" id="busca" placeholder="Buscar por número, tipo ou parte fictícia..." aria-label="Buscar processos">
+              </div>
+              <div class="filtros" role="group" aria-label="Filtrar por prioridade">
+                <button class="filtro" data-prioridade="todas" aria-pressed="true">Todas</button>
+                <button class="filtro" data-prioridade="alta" aria-pressed="false">Alta</button>
+                <button class="filtro" data-prioridade="media" aria-pressed="false">Média</button>
+                <button class="filtro" data-prioridade="baixa" aria-pressed="false">Baixa</button>
+              </div>
+              <div class="filtros" role="group" aria-label="Filtrar por situação">
+                <button class="filtro" data-situacao="todas" aria-pressed="true">Todas situações</button>
+                <button class="filtro" data-situacao="Em andamento" aria-pressed="false">Andamento</button>
+                <button class="filtro" data-situacao="Aguardando" aria-pressed="false">Aguardando</button>
+                <button class="filtro" data-situacao="Concluído" aria-pressed="false">Concluído</button>
+              </div>
+            </div>
+
+            <div class="lista-processos" id="listaProcessos" aria-live="polite"></div>
+
+            <!-- Cadastro de perícia fictícia -->
+            <div class="card cadastro">
+              <h3>Nova perícia fictícia</h3>
+              <form id="formNovo" novalidate>
+                <div class="form-grade">
+                  <div class="campo">
+                    <label for="novoNumero">Número do processo (fictício) *</label>
+                    <input type="text" id="novoNumero" placeholder="0000000-00.2026.8.26.0000">
+                    <span class="erro" aria-live="polite"></span>
+                  </div>
+                  <div class="campo">
+                    <label for="novoTipo">Tipo de perícia *</label>
+                    <select id="novoTipo">
+                      <option>Engenharia civil</option><option>Contabilidade</option>
+                      <option>Avaliação de danos</option><option>Vistoria técnica</option>
+                      <option>Informática forense</option>
+                    </select>
+                  </div>
+                  <div class="campo">
+                    <label for="novaPrioridade">Prioridade</label>
+                    <select id="novaPrioridade">
+                      <option value="baixa">Baixa</option><option value="media" selected>Média</option><option value="alta">Alta</option>
+                    </select>
+                  </div>
+                  <div class="campo">
+                    <label for="novaSituacao">Situação</label>
+                    <select id="novaSituacao">
+                      <option>Em andamento</option><option>Aguardando</option><option>Concluído</option>
+                    </select>
+                  </div>
+                  <div class="campo">
+                    <label for="novoPrazo">Prazo (data) *</label>
+                    <input type="date" id="novoPrazo">
+                    <span class="erro" aria-live="polite"></span>
+                  </div>
+                  <div class="campo">
+                    <label for="novaParte">Parte fictícia</label>
+                    <input type="text" id="novaParte" placeholder="Ex.: Empresa Exemplo Ltda.">
+                  </div>
+                  <div class="campo">
+                    <label for="novaDescricao">Descrição</label>
+                    <textarea id="novaDescricao" placeholder="Breve descrição fictícia da perícia"></textarea>
+                  </div>
+                </div>
+                <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem">
+                  <button class="btn btn--grafite" type="submit">Adicionar registro fictício</button>
+                  <button class="btn btn--fantasma" type="button" id="restaurar">Restaurar dados iniciais</button>
+                </div>
+                <p class="nota">Apenas dados inventados. Não insira números de processos reais, nomes de pessoas reais ou informações sigilosas.</p>
+              </form>
+            </div>
+          </div>
+
+          <!-- Painel de detalhe do processo selecionado -->
+          <aside class="card detalhe" id="detalhe" aria-live="polite">
+            <div class="detalhe__cabecalho">
+              <span class="eyebrow">Detalhes</span>
+              <h3 id="detalheTitulo">Selecione um processo</h3>
+              <small id="detalheNum" style="font-family:var(--fonte-num);color:var(--tinta-suave)"></small>
+            </div>
+            <div class="detalhe__corpo" id="detalheCorpo">
+              <p style="color:var(--tinta-suave);font-size:.85rem">Clique em um registro da lista para ver documentos, prazos e linha do tempo.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendário de prazos -->
+    <section class="secao secao--branco" id="calendario">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">Agenda demonstrativa</span>
+          <h2 class="titulo-secao">Calendário de prazos</h2>
+          <p class="subtitulo-secao">Navegue entre os meses e clique em um dia marcado para filtrar os processos com prazo naquela data.</p>
+        </div>
+        <div class="calendario-layout">
+          <div class="card calendario">
+            <div class="calendario__topo">
+              <h3 id="mesAtual">—</h3>
+              <div class="calendario__botoes">
+                <button id="mesAnterior" aria-label="Mês anterior">‹</button>
+                <button id="mesSeguinte" aria-label="Próximo mês">›</button>
+              </div>
+            </div>
+            <div class="grade-dias" id="gradeDias" role="grid" aria-label="Calendário de prazos"></div>
+          </div>
+          <aside class="card agenda-lateral">
+            <h4>Prazos neste mês</h4>
+            <div id="agendaMes"></div>
+            <button class="btn btn--ouro btn--pequeno" id="imprimir" style="margin-top:1rem">Gerar resumo para impressão</button>
+            <p class="nota" style="font-size:.72rem">O resumo é demonstrativo e não tem valor de documento oficial.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato (simulado) -->
+    <section class="secao secao--grafite" id="contato">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">Fale com a MOSS Digital</span>
+          <h2 class="titulo-secao">Quer uma ferramenta como esta?</h2>
+          <p class="subtitulo-secao">Esta página é apenas uma demonstração. O contato abaixo é da MOSS Digital, responsável pelo desenvolvimento — não é o atendimento do profissional fictício.</p>
+        </div>
+        <a class="btn btn--ouro" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+    <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas</h2>
+      <p class="subtitulo-secao">Imagens de referência licenciadas, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/foto02.webp" alt="Sala de tribunal" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Sala de tribunal<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto03.webp" alt="Pastas de documentos" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Pastas de documentos<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto04.webp" alt="Microscópio de laboratório" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Microscópio de laboratório<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto05.webp" alt="Livros de direito" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Livros de direito<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto01.webp" alt="Exame forense de documentos" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Exame forense de documentos<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/foto06.webp" alt="Documento histórico ilustrativo" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Documento histórico ilustrativo<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape">
+    <div class="container">
+      <div class="rodape__topo">
+        <div class="rodape__marca">
+          <strong>PERÍCIA JUDICIAL PRIME</strong>
+          <p style="font-size:.82rem;max-width:420px;margin-top:.5rem">Demonstração com processos, prazos e pessoas inteiramente fictícios. Não gera laudos, certidões ou documentos com validade jurídica.</p>
+        </div>
+        <div class="moss-bloco">
+          <p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Acesse o catálogo completo de soluções demonstrativas.</p>
+          <a class="btn btn--ouro" id="btnMoss2" href="#" target="_blank" rel="noopener">Quero um site como este</a>
+        </div>
+      </div>
+      <div class="rodape__base">
+        <span>© 2026 PERÍCIA JUDICIAL PRIME — Demo MOSS Digital</span>
+        <span>Dados fictícios · Nenhuma informação confidencial</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="selo-demo" aria-hidden="true">DADOS FICTÍCIOS</div>
+
+  <!-- Área usada apenas na impressão do resumo -->
+  <div id="areaImpressao"></div>
+
+  <script>
+    /* ==========================================================================
+       JAVASCRIPT
+       1. Dados fictícios · 2. Persistência (LocalStorage) · 3. Renderização
+       4. Filtros/busca · 5. Detalhe + checklist + timeline · 6. Calendário
+       7. Cadastro · 8. Impressão · 9. WhatsApp MOSS
+       ========================================================================== */
+    'use strict';
+
+    /* ---------- 1. Dados fictícios ------------------------------------------ */
+    const WHATSAPP_MOSS = '5511942038103';
+    const NOME_DEMO = 'PERÍCIA JUDICIAL PRIME (Demo 02 — Perito judicial)';
+    const CHAVE = 'pericia-prime-dados-v1';
+
+    // Função auxiliar: data relativa a hoje (para o calendário sempre fazer sentido).
+    function daquiDias(n) {
+      const d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() + n);
+      return d.toISOString().slice(0, 10);
+    }
+    function formatarData(iso) {
+      if (!iso) return '—';
+      const [a, m, d] = iso.split('-');
+      return `${d}/${m}/${a}`;
+    }
+
+    // Processos inventados. Números seguem formato genérico, mas NÃO são reais.
+    const PROCESSOS_FICTICIOS = [
+      {
+        id: 'p1', numero: '0000123-45.2026.8.26.0001', tipo: 'Engenharia civil',
+        prioridade: 'alta', situacao: 'Em andamento', prazo: daquiDias(3), parte: 'Construtora Exemplo Ltda.',
+        descricao: 'Vistoria fictícia em edifício para verificação de patologias construtivas.',
+        documentos: [
+          { nome: 'Petição inicial (fictícia)', ok: true },
+          { nome: 'Matrícula do imóvel (fictícia)', ok: true },
+          { nome: 'Projeto arquitetônico (fictício)', ok: false },
+          { nome: 'Fotos da vistoria (fictícias)', ok: false }
+        ],
+        timeline: [
+          { data: daquiDias(-6), texto: 'Perícia determinada (simulação)' },
+          { data: daquiDias(-4), texto: 'Documentos iniciais recebidos' },
+          { data: daquiDias(-1), texto: 'Vistoria agendada' }
+        ]
+      },
+      {
+        id: 'p2', numero: '0000456-78.2026.8.26.0002', tipo: 'Contabilidade',
+        prioridade: 'media', situacao: 'Aguardando', prazo: daquiDias(9), parte: 'Comércio Modelo S/A',
+        descricao: 'Análise contábil demonstrativa de demonstrações financeiras.',
+        documentos: [
+          { nome: 'Balancetes (fictícios)', ok: true },
+          { nome: 'Notas fiscais (fictícias)', ok: false },
+          { nome: 'Contrato social (fictício)', ok: false }
+        ],
+        timeline: [
+          { data: daquiDias(-3), texto: 'Solicitação de documentos enviada' },
+          { data: daquiDias(-1), texto: 'Aguardando complementação' }
+        ]
+      },
+      {
+        id: 'p3', numero: '0000789-12.2026.8.26.0003', tipo: 'Avaliação de danos',
+        prioridade: 'baixa', situacao: 'Concluído', prazo: daquiDias(-5), parte: 'Seguradora Exemplo S/A',
+        descricao: 'Avaliação ilustrativa de danos materiais em veículo.',
+        documentos: [
+          { nome: 'Boletim de ocorrência (fictício)', ok: true },
+          { nome: 'Orçamentos (fictícios)', ok: true },
+          { nome: 'Laudo demonstrativo', ok: true }
+        ],
+        timeline: [
+          { data: daquiDias(-12), texto: 'Perícia iniciada' },
+          { data: daquiDias(-8), texto: 'Vistoria realizada' },
+          { data: daquiDias(-5), texto: 'Laudo demonstrativo gerado' }
+        ]
+      },
+      {
+        id: 'p4', numero: '0000321-98.2026.8.26.0004', tipo: 'Vistoria técnica',
+        prioridade: 'alta', situacao: 'Em andamento', prazo: daquiDias(1), parte: 'Condomínio Exemplo',
+        descricao: 'Vistoria demonstrativa de áreas comuns e instalações.',
+        documentos: [
+          { nome: 'Ata de assembleia (fictícia)', ok: true },
+          { nome: 'Planta das áreas comuns (fictícia)', ok: false }
+        ],
+        timeline: [
+          { data: daquiDias(-2), texto: 'Visita agendada' },
+          { data: daquiDias(0), texto: 'Prazo se aproximando' }
+        ]
+      },
+      {
+        id: 'p5', numero: '0000654-33.2026.8.26.0005', tipo: 'Informática forense',
+        prioridade: 'media', situacao: 'Em andamento', prazo: daquiDias(16), parte: 'Empresa Demonstração tech',
+        descricao: 'Coleta e análise ilustrativa de dados em dispositivos fictícios.',
+        documentos: [
+          { nome: 'Determinação judicial (fictícia)', ok: true },
+          { nome: 'Termo de coleta (fictício)', ok: false }
+        ],
+        timeline: [
+          { data: daquiDias(-1), texto: 'Perícia iniciada' }
+        ]
+      }
+    ];
+
+    /* ---------- 2. Persistência (somente dados fictícios) -------------------- */
+    let processos = carregar();
+    let filtroPrioridade = 'todas';
+    let filtroSituacao = 'todas';
+    let termoBusca = '';
+    let selecionadoId = null;
+    let mesCalendario = new Date();
+    mesCalendario.setDate(1);
+
+    function carregar() {
+      try {
+        const salvo = localStorage.getItem(CHAVE);
+        return salvo ? JSON.parse(salvo) : clone(PROCESSOS_FICTICIOS);
+      } catch (e) {
+        return clone(PROCESSOS_FICTICIOS);
+      }
+    }
+    function salvar() {
+      try { localStorage.setItem(CHAVE, JSON.stringify(processos)); } catch (e) { /* modo privado: segue sem salvar */ }
+    }
+    function clone(obj) { return JSON.parse(JSON.stringify(obj)); }
+
+    /* ---------- 3. Renderização --------------------------------------------- */
+    const lista = document.getElementById('listaProcessos');
+    const ind = document.getElementById('indicadores');
+
+    function renderizarIndicadores() {
+      const total = processos.length;
+      const andamento = processos.filter(p => p.situacao === 'Em andamento').length;
+      const aguardando = processos.filter(p => p.situacao === 'Aguardando').length;
+      const concluidos = processos.filter(p => p.situacao === 'Concluído').length;
+      ind.innerHTML = `
+        <div class="card indicador"><span>Total de perícias</span><strong>${total}</strong><small>registros fictícios</small></div>
+        <div class="card indicador"><span>Em andamento</span><strong>${andamento}</strong><small>acompanhamento ativo</small></div>
+        <div class="card indicador"><span>Aguardando</span><strong>${aguardando}</strong><small>documentação pendente</small></div>
+        <div class="card indicador"><span>Concluídos</span><strong>${concluidos}</strong><small>laudos demonstrativos</small></div>`;
+    }
+
+    function processosFiltrados() {
+      const t = termoBusca.trim().toLowerCase();
+      return processos.filter(p => {
+        const okPrioridade = filtroPrioridade === 'todas' || p.prioridade === filtroPrioridade;
+        const okSituacao = filtroSituacao === 'todas' || p.situacao === filtroSituacao;
+        const texto = (p.numero + ' ' + p.tipo + ' ' + p.parte + ' ' + p.descricao).toLowerCase();
+        return okPrioridade && okSituacao && (!t || texto.includes(t));
+      });
+    }
+
+    function renderizarLista() {
+      const itens = processosFiltrados();
+      if (!itens.length) {
+        lista.innerHTML = '<div class="vazio">Nenhum processo fictício encontrado com os filtros atuais.</div>';
+        return;
+      }
+      lista.innerHTML = itens.map(p => `
+        <article class="processo ${p.id === selecionadoId ? 'selecionado' : ''}" data-id="${p.id}" tabindex="0" role="button"
+                 aria-label="Ver detalhes do processo ${p.numero}">
+          <div class="processo__num">${p.numero}<small>${p.parte || 'Parte não informada'}</small></div>
+          <div class="processo__tipo">${p.tipo}</div>
+          <div><span class="etiqueta etiqueta--${p.prioridade}">${p.prioridade.toUpperCase()}</span></div>
+          <div class="situacao situacao--${p.situacao === 'Em andamento' ? 'andamento' : p.situacao === 'Aguardando' ? 'aguardando' : 'concluido'}">${p.situacao}</div>
+          <div class="processo__prazo"><small>Prazo</small>${formatarData(p.prazo)}</div>
+          <div class="processo__acao"><button class="btn btn--fantasma btn--pequeno" type="button" data-ver="${p.id}">Ver</button></div>
+        </article>`).join('');
+
+      lista.querySelectorAll('.processo').forEach(card => {
+        const abrir = () => selecionar(card.dataset.id);
+        card.addEventListener('click', e => { if (!e.target.closest('[data-ver]')) abrir(); });
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); }
+        });
+      });
+    }
+
+    /* ---------- 4. Filtros e busca ------------------------------------------ */
+    document.querySelectorAll('[data-prioridade]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-prioridade]').forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        filtroPrioridade = btn.dataset.prioridade;
+        renderizarLista();
+      });
+    });
+    document.querySelectorAll('[data-situacao]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-situacao]').forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        filtroSituacao = btn.dataset.situacao;
+        renderizarLista();
+      });
+    });
+    document.getElementById('busca').addEventListener('input', e => {
+      termoBusca = e.target.value;
+      renderizarLista();
+    });
+
+    /* ---------- 5. Detalhe: checklist e linha do tempo ----------------------- */
+    function selecionar(id) {
+      selecionadoId = id;
+      renderizarLista();
+      renderizarDetalhe();
+    }
+
+    function renderizarDetalhe() {
+      const p = processos.find(x => x.id === selecionadoId);
+      const titulo = document.getElementById('detalheTitulo');
+      const num = document.getElementById('detalheNum');
+      const corpo = document.getElementById('detalheCorpo');
+      if (!p) {
+        titulo.textContent = 'Selecione um processo';
+        num.textContent = '';
+        corpo.innerHTML = '<p style="color:var(--tinta-suave);font-size:.85rem">Clique em um registro da lista para ver documentos, prazos e linha do tempo.</p>';
+        return;
+      }
+      titulo.textContent = p.tipo;
+      num.textContent = p.numero;
+      const documentos = p.documentos.map((d, i) => `
+        <li><input type="checkbox" id="doc-${p.id}-${i}" data-doc="${i}" ${d.ok ? 'checked' : ''}>
+            <label for="doc-${p.id}-${i}">${d.nome}</label></li>`).join('');
+      const timeline = p.timeline.map(t => `
+        <li><time>${formatarData(t.data)}</time><strong>${t.texto}</strong></li>`).join('');
+      corpo.innerHTML = `
+        <div class="detalhe__secao">
+          <h4>Situação e prazo</h4>
+          <p style="font-size:.85rem;margin:0">${p.situacao} · Prioridade <strong>${p.prioridade}</strong><br>
+          Prazo: <strong>${formatarData(p.prazo)}</strong></p>
+          <p style="font-size:.83rem;color:var(--tinta-suave);margin-top:.5rem">${p.descricao || 'Sem descrição fictícia.'}</p>
+        </div>
+        <div class="detalhe__secao">
+          <h4>Checklist de documentos (fictícios)</h4>
+          <ul class="checklist">${documentos}</ul>
+        </div>
+        <div class="detalhe__secao">
+          <h4>Linha do tempo</h4>
+          <ul class="timeline">${timeline}</ul>
+        </div>
+        <p class="nota" style="font-size:.72rem">Marcar documentos apenas atualiza esta simulação no navegador.</p>`;
+
+      // Eventos dos checkboxes: atualizam o processo e salvam no LocalStorage.
+      corpo.querySelectorAll('[data-doc]').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const idx = Number(cb.dataset.doc);
+          p.documentos[idx].ok = cb.checked;
+          salvar();
+        });
+      });
+    }
+
+    /* ---------- 6. Calendário de prazos ------------------------------------- */
+    const DIAS_SEMANA = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+    function prazosPorData() {
+      const mapa = {};
+      processos.forEach(p => {
+        (mapa[p.prazo] = mapa[p.prazo] || []).push(p);
+      });
+      return mapa;
+    }
+
+    function renderizarCalendario() {
+      const ano = mesCalendario.getFullYear();
+      const mes = mesCalendario.getMonth();
+      const primeiro = new Date(ano, mes, 1);
+      const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+      const hoje = new Date(); hoje.setHours(12, 0, 0, 0);
+      const mapa = prazosPorData();
+      const nomeMes = primeiro.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+      document.getElementById('mesAtual').textContent = nomeMes.charAt(0).toUpperCase() + nomeMes.slice(1);
+
+      let html = DIAS_SEMANA.map(d => `<div class="dia-semana">${d}</div>`).join('');
+      for (let i = 0; i < primeiro.getDay(); i++) html += '<div class="dia vazio"></div>';
+      for (let d = 1; d <= diasNoMes; d++) {
+        const iso = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const temPrazo = !!mapa[iso];
+        const ehHoje = hoje.toISOString().slice(0, 10) === iso;
+        html += `<div class="dia ${temPrazo ? 'com-prazo' : ''} ${ehHoje ? 'hoje' : ''}"
+          ${temPrazo ? `role="button" tabindex="0" data-dia="${iso}" aria-label="Prazo em ${formatarData(iso)}"` : ''}>
+          ${d}${temPrazo ? '<span class="pontinho"></span>' : ''}</div>`;
+      }
+      document.getElementById('gradeDias').innerHTML = html;
+
+      // Lista lateral com os prazos do mês
+      const itens = processos
+        .filter(p => p.prazo.startsWith(`${ano}-${String(mes + 1).padStart(2, '0')}`))
+        .sort((a, b) => a.prazo.localeCompare(b.prazo));
+      document.getElementById('agendaMes').innerHTML = itens.length
+        ? itens.map(p => `<div class="agenda-item"><time>${formatarData(p.prazo)}</time><span>${p.tipo}<br><small style="color:var(--tinta-suave)">${p.numero}</small></span></div>`).join('')
+        : '<p style="font-size:.82rem;color:var(--tinta-suave)">Nenhum prazo fictício neste mês.</p>';
+
+      document.querySelectorAll('[data-dia]').forEach(el => {
+        const ir = () => {
+          document.getElementById('busca').value = '';
+          termoBusca = '';
+          filtroPrioridade = 'todas'; filtroSituacao = 'todas';
+          document.querySelectorAll('[data-prioridade],[data-situacao]').forEach(b => b.setAttribute('aria-pressed', b.dataset.prioridade === 'todas' || b.dataset.situacao === 'todas'));
+          termoBusca = el.dataset.dia;
+          renderizarLista();
+          document.getElementById('painel').scrollIntoView({ behavior: 'smooth' });
+        };
+        el.addEventListener('click', ir);
+        el.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); ir(); } });
+      });
+    }
+
+    document.getElementById('mesAnterior').addEventListener('click', () => {
+      mesCalendario.setMonth(mesCalendario.getMonth() - 1); renderizarCalendario();
+    });
+    document.getElementById('mesSeguinte').addEventListener('click', () => {
+      mesCalendario.setMonth(mesCalendario.getMonth() + 1); renderizarCalendario();
+    });
+
+    /* ---------- 7. Cadastro de nova perícia fictícia ------------------------ */
+    document.getElementById('formNovo').addEventListener('submit', e => {
+      e.preventDefault();
+      let valido = true;
+      const numero = document.getElementById('novoNumero');
+      const prazo = document.getElementById('novoPrazo');
+      const erroNum = numero.parentElement.querySelector('.erro');
+      const erroPrazo = prazo.parentElement.querySelector('.erro');
+
+      erroNum.textContent = numero.value.trim().length < 8 ? 'Informe um número fictício com ao menos 8 caracteres.' : '';
+      erroPrazo.textContent = !prazo.value ? 'Informe uma data de prazo.' : '';
+      numero.parentElement.classList.toggle('invalido', !!erroNum.textContent);
+      prazo.parentElement.classList.toggle('invalido', !!erroPrazo.textContent);
+      if (erroNum.textContent || erroPrazo.textContent) valido = false;
+      if (!valido) return;
+
+      const Nova = {
+        id: 'p' + Date.now(),
+        numero: numero.value.trim(),
+        tipo: document.getElementById('novoTipo').value,
+        prioridade: document.getElementById('novaPrioridade').value,
+        situacao: document.getElementById('novaSituacao').value,
+        prazo: prazo.value,
+        parte: document.getElementById('novaParte').value.trim() || 'Parte fictícia',
+        descricao: document.getElementById('novaDescricao').value.trim() || 'Registro fictício criado na demonstração.',
+        documentos: [{ nome: 'Documento inicial (fictício)', ok: false }],
+        timeline: [{ data: new Date().toISOString().slice(0, 10), texto: 'Registro criado na demonstração' }]
+      };
+      processos.unshift(Nova);
+      salvar();
+      renderizarIndicadores();
+      renderizarLista();
+      renderizarCalendario();
+      selecionar(Nova.id);
+      e.target.reset();
+      document.getElementById('painel').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('restaurar').addEventListener('click', () => {
+      processos = clone(PROCESSOS_FICTICIOS);
+      salvar();
+      selecionadoId = null;
+      renderizarIndicadores(); renderizarLista(); renderizarDetalhe(); renderizarCalendario();
+      alert('Dados fictícios restaurados.');
+    });
+
+    /* ---------- 8. Resumo para impressão ------------------------------------ */
+    document.getElementById('imprimir').addEventListener('click', () => {
+      const total = processos.length;
+      const andamento = processos.filter(p => p.situacao === 'Em andamento').length;
+      const concluidos = processos.filter(p => p.situacao === 'Concluído').length;
+      const linhas = processos.map(p => `
+        <tr><td>${p.numero}</td><td>${p.tipo}</td><td>${p.prioridade}</td><td>${p.situacao}</td><td>${formatarData(p.prazo)}</td></tr>`).join('');
+      document.getElementById('areaImpressao').innerHTML = `
+        <h1>Resumo demonstrativo de perícias</h1>
+        <p><strong>DOCUMENTO FICTÍCIO — SEM VALIDADE JURÍDICA</strong></p>
+        <p>Total de registros: ${total} · Em andamento: ${andamento} · Concluídos: ${concluidos}</p>
+        <table><thead><tr><th>Processo (fictício)</th><th>Tipo</th><th>Prioridade</th><th>Situação</th><th>Prazo</th></tr></thead>
+        <tbody>${linhas}</tbody></table>
+        <p style="margin-top:14pt;font-size:9pt">Gerado pela demonstração PERÍCIA JUDICIAL PRIME — MOSS Digital.</p>`;
+      window.print();
+    });
+
+    /* ---------- 9. Menu e WhatsApp da MOSS ---------------------------------- */
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('navPrincipal');
+    menuToggle.addEventListener('click', () => {
+      const aberta = nav.classList.toggle('ativa');
+      menuToggle.setAttribute('aria-expanded', String(aberta));
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('ativa'); menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    const msg = encodeURIComponent('Olá! A demonstração ' + NOME_DEMO + ' despertou meu interesse. Gostaria de saber mais.');
+    const link = `https://wa.me/${WHATSAPP_MOSS}?text=${msg}`;
+    document.getElementById('btnMoss').href = link;
+    document.getElementById('btnMoss2').href = link;
+
+    // Renderização inicial
+    renderizarIndicadores();
+    renderizarLista();
+    renderizarDetalhe();
+    renderizarCalendario();
+  </script>
+</body>
+</html>

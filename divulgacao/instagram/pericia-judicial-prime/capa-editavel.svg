@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <rect width="1080" height="1350" fill="#23272e"/>
+  <image href="captura-demo.webp" x="40" y="40" width="1000" height="625"/>
+  <text x="60" y="800" font-family="Arial" font-weight="bold" font-size="68" fill="#c9ab6b">PERÍCIA JUDICIAL PRIME</text>
+  <text x="60" y="895" font-family="Arial" font-size="34" fill="#fff">Perícia judicial</text>
+  <text x="60" y="965" font-family="Arial" font-size="27" fill="#fff">Painel de processos fictícios, prazos e checklist documental.</text>
+  <rect x="60" y="1075" width="960" height="4" fill="#c9ab6b"/>
+  <text x="60" y="1140" font-family="Arial" font-size="34" fill="#fff">Demonstração desenvolvida pela MOSS Digital</text>
+  <text x="60" y="1195" font-family="Arial" font-size="22" fill="#C9D6DE">Imagens, nomes e valores fictícios</text>
+  <text x="60" y="1235" font-family="Arial" font-size="22" fill="#c9ab6b">mossdigital.com.br</text>
+</svg>
