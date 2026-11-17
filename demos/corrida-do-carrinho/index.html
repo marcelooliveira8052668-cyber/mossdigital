@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Corrida do Carrinho — um jogo arcade fictício da MOSS Digital: capture produtos, evite obstáculos e aprenda sobre e-commerce se divertindo.">
+  <meta name="theme-color" content="#0b1f3a">
+  <title>Corrida do Carrinho — MOSS Digital</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#jogo">Pular para o jogo</a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a class="brand" href="https://mossdigital.com.br" target="_blank" rel="noopener">
+        <span class="brand__mark">M</span>
+        <span><strong>MOSS Digital</strong><small>Arcade demonstrativo</small></span>
+      </a>
+      <a class="voltar" href="https://mossdigital.com.br/#catalogo" target="_blank" rel="noopener">← Voltar ao catálogo</a>
+    </div>
+  </header>
+
+  <main id="jogo" class="wrap">
+    <div class="demo-banner">🎮 JOGO DEMONSTRATIVO · pontos, produtos e obstáculos são fictícios · nenhum dinheiro é movimentado</div>
+
+    <div class="cabecalho">
+      <div>
+        <span class="eyebrow">Arcade · MOSS Commerce</span>
+        <h1>Corrida do Carrinho</h1>
+        <p>Capture os produtos, desvie dos problemas do e-commerce e some pontos. Quanto mais rápido, maior o desafio!</p>
+      </div>
+      <button class="btn-som" id="btn-som" aria-pressed="false" aria-label="Ativar som">🔇 Som</button>
+    </div>
+
+    <section class="hud" aria-label="Placar">
+      <div class="hud__item"><span>Pontos</span><strong id="pontos">0</strong></div>
+      <div class="hud__item"><span>Recorde</span><strong id="recorde">0</strong></div>
+      <div class="hud__item"><span>Tempo</span><strong id="tempo">90s</strong></div>
+      <div class="hud__item"><span>Nível</span><strong id="nivel">1</strong></div>
+      <div class="hud__item"><span>Combo</span><strong id="combo">×1</strong></div>
+      <div class="hud__item hud__vidas"><span>Vidas</span><strong id="vidas" aria-label="3 vidas">♥♥♥</strong></div>
+    </section>
+
+    <div class="palco" id="palco">
+      <canvas id="canvas" width="900" height="560" aria-label="Área do jogo: use as setas ou arraste o carrinho"></canvas>
+
+      <div class="overlay" id="overlay-inicio">
+        <div class="overlay__card">
+          <span class="overlay__emoji">🛒</span>
+          <h2>Corrida do Carrinho</h2>
+          <p>Use <kbd>←</kbd> <kbd>→</kbd> ou <kbd>A</kbd> <kbd>D</kbd> para mover. No celular, arraste o dedo na tela.</p>
+          <ul class="legenda">
+            <li><span class="chip chip--produto">📦</span> produtos = pontos</li>
+            <li><span class="chip chip--ruim">🚫</span> esgotado/cupom inválido = perde vida</li>
+            <li><span class="chip chip--bom">🎟️</span> MOSS10 = pontos dobrados</li>
+            <li><span class="chip chip--bom">🚚</span> frete grátis = escudo</li>
+          </ul>
+          <button class="btn btn--primary" id="btn-iniciar">Começar a jogar</button>
+          <p class="overlay__dica">Dica: encadeie capturas para aumentar o combo!</p>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="overlay-pausa">
+        <div class="overlay__card">
+          <span class="overlay__emoji">⏸️</span>
+          <h2>Pausado</h2>
+          <p>Pressione <kbd>P</kbd> ou clique abaixo para continuar.</p>
+          <button class="btn btn--primary" id="btn-continuar">Continuar</button>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="overlay-fim">
+        <div class="overlay__card">
+          <span class="overlay__emoji" id="fim-emoji">🏁</span>
+          <h2 id="fim-titulo">Fim de jogo!</h2>
+          <p id="fim-texto">Você fez 0 pontos.</p>
+          <div class="fim-stats">
+            <div><span>Recorde</span><strong id="fim-recorde">0</strong></div>
+            <div><span>Nível</span><strong id="fim-nivel">1</strong></div>
+          </div>
+          <button class="btn btn--primary" id="btn-reiniciar">Jogar novamente</button>
+        </div>
+      </div>
+
+      <div class="aviso-nivel hidden" id="aviso-nivel">Nível 2!</div>
+    </div>
+
+    <div class="rodape-controles">
+      <div class="controles-teclado">
+        <button class="seta" id="btn-esquerda" aria-label="Mover para a esquerda">←</button>
+        <button class="seta" id="btn-direita" aria-label="Mover para a direita">→</button>
+        <span>Setas / A-D · <kbd>P</kbd> pausar · <kbd>Espaço</kbd> começar</span>
+      </div>
+      <p class="dica" id="dica" aria-live="polite">💡 Dica: frete grátis aumenta a conversão da loja.</p>
+    </div>
+
+    <div class="como-jogar">
+      <h2>Como o jogo funciona (didático)</h2>
+      <div class="grid-dicas">
+        <article><span>1️⃣</span><h3>Evento</h3><p>O teclado ou o toque dispara um evento JavaScript que move o carrinho.</p></article>
+        <article><span>2️⃣</span><h3>Colisão</h3><p>Uma função compara posições. Se o item encostar no carrinho, pontua ou machuca.</p></article>
+        <article><span>3️⃣</span><h3>Estado</h3><p>Pontos, vidas e nível ficam em variáveis — igual ao carrinho da loja.</p></article>
+        <article><span>4️⃣</span><h3>Persistência</h3><p>O recorde é salvo no localStorage, como o carrinho da demonstração.</p></article>
+      </div>
+      <a class="link-lab" href="https://mossdigital.com.br/demos/commerce-enterprise-academy/index.html#/laboratorio" target="_blank" rel="noopener">🔬 Ver o código funcionando no Laboratório da loja →</a>
+    </div>
+  </main>
+
+  <footer class="footer">© 2026 MOSS Digital · Jogo demonstrativo independente · Sem pagamentos reais.</footer>
+
+  <script src="js/game.js"></script>
+</body>
+</html>
