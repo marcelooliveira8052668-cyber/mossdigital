@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testes — MOSS Commerce Academy</title>
+  <style>
+    body{font-family:system-ui,sans-serif;background:#0d1829;color:#dbe7f8;max-width:820px;margin:2rem auto;padding:0 1rem}
+    h1{color:#f5a623}.case{padding:.6rem .8rem;border-radius:8px;margin:.4rem 0;background:#16233a;font-family:Consolas,monospace;font-size:.9rem}
+    .ok{border-left:4px solid #36d399}.fail{border-left:4px solid #ff6b6b}
+    button{padding:.7rem 1.2rem;background:#f5a623;border:0;border-radius:8px;font-weight:800;cursor:pointer}
+    #summary{margin-top:1rem;font-size:1.1rem;font-weight:800}
+  </style>
+</head>
+<body>
+  <h1>Testes automatizados (sem pagamentos reais)</h1>
+  <p>Valida funções puras e o cálculo do carrinho. Nenhum teste chama serviço externo.</p>
+  <button id="run">Executar testes</button>
+  <div id="results"></div>
+  <div id="summary"></div>
+
+  <!-- Carrega apenas o necessário e cria stubs para isolar as funções. -->
+  <script src="../js/core/utils.js"></script>
+  <script>
+    // Stubs mínimos para cart.service.js operar sem a aplicação completa.
+    window.MOSS = window.MOSS || {};
+    var _state = { cart: [], coupon: null };
+    MOSS.store = {
+      get:function(){ return _state; },
+      setCoupon:function(c){ _state.coupon = c; }
+    };
+    MOSS.catalog = {
+      byId:function(id){ return { id:id, name:'Produto '+id, price:100, stock:10 }; }
+    };
+    MOSS.coupons = {
+      get:function(c){ return c==='MOSS10' ? {code:c,percent:10} : c==='PRIME20' ? {code:c,percent:20} : null; }
+    };
+    MOSS.shipping = {
+      get:function(id){ return id==='expressa' ? {id:id,price:40} : {id:id,price:20}; }
+    };
+    MOSS.notify = { toast:function(){} };
+  </script>
+  <script src="../js/services/cart.service.js"></script>
+  <script>
+    var pass = 0, fail = 0;
+    function assert(name, cond, extra){
+      var el = document.createElement('div');
+      el.className = 'case ' + (cond ? 'ok' : 'fail');
+      el.textContent = (cond ? '✓' : '✕') + ' ' + name + (cond ? '' : ' — esperado/diferente: ' + (extra||''));
+      document.getElementById('results').appendChild(el);
+      cond ? pass++ : fail++;
+    }
+    function eq(a,b){ return Math.abs(Number(a)-Number(b)) < 0.001; }
+
+    document.getElementById('run').addEventListener('click', function(){
+      document.getElementById('results').innerHTML = '';
+      pass = 0; fail = 0;
+      var u = MOSS.utils, c = MOSS.cartService;
+
+      assert('normalize remove acentos', u.normalize('Ação') === 'acao');
+      assert('normalize ignora caixa', u.normalize('FONE') === 'fone');
+      assert('normalize apara espaços', u.normalize('  fone  ') === 'fone');
+      assert('round2 corrige ponto flutuante', eq(u.round2(0.1+0.2), 0.3));
+      assert('isEmail válido', u.isEmail('a@b.com') === true);
+      assert('isEmail inválido', u.isEmail('abc') === false);
+
+      _state.cart = []; _state.coupon = null;
+      assert('carrinho vazio → total 0', eq(c.getTotals().total, 0));
+
+      _state.cart = [{id:'p1',qty:2}]; _state.coupon = null;
+      var t = c.getTotals('economica');
+      assert('subtotal 2×100 = 200', eq(t.subtotal,200), t.subtotal);
+      assert('frete econômico = 20', eq(t.shipping,20), t.shipping);
+      assert('total sem cupom = 220', eq(t.total,220), t.total);
+
+      _state.coupon = 'MOSS10';
+      t = c.getTotals('economica');
+      assert('desconto 10% = 20', eq(t.discount,20), t.discount);
+      assert('total com MOSS10 = 200', eq(t.total,200), t.total);
+
+      _state.coupon = 'PRIME20';
+      t = c.getTotals('economica');
+      assert('desconto 20% = 40', eq(t.discount,40), t.discount);
+
+      _state.coupon = 'INVALIDO';
+      t = c.getTotals('economica');
+      assert('cupom inválido não desconta', eq(t.discount,0), t.discount);
+
+      document.getElementById('summary').textContent = pass + ' passaram, ' + fail + ' falharam.';
+    });
+  </script>
+</body>
+</html>
