@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102a43">
+<meta name="description" content="ACESSO PRIME — demonstração de empresa de acessibilidade com foco em navegação por teclado, contraste e leitores de tela. Dados fictícios, sem declaração de conformidade.">
+<title>ACESSO PRIME — Acessibilidade Inclusiva | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  ACESSO PRIME — DEMONSTRAÇÃO 13 DO CATÁLOGO MOSS DIGITAL
+  ============================================================================
+  DEMO COM FOCO EM ACESSIBILIDADE:
+  - Skip link, marcos semânticos, headings em ordem
+  - Foco visível reforçado, navegação por teclado
+  - Rótulos sempre visíveis, aria-describedby, aria-live, aria-pressed
+  - Contraste alto, botões de alto contraste e tamanho de fonte
+  - prefers-reduced-motion e textos alternativos em todas as ilustrações
+
+  ⚠️ Não declare conformidade legal ou técnica. As informações são gerais e
+  devem ser verificadas por profissional e pelas normas vigentes.
+
+  ONDE EDITAR:
+  - Adaptações: ADAPTACOES (JS)
+  - Checklist: CHECKLIST (JS)
+  - Projetos/galeria: PROJETOS (JS)
+  - WhatsApp MOSS: WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — alto contraste por padrão */
+:root{
+ --fundo:#ffffff;--frente:#12212f;--frente-suave:#3d4d5c;--linha:#7c8b99;
+ --destaque:#004c99;--destaque-escuro:#003366;--foco:#ffbf00;--Painel:#eef3f8;
+ --sucesso:#0b5d3b;--erro:#a11212;
+ --sombra:0 6px 18px rgba(18,33,47,.12);--raio:8px;
+ --titulo:"Segoe UI","Trebuchet MS",sans-serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1180px;--escala-fonte:1;
+}
+/* Tema de alto contraste alternativo (ligado pelo botão) */
+html.contraste-alto{
+ --fundo:#000000;--frente:#ffffff;--frente-suave:#f0f0f0;--linha:#ffffff;
+ --destaque:#ffd400;--destaque-escuro:#ffd400;--Painel:#111111;
+ --sucesso:#7dffb0;--erro:#ff9a9a;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--frente);background:var(--fundo);
+ line-height:1.6;font-size:calc(16px * var(--escala-fonte));-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--titulo);line-height:1.2;color:var(--frente);margin:0 0 .5em}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.2rem}a{color:var(--destaque)}
+button,input,select,textarea{font:inherit;color:inherit}
+svg{display:block;max-width:100%}
+:focus{outline:none}
+:focus-visible{outline:4px solid var(--foco);outline-offset:3px;border-radius:2px}
+html.contraste-alto :focus-visible{outline:4px solid #ffd400;outline-offset:4px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--foco);color:#000;font-weight:800;padding:.7rem 1rem;z-index:1000}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0;border-bottom:2px solid var(--linha)}
+.secao--painel{background:var(--Painel)}
+.cabecalho-secao{max-width:720px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--destaque-escuro);font-weight:800}
+html.contraste-alto .eyebrow{color:var(--destaque)}
+.titulo-secao{font-size:clamp(1.9rem,3.8vw,2.6rem)}
+.subtitulo-secao{font-size:1.05rem;color:var(--frente-suave)}
+.centro{text-align:center;margin-inline:auto}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.3rem;border:3px solid var(--destaque);
+ border-radius:var(--raio);font-weight:800;cursor:pointer;text-decoration:none;font-size:.95rem;background:var(--fundo);color:var(--destaque)}
+.btn:hover{background:var(--destaque);color:var(--fundo)}
+.btn--primario{background:var(--destaque);color:#fff}
+html.contraste-alto .btn--primario{background:var(--destaque);color:#000}
+.btn--primario:hover{background:var(--destaque-escuro);color:#fff}
+html.contraste-alto .btn--primario:hover{background:#fff;color:#000}
+.btn--bloco{width:100%}
+.btn--pequeno{padding:.45rem .8rem;font-size:.85rem}
+.card{background:var(--fundo);border:2px solid var(--linha);border-radius:var(--raio);box-shadow:var(--sombra)}
+html.contraste-alto .card{box-shadow:none}
+
+/* Barra/cabeçalho */
+.barra{background:var(--frente);color:var(--fundo);font-family:var(--mono);font-size:.75rem}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.5rem;flex-wrap:wrap}
+.cabecalho{background:var(--fundo);border-bottom:3px solid var(--frente);position:sticky;top:0;z-index:50}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--frente)}
+.logo svg{width:44px;height:44px}
+.logo strong{display:block;font-size:1.15rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em}
+.controles-acessibilidade{display:flex;gap:.4rem;flex-wrap:wrap}
+.controles-acessibilidade button{padding:.45rem .7rem;border:2px solid var(--destaque);background:var(--fundo);color:var(--destaque);
+ border-radius:var(--raio);font-weight:800;cursor:pointer;font-size:.82rem}
+.controles-acessibilidade button[aria-pressed="true"]{background:var(--destaque);color:#fff}
+html.contraste-alto .controles-acessibilidade button[aria-pressed="true"]{background:var(--destaque);color:#000}
+.nav{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap}
+.nav a{color:var(--frente);text-decoration:underline;text-underline-offset:3px;font-weight:600;font-size:.92rem}
+.nav a:hover{color:var(--destaque)}
+.menu-toggle{display:none;padding:.5rem .7rem;border:2px solid var(--destaque);background:var(--fundo);color:var(--destaque);cursor:pointer;border-radius:var(--raio);font-weight:800}
+
+/* Hero */
+.hero{background:var(--frente);color:var(--fundo)}
+.hero h1,.hero h2,.hero h3{color:var(--fundo)}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5rem)}
+.hero__texto{font-size:1.1rem;max-width:35rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero .btn{background:var(--foco);border-color:var(--foco);color:#000}
+.hero .btn:hover{background:#000;color:var(--foco)}
+.hero__arte{border:3px solid var(--foco);border-radius:var(--raio);padding:1rem;background:#000}
+.hero__arte svg{width:100%;height:auto}
+
+/* Listas/cards */
+.adaptacoes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.adaptacao{padding:1.4rem}
+.adaptacao h3{font-size:1.1rem}
+.adaptacao p{margin:0;font-size:.95rem}
+.icone-svg{width:48px;height:48px;margin-bottom:.7rem}
+
+/* Comparador antes/depois */
+.comparador{max-width:900px;margin-inline:auto}
+.comparador__abas{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:1rem}
+.comparador__caixa{position:relative;border:3px solid var(--frente);border-radius:var(--raio);overflow:hidden;aspect-ratio:16/9;background:var(--Painel)}
+.comparador__camada{position:absolute;inset:0}
+.comparador__camada svg{width:100%;height:100%}
+.comparador__depois{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
+.comparador__linha{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:4px;background:var(--foco);transform:translateX(-50%);pointer-events:none}
+.comparador__alinha{position:absolute;top:50%;left:var(--pos,50%);transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;
+ background:var(--foco);color:#000;display:grid;place-items:center;font-weight:900;font-size:1.2rem;pointer-events:none;border:2px solid #000}
+.comparador__etiqueta{position:absolute;top:12px;padding:.35rem .7rem;border-radius:4px;font-family:var(--mono);font-size:.8rem;font-weight:800;pointer-events:none}
+.comparador__etiqueta--antes{left:12px;background:#000;color:#fff}
+.comparador__etiqueta--depois{right:12px;background:var(--foco);color:#000}
+.comparador__range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.comparador__dica{text-align:center;font-weight:700;margin-top:.8rem}
+
+/* Checklist e progresso */
+.check-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.lista-check{list-style:none;padding:0}
+.lista-check li{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--linha)}
+.lista-check input{width:22px;height:22px;accent-color:var(--destaque);flex:0 0 22px;margin-top:.1rem}
+.lista-check label{font-weight:600;cursor:pointer}
+.barra-progresso{height:16px;background:var(--Painel);border:2px solid var(--linha);border-radius:999px;overflow:hidden}
+.barra-progresso span{display:block;height:100%;background:var(--destaque);transition:width .3s}
+
+/* Galeria */
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.galeria__img{aspect-ratio:4/3;background:var(--Painel)}
+.galeria__img svg{width:100%;height:100%}
+.galeria__corpo{padding:1rem 1.1rem 1.2rem}
+.galeria__corpo h3{font-size:1.05rem}
+.galeria__corpo p{margin:0}
+
+/* Formulário */
+.contato{display:grid;grid-template-columns:.9fr 1.1fr;gap:2rem}
+.form-card{padding:1.5rem}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.campo label{font-weight:800}
+.obrigatorio{color:var(--erro)}
+.campo input,.campo select,.campo textarea{width:100%;padding:.75rem;border:2px solid var(--linha);border-radius:var(--raio);background:var(--fundo)}
+.campo input:focus,.campo select:focus,.campo textarea:focus{border-color:var(--destaque)}
+.campo textarea{min-height:100px;resize:vertical}
+.campo .ajuda{font-size:.85rem;color:var(--frente-suave)}
+.campo .erro{color:var(--erro);font-weight:800;min-height:1.2em}
+.campo.invalido input,.campo.invalido select,.campo.invalido textarea{border-color:var(--erro);border-width:3px}
+.confirmacao{display:none;background:var(--Painel);border:3px solid var(--sucesso);border-radius:var(--raio);padding:1rem;margin-top:1rem}
+.confirmacao.visivel{display:block}
+.confirmacao strong{color:var(--sucesso)}
+
+/* Rodapé */
+.rodape{background:var(--frente);color:var(--fundo);padding:2.6rem 0 1.5rem;border-top:5px solid var(--foco)}
+.rodape h2,.rodape h3{color:var(--fundo)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.moss-bloco{border:2px solid var(--foco);border-radius:var(--raio);padding:1rem 1.2rem;max-width:440px}
+.moss-bloco .btn{background:var(--foco);border-color:var(--foco);color:#000}
+.rodape__base{border-top:1px solid var(--fundo);margin-top:2rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--foco);color:#000;
+ font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;padding:.5rem .8rem;border-radius:999px;pointer-events:none;border:2px solid #000}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;flex-direction:column;align-items:stretch;gap:0;padding:.5rem 0 1rem}
+ .nav.ativa{display:flex}
+ .nav a{padding:.8rem .2rem;border-bottom:1px solid var(--linha)}
+ .menu-toggle{display:block}
+ .hero .container,.check-layout,.contato{grid-template-columns:1fr}
+ .adaptacoes,.galeria{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.5rem,var(--largura))}
+ .adaptacoes,.galeria,.grade-2{grid-template-columns:1fr}
+ .cabecalho .container{flex-wrap:wrap;padding-block:.6rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+<div class="barra"><div class="container">
+ <span>◎ DEMONSTRAÇÃO DE ACESSIBILIDADE — DADOS FICTÍCIOS</span>
+ <span>NAVEGAÇÃO POR TECLADO · ALTO CONTRASTE · LEITORES DE TELA</span>
+</div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="ACESSO PRIME — voltar ao início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Logotipo ACESSO PRIME: uma persona em cadeira de rodas sobre uma rampa">
+   <rect width="48" height="48" rx="8" fill="#12212f"/>
+   <path d="M6 38h16V26l14-10h6" stroke="#ffbf00" stroke-width="3" fill="none"/>
+   <circle cx="20" cy="16" r="4" fill="#fff"/><path d="M20 20v8M20 24l8 4" stroke="#fff" stroke-width="3"/>
+   <circle cx="28" cy="32" r="6" fill="none" stroke="#ffbf00" stroke-width="3"/>
+  </svg>
+  <span><strong>ACESSO PRIME</strong><small>INCLUSÃO QUE SE SENTE</small></span>
+ </a>
+ <div class="controles-acessibilidade" role="group" aria-label="Controles de acessibilidade da página">
+  <button type="button" id="btnContraste" aria-pressed="false">Alto contraste</button>
+  <button type="button" id="btnFonte" aria-pressed="false">A+ texto</button>
+ </div>
+ <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navPrincipal">Menu ☰</button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#adaptacoes">Adaptações</a>
+  <a href="#comparador">Antes e depois</a>
+  <a href="#checklist">Checklist</a>
+  <a href="#projetos">Projetos</a>
+  <a href="#orcamento">Orçamento</a>
+  <a class="btn btn--primario" href="#orcamento" data-cta>Solicitar visita técnica</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <p class="eyebrow">Acessibilidade arquitetônica e digital</p>
+   <h1>Um mundo mais acessível começa no detalhe.</h1>
+   <p class="hero__texto">Nesta demonstração você encontra adaptações, projetos ilustrativos, um comparador antes e depois, checklist de necessidades e solicitação de visita — com navegação por teclado, contraste alto e rótulos claros.</p>
+   <p class="hero__acoes">
+    <a class="btn" href="#adaptacoes">Ver adaptações</a>
+    <a class="btn" href="#checklist">Abrir checklist</a>
+   </p>
+   <p><strong>Aviso:</strong> esta página não declara conformidade com leis ou normas. As informações são gerais e devem ser verificadas por profissional habilitado e pelas regras vigentes.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração de uma rampa de acesso com corrimão e uma pessoa em cadeira de rodas">
+   <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="380" fill="#0b1b2a"/>
+    <!-- rampa -->
+    <path d="M30 330L280 180h210v150z" fill="#ffbf00"/>
+    <path d="M30 330L280 180" stroke="#fff" stroke-width="6"/>
+    <!-- corrimão -->
+    <path d="M60 280L290 140h180" fill="none" stroke="#fff" stroke-width="6"/>
+    <path d="M120 268v40M220 210v40M320 160v40" stroke="#fff" stroke-width="4"/>
+    <!-- cadeira de rodas -->
+    <g transform="translate(150,150)">
+     <circle cx="30" cy="90" r="30" fill="none" stroke="#fff" stroke-width="7"/>
+     <path d="M30 60V20M30 30l26 12M20 20h20" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+     <circle cx="22" cy="12" r="10" fill="#fff"/>
+    </g>
+   </svg>
+  </div>
+ </div></section>
+
+ <section class="secao" id="adaptacoes"><div class="container">
+  <div class="cabecalho-secao"><p class="eyebrow">Catálogo de adaptações</p>
+   <h2 class="titulo-secao">Soluções arquitetônicas e digitais</h2>
+   <p class="subtitulo-secao">Cada card traz um título claro e uma descrição curta. As ilustrações são originais e possuem texto alternativo.</p></div>
+  <div class="adaptacoes" id="gradeAdaptacoes"></div>
+ </div></section>
+
+ <section class="secao secao--painel" id="comparador"><div class="container">
+  <div class="cabecalho-secao centro"><p class="eyebrow">Comparação visual</p>
+   <h2 class="titulo-secao">Antes e depois de uma entrada adaptada</h2>
+   <p class="subtitulo-secao">Use o controle deslizante com mouse, toque ou as setas do teclado. O campo é um <code>input type="range"</code> rotulado.</p></div>
+  <div class="comparador">
+   <div class="comparador__caixa" id="caixaComparador">
+    <div class="comparador__camada" id="camadaAntes" role="img" aria-label="Ilustração da entrada antes da adaptação: sem rampa"></div>
+    <div class="comparador__camada comparador__depois" id="camadaDepois" role="img" aria-label="Ilustração da entrada depois da adaptação: com rampa e corrimão"></div>
+    <div class="comparador__linha"></div><div class="comparador__alinha" aria-hidden="true">↔</div>
+    <span class="comparador__etiqueta comparador__etiqueta--antes">ANTES</span>
+    <span class="comparador__etiqueta comparador__etiqueta--depois">DEPOIS</span>
+    <input class="comparador__range" id="rangeComparador" type="range" min="0" max="100" value="50"
+     aria-label="Comparador antes e depois" aria-valuetext="50% da imagem antes visível">
+   </div>
+   <p class="comparador__dica">← Arraste ou use as setas do teclado →</p>
+  </div>
+ </div></section>
+
+ <section class="secao" id="checklist"><div class="container">
+  <div class="cabecalho-secao"><p class="eyebrow">Checklist preliminar</p>
+   <h2 class="titulo-secao">Quais necessidades existem no seu espaço?</h2>
+   <p class="subtitulo-secao">Marque os itens. O progresso é anunciado por leitores de tela e fica apenas neste navegador.</p></div>
+  <div class="check-layout">
+   <div class="card" style="padding:1.2rem">
+    <ul class="lista-check" id="listaCheck"></ul>
+   </div>
+   <div class="card" style="padding:1.2rem">
+    <h3>Progresso da triagem</h3>
+    <div class="barra-progresso" role="progressbar" aria-label="Progresso do checklist" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="barraCheck">
+     <span style="width:0%"></span>
+    </div>
+    <p id="textoProgresso" role="status" aria-live="polite" style="margin-top:.8rem;font-weight:700">0 de 0 itens marcados</p>
+    <p class="ajuda">Esta triagem é ilustrativa e não substitui uma avaliação técnica presencial.</p>
+   </div>
+  </div>
+ </div></section>
+
+ <section class="secao secao--painel" id="projetos"><div class="container">
+  <div class="cabecalho-secao"><p class="eyebrow">Galeria de projetos ilustrativos</p>
+   <h2 class="titulo-secao">Exemplos de adaptações</h2>
+   <p class="subtitulo-secao">Ilustrações vetoriais originais, com descrições alternativas.</p></div>
+  <div class="galeria" id="gradeProjetos"></div>
+ </div></section>
+
+ <section class="secao" id="orcamento"><div class="container">
+  <div class="cabecalho-secao"><p class="eyebrow">Solicitação de visita</p>
+   <h2 class="titulo-secao">Conte sobre o seu espaço</h2>
+   <p class="subtitulo-secao">Todos os campos obrigatórios estão marcados com <span class="obrigatorio">*</span>. Os erros são exibidos ao lado do campo e anunciados.</p></div>
+  <div class="contato">
+   <div>
+    <h3>Informações gerais sobre acessibilidade</h3>
+    <p>Acessibilidade envolve eliminar barreiras de comunicação, locomoção e compreensão. Em projetos arquitetônicos, isso pode incluir rampas, corrimãos, sinalização visual e tátil, sanitários adaptados e rotas acessíveis. No ambiente digital, inclui contraste, navegação por teclado, rótulos e compatibilidade com leitores de tela.</p>
+    <p><strong>Importante:</strong> este texto é educativo e genérico. Não afirma atendimento a normas específicas — verifique sempre as regras aplicáveis e um profissional responsável.</p>
+   </div>
+   <form class="card form-card" id="formOrcamento" novalidate>
+    <div class="grade-2">
+     <div class="campo">
+      <label for="nome">Nome <span class="obrigatorio">*</span></label>
+      <input type="text" id="nome" autocomplete="name" aria-describedby="ajudaNome erroNome">
+      <span class="ajuda" id="ajudaNome">Use um nome fictício nesta demonstração.</span>
+      <span class="erro" id="erroNome" aria-live="polite"></span>
+     </div>
+     <div class="campo">
+      <label for="telefone">Telefone <span class="obrigatorio">*</span></label>
+      <input type="tel" id="telefone" autocomplete="tel" aria-describedby="erroTelefone">
+      <span class="erro" id="erroTelefone" aria-live="polite"></span>
+     </div>
+    </div>
+    <div class="grade-2">
+     <div class="campo">
+      <label for="tipoEspaco">Tipo de espaço <span class="obrigatorio">*</span></label>
+      <select id="tipoEspaco" aria-describedby="erroEspaco">
+       <option value="">Selecione uma opção</option>
+       <option>Residência</option><option>Comércio</option><option>Escola</option>
+       <option>Prédio público</option><option>Espaço de eventos</option>
+      </select>
+      <span class="erro" id="erroEspaco" aria-live="polite"></span>
+     </div>
+     <div class="campo">
+      <label for="dataVisita">Data desejada (ilustrativa)</label>
+      <input type="date" id="dataVisita">
+     </div>
+    </div>
+    <div class="campo">
+     <label for="necessidades">Necessidades observadas <span class="obrigatorio">*</span></label>
+     <textarea id="necessidades" aria-describedby="erroNecessidades"></textarea>
+     <span class="erro" id="erroNecessidades" aria-live="polite"></span>
+    </div>
+    <button class="btn btn--primario btn--bloco" type="submit">Enviar solicitação (demonstração)</button>
+    <div class="confirmacao" id="confirmacao" role="status">
+     <strong>✓ Solicitação registrada nesta demonstração.</strong>
+     <p>Nenhuma mensagem foi enviada. Nada foi armazenado em servidor.</p>
+    </div>
+   </form>
+  </div>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas de acessibilidade</h2>
+      <p class="subtitulo-secao">Imagens de referência sobre adaptações e acessibilidade, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/rampa.webp" alt="Rampa de acesso sinalizada com símbolo de cadeira de rodas" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Rampa de acesso sinalizada com símbolo de cadeira de rodas<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/corrimao.webp" alt="Escada com corrimão de metal" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Escada com corrimão de metal<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/elevador.webp" alt="Interior de elevador" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Interior de elevador<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/piso-tatil.webp" alt="Piso tátil em calçada" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Piso tátil em calçada<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/sanitario.webp" alt="Lavatório em sanitário acessível" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Lavatório em sanitário acessível<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/sinalizacao.webp" alt="Sinal de acessibilidade para cadeira de rodas" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Sinal de acessibilidade para cadeira de rodas<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div><h2>ACESSO PRIME</h2>
+   <p>Demonstração desenvolvida com foco em acessibilidade: teclado, contraste, rótulos e leitores de tela. Projetos e dados fictícios, sem declaração de conformidade legal.</p></div>
+  <div class="moss-bloco">
+   <p><strong>Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou desta abordagem? Crie um site assim para o seu negócio.</p>
+   <a class="btn" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este</a>
+  </div>
+ </div>
+ <div class="rodape__base"><span>© 2026 ACESSO PRIME — Demo MOSS Digital</span><span>Acessível por design · Conteúdo ilustrativo</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — acessibilidade funcional + componentes
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='ACESSO PRIME (Demo 13 — Empresa de acessibilidade)';
+
+/* ---------- 1. Dados -------------------------------------------------------- */
+const ADAPTACOES=[
+ {nome:'Rampas de acesso',icone:'rampa',desc:'Projetos ilustrativos de rampas com inclinação e corrimãos.'},
+ {nome:'Corrimãos',icone:'corrimao',desc:'Apoios contínuos em escadas e rampas, apresentados de forma genérica.'},
+ {nome:'Sinalização visual e tátil',icone:'sinal',desc:'Exemplos ilustrativos de sinalização e piso tátil de orientação.'},
+ {nome:'Sanitários adaptados',icone:'sanitario',desc:'Layouts demonstrativos com espaço de manobra e barras de apoio.'},
+ {nome:'Acessibilidade digital',icone:'digital',desc:'Recursos como contraste, foco visível e navegação por teclado.'},
+ {nome:'Rotas acessíveis',icone:'rota',desc:'Estudos ilustrativos de percursos sem barreiras.'}
+];
+const ICONES={
+ rampa:'<svg viewBox="0 0 48 48" fill="none" stroke="#12212f" stroke-width="3"><path d="M4 40h14V24l22-14h4"/><path d="M8 34l14-10"/></svg>',
+ corrimao:'<svg viewBox="0 0 48 48" fill="none" stroke="#12212f" stroke-width="3"><path d="M6 40l20-28h16M14 32v8M26 20v8M38 12v10"/></svg>',
+ sinal:'<svg viewBox="0 0 48 48" fill="none" stroke="#12212f" stroke-width="3"><circle cx="24" cy="18" r="10"/><path d="M24 12v8M24 24v2M18 34h12M16 40h16"/></svg>',
+ sanitario:'<svg viewBox="0 0 48 48" fill="none" stroke="#12212f" stroke-width="3"><rect x="12" y="10" width="24" height="28" rx="3"/><circle cx="20" cy="20" r="4"/><path d="M16 30h16"/></svg>',
+ digital:'<svg viewBox="0 0 48 48" fill="none" stroke="#12212f" stroke-width="3"><rect x="6" y="8" width="36" height="26" rx="3"/><path d="M16 40h16M24 34v6"/></svg>',
+ rota:'<svg viewBox="0 0 48 48" fill="none" stroke="#12212f" stroke-width="3"><circle cx="10" cy="38" r="4" fill="#12212f"/><path d="M14 38h10V22h8V12h8"/><circle cx="40" cy="12" r="4" fill="#12212f"/></svg>'
+};
+const CHECKLIST=[
+ 'Existe alguma entrada com degrau na acesso principal?',
+ 'Há necessidade de rampa ou elevação?',
+ 'Corrimãos estão presentes em escadas e rampas?',
+ 'A sinalização é visualmente legível?',
+ 'Há necessidade de piso tátil ou sinalização tátil?',
+ 'Sanitários possuem espaço adequado?',
+ 'O site ou sistema precisa de ajustes digitais?'
+];
+const PROJETOS=[
+ {titulo:'Entrada com rampa',desc:'Ilustração de rampa com corrimão em uma entrada.',tipo:'rampa'},
+ {titulo:'Sinalização tátil',desc:'Ilustração de piso tátil e sinal visual.',tipo:'sinal'},
+ {titulo:'Rota interna',desc:'Ilustração de corredor com rota acessível.',tipo:'rota'}
+];
+
+/* ---------- 2. Renderizações ------------------------------------------------ */
+const gradeAdapt=document.getElementById('gradeAdaptacoes');
+ADAPTACOES.forEach(a=>{const card=document.createElement('article');card.className='card adaptacao';
+ card.innerHTML=`<div class="icone-svg">${ICONES[a.icone]}</div><h3>${a.nome}</h3><p>${a.desc}</p>`;gradeAdapt.appendChild(card);});
+
+const gradeProjetos=document.getElementById('gradeProjetos');
+function arteProjeto(tipo){
+ const base='<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de projeto de acessibilidade">';
+ if(tipo==='rampa')return base+`<rect width="400" height="300" fill="#eef3f8"/><rect x="60" y="70" width="280" height="150" fill="#12212f"/>
+  <path d="M40 270L200 160h160v110z" fill="#ffbf00"/><path d="M50 250L200 160" stroke="#fff" stroke-width="6"/></svg>`;
+ if(tipo==='sinal')return base+`<rect width="400" height="300" fill="#eef3f8"/><rect y="220" width="400" height="80" fill="#c9d4df"/>
+  <g fill="#ffbf00"><circle cx="120" cy="200" r="22"/><circle cx="180" cy="200" r="22"/><circle cx="240" cy="200" r="22"/></g>
+  <rect x="280" y="120" width="80" height="100" fill="#12212f"/><circle cx="320" cy="150" r="12" fill="#ffbf00"/></svg>`;
+ return base+`<rect width="400" height="300" fill="#eef3f8"/><rect x="40" y="40" width="320" height="220" fill="#dbe5ee" stroke="#12212f" stroke-width="3"/>
+  <path d="M80 260V100h240v160" fill="none" stroke="#ffbf00" stroke-width="8" stroke-dasharray="14 10"/></svg>`;
+}
+PROJETOS.forEach(p=>{const c=document.createElement('article');c.className='card';
+ c.innerHTML=`<div class="galeria__img" role="img" aria-label="${p.desc}">${arteProjeto(p.tipo)}</div>
+  <div class="galeria__corpo"><h3>${p.titulo}</h3><p>${p.desc}</p></div>`;gradeProjetos.appendChild(c);});
+
+/* ---------- 3. Comparador --------------------------------------------------- */
+const antes=document.getElementById('camadaAntes'),depois=document.getElementById('camadaDepois');
+antes.innerHTML=`<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="450" fill="#e6e9ec"/>
+ <rect x="200" y="60" width="400" height="270" fill="#9aa6b2"/><rect x="280" y="60" width="90" height="140" fill="#5a6672"/>
+ <rect x="430" y="60" width="90" height="140" fill="#5a6672"/><rect x="360" y="250" width="80" height="80" fill="#3f4a55"/>
+ <rect y="330" width="800" height="120" fill="#c2c9d0"/><path d="M0 350h800" stroke="#fff" stroke-width="4"/></svg>`;
+depois.innerHTML=`<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg"><rect width="800" height="450" fill="#eef3f8"/>
+ <rect x="200" y="60" width="400" height="270" fill="#3d556b"/><rect x="280" y="60" width="90" height="140" fill="#9fc4e8"/>
+ <rect x="430" y="60" width="90" height="140" fill="#9fc4e8"/><rect x="360" y="250" width="80" height="80" fill="#1b2d3e"/>
+ <path d="M120 410L340 280h300v130z" fill="#ffbf00"/><path d="M130 400L340 280" stroke="#fff" stroke-width="7"/>
+ <path d="M170 380L350 262h260" stroke="#fff" stroke-width="6"/></svg>`;
+const range=document.getElementById('rangeComparador'),caixa=document.getElementById('caixaComparador');
+function atualizarComparador(v){caixa.style.setProperty('--pos',v+'%');range.setAttribute('aria-valuetext',v+'% da imagem antes visível');}
+range.addEventListener('input',e=>atualizarComparador(e.target.value));
+atualizarComparador(50);
+
+/* ---------- 4. Checklist ---------------------------------------------------- */
+const listaCheck=document.getElementById('listaCheck');
+CHECKLIST.forEach((t,i)=>{const li=document.createElement('li');
+ li.innerHTML=`<input type="checkbox" id="chk${i}" data-chk="${i}"><label for="chk${i}">${t}</label>`;listaCheck.appendChild(li);});
+function atualizarProgresso(){
+ const cbs=Array.from(listaCheck.querySelectorAll('input'));
+ const feitos=cbs.filter(c=>c.checked).length,pct=Math.round(feitos/cbs.length*100);
+ document.querySelector('#barraCheck span').style.width=pct+'%';
+ document.getElementById('barraCheck').setAttribute('aria-valuenow',String(pct));
+ document.getElementById('textoProgresso').textContent=`${feitos} de ${cbs.length} itens marcados (${pct}%)`;
+}
+listaCheck.addEventListener('change',e=>{if(e.target.matches('[data-chk]'))atualizarProgresso();});
+atualizarProgresso();
+
+/* ---------- 5. Formulário acessível ---------------------------------------- */
+const form=document.getElementById('formOrcamento');
+form.addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ const regras=[
+  {id:'nome',erro:'erroNome',t:v=>v.trim().length>=2,m:'Informe seu nome.'},
+  {id:'telefone',erro:'erroTelefone',t:v=>v.replace(/\D/g,'').length>=10,m:'Informe um telefone com DDD.'},
+  {id:'tipoEspaco',erro:'erroEspaco',t:v=>!!v,m:'Selecione o tipo de espaço.'},
+  {id:'necessidades',erro:'erroNecessidades',t:v=>v.trim().length>=10,m:'Descreva as necessidades (mínimo 10 caracteres).'}
+ ];
+ regras.forEach(r=>{
+  const campo=document.getElementById(r.id),erro=document.getElementById(r.erro);
+  const msg=r.t(campo.value)?'':r.m;erro.textContent=msg;
+  campo.parentElement.classList.toggle('invalido',!!msg);
+  campo.setAttribute('aria-invalid',String(!!msg));
+  if(msg){valido=false;}
+ });
+ if(!valido){
+  // Foca o primeiro campo inválido (padrão acessível)
+  const primeiro=form.querySelector('.invalido input, .invalido select, .invalido textarea');
+  if(primeiro)primeiro.focus();
+  return;
+ }
+ document.getElementById('confirmacao').classList.add('visivel');
+ document.getElementById('confirmacao').focus?.();
+});
+
+/* ---------- 6. Controles de acessibilidade e menu -------------------------- */
+const btnContraste=document.getElementById('btnContraste');
+btnContraste.addEventListener('click',()=>{
+ const ativo=document.documentElement.classList.toggle('contraste-alto');
+ btnContraste.setAttribute('aria-pressed',String(ativo));
+ try{localStorage.setItem('acesso-prime-contraste',String(ativo));}catch(e){}
+});
+try{if(localStorage.getItem('acesso-prime-contraste')==='true'){document.documentElement.classList.add('contraste-alto');btnContraste.setAttribute('aria-pressed','true');}}catch(e){}
+
+const btnFonte=document.getElementById('btnFonte');
+btnFonte.addEventListener('click',()=>{
+ const ativo=btnFonte.getAttribute('aria-pressed')!=='true';
+ btnFonte.setAttribute('aria-pressed',String(ativo));
+ document.documentElement.style.setProperty('--escala-fonte',ativo?'1.15':'1');
+ try{localStorage.setItem('acesso-prime-fonte',String(ativo));}catch(e){}
+});
+try{if(localStorage.getItem('acesso-prime-fonte')==='true'){btnFonte.setAttribute('aria-pressed','true');document.documentElement.style.setProperty('--escala-fonte','1.15');}}catch(e){}
+
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{
+ const aberta=nav.classList.toggle('ativa');
+ menuToggle.setAttribute('aria-expanded',String(aberta));
+ menuToggle.textContent=aberta?'Fechar ✕':'Menu ☰';
+});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+ nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='Menu ☰';
+}));
+document.querySelectorAll('[data-cta]').forEach(cta=>cta.addEventListener('click',()=>{
+ setTimeout(()=>document.getElementById('tipoEspaco')?.focus({preventScroll:true}),400);
+}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+</script>
+</body>
+</html>

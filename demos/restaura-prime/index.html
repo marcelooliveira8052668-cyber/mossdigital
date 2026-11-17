@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3f4a2f">
+  <meta name="description" content="RESTAURA PRIME — oficina demonstrativa de restauração de móveis com comparador antes e depois, portfólio e orçamento.">
+  <title>RESTAURA PRIME — Restauração de Móveis | Demonstração MOSS Digital</title>
+
+  <!--
+    ============================================================================
+    RESTAURA PRIME — DEMONSTRAÇÃO 03 DO CATÁLOGO MOSS DIGITAL
+    ============================================================================
+    Arquivo único (HTML + CSS + JS). Ilustrações SVG originais embutidas.
+
+    Diferenciais desta demo:
+    - Comparador "antes e depois" com controle deslizante (mouse, toque e teclado).
+    - Prévia local de fotografias (FileReader) — nenhum arquivo é enviado.
+    - Acompanhamento demonstrativo de ordens de restauração.
+
+    ONDE EDITAR:
+    - Serviços: array SERVICOS (JS)
+    - Peças do comparador: array PECAS (JS)
+    - Ordens fictícias: array ORDENS (JS)
+    - WhatsApp da MOSS: constante WHATSAPP_MOSS (JS)
+    - Cores: variáveis em :root (CSS)
+    ============================================================================
+  -->
+
+  <style>
+    /* ==========================================================================
+       CSS — 1. Variáveis (madeira, bege e verde-oliva)
+       2. Base · 3. Layout · 4. Componentes · 5. Seções · 6. Responsividade
+       ========================================================================== */
+    :root {
+      --madeira-900: #3a2718;
+      --madeira-800: #5a3c22;
+      --madeira-700: #7d5731;
+      --madeira-600: #a8763f;
+      --oliva-800: #3f4a2f;
+      --oliva-700: #55633e;
+      --bege-100: #fbf7ef;
+      --bege-200: #f2ead9;
+      --bege-300: #e3d4b8;
+      --branco: #fffdf8;
+      --tinta: #3a2f22;
+      --tinta-suave: #7a6d5c;
+      --latão: #b48a3e;
+      --borda: #e0d3ba;
+      --sombra: 0 10px 28px rgba(58,39,24,.12);
+      --sombra-forte: 0 20px 48px rgba(58,39,24,.22);
+      --raio: 10px;
+      --fonte-titulo: Georgia, "Times New Roman", serif;
+      --fonte-corpo: "Segoe UI", Arial, sans-serif;
+      --fonte-num: "Consolas", "Courier New", monospace;
+      --largura: 1180px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; font-family:var(--fonte-corpo); color:var(--tinta); background:var(--branco); line-height:1.6; }
+    h1,h2,h3,h4 { font-family:var(--fonte-titulo); font-weight:600; line-height:1.18; color:var(--madeira-900); margin:0 0 .5em; }
+    p { margin:0 0 1em; }
+    ul,ol { margin:0; padding-left:1.1rem; }
+    a { color:var(--madeira-700); }
+    button,input,select,textarea { font:inherit; }
+    svg { display:block; max-width:100%; }
+    :focus-visible { outline:3px solid var(--latão); outline-offset:3px; }
+    .skip-link { position:absolute; left:-9999px; top:0; background:var(--oliva-800); color:#fff; padding:.6rem 1rem; z-index:999; }
+    .skip-link:focus { left:0; }
+
+    .container { width:min(100% - 2.5rem, var(--largura)); margin-inline:auto; }
+    .secao { padding:clamp(3.2rem,6.5vw,5.5rem) 0; }
+    .secao--bege { background:var(--bege-100); }
+    .secao--madeira { background:var(--madeira-900); color:var(--bege-200); }
+    .secao--madeira h2,.secao--madeira h3 { color:#fff; }
+    .cabecalho-secao { max-width:680px; margin-bottom:2.2rem; }
+    .eyebrow { font-family:var(--fonte-num); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--latão); font-weight:700; }
+    .titulo-secao { font-size:clamp(1.9rem,3.8vw,2.6rem); }
+    .subtitulo-secao { color:var(--tinta-suave); }
+    .secao--madeira .subtitulo-secao { color:var(--bege-300); }
+    .texto-centro { text-align:center; margin-inline:auto; }
+
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.8rem 1.3rem;
+      border:2px solid transparent; border-radius:8px; font-weight:700; cursor:pointer; text-decoration:none;
+      font-size:.92rem; transition:transform .18s, background .18s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn--latão { background:var(--latão); color:#fff; }
+    .btn--latão:hover { background:#9c762f; }
+    .btn--oliva { background:var(--oliva-800); color:#fff; }
+    .btn--oliva:hover { background:var(--oliva-700); }
+    .btn--contorno { border-color:var(--madeira-600); color:var(--madeira-700); background:transparent; }
+    .btn--contorno:hover { background:rgba(168,118,63,.08); }
+    .btn--claro { border-color:rgba(255,255,255,.5); color:#fff; background:transparent; }
+    .btn--claro:hover { background:rgba(255,255,255,.1); }
+    .btn--bloco { width:100%; }
+    .card { background:var(--branco); border:1px solid var(--borda); border-radius:var(--raio); box-shadow:var(--sombra); overflow:hidden; }
+
+    /* Cabeçalho */
+    .barra { background:var(--oliva-800); color:var(--bege-200); font-family:var(--fonte-num); font-size:.7rem; letter-spacing:.08em; }
+    .barra .container { display:flex; justify-content:space-between; gap:1rem; padding-block:.45rem; flex-wrap:wrap; }
+    .cabecalho { background:rgba(251,247,239,.97); border-bottom:1px solid var(--borda); position:sticky; top:0; z-index:50; backdrop-filter:blur(8px); }
+    .cabecalho .container { display:flex; align-items:center; justify-content:space-between; min-height:72px; gap:1rem; }
+    .logo { display:flex; align-items:center; gap:.7rem; text-decoration:none; color:var(--madeira-900); }
+    .logo svg { width:42px; height:42px; }
+    .logo strong { display:block; font-family:var(--fonte-titulo); font-size:1.2rem; letter-spacing:.05em; line-height:1; }
+    .logo small { display:block; font-family:var(--fonte-num); font-size:.6rem; letter-spacing:.16em; color:var(--oliva-700); }
+    .nav { display:flex; align-items:center; gap:1.4rem; }
+    .nav a { text-decoration:none; color:var(--tinta); font-weight:600; font-size:.9rem; }
+    .nav a:hover { color:var(--latão); }
+    .menu-toggle { display:none; background:none; border:0; cursor:pointer; padding:.4rem; color:var(--madeira-900); }
+    .menu-toggle svg { width:28px; height:28px; }
+
+    /* Hero */
+    .hero { background:linear-gradient(135deg, var(--bege-200), var(--bege-100)); position:relative; overflow:hidden; }
+    .hero::after { content:""; position:absolute; right:-60px; top:-60px; width:320px; height:320px; border-radius:50%;
+      background:radial-gradient(circle, rgba(180,138,62,.12), transparent 70%); }
+    .hero .container { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; padding-block:clamp(3rem,7vw,5.5rem); position:relative; z-index:1; }
+    .hero h1 { font-size:clamp(2.2rem,5vw,3.7rem); font-weight:400; }
+    .hero h1 em { color:var(--latão); font-style:italic; }
+    .hero__texto { color:var(--tinta-suave); max-width:34rem; }
+    .hero__acoes { display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.6rem; }
+    .hero__arte { border:1px solid var(--borda); padding:.8rem; background:rgba(255,255,255,.6); box-shadow:var(--sombra); }
+    .hero__arte svg { width:100%; height:auto; }
+    .selo-artesanal { display:inline-flex; align-items:center; gap:.5rem; font-family:var(--fonte-num); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--oliva-700); }
+
+    /* Comparador antes/depois */
+    .comparador { max-width:900px; margin-inline:auto; }
+    .comparador__abas { display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; margin-bottom:1rem; }
+    .aba { padding:.5rem 1rem; border:1px solid var(--borda); background:#fff; border-radius:999px; cursor:pointer; font-weight:600; font-size:.85rem; color:var(--tinta-suave); }
+    .aba[aria-pressed="true"] { background:var(--oliva-800); color:#fff; border-color:var(--oliva-800); }
+    .comparador__caixa { position:relative; border:1px solid var(--borda); border-radius:var(--raio); overflow:hidden; background:var(--bege-200);
+      aspect-ratio:16/9; user-select:none; touch-action:pan-y; }
+    .comparador__camada { position:absolute; inset:0; }
+    .comparador__camada svg { width:100%; height:100%; }
+    .comparador__depois { clip-path:inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+    .comparador__linha { position:absolute; top:0; bottom:0; left:var(--pos,50%); width:3px; background:var(--latão); transform:translateX(-50%); pointer-events:none; }
+    .comparador__alinha { position:absolute; top:50%; left:var(--pos,50%); transform:translate(-50%,-50%); width:44px; height:44px; border-radius:50%;
+      background:var(--latão); color:#fff; display:grid; place-items:center; font-weight:700; box-shadow:0 4px 12px rgba(0,0,0,.25); pointer-events:none; }
+    .comparador__etiqueta { position:absolute; top:12px; padding:.3rem .6rem; border-radius:6px; font-family:var(--fonte-num);
+      font-size:.7rem; letter-spacing:.08em; pointer-events:none; }
+    .comparador__etiqueta--antes { left:12px; background:rgba(58,39,24,.8); color:#fff; }
+    .comparador__etiqueta--depois { right:12px; background:rgba(180,138,62,.92); color:#fff; }
+    .comparador__range { position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:ew-resize; }
+    .comparador__dica { text-align:center; font-size:.8rem; color:var(--tinta-suave); margin-top:.8rem; }
+    .comparador__legenda { text-align:center; font-family:var(--fonte-num); font-size:.75rem; color:var(--oliva-700); margin-top:.4rem; }
+
+    /* Serviços */
+    .grade-servicos { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+    .servico { padding:1.6rem; transition:transform .2s, box-shadow .2s; }
+    .servico:hover { transform:translateY(-4px); box-shadow:var(--sombra-forte); }
+    .servico__num { font-family:var(--fonte-num); font-size:.75rem; color:var(--latão); }
+    .servico__icone { width:44px; height:44px; margin:.6rem 0 .9rem; }
+    .servico h3 { font-size:1.15rem; }
+    .servico p { color:var(--tinta-suave); font-size:.9rem; margin:0; }
+
+    /* Portfólio */
+    .grade-portfolio { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+    .projeto__imagem { aspect-ratio:4/3; background:var(--bege-200); }
+    .projeto__imagem svg { width:100%; height:100%; }
+    .projeto__corpo { padding:1.1rem 1.2rem 1.3rem; }
+    .projeto__corpo h3 { font-size:1.1rem; margin-bottom:.2rem; }
+    .projeto__corpo p { font-size:.86rem; color:var(--tinta-suave); margin:0; }
+    .etiqueta-pequena { display:inline-block; font-family:var(--fonte-num); font-size:.65rem; letter-spacing:.08em; text-transform:uppercase;
+      background:var(--bege-200); color:var(--oliva-800); padding:.2rem .5rem; border-radius:4px; margin-bottom:.6rem; }
+
+    /* Etapas */
+    .etapas { display:grid; grid-template-columns:repeat(6,1fr); gap:.8rem; counter-reset:etapa; }
+    .etapa { text-align:center; position:relative; padding:1rem .6rem; }
+    .etapa::before { counter-increment:etapa; content:counter(etapa, decimal-leading-zero); display:grid; place-items:center;
+      width:44px; height:44px; margin:0 auto .7rem; border-radius:50%; background:var(--oliva-800); color:#fff;
+      font-family:var(--fonte-num); font-size:.9rem; font-weight:700; }
+    .etapa h4 { font-family:var(--fonte-corpo); font-size:.88rem; margin-bottom:.3rem; }
+    .etapa p { font-size:.76rem; color:var(--tinta-suave); margin:0; }
+
+    /* Acompanhamento */
+    .acompanhamento { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; }
+    .busca-ordem { display:flex; gap:.5rem; flex-wrap:wrap; }
+    .busca-ordem input { flex:1; min-width:180px; padding:.7rem .8rem; border:1px solid var(--borda); border-radius:8px; }
+    .ordem-resultado { margin-top:1rem; padding:1.2rem; border-left:3px solid var(--latão); background:var(--bege-200); border-radius:6px; }
+    .barra-progresso { height:8px; background:rgba(255,255,255,.5); border-radius:999px; overflow:hidden; margin:1rem 0; }
+    .barra-progresso span { display:block; height:100%; background:var(--latão); transition:width .4s; }
+    .passos { list-style:none; padding:0; display:grid; gap:.5rem; }
+    .passos li { display:flex; gap:.6rem; align-items:center; font-size:.86rem; color:var(--tinta-suave); }
+    .passos li.concluido { color:var(--oliva-800); font-weight:600; }
+    .passos li span.icone { width:20px; text-align:center; }
+    .erro-ordem { color:#a33; font-size:.85rem; margin-top:.6rem; min-height:1.2em; }
+
+    /* Formulário */
+    .contato { display:grid; grid-template-columns:.85fr 1.15fr; gap:2.5rem; }
+    .contato__info h3 { font-size:1.4rem; }
+    .contato__info ul { list-style:none; padding:0; }
+    .contato__info li { display:flex; gap:.6rem; margin-bottom:.7rem; font-size:.9rem; color:var(--bege-200); }
+    .form-card { padding:clamp(1.3rem,4vw,2rem); }
+    .agrupamento { display:grid; grid-template-columns:1fr 1fr; gap:0 1rem; }
+    .campo { display:flex; flex-direction:column; gap:.3rem; margin-bottom:.9rem; }
+    .campo label { font-weight:700; font-size:.85rem; color:var(--madeira-800); }
+    .campo input,.campo select,.campo textarea { width:100%; padding:.7rem .8rem; border:1px solid #d5c6a9; border-radius:8px; background:#fff; }
+    .campo textarea { min-height:90px; resize:vertical; }
+    .campo .erro { color:#a33; font-size:.76rem; min-height:1.1em; }
+    .campo.invalido input,.campo.invalido select,.campo.invalido textarea { border-color:#a33; }
+    .anexos { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
+    .miniatura { width:74px; height:74px; border-radius:6px; overflow:hidden; border:1px solid var(--borda); position:relative; }
+    .miniatura img { width:100%; height:100%; object-fit:cover; }
+    .miniatura button { position:absolute; top:2px; right:2px; border:0; background:rgba(0,0,0,.6); color:#fff; border-radius:50%;
+      width:20px; height:20px; cursor:pointer; font-size:.7rem; line-height:1; }
+    .confirmacao { display:none; background:#eef4e8; border:1px solid #c4d8b5; border-radius:8px; padding:1rem; margin-top:1rem; color:#3a5a2c; font-size:.88rem; }
+    .confirmacao.visivel { display:block; }
+    .resumo { font-family:var(--fonte-num); font-size:.76rem; background:#fff; padding:.7rem; border-radius:6px; white-space:pre-wrap; margin:.5rem 0; }
+
+    /* Depoimentos */
+    .depoimentos { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+    .depoimento { padding:1.4rem; }
+    .depoimento blockquote { font-family:var(--fonte-titulo); font-style:italic; font-size:1rem; margin:0 0 .8rem; }
+    .depoimento cite { font-size:.78rem; color:var(--tinta-suave); font-style:normal; }
+    .aviso-ficticio { font-family:var(--fonte-num); font-size:.7rem; color:var(--latão); letter-spacing:.06em; }
+
+    /* Rodapé */
+    .rodape { background:var(--madeira-900); color:var(--bege-300); padding:2.8rem 0 1.6rem; border-top:4px solid var(--latão); }
+    .rodape__topo { display:flex; justify-content:space-between; gap:2rem; flex-wrap:wrap; align-items:center; }
+    .rodape__marca strong { color:#fff; font-family:var(--fonte-titulo); letter-spacing:.06em; }
+    .moss-bloco { border:1px solid rgba(180,138,62,.45); border-radius:var(--raio); padding:1.1rem 1.3rem; max-width:430px; background:rgba(255,255,255,.03); }
+    .moss-bloco p { font-size:.85rem; margin-bottom:.8rem; }
+    .rodape__base { border-top:1px solid rgba(255,255,255,.1); margin-top:2rem; padding-top:1rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:.76rem; }
+    .selo-demo { position:fixed; right:1rem; bottom:1rem; z-index:40; background:var(--oliva-800); color:#fff;
+      font-family:var(--fonte-num); font-size:.66rem; letter-spacing:.1em; padding:.45rem .7rem; border-radius:999px; pointer-events:none; }
+
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { transition:none !important; animation:none !important; scroll-behavior:auto !important; } }
+
+    /* Responsividade */
+    @media (max-width:980px) {
+      .nav { display:none; position:absolute; top:100%; left:0; right:0; background:var(--bege-100); flex-direction:column;
+        align-items:stretch; gap:0; padding:.5rem 1.25rem 1rem; box-shadow:var(--sombra); }
+      .nav.ativa { display:flex; }
+      .nav a { padding:.75rem 0; border-bottom:1px solid var(--borda); }
+      .menu-toggle { display:block; }
+      .hero .container,.acompanhamento,.contato { grid-template-columns:1fr; }
+      .grade-servicos,.grade-portfolio,.depoimentos { grid-template-columns:repeat(2,1fr); }
+      .etapas { grid-template-columns:repeat(3,1fr); }
+    }
+    @media (max-width:600px) {
+      .container { width:min(100% - 1.4rem,var(--largura)); }
+      .grade-servicos,.grade-portfolio,.depoimentos,.agrupamento,.etapas { grid-template-columns:1fr; }
+      .comparador__caixa { aspect-ratio:4/3; }
+      .selo-demo { font-size:.56rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="barra"><div class="container"><span>✦ OFICINA DE RESTAURAÇÃO · DEMONSTRAÇÃO</span><span>PEÇAS, FOTOS E DEPOIMENTOS FICTÍCIOS</span></div></div>
+
+  <header class="cabecalho">
+    <div class="container">
+      <a class="logo" href="#inicio" aria-label="RESTAURA PRIME — início">
+        <svg viewBox="0 0 48 48" role="img" aria-label="Marca RESTAURA PRIME">
+          <rect width="48" height="48" rx="10" fill="#3f4a2f"/>
+          <path d="M12 34c6-2 8-8 8-14 0-4 3-7 7-7s7 3 7 7c0 6 2 12 8 14" fill="none" stroke="#b48a3e" stroke-width="2.5"/>
+          <path d="M20 20h14M18 26h16" stroke="#f2ead9" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span><strong>RESTAURA PRIME</strong><small>RESTAURAÇÃO &amp; ACABAMENTO</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navPrincipal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+        <a href="#antes-depois">Antes e depois</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#acompanhamento">Acompanhe</a>
+        <a href="#orcamento">Orçamento</a>
+        <a class="btn btn--latão" href="#orcamento" data-cta>Solicitar orçamento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div>
+          <span class="selo-artesanal">❖ Feito à mão · cuidado nos detalhes</span>
+          <h1>Devolva a vida aos seus <em>móveis de madeira</em>.</h1>
+          <p class="hero__texto">Restauramos cadeiras, mesas, armários e objetos antigos com técnicas artesanais e acabamento de alta qualidade. Veja o transformador antes e depois — e acompanhe cada etapa do processo.</p>
+          <div class="hero__acoes">
+            <a class="btn btn--oliva" href="#antes-depois">Ver transformações →</a>
+            <a class="btn btn--contorno" href="#orcamento">Pedir orçamento</a>
+          </div>
+        </div>
+        <div class="hero__arte" role="img" aria-label="Ilustração de uma bancada de marceneiro com cadeira restaurada e ferramentas">
+          <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="520" height="400" fill="#f2ead9"/>
+            <g stroke="#e3d4b8" stroke-width="1"><path d="M0 50h520M0 100h520M0 150h520M0 200h520M0 250h520M0 300h520M0 350h520"/></g>
+            <!-- bancada -->
+            <rect x="30" y="270" width="460" height="22" rx="4" fill="#7d5731"/>
+            <rect x="50" y="292" width="18" height="90" fill="#5a3c22"/><rect x="452" y="292" width="18" height="90" fill="#5a3c22"/>
+            <!-- cadeira restaurada -->
+            <g stroke="#5a3c22" stroke-width="4" stroke-linejoin="round">
+              <rect x="180" y="120" width="120" height="90" rx="8" fill="#a8763f"/>
+              <rect x="196" y="138" width="88" height="54" rx="4" fill="none" stroke="#f2ead9" stroke-width="3"/>
+              <rect x="168" y="210" width="144" height="20" rx="5" fill="#a8763f"/>
+              <path d="M182 230v50M298 230v50" fill="none"/>
+            </g>
+            <!-- brilho do acabamento -->
+            <path d="M190 132 Q240 124 290 132" stroke="#d8b271" stroke-width="3" fill="none" opacity=".7"/>
+            <!-- ferramentas -->
+            <g stroke="#5a3c22" stroke-width="3" stroke-linecap="round">
+              <path d="M370 268 l24 -40" /><path d="M392 232 l16 -8 -8 16z" fill="#b48a3e"/>
+              <path d="M420 268 v-36"/><path d="M412 232 h16 l-8 -14z" fill="#b48a3e"/>
+            </g>
+            <!-- pincel -->
+            <path d="M110 268 l30 -34" stroke="#5a3c22" stroke-width="4"/>
+            <path d="M140 234 l12 -14 -4 18z" fill="#b48a3e"/>
+            <!-- selo artesanal -->
+            <circle cx="80" cy="70" r="34" fill="none" stroke="#b48a3e" stroke-width="2"/>
+            <text x="80" y="66" text-anchor="middle" font-size="8" fill="#7d5731" font-family="Georgia">FEITO À</text>
+            <text x="80" y="78" text-anchor="middle" font-size="8" fill="#7d5731" font-family="Georgia">MÃO</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparador antes e depois -->
+    <section class="secao secao--bege" id="antes-depois">
+      <div class="container">
+        <div class="cabecalho-secao texto-centro">
+          <span class="eyebrow">Galeria interativa</span>
+          <h2 class="titulo-secao">Antes e depois: arraste para comparar</h2>
+          <p class="subtitulo-secao">Use o controle deslizante com o mouse, o dedo ou as setas do teclado. As ilustrações são originais e mostram o efeito ilustrativo de uma restauração.</p>
+        </div>
+        <div class="comparador">
+          <div class="comparador__abas" role="group" aria-label="Escolher peça para comparar" id="abasComparador"></div>
+          <div class="comparador__caixa" id="caixaComparador">
+            <div class="comparador__camada" id="camadaAntes"></div>
+            <div class="comparador__camada comparador__depois" id="camadaDepois"></div>
+            <div class="comparador__linha"></div>
+            <div class="comparador__alinha" aria-hidden="true">↔</div>
+            <span class="comparador__etiqueta comparador__etiqueta--antes">ANTES</span>
+            <span class="comparador__etiqueta comparador__etiqueta--depois">DEPOIS</span>
+            <input class="comparador__range" id="rangeComparador" type="range" min="0" max="100" value="50"
+                   aria-label="Posição do comparador antes e depois" aria-valuetext="50% do antes visível">
+          </div>
+          <p class="comparador__dica">← Arraste o controle para revelar a restauração →</p>
+          <p class="comparador__legenda" id="legendaComparador"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="secao" id="servicos">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">O que fazemos</span>
+          <h2 class="titulo-secao">Serviços da oficina</h2>
+          <p class="subtitulo-secao">Cada projeto recebe diagnóstico, cuidado e acabamento personalizados.</p>
+        </div>
+        <div class="grade-servicos" id="gradeServicos"></div>
+      </div>
+    </section>
+
+    <!-- Portfólio -->
+    <section class="secao secao--bege" id="portfolio">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">Portfólio ilustrativo</span>
+          <h2 class="titulo-secao">Peças restauradas</h2>
+          <p class="subtitulo-secao">Projetos fictícios que mostram o estilo e o padrão de acabamento da oficina.</p>
+        </div>
+        <div class="grade-portfolio" id="gradePortfolio"></div>
+      </div>
+    </section>
+
+    <!-- Etapas -->
+    <section class="secao" id="etapas">
+      <div class="container">
+        <div class="cabecalho-secao texto-centro">
+          <span class="eyebrow">Como trabalhamos</span>
+          <h2 class="titulo-secao">Etapas de uma restauração</h2>
+        </div>
+        <div class="etapas">
+          <div class="etapa"><h4>Diagnóstico</h4><p>Avaliação do estado geral da peça.</p></div>
+          <div class="etapa"><h4>Desmontagem</h4><p>Separação cuidadosa das partes.</p></div>
+          <div class="etapa"><h4>Limpeza</h4><p>Remoção de sujeira e camadas antigas.</p></div>
+          <div class="etapa"><h4>Reparos</h4><p>Correção de fissuras e peças danificadas.</p></div>
+          <div class="etapa"><h4>Acabamento</h4><p>Lixamento, selagem e polimento.</p></div>
+          <div class="etapa"><h4>Entrega</h4><p>Conferência final e orientações de cuidado.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acompanhamento -->
+    <section class="secao secao--madeira" id="acompanhamento">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="eyebrow">Área do cliente (simulação)</span>
+          <h2 class="titulo-secao">Acompanhe sua restauração</h2>
+          <p class="subtitulo-secao">Digite um código de demonstração para ver o andamento. Códigos disponíveis: <strong>RS-1024</strong>, <strong>RS-1030</strong> e <strong>RS-1042</strong>.</p>
+        </div>
+        <div class="acompanhamento">
+          <div>
+            <div class="busca-ordem">
+              <input type="text" id="codigoOrdem" placeholder="Ex.: RS-1024" aria-label="Código da ordem de restauração">
+              <button class="btn btn--latão" id="buscarOrdem">Buscar</button>
+            </div>
+            <div class="erro-ordem" id="erroOrdem" aria-live="polite"></div>
+            <p style="font-size:.8rem;color:var(--bege-300);margin-top:1rem">Os códigos acima são fictícios. Nenhuma ordem real é consultada.</p>
+          </div>
+          <div class="ordem-resultado" id="resultadoOrdem" aria-live="polite">
+            <p style="margin:0;font-size:.85rem;color:var(--madeira-800)">Digite um código e clique em buscar para ver o acompanhamento ilustrativo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Orçamento -->
+    <section class="secao" id="orcamento">
+      <div class="container contato">
+        <div class="contato__info">
+          <span class="eyebrow">Solicite um orçamento</span>
+          <h3>Conte a história do seu móvel</h3>
+          <p>Cada peça é única. Descreva o tipo de móvel, o estado em que se encontra e, se quiser, anexe fotos para ajudar no diagnóstico ilustrativo.</p>
+          <ul>
+            <li>◇ Diagnóstico inicial sem compromisso (exemplo)</li>
+            <li>◇ Orçamento detalhado após análise (exemplo)</li>
+            <li>◇ Acabamentos personalizados (exemplo)</li>
+          </ul>
+          <p class="aviso-ficticio">Esta é uma demonstração: nenhum arquivo é enviado a servidor.</p>
+        </div>
+        <form class="card form-card" id="formOrcamento" novalidate>
+          <div class="agrupamento">
+            <div class="campo">
+              <label for="nome">Nome *</label>
+              <input type="text" id="nome" autocomplete="name" placeholder="Seu nome">
+              <span class="erro" aria-live="polite"></span>
+            </div>
+            <div class="campo">
+              <label for="contato">Telefone / WhatsApp *</label>
+              <input type="tel" id="contato" autocomplete="tel" placeholder="(00) 00000-0000">
+              <span class="erro" aria-live="polite"></span>
+            </div>
+          </div>
+          <div class="agrupamento">
+            <div class="campo">
+              <label for="tipoMovel">Tipo de móvel *</label>
+              <select id="tipoMovel">
+                <option value="">Selecione...</option>
+                <option>Cadeira</option><option>Mesa</option><option>Armário / cômoda</option>
+                <option>Estante / prateleira</option><option>Porta / janela</option><option>Objeto decorativo</option>
+              </select>
+              <span class="erro" aria-live="polite"></span>
+            </div>
+            <div class="campo">
+              <label for="estado">Estado geral</label>
+              <select id="estado">
+                <option>Pequenos desgastes</option><option>Pintura ou verniz danificado</option>
+                <option>Peças soltas ou faltando</option><option>Danos estruturais</option>
+              </select>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="danos">Descrição dos danos *</label>
+            <textarea id="danos" placeholder="Conte o que aconteceu com a peça, dimensões aproximadas, histórico..."></textarea>
+            <span class="erro" aria-live="polite"></span>
+          </div>
+          <div class="campo">
+            <label for="fotos">Prévia de fotografias (opcional)</label>
+            <input type="file" id="fotos" accept="image/*" multiple aria-describedby="ajudaFotos">
+            <small id="ajudaFotos" style="color:var(--tinta-suave);font-size:.75rem">As imagens ficam apenas neste navegador e não são enviadas.</small>
+            <div class="anexos" id="anexos"></div>
+          </div>
+          <button class="btn btn--oliva btn--bloco" type="submit">Enviar solicitação (demonstração)</button>
+          <div class="confirmacao" id="confirmacao" role="status">
+            <strong>✓ Solicitação registrada nesta demonstração.</strong>
+            <p style="margin:.4rem 0">Nenhuma mensagem ou arquivo foi enviado. Resumo gerado:</p>
+            <div class="resumo" id="resumoOrcamento"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Depoimentos (explicitamente fictícios) -->
+    <section class="secao secao--bege">
+      <div class="container">
+        <div class="cabecalho-secao texto-centro">
+          <span class="eyebrow aviso-ficticio">⚠ Exemplos fictícios — não são depoimentos reais</span>
+          <h2 class="titulo-secao">O que clientes diriam</h2>
+        </div>
+        <div class="depoimentos">
+          <div class="card depoimento"><blockquote>“A cadeira da minha avó voltou a brilhar. O acabamento ficou lindo!”</blockquote><cite>— Cliente fictício A</cite></div>
+          <div class="card depoimento"><blockquote>“Gostei de acompanhar cada etapa pelo código. Muito transparência.”</blockquote><cite>— Cliente fictício B</cite></div>
+          <div class="card depoimento"><blockquote>“A mesa antiga ganhou uma nova história sem perder a originalidade.”</blockquote><cite>— Cliente fictício C</cite></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias do segmento</h2>
+      <p class="subtitulo-secao">Imagens de referência sobre marcenaria e móveis antigos, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/bancada.webp" alt="Bancada de marcenaria com ferramentas" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Bancada de marcenaria com ferramentas<small>Imagem ilustrativa · cc0 1.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/artesania.webp" alt="Plaino sobre madeira em bancada de trabalho" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Plaino sobre madeira em bancada de trabalho<small>Imagem ilustrativa · licença registrada</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/cadeira-antiga.webp" alt="Cadeiras de madeira com assento estofado" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Cadeiras de madeira com assento estofado<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/ferramentas.webp" alt="Paquímetro sobre tábua de madeira" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Paquímetro sobre tábua de madeira<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/moveis-antigos.webp" alt="Móveis antigos em ambiente interno" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Móveis antigos em ambiente interno<small>Imagem ilustrativa · by-sa 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/restauracao.webp" alt="Bancada de trabalho em oficina" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Bancada de trabalho em oficina<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape">
+    <div class="container">
+      <div class="rodape__topo">
+        <div class="rodape__marca">
+          <strong>RESTAURA PRIME</strong>
+          <p style="font-size:.82rem;max-width:420px;margin-top:.5rem">Demonstração de uma oficina de restauração. Peças, fotos, códigos e depoimentos são fictícios.</p>
+        </div>
+        <div class="moss-bloco">
+          <p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou do resultado? Crie um site assim para o seu negócio.</p>
+          <a class="btn btn--latão" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a>
+        </div>
+      </div>
+      <div class="rodape__base"><span>© 2026 RESTAURA PRIME — Demo MOSS Digital</span><span>Conteúdo ilustrativo · Imagens SVG originais</span></div>
+    </div>
+  </footer>
+
+  <div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+
+  <script>
+    /* ==========================================================================
+       JAVASCRIPT
+       1. Dados · 2. Gerador de ilustrações · 3. Comparador · 4. Serviços/portfólio
+       5. Acompanhamento · 6. Formulário e prévia de fotos · 7. Menu/WhatsApp
+       ========================================================================== */
+    'use strict';
+
+    /* ---------- 1. Dados ----------------------------------------------------- */
+    const WHATSAPP_MOSS = '5511942038103';
+    const NOME_DEMO = 'RESTAURA PRIME (Demo 03 — Restaurador de móveis)';
+
+    const SERVICOS = [
+      { titulo: 'Restauração de madeira', icone: 'madeira', desc: 'Recuperação de móveis antigos preservando suas características originais.' },
+      { titulo: 'Polimento e acabamento', icone: 'brilho', desc: 'Lixamento, selagem e aplicação de vernizes conforme o estilo da peça.' },
+      { titulo: 'Reforma de estofados', icone: 'estofado', desc: 'Troca de tecidos e espumas mantendo o design e o conforto originais.' },
+      { titulo: 'Restauro de metais', icone: 'metal', desc: 'Limpeza e recuperação de ferragens, puxadores e detalhes decorativos.' },
+      { titulo: 'Reparos estruturais', icone: 'reparo', desc: 'Correção de fissuras, emendas e peças danificadas com técnica adequada.' },
+      { titulo: 'Conservação preventiva', icone: 'escudo', desc: 'Orientações ilustrativas para conservar suas peças por mais tempo.' }
+    ];
+
+    // Peças do comparador. Cada uma gera um SVG "antes" e outro "depois".
+    const PECAS = [
+      { id:'cadeira', nome:'Cadeira Estilo', nota:'Madeira recuperada e verniz acetinado (ilustração)' },
+      { id:'mesa', nome:'Mesa de Jantar', nota:'Tampo lixado e pernas restauradas (ilustração)' },
+      { id:'armario', nome:'Armário Antigo', nota:'Ferragens polidas e pintura preservada (ilustração)' }
+    ];
+
+    // Ordens fictícias para acompanhamento.
+    const ORDENS = {
+      'RS-1024': { peca:'Cadeira Estilo', etapa:3, previsao:'em 5 dias úteis (ilustrativo)' },
+      'RS-1030': { peca:'Mesa de Jantar', etapa:5, previsao:'pronta para retirada (ilustrativo)' },
+      'RS-1042': { peca:'Armário Antigo', etapa:1, previsao:'em 12 dias úteis (ilustrativo)' }
+    };
+    const ETAPAS_NOMES = ['Diagnóstico','Desmontagem','Limpeza','Reparos','Acabamento','Entrega'];
+
+    const PORTFOLIO = [
+      { titulo:'Cadeira de madeira maciça', tipo:'cadeira', desc:'Estrutura recuperada e acabamento acetinado.' },
+      { titulo:'Mesa de jantar familiar', tipo:'mesa', desc:'Tampo renovado com preservação das marcas originais.' },
+      { titulo:'Cômoda vintage', tipo:'armario', desc:'Ferragens restauradas e pintura preservada.' }
+    ];
+
+    /* ---------- 2. Gerador de ilustrações SVG ------------------------------- */
+    /*
+     * Desenha a mesma peça em dois estados.
+     * estado = 'antes' → cores apagadas, rachaduras, aspecto desgastado
+     * estado = 'depois' → madeira viva, brilho, detalhes dourados
+     */
+    function desenharPeca(tipo, estado) {
+      const antes = estado === 'antes';
+      const cor = antes ? '#a99b86' : '#a8763f';
+      const corEscura = antes ? '#8a7d6b' : '#5a3c22';
+      const corClara = antes ? '#c4b8a3' : '#d8a55f';
+      const detalhe = antes ? '#7c7060' : '#b48a3e';
+      const fundo = antes ? '#e8e0d0' : '#f2ead9';
+      const brilho = antes ? '' : `<path d="M40 60 Q140 48 240 60" stroke="#e8c98a" stroke-width="4" fill="none" opacity=".6"/>`;
+      const rachaduras = antes
+        ? `<g stroke="#6f6455" stroke-width="1.6" fill="none" opacity=".8"><path d="M90 100 l14 22 -8 18"/><path d="M175 90 l-10 26 12 20"/><path d="M210 150 l18 14"/></g>`
+        : `<g stroke="#e8c98a" stroke-width="2" fill="none" opacity=".7"><path d="M60 100 h60"/><path d="M170 100 h50"/></g>`;
+
+      let desenho = '';
+      if (tipo === 'cadeira') {
+        desenho = `
+          <rect x="95" y="60" width="150" height="120" rx="10" fill="${cor}" stroke="${corEscura}" stroke-width="5"/>
+          <rect x="115" y="80" width="110" height="80" rx="5" fill="none" stroke="${corEscura}" stroke-width="4"/>
+          <rect x="80" y="178" width="180" height="24" rx="6" fill="${cor}" stroke="${corEscura}" stroke-width="5"/>
+          <path d="M100 202v100M240 202v100" stroke="${corEscura}" stroke-width="8" stroke-linecap="round"/>
+          ${brilho}${rachaduras}`;
+      } else if (tipo === 'mesa') {
+        desenho = `
+          <rect x="40" y="110" width="260" height="26" rx="6" fill="${cor}" stroke="${corEscura}" stroke-width="5"/>
+          ${brilho}
+          <path d="M70 136v130M270 136v130" stroke="${corEscura}" stroke-width="11" stroke-linecap="round"/>
+          <rect x="60" y="150" width="220" height="12" rx="3" fill="${corClara}"/>
+          ${rachaduras}`;
+      } else {
+        desenho = `
+          <rect x="70" y="55" width="200" height="245" rx="8" fill="${cor}" stroke="${corEscura}" stroke-width="5"/>
+          <rect x="88" y="75" width="78" height="100" rx="4" fill="${corClara}" stroke="${corEscura}" stroke-width="3"/>
+          <rect x="174" y="75" width="78" height="100" rx="4" fill="${corClara}" stroke="${corEscura}" stroke-width="3"/>
+          <circle cx="155" cy="125" r="5" fill="${detalhe}"/><circle cx="185" cy="125" r="5" fill="${detalhe}"/>
+          <rect x="88" y="195" width="164" height="80" rx="4" fill="${corClara}" stroke="${corEscura}" stroke-width="3"/>
+          <path d="M170 195v80" stroke="${corEscura}" stroke-width="3"/>
+          <circle cx="152" cy="235" r="5" fill="${detalhe}"/><circle cx="188" cy="235" r="5" fill="${detalhe}"/>
+          ${brilho}${rachaduras}`;
+      }
+      return `<svg viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="Ilustração da peça ${tipo} no estado ${estado}">
+        <rect width="340" height="340" fill="${fundo}"/>
+        <ellipse cx="170" cy="310" rx="130" ry="14" fill="rgba(90,60,34,.12)"/>
+        ${desenho}
+      </svg>`;
+    }
+
+    const ICONES = {
+      madeira:'<svg viewBox="0 0 48 48" fill="none" stroke="#5a3c22" stroke-width="2"><path d="M10 38c8-4 10-14 10-22 0-5 4-8 8-8s8 3 8 8c0 8 2 18 10 22"/></svg>',
+      brilho:'<svg viewBox="0 0 48 48" fill="none" stroke="#5a3c22" stroke-width="2"><path d="M24 6l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/></svg>',
+      estofado:'<svg viewBox="0 0 48 48" fill="none" stroke="#5a3c22" stroke-width="2"><rect x="8" y="18" width="32" height="18" rx="4"/><path d="M8 26h32M14 18v-4h20v4"/></svg>',
+      metal:'<svg viewBox="0 0 48 48" fill="none" stroke="#5a3c22" stroke-width="2"><circle cx="24" cy="24" r="12"/><circle cx="24" cy="24" r="5"/><path d="M24 4v7M24 37v7M4 24h7M37 24h7"/></svg>',
+      reparo:'<svg viewBox="0 0 48 48" fill="none" stroke="#5a3c22" stroke-width="2"><path d="M12 36l20-20M30 10l8 8-6 6-8-8zM10 30l8 8-6 4-6-6z"/></svg>',
+      escudo:'<svg viewBox="0 0 48 48" fill="none" stroke="#5a3c22" stroke-width="2"><path d="M24 6l14 5v12c0 9-6 15-14 19-8-4-14-10-14-19V11z"/><path d="M18 24l4 4 8-9"/></svg>'
+    };
+
+    /* ---------- 3. Comparador antes/depois ---------------------------------- */
+    const abas = document.getElementById('abasComparador');
+    const camadaAntes = document.getElementById('camadaAntes');
+    const camadaDepois = document.getElementById('camadaDepois');
+    const range = document.getElementById('rangeComparador');
+    const caixa = document.getElementById('caixaComparador');
+    const legenda = document.getElementById('legendaComparador');
+    let pecaAtual = PECAS[0];
+
+    // Cria as abas de seleção de peça.
+    PECAS.forEach((p, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'aba'; btn.type = 'button'; btn.textContent = p.nome;
+      btn.setAttribute('aria-pressed', String(i === 0));
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.aba').forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        pecaAtual = p;
+        camadaAntes.innerHTML = desenharPeca(p.id, 'antes');
+        camadaDepois.innerHTML = desenharPeca(p.id, 'depois');
+        legenda.textContent = p.nota;
+      });
+      abas.appendChild(btn);
+    });
+    // Estado inicial
+    camadaAntes.innerHTML = desenharPeca(pecaAtual.id, 'antes');
+    camadaDepois.innerHTML = desenharPeca(pecaAtual.id, 'depois');
+    legenda.textContent = pecaAtual.nota;
+
+    // Atualiza a posição do comparador. --pos controla o clip-path e a linha.
+    function atualizarComparador(valor) {
+      caixa.style.setProperty('--pos', valor + '%');
+      range.setAttribute('aria-valuetext', valor + '% do antes visível');
+    }
+    range.addEventListener('input', e => atualizarComparador(e.target.value));
+    atualizarComparador(50);
+
+    /* ---------- 4. Serviços e portfólio ------------------------------------- */
+    const gradeServicos = document.getElementById('gradeServicos');
+    SERVICOS.forEach((s, i) => {
+      const card = document.createElement('article');
+      card.className = 'card servico';
+      card.innerHTML = `<div class="servico__num">SERVIÇO ${String(i+1).padStart(2,'0')}</div>
+        <div class="servico__icone">${ICONES[s.icone]}</div><h3>${s.titulo}</h3><p>${s.desc}</p>`;
+      gradeServicos.appendChild(card);
+    });
+
+    const gradePortfolio = document.getElementById('gradePortfolio');
+    PORTFOLIO.forEach(p => {
+      const card = document.createElement('article');
+      card.className = 'card projeto';
+      card.innerHTML = `<div class="projeto__imagem">${desenharPeca(p.tipo, 'depois')}</div>
+        <div class="projeto__corpo"><span class="etiqueta-pequena">Projeto fictício</span>
+        <h3>${p.titulo}</h3><p>${p.desc}</p></div>`;
+      gradePortfolio.appendChild(card);
+    });
+
+    /* ---------- 5. Acompanhamento de ordens --------------------------------- */
+    const resultadoOrdem = document.getElementById('resultadoOrdem');
+    const erroOrdem = document.getElementById('erroOrdem');
+
+    function buscarOrdem() {
+      const codigo = document.getElementById('codigoOrdem').value.trim().toUpperCase();
+      const ordem = ORDENS[codigo];
+      if (!ordem) {
+        erroOrdem.textContent = 'Código não encontrado. Use um dos códigos de demonstração informados acima.';
+        resultadoOrdem.innerHTML = '<p style="margin:0;font-size:.85rem;color:var(--madeira-800)">Nenhuma ordem selecionada.</p>';
+        return;
+      }
+      erroOrdem.textContent = '';
+      const passos = ETAPAS_NOMES.map((nome, i) => {
+        const concluido = i < ordem.etapa;
+        return `<li class="${concluido ? 'concluido' : ''}"><span class="icone">${concluido ? '✓' : '○'}</span>${nome}</li>`;
+      }).join('');
+      const percentual = Math.round((ordem.etapa / ETAPAS_NOMES.length) * 100);
+      resultadoOrdem.innerHTML = `
+        <span class="etiqueta-pequena">Ordem ${codigo} · fictícia</span>
+        <h4 style="color:var(--madeira-900)">${ordem.peca}</h4>
+        <div class="barra-progresso"><span style="width:${percentual}%"></span></div>
+        <p style="font-size:.82rem;color:var(--madeira-800)">Etapa atual: <strong>${ETAPAS_NOMES[ordem.etapa-1]}</strong> · ${percentual}% (ilustrativo)</p>
+        <ul class="passos">${passos}</ul>
+        <p style="font-size:.78rem;color:var(--madeira-800);margin:.6rem 0 0">Previsão: ${ordem.previsao}</p>`;
+    }
+    document.getElementById('buscarOrdem').addEventListener('click', buscarOrdem);
+    document.getElementById('codigoOrdem').addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); buscarOrdem(); }
+    });
+
+    /* ---------- 6. Formulário e prévia de fotos ----------------------------- */
+    const fotos = []; // Guarda apenas URLs de objeto locais (nada é enviado).
+    const inputFotos = document.getElementById('fotos');
+    const areaAnexos = document.getElementById('anexos');
+
+    inputFotos.addEventListener('change', e => {
+      Array.from(e.target.files).filter(f => f.type.startsWith('image/')).forEach(arquivo => {
+        const url = URL.createObjectURL(arquivo);
+        fotos.push({ nome: arquivo.name, url });
+      });
+      renderizarAnexos();
+      e.target.value = ''; // permite selecionar o mesmo arquivo novamente
+    });
+
+    function renderizarAnexos() {
+      areaAnexos.innerHTML = '';
+      fotos.forEach((f, i) => {
+        const mini = document.createElement('div');
+        mini.className = 'miniatura';
+        mini.innerHTML = `<img src="${f.url}" alt="Prévia local de ${f.nome}">
+          <button type="button" aria-label="Remover ${f.nome}" data-indice="${i}">×</button>`;
+        areaAnexos.appendChild(mini);
+      });
+      areaAnexos.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const i = Number(btn.dataset.indice);
+          URL.revokeObjectURL(fotos[i].url);
+          fotos.splice(i, 1);
+          renderizarAnexos();
+        });
+      });
+    }
+
+    const form = document.getElementById('formOrcamento');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      let valido = true;
+      const obrigatorios = [
+        { id:'nome', teste: v => v.trim().length >= 2, msg:'Informe seu nome.' },
+        { id:'contato', teste: v => v.replace(/\D/g,'').length >= 10, msg:'Informe um telefone válido.' },
+        { id:'tipoMovel', teste: v => !!v, msg:'Selecione o tipo de móvel.' },
+        { id:'danos', teste: v => v.trim().length >= 10, msg:'Descreva os danos (mínimo 10 caracteres).' }
+      ];
+      obrigatorios.forEach(o => {
+        const campo = document.getElementById(o.id);
+        const erro = campo.parentElement.querySelector('.erro');
+        const msg = o.teste(campo.value) ? '' : o.msg;
+        erro.textContent = msg;
+        campo.parentElement.classList.toggle('invalido', !!msg);
+        if (msg) valido = false;
+      });
+      if (!valido) return;
+
+      const resumo =
+        `Nome: ${document.getElementById('nome').value.trim()}\n` +
+        `Contato: ${document.getElementById('contato').value.trim()}\n` +
+        `Móvel: ${document.getElementById('tipoMovel').value}\n` +
+        `Estado: ${document.getElementById('estado').value}\n` +
+        `Danos: ${document.getElementById('danos').value.trim()}\n` +
+        `Fotos anexadas (locais): ${fotos.length}`;
+      document.getElementById('resumoOrcamento').textContent = resumo;
+      const conf = document.getElementById('confirmacao');
+      conf.classList.add('visivel');
+      conf.scrollIntoView({ behavior:'smooth', block:'nearest' });
+      // Nada é enviado: fotos e dados permanecem apenas nesta página.
+    });
+
+    /* ---------- 7. Menu e WhatsApp MOSS ------------------------------------- */
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('navPrincipal');
+    menuToggle.addEventListener('click', () => {
+      const aberta = nav.classList.toggle('ativa');
+      menuToggle.setAttribute('aria-expanded', String(aberta));
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('ativa'); menuToggle.setAttribute('aria-expanded','false');
+    }));
+    document.querySelectorAll('[data-cta]').forEach(cta => {
+      cta.addEventListener('click', () => {
+        setTimeout(() => document.getElementById('nome')?.focus({ preventScroll:true }), 400);
+      });
+    });
+
+    const msgMoss = encodeURIComponent('Olá! A demonstração ' + NOME_DEMO + ' despertou meu interesse. Gostaria de saber mais.');
+    document.getElementById('btnMoss').href = `https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+  </script>
+</body>
+</html>

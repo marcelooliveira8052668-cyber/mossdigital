@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a2540">
+<meta name="description" content="INSPECT PRIME — demonstração premium de inspeção predial com imóveis, checklists, ocorrências e relatório visual ilustrativo.">
+<title>INSPECT PRIME — Inspeção Predial | Demonstração MOSS Digital</title>
+
+<!--
+  ============================================================================
+  INSPECT PRIME — DEMONSTRAÇÃO 15 DO CATÁLOGO MOSS DIGITAL (ÚLTIMA DEMO)
+  ============================================================================
+  Arquivo único (HTML + CSS + JS + SVGs inline).
+
+  ⚠️ Relatórios, ocorrências, imóveis e prioridades são EXEMPLOS sem valor
+  de laudo técnico oficial. Não substituem inspeção por profissional
+  responsável nem qualquer documento técnico regulamentar.
+
+  ONDE EDITAR:
+  - Serviços: SERVICOS (JS)
+  - Imóveis: IMOVEIS_FICTICIOS (JS)
+  - Categorias do checklist: CHECKLIST_CATEGORIAS (JS)
+  - Ocorrências iniciais: OCORRENCIAS_FICTICIAS (JS)
+  - WhatsApp MOSS: WHATSAPP_MOSS (JS)
+  ============================================================================
+-->
+
+<style>
+/* 1. Variáveis — arquitetura premium: azul-profundo, branco, cobre */
+:root{
+ --navio-900:#0a2036;--navio-800:#0e2d4b;--navio-700:#153d61;--navio-600:#1e527f;
+ --cobre:#b87333;--cobre-claro:#d19a63;
+ --branco:#fff;--fundo:#f5f7f9;--tinta:#22303e;--suave:#6b7c8c;
+ --borda:#dbe3ea;--sombra:0 10px 28px rgba(10,32,54,.10);--sombra-forte:0 20px 46px rgba(10,32,54,.20);
+ --raio:6px;--titulo:Georgia,"Times New Roman",serif;--corpo:"Segoe UI",Arial,sans-serif;--mono:"Consolas",monospace;
+ --largura:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--corpo);color:var(--tinta);background:var(--branco);line-height:1.6}
+h1,h2,h3,h4{font-family:var(--titulo);font-weight:500;line-height:1.2;color:var(--navio-900);margin:0 0 .5em}
+p{margin:0 0 1em}ul{margin:0;padding-left:1.1rem}a{color:var(--navio-700)}
+button,input,select,textarea{font:inherit}svg{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--cobre);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--cobre);color:#fff;padding:.6rem 1rem;z-index:999}
+.skip-link:focus{left:0}
+.container{width:min(100% - 2.5rem,var(--largura));margin-inline:auto}
+.secao{padding:clamp(3rem,6vw,5rem) 0}
+.secao--fundo{background:var(--fundo)}
+.secao--navio{background:var(--navio-900);color:#cfdde9}
+.secao--navio h2,.secao--navio h3{color:#fff}
+.cabecalho-secao{max-width:700px;margin-bottom:2.2rem}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cobre);font-weight:700}
+.titulo-secao{font-size:clamp(1.9rem,3.8vw,2.6rem)}
+.subtitulo-secao{color:var(--suave)}
+.secao--navio .subtitulo-secao{color:#b4c7d8}
+.centro{text-align:center;margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.78rem 1.25rem;border:2px solid transparent;border-radius:var(--raio);
+ font-weight:700;cursor:pointer;text-decoration:none;font-size:.88rem;transition:transform .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn--cobre{background:var(--cobre);color:#fff}.btn--cobre:hover{background:#9b5f28}
+.btn--navio{background:var(--navio-700);color:#fff}.btn--navio:hover{background:var(--navio-600)}
+.btn--contorno{border-color:var(--cobre);color:var(--navio-800);background:transparent}.btn--contorno:hover{background:rgba(184,115,51,.08)}
+.btn--claro{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}.btn--claro:hover{background:rgba(255,255,255,.1)}
+.btn--bloco{width:100%}.btn--pequeno{padding:.4rem .7rem;font-size:.75rem}
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);box-shadow:var(--sombra)}
+
+/* Barra/cabeçalho */
+.barra{background:var(--navio-900);color:#b4c7d8;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+.barra .container{display:flex;justify-content:space-between;gap:1rem;padding-block:.45rem;flex-wrap:wrap}
+.cabecalho{background:rgba(255,255,255,.97);border-bottom:2px solid var(--cobre);position:sticky;top:0;z-index:50}
+.cabecalho .container{display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:1rem}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--navio-900)}
+.logo svg{width:44px;height:44px}
+.logo strong{display:block;font-family:var(--titulo);font-size:1.15rem;line-height:1}
+.logo small{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--cobre)}
+.nav{display:flex;align-items:center;gap:1.1rem}
+.nav a{color:var(--tinta);text-decoration:none;font-weight:600;font-size:.86rem}.nav a:hover{color:var(--cobre)}
+.menu-toggle{display:none;padding:.45rem .7rem;border:1px solid var(--borda);background:#fff;color:var(--navio-900);cursor:pointer;border-radius:var(--raio);font-weight:700}
+
+/* Hero */
+.hero{background:linear-gradient(125deg,var(--navio-900),var(--navio-800));color:#fff;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding-block:clamp(3rem,7vw,5rem)}
+.hero h1{color:#fff;font-size:clamp(2.1rem,4.8vw,3.4rem);font-weight:400}
+.hero h1 em{color:var(--cobre-claro);font-style:italic}
+.hero__texto{color:#c7d7e6;max-width:34rem}
+.hero__acoes{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.5rem}
+.hero__arte{border:1px solid rgba(184,115,51,.4);border-radius:var(--raio);padding:1rem;background:rgba(255,255,255,.04)}
+.hero__arte svg{width:100%;height:auto}
+.hero__nota{font-size:.75rem;color:#c7d7e6;border-left:3px solid var(--cobre);padding:.5rem .8rem;margin-top:1.2rem}
+
+/* Serviços */
+.servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.servico{padding:1.4rem;border-top:3px solid var(--cobre)}
+.servico h3{font-size:1.05rem}.servico p{font-size:.85rem;color:var(--suave);margin:0}
+
+/* Painel imóveis */
+.painel-imoveis{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.imovel{padding:1.3rem;cursor:pointer;transition:border .18s,transform .18s}
+.imovel:hover{transform:translateY(-3px)}
+.imovel.selecionado{border-color:var(--cobre);border-width:2px;background:#fffaf5}
+.imovel h3{font-size:1.05rem;margin-bottom:.2rem}
+.imovel p{font-size:.8rem;color:var(--suave);margin:0}
+.etiqueta{display:inline-block;padding:.2rem .55rem;border-radius:999px;font-size:.68rem;font-weight:700;background:var(--fundo);color:var(--navio-800);margin-top:.6rem}
+.etiqueta--alta{background:#fdeaea;color:#a52626}
+.etiqueta--media{background:#fdf1e0;color:#9a6516}
+.etiqueta--baixa{background:#e8f1ea;color:#2f6b4a}
+
+/* Work area: checklist + ocorrências */
+.work{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+.work>*{min-width:0}
+.check-cat{margin-bottom:1.1rem}
+.check-cat h4{font-family:var(--corpo);font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--navio-700);border-bottom:1px solid var(--borda);padding-bottom:.4rem}
+.checklist{list-style:none;padding:0}
+.checklist li{display:flex;gap:.6rem;align-items:flex-start;padding:.35rem 0;font-size:.85rem}
+.checklist input{accent-color:var(--cobre);margin-top:.2rem;width:17px;height:17px}
+.obs-form{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--borda)}
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.campo{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.8rem}
+.campo label{font-weight:700;font-size:.82rem;color:var(--navio-800)}
+.campo input,.campo select,.campo textarea{width:100%;padding:.65rem .75rem;border:1px solid var(--borda);border-radius:var(--raio)}
+.campo textarea{min-height:80px;resize:vertical}
+.campo .erro{color:#b04a4a;font-size:.74rem;min-height:1.1em}
+.campo.invalido textarea,.campo.invalido select{border-color:#b04a4a}
+.confirmacao{display:none;background:#eef4f8;border:1px solid #b9d2e3;border-radius:var(--raio);padding:.8rem;margin-top:.8rem;color:#27516e;font-size:.82rem}
+.confirmacao.visivel{display:block}
+
+.ocorrencias{list-style:none;padding:0;margin:0}
+.ocorrencia{display:flex;gap:.8rem;padding:.8rem 0;border-bottom:1px solid var(--borda)}
+.ocorrencia svg{width:40px;height:40px;flex:0 0 40px}
+.ocorrencia strong{display:block;font-size:.88rem}
+.ocorrencia p{font-size:.8rem;color:var(--suave);margin:.2rem 0}
+.data-info{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+
+/* Calendário + histórico */
+.cal-hist{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+.cal-hist>*{min-width:0}
+.calendario{padding:1.2rem}
+.cal-topo{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.cal-topo h3{margin:0;font-size:1rem}
+.cal-botoes{display:flex;gap:.3rem}
+.cal-botoes button{width:30px;height:30px;border:1px solid var(--borda);background:#fff;cursor:pointer;border-radius:var(--raio)}
+.grade-dias{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.dia-semana{text-align:center;font-size:.62rem;font-weight:700;color:var(--suave);padding-bottom:.3rem}
+.dia{aspect-ratio:1;border:1px solid var(--borda);border-radius:var(--raio);padding:.2rem;font-size:.72rem;background:#fff}
+.dia.vazio{border:0;background:transparent}
+.dia.com-visita{background:#f7efe6;border-color:var(--cobre);font-weight:700;cursor:pointer}
+.dia.hoje{outline:2px solid var(--navio-700);outline-offset:-2px}
+.dia .pontinho{display:block;width:5px;height:5px;border-radius:50%;background:var(--cobre);margin:2px auto 0}
+.rolagem{overflow-x:auto;max-width:100%}
+.tabela{width:100%;border-collapse:collapse;font-size:.82rem;min-width:420px}
+.tabela th{background:var(--navio-800);color:#fff;padding:.55rem .65rem;text-align:left;font-size:.7rem}
+.tabela td{padding:.55rem .65rem;border-bottom:1px solid var(--borda)}
+
+/* Galeria de ocorrências */
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.galeria__img{aspect-ratio:4/3;background:var(--fundo)}
+.galeria__img svg{width:100%;height:100%}
+.galeria__corpo{padding:1rem 1.1rem 1.2rem}
+.galeria__corpo h3{font-size:1rem}.galeria__corpo p{font-size:.82rem;color:var(--suave);margin:0}
+
+/* Rodapé */
+.rodape{background:var(--navio-900);color:#b4c7d8;padding:2.6rem 0 1.4rem;border-top:3px solid var(--cobre)}
+.rodape__topo{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.rodape__marca strong{color:#fff;font-family:var(--titulo)}
+.moss-bloco{border:1px solid rgba(184,115,51,.45);border-radius:var(--raio);padding:1rem 1.2rem;max-width:430px;background:rgba(255,255,255,.03)}
+.moss-bloco p{font-size:.84rem;margin-bottom:.7rem}
+.rodape__base{border-top:1px solid rgba(255,255,255,.1);margin-top:1.8rem;padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.74rem}
+.selo-demo{position:fixed;right:1rem;bottom:1rem;z-index:40;background:var(--cobre);color:#fff;
+ font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;padding:.42rem .7rem;border-radius:999px;pointer-events:none}
+
+#areaImpressao{display:none}
+@media print{
+ body *{visibility:hidden!important}
+ #areaImpressao,#areaImpressao *{visibility:visible!important}
+ #areaImpressao{display:block!important;position:absolute;left:0;top:0;width:100%;color:#000}
+ #areaImpressao table{width:100%;border-collapse:collapse;margin-top:10pt}
+ #areaImpressao th,#areaImpressao td{border:1px solid #000;padding:5pt;text-align:left;font-size:9pt}
+}
+
+    /* ===== Galeria de fotografias ilustrativas (licenciadas) ===== */
+    .fotos-secao .cabecalho-secao{max-width:760px}
+    .fotos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .foto-item{margin:0;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:var(--branco,#fff)}
+    .foto-item img{width:100%;height:200px;object-fit:cover;display:block}
+    .foto-item figcaption{padding:.7rem .8rem;font-size:.82rem;line-height:1.4}
+    .foto-item figcaption small{display:block;color:var(--suave);font-size:.72rem;margin-top:.2rem}
+    .fotos-aviso{font-size:.8rem;color:var(--suave);border-left:3px solid var(--destaque,var(--cobre,#b9782f));padding:.7rem .9rem;background:rgba(0,0,0,.03);margin-top:1.2rem}
+    @media(max-width:600px){.fotos-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:400px){.fotos-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:980px){
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem;box-shadow:var(--sombra)}
+ .nav.ativa{display:flex}.nav a{padding:.7rem 0;border-bottom:1px solid var(--borda)}
+ .menu-toggle{display:block}
+ .hero .container,.work,.cal-hist{grid-template-columns:1fr}
+ .servicos,.painel-imoveis,.galeria{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 1.4rem,var(--largura))}
+ .servicos,.painel-imoveis,.galeria,.grade-2{grid-template-columns:1fr}
+ .dia{font-size:.65rem}
+ .selo-demo{font-size:.55rem}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<div class="barra"><div class="container"><span>◎ INSPEÇÃO PREDIAL · DEMONSTRAÇÃO PREMIUM</span><span>RELATÓRIOS SÃO EXEMPLOS SEM VALOR DE LAUDO OFICIAL</span></div></div>
+
+<header class="cabecalho"><div class="container">
+ <a class="logo" href="#inicio" aria-label="INSPECT PRIME — início">
+  <svg viewBox="0 0 48 48" role="img" aria-label="Marca INSPECT PRIME">
+   <rect width="48" height="48" rx="6" fill="#0a2036"/>
+   <path d="M10 38V18l14-8 14 8v20" fill="none" stroke="#b87333" stroke-width="2.5"/>
+   <path d="M18 38V26h12v12M6 38h36" stroke="#d19a63" stroke-width="2"/>
+  </svg>
+  <span><strong>INSPECT PRIME</strong><small>INSPEÇÃO PREDIAL</small></span>
+ </a>
+ <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navPrincipal">Menu ☰</button>
+ <nav class="nav" id="navPrincipal" aria-label="Navegação principal">
+  <a href="#servicos">Serviços</a><a href="#imoveis">Imóveis</a><a href="#vistoria">Vistoria</a>
+  <a href="#agenda">Agenda</a><a href="#ocorrencias">Ocorrências</a><a href="#orcamento">Orçamento</a>
+  <a class="btn btn--cobre" href="#orcamento" data-cta>Solicitar orçamento</a>
+ </nav>
+</div></header>
+
+<main id="conteudo">
+ <section class="hero" id="inicio"><div class="container">
+  <div>
+   <span class="eyebrow">Arquitetura &amp; diagnóstico · demonstração</span>
+   <h1>Olhar técnico para <em>cada detalhe</em> do edifício.</h1>
+   <p class="hero__texto">Um ambiente demonstrativo de inspeção predial: imóveis fictícios, checklists interativos, registro de ocorrências com prioridade, agenda de visitas e relatório visual para impressão.</p>
+   <div class="hero__acoes">
+    <a class="btn btn--cobre" href="#imoveis">Ver painel →</a>
+    <a class="btn btn--claro" href="#servicos">Conheça os serviços</a>
+   </div>
+   <p class="hero__nota">⚠ Todos os relatórios, imóveis e ocorrências são <strong>exemplos sem valor de laudo técnico oficial</strong>. Não substituem inspeção por profissional responsável.</p>
+  </div>
+  <div class="hero__arte" role="img" aria-label="Ilustração de um edifício em corte com planta baixa e marcadores de ocorrências">
+   <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+    <rect width="520" height="380" fill="#0a2036"/>
+    <g stroke="#153d61" stroke-width="1"><path d="M0 40h520M0 80h520M0 120h520M0 160h520M0 200h520M0 240h520M0 280h520M0 320h520"/></g>
+    <!-- edifício -->
+    <rect x="90" y="50" width="230" height="290" fill="#0e2d4b" stroke="#b87333" stroke-width="3"/>
+    <g stroke="#d19a63" stroke-width="2"><path d="M90 120h230M90 190h230M90 260h230M205 50v290"/></g>
+    <g fill="#1e527f"><rect x="110" y="75" width="30" height="30"/><rect x="160" y="75" width="30" height="30"/><rect x="260" y="75" width="30" height="30"/>
+     <rect x="110" y="145" width="30" height="30"/><rect x="260" y="145" width="30" height="30"/><rect x="110" y="215" width="30" height="30"/><rect x="260" y="215" width="30" height="30"/></g>
+    <!-- marcadores -->
+    <g fill="#b87333"><circle cx="205" cy="120" r="9"/><circle cx="90" cy="260" r="9"/><circle cx="320" cy="190" r="9"/></g>
+    <g fill="#fff" font-family="monospace" font-size="11" font-weight="bold"><text x="201" y="124">1</text><text x="86" y="264">2</text><text x="316" y="194">3</text></g>
+    <!-- lupa -->
+    <g transform="translate(380,200)"><circle r="46" fill="none" stroke="#d19a63" stroke-width="5"/>
+     <path d="M33 33l40 40" stroke="#d19a63" stroke-width="9" stroke-linecap="round"/></g>
+   </svg>
+  </div>
+ </div></section>
+
+ <section class="secao secao--fundo" id="servicos"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Serviços</span>
+   <h2 class="titulo-secao">Escopo apresentado</h2>
+   <p class="subtitulo-secao"> Serviços descritos de forma genérica, sem laudos ou diagnósticos reais.</p></div>
+  <div class="servicos" id="gradeServicos"></div>
+ </div></section>
+
+ <!-- Imóveis -->
+ <section class="secao" id="imoveis"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Painel demonstrativo</span>
+   <h2 class="titulo-secao">Imóveis fictícios em acompanhamento</h2>
+   <p class="subtitulo-secao">Selecione um imóvel para registrar ocorrências e conferir o checklist. Use o formulário para cadastrar uma vistoria fictícia.</p></div>
+  <div class="painel-imoveis" id="gradeImoveis"></div>
+
+  <form class="card" id="formImovel" style="padding:1.3rem;margin-top:1.5rem" novalidate>
+   <h3 style="font-size:1.05rem">Cadastrar vistoria fictícia</h3>
+   <div class="painel-imoveis">
+    <div class="campo"><label for="nomeImovel">Identificação do imóvel *</label><input id="nomeImovel" placeholder="Ex.: Edifício Exemplo"><span class="erro" aria-live="polite"></span></div>
+    <div class="campo"><label for="tipoImovel">Tipo</label><select id="tipoImovel"><option>Residencial</option><option>Comercial</option><option>Industrial</option><option>Público</option></select></div>
+    <div class="campo"><label for="dataVisita">Data da visita *</label><input type="date" id="dataVisita"><span class="erro" aria-live="polite"></span></div>
+   </div>
+   <button class="btn btn--navio" type="submit">Adicionar imóvel fictício</button>
+  </form>
+ </div></section>
+
+ <!-- Vistoria: checklist + ocorrências -->
+ <section class="secao secao--fundo" id="vistoria"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Checklist e observações</span>
+   <h2 class="titulo-secao">Registro demonstrativo de vistoria</h2>
+   <p class="subtitulo-secao" id="imovelSelecionadoLabel">Imóvel selecionado: —</p></div>
+  <div class="work">
+   <div class="card" style="padding:1.3rem">
+    <h3 style="font-size:1.05rem">Checklists interativos</h3>
+    <div id="checklists"></div>
+    <div class="obs-form">
+     <h4 style="font-family:var(--corpo);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em">Nova observação (fictícia)</h4>
+     <div class="campo"><label for="descricaoObs">Descrição *</label>
+      <textarea id="descricaoObs" placeholder="Ex.: mancha de umidade ilustrativa"></textarea><span class="erro" aria-live="polite"></span></div>
+     <div class="campo"><label for="prioridadeObs">Prioridade ilustrativa</label>
+      <select id="prioridadeObs"><option value="baixa">Baixa</option><option value="media">Média</option><option value="alta">Alta</option></select></div>
+     <button class="btn btn--cobre btn--bloco" id="adicionarObs" type="button">Registrar observação</button>
+     <div class="confirmacao" id="confirmacaoObs" role="status">✓ Observação fictícia registrada nesta demonstração.</div>
+    </div>
+   </div>
+   <div class="card" style="padding:1.3rem">
+    <h3 style="font-size:1.05rem">Pendências do imóvel</h3>
+    <ul class="ocorrencias" id="listaOcorrencias"></ul>
+    <button class="btn btn--navio" id="imprimirRelatorio" style="margin-top:1rem">Gerar relatório visual (imprimir)</button>
+    <p class="aviso">Relatório de exemplo, sem valor de laudo técnico oficial.</p>
+   </div>
+  </div>
+ </div></section>
+
+ <!-- Agenda e histórico -->
+ <section class="secao" id="agenda"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Rotina demonstrativa</span>
+   <h2 class="titulo-secao">Calendário de visitas e histórico</h2>
+   <p class="subtitulo-secao">Clique em uma data marcada para filtrar o histórico de inspeções simuladas.</p></div>
+  <div class="cal-hist">
+   <div class="card calendario">
+    <div class="cal-topo"><h3 id="mesCalendario">—</h3>
+     <div class="cal-botoes"><button id="mesAnterior" aria-label="Mês anterior">‹</button><button id="mesSeguinte" aria-label="Próximo mês">›</button></div></div>
+    <div class="grade-dias" id="gradeDias" role="grid" aria-label="Calendário de visitas"></div>
+   </div>
+   <div class="card" style="padding:1rem">
+    <h3 style="font-size:1rem">Histórico de inspeções (simuladas)</h3>
+    <div class="rolagem">
+     <table class="tabela"><thead><tr><th>Imóvel</th><th>Data</th><th>Tipo</th><th>Ocorrências</th></tr></thead>
+      <tbody id="corpoHistorico"></tbody></table>
+    </div>
+   </div>
+  </div>
+ </div></section>
+
+ <!-- Galeria -->
+ <section class="secao secao--fundo" id="ocorrencias"><div class="container">
+  <div class="cabecalho-secao centro"><span class="eyebrow">Galeria ilustrativa</span>
+   <h2 class="titulo-secao">Tipos de ocorrência ilustrados</h2>
+   <p class="subtitulo-secao">Ilustrações SVG originais, sem fotos de ocorrências reais.</p></div>
+  <div class="galeria" id="gradeGaleria"></div>
+ </div></section>
+
+ <!-- Orçamento -->
+ <section class="secao secao--navio" id="orcamento"><div class="container">
+  <div class="cabecalho-secao"><span class="eyebrow">Atendimento comercial</span>
+   <h2 class="titulo-secao">Solicite uma proposta demonstrativa</h2>
+   <p class="subtitulo-secao">Formulário de simulação: valida os campos e confirma localmente, sem envio a servidor.</p></div>
+  <form class="card" id="formOrcamento" style="padding:1.4rem;max-width:760px" novalidate>
+   <div class="grade-2">
+    <div class="campo"><label for="nome">Nome *</label><input id="nome" placeholder="Seu nome"><span class="erro" aria-live="polite"></span></div>
+    <div class="campo"><label for="email">E-mail *</label><input type="email" id="email" placeholder="voce@exemplo.com"><span class="erro" aria-live="polite"></span></div>
+   </div>
+   <div class="campo"><label for="tipoServico">Tipo de imóvel</label><input id="tipoServico" placeholder="Ex.: residencial, comercial"></div>
+   <div class="campo"><label for="mensagem">Mensagem *</label><textarea id="mensagem" placeholder="Descreva sua necessidade fictícia"></textarea><span class="erro" aria-live="polite"></span></div>
+   <button class="btn btn--cobre" type="submit">Enviar solicitação (demonstração)</button>
+   <div class="confirmacao" id="confirmacaoOrc" role="status">✓ Solicitação registrada nesta demonstração. Nada foi enviado.</div>
+  </form>
+ </div></section>
+</main>
+
+  <!-- Galeria de fotografias licenciadas — não representam a empresa fictícia -->
+  <section class="secao secao--fundo" id="fotografias"><div class="container">
+    <div class="cabecalho-secao centro">
+      <span class="eyebrow">Fotografias ilustrativas</span>
+      <h2 class="titulo-secao">Fotografias ilustrativas de inspeção</h2>
+      <p class="subtitulo-secao">Imagens de referência sobre edificações e ocorrências, com fonte e licença registradas.</p>
+    </div>
+    <div class="fotos-grid">
+      <figure class="foto-item">
+        <img src="img/fotos/fachada.webp" alt="Fachada de edifício residencial" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Fachada de edifício residencial<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/trinca.webp" alt="Fissura em parede" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Fissura em parede<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/umidade.webp" alt="Parede com danos por umidade" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Parede com danos por umidade<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/planta.webp" alt="Planta baixa arquitetônica" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Planta baixa arquitetônica<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/vistoria.webp" alt="Técnicos com equipamentos em vistoria de obra" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Técnicos com equipamentos em vistoria de obra<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+      <figure class="foto-item">
+        <img src="img/fotos/corrosao.webp" alt="Painel metálico com corrosão aparente" width="1200" height="800" loading="lazy" decoding="async">
+        <figcaption>Painel metálico com corrosão aparente<small>Imagem ilustrativa · by 2.0</small></figcaption>
+      </figure>
+    </div>
+    <p class="fotos-aviso">⚠ Estas fotografias são imagens de referência licenciadas. Não representam a empresa fictícia, sua equipe, instalações ou trabalhos reais.</p>
+  </div></section>
+
+<footer class="rodape"><div class="container">
+ <div class="rodape__topo">
+  <div class="rodape__marca"><strong>INSPECT PRIME</strong>
+   <p style="font-size:.82rem;max-width:430px;margin-top:.5rem">Demonstração premium de inspeção predial com imóveis, ocorrências e relatórios fictícios, sem valor de laudo técnico oficial.</p></div>
+  <div class="moss-bloco"><p><strong style="color:#fff">Demonstração desenvolvida pela MOSS Digital.</strong><br>Gostou? Crie um site assim para seu negócio.</p>
+   <a class="btn btn--cobre" id="btnMoss" href="#" target="_blank" rel="noopener">Quero um site como este →</a></div>
+ </div>
+ <div class="rodape__base"><span>© 2026 INSPECT PRIME — Demo MOSS Digital</span><span>Relatórios ilustrativos · Sem laudo oficial</span></div>
+</div></footer>
+<div class="selo-demo" aria-hidden="true">DEMONSTRAÇÃO</div>
+<div id="areaImpressao"></div>
+
+<script>
+/* ==========================================================================
+   JAVASCRIPT — imóveis, checklists, ocorrências, agenda, relatório
+   ========================================================================== */
+'use strict';
+const WHATSAPP_MOSS='5511942038103';
+const NOME_DEMO='INSPECT PRIME (Demo 15 — Inspeção predial)';
+const CHAVE='inspect-prime-v1';
+function daquiDias(n){const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
+function fmt(iso){if(!iso)return '—';const [a,m,d]=iso.split('-');return `${d}/${m}/${a}`;}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+
+/* ---------- 1. Dados fictícios --------------------------------------------- */
+const SERVICOS=[
+ {nome:'Inspeção visual predial',desc:'Descrição genérica ilustrativa, sem laudo ou diagnóstico real.'},
+ {nome:'Checklist de rotina',desc:'Listas demonstrativas para organizar observações fictícias.'},
+ {nome:'Acompanhamento de pendências',desc:'Painel ilustrativo de prioridades e situações simuladas.'},
+ {nome:'Relatório visual',desc:'Documento de exemplo para impressão, sem validade técnica.'},
+ {nome:'Agenda de visitas',desc:'Cronograma fictício apresentado na interface.'},
+ {nome:'Histórico demonstrativo',desc:'Registros inventados para mostrar a evolução do painel.'}
+];
+const IMOVEIS_FICTICIOS=[
+ {id:'im1',nome:'Edifício Aurora',tipo:'Residencial',data:daquiDias(-3),vistorias:2},
+ {id:'im2',nome:'Centro Comercial Prime',tipo:'Comercial',data:daquiDias(-1),vistorias:1},
+ {id:'im3',nome:'Galpão Logístico Exemplo',tipo:'Industrial',data:daquiDias(4),vistorias:3}
+];
+const CHECKLIST_CATEGORIAS={
+ 'Estrutura':['Fissuras aparentes (ilustrativo)','Estado de pilares (ilustrativo)','Lajes e vigas (ilustrativo)'],
+ 'Instalações':['Hidráulica (ilustrativo)','Elétrica (ilustrativo)','Drenagem (ilustrativo)'],
+ 'Cobertura':['Impermeabilização (ilustrativo)','Calhas (ilustrativo)','Acesso (ilustrativo)']
+};
+const OCORRENCIAS_FICTICIAS={
+ im1:[
+  {titulo:'Mancha de umidade ilustrativa',descricao:'Exemplo visual sem diagnóstico.',prioridade:'media',data:daquiDias(-3),tipo:'umidade'},
+  {titulo:'Fissura ilustrativa',descricao:'Exemplo visual sem diagnóstico.',prioridade:'alta',data:daquiDias(-3),tipo:'trinca'}
+ ],
+ im2:[{titulo:'Pintura desgastada ilustrativa',descricao:'Exemplo visual sem diagnóstico.',prioridade:'baixa',data:daquiDias(-1),tipo:'desgaste'}],
+ im3:[{titulo:'Corrosão aparente ilustrativa',descricao:'Exemplo visual sem diagnóstico.',prioridade:'alta',data:daquiDias(4),tipo:'ferrugem'}]
+};
+const ICONES_OCORR={
+ umidade:'<svg viewBox="0 0 48 48" fill="none" stroke="#1e527f" stroke-width="2"><path d="M24 6c8 11 12 17 12 24a12 12 0 01-24 0c0-7 4-13 12-24z"/></svg>',
+ trinca:'<svg viewBox="0 0 48 48" fill="none" stroke="#b87333" stroke-width="2.5"><path d="M8 42l10-16-6-10 14-14M26 16l8 6-4 20"/></svg>',
+ desgaste:'<svg viewBox="0 0 48 48" fill="none" stroke="#6b7c8c" stroke-width="2"><rect x="8" y="8" width="32" height="32" rx="3"/><path d="M14 30l6-8 6 6 8-12"/></svg>',
+ ferrugem:'<svg viewBox="0 0 48 48" fill="none" stroke="#9b5f28" stroke-width="2"><circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="6"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6"/></svg>'
+};
+
+/* ---------- 2. Estado ------------------------------------------------------- */
+let imoveis=carregar();let selecionado=IMOVEIS_FICTICIOS[0].id;let mesAtual=new Date();mesAtual.setDate(1);
+function carregar(){try{const s=localStorage.getItem(CHAVE);if(s){const d=JSON.parse(s);if(Array.isArray(d))return d;}}catch(e){}return clone(IMOVEIS_FICTICIOS);}
+function salvar(){try{localStorage.setItem(CHAVE,JSON.stringify(imoveis));}catch(e){}}
+let ocorrencias=clone(OCORRENCIAS_FICTICIAS);
+const checados={};
+
+/* ---------- 3. Serviços e imóveis ------------------------------------------ */
+const gradeServ=document.getElementById('gradeServicos');
+SERVICOS.forEach(s=>{const c=document.createElement('article');c.className='card servico';
+ c.innerHTML=`<h3>${s.nome}</h3><p>${s.desc}</p>`;gradeServ.appendChild(c);});
+
+function renderizarImoveis(){
+ document.getElementById('gradeImoveis').innerHTML=imoveis.map(im=>`
+  <article class="card imovel ${im.id===selecionado?'selecionado':''}" data-id="${im.id}" tabindex="0" role="button"
+   aria-label="Selecionar ${im.nome}">
+   <h3>${im.nome}</h3><p>${im.tipo} · ${im.vistorias} vistoria(s) simulada(s)</p>
+   <span class="etiqueta">Visita: ${fmt(im.data)}</span>
+  </article>`).join('');
+ document.querySelectorAll('.imovel').forEach(el=>{
+  const ir=()=>{selecionado=el.dataset.id;renderizarImoveis();renderizarChecklists();renderizarOcorrencias();};
+  el.addEventListener('click',ir);
+  el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();ir();}});
+ });
+}
+function renderizarChecklists(){
+ const im=imoveis.find(x=>x.id===selecionado);
+ document.getElementById('imovelSelecionadoLabel').textContent='Imóvel selecionado: '+(im?im.nome:'—');
+ let html='';
+ Object.entries(CHECKLIST_CATEGORIAS).forEach(([cat,itens])=>{
+  html+=`<div class="check-cat"><h4>${cat}</h4><ul class="checklist">`+
+   itens.map((t,i)=>{const key=selecionado+'-'+cat+'-'+i;
+    return `<li><input type="checkbox" id="ck${i}" data-key="${key}" ${checados[key]?'checked':''}><label for="ck${i}">${t}</label></li>`;}).join('')+'</ul></div>';
+ });
+ const area=document.getElementById('checklists');area.innerHTML=html;
+ area.querySelectorAll('[data-key]').forEach(cb=>cb.addEventListener('change',()=>{checados[cb.dataset.key]=cb.checked;}));
+}
+const prioridadeClasse={alta:'etiqueta--alta',media:'etiqueta--media',baixa:'etiqueta--baixa'};
+function renderizarOcorrencias(){
+ const itens=ocorrencias[selecionado]||[];
+ document.getElementById('listaOcorrencias').innerHTML=itens.length?itens.map(o=>`
+  <li class="ocorrencia">${ICONES_OCORR[o.tipo]}
+   <div><strong>${o.titulo}</strong><p>${o.descricao}</p>
+    <div class="data-info"><span class="etiqueta ${prioridadeClasse[o.prioridade]}">Prioridade ${o.prioridade}</span>
+    <small style="color:var(--suave)">${fmt(o.data)} · ilustrativo</small></div>
+   </div></li>`).join(''):'<li style="color:var(--suave);font-size:.85rem">Nenhuma ocorrência fictícia registrada.</li>';
+}
+
+/* ---------- 4. Cadastro de imóvel ------------------------------------------ */
+document.getElementById('formImovel').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ [{id:'nomeImovel',t:v=>v.trim().length>=3,m:'Informe o nome do imóvel fictício.'},
+  {id:'dataVisita',t:v=>!!v,m:'Escolha a data da visita.'}].forEach(o=>{
+  const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+  const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(!valido)return;
+ const id='im'+(Date.now());
+ imoveis.unshift({id,nome:document.getElementById('nomeImovel').value.trim(),tipo:document.getElementById('tipoImovel').value,
+  data:document.getElementById('dataVisita').value,vistorias:0});
+ ocorrencias[id]=[];
+ salvar();selecionado=id;renderizarImoveis();renderizarChecklists();renderizarOcorrencias();renderizarCalendario();renderizarHistorico();
+ e.target.reset();
+});
+
+/* ---------- 5. Observações -------------------------------------------------- */
+document.getElementById('adicionarObs').addEventListener('click',()=>{
+ const c=document.getElementById('descricaoObs'),erro=c.parentElement.querySelector('.erro');
+ erro.textContent=c.value.trim().length>=10?'':'Descreva a observação (mínimo 10 caracteres).';
+ c.parentElement.classList.toggle('invalido',!!erro.textContent);
+ if(erro.textContent)return;
+ const mapa={'Mancha de umidade':'umidade','Fissura':'trinca','Corrosão':'ferrugem'};
+ const texto=c.value.toLowerCase();
+ let tipo='desgaste';
+ if(texto.includes('umidad'))tipo='umidade';
+ else if(texto.includes('trinca')||texto.includes('fissura'))tipo='trinca';
+ else if(texto.includes('ferrugem')||texto.includes('corros'))tipo='ferrugem';
+ (ocorrencias[selecionado]=ocorrencias[selecionado]||[]).unshift({
+  titulo:c.value.trim().slice(0,48),descricao:'Observação fictícia registrada nesta demonstração.',
+  prioridade:document.getElementById('prioridadeObs').value,data:new Date().toISOString().slice(0,10),tipo
+ });
+ renderizarOcorrencias();
+ c.value='';
+ document.getElementById('confirmacaoObs').classList.add('visivel');
+});
+
+/* ---------- 6. Agenda e histórico ------------------------------------------ */
+function renderizarCalendario(){
+ const ano=mesAtual.getFullYear(),mes=mesAtual.getMonth(),primeiro=new Date(ano,mes,1),dias=new Date(ano,mes+1,0).getDate();
+ const nome=primeiro.toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+ document.getElementById('mesCalendario').textContent=nome.charAt(0).toUpperCase()+nome.slice(1);
+ const datas=new Set(imoveis.map(i=>i.data)),hoje=new Date().toISOString().slice(0,10);
+ let html=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'].map(d=>`<div class="dia-semana">${d}</div>`).join('');
+ for(let i=0;i<primeiro.getDay();i++)html+='<div class="dia vazio"></div>';
+ for(let d=1;d<=dias;d++){
+  const iso=`${ano}-${String(mes+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,tem=datas.has(iso);
+  html+=`<div class="dia ${tem?'com-visita':''} ${hoje===iso?'hoje':''}" ${tem?`role="button" tabindex="0" data-dia="${iso}" aria-label="Visita em ${fmt(iso)}"`:''}>
+   ${d}${tem?'<span class="pontinho"></span>':''}</div>`;
+ }
+ document.getElementById('gradeDias').innerHTML=html;
+ document.querySelectorAll('[data-dia]').forEach(el=>{
+  const ir=()=>renderizarHistorico(el.dataset.dia);
+  el.addEventListener('click',ir);
+  el.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();ir();}});
+ });
+}
+function renderizarHistorico(filtro){
+ const itens=filtro?imoveis.filter(i=>i.data===filtro):imoveis;
+ document.getElementById('corpoHistorico').innerHTML=itens.map(i=>{
+  const n=(ocorrencias[i.id]||[]).length;
+  return `<tr><td>${i.nome}</td><td>${fmt(i.data)}</td><td>${i.tipo}</td><td>${n} ilustrativa(s)</td></tr>`;
+ }).join('');
+}
+document.getElementById('mesAnterior').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()-1);renderizarCalendario();});
+document.getElementById('mesSeguinte').addEventListener('click',()=>{mesAtual.setMonth(mesAtual.getMonth()+1);renderizarCalendario();});
+
+/* ---------- 7. Galeria ------------------------------------------------------ */
+function arteOcorrencia(tipo){
+ const base='<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de ocorrência">';
+ if(tipo==='umidade')return base+`<rect width="400" height="300" fill="#eef3f8"/><rect x="60" y="40" width="280" height="220" fill="#f7fafb" stroke="#1e527f" stroke-width="2"/>
+  <path d="M140 240q20-60 60-90t40-70" stroke="#5aa0c4" stroke-width="26" fill="none" opacity=".6"/></svg>`;
+ if(tipo==='trinca')return base+`<rect width="400" height="300" fill="#f5f7f9"/><path d="M40 40h320v220H40z" fill="#e7ecef" stroke="#b87333" stroke-width="2"/>
+  <path d="M120 260l40-70-20-40 60-70 30 30-10 150" fill="none" stroke="#8a5a2b" stroke-width="5"/></svg>`;
+ if(tipo==='ferrugem')return base+`<rect width="400" height="300" fill="#f5f7f9"/><rect x="80" y="60" width="240" height="180" fill="#d9dfe3" stroke="#9b5f28" stroke-width="3"/>
+  <circle cx="170" cy="140" r="34" fill="#9b5f28" opacity=".6"/><circle cx="260" cy="190" r="24" fill="#9b5f28" opacity=".5"/></svg>`;
+ return base+`<rect width="400" height="300" fill="#f5f7f9"/><rect x="70" y="70" width="260" height="160" fill="#e7ecef" stroke="#6b7c8c" stroke-width="2"/>
+  <path d="M90 210l60-70 50 40 60-80 40 110z" fill="#cfd7dd"/></svg>`;
+}
+const gradeGal=document.getElementById('gradeGaleria');
+[['Umidade ilustrativa','Exemplo visual sem diagnóstico.','umidade'],['Fissura ilustrativa','Exemplo visual sem diagnóstico.','trinca'],
+ ['Corrosão ilustrativa','Exemplo visual sem diagnóstico.','ferrugem']].forEach(([t,d,tipo])=>{
+ const c=document.createElement('article');c.className='card';
+ c.innerHTML=`<div class="galeria__img" role="img" aria-label="${t}">${arteOcorrencia(tipo)}</div>
+  <div class="galeria__corpo"><h3>${t}</h3><p>${d}</p></div>`;gradeGal.appendChild(c);
+});
+
+/* ---------- 8. Relatório ---------------------------------------------------- */
+document.getElementById('imprimirRelatorio').addEventListener('click',()=>{
+ const im=imoveis.find(x=>x.id===selecionado);
+ const itens=(ocorrencias[selecionado]||[]).map(o=>
+  `<tr><td>${o.titulo}</td><td>${o.prioridade}</td><td>${fmt(o.data)}</td></tr>`).join('')||'<tr><td colspan="3">Nenhuma ocorrência ilustrativa.</td></tr>';
+ document.getElementById('areaImpressao').innerHTML=`
+  <h1>Relatório visual ilustrativo de inspeção</h1>
+  <p><strong>EXEMPLO SEM VALOR DE LAUDO TÉCNICO OFICIAL</strong></p>
+  <table><tr><th>Imóvel fictício</th><td>${im?im.nome:'—'}</td></tr>
+  <tr><th>Tipo</th><td>${im?im.tipo:'—'}</td></tr><tr><th>Data ilustrativa</th><td>${im?fmt(im.data):'—'}</td></tr></table>
+  <h2>Ocorrências ilustrativas</h2>
+  <table><tr><th>Ocorrência</th><th>Prioridade</th><th>Data</th></tr>${itens}</table>
+  <p style="margin-top:12pt;font-size:9pt">Gerado por INSPECT PRIME — demonstração MOSS Digital.</p>`;
+ window.print();
+});
+
+/* ---------- 9. Orçamento, menu, WhatsApp ----------------------------------- */
+document.getElementById('formOrcamento').addEventListener('submit',e=>{
+ e.preventDefault();let valido=true;
+ [{id:'nome',t:v=>v.trim().length>=2,m:'Informe o nome.'},
+  {id:'email',t:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),m:'E-mail inválido.'},
+  {id:'mensagem',t:v=>v.trim().length>=10,m:'Descreva a necessidade (mínimo 10 caracteres).'}].forEach(o=>{
+  const c=document.getElementById(o.id),erro=c.parentElement.querySelector('.erro');
+  const msg=o.t(c.value)?'':o.m;erro.textContent=msg;c.parentElement.classList.toggle('invalido',!!msg);if(msg)valido=false;
+ });
+ if(valido)document.getElementById('confirmacaoOrc').classList.add('visivel');
+});
+const menuToggle=document.getElementById('menuToggle'),nav=document.getElementById('navPrincipal');
+menuToggle.addEventListener('click',()=>{const a=nav.classList.toggle('ativa');menuToggle.setAttribute('aria-expanded',String(a));
+ menuToggle.textContent=a?'Fechar ✕':'Menu ☰';});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('ativa');menuToggle.setAttribute('aria-expanded','false');menuToggle.textContent='Menu ☰';}));
+document.querySelectorAll('[data-cta]').forEach(cta=>cta.addEventListener('click',()=>{
+ setTimeout(()=>document.getElementById('nome')?.focus({preventScroll:true}),400);}));
+const msgMoss=encodeURIComponent('Olá! A demonstração '+NOME_DEMO+' despertou meu interesse. Gostaria de saber mais.');
+document.getElementById('btnMoss').href=`https://wa.me/${WHATSAPP_MOSS}?text=${msgMoss}`;
+
+renderizarImoveis();renderizarChecklists();renderizarOcorrencias();renderizarCalendario();renderizarHistorico();
+</script>
+</body>
+</html>
