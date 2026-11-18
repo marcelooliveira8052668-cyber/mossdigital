@@ -467,3 +467,19 @@ html[data-estacao]:not([data-estacao="original"]) #depoimentos h2 {color:#182e4d
 @media(prefers-reduced-motion:reduce){
   html[data-estacao]:not([data-estacao="original"]) .vitrine-acoes a {transition:none;}
 }
+
+/* Contraste também nos avisos menores e no endereço de e-mail. */
+html[data-estacao]:not([data-estacao="original"]) #modelos .catalog-note,
+html[data-estacao]:not([data-estacao="original"]) #modelos .empty p,
+html[data-estacao]:not([data-estacao="original"]) #modelos .catalog-note a {
+  color:#365446;
+}
+html[data-estacao]:not([data-estacao="original"]) .contact a[href^="mailto:"] {
+  color:#115f49!important; font-weight:800;
+}
+html[data-estacao]:not([data-estacao="original"]) #modelos .catalog-more a {
+  background:var(--moss-ouro); color:#1d2c23;
+}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-painel {
+  border-color:#ccb470; box-shadow:0 14px 44px #0005;
+}
