@@ -13,7 +13,7 @@
     cancelAnimationFrame(animationFrame);
     const running=playing&&(!reduced()||userAllowedMotion)&&inView&&!document.hidden&&!rail.hidden&&rail.scrollWidth>rail.clientWidth+3;
     root.dataset.carouselRunning=String(running);
-    document.querySelector('.desktop-carousel-hint').textContent=running?'Deslizamento contínuo':'Use as setas ou inicie o movimento';
+    document.querySelector('.desktop-carousel-hint').textContent=running?'Os sites estão passando':'Use as setas para ver os sites';
     if(!running)return;
     let previous=0,left=rail.scrollLeft,lastUpdate=0;
     const speed=matchMedia('(max-width:650px)').matches?56:48;
@@ -42,14 +42,14 @@
     const step=width+parseFloat(getComputedStyle(rail).gap||0);
     const first=matches.length?Math.min(matches.length,Math.floor(rail.scrollLeft/step)+1):0;
     const last=matches.length?Math.min(matches.length,Math.ceil((rail.scrollLeft+rail.clientWidth)/step)):0;
-    position.textContent=matches.length?`${first}–${last} de ${matches.length}`:'0 modelos';
+    position.textContent=matches.length?`${first}–${last} de ${matches.length}`:'Nenhum site';
     prev.disabled=rail.scrollLeft<=2;next.disabled=rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-3||matches.length===0;
   }
   function apply(){
     const query=norm(input.value.trim());
     matches=cards.filter(c=>(category.value==='Todos'||c.dataset.category===category.value)&&texts.get(c).includes(query));
     const set=new Set(matches);cards.forEach(c=>c.hidden=!set.has(c));
-    count.textContent=matches.length+(matches.length===1?' modelo encontrado':' modelos de sites disponíveis');
+    count.textContent=matches.length+(matches.length===1?' site encontrado':' sites de exemplo disponíveis');
     clear.hidden=!input.value;empty.hidden=matches.length!==0;rail.hidden=matches.length===0;
     rail.scrollTo({left:0,behavior:'instant'});update();schedule();
   }
