@@ -178,3 +178,322 @@ html[data-estacao="carnaval"] .vitrine::after {
   }
   html[data-estacao]:not([data-estacao="original"]) .vitrine::after { display: none; }
 }
+
+
+/* ======================================================================
+   MOSS FESTAS | Edição visual especial inspirada nas prévias aprovadas.
+   ATENÇÃO: todos os estilos têm data-estacao, portanto não atingem o
+   visual original, as páginas dos 156 sites ou o mecanismo dia/noite.
+   ====================================================================== */
+
+/* Três paletas marcantes — verde e vermelho; verde e dourado; roxo vibrante. */
+html[data-estacao="natal"] {
+  --moss-claro:#fffcf5; --moss-tinta:#133a30; --moss-ouro:#ffd679;
+  --moss-escuro:#042a20; --moss-heroi:#063326; --moss-botao:#16b441;
+}
+html[data-estacao="ano-novo"] {
+  --moss-claro:#fffdf7; --moss-tinta:#173b32; --moss-ouro:#ffe18c;
+  --moss-escuro:#042820; --moss-heroi:#052824; --moss-botao:#12ac43;
+}
+html[data-estacao="carnaval"] {
+  --moss-claro:#fffbff; --moss-tinta:#28134c; --moss-ouro:#ffe635;
+  --moss-escuro:#290952; --moss-heroi:#350979; --moss-botao:#15b846;
+}
+
+/* A página fica clara abaixo do topo, igual à referência fornecida. */
+html[data-estacao]:not([data-estacao="original"]) body,
+html[data-estacao]:not([data-estacao="original"]):not([data-tema="dia"]) body {
+  background:var(--moss-claro); color:var(--moss-tinta);
+}
+html[data-estacao]:not([data-estacao="original"]) .site-header,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-header {
+  background:var(--moss-escuro); border-bottom:1px solid #ffffff24;
+  box-shadow:0 4px 20px #0002;
+}
+html[data-estacao]:not([data-estacao="original"]) .site-header .brand-name,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-header .brand-name,
+html[data-estacao]:not([data-estacao="original"]) .site-header .main-nav a,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-header .main-nav a {
+  color:#fff;
+}
+html[data-estacao]:not([data-estacao="original"]) .site-header .brand-icon {
+  background:#ffffff13;color:var(--moss-ouro);border:1px solid #ffffff38;
+}
+html[data-estacao]:not([data-estacao="original"]) .site-header .nav-contact,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-header .nav-contact {
+  background:transparent;color:#fff;border:1px solid #50cc71;border-radius:999px;
+}
+html[data-estacao]:not([data-estacao="original"]) .site-header .nav-contact:hover {background:#136d46;}
+
+/* No modo dia, o botão fica claro, no modo noite fica dourado.
+   Seu clique continua funcionando com o JavaScript original. */
+html[data-estacao]:not([data-estacao="original"]) .moss-tema-botao {background:var(--moss-ouro);border-color:var(--moss-ouro);color:#143026;}
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .moss-tema-botao {background:#f9f9f1;border-color:#f9f9f1;color:#143026;}
+
+/* A faixa de palavras fica DEPOIS do destaque durante as festas. */
+html[data-estacao]:not([data-estacao="original"]) .vitrine,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .vitrine {
+  display:flex;flex-direction:column;overflow:hidden;
+  background:
+    radial-gradient(ellipse 66% 66% at 92% 50%,#2b845050 0%,transparent 76%),
+    radial-gradient(ellipse 47% 60% at 15% 24%,#ffffff06 0%,transparent 70%),
+    linear-gradient(120deg,var(--moss-escuro),var(--moss-heroi));
+  padding:0;isolation:isolate;
+}
+html[data-estacao="carnaval"] .vitrine,
+html[data-estacao="carnaval"][data-tema="dia"] .vitrine {
+  background:
+    radial-gradient(ellipse at 80% 33%,#ed239e6b 0%,transparent 50%),
+    radial-gradient(ellipse at 20% 82%,#4f25bd8a 0%,transparent 56%),
+    linear-gradient(125deg,#21034c 0%,#4f0e91 60%,#25084c 100%);
+}
+html[data-estacao="ano-novo"] .vitrine,
+html[data-estacao="ano-novo"][data-tema="dia"] .vitrine {
+  background:
+    radial-gradient(ellipse at 90% 35%,#a97b3845 0%,transparent 56%),
+    linear-gradient(135deg,#041c22 0%,#07362a 70%,#03251d 100%);
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine .ticker {
+  order:2;z-index:3;background:var(--moss-ouro);
+  border-bottom:0;border-top:1px solid #ffffff66;padding:9px 0;
+}
+html[data-estacao]:not([data-estacao="original"]) .ticker-inner span {
+  color:#172920;font-size:.72rem;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-grid {
+  order:1;display:grid;grid-template-columns:minmax(0,.96fr) minmax(0,1.15fr);
+  align-items:center;gap:24px;min-height:460px;padding-top:26px;padding-bottom:26px;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-texto {
+  position:relative;z-index:5;min-width:0;padding:24px 0 24px 8px;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-eyebrow {
+  color:var(--moss-ouro);font-size:.79rem;font-weight:800;letter-spacing:.12em;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine h1 {
+  font-family:Inter,'Segoe UI',Arial,sans-serif;font-size:clamp(2.6rem,4.3vw,4.65rem);
+  font-weight:860;line-height:1.07;letter-spacing:-.045em;max-width:630px;
+  text-shadow:0 2px 12px #0004;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine h1 em {
+  font-family:inherit;font-weight:900;font-size:inherit;font-style:normal;
+  color:var(--moss-ouro);text-shadow:0 3px 14px #0003;
+}
+html[data-estacao="carnaval"] .vitrine h1 em {
+  font-family:'Instrument Serif',Georgia,serif;font-size:1.19em;
+  font-style:italic;line-height:.97;letter-spacing:-.025em;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-lead {
+  max-width:490px;margin:22px 0 24px;font-size:1.04rem;
+  line-height:1.6;color:#fff;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-acoes {
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-acoes a {
+  min-height:48px;display:inline-flex;align-items:center;justify-content:center;
+  text-decoration:none;border-radius:999px;font:800 .9rem/1.2 Inter,'Segoe UI',Arial,sans-serif;
+  padding:13px 21px;transition:transform .2s,background .2s;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-cta {
+  background:transparent;color:#fff;border:1.5px solid var(--moss-ouro);
+  box-shadow:none;font-size:.9rem;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-cta:hover {
+  transform:translateY(-2px);box-shadow:0 8px 22px #0005;background:#ffffff19;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-link {
+  order:-1;color:#fff;background:var(--moss-botao);border:1.5px solid var(--moss-botao);
+  box-shadow:0 8px 21px #0004;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-link:hover {background:#118e3c;}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-nota {display:none;}
+
+/* Ilustrações especiais, criadas separadamente para cada festa.
+   Imagens reais do catálogo continuam nos seus 156 respectivos cartões. */
+html[data-estacao]:not([data-estacao="original"]) .vitrine-collage {
+  position:relative;display:block;width:100%;height:440px;
+  max-width:none;min-height:310px;margin:0;
+  background-repeat:no-repeat;background-position:center;background-size:contain;
+  filter:drop-shadow(0 18px 30px #0003);
+}
+html[data-estacao="natal"] .vitrine-collage {background-image:url('/assets/img/temas/natal-moss.svg');}
+html[data-estacao="ano-novo"] .vitrine-collage {background-image:url('/assets/img/temas/ano-novo-moss.svg');}
+html[data-estacao="carnaval"] .vitrine-collage {background-image:url('/assets/img/temas/carnaval-moss.svg');}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-collage img.vc {display:none;}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-selo {display:none;}
+html[data-estacao]:not([data-estacao="original"]) .vitrine::before,
+html[data-estacao]:not([data-estacao="original"]) .vitrine::after {display:none;}
+
+/* A seção de sites vira uma vitrine clara, limpa e fácil de ler. */
+html[data-estacao]:not([data-estacao="original"]) #modelos {padding-top:52px;padding-bottom:55px;}
+html[data-estacao]:not([data-estacao="original"]) #modelos h2,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] #modelos h2 {
+  color:var(--moss-tinta);font-weight:800;
+}
+html[data-estacao]:not([data-estacao="original"]) #modelos .eyebrow,
+html[data-estacao]:not([data-estacao="original"]) #modelos .field label,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] #modelos .field label {
+  color:#94671b;font-weight:800;
+}
+html[data-estacao="carnaval"] #modelos .eyebrow,
+html[data-estacao="carnaval"] #modelos .field label {color:#6c219d;}
+html[data-estacao]:not([data-estacao="original"]) #modelos .section-head p,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] #modelos .section-head p {
+  color:#4d5d57;max-width:380px;
+}
+html[data-estacao]:not([data-estacao="original"]) .catalog-meta,
+html[data-estacao]:not([data-estacao="original"]) .catalog-meta p,
+html[data-estacao]:not([data-estacao="original"]) .catalog-meta span,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .catalog-meta,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .catalog-meta p {
+  color:#405f52;
+}
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-card {
+  border:1px solid #e4e3da;border-radius:14px;background:#fff;
+  box-shadow:0 7px 25px #0b292a1b;overflow:hidden;
+}
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-card:hover {
+  box-shadow:0 18px 36px #0b292a2a;transform:translateY(-3px);
+}
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-body {padding:17px;}
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-cover img {
+  aspect-ratio:16/10;object-fit:cover;
+}
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-category {color:#61786d;}
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-body h3,
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-details p,
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-details summary,
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-actions a {color:#172e26;}
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-actions a:last-child {color:#177b48;}
+html[data-estacao]:not([data-estacao="original"]) #modelos .field input,
+html[data-estacao]:not([data-estacao="original"]) #modelos .field select {
+  background:#fff;color:#152c24;border:1px solid #d2dcd3;border-radius:11px;
+}
+html[data-estacao]:not([data-estacao="original"]) .carousel-caption,
+html[data-estacao]:not([data-estacao="original"]) .carousel-caption span,
+html[data-estacao]:not([data-estacao="original"]) .carousel-caption strong {
+  color:#355949;
+}
+html[data-estacao]:not([data-estacao="original"]) .carousel-arrows button {
+  color:#1b4b37;background:#fff;border:1px solid #b9c7be;
+}
+html[data-estacao]:not([data-estacao="original"]) .carousel-arrows button:hover {background:#f0f5ed;}
+
+/* Oferta sem desconto inventado. Verde-vermelho, verde-dourado, roxo-amarelo. */
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa {
+  display:flex;position:relative;width:calc(100% - 80px);
+  max-width:1200px;margin:26px auto 0;padding:20px 28px;gap:22px;
+  border:0;border-radius:16px;box-shadow:0 12px 30px #0002;overflow:hidden;
+}
+html[data-estacao="natal"] .moss-estacoes-faixa {
+  background:linear-gradient(115deg,#7f091a,#ba1323 63%,#760b1c);
+}
+html[data-estacao="ano-novo"] .moss-estacoes-faixa {
+  background:linear-gradient(115deg,#053e32,#104c3d 64%,#063026);
+}
+html[data-estacao="carnaval"] .moss-estacoes-faixa {
+  background:linear-gradient(115deg,#400873,#7509a2 66%,#3c096b);
+}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa::after {
+  content:"✦   ✧";color:#ffe69c;opacity:.45;font-size:3rem;
+  position:absolute;right:20%;top:-24px;pointer-events:none;
+}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa h2 {color:#ffe09a;font-weight:850;}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa p {color:#fff7ef;}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa a {
+  position:relative;z-index:2;background:var(--moss-ouro);color:#1b231d;
+  padding:12px 20px;min-height:48px;box-shadow:0 5px 12px #0002;
+}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa a:hover {background:#fff0bd;}
+
+/* As outras partes da página seguem com texto legível. */
+html[data-estacao]:not([data-estacao="original"]) .contact,
+html[data-estacao]:not([data-estacao="original"]) .contact h2,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .contact h2 {
+  color:var(--moss-tinta);
+}
+html[data-estacao]:not([data-estacao="original"]) .contact p,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .contact p {color:#4d6158;}
+html[data-estacao]:not([data-estacao="original"]) .contact .eyebrow {color:#776326;}
+html[data-estacao]:not([data-estacao="original"]) .contact .button {
+  background:var(--moss-escuro);color:#fff;border:0;box-shadow:none;
+}
+html[data-estacao]:not([data-estacao="original"]) .site-footer,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-footer {
+  background:var(--moss-escuro);border-color:#ffffff35;color:#fff4dd;
+}
+html[data-estacao]:not([data-estacao="original"]) .footer-row,
+html[data-estacao]:not([data-estacao="original"]) .site-footer a,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .footer-row,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-footer a {
+  color:#fff4dd;
+}
+html[data-estacao]:not([data-estacao="original"]) #depoimentos h2 {color:#182e4d;}
+
+/* As festas precisam ficar lindas também na tela estreita do iPhone. */
+@media(max-width:1000px){
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-grid {grid-template-columns:1fr;gap:0;}
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-texto {padding:30px 4px 0;}
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-collage {height:320px;}
+}
+@media(max-width:650px){
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-grid {
+    display:grid;grid-template-columns:minmax(0,1fr);
+    width:calc(100% - 36px);min-height:0;padding:22px 0 25px;
+  }
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-texto {padding:14px 0 0;}
+  html[data-estacao]:not([data-estacao="original"]) .vitrine h1 {
+    font-size:clamp(2.25rem,10vw,3.2rem);max-width:420px;line-height:1.07;
+  }
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-eyebrow {font-size:.68rem;}
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-lead {font-size:.9rem;margin:15px 0 20px;}
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-acoes a {
+    min-height:44px;padding:11px 17px;font-size:.81rem;
+  }
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-collage {
+    display:block!important;height:220px;min-height:180px;width:100%;
+    margin:14px auto 0;background-size:contain;background-position:center;
+  }
+  html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa {
+    width:calc(100% - 36px);margin:20px auto 0;padding:19px;
+    flex-direction:column;align-items:stretch;gap:13px;
+  }
+  html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa::after {right:4%;top:0;}
+  html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa a {width:100%;}
+  html[data-estacao]:not([data-estacao="original"]) #modelos {padding-top:39px;}
+  html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-card {box-shadow:0 6px 20px #0b292a19;}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-estacao]:not([data-estacao="original"]) .vitrine-acoes a {transition:none;}
+}
+
+/* Contraste também nos avisos menores e no endereço de e-mail. */
+html[data-estacao]:not([data-estacao="original"]) #modelos .catalog-note,
+html[data-estacao]:not([data-estacao="original"]) #modelos .empty p,
+html[data-estacao]:not([data-estacao="original"]) #modelos .catalog-note a {
+  color:#365446;
+}
+html[data-estacao]:not([data-estacao="original"]) .contact a[href^="mailto:"] {
+  color:#115f49!important; font-weight:800;
+}
+html[data-estacao]:not([data-estacao="original"]) #modelos .catalog-more a {
+  background:var(--moss-ouro); color:#1d2c23;
+}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-painel {
+  border-color:#ccb470; box-shadow:0 14px 44px #0005;
+}
+
+/* Ano impresso com CSS: acompanha o calendário e não fica preso a 2027. */
+html[data-estacao="ano-novo"] .vitrine-collage::after {
+  content:attr(data-ano);display:block;position:absolute;z-index:7;
+  right:3%;bottom:7%;height:auto;width:auto;
+  font-family:Inter,'Segoe UI',Arial,sans-serif;
+  font-size:clamp(2.3rem,5.5vw,4.8rem);line-height:1;
+  font-weight:900;letter-spacing:-.05em;color:#f8dc8d;
+  background:none;border:0;text-shadow:0 4px 2px #5b3806,0 12px 24px #000b;
+  pointer-events:none;
+}
+@media(max-width:650px){
+  html[data-estacao="ano-novo"] .vitrine-collage::after {right:1%;bottom:4%;font-size:2.5rem;}
+}
