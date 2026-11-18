@@ -35,6 +35,6 @@
   <path d="M95 0 H168 Q167 90 131 111 Q99 91 95 0 Z" fill="#eac86b" opacity=".65" stroke="#fff1c6" stroke-width="4"/>
   <path d="M131 109 L131 160 M101 163 H161" stroke="#fff4ca" stroke-width="5"/>
  </g>
- <text x="705" y="435" font-family="Arial" font-size="59" font-weight="900" text-anchor="middle" fill="url(#gold)" filter="url(#shadow)">2027</text>
+ 
  <path d="M-5 335 Q122 290 216 380 Q330 425 477 379" fill="none" stroke="url(#gold)" stroke-width="8" opacity=".95"/>
  <path d="M630 420 Q690 380 833 404" fill="none" stroke="url(#gold)" stroke-width="7" opacity=".85"/><g transform="translate(310 25)" fill="#ffe7ac" opacity=".9"><path d="M0 -13 Q2 -2 13 0 Q2 2 0 13 Q-2 2 -13 0 Q-2 -2 0 -13 Z"/><circle r="1.7" fill="white"/></g><g transform="translate(180 280)" fill="#ffe7ac" opacity=".9"><path d="M0 -9 Q2 -2 9 0 Q2 2 0 9 Q-2 2 -9 0 Q-2 -2 0 -9 Z"/><circle r="1.7" fill="white"/></g><g transform="translate(639 165)" fill="#ffe7ac" opacity=".9"><path d="M0 -17 Q2 -2 17 0 Q2 2 0 17 Q-2 2 -17 0 Q-2 -2 0 -17 Z"/><circle r="1.7" fill="white"/></g></svg>
