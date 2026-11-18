@@ -89,6 +89,24 @@
     }
     .admin-item,.admin-form-panel,.admin-list-panel{min-width:0}
 
+    /* 23 — LOGIN DEMONSTRATIVO: não substitui autenticação verdadeira. */
+    #adminLogin{width:min(460px,calc(100vw - 28px));border:1px solid #dce6da;border-radius:24px;background:#fffdfa;color:#254b3d}
+    #adminLogin::backdrop{background:rgba(15,37,27,.72)}
+    .login-body{padding:28px;display:grid;gap:14px}
+    .login-body .login-symbol{display:grid;place-items:center;width:52px;height:52px;background:#e6efe5;border-radius:16px;font-size:25px}
+    .login-body h2{font:600 clamp(26px,5vw,34px)/1.16 Georgia,serif;margin:0;color:#284c42}
+    .login-body p{font-size:13px;line-height:1.55;color:#5d7165;margin:0}
+    #adminLoginForm{display:grid;gap:13px}
+    #adminLoginForm label{display:grid;gap:6px;font-size:12px;font-weight:800;color:#3b5e50}
+    #adminLoginForm input{height:46px;border:1px solid #c7d8c9;border-radius:12px;background:white;color:#284c42;padding:0 13px;font-size:15px;width:100%}
+    #adminLoginForm input:focus-visible{outline:3px solid #d89d54;outline-offset:2px}
+    .login-actions{display:flex;gap:9px;flex-wrap:wrap}
+    .login-actions button{flex:1;min-height:44px}
+    .login-test{padding:13px 15px;border-radius:12px;background:#eaf2e7;border:1px solid #d5e5d4}
+    .login-test code{font-weight:850;color:#264e3e;white-space:nowrap}
+    .login-warning{padding:12px 14px;background:#fff5dc;border:1px solid #ead2a2;border-radius:12px;font-size:12px!important;color:#645128!important}
+    #adminLoginError{min-height:1.3em;color:#9b3f3f!important;font-size:12px!important;font-weight:700}
+    @media(max-width:460px){.login-body{padding:23px 18px}}
   </style>
 </head>
 <body>
@@ -149,15 +167,37 @@
       <div class="gift-box"><h3>✨ Encontre uma sugestão</h3><div class="gift-row"><label for="giftAge">Idade da criança<select id="giftAge"><option value="0-1">Até 1 ano</option><option value="2-3">2 a 3 anos</option><option value="4-6">4 a 6 anos</option><option value="7+">7 anos ou mais</option></select></label><label for="giftOccasion">Ocasião<select id="giftOccasion"><option value="qualquer">Surpresa carinhosa</option><option value="aniversario">Aniversário</option><option value="maternidade">Nascimento / maternidade</option><option value="roupa">Uma roupa nova</option></select></label></div><div class="gift-actions"><button class="btn rose" id="giftSearch" type="button">Ver sugestões →</button></div><div class="gift-results" id="giftResults" aria-live="polite"><p style="color:#6f8175;font-size:13px">Selecione as opções e clique em “Ver sugestões”.</p></div><p style="font-size:11px;color:#87938a;line-height:1.6">Sugestões ilustrativas. Para brinquedos reais, confira sempre a faixa etária indicada pelo fabricante e a certificação aplicável.</p></div>
     </div></section>
     <section id="sobre" class="section-pad"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">Simples e acolhedor</span><h2>Como funcionaria sua loja?</h2><p>Uma experiência criada para demonstrar aos clientes o potencial de um site de comércio infantil.</p></div></div><div class="steps"><div class="step"><div class="step-index">01</div><h3>Explore os produtos</h3><p>Fotos ilustrativas, categorias, tamanhos e detalhes de cada peça em uma vitrine organizada.</p></div><div class="step"><div class="step-index">02</div><h3>Monte o carrinho</h3><p>Adicione itens, altere quantidades e veja o total. Tudo fica salvo no navegador.</p></div><div class="step"><div class="step-index">03</div><h3>Adapte para seu negócio</h3><p>Na versão real, integramos estoque, cadastro, entrega e pagamento conforme a necessidade da loja.</p></div></div></div></section>
-    <!-- 20 — PAINEL ADMINISTRATIVO DEMONSTRATIVO.
-         NÃO tem senha e NÃO deve ser usado com dados reais de clientes. -->
+    <!-- 20 — Acesso de demonstração por senha pública de teste.
+         ATENÇÃO: GitHub Pages não protege dados nem autentica usuários no servidor. -->
+    <dialog id="adminLogin" aria-labelledby="adminLoginTitle" aria-describedby="adminLoginHelp">
+      <div class="login-body">
+        <span class="login-symbol" aria-hidden="true">🔐</span>
+        <h2 id="adminLoginTitle">Entrar no administrador</h2>
+        <p id="adminLoginHelp">Entre para experimentar o cadastro, a edição e a exclusão de produtos.</p>
+        <form id="adminLoginForm" autocomplete="off">
+          <label for="adminUsuario">Usuário de demonstração
+            <input id="adminUsuario" name="usuario" required autocomplete="off" placeholder="Digite o usuário">
+          </label>
+          <label for="adminSenha">Senha de demonstração
+            <input id="adminSenha" name="senha" type="password" required autocomplete="off" placeholder="Digite a senha">
+          </label>
+          <p id="adminLoginError" role="alert" aria-live="polite"></p>
+          <div class="login-actions">
+            <button class="btn primary" type="submit">Entrar</button>
+            <button class="btn secondary" id="adminLoginCancel" type="button">Cancelar</button>
+          </div>
+        </form>
+        <p class="login-test">🧸 Para testar: usuário <code>demo</code> e senha <code>MOSS2026</code>.</p>
+        <p class="login-warning"><strong>Importante:</strong> esta senha é pública e serve somente para demonstrar a tela. Em uma loja real, usaremos login protegido com Supabase Auth e permissões no banco de dados.</p>
+      </div>
+    </dialog>
     <section class="admin-section" id="administrador" hidden aria-labelledby="adminTitle">
       <div class="wrap">
         <div class="admin-top">
-          <div><span class="eyebrow">ÁREA DE TESTES · SEM LOGIN REAL</span><h2 id="adminTitle">Gerenciar produtos</h2><p>Cadastre, edite ou exclua itens. Tudo fica salvo <strong>somente neste navegador</strong>. Para uma loja real, conectamos um painel protegido ao Supabase.</p></div>
-          <button class="btn secondary" type="button" id="closeAdmin">← Voltar à loja</button>
+          <div><span class="eyebrow">ÁREA DE TESTES · ACESSO DEMONSTRATIVO</span><h2 id="adminTitle">Gerenciar produtos</h2><p>Cadastre, edite ou exclua itens. Tudo fica salvo <strong>somente neste navegador</strong>. Para uma loja real, conectamos um painel protegido ao Supabase.</p></div>
+          <button class="btn secondary" type="button" id="closeAdmin">↪ Sair do administrador</button>
         </div>
-        <div class="admin-info">🔒 <strong>Aviso de segurança:</strong> esta área está aberta a qualquer visitante da demonstração. Não coloque dados pessoais ou comerciais reais. Senhas, autenticação e permissões só existirão na versão com servidor.</div>
+        <div class="admin-info">🔒 <strong>Aviso de segurança:</strong> o acesso por senha desta demonstração não protege dados reais. A senha de teste está disponível no código público. As alterações são locais ao navegador. Uma loja real exige autenticação e permissões no servidor.</div>
         <div class="admin-tools">
           <label class="admin-search" for="adminSearch">Buscar no cadastro <input type="search" id="adminSearch" placeholder="Nome ou categoria..."></label>
           <button class="btn primary" type="button" id="adminNew">＋ Novo produto</button>
@@ -384,12 +424,49 @@
     document.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&$('#cartDrawer').classList.contains('open'))fecharCarrinho();if(ev.key==='Tab'&&$('#cartDrawer').classList.contains('open')){const nodes=$$('#cartDrawer button:not([disabled]),#cartDrawer a[href]');const first=nodes[0],last=nodes[nodes.length-1];if(ev.shiftKey&&document.activeElement===first){ev.preventDefault();last.focus()}else if(!ev.shiftKey&&document.activeElement===last){ev.preventDefault();first.focus()}}});
     document.addEventListener('error',ev=>{const img=ev.target;if(img?.tagName==='IMG'&&!img.dataset.errorHandled){img.dataset.errorHandled='1';img.src=fallback(img.dataset.fallback||'bebes')}},true);
     $('#productDialog').addEventListener('click',ev=>{if(ev.target===$('#productDialog'))fecharModal()});$('#productDialog').addEventListener('close',()=>{modalProduto=null});
-    /* 22 — ADMINISTRAÇÃO LOCAL: todos os botões funcionam sem backend.
-       NÃO é um acesso protegido: somente uma vitrine para testar o recurso. */
+    /* 22 — ADMINISTRAÇÃO LOCAL COM TELA DE LOGIN DEMONSTRATIVA.
+       A senha abaixo NÃO é secreta: está no HTML público e é só um exemplo de navegação.
+       Para loja real: Supabase Auth + RLS com autorização verificada no banco. */
     const adminSection=$('#administrador'),adminForm=$('#adminForm');
-    let fotoEnviada='';
-    function abrirAdmin(){adminSection.hidden=false;renderAdmin();$('#administrador').scrollIntoView({behavior:'smooth'});$('#adminTop').setAttribute('aria-pressed','true')}
-    function fecharAdmin(){adminSection.hidden=true;$('#adminTop').setAttribute('aria-pressed','false');$('#inicio').scrollIntoView({behavior:'smooth'})}
+    const adminLogin=$('#adminLogin'),adminLoginForm=$('#adminLoginForm');
+    const USUARIO_TESTE='demo',SENHA_TESTE='MOSS2026';
+    let adminLiberado=false,fotoEnviada='';
+    function abrirAdmin(){
+      if(!adminLiberado){
+        $('#adminLoginError').textContent='';
+        adminLogin.showModal();
+        $('#adminUsuario').focus();
+        return;
+      }
+      adminSection.hidden=false;
+      renderAdmin();
+      $('#administrador').scrollIntoView({behavior:'smooth'});
+      $('#adminTop').setAttribute('aria-pressed','true');
+    }
+    function fecharAdmin(){
+      adminLiberado=false;
+      adminSection.hidden=true;
+      adminLoginForm.reset();
+      $('#adminLoginError').textContent='';
+      $('#adminTop').setAttribute('aria-pressed','false');
+      $('#inicio').scrollIntoView({behavior:'smooth'});
+    }
+    adminLoginForm.addEventListener('submit',ev=>{
+      ev.preventDefault();
+      const usuario=$('#adminUsuario').value.trim().toLowerCase();
+      const senha=$('#adminSenha').value;
+      if(usuario!==USUARIO_TESTE||senha!==SENHA_TESTE){
+        $('#adminLoginError').textContent='Usuário ou senha de demonstração incorretos.';
+        $('#adminSenha').value='';
+        $('#adminSenha').focus();
+        return;
+      }
+      adminLiberado=true;
+      adminLogin.close();
+      abrirAdmin();
+    });
+    $('#adminLoginCancel').addEventListener('click',()=>adminLogin.close());
+    adminLogin.addEventListener('close',()=>{adminLoginForm.reset();$('#adminLoginError').textContent='';});
     function renderAdmin(){
       const q=$('#adminSearch').value.toLowerCase().trim();
       const data=produtos.filter(p=>`${p.nome} ${NOMES[p.cat]}`.toLowerCase().includes(q));
