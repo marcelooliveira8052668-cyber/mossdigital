@@ -1,0 +1,137 @@
+/* MOSS Digital — temas comemorativos da página inicial.
+   Arquivo isolado: não altera o catálogo, outras demos nem o botão dia/noite. */
+
+/* As cores de cada festa aparecem somente quando o JavaScript escolhe a data. */
+html[data-estacao="natal"] {
+  --festa-cor: #f4ca75;
+  --festa-fundo: #07392f;
+  --festa-secundaria: #8f1631;
+}
+html[data-estacao="ano-novo"] {
+  --festa-cor: #f9d97c;
+  --festa-fundo: #071f27;
+  --festa-secundaria: #7d601b;
+}
+html[data-estacao="carnaval"] {
+  --festa-cor: #ffe32d;
+  --festa-fundo: #2f0967;
+  --festa-secundaria: #d622a3;
+}
+
+/* O modo dia continua independente: somente o modo noite ganha fundo de festa. */
+html[data-estacao="natal"]:not([data-tema="dia"]) body { background: #092e2a; }
+html[data-estacao="ano-novo"]:not([data-tema="dia"]) body { background: #091a29; }
+html[data-estacao="carnaval"]:not([data-tema="dia"]) body { background: #21093c; }
+
+/* A navegação mantém seus links; mudamos apenas o visual. */
+html[data-estacao="natal"] .site-header { background: #062f27; border-color: #d3ad614f; }
+html[data-estacao="ano-novo"] .site-header { background: #071f27; border-color: #e9c77653; }
+html[data-estacao="carnaval"] .site-header { background: #2a0a54; border-color: #ffe32d55; }
+html[data-estacao]:not([data-estacao="original"]) .site-header .brand-name,
+html[data-estacao]:not([data-estacao="original"]) .site-header .main-nav a { color: #fff; }
+html[data-estacao]:not([data-estacao="original"]) .site-header .nav-contact {
+  color: #15211e; background: var(--festa-cor); border-color: var(--festa-cor);
+}
+
+/* A vitrine original permanece intacta; sobrepomos os fundos das festas. */
+html[data-estacao="natal"] .vitrine {
+  background:
+    radial-gradient(circle at 8% 10%, #ffe7a94b 1px, transparent 4px),
+    radial-gradient(circle at 86% 22%, #e3b55d45 2px, transparent 5px),
+    radial-gradient(ellipse at 74% 25%, #296853 0%, transparent 49%),
+    linear-gradient(128deg, #06271f 0%, #07382c 62%, #0d4937 100%);
+  background-size: 80px 80px, 120px 130px, auto, auto;
+}
+html[data-estacao="ano-novo"] .vitrine {
+  background:
+    radial-gradient(circle at 10% 26%, #ffdc844f 1px, transparent 4px),
+    radial-gradient(circle at 84% 12%, #ffdc844d 2px, transparent 6px),
+    radial-gradient(ellipse at 72% 10%, #87611d85 0%, transparent 48%),
+    linear-gradient(128deg, #04161d 0%, #092f32 58%, #07271c 100%);
+  background-size: 80px 100px, 130px 105px, auto, auto;
+}
+html[data-estacao="carnaval"] .vitrine {
+  background:
+    radial-gradient(circle at 10% 25%, #ffdf2e66 1px, transparent 5px),
+    radial-gradient(circle at 86% 35%, #24dce36b 2px, transparent 6px),
+    radial-gradient(ellipse at 70% 35%, #d017a19c 0%, transparent 54%),
+    linear-gradient(125deg, #230651, #47158d 60%, #74139a);
+  background-size: 85px 100px, 115px 130px, auto, auto;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine h1 em,
+html[data-estacao]:not([data-estacao="original"]) .vitrine-eyebrow { color: var(--festa-cor); }
+html[data-estacao]:not([data-estacao="original"]) .vitrine-lead,
+html[data-estacao]:not([data-estacao="original"]) .vitrine-nota { color: #fff1d9; }
+html[data-estacao]:not([data-estacao="original"]) .vitrine-cta,
+html[data-estacao]:not([data-estacao="original"]) .ticker {
+  background: var(--festa-cor);
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-cta {
+  color: #1b1a13; border-color: #151611; box-shadow: 6px 6px 0 #151611;
+}
+html[data-estacao]:not([data-estacao="original"]) .ticker-inner span { color: #1b1a13; }
+
+/* Selo sobre as fotos já existentes da MOSS: não removemos as imagens reais. */
+.moss-estacoes-selo {
+  display: none; position: absolute; z-index: 8; right: 0; bottom: 8px;
+  max-width: 230px; padding: 13px 18px; border-radius: 18px;
+  border: 2px solid var(--festa-cor); color: #fff;
+  background: var(--festa-fundo); box-shadow: 0 12px 32px #0006;
+  text-align: center; font-size: 1.05rem; font-weight: 800; line-height: 1.3;
+  transform: rotate(3deg); pointer-events: none;
+}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-selo { display: block; }
+
+/* Banner de campanha: nunca promete desconto sem uma promoção definida. */
+.moss-estacoes-faixa {
+  width: calc(100% - 80px); max-width: 1200px; margin: 28px auto 0;
+  display: none; align-items: center; justify-content: space-between; gap: 25px;
+  padding: 20px 26px; border-radius: 18px; border: 2px solid var(--festa-cor);
+  background: var(--festa-fundo); box-shadow: 0 10px 22px #0002;
+}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa { display: flex; }
+.moss-estacoes-faixa h2 { color: var(--festa-cor); font-size: clamp(1.22rem, 2.4vw, 1.8rem); }
+.moss-estacoes-faixa p { color: #fff; font-size: .87rem; margin-top: 5px; }
+.moss-estacoes-faixa a {
+  flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+  min-height: 45px; border-radius: 999px; padding: 10px 18px;
+  background: var(--festa-cor); color: #151713; font-size: .85rem;
+  font-weight: 800; text-decoration: none;
+}
+.moss-estacoes-faixa a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+html[data-estacao]:not([data-estacao="original"]):not([data-tema="dia"]) .site-footer { background: var(--festa-fundo); }
+
+/* Painel opcional: só aparece com ?moss-temas=teste (prévia local). */
+.moss-estacoes-painel {
+  position: fixed; z-index: 100; right: 16px; bottom: 16px;
+  width: min(340px, calc(100vw - 32px)); padding: 16px;
+  border: 2px solid #dfb34b; border-radius: 18px;
+  background: #fffdf4; color: #192c28; box-shadow: 0 10px 36px #0005;
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+}
+.moss-estacoes-painel h2 { color: #133a30; font-size: 1rem; margin-bottom: 7px; }
+.moss-estacoes-painel p { color: #3b504b; font-size: .75rem; }
+.moss-estacoes-botoes { display: flex; flex-wrap: wrap; gap: 7px; margin: 11px 0; }
+.moss-estacoes-botoes button {
+  background: #f3eddb; border: 1px solid #b4ad9a; border-radius: 12px;
+  padding: 8px 10px; min-height: 40px; color: #183831; font-size: .78rem;
+}
+.moss-estacoes-botoes button[aria-pressed="true"] {
+  background: #0d4937; color: #fff; border-color: #0d4937;
+}
+.moss-estacoes-fechar { display: inline-block; margin-top: 8px; font-size: .75rem; color: #164c83; text-decoration: underline; }
+
+/* Leitura confortável em telas pequenas e respeito a movimento reduzido. */
+@media (max-width: 1000px) {
+  .moss-estacoes-selo { right: 5%; bottom: -14px; }
+}
+@media (max-width: 650px) {
+  .moss-estacoes-selo { display: none !important; }
+  .moss-estacoes-faixa { width: calc(100% - 36px); flex-direction: column; align-items: stretch; gap: 14px; padding: 18px; }
+  .moss-estacoes-faixa a { width: 100%; }
+  .moss-estacoes-painel { max-height: 55vh; overflow-y: auto; }
+  html[data-estacao]:not([data-estacao="original"]) .vitrine h1 { font-size: clamp(2.25rem, 10vw, 3.5rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .moss-estacoes-selo { transform: none; }
+}
