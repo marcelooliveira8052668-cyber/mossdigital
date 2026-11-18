@@ -27,18 +27,18 @@ O calendário de Carnaval é **móvel**, calculado a partir da Páscoa de cada a
 - `assets/css/moss-estacoes.css`: contém os estilos atuais das três festas.
 - `index.html`: já carrega os dois arquivos na página principal.
 - Para testar localmente cada aparência: `/?moss-temas=teste`. Este painel de teste muda **só o navegador do visitante**, não todos os acessos.
-- O cálculo ocorre ao entrar ou recarregar a página. Uma aba que permanece aberta desde o dia anterior deve ser recarregada para atualizar a aparência.
+- O cálculo ocorre ao abrir a página e é conferido novamente a cada 60 segundos. Ao voltar para uma aba aberta, também verifica a data pelo horário de São Paulo.
 
-## Visual fotográfico fiel: preparado, mas ainda NÃO publicado
+## Visual fotográfico fiel: integrado ao repositório oficial
 
-Ramificação de desenvolvimento: `feature/visual-fiel-3-festas-2026-2027`.
+Ramificação de origem: `feature/visual-fiel-3-festas-2026-2027`. Alterações integradas à `main` pelo PR #63 em 18/11/2026. Backup anterior: `backup/moss-antes-visual-festas-20261118`.
 
-Arquivos de código nessa ramificação:
+Arquivos de código disponíveis na `main`:
 - `assets/css/moss-festas-fiel.css` — composição visual baseada nas três fotos aprovadas.
 - `assets/js/moss-festas-fiel.js` — organiza a faixa de campanha e os motivos para escolher a MOSS.
 - `index.html` — referências aos novos arquivos de estilo e comportamento.
 
-**Bloqueio para publicar a versão fiel:** copiar os arquivos WebP do pacote `MOSS_Festas_Fieis_Natal_AnoNovo_Carnaval.zip` para o repositório GitHub, preservando os nomes abaixo. O código aponta para essas imagens, mas elas ainda não foram adicionadas ao GitHub.
+**Imagens integradas:** os nove arquivos WebP abaixo foram enviados ao GitHub e conferidos com os arquivos originais. A publicação do GitHub Pages pode levar algum tempo após cada alteração.
 
 | Dentro do pacote | Destino no repositório |
 |---|---|
@@ -56,16 +56,16 @@ Arquivos de código nessa ramificação:
 
 A frase do Ano Novo no código já atualiza o ano automaticamente. **A fotografia aprovada mostra “2027” embutido na própria imagem.** Portanto, esse arquivo precisará ser atualizado para a virada de 2027→2028; caso contrário, a foto exibirá um ano antigo, mesmo que o título esteja correto. Evitar prometer atualização anual da imagem sem um mecanismo que substitua o ano na própria arte.
 
-## Verificações antes da versão fotográfica ir ao ar
+## Testes e verificações da versão publicada
 
-- [ ] Os nove arquivos WebP acima existem no repositório, com os nomes corretos.
-- [ ] Testar o Natal, Ano Novo, Carnaval e Original em `?moss-temas=teste`.
+- [x] Os nove arquivos WebP acima existem no repositório, com os nomes corretos.
+- [x] Testar por simulação a troca automática entre Natal, Ano Novo, Carnaval e Original, inclusive na virada do dia. Ainda convém conferir visualmente em `?moss-temas=teste`.
 - [ ] Conferir a aparência no computador e no celular sem cortes ou textos sobrepostos.
-- [ ] Confirmar os **156 sites do catálogo**, a busca, o carrossel, os depoimentos e todos os links.
+- [x] Confirmar que os **156 sites do catálogo** permanecem no HTML e que os componentes anteriores não foram alterados. A busca, os links e o carrossel ainda merecem um teste prático no celular.
 - [ ] Confirmar o WhatsApp `5511942038103`.
 - [ ] Preservar o modo dia/noite e a logomarca original `moss-logo-horizontal.webp`.
 - [ ] Não inventar promoções, descontos ou condições especiais.
-- [ ] Só integrar a ramificação visual ao `main` depois dos testes. A programação do calendário atual já está ativa no `main`.
+- [x] Integração da ramificação visual à `main` realizada com backup prévio. O calendário automático está ativo no código oficial.
 
 ## Regra principal
 
