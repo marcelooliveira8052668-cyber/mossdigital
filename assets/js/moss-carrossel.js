@@ -13,7 +13,7 @@
     cancelAnimationFrame(animationFrame);
     const running=playing&&(!reduced()||userAllowedMotion)&&inView&&!document.hidden&&!rail.hidden&&rail.scrollWidth>rail.clientWidth+3;
     root.dataset.carouselRunning=String(running);
-    document.querySelector('.desktop-carousel-hint').textContent=running?'Deslizamento contínuo':'Use as setas ou inicie o movimento';
+    document.querySelector('.desktop-carousel-hint').textContent=running?'Os sites estão passando':'Use as setas para ver os sites';
     if(!running)return;
     let previous=0,left=rail.scrollLeft,lastUpdate=0;
     const speed=matchMedia('(max-width:650px)').matches?56:48;
