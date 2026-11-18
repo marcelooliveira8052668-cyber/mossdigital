@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-labelledby="t d">
+  <title id="t">Pequenos Encantos Kids — loja de roupas e brinquedos</title>
+  <desc id="d">Capa ilustrada em creme, verde-sálvia e terracota com peças infantis, urso de pelúcia e presentes.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2=".8"><stop stop-color="#f8f5ea"/><stop offset="1" stop-color="#e4ede2"/></linearGradient>
+    <linearGradient id="card" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#fff9f2"/></linearGradient>
+    <filter id="s" x="-40%" y="-40%" width="190%" height="190%"><feDropShadow dx="0" dy="13" stdDeviation="15" flood-color="#24493c" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <ellipse cx="1040" cy="128" rx="275" ry="265" fill="#d5e5d6"/>
+  <ellipse cx="55" cy="715" rx="265" ry="205" fill="#f4e1d2"/>
+  <path d="M80 120 Q190 42 306 113" fill="none" stroke="#e0c7b2" stroke-width="10" stroke-linecap="round"/>
+  <g transform="translate(72 76)">
+    <rect width="226" height="45" rx="23" fill="#e2eee1"/>
+    <circle cx="27" cy="22" r="7" fill="#c47f65"/>
+    <text x="47" y="30" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#3f6658">MOSS DIGITAL</text>
+  </g>
+  <text x="80" y="247" font-family="Georgia,serif" font-size="80" fill="#2f5949">Pequenos</text>
+  <text x="80" y="323" font-family="Georgia,serif" font-size="80" fill="#c17b63">Encantos</text>
+  <text x="84" y="395" font-family="Arial,sans-serif" font-weight="800" font-size="66" fill="#2f5949" letter-spacing="8">KIDS</text>
+  <text x="84" y="466" font-family="Arial,sans-serif" font-size="29" fill="#4a6b5c">Moda, brinquedos e carinho</text>
+  <text x="84" y="505" font-family="Arial,sans-serif" font-size="29" fill="#4a6b5c">para cada descoberta.</text>
+  <g transform="translate(84 568)"><rect width="225" height="54" rx="27" fill="#3f6658"/><text x="113" y="36" text-anchor="middle" font-family="Arial" font-weight="700" font-size="23" fill="#fff">VER A LOJA</text></g>
+  <g filter="url(#s)">
+    <rect x="672" y="105" width="448" height="540" rx="36" fill="#fff"/>
+    <rect x="693" y="126" width="406" height="367" rx="26" fill="#eef3e9"/>
+    <g transform="translate(742 179)">
+      <path d="M22 70 L87 24 L159 63 L200 27 L250 62 L278 222 L0 222 Z" fill="#dec6b1"/>
+      <path d="M84 24 Q145 -25 200 27 L182 60 L104 60 Z" fill="#b97166"/>
+      <path d="M91 47 L192 47 L204 212 L80 212 Z" fill="#f6e2d8" stroke="#c57e6c" stroke-width="4"/>
+      <path d="M137 48 L140 209" stroke="#d79e8b" stroke-width="4" stroke-dasharray="8 12"/>
+      <rect x="4" y="215" width="278" height="13" rx="6" fill="#f5d6be"/>
+    </g>
+    <g transform="translate(806 330)">
+      <circle cx="38" cy="38" r="34" fill="#c38b66"/><circle cx="142" cy="38" r="34" fill="#c38b66"/>
+      <ellipse cx="90" cy="97" rx="90" ry="89" fill="#cc9b76"/>
+      <ellipse cx="90" cy="170" rx="102" ry="73" fill="#cc9b76"/>
+      <ellipse cx="57" cy="87" rx="8" ry="11" fill="#513827"/><ellipse cx="122" cy="87" rx="8" ry="11" fill="#513827"/>
+      <ellipse cx="90" cy="110" rx="27" ry="23" fill="#f0d8c2"/><ellipse cx="90" cy="105" rx="10" ry="7" fill="#5b3e2d"/>
+      <path d="M79 125 Q90 138 101 125" fill="none" stroke="#5b3e2d" stroke-width="3"/>
+      <path d="M90 148 L63 165 L89 185 L113 165 Z" fill="#d87970"/>
+    </g>
+    <text x="730" y="546" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#375949">Roupas e brinquedos</text>
+    <text x="730" y="587" font-family="Arial,sans-serif" font-size="22" fill="#708379">74 produtos demonstrativos</text>
+  </g>
+  <g fill="#dcae81" opacity=".95"><circle cx="565" cy="152" r="9"/><circle cx="1171" cy="540" r="13"/><circle cx="556" cy="608" r="8"/></g>
+  <g stroke="#b4cdb7" stroke-width="6" stroke-linecap="round"><path d="M585 275 v53 M561 302 h48"/><path d="M1152 93 v53 M1126 119 h53"/></g>
+</svg>

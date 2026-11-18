@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Pequenos Encantos Kids: demonstração de loja infantil com roupas, brinquedos, presentes, favoritos e carrinho de compras." />
+  <meta name="theme-color" content="#f9f7f1" />
+  <title>Pequenos Encantos Kids 2.0 | Moda, brinquedos e descobertas</title>
+  <style>
+    /* 01 — CORES E PADRÕES: mude aqui para personalizar a identidade da loja. */
+    :root{--verde:#3f6658;--verde2:#284c42;--sauge:#e7eee5;--terracota:#c87965;--dourado:#e9b975;--creme:#faf7ef;--offwhite:#fffdfa;--texto:#263c35;--muted:#63786f;--linha:#e9e9e1;--sombra:0 18px 48px rgba(34,67,54,.1);--radius:22px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{margin:0;background:var(--offwhite);color:var(--texto);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;-webkit-font-smoothing:antialiased}
+    button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}img{display:block;width:100%;object-fit:cover}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #d89d54;outline-offset:3px}section{scroll-margin-top:96px}
+    .wrap{width:min(1240px,calc(100% - 44px));margin-inline:auto}.skip{position:fixed;z-index:9999;top:-80px;left:12px;background:#fff;padding:12px}.skip:focus{top:12px}
+    .demo-ribbon{background:#284c42;color:#fff;font-size:12px;font-weight:600;text-align:center;padding:9px 15px;letter-spacing:.01em}.demo-ribbon b{color:#f7dbad}
+    /* 02 — TOPO E NAVEGAÇÃO. */
+    .site-header{position:sticky;top:0;z-index:200;background:rgba(255,253,250,.96);backdrop-filter:blur(16px);border-bottom:1px solid #dfe6db}
+    .header-content{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:26px}.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}.logo-mark{display:grid;place-items:center;width:44px;height:44px;border-radius:15px;background:var(--sauge);font-size:25px;box-shadow:inset 0 0 0 1px #cfdfd1}.logo-name{font-family:Georgia,serif;font-size:23px;font-weight:700;line-height:.88;color:var(--verde2)}.logo-name small{display:block;font:700 10px/1.7 ui-sans-serif,Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;color:var(--terracota);margin-top:6px}
+    .main-nav{display:flex;align-items:center;gap:24px;font-size:13px;font-weight:700}.main-nav a:hover{color:var(--terracota)}.header-actions{display:flex;gap:8px;align-items:center}.icon-button{height:42px;min-width:42px;display:inline-grid;place-items:center;background:#f3f4ee;border:1px solid #e1e6dd;border-radius:14px;color:var(--verde2);position:relative}.icon-button:hover{background:var(--sauge)}.bubble{position:absolute;top:-6px;right:-6px;min-width:19px;height:19px;border-radius:100px;background:var(--terracota);display:grid;place-items:center;color:#fff;font-size:10px;font-weight:850;padding:2px}.menu-toggle{display:none}
+    /* 03 — APRESENTAÇÃO PRINCIPAL DA LOJA. */
+    .hero{position:relative;overflow:hidden;background:linear-gradient(117deg,#f3f4e9 0%,#fdf7ef 57%,#f6ede3 100%)}.hero:after{content:"";position:absolute;inset:auto -14% -330px auto;width:590px;height:590px;border:1px solid #ccdac5;border-radius:50%;pointer-events:none}
+    .hero-grid{min-height:570px;display:grid;grid-template-columns:.98fr 1.02fr;align-items:center;gap:36px;padding-top:46px;padding-bottom:54px}.eyebrow{display:inline-flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.19em;color:var(--terracota);font-weight:850;font-size:11px;margin-bottom:15px}.eyebrow::before{content:"";width:23px;height:1px;background:currentColor}.hero h1{font-family:Georgia,serif;letter-spacing:-.045em;font-weight:600;font-size:clamp(45px,5.1vw,78px);line-height:1.01;margin:0 0 23px;color:var(--verde2)}.hero h1 em{font-style:italic;color:var(--terracota)}.hero p{max-width:505px;font-size:17px;line-height:1.75;color:#61766b;margin:0 0 30px}.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;min-height:47px;padding:12px 23px;border:1px solid transparent;font-size:13px;font-weight:800;transition:transform .2s,background .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px)}.btn.primary{background:var(--verde);color:#fff;box-shadow:0 8px 22px #3f665833}.btn.secondary{color:var(--verde2);border-color:#bccdc1;background:#fffdfa}.btn.rose{background:#ca806d;color:#fff}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}.hero-features{display:flex;flex-wrap:wrap;gap:16px;margin-top:35px;color:#637c6e;font-size:12px;font-weight:750}.hero-features span{display:flex;align-items:center;gap:6px}
+    .hero-art{position:relative;width:100%;min-height:480px;display:grid;place-items:center}.hero-halo{width:80%;aspect-ratio:1;border-radius:50%;background:#dfe8d8;position:absolute;left:10%;top:8%}.hero-photo{position:relative;width:83%;height:440px;object-fit:cover;border-radius:180px 180px 30px 30px;border:10px solid #fffdf7;box-shadow:0 18px 55px #264c3b27;z-index:1;background:#e8e3d9}.hero-sticker{position:absolute;z-index:2;bottom:17px;left:0;background:#fff;border:1px solid #f0e6d7;padding:14px 18px;border-radius:18px;box-shadow:var(--sombra);font-size:13px;font-weight:800;max-width:180px;transform:rotate(-4deg)}.hero-sticker strong{display:block;font-size:23px;color:var(--terracota)}.star-shape{position:absolute;z-index:3;right:0;top:48px;font-size:64px;transform:rotate(15deg);color:var(--dourado)}
+    .benefits{background:var(--verde2);color:#fff}.benefits .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-top:22px;padding-bottom:22px}.benefit{display:flex;align-items:center;gap:12px;font-size:12px;line-height:1.5;font-weight:650}.benefit span{font-size:22px}
+    /* 04 — CATEGORIAS E CARTÕES. */
+    .section-pad{padding-top:82px;padding-bottom:76px}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:30px}.section-heading h2,.gift-copy h2,.newsletter h2{font:600 clamp(32px,3.6vw,46px)/1.12 Georgia,serif;letter-spacing:-.04em;color:var(--verde2);margin:0}.section-heading p{max-width:430px;color:var(--muted);line-height:1.65;margin:8px 0 0}.section-heading .right-note{color:var(--terracota);font-weight:800;font-size:12px}
+    .categories{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.cat-card{cursor:pointer;text-align:left;padding:0;border:1px solid #e8e9e1;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px #00000009;transition:transform .2s,box-shadow .2s}.cat-card:hover{transform:translateY(-5px);box-shadow:var(--sombra)}.cat-photo{height:225px;position:relative;overflow:hidden;background:linear-gradient(120deg,#dce9da,#f9eadf)}.cat-photo img{height:100%;transition:transform .35s}.cat-card:hover img{transform:scale(1.05)}.cat-content{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:20px 19px}.cat-content h3{margin:0;font:600 21px Georgia,serif;color:var(--verde2)}.cat-content p{font-size:12px;color:var(--muted);margin:7px 0 0}.cat-arrow{font-size:23px;color:var(--terracota)}
+    .promo{margin:45px 0 0;background:#dfeadd;border-radius:26px;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;align-items:center}.promo-text{padding:32px 42px}.promo .eyebrow{color:#9d6552}.promo h3{font:600 clamp(26px,3vw,40px) Georgia,serif;margin:0 0 12px;color:#264b3e;letter-spacing:-.03em}.promo p{line-height:1.6;color:#5b7765;margin:0}.promo-decoration{min-height:220px;display:grid;place-items:center;background:radial-gradient(circle at center,#d4ddc5,#c9dac9);font-size:100px;letter-spacing:18px}
+    /* 05 — BUSCA, FILTROS E PRODUTOS. */
+    .catalog{background:#f8f8f3}.search-row{display:grid;grid-template-columns:minmax(250px,1fr) 205px;gap:12px;margin-bottom:18px}.search{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #dce4da;border-radius:15px;padding:0 16px;height:48px}.search input{width:100%;border:0;background:transparent;outline:0;color:var(--texto)}.sort{background:#fff;border:1px solid #dce4da;border-radius:15px;padding:0 14px;color:var(--texto);height:48px}.filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:24px}.chip{padding:10px 16px;border:1px solid #d5e0d6;background:#fff;border-radius:100px;color:var(--verde2);font-size:12px;font-weight:750}.chip[aria-pressed="true"]{background:var(--verde);border-color:var(--verde);color:#fff}.filters label{margin-left:auto;display:flex;align-items:center;gap:7px;color:#567263;font-size:12px;font-weight:700}.filters select{border:1px solid #d5e0d6;border-radius:100px;padding:10px 13px;background:#fff;color:var(--texto)}
+    .catalog-status{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:20px;font-size:12px;color:var(--muted)}.reset{border:0;color:var(--verde);background:none;font-weight:800;text-decoration:underline}.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product-card{position:relative;overflow:hidden;background:#fff;border:1px solid #e8e8df;border-radius:20px;box-shadow:0 7px 22px #00000008;transition:transform .2s,box-shadow .2s}.product-card:hover{transform:translateY(-4px);box-shadow:var(--sombra)}.product-img{height:258px;background:linear-gradient(135deg,#e5e9db,#f9e5d9);position:relative;overflow:hidden}.product-img img{height:100%;transition:transform .35s}.product-card:hover .product-img img{transform:scale(1.05)}.badge{position:absolute;top:13px;left:13px;font-size:10px;font-weight:800;background:#fffdf5;color:#a46851;padding:8px 10px;border-radius:100px;box-shadow:0 4px 12px #0001}.fav-button{position:absolute;top:11px;right:11px;width:35px;height:35px;border-radius:100px;border:0;background:#fff;color:#8a9389;box-shadow:0 3px 12px #0002;font-size:20px}.fav-button.active{color:#c46875;background:#fff2f1}.quick-button{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#ffffffeb;border:1px solid #e7e5dd;border-radius:100px;padding:9px 15px;font-size:11px;font-weight:850;color:var(--verde2)}.product-body{padding:18px}.product-cat{color:#ab7961;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.product-body h3{font-size:15px;line-height:1.35;margin:9px 0 8px;min-height:40px;color:#2e493c}.product-description{font-size:12px;line-height:1.5;color:#718176;min-height:37px;margin-bottom:12px}.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:7px}.price{font-size:17px;font-weight:850;color:var(--verde2)}.product-bottom .add{height:38px;width:38px;border-radius:12px;color:#fff;background:var(--verde);border:0;font-size:23px;display:grid;place-items:center}.price-note{font-size:10px;color:#88968a;margin-top:7px}.empty-state{background:#fff;border:1px dashed #c7d4c8;border-radius:20px;text-align:center;padding:40px;color:var(--verde2)}
+    /* 06 — ASSISTENTE PARA PRESENTEAR. */
+    .gift-section{background:linear-gradient(110deg,#f6eee9,#f5f2e7)}.gift-layout{display:grid;grid-template-columns:.84fr 1.16fr;gap:40px;align-items:center}.gift-illustration{height:320px;border-radius:30px;background:radial-gradient(circle at 50% 54%,#e4bd9c,#f0e1cb 68%);display:grid;place-items:center;font-size:118px}.gift-copy h2{margin:0 0 14px}.gift-copy p{line-height:1.7;color:#657369;margin:0 0 20px}.gift-box{background:#fff;border:1px solid #ecdfd7;padding:22px;border-radius:22px;box-shadow:0 12px 38px #5f493414}.gift-box h3{margin:0 0 13px;font-size:17px;color:var(--verde2)}.gift-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.gift-row label{font-size:12px;font-weight:800;color:#486558;display:flex;flex-direction:column;gap:8px}.gift-row select{height:44px;border:1px solid #d9e1d8;border-radius:10px;padding:0 12px;background:#fff;color:var(--texto)}.gift-actions{margin-top:18px}.gift-results{margin-top:16px}.gift-result{display:flex;align-items:center;gap:12px;border-top:1px solid #eee9e4;padding:12px 0;font-size:13px}.gift-result img{height:58px;width:58px;border-radius:11px;object-fit:cover}.gift-result strong{display:block}.gift-result small{color:var(--muted)}.gift-result button{margin-left:auto;border:0;border-radius:10px;background:var(--sauge);color:var(--verde2);font-weight:900;padding:9px 11px}
+    /* 07 — COMO FUNCIONA, CONTATO E RODAPÉ. */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.step{padding:24px 20px;border:1px solid #e7e6dc;border-radius:20px;background:#fff}.step-index{font:600 34px Georgia,serif;color:#cf8e7c;margin-bottom:13px}.step h3{margin:0 0 8px;font-size:16px;color:var(--verde2)}.step p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}.newsletter{padding:60px 0;background:var(--verde2);color:#fff;text-align:center}.newsletter h2{color:#fff;margin:0 0 14px}.newsletter p{color:#d6e5d9;line-height:1.65;max-width:650px;margin:0 auto 25px}.newsletter .btn{background:#f8dfb5;color:#244439}.site-footer{background:#1e3b33;padding:30px 0;color:#d4e4d7}.footer-grid{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;align-items:center;font-size:12px}.footer-grid strong{font:600 22px Georgia,serif;color:#fff}.footer-links{display:flex;flex-wrap:wrap;gap:16px}.footer-links a:hover{color:#fff}
+    /* 08 — CARRINHO LATERAL E DETALHES DO PRODUTO. */
+    .overlay{position:fixed;inset:0;background:rgba(20,34,28,.52);z-index:400;opacity:0;pointer-events:none;transition:opacity .2s}.overlay.visible{opacity:1;pointer-events:auto}.drawer{position:fixed;z-index:410;top:0;right:0;bottom:0;width:min(460px,100%);background:#fffdf9;box-shadow:-20px 0 50px #142e292a;transform:translateX(103%);transition:transform .25s;display:flex;flex-direction:column}.drawer.open{transform:translateX(0)}.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:22px 22px 16px;border-bottom:1px solid var(--linha)}.drawer-head h2{margin:0;font:600 27px Georgia,serif}.close{border:0;background:#edf1e9;width:36px;height:36px;border-radius:12px;font-size:20px;color:var(--verde2)}.drawer-list{flex:1;overflow:auto;padding:8px 20px}.cart-item{display:grid;grid-template-columns:68px 1fr;gap:12px;border-bottom:1px solid #e9ece6;padding:15px 0}.cart-item img{width:68px;height:76px;border-radius:12px}.cart-item h3{margin:0 0 5px;font-size:13px}.cart-item small{color:var(--muted)}.quantity{display:flex;align-items:center;gap:9px;margin-top:8px}.quantity button{border:1px solid #d7e0d8;background:#fff;border-radius:9px;width:28px;height:28px;color:var(--verde2);font-weight:800}.quantity .remove{margin-left:auto;width:auto;padding:0 8px;color:#ad5e5f}.drawer-foot{border-top:1px solid var(--linha);padding:18px 22px 24px;background:#fff}.total-row{display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:850;margin-bottom:12px}.drawer-foot .btn{width:100%}.drawer-foot p{font-size:11px;line-height:1.6;color:var(--muted)}
+    dialog{border:0;border-radius:24px;box-shadow:0 25px 90px #10271c66;max-width:min(790px,calc(100vw - 28px));width:100%;padding:0;background:#fffdf9;color:var(--texto)}dialog::backdrop{background:rgba(15,37,27,.6)}.modal-content{display:grid;grid-template-columns:1fr 1.1fr}.modal-photo{height:440px;background:#eef0e6}.modal-photo img{height:100%}.modal-info{padding:32px 27px}.modal-info h2{font:600 31px Georgia,serif;line-height:1.12;margin:9px 0}.modal-info p{font-size:13px;line-height:1.7;color:var(--muted)}.modal-price{font-size:25px;font-weight:850;color:var(--verde2);margin:18px 0}.modal-select{display:grid;gap:7px;font-weight:800;font-size:12px;margin-bottom:17px}.modal-select select{height:44px;border:1px solid #d4ded5;background:#fff;padding:0 12px;border-radius:10px}.modal-close{position:absolute;right:14px;top:14px;z-index:2}.modal-actions{display:flex;gap:9px;flex-wrap:wrap}.modal-actions .btn{flex:1}
+    #toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,130px);background:#284c42;color:white;padding:12px 19px;border-radius:99px;box-shadow:0 10px 30px #0003;z-index:600;font-size:13px;font-weight:700;transition:transform .3s;pointer-events:none}#toast.show{transform:translate(-50%,0)}
+    /* 09 — APRESENTAÇÃO RESPONSIVA PARA NOTEBOOK, TABLET E CELULAR. */
+    @media(max-width:1050px){.main-nav{gap:14px}.product-grid{grid-template-columns:repeat(3,1fr)}.categories{grid-template-columns:repeat(2,1fr)}.hero-grid{gap:10px}.hero h1{font-size:clamp(41px,5.2vw,65px)}}
+    @media(max-width:760px){.wrap{width:min(100% - 32px,620px)}.header-content{min-height:70px}.logo-name{font-size:20px}.logo-mark{width:39px;height:39px}.main-nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fffdf8;padding:18px 26px 22px;box-shadow:0 15px 20px #0001;flex-direction:column;align-items:flex-start}.main-nav.open{display:flex}.menu-toggle{display:inline-grid}.hero-grid{grid-template-columns:1fr;padding-top:40px;padding-bottom:48px}.hero h1{font-size:clamp(43px,10vw,64px)}.hero p{font-size:15px}.hero-art{min-height:345px}.hero-photo{height:315px;width:82%}.hero-sticker{bottom:0}.star-shape{font-size:45px}.benefits .wrap{grid-template-columns:repeat(2,1fr)}.product-grid{grid-template-columns:repeat(2,1fr)}.section-pad{padding-top:56px;padding-bottom:53px}.section-heading{display:block}.search-row{grid-template-columns:1fr}.filters label{margin:8px 0 0}.gift-layout{grid-template-columns:1fr}.gift-illustration{height:160px;font-size:76px}.steps{grid-template-columns:1fr}.modal-content{grid-template-columns:1fr}.modal-photo{height:240px}.modal-info{padding:22px}.modal-info h2{font-size:25px}}
+    @media(max-width:460px){.product-grid{gap:10px}.product-img{height:174px}.product-body{padding:12px}.product-body h3{font-size:13px;min-height:36px}.product-description{font-size:11px;min-height:50px}.price{font-size:14px}.product-bottom .add{width:35px;height:35px}.categories{gap:10px}.cat-photo{height:135px}.cat-content{padding:14px}.cat-content h3{font-size:17px}.cat-content p{font-size:11px}.benefits .wrap{gap:12px;padding-top:15px;padding-bottom:15px}.benefit{font-size:10px;gap:6px}.benefit span{font-size:18px}.hero h1{font-size:43px}.hero-art{min-height:270px}.hero-photo{height:260px}.hero-sticker{padding:10px;font-size:10px}.hero-sticker strong{font-size:17px}.gift-row{grid-template-columns:1fr}.promo{grid-template-columns:1fr}.promo-text{padding:26px}.promo-decoration{min-height:130px;font-size:70px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+    /* 21 — PAINEL LOCAL: estilo premium consistente com a loja. */
+    .admin-section{background:#eef3ec;padding:64px 0 80px}.admin-section[hidden]{display:none!important}
+    .admin-top{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-bottom:16px}
+    .admin-top h2{font:600 clamp(30px,3vw,42px)/1.1 Georgia,serif;margin:0;color:#284c42}.admin-top p{max-width:740px;line-height:1.6;color:#506b5e}
+    .admin-header{font-size:20px}.admin-info{background:#fff5dc;border:1px solid #ead2a2;color:#66512b;padding:15px 18px;border-radius:14px;font-size:13px;margin-bottom:20px}
+    .admin-tools{display:flex;align-items:flex-end;flex-wrap:wrap;gap:9px;margin-bottom:24px}
+    .admin-tools .btn{min-height:44px;font-size:12px}.admin-search{display:flex;flex-direction:column;gap:5px;min-width:210px;flex:1;font-size:12px;color:#506b5e;font-weight:800}
+    .admin-search input{padding:12px;border:1px solid #d6e0d5;border-radius:12px;background:#fff;color:#263c35;min-height:44px}
+    .admin-import-label{cursor:pointer}.admin-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:start;gap:22px}
+    .admin-list-panel,.admin-form-panel{border-radius:22px;padding:24px;background:#fff;box-shadow:0 12px 35px #23473112;border:1px solid #dce6da}
+    .admin-list-panel h3,.admin-form-panel h3{margin:0 0 16px;font:600 24px Georgia,serif;color:#284c42}.admin-list-panel h3 span{font:700 13px Arial,sans-serif;color:#678072}
+    .admin-list{max-height:740px;overflow:auto;display:grid;gap:10px}.admin-item{display:grid;grid-template-columns:54px minmax(0,1fr) auto;align-items:center;gap:11px;border:1px solid #e3e9df;border-radius:13px;padding:9px}
+    .admin-item img{width:54px;height:63px;border-radius:9px;object-fit:cover;background:#e9f2e4}
+    .admin-item strong{display:block;font-size:12px;color:#2b4c40;overflow-wrap:anywhere}.admin-item small{display:block;font-size:11px;color:#5e7568;margin-top:4px}
+    .admin-item-actions{display:flex;gap:5px;flex-wrap:wrap;justify-content:end}.admin-item-actions button{padding:8px;border:1px solid #cfd9ce;border-radius:9px;background:#f7faf5;color:#345b49;font-size:11px;font-weight:800}
+    .admin-item-actions .danger{color:#a73d39;background:#fff6f5;border-color:#e7c8c4}
+    #adminForm{display:grid;gap:13px}#adminForm label{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#455f52;font-weight:800}
+    #adminForm input,#adminForm select,#adminForm textarea{width:100%;background:#fff;border:1px solid #ccdacf;border-radius:11px;padding:12px;color:#243f34;min-height:42px;font-size:14px}
+    #adminForm textarea{resize:vertical}.admin-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-small{color:#718378;font-size:11px;line-height:1.5;margin:0}
+    .admin-preview{display:flex;align-items:center;gap:15px;background:#f5f8f2;border-radius:13px;padding:12px}.admin-preview img{height:95px;width:95px;border-radius:13px;object-fit:cover}.admin-preview p{font-size:12px;color:#5a7265}
+    .admin-form-actions{display:flex;flex-wrap:wrap;gap:9px}
+    @media(max-width:940px){.admin-layout{grid-template-columns:1fr}.admin-list{max-height:410px}.admin-top{align-items:flex-start}}
+    @media(max-width:600px){.admin-top{display:grid}.admin-fields{grid-template-columns:1fr}.admin-item{grid-template-columns:44px minmax(0,1fr)}.admin-item img{width:44px}.admin-item-actions{grid-column:1/-1;justify-content:flex-end}}
+    /* Ajuste final para 320–460px: quatro botões sem cortar o cabeçalho. */
+    @media(max-width:460px){
+      .wrap{width:calc(100% - 24px)}
+      .header-content{gap:6px;min-height:64px}
+      .logo{gap:5px;min-width:0;flex-shrink:1}
+      .logo-mark{width:30px;height:30px;font-size:19px;flex-shrink:0;border-radius:9px}
+      .logo-name{font-size:14px;line-height:1.04;white-space:normal;letter-spacing:-.025em}
+      .logo-name small{font-size:8px;letter-spacing:2px;white-space:nowrap}
+      .header-actions{gap:4px;flex-shrink:0}
+      .icon-button{width:33px;min-width:33px;height:35px;border-radius:10px;font-size:16px}
+      .admin-header{font-size:17px}
+      .bubble{height:16px;min-width:16px;font-size:9px;top:-3px;right:-3px}
+    }
+    @media(max-width:365px){.header-actions{gap:3px}.icon-button{width:31px;min-width:31px;height:33px}.logo-name{font-size:13px}#favTop{display:none}}
+    /* Tablets entre 761 e 920 pixels usam o menu recolhido. */
+    @media(min-width:761px) and (max-width:920px){
+      .header-content{gap:14px}
+      .main-nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fffdf8;padding:18px 26px 22px;box-shadow:0 15px 20px #0001;flex-direction:column;align-items:flex-start}
+      .main-nav.open{display:flex}
+      .menu-toggle{display:inline-grid}
+    }
+    .admin-item,.admin-form-panel,.admin-list-panel{min-width:0}
+
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="demo-ribbon">🧸 <b>DEMONSTRAÇÃO MOSS DIGITAL</b> — loja fictícia; produtos, fotos e preços ilustrativos</div>
+  <header class="site-header">
+    <div class="wrap header-content">
+      <a class="logo" href="#inicio" aria-label="Pequenos Encantos Kids, início"><span class="logo-mark" aria-hidden="true">✿</span><span class="logo-name">Pequenos Encantos<small>Kids Boutique</small></span></a>
+      <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+        <a href="#inicio">Início</a><a href="#categorias">Categorias</a><a href="#colecao">Produtos</a><a href="#presente">Presente ideal</a><a href="#sobre">Como funciona</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="favTop" type="button" aria-label="Ver produtos favoritos" title="Mostrar favoritos">♡<span class="bubble" id="favCount" hidden>0</span></button>
+        <button class="icon-button admin-header" id="adminTop" type="button" aria-label="Abrir painel de demonstração para gerenciar produtos" title="Gerenciar produtos (demonstração)">⚙</button>
+        <button class="icon-button" id="cartTop" type="button" aria-label="Abrir carrinho de demonstração" title="Abrir carrinho">🛍️<span class="bubble" id="cartCount" hidden>0</span></button>
+        <button class="icon-button menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰</button>
+      </div>
+    </div>
+  </header>
+  <main id="conteudo">
+    <section id="inicio" class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Um universo de pequenos encantos</span>
+          <h1>Coisas lindas para <em>grandes descobertas.</em></h1>
+          <p>Moda confortável, brinquedos que despertam a imaginação e presentes especiais para acompanhar cada fase da infância.</p>
+          <div class="actions"><a href="#colecao" class="btn primary">Explorar a coleção <span aria-hidden="true">→</span></a><a href="#presente" class="btn secondary">Encontrar presente ✨</a></div>
+          <div class="hero-features"><span>✦ Roupinhas encantadoras</span><span>✦ Brinquedos por idade</span><span>✦ Ideias para presentear</span></div>
+        </div>
+        <div class="hero-art" aria-label="Fotografia ilustrativa de artigos para bebês">
+          <div class="hero-halo"></div><img class="hero-photo" id="heroPhoto" src="" data-photo="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="Itens delicados para bebês, em fotografia ilustrativa" />
+          <span class="star-shape" aria-hidden="true">✳</span><div class="hero-sticker"><strong>74 peças</strong> para conhecer e se inspirar ✨</div>
+        </div>
+      </div>
+    </section>
+    <div class="benefits" aria-label="Diferenciais da apresentação"><div class="wrap"><div class="benefit"><span>🌿</span> Seleção por categoria</div><div class="benefit"><span>🧸</span> Brinquedos por idade</div><div class="benefit"><span>🎁</span> Sugestões de presentes</div><div class="benefit"><span>💌</span> Fale com a MOSS</div></div></div>
+    <section id="categorias" class="section-pad">
+      <div class="wrap"><div class="section-heading"><div><span class="eyebrow">Tudo para os pequenos</span><h2>Um mundo de carinho</h2><p>Escolha uma categoria e descubra produtos ilustrativos para sua futura loja.</p></div></div>
+        <div class="categories" id="categoryCards">
+          <button class="cat-card" data-cat="bebes" type="button"><div class="cat-photo"><img src="" data-photo="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Fotografia ilustrativa para roupas de bebês" loading="lazy" /></div><div class="cat-content"><div><h3>Para bebês</h3><p>Os primeiros momentos</p></div><span class="cat-arrow">↗</span></div></button>
+          <button class="cat-card" data-cat="criancas" type="button"><div class="cat-photo"><img src="" data-photo="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Fotografia ilustrativa da moda infantil" loading="lazy" /></div><div class="cat-content"><div><h3>Moda infantil</h3><p>Looks cheios de vida</p></div><span class="cat-arrow">↗</span></div></button>
+          <button class="cat-card" data-cat="brinquedos" type="button"><div class="cat-photo"><img src="" data-photo="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Fotografia ilustrativa de brinquedos" loading="lazy" /></div><div class="cat-content"><div><h3>Brinquedos</h3><p>Imaginar e descobrir</p></div><span class="cat-arrow">↗</span></div></button>
+          <button class="cat-card" data-cat="kits" type="button"><div class="cat-photo"><img src="" data-photo="https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Fotografia ilustrativa de presente infantil" loading="lazy" /></div><div class="cat-content"><div><h3>Kits presente</h3><p>Carinho em cada detalhe</p></div><span class="cat-arrow">↗</span></div></button>
+        </div>
+        <div class="promo"><div class="promo-text"><span class="eyebrow">A coleção do seu jeito</span><h3>Presentear ficou mais simples.</h3><p>Use o nosso assistente para encontrar sugestões de produtos por idade, ocasião e preferência.</p><a href="#presente" class="btn primary" style="margin-top:18px">Encontrar presente →</a></div><div class="promo-decoration" aria-hidden="true">🎈🧸</div></div>
+      </div>
+    </section>
+    <section id="colecao" class="section-pad catalog">
+      <div class="wrap"><div class="section-heading"><div><span class="eyebrow">Pequenas escolhas, grandes sorrisos</span><h2>Explore nossa coleção</h2><p>Busque, filtre, favorite e monte um carrinho demonstrativo.</p></div><span class="right-note">Preços fictícios para apresentação</span></div>
+        <div class="search-row"><label class="search" for="searchInput">⌕ <input id="searchInput" type="search" autocomplete="off" placeholder="Busque por roupa, ursinho, kit…" /></label><select id="sortInput" class="sort" aria-label="Ordenar produtos"><option value="padrao">Mais interessantes</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="nome">Nome A–Z</option></select></div>
+        <div class="filters" role="group" aria-label="Filtrar produtos por categoria"><button type="button" class="chip" data-filter="todos" aria-pressed="true">Todos</button><button type="button" class="chip" data-filter="bebes" aria-pressed="false">Bebês</button><button type="button" class="chip" data-filter="criancas" aria-pressed="false">Crianças</button><button type="button" class="chip" data-filter="brinquedos" aria-pressed="false">Brinquedos</button><button type="button" class="chip" data-filter="kits" aria-pressed="false">Kits presente</button><button type="button" class="chip" data-filter="favoritos" aria-pressed="false">♡ Favoritos</button><label>Idade <select id="ageFilter" aria-label="Faixa etária"><option value="todas">Todas</option><option value="0-1">0 a 1 ano</option><option value="2-3">2 a 3 anos</option><option value="4-6">4 a 6 anos</option><option value="7+">7 anos ou mais</option></select></label></div>
+        <div class="catalog-status"><span id="productCount" role="status">Carregando produtos...</span><button class="reset" id="resetFilters" type="button">Limpar filtros</button></div>
+        <div class="product-grid" id="productGrid" aria-live="off"></div>
+        <div class="empty-state" id="emptyState" hidden><h3>Não encontramos produtos nessa busca.</h3><p>Experimente outra palavra ou limpe os filtros.</p><button class="btn primary" type="button" id="emptyReset">Ver todos os produtos</button></div>
+      </div>
+    </section>
+    <section id="presente" class="section-pad gift-section"><div class="wrap gift-layout"><div class="gift-copy"><span class="eyebrow">Uma ajuda especial</span><h2>Qual será o presente ideal?</h2><p>Escolha a idade e a ocasião. Nossa vitrine sugere itens da demonstração para você explorar.</p><div class="gift-illustration" aria-hidden="true">🎁✨</div></div>
+      <div class="gift-box"><h3>✨ Encontre uma sugestão</h3><div class="gift-row"><label for="giftAge">Idade da criança<select id="giftAge"><option value="0-1">Até 1 ano</option><option value="2-3">2 a 3 anos</option><option value="4-6">4 a 6 anos</option><option value="7+">7 anos ou mais</option></select></label><label for="giftOccasion">Ocasião<select id="giftOccasion"><option value="qualquer">Surpresa carinhosa</option><option value="aniversario">Aniversário</option><option value="maternidade">Nascimento / maternidade</option><option value="roupa">Uma roupa nova</option></select></label></div><div class="gift-actions"><button class="btn rose" id="giftSearch" type="button">Ver sugestões →</button></div><div class="gift-results" id="giftResults" aria-live="polite"><p style="color:#6f8175;font-size:13px">Selecione as opções e clique em “Ver sugestões”.</p></div><p style="font-size:11px;color:#87938a;line-height:1.6">Sugestões ilustrativas. Para brinquedos reais, confira sempre a faixa etária indicada pelo fabricante e a certificação aplicável.</p></div>
+    </div></section>
+    <section id="sobre" class="section-pad"><div class="wrap"><div class="section-heading"><div><span class="eyebrow">Simples e acolhedor</span><h2>Como funcionaria sua loja?</h2><p>Uma experiência criada para demonstrar aos clientes o potencial de um site de comércio infantil.</p></div></div><div class="steps"><div class="step"><div class="step-index">01</div><h3>Explore os produtos</h3><p>Fotos ilustrativas, categorias, tamanhos e detalhes de cada peça em uma vitrine organizada.</p></div><div class="step"><div class="step-index">02</div><h3>Monte o carrinho</h3><p>Adicione itens, altere quantidades e veja o total. Tudo fica salvo no navegador.</p></div><div class="step"><div class="step-index">03</div><h3>Adapte para seu negócio</h3><p>Na versão real, integramos estoque, cadastro, entrega e pagamento conforme a necessidade da loja.</p></div></div></div></section>
+    <!-- 20 — PAINEL ADMINISTRATIVO DEMONSTRATIVO.
+         NÃO tem senha e NÃO deve ser usado com dados reais de clientes. -->
+    <section class="admin-section" id="administrador" hidden aria-labelledby="adminTitle">
+      <div class="wrap">
+        <div class="admin-top">
+          <div><span class="eyebrow">ÁREA DE TESTES · SEM LOGIN REAL</span><h2 id="adminTitle">Gerenciar produtos</h2><p>Cadastre, edite ou exclua itens. Tudo fica salvo <strong>somente neste navegador</strong>. Para uma loja real, conectamos um painel protegido ao Supabase.</p></div>
+          <button class="btn secondary" type="button" id="closeAdmin">← Voltar à loja</button>
+        </div>
+        <div class="admin-info">🔒 <strong>Aviso de segurança:</strong> esta área está aberta a qualquer visitante da demonstração. Não coloque dados pessoais ou comerciais reais. Senhas, autenticação e permissões só existirão na versão com servidor.</div>
+        <div class="admin-tools">
+          <label class="admin-search" for="adminSearch">Buscar no cadastro <input type="search" id="adminSearch" placeholder="Nome ou categoria..."></label>
+          <button class="btn primary" type="button" id="adminNew">＋ Novo produto</button>
+          <button class="btn secondary" type="button" id="adminExport">↓ Exportar produtos</button>
+          <label class="btn secondary admin-import-label" for="adminImport">↑ Importar JSON</label><input type="file" id="adminImport" accept=".json,application/json" hidden>
+          <button class="btn secondary" type="button" id="adminReset">↻ Restaurar demonstração</button>
+        </div>
+        <div class="admin-layout">
+          <div class="admin-list-panel"><h3>Produtos cadastrados <span id="adminCount"></span></h3><div id="adminList" class="admin-list"></div></div>
+          <div class="admin-form-panel" id="adminFormPanel"><h3 id="adminFormTitle">Cadastrar produto</h3>
+            <form id="adminForm" autocomplete="off">
+              <input type="hidden" id="adminId">
+              <label>Nome do produto *<input id="adminName" required maxlength="90" placeholder="Ex.: Macacão de algodão"></label>
+              <div class="admin-fields"><label>Categoria *<select id="adminCategory" required><option value="bebes">Bebês</option><option value="criancas">Moda infantil</option><option value="brinquedos">Brinquedos</option><option value="kits">Kits presente</option></select></label><label>Faixa etária ilustrativa *<select id="adminAge"><option value="0-1">Até 1 ano</option><option value="2-3">2 a 3 anos</option><option value="4-6">4 a 6 anos</option><option value="7+">7 anos ou mais</option></select></label></div>
+              <div class="admin-fields"><label>Preço (R$) *<input type="number" id="adminPrice" min="0.01" step="0.01" value="49.90" required></label><label>Estoque ilustrativo *<input type="number" id="adminStock" min="0" max="9999" step="1" value="15" required></label></div>
+              <label>Descrição *<textarea id="adminDesc" required maxlength="250" rows="3" placeholder="Descreva o produto."></textarea></label>
+              <div class="admin-fields"><label>Tamanhos (se houver)<input id="adminSizes" placeholder="RN, P, M, G ou 2, 4, 6"></label><label>Etiqueta de destaque<input id="adminBadge" maxlength="25" value="Novo" placeholder="Ex.: Lançamento"></label></div>
+              <label>Link HTTPS da foto (opcional)<input id="adminPhoto" type="url" placeholder="https://..." inputmode="url"></label>
+              <label>Ou escolha uma foto do PC (opcional)<input id="adminPhotoFile" type="file" accept="image/png,image/jpeg,image/webp"></label>
+              <p class="admin-small">A foto enviada será reduzida e salva neste navegador para a demonstração. Imagens grandes podem exceder o espaço disponível.</p>
+              <div class="admin-preview"><img id="adminPreviewImg" alt="Prévia ilustrativa do produto"><p>Prévia da imagem</p></div>
+              <div class="admin-form-actions"><button class="btn primary" type="submit" id="adminSave">Salvar produto</button><button class="btn secondary" type="button" id="adminCancel">Cancelar edição</button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="newsletter" id="contato"><div class="wrap"><span class="eyebrow" style="color:#f0c89c">Seu negócio merece um site especial</span><h2>Quer uma loja virtual como esta?</h2><p>Esta é uma demonstração da MOSS Digital. Podemos adaptar cores, catálogo, fotos, domínio e funcionalidades para uma loja verdadeira.</p><a class="btn" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511942038103?text=Ol%C3%A1!%20Vi%20a%20demo%20Pequenos%20Encantos%20Kids%202.0%20e%20quero%20um%20site%20parecido.">💬 Falar com a MOSS Digital</a></div></section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-grid"><div><strong>Pequenos Encantos Kids</strong><p>Uma demonstração de loja infantil criada pela MOSS Digital.</p></div><div class="footer-links"><a href="#inicio">Início</a><a href="#colecao">Produtos</a><a href="#presente">Presente ideal</a><a href="https://mossdigital.com.br" target="_blank" rel="noopener noreferrer">MOSS Digital ↗</a></div></div></footer>
+  <!-- 10 — O carrinho é uma lateral com o conteúdo montado via JavaScript. -->
+  <div class="overlay" id="overlay"></div><aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Seu carrinho" aria-hidden="true" inert><div class="drawer-head"><h2>Seu carrinho 🧸</h2><button type="button" id="closeCart" class="close" aria-label="Fechar carrinho">✕</button></div><div class="drawer-list" id="cartItems"></div><div class="drawer-foot"><div class="total-row"><span>Total ilustrativo</span><span id="cartTotal">R$ 0,00</span></div><button class="btn primary" id="sendCart" type="button">💬 Enviar simulação à MOSS</button><button class="btn secondary" id="clearCart" type="button" style="margin-top:8px">Esvaziar carrinho</button><p>Esta loja é fictícia: não há cobrança nem envio de pedidos. O botão abre uma conversa sobre como criar uma loja como esta.</p></div></aside>
+  <!-- 11 — Janela modal nativa: permite escolher tamanho antes de adicionar. -->
+  <dialog id="productDialog" aria-labelledby="modalTitle"><button class="close modal-close" id="closeModal" type="button" aria-label="Fechar detalhes">✕</button><div class="modal-content"><div class="modal-photo"><img id="modalImage" alt="" /></div><div class="modal-info"><span class="product-cat" id="modalCat"></span><h2 id="modalTitle"></h2><p id="modalDesc"></p><p id="modalAge"></p><div class="modal-price" id="modalPrice"></div><label class="modal-select" for="modalSize" id="modalSizeWrap">Selecione o tamanho<select id="modalSize"></select></label><div class="modal-actions"><button type="button" id="modalAdd" class="btn primary">Adicionar ao carrinho</button><button type="button" id="modalFav" class="btn secondary">♡ Favoritar</button></div><p style="font-size:11px">Produtos e valores fictícios para demonstração.</p></div></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script>
+    /* 12 — PRODUTOS: cada objeto representa um produto fictício da vitrine.
+       Campos: id, nome, categoria, preço, faixa etária, descrição, imagem e tamanhos. */
+    const FOTO={
+      bebe1:'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=650&q=78',
+      bebe2:'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=650&q=78',
+      bebe3:'https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?auto=format&fit=crop&w=650&q=78',
+      roupa1:'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=650&q=78',
+      roupa2:'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=650&q=78',
+      roupa3:'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=650&q=78',
+      toy1:'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=650&q=78',
+      toy2:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=650&q=78',
+      toy3:'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=650&q=78',
+      kit1:'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=650&q=78',
+      kit2:'https://images.unsplash.com/photo-1519340241574-2cec6aef0c01?auto=format&fit=crop&w=650&q=78'
+    };
+    const produtosBase=[
+      {id:1,nome:'Body Algodão Nuvem',cat:'bebes',age:'0-1',preco:49.90,desc:'Body macio em tons suaves para o dia a dia.',img:FOTO.bebe1,tam:['RN','P','M','G'],selo:'Delicado'},
+      {id:2,nome:'Macacão Jardim Encantado',cat:'bebes',age:'0-1',preco:89.90,desc:'Macacão confortável com inspiração floral.',img:FOTO.bebe2,tam:['RN','P','M','G'],selo:'Queridinho'},
+      {id:3,nome:'Conjunto Mini Ursinho',cat:'bebes',age:'0-1',preco:79.90,desc:'Blusinha e calça para os primeiros passeios.',img:FOTO.bebe3,tam:['P','M','G'],selo:'Novo'},
+      {id:4,nome:'Manta Tricot Soninho',cat:'bebes',age:'0-1',preco:69.90,desc:'Manta aconchegante para completar o enxoval.',img:FOTO.bebe2,tam:[],selo:'Enxoval'},
+      {id:5,nome:'Kit 3 Bodies Estrelinhas',cat:'bebes',age:'0-1',preco:99.90,desc:'Trio de bodies com cores combináveis.',img:FOTO.bebe1,tam:['RN','P','M','G'],selo:'Trio'},
+      {id:6,nome:'Sapatinho Primeiros Passos',cat:'bebes',age:'0-1',preco:39.90,desc:'Sapatinho decorativo para compor o look.',img:FOTO.bebe3,tam:['RN','P','M'],selo:'Fofo'},
+      {id:7,nome:'Vestido Flor de Algodão',cat:'criancas',age:'2-3',preco:109.90,desc:'Vestido leve com estampa de flores delicadas.',img:FOTO.roupa1,tam:['2','3','4'],selo:'Favorito'},
+      {id:8,nome:'Conjunto Aventura Kids',cat:'criancas',age:'4-6',preco:94.90,desc:'Camiseta e bermuda para brincar à vontade.',img:FOTO.roupa2,tam:['4','6','8'],selo:'Conforto'},
+      {id:9,nome:'Pijama Lua e Estrelas',cat:'criancas',age:'4-6',preco:74.90,desc:'Pijama de duas peças com clima de sonho.',img:FOTO.roupa3,tam:['4','6','8'],selo:'Noite feliz'},
+      {id:10,nome:'Jaqueta Mini Explorador',cat:'criancas',age:'7+',preco:139.90,desc:'Camada extra para passeios e aventuras.',img:FOTO.roupa1,tam:['8','10','12'],selo:'Novo'},
+      {id:11,nome:'Camiseta Arco-Íris',cat:'criancas',age:'7+',preco:54.90,desc:'Uma peça leve para combinar com tudo.',img:FOTO.roupa2,tam:['6','8','10','12'],selo:'Colorido'},
+      {id:12,nome:'Jardineira Brincadeira',cat:'criancas',age:'2-3',preco:119.90,desc:'Jardineira casual com visual delicado.',img:FOTO.roupa3,tam:['2','3','4'],selo:'Estilo'},
+      {id:13,nome:'Ursinho de Pelúcia',cat:'brinquedos',age:'2-3',preco:69.90,desc:'Pelúcia decorativa com visual encantador.',img:FOTO.toy1,tam:[],selo:'Abraçável'},
+      {id:14,nome:'Blocos Criativos Coloridos',cat:'brinquedos',age:'4-6',preco:89.90,desc:'Peças para exercitar a imaginação.',img:FOTO.toy2,tam:[],selo:'Criativo'},
+      {id:15,nome:'Quebra-Cabeça Animais',cat:'brinquedos',age:'4-6',preco:59.90,desc:'Desafio divertido com tema de bichinhos.',img:FOTO.toy3,tam:[],selo:'Diversão'},
+      {id:16,nome:'Torre de Encaixe',cat:'brinquedos',age:'2-3',preco:79.90,desc:'Brinquedo de encaixar para descobrir formas.',img:FOTO.toy2,tam:[],selo:'Educativo'},
+      {id:17,nome:'Jogo Memória do Bosque',cat:'brinquedos',age:'7+',preco:64.90,desc:'Jogo ilustrativo de memória e atenção.',img:FOTO.toy1,tam:[],selo:'Para jogar'},
+      {id:18,nome:'Livrinho de Pano',cat:'brinquedos',age:'0-1',preco:45.90,desc:'Livro sensorial ilustrativo para explorar.',img:FOTO.toy3,tam:[],selo:'Descobertas'},
+      {id:19,nome:'Kit Boas-Vindas Bebê',cat:'kits',age:'0-1',preco:159.90,desc:'Composição de peças para presente de nascimento.',img:FOTO.kit1,tam:['RN','P'],selo:'Presente'},
+      {id:20,nome:'Caixinha Sonho Doce',cat:'kits',age:'0-1',preco:129.90,desc:'Sugestão de presente para o enxoval.',img:FOTO.kit2,tam:[],selo:'Carinho'},
+      {id:21,nome:'Kit Festa Mini',cat:'kits',age:'2-3',preco:149.90,desc:'Seleção festiva de roupinha e mimo.',img:FOTO.kit1,tam:['2','3'],selo:'Celebração'},
+      {id:22,nome:'Presente Imaginação',cat:'kits',age:'4-6',preco:119.90,desc:'Combinação ilustrativa de brinquedos criativos.',img:FOTO.toy2,tam:[],selo:'Diversão'},
+      {id:23,nome:'Kit Explorador Curioso',cat:'kits',age:'7+',preco:169.90,desc:'Ideia de presente para brincar e descobrir.',img:FOTO.kit2,tam:[],selo:'Aventura'},
+      {id:24,nome:'Box Meu Primeiro Aninho',cat:'kits',age:'0-1',preco:139.90,desc:'Ideia delicada de presente de aniversário.',img:FOTO.kit1,tam:['G'],selo:'Especial'},
+      {id:25,nome:"Body Manga Longa Lua",cat:"bebes",age:"0-1",preco:54.9,desc:"Algodão leve e aconchegante para dias frescos.",img:FOTO.bebe1,tam:["RN","P","M","G"],selo:"Conforto",estoque:16},
+      {id:26,nome:"Macacão Ursinhos do Bosque",cat:"bebes",age:"0-1",preco:104.9,desc:"Macacão com acabamento delicado e tema do bosque.",img:FOTO.bebe2,tam:["RN","P","M","G"],selo:"Novo",estoque:16},
+      {id:27,nome:"Kit 5 Meias Estrelinhas",cat:"bebes",age:"0-1",preco:39.9,desc:"Meias macias com tons fáceis de combinar.",img:FOTO.bebe3,tam:[],selo:"Kit",estoque:16},
+      {id:28,nome:"Conjunto Tricot Aconchego",cat:"bebes",age:"0-1",preco:119.9,desc:"Casaco e calça de tricot para o enxoval.",img:FOTO.bebe2,tam:["P","M","G"],selo:"Inverno",estoque:16},
+      {id:29,nome:"Touquinha Nuvem",cat:"bebes",age:"0-1",preco:29.9,desc:"Acessório delicado para compor o enxoval.",img:FOTO.bebe1,tam:["RN","P"],selo:"Delicado",estoque:16},
+      {id:30,nome:"Babador Bandana Florzinha",cat:"bebes",age:"0-1",preco:26.9,desc:"Babador com fechamento prático e estampa suave.",img:FOTO.bebe3,tam:[],selo:"Prático",estoque:16},
+      {id:31,nome:"Manta Fleece Carinho",cat:"bebes",age:"0-1",preco:89.9,desc:"Manta leve para acompanhar os passeios.",img:FOTO.bebe2,tam:[],selo:"Aconchego",estoque:16},
+      {id:32,nome:"Casaco Mini Abraço",cat:"bebes",age:"0-1",preco:99.9,desc:"Casaco confortável com fechamento frontal.",img:FOTO.bebe1,tam:["P","M","G"],selo:"Conforto",estoque:16},
+      {id:33,nome:"Jardineira Bebê Jardim",cat:"bebes",age:"0-1",preco:84.9,desc:"Jardineira para diferentes combinações.",img:FOTO.bebe3,tam:["P","M","G"],selo:"Estilo",estoque:16},
+      {id:34,nome:"Calça Cotton Nuvens",cat:"bebes",age:"0-1",preco:45.9,desc:"Calça com cós confortável e cor neutra.",img:FOTO.bebe2,tam:["RN","P","M","G"],selo:"Básico",estoque:16},
+      {id:35,nome:"Vestido Bebê Pétalas",cat:"bebes",age:"0-1",preco:86.9,desc:"Vestido leve com aplicação delicada.",img:FOTO.bebe1,tam:["P","M","G"],selo:"Charme",estoque:16},
+      {id:36,nome:"Cobertor Pequena Estrela",cat:"bebes",age:"0-1",preco:114.9,desc:"Peça ilustrativa para montar o enxoval.",img:FOTO.bebe2,tam:[],selo:"Enxoval",estoque:16},
+      {id:37,nome:"Sapatinho Nuvem de Algodão",cat:"bebes",age:"0-1",preco:42.9,desc:"Sapatinho macio para complementar o look.",img:FOTO.bebe3,tam:["RN","P","M"],selo:"Fofo",estoque:16},
+      {id:38,nome:"Kit Fraldas de Pano Flores",cat:"bebes",age:"0-1",preco:62.9,desc:"Trio de peças versáteis para o dia a dia.",img:FOTO.bebe1,tam:[],selo:"Essencial",estoque:16},
+      {id:39,nome:"Vestido Festa Primavera",cat:"criancas",age:"4-6",preco:139.9,desc:"Vestido leve com detalhes especiais para comemorações.",img:FOTO.roupa1,tam:["4","6","8"],selo:"Festa",estoque:16},
+      {id:40,nome:"Bermuda Linho Brisa",cat:"criancas",age:"4-6",preco:69.9,desc:"Bermuda de visual casual para passeios.",img:FOTO.roupa2,tam:["4","6","8"],selo:"Leve",estoque:16},
+      {id:41,nome:"Camiseta Dino Feliz",cat:"criancas",age:"2-3",preco:59.9,desc:"Camiseta divertida com estampa de dinossauro.",img:FOTO.roupa2,tam:["2","3","4"],selo:"Divertido",estoque:16},
+      {id:42,nome:"Blusa Arco-Íris Pastel",cat:"criancas",age:"7+",preco:64.9,desc:"Blusa colorida para combinações alegres.",img:FOTO.roupa3,tam:["8","10","12"],selo:"Colorido",estoque:16},
+      {id:43,nome:"Moletom Abraço Quentinho",cat:"criancas",age:"7+",preco:129.9,desc:"Moletom aconchegante para dias frios.",img:FOTO.roupa1,tam:["8","10","12"],selo:"Inverno",estoque:16},
+      {id:44,nome:"Legging Brincar Livre",cat:"criancas",age:"4-6",preco:49.9,desc:"Legging com tecido flexível para brincar.",img:FOTO.roupa3,tam:["4","6","8"],selo:"Prático",estoque:16},
+      {id:45,nome:"Pijama Sonho de Estrelas",cat:"criancas",age:"2-3",preco:79.9,desc:"Conjunto de dormir com estampa delicada.",img:FOTO.roupa1,tam:["2","3","4"],selo:"Boa noite",estoque:16},
+      {id:46,nome:"Tênis Mini Passeio",cat:"criancas",age:"4-6",preco:149.9,desc:"Calçado ilustrativo de visual leve e moderno.",img:FOTO.roupa2,tam:["25","26","27","28"],selo:"Passos",estoque:16},
+      {id:47,nome:"Jaqueta Corta-Vento Kids",cat:"criancas",age:"7+",preco:164.9,desc:"Jaqueta leve para os passeios da família.",img:FOTO.roupa3,tam:["8","10","12"],selo:"Aventura",estoque:16},
+      {id:48,nome:"Conjunto Dia de Sol",cat:"criancas",age:"2-3",preco:98.9,desc:"Camiseta e short em cores harmônicas.",img:FOTO.roupa2,tam:["2","3","4"],selo:"Verão",estoque:16},
+      {id:49,nome:"Saia Tule Bailarina",cat:"criancas",age:"4-6",preco:84.9,desc:"Saia de tule para momentos especiais.",img:FOTO.roupa1,tam:["4","6","8"],selo:"Encanto",estoque:16},
+      {id:50,nome:"Macacão Jeans Mini",cat:"criancas",age:"2-3",preco:119.9,desc:"Peça versátil para combinar com camisetas.",img:FOTO.roupa3,tam:["2","3","4"],selo:"Moderno",estoque:16},
+      {id:51,nome:"Camisa Polo Horizonte",cat:"criancas",age:"7+",preco:85.9,desc:"Polo casual com acabamento delicado.",img:FOTO.roupa2,tam:["8","10","12"],selo:"Clássico",estoque:16},
+      {id:52,nome:"Conjunto Esportivo Kids",cat:"criancas",age:"7+",preco:109.9,desc:"Conjunto confortável para as brincadeiras.",img:FOTO.roupa1,tam:["8","10","12"],selo:"Movimento",estoque:16},
+      {id:53,nome:"Carrinho Madeira Aventura",cat:"brinquedos",age:"4-6",preco:79.9,desc:"Carrinho de brincadeira com visual de madeira.",img:FOTO.toy2,tam:[],selo:"Criativo",estoque:16},
+      {id:54,nome:"Trenzinho de Encaixar",cat:"brinquedos",age:"2-3",preco:99.9,desc:"Trem ilustrativo de montar com peças grandes.",img:FOTO.toy2,tam:[],selo:"Montagem",estoque:16},
+      {id:55,nome:"Bola Macia Colorida",cat:"brinquedos",age:"0-1",preco:39.9,desc:"Bola macia com cores suaves.",img:FOTO.toy3,tam:[],selo:"Descoberta",estoque:16},
+      {id:56,nome:"Pianinho Musical Infantil",cat:"brinquedos",age:"2-3",preco:119.9,desc:"Teclado ilustrativo para explorar sons.",img:FOTO.toy1,tam:[],selo:"Música",estoque:16},
+      {id:57,nome:"Cubos Sensoriais de Tecido",cat:"brinquedos",age:"0-1",preco:74.9,desc:"Cubos de tecido para exploração sensorial.",img:FOTO.toy3,tam:[],selo:"Sensorial",estoque:16},
+      {id:58,nome:"Boneca de Pano Flor",cat:"brinquedos",age:"2-3",preco:89.9,desc:"Boneca ilustrativa para brincadeiras de imaginação.",img:FOTO.toy1,tam:[],selo:"Carinho",estoque:16},
+      {id:59,nome:"Jogo Sequência de Cores",cat:"brinquedos",age:"4-6",preco:69.9,desc:"Atividade ilustrativa de combinar cores.",img:FOTO.toy2,tam:[],selo:"Educativo",estoque:16},
+      {id:60,nome:"Kit Pintura Criativa",cat:"brinquedos",age:"7+",preco:99.9,desc:"Materiais ilustrativos para fazer arte.",img:FOTO.toy3,tam:[],selo:"Arte",estoque:16},
+      {id:61,nome:"Robô de Montar Kids",cat:"brinquedos",age:"7+",preco:149.9,desc:"Kit de montagem para brincar e descobrir.",img:FOTO.toy2,tam:[],selo:"Montar",estoque:16},
+      {id:62,nome:"Cubos Empilhar Natureza",cat:"brinquedos",age:"2-3",preco:79.9,desc:"Blocos ilustrativos de empilhamento.",img:FOTO.toy3,tam:[],selo:"Coordenação",estoque:16},
+      {id:63,nome:"Jogo Tabuleiro das Cores",cat:"brinquedos",age:"7+",preco:89.9,desc:"Jogo ilustrativo para momentos em família.",img:FOTO.toy1,tam:[],selo:"Família",estoque:16},
+      {id:64,nome:"Brinquedos para Banho",cat:"brinquedos",age:"2-3",preco:49.9,desc:"Conjunto ilustrativo para brincadeiras na água.",img:FOTO.toy3,tam:[],selo:"Diversão",estoque:16},
+      {id:65,nome:"Livro Sensorial do Jardim",cat:"brinquedos",age:"0-1",preco:59.9,desc:"Livro de tecido com formas ilustrativas.",img:FOTO.toy1,tam:[],selo:"Descobertas",estoque:16},
+      {id:66,nome:"Kit Pequeno Cientista",cat:"brinquedos",age:"7+",preco:159.9,desc:"Caixa ilustrativa de atividades criativas.",img:FOTO.toy2,tam:[],selo:"Curiosidade",estoque:16},
+      {id:67,nome:"Kit Chegada com Carinho",cat:"kits",age:"0-1",preco:189.9,desc:"Conjunto de presente com peças para o enxoval.",img:FOTO.kit1,tam:["RN","P"],selo:"Maternidade",estoque:16},
+      {id:68,nome:"Caixa Presente Safari",cat:"kits",age:"2-3",preco:159.9,desc:"Combinação ilustrativa com roupinha e brinquedo.",img:FOTO.kit2,tam:["2","3"],selo:"Safari",estoque:16},
+      {id:69,nome:"Kit Banho e Soninho",cat:"kits",age:"0-1",preco:169.9,desc:"Seleção de acessórios e manta para presente.",img:FOTO.kit1,tam:[],selo:"Aconchego",estoque:16},
+      {id:70,nome:"Kit Inverno Mini",cat:"kits",age:"0-1",preco:194.9,desc:"Sugestão ilustrativa de roupa e manta.",img:FOTO.kit2,tam:["P","M","G"],selo:"Inverno",estoque:16},
+      {id:71,nome:"Caixa Aniversário Colorida",cat:"kits",age:"4-6",preco:179.9,desc:"Ideia especial de presente para aniversário.",img:FOTO.kit1,tam:[],selo:"Aniversário",estoque:16},
+      {id:72,nome:"Kit Passeio em Família",cat:"kits",age:"2-3",preco:139.9,desc:"Conjunto ilustrativo para passeios ao ar livre.",img:FOTO.kit2,tam:["2","3"],selo:"Passeio",estoque:16},
+      {id:73,nome:"Box Hora de Brincar",cat:"kits",age:"7+",preco:219.9,desc:"Seleção ilustrativa de brinquedos e atividades.",img:FOTO.kit1,tam:[],selo:"Diversão",estoque:16},
+      {id:74,nome:"Presente Jardim de Sonhos",cat:"kits",age:"4-6",preco:149.9,desc:"Caixa delicada para ocasiões especiais.",img:FOTO.kit2,tam:[],selo:"Especial",estoque:16}
+    ];
+    // O cadastro é uma SIMULAÇÃO local. Para lojas reais: Supabase Auth + RLS.
+    const PROD_STORAGE='pequenos-encantos-catalogo-v2-admin';
+    // Lê produtos salvos no navegador ou usa a coleção inicial de 74 itens.
+    function carregarCatalogo(){
+      try {
+        const salvo=JSON.parse(localStorage.getItem(PROD_STORAGE)||'null');
+        if(!Array.isArray(salvo)||!salvo.every(p=>p && Number.isInteger(p.id) && typeof p.nome==='string'))return produtosBase.map(p=>({...p,estoque:16+(p.id%18)}));
+        return salvo.map(p=>({...p,estoque:Number.isInteger(p.estoque)?p.estoque:16}));
+      }catch{return produtosBase.map(p=>({...p,estoque:16+(p.id%18)}))}
+    }
+    const produtos=carregarCatalogo();
+    function salvarCatalogo(){try{localStorage.setItem(PROD_STORAGE,JSON.stringify(produtos));return true}catch{aviso('Sem espaço ou permissão para salvar neste navegador. Exporte uma cópia.');return false}}
+    // Escapa texto do cadastro antes de inseri-lo no HTML.
+    const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    // Imagens devem usar HTTPS ou arquivo carregado pelo próprio painel.
+    const imagemSegura=v=>(typeof v==='string'&&(/^(https:\/\/)/i.test(v)||/^data:image\/(jpeg|png|webp);base64,/i.test(v)))?v:'';
+    const NOMES={bebes:'Bebês',criancas:'Moda infantil',brinquedos:'Brinquedos',kits:'Kits presente'};
+    const BRL=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
+    const $=s=>document.querySelector(s);const $$=s=>[...document.querySelectorAll(s)];
+    const STORE='pequenos-encantos-kids-v2';
+    function carregar(){try{const x=JSON.parse(localStorage.getItem(STORE)||'{}');return {cart:Array.isArray(x.cart)?x.cart:[],favs:Array.isArray(x.favs)?x.favs:[]}}catch{return {cart:[],favs:[]}}}
+    const dados=carregar();let cart=dados.cart.filter(x=>produtos.some(p=>p.id===x.id)&&Number.isInteger(x.qtd)&&x.qtd>0&&x.qtd<=99);let favs=new Set(dados.favs.filter(id=>produtos.some(p=>p.id===id)));
+    let filtro='todos',consulta='',ordem='padrao',faixa='todas',modalProduto=null,ultimoFoco=null,toastTimer;
+    function salvar(){try{localStorage.setItem(STORE,JSON.stringify({cart,favs:[...favs]}))}catch{/* A página permanece funcional sem armazenamento. */}}
+    function aviso(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
+    /* Uma fotografia pode falhar se não houver internet. Nesse caso mostramos um cartão ilustrado. */
+    function fallback(cat,nome='',id=0){
+      const emoji={bebes:'🍼',criancas:'👕',brinquedos:'🧸',kits:'🎁'}[cat]||'🌿';
+      const palettes=[['#e9efe5','#f4e1d8','#2c5c4f'],['#efe9dc','#e3eddc','#46694f'],['#f7e7df','#ebf1e7','#8d6554'],['#e4eee9','#f6e5cb','#547268']];
+      const [a,b,ink]=palettes[(id||0)%4];
+      const lines=String(nome).slice(0,52).match(/.{1,23}(?:\s|$)/g)||[];
+      const label=lines.slice(0,3).map((t,i)=>`<text x="250" y="${432+i*27}" text-anchor="middle" font-family="Georgia,Arial" font-weight="600" font-size="21" fill="${ink}">${esc(t.trim())}</text>`).join('');
+      const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="500" height="560" viewBox="0 0 500 560"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="500" height="560" fill="url(#g)"/><circle cx="250" cy="208" r="151" fill="#ffffffa0"/><circle cx="410" cy="48" r="7" fill="${ink}" opacity=".3"/><circle cx="80" cy="345" r="12" fill="${ink}" opacity=".15"/><text x="250" y="260" text-anchor="middle" font-size="137">${emoji}</text>${label}<text x="250" y="530" text-anchor="middle" font-family="Arial" font-size="16" fill="${ink}" opacity=".75">PEQUENOS ENCANTOS · ILUSTRAÇÃO</text></svg>`;
+      return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+    }
+    /* 13 — FOTOS: a página nunca fica vazia sem internet. Apresenta
+       ilustrações locais primeiro, e substitui por fotografias reais
+       somente quando a conexão disponibiliza a imagem. */
+    function prepararFotos(escopo=document){
+      escopo.querySelectorAll('img[data-photo]:not([data-preparada])').forEach(img=>{
+        img.dataset.preparada='1';
+        const categoria=img.dataset.fallback||img.closest('[data-cat]')?.dataset.cat||'bebes';
+        const url=imagemSegura(img.dataset.photo);
+        img.src=fallback(categoria,img.alt||'',Number(img.closest('[data-open]')?.dataset.open||0));
+        if(!url)return;
+        const foto=new Image();
+        foto.onload=()=>{if(img.isConnected)img.src=url;};
+        foto.onerror=()=>{/* Mantém a imagem ilustrativa caso não haja internet. */};
+        foto.src=url;
+      });
+    }
+    /* 14 — VITRINE DINÂMICA: busca, filtros, ordenação e favoritos. */
+    function listar(){let arr=produtos.filter(p=>{
+      const busca=(`${p.nome} ${p.desc} ${NOMES[p.cat]}`).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+      return (filtro==='todos'||(filtro==='favoritos'?favs.has(p.id):p.cat===filtro))&&(faixa==='todas'||p.age===faixa)&&busca.includes(consulta.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase());
+    });if(ordem==='menor')arr.sort((a,b)=>a.preco-b.preco);if(ordem==='maior')arr.sort((a,b)=>b.preco-a.preco);if(ordem==='nome')arr.sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));return arr}
+    function renderProdutos(){const itens=listar();
+      $('#productGrid').innerHTML=itens.map(p=>`<article class="product-card"><div class="product-img"><img src="${fallback(p.cat,p.nome,p.id)}" data-photo="${esc(imagemSegura(p.img))}" alt="Imagem ilustrativa: ${esc(p.nome)}" loading="lazy" data-fallback="${esc(p.cat)}"><span class="badge">${esc(p.selo)}</span><button class="fav-button ${favs.has(p.id)?'active':''}" type="button" data-fav="${p.id}" aria-label="${favs.has(p.id)?'Remover dos':'Adicionar aos'} favoritos: ${esc(p.nome)}" aria-pressed="${favs.has(p.id)}">${favs.has(p.id)?'♥':'♡'}</button><button class="quick-button" data-open="${p.id}" type="button">Ver detalhes</button></div><div class="product-body"><span class="product-cat">${esc(NOMES[p.cat])} • ${p.age==='0-1'?'Até 1 ano':p.age==='7+'?'7+ anos':esc(p.age)+' anos'}</span><h3>${esc(p.nome)}</h3><div class="product-description">${esc(p.desc)}</div><div class="product-bottom"><span class="price">${BRL(p.preco)}</span><button class="add" data-open="${p.id}" type="button" aria-label="Escolher e adicionar ${esc(p.nome)}" ${p.estoque===0?'disabled title="Estoque ilustrativo esgotado"':''}>${p.estoque===0?'×':'+'}</button></div><div class="price-note">${p.estoque===0?'Indisponível nesta demonstração':'Valor ilustrativo'}</div></div></article>`).join('');
+      $('#productCount').textContent=`${itens.length} ${itens.length===1?'produto encontrado':'produtos encontrados'} · ${produtos.length} itens demonstrativos`;
+      $('#emptyState').hidden=itens.length>0;
+      prepararFotos($('#productGrid'));
+      $$('[data-filter]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.filter===filtro)));
+      atualizarContadores();
+    }
+    function atualizarContadores(){const n=cart.reduce((sum,x)=>sum+x.qtd,0);$('#cartCount').textContent=n;$('#cartCount').hidden=n===0;$('#favCount').textContent=favs.size;$('#favCount').hidden=favs.size===0}
+    function escolherCategoria(cat){filtro=cat;renderProdutos();$('#colecao').scrollIntoView({behavior:'smooth'})}
+    function limparFiltros(){filtro='todos';consulta='';ordem='padrao';faixa='todas';$('#searchInput').value='';$('#sortInput').value='padrao';$('#ageFilter').value='todas';renderProdutos()}
+    /* 14 — CARRINHO: cada item possui ID, tamanho e quantidade. */
+    function adicionar(id,tamanho='Único'){const p=produtos.find(x=>x.id===id);if(!p||p.estoque===0){aviso('Produto indisponível nesta demonstração.');return;}const item=cart.find(x=>x.id===id&&x.tamanho===tamanho);if(item)item.qtd=Math.min(99,item.qtd+1);else cart.push({id,tamanho,qtd:1});salvar();renderCarrinho();aviso(`${p.nome} adicionado ao carrinho!`)}
+    function renderCarrinho(){let total=0;$('#cartItems').innerHTML=cart.length?cart.map((x,i)=>{const p=produtos.find(z=>z.id===x.id);if(!p)return '';total+=p.preco*x.qtd;return `<article class="cart-item"><img src="${fallback(p.cat)}" data-photo="${p.img}" alt="Imagem ilustrativa" data-fallback="${p.cat}"><div><h3>${p.nome}</h3><small>${x.tamanho==='Único'?'Item sem tamanho':'Tamanho '+x.tamanho} · ${BRL(p.preco)}</small><div class="quantity"><button data-dec="${i}" aria-label="Diminuir quantidade de ${p.nome}">−</button><strong>${x.qtd}</strong><button data-inc="${i}" aria-label="Aumentar quantidade de ${p.nome}">+</button><button class="remove" data-remove="${i}" aria-label="Remover ${p.nome}">Remover</button></div></div></article>`}).join(''):'<p style="padding:25px;color:#61766a;text-align:center">Seu carrinho está vazio. 🧸<br>Explore a coleção e escolha seus favoritos!</p>';$('#cartTotal').textContent=BRL(total);$('#sendCart').disabled=cart.length===0;atualizarContadores();prepararFotos($('#cartItems'))}
+    function alterarQtd(i,delta){const x=cart[i];if(!x)return;x.qtd+=delta;if(x.qtd<1)cart.splice(i,1);else x.qtd=Math.min(99,x.qtd);salvar();renderCarrinho()}
+    function mandarSimulacao(){if(!cart.length){aviso('Adicione algum produto primeiro.');return}cart=cart.filter(x=>produtos.some(p=>p.id===x.id));const linhas=cart.map(x=>{const p=produtos.find(z=>z.id===x.id);return `${x.qtd}× ${p.nome}${x.tamanho==='Único'?'':' (tam. '+x.tamanho+')'} — ${BRL(p.preco*x.qtd)}`});const total=cart.reduce((t,x)=>t+produtos.find(p=>p.id===x.id).preco*x.qtd,0);const msg=['Olá! Testei a demonstração Pequenos Encantos Kids 2.0 da MOSS Digital.','Gostaria de criar uma loja virtual parecida.','Este é meu carrinho de exemplo:',...linhas,`Total ilustrativo: ${BRL(total)}`,'(Simulação, sem compra nem cobrança.)'].join('\n');window.open('https://wa.me/5511942038103?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')}
+    function abrirCarrinho(){ultimoFoco=document.activeElement;$('#overlay').classList.add('visible');$('#cartDrawer').classList.add('open');$('#cartDrawer').removeAttribute('inert');$('#cartDrawer').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';$('#closeCart').focus()}
+    function fecharCarrinho(){$('#overlay').classList.remove('visible');$('#cartDrawer').classList.remove('open');$('#cartDrawer').setAttribute('inert','');$('#cartDrawer').setAttribute('aria-hidden','true');document.body.style.overflow='';ultimoFoco?.focus?.()}
+    /* 15 — FAVORITOS: são salvos na memória do navegador. */
+    function favoritar(id){if(favs.has(id)){favs.delete(id);aviso('Removido dos favoritos.')}else{favs.add(id);aviso('Adicionado aos favoritos!')}salvar();renderProdutos();if(modalProduto===id)$('#modalFav').textContent=favs.has(id)?'♥ Favoritado':'♡ Favoritar'}
+    /* 16 — MODAL: mostra detalhes e exige tamanho para peças com variação. */
+    function abrirProduto(id){const p=produtos.find(x=>x.id===id);if(!p)return;$('#modalAdd').disabled=p.estoque===0;modalProduto=id;$('#modalImage').dataset.preparada='';delete $('#modalImage').dataset.preparada;$('#modalImage').dataset.photo=p.img;$('#modalImage').src=fallback(p.cat);$('#modalImage').alt=`Imagem ilustrativa: ${p.nome}`;$('#modalImage').dataset.fallback=p.cat;$('#modalCat').textContent=NOMES[p.cat];$('#modalTitle').textContent=p.nome;$('#modalDesc').textContent=p.desc;$('#modalAge').textContent=`Faixa etária ilustrativa: ${p.age==='0-1'?'até 1 ano':p.age==='7+'?'7 anos ou mais':p.age+' anos'}.`;$('#modalPrice').textContent=BRL(p.preco);$('#modalSizeWrap').hidden=p.tam.length===0;$('#modalSize').innerHTML=p.tam.map(t=>`<option value="${t}">${t}</option>`).join('');$('#modalFav').textContent=favs.has(p.id)?'♥ Favoritado':'♡ Favoritar';$('#productDialog').showModal();prepararFotos($('#productDialog'))}
+    function fecharModal(){$('#productDialog').close();modalProduto=null}
+    /* 17 — PRESENTE IDEAL: sugestões por idade e ocasião. */
+    function sugestoes(){const idade=$('#giftAge').value,ocasiao=$('#giftOccasion').value;const arr=produtos.filter(p=>p.age===idade&&p.estoque!==0).sort((a,b)=>{const peso=p=>ocasiao==='roupa'?(p.cat==='bebes'||p.cat==='criancas'?0:2):ocasiao==='maternidade'?(p.cat==='kits'?0:1):ocasiao==='aniversario'?(p.cat==='brinquedos'||p.cat==='kits'?0:1):0;return peso(a)-peso(b)}).slice(0,3);$('#giftResults').innerHTML=arr.map(p=>`<div class="gift-result"><img src="${fallback(p.cat)}" data-photo="${p.img}" data-fallback="${p.cat}" alt="Foto ilustrativa"><div><strong>${p.nome}</strong><small>${BRL(p.preco)} · valor ilustrativo</small></div><button type="button" data-open="${p.id}" aria-label="Ver ${p.nome}">Ver →</button></div>`).join('');if(!arr.length)$('#giftResults').textContent='Não há sugestão para essa combinação.';prepararFotos($('#giftResults'))}
+    /* 18 — INTERAÇÕES: ouvintes ligados uma única vez. */
+    $('#productGrid').addEventListener('click',ev=>{const fav=ev.target.closest('[data-fav]');const open=ev.target.closest('[data-open]');if(fav)favoritar(Number(fav.dataset.fav));else if(open)abrirProduto(Number(open.dataset.open))});
+    $('#categoryCards').addEventListener('click',ev=>{const cat=ev.target.closest('[data-cat]');if(cat)escolherCategoria(cat.dataset.cat)});
+    $$('.chip').forEach(btn=>btn.addEventListener('click',()=>{filtro=btn.dataset.filter;renderProdutos()}));
+    $('#searchInput').addEventListener('input',ev=>{consulta=ev.target.value.trim();renderProdutos()});
+    $('#sortInput').addEventListener('change',ev=>{ordem=ev.target.value;renderProdutos()});
+    $('#ageFilter').addEventListener('change',ev=>{faixa=ev.target.value;renderProdutos()});
+    $('#resetFilters').addEventListener('click',limparFiltros);$('#emptyReset').addEventListener('click',limparFiltros);
+    $('#favTop').addEventListener('click',()=>escolherCategoria('favoritos'));
+    $('#cartTop').addEventListener('click',abrirCarrinho);$('#closeCart').addEventListener('click',fecharCarrinho);$('#overlay').addEventListener('click',fecharCarrinho);
+    $('#cartItems').addEventListener('click',ev=>{const inc=ev.target.closest('[data-inc]'),dec=ev.target.closest('[data-dec]'),rm=ev.target.closest('[data-remove]');if(inc)alterarQtd(Number(inc.dataset.inc),1);else if(dec)alterarQtd(Number(dec.dataset.dec),-1);else if(rm){cart.splice(Number(rm.dataset.remove),1);salvar();renderCarrinho()}});
+    $('#clearCart').addEventListener('click',()=>{cart=[];salvar();renderCarrinho();aviso('Carrinho limpo.')});$('#sendCart').addEventListener('click',mandarSimulacao);
+    $('#closeModal').addEventListener('click',fecharModal);$('#modalAdd').addEventListener('click',()=>{if(modalProduto==null)return;const p=produtos.find(x=>x.id===modalProduto);adicionar(p.id,p.tam.length?$('#modalSize').value:'Único');fecharModal()});$('#modalFav').addEventListener('click',()=>{if(modalProduto!=null)favoritar(modalProduto)});
+    $('#giftSearch').addEventListener('click',sugestoes);$('#giftResults').addEventListener('click',ev=>{const b=ev.target.closest('[data-open]');if(b)abrirProduto(Number(b.dataset.open))});
+    $('#menuToggle').addEventListener('click',()=>{const open=$('#mainNav').classList.toggle('open');$('#menuToggle').setAttribute('aria-expanded',String(open))});$$('#mainNav a').forEach(a=>a.addEventListener('click',()=>{$('#mainNav').classList.remove('open');$('#menuToggle').setAttribute('aria-expanded','false')}));
+    document.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&$('#cartDrawer').classList.contains('open'))fecharCarrinho();if(ev.key==='Tab'&&$('#cartDrawer').classList.contains('open')){const nodes=$$('#cartDrawer button:not([disabled]),#cartDrawer a[href]');const first=nodes[0],last=nodes[nodes.length-1];if(ev.shiftKey&&document.activeElement===first){ev.preventDefault();last.focus()}else if(!ev.shiftKey&&document.activeElement===last){ev.preventDefault();first.focus()}}});
+    document.addEventListener('error',ev=>{const img=ev.target;if(img?.tagName==='IMG'&&!img.dataset.errorHandled){img.dataset.errorHandled='1';img.src=fallback(img.dataset.fallback||'bebes')}},true);
+    $('#productDialog').addEventListener('click',ev=>{if(ev.target===$('#productDialog'))fecharModal()});$('#productDialog').addEventListener('close',()=>{modalProduto=null});
+    /* 22 — ADMINISTRAÇÃO LOCAL: todos os botões funcionam sem backend.
+       NÃO é um acesso protegido: somente uma vitrine para testar o recurso. */
+    const adminSection=$('#administrador'),adminForm=$('#adminForm');
+    let fotoEnviada='';
+    function abrirAdmin(){adminSection.hidden=false;renderAdmin();$('#administrador').scrollIntoView({behavior:'smooth'});$('#adminTop').setAttribute('aria-pressed','true')}
+    function fecharAdmin(){adminSection.hidden=true;$('#adminTop').setAttribute('aria-pressed','false');$('#inicio').scrollIntoView({behavior:'smooth'})}
+    function renderAdmin(){
+      const q=$('#adminSearch').value.toLowerCase().trim();
+      const data=produtos.filter(p=>`${p.nome} ${NOMES[p.cat]}`.toLowerCase().includes(q));
+      $('#adminCount').textContent=`(${data.length} de ${produtos.length})`;
+      $('#adminList').innerHTML=data.map(p=>`<article class="admin-item"><img src="${fallback(p.cat,p.nome,p.id)}" data-photo="${esc(imagemSegura(p.img))}" data-fallback="${esc(p.cat)}" alt="Imagem ilustrativa de ${esc(p.nome)}" loading="lazy"><div><strong>${esc(p.nome)}</strong><small>${esc(NOMES[p.cat])} · ${BRL(p.preco)} · ${p.estoque} no estoque (demo)</small></div><div class="admin-item-actions"><button type="button" data-edit="${p.id}">Editar</button><button type="button" class="danger" data-delete="${p.id}">Excluir</button></div></article>`).join('')||'<p>Nenhum produto encontrado.</p>';
+      prepararFotos($('#adminList'));
+    }
+    function limparForm(){adminForm.reset();$('#adminId').value='';$('#adminFormTitle').textContent='Cadastrar produto';$('#adminPreviewImg').src=fallback('bebes','Novo produto');fotoEnviada='';$('#adminName').focus()}
+    function editarProduto(id){const p=produtos.find(x=>x.id===id);if(!p)return;
+      $('#adminId').value=p.id;$('#adminName').value=p.nome;$('#adminCategory').value=p.cat;$('#adminAge').value=p.age;$('#adminPrice').value=p.preco;$('#adminStock').value=p.estoque;
+      $('#adminDesc').value=p.desc;$('#adminSizes').value=p.tam.join(', ');$('#adminBadge').value=p.selo;
+      $('#adminPhoto').value=String(p.img).startsWith('https://')?p.img:'';
+      $('#adminPhotoFile').value='';fotoEnviada=String(p.img).startsWith('data:image/')?p.img:'';
+      $('#adminPreviewImg').src=imagemSegura(p.img)||fallback(p.cat,p.nome,p.id);
+      $('#adminFormTitle').textContent=`Editando: ${p.nome}`;$('#adminFormPanel').scrollIntoView({behavior:'smooth'});
+    }
+    function excluirProduto(id){const p=produtos.find(x=>x.id===id);if(!p)return;
+      if(!window.confirm(`Excluir “${p.nome}” desta demonstração?`))return;
+      const i=produtos.findIndex(x=>x.id===id);produtos.splice(i,1);
+      cart=cart.filter(x=>x.id!==id);favs.delete(id);salvar();salvarCatalogo();renderProdutos();renderCarrinho();renderAdmin();limparForm();aviso('Produto excluído neste navegador.');
+    }
+    // Foto do computador: reduzir para 640px e JPEG 68%, para ocupar menos espaço.
+    function comprimirFoto(file){return new Promise((resolve,reject)=>{
+      if(!/^image\/(jpeg|png|webp)$/.test(file.type)){reject(Error('Selecione uma foto JPG, PNG ou WebP.'));return}
+      if(file.size>12_000_000){reject(Error('Foto muito grande. Escolha uma imagem de até 12 MB.'));return}
+      const reader=new FileReader();reader.onerror=()=>reject(Error('Não foi possível abrir a foto.'));
+      reader.onload=()=>{const img=new Image();img.onerror=()=>reject(Error('Imagem inválida.'));img.onload=()=>{
+        const ratio=Math.min(1,640/Math.max(img.width,img.height));const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(img.width*ratio));canvas.height=Math.max(1,Math.round(img.height*ratio));
+        const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+        resolve(canvas.toDataURL('image/jpeg',.68));
+      };img.src=reader.result};reader.readAsDataURL(file);
+    })}
+    $('#adminPhotoFile').addEventListener('change',async ev=>{const file=ev.target.files[0];if(!file)return;
+      try{fotoEnviada=await comprimirFoto(file);$('#adminPreviewImg').src=fotoEnviada;aviso('Foto pronta para salvar.')}catch(e){aviso(e.message);fotoEnviada=''}
+    });
+    $('#adminPhoto').addEventListener('input',ev=>{if(!fotoEnviada){const url=imagemSegura(ev.target.value.trim());$('#adminPreviewImg').src=url||fallback($('#adminCategory').value,$('#adminName').value)}});
+    $('#adminCategory').addEventListener('change',()=>{if(!fotoEnviada&&!$('#adminPhoto').value)$('#adminPreviewImg').src=fallback($('#adminCategory').value,$('#adminName').value)});
+    adminForm.addEventListener('submit',ev=>{ev.preventDefault();
+      const id=Number($('#adminId').value),nome=$('#adminName').value.trim(),cat=$('#adminCategory').value,age=$('#adminAge').value,
+        preco=Number($('#adminPrice').value),estoque=Number($('#adminStock').value),desc=$('#adminDesc').value.trim(),selo=$('#adminBadge').value.trim()||'Novidade',
+        tam=$('#adminSizes').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,15),fotoUrl=$('#adminPhoto').value.trim();
+      if(!nome||!desc||!NOMES[cat]||!['0-1','2-3','4-6','7+'].includes(age)||!(preco>0)||!Number.isInteger(estoque)||estoque<0){aviso('Confira os campos obrigatórios, preço e estoque.');return}
+      if(fotoUrl&&!imagemSegura(fotoUrl)){aviso('Use somente URLs HTTPS para fotos.');return}
+      const antigo=produtos.find(p=>p.id===id),novoId=antigo?.id??(Math.max(0,...produtos.map(p=>p.id))+1);
+      const imagem=fotoEnviada||imagemSegura(fotoUrl)||(antigo?.img||'');
+      const dados={id:novoId,nome:nome.slice(0,90),cat,age,preco:Math.round(preco*100)/100,estoque:Math.min(9999,estoque),desc:desc.slice(0,250),tam,selo:selo.slice(0,25),img:imagem};
+      if(antigo)Object.assign(antigo,dados);else produtos.unshift(dados);
+      salvarCatalogo();renderProdutos();renderCarrinho();renderAdmin();limparForm();aviso(antigo?'Produto atualizado.':'Produto cadastrado com sucesso.');
+    });
+    $('#adminTop').addEventListener('click',()=>adminSection.hidden?abrirAdmin():fecharAdmin());
+    $('#closeAdmin').addEventListener('click',fecharAdmin);$('#adminNew').addEventListener('click',()=>{limparForm();$('#adminFormPanel').scrollIntoView({behavior:'smooth'})});
+    $('#adminCancel').addEventListener('click',limparForm);
+    $('#adminSearch').addEventListener('input',renderAdmin);
+    $('#adminList').addEventListener('click',ev=>{const edit=ev.target.closest('[data-edit]'),del=ev.target.closest('[data-delete]');if(edit)editarProduto(Number(edit.dataset.edit));if(del)excluirProduto(Number(del.dataset.delete))});
+    $('#adminReset').addEventListener('click',()=>{if(!window.confirm('Restaurar os 74 itens originais e perder TODAS as edições deste navegador?'))return;produtos.splice(0,produtos.length,...produtosBase.map(p=>({...p,estoque:16+(p.id%18)})));cart=[];favs.clear();salvar();salvarCatalogo();renderProdutos();renderCarrinho();renderAdmin();limparForm();aviso('Catálogo original restaurado.')});
+    $('#adminExport').addEventListener('click',()=>{
+      const file=new Blob([JSON.stringify({loja:'Pequenos Encantos Kids 2.0',versao:2,produtos},null,2)],{type:'application/json;charset=utf-8'});
+      const link=document.createElement('a');link.href=URL.createObjectURL(file);link.download='produtos-pequenos-encantos.json';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1500);
+      aviso('Arquivo JSON exportado!');
+    });
+    $('#adminImport').addEventListener('change',async ev=>{const f=ev.target.files[0];if(!f)return;
+      if(f.size>5_000_000){aviso('Arquivo acima de 5 MB.');return}
+      try{const raw=JSON.parse(await f.text());const data=Array.isArray(raw)?raw:raw.produtos;
+        if(!Array.isArray(data)||data.length>500||!data.every(p=>p&&Number.isInteger(p.id)&&p.id>=1&&typeof p.nome==='string'&&NOMES[p.cat]&&typeof p.desc==='string'&&Number(p.preco)>0&&Array.isArray(p.tam))){throw Error('Arquivo fora do formato esperado.')}
+        if(new Set(data.map(p=>p.id)).size!==data.length)throw Error('Arquivo com códigos de produto repetidos.');
+        if(!window.confirm(`Importar ${data.length} produtos e substituir o cadastro atual?`))return;
+        const pad=data.map(p=>({id:p.id,nome:p.nome.slice(0,90),desc:p.desc.slice(0,250),cat:p.cat,age:['0-1','2-3','4-6','7+'].includes(p.age)?p.age:'4-6',preco:Number(p.preco),estoque:Number.isInteger(p.estoque)?Math.max(0,p.estoque):0,img:imagemSegura(p.img),selo:String(p.selo||'Produto').slice(0,25),tam:p.tam.map(x=>String(x).slice(0,15)).slice(0,15)}));
+        produtos.splice(0,produtos.length,...pad);cart=cart.filter(c=>produtos.some(p=>p.id===c.id));favs=new Set([...favs].filter(id=>produtos.some(p=>p.id===id)));
+        salvar();salvarCatalogo();renderProdutos();renderCarrinho();renderAdmin();limparForm();aviso('Produtos importados com sucesso.');
+      }catch(e){aviso('Erro na importação: '+e.message)}finally{ev.target.value=''}
+    });
+    $('#adminPreviewImg').src=fallback('bebes','Novo produto');
+    /* 19 — INICIALIZAÇÃO DA PÁGINA. */
+    prepararFotos(document);renderProdutos();renderCarrinho();
+  </script>
+</body>
+</html>
