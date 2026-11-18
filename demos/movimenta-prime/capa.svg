@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">MOVIMENTA PRIME — Plataforma para professores de Educação Física e alunos adultos</title>
+  <desc id="desc">Capa ilustrada da plataforma com fundo azul-petróleo, detalhes verde-menta e painel de aulas, turmas e atividades.</desc>
+  <defs>
+    <linearGradient id="bg" x2=".9" y2="1"><stop stop-color="#0e3039"/><stop offset="1" stop-color="#175462"/></linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1dcfa5"/><stop offset="1" stop-color="#73e6bb"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="170%"><feDropShadow dx="0" dy="16" stdDeviation="22" flood-opacity=".32"/></filter>
+    <pattern id="dots" width="35" height="35" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#9ce6d4" opacity=".18"/></pattern>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <rect width="1200" height="750" fill="url(#dots)"/>
+  <circle cx="1144" cy="72" r="310" fill="#26836b" opacity=".23"/>
+  <circle cx="80" cy="750" r="290" fill="#0ba49b" opacity=".12"/>
+  <g transform="translate(72 73)">
+    <rect width="49" height="49" rx="12" fill="url(#shine)"/>
+    <path d="M11 37V14L24.5 29L38 14V37" fill="none" stroke="#0a4540" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="63" y="34" fill="#fff" font-family="Arial,sans-serif" font-size="27" font-weight="800" letter-spacing="1">MOVIMENTA <tspan fill="#6ceac5">PRIME</tspan></text>
+  </g>
+  <rect x="72" y="190" width="349" height="43" rx="21.5" fill="#1f6869" opacity=".92"/>
+  <text x="92" y="219" fill="#83eed5" font-family="Arial,sans-serif" font-weight="750" font-size="17" letter-spacing="1.2">EDUCAÇÃO FÍSICA DIGITAL</text>
+  <text x="70" y="322" fill="#fff" font-family="Arial,sans-serif" font-size="70" font-weight="850">Seu professor.</text>
+  <text x="70" y="412" fill="#fff" font-family="Arial,sans-serif" font-size="70" font-weight="850">Suas aulas.</text>
+  <text x="70" y="501" fill="#70e8c1" font-family="Arial,sans-serif" font-size="72" font-weight="850">Seu movimento.</text>
+  <text x="75" y="572" fill="#c2dedb" font-family="Arial,sans-serif" font-size="25">Planos de aula • Turmas • Atividades</text>
+  <g transform="translate(73 613)">
+    <rect width="270" height="60" rx="15" fill="url(#shine)"/>
+    <text x="135" y="38" text-anchor="middle" fill="#08372f" font-size="22" font-family="Arial,sans-serif" font-weight="850">EXPLORAR PLATAFORMA</text>
+  </g>
+  <g transform="translate(745 185)" filter="url(#shadow)">
+    <rect width="397" height="428" rx="22" fill="#f7fafb"/>
+    <path d="M22 0H375Q397 0 397 22V73H0V22Q0 0 22 0Z" fill="#eff5f5"/>
+    <circle cx="30" cy="36" r="7" fill="#ef8782"/><circle cx="53" cy="36" r="7" fill="#e8c978"/><circle cx="76" cy="36" r="7" fill="#73cba9"/>
+    <rect x="22" y="98" width="103" height="306" rx="12" fill="#123e44"/>
+    <rect x="39" y="122" width="69" height="19" rx="6" fill="#62d5b2" opacity=".85"/>
+    <rect x="39" y="166" width="63" height="10" rx="5" fill="#a4cac5" opacity=".45"/>
+    <rect x="39" y="196" width="68" height="10" rx="5" fill="#a4cac5" opacity=".45"/>
+    <rect x="39" y="226" width="51" height="10" rx="5" fill="#a4cac5" opacity=".45"/>
+    <rect x="39" y="256" width="60" height="10" rx="5" fill="#a4cac5" opacity=".45"/>
+    <text x="147" y="119" font-family="Arial,sans-serif" font-size="20" font-weight="800" fill="#144047">Painel do professor</text>
+    <rect x="148" y="142" width="105" height="90" rx="12" fill="#e0f8ed"/>
+    <rect x="268" y="142" width="105" height="90" rx="12" fill="#e9f0fb"/>
+    <text x="163" y="179" font-family="Arial,sans-serif" font-size="16" fill="#367663">Turmas</text>
+    <text x="162" y="217" font-family="Arial,sans-serif" font-size="33" font-weight="800" fill="#144b3f">04</text>
+    <text x="282" y="179" font-family="Arial,sans-serif" font-size="16" fill="#4b6a81">Planos</text>
+    <text x="282" y="217" font-family="Arial,sans-serif" font-size="33" font-weight="800" fill="#174459">12</text>
+    <rect x="148" y="251" width="225" height="137" rx="13" fill="#fff" stroke="#e5edef" stroke-width="2"/>
+    <text x="163" y="278" font-family="Arial,sans-serif" font-size="16" font-weight="800" fill="#284d51">Atividades recentes</text>
+    <rect x="162" y="299" width="16" height="16" rx="4" fill="#6bdab4"/>
+    <path d="M166 307L170 311L175 303" stroke="#fff" stroke-width="2.6" fill="none"/>
+    <text x="185" y="312" font-family="Arial,sans-serif" font-size="13" fill="#5b7880">Aula de esportes</text>
+    <rect x="162" y="335" width="16" height="16" rx="4" fill="#6bdab4"/>
+    <path d="M166 343L170 347L175 339" stroke="#fff" stroke-width="2.6" fill="none"/>
+    <text x="185" y="348" font-family="Arial,sans-serif" font-size="13" fill="#5b7880">Frequência registrada</text>
+  </g>
+  <g transform="translate(722 606)" filter="url(#shadow)">
+    <rect width="453" height="67" rx="17" fill="#083e41" stroke="#6be4bf" stroke-opacity=".65" stroke-width="2"/>
+    <text x="30" y="27" fill="#72e4bf" font-family="Arial,sans-serif" font-size="13" font-weight="750">PARA PROFESSORES E ALUNOS</text>
+    <text x="30" y="51" fill="#fff" font-family="Arial,sans-serif" font-size="17" font-weight="650">Área adulta + espaço infantojuvenil reservado</text>
+  </g>
+</svg>
