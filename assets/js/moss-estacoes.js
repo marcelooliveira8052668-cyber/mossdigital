@@ -28,9 +28,9 @@
     natal: {
       chamada: '🎄 Especial de Natal MOSS Digital',
       titulo: 'Seu negócio pode <em>brilhar neste Natal!</em>',
-      texto: 'Um site profissional para apresentar sua empresa, atrair clientes e começar a vender.',
-      faixa: 'Natal com presença digital',
-      faixaTexto: 'Apresente seus produtos e serviços em um site com a identidade do seu negócio.',
+      texto: 'Mostre sua empresa na internet com um site bonito, fácil de usar e preparado para receber clientes.',
+      faixa: 'Neste Natal, seu negócio na internet',
+      faixaTexto: 'Mostre o que sua empresa oferece e facilite o contato com seus clientes.',
       selo: '🎁 O melhor presente é crescer!',
       fita: 'NATAL ✦ SUA EMPRESA ONLINE ✦ MOSS DIGITAL ✦ ',
       mensagem: 'Olá! Quero conhecer os sites da MOSS Digital neste Natal.'
@@ -38,9 +38,9 @@
     'ano-novo': {
       chamada: '🎆 MOSS Digital • Bem-vindo, Ano Novo',
       titulo: 'Comece <em>{ano}</em> com seu site pronto para vender.',
-      texto: 'Entre no novo ano com uma presença digital moderna para divulgar seu negócio.',
+      texto: 'Comece o novo ano mostrando seus produtos e serviços em um site da sua empresa.',
       faixa: 'Seu próximo passo começa agora',
-      faixaTexto: 'Planeje o novo ano com um site profissional feito para sua empresa.',
+      faixaTexto: 'Comece o ano com um site feito para mostrar sua empresa.',
       selo: '✨ Novos planos, novas conquistas!',
       fita: 'ANO NOVO ✦ NOVAS OPORTUNIDADES ✦ MOSS DIGITAL ✦ ',
       mensagem: 'Olá! Quero começar o ano com um site da MOSS Digital.'
@@ -48,9 +48,9 @@
     carnaval: {
       chamada: '🎭 Carnaval MOSS Digital',
       titulo: 'Faça seu negócio <em>brilhar neste Carnaval!</em>',
-      texto: 'Sites modernos e feitos sob medida para sua empresa chamar atenção em qualquer época.',
+      texto: 'Um site feito para sua empresa mostrar seus produtos e atrair clientes o ano inteiro.',
       faixa: 'Carnaval de oportunidades',
-      faixaTexto: 'Aproveite a temporada para mostrar seu negócio a mais pessoas.',
+      faixaTexto: 'Apresente sua empresa para quem ainda não conhece seu trabalho.',
       selo: '🎉 Seu negócio merece destaque!',
       fita: 'CARNAVAL ✦ IDEIAS NOVAS ✦ SEU NEGÓCIO ONLINE ✦ ',
       mensagem: 'Olá! Quero conhecer os sites da MOSS Digital para meu negócio.'
@@ -117,7 +117,7 @@
 
   function aplicarTema(escolha) {
     const { ano, mes } = dataDeSaoPaulo();
-    const anoNovo = mes === 12 ? ano + 1 : ano;
+    const anoNovo = mes >= 7 ? ano + 1 : ano;
     const nome = escolha === 'automatico' ? escolherAutomaticamente() : escolha;
     const tema = temas[nome];
 
@@ -149,9 +149,9 @@
       botao.setAttribute('aria-pressed', String(botao.dataset.estacaoPrever === escolha));
     });
     const estado = document.getElementById('moss-estacoes-estado');
-    if (estado) estado.textContent = 'Visualização: ' +
+    if (estado) estado.textContent = 'Tema na tela: ' +
       ({ original: 'Original', natal: 'Natal', 'ano-novo': 'Ano Novo',
-         carnaval: 'Carnaval', automatico: 'Automático' }[nome] || 'Original');
+         carnaval: 'Carnaval', automatico: 'Pela data' }[nome] || 'Original');
   }
 
   // O painel só existe em ?moss-temas=teste; por padrão, o público vê a data automática.
@@ -160,14 +160,14 @@
     painel.className = 'moss-estacoes-painel';
     painel.setAttribute('aria-label', 'Painel de prévia de temas');
     painel.innerHTML = '<h2>🎨 Temas da MOSS</h2>' +
-      '<p>Teste local: não modifica o site para os outros visitantes.</p>' +
+      '<p>Este teste só muda a aparência no seu navegador.</p>' +
       '<div class="moss-estacoes-botoes"></div>' +
       '<p id="moss-estacoes-estado" role="status"></p>' +
       '<a class="moss-estacoes-fechar" href="/">Sair da prévia</a>';
     document.body.appendChild(painel);
 
     const opcoes = [
-      ['automatico', '📅 Automático'], ['original', '💚 Original'],
+      ['automatico', '📅 Pela data'], ['original', '💚 Original'],
       ['natal', '🎄 Natal'], ['ano-novo', '🎆 Ano Novo'], ['carnaval', '🎭 Carnaval']
     ];
     const botoes = painel.querySelector('.moss-estacoes-botoes');
