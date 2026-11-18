@@ -35,3 +35,9 @@
 Antes no `<head>`: `moss-carrossel.css` e `moss-tema.js`.
 Depois: permanecem e ganham `moss-estacoes.css` e `moss-estacoes.js`, ambos isolados.
 A frase antiga do hero é restaurada exatamente quando o tema é Original.
+
+## Revisão de linguagem simples (18/11/2026)
+- Seção principal: "Conheça nossos sites prontos!".
+- Botões: "Abrir demo" -> "Ver site".
+- Explicações: "checkout" -> "finalização da compra"; "Supabase" -> "banco de dados"; "portfólio" -> "galeria de trabalhos".
+- Toda a estrutura de links e imagens é mantida. Os temas também usam frases simples e diretas.
