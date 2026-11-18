@@ -1,0 +1,173 @@
+/* MOSS DIGITAL | VISUAIS FIÉIS DE NATAL, ANO NOVO E CARNAVAL
+   Fotografia decorativa da referência + texto e botões HTML.
+   Estilos isolados: NÃO modificar modo Original nem os 156 sites.
+   As imagens abaixo só estarão disponíveis após serem copiadas do
+   pacote de prévias para assets/img/temas/ no repositório. */
+
+html[data-estacao="natal"]{--fiel-fundo:#002c1e;--fiel-acento:#ffce68;--fiel-tinta:#092f23;--fiel-faixa:#a40b1b;--fiel-papel:#fffdf8}
+html[data-estacao="ano-novo"]{--fiel-fundo:#002b21;--fiel-acento:#ffcf75;--fiel-tinta:#0b2e25;--fiel-faixa:#043d30;--fiel-papel:#fffdf7}
+html[data-estacao="carnaval"]{--fiel-fundo:#2e075e;--fiel-acento:#ffe52d;--fiel-tinta:#261046;--fiel-faixa:#5e0a92;--fiel-papel:#fffbff}
+html[data-estacao]:not([data-estacao="original"]) body,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] body{background:var(--fiel-papel);color:var(--fiel-tinta)}
+html[data-estacao]:not([data-estacao="original"]) .site-header,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-header{
+ background:var(--fiel-fundo);border-color:#ffffff2b;
+}
+html[data-estacao]:not([data-estacao="original"]) .site-header .brand-name,
+html[data-estacao]:not([data-estacao="original"]) .site-header .main-nav a,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-header .brand-name,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-header .main-nav a{color:#fff}
+html[data-estacao]:not([data-estacao="original"]) .site-header .nav-contact{
+ color:#fff;background:transparent;border:1px solid #3bda68;border-radius:100px;
+}
+html[data-estacao]:not([data-estacao="original"]) .moss-tema-botao{background:var(--fiel-acento);color:#172c20}
+html[data-estacao]:not([data-estacao="original"]) .vitrine,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .vitrine{
+ position:relative;isolation:isolate;overflow:hidden;padding:0;
+ background:linear-gradient(112deg,var(--fiel-fundo) 0%,#053f2b 100%);
+}
+html[data-estacao="carnaval"] .vitrine,
+html[data-estacao="carnaval"][data-tema="dia"] .vitrine{
+ background:linear-gradient(110deg,#29034b,#560c8e 90%);
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine .ticker{display:none}
+html[data-estacao]:not([data-estacao="original"]) .vitrine::before{
+ display:block;content:"";position:absolute;left:0;top:0;bottom:0;z-index:0;
+ width:min(12vw,190px);height:100%;border:0;border-radius:0;
+ pointer-events:none;opacity:.93;background-repeat:no-repeat;
+ background-position:left center;background-size:cover;
+}
+html[data-estacao="natal"] .vitrine::before{background-image:url("/assets/img/temas/luzes-natal.webp")}
+html[data-estacao="ano-novo"] .vitrine::before{background-image:url("/assets/img/temas/luzes-ano-novo.webp")}
+html[data-estacao="carnaval"] .vitrine::before{background-image:url("/assets/img/temas/luzes-carnaval.webp")}
+html[data-estacao]:not([data-estacao="original"]) .vitrine::after{display:none}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-grid{
+ display:block;position:relative;min-height:335px;z-index:2;
+ padding:24px 0 28px;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-texto{
+ position:relative;z-index:4;width:min(55%,620px);min-width:0;
+ padding:12px 0 0;margin-left:36px;text-shadow:0 2px 12px #0007;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-eyebrow{display:none}
+html[data-estacao]:not([data-estacao="original"]) .vitrine h1{
+ color:#fff;font-size:clamp(2.3rem,3.5vw,3.6rem);line-height:1.03;
+ font-weight:850;letter-spacing:-.04em;margin-bottom:18px;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine h1 em{
+ font-family:inherit;color:var(--fiel-acento);font-style:normal;font-size:inherit;letter-spacing:inherit;
+}
+html[data-estacao="carnaval"] .vitrine h1 em{font-family:Georgia,serif;font-size:1.2em;font-weight:800;font-style:italic}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-lead{
+ font-size:1rem;line-height:1.52;max-width:435px;color:#fff;margin:0 0 19px;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-acoes{
+ display:flex;flex-wrap:wrap;gap:12px;align-items:center
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-acoes a{
+ min-height:43px;padding:11px 20px;border-radius:99px;font-weight:780;
+ text-decoration:none;box-shadow:none;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-link{order:-1;background:#14be36;color:#fff;border:1px solid #2dea4f}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-cta{background:transparent;color:#fff;border:1.5px solid var(--fiel-acento);box-shadow:none}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-nota{display:none}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-collage{
+ display:block!important;position:absolute;z-index:1;
+ height:100%;min-height:0;top:0;right:max(-14vw,-215px);
+ width:min(65vw,990px);margin:0;max-width:none;pointer-events:none;
+ background-position:right center;background-size:cover;background-repeat:no-repeat;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 14%);
+ mask-image:linear-gradient(90deg,transparent 0%,#000 14%);
+ filter:none;
+}
+html[data-estacao="natal"] .vitrine-collage{background-image:url("/assets/img/temas/foto-natal.webp")}
+html[data-estacao="ano-novo"] .vitrine-collage{background-image:url("/assets/img/temas/foto-ano-novo.webp")}
+html[data-estacao="carnaval"] .vitrine-collage{background-image:url("/assets/img/temas/foto-carnaval.webp")}
+html[data-estacao]:not([data-estacao="original"]) .vitrine-collage img,
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-selo,
+html[data-estacao]:not([data-estacao="original"]) .vitrine-collage::after{display:none!important}
+/* Área branca e cartões originais continuam clicáveis */
+html[data-estacao]:not([data-estacao="original"]) #modelos{padding-top:30px;padding-bottom:28px}
+html[data-estacao]:not([data-estacao="original"]) #modelos h2,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] #modelos h2{color:var(--fiel-tinta)}
+html[data-estacao]:not([data-estacao="original"]) #modelos .section-head p,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] #modelos .section-head p,
+html[data-estacao]:not([data-estacao="original"]) .catalog-meta,
+html[data-estacao]:not([data-estacao="original"]) .catalog-meta p,
+html[data-estacao]:not([data-estacao="original"]) .catalog-meta span{color:#42594e}
+html[data-estacao]:not([data-estacao="original"]) #modelos .eyebrow{color:#a77b18}
+html[data-estacao="carnaval"] #modelos .eyebrow{color:#8220b1}
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-card{
+ background:#fff;border:1px solid #e4e0da;border-radius:14px;
+ box-shadow:0 9px 20px #00000013;
+}
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-card h3,
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-details summary,
+html[data-estacao]:not([data-estacao="original"]) .catalog-grid .demo-details p{color:#193328}
+html[data-estacao]:not([data-estacao="original"]) #modelos .field input,
+html[data-estacao]:not([data-estacao="original"]) #modelos .field select{background:#fff;color:#183e30}
+html[data-estacao]:not([data-estacao="original"]) .carousel-caption,
+html[data-estacao]:not([data-estacao="original"]) .carousel-caption span,
+html[data-estacao]:not([data-estacao="original"]) .carousel-caption strong{color:#2d5143}
+/* A faixa passa para depois do catálogo, como na fotografia. */
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa{
+ background:linear-gradient(110deg,var(--fiel-faixa),#8d101e);
+ border:0;border-radius:16px;max-width:1220px;
+ min-height:92px;box-shadow:0 6px 17px #0002;margin:16px auto 0;
+}
+html[data-estacao="ano-novo"] .moss-estacoes-faixa{background:linear-gradient(110deg,#043b2f,#0b523d 65%,#013023)}
+html[data-estacao="carnaval"] .moss-estacoes-faixa{background:linear-gradient(110deg,#4a077c,#7f08ac 65%,#3d056e)}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa::before{
+ content:"";position:absolute;inset:0 auto 0 0;width:180px;
+ background-size:cover;background-position:center;pointer-events:none;
+ opacity:.83;
+}
+html[data-estacao="natal"] .moss-estacoes-faixa::before{background-image:url("/assets/img/temas/faixa-natal.webp")}
+html[data-estacao="ano-novo"] .moss-estacoes-faixa::before{background-image:url("/assets/img/temas/faixa-ano-novo.webp")}
+html[data-estacao="carnaval"] .moss-estacoes-faixa::before{background-image:url("/assets/img/temas/faixa-carnaval.webp")}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa>div{position:relative;z-index:1;margin-left:190px}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa h2{color:var(--fiel-acento)}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa p{color:#fff}
+html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa a{
+ color:#201f11;background:var(--fiel-acento);font-weight:800;z-index:2;
+}
+/* Linha de vantagens criada apenas durante as festas. */
+.moss-fiel-vantagens{display:none;max-width:1220px;margin:0 auto;padding:24px 25px 35px;gap:16px;align-items:start;color:var(--fiel-tinta)}
+html[data-estacao]:not([data-estacao="original"]) .moss-fiel-vantagens{display:grid;grid-template-columns:minmax(205px,1.2fr) repeat(4,minmax(0,1fr));background:var(--fiel-papel)}
+.moss-fiel-vantagens h2{font-size:clamp(1.3rem,2vw,1.8rem);line-height:1.12;color:var(--fiel-tinta)}
+.moss-fiel-vantagem{display:flex;align-items:flex-start;gap:9px;border-left:1px solid #ddd6c9;padding-left:13px}
+.moss-fiel-vantagem span{font-size:1.65rem;color:#c99522}
+.moss-fiel-vantagem strong{font-size:.9rem;display:block;color:var(--fiel-tinta)}
+.moss-fiel-vantagem p{font-size:.78rem;line-height:1.4;margin-top:4px;color:#46574e}
+html[data-estacao]:not([data-estacao="original"]) .site-footer,
+html[data-estacao]:not([data-estacao="original"])[data-tema="dia"] .site-footer{background:var(--fiel-fundo);color:#fff}
+@media(max-width:900px){
+ html[data-estacao]:not([data-estacao="original"]) .vitrine-grid{min-height:390px}
+ html[data-estacao]:not([data-estacao="original"]) .vitrine-texto{width:62%;margin-left:12px}
+ html[data-estacao]:not([data-estacao="original"]) .vitrine h1{font-size:clamp(2.2rem,5.2vw,3.2rem)}
+ html[data-estacao]:not([data-estacao="original"]) .vitrine-collage{width:67vw;right:-18vw}
+ html[data-estacao]:not([data-estacao="original"]) .moss-fiel-vantagens{grid-template-columns:repeat(2,minmax(0,1fr))}
+ html[data-estacao]:not([data-estacao="original"]) .moss-fiel-vantagens h2{grid-column:1/-1}
+}
+@media(max-width:650px){
+ html[data-estacao]:not([data-estacao="original"]) .vitrine-grid{
+  display:block;min-height:0;width:calc(100% - 34px);padding:30px 0 198px;
+ }
+ html[data-estacao]:not([data-estacao="original"]) .vitrine-texto{
+  width:100%;padding:0;margin:0;max-width:none;min-width:0;
+ }
+ html[data-estacao]:not([data-estacao="original"]) .vitrine h1{font-size:clamp(2.1rem,8.9vw,2.9rem);max-width:380px}
+ html[data-estacao]:not([data-estacao="original"]) .vitrine-lead{font-size:.87rem;max-width:340px}
+ html[data-estacao]:not([data-estacao="original"]) .vitrine-collage{
+  display:block!important;top:auto;bottom:0;right:-17px;
+  width:calc(100% + 34px);height:205px;max-width:none;min-height:0;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 27%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 27%);
+ }
+ html[data-estacao]:not([data-estacao="original"]) .vitrine::before{width:75px;opacity:.35}
+ html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa{width:calc(100% - 30px);padding:16px;flex-direction:column}
+ html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa>div{margin-left:0;padding-left:90px;min-height:60px}
+ html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa::before{width:90px}
+ html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-faixa a{width:100%}
+ html[data-estacao]:not([data-estacao="original"]) .moss-fiel-vantagens{padding:20px 18px;gap:17px}
+}
