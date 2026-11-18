@@ -11,48 +11,53 @@
   const vitrine = document.querySelector('.vitrine');
   const grade = document.querySelector('.vitrine-grid');
   const ticker = [...document.querySelectorAll('.ticker-inner span')];
+  const botaoWhatsApp = document.querySelector('.vitrine-link');
+  const botaoSites = document.querySelector('.vitrine-cta');
 
   // Falta algum elemento? Não mexemos em páginas de demonstrações.
-  if (!heroTitulo || !heroTexto || !heroChamada || !vitrine || !grade) return;
+  if (!heroTitulo || !heroTexto || !heroChamada || !vitrine || !grade || !botaoWhatsApp || !botaoSites) return;
 
   // Guardar o texto ORIGINAL para restaurá-lo sem modificar o código antigo.
   const original = {
     titulo: heroTitulo.innerHTML,
     texto: heroTexto.innerHTML,
     chamada: heroChamada.textContent,
-    ticker: ticker.map(elemento => elemento.textContent)
+    ticker: ticker.map(elemento => elemento.textContent),
+    contatoHref: botaoWhatsApp.getAttribute('href'),
+    contatoTexto: botaoWhatsApp.textContent,
+    sitesHTML: botaoSites.innerHTML
   };
 
   // Conteúdos das campanhas. Não prometemos descontos não aprovados.
   const temas = {
     natal: {
       chamada: '🎄 Especial de Natal MOSS Digital',
-      titulo: 'Seu negócio pode <em>brilhar neste Natal!</em>',
-      texto: 'Mostre sua empresa na internet com um site bonito, fácil de usar e preparado para receber clientes.',
-      faixa: 'Neste Natal, seu negócio na internet',
-      faixaTexto: 'Mostre o que sua empresa oferece e facilite o contato com seus clientes.',
+      titulo: 'Seu site pronto para <em>vender neste Natal!</em>',
+      texto: 'Criamos sites profissionais para sua empresa mostrar seus produtos e conquistar clientes.',
+      faixa: 'Natal é tempo de novas oportunidades',
+      faixaTexto: 'Seu negócio merece um site bonito, fácil de usar e pronto para receber clientes.',
       selo: '🎁 O melhor presente é crescer!',
-      fita: 'NATAL ✦ SUA EMPRESA ONLINE ✦ MOSS DIGITAL ✦ ',
+      fita: 'SITES PROFISSIONAIS ✦ NATAL MOSS DIGITAL ✦ FALE CONOSCO ✦ ',
       mensagem: 'Olá! Quero conhecer os sites da MOSS Digital neste Natal.'
     },
     'ano-novo': {
       chamada: '🎆 MOSS Digital • Bem-vindo, Ano Novo',
       titulo: 'Comece <em>{ano}</em> com seu site pronto para vender.',
-      texto: 'Comece o novo ano mostrando seus produtos e serviços em um site da sua empresa.',
-      faixa: 'Seu próximo passo começa agora',
-      faixaTexto: 'Comece o ano com um site feito para mostrar sua empresa.',
+      texto: 'Comece o ano mostrando sua empresa para novos clientes com um site profissional.',
+      faixa: 'Ano Novo, novas oportunidades',
+      faixaTexto: 'Comece o ano com um site bonito e feito para sua empresa.',
       selo: '✨ Novos planos, novas conquistas!',
-      fita: 'ANO NOVO ✦ NOVAS OPORTUNIDADES ✦ MOSS DIGITAL ✦ ',
+      fita: 'SITES PROFISSIONAIS ✦ ANO NOVO ✦ MOSS DIGITAL ✦ ',
       mensagem: 'Olá! Quero começar o ano com um site da MOSS Digital.'
     },
     carnaval: {
       chamada: '🎭 Carnaval MOSS Digital',
-      titulo: 'Faça seu negócio <em>brilhar neste Carnaval!</em>',
-      texto: 'Um site feito para sua empresa mostrar seus produtos e atrair clientes o ano inteiro.',
+      titulo: 'Prepare seu negócio para o <em>Carnaval!</em>',
+      texto: 'Tenha um site profissional para sua empresa chamar atenção no Carnaval e o ano inteiro.',
       faixa: 'Carnaval de oportunidades',
-      faixaTexto: 'Apresente sua empresa para quem ainda não conhece seu trabalho.',
+      faixaTexto: 'Mostre seus produtos e serviços com um site feito para o seu negócio.',
       selo: '🎉 Seu negócio merece destaque!',
-      fita: 'CARNAVAL ✦ IDEIAS NOVAS ✦ SEU NEGÓCIO ONLINE ✦ ',
+      fita: 'CARNAVAL ✦ SITES PROFISSIONAIS ✦ MOSS DIGITAL ✦ ',
       mensagem: 'Olá! Quero conhecer os sites da MOSS Digital para meu negócio.'
     }
   };
@@ -131,6 +136,10 @@
       ticker.forEach((elemento, indice) => elemento.textContent = original.ticker[indice]);
       selo.textContent = '';
       faixa.hidden = true;
+      // Ao voltar ao visual original, restauramos os botões exatamente como eram.
+      botaoWhatsApp.setAttribute('href', original.contatoHref);
+      botaoWhatsApp.textContent = original.contatoTexto;
+      botaoSites.innerHTML = original.sitesHTML;
     } else {
       heroTitulo.innerHTML = tema.titulo.replace('{ano}', String(anoNovo));
       heroTexto.textContent = tema.texto;
@@ -142,6 +151,13 @@
       faixa.querySelector('a').href =
         'https://wa.me/5511942038103?text=' + encodeURIComponent(tema.mensagem);
       faixa.hidden = false;
+      // Na festa, o contato da vitrine leva ao WhatsApp; o catálogo segue intacto.
+      botaoWhatsApp.href = 'https://wa.me/5511942038103?text=' + encodeURIComponent(tema.mensagem);
+      botaoWhatsApp.textContent = '☏ Falar no WhatsApp';
+      botaoWhatsApp.setAttribute('target', '_blank');
+      botaoWhatsApp.setAttribute('rel', 'noopener noreferrer');
+      botaoSites.innerHTML = 'Ver sites <span aria-hidden="true">↗</span>';
+      faixa.querySelector('a').textContent = 'Quero meu site ↗';
     }
 
     // Estado acessível dos botões da prévia; não altera os outros visitantes.
