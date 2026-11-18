@@ -135,3 +135,46 @@ html[data-estacao]:not([data-estacao="original"]):not([data-tema="dia"]) .site-f
 @media (prefers-reduced-motion: reduce) {
   .moss-estacoes-selo { transform: none; }
 }
+
+/* Pequenos detalhes visuais para que cada festa seja reconhecida de imediato.
+   São apenas enfeites: não mexem nos botões nem no conteúdo dos sites. */
+html[data-estacao]:not([data-estacao="original"]) .vitrine-grid {
+  position: relative; z-index: 2;
+}
+html[data-estacao]:not([data-estacao="original"]) .vitrine::before,
+html[data-estacao]:not([data-estacao="original"]) .vitrine::after {
+  pointer-events: none; border: 0; border-radius: 0;
+  position: absolute; z-index: 1; height: auto; width: auto;
+  text-shadow: 0 8px 22px #0004;
+}
+html[data-estacao="natal"] .vitrine::before {
+  content: "✦  ❄  ✦"; top: 12%; right: 1%; left: auto; bottom: auto;
+  color: #fce4a4; font-size: clamp(2rem, 5vw, 5rem); opacity: .48;
+  transform: rotate(-12deg);
+}
+html[data-estacao="natal"] .vitrine::after {
+  content: "🎄"; bottom: 13px; right: 5%; left: auto; top: auto;
+  font-size: clamp(3rem, 6vw, 6rem); opacity: .73;
+}
+html[data-estacao="ano-novo"] .vitrine::before {
+  content: "✷  ✦  ✷"; top: 13%; right: 1%; left: auto; bottom: auto;
+  color: #fce4a4; font-size: clamp(2rem, 5vw, 4rem); opacity: .65;
+}
+html[data-estacao="ano-novo"] .vitrine::after {
+  content: "🎆"; bottom: 12px; right: 7%; left: auto; top: auto;
+  font-size: clamp(3rem, 6vw, 6rem); opacity: .75;
+}
+html[data-estacao="carnaval"] .vitrine::before {
+  content: "✦  🎊  ✦"; top: 13%; right: 1%; left: auto; bottom: auto;
+  color: #ffe84a; font-size: clamp(2rem, 4vw, 4rem); opacity: .68;
+}
+html[data-estacao="carnaval"] .vitrine::after {
+  content: "🎭"; bottom: 12px; right: 7%; left: auto; top: auto;
+  font-size: clamp(3rem, 6vw, 6rem); opacity: .85;
+}
+@media (max-width: 650px) {
+  html[data-estacao]:not([data-estacao="original"]) .vitrine::before {
+    top: auto; right: 12px; bottom: 14px; font-size: 2rem; opacity: .26;
+  }
+  html[data-estacao]:not([data-estacao="original"]) .vitrine::after { display: none; }
+}
