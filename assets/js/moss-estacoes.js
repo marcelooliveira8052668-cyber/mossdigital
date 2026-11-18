@@ -217,4 +217,23 @@
 
   // Primeiro carregamento: o site volta automaticamente ao original fora das festas.
   aplicarTema(modoEscolhido);
+
+  // Também atualizar caso alguém deixe a página aberta durante a virada do dia.
+  // A comparação usa o calendário de São Paulo, não o fuso horário do visitante.
+  const chaveDaData = () => {
+    const { ano, mes, dia } = dataDeSaoPaulo();
+    return [ano, mes, dia].join('-');
+  };
+  let ultimaData = chaveDaData();
+  const conferirTrocaDeDia = () => {
+    const novaData = chaveDaData();
+    if (novaData === ultimaData) return;
+    ultimaData = novaData;
+    // Não interferir na escolha de quem está usando o painel de testes.
+    if (modoEscolhido === 'automatico') aplicarTema('automatico');
+  };
+  setInterval(conferirTrocaDeDia, 60000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) conferirTrocaDeDia();
+  });
 })();
