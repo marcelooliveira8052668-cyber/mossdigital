@@ -1,0 +1,190 @@
+/* MOSS Digital — motor de temas comemorativos.
+   Funciona em GitHub Pages, sem banco de dados e sem alterar outras demos.
+   O modo dia/noite continua sendo controlado por moss-tema.js. */
+(() => {
+  'use strict';
+
+  const raiz = document.documentElement;
+  const heroTitulo = document.getElementById('hero-title');
+  const heroTexto = document.querySelector('.vitrine-lead');
+  const heroChamada = document.querySelector('.vitrine-eyebrow');
+  const vitrine = document.querySelector('.vitrine');
+  const grade = document.querySelector('.vitrine-grid');
+  const ticker = [...document.querySelectorAll('.ticker-inner span')];
+
+  // Falta algum elemento? Não mexemos em páginas de demonstrações.
+  if (!heroTitulo || !heroTexto || !heroChamada || !vitrine || !grade) return;
+
+  // Guardar o texto ORIGINAL para restaurá-lo sem modificar o código antigo.
+  const original = {
+    titulo: heroTitulo.innerHTML,
+    texto: heroTexto.innerHTML,
+    chamada: heroChamada.textContent,
+    ticker: ticker.map(elemento => elemento.textContent)
+  };
+
+  // Conteúdos das campanhas. Não prometemos descontos não aprovados.
+  const temas = {
+    natal: {
+      chamada: '🎄 Especial de Natal MOSS Digital',
+      titulo: 'Seu negócio pode <em>brilhar neste Natal!</em>',
+      texto: 'Um site profissional para apresentar sua empresa, atrair clientes e começar a vender.',
+      faixa: 'Natal com presença digital',
+      faixaTexto: 'Apresente seus produtos e serviços em um site com a identidade do seu negócio.',
+      selo: '🎁 O melhor presente é crescer!',
+      fita: 'NATAL ✦ SUA EMPRESA ONLINE ✦ MOSS DIGITAL ✦ ',
+      mensagem: 'Olá! Quero conhecer os sites da MOSS Digital neste Natal.'
+    },
+    'ano-novo': {
+      chamada: '🎆 MOSS Digital • Bem-vindo, Ano Novo',
+      titulo: 'Comece <em>{ano}</em> com seu site pronto para vender.',
+      texto: 'Entre no novo ano com uma presença digital moderna para divulgar seu negócio.',
+      faixa: 'Seu próximo passo começa agora',
+      faixaTexto: 'Planeje o novo ano com um site profissional feito para sua empresa.',
+      selo: '✨ Novos planos, novas conquistas!',
+      fita: 'ANO NOVO ✦ NOVAS OPORTUNIDADES ✦ MOSS DIGITAL ✦ ',
+      mensagem: 'Olá! Quero começar o ano com um site da MOSS Digital.'
+    },
+    carnaval: {
+      chamada: '🎭 Carnaval MOSS Digital',
+      titulo: 'Faça seu negócio <em>brilhar neste Carnaval!</em>',
+      texto: 'Sites modernos e feitos sob medida para sua empresa chamar atenção em qualquer época.',
+      faixa: 'Carnaval de oportunidades',
+      faixaTexto: 'Aproveite a temporada para mostrar seu negócio a mais pessoas.',
+      selo: '🎉 Seu negócio merece destaque!',
+      fita: 'CARNAVAL ✦ IDEIAS NOVAS ✦ SEU NEGÓCIO ONLINE ✦ ',
+      mensagem: 'Olá! Quero conhecer os sites da MOSS Digital para meu negócio.'
+    }
+  };
+
+  // Verificar a data da cidade de São Paulo, mesmo quando visitantes estão viajando.
+  function dataDeSaoPaulo() {
+    const partes = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Sao_Paulo', year: 'numeric',
+      month: '2-digit', day: '2-digit'
+    }).formatToParts(new Date());
+    const valor = nome => Number(partes.find(p => p.type === nome).value);
+    return { ano: valor('year'), mes: valor('month'), dia: valor('day') };
+  }
+
+  // Calcular a Páscoa para que o Carnaval possa mudar de data a cada ano.
+  function tercaDeCarnaval(ano) {
+    const a = ano % 19, b = Math.floor(ano / 100), c = ano % 100;
+    const d = Math.floor(b / 4), e = b % 4;
+    const f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3);
+    const h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4), k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k + 7 * 1000) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const mes = Math.floor((h + l - 7 * m + 114) / 31);
+    const dia = ((h + l - 7 * m + 114) % 31) + 1;
+    const pascoa = new Date(Date.UTC(ano, mes - 1, dia));
+    pascoa.setUTCDate(pascoa.getUTCDate() - 47);
+    return pascoa;
+  }
+
+  // Temporadas: Natal (1 a 26/12), Ano Novo (27/12 a 6/1)
+  // e Carnaval (oito dias antes da terça-feira até o dia seguinte).
+  function escolherAutomaticamente() {
+    const { ano, mes, dia } = dataDeSaoPaulo();
+    if (mes === 12 && dia >= 1 && dia <= 26) return 'natal';
+    if ((mes === 12 && dia >= 27) || (mes === 1 && dia <= 6)) return 'ano-novo';
+
+    const hoje = Date.UTC(ano, mes - 1, dia);
+    const diferenca = (hoje - tercaDeCarnaval(ano).getTime()) / 86400000;
+    if (diferenca >= -8 && diferenca <= 1) return 'carnaval';
+    return 'original';
+  }
+
+  // Selo e banner ficam ocultos no tema original, mantendo tudo como estava.
+  const selo = document.createElement('div');
+  selo.className = 'moss-estacoes-selo';
+  selo.setAttribute('aria-hidden', 'true');
+  grade.appendChild(selo);
+
+  const faixa = document.createElement('aside');
+  faixa.className = 'moss-estacoes-faixa';
+  faixa.setAttribute('aria-label', 'Campanha comemorativa da MOSS Digital');
+  faixa.innerHTML = '<div><h2></h2><p></p></div><a target="_blank" rel="noopener noreferrer">Falar no WhatsApp ↗</a>';
+  vitrine.insertAdjacentElement('afterend', faixa);
+
+  const emPrevia = new URLSearchParams(location.search).get('moss-temas') === 'teste';
+  let modoEscolhido = 'automatico';
+  if (emPrevia) {
+    try { modoEscolhido = sessionStorage.getItem('moss:estacao-preview') || 'automatico'; }
+    catch (_) { /* Navegador sem armazenamento: a prévia ainda funciona. */ }
+  }
+
+  function aplicarTema(escolha) {
+    const { ano, mes } = dataDeSaoPaulo();
+    const anoNovo = mes === 12 ? ano + 1 : ano;
+    const nome = escolha === 'automatico' ? escolherAutomaticamente() : escolha;
+    const tema = temas[nome];
+
+    // Alteramos só um atributo; o CSS usa esse atributo para vestir a página.
+    raiz.dataset.estacao = tema ? nome : 'original';
+
+    if (!tema) {
+      heroTitulo.innerHTML = original.titulo;
+      heroTexto.innerHTML = original.texto;
+      heroChamada.textContent = original.chamada;
+      ticker.forEach((elemento, indice) => elemento.textContent = original.ticker[indice]);
+      selo.textContent = '';
+      faixa.hidden = true;
+    } else {
+      heroTitulo.innerHTML = tema.titulo.replace('{ano}', String(anoNovo));
+      heroTexto.textContent = tema.texto;
+      heroChamada.textContent = tema.chamada;
+      ticker.forEach(elemento => elemento.textContent = tema.fita);
+      selo.textContent = tema.selo;
+      faixa.querySelector('h2').textContent = tema.faixa;
+      faixa.querySelector('p').textContent = tema.faixaTexto;
+      faixa.querySelector('a').href =
+        'https://wa.me/5511942038103?text=' + encodeURIComponent(tema.mensagem);
+      faixa.hidden = false;
+    }
+
+    // Estado acessível dos botões da prévia; não altera os outros visitantes.
+    document.querySelectorAll('[data-estacao-prever]').forEach(botao => {
+      botao.setAttribute('aria-pressed', String(botao.dataset.estacaoPrever === escolha));
+    });
+    const estado = document.getElementById('moss-estacoes-estado');
+    if (estado) estado.textContent = 'Visualização: ' +
+      ({ original: 'Original', natal: 'Natal', 'ano-novo': 'Ano Novo',
+         carnaval: 'Carnaval', automatico: 'Automático' }[nome] || 'Original');
+  }
+
+  // O painel só existe em ?moss-temas=teste; por padrão, o público vê a data automática.
+  if (emPrevia) {
+    const painel = document.createElement('aside');
+    painel.className = 'moss-estacoes-painel';
+    painel.setAttribute('aria-label', 'Painel de prévia de temas');
+    painel.innerHTML = '<h2>🎨 Temas da MOSS</h2>' +
+      '<p>Teste local: não modifica o site para os outros visitantes.</p>' +
+      '<div class="moss-estacoes-botoes"></div>' +
+      '<p id="moss-estacoes-estado" role="status"></p>' +
+      '<a class="moss-estacoes-fechar" href="/">Sair da prévia</a>';
+    document.body.appendChild(painel);
+
+    const opcoes = [
+      ['automatico', '📅 Automático'], ['original', '💚 Original'],
+      ['natal', '🎄 Natal'], ['ano-novo', '🎆 Ano Novo'], ['carnaval', '🎭 Carnaval']
+    ];
+    const botoes = painel.querySelector('.moss-estacoes-botoes');
+    opcoes.forEach(([id, texto]) => {
+      const botao = document.createElement('button');
+      botao.type = 'button';
+      botao.dataset.estacaoPrever = id;
+      botao.textContent = texto;
+      botao.addEventListener('click', () => {
+        modoEscolhido = id;
+        try { sessionStorage.setItem('moss:estacao-preview', id); } catch (_) {}
+        aplicarTema(modoEscolhido);
+      });
+      botoes.appendChild(botao);
+    });
+  }
+
+  // Primeiro carregamento: o site volta automaticamente ao original fora das festas.
+  aplicarTema(modoEscolhido);
+})();
