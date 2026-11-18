@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assistência técnica especializada em notebooks e computadores de mesa. Reparo, manutenção, formatação, recuperação de dados e upgrade com rapidez e garantia.">
+  <meta name="theme-color" content="#0b1f3a">
+  <title>NextTech | Assistência Técnica de Notebooks e PCs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-info">
+        <span><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (11) 99999-1234</span>
+        <span class="hide-sm"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> contato@nexttech.com.br</span>
+      </div>
+      <div class="topbar-info">
+        <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Seg-Sex: 08h às 18h | Sáb: 08h às 12h</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navbar -->
+  <header class="header" id="header">
+    <div class="container nav-inner">
+      <a href="#inicio" class="logo" aria-label="NextTech - Início">
+        <span class="logo-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M2 20h20"/></svg></span>
+        <span>Next<span>Tech</span></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#inicio" class="nav-link active">Início</a>
+        <a href="#servicos" class="nav-link">Serviços</a>
+        <a href="#sobre" class="nav-link">Sobre</a>
+        <a href="#processo" class="nav-link">Como Funciona</a>
+        <a href="#depoimentos" class="nav-link">Depoimentos</a>
+        <a href="#contato" class="nav-link">Contato</a>
+        <a href="#contato" class="btn btn-primary nav-cta">Solicitar Orçamento</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg-shape shape-1"></div>
+    <div class="hero-bg-shape shape-2"></div>
+    <div class="container hero-inner">
+      <div class="hero-content reveal">
+        <div class="badge"><span class="badge-dot"></span> Assistência técnica com garantia</div>
+        <h1>Seu computador com problema? <span class="gradient-text">A gente resolve!</span></h1>
+        <p class="hero-subtitle">Reparo de notebooks e desktops com rapidez, transparência e garantia. Diagnóstico gratuito e orçamento sem compromisso. Traga seu equipamento ou solicite atendimento online.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5511999991234?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20meu%20equipamento." target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.8 11.8 0 0 0 5.65 1.44h.01c6.56 0 11.86-5.3 11.86-11.85 0-3.17-1.24-6.15-3.4-8.43zM12.06 21.7h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.8.99 1.01-3.7-.24-.38a9.83 9.83 0 0 1-1.51-5.15c0-5.43 4.42-9.85 9.86-9.85 2.63 0 5.1 1.03 6.96 2.88a9.8 9.8 0 0 1 2.88 6.97c0 5.43-4.42 9.83-9.87 9.83zm5.4-7.38c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.67.15s-.76.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.12 3.23 5.13 4.53.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+            Falar no WhatsApp
+          </a>
+          <a href="#servicos" class="btn btn-outline">Ver serviços</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <span>JS</span><span>MA</span><span>RC</span><span>+</span>
+          </div>
+          <div><strong>+5.000</strong> equipamentos reparados</div>
+          <div class="trust-divider"></div>
+          <div class="stars">★★★★★ <span>4,9/5</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="visual-glow"></div>
+        <div class="photo-frame">
+          <img src="images/macbook.jpg" alt="Notebook em assistência técnica" loading="eager">
+          <div class="photo-status"><i></i> Diagnóstico em andamento</div>
+          <div class="photo-grid"></div>
+        </div>
+        <div class="float-card card-repair">
+          <span class="float-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4-1.4l-1.6-1.6a1 1 0 0 0-1.4 0z"/></svg></span>
+          <span><strong>Reparo expresso</strong><small>Em até 24 horas</small></span>
+        </div>
+        <div class="float-card card-shield">
+          <span class="float-icon green"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></span>
+          <span><strong>Garantia total</strong><small>90 dias em todos os serviços</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container stats-grid reveal">
+      <div class="stat"><strong data-count="10">10</strong><span>+</span><p>Anos de experiência</p></div>
+      <div class="stat"><strong data-count="5000">5.000</strong><span>+</span><p>Equipamentos reparados</p></div>
+      <div class="stat"><strong data-count="98">98</strong><span>%</span><p>Clientes satisfeitos</p></div>
+      <div class="stat"><strong data-count="24">24</strong><span>h</span><p>Reparo expresso</p></div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="servicos">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Nossos serviços</span>
+        <h2>Soluções completas para o seu <span class="gradient-text">equipamento</span></h2>
+        <p>Do diagnóstico à entrega, cuidamos de cada detalhe para que seu computador volte a funcionar como novo.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card reveal">
+          <div class="service-img"><img src="images/laptop-desk.jpg" alt="Notebook sobre mesa de trabalho" loading="lazy"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M1 20h22"/></svg></div>
+          <h3>Reparo de Notebook</h3>
+          <p>Troca de telas, teclados, baterias, HD/SSD, ventilação e resolução de problemas de placa.</p>
+          <a href="#contato" class="service-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-img"><img src="images/desktop-setup.jpg" alt="Computador de mesa montado" loading="lazy"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3>Reparo de Desktop</h3>
+          <p>Fontes, placas de vídeo, memória, processador e montagem completa de computadores.</p>
+          <a href="#contato" class="service-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-img"><img src="images/macbook.jpg" alt="Notebook com sistema operacional instalado" loading="lazy"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Formatação e Instalação</h3>
+          <p>Instalação de Windows e Linux, drivers, programas e configuração completa do seu sistema.</p>
+          <a href="#contato" class="service-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-img"><img src="images/circuit-board.jpg" alt="Placa eletrônica em detalhe" loading="lazy"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5M17 3l3 4-3 4M7 13l-3 4 3 4"/></svg></div>
+          <h3>Recuperação de Dados</h3>
+          <p>Recuperação de arquivos de HD, SSD, pendrives e cartões de memória com tecnologia especializada.</p>
+          <a href="#contato" class="service-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-img"><img src="images/about-tech.jpg" alt="Técnico realizando manutenção em equipamento" loading="lazy"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 10v6M14 10v6"/></svg></div>
+          <h3>Limpeza e Manutenção</h3>
+          <p>Limpeza interna, troca de pasta térmica e prevenção de superaquecimento para maior durabilidade.</p>
+          <a href="#contato" class="service-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+        <article class="service-card reveal">
+          <div class="service-img"><img src="images/repair.jpg" alt="Processador instalado na placa-mãe" loading="lazy"></div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5l-5-3-5 3M17 19l-5 3-5-3M2 12h20M5 7l-3 5 3 5M19 7l3 5-3 5"/></svg></div>
+          <h3>Upgrade de Peças</h3>
+          <p>Mais memória RAM, SSD, placa de vídeo e processador. Seu equipamento com performance de novo.</p>
+          <a href="#contato" class="service-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section about" id="sobre">
+    <div class="container about-inner">
+      <div class="about-visual reveal">
+        <div class="about-img-main">
+          <img src="images/about-tech.jpg" alt="Técnico especializado trabalhando em notebook" loading="lazy">
+        </div>
+        <div class="about-img-small">
+          <img src="images/repair.jpg" alt="Componentes de computador em manutenção" loading="lazy">
+        </div>
+        <div class="about-badge">
+          <strong>10+</strong>
+          <span>anos de<br>experiência</span>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <span class="section-tag">Sobre a NextTech</span>
+        <h2>Tecnologia com <span class="gradient-text">confiança</span> e compromisso</h2>
+        <p>Somos uma assistência técnica especializada em notebooks e computadores de mesa, com anos de experiência no mercado. Nossa missão é devolver a você a produtividade e a tranquilidade, com serviços transparentes, preços justos e garantia em tudo o que fazemos.</p>
+        <p>Trabalhamos com peças de qualidade, profissionais certificados e atendimento personalizado — porque cada cliente e cada equipamento são únicos.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Técnicos especializados e certificados</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Diagnóstico gratuito e orçamento transparente</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Peças originais e garantia de 90 dias</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Atendimento presencial e online</li>
+        </ul>
+        <a href="#contato" class="btn btn-primary">Falar com um especialista</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section process" id="processo">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Como funciona</span>
+        <h2>Simples, rápido e <span class="gradient-text">sem complicação</span></h2>
+        <p>São apenas 4 passos para deixar seu equipamento funcionando perfeitamente.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="step-number">01</div>
+          <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Entre em contato</h3>
+          <p>Fale com a gente pelo WhatsApp, telefone ou formulário e conte o que está acontecendo.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">02</div>
+          <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></div>
+          <h3>Diagnóstico gratuito</h3>
+          <p>Analisamos seu equipamento e identificamos o problema com agilidade e precisão.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">03</div>
+          <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4-1.4l-1.6-1.6a1 1 0 0 0-1.4 0z"/><path d="M21 2l-1.9.4a1 1 0 0 0-.5.3l-1.5 1.5-1.4-1.4a1 1 0 0 0-1.4 0L8.5 8.6l-4.8 4.8a2 2 0 0 0 0 2.8l2.1 2.1a2 2 0 0 0 2.8 0l4.8-4.8 5.8-5.8a1 1 0 0 0 0-1.4l-1.4-1.4 1.5-1.5a1 1 0 0 0 .3-.5L21 2z"/></svg></div>
+          <h3>Orçamento e reparo</h3>
+          <p>Você aprova o orçamento e nossa equipe executa o serviço com peças de qualidade.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-number">04</div>
+          <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+          <h3>Retire como novo</h3>
+          <p>Testamos tudo e devolvemos seu equipamento pronto para uso, com garantia e nota fiscal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials" id="depoimentos">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Depoimentos</span>
+        <h2>O que dizem nossos <span class="gradient-text">clientes</span></h2>
+        <p>A satisfação de quem confia na gente é o nosso maior incentivo.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Meu notebook não ligava e a NextTech resolveu em menos de 24h. Atendimento excelente, preço justo e ainda me explicaram todo o problema. Recomendo demais!"</p>
+          <div class="testimonial-author">
+            <span class="author-avatar">JS</span>
+            <div><strong>Juliana Silva</strong><small>Cliente desde 2021</small></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Recuperei arquivos importantíssimos do meu HD que tinha dado problema. Profissionais muito competentes e discretos. Salvaram meu trabalho!"</p>
+          <div class="testimonial-author">
+            <span class="author-avatar">MA</span>
+            <div><strong>Marcos Almeida</strong><small>Cliente desde 2020</small></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Fiz upgrade do meu desktop e ficou rápido demais! Orçamento transparente, sem surpresa, e a garantia me deu tranquilidade. Nota 10."</p>
+          <div class="testimonial-author">
+            <span class="author-avatar">RC</span>
+            <div><strong>Renata Costa</strong><small>Cliente desde 2022</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container cta-inner reveal">
+      <div>
+        <h2>Precisa de ajuda com seu equipamento?</h2>
+        <p>Não deixe o problema piorar. Fale com nossos especialistas e receba um diagnóstico gratuito agora mesmo.</p>
+      </div>
+      <a href="https://wa.me/5511999991234?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20meu%20equipamento." target="_blank" rel="noopener" class="btn btn-white">
+        <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.8 11.8 0 0 0 5.65 1.44h.01c6.56 0 11.86-5.3 11.86-11.85 0-3.17-1.24-6.15-3.4-8.43zM12.06 21.7h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.8.99 1.01-3.7-.24-.38a9.83 9.83 0 0 1-1.51-5.15c0-5.43 4.42-9.85 9.86-9.85 2.63 0 5.1 1.03 6.96 2.88a9.8 9.8 0 0 1 2.88 6.97c0 5.43-4.42 9.83-9.87 9.83z"/></svg>
+        Chamar no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contato">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Contato</span>
+        <h2>Vamos conversar? <span class="gradient-text">Estamos aqui para ajudar</span></h2>
+        <p>Preencha o formulário ou use um dos canais abaixo. Respondemos rapidinho!</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="info-card">
+            <span class="info-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><strong>Onde estamos</strong><p>Rua das Flores, 123 – Centro<br>São Paulo – SP, 01000-000</p></div>
+          </div>
+          <div class="info-card">
+            <span class="info-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div><strong>Telefone / WhatsApp</strong><p>(11) 99999-1234<br>(11) 3333-1234</p></div>
+          </div>
+          <div class="info-card">
+            <span class="info-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+            <div><strong>E-mail</strong><p>contato@nexttech.com.br<br>orcamento@nexttech.com.br</p></div>
+          </div>
+          <div class="info-card">
+            <span class="info-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+            <div><strong>Horário de atendimento</strong><p>Segunda a Sexta: 08h às 18h<br>Sábado: 08h às 12h</p></div>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+              <span class="error-msg"></span>
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone / WhatsApp</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+              <span class="error-msg"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            <span class="error-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="equipamento">Tipo de equipamento</label>
+            <select id="equipamento" name="equipamento" required>
+              <option value="">Selecione uma opção</option>
+              <option value="notebook">Notebook</option>
+              <option value="desktop">Computador de mesa</option>
+              <option value="outro">Outro</option>
+            </select>
+            <span class="error-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Conte o que aconteceu</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva o problema do seu equipamento..." required></textarea>
+            <span class="error-msg"></span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enviar solicitação</button>
+          <p class="form-note">Ao enviar, você concorda com nossa política de privacidade. Seus dados estão seguros conosco.</p>
+          <div class="form-success" id="formSuccess">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            <strong>Mensagem enviada com sucesso!</strong>
+            <span>Em breve entraremos em contato. Obrigado!</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">
+          <span class="logo-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M2 20h20"/></svg></span>
+          <span>Next<span>Tech</span></span>
+        </a>
+        <p>Assistência técnica de confiança para notebooks e computadores de mesa. Tecnologia, agilidade e garantia em cada serviço.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.8 11.8 0 0 0 5.65 1.44h.01c6.56 0 11.86-5.3 11.86-11.85 0-3.17-1.24-6.15-3.4-8.43z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Links rápidos</h4>
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#processo">Como funciona</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div class="footer-links">
+        <h4>Serviços</h4>
+        <a href="#servicos">Reparo de notebook</a>
+        <a href="#servicos">Reparo de desktop</a>
+        <a href="#servicos">Formatação</a>
+        <a href="#servicos">Recuperação de dados</a>
+        <a href="#servicos">Upgrade de peças</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Fale conosco</h4>
+        <p>Rua das Flores, 123 – Centro<br>São Paulo – SP</p>
+        <p>(11) 99999-1234</p>
+        <p>contato@nexttech.com.br</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 NextTech Assistência Técnica. Todos os direitos reservados.</p>
+      <p>Feito com cuidado para você.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/5511999991234?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.8 11.8 0 0 0 5.65 1.44h.01c6.56 0 11.86-5.3 11.86-11.85 0-3.17-1.24-6.15-3.4-8.43zM12.06 21.7h-.01a9.85 9.85 0 0 1-5.02-1.38l-.36-.21-3.8.99 1.01-3.7-.24-.38a9.83 9.83 0 0 1-1.51-5.15c0-5.43 4.42-9.85 9.86-9.85 2.63 0 5.1 1.03 6.96 2.88a9.8 9.8 0 0 1 2.88 6.97c0 5.43-4.42 9.83-9.87 9.83zm5.4-7.38c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.67.15s-.76.97-.94 1.17c-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.12 3.23 5.13 4.53.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+    <span class="whatsapp-tooltip">Fale com a gente!</span>
+  </a>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+    <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
