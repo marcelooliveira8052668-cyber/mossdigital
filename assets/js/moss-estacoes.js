@@ -25,6 +25,8 @@
     ticker: ticker.map(elemento => elemento.textContent),
     contatoHref: botaoWhatsApp.getAttribute('href'),
     contatoTexto: botaoWhatsApp.textContent,
+    contatoTarget: botaoWhatsApp.getAttribute('target'),
+    contatoRel: botaoWhatsApp.getAttribute('rel'),
     sitesHTML: botaoSites.innerHTML
   };
 
@@ -139,6 +141,11 @@
       // Ao voltar ao visual original, restauramos os botões exatamente como eram.
       botaoWhatsApp.setAttribute('href', original.contatoHref);
       botaoWhatsApp.textContent = original.contatoTexto;
+      // Evitar abrir nova guia quando o tema voltar ao original.
+      if (original.contatoTarget) botaoWhatsApp.setAttribute('target', original.contatoTarget);
+      else botaoWhatsApp.removeAttribute('target');
+      if (original.contatoRel) botaoWhatsApp.setAttribute('rel', original.contatoRel);
+      else botaoWhatsApp.removeAttribute('rel');
       botaoSites.innerHTML = original.sitesHTML;
     } else {
       heroTitulo.innerHTML = tema.titulo.replace('{ano}', String(anoNovo));
