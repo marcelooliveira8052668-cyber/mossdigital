@@ -10,6 +10,7 @@
   const heroChamada = document.querySelector('.vitrine-eyebrow');
   const vitrine = document.querySelector('.vitrine');
   const grade = document.querySelector('.vitrine-grid');
+  const arte = document.querySelector('.vitrine-collage');
   const ticker = [...document.querySelectorAll('.ticker-inner span')];
   const botaoWhatsApp = document.querySelector('.vitrine-link');
   const botaoSites = document.querySelector('.vitrine-cta');
@@ -137,6 +138,7 @@
       heroChamada.textContent = original.chamada;
       ticker.forEach((elemento, indice) => elemento.textContent = original.ticker[indice]);
       selo.textContent = '';
+      if (arte) delete arte.dataset.ano;
       faixa.hidden = true;
       // Ao voltar ao visual original, restauramos os botões exatamente como eram.
       botaoWhatsApp.setAttribute('href', original.contatoHref);
@@ -153,6 +155,11 @@
       heroChamada.textContent = tema.chamada;
       ticker.forEach(elemento => elemento.textContent = tema.fita);
       selo.textContent = tema.selo;
+      // O ano aparece sobre a ilustração, atualizado automaticamente.
+      if (arte) {
+        if (nome === 'ano-novo') arte.dataset.ano = String(anoNovo);
+        else delete arte.dataset.ano;
+      }
       faixa.querySelector('h2').textContent = tema.faixa;
       faixa.querySelector('p').textContent = tema.faixaTexto;
       faixa.querySelector('a').href =
