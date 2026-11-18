@@ -483,3 +483,17 @@ html[data-estacao]:not([data-estacao="original"]) #modelos .catalog-more a {
 html[data-estacao]:not([data-estacao="original"]) .moss-estacoes-painel {
   border-color:#ccb470; box-shadow:0 14px 44px #0005;
 }
+
+/* Ano impresso com CSS: acompanha o calendário e não fica preso a 2027. */
+html[data-estacao="ano-novo"] .vitrine-collage::after {
+  content:attr(data-ano);display:block;position:absolute;z-index:7;
+  right:3%;bottom:7%;height:auto;width:auto;
+  font-family:Inter,'Segoe UI',Arial,sans-serif;
+  font-size:clamp(2.3rem,5.5vw,4.8rem);line-height:1;
+  font-weight:900;letter-spacing:-.05em;color:#f8dc8d;
+  background:none;border:0;text-shadow:0 4px 2px #5b3806,0 12px 24px #000b;
+  pointer-events:none;
+}
+@media(max-width:650px){
+  html[data-estacao="ano-novo"] .vitrine-collage::after {right:1%;bottom:4%;font-size:2.5rem;}
+}
