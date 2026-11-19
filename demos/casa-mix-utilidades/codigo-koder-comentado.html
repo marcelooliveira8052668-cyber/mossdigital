@@ -1,0 +1,832 @@
+  <!-- LINHA ORIGINAL 1: Informa ao navegador que esta página usa HTML5. -->
+<!DOCTYPE html>
+  <!-- LINHA ORIGINAL 2: Inicia a página e define o idioma português do Brasil. -->
+<html lang="pt-BR">
+  <!-- LINHA ORIGINAL 3: Abre a parte de configurações da página. -->
+<head>
+  <!-- META: informa idioma, caracteres, tamanho de tela e título da página. -->
+  <!-- LINHA ORIGINAL 5: Permite usar acentos e caracteres especiais corretamente. -->
+  <meta charset="UTF-8">
+  <!-- LINHA ORIGINAL 6: Adapta a largura da página ao celular. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- LINHA ORIGINAL 7: Define a cor sugerida para a barra do navegador. -->
+  <meta name="theme-color" content="#f1683b">
+  <!-- LINHA ORIGINAL 8: Escreve o resumo da loja para buscadores. -->
+  <meta name="description" content="Casa Mix: loja demonstrativa de potes, utensílios e utilidades domésticas.">
+  <!-- LINHA ORIGINAL 9: Define o título exibido na aba do navegador. -->
+  <title>Casa Mix | Utilidades & Achadinhos</title>
+  <!-- LINHA ORIGINAL 10: Inicia o CSS, responsável pela aparência do site. -->
+  <style>
+    /* 1 — CORES: altere estas variáveis para mudar toda a identidade visual. */
+    /* LINHA ORIGINAL 12: Define as cores principais da identidade visual da Casa Mix. */
+    :root {--laranja:#f1683b;--escuro:#233c51;--texto:#304355;--cinza:#687b86;--fundo:#fff8f1;--borda:#e9e5e0;--verde:#12845d}
+    /* 2 — REGRAS GERAIS: evitam cortes e deixam o layout responsivo. */
+    * {box-sizing:border-box}
+    /* LINHA ORIGINAL 15: Define a aparência de html, incluindo posicionamento, cores e medidas. */
+    html {scroll-behavior:smooth}
+    /* LINHA ORIGINAL 16: Define a aparência de body, incluindo posicionamento, cores e medidas. */
+    body {margin:0;background:var(--fundo);font:15px/1.5 system-ui,Arial,sans-serif;color:var(--texto)}
+    /* LINHA ORIGINAL 17: Define a aparência de a, incluindo posicionamento, cores e medidas. */
+    a {color:inherit;text-decoration:none}
+    /* LINHA ORIGINAL 18: Define a aparência de button,input,select,textarea, incluindo posicionamento, cores e medidas. */
+    button,input,select,textarea {font:inherit}
+    /* LINHA ORIGINAL 19: Define a aparência de button, incluindo posicionamento, cores e medidas. */
+    button {cursor:pointer}
+    /* LINHA ORIGINAL 20: Define a aparência de img, incluindo posicionamento, cores e medidas. */
+    img {display:block;max-width:100%}
+    /* LINHA ORIGINAL 21: Define a aparência de [hidden], incluindo posicionamento, cores e medidas. */
+    [hidden] {display:none!important}
+    /* LINHA ORIGINAL 22: Define a aparência de .wrap, incluindo posicionamento, cores e medidas. */
+    .wrap {width:min(1200px,calc(100% - 28px));margin:auto}
+    /* LINHA ORIGINAL 23: Define a aparência de .sr, incluindo posicionamento, cores e medidas. */
+    .sr {position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+    /* LINHA ORIGINAL 24: Define a aparência de :focus-visible, incluindo posicionamento, cores e medidas. */
+    :focus-visible {outline:3px solid #ffae62;outline-offset:2px}
+    /* LINHA ORIGINAL 25: Define a aparência de .notice, incluindo posicionamento, cores e medidas. */
+    .notice {padding:9px 12px;background:var(--escuro);text-align:center;color:white;font-size:11px}
+    /* LINHA ORIGINAL 26: Define a aparência de .notice b, incluindo posicionamento, cores e medidas. */
+    .notice b {color:#ffb783}
+    /* 3 — CABEÇALHO: logo, busca, favoritos, administrador e carrinho. */
+    /* LINHA ORIGINAL 28: Define a aparência de header, incluindo posicionamento, cores e medidas. */
+    header {background:white;position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #22364714}
+    /* LINHA ORIGINAL 29: Define a aparência de .head, incluindo posicionamento, cores e medidas. */
+    .head {display:flex;align-items:center;gap:14px;min-height:82px}
+    /* LINHA ORIGINAL 30: Define a aparência de .brand, incluindo posicionamento, cores e medidas. */
+    .brand {display:flex;align-items:center;gap:10px;flex-shrink:0}
+    /* LINHA ORIGINAL 31: Define a aparência de .brand-icon, incluindo posicionamento, cores e medidas. */
+    .brand-icon {display:grid;place-items:center;background:var(--laranja);color:white;width:49px;height:49px;border-radius:14px;font-weight:900;font-size:23px}
+    /* LINHA ORIGINAL 32: Define a aparência de .brand strong, incluindo posicionamento, cores e medidas. */
+    .brand strong {font-size:27px;letter-spacing:-1.5px;color:var(--escuro)}
+    /* LINHA ORIGINAL 33: Define a aparência de .brand strong em, incluindo posicionamento, cores e medidas. */
+    .brand strong em {color:var(--laranja);font-style:normal}
+    /* LINHA ORIGINAL 34: Define a aparência de .brand small, incluindo posicionamento, cores e medidas. */
+    .brand small {display:block;font-size:9px;letter-spacing:1.4px;color:var(--cinza);font-weight:800}
+    /* LINHA ORIGINAL 35: Define a aparência de .search, incluindo posicionamento, cores e medidas. */
+    .search {display:flex;flex:1;min-width:100px;gap:5px;background:#f6f8f9;border:1px solid #dce4e6;padding:5px;border-radius:13px}
+    /* LINHA ORIGINAL 36: Define a aparência de .search input, incluindo posicionamento, cores e medidas. */
+    .search input {border:0;outline:none;background:transparent;flex:1;min-width:0;padding:9px}
+    /* LINHA ORIGINAL 37: Define a aparência de .search button,.primary, incluindo posicionamento, cores e medidas. */
+    .search button,.primary {border:0;background:var(--laranja);color:white;border-radius:9px;font-weight:800;padding:11px 15px}
+    /* LINHA ORIGINAL 38: Define a aparência de .icons, incluindo posicionamento, cores e medidas. */
+    .icons {display:flex;gap:6px}
+    /* LINHA ORIGINAL 39: Define a aparência de .square, incluindo posicionamento, cores e medidas. */
+    .square {position:relative;width:41px;height:41px;background:#fff6ef;border:1px solid #f1e1d6;border-radius:12px;font-size:18px}
+    /* LINHA ORIGINAL 40: Define a aparência de .square b, incluindo posicionamento, cores e medidas. */
+    .square b {position:absolute;right:-4px;top:-5px;background:var(--laranja);color:white;border-radius:20px;padding:1px 5px;font-size:9px}
+    /* LINHA ORIGINAL 41: Define a aparência de .nav, incluindo posicionamento, cores e medidas. */
+    .nav {border-top:1px solid #f1eeeb;display:flex;gap:22px;overflow-x:auto;white-space:nowrap;padding:12px 0;font-size:13px;font-weight:700}
+    /* LINHA ORIGINAL 42: Define a aparência de .nav button, incluindo posicionamento, cores e medidas. */
+    .nav button {border:0;background:transparent;color:#415667;padding:0}
+    /* LINHA ORIGINAL 43: Define a aparência de .nav button:hover, incluindo posicionamento, cores e medidas. */
+    .nav button:hover {color:var(--laranja)}
+    /* 4 — VITRINE: cores vivas e fotografias em cartões. */
+    /* LINHA ORIGINAL 45: Define a aparência de .hero, incluindo posicionamento, cores e medidas. */
+    .hero {display:grid;grid-template-columns:1.3fr .7fr;gap:18px;padding:25px 0}
+    /* LINHA ORIGINAL 46: Define a aparência de .hero-main, incluindo posicionamento, cores e medidas. */
+    .hero-main {background:linear-gradient(125deg,#ffe0bb,#fff1d9);border-radius:24px;padding:43px;min-height:350px;display:flex;align-items:center;justify-content:space-between;overflow:hidden}
+    /* LINHA ORIGINAL 47: Define a aparência de .eyebrow, incluindo posicionamento, cores e medidas. */
+    .eyebrow {font-size:11px;font-weight:900;color:#cd542d;text-transform:uppercase;letter-spacing:1px}
+    /* LINHA ORIGINAL 48: Define a aparência de h1, incluindo posicionamento, cores e medidas. */
+    h1 {font-size:clamp(32px,4vw,57px);line-height:1.08;letter-spacing:-2px;color:var(--escuro);margin:12px 0}
+    /* LINHA ORIGINAL 49: Define a aparência de h1 span, incluindo posicionamento, cores e medidas. */
+    h1 span {color:var(--laranja)}
+    /* LINHA ORIGINAL 50: Define a aparência de .hero-main p, incluindo posicionamento, cores e medidas. */
+    .hero-main p {max-width:440px;color:#526577}
+    /* LINHA ORIGINAL 51: Define a aparência de .hero-art, incluindo posicionamento, cores e medidas. */
+    .hero-art {font-size:clamp(65px,10vw,145px);filter:drop-shadow(8px 15px 5px #bf7e4b3d)}
+    /* LINHA ORIGINAL 52: Define a aparência de .hero-side, incluindo posicionamento, cores e medidas. */
+    .hero-side {border-radius:24px;background:#d6e9e0;padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:350px}
+    /* LINHA ORIGINAL 53: Define a aparência de .hero-side h2, incluindo posicionamento, cores e medidas. */
+    .hero-side h2 {font-size:28px;line-height:1.1;letter-spacing:-1px;margin:10px 0;color:#234f43}
+    /* LINHA ORIGINAL 54: Define a aparência de .hero-side .visual, incluindo posicionamento, cores e medidas. */
+    .hero-side .visual {display:flex;justify-content:center;font-size:85px}
+    /* LINHA ORIGINAL 55: Define a aparência de .subbtn, incluindo posicionamento, cores e medidas. */
+    .subbtn {background:white;color:var(--escuro);border:1px solid var(--borda);padding:11px 15px;border-radius:10px;font-weight:800}
+    /* LINHA ORIGINAL 56: Define a aparência de .features, incluindo posicionamento, cores e medidas. */
+    .features {display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+    /* LINHA ORIGINAL 57: Define a aparência de .features div, incluindo posicionamento, cores e medidas. */
+    .features div {background:white;padding:15px;border-radius:14px;border:1px solid var(--borda);font-size:13px}
+    /* LINHA ORIGINAL 58: Define a aparência de .features strong, incluindo posicionamento, cores e medidas. */
+    .features strong {display:block;color:var(--escuro)}
+    /* 5 — DEPARTAMENTOS: os 12 setores da loja. */
+    /* LINHA ORIGINAL 60: Define a aparência de section, incluindo posicionamento, cores e medidas. */
+    section {scroll-margin-top:145px}
+    /* LINHA ORIGINAL 61: Define a aparência de .section-title, incluindo posicionamento, cores e medidas. */
+    .section-title {display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin:29px 0 17px}
+    /* LINHA ORIGINAL 62: Define a aparência de .section-title h2, incluindo posicionamento, cores e medidas. */
+    .section-title h2 {font-size:clamp(23px,3vw,33px);letter-spacing:-1px;margin:3px 0;color:var(--escuro)}
+    /* LINHA ORIGINAL 63: Define a aparência de .section-title p, incluindo posicionamento, cores e medidas. */
+    .section-title p {margin:0;color:var(--cinza);font-size:13px}
+    /* LINHA ORIGINAL 64: Define a aparência de .departments, incluindo posicionamento, cores e medidas. */
+    .departments {display:grid;grid-template-columns:repeat(6,1fr);gap:11px}
+    /* LINHA ORIGINAL 65: Define a aparência de .department, incluindo posicionamento, cores e medidas. */
+    .department {text-align:left;background:white;border:1px solid var(--borda);border-radius:15px;padding:17px 10px;font-size:12px;color:var(--escuro);font-weight:750}
+    /* LINHA ORIGINAL 66: Define a aparência de .department span, incluindo posicionamento, cores e medidas. */
+    .department span {display:block;font-size:35px;margin-bottom:7px}
+    /* LINHA ORIGINAL 67: Define a aparência de .department:hover, incluindo posicionamento, cores e medidas. */
+    .department:hover {border-color:#f8bba2;box-shadow:0 7px 22px #dd754821}
+    /* 6 — CATÁLOGO: filtros, ofertas e cartões clicáveis. */
+    /* LINHA ORIGINAL 69: Define a aparência de .catalog, incluindo posicionamento, cores e medidas. */
+    .catalog {padding-bottom:50px}
+    /* LINHA ORIGINAL 70: Define a aparência de .filters, incluindo posicionamento, cores e medidas. */
+    .filters {display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px;align-items:center}
+    /* LINHA ORIGINAL 71: Define a aparência de .filters select,.filters label, incluindo posicionamento, cores e medidas. */
+    .filters select,.filters label {font-size:12px;font-weight:700}
+    /* LINHA ORIGINAL 72: Define a aparência de .filters select, incluindo posicionamento, cores e medidas. */
+    .filters select {background:white;border:1px solid var(--borda);border-radius:9px;padding:9px}
+    /* LINHA ORIGINAL 73: Define a aparência de .filters button, incluindo posicionamento, cores e medidas. */
+    .filters button {background:white;border:1px solid #dcdfe0;color:var(--escuro);border-radius:20px;padding:9px 13px;font-size:12px;font-weight:800}
+    /* LINHA ORIGINAL 74: Define a aparência de .filters button.active, incluindo posicionamento, cores e medidas. */
+    .filters button.active {background:var(--escuro);color:white}
+    /* LINHA ORIGINAL 75: Define a aparência de .filters .check, incluindo posicionamento, cores e medidas. */
+    .filters .check {display:flex;align-items:center;gap:5px}
+    /* LINHA ORIGINAL 76: Define a aparência de .count-text, incluindo posicionamento, cores e medidas. */
+    .count-text {font-size:12px;color:var(--cinza);margin-bottom:13px}
+    /* LINHA ORIGINAL 77: Define a aparência de .products, incluindo posicionamento, cores e medidas. */
+    .products {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    /* LINHA ORIGINAL 78: Define a aparência de .product, incluindo posicionamento, cores e medidas. */
+    .product {min-width:0;background:white;border:1px solid var(--borda);border-radius:15px;overflow:hidden;box-shadow:0 3px 14px #3043550a}
+    /* LINHA ORIGINAL 79: Define a aparência de .photo, incluindo posicionamento, cores e medidas. */
+    .photo {position:relative;aspect-ratio:1.1;background:#fff9f1;display:grid;place-items:center}
+    /* LINHA ORIGINAL 80: Define a aparência de .photo img, incluindo posicionamento, cores e medidas. */
+    .photo img {width:100%;height:100%;object-fit:contain;background:white}
+    /* LINHA ORIGINAL 81: Define a aparência de .missing, incluindo posicionamento, cores e medidas. */
+    .missing {display:grid;place-items:center;text-align:center;gap:5px;padding:15px;color:#856b4d;font-size:11px}
+    /* LINHA ORIGINAL 82: Define a aparência de .missing span, incluindo posicionamento, cores e medidas. */
+    .missing span {font-size:50px}
+    /* LINHA ORIGINAL 83: Define a aparência de .photolabel, incluindo posicionamento, cores e medidas. */
+    .photolabel {position:absolute;bottom:6px;left:6px;right:6px;width:fit-content;max-width:calc(100% - 12px);background:#fffffff0;border:1px solid #e3e5e1;border-radius:6px;padding:3px 6px;font-size:9px;font-weight:800;color:#327a68}
+    /* LINHA ORIGINAL 84: Define a aparência de .redtag, incluindo posicionamento, cores e medidas. */
+    .redtag {color:#b44d24;background:#ffe9d9;border-color:#ffcdb5}
+    /* LINHA ORIGINAL 85: Define a aparência de .fav, incluindo posicionamento, cores e medidas. */
+    .fav {position:absolute;top:9px;right:9px;background:white;border:1px solid #ece9e5;border-radius:50%;width:35px;height:35px;font-size:22px;color:#e0786a}
+    /* LINHA ORIGINAL 86: Define a aparência de .info, incluindo posicionamento, cores e medidas. */
+    .info {padding:13px}
+    /* LINHA ORIGINAL 87: Define a aparência de .info small, incluindo posicionamento, cores e medidas. */
+    .info small {display:block;color:#758492;font-size:10px;font-weight:750}
+    /* LINHA ORIGINAL 88: Define a aparência de .info h3, incluindo posicionamento, cores e medidas. */
+    .info h3 {min-height:45px;font-size:14px;margin:8px 0;color:var(--escuro);line-height:1.3}
+    /* LINHA ORIGINAL 89: Define a aparência de .stock, incluindo posicionamento, cores e medidas. */
+    .stock {font-size:11px;color:var(--verde)}
+    /* LINHA ORIGINAL 90: Define a aparência de .price, incluindo posicionamento, cores e medidas. */
+    .price {font-size:21px;color:var(--laranja);font-weight:900;margin:5px 0 10px}
+    /* LINHA ORIGINAL 91: Define a aparência de .actions, incluindo posicionamento, cores e medidas. */
+    .actions {display:flex;gap:5px}
+    /* LINHA ORIGINAL 92: Define a aparência de .actions button, incluindo posicionamento, cores e medidas. */
+    .actions button {flex:1;padding:10px 5px;font-size:11px;font-weight:800;border-radius:8px}
+    /* LINHA ORIGINAL 93: Define a aparência de .actions button:first-child, incluindo posicionamento, cores e medidas. */
+    .actions button:first-child {background:#f7f9f9;border:1px solid #e0e5e5;color:#3b5462}
+    /* LINHA ORIGINAL 94: Define a aparência de .actions button:last-child, incluindo posicionamento, cores e medidas. */
+    .actions button:last-child {border:0;color:white;background:var(--laranja)}
+    /* LINHA ORIGINAL 95: Define a aparência de .load, incluindo posicionamento, cores e medidas. */
+    .load {display:block;margin:20px auto 0;min-width:220px}
+    /* LINHA ORIGINAL 96: Define a aparência de .empty, incluindo posicionamento, cores e medidas. */
+    .empty {background:white;border-radius:14px;padding:27px;text-align:center;color:var(--cinza)}
+    /* 7 — RODAPÉ: apresentação da MOSS, sem venda verdadeira. */
+    /* LINHA ORIGINAL 98: Define a aparência de footer, incluindo posicionamento, cores e medidas. */
+    footer {background:#243e50;color:#e7edf2;padding:35px 0;font-size:12px}
+    /* LINHA ORIGINAL 99: Define a aparência de footer .foot, incluindo posicionamento, cores e medidas. */
+    footer .foot {display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+    /* LINHA ORIGINAL 100: Define a aparência de footer strong, incluindo posicionamento, cores e medidas. */
+    footer strong {font-size:20px;color:white}
+    /* LINHA ORIGINAL 101: Define a aparência de footer a, incluindo posicionamento, cores e medidas. */
+    footer a {color:#ffc7a8}
+    /* 8 — CARRINHO LATERAL E JANELAS. */
+    /* LINHA ORIGINAL 103: Define a aparência de .overlay, incluindo posicionamento, cores e medidas. */
+    .overlay {position:fixed;inset:0;background:#132533ad;z-index:19}
+    /* LINHA ORIGINAL 104: Define a aparência de .drawer, incluindo posicionamento, cores e medidas. */
+    .drawer {position:fixed;right:0;top:0;bottom:0;width:min(440px,100%);z-index:20;background:white;display:flex;flex-direction:column;box-shadow:-10px 0 50px #102b4433}
+    /* LINHA ORIGINAL 105: Define a aparência de .drawer-head, incluindo posicionamento, cores e medidas. */
+    .drawer-head {display:flex;align-items:center;justify-content:space-between;padding:17px;border-bottom:1px solid var(--borda)}
+    /* LINHA ORIGINAL 106: Define a aparência de .drawer-head h2, incluindo posicionamento, cores e medidas. */
+    .drawer-head h2 {margin:0;font-size:21px}
+    /* LINHA ORIGINAL 107: Define a aparência de .close, incluindo posicionamento, cores e medidas. */
+    .close {background:#fff1e6;border:0;border-radius:8px;padding:7px 11px}
+    /* LINHA ORIGINAL 108: Define a aparência de .cart-list, incluindo posicionamento, cores e medidas. */
+    .cart-list {overflow:auto;flex:1;padding:12px 17px}
+    /* LINHA ORIGINAL 109: Define a aparência de .cart-row, incluindo posicionamento, cores e medidas. */
+    .cart-row {padding:14px 0;border-bottom:1px solid #eee;display:grid;grid-template-columns:1fr auto;gap:7px}
+    /* LINHA ORIGINAL 110: Define a aparência de .cart-row small, incluindo posicionamento, cores e medidas. */
+    .cart-row small {color:var(--cinza);display:block}
+    /* LINHA ORIGINAL 111: Define a aparência de .cart-row button, incluindo posicionamento, cores e medidas. */
+    .cart-row button {border:1px solid #ddd;background:#fff;border-radius:6px;padding:3px 9px}
+    /* LINHA ORIGINAL 112: Define a aparência de .cart-foot, incluindo posicionamento, cores e medidas. */
+    .cart-foot {padding:18px;border-top:1px solid #ddd}
+    /* LINHA ORIGINAL 113: Define a aparência de dialog, incluindo posicionamento, cores e medidas. */
+    dialog {border:0;border-radius:18px;padding:0;width:min(550px,calc(100% - 24px));max-height:90vh;overflow:auto;box-shadow:0 25px 80px #152e4645;color:var(--texto)}
+    /* LINHA ORIGINAL 114: Define a aparência de dialog::backdrop, incluindo posicionamento, cores e medidas. */
+    dialog::backdrop {background:#152c3cb8}
+    /* LINHA ORIGINAL 115: Define a aparência de .dialog-body, incluindo posicionamento, cores e medidas. */
+    .dialog-body {padding:24px}
+    /* LINHA ORIGINAL 116: Define a aparência de .dialog-body h2, incluindo posicionamento, cores e medidas. */
+    .dialog-body h2 {margin:0 0 9px;color:var(--escuro)}
+    /* LINHA ORIGINAL 117: Define a aparência de .dialog-body p, incluindo posicionamento, cores e medidas. */
+    .dialog-body p {color:var(--cinza);font-size:13px}
+    /* LINHA ORIGINAL 118: Define a aparência de .dialog-body .photo, incluindo posicionamento, cores e medidas. */
+    .dialog-body .photo {height:215px;aspect-ratio:auto;border-radius:10px;margin-bottom:14px}
+    /* LINHA ORIGINAL 119: Define a aparência de .dialog-body label, incluindo posicionamento, cores e medidas. */
+    .dialog-body label {display:block;font-size:12px;font-weight:800;margin:11px 0}
+    /* LINHA ORIGINAL 120: Define a aparência de .dialog-body input,.dialog-body select, incluindo posicionamento, cores e medidas. */
+    .dialog-body input,.dialog-body select {display:block;width:100%;padding:11px;border:1px solid #d7dfe1;border-radius:9px;margin-top:5px}
+    /* LINHA ORIGINAL 121: Define a aparência de .buttons, incluindo posicionamento, cores e medidas. */
+    .buttons {display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+    /* LINHA ORIGINAL 122: Define a aparência de .buttons button, incluindo posicionamento, cores e medidas. */
+    .buttons button {flex:1}
+    /* 9 — PAINEL DE CADASTRO: aberto somente após a senha pública de teste. */
+    /* LINHA ORIGINAL 124: Define a aparência de .admin, incluindo posicionamento, cores e medidas. */
+    .admin {background:#edf2f4;padding:35px 0 50px}
+    /* LINHA ORIGINAL 125: Define a aparência de .admin h2, incluindo posicionamento, cores e medidas. */
+    .admin h2 {font-size:30px;color:var(--escuro);margin:0}
+    /* LINHA ORIGINAL 126: Define a aparência de .admin-grid, incluindo posicionamento, cores e medidas. */
+    .admin-grid {display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    /* LINHA ORIGINAL 127: Define a aparência de .panel, incluindo posicionamento, cores e medidas. */
+    .panel {background:white;padding:19px;border-radius:15px;border:1px solid #dbe3e8;min-width:0}
+    /* LINHA ORIGINAL 128: Define a aparência de .panel h3, incluindo posicionamento, cores e medidas. */
+    .panel h3 {margin:0 0 13px;color:var(--escuro)}
+    /* LINHA ORIGINAL 129: Define a aparência de .admin-head, incluindo posicionamento, cores e medidas. */
+    .admin-head {display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:17px}
+    /* LINHA ORIGINAL 130: Define a aparência de .warning, incluindo posicionamento, cores e medidas. */
+    .warning {background:#fff3db;border:1px solid #ebd7b2;padding:12px;border-radius:10px;margin:12px 0;font-size:12px}
+    /* LINHA ORIGINAL 131: Define a aparência de .tool-row, incluindo posicionamento, cores e medidas. */
+    .tool-row {display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+    /* LINHA ORIGINAL 132: Define a aparência de .tool-row button, incluindo posicionamento, cores e medidas. */
+    .tool-row button {border:1px solid #ced9de;border-radius:9px;background:white;padding:9px;font-size:12px}
+    /* LINHA ORIGINAL 133: Define a aparência de .admin-list, incluindo posicionamento, cores e medidas. */
+    .admin-list {max-height:500px;overflow:auto}
+    /* LINHA ORIGINAL 134: Define a aparência de .admin-item, incluindo posicionamento, cores e medidas. */
+    .admin-item {display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid #eee;font-size:12px}
+    /* LINHA ORIGINAL 135: Define a aparência de .admin-item small, incluindo posicionamento, cores e medidas. */
+    .admin-item small {color:var(--cinza);display:block}
+    /* LINHA ORIGINAL 136: Define a aparência de .admin-item button, incluindo posicionamento, cores e medidas. */
+    .admin-item button {border:1px solid #dfd7d2;border-radius:6px;background:#fff9f5;padding:6px;font-size:11px}
+    /* LINHA ORIGINAL 137: Define a aparência de .admin form, incluindo posicionamento, cores e medidas. */
+    .admin form {display:grid;gap:10px}
+    /* LINHA ORIGINAL 138: Define a aparência de .admin form label, incluindo posicionamento, cores e medidas. */
+    .admin form label {font-size:12px;font-weight:800;display:grid;gap:4px}
+    /* LINHA ORIGINAL 139: Define a aparência de .admin form input,.admin form textarea,.admin form select, incluindo posicionamento, cores e medidas. */
+    .admin form input,.admin form textarea,.admin form select {width:100%;padding:10px;border-radius:9px;border:1px solid #d3dfe2;font-size:13px}
+    /* LINHA ORIGINAL 140: Define a aparência de .admin form textarea, incluindo posicionamento, cores e medidas. */
+    .admin form textarea {min-height:65px;resize:vertical}
+    /* LINHA ORIGINAL 141: Define a aparência de .fields, incluindo posicionamento, cores e medidas. */
+    .fields {display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    /* LINHA ORIGINAL 142: Define a aparência de .admin-actions, incluindo posicionamento, cores e medidas. */
+    .admin-actions {display:flex;gap:8px;flex-wrap:wrap}
+    /* LINHA ORIGINAL 143: Define a aparência de .admin-actions button, incluindo posicionamento, cores e medidas. */
+    .admin-actions button {flex:1}
+    /* LINHA ORIGINAL 144: Define a aparência de #toast, incluindo posicionamento, cores e medidas. */
+    #toast {position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#183e4d;color:white;padding:12px 17px;border-radius:20px;z-index:40;font-size:12px;box-shadow:0 9px 20px #0002}
+    /* 10 — RESPONSIVIDADE: fica confortável também no Koder/iPhone. */
+    /* LINHA ORIGINAL 146: Adapta a disposição dos elementos às dimensões da tela, principalmente no celular. */
+    @media(max-width:900px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}.departments{grid-template-columns:repeat(4,1fr)}}
+    /* LINHA ORIGINAL 147: Adapta a disposição dos elementos às dimensões da tela, principalmente no celular. */
+    @media(max-width:640px){.head{flex-wrap:wrap;padding:10px 0;gap:8px}.brand{flex:1}.brand strong{font-size:22px}.brand-icon{width:39px;height:39px;font-size:19px}.search{order:3;flex-basis:100%}.hero{grid-template-columns:1fr}.hero-main{min-height:265px;padding:25px}.hero-art{font-size:60px}.hero-side{min-height:170px}.hero-side .visual{font-size:45px}.features{grid-template-columns:1fr}.departments{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.info{padding:10px}.info h3{font-size:12px}.price{font-size:17px}.admin-grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.hero h1{font-size:34px}}
+    /* LINHA ORIGINAL 148: Adapta a disposição dos elementos às dimensões da tela, principalmente no celular. */
+    @media(max-width:350px){.departments{grid-template-columns:repeat(2,1fr)}.square{width:34px;height:36px}.hero-art{display:none}}
+    /* LINHA ORIGINAL 149: Define a aparência de </style>, incluindo posicionamento, cores e medidas. */
+  </style>
+  <!-- LINHA ORIGINAL 150: Encerra as configurações da página. -->
+</head>
+  <!-- LINHA ORIGINAL 151: Inicia o conteúdo visível do site. -->
+<body>
+  <!-- FAIXA: avisa ao visitante que a loja é uma demonstração. -->
+  <!-- LINHA ORIGINAL 153: Organiza o conteúdo visível ou a estrutura da página. -->
+  <div class="notice">🧺 <b>DEMONSTRAÇÃO MOSS DIGITAL</b> — produtos e preços fictícios; fotografias de referência</div>
+  <!-- CABEÇALHO: campo de busca e botões principais. -->
+  <!-- LINHA ORIGINAL 155: Cria o cabeçalho com marca, busca e acesso às funções. -->
+  <header>
+  <!-- LINHA ORIGINAL 156: Organiza o conteúdo visível ou a estrutura da página. -->
+    <div class="wrap head">
+  <!-- LINHA ORIGINAL 157: Organiza o conteúdo visível ou a estrutura da página. -->
+      <a class="brand" href="#inicio" aria-label="Casa Mix início"><span class="brand-icon">CM</span><span><strong>CASA<em>MIX</em></strong><small>UTILIDADES & ACHADINHOS</small></span></a>
+  <!-- LINHA ORIGINAL 158: Cria um formulário para receber informações do usuário. -->
+      <form class="search" id="buscaForm"><label class="sr" for="busca">Buscar produtos</label><input id="busca" type="search" placeholder="Potes, organizadores, cozinha..."><button type="submit">Buscar</button></form>
+  <!-- LINHA ORIGINAL 159: Monta parte da interface do carrinho demonstrativo. -->
+      <div class="icons"><button type="button" class="square" id="favoritosBtn" title="Favoritos">♡</button><button type="button" class="square" id="adminBtn" title="Administrador">⚙</button><button type="button" class="square" id="carrinhoBtn" title="Carrinho">🛒<b id="qtdCarrinho" hidden>0</b></button></div>
+  <!-- LINHA ORIGINAL 160: Fecha o elemento HTML aberto anteriormente. -->
+    </div>
+  <!-- LINHA ORIGINAL 161: Cria a navegação pelas categorias da loja. -->
+    <nav class="wrap nav" aria-label="Categorias rápidas" id="menu"></nav>
+  <!-- LINHA ORIGINAL 162: Fecha o elemento HTML aberto anteriormente. -->
+  </header>
+  <!-- VITRINE: destaques comerciais da loja fictícia. -->
+  <!-- LINHA ORIGINAL 164: Inicia o conteúdo principal para os visitantes. -->
+  <main id="inicio">
+  <!-- LINHA ORIGINAL 165: Organiza o conteúdo visível ou a estrutura da página. -->
+    <div class="wrap hero">
+  <!-- LINHA ORIGINAL 166: Monta o destaque visual da loja e seus botões. -->
+      <div class="hero-main"><div><span class="eyebrow">Tudo para o seu dia a dia</span><h1>Sua casa cheia de <span>achadinhos!</span></h1><p>Potes, organizadores, cozinha, limpeza, banheiro e muito mais em uma única vitrine.</p><a href="#catalogo" class="primary" style="display:inline-block;margin-top:10px">Explorar produtos →</a></div><div class="hero-art" aria-hidden="true">🧺</div></div>
+  <!-- LINHA ORIGINAL 167: Monta o destaque visual da loja e seus botões. -->
+      <div class="hero-side"><div><span class="eyebrow">Pequenos detalhes</span><h2>Organização e praticidade para sua casa</h2></div><div class="visual" aria-hidden="true">🥡 🪴</div><a href="#departamentos" class="subbtn">Ver departamentos ↓</a></div>
+  <!-- LINHA ORIGINAL 168: Fecha o elemento HTML aberto anteriormente. -->
+    </div>
+  <!-- LINHA ORIGINAL 169: Reserva a área onde o JavaScript cria os departamentos. -->
+    <div class="wrap features"><div>🛍️ <strong>144 produtos de demonstração</strong>Veja diferentes tipos de utilidades.</div><div>🏠 <strong>12 departamentos</strong>Encontre por ambiente e finalidade.</div><div>🔐 <strong>Painel administrativo de teste</strong>Cadastre e altere produtos no navegador.</div></div>
+    <!-- DEPARTAMENTOS: botões construídos no JavaScript. -->
+  <!-- LINHA ORIGINAL 171: Reserva a área onde o JavaScript cria os departamentos. -->
+    <section class="wrap" id="departamentos"><div class="section-title"><div><span class="eyebrow">Encontre por categoria</span><h2>O que você procura hoje?</h2><p>Escolha um departamento para filtrar o catálogo.</p></div></div><div class="departments" id="departamentosGrid"></div></section>
+    <!-- CATÁLOGO: filtros, ordenação, produtos, fotos e ofertas. -->
+  <!-- LINHA ORIGINAL 173: Organiza a vitrine dos produtos, filtros e busca. -->
+    <section class="wrap catalog" id="catalogo"><div class="section-title"><div><span class="eyebrow">Vitrine de utilidades</span><h2>Explore nossos produtos</h2><p>Itens ilustrativos: confirme modelos e fotos com o fornecedor antes de vender.</p></div></div>
+  <!-- LINHA ORIGINAL 174: Cria um campo que o visitante pode preencher. -->
+      <div class="filters" id="filtros"><button type="button" data-cat="todos" class="active">Todos</button><button type="button" data-cat="favoritos">♡ Favoritos</button><button type="button" data-cat="ofertas">Ofertas</button><label class="check"><input id="soEstoque" type="checkbox"> Em estoque</label><label>Ordenar: <select id="ordenar"><option value="padrao">Padrão</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="nome">Nome A–Z</option></select></label></div>
+  <!-- LINHA ORIGINAL 175: Organiza o conteúdo visível ou a estrutura da página. -->
+      <p class="count-text" id="contador" role="status"></p>
+  <!-- LINHA ORIGINAL 176: Organiza o conteúdo visível ou a estrutura da página. -->
+      <div class="products" id="gradeProdutos"></div>
+  <!-- LINHA ORIGINAL 177: Organiza o conteúdo visível ou a estrutura da página. -->
+      <div class="empty" id="vazio" hidden>Nenhum produto encontrado. Limpe a busca ou escolha outra categoria.</div>
+  <!-- LINHA ORIGINAL 178: Cria um botão clicável para executar uma ação. -->
+      <button class="subbtn load" id="maisBtn" type="button">Mostrar mais produtos</button>
+  <!-- LINHA ORIGINAL 179: Fecha o elemento HTML aberto anteriormente. -->
+    </section>
+  <!-- LINHA ORIGINAL 180: Fecha o elemento HTML aberto anteriormente. -->
+  </main>
+  <!-- RODAPÉ: esta é uma demonstração comercial da MOSS. -->
+  <!-- LINHA ORIGINAL 182: Exibe os dados finais e o contato comercial da MOSS. -->
+  <footer><div class="wrap foot"><div><strong>CASA MIX</strong><p>Utilidades & Achadinhos — uma demonstração de loja virtual.</p></div><div>Quer um site assim para seu negócio?<p><a href="https://wa.me/5511942038103?text=Ola!%20Gostaria%20de%20uma%20loja%20como%20a%20Casa%20Mix" target="_blank" rel="noopener noreferrer">💬 Falar com a MOSS Digital</a></p></div></div></footer>
+  <!-- CARRINHO: não realiza cobrança real. -->
+  <!-- LINHA ORIGINAL 184: Monta parte da interface do carrinho demonstrativo. -->
+  <div class="overlay" id="fundoCarrinho" hidden></div>
+  <!-- LINHA ORIGINAL 185: Monta parte da interface do carrinho demonstrativo. -->
+  <aside class="drawer" id="painelCarrinho" hidden aria-label="Carrinho ilustrativo">
+  <!-- LINHA ORIGINAL 186: Monta parte da interface do carrinho demonstrativo. -->
+    <div class="drawer-head"><h2>🛒 Meu carrinho</h2><button class="close" id="fecharCarrinho" type="button">✕</button></div>
+  <!-- LINHA ORIGINAL 187: Monta parte da interface do carrinho demonstrativo. -->
+    <div class="cart-list" id="listaCarrinho"></div>
+  <!-- LINHA ORIGINAL 188: Monta parte da interface do carrinho demonstrativo. -->
+    <div class="cart-foot"><h3 id="totalCarrinho">Total: R$ 0,00</h3><button type="button" id="copiarPedido" class="primary" style="width:100%">Copiar lista de teste</button><button type="button" class="subbtn" id="limparCarrinho" style="width:100%;margin-top:8px">Limpar carrinho</button><small>Este carrinho é apenas uma simulação, sem pagamentos.</small></div>
+  <!-- LINHA ORIGINAL 189: Fecha o elemento HTML aberto anteriormente. -->
+  </aside>
+  <!-- DETALHES: mostra variação e quantidade para o item clicado. -->
+  <!-- LINHA ORIGINAL 191: Cria uma janela que se abre sobre a página. -->
+  <dialog id="produtoDialog"><div class="dialog-body" id="conteudoProduto"></div></dialog>
+  <!-- LOGIN: senha pública somente para apresentar o funcionamento. -->
+  <!-- LINHA ORIGINAL 193: Cria uma janela que se abre sobre a página. -->
+  <dialog id="loginDialog"><div class="dialog-body"><h2>🔐 Área do lojista</h2><p>Entrada demonstrativa. Não insira dados reais de clientes.</p><form id="loginForm"><label>Usuário<input id="loginUsuario" autocomplete="off" required></label><label>Senha<input id="loginSenha" type="password" autocomplete="off" required></label><p id="erroLogin" style="color:#ad3939"></p><div class="buttons"><button class="primary" type="submit">Entrar</button><button type="button" id="cancelarLogin" class="subbtn">Cancelar</button></div></form><p class="warning">Para testar: usuário <b>demo</b> e senha <b>MOSS2026</b>. O código é público e não oferece segurança real.</p></div></dialog>
+  <!-- ADMINISTRADOR: produtos cadastrados, formulário e importação/exportação. -->
+  <!-- LINHA ORIGINAL 195: Organiza a área do administrador e suas opções. -->
+  <section class="admin" id="adminArea" hidden><div class="wrap"><div class="admin-head"><div><span class="eyebrow">Administração demonstrativa</span><h2>Gerenciar produtos</h2></div><button type="button" class="subbtn" id="sairAdmin">↪ Sair</button></div>
+  <!-- LINHA ORIGINAL 196: Organiza o conteúdo visível ou a estrutura da página. -->
+    <p class="warning">⚠️ Tudo fica salvo somente neste navegador. A senha de teste não protege o catálogo. Para uso comercial, configure um backend com autenticação e permissões.</p>
+  <!-- LINHA ORIGINAL 197: Cria um campo que o visitante pode preencher. -->
+    <div class="tool-row"><button type="button" id="novoBtn">＋ Novo produto</button><button type="button" id="exportarBtn">↓ Exportar JSON</button><button type="button" id="importarBtn">↑ Importar JSON</button><button type="button" id="restaurarBtn">↻ Restaurar 144 produtos</button><input type="file" id="arquivoJson" accept=".json,application/json" hidden></div>
+  <!-- LINHA ORIGINAL 198: Organiza a área do administrador e suas opções. -->
+    <div class="admin-grid"><div class="panel"><h3>Produtos cadastrados <span id="totalAdmin"></span></h3><input id="buscarAdmin" placeholder="Buscar no cadastro..." style="width:100%;padding:10px;border:1px solid #d3dfe2;border-radius:9px;margin-bottom:12px"><div class="admin-list" id="listaAdmin"></div></div>
+  <!-- LINHA ORIGINAL 199: Organiza a área do administrador e suas opções. -->
+      <div class="panel"><h3 id="tituloForm">Cadastrar produto</h3><form id="formAdmin">
+  <!-- LINHA ORIGINAL 200: Cria um campo que o visitante pode preencher. -->
+        <input id="produtoId" type="hidden"><label>Nome *<input id="nomeProduto" maxlength="90" required></label>
+  <!-- LINHA ORIGINAL 201: Cria um campo que o visitante pode preencher. -->
+        <div class="fields"><label>Departamento *<select id="categoriaProduto" required></select></label><label>Preço (R$) *<input id="precoProduto" type="number" min="0.01" step="0.01" required></label></div>
+  <!-- LINHA ORIGINAL 202: Cria um campo que o visitante pode preencher. -->
+        <div class="fields"><label>Estoque *<input id="estoqueProduto" type="number" min="0" step="1" required></label><label>Variações (separadas por vírgula)<input id="variantesProduto" placeholder="Branco, Azul, Verde"></label></div>
+  <!-- LINHA ORIGINAL 203: Cria um campo que o visitante pode preencher. -->
+        <label>Descrição<input id="descricaoProduto" maxlength="240"></label><label>Link HTTPS da foto<input id="fotoProduto" type="url" placeholder="https://..."></label><label>Ou fotografia do celular<input id="arquivoFoto" type="file" accept="image/jpeg,image/png,image/webp"></label>
+  <!-- LINHA ORIGINAL 204: Organiza a área do administrador e suas opções. -->
+        <div class="admin-actions"><button class="primary" type="submit">Salvar produto</button><button class="subbtn" type="button" id="cancelarEdicao">Cancelar edição</button></div>
+  <!-- LINHA ORIGINAL 205: Fecha o elemento HTML aberto anteriormente. -->
+      </form></div></div></div></section>
+  <!-- NOTIFICAÇÃO: exibe mensagens rápidas de sucesso ou erro. -->
+  <!-- LINHA ORIGINAL 207: Organiza o conteúdo visível ou a estrutura da página. -->
+  <div id="toast" hidden role="status"></div>
+  <!-- LINHA ORIGINAL 208: Inicia o JavaScript, responsável pelos recursos interativos. -->
+  <script>
+  // 11 — DADOS DO CATÁLOGO: 12 departamentos, 12 produtos em cada um = 144.
+  // As 84 fotos são referências visuais do tipo de objeto, não mercadoria exata.
+  // LINHA ORIGINAL 211: Define os 12 departamentos e os 144 itens com nomes, preços e códigos de fotos Pexels.
+  const grupos = [{"id":"potes","nome":"Potes & Tampas","icone":"🥡","nomes":"Pote retangular 650 ml|Pote quadrado 1 litro|Pote redondo 500 ml|Pote hermético 1,2 L|Conjunto 3 potes empilháveis|Conjunto 5 potes coloridos|Porta-mantimentos 2 L|Pote para cereal 2,5 L|Marmita com divisórias|Pote para freezer 1,8 L|Organizador de geladeira 1 L|Kit 10 potinhos multiuso","fotos":"27438824,13969247,13968352,13969136,13968355,13968302,13969212,34005910,-,13968353,-,13968350","precos":"9.9,44.9,9.9,49.9,14.9,49.9,17.9,59.9,17.9,69.9,24.9,69.9"},{"id":"organizacao","nome":"Organização","icone":"🧺","nomes":"Cesto organizador pequeno|Cesto empilhável médio|Caixa organizadora 15 L|Caixa com tampa 25 L|Kit 4 cestos de prateleira|Organizador de gaveta 6 peças|Colmeia organizadora 12 nichos|Caixa transparente para sapatos|Porta-trecos de mesa|Organizador multiuso com alças|Suporte para controle remoto|Cesto aramado estilo industrial","fotos":"-,36946571,36946571,36946571,-,9646744,36931458,36946571,33619266,-,-,29268308","precos":"24.9,69.9,24.9,79.9,29.9,79.9,34.9,89.9,34.9,99.9,39.9,99.9"},{"id":"cozinha","nome":"Utensílios de cozinha","icone":"🍴","nomes":"Escorredor de macarrão|Concha de silicone|Espátula vazada|Kit 6 utensílios coloridos|Tábua de corte de plástico|Ralador quatro faces|Abridor multiuso|Funil dobrável|Forma de gelo flexível|Porta-talheres de gaveta|Peneira de cozinha|Copo medidor 1 litro","fotos":"30982932,-,-,3722564,5217777,13656905,-,8450104,8287262,9646744,-,8478062","precos":"39.9,99.9,39.9,9.9,44.9,9.9,49.9,14.9,49.9,17.9,59.9,17.9"},{"id":"limpeza","nome":"Limpeza","icone":"🧽","nomes":"Kit 3 panos de microfibra|Escova para piso|Borrifador 500 ml|Rodo compacto de pia|Esponja multiuso 5 unidades|Balde plástico 10 litros|Pá de lixo com cabo|Escovinha para cantos|Porta-detergente com esponja|Luva de limpeza reutilizável|Cesto para produtos de limpeza|Vassourinha de mesa","fotos":"27937528,5777344,28576621,-,28576626,40756769,3972703,9462652,-,28576634,3177257,3972703","precos":"59.9,17.9,59.9,24.9,69.9,24.9,79.9,29.9,79.9,34.9,89.9,34.9"},{"id":"banheiro","nome":"Banheiro","icone":"🛁","nomes":"Porta-escovas de dentes|Saboneteira com tampa|Dispenser de sabonete 400 ml|Cesto de banheiro 6 litros|Tapete antiderrapante|Ganchos adesivos 6 peças|Organizador para box|Porta-papel higiênico|Lixeira com pedal 5 L|Porta-cotonetes transparente|Pote para algodão|Kit acessórios para pia","fotos":"4992457,-,8054406,3958210,-,-,-,3963086,7282001,-,-,4992457","precos":"89.9,34.9,89.9,39.9,99.9,39.9,9.9,44.9,9.9,49.9,14.9,49.9"},{"id":"lavanderia","nome":"Lavanderia","icone":"🧼","nomes":"Cesto de roupas 35 L|Pregadores coloridos 24 un.|Varal retrátil compacto|Bacia plástica 8 L|Balde dobrável 10 L|Organizador de sabão em pó|Pote para pregadores|Escova lava-roupas|Cesto vazado com tampa|Cabides de plástico 12 un.|Suporte para ferro|Kit de sacos para lavagem","fotos":"13643131,110877,-,9207815,-,-,110877,-,13643131,39518,-,-","precos":"14.9,49.9,14.9,59.9,17.9,59.9,24.9,69.9,24.9,79.9,29.9,79.9"},{"id":"mesa","nome":"Mesa & Copos","icone":"🥤","nomes":"Jogo de copos 6 peças|Copo térmico com tampa|Jarra de plástico 2 L|Bandeja retangular|Travessa colorida 2 L|Suporte para guardanapos|Jogo de bowls 4 peças|Porta-condimentos 3 potes|Garrafa de água 750 ml|Conjunto de canecas 4 un.|Prato raso plástico 6 un.|Pote açucareiro com colher","fotos":"9058851,-,14207017,6800929,-,-,7674568,1516423,18381807,7674572,-,-","precos":"29.9,79.9,29.9,89.9,34.9,89.9,39.9,99.9,39.9,9.9,44.9,9.9"},{"id":"decoracao","nome":"Decoração","icone":"🪴","nomes":"Vaso decorativo pequeno|Vaso para suculenta|Porta-retrato 10x15|Organizador de bijuterias|Cesto de fibra decorativo|Caixa para lembranças|Bandeja de penteadeira|Suporte de mesa para celular|Cachepô colorido|Porta-velas decorativo|Mini relógio de mesa|Caixa organizadora estampada","fotos":"15239212,22610759,4464204,-,2113125,7410461,-,16017173,19446503,35710033,-,-","precos":"44.9,9.9,44.9,14.9,49.9,14.9,59.9,17.9,59.9,24.9,69.9,24.9"},{"id":"papelaria","nome":"Papelaria & Escritório","icone":"✏️","nomes":"Porta-lápis com divisórias|Caixa para documentos|Clipes coloridos 100 un.|Bloco de notas adesivas|Organizador de cabos|Suporte para livros|Estojo com zíper|Kit etiquetas adesivas|Organizador de cartões|Pasta sanfonada A4|Régua e esquadros|Caixinha organizadora de mesa","fotos":"33619266,-,6193147,33344612,-,-,3731255,7889235,-,-,6608749,33619266","precos":"69.9,24.9,69.9,29.9,79.9,29.9,89.9,34.9,89.9,39.9,99.9,39.9"},{"id":"jardim","nome":"Jardim & Plantas","icone":"🌿","nomes":"Regador pequeno 1,5 L|Vaso de plástico 18 cm|Cachepô com drenagem|Pá de jardinagem|Borrifador para plantas|Conjunto de vasos 3 un.|Prato para vaso 20 cm|Organizador de ferramentas|Luvas de jardinagem|Sementeira plástica 12 células|Suporte para vasinhos|Ganchos para jardim 4 un.","fotos":"8989343,-,-,18222297,28576621,15239212,-,-,7728968,7728959,-,-","precos":"99.9,39.9,99.9,44.9,9.9,44.9,14.9,49.9,14.9,59.9,17.9,59.9"},{"id":"festas","nome":"Festas & Presentes","icone":"🎉","nomes":"Potes para lembrancinhas 10 un.|Forminhas de doce 50 un.|Copos de festa 20 un.|Pratinhos coloridos 20 un.|Bandeja de doces 3 andares|Sacolinhas para presente 10 un.|Laços decorativos 12 un.|Caixa para cupcake 6 un.|Porta-doces com tampa|Kit decoração de mesa|Canudos reutilizáveis 12 un.|Potes de bombom 6 un.","fotos":"-,-,8015156,8014831,10585075,7986138,6102496,-,-,16220886,7262894,-","precos":"17.9,59.9,17.9,69.9,24.9,69.9,29.9,79.9,29.9,89.9,34.9,89.9"},{"id":"pets","nome":"Cantinho Pet","icone":"🐾","nomes":"Pote de ração com tampa|Comedouro duplo|Garrafinha portátil pet|Organizador de brinquedos pet|Tapete para potinhos|Escova de pelos|Pote para petiscos 1 L|Pá higiênica plástica|Porta-saquinhos passeio|Brinquedo bolinha flexível|Cesto para acessórios pet|Mini caixa para transporte de itens","fotos":"-,-,-,-,-,-,-,-,-,26221069,-,-","precos":"34.9,89.9,34.9,99.9,39.9,99.9,44.9,9.9,44.9,14.9,49.9,14.9"}];
+  // Transforma cada departamento em uma coleção de 12 produtos.
+  // LINHA ORIGINAL 213: Converte cada departamento em objetos individuais de produto.
+  const originais = grupos.flatMap((grupo,indice) => {
+  // LINHA ORIGINAL 214: Declara um valor ou referência utilizado nas funções da loja.
+    const nomes=grupo.nomes.split('|');
+  // LINHA ORIGINAL 215: Declara um valor ou referência utilizado nas funções da loja.
+    const fotos=grupo.fotos.split(',');
+  // LINHA ORIGINAL 216: Declara um valor ou referência utilizado nas funções da loja.
+    const precos=grupo.precos.split(',');
+  // LINHA ORIGINAL 217: Devolve o resultado calculado para ser utilizado em outra parte do sistema.
+    return nomes.map((nome,j)=>({
+  // LINHA ORIGINAL 218: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      id:indice*12+j+1,
+  // LINHA ORIGINAL 219: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      nome,
+  // LINHA ORIGINAL 220: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      cat:grupo.id,
+  // LINHA ORIGINAL 221: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      preco:Number(precos[j]),
+  // LINHA ORIGINAL 222: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      estoque:7+(j*5)%40,
+  // LINHA ORIGINAL 223: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      variacoes:['Único','Branco','Transparente'],
+  // LINHA ORIGINAL 224: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      desc:`${grupo.nome} — exemplo de utilidade doméstica. Modelo, dimensões e preço ilustrativos.`,
+  // LINHA ORIGINAL 225: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      foto:fotos[j]==='-'?'':`https://images.pexels.com/photos/${fotos[j]}/pexels-photo-${fotos[j]}.jpeg?auto=compress&cs=tinysrgb&w=700`,
+  // LINHA ORIGINAL 226: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      referencia: fotos[j]!=='-'
+  // LINHA ORIGINAL 227: Encerra o bloco de instruções iniciado anteriormente.
+    }));
+  // LINHA ORIGINAL 228: Encerra o bloco de instruções iniciado anteriormente.
+  });
+  // 12 — FUNÇÕES CURTAS: buscar elementos, formatar preço e limpar texto perigoso.
+  // LINHA ORIGINAL 230: Declara um valor ou referência utilizado nas funções da loja.
+  const $=id=>document.getElementById(id);
+  // LINHA ORIGINAL 231: Declara um valor ou referência utilizado nas funções da loja.
+  const dinheiro=n=>Number(n).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  // LINHA ORIGINAL 232: Declara um valor ou referência utilizado nas funções da loja.
+  const seguro=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  // LINHA ORIGINAL 233: Declara um valor ou referência utilizado nas funções da loja.
+  const chave='casamix-koder-produtos-v1',chaveCart='casamix-koder-carrinho-v1',chaveFav='casamix-koder-favoritos-v1';
+  // Evita erro se o navegador não permitir armazenamento.
+  // LINHA ORIGINAL 235: Lê dados salvos no navegador e usa valor padrão se necessário.
+  function ler(chave,padrao){try{return JSON.parse(localStorage.getItem(chave))??padrao}catch{return padrao}}
+  // LINHA ORIGINAL 236: Grava dados no navegador e avisa se não for possível.
+  function gravar(chave,valor){try{localStorage.setItem(chave,JSON.stringify(valor));return true}catch{aviso('Sem espaço para salvar: exporte os produtos.');return false}}
+  // LINHA ORIGINAL 237: Declara um valor ou referência utilizado nas funções da loja.
+  const armazenados=ler(chave,null);
+  // LINHA ORIGINAL 238: Cria variáveis de estado que podem mudar durante o uso da loja.
+  let produtos=Array.isArray(armazenados)?armazenados:originais.map(p=>({...p}));
+  // LINHA ORIGINAL 239: Cria variáveis de estado que podem mudar durante o uso da loja.
+  let carrinho=Array.isArray(ler(chaveCart,[]))?ler(chaveCart,[]):[];
+  // LINHA ORIGINAL 240: Cria variáveis de estado que podem mudar durante o uso da loja.
+  let favoritos=new Set(ler(chaveFav,[]));
+  // LINHA ORIGINAL 241: Cria variáveis de estado que podem mudar durante o uso da loja.
+  let filtro='todos',termo='',pagina=24,acessoAdmin=false,produtoAberto=null,fotoUpload='';
+  // LINHA ORIGINAL 242: Mostra uma mensagem rápida ao usuário.
+  function aviso(msg){const e=$('toast');e.textContent=msg;e.hidden=false;clearTimeout(window.msgTempo);window.msgTempo=setTimeout(()=>e.hidden=true,2700)}
+  // LINHA ORIGINAL 243: Salva catálogo, carrinho e favoritos.
+  function salvar(){gravar(chave,produtos);gravar(chaveCart,carrinho);gravar(chaveFav,[...favoritos])}
+  // 13 — FOTOS: mostra imagem real de referência ou aviso de fotografia pendente.
+  // LINHA ORIGINAL 245: Monta a imagem do item ou identifica foto pendente.
+  function fotoHtml(p){
+  // LINHA ORIGINAL 246: Declara um valor ou referência utilizado nas funções da loja.
+    const img=p.foto&&(/^(https:\/\/|data:image\/(jpeg|png|webp);base64,)/i).test(p.foto);
+  // LINHA ORIGINAL 247: Declara um valor ou referência utilizado nas funções da loja.
+    const grupo=grupos.find(g=>g.id===p.cat);
+  // LINHA ORIGINAL 248: Declara um valor ou referência utilizado nas funções da loja.
+    const credito=p.referencia?'Foto real de referência':'Foto pendente';
+  // LINHA ORIGINAL 249: Devolve o resultado calculado para ser utilizado em outra parte do sistema.
+    return `<div class="photo">${img?`<img loading="lazy" src="${seguro(p.foto)}" alt="Imagem de referência para ${seguro(p.nome)}" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><div class="missing" hidden><span>${grupo?.icone||'🏠'}</span>Foto indisponível</div>`:`<div class="missing"><span>${grupo?.icone||'🏠'}</span>Foto pendente</div>`}<span class="photolabel ${!img?'redtag':''}">${credito}</span></div>`;
+  // LINHA ORIGINAL 250: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // 14 — DEPARTAMENTOS: cria os menus e cartões clicáveis.
+  // LINHA ORIGINAL 252: Desenha menus e categorias com base nos grupos.
+  function departamentos(){
+  // LINHA ORIGINAL 253: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('menu').innerHTML=grupos.slice(0,7).map(g=>`<button type="button" data-menu="${g.id}">${g.nome}</button>`).join('');
+  // LINHA ORIGINAL 254: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('departamentosGrid').innerHTML=grupos.map(g=>`<button type="button" class="department" data-menu="${g.id}"><span>${g.icone}</span>${g.nome}</button>`).join('');
+  // LINHA ORIGINAL 255: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('categoriaProduto').innerHTML=grupos.map(g=>`<option value="${g.id}">${g.nome}</option>`).join('');
+  // LINHA ORIGINAL 256: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // Escuta os botões de departamento, mesmo que tenham sido criados depois.
+  // LINHA ORIGINAL 258: Associa um clique ou mudança do usuário à ação correspondente.
+  document.addEventListener('click',e=>{
+  // LINHA ORIGINAL 259: Declara um valor ou referência utilizado nas funções da loja.
+    const dept=e.target.closest('[data-menu]');
+  // LINHA ORIGINAL 260: Confere uma condição antes de executar o próximo passo.
+    if(dept){filtro=dept.dataset.menu;pagina=24;atualizarTudo();$('catalogo').scrollIntoView()}
+  // LINHA ORIGINAL 261: Encerra o bloco de instruções iniciado anteriormente.
+  });
+  // 15 — FILTROS: procura por nome, departamento, ofertas e estoque.
+  // LINHA ORIGINAL 263: Seleciona e ordena os produtos conforme busca e filtros.
+  function filtrados(){
+  // LINHA ORIGINAL 264: Cria variáveis de estado que podem mudar durante o uso da loja.
+    let lista=produtos.filter(p=>{
+  // LINHA ORIGINAL 265: Declara um valor ou referência utilizado nas funções da loja.
+      const nome=(p.nome+' '+p.desc).toLocaleLowerCase('pt-BR');
+  // LINHA ORIGINAL 266: Declara um valor ou referência utilizado nas funções da loja.
+      const cat=filtro==='todos'||filtro===p.cat||(filtro==='favoritos'&&favoritos.has(p.id))||(filtro==='ofertas'&&p.id%7===0);
+  // LINHA ORIGINAL 267: Devolve o resultado calculado para ser utilizado em outra parte do sistema.
+      return cat&&nome.includes(termo)&&(!$('soEstoque').checked||p.estoque>0);
+  // LINHA ORIGINAL 268: Encerra o bloco de instruções iniciado anteriormente.
+    });
+  // LINHA ORIGINAL 269: Declara um valor ou referência utilizado nas funções da loja.
+    const ordem=$('ordenar').value;
+  // LINHA ORIGINAL 270: Confere uma condição antes de executar o próximo passo.
+    if(ordem==='menor')lista.sort((a,b)=>a.preco-b.preco);
+  // LINHA ORIGINAL 271: Confere uma condição antes de executar o próximo passo.
+    if(ordem==='maior')lista.sort((a,b)=>b.preco-a.preco);
+  // LINHA ORIGINAL 272: Confere uma condição antes de executar o próximo passo.
+    if(ordem==='nome')lista.sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
+  // LINHA ORIGINAL 273: Devolve o resultado calculado para ser utilizado em outra parte do sistema.
+    return lista;
+  // LINHA ORIGINAL 274: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // LINHA ORIGINAL 275: Atualiza a vitrine, os contadores e o visual dos cartões.
+  function atualizarTudo(){
+  // LINHA ORIGINAL 276: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    document.querySelectorAll('[data-cat]').forEach(b=>b.classList.toggle('active',b.dataset.cat===filtro));
+  // LINHA ORIGINAL 277: Declara um valor ou referência utilizado nas funções da loja.
+    const lista=filtrados(),exibir=lista.slice(0,pagina);
+  // LINHA ORIGINAL 278: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('contador').textContent=`Exibindo ${exibir.length} de ${lista.length} produtos encontrados.`;
+  // LINHA ORIGINAL 279: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('vazio').hidden=lista.length>0;
+  // LINHA ORIGINAL 280: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('maisBtn').hidden=lista.length<=pagina;
+    // Cada card contém fotografia, nome, valor, favorito, detalhes e adicionar.
+  // LINHA ORIGINAL 282: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('gradeProdutos').innerHTML=exibir.map(p=>`<article class="product">${fotoHtml(p)}<div class="info"><small>${seguro(grupos.find(g=>g.id===p.cat)?.nome||'Utilidades')}</small><h3>${seguro(p.nome)}</h3><div class="stock">${p.estoque>0?'● Em estoque (demo)':'● Sem estoque (demo)'}</div><div class="price">${dinheiro(p.preco)}</div><div class="actions"><button data-ver="${p.id}">Detalhes</button><button data-add="${p.id}" ${p.estoque<1?'disabled':''}>＋ Carrinho</button></div></div><button class="fav" data-fav="${p.id}" aria-label="Favoritar">${favoritos.has(p.id)?'♥':'♡'}</button></article>`).join('');
+  // LINHA ORIGINAL 283: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('qtdCarrinho').textContent=carrinho.reduce((n,p)=>n+p.qtd,0);
+  // LINHA ORIGINAL 284: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('qtdCarrinho').hidden=carrinho.length===0;
+  // LINHA ORIGINAL 285: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // Busca feita no formulário e seleção de filtros.
+  // LINHA ORIGINAL 287: Associa um clique ou mudança do usuário à ação correspondente.
+  $('buscaForm').addEventListener('submit',e=>{e.preventDefault();termo=$('busca').value.trim().toLocaleLowerCase('pt-BR');pagina=24;atualizarTudo();$('catalogo').scrollIntoView()});
+  // LINHA ORIGINAL 288: Associa um clique ou mudança do usuário à ação correspondente.
+  document.querySelectorAll('[data-cat]').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.cat;pagina=24;atualizarTudo()}));
+  // LINHA ORIGINAL 289: Associa um clique ou mudança do usuário à ação correspondente.
+  $('ordenar').addEventListener('change',atualizarTudo);
+  // LINHA ORIGINAL 290: Associa um clique ou mudança do usuário à ação correspondente.
+  $('soEstoque').addEventListener('change',atualizarTudo);
+  // LINHA ORIGINAL 291: Associa um clique ou mudança do usuário à ação correspondente.
+  $('maisBtn').addEventListener('click',()=>{pagina+=24;atualizarTudo()});
+  // LINHA ORIGINAL 292: Associa um clique ou mudança do usuário à ação correspondente.
+  $('favoritosBtn').addEventListener('click',()=>{filtro='favoritos';pagina=24;atualizarTudo();$('catalogo').scrollIntoView()});
+  // 16 — DETALHES: abre uma janela com a escolha de variações.
+  // LINHA ORIGINAL 294: Abre os detalhes e opções do produto selecionado.
+  function abrirProduto(id){
+  // LINHA ORIGINAL 295: Declara um valor ou referência utilizado nas funções da loja.
+    const p=produtos.find(x=>x.id===id);if(!p)return;
+  // LINHA ORIGINAL 296: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    produtoAberto=p.id;
+  // LINHA ORIGINAL 297: Declara um valor ou referência utilizado nas funções da loja.
+    const variacoes=Array.isArray(p.variacoes)?p.variacoes:['Único'];
+  // LINHA ORIGINAL 298: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('conteudoProduto').innerHTML=`${fotoHtml(p)}<h2 style="margin-top:15px">${seguro(p.nome)}</h2><p>${seguro(p.desc)}</p><div class="price">${dinheiro(p.preco)}</div><label>Variação<select id="variacaoAberta">${variacoes.map(v=>`<option>${seguro(v)}</option>`).join('')}</select></label><label>Quantidade<input id="quantidadeAberta" type="number" min="1" max="${p.estoque}" value="1"></label><div class="buttons"><button type="button" class="primary" id="adicionarAberto">Adicionar ao carrinho</button><button type="button" class="subbtn" id="fecharDetalhes">Fechar</button></div>`;
+  // LINHA ORIGINAL 299: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('produtoDialog').showModal();
+  // LINHA ORIGINAL 300: Associa um clique ou mudança do usuário à ação correspondente.
+    $('fecharDetalhes').onclick=()=>$('produtoDialog').close();
+  // LINHA ORIGINAL 301: Associa um clique ou mudança do usuário à ação correspondente.
+    $('adicionarAberto').onclick=()=>{adicionar(p.id,$('variacaoAberta').value,Number($('quantidadeAberta').value));$('produtoDialog').close()};
+  // LINHA ORIGINAL 302: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // Ações dos cartões: favorito, detalhes e carrinho.
+  // LINHA ORIGINAL 304: Associa um clique ou mudança do usuário à ação correspondente.
+  $('gradeProdutos').addEventListener('click',e=>{
+  // LINHA ORIGINAL 305: Declara um valor ou referência utilizado nas funções da loja.
+    const fav=e.target.closest('[data-fav]'),ver=e.target.closest('[data-ver]'),add=e.target.closest('[data-add]');
+  // LINHA ORIGINAL 306: Confere uma condição antes de executar o próximo passo.
+    if(fav){const id=Number(fav.dataset.fav);favoritos.has(id)?favoritos.delete(id):favoritos.add(id);salvar();atualizarTudo()}
+  // LINHA ORIGINAL 307: Confere uma condição antes de executar o próximo passo.
+    if(ver)abrirProduto(Number(ver.dataset.ver));
+  // LINHA ORIGINAL 308: Confere uma condição antes de executar o próximo passo.
+    if(add)adicionar(Number(add.dataset.add));
+  // LINHA ORIGINAL 309: Encerra o bloco de instruções iniciado anteriormente.
+  });
+  // LINHA ORIGINAL 310: Associa um clique ou mudança do usuário à ação correspondente.
+  $('produtoDialog').addEventListener('click',e=>{if(e.target===$('produtoDialog'))$('produtoDialog').close()});
+  // 17 — CARRINHO: adiciona, remove e muda quantidades.
+  // LINHA ORIGINAL 312: Coloca um produto e quantidade no carrinho.
+  function adicionar(id,variacao='Único',quantidade=1){
+  // LINHA ORIGINAL 313: Declara um valor ou referência utilizado nas funções da loja.
+    const p=produtos.find(x=>x.id===id);if(!p||p.estoque<1)return aviso('Produto indisponível.');
+  // LINHA ORIGINAL 314: Declara um valor ou referência utilizado nas funções da loja.
+    const q=Math.max(1,Math.min(99,Number(quantidade)||1));
+  // LINHA ORIGINAL 315: Declara um valor ou referência utilizado nas funções da loja.
+    const item=carrinho.find(x=>x.id===id&&x.variacao===variacao);
+  // LINHA ORIGINAL 316: Confere uma condição antes de executar o próximo passo.
+    if(item)item.qtd=Math.min(p.estoque,item.qtd+q);
+  // LINHA ORIGINAL 317: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    else carrinho.push({id,variacao,qtd:Math.min(p.estoque,q)});
+  // LINHA ORIGINAL 318: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    salvar();atualizarTudo();mostrarCarrinho();aviso('Produto adicionado!');
+  // LINHA ORIGINAL 319: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // LINHA ORIGINAL 320: Mostra o painel lateral do carrinho.
+  function mostrarCarrinho(){
+  // LINHA ORIGINAL 321: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('fundoCarrinho').hidden=false;$('painelCarrinho').hidden=false;renderCarrinho();
+  // LINHA ORIGINAL 322: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // LINHA ORIGINAL 323: Fecha o painel lateral do carrinho.
+  function fecharCarrinho(){$('fundoCarrinho').hidden=true;$('painelCarrinho').hidden=true}
+  // LINHA ORIGINAL 324: Desenha itens e total no carrinho.
+  function renderCarrinho(){
+  // LINHA ORIGINAL 325: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    carrinho=carrinho.filter(x=>produtos.some(p=>p.id===x.id));
+  // LINHA ORIGINAL 326: Cria variáveis de estado que podem mudar durante o uso da loja.
+    let total=0;
+  // LINHA ORIGINAL 327: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('listaCarrinho').innerHTML=carrinho.length?carrinho.map((c,i)=>{
+  // LINHA ORIGINAL 328: Declara um valor ou referência utilizado nas funções da loja.
+      const p=produtos.find(x=>x.id===c.id);total+=c.qtd*p.preco;
+  // LINHA ORIGINAL 329: Devolve o resultado calculado para ser utilizado em outra parte do sistema.
+      return `<div class="cart-row"><div><strong>${seguro(p.nome)}</strong><small>${seguro(c.variacao)} · ${dinheiro(p.preco)}</small><button data-menos="${i}">−</button> ${c.qtd} <button data-mais="${i}">＋</button></div><button data-remover="${i}">Excluir</button></div>`;
+  // LINHA ORIGINAL 330: Encerra o bloco de instruções iniciado anteriormente.
+    }).join(''):'<p>O carrinho está vazio.</p>';
+  // LINHA ORIGINAL 331: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('totalCarrinho').textContent='Total ilustrativo: '+dinheiro(total);
+  // LINHA ORIGINAL 332: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('qtdCarrinho').textContent=carrinho.reduce((s,c)=>s+c.qtd,0);
+  // LINHA ORIGINAL 333: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('qtdCarrinho').hidden=carrinho.length===0;
+  // LINHA ORIGINAL 334: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // LINHA ORIGINAL 335: Associa um clique ou mudança do usuário à ação correspondente.
+  $('listaCarrinho').addEventListener('click',e=>{
+  // LINHA ORIGINAL 336: Declara um valor ou referência utilizado nas funções da loja.
+    const m=e.target.closest('[data-menos]'),p=e.target.closest('[data-mais]'),r=e.target.closest('[data-remover]');
+  // LINHA ORIGINAL 337: Confere uma condição antes de executar o próximo passo.
+    if(m){const i=Number(m.dataset.menos);carrinho[i].qtd--;if(carrinho[i].qtd<1)carrinho.splice(i,1)}
+  // LINHA ORIGINAL 338: Confere uma condição antes de executar o próximo passo.
+    if(p){const i=Number(p.dataset.mais),estoque=produtos.find(x=>x.id===carrinho[i].id)?.estoque||1;carrinho[i].qtd=Math.min(estoque,carrinho[i].qtd+1)}
+  // LINHA ORIGINAL 339: Confere uma condição antes de executar o próximo passo.
+    if(r)carrinho.splice(Number(r.dataset.remover),1);
+  // LINHA ORIGINAL 340: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    salvar();renderCarrinho();atualizarTudo();
+  // LINHA ORIGINAL 341: Encerra o bloco de instruções iniciado anteriormente.
+  });
+  // LINHA ORIGINAL 342: Associa um clique ou mudança do usuário à ação correspondente.
+  $('carrinhoBtn').onclick=mostrarCarrinho;
+  // LINHA ORIGINAL 343: Associa um clique ou mudança do usuário à ação correspondente.
+  $('fecharCarrinho').onclick=fecharCarrinho;
+  // LINHA ORIGINAL 344: Associa um clique ou mudança do usuário à ação correspondente.
+  $('fundoCarrinho').onclick=fecharCarrinho;
+  // LINHA ORIGINAL 345: Associa um clique ou mudança do usuário à ação correspondente.
+  $('limparCarrinho').onclick=()=>{carrinho=[];salvar();renderCarrinho();atualizarTudo()};
+  // LINHA ORIGINAL 346: Associa um clique ou mudança do usuário à ação correspondente.
+  $('copiarPedido').onclick=async()=>{
+  // LINHA ORIGINAL 347: Confere uma condição antes de executar o próximo passo.
+    if(!carrinho.length)return aviso('Carrinho vazio.');
+  // LINHA ORIGINAL 348: Cria variáveis de estado que podem mudar durante o uso da loja.
+    let total=0;const lista=['CASA MIX — LISTA DE TESTE (SEM COMPRA REAL)'];
+  // LINHA ORIGINAL 349: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    carrinho.forEach(c=>{const p=produtos.find(x=>x.id===c.id);lista.push(`${c.qtd}x ${p.nome} (${c.variacao}) — ${dinheiro(c.qtd*p.preco)}`);total+=c.qtd*p.preco});
+  // LINHA ORIGINAL 350: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    lista.push('Total ilustrativo: '+dinheiro(total));
+  // LINHA ORIGINAL 351: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    try{await navigator.clipboard.writeText(lista.join('\n'));aviso('Lista de teste copiada.')}catch{aviso('Não foi possível copiar neste navegador.')}
+  // LINHA ORIGINAL 352: Encerra o bloco de instruções iniciado anteriormente.
+  };
+  // 18 — LOGIN DEMONSTRATIVO: as credenciais estão visíveis no código.
+  // LINHA ORIGINAL 354: Associa um clique ou mudança do usuário à ação correspondente.
+  $('adminBtn').onclick=()=>{$('loginDialog').showModal()};
+  // LINHA ORIGINAL 355: Associa um clique ou mudança do usuário à ação correspondente.
+  $('cancelarLogin').onclick=()=>$('loginDialog').close();
+  // LINHA ORIGINAL 356: Associa um clique ou mudança do usuário à ação correspondente.
+  $('loginForm').addEventListener('submit',e=>{
+  // LINHA ORIGINAL 357: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    e.preventDefault();
+  // LINHA ORIGINAL 358: Confere uma condição antes de executar o próximo passo.
+    if($('loginUsuario').value.trim().toLowerCase()!=='demo'||$('loginSenha').value!=='MOSS2026'){
+  // LINHA ORIGINAL 359: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      $('erroLogin').textContent='Usuário ou senha incorretos.';return;
+  // LINHA ORIGINAL 360: Encerra o bloco de instruções iniciado anteriormente.
+    }
+  // LINHA ORIGINAL 361: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    acessoAdmin=true;$('loginDialog').close();$('loginForm').reset();
+  // LINHA ORIGINAL 362: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('adminArea').hidden=false;listarAdmin();novoProduto();$('adminArea').scrollIntoView();
+  // LINHA ORIGINAL 363: Encerra o bloco de instruções iniciado anteriormente.
+  });
+  // LINHA ORIGINAL 364: Associa um clique ou mudança do usuário à ação correspondente.
+  $('sairAdmin').onclick=()=>{acessoAdmin=false;$('adminArea').hidden=true;aviso('Saiu do administrador.');$('inicio').scrollIntoView()};
+  // 19 — GERENCIAR PRODUTOS: cadastrar, editar e excluir no mesmo aparelho.
+  // LINHA ORIGINAL 366: Lista produtos para o lojista editar ou excluir.
+  function listarAdmin(){
+  // LINHA ORIGINAL 367: Confere uma condição antes de executar o próximo passo.
+    if(!acessoAdmin)return;
+  // LINHA ORIGINAL 368: Declara um valor ou referência utilizado nas funções da loja.
+    const t=$('buscarAdmin').value.toLowerCase();
+  // LINHA ORIGINAL 369: Declara um valor ou referência utilizado nas funções da loja.
+    const lista=produtos.filter(p=>p.nome.toLowerCase().includes(t));
+  // LINHA ORIGINAL 370: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('totalAdmin').textContent=`(${lista.length})`;
+  // LINHA ORIGINAL 371: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('listaAdmin').innerHTML=lista.map(p=>`<div class="admin-item"><div><strong>${seguro(p.nome)}</strong><small>${dinheiro(p.preco)} · estoque ${p.estoque}</small></div><div><button type="button" data-editar="${p.id}">Editar</button> <button type="button" data-excluir="${p.id}">Excluir</button></div></div>`).join('');
+  // LINHA ORIGINAL 372: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // LINHA ORIGINAL 373: Limpa o formulário para cadastrar novo item.
+  function novoProduto(){
+  // LINHA ORIGINAL 374: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('formAdmin').reset();$('produtoId').value='';fotoUpload='';
+  // LINHA ORIGINAL 375: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('tituloForm').textContent='Cadastrar produto';
+  // LINHA ORIGINAL 376: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // LINHA ORIGINAL 377: Preenche o formulário com os dados do item escolhido.
+  function editarProduto(id){
+  // LINHA ORIGINAL 378: Declara um valor ou referência utilizado nas funções da loja.
+    const p=produtos.find(x=>x.id===id);if(!p)return;
+  // LINHA ORIGINAL 379: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('produtoId').value=p.id;$('nomeProduto').value=p.nome;$('categoriaProduto').value=p.cat;
+  // LINHA ORIGINAL 380: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('precoProduto').value=p.preco;$('estoqueProduto').value=p.estoque;
+  // LINHA ORIGINAL 381: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('descricaoProduto').value=p.desc;$('variantesProduto').value=(p.variacoes||[]).join(', ');
+  // LINHA ORIGINAL 382: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('fotoProduto').value=p.foto?.startsWith('https://')?p.foto:'';
+  // LINHA ORIGINAL 383: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    fotoUpload=p.foto?.startsWith('data:image/')?p.foto:'';
+  // LINHA ORIGINAL 384: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('tituloForm').textContent='Editando: '+p.nome;
+  // LINHA ORIGINAL 385: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    $('formAdmin').scrollIntoView({behavior:'smooth'});
+  // LINHA ORIGINAL 386: Encerra o bloco de instruções iniciado anteriormente.
+  }
+  // LINHA ORIGINAL 387: Associa um clique ou mudança do usuário à ação correspondente.
+  $('listaAdmin').addEventListener('click',e=>{
+  // LINHA ORIGINAL 388: Declara um valor ou referência utilizado nas funções da loja.
+    const ed=e.target.closest('[data-editar]'),exc=e.target.closest('[data-excluir]');
+  // LINHA ORIGINAL 389: Confere uma condição antes de executar o próximo passo.
+    if(ed)editarProduto(Number(ed.dataset.editar));
+  // LINHA ORIGINAL 390: Confere uma condição antes de executar o próximo passo.
+    if(exc){const id=Number(exc.dataset.excluir),p=produtos.find(x=>x.id===id);if(!p||!confirm('Excluir '+p.nome+'?'))return;produtos=produtos.filter(x=>x.id!==id);carrinho=carrinho.filter(x=>x.id!==id);favoritos.delete(id);salvar();atualizarTudo();listarAdmin();novoProduto()}
+  // LINHA ORIGINAL 391: Encerra o bloco de instruções iniciado anteriormente.
+  });
+  // LINHA ORIGINAL 392: Associa um clique ou mudança do usuário à ação correspondente.
+  $('buscarAdmin').addEventListener('input',listarAdmin);
+  // LINHA ORIGINAL 393: Associa um clique ou mudança do usuário à ação correspondente.
+  $('novoBtn').onclick=()=>{novoProduto();$('formAdmin').scrollIntoView()};
+  // LINHA ORIGINAL 394: Associa um clique ou mudança do usuário à ação correspondente.
+  $('cancelarEdicao').onclick=novoProduto;
+  // Fotos enviadas do iPhone são reduzidas antes de serem salvas localmente.
+  // LINHA ORIGINAL 396: Associa um clique ou mudança do usuário à ação correspondente.
+  $('arquivoFoto').addEventListener('change',e=>{
+  // LINHA ORIGINAL 397: Declara um valor ou referência utilizado nas funções da loja.
+    const file=e.target.files[0];if(!file)return;
+  // LINHA ORIGINAL 398: Confere uma condição antes de executar o próximo passo.
+    if(!/^image\/(jpeg|png|webp)$/.test(file.type)||file.size>10_000_000)return aviso('Escolha JPG, PNG ou WebP de até 10 MB.');
+  // LINHA ORIGINAL 399: Declara um valor ou referência utilizado nas funções da loja.
+    const reader=new FileReader();
+  // LINHA ORIGINAL 400: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    reader.onload=()=>{const img=new Image();img.onload=()=>{
+  // LINHA ORIGINAL 401: Declara um valor ou referência utilizado nas funções da loja.
+      const escala=Math.min(1,600/Math.max(img.width,img.height));
+  // LINHA ORIGINAL 402: Declara um valor ou referência utilizado nas funções da loja.
+      const tela=document.createElement('canvas');tela.width=Math.round(img.width*escala);tela.height=Math.round(img.height*escala);
+  // LINHA ORIGINAL 403: Declara um valor ou referência utilizado nas funções da loja.
+      const ctx=tela.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,tela.width,tela.height);ctx.drawImage(img,0,0,tela.width,tela.height);
+  // LINHA ORIGINAL 404: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      fotoUpload=tela.toDataURL('image/jpeg',.67);aviso('Fotografia pronta para salvar.');
+  // LINHA ORIGINAL 405: Encerra o bloco de instruções iniciado anteriormente.
+    };img.src=reader.result};reader.readAsDataURL(file);
+  // LINHA ORIGINAL 406: Encerra o bloco de instruções iniciado anteriormente.
+  });
+  // LINHA ORIGINAL 407: Associa um clique ou mudança do usuário à ação correspondente.
+  $('formAdmin').addEventListener('submit',e=>{
+  // LINHA ORIGINAL 408: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    e.preventDefault();if(!acessoAdmin)return;
+  // LINHA ORIGINAL 409: Declara um valor ou referência utilizado nas funções da loja.
+    const id=Number($('produtoId').value),existe=produtos.find(p=>p.id===id);
+  // LINHA ORIGINAL 410: Declara um valor ou referência utilizado nas funções da loja.
+    const nome=$('nomeProduto').value.trim(),preco=Number($('precoProduto').value),estoque=Number($('estoqueProduto').value);
+  // LINHA ORIGINAL 411: Declara um valor ou referência utilizado nas funções da loja.
+    const cat=$('categoriaProduto').value,url=$('fotoProduto').value.trim();
+  // LINHA ORIGINAL 412: Confere uma condição antes de executar o próximo passo.
+    if(!nome||!grupos.some(g=>g.id===cat)||preco<=0||!Number.isInteger(estoque)||estoque<0)return aviso('Revise os dados do produto.');
+  // LINHA ORIGINAL 413: Confere uma condição antes de executar o próximo passo.
+    if(url&&!url.startsWith('https://'))return aviso('A foto deve usar HTTPS.');
+  // LINHA ORIGINAL 414: Declara um valor ou referência utilizado nas funções da loja.
+    const p={id:existe?.id??Math.max(0,...produtos.map(x=>x.id))+1,nome:nome.slice(0,90),cat,preco,estoque,
+  // LINHA ORIGINAL 415: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      desc:$('descricaoProduto').value.slice(0,240),variacoes:$('variantesProduto').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12),foto:fotoUpload||url||existe?.foto||'',referencia:false};
+  // LINHA ORIGINAL 416: Confere uma condição antes de executar o próximo passo.
+    if(existe)Object.assign(existe,p);else produtos.unshift(p);
+  // LINHA ORIGINAL 417: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    salvar();atualizarTudo();listarAdmin();novoProduto();aviso('Produto salvo neste navegador.');
+  // LINHA ORIGINAL 418: Encerra o bloco de instruções iniciado anteriormente.
+  });
+  // 20 — IMPORTAR E EXPORTAR: levar os cadastros entre dispositivos manualmente.
+  // LINHA ORIGINAL 420: Associa um clique ou mudança do usuário à ação correspondente.
+  $('exportarBtn').onclick=()=>{const blob=new Blob([JSON.stringify({loja:'Casa Mix',produtos},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='casamix-produtos.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+  // LINHA ORIGINAL 421: Associa um clique ou mudança do usuário à ação correspondente.
+  $('importarBtn').onclick=()=>$('arquivoJson').click();
+  // LINHA ORIGINAL 422: Associa um clique ou mudança do usuário à ação correspondente.
+  $('arquivoJson').addEventListener('change',async e=>{
+  // LINHA ORIGINAL 423: Declara um valor ou referência utilizado nas funções da loja.
+    const file=e.target.files[0];if(!file||file.size>4_000_000)return aviso('Arquivo ausente ou muito grande.');
+  // LINHA ORIGINAL 424: Executa uma etapa da funcionalidade indicada no comentário da seção.
+    try{
+  // LINHA ORIGINAL 425: Declara um valor ou referência utilizado nas funções da loja.
+      const json=JSON.parse(await file.text()),lista=Array.isArray(json)?json:json.produtos;
+  // LINHA ORIGINAL 426: Confere uma condição antes de executar o próximo passo.
+      if(!Array.isArray(lista)||lista.length>500||!lista.every(p=>p&&Number.isInteger(p.id)&&typeof p.nome==='string'&&grupos.some(g=>g.id===p.cat)&&Number(p.preco)>0))throw Error('Arquivo inválido');
+  // LINHA ORIGINAL 427: Confere uma condição antes de executar o próximo passo.
+      if(!confirm('Substituir seu catálogo por '+lista.length+' produtos importados?'))return;
+  // LINHA ORIGINAL 428: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      produtos=lista.map(p=>({id:p.id,nome:p.nome.slice(0,90),cat:p.cat,preco:Number(p.preco),estoque:Math.max(0,Number(p.estoque)||0),desc:String(p.desc||'').slice(0,240),variacoes:Array.isArray(p.variacoes)?p.variacoes.map(String).slice(0,12):['Único'],foto:typeof p.foto==='string'&&/^(https:\/\/|data:image\/(jpeg|png|webp);base64,)/i.test(p.foto)?p.foto:'',referencia:false}));
+  // LINHA ORIGINAL 429: Executa uma etapa da funcionalidade indicada no comentário da seção.
+      carrinho=[];favoritos.clear();salvar();atualizarTudo();listarAdmin();aviso('Importação concluída.');
+  // LINHA ORIGINAL 430: Encerra o bloco de instruções iniciado anteriormente.
+    }catch{aviso('Não foi possível importar este JSON.')}finally{e.target.value=''}
+  // LINHA ORIGINAL 431: Encerra o bloco de instruções iniciado anteriormente.
+  });
+  // LINHA ORIGINAL 432: Associa um clique ou mudança do usuário à ação correspondente.
+  $('restaurarBtn').onclick=()=>{if(!confirm('Restaurar os 144 produtos e perder alterações locais?'))return;produtos=originais.map(p=>({...p}));carrinho=[];favoritos.clear();salvar();atualizarTudo();listarAdmin();novoProduto()};
+  // 21 — INICIAR: prepara a vitrine quando a página abre.
+  // LINHA ORIGINAL 434: Executa uma etapa da funcionalidade indicada no comentário da seção.
+  departamentos();atualizarTudo();renderCarrinho();
+  // LINHA ORIGINAL 435: Executa uma etapa da funcionalidade indicada no comentário da seção.
+  </script>
+  <!-- LINHA ORIGINAL 436: Encerra o conteúdo da página. -->
+</body>
+  <!-- LINHA ORIGINAL 437: Encerra o documento HTML. -->
+</html>
