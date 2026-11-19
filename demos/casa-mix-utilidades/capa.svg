@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-labelledby="t d">
+<title id="t">Casa Mix — Utilidades e Achadinhos</title>
+<desc id="d">Arte ilustrada do catálogo com potes plásticos, utensílios e organizadores, em laranja e azul.</desc>
+<defs>
+ <linearGradient id="bg" x2="1" y2=".65"><stop stop-color="#fff7eb"/><stop offset="1" stop-color="#ffe1be"/></linearGradient>
+ <linearGradient id="orange" x2=".8" y2="1"><stop stop-color="#ff9867"/><stop offset="1" stop-color="#e95830"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="170%" height="170%"><feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#5e3427" flood-opacity=".2"/></filter>
+</defs>
+<rect width="1200" height="750" fill="url(#bg)"/>
+<circle cx="1076" cy="70" r="294" fill="#f9c99f" opacity=".6"/>
+<circle cx="30" cy="810" r="265" fill="#f6d2b2" opacity=".8"/>
+<path d="M48 620H1155" stroke="#f7bf95" stroke-width="7" stroke-linecap="round" opacity=".75"/>
+<g transform="translate(72 74)">
+ <rect width="67" height="67" rx="20" fill="url(#orange)"/>
+ <text x="33" y="44" text-anchor="middle" font-family="Arial,sans-serif" font-size="29" fill="#fff" font-weight="900">CM</text>
+ <text x="83" y="42" fill="#263e4a" font-family="Arial,sans-serif" font-size="38" font-weight="900">CASA</text>
+ <text x="196" y="42" fill="#e95830" font-family="Arial,sans-serif" font-size="38" font-weight="900">MIX</text>
+</g>
+<rect x="72" y="186" width="280" height="42" rx="21" fill="#fff" stroke="#f1c59f"/>
+<text x="91" y="214" font-family="Arial,sans-serif" font-size="17" font-weight="850" fill="#d65c33" letter-spacing="1">UTILIDADES &amp; ACHADINHOS</text>
+<text x="70" y="325" font-family="Arial,sans-serif" font-size="64" font-weight="900" fill="#233f55">De tudo um</text>
+<text x="70" y="407" font-family="Arial,sans-serif" font-size="64" font-weight="900" fill="#233f55">pouquinho</text>
+<text x="70" y="491" font-family="Arial,sans-serif" font-size="67" font-weight="900" fill="#e95830">para sua casa!</text>
+<text x="75" y="557" font-family="Arial,sans-serif" font-size="25" fill="#456478">Potes • Organização • Cozinha • Limpeza</text>
+<g transform="translate(74 607)">
+ <rect width="263" height="63" rx="17" fill="#e95830"/>
+ <text x="132" y="40" text-anchor="middle" font-size="24" font-weight="800" fill="white" font-family="Arial,sans-serif">144 PRODUTOS</text>
+</g>
+<g transform="translate(668 166)" filter="url(#shadow)">
+ <rect x="0" y="0" width="455" height="456" rx="33" fill="#fff"/>
+ <rect x="22" y="22" width="411" height="411" rx="26" fill="#f9f5ef"/>
+ <path d="M44 347H412" stroke="#d7ab83" stroke-width="12" stroke-linecap="round"/>
+ <g transform="translate(65 64)">
+   <path d="M15 63H180L170 241Q167 266 139 268H54Q26 266 24 241Z" fill="#c9dbe2" stroke="#8db1ba" stroke-width="5"/>
+   <rect x="0" y="41" width="197" height="37" rx="12" fill="#4a8692"/>
+   <rect x="19" y="38" width="158" height="18" rx="8" fill="#96bec2"/>
+   <path d="M48 101V234M88 99V233M128 101V233" stroke="#ecf5f5" stroke-width="7" stroke-linecap="round" opacity=".65"/>
+ </g>
+ <g transform="translate(275 82)">
+   <rect width="122" height="164" rx="17" fill="#a4c0bb" stroke="#75a79b" stroke-width="4"/>
+   <path d="M-9 23H130" stroke="#3d7a72" stroke-width="27" stroke-linecap="round"/>
+   <rect x="23" y="74" width="76" height="37" rx="10" fill="#dceae3"/>
+ </g>
+ <g transform="translate(113 337)">
+   <rect x="0" y="0" width="235" height="23" rx="11" fill="#e7b98c"/>
+   <path d="M13 25H222L208 68Q198 87 162 87H70Q34 87 25 68Z" fill="#e88860"/>
+   <ellipse cx="116" cy="85" rx="87" ry="11" fill="#d86c47"/>
+ </g>
+ <circle cx="391" cy="356" r="25" fill="#f6ce70"/>
+ <text x="230" y="406" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="750" fill="#607789">LOJA DEMONSTRATIVA</text>
+</g>
+</svg>
