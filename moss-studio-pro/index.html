@@ -1,0 +1,1838 @@
+
+<!DOCTYPE html>
+<!-- MOSS STUDIO PRO - Criador visual de sites -->
+<html lang="pt-BR">
+<head>
+  <!-- Configurações gerais -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102d23">
+  <title>MOSS Studio Pro | Criador de Sites</title>
+
+  <!-- Biblioteca para gerar arquivos ZIP -->
+  <!-- Requer internet para carregar na primeira utilização -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <!-- Estilos do editor -->
+  <style>
+    /* Configurações de cores */
+    :root {
+      --verde: #123b2c;
+      --verde2: #1d5943;
+      --laranja: #f2a34b;
+      --fundo: #f2f5f3;
+      --borda: #dce5df;
+      --texto: #20332a;
+    }
+
+    /* Padronização dos elementos */
+    * { box-sizing: border-box; }
+
+    /* Corpo do editor */
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+    }
+
+    /* Botões e campos */
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    /* Botões clicáveis */
+    button { cursor: pointer; }
+
+    /* Cabeçalho do editor */
+    header {
+      background: var(--verde);
+      color: white;
+      padding: 17px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Nome do projeto */
+    .marca {
+      font-weight: 900;
+      font-size: 21px;
+    }
+
+    /* Subtítulo */
+    .marca small {
+      display: block;
+      font-size: 11px;
+      color: #b8d9c5;
+      margin-top: 5px;
+    }
+
+    /* Layout principal */
+    .layout {
+      display: grid;
+      grid-template-columns: 365px minmax(0, 1fr);
+      min-height: calc(100vh - 78px);
+    }
+
+    /* Painel de edição */
+    aside {
+      background: white;
+      border-right: 1px solid var(--borda);
+      padding: 18px;
+      overflow-y: auto;
+      max-height: calc(100vh - 78px);
+    }
+
+    /* Título do painel */
+    aside h2 { margin: 5px 0 16px; }
+
+    /* Blocos de configurações */
+    details {
+      border: 1px solid var(--borda);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: white;
+    }
+
+    /* Cabeçalho de cada bloco */
+    summary {
+      padding: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #f6faf7;
+    }
+
+    /* Conteúdo de cada bloco */
+    .conteudo { padding: 15px; }
+
+    /* Rótulos dos campos */
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin: 13px 0 6px;
+    }
+
+    /* Campos de entrada */
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid #cbd8cf;
+      border-radius: 9px;
+      padding: 12px;
+      background: white;
+      color: #24352b;
+    }
+
+    /* Campos de texto maiores */
+    textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    /* Campo de cor */
+    input[type="color"] {
+      height: 48px;
+      padding: 4px;
+    }
+
+    /* Campos de seleção */
+    input[type="checkbox"] {
+      width: auto;
+      accent-color: var(--verde);
+    }
+
+    /* Linha de seleção */
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 14px 0;
+    }
+
+    /* Botão principal */
+    .btn {
+      background: var(--verde);
+      color: white;
+      border: 0;
+      border-radius: 9px;
+      padding: 12px 15px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* Botão secundário */
+    .btn-sec {
+      background: #e8efe9;
+      color: var(--verde);
+    }
+
+    /* Botão de perigo */
+    .btn-perigo {
+      background: #a93d36;
+      color: white;
+    }
+
+    /* Botão de exportação */
+    .btn-exportar {
+      background: var(--laranja);
+      color: #1b281e;
+    }
+
+    /* Botão ocupando toda a largura */
+    .largura { width: 100%; }
+
+    /* Área de visualização */
+    .visualizacao {
+      padding: 20px;
+      min-width: 0;
+    }
+
+    /* Barra da visualização */
+    .barra-preview {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    /* Área do iframe */
+    .moldura {
+      background: white;
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 35px #00000012;
+      margin: auto;
+      transition: max-width .25s;
+      max-width: 100%;
+    }
+
+    /* Visualização em celular */
+    .moldura.celular { max-width: 390px; }
+
+    /* Site criado pelo cliente */
+    iframe {
+      width: 100%;
+      height: 76vh;
+      min-height: 560px;
+      border: 0;
+      display: block;
+      background: white;
+    }
+
+    /* Informações auxiliares */
+    .ajuda {
+      font-size: 12px;
+      color: #63766a;
+      line-height: 1.6;
+    }
+
+    /* Lista de produtos no editor */
+    .produto-editor {
+      border: 1px solid var(--borda);
+      border-radius: 10px;
+      padding: 12px;
+      margin: 10px 0;
+      background: #fafcfb;
+    }
+
+    /* Galeria de miniaturas */
+    .miniaturas {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    /* Miniatura da galeria */
+    .miniatura {
+      position: relative;
+      aspect-ratio: 1;
+    }
+
+    /* Foto em miniatura */
+    .miniatura img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 7px;
+      background: #edf2ee;
+    }
+
+    /* Botão para remover foto */
+    .miniatura button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      border: 0;
+      background: #a32626;
+      color: white;
+      border-radius: 5px;
+    }
+
+    /* Painel de auditoria */
+    .auditoria {
+      background: #f5faf6;
+      border: 1px solid #d5e5d8;
+      padding: 14px;
+      border-radius: 10px;
+      line-height: 1.8;
+      font-size: 13px;
+    }
+
+    /* Avisos do editor */
+    #mensagem {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 12px;
+      color: #235d39;
+    }
+
+    /* Adaptação para celular */
+    @media(max-width: 850px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        max-height: none;
+        border-right: 0;
+        border-bottom: 1px solid var(--borda);
+      }
+
+      .visualizacao { padding: 12px; }
+
+      iframe { height: 650px; }
+
+      header { padding: 15px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Cabeçalho principal -->
+  <header>
+    <div class="marca">
+      ✦ MOSS STUDIO PRO
+      <small>CRIE SUA MARCA • MONTE SEU SITE</small>
+    </div>
+
+    <!-- Botão de exportação -->
+    <button class="btn btn-exportar" onclick="baixarZIP()">
+      ⬇ Baixar meu site
+    </button>
+  </header>
+
+  <!-- Estrutura do editor -->
+  <div class="layout">
+
+    <!-- Painel de personalização -->
+    <aside>
+      <h2>🎨 Personalize seu site</h2>
+
+      <p class="ajuda">
+        Preencha os campos abaixo. Seu site será atualizado
+        automaticamente na visualização.
+      </p>
+
+      <!-- Dados da empresa -->
+      <details open>
+        <summary>🏢 1. Minha empresa</summary>
+
+        <div class="conteudo">
+          <label for="nome">Nome da empresa</label>
+          <input id="nome" value="Minha Empresa" oninput="atualizar()">
+
+          <label for="slogan">Frase de destaque</label>
+          <input id="slogan" value="Seu negócio merece destaque!" oninput="atualizar()">
+
+          <label for="descricao">Descrição dos serviços</label>
+          <textarea id="descricao" oninput="atualizar()">Conheça nossos produtos e serviços. Qualidade e atendimento especial para você.</textarea>
+
+          <label for="historia">História da empresa</label>
+          <textarea id="historia" oninput="atualizar()">Nossa empresa nasceu do desejo de oferecer produtos e serviços de qualidade, valorizando cada cliente e construindo uma história de confiança.</textarea>
+
+          <label for="logo">Logotipo da empresa</label>
+          <input type="file" id="logo" accept="image/*" onchange="enviarLogo(event)">
+
+          <p class="ajuda">
+            Você pode enviar uma imagem PNG, JPG ou WebP.
+          </p>
+        </div>
+      </details>
+
+      <!-- Personalização visual -->
+      <details>
+        <summary>🎨 2. Cores e aparência</summary>
+
+        <div class="conteudo">
+          <label for="corPrincipal">Cor principal</label>
+          <input type="color" id="corPrincipal" value="#173d2e" oninput="atualizar()">
+
+          <label for="corDestaque">Cor de destaque</label>
+          <input type="color" id="corDestaque" value="#f2a34b" oninput="atualizar()">
+
+          <label for="estilo">Estilo dos cartões</label>
+          <select id="estilo" onchange="atualizar()">
+            <option value="14">Moderno</option>
+            <option value="3">Clássico</option>
+            <option value="25">Arredondado</option>
+          </select>
+
+          <label for="banner">Foto principal do site</label>
+          <input type="file" id="banner" accept="image/*" onchange="enviarBanner(event)">
+        </div>
+      </details>
+
+      <!-- Contatos -->
+      <details>
+        <summary>📱 3. Contatos e redes sociais</summary>
+
+        <div class="conteudo">
+          <label for="telefone">WhatsApp com DDD</label>
+          <input id="telefone" placeholder="11999999999" oninput="atualizar()">
+
+          <label for="instagram">Link do Instagram</label>
+          <input id="instagram" placeholder="https://instagram.com/suaempresa" oninput="atualizar()">
+
+          <label for="facebook">Link do Facebook</label>
+          <input id="facebook" placeholder="https://facebook.com/suaempresa" oninput="atualizar()">
+
+          <label for="endereco">Endereço</label>
+          <input id="endereco" placeholder="Rua, número, cidade" oninput="atualizar()">
+
+          <label for="horario">Horário de funcionamento</label>
+          <input id="horario" placeholder="Seg a Sex, 9h às 18h" oninput="atualizar()">
+        </div>
+      </details>
+
+      <!-- Galeria -->
+      <details>
+        <summary>🖼️ 4. Galeria de fotos</summary>
+
+        <div class="conteudo">
+          <p class="ajuda">
+            O modelo começa com 30 espaços para fotos.
+            Envie imagens do seu negócio para substituí-los.
+          </p>
+
+          <label for="fotos">Adicionar várias fotos</label>
+          <input
+            type="file"
+            id="fotos"
+            accept="image/*"
+            multiple
+            onchange="enviarFotos(event)"
+          >
+
+          <p id="contadorFotos" class="ajuda"></p>
+
+          <div id="miniaturas" class="miniaturas"></div>
+
+          <button class="btn btn-sec largura" onclick="limparFotos()">
+            Limpar fotos enviadas
+          </button>
+        </div>
+      </details>
+
+      <!-- Cadastro de produtos -->
+      <details>
+        <summary>🛍️ 5. Produtos e serviços</summary>
+
+        <div class="conteudo">
+          <label for="produtoNome">Nome do produto ou serviço</label>
+          <input id="produtoNome" placeholder="Ex.: Produto Premium">
+
+          <label for="produtoPreco">Preço em reais</label>
+          <input id="produtoPreco" type="number" min="0" step="0.01" placeholder="99.90">
+
+          <label for="produtoDescricao">Descrição</label>
+          <textarea id="produtoDescricao" placeholder="Descreva o produto"></textarea>
+
+          <label for="produtoFoto">Foto do produto</label>
+          <input type="file" id="produtoFoto" accept="image/*">
+
+          <button class="btn largura" onclick="adicionarProduto()">
+            + Adicionar produto
+          </button>
+
+          <div id="listaProdutos"></div>
+        </div>
+      </details>
+
+      <!-- Recursos comerciais -->
+      <details>
+        <summary>🛒 6. Vendas e pagamentos</summary>
+
+        <div class="conteudo">
+          <label class="check">
+            <input type="checkbox" id="carrinho" checked onchange="atualizar()">
+            Ativar carrinho de compras
+          </label>
+
+          <label class="check">
+            <input type="checkbox" id="pix" onchange="atualizar()">
+            Mostrar chave Pix
+          </label>
+
+          <label for="chavePix">Chave Pix da empresa</label>
+          <input id="chavePix" placeholder="Chave Pix" oninput="atualizar()">
+
+          <label for="recebedor">Nome do recebedor Pix</label>
+          <input id="recebedor" placeholder="Nome ou razão social" oninput="atualizar()">
+
+          <p class="ajuda">
+            O Pix desta versão é manual: o cliente recebe
+            a chave e combina o pagamento com a loja.
+            A confirmação não é automática.
+          </p>
+
+          <label class="check">
+            <input type="checkbox" id="cartao" onchange="atualizar()">
+            Mostrar opção de cartão (sob consulta)
+          </label>
+
+          <p class="ajuda">
+            Para cobrança real por cartão será necessária
+            uma integração segura com um provedor de pagamentos.
+          </p>
+        </div>
+      </details>
+
+      <!-- Auditoria -->
+      <details>
+        <summary>🛡️ 7. Verificar meu site</summary>
+
+        <div class="conteudo">
+          <div id="auditoria" class="auditoria"></div>
+
+          <button class="btn largura" onclick="verificarSite()">
+            Verificar novamente
+          </button>
+        </div>
+      </details>
+
+      <!-- Exportação -->
+      <details>
+        <summary>📦 8. Publicar meu site</summary>
+
+        <div class="conteudo">
+          <p class="ajuda">
+            Baixe seu site e publique em uma hospedagem
+            compatível com HTML estático.
+          </p>
+
+          <button class="btn largura" onclick="baixarHTML()">
+            Baixar HTML
+          </button>
+
+          <button class="btn btn-exportar largura" onclick="baixarZIP()">
+            Baixar pacote ZIP
+          </button>
+
+          <button class="btn btn-sec largura" onclick="salvarProjeto()">
+            Salvar projeto neste navegador
+          </button>
+
+          <button class="btn btn-sec largura" onclick="carregarProjeto()">
+            Recuperar projeto salvo
+          </button>
+
+          <p class="ajuda">
+            O salvamento depende do espaço disponível
+            no navegador. Guarde também uma cópia
+            do arquivo exportado.
+          </p>
+
+          <p id="mensagem" role="status"></p>
+        </div>
+      </details>
+    </aside>
+
+    <!-- Visualização do site -->
+    <section class="visualizacao">
+
+      <div class="barra-preview">
+        <div>
+          <strong>👁️ Visualização em tempo real</strong>
+          <p class="ajuda">Veja como seu cliente verá o site.</p>
+        </div>
+
+        <div>
+          <button class="btn btn-sec" onclick="modoPreview('desktop')">
+            🖥️
+          </button>
+
+          <button class="btn btn-sec" onclick="modoPreview('celular')">
+            📱
+          </button>
+        </div>
+      </div>
+
+      <!-- Moldura do site -->
+      <div class="moldura" id="moldura">
+
+        <!-- O iframe recebe o HTML gerado -->
+        <iframe
+          id="preview"
+          title="Prévia do site criado"
+          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
+        ></iframe>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript do criador -->
+  <script>
+    // ======================================
+    // ESTADO DO PROJETO
+    // ======================================
+
+    // Armazena o logotipo enviado.
+    let logoData = "";
+
+    // Armazena a imagem do banner.
+    let bannerData = "";
+
+    // Armazena as fotos da galeria.
+    let fotos = [];
+
+    // Armazena os produtos cadastrados.
+    let produtos = [];
+
+    // Define o próximo identificador.
+    let proximoId = 1;
+
+    // Define um controle para atualizações.
+    let atualizacaoPendente = false;
+
+    // ======================================
+    // FUNÇÕES AUXILIARES
+    // ======================================
+
+    // Recupera um campo pelo ID.
+    function campo(id) {
+      return document.getElementById(id);
+    }
+
+    // Lê o valor de um campo.
+    function valor(id) {
+      return campo(id).value.trim();
+    }
+
+    // Lê o estado de uma opção.
+    function marcado(id) {
+      return campo(id).checked;
+    }
+
+    // Protege textos usados no HTML.
+    function escapar(texto) {
+      return String(texto).replace(/[&<>"']/g, c => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[c]);
+    }
+
+    // Formata preços em reais.
+    function moeda(numero) {
+      return Number(numero).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
+
+    // Converte um texto para nome de arquivo.
+    function nomeArquivo(texto) {
+      return texto.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "") || "meu-site";
+    }
+
+    // Aceita somente links HTTP ou HTTPS.
+    function linkSeguro(texto) {
+      try {
+        const url = new URL(texto);
+        return ["http:", "https:"].includes(url.protocol)
+          ? url.href : "";
+      } catch {
+        return "";
+      }
+    }
+
+    // Normaliza números brasileiros de WhatsApp.
+    function numeroWhatsapp(texto) {
+      const digitos = texto.replace(/\D/g, "");
+
+      if (/^55\d{10,11}$/.test(digitos)) return digitos;
+
+      if (/^\d{10,11}$/.test(digitos)) return "55" + digitos;
+
+      return "";
+    }
+
+    // Cria uma imagem demonstrativa SVG.
+    function imagemModelo(numero) {
+      const titulo = "Sua foto " + numero;
+
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="800" height="600" viewBox="0 0 800 600">
+          <rect width="800" height="600" fill="#e5eee7"/>
+          <circle cx="400" cy="245" r="70" fill="#bbd2c0"/>
+          <path d="M170 450L320 300L420 390L510 270L650 450Z"
+                fill="#8fb29a"/>
+          <text x="400" y="520" text-anchor="middle"
+                font-family="Arial" font-size="32"
+                fill="#315840">${titulo}</text>
+        </svg>
+      `;
+
+      return "data:image/svg+xml;charset=utf-8," +
+        encodeURIComponent(svg);
+    }
+
+    // Cria a imagem inicial do banner.
+    function bannerModelo() {
+      return imagemModelo("principal");
+    }
+
+    // Lê imagens selecionadas pelo usuário.
+    function lerImagem(arquivo) {
+      return new Promise((resolve, reject) => {
+        if (!arquivo || !arquivo.type.startsWith("image/")) {
+          reject(new Error("Selecione uma imagem válida."));
+          return;
+        }
+
+        // Limita o tamanho de cada arquivo.
+        if (arquivo.size > 8 * 1024 * 1024) {
+          reject(new Error("Imagem maior que 8 MB."));
+          return;
+        }
+
+        const leitor = new FileReader();
+
+        leitor.onload = () => resolve(leitor.result);
+        leitor.onerror = () => reject(new Error("Erro ao ler imagem."));
+        leitor.readAsDataURL(arquivo);
+      });
+    }
+
+    // Mostra uma mensagem no painel.
+    function mensagem(texto) {
+      campo("mensagem").textContent = texto;
+    }
+
+    // ======================================
+    // ENVIO DE IMAGENS
+    // ======================================
+
+    // Recebe o logotipo.
+    async function enviarLogo(evento) {
+      try {
+        logoData = await lerImagem(evento.target.files[0]);
+        atualizar();
+      } catch (erro) {
+        alert(erro.message);
+      }
+    }
+
+    // Recebe o banner.
+    async function enviarBanner(evento) {
+      try {
+        bannerData = await lerImagem(evento.target.files[0]);
+        atualizar();
+      } catch (erro) {
+        alert(erro.message);
+      }
+    }
+
+    // Recebe várias fotos da galeria.
+    async function enviarFotos(evento) {
+      const arquivos = Array.from(evento.target.files);
+
+      // Processa cada foto individualmente.
+      for (const arquivo of arquivos) {
+        try {
+          const imagem = await lerImagem(arquivo);
+          fotos.push(imagem);
+        } catch (erro) {
+          alert(arquivo.name + ": " + erro.message);
+        }
+      }
+
+      // Limpa a seleção do campo.
+      evento.target.value = "";
+
+      // Atualiza o painel.
+      mostrarMiniaturas();
+
+      // Atualiza a visualização.
+      atualizar();
+    }
+
+    // Remove uma foto da galeria.
+    function removerFoto(indice) {
+      fotos.splice(indice, 1);
+      mostrarMiniaturas();
+      atualizar();
+    }
+
+    // Remove todas as fotos enviadas.
+    function limparFotos() {
+      if (!confirm("Remover todas as fotos da galeria?")) return;
+
+      fotos = [];
+      mostrarMiniaturas();
+      atualizar();
+    }
+
+    // Mostra as miniaturas no editor.
+    function mostrarMiniaturas() {
+      campo("contadorFotos").textContent =
+        fotos.length + " foto(s) enviada(s). " +
+        "O modelo contém 30 espaços iniciais.";
+
+      campo("miniaturas").innerHTML =
+        fotos.map((foto, indice) => `
+          <div class="miniatura">
+            <img src="${foto}" alt="Foto ${indice + 1}">
+            <button
+              aria-label="Remover foto ${indice + 1}"
+              onclick="removerFoto(${indice})"
+            >×</button>
+          </div>
+        `).join("");
+    }
+
+    // ======================================
+    // PRODUTOS
+    // ======================================
+
+    // Adiciona um produto ao catálogo.
+    async function adicionarProduto() {
+      const nome = valor("produtoNome");
+      const preco = Number(valor("produtoPreco"));
+      const descricao = valor("produtoDescricao");
+      const arquivo = campo("produtoFoto").files[0];
+
+      // Verifica os dados obrigatórios.
+      if (!nome || !Number.isFinite(preco) || preco < 0 ||
+          valor("produtoPreco") === "") {
+        alert("Informe nome e preço válido.");
+        return;
+      }
+
+      // Define uma imagem inicial.
+      let imagem = imagemModelo("produto");
+
+      // Lê a foto quando enviada.
+      if (arquivo) {
+        try {
+          imagem = await lerImagem(arquivo);
+        } catch (erro) {
+          alert(erro.message);
+          return;
+        }
+      }
+
+      // Cadastra o novo produto.
+      produtos.push({
+        id: proximoId++,
+        nome,
+        preco,
+        descricao,
+        imagem
+      });
+
+      // Limpa os campos.
+      campo("produtoNome").value = "";
+      campo("produtoPreco").value = "";
+      campo("produtoDescricao").value = "";
+      campo("produtoFoto").value = "";
+
+      // Atualiza o editor.
+      mostrarListaProdutos();
+      atualizar();
+    }
+
+    // Remove um produto.
+    function removerProduto(id) {
+      produtos = produtos.filter(p => p.id !== id);
+      mostrarListaProdutos();
+      atualizar();
+    }
+
+    // Mostra os produtos cadastrados.
+    function mostrarListaProdutos() {
+      campo("listaProdutos").innerHTML =
+        produtos.map(produto => `
+          <div class="produto-editor">
+            <strong>${escapar(produto.nome)}</strong>
+            <p>${moeda(produto.preco)}</p>
+            <button
+              class="btn btn-perigo"
+              onclick="removerProduto(${produto.id})"
+            >Excluir</button>
+          </div>
+        `).join("");
+    }
+
+    // ======================================
+    // DADOS DO SITE
+    // ======================================
+
+    // Reúne todas as informações do cliente.
+    function obterDados() {
+      return {
+        nome: valor("nome"),
+        slogan: valor("slogan"),
+        descricao: valor("descricao"),
+        historia: valor("historia"),
+        cor: valor("corPrincipal"),
+        destaque: valor("corDestaque"),
+        raio: Number(valor("estilo")),
+        logo: logoData,
+        banner: bannerData || bannerModelo(),
+        telefone: valor("telefone"),
+        instagram: valor("instagram"),
+        facebook: valor("facebook"),
+        endereco: valor("endereco"),
+        horario: valor("horario"),
+        carrinho: marcado("carrinho"),
+        pix: marcado("pix"),
+        chavePix: valor("chavePix"),
+        recebedor: valor("recebedor"),
+        cartao: marcado("cartao"),
+        fotos: [...fotos],
+        produtos: [...produtos]
+      };
+    }
+
+    // ======================================
+    // GERAÇÃO DO SITE FINAL
+    // ======================================
+
+    // Gera um site independente do editor.
+    function gerarSite(dados) {
+      // Escapa os dados antes de inserir no HTML.
+      const nome = escapar(dados.nome || "Minha Empresa");
+      const slogan = escapar(dados.slogan);
+      const descricao = escapar(dados.descricao);
+      const historia = escapar(dados.historia);
+      const endereco = escapar(dados.endereco);
+      const horario = escapar(dados.horario);
+      const chavePix = escapar(dados.chavePix);
+      const recebedor = escapar(dados.recebedor);
+
+      // Valida o WhatsApp.
+      const telefone = numeroWhatsapp(dados.telefone);
+
+      // Valida os links sociais.
+      const instagram = linkSeguro(dados.instagram);
+      const facebook = linkSeguro(dados.facebook);
+
+      // Monta os 30 espaços iniciais da galeria.
+      const galeria = Array.from({ length: Math.max(30, dados.fotos.length) },
+        (_, i) => dados.fotos[i] || imagemModelo(i + 1));
+
+      // Transforma as fotos em elementos HTML.
+      const galeriaHTML = galeria.map((foto, i) => `
+        <button class="foto" onclick="ampliar(${i})"
+                aria-label="Ampliar foto ${i + 1}">
+          <img src="${foto}" alt="Galeria: foto ${i + 1}" loading="lazy">
+        </button>
+      `).join("");
+
+      // Cria os cartões de produtos.
+      const cardsHTML = dados.produtos.map(produto => `
+        <article class="card">
+          <button class="foto" onclick="ampliarProduto(${produto.id})"
+                  aria-label="Ver foto de ${escapar(produto.nome)}">
+            <img src="${produto.imagem}"
+                 alt="${escapar(produto.nome)}" loading="lazy">
+          </button>
+          <div class="card-body">
+            <h3>${escapar(produto.nome)}</h3>
+            <p>${escapar(produto.descricao)}</p>
+            <strong>${moeda(produto.preco)}</strong>
+            <button class="acao" onclick="comprar(${produto.id})">
+              ${dados.carrinho ? "Adicionar ao carrinho" : "Consultar produto"}
+            </button>
+          </div>
+        </article>
+      `).join("");
+
+      // Cria os links sociais.
+      const redesHTML = [
+        instagram ? `<a href="${escapar(instagram)}" target="_blank" rel="noopener noreferrer">Instagram</a>` : "",
+        facebook ? `<a href="${escapar(facebook)}" target="_blank" rel="noopener noreferrer">Facebook</a>` : ""
+      ].join(" ");
+
+      // Cria o logo, quando existir.
+      const logoHTML = dados.logo
+        ? `<img class="logo" src="${dados.logo}" alt="Logo de ${nome}">`
+        : `<strong class="marca">${nome}</strong>`;
+
+      // Prepara os produtos para o JavaScript.
+      // Evita inserir HTML executável pelos campos.
+      const produtosJSON = JSON.stringify(dados.produtos)
+        .replace(/</g, "\\u003c")
+        .replace(/>/g, "\\u003e")
+        .replace(/&/g, "\\u0026");
+
+      // Prepara as fotos para o JavaScript.
+      const fotosJSON = JSON.stringify(galeria)
+        .replace(/</g, "\\u003c");
+
+      // Retorna o documento HTML completo.
+      return `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="${descricao.slice(0, 155)}">
+<meta name="theme-color" content="${dados.cor}">
+<title>${nome} | Site Oficial</title>
+
+<style>
+/* Configurações visuais da marca */
+:root {
+  --principal:${dados.cor};
+  --destaque:${dados.destaque};
+  --raio:${dados.raio}px;
+}
+
+/* Estrutura geral */
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:90px; }
+body { margin:0; font-family:Arial,sans-serif; color:#25342a; background:#f7f8f5; }
+button,input,textarea { font:inherit; }
+button { cursor:pointer; }
+a { text-decoration:none; color:inherit; }
+img { max-width:100%; }
+:focus-visible { outline:3px solid var(--destaque); outline-offset:3px; }
+
+/* Barra de navegação */
+header {
+  background:var(--principal);
+  color:white;
+  padding:13px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo { max-width:160px; max-height:55px; object-fit:contain; }
+.marca { font-size:21px; }
+nav { display:flex; align-items:center; gap:17px; }
+nav a { font-size:14px; font-weight:bold; }
+.menu { display:none; background:none; color:white; border:0; font-size:27px; }
+
+/* Banner principal */
+.hero {
+  min-height:380px;
+  background:linear-gradient(90deg,#000b,#0005),url('${dados.banner}');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  color:white;
+  padding:60px 7%;
+}
+.hero h1 { font-size:clamp(32px,5vw,60px); max-width:700px; }
+.hero p { max-width:600px; line-height:1.7; }
+.botao {
+  display:inline-block;
+  background:var(--destaque);
+  padding:14px 20px;
+  border:0;
+  border-radius:var(--raio);
+  font-weight:bold;
+  color:#17241b;
+}
+
+/* Seções do site */
+section { padding:55px 6%; }
+section h2 { font-size:clamp(25px,4vw,36px); }
+.texto { line-height:1.8; max-width:850px; white-space:pre-line; }
+
+/* Galeria de fotos */
+.galeria {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:12px;
+}
+.foto { padding:0; border:0; background:#e6eee7; display:block; width:100%; }
+.foto img {
+  display:block;
+  width:100%;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  border-radius:var(--raio);
+}
+.galeria .foto img { transition:transform .2s; }
+.galeria .foto:hover img { transform:scale(1.03); }
+
+/* Carrossel */
+.carrossel {
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  gap:15px;
+  padding:10px 0 20px;
+}
+.carrossel img {
+  width:270px;
+  height:180px;
+  object-fit:cover;
+  border-radius:var(--raio);
+  scroll-snap-align:start;
+}
+
+/* Cartões comerciais */
+.grade {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+}
+.card {
+  background:white;
+  border-radius:var(--raio);
+  overflow:hidden;
+  border:1px solid #e1e8e2;
+  display:flex;
+  flex-direction:column;
+}
+.card-body { padding:15px; flex:1; display:flex; flex-direction:column; }
+.card h3 { margin:8px 0; }
+.card p { color:#65736a; line-height:1.5; flex:1; }
+.card strong { font-size:22px; color:var(--principal); }
+.acao {
+  background:var(--principal);
+  color:white;
+  border:0;
+  border-radius:8px;
+  padding:12px;
+  margin-top:13px;
+  width:100%;
+}
+
+/* Contato e rodapé */
+.contato { background:#eaf1ea; }
+footer { background:var(--principal); color:white; padding:35px 6%; text-align:center; }
+footer a { margin:0 8px; text-decoration:underline; }
+
+/* Carrinho */
+.carrinho-btn {
+  background:var(--destaque);
+  border:0;
+  padding:10px;
+  border-radius:8px;
+  font-weight:bold;
+}
+.painel-carrinho {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000a;
+  z-index:30;
+  padding:15px;
+  align-items:center;
+  justify-content:center;
+}
+.painel-carrinho.aberto { display:flex; }
+.caixa {
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  width:100%;
+  max-width:500px;
+  max-height:90vh;
+  overflow:auto;
+}
+.linha {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid #ddd;
+}
+.caixa input {
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+.fechar { float:right; border:0; background:#eee; padding:9px; border-radius:7px; }
+.item-qtd button { padding:5px 10px; margin:0 5px; }
+
+/* Visualizador de fotos */
+.lightbox {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:40;
+  background:#000e;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.lightbox.aberto { display:flex; }
+.lightbox img { max-height:85vh; max-width:95vw; object-fit:contain; }
+.lightbox button { position:absolute; top:15px; right:15px; }
+
+/* Adaptação para celular */
+@media(max-width:800px) {
+  .menu { display:block; }
+  nav {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:var(--principal);
+    flex-direction:column;
+    padding:20px;
+  }
+  nav.aberta { display:flex; }
+  .grade { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .galeria { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .hero { min-height:320px; }
+  section { padding:35px 4%; }
+}
+@media(max-width:400px) {
+  .galeria { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Cabeçalho e navegação -->
+<header>
+  <a href="#inicio">${logoHTML}</a>
+  <button class="menu" aria-label="Abrir menu" onclick="alternarMenu()">☰</button>
+  <nav id="nav">
+    <a href="#inicio" onclick="fecharMenu()">Início</a>
+    <a href="#sobre" onclick="fecharMenu()">Sobre</a>
+    <a href="#produtos" onclick="fecharMenu()">Produtos</a>
+    <a href="#galeria" onclick="fecharMenu()">Galeria</a>
+    <a href="#contato" onclick="fecharMenu()">Contato</a>
+  </nav>
+  ${dados.carrinho
+    ? '<button class="carrinho-btn" onclick="abrirCarrinho()">🛒 <span id="contador">0</span></button>'
+    : ''}
+</header>
+
+<!-- Banner da empresa -->
+<div class="hero" id="inicio">
+  <div>
+    <h1>${slogan}</h1>
+    <p>${descricao}</p>
+    <a class="botao" href="#produtos">Conheça nossos produtos</a>
+  </div>
+</div>
+
+<!-- História da empresa -->
+<section id="sobre">
+  <h2>Nossa história</h2>
+  <p class="texto">${historia}</p>
+</section>
+
+<!-- Produtos ou serviços -->
+<section id="produtos">
+  <h2>Produtos e serviços</h2>
+  <div class="grade">
+    ${cardsHTML || '<p>Em breve, novidades por aqui!</p>'}
+  </div>
+</section>
+
+<!-- Galeria de imagens -->
+<section id="galeria">
+  <h2>Nossa galeria</h2>
+  <p>Conheça mais sobre nosso empreendimento.</p>
+  <div class="galeria">${galeriaHTML}</div>
+
+  <!-- Carrossel horizontal -->
+  <h2>Destaques</h2>
+  <div class="carrossel">
+    ${galeria.slice(0, 10).map(foto =>
+      '<img src="' + foto + '" alt="Foto em destaque" loading="lazy">'
+    ).join("")}
+  </div>
+</section>
+
+<!-- Informações de contato -->
+<section id="contato" class="contato">
+  <h2>Fale conosco</h2>
+  <p>📍 ${endereco || "Endereço a informar"}</p>
+  <p>🕒 ${horario || "Consulte nosso horário"}</p>
+
+  ${endereco
+    ? `<a class="botao" target="_blank" rel="noopener noreferrer"
+          href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(dados.endereco)}">
+          Ver localização
+        </a>`
+    : ''}
+
+  ${telefone
+    ? `<p><a class="botao" target="_blank" rel="noopener noreferrer"
+            href="https://wa.me/${telefone}">
+            💬 WhatsApp
+          </a></p>`
+    : ''}
+
+  ${dados.pix && dados.chavePix
+    ? `<p><strong>Pix manual:</strong> ${chavePix}</p>
+       <p>Recebedor: ${recebedor}</p>
+       <p>Confirme o pagamento diretamente com a empresa.</p>`
+    : ''}
+
+  ${dados.cartao
+    ? '<p>💳 Pagamento por cartão: consulte a empresa.</p>'
+    : ''}
+</section>
+
+<!-- Rodapé profissional -->
+<footer>
+  <h3>${nome}</h3>
+  <p>${slogan}</p>
+  <p>${redesHTML}</p>
+  <p>© ${new Date().getFullYear()} ${nome}. Todos os direitos reservados.</p>
+</footer>
+
+<!-- Janela do carrinho -->
+<div class="painel-carrinho" id="painelCarrinho">
+  <div class="caixa">
+    <button class="fechar" onclick="fecharCarrinho()">Fechar ×</button>
+    <h2>🛒 Meu carrinho</h2>
+    <div id="itens"></div>
+    <h3 id="total"></h3>
+    <form onsubmit="enviarPedido(event)">
+      <label for="cliente">Seu nome</label>
+      <input id="cliente" required placeholder="Nome completo">
+      <button class="botao" type="submit">Enviar pedido pelo WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<!-- Visualizador de imagens -->
+<div class="lightbox" id="lightbox" onclick="fecharImagem()">
+  <button class="fechar" onclick="fecharImagem()">Fechar ×</button>
+  <img id="fotoGrande" alt="Imagem ampliada">
+</div>
+
+<!-- JavaScript do site publicado -->
+<script>
+/* Dados dos produtos */
+const produtos = ${produtosJSON};
+
+/* Fotos da galeria */
+const fotos = ${fotosJSON};
+
+/* Número de WhatsApp */
+const telefone = ${JSON.stringify(telefone)};
+
+/* Define se o carrinho está ativo */
+const carrinhoAtivo = ${dados.carrinho};
+
+/* Carrinho em memória */
+let carrinho = [];
+
+/* Formatação monetária */
+function moeda(valor) {
+  return Number(valor).toLocaleString("pt-BR", {
+    style:"currency", currency:"BRL"
+  });
+}
+
+/* Alterna a navegação */
+function alternarMenu() {
+  document.getElementById("nav").classList.toggle("aberta");
+}
+
+/* Fecha a navegação */
+function fecharMenu() {
+  document.getElementById("nav").classList.remove("aberta");
+}
+
+/* Abre uma foto da galeria */
+function ampliar(indice) {
+  document.getElementById("fotoGrande").src = fotos[indice];
+  document.getElementById("lightbox").classList.add("aberto");
+}
+
+/* Abre a foto de um produto */
+function ampliarProduto(id) {
+  const produto = produtos.find(p => p.id === id);
+  if (!produto) return;
+  document.getElementById("fotoGrande").src = produto.imagem;
+  document.getElementById("lightbox").classList.add("aberto");
+}
+
+/* Fecha a imagem */
+function fecharImagem() {
+  document.getElementById("lightbox").classList.remove("aberto");
+}
+
+/* Compra ou consulta um produto */
+function comprar(id) {
+  const produto = produtos.find(p => p.id === id);
+  if (!produto) return;
+
+  /* Sem carrinho, envia consulta ao WhatsApp */
+  if (!carrinhoAtivo) {
+    if (!telefone) {
+      alert("WhatsApp ainda não configurado.");
+      return;
+    }
+    const texto = "Olá! Gostaria de saber mais sobre: " +
+      produto.nome + " - " + moeda(produto.preco);
+    window.open(
+      "https://wa.me/" + telefone + "?text=" + encodeURIComponent(texto),
+      "_blank"
+    );
+    return;
+  }
+
+  /* Adiciona ou aumenta a quantidade */
+  const item = carrinho.find(p => p.id === id);
+  if (item) item.quantidade++;
+  else carrinho.push({id,quantidade:1});
+
+  atualizarCarrinho();
+}
+
+/* Altera a quantidade */
+function quantidade(id, diferenca) {
+  const item = carrinho.find(p => p.id === id);
+  if (!item) return;
+  item.quantidade += diferenca;
+  carrinho = carrinho.filter(p => p.quantidade > 0);
+  atualizarCarrinho();
+}
+
+/* Atualiza os itens e os valores */
+function atualizarCarrinho() {
+  const contador = document.getElementById("contador");
+  if (contador) {
+    contador.textContent = carrinho.reduce(
+      (total,item) => total + item.quantidade, 0
+    );
+  }
+
+  const area = document.getElementById("itens");
+  if (!area) return;
+
+  /* Constrói os itens do carrinho */
+  area.innerHTML = carrinho.map(item => {
+    const produto = produtos.find(p => p.id === item.id);
+    const nome = document.createElement("span");
+    nome.textContent = produto.nome;
+    return '<div class="linha"><div>' +
+      nome.innerHTML + '<p>' +
+      moeda(produto.preco * item.quantidade) +
+      '</p></div><div class="item-qtd">' +
+      '<button onclick="quantidade(' + item.id + ',-1)">−</button>' +
+      item.quantidade +
+      '<button onclick="quantidade(' + item.id + ',1)">+</button>' +
+      '</div></div>';
+  }).join("") || "<p>Carrinho vazio.</p>";
+
+  /* Calcula o total */
+  const total = carrinho.reduce((soma,item) => {
+    const produto = produtos.find(p => p.id === item.id);
+    return soma + produto.preco * item.quantidade;
+  },0);
+
+  document.getElementById("total").textContent =
+    "Subtotal: " + moeda(total);
+}
+
+/* Abre o carrinho */
+function abrirCarrinho() {
+  atualizarCarrinho();
+  document.getElementById("painelCarrinho").classList.add("aberto");
+}
+
+/* Fecha o carrinho */
+function fecharCarrinho() {
+  document.getElementById("painelCarrinho").classList.remove("aberto");
+}
+
+/* Envia a lista de compras */
+function enviarPedido(evento) {
+  evento.preventDefault();
+
+  if (!telefone) {
+    alert("WhatsApp não configurado.");
+    return;
+  }
+
+  if (!carrinho.length) {
+    alert("Adicione produtos.");
+    return;
+  }
+
+  const cliente = document.getElementById("cliente").value.trim();
+  let texto = "Olá! Novo pedido de " + cliente + ":\\n\\n";
+  let total = 0;
+
+  carrinho.forEach(item => {
+    const produto = produtos.find(p => p.id === item.id);
+    const subtotal = produto.preco * item.quantidade;
+    total += subtotal;
+    texto += item.quantidade + "x " + produto.nome +
+      " - " + moeda(subtotal) + "\\n";
+  });
+
+  texto += "\\nSubtotal: " + moeda(total);
+  texto += "\\nGostaria de confirmar disponibilidade, entrega e pagamento.";
+
+  window.open(
+    "https://wa.me/" + telefone + "?text=" + encodeURIComponent(texto),
+    "_blank"
+  );
+}
+
+/* Fecha janelas com Escape */
+document.addEventListener("keydown", evento => {
+  if (evento.key === "Escape") {
+    fecharImagem();
+    fecharCarrinho();
+    fecharMenu();
+  }
+});
+
+/* Inicializa o contador */
+atualizarCarrinho();
+<\/script>
+</body>
+</html>`;
+    }
+
+    // ======================================
+    // VISUALIZAÇÃO EM TEMPO REAL
+    // ======================================
+
+    // Atualiza a prévia.
+    function atualizar() {
+      // Evita atualizações duplicadas.
+      if (atualizacaoPendente) return;
+
+      atualizacaoPendente = true;
+
+      // Aguarda o próximo quadro do navegador.
+      requestAnimationFrame(() => {
+        atualizacaoPendente = false;
+
+        // Obtém os dados atuais.
+        const dados = obterDados();
+
+        // Gera o site completo.
+        const html = gerarSite(dados);
+
+        // Atualiza o iframe.
+        campo("preview").srcdoc = html;
+
+        // Atualiza a auditoria.
+        verificarSite();
+      });
+    }
+
+    // Alterna entre computador e celular.
+    function modoPreview(modo) {
+      campo("moldura").classList.toggle(
+        "celular", modo === "celular"
+      );
+    }
+
+    // ======================================
+    // VERIFICAÇÃO DO SITE
+    // ======================================
+
+    // Confere informações importantes.
+    function verificarSite() {
+      const dados = obterDados();
+
+      // Lista das verificações.
+      const testes = [
+        ["Nome da empresa", Boolean(dados.nome)],
+        ["História preenchida", dados.historia.length >= 30],
+        ["Logotipo enviado", Boolean(dados.logo)],
+        ["WhatsApp válido", Boolean(numeroWhatsapp(dados.telefone))],
+        ["Endereço preenchido", Boolean(dados.endereco)],
+        ["30 fotos reais enviadas", dados.fotos.length >= 30],
+        ["Pelo menos um produto", dados.produtos.length > 0],
+        ["Pix configurado, se ativado",
+          !dados.pix || Boolean(dados.chavePix && dados.recebedor)],
+        ["Instagram válido, se preenchido",
+          !dados.instagram || Boolean(linkSeguro(dados.instagram))],
+        ["Facebook válido, se preenchido",
+          !dados.facebook || Boolean(linkSeguro(dados.facebook))]
+      ];
+
+      // Conta os testes aprovados.
+      const aprovados = testes.filter(t => t[1]).length;
+
+      // Monta o relatório.
+      campo("auditoria").innerHTML =
+        "<strong>" + aprovados + " de " +
+        testes.length + " verificações aprovadas</strong><hr>" +
+        testes.map(t =>
+          (t[1] ? "✅ " : "⚠️ ") + escapar(t[0])
+        ).join("<br>") +
+        "<p>Esta é uma verificação inicial. " +
+        "Teste o site exportado antes de publicar.</p>";
+
+      return aprovados === testes.length;
+    }
+
+    // ======================================
+    // DOWNLOAD DOS ARQUIVOS
+    // ======================================
+
+    // Cria o download de um arquivo.
+    function baixarArquivo(conteudo, nome, tipo) {
+      const blob = new Blob([conteudo], {type:tipo});
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+
+      link.href = url;
+      link.download = nome;
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      // Libera a memória após o início do download.
+      setTimeout(() => URL.revokeObjectURL(url), 30000);
+    }
+
+    // Baixa o HTML independente.
+    function baixarHTML() {
+      const dados = obterDados();
+      const html = gerarSite(dados);
+
+      baixarArquivo(
+        html,
+        "index.html",
+        "text/html;charset=utf-8"
+      );
+
+      mensagem("Download do HTML solicitado.");
+    }
+
+    // Gera o pacote ZIP.
+    async function baixarZIP() {
+      // Verifica se a biblioteca está disponível.
+      if (typeof JSZip === "undefined") {
+        alert(
+          "A biblioteca ZIP não carregou. " +
+          "Conecte-se à internet ou use Baixar HTML."
+        );
+        return;
+      }
+
+      // Recupera os dados do cliente.
+      const dados = obterDados();
+
+      // Cria o site.
+      const html = gerarSite(dados);
+
+      // Cria o arquivo compactado.
+      const zip = new JSZip();
+
+      // Adiciona o site funcional.
+      zip.file("index.html", html);
+
+      // Adiciona as informações do projeto.
+      zip.file(
+        "LEIA-ME.txt",
+        "MOSS STUDIO PRO\n\n" +
+        "SITE GERADO PARA: " + dados.nome + "\n\n" +
+        "1. Abra index.html para testar.\n" +
+        "2. As imagens estão incorporadas ao HTML.\n" +
+        "3. Publique index.html em uma hospedagem estática.\n" +
+        "4. Configure seu domínio na hospedagem.\n" +
+        "5. Teste links, WhatsApp e carrinho.\n" +
+        "6. Pix é manual, sem confirmação automática.\n" +
+        "7. Cartão exige integração segura com provedor.\n" +
+        "8. Não coloque senhas ou tokens secretos no HTML.\n" +
+        "9. Substitua fotos demonstrativas por fotos reais.\n" +
+        "10. Verifique direitos de uso das imagens.\n\n" +
+        "IMPORTANTE:\n" +
+        "O domínio não substitui a hospedagem.\n" +
+        "O carrinho gera pedidos, mas não controla estoque.\n" +
+        "O site não possui banco de dados nem painel de pedidos.\n"
+      );
+
+      // Adiciona uma cópia editável dos dados.
+      zip.file(
+        "dados-do-projeto.json",
+        JSON.stringify(dados, null, 2)
+      );
+
+      // Informa o andamento.
+      mensagem("Preparando o arquivo ZIP...");
+
+      try {
+        // Gera o arquivo compactado.
+        const blob = await zip.generateAsync({
+          type:"blob",
+          compression:"DEFLATE",
+          compressionOptions:{level:3}
+        });
+
+        // Cria o endereço temporário.
+        const url = URL.createObjectURL(blob);
+
+        // Cria o link de download.
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = nomeArquivo(dados.nome) + ".zip";
+
+        // Solicita o download.
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        // Libera o endereço temporário.
+        setTimeout(() => URL.revokeObjectURL(url), 30000);
+
+        mensagem(
+          "ZIP gerado. Verifique se o arquivo " +
+          "foi salvo no seu dispositivo."
+        );
+      } catch (erro) {
+        mensagem("Erro ao gerar ZIP: " + erro.message);
+      }
+    }
+
+    // ======================================
+    // SALVAMENTO LOCAL
+    // ======================================
+
+    // Salva os dados no navegador.
+    function salvarProjeto() {
+      try {
+        localStorage.setItem(
+          "moss-studio-pro",
+          JSON.stringify(obterDados())
+        );
+
+        mensagem("Projeto salvo neste navegador.");
+      } catch (erro) {
+        mensagem(
+          "Não foi possível salvar. " +
+          "As imagens podem ocupar muito espaço. " +
+          "Exporte uma cópia do projeto."
+        );
+      }
+    }
+
+    // Recupera o projeto salvo.
+    function carregarProjeto() {
+      const salvo = localStorage.getItem("moss-studio-pro");
+
+      if (!salvo) {
+        alert("Nenhum projeto salvo neste navegador.");
+        return;
+      }
+
+      try {
+        const dados = JSON.parse(salvo);
+
+        // Restaura os campos de texto.
+        const campos = {
+          nome:dados.nome,
+          slogan:dados.slogan,
+          descricao:dados.descricao,
+          historia:dados.historia,
+          corPrincipal:dados.cor,
+          corDestaque:dados.destaque,
+          estilo:dados.raio,
+          telefone:dados.telefone,
+          instagram:dados.instagram,
+          facebook:dados.facebook,
+          endereco:dados.endereco,
+          horario:dados.horario,
+          chavePix:dados.chavePix,
+          recebedor:dados.recebedor
+        };
+
+        // Preenche os campos existentes.
+        Object.entries(campos).forEach(([id, valorSalvo]) => {
+          if (campo(id) && valorSalvo !== undefined) {
+            campo(id).value = valorSalvo;
+          }
+        });
+
+        // Restaura as opções.
+        campo("carrinho").checked = Boolean(dados.carrinho);
+        campo("pix").checked = Boolean(dados.pix);
+        campo("cartao").checked = Boolean(dados.cartao);
+
+        // Restaura as imagens.
+        logoData = dados.logo || "";
+        bannerData = dados.banner || "";
+        fotos = Array.isArray(dados.fotos) ? dados.fotos : [];
+
+        // Restaura os produtos.
+        produtos = Array.isArray(dados.produtos)
+          ? dados.produtos : [];
+
+        // Atualiza o próximo ID.
+        proximoId = Math.max(
+          0,
+          ...produtos.map(p => Number(p.id) || 0)
+        ) + 1;
+
+        // Atualiza o editor.
+        mostrarMiniaturas();
+        mostrarListaProdutos();
+        atualizar();
+
+        mensagem("Projeto recuperado com sucesso.");
+      } catch (erro) {
+        mensagem("Erro ao recuperar projeto salvo.");
+      }
+    }
+
+    // ======================================
+    // INICIALIZAÇÃO
+    // ======================================
+
+    // Mostra as miniaturas iniciais.
+    mostrarMiniaturas();
+
+    // Mostra os produtos iniciais.
+    mostrarListaProdutos();
+
+    // Cria a primeira visualização.
+    atualizar();
+
+    // Confirma o carregamento no console.
+    console.log("MOSS Studio Pro iniciado.");
+
+  </script>
+</body>
+</html>
