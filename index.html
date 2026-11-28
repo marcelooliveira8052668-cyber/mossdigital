@@ -63,6 +63,7 @@ img{display:block;max-width:100%}
 .hero-inner{position:relative;display:grid;grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr);align-items:center;gap:clamp(24px,4vw,64px);min-height:clamp(370px,33vw,510px);padding-block:clamp(40px,5vw,76px)}
 .hero-copy{position:relative;padding-left:20px;z-index:2}
 .hero h1{position:relative;margin:0 0 20px;font-size:clamp(2.6rem,4.55vw,4.55rem);font-weight:850;line-height:1.03;letter-spacing:-.055em;text-wrap:balance;text-shadow:0 5px 20px #0004}
+.hero h1 > span{display:block;max-width:100%;overflow-wrap:normal}
 .hero h1::before{content:"";position:absolute;left:-20px;top:5px;bottom:5px;width:5px;border-radius:5px;background:linear-gradient(#fff4ab,#ffc400);box-shadow:0 0 20px #ffcb2855}
 .hero p{max-width:570px;margin:0 0 28px;font-size:clamp(1.13rem,1.75vw,1.48rem);line-height:1.55;color:#d8e8fa;font-weight:400;text-wrap:pretty}
 .actions{display:flex;gap:13px;flex-wrap:wrap}
@@ -171,12 +172,12 @@ img{display:block;max-width:100%}
 }
 @media(max-width:490px){
   .demo{flex-basis:100%}.demo-link{min-height:250px}.demo h3{font-size:1.16rem}
-  .hero h1 br{display:none}.actions .btn{padding-inline:15px}
+  .hero h1{font-size:clamp(1.65rem,7.3vw,2.1rem);line-height:1.13;letter-spacing:-.035em;text-wrap:initial}.actions .btn{padding-inline:15px}
   .header .btn svg{display:none}
 }
 @media(max-width:350px){
   .header .brand img{width:106px}.menu-toggle{padding:7px}.header .btn{padding-inline:9px}
-  .actions{flex-direction:column;align-items:stretch}.hero h1{font-size:2rem}
+  .actions{flex-direction:column;align-items:stretch}.hero h1{font-size:1.65rem}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 
@@ -192,7 +193,7 @@ img{display:block;max-width:100%}
 </div></header>
 <main id="conteudo">
 <section class="hero" aria-labelledby="hero-title"><div class="wrap hero-inner">
-<div class="hero-copy"><h1 id="hero-title">Sites Profissionais<br> para o seu Negócio</h1><p>Modelos prontos, sistemas e soluções personalizadas.</p><div class="actions"><a class="btn gold" href="/catalogo.html#modelos">Ver Modelos <span aria-hidden="true">→</span></a><a class="btn outline" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20meu%20site." target="_blank" rel="noopener noreferrer">Fale Conosco</a></div></div>
+<div class="hero-copy"><h1 id="hero-title"><span>Sites Profissionais</span> <span>para o seu Negócio</span></h1><p>Modelos prontos, sistemas e soluções personalizadas.</p><div class="actions"><a class="btn gold" href="/catalogo.html#modelos">Ver Modelos <span aria-hidden="true">→</span></a><a class="btn outline" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20meu%20site." target="_blank" rel="noopener noreferrer">Fale Conosco</a></div></div>
 <div class="hero-art" aria-hidden="true"><div class="halo"></div><div class="desk"></div><div class="laptop"><div class="screen"><img src="/assets/img/fotos/moss-logo-horizontal.webp" alt=""></div><div class="base"></div></div></div>
 </div></section>
 <section class="services" aria-label="Nossos serviços"><div class="wrap services-row"><a class="service" href="https://wa.me/5511942038103?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20meu%20site."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg><strong>Sites<br>Personalizados</strong></a>
